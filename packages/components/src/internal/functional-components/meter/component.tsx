@@ -3,6 +3,7 @@ import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
 
 import type { FunctionalComponentProps } from '../generic-types';
+import { renderLabelWithLang } from '../span/component';
 import type { MeterApi } from './api';
 
 type MeterState = 'optimum' | 'suboptimal' | 'critical';
@@ -75,7 +76,7 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 		<div class={{ 'kol-meter': true, 'kol-meter--vertical': isVertical }}>
 			<div class="kol-meter__bar">
 				<div class="kol-meter__bar-label">
-					{label}
+					{renderLabelWithLang(label)}
 					{hasStateClassification && (
 						<span class={`kol-meter__bar-state kol-meter__bar-state--${state}`}>
 							{' – '}

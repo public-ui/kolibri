@@ -8,7 +8,7 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 } from '../../../schema';
-import { buildBadgeTextString } from '../../../schema';
+import { buildBadgeTextString, trimLabel } from '../../../schema';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import {
@@ -316,7 +316,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 
 	private isTooltipShown(): boolean {
 		const shared = this.shared;
-		return isLabelShownAsTooltip({ hideLabel: shared.getRenderProp('hideLabel'), label: shared.getRenderProp('label') });
+		return isLabelShownAsTooltip({ hideLabel: shared.getRenderProp('hideLabel'), label: trimLabel(shared.getRenderProp('label')) });
 	}
 
 	/**

@@ -5,6 +5,7 @@ import { bem } from '../../../schema/bem-registry';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import { LinkFC } from '../link/component';
+import { renderLabelWithLang } from '../span/component';
 import type { BreadcrumbApi } from './api';
 import type { BreadcrumbLinkItem } from './link-item';
 
@@ -44,7 +45,7 @@ const renderLink = (item: BreadcrumbLinkItem, index: number, lastIndex: number, 
 					{link._hideLabel ? (
 						<IconFC class={BEM_CLASS_BREADCRUMB__ICON} icons={typeof link._icons === 'string' ? link._icons : 'kolicon-link'} label={link._label} />
 					) : (
-						<>{link._label}</>
+						<>{renderLabelWithLang(link._label)}</>
 					)}
 				</span>
 			) : (

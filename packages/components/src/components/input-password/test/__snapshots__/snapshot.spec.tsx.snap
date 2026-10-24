@@ -801,3 +801,36 @@ exports[`kol-input-password should render with _label="Label" _name="field" _vis
   </template>
 </kol-input-password>
 `;
+
+exports[`kol-input-password should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" 1`] = `
+<kol-input-password _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-password password">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-password-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-password>
+`;

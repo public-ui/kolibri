@@ -103,3 +103,21 @@ exports[`kol-heading should render with _label="Headline" 1`] = `
   </template>
 </kol-heading>
 `;
+
+exports[`kol-heading should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+<kol-heading>
+  <template shadowrootmode="open">
+    <strong class="kol-heading kol-headline kol-headline--single kol-headline--strong">
+      <span>
+        <span lang="en">
+          partly english
+        </span>
+        <span>
+          Label
+        </span>
+      </span>
+      <slot name="expert" slot="expert"></slot>
+    </strong>
+  </template>
+</kol-heading>
+`;

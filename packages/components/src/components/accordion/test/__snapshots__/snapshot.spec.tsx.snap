@@ -173,3 +173,37 @@ exports[`kol-accordion should render with _label="Überschrift" 1`] = `
   </template>
 </kol-accordion>
 `;
+
+exports[`kol-accordion should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+<kol-accordion>
+  <template shadowrootmode="open">
+    <details class="kol-accordion" style="--collapsible-transition-duration: 300ms;">
+      <summary aria-controls="accordion-control-nonce" class="kol-accordion__heading" id="accordion-heading-nonce">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
+          <span class="kol-span">
+            <span class="kol-span__container">
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
+              <span class="kol-span__label">
+                <span lang="en">
+                  partly english
+                </span>
+                <span>
+                  Label
+                </span>
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+            </span>
+          </span>
+        </strong>
+      </summary>
+      <div class="kol-accordion__wrapper">
+        <div class="kol-accordion__wrapper-animation">
+          <div aria-hidden="true" aria-labelledby="accordion-heading-nonce" class="kol-accordion__content" id="accordion-control-nonce" role="region">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </details>
+  </template>
+</kol-accordion>
+`;

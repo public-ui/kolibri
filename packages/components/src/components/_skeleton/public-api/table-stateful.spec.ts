@@ -62,7 +62,7 @@ const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 	},
 	_label: {
 		kind: 'prop',
-		type: 'string',
+		type: 'LabelPropType',
 		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},

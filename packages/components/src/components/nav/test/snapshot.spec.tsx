@@ -34,6 +34,7 @@ const baseObj: NavProps = {
 			_label: '6 Keine eigene Seite, mit Icon',
 			_icons: 'codicon codicon-squirrel',
 		},
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
 	],
 };
 

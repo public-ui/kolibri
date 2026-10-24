@@ -119,419 +119,48 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links="[{\\"_label\\":\\"Homepage\\",\\"_href\\":\\"#\\"},{\\"_label\\":\\"Nav - aria-current\\",\\"_href\\":\\"#\\",\\"_active\\":true},{\\"_label\\":\\"3 Navigation point\\",\\"_href\\":\\"#\\",\\"_icons\\":\\"codicon codicon-home\\",\\"_children\\":[{\\"_label\\":\\"3.1 Navigation point\\",\\"_icons\\":\\"codicon codicon-home\\",\\"_href\\":\\"#\\"}]},{\\"_label\\":\\"6 Keine eigene Seite, mit Icon\\",\\"_icons\\":\\"codicon codicon-squirrel\\"}]" 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links="[{\\"_label\\":\\"Homepage\\",\\"_href\\":\\"#\\"},{\\"_label\\":\\"Nav - aria-current\\",\\"_href\\":\\"#\\",\\"_active\\":true},{\\"_label\\":\\"3 Navigation point\\",\\"_href\\":\\"#\\",\\"_icons\\":\\"codicon codicon-home\\",\\"_children\\":[{\\"_label\\":\\"3.1 Navigation point\\",\\"_icons\\":\\"codicon codicon-home\\",\\"_href\\":\\"#\\"}]},{\\"_label\\":\\"6 Keine eigene Seite, mit Icon\\",\\"_icons\\":\\"codicon codicon-squirrel\\"},{\\"_label\\":[{\\"text\\":\\"partly english\\",\\"lang\\":\\"en\\"},{\\"text\\":\\"Label\\"}]}]" 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Homepage
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Nav - aria-current
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a aria-expanded="false" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          3 Navigation point
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
-                <div class="kol-button kol-button--normal kol-button--standalone">
-                  <button class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          6 Keine eigene Seite, mit Icon
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
     </div>
   </template>
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _collapsible=false 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"},{"_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] _collapsible=false 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Homepage
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Nav - aria-current
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          3 Navigation point
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button">
-                <div class="kol-button kol-button--normal kol-button--standalone">
-                  <button class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          6 Keine eigene Seite, mit Icon
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
     </div>
   </template>
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasCompactButton=false 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"},{"_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] _hasCompactButton=false 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Homepage
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Nav - aria-current
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a aria-expanded="false" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          3 Navigation point
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
-                <div class="kol-button kol-button--normal kol-button--standalone">
-                  <button class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          6 Keine eigene Seite, mit Icon
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
     </div>
   </template>
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasCompactButton=true _hideLabel=true 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"},{"_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] _hasCompactButton=true _hideLabel=true 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav kol-nav--is-compact">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--hide-label kol-link--inline">
-                  <a aria-label="Homepage" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span kol-span--hide-label">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-link" role="presentation"></i>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                  <div class="kol-link__tooltip">
-                    <div class="kol-tooltip__floating">
-                      <div class="kol-tooltip__arrow"></div>
-                      <span class="kol-span kol-tooltip__content">
-                        <span class="kol-span__container">
-                          <span class="kol-span__label">
-                            Homepage
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--hide-label kol-link--inline">
-                  <a aria-label="Nav - aria-current" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span kol-span--hide-label">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-link" role="presentation"></i>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                  <div class="kol-link__tooltip">
-                    <div class="kol-tooltip__floating">
-                      <div class="kol-tooltip__arrow"></div>
-                      <span class="kol-span kol-tooltip__content">
-                        <span class="kol-span__container">
-                          <span class="kol-span__label">
-                            Nav - aria-current
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--hide-label kol-link--inline">
-                  <a aria-expanded="false" aria-label="3 Navigation point" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span kol-span--hide-label">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
-                      </span>
-                    </span>
-                  </a>
-                  <div class="kol-link__tooltip">
-                    <div class="kol-tooltip__floating">
-                      <div class="kol-tooltip__arrow"></div>
-                      <span class="kol-span kol-tooltip__content">
-                        <span class="kol-span__container">
-                          <span class="kol-span__label">
-                            3 Navigation point
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
-                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
-                  <button aria-label="6 Keine eigene Seite, mit Icon" class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span kol-span--hide-label">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="codicon codicon-squirrel kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                  <div class="kol-button__tooltip">
-                    <div class="kol-tooltip__floating">
-                      <div class="kol-tooltip__arrow"></div>
-                      <span class="kol-span kol-tooltip__content">
-                        <span class="kol-span__container">
-                          <span class="kol-span__label">
-                            6 Keine eigene Seite, mit Icon
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
       <div class="kol-nav__compact">
         <div class="kol-nav__toggle-button">
@@ -567,94 +196,12 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasCompactButton=true 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"},{"_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] _hasCompactButton=true 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Homepage
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Nav - aria-current
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a aria-expanded="false" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          3 Navigation point
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
-                <div class="kol-button kol-button--normal kol-button--standalone">
-                  <button class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          6 Keine eigene Seite, mit Icon
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
       <div class="kol-nav__compact">
         <div class="kol-nav__toggle-button">
@@ -690,516 +237,60 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasIconsWhenExpanded=false 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"},{"_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] _hasIconsWhenExpanded=false 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Homepage
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Nav - aria-current
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a aria-expanded="false" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          3 Navigation point
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
-                <div class="kol-button kol-button--normal kol-button--standalone">
-                  <button class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          6 Keine eigene Seite, mit Icon
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
     </div>
   </template>
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasIconsWhenExpanded=true 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"},{"_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] _hasIconsWhenExpanded=true 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Homepage
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Nav - aria-current
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a aria-expanded="false" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                        <span class="kol-span__label">
-                          3 Navigation point
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
-                <div class="kol-button kol-button--normal kol-button--standalone">
-                  <button class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="codicon codicon-squirrel kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                        <span class="kol-span__label">
-                          6 Keine eigene Seite, mit Icon
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
     </div>
   </template>
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hideLabel=false 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"},{"_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] _hideLabel=false 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Homepage
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Nav - aria-current
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a aria-expanded="false" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          3 Navigation point
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
-                <div class="kol-button kol-button--normal kol-button--standalone">
-                  <button class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          6 Keine eigene Seite, mit Icon
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
     </div>
   </template>
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hideLabel=true 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"},{"_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] _hideLabel=true 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav kol-nav--is-compact">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--hide-label kol-link--inline">
-                  <a aria-label="Homepage" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span kol-span--hide-label">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-link" role="presentation"></i>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                  <div class="kol-link__tooltip">
-                    <div class="kol-tooltip__floating">
-                      <div class="kol-tooltip__arrow"></div>
-                      <span class="kol-span kol-tooltip__content">
-                        <span class="kol-span__container">
-                          <span class="kol-span__label">
-                            Homepage
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--hide-label kol-link--inline">
-                  <a aria-label="Nav - aria-current" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span kol-span--hide-label">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-link" role="presentation"></i>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                  <div class="kol-link__tooltip">
-                    <div class="kol-tooltip__floating">
-                      <div class="kol-tooltip__arrow"></div>
-                      <span class="kol-span kol-tooltip__content">
-                        <span class="kol-span__container">
-                          <span class="kol-span__label">
-                            Nav - aria-current
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--hide-label kol-link--inline">
-                  <a aria-expanded="false" aria-label="3 Navigation point" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span kol-span--hide-label">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
-                      </span>
-                    </span>
-                  </a>
-                  <div class="kol-link__tooltip">
-                    <div class="kol-tooltip__floating">
-                      <div class="kol-tooltip__arrow"></div>
-                      <span class="kol-span kol-tooltip__content">
-                        <span class="kol-span__container">
-                          <span class="kol-span__label">
-                            3 Navigation point
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
-                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
-                  <button aria-label="6 Keine eigene Seite, mit Icon" class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span kol-span--hide-label">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="codicon codicon-squirrel kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                  <div class="kol-button__tooltip">
-                    <div class="kol-tooltip__floating">
-                      <div class="kol-tooltip__arrow"></div>
-                      <span class="kol-span kol-tooltip__content">
-                        <span class="kol-span__container">
-                          <span class="kol-span__label">
-                            6 Keine eigene Seite, mit Icon
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
     </div>
   </template>
 </kol-nav>
 `;
 
-exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] 1`] = `
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"},{"_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
     <div class="kol-nav">
       <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
-        <ul class="kol-nav__list">
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Homepage
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--active">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          Nav - aria-current
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item kol-nav__list-item--has-children">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
-                <div class="kol-link kol-link--inline">
-                  <a aria-expanded="false" class="kol-link__interactive-element" href="#">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          3 Navigation point
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="kol-nav__list-item">
-            <div class="kol-nav__entry-wrapper">
-              <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
-                <div class="kol-button kol-button--normal kol-button--standalone">
-                  <button class="kol-button__interactive-element" type="button">
-                    <span class="kol-button__text kol-span">
-                      <span class="kol-span__container">
-                        <span class="kol-span__label">
-                          6 Keine eigene Seite, mit Icon
-                        </span>
-                        <span aria-hidden="true" class="kol-span__slot" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                      </span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="kol-nav__list"></ul>
       </nav>
     </div>
   </template>

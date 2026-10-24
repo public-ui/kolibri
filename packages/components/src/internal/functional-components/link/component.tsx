@@ -2,7 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
-import { devHint } from '../../../schema';
+import { devHint, trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
@@ -104,7 +104,9 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				aria-disabled={disabled ? 'true' : undefined}
 				aria-expanded={ariaExpanded === '' ? undefined : ariaExpanded}
 				aria-owns={ariaOwns || undefined}
-				aria-label={hideLabel && typeof label === 'string' && label.trim() !== '' ? `${label}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined}
+				aria-label={
+					hideLabel && typeof label === 'string' && trimLabel(label) !== '' ? `${label}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined
+				}
 				aria-keyshortcuts={shortKey || undefined}
 				class={linkBem('interactive-element')}
 				{...on}

@@ -173,3 +173,37 @@ exports[`kol-details should render with _label="Zusammenfassung" 1`] = `
   </template>
 </kol-details>
 `;
+
+exports[`kol-details should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+<kol-details>
+  <template shadowrootmode="open">
+    <details class="kol-details" style="--collapsible-transition-duration: 300ms;">
+      <summary aria-controls="details-control-nonce" class="kol-details__heading" id="details-heading-nonce">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
+          <span class="kol-span">
+            <span class="kol-span__container">
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
+              <span class="kol-span__label">
+                <span lang="en">
+                  partly english
+                </span>
+                <span>
+                  Label
+                </span>
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+            </span>
+          </span>
+        </strong>
+      </summary>
+      <div class="kol-details__wrapper">
+        <div class="kol-details__wrapper-animation">
+          <div aria-hidden="true" aria-labelledby="details-heading-nonce" class="indented-text kol-details__content" id="details-control-nonce" role="region">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    </details>
+  </template>
+</kol-details>
+`;

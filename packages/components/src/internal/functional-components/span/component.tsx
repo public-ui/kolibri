@@ -2,7 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 import { isString } from 'lodash-es';
 
-import type { IconOrIconClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriIconsProp } from '../../../schema';
+import type { IconOrIconClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriIconsProp, LabelPropType } from '../../../schema';
 import { showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
@@ -58,17 +58,40 @@ function renderUnderlinedBadgeText(label: string, badgeText: string) {
 	);
 }
 
-function renderLabel(label: string, hideLabel: boolean, allowMarkdown: boolean | undefined, badgeText: string | undefined) {
-	if (hideLabel || !isString(label)) {
+export function renderLabelWithLang(label: LabelPropType) {
+	return Array.isArray(label) ? (
+		<span>
+			{label.map((labelSegment) => {
+				return <span lang={labelSegment.lang}>{labelSegment.text}</span>;
+			})}
+		</span>
+	) : (
+		<>{label}</>
+	);
+}
+
+function renderLabel(label: LabelPropType, hideLabel: boolean, allowMarkdown: boolean | undefined, badgeText: string | undefined) {
+	if (hideLabel) {
 		return null;
 	}
-	if (allowMarkdown) {
-		return <span class={clsx(spanBem('label'), 'md')} innerHTML={md(label)} />;
+
+	if (Array.isArray(label)) {
+		return (
+			<span class={spanBem('label')}>
+				{label.map((labelSegment) => {
+					return <span lang={labelSegment.lang}>{labelSegment.text}</span>;
+				})}
+			</span>
+		);
+	} else {
+		if (allowMarkdown) {
+			return <span class={clsx(spanBem('label'), 'md')} innerHTML={md(label)} />;
+		}
+		if (badgeText) {
+			return <span class={spanBem('label')}>{renderUnderlinedBadgeText(label, badgeText)}</span>;
+		}
+		return <span class={spanBem('label')}>{label}</span>;
 	}
-	if (badgeText) {
-		return <span class={spanBem('label')}>{renderUnderlinedBadgeText(label, badgeText)}</span>;
-	}
-	return <span class={spanBem('label')}>{label}</span>;
 }
 
 export const SpanFC: FC<

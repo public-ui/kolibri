@@ -45,9 +45,38 @@ export function containsOnlyNumbers(str: string): boolean {
 }
 
 /**
+ * Trims a label value and returns it as a single string.
+ *
+ * - If `label` is a string, leading and trailing whitespace is removed.
+ * - If `label` is an array of label segments,  all segments are concatenated with a single space between
+ * and leading and trailing whitespace is removed.
+ *
+ * @param label The label value as a LabelPropType (string or an array of label segments).
+ * @returns The normalized label as a trimmed string.
+ */
+export function trimLabel(label: LabelPropType): string {
+	if (typeof label === 'string') {
+		return label.trim();
+	}
+
+	return label
+		.map((item) => item.text)
+		.join('')
+		.trim();
+}
+
+/**
+ * Defines segments of a label with language attributes
+ */
+export type LabelSegment = {
+	text: string;
+	lang?: string;
+};
+
+/**
  * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
  */
-export type LabelPropType = string;
+export type LabelPropType = string | LabelSegment[];
 
 /**
  * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
@@ -101,7 +130,10 @@ function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 
 const LABEL_VALUES = new Set(['string']);
 export const validateLabel = (component: Generic.Element.Component, value?: LabelPropType, options: WatchStringOptions = {}): void => {
-	watchValidator(component, '_label', (value) => typeof value === 'string', LABEL_VALUES, value, getValidationOptions(options));
+	// eslint-disable-next-line no-console
+	console.log(value);
+
+	watchValidator(component, '_label', (value) => typeof value === 'string' || Array.isArray(value), LABEL_VALUES, value, getValidationOptions(options));
 };
 
 /**

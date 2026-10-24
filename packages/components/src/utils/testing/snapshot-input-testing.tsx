@@ -57,6 +57,7 @@ export function executeInputSnapshotTests<Props extends Record<string, unknown>>
 				},
 			},
 		},
+		{ ...(baseObj as Props), _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
 	];
 
 	if (options?.hasSmartButton) {

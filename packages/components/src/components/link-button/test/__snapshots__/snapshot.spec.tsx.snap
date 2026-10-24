@@ -169,3 +169,29 @@ exports[`kol-link-button should render with _label="Label" _href="" _download="d
   </template>
 </kol-link-button>
 `;
+
+exports[`kol-link-button should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _href="" 1`] = `
+<kol-link-button>
+  <template shadowrootmode="open">
+    <div class="kol-link kol-link--normal kol-link--standalone">
+      <a class="kol-link__interactive-element" href="javascript:void(0);">
+        <span class="kol-link__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </a>
+    </div>
+  </template>
+</kol-link-button>
+`;

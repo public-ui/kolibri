@@ -136,7 +136,7 @@ export const createDialogItem = (
 
 	return {
 		getFcProps: (props: DialogItemProps): DialogItemFCProps => {
-			let label = '';
+			let label: LabelPropType = '';
 			let level: HeadingLevel = 0;
 			let variant = 'blank' as ModalVariantPropType;
 			let width = '100%';
