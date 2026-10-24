@@ -1,6 +1,6 @@
 ---
 name: migrate-to-skeleton
-description: Migriert eine Legacy-KoliBri-Komponente auf die Skeleton-Blueprint-Architektur (WC-Orchestrator → optionale Behaviors + FC + Props-Pattern). Führt durch Gap-Analyse, Props-First, Layer-Refactor, Legacy-Rückbau und die Abnahme-Gates (Unit-Tests, öffentliche API-Parität, Pixel-Gate). Trigger: "Skeleton-Migration", "Komponente migrieren", "auf Skeleton umbauen", "migrate-to-skeleton", "BaseWebComponent", "Prop-Triangle", "propsConfig", "ApiFromConfig", "BemRootNodeFC", "Legacy-Komponente umbauen", "Controller auflösen", "Aspect-Klasse auflösen", "Dead-Schema-Abbau", "Skeleton-Blueprint", "migrate to skeleton".
+description: 'Migriert eine Legacy-KoliBri-Komponente auf die Skeleton-Blueprint-Architektur (WC-Orchestrator → optionale Behaviors + FC + Props-Pattern). Führt durch Gap-Analyse, Props-First, Layer-Refactor, Legacy-Rückbau und die Abnahme-Gates (Unit-Tests, öffentliche API-Parität, Pixel-Gate). Trigger: "Skeleton-Migration", "Komponente migrieren", "auf Skeleton umbauen", "migrate-to-skeleton", "BaseWebComponent", "Prop-Triangle", "propsConfig", "ApiFromConfig", "BemRootNodeFC", "Legacy-Komponente umbauen", "Controller auflösen", "Aspect-Klasse auflösen", "Dead-Schema-Abbau", "Skeleton-Blueprint", "migrate to skeleton".'
 ---
 
 # Migrate to Skeleton
