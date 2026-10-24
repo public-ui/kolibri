@@ -10,6 +10,7 @@ type TooltipFixture = {
 	show: () => void;
 };
 
+const created: HTMLElement[] = [];
 const createTooltipFixture = (): TooltipFixture => {
 	const behavior = new TooltipBehavior(BaseWebComponent.stateLess);
 	behavior.componentWillLoad({ label: 'Sample tooltip' });
@@ -23,6 +24,7 @@ const createTooltipFixture = (): TooltipFixture => {
 
 	document.body.appendChild(target);
 	document.body.appendChild(tooltip);
+	created.push(target, tooltip);
 
 	behavior.initContext(target);
 	behavior.setTooltipElementRef(tooltip);
@@ -51,7 +53,7 @@ describe('TooltipBehavior', () => {
 		jest.useRealTimers();
 		addEventListenerSpy.mockRestore();
 		removeEventListenerSpy.mockRestore();
-		document.body.innerHTML = '';
+		created.splice(0).forEach((element) => element.remove());
 	});
 
 	describe('Escape keydown listener registration on show', () => {
