@@ -40,28 +40,37 @@ export const setRuntimeMode = (mode: Mode): void => {
 	}
 };
 
-// Safer mode detection that handles browser environments better
-const getInitialMode = (): Mode => {
+const getNodeEnv = (): string | undefined => {
 	try {
-		// Try to get NODE_ENV, but handle cases where process is not available
-		const nodeEnv = typeof process !== 'undefined' && process.env ? process.env['NODE_ENV'] : undefined;
-		if (nodeEnv && MODES.includes(nodeEnv as Mode)) {
-			return nodeEnv as Mode;
-		}
+		// The bracket notation prevents the Stencil build from replacing the expression with its build environment.
+		return typeof process !== 'undefined' && process.env ? process.env['NODE_ENV'] : undefined;
 	} catch {
 		// Ignore errors in browser environments where process might not be available
+		return undefined;
 	}
-	return 'production';
+};
+
+// Safer mode detection that handles browser environments better
+const getInitialMode = (): Mode => {
+	const nodeEnv = getNodeEnv();
+	return nodeEnv && MODES.includes(nodeEnv as Mode) ? (nodeEnv as Mode) : 'production';
 };
 
 setRuntimeMode(getInitialMode());
-
 let EXPERIMENTAL_MODE: boolean = false;
 let COLOR_CONTRAST_ANALYSIS: boolean = false;
 
 export const isDevMode = (): boolean => runtimeMode === 'development';
 export const isTestMode = (): boolean => runtimeMode === 'test';
 export const isProdMode = (): boolean => runtimeMode === 'production';
+
+/**
+ * Whether the prop validation should run. Validation is a development aid and is only skipped
+ * when both the runtime mode and the process environment prove `production`. In environments
+ * without a `process` — a browser bundle of the published artifact — the mode of the hosting
+ * application is unknown and the validation stays enabled.
+ */
+export const isValidationEnabled = (): boolean => runtimeMode !== 'production' || getNodeEnv() !== 'production';
 
 export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
 export const setExperimentalMode = (mode: boolean): void => {
