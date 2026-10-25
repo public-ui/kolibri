@@ -14,9 +14,9 @@ button .kol-span__label display none default, desy, bwst
 card .kol-card width 100% default, desy  
 card .kol-card height 100% default, desy  
 custom-suggestions-option .kol-custom-suggestions-option display flex default, desy, bwst  
-custom-suggestions-option .kol-custom-suggestions-option min-height $option-height                 default, desy, bwst           
-custom-suggestions-option .kol-custom-suggestions-option align-items          center                         default, desy, bwst           
-custom-suggestions-options-group .kol-custom-suggestions-options-group max-height           calc($option-height * $visible-options + to-rem(2)) default, desy, bwst  
+custom-suggestions-option .kol-custom-suggestions-option min-height $option-height default, desy, bwst  
+custom-suggestions-option .kol-custom-suggestions-option align-items center default, desy, bwst  
+custom-suggestions-options-group .kol-custom-suggestions-options-group max-height calc($option-height * $visible-options + to-rem(2)) default, desy, bwst  
 custom-suggestions-toggle .kol-custom-suggestions-toggle display grid default, desy, bwst  
 field-control .kol-field-control display flex default, desy, bwst  
 form-field .kol-form-field padding-left to-rem(16) default, bwst  
