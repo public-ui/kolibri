@@ -48,7 +48,7 @@ export function containsOnlyNumbers(str: string): boolean {
  * Trims a label value and returns it as a single string.
  *
  * - If `label` is a string, leading and trailing whitespace is removed.
- * - If `label` is an array of label segments,  all segments are concatenated with a single space between
+ * - If `label` is an array of label segments,  all segments are concatenated
  * and leading and trailing whitespace is removed.
  *
  * @param label The label value as a LabelPropType (string or an array of label segments).
@@ -108,6 +108,32 @@ export type PropLabelWithExpertSlot = {
 export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
 // type LabelWithExpertSlotProp = Generic.Element.Members<PropLabelWithExpertSlot, unknown>;
 
+function isLabelSegment(value: unknown): value is LabelSegment {
+	if (typeof value !== 'object' || value === null) {
+		return false;
+	}
+
+	const v = value as Record<string, unknown>;
+	const keys = Object.keys(v);
+
+	// only text & lang are allowed
+	if (!keys.every((k) => k === 'text' || k === 'lang')) {
+		return false;
+	}
+
+	// text is mandatory
+	if (typeof v.text !== 'string') {
+		return false;
+	}
+
+	//lang is optional
+	if (v.lang !== undefined && typeof v.lang !== 'string') {
+		return false;
+	}
+
+	return true;
+}
+
 function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 	return {
 		...options,
@@ -122,6 +148,9 @@ function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 				if (typeof value === 'string' && value.length > 80) {
 					uiUxHint(`A heading or label should not be longer than 80 characters.`);
 				}
+				if (Array.isArray(value) && !value.every(isLabelSegment)) {
+					uiUxHint(`Label segments have to be { text: string, lang?: string }`);
+				}
 			},
 			beforePatch: options.hooks?.beforePatch,
 		},
@@ -130,9 +159,6 @@ function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 
 const LABEL_VALUES = new Set(['string']);
 export const validateLabel = (component: Generic.Element.Component, value?: LabelPropType, options: WatchStringOptions = {}): void => {
-	// eslint-disable-next-line no-console
-	console.log(value);
-
 	watchValidator(component, '_label', (value) => typeof value === 'string' || Array.isArray(value), LABEL_VALUES, value, getValidationOptions(options));
 };
 

@@ -2,6 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
 
+import { trimLabel } from '../../../schema';
 import type { FunctionalComponentProps } from '../generic-types';
 import { renderLabelWithLang } from '../span/component';
 import type { MeterApi } from './api';
@@ -86,7 +87,16 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 				</div>
 
 				<div class="kol-meter__bar-track">
-					<meter aria-label={label} aria-valuetext={staticValueWithState} high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
+					<meter
+						aria-label={trimLabel(label)}
+						aria-valuetext={staticValueWithState}
+						high={high}
+						low={low}
+						max={max}
+						min={min}
+						optimum={optimum}
+						value={value}
+					></meter>
 				</div>
 				<span class="kol-meter__value-unit">
 					<span class="kol-meter__value" style={{ 'min-width': charCount }}>

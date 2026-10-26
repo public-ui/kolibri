@@ -1,7 +1,7 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../../schema';
+import { trimLabel, type HeadingLevel, type KoliBriDialogEventCallbacks, type LabelPropType } from '../../../schema';
 import type { ModalVariantPropType } from '../../../schema/props/variant/modal';
 import { createUniqueId, nonce } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
@@ -170,7 +170,7 @@ export const createDialogItem = (
 					blockClass: dialogBlockClass(variant),
 					handleCancel,
 					handleClose,
-					label,
+					label: trimLabel(label),
 					labelledBy: isCard ? headingId : undefined,
 					modal,
 					refDialog: dialogRef,
@@ -187,7 +187,7 @@ export const createDialogItem = (
 								hasCloser: true,
 								headingId,
 								href: '',
-								label,
+								label: trimLabel(label),
 								level,
 								on: {},
 								refCloseButton: cardCloseButtonRef,
