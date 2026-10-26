@@ -344,7 +344,7 @@ export class KolInputPassword
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: string;
+	@Prop({ mutable: true }) public _value?: string;
 
 	@Watch('_value')
 	public watchValue(value?: string): void {
