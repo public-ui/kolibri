@@ -35,7 +35,7 @@ Weitere Ausschlüsse per Label: `po:doing`, `need:reproduction`, `need:to-refine
 `to-answer-and-close`, `intern`, `icebox`, `Stale`. Beanspruchte Issues (offener PR oder
 Assignee) erhalten kein Label; trägt ein beanspruchtes Issue noch ein Label aus einem
 früheren Lauf, schlägt der Bericht das Entfernen vor und normalisiert den Stand damit auf
-„Label bedeutet: aktuell frei und klassifiziert“.
+„Label bedeutet: aktuell frei und klassifiziert“. Aus dem ersten Lauf: #11317 wurde extern geschlossen, #11146 hatte fremd ein `good first issue` erhalten — beides wurde im selben Zug normalisiert.
 
 ## 1. Menge einlesen
 
@@ -98,6 +98,6 @@ gh issue edit <NR> --repo public-ui/kolibri --add-label "up-for-grabs"
 gh issue edit <NR> --repo public-ui/kolibri --remove-label "good first issue"
 ```
 
-Anschließend jede betroffene Label-Abfrage verifizieren und als Linkliste melden. Der
+Anschließend jede betroffene Label-Abfrage verifizieren und als Linkliste melden; geprüft wird auch die Ein-Label-Regel — kein Issue trägt zwei Klassifizierungslabels — und Labels an geschlossenen oder zwischenzeitlich beanspruchten Issues werden entfernt. Der
 Label-Stand ist eine Momentaufnahme: Neue PRs können Tickets jederzeit beanspruchen, der
 nächste Durchlauf normalisiert das.
