@@ -357,13 +357,6 @@ export class KolInputColor
 		this.watchValue(this._value);
 	}
 
-	public componentDidLoad(): void {
-		// Without a preset value the field takes the initial value of the native control (`#000000`).
-		if (!this._value && this.ctaRef) {
-			this._value = this.ctaRef.el?.value;
-		}
-	}
-
 	public componentDidRender(): void {
 		this.syncFormField();
 	}
