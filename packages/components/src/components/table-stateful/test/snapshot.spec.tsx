@@ -99,7 +99,7 @@ const CASES: Case[] = [
 	[
 		'label with language ',
 		{
-			_label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }],
+			_label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }],
 			_headers: headers(),
 			_data: FEW_ROWS,
 		},

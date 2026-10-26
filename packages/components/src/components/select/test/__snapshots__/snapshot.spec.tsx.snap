@@ -8213,7 +8213,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _hideMsg=true _msg={"_type":"error","_description":"This is a combined error message"} 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _hideMsg=true _msg={"_type":"error","_description":"This is a combined error message"} 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
@@ -8256,7 +8256,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _value=["Divers","Frau"] 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _value=["Divers","Frau"] 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
@@ -8299,7 +8299,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
@@ -8342,7 +8342,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
@@ -8385,7 +8385,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
@@ -8428,7 +8428,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _tabIndex=-1 _required=true 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _tabIndex=-1 _required=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
@@ -8471,7 +8471,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _value="Herr" 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _value="Herr" 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
@@ -8514,7 +8514,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _value="Unbekannt" 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _value="Unbekannt" 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
@@ -8557,7 +8557,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
@@ -8600,7 +8600,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Gruppe","options":[{"label":"Eins","value":1},{"label":"Zwei","value":2,"disabled":true}]},{"label":"Drei","value":3}] 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Gruppe","options":[{"label":"Eins","value":1},{"label":"Zwei","value":2,"disabled":true}]},{"label":"Drei","value":3}] 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
@@ -8645,7 +8645,7 @@ exports[`kol-select should render with _label=[{"text":"partly english","lang":"
 </kol-select>
 `;
 
-exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Keine Angabe","value":""},{"label":"Gruppe","options":[{"label":"Eins","value":1},{"label":"Zwei","value":2,"disabled":true}]},{"label":"Drei","value":3}] _value=2 1`] = `
+exports[`kol-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Keine Angabe","value":""},{"label":"Gruppe","options":[{"label":"Eins","value":1},{"label":"Zwei","value":2,"disabled":true}]},{"label":"Drei","value":3}] _value=2 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">

@@ -150,7 +150,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
 </kol-tree-item>
 `;
 
-exports[`kol-tree-item should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _href="https://example.com" 1`] = `
+exports[`kol-tree-item should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _href="https://example.com" 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
     <li class="kol-tree-item" role="none" style="--level: 0;">

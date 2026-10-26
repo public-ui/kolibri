@@ -1922,7 +1922,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
 </kol-pagination>
 `;
 
-exports[`kol-pagination should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _on={} _max=2 _page=1 1`] = `
+exports[`kol-pagination should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _on={} _max=2 _page=1 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
     <div class="kol-pagination">

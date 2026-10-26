@@ -705,7 +705,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _resize="n
 </kol-textarea>
 `;
 
-exports[`kol-textarea should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" 1`] = `
+exports[`kol-textarea should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" 1`] = `
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">

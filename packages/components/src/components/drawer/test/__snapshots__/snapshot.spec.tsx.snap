@@ -211,7 +211,7 @@ exports[`kol-drawer should render with _label="Label" 1`] = `
 </kol-drawer>
 `;
 
-exports[`kol-drawer should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+exports[`kol-drawer should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
 <kol-drawer>
   <template shadowrootmode="open">
     <div class="kol-drawer">

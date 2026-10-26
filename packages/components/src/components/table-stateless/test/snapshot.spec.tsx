@@ -269,7 +269,7 @@ const propVariants: TableStatelessProps[] = [
 		_loading: true,
 	},
 	{
-		_label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }],
+		_label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }],
 		_headers: {
 			horizontal: [[{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 180 }]],
 			vertical: [],

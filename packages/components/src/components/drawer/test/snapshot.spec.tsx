@@ -16,7 +16,7 @@ const testCases: DrawerProps[] = [
 	{ _label: 'Label', _open: false },
 	{ _label: 'Label', _open: true, _hasCloser: true },
 	{ _label: 'Label', _open: true, _level: 2 },
-	{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
+	{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 ];
 
 executeSnapshotTests<DrawerProps>(KolDrawerTag, [KolDrawer], testCases);

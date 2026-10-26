@@ -51,7 +51,7 @@ exports[`kol-breadcrumb should render with _label="Aria-Label" _links=[{"_href":
 </kol-breadcrumb>
 `;
 
-exports[`kol-breadcrumb should render with _label="Aria-Label" _links=[{"_href":"https://example.com","_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]},{"_href":"https://example.com","_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] 1`] = `
+exports[`kol-breadcrumb should render with _label="Aria-Label" _links=[{"_href":"https://example.com","_label":[{"text":"partly english","lang":"en"},{"text":" Label"}]},{"_href":"https://example.com","_label":[{"text":"partly english","lang":"en"},{"text":" Label"}]}] 1`] = `
 <kol-breadcrumb>
   <template shadowrootmode="open">
     <nav aria-label="Aria-Label" class="kol-breadcrumb">

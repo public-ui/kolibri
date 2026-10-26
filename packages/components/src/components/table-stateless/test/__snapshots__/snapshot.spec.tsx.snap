@@ -1145,7 +1145,7 @@ exports[`kol-table-stateless should render with _label="Table without data with 
 </kol-table-stateless>
 `;
 
-exports[`kol-table-stateless should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _headers={"horizontal":[[{"key":"header1","label":"Header 1","textAlign":"left","width":180}]],"vertical":[]} _data=[] 1`] = `
+exports[`kol-table-stateless should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _headers={"horizontal":[[{"key":"header1","label":"Header 1","textAlign":"left","width":180}]],"vertical":[]} _data=[] 1`] = `
 <kol-table-stateless>
   <template shadowrootmode="open">
     <div class="kol-table">

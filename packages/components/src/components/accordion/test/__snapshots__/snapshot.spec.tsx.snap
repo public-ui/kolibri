@@ -174,7 +174,7 @@ exports[`kol-accordion should render with _label="Überschrift" 1`] = `
 </kol-accordion>
 `;
 
-exports[`kol-accordion should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+exports[`kol-accordion should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
 <kol-accordion>
   <template shadowrootmode="open">
     <details class="kol-accordion" style="--collapsible-transition-duration: 300ms;">

@@ -13,6 +13,6 @@ executeSnapshotTests<BadgeProps>(
 		{ _label: 'Text', _icons: 'codicon codicon-home' },
 		{ _label: 'Text', _icons: 'codicon codicon-home', _color: '#000000' },
 		{ _label: 'Badge fallback', _smartButton: { _ariaDescription: 'Badge label', _label: 'Remove' } },
-		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 	],
 );

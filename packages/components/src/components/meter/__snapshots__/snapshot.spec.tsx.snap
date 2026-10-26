@@ -474,7 +474,7 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=100 1`] = `
 </kol-meter>
 `;
 
-exports[`kol-meter should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+exports[`kol-meter should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
 <kol-meter>
   <template shadowrootmode="open">
     <div class="kol-meter">
@@ -490,7 +490,7 @@ exports[`kol-meter should render with _label=[{"text":"partly english","lang":"e
           </span>
         </div>
         <div class="kol-meter__bar-track">
-          <meter aria-label="[object Object],[object Object]" aria-valuetext="kol-live-value" max="1" min="0" value="0"></meter>
+          <meter aria-label="partly english Label" aria-valuetext="kol-live-value" max="1" min="0" value="0"></meter>
         </div>
         <span class="kol-meter__value-unit">
           <span class="kol-meter__value" style="min-width: 1ch;">

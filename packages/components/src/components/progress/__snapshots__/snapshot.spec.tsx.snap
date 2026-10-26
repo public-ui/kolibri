@@ -600,7 +600,7 @@ exports[`kol-progress should render with _label="more than max" _variant="cycle"
 </kol-progress>
 `;
 
-exports[`kol-progress should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+exports[`kol-progress should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
 <kol-progress>
   <template shadowrootmode="open">
     <div class="kol-progress">

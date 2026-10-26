@@ -933,7 +933,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _type="s
 </kol-input-text>
 `;
 
-exports[`kol-input-text should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" 1`] = `
+exports[`kol-input-text should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" 1`] = `
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">

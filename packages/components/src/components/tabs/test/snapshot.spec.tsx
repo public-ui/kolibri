@@ -27,7 +27,7 @@ executeSnapshotTests<TabsProps>(
 				},
 				{
 					_icons: 'codicon codicon-pie-chart',
-					_label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }],
+					_label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }],
 				},
 				{
 					_icons: 'codicon codicon-telescope',

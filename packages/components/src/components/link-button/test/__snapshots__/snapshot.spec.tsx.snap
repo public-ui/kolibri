@@ -170,7 +170,7 @@ exports[`kol-link-button should render with _label="Label" _href="" _download="d
 </kol-link-button>
 `;
 
-exports[`kol-link-button should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _href="" 1`] = `
+exports[`kol-link-button should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _href="" 1`] = `
 <kol-link-button>
   <template shadowrootmode="open">
     <div class="kol-link kol-link--normal kol-link--standalone">

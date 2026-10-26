@@ -1820,7 +1820,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _value
 </kol-input-number>
 `;
 
-exports[`kol-input-number should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] 1`] = `
+exports[`kol-input-number should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _suggestions=[1,2,3] 1`] = `
 <kol-input-number>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">
@@ -1868,7 +1868,7 @@ exports[`kol-input-number should render with _label=[{"text":"partly english","l
 </kol-input-number>
 `;
 
-exports[`kol-input-number should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" 1`] = `
+exports[`kol-input-number should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" 1`] = `
 <kol-input-number>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-number number">

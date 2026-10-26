@@ -7,5 +7,5 @@ import { KolButtonLink } from './component';
 executeSnapshotTests<ButtonLinkProps>(
 	KolButtonLinkTag,
 	[KolButtonLink],
-	[{ _label: 'Beschreibung' }, { _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] }],
+	[{ _label: 'Beschreibung' }, { _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] }],
 );

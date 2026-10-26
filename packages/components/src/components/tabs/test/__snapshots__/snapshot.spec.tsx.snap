@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-tabs should render with _label="Text" _selected=1 _tabs=[{"_icons":"codicon codicon-pie-chart","_label":"Erster Tab"},{"_icons":"codicon codicon-calendar","_label":"Zweiter Tab"},{"_disabled":true,"_icons":"codicon codicon-briefcase","_label":"Deaktivierter Tab"},{"_icons":"codicon codicon-pie-chart","_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]},{"_icons":"codicon codicon-telescope","_label":"Letzter Tab"}] 1`] = `
+exports[`kol-tabs should render with _label="Text" _selected=1 _tabs=[{"_icons":"codicon codicon-pie-chart","_label":"Erster Tab"},{"_icons":"codicon codicon-calendar","_label":"Zweiter Tab"},{"_disabled":true,"_icons":"codicon codicon-briefcase","_label":"Deaktivierter Tab"},{"_icons":"codicon codicon-pie-chart","_label":[{"text":"partly english","lang":"en"},{"text":" Label"}]},{"_icons":"codicon codicon-telescope","_label":"Letzter Tab"}] 1`] = `
 <kol-tabs _selected="1">
   <template shadowrootmode="open">
     <div class="kol-tabs kol-tabs--align-top">

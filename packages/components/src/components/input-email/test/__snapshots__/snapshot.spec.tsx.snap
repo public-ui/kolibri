@@ -1459,7 +1459,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 </kol-input-email>
 `;
 
-exports[`kol-input-email should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] 1`] = `
+exports[`kol-input-email should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] 1`] = `
 <kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-form-field kol-input-email">
@@ -1497,7 +1497,7 @@ exports[`kol-input-email should render with _label=[{"text":"partly english","la
 </kol-input-email>
 `;
 
-exports[`kol-input-email should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" 1`] = `
+exports[`kol-input-email should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" 1`] = `
 <kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-form-field kol-input-email">

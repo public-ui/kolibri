@@ -802,7 +802,7 @@ exports[`kol-input-password should render with _label="Label" _name="field" _vis
 </kol-input-password>
 `;
 
-exports[`kol-input-password should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" 1`] = `
+exports[`kol-input-password should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" 1`] = `
 <kol-input-password _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">

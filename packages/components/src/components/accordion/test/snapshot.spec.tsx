@@ -16,6 +16,6 @@ executeSnapshotTests<AccordionProps>(
 		{ ...baseObject, _open: false, _disabled: true },
 		{ ...baseObject, _open: true, _disabled: true },
 		{ ...baseObject, _open: true, _disabled: false },
-		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 	],
 );

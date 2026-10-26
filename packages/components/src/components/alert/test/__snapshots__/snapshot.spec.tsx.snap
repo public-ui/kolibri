@@ -1399,7 +1399,7 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
 </kol-alert>
 `;
 
-exports[`kol-alert should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+exports[`kol-alert should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
     <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">

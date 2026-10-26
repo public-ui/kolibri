@@ -60,7 +60,7 @@ exports[`kol-quote should render with _href="https://example.com" _label="Captio
 </kol-quote>
 `;
 
-exports[`kol-quote should render with _href="https://example.com" _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _quote="Text of the Quote" 1`] = `
+exports[`kol-quote should render with _href="https://example.com" _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _quote="Text of the Quote" 1`] = `
 <kol-quote>
   <template shadowrootmode="open">
     <figure class="kol-quote kol-quote--inline">

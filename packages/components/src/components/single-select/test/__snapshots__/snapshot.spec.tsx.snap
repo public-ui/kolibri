@@ -905,7 +905,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 </kol-single-select>
 `;
 
-exports[`kol-single-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
+exports[`kol-single-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">

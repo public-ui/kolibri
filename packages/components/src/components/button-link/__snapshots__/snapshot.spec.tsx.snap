@@ -21,7 +21,7 @@ exports[`kol-button-link should render with _label="Beschreibung" 1`] = `
 </kol-button-link>
 `;
 
-exports[`kol-button-link should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+exports[`kol-button-link should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
 <kol-button-link>
   <template shadowrootmode="open">
     <div class="kol-button kol-button--inline kol-button--normal">

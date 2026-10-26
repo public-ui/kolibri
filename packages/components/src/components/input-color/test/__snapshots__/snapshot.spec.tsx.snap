@@ -1330,7 +1330,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 </kol-input-color>
 `;
 
-exports[`kol-input-color should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFFFFF" _suggestions=["#FF0000","#00FF00","#0000FF"] 1`] = `
+exports[`kol-input-color should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFFFFF" _suggestions=["#FF0000","#00FF00","#0000FF"] 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
@@ -1368,7 +1368,7 @@ exports[`kol-input-color should render with _label=[{"text":"partly english","la
 </kol-input-color>
 `;
 
-exports[`kol-input-color should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFFFFF" 1`] = `
+exports[`kol-input-color should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFFFFF" 1`] = `
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">

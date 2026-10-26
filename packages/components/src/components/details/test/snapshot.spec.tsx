@@ -14,6 +14,6 @@ executeSnapshotTests<DetailsProps>(
 		{ _label: 'Zusammenfassung', _disabled: true, _open: true },
 		{ _label: 'Zusammenfassung', _disabled: false, _open: false },
 		{ _label: 'Zusammenfassung', _disabled: false, _open: true },
-		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 	],
 );

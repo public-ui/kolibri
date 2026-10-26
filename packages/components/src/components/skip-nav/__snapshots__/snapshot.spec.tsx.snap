@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https://example.com","_label":"Zum Anfang"},{"_href":"https://example.com","_label":"Zum Formular"},{"_href":"https://example.com","_label":"Zum Ende"},{"_href":"https://example.com","_label":[{"text":"partly english","lang":"en"},{"text":"Label"}]}] 1`] = `
+exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https://example.com","_label":"Zum Anfang"},{"_href":"https://example.com","_label":"Zum Formular"},{"_href":"https://example.com","_label":"Zum Ende"},{"_href":"https://example.com","_label":[{"text":"partly english","lang":"en"},{"text":" Label"}]}] 1`] = `
 <kol-skip-nav>
   <template shadowrootmode="open">
     <nav aria-label="Label" class="kol-skip-nav">

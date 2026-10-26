@@ -1182,7 +1182,7 @@ exports[`kol-input-file should render with _label="Label" 1`] = `
 </kol-input-file>
 `;
 
-exports[`kol-input-file should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" 1`] = `
+exports[`kol-input-file should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" 1`] = `
 <kol-input-file _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="file kol-form-field kol-input-file">

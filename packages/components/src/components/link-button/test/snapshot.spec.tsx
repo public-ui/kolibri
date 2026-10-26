@@ -20,6 +20,6 @@ executeSnapshotTests<LinkButtonProps>(
 
 		{ _label: 'Label', _href: '', _download: 'download-file.zip', _target: 'blank' },
 
-		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }], _href: '' },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }], _href: '' },
 	],
 );

@@ -570,7 +570,7 @@ exports[`kol-card should render with _label="Überschrift" 1`] = `
 </kol-card>
 `;
 
-exports[`kol-card should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+exports[`kol-card should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
 <kol-card>
   <template shadowrootmode="open">
     <article aria-labelledby="card-heading-nonce" class="kol-card">

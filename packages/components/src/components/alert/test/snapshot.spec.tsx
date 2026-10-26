@@ -31,7 +31,7 @@ executeSnapshotTests<AlertProps>(
 		...buildByType('info'),
 		...buildByType('success'),
 		...buildByType('warning'),
-		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 	],
 );
 

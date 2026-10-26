@@ -17,6 +17,6 @@ executeSnapshotTests<QuoteSnapshotProps>(
 		{ _href: 'https://example.com', _label: 'Caption', _quote: 'Text of the Quote' },
 		{ _href: 'https://example.com', _label: 'Caption', _quote: 'Text of the Quote', _variant: 'block' },
 		{ _href: 'https://example.com', _label: 'Caption', _quote: 'Text of the Quote', _variant: 'inline' },
-		{ _href: 'https://example.com', _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }], _quote: 'Text of the Quote' },
+		{ _href: 'https://example.com', _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }], _quote: 'Text of the Quote' },
 	],
 );

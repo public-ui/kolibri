@@ -57,7 +57,7 @@ exports[`kol-link should render with _href="#" _hideLabel=true 1`] = `
 </kol-link>
 `;
 
-exports[`kol-link should render with _href="#" _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+exports[`kol-link should render with _href="#" _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
 <kol-link>
   <template shadowrootmode="open">
     <div class="kol-link kol-link--inline">

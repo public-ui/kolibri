@@ -30,6 +30,6 @@ executeSnapshotTests(
 		{ _label: 'Label', _max: 100, _value: 10, _low: 25, _high: 75, _optimum: 50, _orientation: 'vertical' },
 		{ _label: 'Label', _max: 100, _value: 90, _low: 25, _high: 75, _optimum: 50, _orientation: 'vertical' },
 
-		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 	],
 );

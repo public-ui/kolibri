@@ -5046,7 +5046,7 @@ exports[`kol-input-checkbox should render with _label="Label" 1`] = `
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" 1`] = `
+exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
@@ -5082,7 +5082,7 @@ exports[`kol-input-checkbox should render with _label=[{"text":"partly english",
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" 1`] = `
+exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="button" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
@@ -5118,7 +5118,7 @@ exports[`kol-input-checkbox should render with _label=[{"text":"partly english",
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" 1`] = `
+exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="switch" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-switch">
@@ -5154,7 +5154,7 @@ exports[`kol-input-checkbox should render with _label=[{"text":"partly english",
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" 1`] = `
+exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
@@ -5190,7 +5190,7 @@ exports[`kol-input-checkbox should render with _label=[{"text":"partly english",
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" 1`] = `
+exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="right" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-default">
@@ -5226,7 +5226,7 @@ exports[`kol-input-checkbox should render with _label=[{"text":"partly english",
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" 1`] = `
+exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="button" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
@@ -5262,7 +5262,7 @@ exports[`kol-input-checkbox should render with _label=[{"text":"partly english",
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" 1`] = `
+exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="switch" 1`] = `
 <kol-input-checkbox _checked="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-switch">
@@ -5298,7 +5298,7 @@ exports[`kol-input-checkbox should render with _label=[{"text":"partly english",
 </kol-input-checkbox>
 `;
 
-exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true 1`] = `
+exports[`kol-input-checkbox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _indeterminate=true 1`] = `
 <kol-input-checkbox _indeterminate="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-checkbox kol-input-checkbox--indeterminate kol-input-checkbox--label-align-right kol-input-checkbox--variant-default">

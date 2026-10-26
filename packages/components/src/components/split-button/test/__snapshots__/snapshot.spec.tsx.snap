@@ -621,7 +621,7 @@ exports[`kol-split-button should render with _label="Label" 1`] = `
 </kol-split-button>
 `;
 
-exports[`kol-split-button should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+exports[`kol-split-button should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
 <kol-split-button>
   <template shadowrootmode="open">
     <div class="kol-split-button">

@@ -1398,7 +1398,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 </kol-combobox>
 `;
 
-exports[`kol-combobox should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] 1`] = `
+exports[`kol-combobox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] 1`] = `
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
