@@ -1,6 +1,6 @@
 ---
 name: triage-contributor-tickets
-description: Liest alle offenen GitHub-Issues in public-ui/kolibri, klassifiziert jedes freie Ticket in genau eine von drei Contributor-Kategorien (good first issue für Einsteiger, up-for-grabs für erfahrene Selbstbedienung, here-be-dragons als Warnung vor komplexen, fallstrickreichen Tickets) und setzt die Labels nach Bestätigung des Nutzers; alle übrigen Issues bleiben ohne Label. Nutze diesen Skill immer, wenn Contributor-Tickets klassifiziert, gelabelt oder der Label-Stand aufgeräumt werden sollen – auch bei Formulierungen wie "klassifiziere das Backlog", "verteile die contributor labels", "welches Label bekommt welches Issue", "Label-Stand aufräumen" oder "triage alle issues".
+description: Liest alle offenen GitHub-Issues in public-ui/kolibri, klassifiziert jedes freie Ticket in genau eine von drei Contributor-Kategorien (good first issue für Einsteiger, up-for-grabs für erfahrene Selbstbedienung, here-be-dragons als Warnung vor komplexen, fallstrickreichen Tickets) und setzt die Labels nach Bestätigung des Nutzers; Issues mit Klärungsbedarf erhalten `unclear`, alle übrigen bleiben ohne Label. Nutze diesen Skill immer, wenn Contributor-Tickets klassifiziert, gelabelt oder der Label-Stand aufgeräumt werden sollen – auch bei Formulierungen wie "klassifiziere das Backlog", "verteile die contributor labels", "welches Label bekommt welches Issue", "Label-Stand aufräumen" oder "triage alle issues".
 ---
 
 # Contributor-Ticket-Triage
@@ -14,23 +14,28 @@ zu ändern.
 
 ## Kategorien
 
-Genau ein Label pro freiem Ticket, sonst keins. Priorität in dieser Reihenfolge:
-`here-be-dragons` schlägt `up-for-grabs` (eine Falle wird nicht als Selbstbedienung
-beworben), `up-for-grabs` gilt nur, wenn die Einsteiger-Kriterien nicht erfüllt sind,
-`good first issue` nur bei voller Einsteiger-Eignung.
+Die Beschreibungsqualität wird zuerst geprüft: Ist der Text eines freien Issues zu dünn
+oder der nächste Schritt unklar, erhält es `unclear` und scheidet für die drei
+Contributor-Labels aus. Danach gilt: `here-be-dragons` schlägt `up-for-grabs` (eine Falle
+wird nicht als Selbstbedienung beworben), `up-for-grabs` gilt nur, wenn die
+Einsteiger-Kriterien nicht erfüllt sind, `good first issue` nur bei voller
+Einsteiger-Eignung.
 
 | Label              | Bedeutung                     | Kernkriterien (alle erforderlich)                                                                                                                                            |
 | ------------------ | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `unclear`          | Klärungsbedarf                | frei, aber der Text ist zu dünn oder der nächste Schritt ist unklar; kommt erst wieder in die Triage, wenn der Text nachgeschärft und das Label entfernt ist                 |
 | `good first issue` | Einsteiger-Ticket             | frei; unkompliziert; abhängigkeitsfrei; sauber beschrieben (Problem, Ort, Soll, Nachweis — template-unabhängig); wirft wenige Fragen auf                                     |
 | `up-for-grabs`     | Selbstbedienung für Erfahrene | frei; klarer Scope; keine offenen Entscheidungen; keine Maintainer-Ressourcen nötig; keine Theming-Contract-Änderung; eigenständig verifizierbar                             |
 | `here-be-dragons`  | Warnung vor Fallstricken      | frei; komplex oder riskant mit Falle aus: Snapshot-Artefakt-Richtung, Theming-Contract, Zeitzonenlogik, TS-Typsystem, komponentenübergreifende Verträge, Sicherheitsrelevanz |
-| (keins)            | alles übrige                  | beansprucht, unklar oder zur Klärung gestellt, design- oder release-koordiniert, Epic/Container, dünner oder leerer Issue-Text                                               |
+| (keins)            | alles übrige                  | beansprucht, design- oder release-koordiniert, Epic/Container                                                                                                                |
 
-Gemeinsame Ausschlüsse per Label: `po:doing`, `unclear`, `need:reproduction`,
-`need:to-refine`, `to-answer-and-close`, `intern`, `icebox`, `Stale`. beanspruchte Issues
-(offener PR oder Assignee) erhalten kein Label; trägt ein beanspruchtes Issue noch ein
-Label aus einem früheren Lauf, schlägt der Bericht das Entfernen vor und normalisiert den
-Stand damit auf „Label bedeutet: aktuell frei und klassifiziert“.
+`unclear` ist damit zugleich Ausschluss und Ergebnis: Ausgegebene `unclear`-Labels halten
+Issues aus der Triage heraus, bis der Text nachgeschärft und das Label entfernt ist.
+Weitere Ausschlüsse per Label: `po:doing`, `need:reproduction`, `need:to-refine`,
+`to-answer-and-close`, `intern`, `icebox`, `Stale`. Beanspruchte Issues (offener PR oder
+Assignee) erhalten kein Label; trägt ein beanspruchtes Issue noch ein Label aus einem
+früheren Lauf, schlägt der Bericht das Entfernen vor und normalisiert den Stand damit auf
+„Label bedeutet: aktuell frei und klassifiziert“.
 
 ## 1. Menge einlesen
 
@@ -58,14 +63,16 @@ Skeleton-Migration #11113, #9649 vor der Migration).
 
 ## 2. Klassifizieren
 
-Für jedes freie Issue in der Reihenfolge der Kategorien prüfen:
+Für jedes freie Issue in dieser Reihenfolge prüfen:
 
-1. **Dragons-Check zuerst:** berührt das Ticket einen der Fallstrickbereiche? Dann
+1. **Beschreibungsqualität:** Text zu dünn oder Ziel unklar → `unclear` vorschlagen.
+2. **Dragons-Check:** berührt das Ticket einen der Fallstrickbereiche? Dann
    `here-be-dragons` vorschlagen, unabhängig vom Schwierigkeitsgrad im Übrigen.
-2. **Einsteiger-Kriterien:** alle vier aus der Tabelle erfüllt → `good first issue`.
-3. **Selbstbedienungs-Kriterien:** erfüllt, ohne einsteigertauglich zu sein →
+3. **Einsteiger-Kriterien:** alle vier aus der Tabelle erfüllt → `good first issue`.
+4. **Selbstbedienungs-Kriterien:** erfüllt, ohne einsteigertauglich zu sein →
    `up-for-grabs` (Umfang S bis L erlaubt).
-4. **Sonst:** kein Label-Vorschlag, mit kurzem Grund.
+5. **Sonst:** kein Label-Vorschlag, mit kurzem Grund (beispielsweise design- oder
+   release-koordiniert).
 
 Zusatzprüfungen für Label-Vorschläge von `good first issue` und `up-for-grabs`:
 
