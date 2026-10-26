@@ -249,6 +249,38 @@ test.describe('kol-table-stateless', () => {
 		await expect(table.locator('caption')).toHaveText('Internal');
 	});
 
+	test('releases the external label references when _ariaLabelledby is emptied', async ({ page }) => {
+		await page.locator('body').evaluate((body: HTMLBodyElement) => {
+			const external = document.createElement('span');
+			external.id = 'external-caption';
+			external.textContent = 'External Caption';
+			body.prepend(external);
+		});
+		const kolTableStateless = page.locator('kol-table-stateless');
+		await kolTableStateless.evaluate((el: HTMLKolTableStatelessElement) => {
+			(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = 'external-caption';
+			el._label = 'Internal Fallback';
+		});
+		await page.waitForChanges();
+		const table = kolTableStateless.locator('table');
+		await expect(table).not.toHaveAttribute('aria-labelledby', 'caption');
+
+		await kolTableStateless.evaluate((el: HTMLKolTableStatelessElement) => {
+			(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = '';
+		});
+		await page.waitForChanges();
+
+		// Explicit element references win over the aria-labelledby content attribute: emptying
+		// _ariaLabelledby must release them, so the caption fallback names the table again.
+		await expect(table).toHaveAttribute('aria-labelledby', 'caption');
+		await expect(table.locator('caption')).toHaveText('Internal Fallback');
+		const externalStillReferenced = await table.evaluate((element) => {
+			const refs = (element as unknown as { ariaLabelledByElements?: (Element | null)[] | null }).ariaLabelledByElements;
+			return refs?.some((ref) => ref instanceof HTMLElement && ref.id === 'external-caption') ?? false;
+		});
+		expect(externalStillReferenced).toBe(false);
+	});
+
 	test.describe('Keyboard access to the scroll container', () => {
 		test('it keeps the caption out of the tab order when nothing overflows', async ({ page }) => {
 			await expect(page.locator('kol-table-stateless').locator('caption')).not.toHaveAttribute('tabindex');
