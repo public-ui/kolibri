@@ -83,8 +83,8 @@ export class KolCombobox
 	@State() public blockSuggestionMouseOver = false;
 
 	/**
-	 * The suggestions matching the input. The `_suggestions` watcher assigns the raw prop, which can
-	 * be a JSON string; no option is rendered then until the next filtering.
+	 * The suggestions matching the input, derived from the parsed `suggestions` render prop — never
+	 * from the raw prop, which can be a JSON string when set as an attribute.
 	 */
 	@State() public filteredSuggestions?: SuggestionsPropType;
 
@@ -253,12 +253,13 @@ export class KolCombobox
 	 */
 	@Prop() public _suggestions!: SuggestionsPropType;
 
-	/** Assigns the raw prop to the filtered suggestions, then filters them by the `_value` prop. */
+	/** Parses the raw prop into the render prop, then filters the parsed suggestions by the `_value` prop. */
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
 		this.applySuggestions(value);
-		this.filteredSuggestions = value;
-		this.setFilteredSuggestionsByQuery(this._value);
+		// An empty query derives the full list from the parsed render prop, so a `_value` that is not set
+		// yet still shows the suggestions instead of leaving the raw JSON string in place.
+		this.setFilteredSuggestionsByQuery(this._value ?? '');
 	}
 
 	/**
