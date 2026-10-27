@@ -45,7 +45,7 @@ const KOL_TREE_ITEM_PUBLIC_API: PublicApiContract = {
 	},
 	_open: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'OpenPropType',
 		required: false,
 		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',
 	},

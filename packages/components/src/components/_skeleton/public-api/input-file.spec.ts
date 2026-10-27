@@ -52,21 +52,21 @@ const KOL_INPUT_FILE_PUBLIC_API: PublicApiContract = {
 	},
 	_disabled: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'DisabledPropType',
 		required: false,
 		default: 'false',
 		doc: 'Makes the element not focusable and ignore all events.',
 	},
 	_hideLabel: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HideLabelPropType',
 		required: false,
 		default: 'false',
 		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',
 	},
 	_hideMsg: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HideMsgPropType',
 		required: false,
 		default: 'false',
 		doc: "Hides the error message but leaves it in the DOM for the input's aria-describedby.",
@@ -104,7 +104,7 @@ const KOL_INPUT_FILE_PUBLIC_API: PublicApiContract = {
 	},
 	_multiple: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'MultiplePropType',
 		required: false,
 		default: 'false',
 		doc: 'Makes the input accept multiple inputs.',
@@ -123,7 +123,7 @@ const KOL_INPUT_FILE_PUBLIC_API: PublicApiContract = {
 	},
 	_required: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'RequiredPropType',
 		required: false,
 		default: 'false',
 		doc: 'Makes the input element required.',
@@ -155,7 +155,7 @@ const KOL_INPUT_FILE_PUBLIC_API: PublicApiContract = {
 	},
 	_touched: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'TouchedPropType',
 		required: false,
 		default: 'false',
 		doc: 'Shows if the input was touched by a user.',

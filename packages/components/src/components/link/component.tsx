@@ -93,7 +93,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop() public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: AriaExpandedPropType;
 
 	@Watch('_ariaExpanded')
 	public watchAriaExpanded(value?: AriaExpandedPropType): void {
@@ -103,7 +103,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -124,7 +124,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -154,7 +154,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: boolean = true;
+	@Prop() public _inline?: InlinePropType = true;
 
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {

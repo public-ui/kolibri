@@ -187,7 +187,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines whether to allow multi sort.
 	 */
-	@Prop() public _allowMultiSort?: boolean;
+	@Prop() public _allowMultiSort?: AllowMultiSortPropType;
 
 	@Watch('_allowMultiSort')
 	public watchAllowMultiSort(value?: AllowMultiSortPropType): void {
@@ -199,7 +199,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the primary table data.
 	 */
-	@Prop() public _data!: Stringified<KoliBriTableDataType[]>;
+	@Prop() public _data!: TableDataPropType;
 
 	@Watch('_data')
 	public watchData(value?: TableDataPropType): void {
@@ -212,7 +212,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the data for the table footer.
 	 */
-	@Prop() public _dataFoot?: Stringified<KoliBriTableDataType[]>;
+	@Prop() public _dataFoot?: TableDataFootPropType;
 
 	@Watch('_dataFoot')
 	public watchDataFoot(value?: TableDataFootPropType): void {
@@ -261,7 +261,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -271,7 +271,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Wether the table shows a loading spinner (default: false).
 	 */
-	@Prop() public _loading?: boolean;
+	@Prop() public _loading?: TableLoadingPropType;
 
 	@Watch('_loading')
 	public watchLoading(value?: TableLoadingPropType): void {
@@ -328,7 +328,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Enables the settings menu if true (default: false).
 	 */
-	@Prop() public _hasSettingsMenu?: boolean;
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
 
 	@Watch('_hasSettingsMenu')
 	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {

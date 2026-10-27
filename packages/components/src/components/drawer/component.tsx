@@ -71,7 +71,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Defines whether the element can be closed.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: HasCloserPropType): void {
@@ -111,7 +111,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: boolean;
+	@Prop() public _open?: OpenPropType;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {

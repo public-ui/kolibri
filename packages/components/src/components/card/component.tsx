@@ -45,7 +45,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	/**
 	 * Defines whether the element can be closed.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: HasCloserPropType): void {

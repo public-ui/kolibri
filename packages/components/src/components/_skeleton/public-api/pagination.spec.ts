@@ -8,7 +8,7 @@ import { describePublicApiContract } from './contract';
 const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	_boundaryCount: {
 		kind: 'prop',
-		type: 'number',
+		type: 'BoundaryCountPropType',
 		required: false,
 		default: '1',
 		doc: 'Defines the amount of pages to show next to the outer arrow buttons.',
@@ -34,7 +34,7 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	},
 	_max: {
 		kind: 'prop',
-		type: 'number',
+		type: 'MaxPropType',
 		required: true,
 		doc: 'Defines the maximum value of the element.',
 	},
@@ -46,7 +46,7 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	},
 	_page: {
 		kind: 'prop',
-		type: 'number',
+		type: 'PagePropType',
 		required: true,
 		doc: 'Defines the current page.',
 	},
@@ -66,7 +66,7 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	},
 	_siblingCount: {
 		kind: 'prop',
-		type: 'number',
+		type: 'SiblingCountPropType',
 		required: false,
 		default: '1',
 		doc: 'Defines the amount of pages to show next to the current page.',

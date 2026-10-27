@@ -33,7 +33,7 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriP
 	/**
 	 * Defines whether the component has a label.
 	 */
-	@Prop() public _labeled?: boolean = true;
+	@Prop() public _labeled?: LabeledPropType = true;
 
 	@Watch('_labeled')
 	public watchLabeled(value?: LabeledPropType): void {

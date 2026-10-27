@@ -116,7 +116,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines whether the element has a create button.
 	 */
-	@Prop() public _hasCreateButton?: boolean = false;
+	@Prop() public _hasCreateButton?: HasCreateButtonPropType = false;
 
 	@Watch('_hasCreateButton')
 	public watchHasCreateButton(value?: HasCreateButtonPropType): void {
@@ -146,7 +146,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines which tab is active.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
+	@Prop({ mutable: true, reflect: true }) public _selected?: SelectedPropType = 0;
 
 	@Watch('_selected')
 	public watchSelected(value?: SelectedPropType): void {

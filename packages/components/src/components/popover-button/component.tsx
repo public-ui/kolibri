@@ -91,7 +91,7 @@ export class KolPopoverButton
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -102,7 +102,7 @@ export class KolPopoverButton
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -122,7 +122,7 @@ export class KolPopoverButton
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: boolean = false;
+	@Prop() public _inline?: InlinePropType = false;
 
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {
@@ -183,7 +183,7 @@ export class KolPopoverButton
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop() public _tabIndex?: number;
+	@Prop() public _tabIndex?: TabIndexPropType;
 
 	@Watch('_tabIndex')
 	public watchTabIndex(value?: TabIndexPropType): void {

@@ -79,7 +79,7 @@ export class KolAccordion
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -119,7 +119,7 @@ export class KolAccordion
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {

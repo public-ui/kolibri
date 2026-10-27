@@ -70,7 +70,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 */
-	@Prop() public _collapsible?: boolean = true;
+	@Prop() public _collapsible?: CollapsiblePropType = true;
 
 	@Watch('_collapsible')
 	public watchCollapsible(value?: CollapsiblePropType): void {
@@ -80,7 +80,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	/**
 	 * Creates a button below the navigation, that toggles _collapsible.
 	 */
-	@Prop() public _hasCompactButton?: boolean = false;
+	@Prop() public _hasCompactButton?: HasCompactButtonPropType = false;
 
 	@Watch('_hasCompactButton')
 	public watchHasCompactButton(value?: HasCompactButtonPropType): void {
@@ -90,7 +90,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	/**
 	 * Shows icons next to the navigation item labels, even when the navigation is not collapsed.
 	 */
-	@Prop() public _hasIconsWhenExpanded?: boolean = false;
+	@Prop() public _hasIconsWhenExpanded?: HasIconsWhenExpandedPropType = false;
 
 	@Watch('_hasIconsWhenExpanded')
 	public watchHasIconsWhenExpanded(value?: HasIconsWhenExpandedPropType): void {
@@ -101,7 +101,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {

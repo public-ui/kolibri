@@ -20,7 +20,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	 * Makes the element show up.
 	 */
 	@Prop()
-	public _show?: boolean;
+	public _show?: ShowPropType;
 
 	@Watch('_show')
 	public watchShow(value?: ShowPropType): void {

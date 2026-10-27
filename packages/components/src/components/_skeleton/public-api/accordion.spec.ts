@@ -30,7 +30,7 @@ const KOL_ACCORDION_PUBLIC_API: PublicApiContract = {
 	},
 	_disabled: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'DisabledPropType',
 		required: false,
 		default: 'false',
 		doc: 'Makes the element not focusable and ignore all events.',
@@ -56,7 +56,7 @@ const KOL_ACCORDION_PUBLIC_API: PublicApiContract = {
 	},
 	_open: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'OpenPropType',
 		required: false,
 		default: 'false',
 		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',

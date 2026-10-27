@@ -23,7 +23,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	 * Sets the target URI of the link or citation source.
 	 */
 	@Prop()
-	public _href!: string;
+	public _href!: HrefPropType;
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
@@ -45,7 +45,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	 * Defines the text of the quote.
 	 */
 	@Prop()
-	public _quote!: string;
+	public _quote!: QuotePropType;
 
 	@Watch('_quote')
 	public watchQuote(value?: QuotePropType): void {

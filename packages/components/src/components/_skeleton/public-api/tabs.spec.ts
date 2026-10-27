@@ -35,7 +35,7 @@ const KOL_TABS_PUBLIC_API: PublicApiContract = {
 	},
 	_hasCreateButton: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HasCreateButtonPropType',
 		required: false,
 		default: 'false',
 		doc: 'Defines whether the element has a create button.',
@@ -54,7 +54,7 @@ const KOL_TABS_PUBLIC_API: PublicApiContract = {
 	},
 	_selected: {
 		kind: 'prop',
-		type: 'number',
+		type: 'SelectedPropType',
 		required: false,
 		default: '0',
 		doc: 'Defines which tab is active.',

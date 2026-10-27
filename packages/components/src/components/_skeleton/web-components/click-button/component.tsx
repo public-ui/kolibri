@@ -23,7 +23,7 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	 * Sets the label of the click button component.
 	 */
 	@Prop()
-	public _label!: string;
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {

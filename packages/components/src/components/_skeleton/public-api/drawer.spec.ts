@@ -38,7 +38,7 @@ const KOL_DRAWER_PUBLIC_API: PublicApiContract = {
 	},
 	_hasCloser: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HasCloserPropType',
 		required: false,
 		default: 'false',
 		doc: 'Defines whether the element can be closed.',
@@ -64,7 +64,7 @@ const KOL_DRAWER_PUBLIC_API: PublicApiContract = {
 	},
 	_open: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'OpenPropType',
 		required: false,
 		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',
 	},

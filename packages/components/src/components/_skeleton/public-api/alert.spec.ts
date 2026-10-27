@@ -8,14 +8,14 @@ import { describePublicApiContract } from './contract';
 const KOL_ALERT_PUBLIC_API: PublicApiContract = {
 	_alert: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'AlertPropType',
 		required: false,
 		default: 'false',
 		doc: 'Defines whether the screen-readers should read out the notification.',
 	},
 	_hasCloser: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HasCloserPropType',
 		required: false,
 		default: 'false',
 		doc: 'Defines whether the element can be closed.',

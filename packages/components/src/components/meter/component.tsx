@@ -40,7 +40,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * From this value to the max value is the high range of the meter. Below this value is the middle range.
 	 */
 	@Prop()
-	public _high?: number;
+	public _high?: HighPropType;
 
 	@Watch('_high')
 	public watchHigh(value?: HighPropType): void {
@@ -55,7 +55,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label!: string;
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -66,7 +66,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * From this value to the min value is the low range of the meter. Above this value is the middle range.
 	 */
 	@Prop()
-	public _low?: number;
+	public _low?: LowPropType;
 
 	@Watch('_low')
 	public watchLow(value?: LowPropType): void {
@@ -114,7 +114,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * If this lies in the middle range, both low and high range will be suboptimum and nothing will be critical.
 	 */
 	@Prop()
-	public _optimum?: number;
+	public _optimum?: OptimumPropType;
 
 	@Watch('_optimum')
 	public watchOptimum(value?: OptimumPropType): void {
@@ -151,7 +151,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * Defines the value of the element. Is capped between min and max.
 	 */
 	@Prop()
-	public _value!: number;
+	public _value!: ClampedNumberValuePropType;
 
 	@Watch('_value')
 	public watchValue(value?: ClampedNumberValuePropType): void {

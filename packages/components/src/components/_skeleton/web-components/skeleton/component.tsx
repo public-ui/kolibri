@@ -40,7 +40,7 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	 * Sets the name of the skeleton component.
 	 */
 	@Prop()
-	public _name!: string;
+	public _name!: NamePropType;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {

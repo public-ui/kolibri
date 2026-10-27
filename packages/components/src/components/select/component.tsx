@@ -87,7 +87,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -97,7 +97,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -108,7 +108,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -168,7 +168,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Makes the input accept multiple inputs.
 	 */
-	@Prop() public _multiple?: boolean = false;
+	@Prop() public _multiple?: MultiplePropType = false;
 
 	@Watch('_multiple')
 	public watchMultiple(value?: MultiplePropType): void {
@@ -208,7 +208,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -228,7 +228,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Maximum number of visible rows of the element.
 	 */
-	@Prop() public _rows?: number;
+	@Prop() public _rows?: RowsPropType;
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
@@ -249,7 +249,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop() public _tabIndex?: number;
+	@Prop() public _tabIndex?: TabIndexPropType;
 
 	@Watch('_tabIndex')
 	public watchTabIndex(value?: TabIndexPropType): void {
@@ -269,7 +269,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {

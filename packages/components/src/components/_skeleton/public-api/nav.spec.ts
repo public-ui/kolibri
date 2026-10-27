@@ -8,28 +8,28 @@ import { describePublicApiContract } from './contract';
 const KOL_NAV_PUBLIC_API: PublicApiContract = {
 	_collapsible: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'CollapsiblePropType',
 		required: false,
 		default: 'true',
 		doc: 'Defines if navigation nodes can be collapsed or not. Enabled by default.',
 	},
 	_hasCompactButton: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HasCompactButtonPropType',
 		required: false,
 		default: 'false',
 		doc: 'Creates a button below the navigation, that toggles _collapsible.',
 	},
 	_hasIconsWhenExpanded: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HasIconsWhenExpandedPropType',
 		required: false,
 		default: 'false',
 		doc: 'Shows icons next to the navigation item labels, even when the navigation is not collapsed.',
 	},
 	_hideLabel: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HideLabelPropType',
 		required: false,
 		default: 'false',
 		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',

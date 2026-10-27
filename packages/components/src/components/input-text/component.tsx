@@ -122,7 +122,7 @@ export class KolInputText
 	/**
 	 * Shows a character counter for the input element.
 	 */
-	@Prop() public _hasCounter?: boolean = false;
+	@Prop() public _hasCounter?: HasCounterPropType = false;
 
 	@Watch('_hasCounter')
 	public watchHasCounter(value?: HasCounterPropType): void {
@@ -142,7 +142,7 @@ export class KolInputText
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -152,7 +152,7 @@ export class KolInputText
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -163,7 +163,7 @@ export class KolInputText
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -213,7 +213,7 @@ export class KolInputText
 	/**
 	 * Defines the maximum number of input characters.
 	 */
-	@Prop() public _maxLength?: number;
+	@Prop() public _maxLength?: MaxLengthPropType;
 
 	@Watch('_maxLength')
 	public watchMaxLength(value?: MaxLengthPropType): void {
@@ -273,7 +273,7 @@ export class KolInputText
 	/**
 	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: boolean = false;
+	@Prop() public _readOnly?: ReadOnlyPropType = false;
 
 	@Watch('_readOnly')
 	public watchReadOnly(value?: ReadOnlyPropType): void {
@@ -283,7 +283,7 @@ export class KolInputText
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -303,7 +303,7 @@ export class KolInputText
 	/**
 	 * Defines whether the browser should check the spelling and grammar.
 	 */
-	@Prop() public _spellCheck?: boolean;
+	@Prop() public _spellCheck?: SpellCheckPropType;
 
 	@Watch('_spellCheck')
 	public watchSpellCheck(value?: SpellCheckPropType): void {
@@ -354,7 +354,7 @@ export class KolInputText
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {

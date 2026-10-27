@@ -13,7 +13,7 @@ const KOL_SPIN_PUBLIC_API: PublicApiContract = {
 	},
 	_show: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'ShowPropType',
 		required: false,
 		doc: 'Makes the element show up.',
 	},

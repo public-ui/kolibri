@@ -7,7 +7,7 @@ import { describePublicApiContract } from './contract';
 const KOL_QUOTE_PUBLIC_API: PublicApiContract = {
 	_href: {
 		kind: 'prop',
-		type: 'string',
+		type: 'HrefPropType',
 		required: true,
 		doc: 'Sets the target URI of the link or citation source.',
 	},
@@ -19,7 +19,7 @@ const KOL_QUOTE_PUBLIC_API: PublicApiContract = {
 	},
 	_quote: {
 		kind: 'prop',
-		type: 'string',
+		type: 'QuotePropType',
 		required: true,
 		doc: 'Defines the text of the quote.',
 	},

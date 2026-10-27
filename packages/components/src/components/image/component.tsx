@@ -27,7 +27,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	 * Sets the alternative text of the image.
 	 */
 	@Prop()
-	public _alt!: string;
+	public _alt!: AltPropType;
 
 	@Watch('_alt')
 	public watchAlt(value?: AltPropType): void {
@@ -60,7 +60,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop()
-	public _src!: string;
+	public _src!: SrcPropType;
 
 	@Watch('_src')
 	public watchSrc(value?: SrcPropType): void {

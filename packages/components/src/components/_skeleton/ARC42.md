@@ -361,7 +361,7 @@ Design principles:
 - **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
 - **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
 - **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `disabledProp` for every `_disabled`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default), where a shared factory types the value per component (callbacks, links, options), or where the meaning of the prop differs (`paginationLabelProp`, the label of the navigation landmark of the pagination, beside `labelWithExpertSlotProp`); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior share the implementation, except a variant kept apart for its meaning (`paginationLabelProp`): under different keys `createAlignPropDefinition` (`_align`, `_popoverAlign`, `_tooltipAlign`), under one key the typed factories `createCallbacksPropDefinition`, `createLinksPropDefinition` and `createOptionsPropDefinition`
-- **One explicit schema type per prop**: every prop value type is the named schema type from `src/schema/props`; as a rule, one readable PropType per functionality is shared by all of its property definitions, and prop bags, prop definitions, watchers and apply methods reference that name instead of inlining a native type (see _Explicit Schema Types per Prop_)
+- **One explicit schema type per prop**: every prop value type is the named schema type from `src/schema/props`; as a rule, one readable PropType per functionality is shared by all of its property definitions, and prop bags, prop definitions, `@Prop` declarations, watchers and apply methods reference that name instead of inlining a native type (see _Explicit Schema Types per Prop_)
 
 #### Dual-Type Props
 
@@ -384,8 +384,8 @@ type NameProp = SimpleProp<'name', NamePropType>;
 Every prop has exactly one named **schema type** in `src/schema/props` (e.g. `DisabledPropType` in
 `schema/props/disabled.ts`). A schema type may be structurally as simple as a native type — naming it
 is the point, not making it complex. The name is the single spelling of the type: the prop bag, the
-prop definition in `internal/props`, the watcher and the apply method all reference it, and no layer
-inlines a native type instead:
+prop definition in `internal/props`, the `@Prop` declaration, the watcher and the apply method all
+reference it, and no layer inlines a native type instead:
 
 ```typescript
 // schema/props/disabled.ts — the named schema type (its structure does not change)
@@ -395,9 +395,8 @@ export type DisabledPropType = boolean;
 export type DisabledProp = SimpleProp<'disabled', DisabledPropType>;
 export const disabledProp = createPropDefinition<DisabledProp>('disabled', false, normalizeBoolean);
 
-// components/button/component.tsx — watcher and apply carry the schema type; the @Prop keeps the
-// literal primitive for boolean/number (see below) and may carry the alias for strings
-@Prop() public _disabled?: boolean = false;
+// components/button/component.tsx — @Prop, watcher and apply carry the schema type
+@Prop() public _disabled?: DisabledPropType = false;
 
 @Watch('_disabled')
 public watchDisabled(value?: DisabledPropType): void {
@@ -405,13 +404,12 @@ public watchDisabled(value?: DisabledPropType): void {
 }
 ```
 
-One exception is forced by the toolchain: for boolean and number props the `@Prop` declaration keeps
-the literal primitive, because the pinned Stencil compiler does not resolve imported type aliases
-when parsing attribute values ([stenciljs/core#4663](https://github.com/stenciljs/core/issues/4663),
-fixed upstream — unblocked by the next Stencil upgrade). The definition, watcher and apply still
-carry the schema type, so every prop-handling method is prop-specifically typed; the `@Prop`
-annotation is only the source-side spelling, because Stencil serializes the resolved type into the
-generated public API and consumers see the same type either way.
+One caveat lives in the test toolchain, not in the compiled output: the pinned Stencil transpile does
+not coerce attribute strings for imported type aliases
+([stenciljs/core#4663](https://github.com/stenciljs/core/issues/4663), fixed upstream), so jest sees
+the raw attribute string on an aliased boolean/number prop while the compiled dist metadata resolves
+the alias and the real runtime is unaffected. Tests therefore assert the normalized render props
+instead of raw `@Prop` values; the next Stencil upgrade removes the caveat entirely.
 
 Without the shared name, every layer spells the type its own way (`SimpleProp<'disabled', boolean>`,
 `watchDisabled(value?: boolean)`) and nothing ties the spellings together. With it, `apply`, watcher
@@ -703,7 +701,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **ARIA ID Uniqueness via readable nonce IDs** | Any DOM `id` referenced by ARIA attributes (e.g. `aria-controls`, `aria-labelledby`) must be unique per component instance and follow the pattern `readable-identifier-<nonce>`. Use `private readonly someId = createUniqueId('readable-identifier')` from `utils/dev.utils`. This prevents ID collisions when components are composed inside a shared DOM scope (e.g. multiple WC instances within one shadow root, or direct light-DOM usage). Shadow DOM alone is not sufficient when a shadow component renders multiple instances of an internal WC in the same shadow root. |
 | **State ownership**                           | The WC owns reactive state (`@State`) and render props; the FC consumes them.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Type safety**                               | `WebComponentInterface`, `BehaviorInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| **Explicit schema types**                     | Every prop has exactly one named schema type in `src/schema/props`; prop definitions, watchers and apply methods reference that name instead of inlining native types (boolean/number `@Prop`s keep the literal primitive until Stencil resolves imported aliases).                                                                                                                                                                                                                                                                                                                |
+| **Explicit schema types**                     | Every prop has exactly one named schema type in `src/schema/props`; prop definitions, `@Prop` declarations, watchers and apply methods reference that name instead of inlining native types (the stenciljs/core#4663 alias caveat is confined to the jest toolchain).                                                                                                                                                                                                                                                                                                              |
 | **Styling boundary**                          | A component's `style.scss` is base styling: layout and structure only, no colors (except the black/white contrast fallback), no spacing and no dark/light color scheme (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Colors, spacing and color schemes are implemented in the theme packages. See [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](../../../../../docs/BASE_STYLING_VS_THEMING_CONCEPT.md).                                                                                                                                                                 |
 | **Watcher placement**                         | Attach `@Watch` only to underscored public props (e.g. `_name`); internal state fields use `@State`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
@@ -768,9 +766,9 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Alternative_: treat every class or node change as a breaking change that waits for the next major release.
     - _Reason_: themes can be adapted to such a change largely automatically through their own visual snapshots and the zero-visual-delta workflow. Holding back structural cleanups (single BEM root, registered classes) until a major release would keep known non-conformities alive for a long time without protecting anyone more than the changelog entry does.
 18. **Explicit schema types per prop**
-    - _Pattern_: every prop's value type is the named schema type from `src/schema/props`; the prop bag, the prop definition in `internal/props`, the watcher and the apply method all reference that name, and no layer inlines a native type. For boolean and number props the `@Prop` declaration keeps the literal primitive until the pinned Stencil resolves imported aliases (stenciljs/core#4663). See [Explicit Schema Types per Prop](#explicit-schema-types-per-prop).
+    - _Pattern_: every prop's value type is the named schema type from `src/schema/props`; the prop bag, the prop definition in `internal/props`, the `@Prop` declaration, the watcher and the apply method all reference that name, and no layer inlines a native type. See [Explicit Schema Types per Prop](#explicit-schema-types-per-prop).
     - _Alternative_: type prop definitions and component signatures with bare natives (`SimpleProp<'disabled', boolean>`) and keep the schema name only on the prop bag.
-    - _Reason_: the type is defined once and every layer points at the same name, so drift between the layers fails the compiler instead of surfacing in review; apply and watcher signatures carry the domain term; and the prop definitions binding one render key are connected by their shared schema type, not only by the key string. Naming a type never changes its structure, so adopting it is invisible to consumers.
+    - _Reason_: the type is defined once and every layer points at the same name, so drift between the layers fails the compiler instead of surfacing in review; apply and watcher signatures carry the domain term; and the prop definitions binding one render key are connected by their shared schema type, not only by the key string. Naming a type never changes its structure, so adopting it is invisible to consumers. The pinned Stencil's un-coerced attribute parsing for imported aliases (stenciljs/core#4663) is a known test-toolchain caveat, not a reason to inline natives.
 
 ## 10. Quality Requirements
 

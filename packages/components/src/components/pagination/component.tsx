@@ -41,7 +41,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the amount of pages to show next to the outer arrow buttons.
 	 */
-	@Prop() public _boundaryCount?: number = 1;
+	@Prop() public _boundaryCount?: BoundaryCountPropType = 1;
 
 	@Watch('_boundaryCount')
 	public watchBoundaryCount(value?: BoundaryCountPropType): void {
@@ -81,7 +81,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the current page.
 	 */
-	@Prop() public _page!: number;
+	@Prop() public _page!: PagePropType;
 
 	@Watch('_page')
 	public watchPage(value?: PagePropType): void {
@@ -121,7 +121,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the amount of pages to show next to the current page.
 	 */
-	@Prop() public _siblingCount?: number = 1;
+	@Prop() public _siblingCount?: SiblingCountPropType = 1;
 
 	@Watch('_siblingCount')
 	public watchSiblingCount(value?: SiblingCountPropType): void {
@@ -141,7 +141,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the maximum value of the element.
 	 */
-	@Prop() public _max!: number;
+	@Prop() public _max!: MaxPropType;
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {

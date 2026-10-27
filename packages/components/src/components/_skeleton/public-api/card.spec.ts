@@ -20,7 +20,7 @@ const KOL_CARD_PUBLIC_API: PublicApiContract = {
 	},
 	_hasCloser: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HasCloserPropType',
 		required: false,
 		default: 'false',
 		doc: 'Defines whether the element can be closed.',

@@ -46,13 +46,13 @@ const KOL_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_ariaExpanded: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'AriaExpandedPropType',
 		required: false,
 		doc: 'Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)',
 	},
 	_ariaSelected: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'AriaSelectedPropType',
 		required: false,
 		doc: 'Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)',
 	},
@@ -64,14 +64,14 @@ const KOL_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_disabled: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'DisabledPropType',
 		required: false,
 		default: 'false',
 		doc: 'Makes the element not focusable and ignore all events.',
 	},
 	_hideLabel: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HideLabelPropType',
 		required: false,
 		default: 'false',
 		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',
@@ -84,7 +84,7 @@ const KOL_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_inline: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'InlinePropType',
 		required: false,
 		default: 'false',
 		doc: 'Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.',

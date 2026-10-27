@@ -7,7 +7,7 @@ import { describePublicApiContract } from './contract';
 const KOL_IMAGE_PUBLIC_API: PublicApiContract = {
 	_alt: {
 		kind: 'prop',
-		type: 'string',
+		type: 'AltPropType',
 		required: true,
 		doc: 'Sets the alternative text of the image.',
 	},
@@ -31,7 +31,7 @@ const KOL_IMAGE_PUBLIC_API: PublicApiContract = {
 	},
 	_src: {
 		kind: 'prop',
-		type: 'string',
+		type: 'SrcPropType',
 		required: true,
 		doc: 'Sets the image `src` attribute to the given string.',
 	},

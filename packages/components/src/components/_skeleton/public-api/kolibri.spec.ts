@@ -15,7 +15,7 @@ const KOL_KOLIBRI_PUBLIC_API: PublicApiContract = {
 	},
 	_labeled: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'LabeledPropType',
 		required: false,
 		default: 'true',
 		doc: 'Defines whether the component has a label.',

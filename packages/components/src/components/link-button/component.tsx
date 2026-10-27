@@ -107,7 +107,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -128,7 +128,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -158,7 +158,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: boolean = false;
+	@Prop() public _inline?: InlinePropType = false;
 
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {

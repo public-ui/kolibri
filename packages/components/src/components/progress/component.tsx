@@ -42,7 +42,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	 * Defines the maximum value of the element.
 	 */
 	@Prop()
-	public _max!: number;
+	public _max!: MaxPropType;
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {
@@ -67,7 +67,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	 * Defines the value of the element.
 	 */
 	@Prop()
-	public _value!: number;
+	public _value!: ClampedNumberValuePropType;
 
 	@Watch('_value')
 	public watchValue(value?: ClampedNumberValuePropType): void {

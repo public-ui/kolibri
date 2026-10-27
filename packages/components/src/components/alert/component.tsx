@@ -54,7 +54,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop() public _alert?: boolean = false;
+	@Prop() public _alert?: AlertPropType = false;
 
 	@Watch('_alert')
 	public watchAlert(value?: AlertPropType): void {
@@ -67,7 +67,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines whether the element can be closed.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: HasCloserPropType): void {

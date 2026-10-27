@@ -152,7 +152,7 @@ export class KolInputNumber
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -162,7 +162,7 @@ export class KolInputNumber
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -173,7 +173,7 @@ export class KolInputNumber
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -283,7 +283,7 @@ export class KolInputNumber
 	/**
 	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: boolean = false;
+	@Prop() public _readOnly?: ReadOnlyPropType = false;
 
 	@Watch('_readOnly')
 	public watchReadOnly(value?: ReadOnlyPropType): void {
@@ -293,7 +293,7 @@ export class KolInputNumber
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -369,7 +369,7 @@ export class KolInputNumber
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {

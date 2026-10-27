@@ -51,14 +51,14 @@ const KOL_POPOVER_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_disabled: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'DisabledPropType',
 		required: false,
 		default: 'false',
 		doc: 'Makes the element not focusable and ignore all events.',
 	},
 	_hideLabel: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HideLabelPropType',
 		required: false,
 		default: 'false',
 		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',
@@ -71,7 +71,7 @@ const KOL_POPOVER_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_inline: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'InlinePropType',
 		required: false,
 		default: 'false',
 		doc: 'Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.',
@@ -109,7 +109,7 @@ const KOL_POPOVER_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_tabIndex: {
 		kind: 'prop',
-		type: 'number',
+		type: 'TabIndexPropType',
 		required: false,
 		doc: 'Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)',
 	},
