@@ -249,7 +249,7 @@ test.describe('kol-table-stateless', () => {
 		await expect(table.locator('caption')).toHaveText('Internal');
 	});
 
-	test('releases the external label references when _ariaLabelledby is emptied', async ({ page }) => {
+	test('releases the external label references when _ariaLabelledby is emptied or set to a missing ID', async ({ page }) => {
 		await page.locator('body').evaluate((body: HTMLBodyElement) => {
 			const external = document.createElement('span');
 			external.id = 'external-caption';
@@ -257,28 +257,33 @@ test.describe('kol-table-stateless', () => {
 			body.prepend(external);
 		});
 		const kolTableStateless = page.locator('kol-table-stateless');
+		const table = kolTableStateless.locator('table');
+		const setAriaLabelledby = (value: string) =>
+			kolTableStateless.evaluate((el: HTMLKolTableStatelessElement, nextValue: string) => {
+				(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = nextValue;
+			}, value);
+		const externalStillReferenced = () =>
+			table.evaluate((element) => {
+				const refs = (element as unknown as { ariaLabelledByElements?: (Element | null)[] | null }).ariaLabelledByElements;
+				return refs?.some((ref) => ref instanceof HTMLElement && ref.id === 'external-caption') ?? false;
+			});
 		await kolTableStateless.evaluate((el: HTMLKolTableStatelessElement) => {
-			(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = 'external-caption';
 			el._label = 'Internal Fallback';
 		});
+		await setAriaLabelledby('external-caption');
 		await page.waitForChanges();
-		const table = kolTableStateless.locator('table');
 		await expect(table).not.toHaveAttribute('aria-labelledby', 'caption');
 
-		await kolTableStateless.evaluate((el: HTMLKolTableStatelessElement) => {
-			(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = '';
-		});
-		await page.waitForChanges();
-
-		// Explicit element references win over the aria-labelledby content attribute: emptying
-		// _ariaLabelledby must release them, so the caption fallback names the table again.
-		await expect(table).toHaveAttribute('aria-labelledby', 'caption');
-		await expect(table.locator('caption')).toHaveText('Internal Fallback');
-		const externalStillReferenced = await table.evaluate((element) => {
-			const refs = (element as unknown as { ariaLabelledByElements?: (Element | null)[] | null }).ariaLabelledByElements;
-			return refs?.some((ref) => ref instanceof HTMLElement && ref.id === 'external-caption') ?? false;
-		});
-		expect(externalStillReferenced).toBe(false);
+		// Explicit element references win over the aria-labelledby content attribute: pointing
+		// _ariaLabelledby at an ID without an element or emptying it must release them, so the
+		// caption fallback names the table again.
+		for (const value of ['does-not-exist', '']) {
+			await setAriaLabelledby(value);
+			await page.waitForChanges();
+			await expect(table).toHaveAttribute('aria-labelledby', 'caption');
+			await expect(table.locator('caption')).toHaveText('Internal Fallback');
+			expect(await externalStillReferenced()).toBe(false);
+		}
 	});
 
 	test.describe('Keyboard access to the scroll container', () => {
