@@ -6,21 +6,6 @@
 
 - `aria-description` was introduced with [WAI-ARIA 1.2](https://www.w3.org/TR/wai-aria-1.2/#aria-description), but many assistive technologies have not yet adopted it and continue to rely solely on `aria-describedby` when presenting supplementary text. Components that accept `_ariaDescription` therefore keep rendering hidden fallback markup and set both attributes so older screen readers still expose the description.
 
-### VoiceOver does not announce ARIA element references (`_ariaLabelledby`, `_ariaDetails`)
-
-`kol-table-stateful`/`kol-table-stateless` (`_ariaLabelledby`) and the form fields (`_ariaDetails`) connect external elements across the Shadow DOM boundary via ARIA element reflection (`ariaLabelledByElements`/`ariaDetailsElements`), because plain IDREFs cannot cross that boundary. VoiceOver on macOS does not announce these references — and a native control experiment shows the gap is platform-side, not in KoliBri: a vanilla web component whose inner native `<input>` carries the external references via `ariaDetailsElements` stays as silent as the KoliBri fields. The DOM API itself exists in WebKit since Safari 16.4, but the announcement does not reach the user.
-
-- **Fallback:** `_label` and `_hint` work with every screen reader.
-- **Verify with:** NVDA or JAWS on Chromium, where element references are followed.
-- **Reproduce:** Sample route `input-text/aria-details` stacks the control group from plain native markup over `demo-input-light`/`demo-input-shadow` (native web components, see [demo-input-wc.ts](./packages/samples/react/src/@shared/demo-input-wc.ts)) to the KoliBri fields; `table/aria-labelledby` is the equivalent for the table.
-
-[Chromium issue 41469336](https://issues.chromium.org/issues/41469336),
-[WebKit bug #179723](https://bugs.webkit.org/show_bug.cgi?id=179723),
-[WebKit bug #233594](https://bugs.webkit.org/show_bug.cgi?format=multiple&id=233594),
-[Mozilla bug #1769586](https://bugzilla.mozilla.org/show_bug.cgi?id=1769586),
-[MDN: `ariaLabelledByElements`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLabelledByElements),
-[Reference Target proposal (WICG)](https://github.com/WICG/webcomponents/issues/1111)
-
 ## select
 
 ### All text inputs
