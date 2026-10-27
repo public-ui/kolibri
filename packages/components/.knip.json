@@ -4,5 +4,6 @@
 	"exclude": ["duplicates"],
 	"ignore": ["src/schema/**"],
 	"ignoreDependencies": ["@public-ui/icons", "@public-ui/stylelint-rules", "jest", "jest-cli"],
+	"ignoreUnresolved": ["./components.d"],
 	"project": ["src/**/*.ts"]
 }
