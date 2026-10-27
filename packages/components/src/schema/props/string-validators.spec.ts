@@ -241,11 +241,18 @@ describe('legacy string prop validators', () => {
 			expect(validateLabelWithExpertSlot).toBe(validateLabel);
 		});
 
-		// Known difference to the skeleton `labelProp`: that one accepts '' or at least 2 characters only.
-		it.each([[''], ['A']])('accepts the string %p', (value) => {
+		// Same rule as the skeleton `labelProp`: '' (not set / expert slot) or at least 2 characters;
+		// numbers-only labels are exempt from the minimum length (e.g. page numbers).
+		it.each([[''], ['Ab'], ['1']])('accepts the string %p', (value) => {
 			const component = createLegacyComponent();
 			validateLabel(component, value);
 			expect(component.state._label).toBe(value);
+		});
+
+		it('rejects a one-character label and keeps the previous state value', () => {
+			const component = createLegacyComponent({ _label: 'old' });
+			validateLabel(component, 'A');
+			expect(component.state._label).toBe('old');
 		});
 
 		it('accepts a label longer than 80 characters and gives a ui/ux hint', () => {

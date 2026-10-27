@@ -67,7 +67,6 @@ const STRING_PROPS: ReadonlyArray<{ name: string; definition: PropDefinition; de
 	{ name: 'downloadProp', definition: downloadProp, defaultValue: undefined },
 	{ name: 'iconsProp', definition: iconsProp, defaultValue: 'kolicon-logo' },
 	{ name: 'idProp', definition: idProp, defaultValue: '' },
-	{ name: 'labelWithExpertSlotProp', definition: labelWithExpertSlotProp, defaultValue: '' },
 	{ name: 'linkTargetProp', definition: linkTargetProp, defaultValue: '' },
 	{ name: 'nameProp', definition: nameProp, defaultValue: '' },
 	{ name: 'optionalHrefProp', definition: optionalHrefProp, defaultValue: '' },
@@ -151,7 +150,7 @@ describe('labelProp', () => {
 		expect(warnings()).toEqual([]);
 	});
 
-	it.each<unknown>(['a', 1])('ignores %p with a developer warning', (value) => {
+	it.each<unknown>(['a'])('ignores %p with a developer warning', (value) => {
 		expect(applied(labelProp, value)).toEqual([]);
 		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid. The value is ignored.`)]);
 	});
@@ -175,6 +174,41 @@ describe('labelProp', () => {
 		applied(labelProp, value);
 		expect(hints()).toEqual([]);
 	});
+});
+
+/**
+ * `labelWithExpertSlotProp` validates like `labelProp`; its empty string additionally enables
+ * the expert slot on the components that render one.
+ */
+describe('labelWithExpertSlotProp', () => {
+	it.each([undefined, null])('applies the default "" for %p', (value) => {
+		expect(applied(labelWithExpertSlotProp, value)).toEqual(['']);
+	});
+
+	// Distinct values from the `labelProp` describe: `devWarning` logs each distinct message once,
+	// and both props share the prop name `label`.
+	it.each<[unknown, string]>([
+		['', ''],
+		['My label', 'My label'],
+		[12, '12'],
+		['y'.repeat(81), 'y'.repeat(81)],
+	])('accepts %p as %p', (value, expected) => {
+		expect(applied(labelWithExpertSlotProp, value)).toEqual([expected]);
+		expect(warnings()).toEqual([]);
+	});
+
+	it.each<unknown>(['x'])('ignores %p with a developer warning', (value) => {
+		expect(applied(labelWithExpertSlotProp, value)).toEqual([]);
+		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid`)]);
+	});
+
+	it('emits the a11y hint for an accepted label with fewer than three readable characters', () => {
+		expect(applied(labelWithExpertSlotProp, 'xy')).toEqual(['xy']);
+		expect(hints()).toEqual([expect.stringContaining('The heading or label ("xy") is inaccessible.')]);
+	});
+
+	// The ui/ux hint for a label longer than 80 characters is covered by the `labelProp` describe:
+	// its message does not name the value, so the hint dedupe suppresses a second identical hint.
 });
 
 /**

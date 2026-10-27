@@ -17,6 +17,7 @@ Primary goals:
 - keep the WC as the single orchestrator — no indirection layer between the custom element and the renderer
 - factor out only genuinely reusable cross-component logic into Behaviors
 - enforce consistent validation and type-safety boundaries
+- keep per-prop special treatment to a minimum — validation, defaults and hints are uniform across every component using a prop; deviations are documented exceptions with a reason, not per-component one-offs
 - document an end-to-end implementation pipeline that teams can replicate when bootstrapping new components
 
 ### Blueprint Layout
@@ -362,6 +363,7 @@ Design principles:
 - **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
 - **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `disabledProp` for every `_disabled`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default), where a shared factory types the value per component (callbacks, links, options), or where the meaning of the prop differs (`paginationLabelProp`, the label of the navigation landmark of the pagination, beside `labelWithExpertSlotProp`); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior share the implementation, except a variant kept apart for its meaning (`paginationLabelProp`): under different keys `createAlignPropDefinition` (`_align`, `_popoverAlign`, `_tooltipAlign`), under one key the typed factories `createCallbacksPropDefinition`, `createLinksPropDefinition` and `createOptionsPropDefinition`
 - **One explicit schema type per prop**: every prop value type is the named schema type from `src/schema/props`; as a rule, one readable PropType per functionality is shared by all of its property definitions, and prop bags, prop definitions, `@Prop` declarations, watchers and apply methods reference that name instead of inlining a native type (see _Explicit Schema Types per Prop_)
+- **As few special treatments per prop as possible**: a prop's validation, default and hints are the same for every component using it; a component-specific deviation is a documented exception with a reason (e.g. the `LabelWithExpertSlotPropType` empty-string sentinel), never a silent one-off (see §1 Primary Goals)
 
 #### Dual-Type Props
 

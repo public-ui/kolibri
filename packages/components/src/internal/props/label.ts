@@ -2,6 +2,7 @@ import type { LabelPropType } from '../../schema/props/label';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
+import { isValidLabel } from './helpers/validators';
 import { labelHints } from './hints/label-hints';
 
 /**
@@ -26,6 +27,6 @@ import { labelHints } from './hints/label-hints';
  * @see https://www.w3.org/TR/accname-1.2/
  */
 export type LabelProp = SimpleProp<'label', LabelPropType>;
-export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeString, (v) => v === '' || v.length >= 2, {
+export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeString, isValidLabel, {
 	hints: labelHints,
 });

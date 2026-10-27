@@ -50,7 +50,7 @@ export function containsOnlyNumbers(str: string): boolean {
 export type LabelPropType = string;
 
 /**
- * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+ * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
  */
 export type LabelWithExpertSlotPropType = LabelPropType | '';
 
@@ -101,7 +101,14 @@ function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 
 const LABEL_VALUES = new Set(['string']);
 export const validateLabel = (component: Generic.Element.Component, value?: LabelPropType, options: WatchStringOptions = {}): void => {
-	watchValidator(component, '_label', (value) => typeof value === 'string', LABEL_VALUES, value, getValidationOptions(options));
+	watchValidator(
+		component,
+		'_label',
+		(value) => typeof value === 'string' && (value === '' || value.length >= 2 || containsOnlyNumbers(value)),
+		LABEL_VALUES,
+		value,
+		getValidationOptions(options),
+	);
 };
 
 /**

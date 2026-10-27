@@ -113,7 +113,11 @@ describe('paginationHasButtonsProp', () => {
 });
 
 describe('paginationLabelProp', () => {
-	it.each(['', 'P', 'A very long navigation label that is longer than eighty characters, which labelProp rejects'])('accepts %j', (value) => {
+	it.each(['', '1', 'A very long navigation label that is longer than eighty characters'])('accepts %j', (value) => {
 		expect(applied(paginationLabelProp, value)).toEqual([value]);
+	});
+
+	it.each(['P', 'A'])('ignores %j with a developer warning (empty string or at least 2 characters; numbers-only labels are exempt)', (value) => {
+		expect(applied(paginationLabelProp, value)).toEqual([]);
 	});
 });

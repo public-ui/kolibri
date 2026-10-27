@@ -1,3 +1,5 @@
+import { containsOnlyNumbers } from '../../../schema/props/label';
+
 /**
  * Shared validators for prop definitions.
  * Centralized here so custom-class and variant props share one regex
@@ -17,3 +19,10 @@
 const SAFE_CLASS_NAME_RE = /^[a-zA-Z][a-zA-Z0-9_-]{0,60}$/;
 
 export const isSafeClassName = (value: unknown): value is string => typeof value === 'string' && SAFE_CLASS_NAME_RE.test(value);
+
+/**
+ * A label is either the empty string ("not set"; enables the expert slot on components with one)
+ * or a text of at least two characters. Numbers-only labels are exempt from the minimum length —
+ * generated labels like page numbers are valid button texts (same exemption as the label hints).
+ */
+export const isValidLabel = (value: string): boolean => value === '' || value.length >= 2 || containsOnlyNumbers(value);

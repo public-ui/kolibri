@@ -96,7 +96,7 @@ const KOL_INPUT_PASSWORD_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'LabelWithExpertSlotPropType',
 		required: true,
-		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.',
+		doc: "Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.",
 	},
 	_maxLength: {
 		kind: 'prop',
