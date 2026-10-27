@@ -246,15 +246,21 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	test.describe('_ariaDetails', () => {
-		test('accepts valid element reference', async ({ page }) => {
+		test('sets the element reference on the native input', async ({ page }) => {
 			await page.setContent(`
 				<kol-single-select _label="Select option" _aria-details="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
 				<div id="select-details">Choose one of these options carefully</div>
 			`);
 			await page.waitForChanges();
 
-			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
-			expect(value).toBe('select-details');
+			const host = page.locator(COMPONENT_NAME);
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('select-details');
+			const refIds = await host.evaluate((el: HTMLKolSingleSelectElement) => {
+				const input = el.shadowRoot?.querySelector('input');
+				const refs = (input as unknown as { ariaDetailsElements?: (Element | null)[] | null } | null)?.ariaDetailsElements;
+				return refs?.map((ref) => (ref instanceof HTMLElement ? ref.id : null)) ?? null;
+			});
+			expect(refIds).toEqual(['select-details']);
 		});
 
 		test('updates when prop changes', async ({ page }) => {
