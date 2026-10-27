@@ -8,7 +8,7 @@ import type { KolibriApi } from '../../internal/functional-components/kolibri/ap
 import { kolibriPropsConfig } from '../../internal/functional-components/kolibri/api';
 import { KolibriFC } from '../../internal/functional-components/kolibri/component';
 import { kolibriColorProp, labeledProp } from '../../internal/props';
-import type { KolibriProps, PropColor, Stringified } from '../../schema';
+import type { KolibriProps, LabeledPropType, PropColor, Stringified } from '../../schema';
 
 @Component({
 	tag: 'kol-kolibri',
@@ -36,7 +36,7 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriP
 	@Prop() public _labeled?: boolean = true;
 
 	@Watch('_labeled')
-	public watchLabeled(value?: boolean): void {
+	public watchLabeled(value?: LabeledPropType): void {
 		labeledProp.apply(value, (v) => this.setRenderProp('labeled', v));
 	}
 

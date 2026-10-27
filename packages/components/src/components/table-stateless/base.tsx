@@ -34,12 +34,14 @@ import type {
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
+	LabelPropType,
 	SelectionChangeEventPayload,
 	SortEventPayload,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCellsPropType,
+	TableLoadingPropType,
 	TableSelectionPropType,
 	VariantClassNamePropType,
 } from '../../schema';
@@ -165,11 +167,11 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		tableHeadersProp.apply(value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)));
 	}
 
-	protected applyLabel(value?: string): void {
+	protected applyLabel(value?: LabelPropType): void {
 		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
-	protected applyLoading(value?: boolean): void {
+	protected applyLoading(value?: TableLoadingPropType): void {
 		tableLoadingProp.apply(value, (v) => this.setRenderProp('loading', v));
 	}
 

@@ -19,6 +19,8 @@ import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLa
 import type {
 	ButtonOrLinkOrTextWithChildrenProps,
 	CollapsiblePropType,
+	HasCompactButtonPropType,
+	HasIconsWhenExpandedPropType,
 	HideLabelPropType,
 	InternalButtonProps,
 	LabelPropType,
@@ -67,7 +69,6 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
-	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _collapsible?: boolean = true;
 
@@ -82,7 +83,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	@Prop() public _hasCompactButton?: boolean = false;
 
 	@Watch('_hasCompactButton')
-	public watchHasCompactButton(value?: boolean): void {
+	public watchHasCompactButton(value?: HasCompactButtonPropType): void {
 		hasCompactButtonProp.apply(value, (v) => this.setRenderProp('hasCompactButton', v));
 	}
 
@@ -92,14 +93,13 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	@Prop() public _hasIconsWhenExpanded?: boolean = false;
 
 	@Watch('_hasIconsWhenExpanded')
-	public watchHasIconsWhenExpanded(value?: boolean): void {
+	public watchHasIconsWhenExpanded(value?: HasIconsWhenExpandedPropType): void {
 		hasIconsWhenExpandedProp.apply(value, (v) => this.setRenderProp('hasIconsWhenExpanded', v));
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 

@@ -39,7 +39,7 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_ariaControls: {
 		kind: 'prop',
-		type: 'string',
+		type: 'AriaControlsPropType',
 		required: false,
 		doc: 'Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)',
 	},
@@ -51,13 +51,13 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_ariaExpanded: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'AriaExpandedPropType',
 		required: false,
 		doc: 'Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)',
 	},
 	_ariaSelected: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'AriaSelectedPropType',
 		required: false,
 		doc: 'Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)',
 	},
@@ -79,7 +79,7 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.',
+		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',
 	},
 	_icons: {
 		kind: 'prop',
@@ -95,7 +95,7 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_name: {
 		kind: 'prop',
-		type: 'string',
+		type: 'NamePropType',
 		required: false,
 		doc: 'Defines the technical name of an input field.',
 	},

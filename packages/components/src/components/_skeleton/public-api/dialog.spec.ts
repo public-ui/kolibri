@@ -64,7 +64,7 @@ const KOL_DIALOG_PUBLIC_API: PublicApiContract = {
 	},
 	_width: {
 		kind: 'prop',
-		type: 'string',
+		type: 'WidthPropType',
 		required: false,
 		default: "'100%'",
 		doc: 'Defines the width of the modal. (max-width: 100%)',

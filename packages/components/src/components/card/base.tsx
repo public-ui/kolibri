@@ -9,7 +9,7 @@ import { resolveCardCloseButtonProps } from '../../internal/functional-component
 import { CardFC } from '../../internal/functional-components/card/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { cardCallbacksProp, hasCloserProp, labelProp, levelProp, linkTargetProp, optionalHrefProp } from '../../internal/props';
-import type { HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
+import type { HasCloserPropType, HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -53,7 +53,7 @@ export abstract class BaseCardWebComponent extends BaseWebComponent<CardApi> {
 
 	// --- Prop application ---
 
-	protected applyHasCloser(value?: boolean): void {
+	protected applyHasCloser(value?: HasCloserPropType): void {
 		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
 	}
 

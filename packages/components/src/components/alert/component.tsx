@@ -9,7 +9,16 @@ import { BaseWebComponent } from '../../internal/functional-components/base-web-
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp } from '../../internal/props';
-import type { AlertProps, AlertTypePropType, AlertVariantPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
+import type {
+	AlertProps,
+	AlertPropType,
+	AlertTypePropType,
+	AlertVariantPropType,
+	HasCloserPropType,
+	HeadingLevel,
+	KoliBriAlertEventCallbacks,
+	LabelPropType,
+} from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -48,7 +57,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	@Prop() public _alert?: boolean = false;
 
 	@Watch('_alert')
-	public watchAlert(value?: boolean): void {
+	public watchAlert(value?: AlertPropType): void {
 		alertProp.apply(value, (v) => {
 			this.setRenderProp('alert', v);
 			this.syncAlertEffects(v);
@@ -57,12 +66,11 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 
 	/**
 	 * Defines whether the element can be closed.
-	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	@Watch('_hasCloser')
-	public watchHasCloser(value?: boolean): void {
+	public watchHasCloser(value?: HasCloserPropType): void {
 		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
 	}
 

@@ -8,16 +8,20 @@ import type {
 	ButtonTypePropType,
 	ClickableElement,
 	CustomClassPropType,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	IconsPropType,
 	InlinePropType,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
+	NamePropType,
 	PopoverAlignPropType,
 	PopoverButtonProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
+	TabIndexPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
@@ -90,19 +94,18 @@ export class KolPopoverButton
 	@Prop() public _disabled?: boolean = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
@@ -119,7 +122,7 @@ export class KolPopoverButton
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: InlinePropType = false;
+	@Prop() public _inline?: boolean = false;
 
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {
@@ -139,10 +142,10 @@ export class KolPopoverButton
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType;
 
 	@Watch('_name')
-	public watchName(value?: string): void {
+	public watchName(value?: NamePropType): void {
 		this.applyName(value);
 	}
 
@@ -183,7 +186,7 @@ export class KolPopoverButton
 	@Prop() public _tabIndex?: number;
 
 	@Watch('_tabIndex')
-	public watchTabIndex(value?: number): void {
+	public watchTabIndex(value?: TabIndexPropType): void {
 		this.applyTabIndex(value);
 	}
 

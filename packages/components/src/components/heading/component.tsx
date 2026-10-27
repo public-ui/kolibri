@@ -7,7 +7,7 @@ import type { HeadingApi } from '../../internal/functional-components/heading/ap
 import { headingPropsConfig } from '../../internal/functional-components/heading/api';
 import { HeadingFC } from '../../internal/functional-components/heading/component';
 import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../internal/props';
-import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType } from '../../schema';
+import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType, SecondaryHeadlinePropType } from '../../schema';
 
 /**
  *
@@ -44,10 +44,10 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	/**
 	 * Defines the text of the secondary headline.
 	 */
-	@Prop() public _secondaryHeadline?: string;
+	@Prop() public _secondaryHeadline?: SecondaryHeadlinePropType;
 
 	@Watch('_secondaryHeadline')
-	public watchSecondaryHeadline(value?: string): void {
+	public watchSecondaryHeadline(value?: SecondaryHeadlinePropType): void {
 		secondaryHeadlineProp.apply(value, (v) => this.setRenderProp('secondaryHeadline', v));
 	}
 

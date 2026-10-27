@@ -34,7 +34,7 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	},
 	_max: {
 		kind: 'prop',
-		type: 'MaxPropType',
+		type: 'number',
 		required: true,
 		doc: 'Defines the maximum value of the element.',
 	},

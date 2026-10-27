@@ -58,7 +58,7 @@ const KOL_DETAILS_PUBLIC_API: PublicApiContract = {
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Opens/expands the element when truthy, closes/collapses when falsy. @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.',
+		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',
 	},
 };
 

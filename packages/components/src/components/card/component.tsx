@@ -7,6 +7,7 @@ import type {
 	CardProps,
 	ClickableElement,
 	FocusableElement,
+	HasCloserPropType,
 	HeadingLevel,
 	HrefPropType,
 	KolFocusOptions,
@@ -43,12 +44,11 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 
 	/**
 	 * Defines whether the element can be closed.
-	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	@Watch('_hasCloser')
-	public watchHasCloser(value?: boolean): void {
+	public watchHasCloser(value?: HasCloserPropType): void {
 		this.applyHasCloser(value);
 	}
 

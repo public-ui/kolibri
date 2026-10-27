@@ -61,7 +61,7 @@ const KOL_POPOVER_BUTTON_PUBLIC_API: PublicApiContract = {
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.',
+		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',
 	},
 	_icons: {
 		kind: 'prop',
@@ -71,7 +71,7 @@ const KOL_POPOVER_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_inline: {
 		kind: 'prop',
-		type: 'InlinePropType',
+		type: 'boolean',
 		required: false,
 		default: 'false',
 		doc: 'Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.',
@@ -84,7 +84,7 @@ const KOL_POPOVER_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_name: {
 		kind: 'prop',
-		type: 'string',
+		type: 'NamePropType',
 		required: false,
 		doc: 'Defines the technical name of an input field.',
 	},

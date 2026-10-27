@@ -23,7 +23,7 @@ const KOL_CARD_PUBLIC_API: PublicApiContract = {
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Defines whether the element can be closed. @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.',
+		doc: 'Defines whether the element can be closed.',
 	},
 	_href: {
 		kind: 'prop',

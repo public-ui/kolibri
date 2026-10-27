@@ -17,6 +17,7 @@ import type {
 	KolFocusOptions,
 	KoliBriTabsCallbacks,
 	LabelPropType,
+	SelectedPropType,
 	StencilUnknown,
 	Stringified,
 	TabBehaviorPropType,
@@ -115,7 +116,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines whether the element has a create button.
 	 */
-	@Prop() public _hasCreateButton?: HasCreateButtonPropType = false;
+	@Prop() public _hasCreateButton?: boolean = false;
 
 	@Watch('_hasCreateButton')
 	public watchHasCreateButton(value?: HasCreateButtonPropType): void {
@@ -148,7 +149,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
 
 	@Watch('_selected')
-	public watchSelected(value?: number): void {
+	public watchSelected(value?: SelectedPropType): void {
 		this.applySelected(value);
 	}
 
@@ -441,7 +442,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		);
 	}
 
-	private applySelected(value?: number): void {
+	private applySelected(value?: SelectedPropType): void {
 		selectedProp.apply(value, (v) => {
 			this.setRenderProp('selected', v);
 			this.syncSelected();

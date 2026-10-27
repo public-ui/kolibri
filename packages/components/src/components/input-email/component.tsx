@@ -1,11 +1,17 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	AccessKeyPropType,
 	AriaDetailsPropType,
 	AutoCompletePropType,
 	ClickableElement,
+	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
+	HasCounterPropType,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	InputEmailProps,
 	InputTypeOnDefault,
@@ -13,13 +19,21 @@ import type {
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
+	MaxLengthPropType,
 	MsgPropType,
+	MultiplePropType,
 	NamePropType,
+	PatternPropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	Stringified,
+	StringValuePropType,
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
 
@@ -68,10 +82,10 @@ export class KolInputEmail
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: string;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
+	public watchAccessKey(value?: AccessKeyPropType): void {
 		this.applyAccessKey(value);
 	}
 
@@ -104,7 +118,7 @@ export class KolInputEmail
 	@Prop() public _hasCounter?: boolean = false;
 
 	@Watch('_hasCounter')
-	public watchHasCounter(value?: boolean): void {
+	public watchHasCounter(value?: HasCounterPropType): void {
 		this.applyHasCounter(value);
 	}
 
@@ -120,45 +134,42 @@ export class KolInputEmail
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideMsg?: boolean = false;
 
 	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
+	public watchHideMsg(value?: HideMsgPropType): void {
 		this.applyHideMsg(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: string = '';
+	@Prop() public _hint?: HintPropType = '';
 
 	@Watch('_hint')
-	public watchHint(value?: string): void {
+	public watchHint(value?: HintPropType): void {
 		this.applyHint(value);
 	}
 
@@ -198,7 +209,7 @@ export class KolInputEmail
 	@Prop() public _maxLength?: number;
 
 	@Watch('_maxLength')
-	public watchMaxLength(value?: number): void {
+	public watchMaxLength(value?: MaxLengthPropType): void {
 		this.applyMaxLength(value);
 	}
 
@@ -214,12 +225,11 @@ export class KolInputEmail
 
 	/**
 	 * Makes the input accept multiple inputs.
-	 * @TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _multiple?: boolean = false;
 
 	@Watch('_multiple')
-	public watchMultiple(value?: boolean): void {
+	public watchMultiple(value?: MultiplePropType): void {
 		multipleProp.apply(value, (v) => this.setRenderProp('multiple', v));
 	}
 
@@ -246,42 +256,40 @@ export class KolInputEmail
 	/**
 	 * Defines a validation pattern for the input field.
 	 */
-	@Prop() public _pattern?: string;
+	@Prop() public _pattern?: PatternPropType;
 
 	@Watch('_pattern')
-	public watchPattern(value?: string): void {
+	public watchPattern(value?: PatternPropType): void {
 		this.applyPattern(value);
 	}
 
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: string;
+	@Prop() public _placeholder?: PlaceholderPropType;
 
 	@Watch('_placeholder')
-	public watchPlaceholder(value?: string): void {
+	public watchPlaceholder(value?: PlaceholderPropType): void {
 		this.applyPlaceholder(value);
 	}
 
 	/**
 	 * Makes the input element read only.
-	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _readOnly?: boolean = false;
 
 	@Watch('_readOnly')
-	public watchReadOnly(value?: boolean): void {
+	public watchReadOnly(value?: ReadOnlyPropType): void {
 		this.applyReadOnly(value);
 	}
 
 	/**
 	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean = false;
 
 	@Watch('_required')
-	public watchRequired(value?: boolean): void {
+	public watchRequired(value?: RequiredPropType): void {
 		this.applyRequired(value);
 	}
 
@@ -338,22 +346,21 @@ export class KolInputEmail
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
+	public watchTouched(value?: TouchedPropType): void {
 		this.applyTouched(value);
 	}
 
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: StringValuePropType;
 
 	@Watch('_value')
-	public watchValue(value?: string): void {
+	public watchValue(value?: StringValuePropType): void {
 		this.applyValue(value);
 	}
 

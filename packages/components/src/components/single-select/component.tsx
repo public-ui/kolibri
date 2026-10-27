@@ -2,9 +2,15 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import type {
+	AccessKeyPropType,
 	AriaDetailsPropType,
+	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
+	HasClearButtonPropType,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
 	KolFocusOptions,
@@ -13,6 +19,8 @@ import type {
 	NamePropType,
 	Option,
 	OptionsPropType,
+	PlaceholderPropType,
+	RequiredPropType,
 	RowsPropType,
 	ShortKeyPropType,
 	SingleSelectProps,
@@ -20,6 +28,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
@@ -107,10 +116,10 @@ export class KolSingleSelect
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: string;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
+	public watchAccessKey(value?: AccessKeyPropType): void {
 		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
 		validateAccessAndShortKey(value, this._shortKey);
 	}
@@ -131,10 +140,10 @@ export class KolSingleSelect
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: string;
+	@Prop() public _placeholder?: PlaceholderPropType;
 
 	@Watch('_placeholder')
-	public watchPlaceholder(value?: string): void {
+	public watchPlaceholder(value?: PlaceholderPropType): void {
 		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
 	}
 
@@ -144,40 +153,38 @@ export class KolSingleSelect
 	@Prop() public _disabled?: boolean = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideMsg?: boolean = false;
 
 	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
+	public watchHideMsg(value?: HideMsgPropType): void {
 		this.applyHideMsg(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: string = '';
+	@Prop() public _hint?: HintPropType = '';
 
 	@Watch('_hint')
-	public watchHint(value?: string): void {
+	public watchHint(value?: HintPropType): void {
 		this.applyHint(value);
 	}
 
@@ -260,12 +267,11 @@ export class KolSingleSelect
 
 	/**
 	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean = false;
 
 	@Watch('_required')
-	public watchRequired(value?: boolean): void {
+	public watchRequired(value?: RequiredPropType): void {
 		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
 	}
 
@@ -303,12 +309,11 @@ export class KolSingleSelect
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
+	public watchTouched(value?: TouchedPropType): void {
 		this.applyTouched(value);
 	}
 
@@ -328,14 +333,14 @@ export class KolSingleSelect
 	@Prop() public _hasClearButton?: boolean = true;
 
 	@Watch('_hasClearButton')
-	public watchHasClearButton(value?: boolean): void {
+	public watchHasClearButton(value?: HasClearButtonPropType): void {
 		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
 	}
 
 	/**
 	 * Maximum number of visible rows of the element.
 	 */
-	@Prop() public _rows?: RowsPropType;
+	@Prop() public _rows?: number;
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {

@@ -5,10 +5,14 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { LinkApi } from '../../internal/functional-components/link/api';
 import type {
 	AccessKeyPropType,
+	AriaControlsPropType,
 	AriaCurrentValuePropType,
 	AriaDescriptionPropType,
+	AriaExpandedPropType,
+	DisabledPropType,
 	DownloadPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HrefPropType,
 	InlinePropType,
 	KolFocusOptions,
@@ -69,10 +73,10 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop() public _ariaControls?: string;
+	@Prop() public _ariaControls?: AriaControlsPropType;
 
 	@Watch('_ariaControls')
-	public watchAriaControls(value?: string): void {
+	public watchAriaControls(value?: AriaControlsPropType): void {
 		this.applyAriaControls(value);
 	}
 
@@ -88,12 +92,11 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 * @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: AriaExpandedPropType;
 
 	@Watch('_ariaExpanded')
-	public watchAriaExpanded(value?: boolean): void {
+	public watchAriaExpanded(value?: AriaExpandedPropType): void {
 		this.applyAriaExpanded(value);
 	}
 
@@ -103,7 +106,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	@Prop() public _disabled?: boolean = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
@@ -120,12 +123,11 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
@@ -152,7 +154,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: InlinePropType = true;
+	@Prop() public _inline?: boolean = true;
 
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {

@@ -31,6 +31,7 @@ import {
 import type { TablePagination } from '../../internal/props/table-pagination';
 import { isTablePaginationShown } from '../../internal/props/table-pagination';
 import type {
+	AllowMultiSortPropType,
 	ChangeHeaderCellsEventPayload,
 	FixedColsPropType,
 	HasSettingsMenuPropType,
@@ -48,6 +49,7 @@ import type {
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCells,
+	TableLoadingPropType,
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
 	VariantClassNamePropType,
@@ -188,7 +190,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Prop() public _allowMultiSort?: boolean;
 
 	@Watch('_allowMultiSort')
-	public watchAllowMultiSort(value?: boolean): void {
+	public watchAllowMultiSort(value?: AllowMultiSortPropType): void {
 		allowMultiSortProp.apply(value, (v) => {
 			this.allowMultiSort = v;
 		});
@@ -272,7 +274,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Prop() public _loading?: boolean;
 
 	@Watch('_loading')
-	public watchLoading(value?: boolean): void {
+	public watchLoading(value?: TableLoadingPropType): void {
 		this.applyLoading(value);
 	}
 
@@ -326,7 +328,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Enables the settings menu if true (default: false).
 	 */
-	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+	@Prop() public _hasSettingsMenu?: boolean;
 
 	@Watch('_hasSettingsMenu')
 	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {

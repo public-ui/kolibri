@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
+import type { DialogProps, HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType, WidthPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from './base';
@@ -70,10 +70,10 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	/**
 	 * Defines the width of the modal. (max-width: 100%)
 	 */
-	@Prop() public _width?: string = '100%';
+	@Prop() public _width?: WidthPropType = '100%';
 
 	@Watch('_width')
-	public watchWidth(value?: string): void {
+	public watchWidth(value?: WidthPropType): void {
 		this.applyWidth(value);
 	}
 

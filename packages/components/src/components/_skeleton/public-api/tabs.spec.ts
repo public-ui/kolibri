@@ -35,7 +35,7 @@ const KOL_TABS_PUBLIC_API: PublicApiContract = {
 	},
 	_hasCreateButton: {
 		kind: 'prop',
-		type: 'HasCreateButtonPropType',
+		type: 'boolean',
 		required: false,
 		default: 'false',
 		doc: 'Defines whether the element has a create button.',

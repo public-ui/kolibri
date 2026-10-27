@@ -11,7 +11,7 @@ import { DrawerFC } from '../../internal/functional-components/drawer/component'
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alignProp, drawerCallbacksProp, hasCloserProp, labelProp, levelProp, openProp } from '../../internal/props';
-import type { AlignPropType, DrawerProps, HeadingLevel, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
+import type { AlignPropType, DrawerProps, HasCloserPropType, HeadingLevel, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -70,12 +70,11 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 
 	/**
 	 * Defines whether the element can be closed.
-	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
 
 	@Watch('_hasCloser')
-	public watchHasCloser(value?: boolean): void {
+	public watchHasCloser(value?: HasCloserPropType): void {
 		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
 	}
 
@@ -112,7 +111,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType;
+	@Prop() public _open?: boolean;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {

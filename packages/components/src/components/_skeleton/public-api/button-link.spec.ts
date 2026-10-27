@@ -34,7 +34,7 @@ const KOL_BUTTON_LINK_PUBLIC_API: PublicApiContract = {
 	},
 	_ariaControls: {
 		kind: 'prop',
-		type: 'string',
+		type: 'AriaControlsPropType',
 		required: false,
 		doc: 'Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)',
 	},
@@ -46,29 +46,29 @@ const KOL_BUTTON_LINK_PUBLIC_API: PublicApiContract = {
 	},
 	_ariaExpanded: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'AriaExpandedPropType',
 		required: false,
-		doc: 'Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded) @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.',
+		doc: 'Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)',
 	},
 	_ariaSelected: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'AriaSelectedPropType',
 		required: false,
-		doc: 'Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected) @TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved.',
+		doc: 'Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)',
 	},
 	_disabled: {
 		kind: 'prop',
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Makes the element not focusable and ignore all events. @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.',
+		doc: 'Makes the element not focusable and ignore all events.',
 	},
 	_hideLabel: {
 		kind: 'prop',
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.',
+		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',
 	},
 	_icons: {
 		kind: 'prop',
@@ -78,7 +78,7 @@ const KOL_BUTTON_LINK_PUBLIC_API: PublicApiContract = {
 	},
 	_inline: {
 		kind: 'prop',
-		type: 'InlinePropType',
+		type: 'boolean',
 		required: false,
 		default: 'true',
 		doc: 'Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.',

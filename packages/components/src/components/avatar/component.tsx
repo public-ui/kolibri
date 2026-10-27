@@ -6,7 +6,7 @@ import { AvatarFC } from '../../internal/functional-components/avatar/component'
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { colorProp, labelProp, srcProp } from '../../internal/props';
-import type { ColorPair } from '../../schema';
+import type { ColorPair, LabelPropType, SrcPropType } from '../../schema';
 
 /**
  * Formats a single name as an initial by taking the first character and converting it to uppercase.
@@ -73,7 +73,7 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	public _label!: string;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelPropType): void {
 		labelProp.apply(value, (v) => {
 			this.setRenderProp('label', v);
 			this.setState('initials', normalizeInitials(v));
@@ -84,10 +84,10 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop()
-	public _src?: string;
+	public _src?: SrcPropType;
 
 	@Watch('_src')
-	public watchSrc(value?: string): void {
+	public watchSrc(value?: SrcPropType): void {
 		srcProp.apply(value, (v) => this.setRenderProp('src', v));
 	}
 

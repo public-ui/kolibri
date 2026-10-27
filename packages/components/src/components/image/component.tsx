@@ -6,6 +6,7 @@ import type { ImageApi } from '../../internal/functional-components/image/api';
 import { imagePropsConfig } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
 import { altProp, imageCallbacksProp, loadingProp, sizesProp, srcProp, srcsetProp, type LoadingType } from '../../internal/props';
+import type { AltPropType, SizesPropType, SrcPropType, SrcsetPropType } from '../../schema';
 import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -29,7 +30,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	public _alt!: string;
 
 	@Watch('_alt')
-	public watchAlt(value?: string): void {
+	public watchAlt(value?: AltPropType): void {
 		altProp.apply(value, (v) => this.setRenderProp('alt', v));
 	}
 
@@ -48,10 +49,10 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	 * Defines the image sizes for different screen resolutions, supporting _srcset.
 	 */
 	@Prop()
-	public _sizes?: string;
+	public _sizes?: SizesPropType;
 
 	@Watch('_sizes')
-	public watchSizes(value?: string): void {
+	public watchSizes(value?: SizesPropType): void {
 		sizesProp.apply(value, (v) => this.setRenderProp('sizes', v));
 	}
 
@@ -62,7 +63,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	public _src!: string;
 
 	@Watch('_src')
-	public watchSrc(value?: string): void {
+	public watchSrc(value?: SrcPropType): void {
 		srcProp.apply(value, (v) => this.setRenderProp('src', v));
 	}
 
@@ -70,10 +71,10 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	 * Sets a list of source URLs with widths of the images.
 	 */
 	@Prop()
-	public _srcset?: string;
+	public _srcset?: SrcsetPropType;
 
 	@Watch('_srcset')
-	public watchSrcset(value?: string): void {
+	public watchSrcset(value?: SrcsetPropType): void {
 		srcsetProp.apply(value, (v) => this.setRenderProp('srcset', v));
 	}
 

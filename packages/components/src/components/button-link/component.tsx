@@ -5,12 +5,17 @@ import type { ButtonLinkWebComponentInterface } from '../../internal/functional-
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaControlsPropType,
 	AriaDescriptionPropType,
+	AriaExpandedPropType,
+	AriaSelectedPropType,
 	ButtonCallbacksPropType,
 	ButtonLinkProps,
 	ButtonTypePropType,
 	ClickableElement,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	IconsPropType,
 	InlinePropType,
 	KolFocusOptions,
@@ -69,10 +74,10 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkP
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop() public _ariaControls?: string;
+	@Prop() public _ariaControls?: AriaControlsPropType;
 
 	@Watch('_ariaControls')
-	public watchAriaControls(value?: string): void {
+	public watchAriaControls(value?: AriaControlsPropType): void {
 		this.applyAriaControls(value);
 	}
 
@@ -88,46 +93,42 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkP
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 * @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: AriaExpandedPropType;
 
 	@Watch('_ariaExpanded')
-	public watchAriaExpanded(value?: boolean): void {
+	public watchAriaExpanded(value?: AriaExpandedPropType): void {
 		this.applyAriaExpanded(value);
 	}
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-	 * @TODO: Change type back to `AriaSelectedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _ariaSelected?: boolean;
+	@Prop() public _ariaSelected?: AriaSelectedPropType;
 
 	@Watch('_ariaSelected')
-	public watchAriaSelected(value?: boolean): void {
+	public watchAriaSelected(value?: AriaExpandedPropType): void {
 		this.applyAriaSelected(value);
 	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
@@ -144,7 +145,7 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkP
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: InlinePropType = true;
+	@Prop() public _inline?: boolean = true;
 
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {

@@ -1,23 +1,32 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	AccessKeyPropType,
 	AriaDetailsPropType,
+	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
+	MultiplePropType,
 	NamePropType,
 	OptionsWithOptgroupPropType,
+	RequiredPropType,
 	RowsPropType,
 	SelectProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
+	TabIndexPropType,
 	TooltipAlignPropType,
+	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
 
@@ -58,10 +67,10 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: string;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
+	public watchAccessKey(value?: AccessKeyPropType): void {
 		this.applyAccessKey(value);
 	}
 
@@ -77,45 +86,42 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideMsg?: boolean = false;
 
 	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
+	public watchHideMsg(value?: HideMsgPropType): void {
 		this.applyHideMsg(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: string = '';
+	@Prop() public _hint?: HintPropType = '';
 
 	@Watch('_hint')
-	public watchHint(value?: string): void {
+	public watchHint(value?: HintPropType): void {
 		this.applyHint(value);
 	}
 
@@ -161,12 +167,11 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 
 	/**
 	 * Makes the input accept multiple inputs.
-	 * @TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _multiple?: boolean = false;
 
 	@Watch('_multiple')
-	public watchMultiple(value?: boolean): void {
+	public watchMultiple(value?: MultiplePropType): void {
 		this.applyMultiple(value);
 	}
 
@@ -202,12 +207,11 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 
 	/**
 	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _required?: boolean = false;
 
 	@Watch('_required')
-	public watchRequired(value?: boolean): void {
+	public watchRequired(value?: RequiredPropType): void {
 		this.applyRequired(value);
 	}
 
@@ -224,7 +228,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Maximum number of visible rows of the element.
 	 */
-	@Prop() public _rows?: RowsPropType;
+	@Prop() public _rows?: number;
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
@@ -248,7 +252,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	@Prop() public _tabIndex?: number;
 
 	@Watch('_tabIndex')
-	public watchTabIndex(value?: number): void {
+	public watchTabIndex(value?: TabIndexPropType): void {
 		this.applyTabIndex(value);
 	}
 
@@ -264,12 +268,11 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
+	public watchTouched(value?: TouchedPropType): void {
 		this.applyTouched(value);
 	}
 

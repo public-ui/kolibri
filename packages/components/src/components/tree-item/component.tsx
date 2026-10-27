@@ -66,7 +66,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType;
+	@Prop() public _open?: boolean;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {

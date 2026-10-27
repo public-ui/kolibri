@@ -14,10 +14,12 @@ import type {
 	AccordionProps,
 	ClickableElement,
 	CollapsibleCallbacksPropType,
+	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
 	KolFocusOptions,
 	LabelPropType,
+	OpenPropType,
 } from '../../schema';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -80,7 +82,7 @@ export class KolAccordion
 	@Prop() public _disabled?: boolean = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
 	}
 
@@ -116,12 +118,11 @@ export class KolAccordion
 
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
-	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 
 	@Watch('_open')
-	public watchOpen(value?: boolean): void {
+	public watchOpen(value?: OpenPropType): void {
 		openProp.apply(value, (v) => {
 			this.setRenderProp('open', v);
 			/* The very first pass runs during componentWillLoad: render the final state straight

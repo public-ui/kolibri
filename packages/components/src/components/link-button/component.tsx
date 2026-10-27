@@ -7,12 +7,15 @@ import type { LinkApi } from '../../internal/functional-components/link/api';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaControlsPropType,
 	AriaCurrentValuePropType,
 	AriaDescriptionPropType,
 	ClickableElement,
 	CustomClassPropType,
+	DisabledPropType,
 	DownloadPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HrefPropType,
 	IconsPropType,
 	InlinePropType,
@@ -74,10 +77,10 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop() public _ariaControls?: string;
+	@Prop() public _ariaControls?: AriaControlsPropType;
 
 	@Watch('_ariaControls')
-	public watchAriaControls(value?: string): void {
+	public watchAriaControls(value?: AriaControlsPropType): void {
 		this.applyAriaControls(value);
 	}
 
@@ -107,7 +110,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	@Prop() public _disabled?: boolean = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
@@ -124,12 +127,11 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
@@ -156,7 +158,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: InlinePropType = false;
+	@Prop() public _inline?: boolean = false;
 
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {

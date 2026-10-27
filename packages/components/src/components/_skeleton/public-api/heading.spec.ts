@@ -20,7 +20,7 @@ const KOL_HEADING_PUBLIC_API: PublicApiContract = {
 	},
 	_secondaryHeadline: {
 		kind: 'prop',
-		type: 'string',
+		type: 'SecondaryHeadlinePropType',
 		required: false,
 		doc: 'Defines the text of the secondary headline.',
 	},

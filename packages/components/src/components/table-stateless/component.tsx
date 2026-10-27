@@ -8,10 +8,12 @@ import type {
 	HasSettingsMenuPropType,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
+	LabelPropType,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCellsPropType,
+	TableLoadingPropType,
 	TableSelectionPropType,
 	TableStatelessProps,
 	VariantClassNamePropType,
@@ -112,7 +114,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	@Prop() public _label!: string;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelPropType): void {
 		this.applyLabel(value);
 	}
 
@@ -122,7 +124,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	@Prop() public _loading?: boolean;
 
 	@Watch('_loading')
-	public watchLoading(value?: boolean): void {
+	public watchLoading(value?: TableLoadingPropType): void {
 		this.applyLoading(value);
 	}
 
@@ -149,7 +151,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Enables the settings menu if true (default: false).
 	 */
-	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+	@Prop() public _hasSettingsMenu?: boolean;
 
 	@Watch('_hasSettingsMenu')
 	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {

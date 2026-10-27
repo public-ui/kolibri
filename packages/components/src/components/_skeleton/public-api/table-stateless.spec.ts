@@ -32,7 +32,7 @@ const KOL_TABLE_STATELESS_PUBLIC_API: PublicApiContract = {
 	},
 	_hasSettingsMenu: {
 		kind: 'prop',
-		type: 'HasSettingsMenuPropType',
+		type: 'boolean',
 		required: false,
 		doc: 'Enables the settings menu if true (default: false).',
 	},

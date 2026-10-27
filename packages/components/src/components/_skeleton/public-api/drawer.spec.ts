@@ -41,7 +41,7 @@ const KOL_DRAWER_PUBLIC_API: PublicApiContract = {
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Defines whether the element can be closed. @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.',
+		doc: 'Defines whether the element can be closed.',
 	},
 	_label: {
 		kind: 'prop',
@@ -64,7 +64,7 @@ const KOL_DRAWER_PUBLIC_API: PublicApiContract = {
 	},
 	_open: {
 		kind: 'prop',
-		type: 'OpenPropType',
+		type: 'boolean',
 		required: false,
 		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',
 	},

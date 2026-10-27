@@ -11,7 +11,7 @@ const KOL_NAV_PUBLIC_API: PublicApiContract = {
 		type: 'boolean',
 		required: false,
 		default: 'true',
-		doc: 'Defines if navigation nodes can be collapsed or not. Enabled by default. @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.',
+		doc: 'Defines if navigation nodes can be collapsed or not. Enabled by default.',
 	},
 	_hasCompactButton: {
 		kind: 'prop',
@@ -32,7 +32,7 @@ const KOL_NAV_PUBLIC_API: PublicApiContract = {
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.',
+		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',
 	},
 	_label: {
 		kind: 'prop',

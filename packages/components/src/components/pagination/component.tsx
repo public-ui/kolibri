@@ -9,12 +9,16 @@ import { PaginationFC } from '../../internal/functional-components/pagination/co
 import type { PaginationItem, PaginationPropsStore, PaginationRenderProps } from '../../internal/functional-components/pagination/item';
 import { createPaginationItem } from '../../internal/functional-components/pagination/item';
 import type {
+	BoundaryCountPropType,
 	CustomClassPropType,
 	KoliBriPaginationButtonCallbacks,
 	LabelPropType,
 	MaxPropType,
+	PagePropType,
+	PageSizePropType,
 	PaginationHasButton,
 	PaginationProps,
+	SiblingCountPropType,
 	Stringified,
 	TooltipAlignPropType,
 } from '../../schema';
@@ -40,7 +44,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	@Prop() public _boundaryCount?: number = 1;
 
 	@Watch('_boundaryCount')
-	public watchBoundaryCount(value?: number): void {
+	public watchBoundaryCount(value?: BoundaryCountPropType): void {
 		this.item.applyBoundaryCount(value);
 	}
 
@@ -80,7 +84,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	@Prop() public _page!: number;
 
 	@Watch('_page')
-	public watchPage(value?: number): void {
+	public watchPage(value?: PagePropType): void {
 		this.item.applyPage(value);
 	}
 
@@ -90,7 +94,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
 
 	@Watch('_pageSize')
-	public watchPageSize(value?: number): void {
+	public watchPageSize(value?: PageSizePropType): void {
 		this.item.applyPageSize(value);
 	}
 
@@ -120,7 +124,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	@Prop() public _siblingCount?: number = 1;
 
 	@Watch('_siblingCount')
-	public watchSiblingCount(value?: number): void {
+	public watchSiblingCount(value?: SiblingCountPropType): void {
 		this.item.applySiblingCount(value);
 	}
 
@@ -137,7 +141,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the maximum value of the element.
 	 */
-	@Prop() public _max!: MaxPropType;
+	@Prop() public _max!: number;
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {

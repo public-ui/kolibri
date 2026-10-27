@@ -25,14 +25,14 @@ const KOL_METER_PUBLIC_API: PublicApiContract = {
 	},
 	_max: {
 		kind: 'prop',
-		type: 'number',
+		type: 'MaxPropType',
 		required: false,
 		default: '1',
 		doc: 'Defines the maximum value of the element. Default like native component.',
 	},
 	_min: {
 		kind: 'prop',
-		type: 'number',
+		type: 'MinPropType',
 		required: false,
 		default: '0',
 		doc: 'Defines the minimum value of the element. Default like native component.',
@@ -52,7 +52,7 @@ const KOL_METER_PUBLIC_API: PublicApiContract = {
 	},
 	_unit: {
 		kind: 'prop',
-		type: 'string',
+		type: 'UnitPropType',
 		required: false,
 		default: "'%'",
 		doc: 'Defines the unit of the value.',

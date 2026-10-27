@@ -25,7 +25,7 @@ const KOL_IMAGE_PUBLIC_API: PublicApiContract = {
 	},
 	_sizes: {
 		kind: 'prop',
-		type: 'string',
+		type: 'SizesPropType',
 		required: false,
 		doc: 'Defines the image sizes for different screen resolutions, supporting _srcset.',
 	},
@@ -37,7 +37,7 @@ const KOL_IMAGE_PUBLIC_API: PublicApiContract = {
 	},
 	_srcset: {
 		kind: 'prop',
-		type: 'string',
+		type: 'SrcsetPropType',
 		required: false,
 		doc: 'Sets a list of source URLs with widths of the images.',
 	},
