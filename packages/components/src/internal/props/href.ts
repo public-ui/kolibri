@@ -1,3 +1,4 @@
+import type { HrefPropType } from '../../schema/props/href';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -23,7 +24,7 @@ import { normalizeString } from './helpers/normalizers';
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
  */
-export type HrefProp = SimpleProp<'href', string>;
+export type HrefProp = SimpleProp<'href', HrefPropType>;
 export const hrefProp = createPropDefinition<HrefProp>('href', '', normalizeString, (v) => typeof v === 'string', { required: true });
 
 /**

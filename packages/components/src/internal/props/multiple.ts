@@ -1,3 +1,4 @@
+import type { MultiplePropType } from '../../schema/props/multiple';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -10,5 +11,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  *
  * @see https://html.spec.whatwg.org/multipage/input.html#attr-input-multiple
  */
-export type MultipleProp = SimpleProp<'multiple', boolean>;
+export type MultipleProp = SimpleProp<'multiple', MultiplePropType>;
 export const multipleProp = createPropDefinition<MultipleProp>('multiple', false, normalizeBoolean);

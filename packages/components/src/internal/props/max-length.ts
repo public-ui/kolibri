@@ -1,3 +1,4 @@
+import type { MaxLengthPropType } from '../../schema/props/max-length';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeNumber } from './helpers/normalizers';
@@ -11,7 +12,7 @@ import { normalizeNumber } from './helpers/normalizers';
  *
  * @see https://html.spec.whatwg.org/multipage/input.html#attr-input-maxlength
  */
-export type MaxLengthProp = SimpleProp<'maxLength', number>;
+export type MaxLengthProp = SimpleProp<'maxLength', MaxLengthPropType>;
 // The default is `undefined`: without a maximum there is no limit and no character limit hint. The
 // validation also runs on the default, so it accepts `undefined`.
 export const maxLengthProp = createPropDefinition<MaxLengthProp>(

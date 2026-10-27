@@ -1,3 +1,4 @@
+import type { PatternPropType } from '../../schema/props/pattern';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -10,6 +11,6 @@ import { normalizeString } from './helpers/normalizers';
  *
  * @see https://html.spec.whatwg.org/multipage/input.html#attr-input-pattern
  */
-export type PatternProp = SimpleProp<'pattern', string>;
+export type PatternProp = SimpleProp<'pattern', PatternPropType>;
 // The default is `undefined`: the native attribute is only rendered when a pattern is set.
 export const patternProp = createPropDefinition<PatternProp>('pattern', undefined as unknown as string, normalizeString);

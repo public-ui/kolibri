@@ -1,3 +1,4 @@
+import type { HintPropType } from '../../schema/props/hint';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -12,5 +13,5 @@ import { normalizeString } from './helpers/normalizers';
  *
  * @see https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
  */
-export type HintProp = SimpleProp<'hint', string>;
+export type HintProp = SimpleProp<'hint', HintPropType>;
 export const hintProp = createPropDefinition<HintProp>('hint', '', normalizeString);
