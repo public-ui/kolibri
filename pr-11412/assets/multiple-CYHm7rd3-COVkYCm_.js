@@ -1,1 +1,0 @@
-import{f as e,o as t}from"./base-web-component-Bcoukts3-Do-AxLWb.js";var n=t(`multiple`,!1,e);export{n as t};
