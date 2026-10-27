@@ -1,19 +1,356 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "No visual changes",
-	"computedAt": "2026-10-27T09:46:52.683Z",
+	"state": "pending",
+	"description": "84 changed – 0 of 84 approved, review pending",
+	"computedAt": "2026-10-27T10:25:58.217Z",
 	"pr": 11416,
-	"head": "0f48dabb74e41eecadfa1d776ae25079390428a3",
-	"digest": "sha256:70fcbc6218a0e26fc4f25d27aacf97903d59157d7ab4d484d874383796b3e4ff",
+	"head": "ce5763e669023a1f31392cbb2c5090040bb67789",
+	"digest": "sha256:e2ecb957c2c5f7832004dc2795eb95c2ddea6cb362de3d74eb096c6dd28cde47",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 84,
+		"open": 84,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-card-msg--default": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-card-msg--error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-card-msg--info": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-card-msg--success": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-card-msg--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-card-msg--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-card-msg--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-card-msg--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-card-msg--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/alert-card-msg--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-card-msg--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-card-msg--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-card-msg--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-card-msg--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-card-msg--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-card-msg--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-card-msg--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-card-msg--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-card-msg--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/alert-card-msg--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-card-msg--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-card-msg--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-card-msg--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-card-msg--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/alert-card-msg--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-card-msg--default": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-card-msg--error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-card-msg--info": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-card-msg--success": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/alert-card-msg--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
