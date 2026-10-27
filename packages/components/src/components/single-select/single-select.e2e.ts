@@ -276,6 +276,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('details-2');
+			expect(await getAriaDetailsRefIds(host)).toEqual(['details-2']);
 		});
 
 		test('handles missing ID gracefully', async ({ page }) => {
