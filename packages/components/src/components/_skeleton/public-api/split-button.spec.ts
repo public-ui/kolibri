@@ -51,13 +51,13 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 	_ariaExpanded: {
 		kind: 'prop',
-		type: 'AriaExpandedPropType',
+		type: 'boolean',
 		required: false,
 		doc: 'Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)',
 	},
 	_ariaSelected: {
 		kind: 'prop',
-		type: 'AriaSelectedPropType',
+		type: 'boolean',
 		required: false,
 		doc: 'Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)',
 	},

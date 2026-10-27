@@ -8,7 +8,6 @@ import type {
 	AriaControlsPropType,
 	AriaDescriptionPropType,
 	AriaExpandedPropType,
-	AriaSelectedPropType,
 	ButtonCallbacksPropType,
 	ButtonProps,
 	ButtonTypePropType,
@@ -87,7 +86,7 @@ export class KolButton extends BaseButtonWebComponent implements ButtonProps, Bu
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop() public _ariaExpanded?: AriaExpandedPropType;
+	@Prop() public _ariaExpanded?: boolean;
 
 	@Watch('_ariaExpanded')
 	public watchAriaExpanded(value?: AriaExpandedPropType): void {
@@ -97,7 +96,7 @@ export class KolButton extends BaseButtonWebComponent implements ButtonProps, Bu
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
-	@Prop() public _ariaSelected?: AriaSelectedPropType;
+	@Prop() public _ariaSelected?: boolean;
 
 	@Watch('_ariaSelected')
 	public watchAriaSelected(value?: AriaExpandedPropType): void {

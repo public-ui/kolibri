@@ -34,7 +34,7 @@ const KOL_LINK_PUBLIC_API: PublicApiContract = {
 	},
 	_ariaExpanded: {
 		kind: 'prop',
-		type: 'AriaExpandedPropType',
+		type: 'boolean',
 		required: false,
 		doc: 'Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)',
 	},

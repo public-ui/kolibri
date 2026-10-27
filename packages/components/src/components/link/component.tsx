@@ -93,7 +93,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop() public _ariaExpanded?: AriaExpandedPropType;
+	@Prop() public _ariaExpanded?: boolean;
 
 	@Watch('_ariaExpanded')
 	public watchAriaExpanded(value?: AriaExpandedPropType): void {
