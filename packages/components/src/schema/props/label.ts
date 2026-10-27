@@ -104,7 +104,7 @@ export const validateLabel = (component: Generic.Element.Component, value?: Labe
 	watchValidator(
 		component,
 		'_label',
-		(value) => typeof value === 'string' && (value === '' || value.length >= 2 || containsOnlyNumbers(value)),
+		(value) => typeof value === 'string' && (value.length >= 2 || containsOnlyNumbers(value)),
 		LABEL_VALUES,
 		value,
 		getValidationOptions(options),

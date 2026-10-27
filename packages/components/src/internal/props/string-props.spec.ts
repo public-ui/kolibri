@@ -136,12 +136,11 @@ describe('hrefProp', () => {
  * accepted value, the UI/UX hint for a label longer than 80 characters included.
  */
 describe('labelProp', () => {
-	it.each([undefined, null])('applies the default "" for %p', (value) => {
-		expect(applied(labelProp, value)).toEqual(['']);
+	it.each([undefined, null])('applies the "not set" default undefined for %p', (value) => {
+		expect(applied(labelProp, value)).toEqual([undefined]);
 	});
 
 	it.each<[unknown, string]>([
-		['', ''],
 		['Label', 'Label'],
 		[12, '12'],
 		['a'.repeat(80), 'a'.repeat(80)],
@@ -150,7 +149,7 @@ describe('labelProp', () => {
 		expect(warnings()).toEqual([]);
 	});
 
-	it.each<unknown>(['a'])('ignores %p with a developer warning', (value) => {
+	it.each<unknown>(['', 'a'])('ignores %p with a developer warning', (value) => {
 		expect(applied(labelProp, value)).toEqual([]);
 		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid. The value is ignored.`)]);
 	});

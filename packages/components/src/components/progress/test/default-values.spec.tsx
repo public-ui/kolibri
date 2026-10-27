@@ -37,11 +37,11 @@ describe('kol-progress default values', () => {
 
 		expect(instance.getRenderProp('variant')).toBe('cycle');
 
-		// Set label to undefined - should apply default ''
+		// Set label to undefined - applies the "not set" state
 		page.root!.removeAttribute('_label');
 		await page.waitForChanges();
 
-		expect(instance.getRenderProp('label')).toBe('');
+		expect(instance.getRenderProp('label')).toBeUndefined();
 
 		// Set unit to undefined - should apply default '%'
 		page.root!.removeAttribute('_unit');

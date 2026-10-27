@@ -2,7 +2,7 @@ import type { LabelPropType } from '../../schema/props/label';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
-import { isValidLabel } from './helpers/validators';
+import { isValidLabelPropValue } from './helpers/validators';
 import { labelHints } from './hints/label-hints';
 
 /**
@@ -17,9 +17,10 @@ import { labelHints } from './hints/label-hints';
  * - Every interactive element must have a perceivable label (WCAG 4.1.2 Name, Role, Value)
  * - Labels must be descriptive and concise (WCAG 2.4.6 Headings and Labels)
  * - Labels must be programmatically associated with their controls (WCAG 1.3.1 Info and Relationships)
- * - Minimum 2 characters for meaningful labels
+ * - Minimum 2 characters for meaningful labels; an explicitly passed empty string is invalid
+ *   (the empty string is reserved for the label with expert slot)
  * - Labels longer than 80 characters are accepted, but give a UI/UX hint to keep them concise
- * - An empty label ("") is allowed for cases where the accessible name is provided differently
+ * - `undefined` is the "not set" state, when the accessible name is provided differently
  *
  * @see https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
  * @see https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html
@@ -27,6 +28,6 @@ import { labelHints } from './hints/label-hints';
  * @see https://www.w3.org/TR/accname-1.2/
  */
 export type LabelProp = SimpleProp<'label', LabelPropType>;
-export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeString, isValidLabel, {
+export const labelProp = createPropDefinition<LabelProp>('label', undefined as unknown as LabelPropType, normalizeString, isValidLabelPropValue, {
 	hints: labelHints,
 });

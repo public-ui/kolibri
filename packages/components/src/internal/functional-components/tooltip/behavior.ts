@@ -31,7 +31,9 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 	}
 
 	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => {
+		// An empty label means "not set" for the tooltip: `labelProp` rejects the empty string (it
+		// is the expert-slot sentinel), and a tooltip without a label text is simply not set.
+		labelProp.apply(value || undefined, (v) => {
 			this.setRenderProp('label', v);
 		});
 	}
