@@ -23,9 +23,10 @@ export const isSafeClassName = (value: unknown): value is string => typeof value
 /**
  * A label text is at least two characters long. Numbers-only labels are exempt from the minimum
  * length — generated labels like page numbers are valid button texts (same exemption as the
- * label hints).
+ * label hints). Module-internal: the public entries are `isValidLabelWithExpertSlot` and
+ * `isValidLabelPropValue`.
  */
-export const isValidLabelText = (value: string): boolean => value.length >= 2 || containsOnlyNumbers(value);
+const isValidLabelText = (value: string): boolean => value.length >= 2 || containsOnlyNumbers(value);
 
 /**
  * The label of a component with an expert slot additionally accepts the empty string: it enables
