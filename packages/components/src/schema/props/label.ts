@@ -100,6 +100,10 @@ function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 }
 
 const LABEL_VALUES = new Set(['string']);
+/**
+ * This validator validates the label of a component without an expert slot: the empty string is
+ * invalid — it is the expert-slot sentinel of `LabelWithExpertSlotPropType` only.
+ */
 export const validateLabel = (component: Generic.Element.Component, value?: LabelPropType, options: WatchStringOptions = {}): void => {
 	watchValidator(
 		component,
@@ -112,7 +116,20 @@ export const validateLabel = (component: Generic.Element.Component, value?: Labe
 };
 
 /**
- * This method name helps to differentiate between the label
- * and the label with expert slot usage.
+ * This validator validates the label of a component with an expert slot: the empty string enables
+ * the expert slot and stands for the former `false`.
  */
-export const validateLabelWithExpertSlot = validateLabel;
+export const validateLabelWithExpertSlot = (
+	component: Generic.Element.Component,
+	value?: LabelWithExpertSlotPropType,
+	options: WatchStringOptions = {},
+): void => {
+	watchValidator(
+		component,
+		'_label',
+		(value) => typeof value === 'string' && (value === '' || value.length >= 2 || containsOnlyNumbers(value)),
+		LABEL_VALUES,
+		value,
+		getValidationOptions(options),
+	);
+};

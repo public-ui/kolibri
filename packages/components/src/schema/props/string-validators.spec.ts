@@ -237,8 +237,18 @@ describe('legacy string prop validators', () => {
 	describe('validateLabel', () => {
 		const labelHints = (): string[] => getLoggedMessages(debugSpy.mock.calls).filter((message) => message.startsWith('The heading or label'));
 
-		it('is validateLabelWithExpertSlot', () => {
-			expect(validateLabelWithExpertSlot).toBe(validateLabel);
+		// Same rule as the skeleton `isValidLabelWithExpertSlot`: the empty string enables the
+		// expert slot, otherwise at least 2 characters; numbers-only labels are exempt.
+		it.each([[''], ['Ab'], ['1']])('validateLabelWithExpertSlot accepts the string %p', (value) => {
+			const component = createLegacyComponent();
+			validateLabelWithExpertSlot(component, value);
+			expect(component.state._label).toBe(value);
+		});
+
+		it('validateLabelWithExpertSlot rejects a one-character label and keeps the previous state value', () => {
+			const component = createLegacyComponent({ _label: 'old' });
+			validateLabelWithExpertSlot(component, 'A');
+			expect(component.state._label).toBe('old');
 		});
 
 		// Same rule as the skeleton `labelProp`: at least 2 characters; numbers-only labels are

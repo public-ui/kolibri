@@ -142,14 +142,16 @@ describe('labelProp', () => {
 
 	it.each<[unknown, string]>([
 		['Label', 'Label'],
+		['1', '1'],
+		['1.5', '1.5'],
 		[12, '12'],
 		['a'.repeat(80), 'a'.repeat(80)],
-	])('accepts %p as %p', (value, expected) => {
+	])('accepts %p as %p, a one-character numbers-only label via the exemption', (value, expected) => {
 		expect(applied(labelProp, value)).toEqual([expected]);
 		expect(warnings()).toEqual([]);
 	});
 
-	it.each<unknown>(['', 'a'])('ignores %p with a developer warning', (value) => {
+	it.each<unknown>(['', 'a', '.'])('ignores %p with a developer warning', (value) => {
 		expect(applied(labelProp, value)).toEqual([]);
 		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid. The value is ignored.`)]);
 	});
@@ -189,9 +191,11 @@ describe('labelWithExpertSlotProp', () => {
 	it.each<[unknown, string]>([
 		['', ''],
 		['My label', 'My label'],
+		['1', '1'],
+		['1.5', '1.5'],
 		[12, '12'],
 		['y'.repeat(81), 'y'.repeat(81)],
-	])('accepts %p as %p', (value, expected) => {
+	])('accepts %p as %p, a one-character numbers-only label via the exemption', (value, expected) => {
 		expect(applied(labelWithExpertSlotProp, value)).toEqual([expected]);
 		expect(warnings()).toEqual([]);
 	});
