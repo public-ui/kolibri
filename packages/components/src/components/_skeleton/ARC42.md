@@ -430,6 +430,12 @@ number inputs. `prop-keys.spec.ts` documents the variants per render key.
 Naming roles stay distinct: `XxxPropType` is the schema value type, `PropXxx` the schema prop bag
 and `XxxProp` the prop definition in `internal/props`.
 
+Which variant a component uses follows its rendered markup: a `_label` that flows into the `span`
+expert slot (`<slot name="expert">`) is `LabelWithExpertSlotPropType` — the interactive elements and
+the form-field labels. A `_label` that is a landmark name, a caption or a pure `aria-label` without
+an expert slot stays `LabelPropType` — even when the component renders unrelated expert slots
+elsewhere (e.g. for the quote content or the tree item button).
+
 This rule binds new and changed props immediately. Existing props adopt it family by family — prop
 definitions first, then component signatures. Where no named schema type exists yet, it is added: an
 additive, non-breaking change, because naming a type never changes its structure.
