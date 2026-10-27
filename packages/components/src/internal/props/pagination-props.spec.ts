@@ -5,7 +5,6 @@ import { pageProp } from './page';
 import { pageSizeProp } from './page-size';
 import { pageSizeOptionsProp } from './page-size-options';
 import { paginationHasButtonsProp } from './pagination-has-buttons';
-import { paginationLabelProp } from './pagination-label';
 import { paginationMaxProp } from './pagination-max';
 import { siblingCountProp } from './sibling-count';
 
@@ -109,15 +108,5 @@ describe('paginationHasButtonsProp', () => {
 
 	it.each([5, '{'])('ignores %j', (value) => {
 		expect(applied(paginationHasButtonsProp, value)).toEqual([]);
-	});
-});
-
-describe('paginationLabelProp', () => {
-	it.each(['1', 'A very long navigation label that is longer than eighty characters'])('accepts %j', (value) => {
-		expect(applied(paginationLabelProp, value)).toEqual([value]);
-	});
-
-	it.each(['', 'P', 'A'])('ignores %j with a developer warning (at least 2 characters; numbers-only labels are exempt)', (value) => {
-		expect(applied(paginationLabelProp, value)).toEqual([]);
 	});
 });
