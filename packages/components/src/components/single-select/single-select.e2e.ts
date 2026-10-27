@@ -1,6 +1,7 @@
 import { expect, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { getAriaDetailsRefIds } from '../../e2e/aria-details';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
@@ -255,12 +256,7 @@ test.describe(COMPONENT_NAME, () => {
 
 			const host = page.locator(COMPONENT_NAME);
 			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('select-details');
-			const refIds = await host.evaluate((el: HTMLKolSingleSelectElement) => {
-				const input = el.shadowRoot?.querySelector('input');
-				const refs = (input as unknown as { ariaDetailsElements?: (Element | null)[] | null } | null)?.ariaDetailsElements;
-				return refs?.map((ref) => (ref instanceof HTMLElement ? ref.id : null)) ?? null;
-			});
-			expect(refIds).toEqual(['select-details']);
+			expect(await getAriaDetailsRefIds(host)).toEqual(['select-details']);
 		});
 
 		test('updates when prop changes', async ({ page }) => {
