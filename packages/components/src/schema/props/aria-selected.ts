@@ -3,7 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import { watchBoolean } from '../utils';
 
 /* types */
-export type AriaSelectedPropType = boolean;
+type AriaSelectedPropType = boolean;
 
 /**
  * Marks this element as selected.

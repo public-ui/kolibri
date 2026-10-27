@@ -9,9 +9,7 @@ import type {
 	PropHideMsg,
 	PropHint,
 	PropHorizontalIcons,
-	PropId,
 	PropLabelWithExpertSlot,
-	PropMsg,
 	PropName,
 	PropRequired,
 	PropShortKey,
@@ -20,7 +18,7 @@ import type {
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropSuggestions;
 type OptionalProps = {
@@ -43,30 +41,4 @@ type OptionalProps = {
 	PropTouched &
 	PropVariantClassName;
 
-type RequiredStates = {
-	hasValue: boolean;
-	hasClearButton: boolean;
-	suggestions: W3CInputValue[];
-	value: string;
-} & PropId &
-	PropHideMsg &
-	PropLabelWithExpertSlot;
-type OptionalStates = {
-	on: InputTypeOnDefault;
-	placeholder: string;
-} & PropAccessKey &
-	PropDisabled &
-	PropHideLabel &
-	PropHint &
-	KoliBriHIcons &
-	PropName &
-	PropRequired &
-	PropMsg &
-	PropShortKey &
-	PropTouched &
-	PropVariantClassName;
-
 export type ComboboxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type ComboboxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type ComboboxWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
-export type ComboboxAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

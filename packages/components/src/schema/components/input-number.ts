@@ -11,19 +11,15 @@ import type {
 	PropHideMsg,
 	PropHint,
 	PropHorizontalIcons,
-	PropId,
 	PropLabelWithExpertSlot,
-	PropMsg,
 	PropName,
 	PropReadOnly,
 	PropRequired,
-	PropShortKey,
 	PropSuggestions,
-	PropSyncValueBySelector,
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, NumberString, Stringified } from '../types';
 import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -51,37 +47,4 @@ type OptionalProps = {
 	PropTouched &
 	PropVariantClassName;
 
-type RequiredStates = {
-	hasValue: boolean;
-	suggestions: W3CInputValue[];
-} & PropId &
-	PropHideMsg &
-	PropLabelWithExpertSlot;
-
-type OptionalStates = {
-	max: number;
-	min: number;
-	on: InputTypeOnDefault;
-	placeholder: PlaceholderPropType;
-	smartButton: InternalButtonProps;
-	step: number;
-	value: number;
-} & PropAccessKey &
-	PropAutoComplete &
-	PropDisabled &
-	PropHideLabel &
-	PropHint &
-	KoliBriHIcons &
-	PropMsg &
-	PropName &
-	PropReadOnly &
-	PropRequired &
-	PropSyncValueBySelector &
-	PropShortKey &
-	PropTouched &
-	PropVariantClassName;
-
 export type InputNumberProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputNumberStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type InputNumberWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
-export type InputNumberAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

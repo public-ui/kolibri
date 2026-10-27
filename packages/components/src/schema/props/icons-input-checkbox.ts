@@ -29,10 +29,6 @@ export type InputCheckboxIconsState = {
 
 export type InputCheckboxIconsPropType = Stringified<InputCheckboxIconsProp>;
 
-export type PropIconsInputCheckbox = {
-	icons: InputCheckboxIconsPropType;
-};
-
 export const validateIconsInputCheckbox = (component: Generic.Element.Component, value?: InputCheckboxIconsPropType): void => {
 	watchValidator<unknown>(
 		component,

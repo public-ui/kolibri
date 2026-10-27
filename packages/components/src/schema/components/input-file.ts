@@ -9,9 +9,7 @@ import type {
 	PropHideMsg,
 	PropHint,
 	PropHorizontalIcons,
-	PropId,
 	PropLabelWithExpertSlot,
-	PropMsg,
 	PropMultiple,
 	PropName,
 	PropRequired,
@@ -20,7 +18,7 @@ import type {
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
+import type { InputTypeOnDefault, Stringified } from '../types';
 import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -44,25 +42,4 @@ type OptionalProps = {
 	PropTouched &
 	PropVariantClassName;
 
-type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideMsg;
-type OptionalStates = {
-	accept: string;
-	on: InputTypeOnDefault;
-	smartButton: InternalButtonProps;
-} & PropAccessKey &
-	PropDisabled &
-	PropHideLabel &
-	PropHint &
-	KoliBriHIcons &
-	PropMsg &
-	PropMultiple &
-	PropName &
-	PropRequired &
-	PropShortKey &
-	PropTouched &
-	PropVariantClassName;
-
 export type InputFileProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputFileStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type InputFileWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
-export type InputFileAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

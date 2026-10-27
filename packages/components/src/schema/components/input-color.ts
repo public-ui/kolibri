@@ -11,7 +11,6 @@ import type {
 	PropHint,
 	PropHorizontalIcons,
 	PropLabelWithExpertSlot,
-	PropMsg,
 	PropName,
 	PropShortKey,
 	PropSuggestions,
@@ -19,7 +18,7 @@ import type {
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { InputTypeOnDefault, Stringified } from '../types';
 import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -43,28 +42,4 @@ type OptionalProps = {
 	PropTouched &
 	PropVariantClassName;
 
-type RequiredStates = {
-	id: string;
-	suggestions: W3CInputValue[];
-} & PropHideMsg &
-	PropLabelWithExpertSlot;
-type OptionalStates = {
-	on: InputTypeOnDefault;
-	smartButton: InternalButtonProps;
-	value: string;
-} & PropAccessKey &
-	PropAutoComplete &
-	PropDisabled &
-	PropHideLabel &
-	PropHint &
-	KoliBriHIcons &
-	PropMsg &
-	PropName &
-	PropShortKey &
-	PropTouched &
-	PropVariantClassName;
-
 export type InputColorProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputColorStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type InputColorWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
-export type InputColorAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

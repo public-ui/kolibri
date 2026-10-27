@@ -3,7 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import { watchValidator } from '../utils';
 
 /* types */
-export const autoCompleteOptions = ['on', 'off'] as const;
+const autoCompleteOptions = ['on', 'off'] as const;
 export type AutoCompletePropType = (typeof autoCompleteOptions)[number] | string;
 
 /**

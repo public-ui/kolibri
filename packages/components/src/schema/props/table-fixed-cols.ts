@@ -2,9 +2,6 @@ import type { Generic } from 'adopted-style-sheets';
 import { watchValidator } from '../utils';
 
 export type FixedColsPropType = [number, number];
-export type PropFixedCols = {
-	fixedCols: FixedColsPropType;
-};
 
 export const validateFixedCols = (component: Generic.Element.Component, value?: FixedColsPropType): void => {
 	watchValidator(

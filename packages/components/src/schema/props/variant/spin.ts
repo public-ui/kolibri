@@ -10,13 +10,6 @@ import { watchValidator } from '../../utils/prop.validators';
 const spinVariantPropTypeOptions = ['cycle', 'dot', 'none'] as const;
 export type SpinVariantPropType = (typeof spinVariantPropTypeOptions)[number];
 
-/**
- * Defines the variant of spin navigation.
- */
-export type PropSpinVariant = {
-	variant: SpinVariantPropType;
-};
-
 /* validator */
 export const validateSpinVariant = (component: Generic.Element.Component, value?: SpinVariantPropType): void => {
 	watchValidator(

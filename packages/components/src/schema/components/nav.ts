@@ -8,16 +8,4 @@ type RequiredProps = {
 } & PropLabel;
 type OptionalProps = PropCollapsible & PropHasCompactButton & PropHasIconsWhenExpanded & PropHideLabel;
 
-type RequiredStates = {
-	links: ButtonOrLinkOrTextWithChildrenProps[];
-	expandedChildren: ButtonOrLinkOrTextWithChildrenProps[][];
-} & PropCollapsible &
-	PropHasCompactButton &
-	PropHasIconsWhenExpanded &
-	PropHideLabel &
-	PropLabel;
-type OptionalStates = NonNullable<unknown>;
-
 export type NavProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type NavStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type NavAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

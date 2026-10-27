@@ -13,7 +13,7 @@ export type SortEventPayload = {
 };
 
 export type SelectionChangeEventPayload = KoliBriTableSelectionKeys;
-export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | null;
+type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | null;
 export type ChangeHeaderCellsEventPayload = TableHeaderCells;
 
 export type TableCallbacksPropType = {
@@ -29,10 +29,6 @@ export type TableStatefulCallbacksPropType = {
  */
 export type PropTableCallbacks = {
 	on: TableCallbacksPropType;
-};
-
-export type StatefulPropTableCallbacks = {
-	on: TableStatefulCallbacksPropType;
 };
 
 /* validator */

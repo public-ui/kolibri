@@ -15,9 +15,4 @@ type OptionalProps = {
 	requiredText: string | boolean;
 } & PropErrorList;
 
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-
 export type FormProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type FormStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type FormAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

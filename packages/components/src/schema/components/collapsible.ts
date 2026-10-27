@@ -5,6 +5,3 @@ export type OptionalProps = {
 	level: HeadingLevel;
 } & PropDisabled &
 	PropOpen;
-
-export type RequiredStates = RequiredProps & PropLabel;
-export type OptionalStates = OptionalProps;

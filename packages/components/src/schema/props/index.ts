@@ -1,7 +1,6 @@
-export { headingLevelOptions, type HeadingLevel } from '../../internal/props/level';
+export { type HeadingLevel } from '../../internal/props/level';
 export * from './accept';
 export * from './access-key';
-export * from './accordion-callbacks';
 export * from './active';
 export * from './adjust-height';
 export * from './alert';
@@ -29,7 +28,6 @@ export * from './collapsible-callbacks';
 export * from './color';
 export * from './current-length';
 export * from './custom-class';
-export * from './details-callbacks';
 export * from './disabled';
 export * from './download';
 export * from './error-list';

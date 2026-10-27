@@ -7,13 +7,6 @@ import { isObject, isString } from '../validators';
 /* types */
 export type MsgPropType = Omit<AlertProps, '_level' | '_on' | '_label' | '_hasCloser' | '_variant'> & { _description: string };
 
-/**
- * Defines the properties for a message rendered as Alert component.
- */
-export type PropMsg = {
-	msg: Stringified<MsgPropType>;
-};
-
 /* validator */
 export const validateMsg = (component: Generic.Element.Component, value?: Stringified<MsgPropType>): void => {
 	objectObjectHandler(value, () => {

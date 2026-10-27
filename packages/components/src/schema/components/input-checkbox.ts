@@ -2,7 +2,6 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type {
 	InputCheckboxIconsProp,
-	InputCheckboxIconsState,
 	InputCheckboxVariantPropType,
 	MsgPropType,
 	PropAccessKey,
@@ -15,7 +14,6 @@ import type {
 	PropIndeterminate,
 	PropLabelAlign,
 	PropLabelWithExpertSlot,
-	PropMsg,
 	PropName,
 	PropRequired,
 	PropShortKey,
@@ -46,29 +44,4 @@ type OptionalProps = {
 	PropTouched &
 	PropLabelAlign;
 
-type RequiredStates = {
-	icons: InputCheckboxIconsState;
-	id: string;
-	value: StencilUnknown;
-	variant: InputCheckboxVariantPropType;
-} & PropChecked &
-	PropHideMsg &
-	PropIndeterminate &
-	PropLabelWithExpertSlot;
-type OptionalStates = {
-	on: InputTypeOnDefault;
-} & PropAccessKey &
-	PropDisabled &
-	PropHideLabel &
-	PropHint &
-	PropMsg &
-	PropName &
-	PropRequired &
-	PropShortKey &
-	PropTouched &
-	PropLabelAlign;
-
 export type InputCheckboxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputCheckboxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type InputCheckboxWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
-export type InputCheckboxAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

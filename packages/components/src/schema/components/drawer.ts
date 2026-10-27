@@ -10,12 +10,5 @@ type OptionalProps = PropAlign &
 		level?: HeadingLevel;
 		on: KoliBriModalEventCallbacks;
 	};
-type RequiredStates = PropAlign & PropOpen & PropLabel;
-type OptionalStates = PropHasCloser & {
-	level?: HeadingLevel;
-	on: KoliBriModalEventCallbacks;
-};
 
 export type DrawerProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type DrawerStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type DrawerAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

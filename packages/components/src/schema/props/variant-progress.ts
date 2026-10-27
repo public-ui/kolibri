@@ -2,15 +2,8 @@ import type { Generic } from 'adopted-style-sheets';
 
 import { watchValidator } from '../utils';
 
-export const progressVariantOptions = ['bar', 'cycle'] as const;
+const progressVariantOptions = ['bar', 'cycle'] as const;
 export type ProgressVariantPropType = (typeof progressVariantOptions)[number];
-
-/**
- * Defines the variant for displaying the progress component.
- */
-export type PropVariantProgress = {
-	variant: ProgressVariantPropType;
-};
 
 const isProgressVariantPropType = (value: unknown): value is ProgressVariantPropType => {
 	return typeof value === 'string' && progressVariantOptions.includes(value as ProgressVariantPropType);

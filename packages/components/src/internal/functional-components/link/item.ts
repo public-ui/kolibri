@@ -13,7 +13,7 @@ import type { EmbeddedLinkProps, ResolvedLinkProps } from './resolve-props';
 import { resolveLinkProps } from './resolve-props';
 
 /** Attributes the embedding component puts on the `.kol-link` root, e.g. its BEM element class. */
-export type LinkItemRootAttributes = Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;
+type LinkItemRootAttributes = Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;
 
 /**
  * One orchestrated link embedded in another component's shadow DOM: everything `LinkFC` needs to

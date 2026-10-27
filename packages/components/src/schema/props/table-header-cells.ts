@@ -10,13 +10,6 @@ export type TableHeaderCells = {
 
 export type TableHeaderCellsPropType = Stringified<TableHeaderCells>;
 
-/**
- * Defines the horizontal and vertical table header cells.
- */
-export type PropTableHeaderCells = {
-	headerCells: TableHeaderCellsPropType;
-};
-
 const isHeaderRows = (rows: unknown): rows is KoliBriTableHeaderCell[][] => {
 	return Array.isArray(rows) && rows.every((headerRow) => Array.isArray(headerRow));
 };

@@ -8,10 +8,6 @@ import { watchString } from '../utils';
  */
 export type AriaOwnsPropType = string;
 
-export type PropAriaOwns = {
-	ariaOwns: AriaOwnsPropType;
-};
-
 /* validator */
 export const validateAriaOwns = (component: Generic.Element.Component, value?: AriaOwnsPropType): void => {
 	watchString(component, '_ariaOwns', value, {
