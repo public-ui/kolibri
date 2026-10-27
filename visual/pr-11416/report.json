@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11416,
-	"head": "9c4f5e116420368bd5533916a89c81bedbf928a2",
+	"head": "a90f38df0c5dd44ed908adfabf8fb4e3df30089d",
 	"repository": "public-ui/kolibri",
-	"runId": 40550991994,
-	"generatedAt": "2026-10-27T17:52:24.909Z",
-	"digest": "sha256:e2ecb957c2c5f7832004dc2795eb95c2ddea6cb362de3d74eb096c6dd28cde47",
+	"runId": 40562011600,
+	"generatedAt": "2026-10-27T18:55:12.526Z",
+	"digest": "sha256:70fcbc6218a0e26fc4f25d27aacf97903d59157d7ab4d484d874383796b3e4ff",
 	"baseline": {
 		"sha": "0fc7035f065217a33f0645a6d60ea3fb240f95b4",
 		"ref": "release/4",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2857,
-		"changed": 84,
+		"unchanged": 2941,
+		"changed": 0,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 12,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:394d98d71ec4756f3051896af00785ab8030dd8492d7f7c95c2fca29d492ae3b",
+			"digest": "sha256:9ece9d54852eabb9a9d9006c25b2d7cd7f0b5d59505d623d95ad8a4e6af57579",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -65,213 +65,63 @@
 				},
 				{
 					"name": "alert-basic--default",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:c3aa3c2820c1c408046cbf0b46a1f80241187926075811a5354984d98dca5d81",
-					"diffPixels": 4807,
-					"diffRatio": 0.03618,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-basic--default.expected.png",
-					"actual": "test-tag-name-transformer/alert-basic--default.actual.png",
-					"diff": "test-tag-name-transformer/alert-basic--default.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:0a4488d43b6ffd3b918e8bb227d522788164cbbbbde2456823b79a54a2fc61c3"
 				},
 				{
 					"name": "alert-basic--error",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:4adfe0d16957e421e39f05cfa23b74d489f0c4124f2bf782d5ef341678273873",
-					"diffPixels": 5029,
-					"diffRatio": 0.037851,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-basic--error.expected.png",
-					"actual": "test-tag-name-transformer/alert-basic--error.actual.png",
-					"diff": "test-tag-name-transformer/alert-basic--error.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:9f8ac255c0c22441df6a2eb872a7f00a408a19d7a1e9ac6e2f7de5673d1f7f9e"
 				},
 				{
 					"name": "alert-basic--info",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:e9a044be0a05b83b913853a7e00aee1aaf287a52d8b588ad0761c6a617ecb57c",
-					"diffPixels": 4887,
-					"diffRatio": 0.036782,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-basic--info.expected.png",
-					"actual": "test-tag-name-transformer/alert-basic--info.actual.png",
-					"diff": "test-tag-name-transformer/alert-basic--info.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:4fdfb50ee3f8a519f0a1e64a43d3e2d70db361d292fff175b23b88a90fce34e0"
 				},
 				{
 					"name": "alert-basic--success",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:736b33e2774881b069190677a0f22640d516fbbae48aa6b6068d4c545fe98614",
-					"diffPixels": 4929,
-					"diffRatio": 0.037098,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-basic--success.expected.png",
-					"actual": "test-tag-name-transformer/alert-basic--success.actual.png",
-					"diff": "test-tag-name-transformer/alert-basic--success.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:24f4ca087db454317542eae54821b435eb2e95f875c2e419d763e7ce1edb5260"
 				},
 				{
 					"name": "alert-basic--warning",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:c7a8e3b1c0e1c4948805278edf807150923430f69d233dc4deef9f6363272ec3",
-					"diffPixels": 4930,
-					"diffRatio": 0.037106,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-basic--warning.expected.png",
-					"actual": "test-tag-name-transformer/alert-basic--warning.actual.png",
-					"diff": "test-tag-name-transformer/alert-basic--warning.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:9b0719e267b54997414a9641827647f526ed7c60f3b3a9ad2d0711388b4fba76"
 				},
 				{
 					"name": "alert-card-msg--default",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:d1f75a0240c86b307b703740c67455dbf53c5e975e126c94f174790b222456a7",
-					"diffPixels": 119003,
-					"diffRatio": 0.358685,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-card-msg--default.expected.png",
-					"actual": "test-tag-name-transformer/alert-card-msg--default.actual.png",
-					"diff": "test-tag-name-transformer/alert-card-msg--default.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:3391359c7ac982b3abf7b19cc55ad70001da1045770dda6613959f6e7bb7f244"
 				},
 				{
 					"name": "alert-card-msg--error",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:248ea6692e76628044e08f18e734823c6e58a30a6d3cdcf53041b6b6fbcfafc2",
-					"diffPixels": 119139,
-					"diffRatio": 0.359095,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-card-msg--error.expected.png",
-					"actual": "test-tag-name-transformer/alert-card-msg--error.actual.png",
-					"diff": "test-tag-name-transformer/alert-card-msg--error.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:453dd027895452a87bf0fdc774e2e7f5d541604653f2f96327c99fff187c21c6"
 				},
 				{
 					"name": "alert-card-msg--info",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:b9c420ce024c52b08a412b55d094c5070edb78304ad0de48b2d2da20e1cea365",
-					"diffPixels": 118910,
-					"diffRatio": 0.358404,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-card-msg--info.expected.png",
-					"actual": "test-tag-name-transformer/alert-card-msg--info.actual.png",
-					"diff": "test-tag-name-transformer/alert-card-msg--info.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:40a280c87b42553ed54f43be16e04f54df2e49df0dbad223ed4789fbd40fbefc"
 				},
 				{
 					"name": "alert-card-msg--success",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:c1a74eddf704707ba96e368dbad3ca85c61c88c5f8713df9d63daf58b6ab94c2",
-					"diffPixels": 118971,
-					"diffRatio": 0.358588,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-card-msg--success.expected.png",
-					"actual": "test-tag-name-transformer/alert-card-msg--success.actual.png",
-					"diff": "test-tag-name-transformer/alert-card-msg--success.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:a57c8f848c2f1b05654135e455f2c135bb47b127676bf46afc4d3c346e67b6e1"
 				},
 				{
 					"name": "alert-card-msg--warning",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:7bc9bf0c63948d5920073e621036d02a93a7b5f5480c0eceff3cd516f9e106f1",
-					"diffPixels": 119369,
-					"diffRatio": 0.359788,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "test-tag-name-transformer/alert-card-msg--warning.expected.png",
-					"actual": "test-tag-name-transformer/alert-card-msg--warning.actual.png",
-					"diff": "test-tag-name-transformer/alert-card-msg--warning.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:176ad71238504da8dab330b8d1056ad01e9470dd8d0a4b1ea0740e9278344ad4"
 				},
 				{
 					"name": "avatar-size--size",
@@ -1811,24 +1661,9 @@
 				},
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
-					"route": "input-text/hide-label?noColumns",
-					"status": "changed",
-					"hash": "sha256:3c820779b4757c383720aa090e5952850e8c4451ce946b07cacfb336b984b681",
-					"diffPixels": 8075,
-					"diffRatio": 0.089104,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							118
-						],
-						"actual": [
-							768,
-							99
-						]
-					},
-					"expected": "test-tag-name-transformer/input-text-hide-label-noColumns--address-group.expected.png",
-					"actual": "test-tag-name-transformer/input-text-hide-label-noColumns--address-group.actual.png",
-					"diff": "test-tag-name-transformer/input-text-hide-label-noColumns--address-group.diff.png"
+					"route": "input-text-hide-label-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b069b18f94a413e7fe232492fb6e6b9b2f2c1c637e5b8c949ba752d23d728b36"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
@@ -1844,24 +1679,9 @@
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
-					"route": "input-text/hide-msg?noColumns",
-					"status": "changed",
-					"hash": "sha256:a943d7ea5729f52138b1ac15f37b25e9ed0bf01b266f5e0bc29592e3ae23c0e6",
-					"diffPixels": 8553,
-					"diffRatio": 0.077879,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							143
-						],
-						"actual": [
-							768,
-							124
-						]
-					},
-					"expected": "test-tag-name-transformer/input-text-hide-msg-noColumns--combined-error.expected.png",
-					"actual": "test-tag-name-transformer/input-text-hide-msg-noColumns--combined-error.actual.png",
-					"diff": "test-tag-name-transformer/input-text-hide-msg-noColumns--combined-error.diff.png"
+					"route": "input-text-hide-msg-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:19c99cea01537b749a73defb50d76c04faa4f7f573cec993762d7abdbff2d74d"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
@@ -2774,13 +2594,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 12,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:35a2b9b4704f57339aef40f792815b80aab6cdbcd60faa33d53d153e3c4c5f68",
+			"digest": "sha256:ee0b0eed7674b19122641b4fa322a50d36ae97c3cb3ad911d1347e094be94558",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2796,213 +2616,63 @@
 				},
 				{
 					"name": "alert-basic--default",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:6b8d4eb327608a085c8c20d98a1d454f5179835bce67cd18239328a0a21c3131",
-					"diffPixels": 4211,
-					"diffRatio": 0.029479,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							186
-						],
-						"actual": [
-							768,
-							120
-						]
-					},
-					"expected": "theme-bwst/alert-basic--default.expected.png",
-					"actual": "theme-bwst/alert-basic--default.actual.png",
-					"diff": "theme-bwst/alert-basic--default.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:d06daaccde270b2f48465fbacf98e4a4aa48eff8b36f867f52f3ba4b6d1fcc36"
 				},
 				{
 					"name": "alert-basic--error",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:6bf74aed9f7f4141015cc30800fc607980caf40f06ff147ed39b7bd926878f00",
-					"diffPixels": 4469,
-					"diffRatio": 0.031285,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							186
-						],
-						"actual": [
-							768,
-							120
-						]
-					},
-					"expected": "theme-bwst/alert-basic--error.expected.png",
-					"actual": "theme-bwst/alert-basic--error.actual.png",
-					"diff": "theme-bwst/alert-basic--error.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:7ee1b1a4c24318fca40f7572a623cd525543e69831e44d325015233698901501"
 				},
 				{
 					"name": "alert-basic--info",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:bd82521cd926557849ad5f12ff33c5966f2ea11475371633e33f5ae891f60c34",
-					"diffPixels": 4308,
-					"diffRatio": 0.030158,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							186
-						],
-						"actual": [
-							768,
-							120
-						]
-					},
-					"expected": "theme-bwst/alert-basic--info.expected.png",
-					"actual": "theme-bwst/alert-basic--info.actual.png",
-					"diff": "theme-bwst/alert-basic--info.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:49b1826e2cb83465624a0055bfb3e15dcd525ed9481b0946d8571aacfb18e4aa"
 				},
 				{
 					"name": "alert-basic--success",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:3bf29afd5ad94265fdd50ae1c75f386650c1202216e865605d07c08b024f913d",
-					"diffPixels": 4335,
-					"diffRatio": 0.030347,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							186
-						],
-						"actual": [
-							768,
-							120
-						]
-					},
-					"expected": "theme-bwst/alert-basic--success.expected.png",
-					"actual": "theme-bwst/alert-basic--success.actual.png",
-					"diff": "theme-bwst/alert-basic--success.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:b002c0bc3408b026ca12fab4dd82329f408287fcf4dce4b84cf765381cd45adf"
 				},
 				{
 					"name": "alert-basic--warning",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:67fb2b6245e433ba380513dea086c9695d2821799c2b90df7f24a3e9a7a06f01",
-					"diffPixels": 4354,
-					"diffRatio": 0.03048,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							186
-						],
-						"actual": [
-							768,
-							120
-						]
-					},
-					"expected": "theme-bwst/alert-basic--warning.expected.png",
-					"actual": "theme-bwst/alert-basic--warning.actual.png",
-					"diff": "theme-bwst/alert-basic--warning.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:a486fec9ed409bd9eafb92e0bca4e9c3f40e3658112555c92d3794806828a340"
 				},
 				{
 					"name": "alert-card-msg--default",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:b4477b998620fda87a98d87e0eebbedde3c81af65d1eb086459a5c42dca368d8",
-					"diffPixels": 118727,
-					"diffRatio": 0.348181,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							444
-						],
-						"actual": [
-							768,
-							234
-						]
-					},
-					"expected": "theme-bwst/alert-card-msg--default.expected.png",
-					"actual": "theme-bwst/alert-card-msg--default.actual.png",
-					"diff": "theme-bwst/alert-card-msg--default.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:a71df6ada0c265d8c64ff4c24167dbc1f296e73e91726cc10da1fe0c0278644c"
 				},
 				{
 					"name": "alert-card-msg--error",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:7c1e549e87eb27969357273cb2ba2735fed1ba37d3a67ae7d6bb959c0c9293e2",
-					"diffPixels": 118711,
-					"diffRatio": 0.348134,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							444
-						],
-						"actual": [
-							768,
-							234
-						]
-					},
-					"expected": "theme-bwst/alert-card-msg--error.expected.png",
-					"actual": "theme-bwst/alert-card-msg--error.actual.png",
-					"diff": "theme-bwst/alert-card-msg--error.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:1bfa0e5af553a724c4ea1d8907e2fc57cdd94e10a811cdf7946e80a5c485534d"
 				},
 				{
 					"name": "alert-card-msg--info",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:94c66345499ec657df55446b365e275d05b5cf5b406987e72bd97fbee96f14b4",
-					"diffPixels": 118674,
-					"diffRatio": 0.348026,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							444
-						],
-						"actual": [
-							768,
-							234
-						]
-					},
-					"expected": "theme-bwst/alert-card-msg--info.expected.png",
-					"actual": "theme-bwst/alert-card-msg--info.actual.png",
-					"diff": "theme-bwst/alert-card-msg--info.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:ed9cd18c582623aed4bd73a36c390aceed98de90e23d01c602f9f48c57245d6b"
 				},
 				{
 					"name": "alert-card-msg--success",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:ae967235a8be72971d8c7243274e18add08bfda892aa40415dd2373e40a7fec8",
-					"diffPixels": 118622,
-					"diffRatio": 0.347873,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							444
-						],
-						"actual": [
-							768,
-							234
-						]
-					},
-					"expected": "theme-bwst/alert-card-msg--success.expected.png",
-					"actual": "theme-bwst/alert-card-msg--success.actual.png",
-					"diff": "theme-bwst/alert-card-msg--success.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:886e2f077ab4a0e048d12fa687d39f507073e09b70bbb6adb7cbc3e4ded5aea3"
 				},
 				{
 					"name": "alert-card-msg--warning",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:686c84e1e0ea484f4ff03e36da8d802d711d094ec264ca62d0934c3b136fc4cc",
-					"diffPixels": 119077,
-					"diffRatio": 0.349208,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							444
-						],
-						"actual": [
-							768,
-							234
-						]
-					},
-					"expected": "theme-bwst/alert-card-msg--warning.expected.png",
-					"actual": "theme-bwst/alert-card-msg--warning.actual.png",
-					"diff": "theme-bwst/alert-card-msg--warning.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:6340aa67ad6ad607d589e423a7fdd23350095c6b360b1d86260e9e1db97d5cc8"
 				},
 				{
 					"name": "avatar-size--size",
@@ -4542,24 +4212,9 @@
 				},
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
-					"route": "input-text/hide-label?noColumns",
-					"status": "changed",
-					"hash": "sha256:b899915dc32eb7cdf486ad59fae6dfce417fb5c19963fd5cb4563348a33ee80f",
-					"diffPixels": 5273,
-					"diffRatio": 0.056743,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							121
-						],
-						"actual": [
-							768,
-							99
-						]
-					},
-					"expected": "theme-bwst/input-text-hide-label-noColumns--address-group.expected.png",
-					"actual": "theme-bwst/input-text-hide-label-noColumns--address-group.actual.png",
-					"diff": "theme-bwst/input-text-hide-label-noColumns--address-group.diff.png"
+					"route": "input-text-hide-label-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:41979a99e8d1a86156f30e3207602e0de56919bd5201b41b725136defbe020b2"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
@@ -4575,24 +4230,9 @@
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
-					"route": "input-text/hide-msg?noColumns",
-					"status": "changed",
-					"hash": "sha256:ee81b7144bcda99898d6bc0283b644bb7172947921d905eed7d3252ea09ba6a0",
-					"diffPixels": 6102,
-					"diffRatio": 0.05442,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							146
-						],
-						"actual": [
-							768,
-							124
-						]
-					},
-					"expected": "theme-bwst/input-text-hide-msg-noColumns--combined-error.expected.png",
-					"actual": "theme-bwst/input-text-hide-msg-noColumns--combined-error.actual.png",
-					"diff": "theme-bwst/input-text-hide-msg-noColumns--combined-error.diff.png"
+					"route": "input-text-hide-msg-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:c6427de9c657bb7a1004e423eee0e82729779026693d118905e6dbd959907a1a"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
@@ -5505,13 +5145,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 12,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:394d98d71ec4756f3051896af00785ab8030dd8492d7f7c95c2fca29d492ae3b",
+			"digest": "sha256:9ece9d54852eabb9a9d9006c25b2d7cd7f0b5d59505d623d95ad8a4e6af57579",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5527,213 +5167,63 @@
 				},
 				{
 					"name": "alert-basic--default",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:c3aa3c2820c1c408046cbf0b46a1f80241187926075811a5354984d98dca5d81",
-					"diffPixels": 4807,
-					"diffRatio": 0.03618,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "theme-default/alert-basic--default.expected.png",
-					"actual": "theme-default/alert-basic--default.actual.png",
-					"diff": "theme-default/alert-basic--default.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:0a4488d43b6ffd3b918e8bb227d522788164cbbbbde2456823b79a54a2fc61c3"
 				},
 				{
 					"name": "alert-basic--error",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:4adfe0d16957e421e39f05cfa23b74d489f0c4124f2bf782d5ef341678273873",
-					"diffPixels": 5029,
-					"diffRatio": 0.037851,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "theme-default/alert-basic--error.expected.png",
-					"actual": "theme-default/alert-basic--error.actual.png",
-					"diff": "theme-default/alert-basic--error.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:9f8ac255c0c22441df6a2eb872a7f00a408a19d7a1e9ac6e2f7de5673d1f7f9e"
 				},
 				{
 					"name": "alert-basic--info",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:e9a044be0a05b83b913853a7e00aee1aaf287a52d8b588ad0761c6a617ecb57c",
-					"diffPixels": 4887,
-					"diffRatio": 0.036782,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "theme-default/alert-basic--info.expected.png",
-					"actual": "theme-default/alert-basic--info.actual.png",
-					"diff": "theme-default/alert-basic--info.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:4fdfb50ee3f8a519f0a1e64a43d3e2d70db361d292fff175b23b88a90fce34e0"
 				},
 				{
 					"name": "alert-basic--success",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:736b33e2774881b069190677a0f22640d516fbbae48aa6b6068d4c545fe98614",
-					"diffPixels": 4929,
-					"diffRatio": 0.037098,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "theme-default/alert-basic--success.expected.png",
-					"actual": "theme-default/alert-basic--success.actual.png",
-					"diff": "theme-default/alert-basic--success.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:24f4ca087db454317542eae54821b435eb2e95f875c2e419d763e7ce1edb5260"
 				},
 				{
 					"name": "alert-basic--warning",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:c7a8e3b1c0e1c4948805278edf807150923430f69d233dc4deef9f6363272ec3",
-					"diffPixels": 4930,
-					"diffRatio": 0.037106,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							173
-						],
-						"actual": [
-							768,
-							110
-						]
-					},
-					"expected": "theme-default/alert-basic--warning.expected.png",
-					"actual": "theme-default/alert-basic--warning.actual.png",
-					"diff": "theme-default/alert-basic--warning.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:9b0719e267b54997414a9641827647f526ed7c60f3b3a9ad2d0711388b4fba76"
 				},
 				{
 					"name": "alert-card-msg--default",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:d1f75a0240c86b307b703740c67455dbf53c5e975e126c94f174790b222456a7",
-					"diffPixels": 119003,
-					"diffRatio": 0.358685,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "theme-default/alert-card-msg--default.expected.png",
-					"actual": "theme-default/alert-card-msg--default.actual.png",
-					"diff": "theme-default/alert-card-msg--default.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:3391359c7ac982b3abf7b19cc55ad70001da1045770dda6613959f6e7bb7f244"
 				},
 				{
 					"name": "alert-card-msg--error",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:248ea6692e76628044e08f18e734823c6e58a30a6d3cdcf53041b6b6fbcfafc2",
-					"diffPixels": 119139,
-					"diffRatio": 0.359095,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "theme-default/alert-card-msg--error.expected.png",
-					"actual": "theme-default/alert-card-msg--error.actual.png",
-					"diff": "theme-default/alert-card-msg--error.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:453dd027895452a87bf0fdc774e2e7f5d541604653f2f96327c99fff187c21c6"
 				},
 				{
 					"name": "alert-card-msg--info",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:b9c420ce024c52b08a412b55d094c5070edb78304ad0de48b2d2da20e1cea365",
-					"diffPixels": 118910,
-					"diffRatio": 0.358404,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "theme-default/alert-card-msg--info.expected.png",
-					"actual": "theme-default/alert-card-msg--info.actual.png",
-					"diff": "theme-default/alert-card-msg--info.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:40a280c87b42553ed54f43be16e04f54df2e49df0dbad223ed4789fbd40fbefc"
 				},
 				{
 					"name": "alert-card-msg--success",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:c1a74eddf704707ba96e368dbad3ca85c61c88c5f8713df9d63daf58b6ab94c2",
-					"diffPixels": 118971,
-					"diffRatio": 0.358588,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "theme-default/alert-card-msg--success.expected.png",
-					"actual": "theme-default/alert-card-msg--success.actual.png",
-					"diff": "theme-default/alert-card-msg--success.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:a57c8f848c2f1b05654135e455f2c135bb47b127676bf46afc4d3c346e67b6e1"
 				},
 				{
 					"name": "alert-card-msg--warning",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:7bc9bf0c63948d5920073e621036d02a93a7b5f5480c0eceff3cd516f9e106f1",
-					"diffPixels": 119369,
-					"diffRatio": 0.359788,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							432
-						],
-						"actual": [
-							768,
-							228
-						]
-					},
-					"expected": "theme-default/alert-card-msg--warning.expected.png",
-					"actual": "theme-default/alert-card-msg--warning.actual.png",
-					"diff": "theme-default/alert-card-msg--warning.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:176ad71238504da8dab330b8d1056ad01e9470dd8d0a4b1ea0740e9278344ad4"
 				},
 				{
 					"name": "avatar-size--size",
@@ -7273,24 +6763,9 @@
 				},
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
-					"route": "input-text/hide-label?noColumns",
-					"status": "changed",
-					"hash": "sha256:3c820779b4757c383720aa090e5952850e8c4451ce946b07cacfb336b984b681",
-					"diffPixels": 8075,
-					"diffRatio": 0.089104,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							118
-						],
-						"actual": [
-							768,
-							99
-						]
-					},
-					"expected": "theme-default/input-text-hide-label-noColumns--address-group.expected.png",
-					"actual": "theme-default/input-text-hide-label-noColumns--address-group.actual.png",
-					"diff": "theme-default/input-text-hide-label-noColumns--address-group.diff.png"
+					"route": "input-text-hide-label-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b069b18f94a413e7fe232492fb6e6b9b2f2c1c637e5b8c949ba752d23d728b36"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
@@ -7306,24 +6781,9 @@
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
-					"route": "input-text/hide-msg?noColumns",
-					"status": "changed",
-					"hash": "sha256:a943d7ea5729f52138b1ac15f37b25e9ed0bf01b266f5e0bc29592e3ae23c0e6",
-					"diffPixels": 8553,
-					"diffRatio": 0.077879,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							143
-						],
-						"actual": [
-							768,
-							124
-						]
-					},
-					"expected": "theme-default/input-text-hide-msg-noColumns--combined-error.expected.png",
-					"actual": "theme-default/input-text-hide-msg-noColumns--combined-error.actual.png",
-					"diff": "theme-default/input-text-hide-msg-noColumns--combined-error.diff.png"
+					"route": "input-text-hide-msg-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:19c99cea01537b749a73defb50d76c04faa4f7f573cec993762d7abdbff2d74d"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
@@ -8236,13 +7696,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 12,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:414f0f854c4ccc37887762e3dff5e250b124b82416f0443488319104489dcd5a",
+			"digest": "sha256:0e12d58cd34443f8feb05f6e55fe2b45205163b0e7f10d380bdeec98e1ca944f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -8258,213 +7718,63 @@
 				},
 				{
 					"name": "alert-basic--default",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:67e9680a914e312f3835e36808da6e24a60a32463204d65cd1e577c18a0a5765",
-					"diffPixels": 4037,
-					"diffRatio": 0.050543,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							104
-						],
-						"actual": [
-							768,
-							64
-						]
-					},
-					"expected": "theme-desy/alert-basic--default.expected.png",
-					"actual": "theme-desy/alert-basic--default.actual.png",
-					"diff": "theme-desy/alert-basic--default.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:07b9c099872167a46ed15da514fbb36c84efae669a26768aa0252d97cb1e768f"
 				},
 				{
 					"name": "alert-basic--error",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:bed988de4ae6473143d540442eb938806f2c91d0691fc085a0bb7554b9521134",
-					"diffPixels": 4331,
-					"diffRatio": 0.054224,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							104
-						],
-						"actual": [
-							768,
-							64
-						]
-					},
-					"expected": "theme-desy/alert-basic--error.expected.png",
-					"actual": "theme-desy/alert-basic--error.actual.png",
-					"diff": "theme-desy/alert-basic--error.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:3444202b69d053b8df2da019a9bffcbeb745535f0442f931733d5ef58a3530cd"
 				},
 				{
 					"name": "alert-basic--info",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:bfecdea9c6478bd1220ca8e4617d0a8fb692d7fc123705d23ca7179fce314ab0",
-					"diffPixels": 4209,
-					"diffRatio": 0.052697,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							104
-						],
-						"actual": [
-							768,
-							64
-						]
-					},
-					"expected": "theme-desy/alert-basic--info.expected.png",
-					"actual": "theme-desy/alert-basic--info.actual.png",
-					"diff": "theme-desy/alert-basic--info.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:4e099aae7735ba9a534ab28fdeee8e5e3a821b09187625b479c7b659ac15f620"
 				},
 				{
 					"name": "alert-basic--success",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:41bc9d8fa5575c79e645b67ed2d58da3e1b14321d9e5dea83508fd1a70a49fb6",
-					"diffPixels": 4252,
-					"diffRatio": 0.053235,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							104
-						],
-						"actual": [
-							768,
-							64
-						]
-					},
-					"expected": "theme-desy/alert-basic--success.expected.png",
-					"actual": "theme-desy/alert-basic--success.actual.png",
-					"diff": "theme-desy/alert-basic--success.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:44ecd49563653818ef0ab61fce92fd431ec189ccfc4176eb9362a7cc05c2e634"
 				},
 				{
 					"name": "alert-basic--warning",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:4058bf65a38ab98eeeb4f143268ef9f4d52e73b8593c954be084784a86ae5f6f",
-					"diffPixels": 3944,
-					"diffRatio": 0.049379,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							104
-						],
-						"actual": [
-							768,
-							64
-						]
-					},
-					"expected": "theme-desy/alert-basic--warning.expected.png",
-					"actual": "theme-desy/alert-basic--warning.actual.png",
-					"diff": "theme-desy/alert-basic--warning.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:12d7e945b4d6de2990baf8d376560966db5d42cb34e9aa570d54ce5208c42569"
 				},
 				{
 					"name": "alert-card-msg--default",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:4dd291b91898a4bdbdb68d28e957240bc51c0c6ec613b5658d3f6ac1ba0ec195",
-					"diffPixels": 4220,
-					"diffRatio": 0.018075,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							304
-						],
-						"actual": [
-							768,
-							176
-						]
-					},
-					"expected": "theme-desy/alert-card-msg--default.expected.png",
-					"actual": "theme-desy/alert-card-msg--default.actual.png",
-					"diff": "theme-desy/alert-card-msg--default.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:ca5f174dec85f5851499ec51f91a565d4edf9efdab7ca9c935175e5e66709047"
 				},
 				{
 					"name": "alert-card-msg--error",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:a3e2eb7c22b5ab4ea3e6fce8cae096ff326cc0d179537de4a48a54afc8faac7d",
-					"diffPixels": 9069,
-					"diffRatio": 0.03834,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							308
-						],
-						"actual": [
-							768,
-							176
-						]
-					},
-					"expected": "theme-desy/alert-card-msg--error.expected.png",
-					"actual": "theme-desy/alert-card-msg--error.actual.png",
-					"diff": "theme-desy/alert-card-msg--error.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:ebdd9d299fd2e3f898b5c9de43894e3fcc586d04d79abc34ba84e0bccef2c7f9"
 				},
 				{
 					"name": "alert-card-msg--info",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:e50e55670c990c5661d13993ebbc183a43ec555434cb1634894940e324f33a3e",
-					"diffPixels": 8976,
-					"diffRatio": 0.037946,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							308
-						],
-						"actual": [
-							768,
-							176
-						]
-					},
-					"expected": "theme-desy/alert-card-msg--info.expected.png",
-					"actual": "theme-desy/alert-card-msg--info.actual.png",
-					"diff": "theme-desy/alert-card-msg--info.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:116a6b7324827b49a1398f52111718380fa9b82d744cefd5b4f491af09cc68f3"
 				},
 				{
 					"name": "alert-card-msg--success",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:bd8a7a2448634854d8149a8ea1a7463942408c209a4ee384e8c8e9350dc26dd5",
-					"diffPixels": 9001,
-					"diffRatio": 0.038052,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							308
-						],
-						"actual": [
-							768,
-							176
-						]
-					},
-					"expected": "theme-desy/alert-card-msg--success.expected.png",
-					"actual": "theme-desy/alert-card-msg--success.actual.png",
-					"diff": "theme-desy/alert-card-msg--success.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:77399606c6e423b9accd439617bce3009b79a3b7a82b3970c9148c0b6a5d69e0"
 				},
 				{
 					"name": "alert-card-msg--warning",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:ec0f804f987220a00deebce9eb0f3d1882e099dcef3f28664d6801d8d7714840",
-					"diffPixels": 9024,
-					"diffRatio": 0.038149,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							308
-						],
-						"actual": [
-							768,
-							176
-						]
-					},
-					"expected": "theme-desy/alert-card-msg--warning.expected.png",
-					"actual": "theme-desy/alert-card-msg--warning.actual.png",
-					"diff": "theme-desy/alert-card-msg--warning.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:b3891470d45fb8eee55747630d1afaa0d5c4fe42831f99f2872c1499e7677170"
 				},
 				{
 					"name": "avatar-size--size",
@@ -10004,24 +9314,9 @@
 				},
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
-					"route": "input-text/hide-label?noColumns",
-					"status": "changed",
-					"hash": "sha256:1bcb1dfcb5fbc0959cb40a96b3f6e0cb449dded0445884acbce7fef77d52e6f6",
-					"diffPixels": 5355,
-					"diffRatio": 0.061164,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							114
-						],
-						"actual": [
-							768,
-							94
-						]
-					},
-					"expected": "theme-desy/input-text-hide-label-noColumns--address-group.expected.png",
-					"actual": "theme-desy/input-text-hide-label-noColumns--address-group.actual.png",
-					"diff": "theme-desy/input-text-hide-label-noColumns--address-group.diff.png"
+					"route": "input-text-hide-label-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:9eaf2311fe6efd87d22c35821e3a34bf2d35e42cf29ae71139527f557ce7d144"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
@@ -10037,24 +9332,9 @@
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
-					"route": "input-text/hide-msg?noColumns",
-					"status": "changed",
-					"hash": "sha256:ab6030b4a07127bf61af44f816e550a74b0b620f7ef2f401463befc0f2e4bad5",
-					"diffPixels": 6041,
-					"diffRatio": 0.056999,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							138
-						],
-						"actual": [
-							768,
-							118
-						]
-					},
-					"expected": "theme-desy/input-text-hide-msg-noColumns--combined-error.expected.png",
-					"actual": "theme-desy/input-text-hide-msg-noColumns--combined-error.actual.png",
-					"diff": "theme-desy/input-text-hide-msg-noColumns--combined-error.diff.png"
+					"route": "input-text-hide-msg-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:6a259bfe3aab8f6826da7e830e08e7af76c29e704e3213e2040a2c93ca5120c5"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
@@ -10967,13 +10247,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 12,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:1aacf6158a1db026220e73f72bcb8509450f7745b8d46917041c95e890c8f86a",
+			"digest": "sha256:c306758daf845dd6ca74bf625363d3ab00068ecf81c7ca1adff53892bbadfd27",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10989,213 +10269,63 @@
 				},
 				{
 					"name": "alert-basic--default",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:8ff0c7e799f1094e9f5c14267d4147558401b73d18b988aaeec732f4bd77fe44",
-					"diffPixels": 5731,
-					"diffRatio": 0.041457,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							180
-						],
-						"actual": [
-							768,
-							116
-						]
-					},
-					"expected": "theme-ecl/alert-basic--default.expected.png",
-					"actual": "theme-ecl/alert-basic--default.actual.png",
-					"diff": "theme-ecl/alert-basic--default.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:c7145e034a5295390265308698c2ffa2873f0e0a021377e5d719b9eb8893faad"
 				},
 				{
 					"name": "alert-basic--error",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:ef2e8f5d60df46113527496ae091accc69565fd18ab53374522ac476dcd6d581",
-					"diffPixels": 5313,
-					"diffRatio": 0.038433,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							180
-						],
-						"actual": [
-							768,
-							116
-						]
-					},
-					"expected": "theme-ecl/alert-basic--error.expected.png",
-					"actual": "theme-ecl/alert-basic--error.actual.png",
-					"diff": "theme-ecl/alert-basic--error.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:7404dbad65a78eaa5b05823e440a86b14560284535cb918158ecec869dcaa9a0"
 				},
 				{
 					"name": "alert-basic--info",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:6a1faf447052dda4d11f164d8076a6d86a7d52d7d0d453c7eda6ba3bd40abd61",
-					"diffPixels": 5536,
-					"diffRatio": 0.040046,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							180
-						],
-						"actual": [
-							768,
-							116
-						]
-					},
-					"expected": "theme-ecl/alert-basic--info.expected.png",
-					"actual": "theme-ecl/alert-basic--info.actual.png",
-					"diff": "theme-ecl/alert-basic--info.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:36e9832589bcdf24cbec00937dc6d4c2cd951c2856acabbe980cf082f734a4ae"
 				},
 				{
 					"name": "alert-basic--success",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:3751ee8ffbf3ba67d15956b405e5809369e1750511d18deb4b2d1df43bcd1bc5",
-					"diffPixels": 5298,
-					"diffRatio": 0.038325,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							180
-						],
-						"actual": [
-							768,
-							116
-						]
-					},
-					"expected": "theme-ecl/alert-basic--success.expected.png",
-					"actual": "theme-ecl/alert-basic--success.actual.png",
-					"diff": "theme-ecl/alert-basic--success.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:bbbd17264a2493d46b592da79fb1c1b6f72e1da3b5e0d99b4b39f48ee9a29c26"
 				},
 				{
 					"name": "alert-basic--warning",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:20494e60b0ab92774bfe92f822ec5c625970f18d35fabc041d1dd5953759f20e",
-					"diffPixels": 4781,
-					"diffRatio": 0.034585,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							180
-						],
-						"actual": [
-							768,
-							116
-						]
-					},
-					"expected": "theme-ecl/alert-basic--warning.expected.png",
-					"actual": "theme-ecl/alert-basic--warning.actual.png",
-					"diff": "theme-ecl/alert-basic--warning.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:55b95b09c60cf10b77632b214dbbb0649c39c4f3ac603f52e08d74d221221507"
 				},
 				{
 					"name": "alert-card-msg--default",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:64a95be37614a81886175d53d1cf1affafdaa9e431757c98956dd7c5f8fbe38d",
-					"diffPixels": 13800,
-					"diffRatio": 0.054123,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							332
-						],
-						"actual": [
-							768,
-							196
-						]
-					},
-					"expected": "theme-ecl/alert-card-msg--default.expected.png",
-					"actual": "theme-ecl/alert-card-msg--default.actual.png",
-					"diff": "theme-ecl/alert-card-msg--default.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:dc84651b54f03d05a24f91f63ec493e288fd6525cf504e742a1fee30b75f6578"
 				},
 				{
 					"name": "alert-card-msg--error",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:457b9c05bb4e4c2327708e066a9afc8335eddcccb82657fb7cd3fbac7b992f05",
-					"diffPixels": 13029,
-					"diffRatio": 0.051099,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							332
-						],
-						"actual": [
-							768,
-							196
-						]
-					},
-					"expected": "theme-ecl/alert-card-msg--error.expected.png",
-					"actual": "theme-ecl/alert-card-msg--error.actual.png",
-					"diff": "theme-ecl/alert-card-msg--error.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:194d5f3f2b05cc2c3ef9894d7aeed77487b4eef34473e3c17aaa674878f54f3f"
 				},
 				{
 					"name": "alert-card-msg--info",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:6877a3e6aa6d1763e8b2fdaf9bb3725ddcfe959f232a61cdcbb04032edec81f7",
-					"diffPixels": 13783,
-					"diffRatio": 0.054056,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							332
-						],
-						"actual": [
-							768,
-							196
-						]
-					},
-					"expected": "theme-ecl/alert-card-msg--info.expected.png",
-					"actual": "theme-ecl/alert-card-msg--info.actual.png",
-					"diff": "theme-ecl/alert-card-msg--info.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:675369477311d11033017e58d9b64f2a76b1162de1e175fe0324d8eea33ef377"
 				},
 				{
 					"name": "alert-card-msg--success",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:3cecc278c3b137d8126721ca5eeab4d8a258306301258c0159fc1c222761eb0d",
-					"diffPixels": 13394,
-					"diffRatio": 0.05253,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							332
-						],
-						"actual": [
-							768,
-							196
-						]
-					},
-					"expected": "theme-ecl/alert-card-msg--success.expected.png",
-					"actual": "theme-ecl/alert-card-msg--success.actual.png",
-					"diff": "theme-ecl/alert-card-msg--success.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:2177072f1b4027e0b552306c496ed35dc820efd1ff38b9adfd969cf8f1825967"
 				},
 				{
 					"name": "alert-card-msg--warning",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:5227e0531b442b97440c09f0b72c57b7d100ee174dcb274f2f39e6b52effd48c",
-					"diffPixels": 12915,
-					"diffRatio": 0.050652,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							332
-						],
-						"actual": [
-							768,
-							196
-						]
-					},
-					"expected": "theme-ecl/alert-card-msg--warning.expected.png",
-					"actual": "theme-ecl/alert-card-msg--warning.actual.png",
-					"diff": "theme-ecl/alert-card-msg--warning.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:16d143f4d74aec6ad0be3b6742b0d692a2b76016a539868bde720d101e564656"
 				},
 				{
 					"name": "avatar-size--size",
@@ -12735,24 +11865,9 @@
 				},
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
-					"route": "input-text/hide-label?noColumns",
-					"status": "changed",
-					"hash": "sha256:142aed63d593c3275f1bcb6f2a1a184a670f6951ce33e2c296eb0fc3c211eca4",
-					"diffPixels": 5507,
-					"diffRatio": 0.060257,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							119
-						],
-						"actual": [
-							768,
-							99
-						]
-					},
-					"expected": "theme-ecl/input-text-hide-label-noColumns--address-group.expected.png",
-					"actual": "theme-ecl/input-text-hide-label-noColumns--address-group.actual.png",
-					"diff": "theme-ecl/input-text-hide-label-noColumns--address-group.diff.png"
+					"route": "input-text-hide-label-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:e3cf16e6b6e7add48b26f566fe8a5f60503aa7c4208d12e7c4efae86b2a0b48f"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
@@ -12768,24 +11883,9 @@
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
-					"route": "input-text/hide-msg?noColumns",
-					"status": "changed",
-					"hash": "sha256:627592a7525f2958916169153d7ddddb109b8c6550386a8e677d05c4b63d2559",
-					"diffPixels": 5923,
-					"diffRatio": 0.051074,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							151
-						],
-						"actual": [
-							768,
-							131
-						]
-					},
-					"expected": "theme-ecl/input-text-hide-msg-noColumns--combined-error.expected.png",
-					"actual": "theme-ecl/input-text-hide-msg-noColumns--combined-error.actual.png",
-					"diff": "theme-ecl/input-text-hide-msg-noColumns--combined-error.diff.png"
+					"route": "input-text-hide-msg-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:cfd05de7078f9c9796aad8a8889723ce5bc471a6c2bb2902ca6d82ab63a500c7"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
@@ -13698,13 +12798,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 409,
-				"changed": 12,
+				"unchanged": 421,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:f23c5af5e13ff69e21e85bca91516344b7bbad9a9095a0344d2fd0453c992f5a",
+			"digest": "sha256:da6726b606d1bc2c3858d9571c14726259a8030b5d718547d876051807c44bd2",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13720,213 +12820,63 @@
 				},
 				{
 					"name": "alert-basic--default",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:c87dbff02825d2946eb3285af0762f9b4b8d18f4065978ae2e7c1448d4adf49d",
-					"diffPixels": 6947,
-					"diffRatio": 0.045455,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							199
-						],
-						"actual": [
-							768,
-							134
-						]
-					},
-					"expected": "theme-kern/alert-basic--default.expected.png",
-					"actual": "theme-kern/alert-basic--default.actual.png",
-					"diff": "theme-kern/alert-basic--default.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:48cbf7721bd52b9267ba417b20a7f9c0ef19142f836a49c6ae5be5c3e2315a1a"
 				},
 				{
 					"name": "alert-basic--error",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:1357810b3146e0014add2e406dd77b598a1013aecc2fc227b0e1b6a2616997d8",
-					"diffPixels": 6843,
-					"diffRatio": 0.044775,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							199
-						],
-						"actual": [
-							768,
-							134
-						]
-					},
-					"expected": "theme-kern/alert-basic--error.expected.png",
-					"actual": "theme-kern/alert-basic--error.actual.png",
-					"diff": "theme-kern/alert-basic--error.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:af4edef5d8cb962e4597f9c0a867518ad316a881f46218dbffab74882113bb9a"
 				},
 				{
 					"name": "alert-basic--info",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:05eb7e20f5e75a30cf6ca7d04d1d9b88c047d4687ed197bfb7aeff9f94f687d7",
-					"diffPixels": 7071,
-					"diffRatio": 0.046266,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							199
-						],
-						"actual": [
-							768,
-							134
-						]
-					},
-					"expected": "theme-kern/alert-basic--info.expected.png",
-					"actual": "theme-kern/alert-basic--info.actual.png",
-					"diff": "theme-kern/alert-basic--info.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:b8ebc0bd79affd38cfa4eeb99ce571db4d465cd285513e49725c28273f2b9805"
 				},
 				{
 					"name": "alert-basic--success",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:6e136f2d927cc29e29fd50f09ae8d80b43206c1a7959738bb43070dcd7b267ce",
-					"diffPixels": 6973,
-					"diffRatio": 0.045625,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							199
-						],
-						"actual": [
-							768,
-							134
-						]
-					},
-					"expected": "theme-kern/alert-basic--success.expected.png",
-					"actual": "theme-kern/alert-basic--success.actual.png",
-					"diff": "theme-kern/alert-basic--success.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:44b6d3f97715462750c6ce3fe2e48d9731dfb4852340d82111c64f666c1f0ac1"
 				},
 				{
 					"name": "alert-basic--warning",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:5ddba069cd10357033f5f2df4fd9125d1d2520380ef141f57c6d793e1af60e98",
-					"diffPixels": 6611,
-					"diffRatio": 0.043257,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							199
-						],
-						"actual": [
-							768,
-							134
-						]
-					},
-					"expected": "theme-kern/alert-basic--warning.expected.png",
-					"actual": "theme-kern/alert-basic--warning.actual.png",
-					"diff": "theme-kern/alert-basic--warning.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:29dd49c724d1584069e4805eb9e4431e0f210c77bc61936e95c571a6ff21c9f7"
 				},
 				{
 					"name": "alert-card-msg--default",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:bee5b54616568a4bb5182511446ad19e7ce7859f0f98311332ddd2ed9225d1e5",
-					"diffPixels": 23229,
-					"diffRatio": 0.054497,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							555
-						],
-						"actual": [
-							768,
-							294
-						]
-					},
-					"expected": "theme-kern/alert-card-msg--default.expected.png",
-					"actual": "theme-kern/alert-card-msg--default.actual.png",
-					"diff": "theme-kern/alert-card-msg--default.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:8a9d28cd00de9de2454f17896c3a6c820be692f33ff35237e23897deec590e9e"
 				},
 				{
 					"name": "alert-card-msg--error",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:87148ff3314d78ffeb5d40fd4b33500280864e9c54e404f01c9b3d29be5712ea",
-					"diffPixels": 22805,
-					"diffRatio": 0.053503,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							555
-						],
-						"actual": [
-							768,
-							294
-						]
-					},
-					"expected": "theme-kern/alert-card-msg--error.expected.png",
-					"actual": "theme-kern/alert-card-msg--error.actual.png",
-					"diff": "theme-kern/alert-card-msg--error.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:9b1a2f2fe8b61ce52b78d8b64133e5f712bdaa9faade691cec21b8de1605a8cd"
 				},
 				{
 					"name": "alert-card-msg--info",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:ff110185730d2ebc5207c24629eab92425f8e82730e1ecc1716d0c9c0668e26d",
-					"diffPixels": 23293,
-					"diffRatio": 0.054648,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							555
-						],
-						"actual": [
-							768,
-							294
-						]
-					},
-					"expected": "theme-kern/alert-card-msg--info.expected.png",
-					"actual": "theme-kern/alert-card-msg--info.actual.png",
-					"diff": "theme-kern/alert-card-msg--info.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:32a67e77b7f440c62bb27bc415611bf49a1088deda6790d30a3a32338367e8d1"
 				},
 				{
 					"name": "alert-card-msg--success",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:60190c1ad236c21f215e7dba08f07792ac1deb8bfa6eef49180e4ce70ca1e44f",
-					"diffPixels": 23297,
-					"diffRatio": 0.054657,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							555
-						],
-						"actual": [
-							768,
-							294
-						]
-					},
-					"expected": "theme-kern/alert-card-msg--success.expected.png",
-					"actual": "theme-kern/alert-card-msg--success.actual.png",
-					"diff": "theme-kern/alert-card-msg--success.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:7ef6921d931499f46c85fbc68ca537203aafd1ef56de6b7e8c18d49c28cb09a0"
 				},
 				{
 					"name": "alert-card-msg--warning",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:a4f28ddb2746d10290c4bf2041b5ed3d5ab3a0ea7e368dbfc2d44bc44f3a2c18",
-					"diffPixels": 22585,
-					"diffRatio": 0.052987,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							555
-						],
-						"actual": [
-							768,
-							294
-						]
-					},
-					"expected": "theme-kern/alert-card-msg--warning.expected.png",
-					"actual": "theme-kern/alert-card-msg--warning.actual.png",
-					"diff": "theme-kern/alert-card-msg--warning.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:b965643454202ae85419c300d7495dadfcf76920a83fd8ece9b19ee82caf5c45"
 				},
 				{
 					"name": "avatar-size--size",
@@ -15466,24 +14416,9 @@
 				},
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
-					"route": "input-text/hide-label?noColumns",
-					"status": "changed",
-					"hash": "sha256:7aaed14836062e37b026fe6a58c468e3ed57448a33b0c7c32a3c90cf971d34a4",
-					"diffPixels": 5451,
-					"diffRatio": 0.057239,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							124
-						],
-						"actual": [
-							768,
-							103
-						]
-					},
-					"expected": "theme-kern/input-text-hide-label-noColumns--address-group.expected.png",
-					"actual": "theme-kern/input-text-hide-label-noColumns--address-group.actual.png",
-					"diff": "theme-kern/input-text-hide-label-noColumns--address-group.diff.png"
+					"route": "input-text-hide-label-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:54e2ceebca562d8bdb5ae9b0ab50c69e94a2da64ad0d7181e0090a384f775b83"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
@@ -15499,24 +14434,9 @@
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
-					"route": "input-text/hide-msg?noColumns",
-					"status": "changed",
-					"hash": "sha256:072852069dde29713315f9cb7dfd64fd65ca707b85dac0202cbc663fdd3989c3",
-					"diffPixels": 6599,
-					"diffRatio": 0.052393,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							164
-						],
-						"actual": [
-							768,
-							143
-						]
-					},
-					"expected": "theme-kern/input-text-hide-msg-noColumns--combined-error.expected.png",
-					"actual": "theme-kern/input-text-hide-msg-noColumns--combined-error.actual.png",
-					"diff": "theme-kern/input-text-hide-msg-noColumns--combined-error.diff.png"
+					"route": "input-text-hide-msg-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:7ed28e40152ee616fed8a1f0188f7886a24d7c601069df66a90585b6d4b4a750"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
@@ -16435,13 +15355,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 12,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:69c30fa10a7270f3b37dea0909e9cb352d9d731ae25a1350ff1470fd50f6ae22",
+			"digest": "sha256:65729fa7fd042be9c3dd796d7efae529ddd7fb60ab0aa26babc2a17b9df55ecd",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16457,213 +15377,63 @@
 				},
 				{
 					"name": "alert-basic--default",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:39d4f17d34c52dfff4efd08b65902809871779e13f1b3a518db90007228180a9",
-					"diffPixels": 4203,
-					"diffRatio": 0.025336,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							216
-						],
-						"actual": [
-							768,
-							151
-						]
-					},
-					"expected": "unstyled/alert-basic--default.expected.png",
-					"actual": "unstyled/alert-basic--default.actual.png",
-					"diff": "unstyled/alert-basic--default.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:2129cac01a9061a2415214bbf38b4c9a79b6c3e71bd51b59bdf528de161e19e0"
 				},
 				{
 					"name": "alert-basic--error",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:32201b459b33eb538200c7dd6af5be6b1b10b77d790649f013d7f1b2d0178d6e",
-					"diffPixels": 4247,
-					"diffRatio": 0.024361,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							227
-						],
-						"actual": [
-							768,
-							162
-						]
-					},
-					"expected": "unstyled/alert-basic--error.expected.png",
-					"actual": "unstyled/alert-basic--error.actual.png",
-					"diff": "unstyled/alert-basic--error.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:a9d939d03f4419c39df379a3f01b1c11cb1a03082b01765284fe7cb17fc032ed"
 				},
 				{
 					"name": "alert-basic--info",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:429c097fcb7bf2d3f0375fc78a2f3ad494f969349a7a1615941fc7b015a58345",
-					"diffPixels": 4173,
-					"diffRatio": 0.022927,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							237
-						],
-						"actual": [
-							768,
-							172
-						]
-					},
-					"expected": "unstyled/alert-basic--info.expected.png",
-					"actual": "unstyled/alert-basic--info.actual.png",
-					"diff": "unstyled/alert-basic--info.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:dee37e503f325dc5823691392518732dba0706bf185021f242dbdfaf925aa037"
 				},
 				{
 					"name": "alert-basic--success",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:7ea466c7878b0691af51795a26606f92de2fa132685291f940b054a8e36574f6",
-					"diffPixels": 4214,
-					"diffRatio": 0.021185,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							259
-						],
-						"actual": [
-							768,
-							194
-						]
-					},
-					"expected": "unstyled/alert-basic--success.expected.png",
-					"actual": "unstyled/alert-basic--success.actual.png",
-					"diff": "unstyled/alert-basic--success.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:d9d430ea04c648d7f7277930b3521983de72ee89c98abcdca991b56cb41674ac"
 				},
 				{
 					"name": "alert-basic--warning",
-					"route": "alert/basic",
-					"status": "changed",
-					"hash": "sha256:2770235e0df9428e4470a5f9bf83269758bb6b33b343cc7c2f3d691695412243",
-					"diffPixels": 4216,
-					"diffRatio": 0.019606,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							280
-						],
-						"actual": [
-							768,
-							215
-						]
-					},
-					"expected": "unstyled/alert-basic--warning.expected.png",
-					"actual": "unstyled/alert-basic--warning.actual.png",
-					"diff": "unstyled/alert-basic--warning.diff.png"
+					"route": "alert-basic",
+					"status": "unchanged",
+					"hash": "sha256:7ab87563b0b7f00412dc5bc5e15de7443a1270a7eb5b2cd6af33687597357be1"
 				},
 				{
 					"name": "alert-card-msg--default",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:39d4f17d34c52dfff4efd08b65902809871779e13f1b3a518db90007228180a9",
-					"diffPixels": 4203,
-					"diffRatio": 0.025336,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							216
-						],
-						"actual": [
-							768,
-							151
-						]
-					},
-					"expected": "unstyled/alert-card-msg--default.expected.png",
-					"actual": "unstyled/alert-card-msg--default.actual.png",
-					"diff": "unstyled/alert-card-msg--default.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:2129cac01a9061a2415214bbf38b4c9a79b6c3e71bd51b59bdf528de161e19e0"
 				},
 				{
 					"name": "alert-card-msg--error",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:32201b459b33eb538200c7dd6af5be6b1b10b77d790649f013d7f1b2d0178d6e",
-					"diffPixels": 4247,
-					"diffRatio": 0.024361,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							227
-						],
-						"actual": [
-							768,
-							162
-						]
-					},
-					"expected": "unstyled/alert-card-msg--error.expected.png",
-					"actual": "unstyled/alert-card-msg--error.actual.png",
-					"diff": "unstyled/alert-card-msg--error.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:a9d939d03f4419c39df379a3f01b1c11cb1a03082b01765284fe7cb17fc032ed"
 				},
 				{
 					"name": "alert-card-msg--info",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:429c097fcb7bf2d3f0375fc78a2f3ad494f969349a7a1615941fc7b015a58345",
-					"diffPixels": 4173,
-					"diffRatio": 0.022927,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							237
-						],
-						"actual": [
-							768,
-							172
-						]
-					},
-					"expected": "unstyled/alert-card-msg--info.expected.png",
-					"actual": "unstyled/alert-card-msg--info.actual.png",
-					"diff": "unstyled/alert-card-msg--info.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:dee37e503f325dc5823691392518732dba0706bf185021f242dbdfaf925aa037"
 				},
 				{
 					"name": "alert-card-msg--success",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:7ea466c7878b0691af51795a26606f92de2fa132685291f940b054a8e36574f6",
-					"diffPixels": 4214,
-					"diffRatio": 0.021185,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							259
-						],
-						"actual": [
-							768,
-							194
-						]
-					},
-					"expected": "unstyled/alert-card-msg--success.expected.png",
-					"actual": "unstyled/alert-card-msg--success.actual.png",
-					"diff": "unstyled/alert-card-msg--success.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:d9d430ea04c648d7f7277930b3521983de72ee89c98abcdca991b56cb41674ac"
 				},
 				{
 					"name": "alert-card-msg--warning",
-					"route": "alert/card-msg",
-					"status": "changed",
-					"hash": "sha256:2770235e0df9428e4470a5f9bf83269758bb6b33b343cc7c2f3d691695412243",
-					"diffPixels": 4216,
-					"diffRatio": 0.019606,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							280
-						],
-						"actual": [
-							768,
-							215
-						]
-					},
-					"expected": "unstyled/alert-card-msg--warning.expected.png",
-					"actual": "unstyled/alert-card-msg--warning.actual.png",
-					"diff": "unstyled/alert-card-msg--warning.diff.png"
+					"route": "alert-card-msg",
+					"status": "unchanged",
+					"hash": "sha256:7ab87563b0b7f00412dc5bc5e15de7443a1270a7eb5b2cd6af33687597357be1"
 				},
 				{
 					"name": "avatar-size--size",
@@ -18203,24 +16973,9 @@
 				},
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
-					"route": "input-text/hide-label?noColumns",
-					"status": "changed",
-					"hash": "sha256:93e7c0a6d3122c30990efb7994f033b4e8176eda3bc8077d4a77a7446bbb2a65",
-					"diffPixels": 6375,
-					"diffRatio": 0.069173,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							120
-						],
-						"actual": [
-							768,
-							99
-						]
-					},
-					"expected": "unstyled/input-text-hide-label-noColumns--address-group.expected.png",
-					"actual": "unstyled/input-text-hide-label-noColumns--address-group.actual.png",
-					"diff": "unstyled/input-text-hide-label-noColumns--address-group.diff.png"
+					"route": "input-text-hide-label-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:bdab13507623c3f9f88e1827869eed9d8a390f40fe82c3365c3385c617d16198"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
@@ -18236,24 +16991,9 @@
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
-					"route": "input-text/hide-msg?noColumns",
-					"status": "changed",
-					"hash": "sha256:83c237dc4ec44f7c0f650e38b31455682f56c2dbafad894c3da110887dfae334",
-					"diffPixels": 6475,
-					"diffRatio": 0.059794,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							141
-						],
-						"actual": [
-							768,
-							120
-						]
-					},
-					"expected": "unstyled/input-text-hide-msg-noColumns--combined-error.expected.png",
-					"actual": "unstyled/input-text-hide-msg-noColumns--combined-error.actual.png",
-					"diff": "unstyled/input-text-hide-msg-noColumns--combined-error.diff.png"
+					"route": "input-text-hide-msg-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:3bc3ddeb0958f71e091a8ea44d9042b44ae6fadee3b469ffdcab69e2e5178d90"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
