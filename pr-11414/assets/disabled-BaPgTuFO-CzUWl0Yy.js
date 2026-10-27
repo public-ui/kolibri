@@ -1,0 +1,1 @@
+import{f as e,o as t}from"./base-web-component-Bcoukts3-oKexrRa0.js";var n=t(`disabled`,!1,e);export{n as t};
