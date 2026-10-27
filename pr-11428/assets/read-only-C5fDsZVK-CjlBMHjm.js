@@ -1,0 +1,1 @@
+import{f as e,o as t}from"./base-web-component-Bcoukts3-B8V22NfF.js";var n=t(`readOnly`,!1,e);export{n as t};
