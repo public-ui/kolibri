@@ -361,7 +361,7 @@ Design principles:
 - **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
 - **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
 - **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `disabledProp` for every `_disabled`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default), where a shared factory types the value per component (callbacks, links, options), or where the meaning of the prop differs (`paginationLabelProp`, the label of the navigation landmark of the pagination, beside `labelWithExpertSlotProp`); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior share the implementation, except a variant kept apart for its meaning (`paginationLabelProp`): under different keys `createAlignPropDefinition` (`_align`, `_popoverAlign`, `_tooltipAlign`), under one key the typed factories `createCallbacksPropDefinition`, `createLinksPropDefinition` and `createOptionsPropDefinition`
-- **One explicit schema type per prop**: every prop value type is the named schema type from `src/schema/props`; prop bags, prop definitions, `@Prop` declarations and watchers reference that name and never inline a native type (see _Explicit Schema Types per Prop_)
+- **One explicit schema type per prop**: every prop value type is the named schema type from `src/schema/props`; as a rule, one readable PropType per functionality is shared by all of its property definitions, and prop bags, prop definitions, `@Prop` declarations and watchers reference that name and never inline a native type (see _Explicit Schema Types per Prop_)
 
 #### Dual-Type Props
 
@@ -409,12 +409,14 @@ Without the shared name, every layer spells the type its own way (`SimpleProp<'d
 FC signatures carry the domain term, drift between the layers fails the compiler instead of surfacing
 in review, and an evolution of the schema type moves every layer at once.
 
-The schema type and the prop definition are separate concerns. One schema type can be bound by
-several `createPropDefinition`s that differ in normalizer, validator or default (e.g.
-`orientationProp` and `radioOrientationProp` share their type and differ in the default); the shared
-type — not only the prop key string — is what connects such variants. Conversely, props that only
-share their key but differ in value type get separate schema types (the `_max` of `kol-input-date`
-and the `_max` of the pagination). `prop-keys.spec.ts` documents the variants per render key.
+As a rule, one readable PropType is defined per functionality and shared by all of its property
+definitions — whether there is one (`disabledProp` for `_disabled`) or several (`inputDateMaxProp`,
+`inputMaxProp`, `maxProp` and `paginationMaxProp` for `_max`, each with its own normalizer,
+validator or default). The shared type — not only the prop key string — is what connects the
+definitions of a functionality. Only in individual cases, where the meaning of the value itself
+differs, is a special readable PropType variant introduced — e.g. `LabelWithExpertSlotPropType`
+beside `LabelPropType`, or the distinct `_value` types of the checkbox, radio, select, date and
+number inputs. `prop-keys.spec.ts` documents the variants per render key.
 
 Naming roles stay distinct: `XxxPropType` is the schema value type, `PropXxx` the schema prop bag
 and `XxxProp` the prop definition in `internal/props`.
