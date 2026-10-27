@@ -12,6 +12,7 @@ import { AbstractTask, TaskOptions } from '../../abstract-task';
  */
 export class GenericRemoveTagNameTask extends AbstractTask {
 	private readonly componentSoleImportRegExp: RegExp;
+	private readonly componentSoleRequireRegExp: RegExp;
 	private readonly componentImportStatementRegExp: RegExp;
 	private readonly componentRequireStatementRegExp: RegExp;
 	private readonly componentDefaultImportRegExp: RegExp;
@@ -29,6 +30,7 @@ export class GenericRemoveTagNameTask extends AbstractTask {
 		versionRange: string,
 		dependentTasks: AbstractTask[] = [],
 		options: TaskOptions = {},
+		private readonly removalNotice?: string,
 	) {
 		super(identifier, description, MARKUP_EXTENSIONS, versionRange, dependentTasks, options);
 
@@ -41,6 +43,12 @@ export class GenericRemoveTagNameTask extends AbstractTask {
 		// Named or type import with the removed component as its only member.
 		this.componentSoleImportRegExp = new RegExp(
 			`import\\s+(?:type\\s+)?{\\s*${this.oldTagNameInCamelCase}\\s*}\\s*from\\s*['"\`][^'"\`]*['"\`];?\\r?\\n?`,
+			'g',
+		);
+
+		// Require destructuring with the removed component as its only member.
+		this.componentSoleRequireRegExp = new RegExp(
+			`(?:const|var|let)\\s*{\\s*${this.oldTagNameInCamelCase}\\s*}\\s*=\\s*require\\(\\s*['"\`][^'"\`]*['"\`]\\s*\\);?\\r?\\n?`,
 			'g',
 		);
 
@@ -71,7 +79,7 @@ export class GenericRemoveTagNameTask extends AbstractTask {
 
 		if (modifiedFiles > 0) {
 			POST_MESSAGES.add({
-				message: `The "${this.oldTagName}" component was removed without a replacement, its usages and imports have been removed. Tooltips rendered by other KoliBri components (for example label hints) are not affected.`,
+				message: `The "${this.oldTagName}" component was removed without a replacement, its usages and imports have been removed.${this.removalNotice ? ` ${this.removalNotice}` : ''}`,
 				type: 'warn',
 			});
 		}
@@ -84,6 +92,7 @@ export class GenericRemoveTagNameTask extends AbstractTask {
 			const newContent = content
 				.replace(this.componentSoleImportRegExp, '')
 				.replace(this.componentDefaultImportRegExp, '')
+				.replace(this.componentSoleRequireRegExp, '')
 				.replace(this.componentImportStatementRegExp, (statement: string) => this.removeImportMember(statement))
 				.replace(this.componentRequireStatementRegExp, (statement: string) => this.removeImportMember(statement))
 				.replace(this.componentPairedRegExp, '')
@@ -112,7 +121,11 @@ export class GenericRemoveTagNameTask extends AbstractTask {
 	}
 
 	private removeImportMember(statement: string): string {
-		const withoutMember = statement.replace(new RegExp(`,?\\s*\\b${this.oldTagNameInCamelCase}\\b`, 'g'), '');
+		// A leading member loses its trailing comma, a trailing member its leading one — one optional-comma
+		// pattern would swallow both commas of a middle member and leave `{ A B }` behind.
+		const withoutMember = statement
+			.replace(new RegExp(`\\b${this.oldTagNameInCamelCase}\\b\\s*,\\s*`, 'g'), '')
+			.replace(new RegExp(`,\\s*\\b${this.oldTagNameInCamelCase}\\b`, 'g'), '');
 		// The removed component was the only member, so the statement imports nothing anymore.
 		if (/{\s*}/.test(withoutMember)) {
 			return '';
