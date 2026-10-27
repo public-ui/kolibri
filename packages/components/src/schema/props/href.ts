@@ -13,6 +13,8 @@ export type PropHref = {
 	href: HrefPropType;
 };
 
+export type HrefProp = Generic.Element.Members<PropHref, unknown>;
+
 /* validator */
 export const validateHref = (component: Generic.Element.Component, value?: HrefPropType, options: WatchStringOptions = {}): void => {
 	watchString(component, '_href', value, options);

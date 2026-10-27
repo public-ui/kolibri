@@ -8,12 +8,19 @@ export const getWindow = (): Window => {
 	return {} as Window;
 };
 
+export const setWindow = (value: Window): void => {
+	WINDOW = value;
+};
+
 export const getDocument = (): Document => {
 	if (DOCUMENT) return DOCUMENT;
 	const win = getWindow();
 	if (win && typeof win.document !== 'undefined') return win.document;
 	// For SSR/test environments, return a minimal mock instead of unsafe null casting
 	return {} as Document;
+};
+export const setDocument = (value: Document): void => {
+	DOCUMENT = value;
 };
 
 const MODES = ['development', 'production', 'test'] as const;
@@ -54,6 +61,7 @@ let COLOR_CONTRAST_ANALYSIS: boolean = false;
 
 export const isDevMode = (): boolean => runtimeMode === 'development';
 export const isTestMode = (): boolean => runtimeMode === 'test';
+export const isProdMode = (): boolean => runtimeMode === 'production';
 
 export const getExperimentalMode = (): boolean => EXPERIMENTAL_MODE === true;
 export const setExperimentalMode = (mode: boolean): void => {
@@ -95,7 +103,7 @@ const getShield = (label: string, options?: LogShieldOptions): string[] => {
 
 const isDevModeOrForceLog = (forceLog?: boolean): boolean => isDevMode() || forceLog === true;
 
-class Logger {
+export class Logger {
 	public constructor(private readonly label: string) {}
 
 	public debug(msg: unknown | unknown[], options?: LogShieldOptions): void {

@@ -10,7 +10,9 @@ import type {
 	PropHideMsg,
 	PropHint,
 	PropHorizontalIcons,
+	PropId,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropName,
 	PropShortKey,
 	PropSuggestions,
@@ -18,7 +20,7 @@ import type {
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import type { InputTypeOnDefault, NumberString, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -43,4 +45,30 @@ type OptionalProps = {
 	PropTouched &
 	PropVariantClassName;
 
+type RequiredStates = {
+	suggestions: W3CInputValue[];
+} & PropId &
+	PropHideMsg &
+	PropLabelWithExpertSlot;
+type OptionalStates = {
+	max: number;
+	min: number;
+	on: InputTypeOnDefault;
+	step: number;
+	value: number;
+} & PropAccessKey &
+	PropAutoComplete &
+	PropDisabled &
+	PropHideLabel &
+	PropHint &
+	KoliBriHIcons &
+	PropMsg &
+	PropName &
+	PropShortKey &
+	PropTouched &
+	PropVariantClassName;
+
 export type InputRangeProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type InputRangeStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type InputRangeWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export type InputRangeAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

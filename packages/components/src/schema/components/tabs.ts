@@ -11,7 +11,7 @@ export type KoliBriTabsCallbacks = {
 	[Callback.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
 
-type KoliBriTabButtonCallbacks = {
+export type KoliBriTabButtonCallbacks = {
 	[Callback.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
 type RequiredTabButtonProps = PropLabel;
@@ -33,4 +33,16 @@ type OptionalProps = {
 	PropHasCreateButton &
 	PropTabBehavior;
 
+type RequiredStates = {
+	selected: number;
+	tabs: TabButtonProps[];
+} & PropLabel &
+	PropAlign;
+type OptionalStates = {
+	on: KoliBriTabsCallbacks;
+} & PropTabBehavior &
+	PropHasCreateButton;
+
 export type TabsProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type TabsStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type TabsAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

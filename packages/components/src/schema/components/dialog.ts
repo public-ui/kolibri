@@ -10,4 +10,14 @@ type OptionalProps = {
 	width: string;
 	level?: HeadingLevel;
 } & PropDialogVariant;
+type RequiredStates = {
+	width: string;
+} & PropLabel;
+type OptionalStates = {
+	level?: HeadingLevel;
+	on: KoliBriModalEventCallbacks;
+} & PropDialogVariant;
+
 export type DialogProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type DialogStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type DialogAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

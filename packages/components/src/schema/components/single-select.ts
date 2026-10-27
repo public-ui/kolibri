@@ -9,7 +9,9 @@ import type {
 	PropHideMsg,
 	PropHint,
 	PropHorizontalIcons,
+	PropId,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropName,
 	PropOptions,
 	PropRequired,
@@ -19,7 +21,7 @@ import type {
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import type { InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptions;
 type OptionalProps = {
@@ -43,4 +45,29 @@ type OptionalProps = {
 	PropTouched &
 	PropVariantClassName;
 
+type RequiredStates = {
+	options: Option<StencilUnknown>[];
+} & PropId &
+	PropHideMsg &
+	PropLabelWithExpertSlot;
+type OptionalStates = {
+	on: InputTypeOnDefault;
+	placeholder: string;
+	hasClearButton: boolean;
+} & PropAccessKey &
+	PropDisabled &
+	PropHideLabel &
+	KoliBriHIcons &
+	PropHint &
+	PropName &
+	PropRequired &
+	PropRows &
+	PropMsg &
+	PropShortKey &
+	PropTouched &
+	PropVariantClassName;
+
 export type SingleSelectProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type SingleSelectStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type SingleSelectWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export type SingleSelectAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

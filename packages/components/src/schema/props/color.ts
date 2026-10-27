@@ -1,8 +1,8 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { Stringified } from '../types';
-import type { WatchOptions } from '../utils';
-import { watchValidator } from '../utils';
+import type { ColorContrast, WatchOptions } from '../utils';
+import { a11yHint, createContrastColorPair, Log, watchValidator } from '../utils';
 
 /**
  * Defines the backgroundColor and foregroundColor.
@@ -67,4 +67,41 @@ function validatorFunction(value?: Stringified<PropColor>): boolean {
 
 export const validateColor = (component: Generic.Element.Component, value?: Stringified<PropColor>, options?: WatchOptions): void => {
 	watchValidator(component, '_color', validatorFunction, new Set(['rgb in hex', 'ColorPair']), value, options);
+};
+
+export const handleColorChange = (value: unknown): ColorPair => {
+	let colorContrast: ColorContrast<string>;
+	const valueType = typeOfColor(value);
+	switch (valueType.type) {
+		case 'string':
+			colorContrast = createContrastColorPair(valueType.value as string);
+			break;
+		case 'ColorPair': {
+			const asColorPair = valueType.value as ColorPair;
+			let foreground = '';
+			if (typeof asColorPair.foregroundColor === 'string') foreground = asColorPair.foregroundColor;
+			if (!foreground || typeof foreground !== 'string') foreground = '#fff';
+			colorContrast = createContrastColorPair({
+				background: asColorPair.backgroundColor,
+				foreground,
+			});
+			break;
+		}
+		case null:
+			Log.warn(`_color was empty or invalid (${JSON.stringify(value)})`);
+			colorContrast = createContrastColorPair({
+				background: '#000',
+				foreground: '#000',
+			});
+	}
+
+	if (colorContrast.contrast < 7) {
+		a11yHint(
+			`[KolBadge] The contrast of ${colorContrast.contrast} (≥7, AAA) is to low, between the color pair ${colorContrast.background} and ${colorContrast.foreground}.`,
+		);
+	}
+	return {
+		backgroundColor: colorContrast.background,
+		foregroundColor: colorContrast.foreground,
+	};
 };

@@ -5,6 +5,13 @@ import { watchValidator } from '../utils';
 const buttonVariantPropTypeOptions = ['primary', 'secondary', 'normal', 'tertiary', 'danger', 'ghost', 'custom'] as const;
 export type ButtonVariantPropType = (typeof buttonVariantPropTypeOptions)[number];
 
+/**
+ * Defines which variant should be used for presentation.
+ */
+export type PropButtonVariant = {
+	variant: ButtonVariantPropType;
+};
+
 /* validator */
 export const validateButtonVariant = (component: Generic.Element.Component, value?: ButtonVariantPropType): void => {
 	watchValidator(

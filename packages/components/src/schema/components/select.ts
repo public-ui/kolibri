@@ -9,7 +9,9 @@ import type {
 	PropHideMsg,
 	PropHint,
 	PropHorizontalIcons,
+	PropId,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropMultiple,
 	PropName,
 	PropOptionsWithOptgroup,
@@ -20,7 +22,7 @@ import type {
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import type { InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
+import type { InputTypeOnDefault, KoliBriHIcons, SelectOption, StencilUnknown, Stringified, W3CInputValue } from '../types';
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptionsWithOptgroup;
 type OptionalProps = {
@@ -44,4 +46,32 @@ type OptionalProps = {
 	PropTouched &
 	PropVariantClassName;
 
+type RequiredStates = {
+	hasValue: boolean;
+	options: SelectOption<W3CInputValue>[];
+	value: StencilUnknown[] | StencilUnknown;
+} & PropId &
+	PropHideMsg &
+	PropMultiple &
+	PropLabelWithExpertSlot;
+type OptionalStates = {
+	on: InputTypeOnDefault;
+	tabIndex: number;
+} & PropAccessKey &
+	PropAriaDetails &
+	PropDisabled &
+	PropHideLabel &
+	PropHint &
+	KoliBriHIcons &
+	PropName &
+	PropRequired &
+	PropRows &
+	PropMsg &
+	PropShortKey &
+	PropTouched &
+	PropVariantClassName;
+
 export type SelectProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type SelectStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type SelectWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export type SelectAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

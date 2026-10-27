@@ -15,4 +15,11 @@ type RequiredProps = {
 } & PropLabel;
 type OptionalProps = NonNullable<unknown>;
 
+type RequiredStates = {
+	links: BreadcrumbLinkProps[];
+} & PropLabel;
+type OptionalStates = OptionalProps;
+
 export type BreadcrumbProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type BreadcrumbStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type BreadcrumbAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -31,7 +31,7 @@ type RGBA = [number, number, number, number];
 // const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
 
 // https://24ways.org/2010/calculating-color-contrast/
-const getContrastYIQ = (r: number, g: number, b: number): number => {
+export const getContrastYIQ = (r: number, g: number, b: number): number => {
 	const yiq = (r * 299 + g * 587 + b * 114) / 1000;
 	return yiq >= 128 ? -1 : 1;
 };

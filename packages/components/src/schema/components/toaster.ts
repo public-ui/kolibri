@@ -50,6 +50,9 @@ type RequiredStates = RequiredProps & {
 	toastStates: ToastState[];
 };
 type OptionalStates = OptionalProps;
+
+/** @deprecated Will be removed in the next major version. See https://github.com/public-ui/kolibri/issues/8372 */
+export type ToasterProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 /** @deprecated Will be removed in the next major version. See https://github.com/public-ui/kolibri/issues/8372 */
 export type ToasterStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 /** @deprecated Will be removed in the next major version. See https://github.com/public-ui/kolibri/issues/8372 */

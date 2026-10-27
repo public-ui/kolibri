@@ -11,15 +11,19 @@ import type {
 	PropHideMsg,
 	PropHint,
 	PropHorizontalIcons,
+	PropId,
 	PropLabelWithExpertSlot,
+	PropMsg,
 	PropName,
 	PropReadOnly,
 	PropRequired,
+	PropShortKey,
 	PropSuggestions,
+	PropSyncValueBySelector,
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import type { InputTypeOnDefault, Iso8601, NumberString, Stringified } from '../types';
+import type { InputTypeOnDefault, Iso8601, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -47,4 +51,38 @@ type OptionalProps = {
 	PropTouched &
 	PropVariantClassName;
 
+type RequiredStates = {
+	hasValue: boolean;
+	suggestions: W3CInputValue[];
+	type: InputDateTypePropType;
+} & PropLabelWithExpertSlot &
+	PropHideMsg &
+	PropId;
+
+type OptionalStates = {
+	max: Iso8601;
+	min: Iso8601;
+	on: InputTypeOnDefault;
+	placeholder: string;
+	smartButton: InternalButtonProps;
+	step: number;
+	value: Iso8601 | null;
+} & PropAccessKey &
+	PropAutoComplete &
+	PropHint &
+	PropSyncValueBySelector &
+	PropDisabled &
+	PropHideLabel &
+	KoliBriHIcons &
+	PropMsg &
+	PropName &
+	PropReadOnly &
+	PropRequired &
+	PropShortKey &
+	PropTouched &
+	PropVariantClassName;
+
 export type InputDateProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type InputDateStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type InputDateWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export type InputDateAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
