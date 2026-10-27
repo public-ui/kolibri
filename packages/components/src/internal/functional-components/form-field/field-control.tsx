@@ -1,6 +1,6 @@
 import { h, type FunctionalComponent as FC, type VNode } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import type { LabelAlignPropType, LabelPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../../schema';
+import type { LabelAlignPropType, LabelLangSegmentsPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../../schema';
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
@@ -13,7 +13,7 @@ const fieldControlBem = bem.forBlock('kol-field-control');
 
 export type FieldControlFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'id' | 'ref'> & {
 	id: string;
-	label: LabelPropType;
+	label: LabelLangSegmentsPropType;
 	hint?: string;
 	hideLabel?: boolean;
 	labelAlign?: LabelAlignPropType;

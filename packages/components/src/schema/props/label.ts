@@ -54,7 +54,7 @@ export function containsOnlyNumbers(str: string): boolean {
  * @param label The label value as a LabelPropType (string or an array of label segments).
  * @returns The normalized label as a trimmed string.
  */
-export function trimLabel(label: LabelPropType): string {
+export function trimLabel(label: LabelLangSegmentsPropType): string {
 	if (typeof label === 'string') {
 		return label.trim();
 	}
@@ -76,12 +76,17 @@ export type LabelSegment = {
 /**
  * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
  */
-export type LabelPropType = string | LabelSegment[];
+export type LabelPropType = string;
+
+/**
+ * Defines the visible or semantic label with segments in different languages (so screenreader know how to pronounce every segment) of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+ */
+export type LabelLangSegmentsPropType = LabelPropType | LabelSegment[];
 
 /**
  * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
  */
-export type LabelWithExpertSlotPropType = LabelPropType | '';
+export type LabelWithExpertSlotPropType = LabelLangSegmentsPropType | '';
 
 /**
  * The label property is used to label different elements:
@@ -101,11 +106,15 @@ export type LabelWithExpertSlotPropType = LabelPropType | '';
 export type PropLabel = {
 	label: LabelPropType;
 };
+export type PropLabelLangSegments = {
+	label: LabelLangSegmentsPropType;
+};
 export type PropLabelWithExpertSlot = {
 	label: LabelWithExpertSlotPropType;
 };
 
 export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
+export type LabelLangSegmentsProp = Generic.Element.Members<LabelLangSegmentsPropType, unknown>;
 // type LabelWithExpertSlotProp = Generic.Element.Members<PropLabelWithExpertSlot, unknown>;
 
 function isLabelSegment(value: unknown): value is LabelSegment {
@@ -159,6 +168,10 @@ function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
 
 const LABEL_VALUES = new Set(['string']);
 export const validateLabel = (component: Generic.Element.Component, value?: LabelPropType, options: WatchStringOptions = {}): void => {
+	watchValidator(component, '_label', (value) => typeof value === 'string', LABEL_VALUES, value, getValidationOptions(options));
+};
+
+export const validateLabelLangSegments = (component: Generic.Element.Component, value?: LabelLangSegmentsPropType, options: WatchStringOptions = {}): void => {
 	watchValidator(component, '_label', (value) => typeof value === 'string' || Array.isArray(value), LABEL_VALUES, value, getValidationOptions(options));
 };
 

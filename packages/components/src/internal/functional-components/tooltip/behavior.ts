@@ -1,5 +1,5 @@
 import { autoUpdate } from '@floating-ui/dom';
-import type { LabelPropType } from '../../../schema';
+import type { LabelLangSegmentsPropType } from '../../../schema';
 import { getDocument } from '../../../schema';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../../utils/overlay';
@@ -31,7 +31,7 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 		this.watchId(props.id);
 	}
 
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		labelProp.apply(value, (v) => {
 			this.setRenderProp('label', v);
 		});

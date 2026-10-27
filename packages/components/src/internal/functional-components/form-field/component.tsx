@@ -1,7 +1,14 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { translate } from '../../../i18n';
-import type { LabelPropType, MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../../schema';
+import type {
+	LabelLangSegmentsPropType,
+	MaxLengthBehaviorPropType,
+	MsgPropType,
+	Stringified,
+	TooltipAlignPropType,
+	VariantClassNamePropType,
+} from '../../../schema';
 import { buildBadgeTextString, classNameFromVariant, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
@@ -21,7 +28,7 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	disabled?: boolean;
 	msg?: Stringified<MsgPropType>;
 	hint?: string;
-	label: LabelPropType;
+	label: LabelLangSegmentsPropType;
 	/** Space-separated IDs the root element references through `aria-describedby`. */
 	ariaDescribedBy?: string;
 	hideLabel?: boolean;

@@ -11,7 +11,7 @@ import { DrawerFC } from '../../internal/functional-components/drawer/component'
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alignProp, drawerCallbacksProp, hasCloserProp, labelProp, levelProp, openProp } from '../../internal/props';
-import type { AlignPropType, DrawerProps, HeadingLevel, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
+import type { AlignPropType, DrawerProps, HeadingLevel, KoliBriModalEventCallbacks, LabelLangSegmentsPropType, OpenPropType } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -82,10 +82,10 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

@@ -1,11 +1,19 @@
-import { trimLabel, type LabelPropType } from '../../../schema';
+import { trimLabel, type LabelLangSegmentsPropType } from '../../../schema';
 
 /**
  * Attributes every native form control of a field gets: no title tooltip, no autocapitalization or
  * autocorrection, the `aria-describedby` references and, with a hidden label, the label as
  * `aria-label`.
  */
-export function getDefaultInputProps({ ariaDescribedBy, hideLabel, label }: { ariaDescribedBy?: string[]; hideLabel?: boolean; label?: LabelPropType }): {
+export function getDefaultInputProps({
+	ariaDescribedBy,
+	hideLabel,
+	label,
+}: {
+	ariaDescribedBy?: string[];
+	hideLabel?: boolean;
+	label?: LabelLangSegmentsPropType;
+}): {
 	title: string;
 	autoCapitalize: string;
 	autoCorrect: string;
@@ -33,5 +41,5 @@ export type DefaultInputProps<T> = Omit<
 	id?: string;
 	ariaDescribedBy?: string[];
 	hideLabel?: boolean;
-	label?: LabelPropType;
+	label?: LabelLangSegmentsPropType;
 };

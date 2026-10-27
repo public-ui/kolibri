@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { translate } from '../../../i18n';
-import type { LabelPropType } from '../../../schema';
+import type { LabelLangSegmentsPropType } from '../../../schema';
 import { buildBadgeTextString } from '../../../schema';
 import clsx from '../../../utils/clsx';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
@@ -19,7 +19,7 @@ export type FormFieldLabelFCProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement
 	/** `legend` labels the fieldset of a radio group. */
 	component?: 'label' | 'legend';
 	id: string;
-	label?: LabelPropType;
+	label?: LabelLangSegmentsPropType;
 	accessKey?: string;
 	shortKey?: string;
 	hasExpertSlot?: boolean;

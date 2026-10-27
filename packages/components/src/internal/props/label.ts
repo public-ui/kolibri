@@ -29,11 +29,11 @@ export const labelProp = createPropDefinition<LabelProp>(
 	'label',
 	'',
 	(value: unknown) => {
-		if (typeof value === 'string' || Array.isArray(value)) {
-			return value as LabelPropType;
+		if (typeof value === 'string') {
+			return value;
 		}
 		if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
-			return String(value) as LabelPropType;
+			return String(value);
 		}
 		throw new TypeError(`Cannot convert ${typeof value} to LabelPropType`);
 	},

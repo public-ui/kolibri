@@ -17,7 +17,7 @@ import {
 	unitProp,
 	type OrientationPropType,
 } from '../../internal/props';
-import type { LabelPropType } from '../../schema';
+import type { LabelLangSegmentsPropType } from '../../schema';
 
 @Component({
 	tag: 'kol-meter',
@@ -46,10 +46,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label!: LabelPropType;
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

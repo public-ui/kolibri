@@ -6,7 +6,7 @@ import type { ProgressApi } from '../../internal/functional-components/progress/
 import { progressPropsConfig } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
 import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
-import type { LabelPropType } from '../../schema';
+import type { LabelLangSegmentsPropType } from '../../schema';
 
 /**
  * The **Progress** component visualizes the completion status of a task or process. It supports both determinate (percentage-based) and indeterminate variants.
@@ -31,10 +31,10 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label?: LabelPropType;
+	public _label?: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

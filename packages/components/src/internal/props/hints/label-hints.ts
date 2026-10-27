@@ -1,4 +1,4 @@
-import type { LabelPropType } from '../../../schema/props/label';
+import type { LabelLangSegmentsPropType, LabelPropType } from '../../../schema/props/label';
 import { containsOnlyNumbers, hasEnoughReadableChars } from '../../../schema/props/label';
 import { a11yHint, uiUxHint } from '../../../schema/utils/a11y.tipps';
 
@@ -15,7 +15,7 @@ import { a11yHint, uiUxHint } from '../../../schema/utils/a11y.tipps';
  * @param _propName - The name of the property (included for API consistency, not currently used)
  * @param value - The normalized label value to check
  */
-export function labelHints(_propName: string, value: LabelPropType): void {
+export function labelHints(_propName: string, value: LabelPropType | LabelLangSegmentsPropType): void {
 	if (typeof value === 'string' && value !== '') {
 		if (hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
 			a11yHint(`The heading or label ("${value}") is inaccessible. A label should consist of at least three readable characters.`);

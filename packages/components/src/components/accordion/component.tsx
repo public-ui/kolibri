@@ -17,7 +17,7 @@ import type {
 	FocusableElement,
 	HeadingLevel,
 	KolFocusOptions,
-	LabelPropType,
+	LabelLangSegmentsPropType,
 } from '../../schema';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -87,10 +87,10 @@ export class KolAccordion
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

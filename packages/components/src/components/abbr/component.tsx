@@ -7,7 +7,7 @@ import { AbbrFC } from '../../internal/functional-components/abbr/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { labelProp } from '../../internal/props';
-import type { LabelPropType } from '../../schema';
+import type { LabelLangSegmentsPropType } from '../../schema';
 
 /**
  * The **Abbr** component implements the HTML tag `abbr`.
@@ -26,10 +26,10 @@ export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentIn
 	 * DEPRECATED!
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label?: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

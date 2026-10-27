@@ -7,7 +7,7 @@ import { describePublicApiContract } from './contract';
 const KOL_SPIN_PUBLIC_API: PublicApiContract = {
 	_label: {
 		kind: 'prop',
-		type: 'string',
+		type: 'LabelPropType',
 		required: false,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},

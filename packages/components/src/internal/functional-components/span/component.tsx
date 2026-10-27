@@ -2,7 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 import { isString } from 'lodash-es';
 
-import type { IconOrIconClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriIconsProp, LabelPropType } from '../../../schema';
+import type { IconOrIconClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriIconsProp, LabelLangSegmentsPropType } from '../../../schema';
 import { showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
@@ -58,7 +58,7 @@ function renderUnderlinedBadgeText(label: string, badgeText: string) {
 	);
 }
 
-export function renderLabelWithLang(label: LabelPropType) {
+export function renderLabelWithLang(label: LabelLangSegmentsPropType) {
 	return Array.isArray(label) ? (
 		<span>
 			{label.map((labelSegment) => {
@@ -70,7 +70,7 @@ export function renderLabelWithLang(label: LabelPropType) {
 	);
 }
 
-function renderLabel(label: LabelPropType, hideLabel: boolean, allowMarkdown: boolean | undefined, badgeText: string | undefined) {
+function renderLabel(label: LabelLangSegmentsPropType, hideLabel: boolean, allowMarkdown: boolean | undefined, badgeText: string | undefined) {
 	if (hideLabel) {
 		return null;
 	}
