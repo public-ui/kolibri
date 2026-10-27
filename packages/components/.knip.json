@@ -3,7 +3,7 @@
 	"entry": ["src/index.ts", "src/global/devtools.ts", "src/**/*.e2e.ts"],
 	"exclude": ["duplicates"],
 	"ignore": ["src/schema/**"],
-	"ignoreDependencies": ["@public-ui/icons", "@public-ui/stylelint-rules"],
+	"ignoreDependencies": ["@public-ui/icons", "@public-ui/stylelint-rules", "jest", "jest-cli"],
 	"ignoreUnresolved": ["./components.d"],
 	"project": ["src/**/*.ts"]
 }
