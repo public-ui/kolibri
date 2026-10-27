@@ -361,6 +361,7 @@ Design principles:
 - **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
 - **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
 - **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `disabledProp` for every `_disabled`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default), where a shared factory types the value per component (callbacks, links, options), or where the meaning of the prop differs (`paginationLabelProp`, the label of the navigation landmark of the pagination, beside `labelWithExpertSlotProp`); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior share the implementation, except a variant kept apart for its meaning (`paginationLabelProp`): under different keys `createAlignPropDefinition` (`_align`, `_popoverAlign`, `_tooltipAlign`), under one key the typed factories `createCallbacksPropDefinition`, `createLinksPropDefinition` and `createOptionsPropDefinition`
+- **One explicit schema type per prop**: every prop value type is the named schema type from `src/schema/props`; prop bags, prop definitions, `@Prop` declarations and watchers reference that name and never inline a native type (see _Explicit Schema Types per Prop_)
 
 #### Dual-Type Props
 
@@ -374,9 +375,53 @@ type ColorProp = Prop<'color', ColorPair | string, ColorPair>;
 //                     └─ Key  └─ Web Component     └─ FC
 
 // Same external and internal type (shorthand):
-type MaxProp = SimpleProp<'max', number>;
-//                        └─ Key └─ Both types
+type NameProp = SimpleProp<'name', NamePropType>;
+//                         └─ Key  └─ Both types
 ```
+
+#### Explicit Schema Types per Prop
+
+Every prop has exactly one named **schema type** in `src/schema/props` (e.g. `DisabledPropType` in
+`schema/props/disabled.ts`). A schema type may be structurally as simple as a native type — naming it
+is the point, not making it complex. The name is the single spelling of the type: the prop bag, the
+prop definition in `internal/props`, the `@Prop` declaration, the watcher and the FC render props all
+reference it, and no layer inlines a native type instead:
+
+```typescript
+// schema/props/disabled.ts — the named schema type (its structure does not change)
+export type DisabledPropType = boolean;
+
+// internal/props/disabled.ts — the definition references the schema type
+export type DisabledProp = SimpleProp<'disabled', DisabledPropType>;
+export const disabledProp = createPropDefinition<DisabledProp>('disabled', false, normalizeBoolean);
+
+// components/button/component.tsx — @Prop and watcher carry the same name
+@Prop() public _disabled?: DisabledPropType = false;
+
+@Watch('_disabled')
+public watchDisabled(value?: DisabledPropType): void {
+	disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+}
+```
+
+Without the shared name, every layer spells the type its own way (`SimpleProp<'disabled', boolean>`,
+`@Prop() _disabled?: boolean`) and nothing ties the spellings together. With it, `apply`, watcher and
+FC signatures carry the domain term, drift between the layers fails the compiler instead of surfacing
+in review, and an evolution of the schema type moves every layer at once.
+
+The schema type and the prop definition are separate concerns. One schema type can be bound by
+several `createPropDefinition`s that differ in normalizer, validator or default (e.g.
+`orientationProp` and `radioOrientationProp` share their type and differ in the default); the shared
+type — not only the prop key string — is what connects such variants. Conversely, props that only
+share their key but differ in value type get separate schema types (the `_max` of `kol-input-date`
+and the `_max` of the pagination). `prop-keys.spec.ts` documents the variants per render key.
+
+Naming roles stay distinct: `XxxPropType` is the schema value type, `PropXxx` the schema prop bag
+and `XxxProp` the prop definition in `internal/props`.
+
+This rule binds new and changed props immediately. Existing props adopt it family by family — prop
+definitions first, then component signatures. Where no named schema type exists yet, it is added: an
+additive, non-breaking change, because naming a type never changes its structure.
 
 #### `PropDefinition<TInternal>`
 
@@ -503,17 +548,17 @@ This ensures the renderer never works with raw, unvalidated data. Props must alw
 Incoming props are normalized in dedicated watchers directly inside the WC:
 
 ```ts
-// Prop definition (internal/props/name.ts)
-type NameProp = SimpleProp<'name', string>;
+// Prop definition (internal/props/name.ts); NamePropType is imported from schema/props/name.ts
+type NameProp = SimpleProp<'name', NamePropType>;
 const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);
 ```
 
 ```tsx
 // Web Component (web-components/skeleton/component.tsx)
-@Prop() public _name!: string;
+@Prop() public _name!: NamePropType;
 
 @Watch('_name')
-public watchName(value?: string): void {
+public watchName(value?: NamePropType): void {
 	nameProp.apply(value, (v) => this.setRenderProp('name', v));
 }
 ```
@@ -647,6 +692,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **ARIA ID Uniqueness via readable nonce IDs** | Any DOM `id` referenced by ARIA attributes (e.g. `aria-controls`, `aria-labelledby`) must be unique per component instance and follow the pattern `readable-identifier-<nonce>`. Use `private readonly someId = createUniqueId('readable-identifier')` from `utils/dev.utils`. This prevents ID collisions when components are composed inside a shared DOM scope (e.g. multiple WC instances within one shadow root, or direct light-DOM usage). Shadow DOM alone is not sufficient when a shadow component renders multiple instances of an internal WC in the same shadow root. |
 | **State ownership**                           | The WC owns reactive state (`@State`) and render props; the FC consumes them.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Type safety**                               | `WebComponentInterface`, `BehaviorInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **Explicit schema types**                     | Every prop has exactly one named schema type in `src/schema/props`; prop definitions, `@Prop` declarations and watchers reference that name instead of inlining native types.                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Styling boundary**                          | A component's `style.scss` is base styling: layout and structure only, no colors (except the black/white contrast fallback), no spacing and no dark/light color scheme (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Colors, spacing and color schemes are implemented in the theme packages. See [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](../../../../../docs/BASE_STYLING_VS_THEMING_CONCEPT.md).                                                                                                                                                                 |
 | **Watcher placement**                         | Attach `@Watch` only to underscored public props (e.g. `_name`); internal state fields use `@State`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
@@ -710,6 +756,10 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Pattern_: a change of the internal DOM structure or of the BEM classes it needs ships in at least a minor release as a **theming breaking change**: release label `release:theming`, old and new classes listed in the pull request, all themes of this repository adapted in the same change. See [Theming Contract](#theming-contract-shadow-dom-structure-and-bem-classes).
     - _Alternative_: treat every class or node change as a breaking change that waits for the next major release.
     - _Reason_: themes can be adapted to such a change largely automatically through their own visual snapshots and the zero-visual-delta workflow. Holding back structural cleanups (single BEM root, registered classes) until a major release would keep known non-conformities alive for a long time without protecting anyone more than the changelog entry does.
+18. **Explicit schema types per prop**
+    - _Pattern_: every prop's value type is the named schema type from `src/schema/props`; the prop bag, the prop definition in `internal/props`, the `@Prop` declaration and the watcher all reference that name, and no layer inlines a native type. See [Explicit Schema Types per Prop](#explicit-schema-types-per-prop).
+    - _Alternative_: type prop definitions and component signatures with bare natives (`SimpleProp<'disabled', boolean>`) and keep the schema name only on the prop bag.
+    - _Reason_: the type is defined once and every layer points at the same name, so drift between the layers fails the compiler instead of surfacing in review; apply and watcher signatures carry the domain term; and the prop definitions binding one render key are connected by their shared schema type, not only by the key string. Naming a type never changes its structure, so adopting it is invisible to consumers.
 
 ## 10. Quality Requirements
 
@@ -738,6 +788,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.                                  |
 | **Render props**         | Validated, normalized prop values stored on the WC via `setRenderProp` and read via `getRenderProp` for rendering.                             |
 | **Schema Helper**        | Utility providing `normalize` (unknown → TInternal), `validate` (TInternal → boolean) and `apply` (normalize + validate + callback) for props. |
+| **Schema Type**          | Named value type of one prop in `src/schema/props` (e.g. `DisabledPropType`); the single spelling every layer references.                      |
 | **StateAccess**          | `{ setState, getState }` bundle a WC passes to a Behavior; `BaseWebComponent.stateLess` is the no-op sentinel for stateless Behaviors.         |
 | **Stencil**              | Compiler for building framework-agnostic web components.                                                                                       |
 | **Transitional WC**      | A `shadow:false` WC that renders an FC into the light DOM so legacy consumers can reach inner BEM classes; deleted once consumers migrate.     |
