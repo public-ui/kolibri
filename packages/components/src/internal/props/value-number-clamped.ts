@@ -28,9 +28,9 @@ import { normalizeNumber } from './helpers/normalizers';
  * @see https://www.w3.org/TR/wai-aria-1.2/#aria-valuemin
  * @see https://www.w3.org/TR/wai-aria-1.2/#aria-valuemax
  */
-export type ClampedNumberValueProp = SimpleProp<'value', ClampedNumberValuePropType>;
+type ClampedNumberValueProp = SimpleProp<'value', ClampedNumberValuePropType>;
 
-export type ClampedNumberValueDeps = {
+type ClampedNumberValueDeps = {
 	min: number;
 	max: number;
 };

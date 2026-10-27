@@ -17,13 +17,16 @@ function normalizeDialogCallbacks(value: unknown): KoliBriDialogEventCallbacks {
 		throw new Error(`Invalid on callbacks: expected object, got ${typeof value}`);
 	}
 
-	const { onCancel, onClose } = value as KoliBriDialogEventCallbacks;
+	const { onCancel, onClose, onToggle } = value as KoliBriDialogEventCallbacks;
 	const callbacks: KoliBriDialogEventCallbacks = {};
 	if (typeof onCancel === 'function') {
 		callbacks.onCancel = onCancel;
 	}
 	if (typeof onClose === 'function') {
 		callbacks.onClose = onClose;
+	}
+	if (typeof onToggle === 'function') {
+		callbacks.onToggle = onToggle;
 	}
 	return callbacks;
 }

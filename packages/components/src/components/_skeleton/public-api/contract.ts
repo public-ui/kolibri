@@ -16,7 +16,7 @@ import path from 'node:path';
  * must NOT appear in the pinned contracts.
  */
 
-export type ApiMember = {
+type ApiMember = {
 	/** Prop name including the underscore prefix, or method name. */
 	name: string;
 	kind: 'prop' | 'method';
@@ -33,7 +33,7 @@ export type ApiMember = {
 export type PublicApiContract = Record<string, Omit<ApiMember, 'name'>>;
 
 /** Extracts `@Prop()` and `@Method()` members with their preceding JSDoc from a component source. */
-export const extractPublicApi = (source: string): ApiMember[] => {
+const extractPublicApi = (source: string): ApiMember[] => {
 	const lines = source.split('\n');
 	const isDocLine = (line: string): boolean => /^\s*(\/\*\*|\*|\*\/)/.test(line);
 	const normalizeDoc = (doc: string[]): string =>
@@ -102,15 +102,15 @@ export const extractPublicApi = (source: string): ApiMember[] => {
 };
 
 /** Turns the member list into a comparable record (object equality ignores declaration order). */
-export const toContract = (members: ApiMember[]): PublicApiContract => Object.fromEntries(members.map(({ name, ...contract }) => [name, contract]));
+const toContract = (members: ApiMember[]): PublicApiContract => Object.fromEntries(members.map(({ name, ...contract }) => [name, contract]));
 
 /** Reads a source file of a component folder under `src/components`. */
-export const readSource = (component: string, file: string): string => fs.readFileSync(path.join(__dirname, '..', '..', component, file), 'utf8');
+const readSource = (component: string, file: string): string => fs.readFileSync(path.join(__dirname, '..', '..', component, file), 'utf8');
 
-export const extractFrom = (component: string, file: string): ApiMember[] => extractPublicApi(readSource(component, file));
+const extractFrom = (component: string, file: string): ApiMember[] => extractPublicApi(readSource(component, file));
 
 /** Lists the public members of a component source that carry no JSDoc. */
-export const findUndocumentedMembers = (component: string, file: string): string[] =>
+const findUndocumentedMembers = (component: string, file: string): string[] =>
 	extractFrom(component, file)
 		.filter((member) => member.doc.length === 0)
 		.map((member) => member.name);
