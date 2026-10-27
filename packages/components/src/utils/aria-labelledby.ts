@@ -10,8 +10,8 @@
  *   table without a label. This is a Chrome/TalkBack limitation, not a bug in this code.
  *   Users who require TalkBack support today should fall back to the `_label` prop.
  *   VoiceOver on macOS does not announce element references either — natively or through the
- *   components; see docs/ARIA_ELEMENT_REFLECTION_KNOWN_ISSUES.md and the native reference
- *   implementations of the `input-text/aria-details` sample.
+ *   components; see KNOWN_ISSUES.md and the native reference implementations of the
+ *   `input-text/aria-details` sample.
  */
 export type HostInternals = {
 	role: string | null;
