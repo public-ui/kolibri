@@ -5,7 +5,8 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 /**
  * Props configuration for the tree component.
  *
- * `labelLangSegmentsProp`: the label is an accessible name without an expert slot.
+ * `labelProp`: the label is emitted only as the `aria-label` of the tree and is never rendered,
+ * so language segments would have no effect — a plain string suffices.
  */
 export const treePropsConfig = {
 	required: [labelProp],

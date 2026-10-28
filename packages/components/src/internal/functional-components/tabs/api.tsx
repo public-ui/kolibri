@@ -7,7 +7,8 @@ import type { TabsButton } from './button-item';
  * Props configuration for the tabs component.
  *
  * Notes on prop choices:
- * - `labelProp`: the label names a landmark without an expert slot.
+ * - `labelProp`: the label is emitted only as the `aria-label` of the tab list and is never
+ *   rendered, so language segments would have no effect — a plain string suffices.
  * - `selectedProp` only checks the type. Clamping into the tab list and skipping disabled tabs
  *   needs both `_selected` and `_tabs`, so the web component resolves it after applying either.
  * - `tabsCallbacksProp` and `tabBehaviorProp` are not rendered — the web component reads them in

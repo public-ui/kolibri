@@ -7,7 +7,8 @@ import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
  * Props configuration for the toolbar component.
  *
  * Notes on prop choices:
- * - `labelProp`: the toolbar has no expert slot.
+ * - `labelProp`: the label is emitted only as the `aria-label` of the toolbar and is never
+ *   rendered, so language segments would have no effect — a plain string suffices.
  * - `orientationProp` defaults to `'horizontal'`, like the predecessor's `validateOrientation`.
  */
 export const toolbarPropsConfig = {
