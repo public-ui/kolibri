@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "147 added – 0 of 147 approved, review pending",
-	"computedAt": "2026-10-28T09:30:55.780Z",
+	"description": "154 added – 0 of 154 approved, review pending",
+	"computedAt": "2026-10-28T11:08:12.251Z",
 	"pr": 11258,
-	"head": "19cea67e63381715fe4575872a2b9649d5ae076a",
-	"digest": "sha256:4961a62f0e905f0754d752a7e633afdd625ffcd81c79ec9c39e72b8fa5d95a04",
+	"head": "72fbdef4d080d889a33cb3ff489beaff9852be10",
+	"digest": "sha256:d66b1062ac7bf659c1b71b495b28d7ec666c924dd71bd2297ab5e476c5873c19",
 	"counts": {
-		"changes": 147,
-		"open": 147,
+		"changes": 154,
+		"open": 154,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -45,6 +45,10 @@
 			"notes": []
 		},
 		"test-tag-name-transformer/scenarios-label-lang--label-lang-checkbox": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-label-lang--label-lang-details": {
 			"state": "open",
 			"notes": []
 		},
@@ -132,6 +136,10 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-bwst/scenarios-label-lang--label-lang-details": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-bwst/scenarios-label-lang--label-lang-heading": {
 			"state": "open",
 			"notes": []
@@ -213,6 +221,10 @@
 			"notes": []
 		},
 		"theme-default/scenarios-label-lang--label-lang-checkbox": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-label-lang--label-lang-details": {
 			"state": "open",
 			"notes": []
 		},
@@ -300,6 +312,10 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-desy/scenarios-label-lang--label-lang-details": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-desy/scenarios-label-lang--label-lang-heading": {
 			"state": "open",
 			"notes": []
@@ -381,6 +397,10 @@
 			"notes": []
 		},
 		"theme-ecl/scenarios-label-lang--label-lang-checkbox": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-label-lang--label-lang-details": {
 			"state": "open",
 			"notes": []
 		},
@@ -468,6 +488,10 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-kern/scenarios-label-lang--label-lang-details": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-kern/scenarios-label-lang--label-lang-heading": {
 			"state": "open",
 			"notes": []
@@ -549,6 +573,10 @@
 			"notes": []
 		},
 		"unstyled/scenarios-label-lang--label-lang-checkbox": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-label-lang--label-lang-details": {
 			"state": "open",
 			"notes": []
 		},
