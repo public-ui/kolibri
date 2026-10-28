@@ -1,0 +1,1 @@
+import{o as e,x as t}from"./base-web-component-CwlZ_R15-DiIXVL55.js";var n=e(`src`,``,t);export{n as t};
