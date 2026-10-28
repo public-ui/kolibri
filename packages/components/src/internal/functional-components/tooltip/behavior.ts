@@ -32,9 +32,9 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 	}
 
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		// An empty label means "not set" for the tooltip: the label validators reject the empty
-		// string (it is the expert-slot sentinel), and a tooltip without a label text — e.g. the
-		// one of an unlabeled info popover — is simply not set, without a required warning.
+		// The empty string is the expert-slot sentinel and invalid for this prop: the tooltip renders
+		// no label text and has no expert slot. Mapping it to `undefined` records the "not set"
+		// state instead of logging an invalid-value warning.
 		labelLangSegmentsProp.apply(value || undefined, (v) => {
 			this.setRenderProp('label', v);
 		});

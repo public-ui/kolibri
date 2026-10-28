@@ -441,6 +441,35 @@ This rule binds new and changed props immediately. Existing props adopt it famil
 definitions first, then component signatures. Where no named schema type exists yet, it is added: an
 additive, non-breaking change, because naming a type never changes its structure.
 
+#### Label Handling Forms
+
+Six forms govern how a label value flows through the layers. They exist because the validation
+boundary and the render boundary are different places: the web component validates untyped input
+(attributes arrive as strings, adapters pass any runtime value), while a functional component
+receives already-normalized props and never validates.
+
+1. **A functional component trusts its props.** Its prop type comes from the props config slot
+   (`required` → mandatory, `optional` → partial). A guard inside a functional component is never a
+   distrust of validation — it handles the documented "not set" state of an optional prop (the alert
+   without a label renders no heading).
+2. **The "not set" guard is `label?.length > 0`** for optional `string | LabelSegment[] | undefined`
+   labels, in JSX conditions and ternaries alike. The expression must be strictly boolean: a bare
+   `label?.length &&` renders the digit `0` into the DOM when the label is the empty string.
+3. **`trimLabel(label)` is the only way to obtain a plain string** (accessible names, aria-label,
+   aria-description). `trimLabel` is undefined-safe by signature (`undefined` → `''`) and the only
+   place joining segment arrays — call it without `?? ''` or `|| ''`, and never apply string
+   operations to a segment array directly.
+4. **`''` is the expert-slot sentinel, everywhere.** Only components with `labelWithExpertSlotProp`
+   accept it; their span switches to the expert slot. Everywhere else it is an invalid value. The
+   one mapping to "not set" lives where an empty label is legitimate input (the tooltip behavior:
+   `apply(value || undefined, …)`, mapping `''` to the unset state instead of an invalid-value
+   warning).
+5. **Rendered labels go through `renderLabelWithLang`** so each segment keeps its `lang` attribute
+   for screen readers. A pure `aria-label` uses `trimLabel` — language segments would have no
+   effect there, which is why landmark components bind `labelProp`.
+6. **Which prop definition a component binds follows its markup** (see the variant rule above);
+   the forms here stay identical for all three label definitions.
+
 #### `PropDefinition<TInternal>`
 
 `PropDefinition<TInternal>` defines `normalize` (unknown → TInternal), `validate` (TInternal → boolean), `getDefaultValue()` (→ TInternal) and `apply(value, callback)`. The normalize function accepts `unknown` because HTML attributes can arrive as any type.
