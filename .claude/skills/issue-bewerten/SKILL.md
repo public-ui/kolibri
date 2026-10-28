@@ -18,11 +18,20 @@ die passende Aktion anbieten.
 ## 1. Issue finden
 
 ```bash
-gh issue list --repo public-ui/kolibri --state open --search "-label:icebox sort:created-asc" --limit 1 \
-  --json number,title,createdAt,updatedAt,labels,author,milestone,assignees
+gh api "repos/public-ui/kolibri/issues?state=open&sort=created&direction=asc&per_page=100" --paginate \
+  --jq '.[] | select(.pull_request == null)
+        | select([.labels[].name] | index("icebox") | not)
+        | select((.sub_issues_summary.total // 0) == (.sub_issues_summary.completed // 0))
+        | "#\(.number) · \(.created_at[:10]) · \(.title)"' | head -n 1
 ```
 
 - Das Label heißt exakt `icebox` (klein geschrieben).
+- **Issues mit offenen Sub-Issues überspringen.** Ein solches Issue ist der Rahmen für Arbeit, die gerade
+  in den Sub-Issues läuft, und bleibt offen, bis diese erledigt sind – auch wenn sein eigener Inhalt
+  entschieden oder umgesetzt wirkt. Bewertet werden stattdessen die Sub-Issues, wenn sie an der Reihe
+  sind. Der Filter auf `sub_issues_summary` erledigt das; die REST-Liste enthält auch Pull Requests,
+  deshalb filtert `pull_request == null` sie heraus. Die Meldung „The pipe is being closed“ entsteht,
+  weil `head` die Ausgabe abschneidet, und ist harmlos.
 - Hat der Nutzer eine Issue-Nummer genannt, diese statt des ältesten nehmen.
 - Kurz nennen, welches Issue es ist (Nummer, Titel, Alter), dann weiter.
 
