@@ -1,0 +1,1 @@
+import{et as e}from"./index-BOxmVLNq-CG82QB95.js";import{d as t,o as n}from"./base-web-component-Bcoukts3-DMml37DJ.js";function r(r){return n(`links`,[],e=>t(e),e=>e.every(e=>typeof e==`object`&&!!e&&(typeof e._href==`string`||typeof e._label==`string`)),{hints:(t,n)=>e(r,n.length)})}export{r as t};
