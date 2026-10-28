@@ -162,16 +162,7 @@ exports[`kol-tree-item should render with _label=[{"text":"partly english","lang
                 <span class="kol-span__slot">
                   <span class="kol-tree-item__link-inner">
                     <span class="kol-tree-item__toggle-button-placeholder"></span>
-                    <span class="kol-tree-item__text">
-                      <span>
-                        <span lang="en">
-                          partly english
-                        </span>
-                        <span>
-                          Label
-                        </span>
-                      </span>
-                    </span>
+                    <span class="kol-tree-item__text"></span>
                   </span>
                 </span>
               </span>

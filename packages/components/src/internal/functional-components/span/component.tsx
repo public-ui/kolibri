@@ -58,7 +58,7 @@ function renderUnderlinedBadgeText(label: string, badgeText: string) {
 	);
 }
 
-export function renderLabelWithLang(label: LabelLangSegmentsPropType) {
+export function renderLabelWithLang(label: LabelLangSegmentsPropType | undefined) {
 	return Array.isArray(label) ? (
 		<span>
 			{label.map((labelSegment) => {

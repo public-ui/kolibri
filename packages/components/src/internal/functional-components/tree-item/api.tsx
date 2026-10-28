@@ -1,5 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
-import { activeProp, hrefProp, labelProp } from '../../props';
+import { activeProp, hrefProp, labelLangSegmentsProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
@@ -11,7 +11,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  *   routes every external value through `openProp`.
  */
 export const treeItemPropsConfig = {
-	required: [hrefProp, labelProp],
+	required: [hrefProp, labelLangSegmentsProp],
 	optional: [activeProp],
 } as const satisfies PropsConfigShape;
 

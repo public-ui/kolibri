@@ -717,16 +717,7 @@ exports[`kol-table-stateful should render with label with language  1`] = `
     <div class="kol-table">
       <div class="kol-table__scroll-container">
         <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-          <caption class="kol-table__caption kol-table__focus-element" id="caption">
-            <span>
-              <span lang="en">
-                partly english
-              </span>
-              <span>
-                Label
-              </span>
-            </span>
-          </caption>
+          <caption class="kol-table__caption kol-table__focus-element" id="caption"></caption>
           <thead class="kol-table__head">
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">

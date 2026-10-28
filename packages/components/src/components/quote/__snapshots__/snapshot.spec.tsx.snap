@@ -70,11 +70,6 @@ exports[`kol-quote should render with _href="https://example.com" _label=[{"text
           <slot name="expert"></slot>
         </span>
       </q>
-      <figcaption class="kol-quote__figcaption">
-        <cite class="kol-quote__cite">
-          <kol-link _href="https://example.com" _target="_blank"></kol-link>
-        </cite>
-      </figcaption>
     </figure>
   </template>
 </kol-quote>

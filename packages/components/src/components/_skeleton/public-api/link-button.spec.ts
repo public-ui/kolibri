@@ -91,7 +91,7 @@ const KOL_LINK_BUTTON_PUBLIC_API: PublicApiContract = {
 	_label: {
 		kind: 'prop',
 		type: 'LabelWithExpertSlotPropType',
-		required: false,
+		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.',
 	},
 	_on: {

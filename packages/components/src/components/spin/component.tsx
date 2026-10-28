@@ -31,7 +31,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label?: string;
+	public _label?: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {

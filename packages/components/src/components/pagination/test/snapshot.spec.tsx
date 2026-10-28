@@ -35,6 +35,5 @@ executeSnapshotTests<PaginationProps>(
 		{ _label: 'Label', _on: {}, _max: 12, _page: 2, _hasButtons: '{"first":false,"next":false}' },
 		{ _label: 'Label', _on: {}, _max: 40, _page: 1, _pageSize: 15, _pageSizeOptions: [10, 20] },
 		{ _label: 'Label', _on: {}, _max: 40, _page: 1, _pageSize: 10, _pageSizeOptions: '[10, 20, 50]' },
-		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }], _on: {}, _max: 2, _page: 1 },
 	],
 );

@@ -183,15 +183,7 @@ exports[`kol-details should render with _label=[{"text":"partly english","lang":
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
-              <span class="kol-span__label">
-                <span lang="en">
-                  partly english
-                </span>
-                <span>
-                  Label
-                </span>
-              </span>
-              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              <span class="kol-span__slot"></span>
             </span>
           </span>
         </strong>

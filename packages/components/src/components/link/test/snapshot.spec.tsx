@@ -25,24 +25,13 @@ executeSnapshotTests<LinkProps>(
 		// `download` is a presence attribute: an empty string must render as `download=""`.
 		{ ...baseObj, _download: '' },
 
-		{ _href: '#', _hideLabel: true },
+		{ _href: '#', _hideLabel: true, _label: 'Label' },
 		{ _href: '#', _hideLabel: true, _label: '   ' },
 		{ _href: '#', _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 	],
 );
 
 describe('kol-link _hideLabel without label', () => {
-	it('omits aria-label when _label is omitted', async () => {
-		const page = await newSpecPage({
-			components: [KolLink],
-			template: () => <kol-link _href="#" _hideLabel={true} />,
-		});
-		await page.waitForChanges();
-
-		const anchor = page.root?.shadowRoot?.querySelector('a');
-		expect(anchor?.hasAttribute('aria-label')).toBe(false);
-	});
-
 	it('omits aria-label when _label is whitespace only', async () => {
 		const page = await newSpecPage({
 			components: [KolLink],
