@@ -1,6 +1,6 @@
 ---
 name: issue-bewerten
-description: Sucht das älteste offene GitHub-Issue im KoliBri-Repo, bei dem das Issue-Feld `Triage` keinen Wert hat und das keine offenen Sub-Issues hat, prüft es gegen den heutigen Stand von Code, Doku, PRs und anderen Issues auf Gültigkeit und gibt eine begründete Empfehlung (umsetzen, Scope anpassen, icebox, schließen, klären). Nutze diesen Skill immer, wenn der Nutzer Backlog-Pflege, Issue-Triage oder das Aufräumen alter Issues angeht – auch bei Formulierungen wie "nimm dir das älteste Issue vor", "ist das alte Ticket noch aktuell", "Backlog-Hygiene", "welches Issue liegt am längsten rum", "lohnt sich das noch" oder "nächstes Issue triagieren".
+description: Sucht das älteste offene GitHub-Issue im KoliBri-Repo, bei dem das Issue-Feld `Triage` keinen Wert oder den Wert `Unclear` hat und das keine offenen Sub-Issues hat, prüft es gegen den heutigen Stand von Code, Doku, PRs und anderen Issues auf Gültigkeit und gibt eine begründete Empfehlung (umsetzen, Scope anpassen, icebox, schließen, klären). Nutze diesen Skill immer, wenn der Nutzer Backlog-Pflege, Issue-Triage oder das Aufräumen alter Issues angeht – auch bei Formulierungen wie "nimm dir das älteste Issue vor", "ist das alte Ticket noch aktuell", "Backlog-Hygiene", "welches Issue liegt am längsten rum", "lohnt sich das noch" oder "nächstes Issue triagieren".
 ---
 
 # Ältestes Issue bewerten
@@ -8,7 +8,7 @@ description: Sucht das älteste offene GitHub-Issue im KoliBri-Repo, bei dem das
 Der Backlog von KoliBri enthält Issues aus mehreren Major-Versionen. Viele alte Issues sind inzwischen
 erledigt, überholt oder nie priorisiert worden – sie verstopfen die Liste und kosten bei jeder Sichtung
 Aufmerksamkeit. Dieser Skill arbeitet den Backlog von hinten ab: **immer das älteste offene Issue ohne
-`Triage`-Wert**, eins pro Aufruf, mit einer klaren Empfehlung.
+`Triage`-Wert oder mit `Unclear`**, eins pro Aufruf, mit einer klaren Empfehlung.
 
 Das Ergebnis ist **eine Empfehlung im Chat**. Der Skill ändert am Issue nichts von selbst (kein
 Kommentar, kein Feldwert, kein Schließen) – das entscheidet der Nutzer. Erst die Folgeaktion (einen
@@ -18,18 +18,20 @@ drankommt; deshalb am Ende die passende Aktion anbieten.
 ## 1. Issue finden
 
 ```bash
-UNTRIAGED=$(gh issue list --repo public-ui/kolibri --state open --search "no:field.Triage" --limit 500 --json number --jq 'map(.number)')
+QUEUE=$( { gh issue list --repo public-ui/kolibri --state open --search "no:field.Triage" --limit 500 --json number;
+            gh issue list --repo public-ui/kolibri --state open --search "field.Triage:Unclear" --limit 500 --json number; } \
+  | jq -s 'add | map(.number)')
 gh api "repos/public-ui/kolibri/issues?state=open&sort=created&direction=asc&per_page=100" --paginate \
-  | jq -r --argjson untriaged "$UNTRIAGED" '.[] | select(.pull_request == null)
-        | select([.number] | inside($untriaged))
+  | jq -r --argjson queue "$QUEUE" '.[] | select(.pull_request == null)
+        | select([.number] | inside($queue))
         | select((.sub_issues_summary.total // 0) == (.sub_issues_summary.completed // 0))
         | "#\(.number) · \(.created_at[:10]) · \(.title)"' | head -n 1
 ```
 
 - Berücksichtigt werden nur Issues, bei denen das Org-Issue-Feld `Triage` (nur innerhalb der Organisation
-  sichtbar) keinen Wert hat. Jeder Wert nimmt ein Issue aus der Warteschlange, auch `Unclear`. Die
-  REST-Liste liefert keine Feldwerte, deshalb kommt die Menge dieser Issues aus der Suche
-  `no:field.Triage`.
+  sichtbar) keinen Wert oder den Wert `Unclear` hat: `Unclear`-Tickets sollen bewertet werden. Jeder
+  andere Wert nimmt ein Issue aus der Warteschlange. Die REST-Liste liefert keine Feldwerte, deshalb
+  kommt die Menge dieser Issues aus den Suchen `no:field.Triage` und `field.Triage:Unclear`.
 - **Issues mit offenen Sub-Issues überspringen.** Ein solches Issue ist der Rahmen für Arbeit, die gerade
   in den Sub-Issues läuft, und bleibt offen, bis diese erledigt sind – auch wenn sein eigener Inhalt
   entschieden oder umgesetzt wirkt. Bewertet werden stattdessen die Sub-Issues, wenn sie an der Reihe
