@@ -435,7 +435,11 @@ expert slot (`<slot name="expert">`) is `LabelWithExpertSlotPropType` — the in
 the form-field labels and the heading (its label sits in the heading tag next to the expert slot).
 A `_label` that is a landmark name, a caption or a pure `aria-label` without an expert slot stays
 `LabelPropType` — even when the component renders unrelated expert slots elsewhere (e.g. for the
-quote content or the tree item button).
+quote content or the tree item button). The decisive test is who switches the slot: a label is a
+sentinel carrier (`''` enables the slot) only where the label value itself toggles it. A label
+rendered through a slot the component keeps open on its own — the tree item puts its label into
+the always-open expert slot of its embedded link — carries segments but no sentinel, so it binds
+`labelLangSegmentsProp`.
 
 This rule binds new and changed props immediately. Existing props adopt it family by family — prop
 definitions first, then component signatures. Where no named schema type exists yet, it is added: an
