@@ -40,7 +40,7 @@ import type {
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
 	KoliBriTableSelectionKeys,
-	LabelPropType,
+	LabelLangSegmentsPropType,
 	PaginationPositionPropType,
 	SelectionChangeEventPayload,
 	SortEventPayload,
@@ -259,10 +259,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		this.applyLabel(value);
 	}
 

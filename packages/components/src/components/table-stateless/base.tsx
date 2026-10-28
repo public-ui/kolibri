@@ -34,7 +34,7 @@ import type {
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
-	LabelPropType,
+	LabelLangSegmentsPropType,
 	SelectionChangeEventPayload,
 	SortEventPayload,
 	TableCallbacksPropType,
@@ -166,7 +166,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		tableHeadersProp.apply(value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)));
 	}
 
-	protected applyLabel(value?: LabelPropType): void {
+	protected applyLabel(value?: LabelLangSegmentsPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

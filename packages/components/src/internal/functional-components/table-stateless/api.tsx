@@ -2,7 +2,7 @@ import type { KoliBriTableCell, KoliBriTableDataType, KoliBriTableHeaderCell, Se
 import {
 	fixedColsProp,
 	hasSettingsMenuProp,
-	labelProp,
+	labelLangSegmentsProp,
 	tableCallbacksProp,
 	tableDataFootProp,
 	tableDataProp,
@@ -21,7 +21,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  *   lazy-loading hint of embedded content.
  */
 export const tableStatelessPropsConfig = {
-	required: [labelProp, tableDataProp],
+	required: [labelLangSegmentsProp, tableDataProp],
 	optional: [fixedColsProp, hasSettingsMenuProp, tableCallbacksProp, tableDataFootProp, tableHeadersProp, tableLoadingProp, tableSelectionProp, variantProp],
 } as const satisfies PropsConfigShape;
 

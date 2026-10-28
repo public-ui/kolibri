@@ -3,7 +3,7 @@ import {
 	allowMultiSortProp,
 	fixedColsProp,
 	hasSettingsMenuProp,
-	labelProp,
+	labelLangSegmentsProp,
 	paginationPositionProp,
 	tableDataFootProp,
 	tableDataProp,
@@ -22,7 +22,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * header cells with their sort state).
  */
 export const tableStatefulPropsConfig = {
-	required: [labelProp, tableDataProp, tableStatefulHeadersProp],
+	required: [labelLangSegmentsProp, tableDataProp, tableStatefulHeadersProp],
 	optional: [
 		allowMultiSortProp,
 		fixedColsProp,
