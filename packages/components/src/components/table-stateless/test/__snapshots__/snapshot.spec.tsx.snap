@@ -1151,7 +1151,16 @@ exports[`kol-table-stateless should render with _label=[{"text":"partly english"
     <div class="kol-table">
       <div class="kol-table__scroll-container">
         <table aria-labelledby="caption" class="kol-table__table" style="min-width: 180px;">
-          <caption class="kol-table__caption kol-table__focus-element" id="caption"></caption>
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            <span>
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+          </caption>
           <thead class="kol-table__head">
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="col" style="width: 180px;">

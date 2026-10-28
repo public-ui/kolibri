@@ -1407,7 +1407,17 @@ exports[`kol-alert should render with _label=[{"text":"partly english","lang":"e
         kol-message
       </span>
       <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-      <div class="kol-alert__content">
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        <span>
+          <span lang="en">
+            partly english
+          </span>
+          <span>
+            Label
+          </span>
+        </span>
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
         <slot></slot>
       </div>
     </div>

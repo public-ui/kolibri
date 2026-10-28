@@ -218,7 +218,16 @@ exports[`kol-drawer should render with _label=[{"text":"partly english","lang":"
       <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
         <div class="kol-drawer__wrapper kol-drawer__wrapper--is-closing kol-drawer__wrapper--top">
           <article aria-labelledby="drawer-heading-nonce" class="kol-card">
-            <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="drawer-heading-nonce"></strong>
+            <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="drawer-heading-nonce">
+              <span>
+                <span lang="en">
+                  partly english
+                </span>
+                <span>
+                  Label
+                </span>
+              </span>
+            </strong>
             <div class="kol-card__content">
               <div class="kol-drawer__content">
                 <slot></slot>
