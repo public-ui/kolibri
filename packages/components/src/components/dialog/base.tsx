@@ -10,8 +10,8 @@ import type { DialogApi } from '../../internal/functional-components/dialog/api'
 import { dialogPropsConfig } from '../../internal/functional-components/dialog/api';
 import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { dialogCallbacksProp, labelProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
-import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType } from '../../schema';
+import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
+import { trimLabel, type HeadingLevel, type KoliBriDialogEventCallbacks, type LabelLangSegmentsPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -71,7 +71,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 	// --- Prop application ---
 
 	protected applyLabel(value?: LabelLangSegmentsPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	protected applyLevel(value?: HeadingLevel): void {
@@ -199,7 +199,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 				blockClass={dialogBlockClass(variant)}
 				handleCancel={this.handleCancel}
 				handleClose={this.handleClose}
-				label={this.getRenderProp('label')}
+				label={trimLabel(this.getRenderProp('label'))}
 				labelledBy={isCard ? this.getState('headingId') : undefined}
 				modal={this.getState('modal')}
 				refDialog={this.dialogRef}

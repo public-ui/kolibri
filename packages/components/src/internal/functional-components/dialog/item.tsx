@@ -1,14 +1,14 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { trimLabel, type HeadingLevel, type KoliBriDialogEventCallbacks, type LabelPropType } from '../../../schema';
+import { trimLabel, type HeadingLevel, type KoliBriDialogEventCallbacks, type LabelLangSegmentsPropType } from '../../../schema';
 import type { ModalVariantPropType } from '../../../schema/props/variant/modal';
 import { createUniqueId, nonce } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { lockScroll, unlockScroll } from '../../../utils/scroll-lock';
 import { handleCancelOverlay } from '../../../utils/tooltip-open-tracking';
-import { dialogCallbacksProp, labelProp, levelProp, variantDialogProp, widthProp } from '../../props';
+import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../props';
 import { BaseWebComponent } from '../base-web-component';
 import type { ResolvedButtonProps } from '../button/resolve-props';
 import { resolveCardCloseButtonProps } from '../card/close-button';
@@ -20,7 +20,7 @@ import { dialogBlockClass, DialogFC } from './component';
 
 /** The configuration of an embedded dialog: the public props of the dialog elements. */
 export type DialogItemProps = {
-	label: LabelPropType;
+	label: LabelLangSegmentsPropType;
 	level?: HeadingLevel;
 	on?: KoliBriDialogEventCallbacks;
 	variant?: ModalVariantPropType;
@@ -136,11 +136,11 @@ export const createDialogItem = (
 
 	return {
 		getFcProps: (props: DialogItemProps): DialogItemFCProps => {
-			let label: LabelPropType = '';
+			let label: LabelLangSegmentsPropType = '';
 			let level: HeadingLevel = 0;
 			let variant = 'blank' as ModalVariantPropType;
 			let width = '100%';
-			labelProp.apply(props.label, (v) => {
+			labelLangSegmentsProp.apply(props.label, (v) => {
 				label = v;
 			});
 			levelProp.apply(props.level ?? 0, (v) => {
@@ -187,7 +187,7 @@ export const createDialogItem = (
 								hasCloser: true,
 								headingId,
 								href: '',
-								label: trimLabel(label),
+								label,
 								level,
 								on: {},
 								refCloseButton: cardCloseButtonRef,
