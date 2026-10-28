@@ -71,7 +71,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 		download: typeof download === 'string' ? download : undefined,
 	};
 
-	if (hideLabel === true && !label) {
+	if (hideLabel === true && trimLabel(label) === '') {
 		devHint(`[KolLink] An aria-label must be set when _hide-label is set.`);
 	}
 
@@ -104,9 +104,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				aria-disabled={disabled ? 'true' : undefined}
 				aria-expanded={ariaExpanded === '' ? undefined : ariaExpanded}
 				aria-owns={ariaOwns || undefined}
-				aria-label={
-					hideLabel && typeof label === 'string' && trimLabel(label) !== '' ? `${label}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined
-				}
+				aria-label={hideLabel && trimLabel(label) !== '' ? `${trimLabel(label)}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined}
 				aria-keyshortcuts={shortKey || undefined}
 				class={linkBem('interactive-element')}
 				{...on}
