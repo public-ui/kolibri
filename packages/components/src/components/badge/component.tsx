@@ -67,7 +67,7 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
+	@Prop() public _icons?: Stringified<KoliBriIconsProp> = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
@@ -87,7 +87,7 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
+	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {

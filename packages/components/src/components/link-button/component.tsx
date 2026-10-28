@@ -57,7 +57,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -67,7 +67,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines the value for the aria-current attribute.
 	 */
-	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType = undefined;
 
 	@Watch('_ariaCurrentValue')
 	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
@@ -77,7 +77,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop() public _ariaControls?: AriaControlsPropType;
+	@Prop() public _ariaControls?: AriaControlsPropType = undefined;
 
 	@Watch('_ariaControls')
 	public watchAriaControls(value?: AriaControlsPropType): void {
@@ -87,7 +87,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType = undefined;
 
 	@Watch('_ariaDescription')
 	public watchAriaDescription(value?: AriaDescriptionPropType): void {
@@ -97,7 +97,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: CustomClassPropType;
+	@Prop() public _customClass?: CustomClassPropType = undefined;
 
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
@@ -117,7 +117,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: DownloadPropType;
+	@Prop() public _download?: DownloadPropType = undefined;
 
 	@Watch('_download')
 	public watchDownload(value?: DownloadPropType): void {
@@ -148,7 +148,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsPropType;
+	@Prop() public _icons?: IconsPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsPropType): void {
@@ -168,7 +168,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label?: LabelWithExpertSlotPropType;
+	@Prop() public _label?: LabelWithExpertSlotPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -178,7 +178,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkOnCallbacksPropType;
+	@Prop() public _on?: LinkOnCallbacksPropType = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: LinkOnCallbacksPropType): void {
@@ -190,7 +190,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	 *
 	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
-	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType = undefined;
 
 	@Watch('_role')
 	public watchRole(): void {
@@ -201,7 +201,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -211,7 +211,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	/**
 	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTargetPropType;
+	@Prop() public _target?: LinkTargetPropType = undefined;
 
 	@Watch('_target')
 	public watchTarget(value?: LinkTargetPropType): void {

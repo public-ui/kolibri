@@ -53,7 +53,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -63,7 +63,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the value for the aria-current attribute.
 	 */
-	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType = undefined;
 
 	@Watch('_ariaCurrentValue')
 	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
@@ -73,7 +73,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop() public _ariaControls?: AriaControlsPropType;
+	@Prop() public _ariaControls?: AriaControlsPropType = undefined;
 
 	@Watch('_ariaControls')
 	public watchAriaControls(value?: AriaControlsPropType): void {
@@ -83,7 +83,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType = undefined;
 
 	@Watch('_ariaDescription')
 	public watchAriaDescription(value?: AriaDescriptionPropType): void {
@@ -93,7 +93,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop() public _ariaExpanded?: AriaExpandedPropType;
+	@Prop() public _ariaExpanded?: AriaExpandedPropType = undefined;
 
 	@Watch('_ariaExpanded')
 	public watchAriaExpanded(value?: AriaExpandedPropType): void {
@@ -113,7 +113,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: DownloadPropType;
+	@Prop() public _download?: DownloadPropType = undefined;
 
 	@Watch('_download')
 	public watchDownload(value?: DownloadPropType): void {
@@ -144,7 +144,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
+	@Prop() public _icons?: Stringified<KoliBriIconsProp> = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
@@ -164,7 +164,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label?: LabelWithExpertSlotPropType;
+	@Prop() public _label?: LabelWithExpertSlotPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -174,7 +174,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkOnCallbacksPropType;
+	@Prop() public _on?: LinkOnCallbacksPropType = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: LinkOnCallbacksPropType): void {
@@ -184,7 +184,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -194,7 +194,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTargetPropType;
+	@Prop() public _target?: LinkTargetPropType = undefined;
 
 	@Watch('_target')
 	public watchTarget(value?: LinkTargetPropType): void {
@@ -214,7 +214,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

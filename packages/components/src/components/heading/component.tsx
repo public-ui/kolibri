@@ -44,7 +44,7 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	/**
 	 * Defines the text of the secondary headline.
 	 */
-	@Prop() public _secondaryHeadline?: SecondaryHeadlinePropType;
+	@Prop() public _secondaryHeadline?: SecondaryHeadlinePropType = undefined;
 
 	@Watch('_secondaryHeadline')
 	public watchSecondaryHeadline(value?: SecondaryHeadlinePropType): void {

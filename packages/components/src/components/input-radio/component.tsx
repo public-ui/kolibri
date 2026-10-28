@@ -93,7 +93,7 @@ export class KolInputRadio
 	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
 	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -144,7 +144,7 @@ export class KolInputRadio
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -164,7 +164,7 @@ export class KolInputRadio
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -174,7 +174,7 @@ export class KolInputRadio
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -184,7 +184,7 @@ export class KolInputRadio
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
-	@Prop() public _on?: InputTypeOnDefault;
+	@Prop() public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -194,7 +194,7 @@ export class KolInputRadio
 	/**
 	 * Options the user can choose from.
 	 */
-	@Prop() public _options?: RadioOptionsPropType;
+	@Prop() public _options?: RadioOptionsPropType = undefined;
 
 	/** The option map keeps its entries while the list is empty. */
 	@Watch('_options')
@@ -232,7 +232,7 @@ export class KolInputRadio
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -279,7 +279,7 @@ export class KolInputRadio
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

@@ -16,8 +16,8 @@ const KOL_BADGE_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'Stringified<PropColor>',
 		required: false,
-		default: "'#000'",
 		doc: 'Defines the backgroundColor and foregroundColor.',
+		default: "'#000'",
 	},
 	_icons: {
 		kind: 'prop',

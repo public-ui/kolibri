@@ -51,7 +51,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: CustomClassPropType;
+	@Prop() public _customClass?: CustomClassPropType = undefined;
 
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
@@ -61,7 +61,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label?: LabelPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {

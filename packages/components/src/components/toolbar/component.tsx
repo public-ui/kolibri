@@ -65,7 +65,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
-	@Prop() public _orientation?: OrientationPropType;
+	@Prop() public _orientation?: OrientationPropType = undefined;
 
 	@Watch('_orientation')
 	public watchOrientation(value?: OrientationPropType): void {

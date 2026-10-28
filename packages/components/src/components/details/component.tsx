@@ -113,7 +113,7 @@ export class KolDetails
 	/**
 	 * Defines the callback functions for the collapsible.
 	 */
-	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
+	@Prop() public _on?: CollapsibleCallbacksPropType<boolean> = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {

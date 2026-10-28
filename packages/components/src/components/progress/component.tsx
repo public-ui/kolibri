@@ -31,7 +31,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label?: LabelPropType;
+	public _label?: LabelPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -56,7 +56,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	 * Defines the unit of the step values (not shown).
 	 */
 	@Prop()
-	public _unit?: UnitPropType;
+	public _unit?: UnitPropType = undefined;
 
 	@Watch('_unit')
 	public watchUnit(value?: UnitPropType): void {
@@ -85,7 +85,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop()
-	public _variant?: ProgressVariantType;
+	public _variant?: ProgressVariantType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: ProgressVariantType): void {

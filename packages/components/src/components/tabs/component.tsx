@@ -106,7 +106,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines which behavior is active.
 	 */
-	@Prop() public _behavior?: TabBehaviorPropType;
+	@Prop() public _behavior?: TabBehaviorPropType = undefined;
 
 	@Watch('_behavior')
 	public watchBehavior(value?: TabBehaviorPropType): void {
@@ -136,7 +136,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines the callback functions for tabs events.
 	 */
-	@Prop() public _on?: KoliBriTabsCallbacks;
+	@Prop() public _on?: KoliBriTabsCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriTabsCallbacks): void {

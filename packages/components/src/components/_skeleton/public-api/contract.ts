@@ -83,7 +83,7 @@ const extractPublicApi = (source: string): ApiMember[] => {
 					kind,
 					type: (match[3] ?? '').trim(),
 					required: match[2] === '!',
-					default: match[4] === undefined ? undefined : match[4].trim(),
+					default: match[4] === undefined || match[4].trim() === 'undefined' ? undefined : match[4].trim(),
 					doc: normalizeDoc(doc),
 				});
 			}

@@ -50,7 +50,7 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	/**
 	 * Defines the modal callback functions.
 	 */
-	@Prop() public _on?: KoliBriDialogEventCallbacks;
+	@Prop() public _on?: KoliBriDialogEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriDialogEventCallbacks): void {

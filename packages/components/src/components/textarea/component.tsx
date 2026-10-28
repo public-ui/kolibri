@@ -116,7 +116,7 @@ export class KolTextarea
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -138,7 +138,7 @@ export class KolTextarea
 	/**
 	 * References an external element by ID that provides accessible details for this textarea.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -189,7 +189,7 @@ export class KolTextarea
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType;
+	@Prop() public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -199,7 +199,7 @@ export class KolTextarea
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -219,7 +219,7 @@ export class KolTextarea
 	/**
 	 * Defines the maximum number of input characters.
 	 */
-	@Prop() public _maxLength?: MaxLengthPropType;
+	@Prop() public _maxLength?: MaxLengthPropType = undefined;
 
 	@Watch('_maxLength')
 	public watchMaxLength(value?: MaxLengthPropType): void {
@@ -252,7 +252,7 @@ export class KolTextarea
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -262,7 +262,7 @@ export class KolTextarea
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -272,7 +272,7 @@ export class KolTextarea
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
-	@Prop() public _on?: InputTypeOnDefault;
+	@Prop() public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -282,7 +282,7 @@ export class KolTextarea
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: PlaceholderPropType;
+	@Prop() public _placeholder?: PlaceholderPropType = undefined;
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
@@ -323,7 +323,7 @@ export class KolTextarea
 	/**
 	 * Maximum number of visible rows of the element.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType;
+	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType = undefined;
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
@@ -338,7 +338,7 @@ export class KolTextarea
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -349,7 +349,7 @@ export class KolTextarea
 	/**
 	 * Defines whether the browser should check the spelling and grammar.
 	 */
-	@Prop() public _spellCheck?: SpellCheckPropType;
+	@Prop() public _spellCheck?: SpellCheckPropType = undefined;
 
 	@Watch('_spellCheck')
 	public watchSpellCheck(value?: SpellCheckPropType): void {
@@ -360,7 +360,7 @@ export class KolTextarea
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -390,7 +390,7 @@ export class KolTextarea
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: StringValuePropType;
+	@Prop({ mutable: true, reflect: true }) public _value?: StringValuePropType = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StringValuePropType): void {
@@ -401,7 +401,7 @@ export class KolTextarea
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

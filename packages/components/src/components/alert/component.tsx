@@ -77,7 +77,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label?: LabelPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -97,7 +97,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines the event callback functions for closing the alert.
 	 */
-	@Prop() public _on?: KoliBriAlertEventCallbacks;
+	@Prop() public _on?: KoliBriAlertEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriAlertEventCallbacks): void {

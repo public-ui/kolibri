@@ -61,7 +61,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Defines the visual orientation of the component.
 	 */
-	@Prop() public _align?: AlignPropType;
+	@Prop() public _align?: AlignPropType = undefined;
 
 	@Watch('_align')
 	public watchAlign(value?: AlignPropType): void {
@@ -101,7 +101,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Specifies the EventCallback function to be called when the drawer is closing.
 	 */
-	@Prop() public _on?: KoliBriModalEventCallbacks;
+	@Prop() public _on?: KoliBriModalEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriModalEventCallbacks): void {
@@ -111,7 +111,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType;
+	@Prop() public _open?: OpenPropType = undefined;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {

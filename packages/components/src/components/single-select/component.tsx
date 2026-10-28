@@ -116,7 +116,7 @@ export class KolSingleSelect
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -130,7 +130,7 @@ export class KolSingleSelect
 	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
 	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -140,7 +140,7 @@ export class KolSingleSelect
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: PlaceholderPropType;
+	@Prop() public _placeholder?: PlaceholderPropType = undefined;
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
@@ -191,7 +191,7 @@ export class KolSingleSelect
 	/**
 	 * Defines the icon classnames (e.g. `icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType;
+	@Prop() public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -201,7 +201,7 @@ export class KolSingleSelect
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -221,7 +221,7 @@ export class KolSingleSelect
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -231,7 +231,7 @@ export class KolSingleSelect
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -241,7 +241,7 @@ export class KolSingleSelect
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
-	@Prop() public _on?: InputTypeOnDefault;
+	@Prop() public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -278,7 +278,7 @@ export class KolSingleSelect
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -290,7 +290,7 @@ export class KolSingleSelect
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -340,7 +340,7 @@ export class KolSingleSelect
 	/**
 	 * Maximum number of visible rows of the element.
 	 */
-	@Prop() public _rows?: RowsPropType;
+	@Prop() public _rows?: RowsPropType = undefined;
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
@@ -350,7 +350,7 @@ export class KolSingleSelect
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

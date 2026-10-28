@@ -91,7 +91,7 @@ export class KolInputCheckbox
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -154,7 +154,7 @@ export class KolInputCheckbox
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: Stringified<InputCheckboxIconsProp>;
+	@Prop() public _icons?: Stringified<InputCheckboxIconsProp> = undefined;
 
 	/** Merges the given icons into the current ones, so the other states keep their icons. */
 	@Watch('_icons')
@@ -165,7 +165,7 @@ export class KolInputCheckbox
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -175,7 +175,7 @@ export class KolInputCheckbox
 	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _indeterminate?: IndeterminatePropType;
+	@Prop({ mutable: true, reflect: true }) public _indeterminate?: IndeterminatePropType = undefined;
 
 	@Watch('_indeterminate')
 	public watchIndeterminate(value?: IndeterminatePropType): void {
@@ -205,7 +205,7 @@ export class KolInputCheckbox
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -215,7 +215,7 @@ export class KolInputCheckbox
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -225,7 +225,7 @@ export class KolInputCheckbox
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
-	@Prop() public _on?: InputTypeOnDefault;
+	@Prop() public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -248,7 +248,7 @@ export class KolInputCheckbox
 	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
 	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -258,7 +258,7 @@ export class KolInputCheckbox
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -270,7 +270,7 @@ export class KolInputCheckbox
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {

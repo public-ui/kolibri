@@ -52,15 +52,15 @@ const KOL_MODAL_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'ModalVariantPropType',
 		required: false,
-		default: "'blank'",
 		doc: 'Defines the variant of the modal.',
+		default: "'blank'",
 	},
 	_width: {
 		kind: 'prop',
 		type: 'WidthPropType',
 		required: false,
-		default: "'100%'",
 		doc: 'Defines the width of the modal. (max-width: 100%)',
+		default: "'100%'",
 	},
 };
 

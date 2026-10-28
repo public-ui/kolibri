@@ -10,15 +10,15 @@ const KOL_KOLIBRI_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'Stringified<PropColor>',
 		required: false,
-		default: "'#003c78'",
 		doc: 'Defines the color of the logo and label.',
+		default: "'#003c78'",
 	},
 	_labeled: {
 		kind: 'prop',
 		type: 'LabeledPropType',
 		required: false,
-		default: 'true',
 		doc: 'Defines whether the component has a label.',
+		default: 'true',
 	},
 };
 

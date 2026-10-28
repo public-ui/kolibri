@@ -27,8 +27,8 @@ const KOL_QUOTE_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'QuoteVariantType',
 		required: false,
-		default: "'inline'",
 		doc: 'Defines which variant should be used for presentation.',
+		default: "'inline'",
 	},
 };
 

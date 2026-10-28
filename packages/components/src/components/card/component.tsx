@@ -55,7 +55,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	/**
 	 * Sets the target URI of the link or citation source.
 	 */
-	@Prop() public _href?: HrefPropType;
+	@Prop() public _href?: HrefPropType = undefined;
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
@@ -85,7 +85,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	/**
 	 * Defines the event callback functions for the component.
 	 */
-	@Prop() public _on?: KoliBriCardEventCallbacks;
+	@Prop() public _on?: KoliBriCardEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriCardEventCallbacks): void {
@@ -95,7 +95,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	/**
 	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTargetPropType;
+	@Prop() public _target?: LinkTargetPropType = undefined;
 
 	@Watch('_target')
 	public watchTarget(value?: LinkTargetPropType): void {

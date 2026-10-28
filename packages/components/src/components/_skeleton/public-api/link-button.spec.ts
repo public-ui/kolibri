@@ -53,8 +53,8 @@ const KOL_LINK_BUTTON_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'DisabledPropType',
 		required: false,
-		default: 'false',
 		doc: 'Makes the element not focusable and ignore all events.',
+		default: 'false',
 	},
 	_download: {
 		kind: 'prop',
@@ -66,8 +66,8 @@ const KOL_LINK_BUTTON_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'HideLabelPropType',
 		required: false,
-		default: 'false',
 		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',
+		default: 'false',
 	},
 	_href: {
 		kind: 'prop',
@@ -85,8 +85,8 @@ const KOL_LINK_BUTTON_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'InlinePropType',
 		required: false,
-		default: 'false',
 		doc: 'Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.',
+		default: 'false',
 	},
 	_label: {
 		kind: 'prop',
@@ -122,15 +122,15 @@ const KOL_LINK_BUTTON_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'TooltipAlignPropType',
 		required: false,
-		default: "'right'",
 		doc: 'Defines where to show the Tooltip preferably: top, right, bottom or left.',
+		default: "'right'",
 	},
 	_variant: {
 		kind: 'prop',
 		type: 'VariantClassNamePropType',
 		required: false,
-		default: "getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal'",
 		doc: 'Defines which variant should be used for presentation.',
+		default: "getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal'",
 	},
 };
 

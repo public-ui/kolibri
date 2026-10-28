@@ -15,8 +15,8 @@ const KOL_HEADING_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'HeadingLevel',
 		required: false,
-		default: '0',
 		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+		default: '0',
 	},
 	_secondaryHeadline: {
 		kind: 'prop',

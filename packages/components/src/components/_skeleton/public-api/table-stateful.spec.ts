@@ -88,8 +88,8 @@ const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'PaginationPositionPropType',
 		required: false,
-		default: "'bottom'",
 		doc: 'Controls the position of the pagination.',
+		default: "'bottom'",
 	},
 	_selection: {
 		kind: 'prop',

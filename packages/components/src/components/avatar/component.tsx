@@ -59,7 +59,7 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	 * Defines the backgroundColor and foregroundColor.
 	 */
 	@Prop()
-	public _color?: string | ColorPair;
+	public _color?: string | ColorPair = undefined;
 
 	@Watch('_color')
 	public watchColor(value?: string | ColorPair): void {
@@ -88,7 +88,7 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop()
-	public _src?: SrcPropType;
+	public _src?: SrcPropType = undefined;
 
 	@Watch('_src')
 	public watchSrc(value?: SrcPropType): void {

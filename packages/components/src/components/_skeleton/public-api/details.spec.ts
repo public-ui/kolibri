@@ -31,8 +31,8 @@ const KOL_DETAILS_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'DisabledPropType',
 		required: false,
-		default: 'false',
 		doc: 'Makes the element not focusable and ignore all events.',
+		default: 'false',
 	},
 	_label: {
 		kind: 'prop',
@@ -44,8 +44,8 @@ const KOL_DETAILS_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'HeadingLevel',
 		required: false,
-		default: '0',
 		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+		default: '0',
 	},
 	_on: {
 		kind: 'prop',
@@ -57,8 +57,8 @@ const KOL_DETAILS_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'OpenPropType',
 		required: false,
-		default: 'false',
 		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',
+		default: 'false',
 	},
 };
 

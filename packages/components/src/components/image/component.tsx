@@ -38,7 +38,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	 * Defines the loading mode for the image.
 	 */
 	@Prop()
-	public _loading?: LoadingType;
+	public _loading?: LoadingType = undefined;
 
 	@Watch('_loading')
 	public watchLoading(value?: LoadingType): void {
@@ -49,7 +49,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	 * Defines the image sizes for different screen resolutions, supporting _srcset.
 	 */
 	@Prop()
-	public _sizes?: SizesPropType;
+	public _sizes?: SizesPropType = undefined;
 
 	@Watch('_sizes')
 	public watchSizes(value?: SizesPropType): void {
@@ -71,7 +71,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	 * Sets a list of source URLs with widths of the images.
 	 */
 	@Prop()
-	public _srcset?: SrcsetPropType;
+	public _srcset?: SrcsetPropType = undefined;
 
 	@Watch('_srcset')
 	public watchSrcset(value?: SrcsetPropType): void {
@@ -82,7 +82,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	 * Defines callbacks for image load events (`onError`, `onLoad`).
 	 */
 	@Prop()
-	public _on?: KoliBriImageEventCallbacks;
+	public _on?: KoliBriImageEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriImageEventCallbacks): void {

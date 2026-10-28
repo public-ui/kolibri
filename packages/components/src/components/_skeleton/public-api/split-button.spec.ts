@@ -71,15 +71,15 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'DisabledPropType',
 		required: false,
-		default: 'false',
 		doc: 'Makes the element not focusable and ignore all events.',
+		default: 'false',
 	},
 	_hideLabel: {
 		kind: 'prop',
 		type: 'HideLabelPropType',
 		required: false,
-		default: 'false',
 		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it.',
+		default: 'false',
 	},
 	_icons: {
 		kind: 'prop',
@@ -127,15 +127,15 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'TooltipAlignPropType',
 		required: false,
-		default: "'top'",
 		doc: 'Defines where to show the Tooltip preferably: top, right, bottom or left.',
+		default: "'top'",
 	},
 	_type: {
 		kind: 'prop',
 		type: 'ButtonTypePropType',
 		required: false,
-		default: "'button'",
 		doc: 'Defines either the type of the component or of the components interactive element.',
+		default: "'button'",
 	},
 	_value: {
 		kind: 'prop',
@@ -147,8 +147,8 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'VariantClassNamePropType',
 		required: false,
-		default: "'normal'",
 		doc: 'Defines which variant should be used for presentation.',
+		default: "'normal'",
 	},
 };
 
