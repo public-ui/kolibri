@@ -104,9 +104,9 @@ export type LabelWithExpertSlotPropType = LabelLangSegmentsPropType | '';
  * - version -> version text
  * - etc.
  *
- * The label is often a mandatory attribute. If the value of the label is false,
- * the expert-slot will be used. Otherwise, the value of the label must be a string
- * and the expert-slot will be ignored.
+ * The label is often a mandatory attribute. If the value of the label is the empty
+ * string, the expert-slot will be used. Otherwise, the value of the label must be a
+ * valid label string or a list of label segments and the expert-slot will be ignored.
  */
 export type PropLabel = {
 	label: LabelPropType;
