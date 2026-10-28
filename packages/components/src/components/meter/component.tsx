@@ -8,7 +8,7 @@ import { MeterFC } from '../../internal/functional-components/meter/component';
 import {
 	clampedNumberValueProp,
 	highProp,
-	labelProp,
+	labelLangSegmentsProp,
 	lowProp,
 	maxProp,
 	minProp,
@@ -50,7 +50,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
@@ -160,7 +160,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 		this.initRenderProps(meterPropsConfig);
 
 		this.watchHigh(this._high);
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v));
 		this.watchLow(this._low);
 		maxProp.apply(this._max, (v) => {
 			this.setRenderProp('max', v);

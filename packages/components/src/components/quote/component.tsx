@@ -5,7 +5,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { QuoteApi } from '../../internal/functional-components/quote/api';
 import { quotePropsConfig } from '../../internal/functional-components/quote/api';
 import { QuoteFC } from '../../internal/functional-components/quote/component';
-import { hrefProp, labelProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../internal/props';
+import { hrefProp, labelLangSegmentsProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../internal/props';
 import type { LabelLangSegmentsPropType } from '../../schema';
 
 /**
@@ -38,7 +38,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
@@ -67,7 +67,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 		this.initRenderProps(quotePropsConfig);
 
 		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v));
 		quoteProp.apply(this._quote, (v) => this.setRenderProp('quote', v));
 		variantQuoteProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
 	}

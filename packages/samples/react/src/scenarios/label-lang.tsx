@@ -8,6 +8,7 @@ import {
 	KolButton,
 	KolButtonLink,
 	KolCard,
+	KolDetails,
 	KolHeading,
 	KolInputCheckbox,
 	KolInputText,
@@ -31,22 +32,22 @@ import type { KoliBriTableHeaders } from '@public-ui/components';
 import type { FC } from 'react';
 
 export const LabelLang: FC = () => {
-	const defaultLabel = [{ text: 'Partly english', lang: 'en' }, { text: 'Label' }];
+	const defaultLabel = (component: string) => [{ text: component }, { text: 'partly english', lang: 'en' }, { text: ' Label', lang: 'de' }];
 
 	const navLinks = [
 		{
-			_label: defaultLabel,
+			_label: defaultLabel('Link '),
 			_href: '#/',
 		},
 		{
-			_label: defaultLabel,
+			_label: defaultLabel('Link '),
 			_href: '#/',
 		},
 	];
 
 	const tabs = [
 		{
-			_label: defaultLabel,
+			_label: defaultLabel('Tab '),
 		},
 		{
 			_label: 'Second Tab',
@@ -65,60 +66,65 @@ export const LabelLang: FC = () => {
 
 			<div className="grid gap-4">
 				<SampleBlock id="label-lang-accordion">
-					<KolAccordion _label={defaultLabel}>
+					<KolAccordion _label={defaultLabel('Accordion ')}>
 						<p>Contents Accordion</p>
 					</KolAccordion>
 				</SampleBlock>
 				<SampleBlock id="label-lang-alert">
-					<KolAlert _label={defaultLabel}>This is the text of the alert.</KolAlert>
+					<KolAlert _label={defaultLabel('Alert ')}>This is the text of the alert.</KolAlert>
 				</SampleBlock>
 				<SampleBlock id="label-lang-badge">
-					<KolBadge _label={defaultLabel}></KolBadge>
+					<KolBadge _label={defaultLabel('Badge ')}></KolBadge>
 				</SampleBlock>
 				<SampleBlock id="label-lang-breadcrumb">
 					<KolBreadcrumb _label="Breadcrumb" _links={navLinks} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-button">
-					<KolButton _label={defaultLabel} />
+					<KolButton _label={defaultLabel('Button ')} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-button-link">
-					<KolButtonLink _label={defaultLabel} />
+					<KolButtonLink _label={defaultLabel('ButtonLink ')} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-card">
-					<KolCard _label={defaultLabel}>Inhaltsbereich</KolCard>
+					<KolCard _label={defaultLabel('Card ')}>Inhaltsbereich</KolCard>
+				</SampleBlock>
+				<SampleBlock id="label-lang-details">
+					<KolDetails _label={defaultLabel('Details ')}>
+						<p>Contents Details</p>
+					</KolDetails>
 				</SampleBlock>
 				<SampleBlock id="label-lang-heading">
-					<KolHeading _label={defaultLabel} _level={1} />
+					<KolHeading _label={defaultLabel('Heading ')} _level={1} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-checkbox">
-					<KolInputCheckbox _label={defaultLabel} />
+					<KolInputCheckbox _label={defaultLabel('Checkbox')} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-input">
-					<KolInputText _label={defaultLabel} />
+					<KolInputText _label={defaultLabel('Input ')} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-link">
-					<KolLink _label={defaultLabel} _href="" />
+					<KolLink _label={defaultLabel('Link ')} _href="" />
 				</SampleBlock>
 				<SampleBlock id="label-lang-link-button">
-					<KolLinkButton _label={defaultLabel} _href="" />
+					<KolLinkButton _label={defaultLabel('LinkButton ')} _href="" />
 				</SampleBlock>
 				<SampleBlock id="label-lang-meter">
-					<KolMeter _label={defaultLabel} _max={1024} _min={0} _unit="MB" _value={512} />
+					<KolMeter _label={defaultLabel('Meter ')} _max={1024} _min={0} _unit="MB" _value={512} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-nav">
 					<KolNav _label="Navi" _links={navLinks} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-popover">
-					<KolPopoverButton _label={defaultLabel}>Text</KolPopoverButton>
+					<KolPopoverButton _label={defaultLabel('Popover ')}>Text</KolPopoverButton>
 				</SampleBlock>
 				<SampleBlock id="label-lang-progress">
-					<KolProgress _label={defaultLabel} _max={100} _value={45} _variant="bar" />
+					<KolProgress _label={defaultLabel('Progress ')} _max={100} _value={45} _variant="bar" />
 				</SampleBlock>
 				<SampleBlock id="label-lang-quote">
-					<KolQuote _href="https://public-ui.github.io/docs" _label={defaultLabel} _quote="Quote." _variant="inline" />
+					<KolQuote _href="https://public-ui.github.io/docs" _label={defaultLabel('Quote ')} _quote="Quote." _variant="inline" />
 				</SampleBlock>
 				<SampleBlock id="label-lang-table">
-					<KolTableStateful _label={defaultLabel} _data={[]} _headers={HEADER}></KolTableStateful>
+					<KolTableStateful _label={defaultLabel('Table ')} _data={[]} _headers={HEADER}></KolTableStateful>
 				</SampleBlock>
 				<SampleBlock id="label-lang-tabs">
 					<KolTabs _tabs={tabs} _label="Regular tabs"></KolTabs>
@@ -129,11 +135,11 @@ export const LabelLang: FC = () => {
 						_items={[
 							{
 								type: 'button',
-								_label: defaultLabel,
+								_label: defaultLabel('Button '),
 							},
 							{
 								type: 'link',
-								_label: defaultLabel,
+								_label: defaultLabel('Link '),
 								_href: '#',
 							},
 						]}
@@ -141,7 +147,7 @@ export const LabelLang: FC = () => {
 				</SampleBlock>
 				<SampleBlock id="label-lang-tree">
 					<KolTree _label="Tree">
-						<KolTreeItem _label={defaultLabel} _href="#/" />
+						<KolTreeItem _label={defaultLabel('TreeItem ')} _href="#/" />
 					</KolTree>
 				</SampleBlock>
 			</div>

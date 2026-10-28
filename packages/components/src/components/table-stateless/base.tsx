@@ -17,7 +17,7 @@ import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-co
 import {
 	fixedColsProp,
 	hasSettingsMenuProp,
-	labelProp,
+	labelLangSegmentsProp,
 	tableCallbacksProp,
 	tableDataFootProp,
 	tableDataProp,
@@ -167,7 +167,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	}
 
 	protected applyLabel(value?: LabelLangSegmentsPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	protected applyLoading(value?: boolean): void {

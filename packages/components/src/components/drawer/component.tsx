@@ -10,7 +10,7 @@ import { drawerPropsConfig } from '../../internal/functional-components/drawer/a
 import { DrawerFC } from '../../internal/functional-components/drawer/component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { alignProp, drawerCallbacksProp, hasCloserProp, labelProp, levelProp, openProp } from '../../internal/props';
+import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
 import type { AlignPropType, DrawerProps, HeadingLevel, KoliBriModalEventCallbacks, LabelLangSegmentsPropType, OpenPropType } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
@@ -86,7 +86,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**

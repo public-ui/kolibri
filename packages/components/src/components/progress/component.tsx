@@ -5,7 +5,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { ProgressApi } from '../../internal/functional-components/progress/api';
 import { progressPropsConfig } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
-import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
+import { clampedNumberValueProp, labelLangSegmentsProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
 import type { LabelLangSegmentsPropType } from '../../schema';
 
 /**
@@ -35,7 +35,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
@@ -95,7 +95,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	public componentWillLoad(): void {
 		this.initRenderProps(progressPropsConfig);
 
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v));
 		maxProp.apply(this._max, (v) => {
 			this.setRenderProp('max', v);
 			this.watchValue(this.getRawProp('value'));

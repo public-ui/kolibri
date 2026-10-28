@@ -9,7 +9,7 @@ import { CollapsibleFC } from '../../internal/functional-components/collapsible/
 import { createCollapsibleOpenAnimation, DEFAULT_COLLAPSIBLE_TRANSITION_MS } from '../../internal/functional-components/collapsible/open-animation';
 import { createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/toggle-handler';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { collapsibleCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../internal/props';
+import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
 import type {
 	ClickableElement,
 	CollapsibleCallbacksPropType,
@@ -95,7 +95,7 @@ export class KolDetails
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**

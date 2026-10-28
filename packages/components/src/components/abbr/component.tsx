@@ -6,7 +6,7 @@ import { abbrPropsConfig } from '../../internal/functional-components/abbr/api';
 import { AbbrFC } from '../../internal/functional-components/abbr/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { labelProp } from '../../internal/props';
+import { labelLangSegmentsProp } from '../../internal/props';
 import type { LabelLangSegmentsPropType } from '../../schema';
 
 /**
@@ -30,7 +30,7 @@ export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentIn
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	public componentWillLoad(): void {
