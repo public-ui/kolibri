@@ -7,7 +7,7 @@ import type { VersionApi } from '../../internal/functional-components/version/ap
 import { versionPropsConfig } from '../../internal/functional-components/version/api';
 import { VersionFC } from '../../internal/functional-components/version/component';
 import { labelProp } from '../../internal/props';
-import type { ColorPair, KoliBriIconsProp, LabelWithExpertSlotPropType, VersionProps } from '../../schema';
+import type { ColorPair, KoliBriIconsProp, LabelPropType, VersionProps } from '../../schema';
 import { createContrastColorPair } from '../../schema';
 
 /**
@@ -39,10 +39,10 @@ export class KolVersion extends BaseWebComponent<VersionApi> implements VersionP
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+	public watchLabel(value?: LabelPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

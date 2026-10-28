@@ -10,16 +10,7 @@ import { resolveButtonProps } from '../../internal/functional-components/button/
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../internal/props';
-import type {
-	BadgeProps,
-	FocusableElement,
-	InternalButtonProps,
-	KolFocusOptions,
-	KoliBriIconsProp,
-	LabelWithExpertSlotPropType,
-	PropColor,
-	Stringified,
-} from '../../schema';
+import type { BadgeProps, FocusableElement, InternalButtonProps, KolFocusOptions, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
 import { featureHint, objectObjectHandler, setEventTarget } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
@@ -86,10 +77,10 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+	public watchLabel(value?: LabelPropType): void {
 		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
