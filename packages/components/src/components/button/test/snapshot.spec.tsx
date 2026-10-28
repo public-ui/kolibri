@@ -25,5 +25,6 @@ executeSnapshotTests<InternalButtonProps>(
 
 		{ _label: 'Label', _ariaDescription: 'Aria Description' },
 		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }], _hideLabel: true },
 	],
 );
