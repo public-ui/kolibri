@@ -78,7 +78,7 @@ export type PropDefinitionOptions<T = unknown> = {
 export type PropDefinition<TInternal, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = {
 	readonly __phantomProp__?: P;
 	readonly propName: string;
-	getDefaultValue(): TInternal;
+	getDefaultValue(): TInternal | undefined;
 	normalize: (value: unknown) => TInternal | never;
 	validate: (value: TInternal) => boolean;
 	apply: (value: unknown, callback: (normalized: TInternal) => void, required?: boolean) => void;
@@ -86,7 +86,12 @@ export type PropDefinition<TInternal, P extends Prop<string, unknown, unknown> =
 
 export function createPropDefinition<P extends Prop<string, unknown, unknown>, K extends ExtractPropKey<P> = ExtractPropKey<P>>(
 	propName: K,
-	defaultValue: InternalPropValue<P>,
+	/**
+	 * The fallback applied when a value is undefined or null. Pass undefined deliberately for
+	 * props without a meaningful fallback: unset values then flow through as "not set" — there is
+	 * no fallback to validate, requiredness still warns via the config slot.
+	 */
+	defaultValue: InternalPropValue<P> | undefined,
 	normalize: (value: unknown) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>) => boolean = () => true,
 	options?: PropDefinitionOptions<InternalPropValue<P>>,
@@ -101,7 +106,14 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 				if (required) {
 					devWarning(`The required property '_${propName}' did not receive a value. The default value is used instead.`);
 				}
-				const fallback = this.getDefaultValue();
+				if (defaultValue === undefined) {
+					// No default means "not set": nothing to validate, the callback receives the unset
+					// state. The cast is the single place bridging the unset state into the typed
+					// callback — the store's honest "unset" typing is the concern of the config (#11435).
+					callback(undefined as unknown as InternalPropValue<P>);
+					return;
+				}
+				const fallback = this.getDefaultValue() as InternalPropValue<P>; // cloneDeep for objects; undefined is ruled out above
 				if (this.validate(fallback)) {
 					callback(fallback);
 				} else {
@@ -128,7 +140,7 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 export type DependentPropDefinition<TInternal, TDeps, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = {
 	readonly __phantomProp__?: P;
 	readonly propName: string;
-	getDefaultValue(): TInternal;
+	getDefaultValue(): TInternal | undefined;
 	normalize: (value: unknown, deps: TDeps) => TInternal | never;
 	validate: (value: TInternal, deps: TDeps) => boolean;
 	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps) => void;
@@ -136,7 +148,7 @@ export type DependentPropDefinition<TInternal, TDeps, P extends Prop<string, unk
 
 export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = unknown>(
 	propName: ExtractPropKey<P>,
-	defaultValue: InternalPropValue<P>,
+	defaultValue: InternalPropValue<P> | undefined,
 	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>, deps: TDeps) => boolean = () => true,
 	options?: PropDefinitionOptions<InternalPropValue<P>>,
@@ -148,7 +160,11 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 		validate,
 		apply(value, callback, deps: TDeps) {
 			if (value === undefined || value === null) {
-				const fallback = this.getDefaultValue();
+				if (defaultValue === undefined) {
+					callback(undefined as unknown as InternalPropValue<P>);
+					return;
+				}
+				const fallback = this.getDefaultValue() as InternalPropValue<P>; // cloneDeep for objects; undefined is ruled out above
 				if (this.validate(fallback, deps)) {
 					callback(fallback);
 				} else {

@@ -13,4 +13,4 @@ import { normalizeString } from './helpers/normalizers';
  */
 export type AcceptProp = SimpleProp<'accept', AcceptPropType>;
 // The default is `undefined`: the native attribute is only rendered when file types are set.
-export const acceptProp = createPropDefinition<AcceptProp>('accept', undefined as unknown as string, normalizeString);
+export const acceptProp = createPropDefinition<AcceptProp>('accept', undefined, normalizeString);

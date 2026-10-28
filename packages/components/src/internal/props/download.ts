@@ -8,4 +8,4 @@ export type DownloadProp = SimpleProp<'download', DownloadPropType>;
 // from "explicitly empty": `download` is a presence attribute, so `_download=""` must render as
 // `download=""` (download without a suggested filename) while an unset `_download` must not
 // render the attribute at all.
-export const downloadProp = createPropDefinition<DownloadProp>('download', undefined as unknown as string, normalizeString);
+export const downloadProp = createPropDefinition<DownloadProp>('download', undefined, normalizeString);

@@ -29,7 +29,7 @@ describe('createPropDefinition', () => {
 			const def = createPropDefinition<MyProp>('myProp', { nested: 'original' }, (v) => v as { nested: string });
 
 			// Mutate the returned default value
-			def.getDefaultValue().nested = 'mutated';
+			def.getDefaultValue()!.nested = 'mutated';
 
 			// The stored default must remain unaffected
 			expect(def.getDefaultValue()).toEqual({ nested: 'original' });
@@ -150,7 +150,7 @@ describe('createDependentPropDefinition', () => {
 			const def = createDependentPropDefinition<MyProp>('myProp', { nested: 'original' }, (v) => v as { nested: string });
 
 			// Mutate the returned default value
-			def.getDefaultValue().nested = 'mutated';
+			def.getDefaultValue()!.nested = 'mutated';
 
 			// The stored default must remain unaffected
 			expect(def.getDefaultValue()).toEqual({ nested: 'original' });

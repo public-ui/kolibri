@@ -13,4 +13,4 @@ import { normalizeString } from './helpers/normalizers';
 export type SyncValueBySelectorProp = SimpleProp<'syncValueBySelector', SyncValueBySelectorPropType>;
 // The default is `undefined` (not `''` like other string props): an empty string is not a valid
 // selector, so "not set" must stay distinguishable and must not reach `document.querySelector`.
-export const syncValueBySelectorProp = createPropDefinition<SyncValueBySelectorProp>('syncValueBySelector', undefined as unknown as string, normalizeString);
+export const syncValueBySelectorProp = createPropDefinition<SyncValueBySelectorProp>('syncValueBySelector', undefined, normalizeString);

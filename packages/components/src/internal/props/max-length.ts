@@ -15,9 +15,4 @@ import { normalizeNumber } from './helpers/normalizers';
 export type MaxLengthProp = SimpleProp<'maxLength', MaxLengthPropType>;
 // The default is `undefined`: without a maximum there is no limit and no character limit hint. The
 // validation also runs on the default, so it accepts `undefined`.
-export const maxLengthProp = createPropDefinition<MaxLengthProp>(
-	'maxLength',
-	undefined as unknown as number,
-	normalizeNumber,
-	(value) => value === undefined || value >= 0,
-);
+export const maxLengthProp = createPropDefinition<MaxLengthProp>('maxLength', undefined, normalizeNumber, (value) => value >= 0);

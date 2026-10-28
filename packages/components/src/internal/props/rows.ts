@@ -12,6 +12,5 @@ import { normalizeNumber } from './helpers/normalizers';
  * @see https://html.spec.whatwg.org/multipage/form-elements.html#attr-textarea-rows
  */
 export type RowsProp = SimpleProp<'rows', RowsPropType>;
-// The default is `undefined`: without a value the native attribute is not rendered. The validation
-// also runs on the default, so it accepts `undefined`.
-export const rowsProp = createPropDefinition<RowsProp>('rows', undefined as unknown as number, normalizeNumber, (value) => value === undefined || value >= 1);
+// Without a value ('not set', no default) the native attribute is not rendered.
+export const rowsProp = createPropDefinition<RowsProp>('rows', undefined, normalizeNumber, (value) => value >= 1);

@@ -14,4 +14,4 @@ import { normalizeBoolean } from './helpers/normalizers';
 export type SpellCheckProp = SimpleProp<'spellCheck', SpellCheckPropType>;
 // The default is `undefined`: without a value the native attribute is not rendered and the
 // browser decides.
-export const spellCheckProp = createPropDefinition<SpellCheckProp>('spellCheck', undefined as unknown as boolean, normalizeBoolean);
+export const spellCheckProp = createPropDefinition<SpellCheckProp>('spellCheck', undefined, normalizeBoolean);

@@ -13,4 +13,4 @@ import { normalizeString } from './helpers/normalizers';
  */
 export type PlaceholderProp = SimpleProp<'placeholder', PlaceholderPropType>;
 // The default is `undefined`: the native attribute is only rendered when a placeholder is set.
-export const placeholderProp = createPropDefinition<PlaceholderProp>('placeholder', undefined as unknown as string, normalizeString);
+export const placeholderProp = createPropDefinition<PlaceholderProp>('placeholder', undefined, normalizeString);

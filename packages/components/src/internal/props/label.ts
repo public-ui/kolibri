@@ -28,6 +28,6 @@ import { labelHints } from './hints/label-hints';
  * @see https://www.w3.org/TR/accname-1.2/
  */
 export type LabelProp = SimpleProp<'label', LabelPropType>;
-export const labelProp = createPropDefinition<LabelProp>('label', undefined as unknown as LabelPropType, normalizeString, isValidLabel, {
+export const labelProp = createPropDefinition<LabelProp>('label', undefined, normalizeString, isValidLabel, {
 	hints: labelHints,
 });

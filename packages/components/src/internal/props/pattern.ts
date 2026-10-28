@@ -13,4 +13,4 @@ import { normalizeString } from './helpers/normalizers';
  */
 export type PatternProp = SimpleProp<'pattern', PatternPropType>;
 // The default is `undefined`: the native attribute is only rendered when a pattern is set.
-export const patternProp = createPropDefinition<PatternProp>('pattern', undefined as unknown as string, normalizeString);
+export const patternProp = createPropDefinition<PatternProp>('pattern', undefined, normalizeString);
