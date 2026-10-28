@@ -1,6 +1,6 @@
 ---
 name: issue-bewerten
-description: Sucht das älteste offene GitHub-Issue im KoliBri-Repo, das nicht das Label `icebox` trägt, prüft es gegen den heutigen Stand von Code, Doku, PRs und anderen Issues auf Gültigkeit und gibt eine begründete Empfehlung (umsetzen, Scope anpassen, icebox, schließen, klären). Nutze diesen Skill immer, wenn der Nutzer Backlog-Pflege, Issue-Triage oder das Aufräumen alter Issues angeht – auch bei Formulierungen wie "nimm dir das älteste Issue vor", "ist das alte Ticket noch aktuell", "Backlog-Hygiene", "welches Issue liegt am längsten rum", "lohnt sich das noch" oder "nächstes Issue triagieren".
+description: Sucht das älteste offene GitHub-Issue im KoliBri-Repo, dessen Issue-Feld `Triage` nicht `Icebox` ist, prüft es gegen den heutigen Stand von Code, Doku, PRs und anderen Issues auf Gültigkeit und gibt eine begründete Empfehlung (umsetzen, Scope anpassen, icebox, schließen, klären). Nutze diesen Skill immer, wenn der Nutzer Backlog-Pflege, Issue-Triage oder das Aufräumen alter Issues angeht – auch bei Formulierungen wie "nimm dir das älteste Issue vor", "ist das alte Ticket noch aktuell", "Backlog-Hygiene", "welches Issue liegt am längsten rum", "lohnt sich das noch" oder "nächstes Issue triagieren".
 ---
 
 # Ältestes Issue bewerten
@@ -8,24 +8,27 @@ description: Sucht das älteste offene GitHub-Issue im KoliBri-Repo, das nicht d
 Der Backlog von KoliBri enthält Issues aus mehreren Major-Versionen. Viele alte Issues sind inzwischen
 erledigt, überholt oder nie priorisiert worden – sie verstopfen die Liste und kosten bei jeder Sichtung
 Aufmerksamkeit. Dieser Skill arbeitet den Backlog von hinten ab: **immer das älteste offene Issue ohne
-`icebox`**, eins pro Aufruf, mit einer klaren Empfehlung.
+`Triage = Icebox`**, eins pro Aufruf, mit einer klaren Empfehlung.
 
 Das Ergebnis ist **eine Empfehlung im Chat**. Der Skill ändert am Issue nichts von selbst (kein
-Kommentar, kein Label, kein Schließen) – das entscheidet der Nutzer. Erst die Folgeaktion (icebox setzen,
+Kommentar, kein Feldwert, kein Schließen) – das entscheidet der Nutzer. Erst die Folgeaktion (Icebox setzen,
 schließen, umsetzen) sorgt dafür, dass beim nächsten Aufruf ein anderes Issue drankommt; deshalb am Ende
 die passende Aktion anbieten.
 
 ## 1. Issue finden
 
 ```bash
+ICEBOX=$(gh issue list --repo public-ui/kolibri --state open --search "field.Triage:Icebox" --limit 500 --json number --jq 'map(.number)')
 gh api "repos/public-ui/kolibri/issues?state=open&sort=created&direction=asc&per_page=100" --paginate \
-  --jq '.[] | select(.pull_request == null)
-        | select([.labels[].name] | index("icebox") | not)
+  | jq -r --argjson icebox "$ICEBOX" '.[] | select(.pull_request == null)
+        | select([.number] | inside($icebox) | not)
         | select((.sub_issues_summary.total // 0) == (.sub_issues_summary.completed // 0))
         | "#\(.number) · \(.created_at[:10]) · \(.title)"' | head -n 1
 ```
 
-- Das Label heißt exakt `icebox` (klein geschrieben).
+- Der Marker „Icebox" ist der Wert `Icebox` des Org-Issue-Felds `Triage` (nur innerhalb der Organisation
+  sichtbar). Die REST-Liste liefert keine Feldwerte, deshalb kommt die Menge der Icebox-Issues aus der
+  Suche `field.Triage:Icebox`.
 - **Issues mit offenen Sub-Issues überspringen.** Ein solches Issue ist der Rahmen für Arbeit, die gerade
   in den Sub-Issues läuft, und bleibt offen, bis diese erledigt sind – auch wenn sein eigener Inhalt
   entschieden oder umgesetzt wirkt. Bewertet werden stattdessen die Sub-Issues, wenn sie an der Reihe
@@ -166,13 +169,20 @@ Im Chat, auf Deutsch, in dieser Struktur:
 
 ### Vorgeschlagene Folgeaktion
 
-<z. B. „Label `icebox` setzen“, „Schließen mit Kommentar: …“, „Scope im Issue aktualisieren“>
+<z. B. „`Triage` auf `Icebox` setzen“, „Schließen mit Kommentar: …“, „Scope im Issue aktualisieren“>
 ```
 
 Danach fragen, ob die vorgeschlagene Folgeaktion ausgeführt werden soll. Erst bei ausdrücklicher
-Zustimmung handeln (Kommentar posten, Label setzen, Issue schließen) – das ist nach außen sichtbar und
+Zustimmung handeln (Kommentar posten, Feldwert setzen, Issue schließen) – das ist nach außen sichtbar und
 betrifft ein öffentliches Repo. Einen Kommentar am Issue auf Deutsch oder in der Sprache des Issues
 verfassen und vor dem Posten zeigen.
+
+Den Feldwert `Triage` setzen die Skills über GraphQL (Feld-ID `IFSS_kgDOAu3I4g`, Option `Icebox`
+`IFSSO_kgDOBSCwRg`; die Issue-ID liefert `gh issue view <NR> --json id`):
+
+```bash
+gh api graphql -f query='mutation($i:ID!){ setIssueFieldValue(input:{issueId:$i,issueFields:[{fieldId:"IFSS_kgDOAu3I4g",singleSelectOptionId:"IFSSO_kgDOBSCwRg"}]}){ clientMutationId } }' -f i=<ISSUE_ID>
+```
 
 Ein Kommentarentwurf muss für sich stehen, auch für Leser:innen ohne diesen Chat-Kontext: Sätze wie
 „Danke für die erneute Analyse“ setzen voraus, dass klar ist, wer/was gemeint ist. Lieber konkret
