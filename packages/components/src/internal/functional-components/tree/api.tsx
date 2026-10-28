@@ -5,8 +5,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 /**
  * Props configuration for the tree component.
  *
- * `labelProp`: the label is an accessible name without an expert slot. The unified validation
- * (at least 2 characters, numbers-only labels exempt) covers the predecessor's accepted values.
+ * `labelProp`: the label is an accessible name without an expert slot.
  */
 export const treePropsConfig = {
 	required: [labelProp],

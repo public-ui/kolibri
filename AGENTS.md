@@ -512,6 +512,17 @@ We encourage inline code documentation (JSDoc in TypeScript/TSX, comments in SCS
 - **Document what the code cannot say itself**: the purpose of public API (`@Prop`, `@Method`, `@Event`, exported functions and types), constraints, a non-obvious reason (the "why") and known limitations.
 - **Do not repeat the code**: no comment that restates a name, a type or the next line. The TypeScript signature is the source of truth, so no `@param {string}` or `@returns {void}` type annotations.
 - **Describe the present and the future, never the past**: state what the code is and does and, where relevant, where it is heading (`@deprecated` with its replacement, a `TODO` with an issue link). Do not write history such as "previously", "changed to", "fixed", "new:", and do not refer to the diff, the pull request or a predecessor implementation. History belongs in the commit message, the pull request and the changelog. If an earlier state still matters, state the constraint that follows from it today.
+- **State the rule, not its origin**: a comment describes the current behaviour, never justifies it against a former mistake or an alternative. "The predecessor accepted X", "keeps Y valid that Z would have rejected" and "X, not X" phrasings are history dressed as reasoning — the reader needs the rule, not the deliberation.
+
+  ```ts
+  // ❌ Bad: justifies the present against a past mistake and an alternative.
+  // `labelProp`, not `labelWithExpertSlotProp`: the predecessor's validateLabel accepted any
+  // string; labelProp would reject one-character labels.
+
+  // ✅ Good: the rule, in present tense.
+  // The label names a landmark without an expert slot.
+  ```
+
 - **Write for human and AI readers alike**: clear, easy to follow and free of contradictions. One statement per fact, terms named exactly as in the code, no vague wording ("maybe", "somehow", "for now"). A comment never contradicts the code, another comment or the documentation. Update or delete a comment together with the code it describes, and link the authoritative document instead of copying it.
 - **Published API documentation stays stable**: the JSDoc of public `@Prop`, `@Method` and `@Event` members is published (`custom-elements.json`, `docs-vscode`, adapter IntelliSense). Refactorings and migrations keep it unchanged (see [Public API Contract](packages/components/src/components/_skeleton/ARC42.md#public-api-contract-migration-parity)); rewording it is a change of its own.
 

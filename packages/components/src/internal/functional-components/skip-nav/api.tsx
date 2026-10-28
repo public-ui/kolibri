@@ -6,8 +6,7 @@ import type { SkipNavLinkItem } from './link-item';
  * Props configuration for the skip-nav component.
  *
  * Both props are required. Notes on prop choices:
- * - `labelProp`: the label names a landmark without an expert slot. The unified validation
- *   (at least 2 characters, numbers-only labels exempt) covers the predecessor's accepted values.
+ * - `labelProp`: the label names a landmark without an expert slot.
  * - `skipNavLinksProp`: `Stringified<LinkProps[]>` in, parsed array out, every entry
  *   an object with a string `_href` or `_label`, and the Millersche Zahl hint (>7 entries).
  */

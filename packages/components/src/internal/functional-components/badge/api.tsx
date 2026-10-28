@@ -6,9 +6,8 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * Props configuration for the badge component.
  *
  * Why these prop definitions:
- * - `labelProp`, not `labelWithExpertSlotProp`: the badge has no expert slot. Its numbers-only
- *   exemption keeps single-digit counters ("1") valid, and a required non-empty label matches the
- *   badge showing a value.
+ * - `labelProp`: the badge has no expert slot; single-digit counters ("1") are valid through
+ *   the numbers-only exemption.
  * - `spanIconsProp`, not `iconsProp`: icons are `KoliBriIconsProp` — a string or a per-direction
  *   object, not a plain icon class string.
  * - `smartButtonProp` has no meaningful default: the web component clears the render prop when no

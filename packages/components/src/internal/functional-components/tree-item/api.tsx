@@ -6,8 +6,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * Props configuration for the tree item component.
  *
  * Notes on prop choices:
- * - `labelProp`: the label is an accessible name without an expert slot. The unified validation
- *   (at least 2 characters, numbers-only labels exempt) covers the predecessor's accepted values.
+ * - `labelProp`: the label is an accessible name without an expert slot.
  * - `_open` is not a render prop: `expand()` and `collapse()` switch it from the inside, so the
  *   normalized value lives in the reactive `open` state (see `States`). The `_open` watcher still
  *   routes every external value through `openProp`.

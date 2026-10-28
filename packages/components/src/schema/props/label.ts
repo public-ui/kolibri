@@ -117,7 +117,7 @@ export const validateLabel = (component: Generic.Element.Component, value?: Labe
 
 /**
  * This validator validates the label of a component with an expert slot: the empty string enables
- * the expert slot and stands for the former `false`.
+ * the expert slot.
  */
 export const validateLabelWithExpertSlot = (
 	component: Generic.Element.Component,
