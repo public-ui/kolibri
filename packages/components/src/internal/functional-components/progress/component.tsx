@@ -1,6 +1,7 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
+import { trimLabel } from '../../../schema';
 
 import type { ProgressVariantType } from '../../props';
 import type { FunctionalComponentProps } from '../generic-types';
@@ -99,7 +100,7 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 			</div>
 
 			{/* https://css-tricks.com/html5-progress-element/ */}
-			<progress aria-busy={value < max ? 'true' : 'false'} aria-label={label} class="visually-hidden" max={max} value={value}></progress>
+			<progress aria-busy={value < max ? 'true' : 'false'} aria-label={trimLabel(label)} class="visually-hidden" max={max} value={value}></progress>
 			<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 				{liveValueText}
 			</span>

@@ -627,7 +627,7 @@ exports[`kol-progress should render with _label=[{"text":"partly english","lang"
           %
         </div>
       </div>
-      <progress aria-busy="true" aria-label="[object Object],[object Object]" class="visually-hidden" max="100" value="0"></progress>
+      <progress aria-busy="true" aria-label="partly english Label" class="visually-hidden" max="100" value="0"></progress>
       <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
         kol-live-value
       </span>
