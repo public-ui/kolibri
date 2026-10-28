@@ -2,7 +2,7 @@
 	"schema": 1,
 	"state": "pending",
 	"description": "154 added – 90 of 154 approved, review pending",
-	"computedAt": "2026-10-28T12:05:46.772Z",
+	"computedAt": "2026-10-28T12:06:55.073Z",
 	"pr": 11258,
 	"head": "72fbdef4d080d889a33cb3ff489beaff9852be10",
 	"digest": "sha256:d66b1062ac7bf659c1b71b495b28d7ec666c924dd71bd2297ab5e476c5873c19",
