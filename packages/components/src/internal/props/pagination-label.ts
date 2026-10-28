@@ -1,3 +1,4 @@
+import type { LabelPropType } from '../../schema';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -9,5 +10,5 @@ import { normalizeString } from './helpers/normalizers';
  * The accessible name of the navigation. Unlike `labelProp`, any string is accepted. Without a value
  * the pagination uses the translation `kol-pagination`.
  */
-export type PaginationLabelProp = SimpleProp<'label', string>;
+export type PaginationLabelProp = SimpleProp<'label', LabelPropType>;
 export const paginationLabelProp = createPropDefinition<PaginationLabelProp>('label', '', normalizeString);

@@ -39,7 +39,7 @@ const KOL_TREE_ITEM_PUBLIC_API: PublicApiContract = {
 	},
 	_label: {
 		kind: 'prop',
-		type: 'LabelPropType',
+		type: 'LabelLangSegmentsPropType',
 		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},

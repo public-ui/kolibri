@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { LabelProp, PropLabel } from '../props';
+import type { PropLabel } from '../props';
 import type { Stringified } from '../types';
 import type { LinkProps } from './link';
 
@@ -8,7 +8,7 @@ import type { LinkProps } from './link';
  * TODO: All LinkProps as Link-List (_links) does not have a _label
  *       with expert-slot!
  */
-export type BreadcrumbLinkProps = LinkProps & LabelProp;
+export type BreadcrumbLinkProps = LinkProps;
 
 type RequiredProps = {
 	links: Stringified<BreadcrumbLinkProps[]>;

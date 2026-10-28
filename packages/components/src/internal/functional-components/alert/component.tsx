@@ -3,11 +3,13 @@ import { h } from '@stencil/core';
 
 import { getHeadlineTag } from '../../../functional-components/Heading/Heading';
 import { translate } from '../../../i18n';
+import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { FunctionalComponentProps } from '../generic-types';
+import { renderLabelWithLang } from '../span/component';
 import type { AlertApi } from './api';
 import { AlertIconFC } from './icon';
 
@@ -78,7 +80,7 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 					class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, alertBem('heading', { [`h${level}`]: true }), 'kol-headline--single')}
 					id={headingId}
 				>
-					{label}
+					{renderLabelWithLang(label)}
 				</HeadlineTag>
 			)}
 
@@ -86,7 +88,8 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 				<ButtonFC
 					accessKey=""
 					ariaControls=""
-					ariaDescription={label.trim()}
+					ariaDescription={trimLabel(label)}
+
 					ariaDescriptionId={closerAriaDescriptionId}
 					ariaExpanded={UNSET_BUTTON_PROP}
 					ariaHasPopup=""
