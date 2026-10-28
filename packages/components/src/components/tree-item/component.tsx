@@ -131,7 +131,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 		// The link marks itself as the current page, as `kol-link` does.
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
-			const ariaCurrent = location === this.getRenderProp('href') ? ariaCurrentValueProp.getDefaultValue()! : '';
+			const ariaCurrent = location === this.getRenderProp('href') ? ariaCurrentValueProp.getDefaultValue() : '';
 			if (this.ariaCurrent !== ariaCurrent) {
 				this.ariaCurrent = ariaCurrent;
 			}

@@ -27,8 +27,9 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	/** Stores unprocessed property values as received from the @Prop. */
 	private readonly rawProps: Partial<Record<string, unknown>> = {};
 
-	/** Stores validated and normalized property values ready for rendering. */
-	private renderProps: StrictFields<ResolvedProps<Api>> | undefined;
+	/** Stores validated and normalized property values ready for rendering. Starts empty and is
+	 * seeded by `initRenderProps` in `componentWillLoad`; `StrictFields` types the steady state. */
+	private renderProps: StrictFields<ResolvedProps<Api>> = {} as StrictFields<ResolvedProps<Api>>;
 	private requiredPropNames = new Set<string>();
 
 	/** Writes a value into the web component's reactive Stencil state. */
@@ -116,13 +117,11 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	 * here once instead of at each call site.
 	 */
 	protected unsetRenderProp<K extends keyof ResolvedProps<Api>>(key: K): void {
-		if (this.renderProps) {
-			this.renderProps[key] = undefined as unknown as StrictFields<ResolvedProps<Api>>[K];
-		}
+		this.renderProps[key] = undefined as unknown as StrictFields<ResolvedProps<Api>>[K];
 	}
 
 	/** Returns the current validated render value for a property. */
 	public getRenderProp<K extends keyof ResolvedProps<Api>>(key: K): StrictFields<ResolvedProps<Api>>[K] {
-		return this.renderProps![key];
+		return this.renderProps[key];
 	}
 }

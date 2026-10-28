@@ -79,6 +79,14 @@ export default [
 			'@typescript-eslint/consistent-type-imports': 'warn',
 
 			/**
+			 * The TypeScript-aware variant replaces the base `no-redeclare`: it accepts function
+			 * overload declarations (the typed default contract of the prop-definition factories)
+			 * which the base rule rejects.
+			 */
+			'@typescript-eslint/no-redeclare': 'error',
+			'no-redeclare': 'off',
+
+			/**
 			 * This rule is disabled because it is not possible to use the
 			 * `no-unsafe-assignment` rule without breaking the build.
 			 */

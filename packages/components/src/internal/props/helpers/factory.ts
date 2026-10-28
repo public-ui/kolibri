@@ -84,6 +84,33 @@ export type PropDefinition<TInternal, P extends Prop<string, unknown, unknown> =
 	apply: (value: unknown, callback: (normalized: TInternal) => void, required?: boolean) => void;
 };
 
+/**
+ * A prop definition created with a default value: `getDefaultValue` is guaranteed non-undefined,
+ * so callers read the fallback without assertions — the default contract is typed, not asserted.
+ * `Omit` replaces the nullable signature instead of intersecting it (an intersection of the two
+ * method types would keep the `| undefined` overload).
+ */
+export type PropDefinitionWithDefault<TInternal, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = Omit<
+	PropDefinition<TInternal, P>,
+	'getDefaultValue'
+> & {
+	getDefaultValue(): TInternal;
+};
+
+export function createPropDefinition<P extends Prop<string, unknown, unknown>, K extends ExtractPropKey<P> = ExtractPropKey<P>>(
+	propName: K,
+	defaultValue: InternalPropValue<P>,
+	normalize: (value: unknown) => InternalPropValue<P> | never,
+	validate?: (value: InternalPropValue<P>) => boolean,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
+): PropDefinitionWithDefault<InternalPropValue<P>, P>;
+export function createPropDefinition<P extends Prop<string, unknown, unknown>, K extends ExtractPropKey<P> = ExtractPropKey<P>>(
+	propName: K,
+	defaultValue: undefined,
+	normalize: (value: unknown) => InternalPropValue<P> | never,
+	validate?: (value: InternalPropValue<P>) => boolean,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
+): PropDefinition<InternalPropValue<P>, P>;
 export function createPropDefinition<P extends Prop<string, unknown, unknown>, K extends ExtractPropKey<P> = ExtractPropKey<P>>(
 	propName: K,
 	/**
@@ -146,6 +173,33 @@ export type DependentPropDefinition<TInternal, TDeps, P extends Prop<string, unk
 	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps) => void;
 };
 
+/**
+ * A dependent prop definition created with a default value: `getDefaultValue` is guaranteed
+ * non-undefined, so callers read the fallback without assertions — the default contract is typed,
+ * not asserted. `Omit` replaces the nullable signature instead of intersecting it (an intersection
+ * of the two method types would keep the `| undefined` overload).
+ */
+export type DependentPropDefinitionWithDefault<TInternal, TDeps, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = Omit<
+	DependentPropDefinition<TInternal, TDeps, P>,
+	'getDefaultValue'
+> & {
+	getDefaultValue(): TInternal;
+};
+
+export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = unknown>(
+	propName: ExtractPropKey<P>,
+	defaultValue: InternalPropValue<P>,
+	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
+	validate?: (value: InternalPropValue<P>, deps: TDeps) => boolean,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
+): DependentPropDefinitionWithDefault<InternalPropValue<P>, TDeps, P>;
+export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = unknown>(
+	propName: ExtractPropKey<P>,
+	defaultValue: undefined,
+	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
+	validate?: (value: InternalPropValue<P>, deps: TDeps) => boolean,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
+): DependentPropDefinition<InternalPropValue<P>, TDeps, P>;
 export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = unknown>(
 	propName: ExtractPropKey<P>,
 	defaultValue: InternalPropValue<P> | undefined,
