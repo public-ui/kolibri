@@ -224,6 +224,18 @@ export default [
 		},
 	},
 
+	// Requiredness must be threaded into apply — scoped to the web component layer. Appliers
+	// outside a component config (items, behaviors, resolve-props) deliberately omit it.
+	{
+		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/form-field/base-web-component.tsx'],
+		plugins: {
+			kolibri: kolibriPlugin,
+		},
+		rules: {
+			'kolibri/apply-passes-required': 'error',
+		},
+	},
+
 	// JSX accessibility rules for TSX files
 	{
 		files: ['src/**/*.tsx'],
