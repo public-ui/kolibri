@@ -1,0 +1,1 @@
+import"./index-BOxmVLNq-TGo1YqHR.js";var e=/[a-zA-Z0-9äöüÄÖÜß]/g,t=/^\d+$/;function n(t){return typeof t==`string`&&t.match(e)?.length||0}function r(e,t=1){return n(e)>=t}function i(e){return t.test(e)}function a(e){return typeof e==`string`?e.trim():e.map(e=>e.text).join(``).trim()}export{r as n,a as r,i as t};
