@@ -23,7 +23,7 @@ import type {
  * https://mui.com/material-ui/react-link/#accessibility
  * https://mui.com/material-ui/react-button/#text-button
  */
-export type RequiredProps = PropHref & PropLabelWithExpertSlot;
+export type RequiredProps = PropHref;
 export type OptionalProps = {
 	tabIndex: number;
 } & PropAccessKey &
@@ -36,6 +36,7 @@ export type OptionalProps = {
 	PropHideLabel &
 	PropIcons &
 	PropInline &
+	PropLabelWithExpertSlot &
 	PropLinkOnCallbacks &
 	PropLinkTarget &
 	PropShortKey &

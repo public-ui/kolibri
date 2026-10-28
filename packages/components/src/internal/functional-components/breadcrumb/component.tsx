@@ -44,7 +44,11 @@ const renderLink = (item: BreadcrumbLinkItem, index: number, lastIndex: number, 
 			{index === lastIndex ? (
 				<span class={BEM_CLASS_BREADCRUMB__LIST_ELEMENT_SPAN} aria-current="page">
 					{link._hideLabel ? (
-						<IconFC class={BEM_CLASS_BREADCRUMB__ICON} icons={typeof link._icons === 'string' ? link._icons : 'kolicon-link'} label={trimLabel(link._label)} />
+						<IconFC
+							class={BEM_CLASS_BREADCRUMB__ICON}
+							icons={typeof link._icons === 'string' ? link._icons : 'kolicon-link'}
+							label={link._label ? trimLabel(link._label) : link._href} // logic like KolLink
+						/>
 					) : (
 						<>{renderLabelWithLang(link._label)}</>
 					)}
