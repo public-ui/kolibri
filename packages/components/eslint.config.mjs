@@ -233,6 +233,9 @@ export default [
 		},
 		rules: {
 			'kolibri/apply-passes-required': 'error',
+			'kolibri/prop-required-no-initializer': 'error',
+			// Warning until #11435 has mirrored every default as an initializer, then error.
+			'kolibri/prop-optional-requires-initializer': 'warn',
 		},
 	},
 
