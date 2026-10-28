@@ -61,13 +61,12 @@ export type ExtractPropKey<P extends Prop<string, unknown, unknown>> =
 
 /**
  * Options for prop definitions, including optional hint callbacks for developer guidance.
+ *
+ * Requiredness is deliberately NOT an option here: it is a property of the component, not of the
+ * value's functionality. The props config slot (`required`/`optional` array) decides, and the
+ * applying component passes the result to `apply` as its third argument.
  */
 export type PropDefinitionOptions<T = unknown> = {
-	/**
-	 * Whether the property is required. If true and no value is provided,
-	 * a warning will be emitted and the default value will be used.
-	 */
-	required?: boolean;
 	/**
 	 * Optional callback for emitting developer hints after successful validation.
 	 * Called with the property name and the normalized value.
@@ -82,7 +81,7 @@ export type PropDefinition<TInternal, P extends Prop<string, unknown, unknown> =
 	getDefaultValue(): TInternal;
 	normalize: (value: unknown) => TInternal | never;
 	validate: (value: TInternal) => boolean;
-	apply: (value: unknown, callback: (normalized: TInternal) => void) => void;
+	apply: (value: unknown, callback: (normalized: TInternal) => void, required?: boolean) => void;
 };
 
 export function createPropDefinition<P extends Prop<string, unknown, unknown>, K extends ExtractPropKey<P> = ExtractPropKey<P>>(
@@ -97,9 +96,9 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 		getDefaultValue: isObject(defaultValue) ? () => cloneDeep(defaultValue) : () => defaultValue,
 		normalize,
 		validate,
-		apply(value, callback) {
+		apply(value, callback, required) {
 			if (value === undefined || value === null) {
-				if (options?.required) {
+				if (required) {
 					devWarning(`The required property '_${propName}' did not receive a value. The default value is used instead.`);
 				}
 				const fallback = this.getDefaultValue();

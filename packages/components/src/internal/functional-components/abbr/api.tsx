@@ -1,8 +1,8 @@
-import { optionalLabelProp } from '../../props';
+import { labelProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const abbrPropsConfig = {
-	optional: [optionalLabelProp],
+	optional: [labelProp],
 } as const satisfies PropsConfigShape;
 
 export type AbbrApi = ApiFromConfig<typeof abbrPropsConfig>;

@@ -1,4 +1,4 @@
-import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, levelProp, optionalLabelProp } from '../../props';
+import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
@@ -7,7 +7,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * All props are optional — an alert without a label renders icon and content only.
  *
  * Notes on prop choices:
- * - `optionalLabelProp` (not `labelProp`): the alert has no expert slot and its label is optional. It keeps the shared
+ * - `labelProp` in the optional array: the alert has no expert slot and its label is legitimately optional, so no required warning applies. It keeps the shared
  *   2–80 character validation and accessibility hints; the empty string renders no heading.
  * - `alertProp`: renders `role="alert"` so screen readers announce the notification assertively.
  * - `alertTypeProp`/`alertVariantProp`: enum props selecting icon/color scheme and presentation.
@@ -15,7 +15,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  *   closer handler; `AlertFC` never receives it.
  */
 export const alertPropsConfig = {
-	optional: [alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, optionalLabelProp, levelProp],
+	optional: [alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp],
 } as const satisfies PropsConfigShape;
 
 export type AlertApi = ApiFromConfig<

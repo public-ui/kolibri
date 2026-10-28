@@ -71,7 +71,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 	// --- Prop application ---
 
 	protected applyLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyLevel(value?: HeadingLevel): void {

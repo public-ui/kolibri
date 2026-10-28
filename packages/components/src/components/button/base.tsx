@@ -247,10 +247,14 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.tooltipBehavior.watchLabel(v);
-		});
+		labelWithExpertSlotProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.tooltipBehavior.watchLabel(v);
+			},
+			this.isRequired('label'),
+		);
 	}
 
 	protected applyName(value?: NamePropType): void {

@@ -81,7 +81,7 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**

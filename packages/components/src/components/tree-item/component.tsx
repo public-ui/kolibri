@@ -60,7 +60,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -80,7 +80,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	/**

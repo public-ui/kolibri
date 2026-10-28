@@ -207,7 +207,7 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	}
 
 	protected applyHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	protected applyIcons(value?: Stringified<KoliBriIconsProp>): void {
@@ -219,11 +219,15 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.setState('expertSlot', value === '');
-			this.tooltipBehavior.watchLabel(this.getTooltipLabel());
-		});
+		labelWithExpertSlotProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.setState('expertSlot', value === '');
+				this.tooltipBehavior.watchLabel(this.getTooltipLabel());
+			},
+			this.isRequired('label'),
+		);
 	}
 
 	protected applyOn(value?: LinkOnCallbacksPropType): void {

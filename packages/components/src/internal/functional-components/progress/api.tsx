@@ -1,8 +1,8 @@
-import { clampedNumberValueProp, maxProp, optionalLabelProp, unitProp, variantProgressProp } from '../../props';
+import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const progressPropsConfig = {
-	optional: [optionalLabelProp, unitProp, variantProgressProp],
+	optional: [labelProp, unitProp, variantProgressProp],
 	required: [maxProp, clampedNumberValueProp],
 } as const satisfies PropsConfigShape;
 

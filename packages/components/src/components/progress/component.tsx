@@ -35,7 +35,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -95,7 +95,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	public componentWillLoad(): void {
 		this.initRenderProps(progressPropsConfig);
 
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		maxProp.apply(this._max, (v) => {
 			this.setRenderProp('max', v);
 			this.watchValue(this.getRawProp('value'));

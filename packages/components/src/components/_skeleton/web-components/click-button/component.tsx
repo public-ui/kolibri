@@ -27,7 +27,7 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -42,7 +42,7 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	public componentWillLoad(): void {
 		this.initRenderProps(clickButtonPropsConfig);
 
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	public handleClick = (): void => {

@@ -7,7 +7,7 @@ import { ariaDescriptionProp } from './aria-description';
 import { ariaOwnsProp } from './aria-owns';
 import { badgeTextProp } from './badge-text';
 import { downloadProp } from './download';
-import { hrefProp, optionalHrefProp } from './href';
+import { hrefProp } from './href';
 import { iconsProp } from './icons';
 import { idProp } from './id';
 import { labelProp } from './label';
@@ -32,12 +32,12 @@ import { widthProp } from './width';
  */
 type PropDefinition = {
 	readonly propName: string;
-	apply: (value: unknown, callback: (normalized: unknown) => void) => void;
+	apply: (value: unknown, callback: (normalized: unknown) => void, required?: boolean) => void;
 };
 
-const applied = (definition: PropDefinition, value: unknown): unknown[] => {
+const applied = (definition: PropDefinition, value: unknown, required?: boolean): unknown[] => {
 	const callback = jest.fn();
-	definition.apply(value, callback);
+	definition.apply(value, callback, required);
 	return callback.mock.calls.map(([normalized]) => normalized);
 };
 
@@ -69,7 +69,7 @@ const STRING_PROPS: ReadonlyArray<{ name: string; definition: PropDefinition; de
 	{ name: 'idProp', definition: idProp, defaultValue: '' },
 	{ name: 'linkTargetProp', definition: linkTargetProp, defaultValue: '' },
 	{ name: 'nameProp', definition: nameProp, defaultValue: '' },
-	{ name: 'optionalHrefProp', definition: optionalHrefProp, defaultValue: '' },
+	{ name: 'hrefProp', definition: hrefProp, defaultValue: '' },
 	{ name: 'quoteProp', definition: quoteProp, defaultValue: '' },
 	{ name: 'secondaryHeadlineProp', definition: secondaryHeadlineProp, defaultValue: '' },
 	{ name: 'shortKeyProp', definition: shortKeyProp, defaultValue: '' },
@@ -103,11 +103,11 @@ describe.each(STRING_PROPS)('$name', ({ definition, defaultValue }) => {
 });
 
 /**
- * `hrefProp` differs from `optionalHrefProp` (covered above) only by its `required` flag.
+ * `hrefProp` differs from `hrefProp` (covered above) only by its `required` flag.
  */
 describe('hrefProp', () => {
-	it('applies the default "" for undefined and warns about the missing required value', () => {
-		expect(applied(hrefProp, undefined)).toEqual(['']);
+	it('applies the default "" for undefined and warns about the missing required value (config slot)', () => {
+		expect(applied(hrefProp, undefined, true)).toEqual(['']);
 		expect(warnings()).toEqual([expect.stringContaining(`The required property '_href' did not receive a value.`)]);
 	});
 
@@ -136,8 +136,8 @@ describe('hrefProp', () => {
  * accepted value, the UI/UX hint for a label longer than 80 characters included.
  */
 describe('labelProp', () => {
-	it('applies the "not set" default undefined and warns about the missing required value', () => {
-		expect(applied(labelProp, undefined)).toEqual([undefined]);
+	it('applies the "not set" default undefined and warns about the missing required value (config slot)', () => {
+		expect(applied(labelProp, undefined, true)).toEqual([undefined]);
 		expect(warnings()).toEqual([expect.stringContaining(`The required property '_label' did not receive a value.`)]);
 	});
 

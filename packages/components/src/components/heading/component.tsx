@@ -28,7 +28,7 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -54,7 +54,7 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	public componentWillLoad(): void {
 		this.initRenderProps(headingPropsConfig);
 
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		levelProp.apply(this._level, (v) => this.setRenderProp('level', v));
 		secondaryHeadlineProp.apply(this._secondaryHeadline, (v) => this.setRenderProp('secondaryHeadline', v));
 	}

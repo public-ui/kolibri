@@ -168,7 +168,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	}
 
 	protected applyLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyLoading(value?: TableLoadingPropType): void {

@@ -59,7 +59,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -169,7 +169,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 		this.initRenderProps(meterPropsConfig);
 
 		this.watchHigh(this._high);
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		this.watchLow(this._low);
 		maxProp.apply(this._max, (v) => {
 			this.setRenderProp('max', v);

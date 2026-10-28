@@ -29,16 +29,5 @@ import { labelHints } from './hints/label-hints';
  */
 export type LabelProp = SimpleProp<'label', LabelPropType>;
 export const labelProp = createPropDefinition<LabelProp>('label', undefined as unknown as LabelPropType, normalizeString, isValidLabel, {
-	required: true,
-	hints: labelHints,
-});
-
-/**
- * The label of a component whose `_label` is optional: same validation and hints as `labelProp`,
- * but an unset label is legitimate (a missing caption or landmark name) and does not warn.
- * The `hrefProp`/`optionalHrefProp` pair is the precedent.
- */
-export type OptionalLabelProp = SimpleProp<'label', LabelPropType>;
-export const optionalLabelProp = createPropDefinition<OptionalLabelProp>('label', undefined as unknown as LabelPropType, normalizeString, isValidLabel, {
 	hints: labelHints,
 });

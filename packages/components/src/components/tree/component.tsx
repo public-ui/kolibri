@@ -44,7 +44,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**

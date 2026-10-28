@@ -27,7 +27,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	/**
@@ -38,7 +38,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -66,8 +66,8 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	public componentWillLoad(): void {
 		this.initRenderProps(quotePropsConfig);
 
-		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		quoteProp.apply(this._quote, (v) => this.setRenderProp('quote', v));
 		variantQuoteProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
 	}

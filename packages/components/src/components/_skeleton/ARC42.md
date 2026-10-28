@@ -453,12 +453,12 @@ maxProp.apply(value, (normalized) => {
 });
 ```
 
-##### Undefined handling and the default contract
+##### Undefined handling, requiredness and the default contract
 
 Three rules separate the layers, so a fachliche validator never has to deal with "not set":
 
-1. **The `required`/`optional` arrays of a props config are type-level only.** They feed `ApiFromConfig` (`Props.Required`/`Props.Optional`); at runtime both arrays are processed identically (seeding the render-prop defaults). Sorting a definition into the other array does not change its validation or warnings.
-2. **`apply()` intercepts `undefined` and `null` before any fachliche validation**: after the optional required warning, the built-in default is substituted and handed to the callback. `normalize` and `validate` never see a raw `undefined` from the `apply` path.
+1. **Requiredness is a property of the component, decided by the props config slot.** The `required`/`optional` arrays feed `ApiFromConfig` (`Props.Required`/`Props.Optional`) _and_ drive the runtime warning: `BaseWebComponent.isRequired(key)` answers from the `required` array, and the applying watcher passes it to `apply` as its third argument (`labelProp.apply(value, cb, this.isRequired('label'))`). A prop definition itself carries no requiredness — one definition serves a required prop in one component (the link's `href`) and an optional one in another (the card's) without duplication. Appliers outside a component config (items, behaviors, `resolve-props`) apply without the argument: an unset value there is a legitimate "not set", not a missing required value.
+2. **`apply()` intercepts `undefined` and `null` before any fachliche validation**: after the warning when `required` was passed, the built-in default is substituted and handed to the callback. `normalize` and `validate` never see a raw `undefined` from the `apply` path.
 3. **The validator must accept the definition's own default.** `apply()` validates the fallback and throws on an invalid default — so a definition defaulting to `undefined` needs a validator that passes `undefined` (e.g. `isValidLabel`), and a definition defaulting to `''` needs `''` to be valid. This is the contract that makes "not set" representable without weakening the fachliche validation of real values.
 
 #### `DependentPropDefinition<TInternal, TDeps>`

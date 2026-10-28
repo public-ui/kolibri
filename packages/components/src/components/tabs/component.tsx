@@ -130,7 +130,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -184,7 +184,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
 		tabBehaviorProp.apply(this._behavior, (v) => this.setRenderProp('behavior', v));
 		hasCreateButtonProp.apply(this._hasCreateButton, (v) => this.setRenderProp('hasCreateButton', v));
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		tabsCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
 		this.applySelected(this._selected);
 		this.applyTabs(this._tabs);
