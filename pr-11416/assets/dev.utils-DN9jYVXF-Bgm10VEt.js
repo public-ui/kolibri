@@ -1,8 +1,0 @@
-import{A as e,I as t,J as n,O as r,X as i,h as a,t as o}from"./index-BOxmVLNq-BkiReFiU.js";var s=()=>{try{let e=r();if(!e||typeof e.querySelector!=`function`)return;let t=e.querySelector(`meta[name="kolibri"]`);if(t&&t.hasAttribute(`content`)){let e=t.getAttribute(`content`);typeof e==`string`&&(i(e.includes(`experimental-mode=true`)),n(e.includes(`color-contrast-analysis=true`)))}}catch{}},c=()=>{let t=e().KoliBri;return t===void 0&&(t={},Object.defineProperty(e(),"KoliBri",{value:t,writable:!1})),t},l="\n,--. ,--.         ,--. ,--. ,-----.           ,--.\n|  .'   /  ,---.  |  | `--' |  |) /_  ,--.--. `--'\n|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.\n|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |\n`--' `--´  `---´  `--' `--' `------´  `--'    `--'".replace(/ /g,`\xA0`),u=()=>{s(),a.debug(`${l}
-🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${o.kolibriVersion}
-	`,{forceLog:!0})},d=()=>{c().adviceShown!==!0&&(Object.defineProperty(c(),"adviceShown",{get:function(){return!0}}),a.debug(`
-You are using the KoliBri component library. If you have any suggestions for improvement or find a problem, please contact us:
-
-Ticket: https://github.com/public-ui/kolibri/issues/new/choose (for privacy reasons, please use email)
-Email: kolibri@itzbund.de
-`))},f=()=>Math.floor(Math.random()*16777215).toString(16);t()&&(f=()=>`nonce`);var p=e=>`${e}-${f()}`,m=(e,t)=>{let n=e.lastIndexOf(`-`);if(n===-1)return`${e}-${t}`;let r=e.slice(n+1);return r===`nonce`||/^[0-9a-f]+$/.test(r)?`${e.slice(0,n)}-${t}-${r}`:`${e}-${t}`};export{d as a,f as i,p as n,u as r,m as t};

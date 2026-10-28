@@ -1,1 +1,0 @@
-import{l as e,u as t}from"./label-CJRIAbnc-CrpwT57M.js";var n=/^[a-zA-Z][a-zA-Z0-9_-]{0,60}$/,r=e=>typeof e==`string`&&n.test(e),i=t,a=t=>t===``||e(t);export{i as n,a as r,r as t};
