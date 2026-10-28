@@ -6,7 +6,8 @@ import { isValidLabel } from './helpers/validators';
 import { labelHints } from './hints/label-hints';
 
 /**
- * Label prop for accessible names
+ * Label prop for accessible names of components that do not render their label and therefore do
+ * not support language segments
  *
  * Description:
  * The label provides the accessible name for a component. It is announced by screen readers

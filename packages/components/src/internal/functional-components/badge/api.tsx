@@ -1,12 +1,13 @@
 import type { KolFocusOptions } from '../../../schema';
-import { colorProp, labelProp, smartButtonProp, spanIconsProp } from '../../props';
+import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
  * Props configuration for the badge component.
  *
  * Why these prop definitions:
- * - `labelProp`: the badge has no expert slot; single-digit counters ("1") are valid through
+ * - `labelWithExpertSlotProp`: the badge renders its label through the span, which provides the
+ *   expert slot (the empty string enables it); single-digit counters ("1") are valid through
  *   the numbers-only exemption.
  * - `spanIconsProp`, not `iconsProp`: icons are `KoliBriIconsProp` — a string or a per-direction
  *   object, not a plain icon class string.
@@ -14,7 +15,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  *   smart button is configured, so the functional component receives `undefined` and renders none.
  */
 export const badgePropsConfig = {
-	required: [labelProp],
+	required: [labelWithExpertSlotProp],
 	optional: [colorProp, smartButtonProp, spanIconsProp],
 } as const satisfies PropsConfigShape;
 

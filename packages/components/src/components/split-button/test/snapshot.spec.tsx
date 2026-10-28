@@ -21,5 +21,6 @@ executeSnapshotTests<SplitButtonProps>(
 					_variant,
 				}) as SplitButtonProps,
 		),
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 	],
 );

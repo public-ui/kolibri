@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, KoliBriDialogEventCallbacks, LabelPropType, WidthPropType } from '../../schema';
+import type { DialogProps, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from '../dialog/base';
@@ -37,10 +37,10 @@ export class KolModal extends BaseDialogWebComponent implements DialogProps, Omi
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		this.applyLabel(value);
 	}
 

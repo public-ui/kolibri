@@ -20,9 +20,9 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 		reason: 'icons of a form field (left/right state), checkbox state icons, a single icon class, icons of a span (raw)',
 	},
 	label: {
-		definitions: ['labelProp', 'labelWithExpertSlotProp'],
+		definitions: ['labelLangSegmentsProp', 'labelProp', 'labelWithExpertSlotProp'],
 		reason:
-			'labelProp validates at least two characters (numbers-only labels are exempt, the empty string is invalid) and gives the label hints; labelWithExpertSlotProp additionally accepts the empty string, which enables the expert slot of a component — requiredness itself follows the props config slot',
+			'labelProp validates at least two characters (numbers-only labels are exempt, the empty string is invalid) and gives the label hints; labelLangSegmentsProp additionally accepts language segments with the same rules on the joined text; labelWithExpertSlotProp additionally accepts the empty string, which enables the expert slot of a component — requiredness itself follows the props config slot',
 	},
 	links: {
 		definitions: ['breadcrumbLinksProp', 'navLinksProp', 'skipNavLinksProp'],

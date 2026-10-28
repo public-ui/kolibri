@@ -3,8 +3,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { NavChildren } from './model';
 
 /**
- * Props configuration of `kol-nav`. `labelProp`, not `labelProp`: the label is the
- * `aria-label` of the navigation landmark, which has no length limit.
+ * Props configuration of `kol-nav`.
  */
 export const navPropsConfig = {
 	required: [labelProp, navLinksProp],

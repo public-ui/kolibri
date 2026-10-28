@@ -1,4 +1,4 @@
-import { alignProp, drawerCallbacksProp, hasCloserProp, labelProp, levelProp } from '../../props';
+import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
@@ -6,14 +6,14 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  *
  * Notes on prop choices:
  * - `alignProp`: the edge the drawer slides in from. Its `'top'` default is the drawer's too.
- * - `labelProp`, not `labelProp`: the label is the heading of the card the drawer
+ * - `labelLangSegmentsProp`, not `labelWithExpertSlotProp`: the label is the heading of the card the drawer
  *   wraps its content in, and that heading has no expert slot.
  * - `openProp` is deliberately absent: `show()`, `showModal()` and `close()` move the drawer
  *   without touching the `_open` prop, so the open state has to re-render the component on its
  *   own. It lives in {@link DrawerApi} states as `expanded` instead.
  */
 export const drawerPropsConfig = {
-	required: [labelProp],
+	required: [labelLangSegmentsProp],
 	optional: [alignProp, drawerCallbacksProp, hasCloserProp, levelProp],
 } as const satisfies PropsConfigShape;
 

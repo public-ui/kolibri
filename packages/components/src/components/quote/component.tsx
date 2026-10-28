@@ -5,8 +5,8 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { QuoteApi } from '../../internal/functional-components/quote/api';
 import { quotePropsConfig } from '../../internal/functional-components/quote/api';
 import { QuoteFC } from '../../internal/functional-components/quote/component';
-import { hrefProp, labelProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../internal/props';
-import type { HrefPropType, LabelPropType, QuotePropType } from '../../schema';
+import { hrefProp, labelLangSegmentsProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../internal/props';
+import type { HrefPropType, LabelLangSegmentsPropType, QuotePropType } from '../../schema';
 
 /**
  * The **Quote** component has two variants: a short inline (`inline`) and an indented block (`block`) variant. Both variants include a link to the source of the quote.
@@ -34,11 +34,11 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label?: LabelPropType = undefined;
+	public _label?: LabelLangSegmentsPropType = undefined;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -67,7 +67,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 		this.initRenderProps(quotePropsConfig);
 
 		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v), this.isRequired('href'));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		quoteProp.apply(this._quote, (v) => this.setRenderProp('quote', v));
 		variantQuoteProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
 	}

@@ -1398,3 +1398,29 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
   </template>
 </kol-alert>
 `;
+
+exports[`kol-alert should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
+<kol-alert>
+  <template shadowrootmode="open">
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        <span>
+          <span lang="en">
+            partly english
+          </span>
+          <span>
+            Label
+          </span>
+        </span>
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-alert>
+`;

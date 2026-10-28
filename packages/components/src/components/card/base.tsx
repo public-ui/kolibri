@@ -8,8 +8,8 @@ import { cardPropsConfig } from '../../internal/functional-components/card/api';
 import { resolveCardCloseButtonProps } from '../../internal/functional-components/card/close-button';
 import { CardFC } from '../../internal/functional-components/card/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { cardCallbacksProp, hasCloserProp, hrefProp, labelProp, levelProp, linkTargetProp } from '../../internal/props';
-import type { HasCloserPropType, HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
+import { cardCallbacksProp, hasCloserProp, hrefProp, labelLangSegmentsProp, levelProp, linkTargetProp } from '../../internal/props';
+import type { HasCloserPropType, HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelLangSegmentsPropType, LinkTargetPropType } from '../../schema';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -61,8 +61,8 @@ export abstract class BaseCardWebComponent extends BaseWebComponent<CardApi> {
 		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
-	protected applyLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+	protected applyLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyLevel(value?: HeadingLevel): void {

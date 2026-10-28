@@ -1,4 +1,4 @@
-import { containsOnlyNumbers } from '../../../schema/props/label';
+import { isValidLabelSegments, isValidLabelString, type LabelWithExpertSlotPropType } from '../../../schema/props/label';
 
 /**
  * Shared validators for prop definitions.
@@ -24,12 +24,15 @@ export const isSafeClassName = (value: unknown): value is string => typeof value
  * A label is at least two characters long. Numbers-only labels are exempt from the minimum
  * length — generated labels like page numbers are valid button texts (same exemption as the
  * label hints). The "not set" state never reaches the validator: `apply` passes it through
- * directly when the definition has no default.
+ * directly when the definition has no default. The predicates live in `schema/props/label.ts`,
+ * the single source shared with the watch-validator route.
  */
-export const isValidLabel = (value: string): boolean => value.length >= 2 || containsOnlyNumbers(value);
+export const isValidLabel = isValidLabelString;
+
+export { isValidLabelSegments };
 
 /**
- * The label of a component with an expert slot additionally accepts the empty string: it enables
- * the expert slot.
+ * The label of a component with an expert slot additionally accepts the empty string — it enables
+ * the expert slot — and, like `isValidLabelSegments`, language segments.
  */
-export const isValidLabelWithExpertSlot = (value: string): boolean => value === '' || isValidLabel(value);
+export const isValidLabelWithExpertSlot = (value: LabelWithExpertSlotPropType): boolean => value === '' || isValidLabelSegments(value);
