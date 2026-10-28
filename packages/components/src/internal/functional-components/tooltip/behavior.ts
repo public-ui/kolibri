@@ -67,6 +67,9 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 			if (replacePreviousSibling) {
 				this.previousSibling = next;
 			}
+			/* The removal makes repeated syncs idempotent: renders and reconnects re-run the sync
+			   without duplicating listeners, since the elements persist across a reattachment. */
+			this.removeListeners(next);
 			this.addListeners(next);
 		}
 	}

@@ -36,6 +36,15 @@ const BLOCK_ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/; // kebab-case
 const MAX_BLOCK_ID_LENGTH = 30; // keeps snapshot file paths safely below the Windows path limit
 
 /**
+ * Blocks that set SampleBlock's `skipSnapshot` prop carry this marker instead of `data-visual-block`:
+ * heading, layout and debug outline stay, but no screenshot is taken. A route whose page renders only
+ * skipped blocks is legitimate – the sample relies on theme-exclusive variants the active theme does
+ * not provide – and is skipped instead of failing. A route without any marker at all still fails,
+ * because an unmarked sample must stay visible.
+ */
+const SKIPPED_SELECTOR = '[data-visual-block-skipped]';
+
+/**
  * Blocks that set SampleBlock's `narrow` prop are captured a second time at 320 px viewport width to
  * guard the reflow behaviour required by WCAG 1.4.10 – the successor of the former 400 % zoom pass,
  * which produced one whole-page screenshot per route and was switched off on 150 of 158 routes.
@@ -138,6 +147,13 @@ ROUTES.forEach((options, route) => {
 		const blockIds = await readBlockIds(page, BLOCK_SELECTOR);
 
 		if (blockIds.length === 0) {
+			/* The page may render only skipped blocks when all of them depend on theme-exclusive variants
+			   the active theme does not provide (see SKIPPED_SELECTOR). That is a correct state – the route
+			   has nothing to capture for this theme – so the route is skipped instead of failing. A page
+			   without any marker at all means the sample forgot to declare its blocks and stays an error. */
+			if ((await page.locator(SKIPPED_SELECTOR).count()) > 0) {
+				test.skip(true, `Route "${route}" renders only skipped blocks for this theme – nothing to capture.`);
+			}
 			throw new Error(
 				`Route "${route}": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js.`,
 			);

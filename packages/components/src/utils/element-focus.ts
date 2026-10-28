@@ -102,6 +102,45 @@ function isActiveElement(element: HTMLElement): boolean {
 	return document.activeElement === element;
 }
 
+/**
+ * Resolves the deepest active element, crossing shadow boundaries. `document.activeElement` alone
+ * reflects only the outermost shadow host of a focus inside nested shadow DOMs, so a containment
+ * check against it misjudges where the focus sits.
+ *
+ * @param document_ - Document to start from; defaults to the global `document`.
+ */
+export function deepActiveElement(document_: Document = document): Element | null {
+	let active: Element | null = document_.activeElement;
+	while (active?.shadowRoot?.activeElement) {
+		active = active.shadowRoot.activeElement;
+	}
+	return active;
+}
+
+/**
+ * Whether the focus is inside `container`, honouring shadow boundaries: a nested web component
+ * that holds the focus reports its host as `document.activeElement`, which `contains` would miss.
+ * `contains` never reaches into a shadow root, so the host chain of the resolved element is walked
+ * up to the container.
+ */
+export function containsDeepActiveElement(container: HTMLElement | null | undefined): boolean {
+	const active = deepActiveElement();
+	if (!active || !container) {
+		return false;
+	}
+	let node: Node | null = active;
+	while (node) {
+		if (node === container) {
+			return true;
+		}
+		const root: Node = node.getRootNode();
+		/* A shadow root has no parentElement: the walk continues at its host, so containers around
+		   a nested web component match as well. */
+		node = root instanceof ShadowRoot ? root.host : node.parentElement;
+	}
+	return false;
+}
+
 const FOCUS_OPTIONS = {
 	preventScroll: true,
 } satisfies FocusOptions;

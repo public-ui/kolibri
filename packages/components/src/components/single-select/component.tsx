@@ -26,6 +26,7 @@ import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { containsDeepActiveElement } from '../../utils/element-focus';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 
@@ -425,7 +426,7 @@ export class KolSingleSelect
 	@Listen('focusin')
 	public handleFocusIn(event: FocusEvent): void {
 		setTimeout(() => {
-			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+			if (containsDeepActiveElement(this.host) && !this.inputHasFocus) {
 				this.handleFocus(event);
 			}
 		});
@@ -436,7 +437,7 @@ export class KolSingleSelect
 	public handleFocusOut(event: FocusEvent): void {
 		this.selectOptionByInputValue();
 		setTimeout(() => {
-			if (this.inputHasFocus && !this.host?.contains(document.activeElement)) {
+			if (this.inputHasFocus && !containsDeepActiveElement(this.host)) {
 				this.handleBlur(event);
 				this.isOpen = false;
 			}
@@ -557,8 +558,8 @@ export class KolSingleSelect
 	}
 
 	/**
-	 * Sends the payload `{ value: null }` (#10841) as value of the `input` and `change` events and as
-	 * form value, then opens the listbox.
+	 * Sends `null` (#10841) as value of the `input` and `change` events and as form value, like
+	 * `selectOption` sends the option value, then opens the listbox.
 	 */
 	private clearSelection(): void {
 		if (this.getRenderProp('disabled') === true) {
@@ -572,8 +573,8 @@ export class KolSingleSelect
 		this.filteredOptions = [...this.getRenderProp('options')];
 
 		const detail = { name: this.getRenderProp('name'), value: emptyValue };
-		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), { value: emptyValue });
-		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), { value: emptyValue });
+		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), emptyValue);
+		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
 
 		this.ctaRef.el?.focus();
 		this.isOpen = true;

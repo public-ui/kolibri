@@ -112,6 +112,11 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 		} else {
 			dialog?.show?.();
 		}
+
+		this.getRenderProp('on').onToggle?.(true);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.toggle);
+		}
 	}
 
 	protected closeDialog(): void {
@@ -141,8 +146,10 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 
 		unlockScroll(this);
 		this.getRenderProp('on').onClose?.();
+		this.getRenderProp('on').onToggle?.(false);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
+			dispatchDomEvent(this.host, KolEvent.toggle);
 		}
 	};
 
