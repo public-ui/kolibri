@@ -7,8 +7,8 @@ import type { TabsButton } from './button-item';
  * Props configuration for the tabs component.
  *
  * Notes on prop choices:
- * - `labelProp` (not `labelProp`): the predecessor's `validateLabel` accepted any
- *   string; `labelProp` would reject one-character labels, a validation regression.
+ * - `labelProp`: the label names a landmark without an expert slot. The unified validation
+ *   (at least 2 characters, numbers-only labels exempt) covers the predecessor's accepted values.
  * - `selectedProp` only checks the type. Clamping into the tab list and skipping disabled tabs
  *   needs both `_selected` and `_tabs`, so the web component resolves it after applying either.
  * - `tabsCallbacksProp` and `tabBehaviorProp` are not rendered — the web component reads them in
