@@ -3,7 +3,7 @@ import { getDocument } from '../../../schema';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../../utils/overlay';
 import { tooltipClosed, tooltipOpened } from '../../../utils/tooltip-open-tracking';
-import { alignProp, badgeTextProp, idProp, labelProp } from '../../props';
+import { alignProp, badgeTextProp, idProp, optionalLabelProp } from '../../props';
 import { BaseBehavior } from '../base-behavior';
 import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { TooltipApi } from './api';
@@ -31,9 +31,10 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 	}
 
 	public watchLabel(value?: string): void {
-		// An empty label means "not set" for the tooltip: `labelProp` rejects the empty string (it
-		// is the expert-slot sentinel), and a tooltip without a label text is simply not set.
-		labelProp.apply(value || undefined, (v) => {
+		// An empty label means "not set" for the tooltip: the label validators reject the empty
+		// string (it is the expert-slot sentinel), and a tooltip without a label text — e.g. the
+		// one of an unlabeled info popover — is simply not set, without a required warning.
+		optionalLabelProp.apply(value || undefined, (v) => {
 			this.setRenderProp('label', v);
 		});
 	}

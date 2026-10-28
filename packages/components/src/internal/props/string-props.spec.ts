@@ -136,8 +136,13 @@ describe('hrefProp', () => {
  * accepted value, the UI/UX hint for a label longer than 80 characters included.
  */
 describe('labelProp', () => {
-	it.each([undefined, null])('applies the "not set" default undefined for %p', (value) => {
-		expect(applied(labelProp, value)).toEqual([undefined]);
+	it('applies the "not set" default undefined and warns about the missing required value', () => {
+		expect(applied(labelProp, undefined)).toEqual([undefined]);
+		expect(warnings()).toEqual([expect.stringContaining(`The required property '_label' did not receive a value.`)]);
+	});
+
+	it('applies the "not set" default undefined for null', () => {
+		expect(applied(labelProp, null)).toEqual([undefined]);
 	});
 
 	it.each<[unknown, string]>([

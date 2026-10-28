@@ -21,9 +21,9 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 		reason: 'icons of a form field (left/right state), checkbox state icons, a single icon class, icons of a span (raw)',
 	},
 	label: {
-		definitions: ['labelProp', 'labelWithExpertSlotProp'],
+		definitions: ['labelProp', 'labelWithExpertSlotProp', 'optionalLabelProp'],
 		reason:
-			'labelProp validates at least two characters (numbers-only labels are exempt, the empty string is invalid) and gives the label hints; labelWithExpertSlotProp additionally accepts the empty string, which enables the expert slot of a component',
+			'labelProp validates at least two characters (numbers-only labels are exempt, the empty string is invalid) and gives the label hints; labelWithExpertSlotProp additionally accepts the empty string, which enables the expert slot of a component; optionalLabelProp drops the required warning for components whose label is legitimately optional (the hrefProp/optionalHrefProp precedent)',
 	},
 	links: {
 		definitions: ['breadcrumbLinksProp', 'navLinksProp', 'skipNavLinksProp'],
