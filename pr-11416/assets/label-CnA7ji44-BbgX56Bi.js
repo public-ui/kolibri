@@ -1,0 +1,1 @@
+import{b as e,o as t}from"./base-web-component-Bcoukts3-C7CgKi_a.js";import{i as n,o as r}from"./label-hints-CAZ4E3ar-Cq_R_2w2.js";var i=t(`label`,void 0,e,n,{required:!0,hints:r}),a=t(`label`,void 0,e,n,{hints:r});export{a as n,i as t};

@@ -1,1 +1,0 @@
-import{i as e}from"./index-D6-7GNnI.js";var t=new Map;function n(n){let r=t.get(n);return r||(r=e.forBlock(n),t.set(n,r)),r}export{n as t};
