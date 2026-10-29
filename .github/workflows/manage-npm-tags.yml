@@ -18,6 +18,7 @@ on:
         description: 'NPM tag name'
         required: true
         options:
+          - beta
           - dev
           - latest
           - lts

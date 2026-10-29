@@ -1,7 +1,14 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { translate } from '../../../i18n';
-import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../../schema';
+import type {
+	LabelLangSegmentsPropType,
+	MaxLengthBehaviorPropType,
+	MsgPropType,
+	Stringified,
+	TooltipAlignPropType,
+	VariantClassNamePropType,
+} from '../../../schema';
 import { buildBadgeTextString, classNameFromVariant, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
@@ -21,7 +28,9 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	disabled?: boolean;
 	msg?: Stringified<MsgPropType>;
 	hint?: string;
-	label: string;
+	label: LabelLangSegmentsPropType;
+	/** Space-separated IDs the root element references through `aria-describedby`. */
+	ariaDescribedBy?: string;
 	hideLabel?: boolean;
 	hideMsg?: boolean;
 	infoPopover?: FormFieldInfoPopover;
@@ -171,7 +180,7 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
 				</div>
 			)}
-			{showMsg && !hideMsg && <FormFieldMsgFC id={id} alert={alert} msg={msg} />}
+			{showMsg && <FormFieldMsgFC id={id} alert={alert} hideMsg={hideMsg} msg={msg} />}
 			{!renderNoHint && <FormFieldHintFC id={id} hint={hint} />}
 			{typeof maxLength === 'number' && !counter && (
 				// The hidden character limit hint is only rendered without a counter: the counter spans

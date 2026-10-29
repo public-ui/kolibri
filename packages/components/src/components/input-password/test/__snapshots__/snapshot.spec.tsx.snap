@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kol-input-password should render with _label="Label" _name="field" _hasCounter=true _maxLength=10 _value="Value" 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--has-counter kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -24,7 +24,7 @@ exports[`kol-input-password should render with _label="Label" _name="field" _has
         </div>
       </div>
       <div class="kol-form-field__counter">
-        <span aria-hidden="true" class="kol-form-field__counter kol-form-field__counter--exceeded" data-testid="input-counter">
+        <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
           kol-character-counter-current-of-max
         </span>
         <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="input-password-counter-nonce">
@@ -37,10 +37,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _has
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _maxLength=10 _value="Value" 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -71,7 +71,7 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pat
 <kol-input-password>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--required kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -96,10 +96,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pat
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _accessKey="V" 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -127,10 +127,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _alert=true 1`] = `
-<kol-input-password _alert="" _value="Value">
+<kol-input-password _alert="">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -155,10 +155,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _disabled=true 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--disabled kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -183,10 +183,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _hideLabel=true 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--hide-label kol-input-password password">
-      <label class="kol-form-field__label" hidden="" htmlfor="input-password-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -224,10 +224,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _hint="Hint" 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -255,10 +255,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -289,10 +289,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -321,10 +321,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -353,10 +353,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -416,10 +416,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
-<kol-input-password _touched="" _value="Value">
+<kol-input-password _touched="">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -434,8 +434,17 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-password-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
+            <input aria-describedby="input-password-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-password-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
           </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-password-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -444,10 +453,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
-<kol-input-password _touched="" _value="Value">
+<kol-input-password _touched="">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -481,10 +490,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -499,7 +508,7 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="input-password-msg-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-password-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-password-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
           </div>
         </div>
       </div>
@@ -509,10 +518,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _readOnly=true 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--read-only kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -540,10 +549,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _shortKey="S" 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -571,10 +580,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -626,10 +635,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _touched=true 1`] = `
-<kol-input-password _touched="" _value="Value">
+<kol-input-password _touched="">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--touched kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -654,10 +663,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _variant="custom" 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--custom kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -682,10 +691,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -710,10 +719,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _variant="visibility-toggle" _value="Value" 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--visibility-toggle kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -738,10 +747,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _var
 `;
 
 exports[`kol-input-password should render with _label="Label" _name="field" _visibilityToggle=true _value="Value" 1`] = `
-<kol-input-password _value="Value">
+<kol-input-password>
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-password password">
-      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -785,6 +794,39 @@ exports[`kol-input-password should render with _label="Label" _name="field" _vis
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-password>
+`;
+
+exports[`kol-input-password should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" 1`] = `
+<kol-input-password>
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-password password">
+      <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-password-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
           </div>
         </div>
       </div>

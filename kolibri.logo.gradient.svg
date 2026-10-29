@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="kolibri-logo-gradient-title kolibri-logo-gradient-desc">
+	<title id="kolibri-logo-gradient-title">KoliBri</title>
+	<desc id="kolibri-logo-gradient-desc">Kolibri-Logo aus sechs Segmenten, dessen Farben als fließender Verlauf kontinuierlich im Kreis um die Form wandern. Die Palette ist farblindensicher (Okabe-Ito). Bei aktivierter Einstellung „Bewegung reduzieren“ steht das Logo statisch dar.</desc>
+	<!--
+		Farblindensichere Palette (angelehnt an Okabe-Ito, https://davidmathlogic.com/colorblindness/).
+		Verlaufsvariante: Die sieben Farben fließen ohne Haltphasen kontinuierlich im Kreis um die
+		Form (Ringfolge Schnabel, oberer Flügel, Kopf, Schwanz, Körper, unterer Flügel). Jedes
+		Segment führt dieselbe Farbfolge in eigener Drehphase (Variablen c0 bis c6) und teilt sich
+		den einen Keyframes-Satz; die Palettenreihenfolge wurde per Skript so gewählt, dass die
+		permanent benachbarten Palette-Paare den größten Mindestkontrast haben. Während des
+		Übergangs entstehen Mischfarben, die nicht farblindensicher geprüft sind; die weißen
+		Trennfugen tragen die Unterscheidbarkeit zusätzlich (WCAG 1.4.1). Die Animation läuft
+		als reines CSS auch in img-Kontexten und respektiert prefers-reduced-motion.
+	-->
+	<style>
+		/*
+		 * 14s pro Umlauf, jede Farbe fließt 2s lang in die nächste über (linear, ohne Halt).
+		 * Die Position im Kreis steckt allein in den variablen Farbfolgen (c0 bis c6), die je
+		 * Segment um eine Palette-Stufe gedreht sind — ein Keyframes-Satz für alle Segmente.
+		 */
+		.kol-seg {
+			fill: var(--c0);
+			animation: kol-verlauf 14s linear infinite;
+		}
+		.kol-seg:nth-of-type(1) { --c0: #56B4E9; --c1: #0072B2; --c2: #009E73; --c3: #E69F00; --c4: #003C78; --c5: #CC79A7; --c6: #D55E00; } /* Körper */
+		.kol-seg:nth-of-type(2) { --c0: #D55E00; --c1: #56B4E9; --c2: #0072B2; --c3: #009E73; --c4: #E69F00; --c5: #003C78; --c6: #CC79A7; } /* unterer Flügel */
+		.kol-seg:nth-of-type(3) { --c0: #009E73; --c1: #E69F00; --c2: #003C78; --c3: #CC79A7; --c4: #D55E00; --c5: #56B4E9; --c6: #0072B2; } /* Kopf */
+		.kol-seg:nth-of-type(4) { --c0: #E69F00; --c1: #003C78; --c2: #CC79A7; --c3: #D55E00; --c4: #56B4E9; --c5: #0072B2; --c6: #009E73; } /* oberer Flügel */
+		.kol-seg:nth-of-type(5) { --c0: #003C78; --c1: #CC79A7; --c2: #D55E00; --c3: #56B4E9; --c4: #0072B2; --c5: #009E73; --c6: #E69F00; } /* Schnabel */
+		.kol-seg:nth-of-type(6) { --c0: #0072B2; --c1: #009E73; --c2: #E69F00; --c3: #003C78; --c4: #CC79A7; --c5: #D55E00; --c6: #56B4E9; } /* Schwanz */
+		@keyframes kol-verlauf {
+			0%      { fill: var(--c0); }
+			14.286% { fill: var(--c1); }
+			28.571% { fill: var(--c2); }
+			42.857% { fill: var(--c3); }
+			57.143% { fill: var(--c4); }
+			71.429% { fill: var(--c5); }
+			85.714% { fill: var(--c6); }
+			100%    { fill: var(--c0); }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			.kol-seg {
+				animation: none;
+			}
+		}
+	</style>
+	<g>
+		<path class="kol-seg" d="M353 322L213 304V434L353 322Z" />
+		<path class="kol-seg" d="M209 564V304L149 434L209 564Z" />
+		<path class="kol-seg" d="M357 316L417 250L361 210L275 244L357 316Z" />
+		<path class="kol-seg" d="M329 218L237 92L250 222L272 241L329 218Z" />
+		<path class="kol-seg" d="M353 318L35 36L213 300L353 318Z" />
+		<path class="kol-seg" d="M391 286L565 272L421 252L391 286Z" />
+	</g>
+</svg>

@@ -40,7 +40,7 @@ import type {
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
 	KoliBriTableSelectionKeys,
-	LabelPropType,
+	LabelLangSegmentsPropType,
 	PaginationPositionPropType,
 	SelectionChangeEventPayload,
 	SortEventPayload,
@@ -52,7 +52,7 @@ import type {
 	TableStatefulCallbacksPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { devHint } from '../../schema';
+import { devHint, trimLabel } from '../../schema';
 import { Callback } from '../../schema/enums';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
 import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
@@ -259,10 +259,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		this.applyLabel(value);
 	}
 
@@ -493,7 +493,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 			max: this.pagination._max || this.data.length,
 			label: translate('kol-table-pagination-label', {
 				placeholders: {
-					label: `${this.getRenderProp('label')} (${positionLabel})`,
+					label: `${trimLabel(this.getRenderProp('label'))} (${positionLabel})`,
 				},
 			}),
 		};

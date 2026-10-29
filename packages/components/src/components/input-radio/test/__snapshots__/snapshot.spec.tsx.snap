@@ -23,7 +23,7 @@ exports[`kol-input-radio should render with _disabled=true _label="Label" _name=
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -42,7 +42,7 @@ exports[`kol-input-radio should render with _disabled=true _label="Label" _name=
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -61,7 +61,7 @@ exports[`kol-input-radio should render with _disabled=true _label="Label" _name=
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -116,7 +116,7 @@ exports[`kol-input-radio should render with _hideLabel=true _label="Label" _name
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-0-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-radio-0-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -148,7 +148,7 @@ exports[`kol-input-radio should render with _hideLabel=true _label="Label" _name
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-1-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-radio-1-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -180,7 +180,7 @@ exports[`kol-input-radio should render with _hideLabel=true _label="Label" _name
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-2-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-radio-2-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -222,7 +222,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-input kol-input-radio__input" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -244,7 +244,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -286,7 +286,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--required kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" required="" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -305,7 +305,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--required kol-input-radio__input" id="input-radio-1-nonce" name="field" required="" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -324,7 +324,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--required kol-input-radio__input" id="input-radio-2-nonce" name="field" required="" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -366,7 +366,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -385,7 +385,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -404,7 +404,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -446,7 +446,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-input kol-input-radio__input" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -465,7 +465,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -507,7 +507,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _option
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -549,7 +549,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -568,7 +568,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -587,7 +587,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -629,7 +629,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -648,7 +648,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -667,7 +667,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -709,7 +709,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -728,7 +728,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -747,7 +747,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -802,7 +802,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-0-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-radio-0-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -834,7 +834,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-1-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-radio-1-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -866,7 +866,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-2-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-radio-2-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -908,7 +908,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -927,7 +927,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -946,7 +946,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -991,7 +991,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1010,7 +1010,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1029,7 +1029,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1071,7 +1071,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1090,7 +1090,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1109,7 +1109,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1151,7 +1151,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1170,7 +1170,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1189,7 +1189,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1266,7 +1266,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1285,7 +1285,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1304,7 +1304,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1326,7 +1326,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--radio kol-form-field--touched">
+    <fieldset aria-describedby="input-radio-msg-nonce" class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--radio kol-form-field--touched">
       <legend class="kol-form-field__label kol-form-field__label--legend" id="input-radio-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
@@ -1346,7 +1346,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1365,7 +1365,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1384,7 +1384,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1396,6 +1396,15 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </span>
           </label>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-radio-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </fieldset>
@@ -1426,7 +1435,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1445,7 +1454,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1464,7 +1473,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1495,7 +1504,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset aria-describedby="input-radio-msg-nonce" class="kol-form-field kol-form-field--radio">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" id="input-radio-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
@@ -1515,7 +1524,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1534,7 +1543,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1553,7 +1562,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1595,7 +1604,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1614,7 +1623,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1633,7 +1642,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1675,7 +1684,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1694,7 +1703,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1713,7 +1722,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1755,7 +1764,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1774,7 +1783,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1793,7 +1802,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1848,7 +1857,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-0-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-radio-0-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1880,7 +1889,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-1-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-radio-1-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1912,7 +1921,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-2-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-radio-2-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1954,7 +1963,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1973,7 +1982,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1992,7 +2001,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2037,7 +2046,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2056,7 +2065,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2075,7 +2084,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2117,7 +2126,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2136,7 +2145,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2155,7 +2164,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2197,7 +2206,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2216,7 +2225,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2235,7 +2244,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2312,7 +2321,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2331,7 +2340,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2350,7 +2359,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2372,7 +2381,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
   <template shadowrootmode="open">
-    <fieldset class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--radio kol-form-field--touched">
+    <fieldset aria-describedby="input-radio-msg-nonce" class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--radio kol-form-field--touched">
       <legend class="kol-form-field__label kol-form-field__label--legend" id="input-radio-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
@@ -2392,7 +2401,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2411,7 +2420,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2430,7 +2439,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2442,6 +2451,15 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </span>
           </label>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-radio-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </fieldset>
@@ -2472,7 +2490,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2491,7 +2509,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2510,7 +2528,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2541,7 +2559,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
-    <fieldset aria-describedby="input-radio-msg-nonce" class="kol-form-field kol-form-field--radio">
+    <fieldset class="kol-form-field kol-form-field--radio">
       <legend class="kol-form-field__label kol-form-field__label--legend" id="input-radio-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
@@ -2561,7 +2579,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2580,7 +2598,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2599,7 +2617,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2641,7 +2659,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2660,7 +2678,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2679,7 +2697,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2721,7 +2739,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2740,7 +2758,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2759,7 +2777,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2801,7 +2819,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--touched kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2820,7 +2838,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--touched kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2839,7 +2857,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--touched kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2881,7 +2899,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2900,7 +2918,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2919,7 +2937,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2961,7 +2979,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2980,7 +2998,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2999,7 +3017,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3041,7 +3059,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3060,7 +3078,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3079,7 +3097,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3121,7 +3139,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3140,7 +3158,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3159,7 +3177,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3201,7 +3219,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--touched kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3220,7 +3238,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--touched kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3239,7 +3257,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--touched kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3281,7 +3299,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3300,7 +3318,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3319,7 +3337,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3361,7 +3379,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3380,7 +3398,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3399,7 +3417,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3441,7 +3459,7 @@ exports[`kol-input-radio should render with _label="Label" _options=[{"label":"F
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="input-radio-nonce" type="radio" value="-0">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3460,7 +3478,7 @@ exports[`kol-input-radio should render with _label="Label" _options=[{"label":"F
               <input autocapitalize="off" autocorrect="off" checked="" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="input-radio-nonce" type="radio" value="-1">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3479,7 +3497,177 @@ exports[`kol-input-radio should render with _label="Label" _options=[{"label":"F
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="input-radio-nonce" type="radio" value="-2">
             </label>
           </div>
-          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
+exports[`kol-input-radio should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset class="kol-form-field kol-form-field--radio">
+      <legend class="kol-form-field__label kol-form-field__label--legend" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-horizontal">
+        <div class="kol-field-control kol-field-control--disabled">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
+exports[`kol-input-radio should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset class="kol-form-field kol-form-field--radio">
+      <legend class="kol-form-field__label kol-form-field__label--legend" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-vertical">
+        <div class="kol-field-control kol-field-control--disabled">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">

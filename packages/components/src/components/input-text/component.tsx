@@ -457,6 +457,10 @@ export class KolInputText
 		}
 	}
 
+	public connectedCallback(): void {
+		super.connectedCallback();
+		this.clearButton.syncListeners();
+	}
 	public componentWillLoad(): void {
 		this.initRenderProps(inputTextPropsConfig);
 		this.unsetRenderProp('smartButton');
@@ -496,6 +500,10 @@ export class KolInputText
 
 	public componentDidLoad(): void {
 		this.didLoadTextInput();
+	}
+
+	public componentDidUpdate(): void {
+		this.didUpdateTextInput();
 	}
 
 	public componentDidRender(): void {

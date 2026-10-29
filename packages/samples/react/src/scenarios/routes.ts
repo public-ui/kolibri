@@ -9,6 +9,7 @@ import { FocusElements } from './focus-elements';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
 import { InputGroupWithError } from './input-group-with-error';
 import { InputsGetValue } from './inputs-get-value';
+import { LabelLang } from './label-lang';
 import { PerformanceTest } from './performance-test';
 import { RHFBasic } from './react-hook-form/basic';
 import { RHFDisabled } from './react-hook-form/disabled';
@@ -29,6 +30,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'date-in-form': DateInForm,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
+		'label-lang': LabelLang,
 		'input-group-with-error': InputGroupWithError,
 		'inputs-get-value': InputsGetValue,
 		'react-hook-form-adapter': RHFBasic,

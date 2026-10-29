@@ -1,4 +1,5 @@
 import { autoUpdate } from '@floating-ui/dom';
+import type { LabelLangSegmentsPropType } from '../../../schema';
 import { getDocument } from '../../../schema';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../../utils/overlay';
@@ -30,7 +31,7 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 		this.watchId(props.id);
 	}
 
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		labelProp.apply(value, (v) => {
 			this.setRenderProp('label', v);
 		});
@@ -66,6 +67,9 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 			if (replacePreviousSibling) {
 				this.previousSibling = next;
 			}
+			/* The removal makes repeated syncs idempotent: renders and reconnects re-run the sync
+			   without duplicating listeners, since the elements persist across a reattachment. */
+			this.removeListeners(next);
 			this.addListeners(next);
 		}
 	}

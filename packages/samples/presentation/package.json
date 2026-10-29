@@ -39,7 +39,7 @@
 		"react-router": "8.4.0"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.60.0",
+		"@playwright/test": "1.63.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@testing-library/jest-dom": "7.0.1",
 		"@testing-library/react": "16.3.3",
@@ -52,7 +52,7 @@
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
 		"happy-dom": "20.14.6",
-		"knip": "6.39.0",
+		"knip": "6.42.1",
 		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"shadow-dom-testing-library": "1.14.2",

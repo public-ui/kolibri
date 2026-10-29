@@ -45,6 +45,7 @@ export enum KeyEnum {
 	'pagination-position-top',
 	readonly,
 	'show-password',
+	'show-suggestions',
 	sort,
 	'split-button-dropdown-label-open',
 	success,

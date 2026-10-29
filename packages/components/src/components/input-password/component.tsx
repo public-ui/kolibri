@@ -344,7 +344,7 @@ export class KolInputPassword
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: string;
+	@Prop({ mutable: true }) public _value?: string;
 
 	@Watch('_value')
 	public watchValue(value?: string): void {
@@ -396,6 +396,10 @@ export class KolInputPassword
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
 
+	public connectedCallback(): void {
+		super.connectedCallback();
+		this.visibilityToggle.syncListeners();
+	}
 	public componentWillLoad(): void {
 		this.initRenderProps(inputPasswordPropsConfig);
 		this.unsetRenderProp('smartButton');
@@ -433,6 +437,10 @@ export class KolInputPassword
 
 	public componentDidLoad(): void {
 		this.didLoadTextInput();
+	}
+
+	public componentDidUpdate(): void {
+		this.didUpdateTextInput();
 	}
 
 	public componentDidRender(): void {

@@ -184,6 +184,19 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(listbox).toBeVisible();
 	});
 
+	test('names the toggle button and reflects the state of the listbox on it', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+		const toggle = page.locator('button.kol-combobox-toggle');
+		const listboxId = await page.locator('.kol-custom-suggestions-options-group').getAttribute('id');
+		await expect(toggle).toHaveAccessibleName(/\S/);
+		await expect(toggle).toHaveAttribute('aria-controls', listboxId!);
+		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+		await toggle.click();
+		await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+		await toggle.click();
+		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+	});
+
 	test('should close listbox when pressing Escape', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const input = page.locator('input.kol-combobox__input');
@@ -531,6 +544,25 @@ test.describe(COMPONENT_NAME, () => {
 			]);
 			expect([await isOpen(page), await getFocused(page)]).toEqual([false, 'input']);
 			expect(await page.locator('input.kol-combobox__input').inputValue()).toBe('');
+		});
+	});
+
+	test.describe('Suggestions set as a JSON attribute after load', () => {
+		test('renders the options immediately, before any filtering', async ({ page }) => {
+			await page.setContent('<kol-combobox _label="Input"></kol-combobox>');
+			const component = page.locator('kol-combobox');
+
+			await component.evaluate((element: HTMLKolComboboxElement, options: string[]) => {
+				element.setAttribute('_suggestions', JSON.stringify(options));
+			}, OPTIONS);
+			await page.waitForChanges();
+
+			const input = page.locator('input.kol-combobox__input');
+			await input.focus();
+			await input.press('ArrowDown');
+			await page.waitForChanges();
+			expect(await isOpen(page)).toBe(true);
+			expect(await getOptionTexts(page)).toEqual(OPTIONS);
 		});
 	});
 });

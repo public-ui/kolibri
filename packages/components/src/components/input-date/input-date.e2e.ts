@@ -1,9 +1,21 @@
+import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 import type { Iso8601 } from '../../schema';
+
+/**
+ * Local calendar day of an ISO instant in the timezone of the page, as `YYYY-MM-DD`. The date
+ * field works on local calendar days, and the test runner may run in another timezone than the
+ * page, so days are formatted inside the page.
+ */
+const pageLocalDay = (page: Page, iso: string): Promise<string> =>
+	page.evaluate((iso: string) => {
+		const date = new Date(iso);
+		return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+	}, iso);
 
 test.describe('kol-input-date', () => {
 	test.describe('when value is Date object', () => {
@@ -88,7 +100,9 @@ test.describe('kol-input-date', () => {
 
 					if (value instanceof Date) {
 						expect(getValue).toBeInstanceOf(Date);
-						expect((getValue as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
+						const expectedDay = await pageLocalDay(page, value.toISOString());
+						const returnedDay = await pageLocalDay(page, (getValue as Date).toISOString());
+						expect(returnedDay).toBe(expectedDay);
 					} else {
 						expect(getValue).toBe(value);
 					}
@@ -111,7 +125,8 @@ test.describe('kol-input-date', () => {
 
 					if (value instanceof Date) {
 						expect(valueDomProperty).toBeInstanceOf(Date);
-						expect((valueDomProperty as Date).toISOString().split('T')[0]).toBe(new Date(NEW_DATE).toISOString().split('T')[0]);
+						const reflectedDay = await pageLocalDay(page, (valueDomProperty as Date).toISOString());
+						expect(reflectedDay).toBe(NEW_DATE);
 					} else {
 						expect(valueDomProperty).toBe(NEW_DATE);
 					}
@@ -331,6 +346,53 @@ test.describe('kol-input-date', () => {
 
 	testInputMessage<HTMLKolInputDateElement>('kol-input-date');
 
+	test.describe('Enter in a kol-form', () => {
+		const setUpForm = async (page: Page) => {
+			await page.setContent('<kol-form><kol-input-date _label="Date input"></kol-input-date></kol-form>');
+			await page.locator('kol-form').evaluate((element: HTMLKolFormElement) => {
+				(window as unknown as { submitCount: number }).submitCount = 0;
+				element._on = {
+					onSubmit: () => {
+						(window as unknown as { submitCount: number }).submitCount++;
+					},
+				};
+			});
+		};
+
+		const getSubmitCount = (page: Page) => page.evaluate(() => (window as unknown as { submitCount: number }).submitCount);
+
+		test('submits the form on Enter in the date field', async ({ page }) => {
+			await setUpForm(page);
+			await page.locator('input').focus();
+			await page.keyboard.press('Enter');
+			await expect.poll(() => getSubmitCount(page)).toBe(1);
+		});
+
+		test('does not submit the form when a keydown listener prevents the default', async ({ page }) => {
+			await setUpForm(page);
+			await page.locator('input').evaluate((input: HTMLInputElement) => {
+				input.addEventListener('keydown', (event) => event.preventDefault());
+			});
+			await page.locator('input').focus();
+			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
+			expect(await getSubmitCount(page)).toBe(0);
+		});
+
+		test('does not submit the form when Enter opens the native calendar', async ({ page }) => {
+			await setUpForm(page);
+			await page.locator('input').focus();
+			// Day, month and year are the first three tab stops of the date input, the calendar icon is the fourth.
+			for (let i = 0; i < 3; i++) {
+				await page.keyboard.press('Tab');
+			}
+			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
+			expect(await page.locator('input').evaluate((input: HTMLInputElement) => input.matches(':open'))).toBe(true);
+			expect(await getSubmitCount(page)).toBe(0);
+		});
+	});
+
 	testInputBehaviorContract<HTMLKolInputDateElement>({
 		componentName: 'kol-input-date',
 		fillAction: async (input) => {
@@ -358,5 +420,20 @@ test.describe('kol-input-date', () => {
 			experimentalFormData: [['field', '2024-05-10']],
 			syncedValue: '2024-05-10',
 		},
+	});
+
+	test.describe('reset', () => {
+		test('removes the has-value class immediately', async ({ page }) => {
+			await page.setContent('<kol-input-date _label="Date" _value="2026-01-01"></kol-input-date>');
+
+			const formField = page.locator('kol-input-date .kol-form-field');
+			await expect(formField).toHaveClass(/has-value/);
+
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => element.reset());
+			await page.waitForChanges();
+
+			await expect(formField).not.toHaveClass(/has-value/);
+			await expect(page.locator('kol-input-date input')).toHaveValue('');
+		});
 	});
 });

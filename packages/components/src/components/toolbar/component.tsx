@@ -8,8 +8,8 @@ import { toolbarPropsConfig } from '../../internal/functional-components/toolbar
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
 import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
 import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
-import { labelWithExpertSlotProp, orientationProp, toolbarItemsProp } from '../../internal/props';
-import type { ClickableElement, FocusableElement, KolFocusOptions, ToolbarItemsPropType, ToolbarProps } from '../../schema';
+import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
+import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType, ToolbarProps } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { delegateClick, setClick } from '../../utils/element-click';
@@ -40,11 +40,11 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+	public watchLabel(value?: LabelPropType): void {
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
