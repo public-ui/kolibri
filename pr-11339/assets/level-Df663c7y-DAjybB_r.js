@@ -1,1 +1,0 @@
-import{g as e,o as t}from"./base-web-component-Bcoukts3-C7c2tm6I.js";var n=[0,1,2,3,4,5,6],r=t(`level`,0,t=>e(t),e=>n.includes(e));export{r as t};
