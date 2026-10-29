@@ -16,6 +16,7 @@
 		overflow: visible;
 
 		grid-template-areas:
+			'image close'
 			'header  close'
 			'content content';
 		grid-template-columns: 1fr min-content;
@@ -35,16 +36,25 @@
 			grid-area: close;
 		}
 
+		&__image {
+			max-width: 100%;
+			object-fit: cover;
+			grid-area: image;
+		}
+
 		&:has(&__link) {
 			position: relative;
 		}
 
-		&__link::after {
-			position: absolute;
-			inset: 0;
+		&__link {
+			grid-area: header;
+			&::after {
+				position: absolute;
+				inset: 0;
 
-			content: '';
-			cursor: pointer;
+				content: '';
+				cursor: pointer;
+			}
 		}
 	}
 }
