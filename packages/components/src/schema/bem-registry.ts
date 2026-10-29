@@ -112,6 +112,9 @@ export type KoliBriComponentsBemSchema = {
 			link: {
 				modifiers: null;
 			};
+			image: {
+				modifiers: null;
+			};
 		};
 		modifiers: null;
 	};
@@ -875,6 +878,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			'close-button': { modifiers: null },
 			content: { modifiers: null },
 			header: { modifiers: null },
+			image: { modifiers: null },
 			link: { modifiers: null },
 		},
 		modifiers: null,

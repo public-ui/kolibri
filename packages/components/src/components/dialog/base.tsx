@@ -173,6 +173,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 			hasCloser: true,
 			headingId: this.getState('headingId'),
 			href: '',
+			image: '',
 			label: this.getRenderProp('label'),
 			level: this.getRenderProp('level'),
 			on: {},

@@ -9,7 +9,8 @@ import { resolveCardCloseButtonProps } from '../../internal/functional-component
 import { CardFC } from '../../internal/functional-components/card/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { cardCallbacksProp, hasCloserProp, labelProp, levelProp, linkTargetProp, optionalHrefProp } from '../../internal/props';
-import type { HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
+import { imageProp } from '../../internal/props/image';
+import type { HeadingLevel, HrefPropType, ImagePropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -59,6 +60,10 @@ export abstract class BaseCardWebComponent extends BaseWebComponent<CardApi> {
 
 	protected applyHref(value?: HrefPropType): void {
 		optionalHrefProp.apply(value, (v) => this.setRenderProp('href', v));
+	}
+
+	protected applyImage(value?: ImagePropType): void {
+		imageProp.apply(value, (v) => this.setRenderProp('image', v));
 	}
 
 	protected applyLabel(value?: LabelPropType): void {
@@ -120,6 +125,7 @@ export abstract class BaseCardWebComponent extends BaseWebComponent<CardApi> {
 				hasCloser={this.getRenderProp('hasCloser')}
 				headingId={this.getState('headingId')}
 				href={this.getRenderProp('href')}
+				image={this.getRenderProp('image')}
 				label={this.getRenderProp('label')}
 				level={this.getRenderProp('level')}
 				on={this.getRenderProp('on')}
