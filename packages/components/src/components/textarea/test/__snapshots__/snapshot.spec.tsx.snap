@@ -736,3 +736,31 @@ exports[`kol-textarea should render with _label=[{"text":"partly english","lang"
   </template>
 </kol-textarea>
 `;
+
+exports[`kol-textarea should render with _label="Label" _name="field" _spellCheck=false 1`] = `
+<kol-textarea>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field-textarea">
+      <label class="kol-form-field__label" for="textarea-nonce" id="textarea-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container"><textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="textarea-nonce" name="field" style="resize: vertical;"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-textarea>
+`;
+
