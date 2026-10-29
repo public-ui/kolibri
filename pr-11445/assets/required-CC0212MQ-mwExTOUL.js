@@ -1,0 +1,1 @@
+import{f as e,o as t}from"./base-web-component-Bcoukts3-C3PGKBbh.js";var n=t(`required`,!1,e);export{n as t};
