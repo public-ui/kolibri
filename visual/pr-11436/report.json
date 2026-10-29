@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11436,
-	"head": "604dc31fc8c0b9a75c03b7a579fbcb56d4300d5b",
+	"head": "29fc9a6265704ad9f71bcaae0644d354e0d49e0c",
 	"repository": "public-ui/kolibri",
-	"runId": 40657486976,
-	"generatedAt": "2026-10-28T08:47:50.139Z",
-	"digest": "sha256:70fcbc6218a0e26fc4f25d27aacf97903d59157d7ab4d484d874383796b3e4ff",
+	"runId": 40830419212,
+	"generatedAt": "2026-10-29T06:52:29.310Z",
+	"digest": "sha256:d66b1062ac7bf659c1b71b495b28d7ec666c924dd71bd2297ab5e476c5873c19",
 	"baseline": {
-		"sha": "0fc7035f065217a33f0645a6d60ea3fb240f95b4",
+		"sha": "2b3579a4a0ecd05a6f362bd1e25963290f8d0966",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -17,7 +17,7 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2941,
+		"unchanged": 3095,
 		"changed": 0,
 		"added": 0,
 		"removed": 0,
@@ -28,28 +28,28 @@
 			"package": "test-tag-name-transformer",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 420,
+				"files": 442,
 				"meta": {
-					"sha": "0fc7035f065217a33f0645a6d60ea3fb240f95b4",
+					"sha": "2b3579a4a0ecd05a6f362bd1e25963290f8d0966",
 					"ref": "release/4",
-					"runId": 40523152526,
+					"runId": 40692067424,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-10-27T14:47:23.742Z",
-					"digest": "sha256:9ece9d54852eabb9a9d9006c25b2d7cd7f0b5d59505d623d95ad8a4e6af57579",
+					"createdAt": "2026-10-28T13:04:01.442Z",
+					"digest": "sha256:bfdd6a1f3d440fc90c3e9f6b0a7f93563062f82310e0d450971bdbbbd73ef453",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 420,
+				"unchanged": 442,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:9ece9d54852eabb9a9d9006c25b2d7cd7f0b5d59505d623d95ad8a4e6af57579",
+			"digest": "sha256:bfdd6a1f3d440fc90c3e9f6b0a7f93563062f82310e0d450971bdbbbd73ef453",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2140,6 +2140,138 @@
 					"hash": "sha256:876c7d41165a62e410eeefd2bd75c03436de57fdf26773dd81624d352e52d303"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:9d5f54611faf0e9d3141f65cef16437126d9f02a9044fd073fb19d4e74901f64"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:c810edf45ebbd9e525aa7ca7798e0564a49b522337b76341ef9ee5c8f95d1ee4"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:3236cc1513e71d7374d2f35b3887619b963e88b3b29d6970845d5fa035f0b76f"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:223905ce83dca4f63d882d3939b76214abe439e0c27e20c4f6cf2d8aa17efd99"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b5e41c438d3f0c3fb627c0f1a3da823da0a0656abe0d67fe7dc55b683f7a9387"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:818263d3eca17bc183fef960f36d774fa83fbb5ad7855ed33b7a9a0fcb85992c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:94a41a92d78d2e03b118f8270737487036afcae16255ef45a5960e677388a29a"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ffa8ade42b536a8b78b9ac7b66fec4eaa0259dda73cff220872bc6c44fcfe991"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-details",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b57866bf7e0e2ee71605a872e4791ce8bc8447ffaf089e6ebfc4439a1386b8cd"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:69180457301951a7fd06bfb79726df6f2e86fba4071da40d11bd62e3e119c5ca"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:118731c6b395cf497402cc75dfe2a5e6047cd8b03b4e6b77e7aa57eaa47429de"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:271ce76f3ba1dc2f7853e13e7e5112d64e0f328f929afb2232df4fbff6bc0063"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:4d553096e6143b44776189737e338932be009a394d2d24a56255331d28be8255"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:49b42af08a60a1f61701f4b906e0b5044c66d7c9fa5473a3aac2744f17bdad21"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ed52b47e58a0cb49f6d22a3e0896ccc6973cd47551de7b4a63bfa12dd29f4c38"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:04e30a0b23b5469ca078df6cfb7b1ee50909c56762be087de790cd546da2f66c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:d4439b10bc95c2cb1ac0bf926337305b81fcc5a796ae82a952e0af78b956a40f"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:f1c882d26439bd39ca6569f42c89a126919afbb3beb2103780294c12ca785bd1"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:735605c1f3f019560172171e17e498e330cef8eb055dc34e5f2d1d8263a8e2d6"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:157be2c6aee2d84cf690ef353147d5211304fc411c72a51fe0207039e6b4131d"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:d3741c2727fd89648cfc156ceb069572902747a90e8a01a04264547bab2a4cec"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ff6afae7d11bf3807cff3112c95d2ea5a5758e293a2d2b5595bfd4a4d8d0a92e"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -2579,28 +2711,28 @@
 			"package": "theme-bwst",
 			"themeDir": "theme-bwst",
 			"baseline": {
-				"files": 420,
+				"files": 442,
 				"meta": {
-					"sha": "0fc7035f065217a33f0645a6d60ea3fb240f95b4",
+					"sha": "2b3579a4a0ecd05a6f362bd1e25963290f8d0966",
 					"ref": "release/4",
-					"runId": 40523152526,
+					"runId": 40692067424,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-10-27T14:47:03.819Z",
-					"digest": "sha256:ee0b0eed7674b19122641b4fa322a50d36ae97c3cb3ad911d1347e094be94558",
+					"createdAt": "2026-10-28T13:04:11.400Z",
+					"digest": "sha256:1ef734cfc081af59b5a8f3c00fcba4b088b888010f39845af7cc4c4a51afa9a9",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 420,
+				"unchanged": 442,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ee0b0eed7674b19122641b4fa322a50d36ae97c3cb3ad911d1347e094be94558",
+			"digest": "sha256:1ef734cfc081af59b5a8f3c00fcba4b088b888010f39845af7cc4c4a51afa9a9",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4691,6 +4823,138 @@
 					"hash": "sha256:3ebec977568e5780b72bb93b5bd6d3ab6d0bfea8d5fba50012d3f145f1e86594"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:35d0185239c4648171b72771290b31143dac50ad607a0bbb341b837f2c73a89e"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:5d25f53a5c28346d45e213e966914241dd0ac5c6bc6f807dedd3f3861333e7d7"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:bb7bba8cfa2a9a93c50367f4136f87b5956c49890b3066c160fcf2638a99e50b"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:3f50f225b6146f7a0f66b27a554cd0b54fc70ee8bcf5a985708f6b1510226d32"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b03f0f9e3ddca74f7714260d20e9714888d24234bb5de2da25ca6dc829155203"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:d33e71b002b75d1fe454b65ebf91e920f0862041841301d6fbedd8faad915435"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:6431a87817e2c544f9fd8180e392d66edf55e3c3da0afa63b72594d274856399"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b4d7e31452c9c25993674b656e2feb237b2d35b638a5e3da886f442c26bcd448"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-details",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:bbfee3a1e450fce87f683fc0325744f63e78251fc20e7b5b9f8b550fded6aab0"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:60c14c0d00bc0132f5a7bc59359d88b84d8e29c5b9c21bdf9d5d8b690e501c59"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:9d7405a04e615a752faa93471f12ea2c17b3e4a987cfea0fa8e2f538b26cf657"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:abb965db92bdbc2860eba58d1b857c47ef7cd80004fc64c4e7db80277b51f723"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:104a53d1be071ba65e8d1d0b25ca86f32fddf8afe7bbf25ced55f4f96d24096f"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:af3a35f03332e475fdda1a2e96be25cb9cdc3ad9a41711ed61a73c825c45a266"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:fd21d5f88152a205e29f84a68142cb06d54a5f071432fc7aecea5bd91750a2a1"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:60af113cba8a755f00e8651a8a212f61ab29fcfcc51eacb6159504dd1ecd0aa0"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:2cac9ae7abadd334b045b9758ee19e4eb0b29f0d5ecbc4d3a3efd72e9a240d22"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:429085b94b18d7bfc3591de010eb47b10c647d55d3f4d992a35a018a2fce3237"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:1cd3cceea71e93b8ab828c08fc1673e77fe7a487f033bb3942a0e8f249eb2ddc"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:29a6ccc16b11aa67783da1be1c948636e0df70e940f5e13468280cab79e427f4"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:f0e1b76fba15d2a468b0414c70ef5aa10ee5f8793d9ab700443ff721de5fffbe"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:bfe2fc6fdea68ca04df309956436483ff7fb54181ea2e5645e56159f9106ceae"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -5130,28 +5394,28 @@
 			"package": "theme-default",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 420,
+				"files": 442,
 				"meta": {
-					"sha": "0fc7035f065217a33f0645a6d60ea3fb240f95b4",
+					"sha": "2b3579a4a0ecd05a6f362bd1e25963290f8d0966",
 					"ref": "release/4",
-					"runId": 40523152526,
+					"runId": 40692067424,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-10-27T14:47:23.742Z",
-					"digest": "sha256:9ece9d54852eabb9a9d9006c25b2d7cd7f0b5d59505d623d95ad8a4e6af57579",
+					"createdAt": "2026-10-28T13:04:01.442Z",
+					"digest": "sha256:bfdd6a1f3d440fc90c3e9f6b0a7f93563062f82310e0d450971bdbbbd73ef453",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 420,
+				"unchanged": 442,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:9ece9d54852eabb9a9d9006c25b2d7cd7f0b5d59505d623d95ad8a4e6af57579",
+			"digest": "sha256:bfdd6a1f3d440fc90c3e9f6b0a7f93563062f82310e0d450971bdbbbd73ef453",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7242,6 +7506,138 @@
 					"hash": "sha256:876c7d41165a62e410eeefd2bd75c03436de57fdf26773dd81624d352e52d303"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:9d5f54611faf0e9d3141f65cef16437126d9f02a9044fd073fb19d4e74901f64"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:c810edf45ebbd9e525aa7ca7798e0564a49b522337b76341ef9ee5c8f95d1ee4"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:3236cc1513e71d7374d2f35b3887619b963e88b3b29d6970845d5fa035f0b76f"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:223905ce83dca4f63d882d3939b76214abe439e0c27e20c4f6cf2d8aa17efd99"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b5e41c438d3f0c3fb627c0f1a3da823da0a0656abe0d67fe7dc55b683f7a9387"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:818263d3eca17bc183fef960f36d774fa83fbb5ad7855ed33b7a9a0fcb85992c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:94a41a92d78d2e03b118f8270737487036afcae16255ef45a5960e677388a29a"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ffa8ade42b536a8b78b9ac7b66fec4eaa0259dda73cff220872bc6c44fcfe991"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-details",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b57866bf7e0e2ee71605a872e4791ce8bc8447ffaf089e6ebfc4439a1386b8cd"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:69180457301951a7fd06bfb79726df6f2e86fba4071da40d11bd62e3e119c5ca"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:118731c6b395cf497402cc75dfe2a5e6047cd8b03b4e6b77e7aa57eaa47429de"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:271ce76f3ba1dc2f7853e13e7e5112d64e0f328f929afb2232df4fbff6bc0063"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:4d553096e6143b44776189737e338932be009a394d2d24a56255331d28be8255"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:49b42af08a60a1f61701f4b906e0b5044c66d7c9fa5473a3aac2744f17bdad21"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ed52b47e58a0cb49f6d22a3e0896ccc6973cd47551de7b4a63bfa12dd29f4c38"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:04e30a0b23b5469ca078df6cfb7b1ee50909c56762be087de790cd546da2f66c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:d4439b10bc95c2cb1ac0bf926337305b81fcc5a796ae82a952e0af78b956a40f"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:f1c882d26439bd39ca6569f42c89a126919afbb3beb2103780294c12ca785bd1"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:735605c1f3f019560172171e17e498e330cef8eb055dc34e5f2d1d8263a8e2d6"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:157be2c6aee2d84cf690ef353147d5211304fc411c72a51fe0207039e6b4131d"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:d3741c2727fd89648cfc156ceb069572902747a90e8a01a04264547bab2a4cec"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ff6afae7d11bf3807cff3112c95d2ea5a5758e293a2d2b5595bfd4a4d8d0a92e"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -7681,28 +8077,28 @@
 			"package": "theme-desy",
 			"themeDir": "theme-desyv11",
 			"baseline": {
-				"files": 420,
+				"files": 442,
 				"meta": {
-					"sha": "0fc7035f065217a33f0645a6d60ea3fb240f95b4",
+					"sha": "2b3579a4a0ecd05a6f362bd1e25963290f8d0966",
 					"ref": "release/4",
-					"runId": 40523152526,
+					"runId": 40692067424,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-10-27T14:44:57.946Z",
-					"digest": "sha256:0e12d58cd34443f8feb05f6e55fe2b45205163b0e7f10d380bdeec98e1ca944f",
+					"createdAt": "2026-10-28T13:03:06.364Z",
+					"digest": "sha256:f64919aee0563da37b0f58034e256f6b19b83dcc06f472724c296cacfdd8ddf9",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 420,
+				"unchanged": 442,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0e12d58cd34443f8feb05f6e55fe2b45205163b0e7f10d380bdeec98e1ca944f",
+			"digest": "sha256:f64919aee0563da37b0f58034e256f6b19b83dcc06f472724c296cacfdd8ddf9",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9793,6 +10189,138 @@
 					"hash": "sha256:ce01cf023979683c7ae571e6bc969123709fdd621401216d49da445db004bf61"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:45660ac8cb24745c57bbe57f9efe44cb43fbc11435ef2b79e0f0300b921aad29"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:68fe9af8480578a7d059d86675c83d6fda0e2dc39ff0d66284656ea99e7047bc"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:3fa4e520189813940e3ac3ade3d4afc098accc7e334edf87fe74cd20df1d51ca"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:62bbec30e9c353c7752cbde952d84d80cffd7ab69d80110b6f10b218bb61485c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b7fca8d05f4e1c1613e0cbe8bab667e2e36ad6575ed76272437bca5185c38a7e"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:6e2fcc501aa2617e138a31ed9befb1277ef63d2399754f3aef6f83dcf9a62cdc"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:5ace8ce78ad0d8eec58789e6ebfaa74da6d2c22460e65988c8606da4304a7dbb"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:3ab1e3c4d5e5c526355e87c0637289b925617af4e7f85630868c2bd5b964be03"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-details",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:3d4bf85a1e8b872bb70247bfe99b4b770c3d033531322ed1cf15f624051255e9"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:1d6bff19964b49ed099680994eb54e72455d72afb53af25b91e2a153fd8a9dd7"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:9171aad8ae012158eae35d6c14c1b167d7ba951c167fc6e90ec065862b366313"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:d99bb5d4745b53015517c52c65c040dedf7e728e8a4190106ad39426a4814051"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:5aed88f3cfda8df7e39852f94c0599f7528083d8c0704114ee7ab29ee7d4c11d"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:f355bef1f6b6cf3972f0f80aefa8a64367a6bcc16c43281c86428b98da88f939"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:f901d6dbef2a35caaaa65fb65ca960f286386a596713690ae28175a93647dda0"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:1122879b6cc727665e7cea0c3fa69d74cf2690484ca5cda04d50b653e176b207"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:0fb23608bb85ac7932d2c5eb5cfe8356166829ef754a68685fd8f733b6275a8c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ce4ab3b75f8a02bc2476c2fa2897666e9b4e3872cbb97837af533bb1dd9961ba"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:6633610741febae0bc398c82055411c2d99b9ca14818ed74419c05ae2d8b2fa5"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b73011c4209faf1e4edaba7ed03b82e7222fd60bab53a84ad00eef3fb2ee709a"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:6f8a4caa7756248d9e290db7c093b28741a96895c8245ed570d68c625ea9467c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:e549b2533a4fc4cba05fb6c4a58e2fef68f5206cca6a65f16fc93c304da03959"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -10232,28 +10760,28 @@
 			"package": "theme-ecl",
 			"themeDir": "theme-ecl_ec",
 			"baseline": {
-				"files": 420,
+				"files": 442,
 				"meta": {
-					"sha": "0fc7035f065217a33f0645a6d60ea3fb240f95b4",
+					"sha": "2b3579a4a0ecd05a6f362bd1e25963290f8d0966",
 					"ref": "release/4",
-					"runId": 40523152526,
+					"runId": 40692067424,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-10-27T14:44:49.328Z",
-					"digest": "sha256:c306758daf845dd6ca74bf625363d3ab00068ecf81c7ca1adff53892bbadfd27",
+					"createdAt": "2026-10-28T13:06:09.356Z",
+					"digest": "sha256:c337b5c85a74a31d7fd208825294ffd0d7b73d0d9283e1394a41de5f9ebd49c3",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 420,
+				"unchanged": 442,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:c306758daf845dd6ca74bf625363d3ab00068ecf81c7ca1adff53892bbadfd27",
+			"digest": "sha256:c337b5c85a74a31d7fd208825294ffd0d7b73d0d9283e1394a41de5f9ebd49c3",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12344,6 +12872,138 @@
 					"hash": "sha256:8f1b1fb8c05428326b5866097d229b33f485ff0e5722f5bb8566a74fcb8878aa"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:a475bb613f0422f4c323a54baad7009327f294741f39fddba050693e92c74ed0"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:5d99fc201af0534494da773ab6acc4d3803b323e6b0b23177b36cb98c0047018"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:207d80c22e0ec111a733ec1e74f5ceaf50b008700c21f7862b6bf6ca6f325a0a"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:e23c3e4e75472bf92115f2cb9589fcac9fe7e8c56d5a5fcc851a414550008462"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:a3797445328884ced371d56ed5eeffe8ba19de8e12d877aa96ad9bb5595133da"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b146017e77f885afbd63b5cbab2b783c284db72fd6baf59f76ff8bf52cc69919"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:f5a5e83ef72f1451a0220caec79690c4dda22f683bb532b31f79f8c40e1c9921"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:a88d04fd0b1acb7b603df8ceeb63083a4edf49ba050bda32967af631d9e1cbf2"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-details",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ec1b3cbea964ff91c1bdcf9520fe4fb3963b466a8c1f252e7d4ca70f6c0c2d24"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:932a1a9264cee808cd672127af5db42663200014a3333cb10dd65b849ed1de3b"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:7b64079bd4b60f18f4234ab5aa78dfe3070853cead8f20736d10004f8fef51cd"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:18cdee5d4343eafaf8f2f55e2aff3169b76a01c2ab055c9902748d356d05f22b"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:6834b6d6a8deddf1cd9b0a242d4d5df43549b66bf92808a70adbd171453ea73a"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:dad16a4a1ead3c79e0f24c66239edaa6175e6f962a6bd37de8f65381ba15d6a2"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:143b6c82dc92fefa14597dabaa21118e5b4ff251166caccd57d4204a34c6a9c0"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:78754243ca357c680195ad4cc29ee945598cd245f7d993847a486a6ddd16d077"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:6c3e47d807da6875f73c0539dde3c9ef2c67b3092e665d3a6f1f85099df92f47"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:5f327d755ccae91c2ea79e927220908b4c5b5a4896aaf50ab87bfd8465fd1cc8"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:e4727fcd5f8a8311221a7cde2141e1d3e0df684d5adf712429ad84f89028e4d9"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:1ebbba24e4756087c1997cb451c2171d58d06ace7fcf46e630d4d3f51fb7a556"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:e0d04e2a6e20c334e2c708e57565a43e082a1bafa96d67031ae2e6feeca692a6"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ef1a7385c03c7027475f3ad51d75e855afd65454db4a398aa208cd2428500d05"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -12783,28 +13443,28 @@
 			"package": "theme-kern",
 			"themeDir": "theme-kern_v2",
 			"baseline": {
-				"files": 421,
+				"files": 443,
 				"meta": {
-					"sha": "0fc7035f065217a33f0645a6d60ea3fb240f95b4",
+					"sha": "2b3579a4a0ecd05a6f362bd1e25963290f8d0966",
 					"ref": "release/4",
-					"runId": 40523152526,
+					"runId": 40692067424,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-10-27T14:46:10.046Z",
-					"digest": "sha256:da6726b606d1bc2c3858d9571c14726259a8030b5d718547d876051807c44bd2",
+					"createdAt": "2026-10-28T13:04:12.830Z",
+					"digest": "sha256:78758cafba0a822473b631754590bf2ecabd621bb5a17ceaf92f500ce082708e",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 421,
+				"unchanged": 443,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:da6726b606d1bc2c3858d9571c14726259a8030b5d718547d876051807c44bd2",
+			"digest": "sha256:78758cafba0a822473b631754590bf2ecabd621bb5a17ceaf92f500ce082708e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14895,6 +15555,138 @@
 					"hash": "sha256:1972d4e074754b1ed5dc619d0a9002fb54482833c040267626f97ce1d327ea94"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:8c60864c031d14db771e87eea2ef89887fdc4b86150017e7d76bbc1d1d1b6a3a"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:6ebc2ec720d67dcfdecf30fe25916b7ac0d5772f8314e285df8dbadc73233d5f"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:0f073ed4a1553bc60a8491f7e0fc7e3b1e69482c21da36bad481d4dd90873541"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:d43d41afa39558e589b87739244a652a8645e84cedadadfc02f6fd9fc838e574"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:2d551d7045521fce3ae819657d905973adc74e5d15669e64b3b295e381fa8e3d"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:a82c8c713663177a7da37d31b35206e4ab67fd95a30274dc597830706777c13c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:ab9c451b5a7e6024c5c9be014ff3e1962924f7c46e1ae89b628c14a45ddb42c1"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:7dbe9037434ecfbd527d58cfafd0926b5e3433e555f06a113ff7277e48e5837c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-details",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:f06f6e45637af9ab7118241bcd02e884b520c170f40b1f8343afebf5142b3ab9"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:a46a4fc06372100138e0385d0bb5a8389f2598bee4a721b4049959c4229929be"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:d1696614d98939cae16d336e38a1264573c8639bea2e1fecf290b064adb7438b"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:c18b51f3267503fd2cad089f6d55ae6c8d87fa7972a78dac2053cef9aa78f209"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:b38e36d9e7ac6d5b2389c8722abc950d464fd1bddd2f4b8124e7dd52ad6d8c80"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:68bb2338b8b2acb47bd147a7f34956bf1ee6aaec2dddbca53fccec3566d39156"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:208900007c17cedd20590a088f4849a077d6cef688b220c64f17cb1e2cb7014e"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:90216befbb4a21f4b99887b09930ef01e1fba940a9686947d1ed25d40d330226"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:113e74d6adfe19375e612e16604e597530f93f9b25131f4312a6f3a6b0c2d227"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:65426e3192bee69af458cc2f34d089418011d9377cde7d9c867c5229cb311065"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:7a999ed4bfae83c0513c9548c9d333ea324660753ba189f6f7bb5b08fa17687e"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:d79270276f37fd335e2e2d6ba80f25f7a7a50fee3374cd557dc3beb3c1166e9f"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:4484a8d8b33ff3c82a463bc531d8b923ace79784b25e4f3420e49543b1d35376"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:404250a5a17fbc1421fcc573f00df1f827499cf6d03fd6aa0731a2dec7101171"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -15340,28 +16132,28 @@
 			"package": "unstyled",
 			"themeDir": "theme-unstyled",
 			"baseline": {
-				"files": 420,
+				"files": 442,
 				"meta": {
-					"sha": "0fc7035f065217a33f0645a6d60ea3fb240f95b4",
+					"sha": "2b3579a4a0ecd05a6f362bd1e25963290f8d0966",
 					"ref": "release/4",
-					"runId": 40523152526,
+					"runId": 40692067424,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-10-27T14:45:48.291Z",
-					"digest": "sha256:65729fa7fd042be9c3dd796d7efae529ddd7fb60ab0aa26babc2a17b9df55ecd",
+					"createdAt": "2026-10-28T13:03:32.523Z",
+					"digest": "sha256:23346e486ffbfd2fa049dd82a3954520d9f82d9fbfd29d19f1b825e76acb257c",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 420,
+				"unchanged": 442,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:65729fa7fd042be9c3dd796d7efae529ddd7fb60ab0aa26babc2a17b9df55ecd",
+			"digest": "sha256:23346e486ffbfd2fa049dd82a3954520d9f82d9fbfd29d19f1b825e76acb257c",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17450,6 +18242,138 @@
 					"route": "scenarios-focus-elements-component-tree",
 					"status": "unchanged",
 					"hash": "sha256:b53ee8de8a64510d5a69c654b298f2f491362c43235d325fd25d62afd0b57bfb"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:bb1fcfd30af75fa00991d2d19b7624445019acda11ee6e1d7f4530e43c9a9907"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:a7f65d4cb6c1959d9491e57fa55e011c8e596698ed58885c5ad7d52d1a75b938"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:963fd37145219816bb21280c333e4d56c830ec09f63e02921c56f311c482731f"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:2df0dba75459d88fc5e2c9edab6ecafa3b465b7fa969e2b4b7baace46b4cad29"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:9e7a8990f0744df55bdf467e2523f225ba41793deae0086236ec2b1a94c87968"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:5c58ccc6266a194054ae811a4787095feef3c96608539259681d3d9c54440001"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:c2e50ee98b95c330203155b36c1b189d12e8f1b81344c33b3aa3291f8d076b1f"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:63e61a0f0e55ed87915bd1643bb3dcec380daab246f10ffc4aaa2c2e9a941826"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-details",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:8d89c143037cf9e47a7f9f7db745bce36e5225bfa0163fdb0db54be1789f18ad"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:2d81de0ff258cc63ae025b8bcf561e973450ce5779fea863c075c39093a73bd0"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:550518ba5623914c774ab82491c296a175c76833d1ed826dcecb7e4922507a13"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:fe9b36cca2738f2e9e4d8b0a1247f0a65e7eab48493b61d3d6b8af5fac3aff68"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:c6538cce6f0c6f979da6e47aeccd0db992b22966d45b267b0abfc0bb57d9ac77"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:f355bef1f6b6cf3972f0f80aefa8a64367a6bcc16c43281c86428b98da88f939"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:9ae45de0d9472e07d71716ce42146630ffa4a1397671d622bc0afd557a7bb6f3"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:2d60c6d9b338cdbacbf12b0ab61155348b38af34f0c9a4690354a5f5edda3ead"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:513d678d1b635ff733394113bc39d6f0c70a4ff09de86ccfd0def682ca710d10"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:5969a4d7fab939e584d1ae019748b378142afafced0fa322222d9a39923af457"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:901e0977307ba647927cd0ac3408c0016bb0b77ca664e375d3e77e1144252e46"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:e9cc8c58b962b2b02c3a8cac392c40e068ea3f070cd1bb6f3d5046dc22110796"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:54d4bc8189cf6e9ec984aac3331c54d66a206d98baf0cc6bf9ebd31f9b2f418c"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:7cc06183ebfe5d9e0666d850e0ab24f8267192f11bd2036a3f28383691208562"
 				},
 				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
