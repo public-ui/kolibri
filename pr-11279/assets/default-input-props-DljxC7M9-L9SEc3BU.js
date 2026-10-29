@@ -1,1 +1,0 @@
-function e({ariaDescribedBy:e,hideLabel:t,label:n}){return{title:``,autoCapitalize:`off`,autoCorrect:`off`,"aria-describedby":e?.length?e.join(` `):void 0,"aria-label":t&&n?n:void 0}}export{e as t};
