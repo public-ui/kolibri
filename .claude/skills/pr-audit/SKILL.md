@@ -112,8 +112,17 @@ belegen zusätzliche LLM-Verbindungen und blockieren beim Nutzer andere Threads.
 bei der Auswahl ausdrücklich verlangt, läuft je PR ein Subagent parallel: nur lesen, nichts posten,
 nichts pushen. Jeden **warn** selbst am Code bestätigen, bevor er in die Tabelle kommt.
 
+Zwischenreport je PR: Sobald ein PR fertig geprüft ist, sofort sein Einzelergebnis ausgeben (Status,
+Gesamt, drei Spalten mit Befunden) — der Nutzer kann lesen, während die übrigen PRs der Auswahl noch
+geprüft werden („Ausgabe, dann nächster: prüfen, Ausgabe …“). Die Gesamtausgabe nach Abschnitt 6 —
+Stand, Gesamttabelle, OOS- und FU-Listen, Label-Empfehlungen, Folgeaktionen — folgt erst, wenn alle
+Ergebnisse da sind.
+
 1. **PR lesen:** Beschreibung, Labels, Commits, Kommentare, Review-Threads, Check-Runs und den Kommentar
-   „Visual Review“ des Bots.
+   „Visual Review“ des Bots. Frühere pr-audit-Kommentare über den Marker `<!-- pr-audit:review -->`
+   einsammeln (Abschnitt 8): Jeden dortigen Punkt am aktuellen Head nachprüfen und als ✅ **erledigt**,
+   ⏳ **offen** oder 🗑 **hinfällig** führen — der Status geht in den Zwischenreport und die
+   Gesamtausgabe ein („Vorbefunde“).
 2. **Issue lesen:** mit allen Kommentaren. Daraus die Akzeptanzkriterien ableiten, auch Vorgaben von
    Maintainern im PR (z. B. bei #11074: „No gap, padding, margin in basis styling“).
 3. **Diff holen:**
@@ -226,7 +235,8 @@ eigene Regel für den Gesamtstatus.
 
 ## 6. Ausgabe des Audits
 
-Auf Deutsch, knapp, in dieser Reihenfolge. Leere Blöcke weglassen.
+Auf Deutsch, knapp, in dieser Reihenfolge. Leere Blöcke weglassen. Diese Blöcke sind die Gesamtausgabe
+am Ende; die Zwischenreporte je PR (Abschnitt 3) gehen ihr voraus.
 
 ### 6.1 Stand
 
@@ -243,7 +253,8 @@ Merge“. Bei einer Folgeprüfung zusätzlich, was sich seit dem letzten Audit g
   innerhalb eines Status absteigend nach PR-Nummer.
 - **Kurzbeschreibung:** ein Satz, was der PR leistet und ob das Issue gelöst ist.
 - **Spalten:** Wert und ein knapper Befund. OOS- und FU-Punkte nur mit ihrer ID nennen, z. B.
-  „💡 **hint**: Test aus dem Issue fehlt (FU-1)“.
+  „💡 **hint**: Test aus dem Issue fehlt (FU-1)“. Gab es frühere pr-audit-Kommentare, den Stand der
+  Vorbefunde kurz in der Zeile nennen (z. B. „Vorbefunde: P1 erledigt, P2 offen“).
 
 ### 6.3 Legende
 
@@ -327,8 +338,9 @@ geschlossene PRs überspringen und das nennen.
 **Vorher:**
 
 1. Den Head neu abrufen. Hat er sich seit dem Audit geändert, zuerst neu auditieren.
-2. Die bisherigen Kommentare lesen. Steht ein Punkt schon unbeantwortet in einem früheren Kommentar,
-   darauf verweisen statt ihn zu wiederholen. Ist nichts Neues offen, nichts posten und das sagen.
+2. Frühere pr-audit-Kommentare über den Marker `<!-- pr-audit:review -->` suchen und jeden Punkt am
+   aktuellen Head nachprüfen (✅ erledigt, ⏳ offen, 🗑 hinfällig). Offene Punkte nicht wiederholen,
+   sondern unter ihrer ID weiterführen. Ist nichts Neues offen, nichts posten und das sagen.
 
 **Inhalt:**
 
@@ -341,6 +353,13 @@ geschlossene PRs überspringen und das nennen.
 | FU-Punkt, Bezug: neu   | nicht verlangen; gibt es ein Ticket, ein Satz „tracked separately in #…“ |
 | Label-Abweichung       | nicht verlangen; ein Satz, dass die Maintainer das Label setzen          |
 
+**Punkte markieren:** Jeder Kommentar beginnt mit dem Marker `<!-- pr-audit:review -->` (in GitHub
+unsichtbar, über die API auffindbar). Jede Punktnummer `P1, P2, …` läuft pro PR fortlaufend über alle
+pr-audit-Kommentare und bleibt stabil: Ein offener Punkt behält seine ID, bis er erledigt ist. Ein
+Folgekommmentar listet zuerst den Stand der Vorbefunde (✅ erledigt, mit Commit-Sha · ⏳ offen, mit
+gleicher ID · 🗑 hinfällig, mit Grund) und enthält danach nur neue oder weiterhin offene Punkte. So ist
+jederzeit nachvollziehbar, welche Hinweise schon berücksichtigt sind.
+
 Jeder Punkt nennt Datei und Zeile, was falsch ist, warum, und was zu ändern ist. Kein Punkt, der nicht
 aus dem Audit stammt. Kein Ampel-Jargon (kein „warn“, „hint“, „OOS“). Kinkerlitzchen bleiben draußen:
 Punkte ohne jede Wirkung — Leerzeilen, Formatierung in generierten Dateien, reine Kosmetik — kommen
@@ -352,19 +371,26 @@ Footer folgen derselben Sprache. Freundlich, knapp. Leere Abschnitte weglassen; 
 durch. Der Footer steht immer am Ende.
 
 ```markdown
+<!-- pr-audit:review -->
+
 Hi @<author>, thanks for the PR! To get it ready for merge, please address the following. Everything here is within the scope of #<issue>.
+
+**Status of previous points**
+
+- P1: ✅ addressed in `<sha>` — thanks!
+- P2: ⏳ still open — see P4 below.
 
 **Required**
 
-1. `<file>:<line>`: <what is wrong and why>. <what to change>.
+3. `<file>:<line>`: <what is wrong and why>. <what to change>.
 
 **Recommended**
 
-2. `<file>:<line>`: <what is wrong>. <what to change>.
+4. `<file>:<line>`: <what is wrong>. <what to change>.
 
 **Please remove (not part of #<issue>)**
 
-3. `<file>:<line>`: <change>. <why it is not needed here>.
+5. `<file>:<line>`: <change>. <why it is not needed here>.
 
 Not part of this PR: <topic> is tracked separately in #<ticket>.
 
@@ -374,6 +400,9 @@ Thanks!
 
 _Generated by [Claude Code](https://claude.ai/code)_
 ```
+
+Der Status-Block steht nur, wenn es Vorbefunde gibt; die Nummerierung läuft über Kommentare fort (P1 und
+P2 stammen aus einem früheren Kommentar, der neue fährt bei P3 fort).
 
 Beispiel für einen Punkt unter **Please remove** (#11084):
 
