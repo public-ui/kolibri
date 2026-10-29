@@ -385,7 +385,9 @@ export class KolInputFile
 						required: this.getRenderProp('required'),
 					})}
 				>
-					<input type="file" id="test" name="test" class="kol-input kol-input--touched" />
+					<div class="kol-input-container">
+						<input type="file" class="kol-input" />
+					</div>
 				</FormFieldFC>
 			</Host>
 		);
