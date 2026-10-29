@@ -15,6 +15,7 @@ import { getAssetTasks } from './runner/tasks/v1/assets';
 import { v2Tasks } from './runner/tasks/v2';
 import { v3Tasks } from './runner/tasks/v3';
 import { v4Tasks } from './runner/tasks/v4';
+import { v5Tasks } from './runner/tasks/v5';
 import {
 	getContentOfProjectPkgJson,
 	getPackageManagerCommand,
@@ -128,6 +129,7 @@ Source folder to migrate: ${baseDir}
 				runner.registerTasks(v2Tasks);
 				runner.registerTasks(v3Tasks);
 				runner.registerTasks(v4Tasks);
+				runner.registerTasks(v5Tasks);
 				runner.registerTasks(getAssetTasks(baseDir));
 
 				if (options.testTasks) {
