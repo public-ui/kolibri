@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11279,
-	"head": "bc74b7e9c08746fd15c5186aa69cc183bff794cf",
+	"head": "ee8d7ec79ba0a58e08b74b1c0a3fecc61acfdc65",
 	"repository": "public-ui/kolibri",
-	"runId": 40867391422,
-	"generatedAt": "2026-10-29T12:13:24.728Z",
-	"digest": "sha256:363e88d83d9b41d611507a1ee830a0eb94c82b3b7e0dba1f61a0d09e5a354dcd",
+	"runId": 40901674907,
+	"generatedAt": "2026-10-29T15:49:51.820Z",
+	"digest": "sha256:a582988b4b8d1515ef07ce08521a0e0726638365dbbe1b0715510c595670edb1",
 	"baseline": {
 		"sha": "c7943e485d457942b2870b72a07f2558cabb6904",
 		"ref": "release/4",
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:cbf2d13a6ad0821e92878dd8b87b8d2c5829cab060c4246566b421166fef39b4",
+			"digest": "sha256:5306fc5ed537e90c128be85ec871f3d84ad314f39949e709718dbd85b1a4fa46",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1159,19 +1159,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:46e6bc2eaceeb256c04397fffbdfd5c6728970663793bb51e308b80c6fc28214",
-					"diffPixels": 5791,
-					"diffRatio": 0.135977,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							91
-						],
-						"actual": [
-							468,
-							87
-						]
-					},
+					"hash": "sha256:6965b7a5439df215c6250536436855dc07bb73696080dc4c2925fba31722bbce",
+					"diffPixels": 7281,
+					"diffRatio": 0.170964,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -1180,19 +1170,9 @@
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:66d05cb6ac9bb21080077eacfdba82f63da67ab4de8cec21bc1c523a54c72db5",
-					"diffPixels": 5609,
-					"diffRatio": 0.168803,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							71
-						],
-						"actual": [
-							468,
-							67
-						]
-					},
+					"hash": "sha256:844b3ded9a5b2b24dfedc13d102db4d313fe780b11decfa5c600f3b1cf73a381",
+					"diffPixels": 7203,
+					"diffRatio": 0.216775,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-access-key.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-access-key.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-access-key.diff.png"
@@ -1201,19 +1181,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:2c59d88b3a0bf9ee447409666d3f24aa6d26b9b8a72c36e6963d8fed9af6045a",
-					"diffPixels": 8171,
-					"diffRatio": 0.205405,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							85
-						],
-						"actual": [
-							468,
-							81
-						]
-					},
+					"hash": "sha256:f2a12415925a301a8a8c0a07d0decc7f99d6710b4235dbb03ef0db83acbb0685",
+					"diffPixels": 7281,
+					"diffRatio": 0.183032,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -1222,19 +1192,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:169b1023b7d3fa8a92a807b8cf55548f1a49a759ca3dc3f8e9b7d7c9e940bc4d",
-					"diffPixels": 6983,
-					"diffRatio": 0.216246,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							69
-						],
-						"actual": [
-							468,
-							65
-						]
-					},
+					"hash": "sha256:1f83d92f900df898ec61e135a69c93b00219b595aa331f49be7c83d21b6fb811",
+					"diffPixels": 8171,
+					"diffRatio": 0.253035,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-disabled.diff.png"
@@ -1243,19 +1203,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:94267c7fc78519e8d9b86452dda364f6d7e7e0fa77b47e71507ed92362e4c1e6",
-					"diffPixels": 5791,
-					"diffRatio": 0.108543,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							114
-						],
-						"actual": [
-							468,
-							110
-						]
-					},
+					"hash": "sha256:93ab488e637e9b5bdc83d55cd52d40ee3a57bef3d4d8f8cf0d08e9514496e789",
+					"diffPixels": 7281,
+					"diffRatio": 0.136471,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-error.diff.png"
@@ -1264,19 +1214,9 @@
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:818f0cc9cab83f8a6f4eef0e69cdc8743c53a87f4eb23d07b13569984133aae7",
-					"diffPixels": 5609,
-					"diffRatio": 0.130272,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							92
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:0f377794547d2da026322c89e1dd704fa97a384e62d491559fd725598c96439f",
+					"diffPixels": 7203,
+					"diffRatio": 0.167294,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-default.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-default.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-default.diff.png"
@@ -1285,19 +1225,9 @@
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:33418ae5e9791026f787d37d0d9d9fece405e107e3e7bb53a78976263786298a",
-					"diffPixels": 5609,
-					"diffRatio": 0.130272,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							92
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:ee697cd32ed923309ba630141dfb80f67a6da90ced05bdf83193ed9eb734fdbd",
+					"diffPixels": 7203,
+					"diffRatio": 0.167294,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-info.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-info.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-info.diff.png"
@@ -1306,19 +1236,9 @@
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f163aa5c389b0e37ba9dda8f37bd33b2f85a743b2f510d27e45c720771e60dd6",
-					"diffPixels": 5609,
-					"diffRatio": 0.130272,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							92
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:8743567e6a5c0dbe6254d5d466540e061d3549a04e180411ce2da77004925eee",
+					"diffPixels": 7203,
+					"diffRatio": 0.167294,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-success.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-success.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-success.diff.png"
@@ -1327,19 +1247,9 @@
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:36335cab5f3fc6aef7383b02a7a49fe5227da969a4c121f9a6c559a4507fa201",
-					"diffPixels": 5609,
-					"diffRatio": 0.130272,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							92
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:3d99ab5dcdfbed9786d3ec53e4aa2f67acc60c35222232123e0de2fde182280b",
+					"diffPixels": 7203,
+					"diffRatio": 0.167294,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-warning.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-warning.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-msg-warning.diff.png"
@@ -1348,19 +1258,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:30d87e4165de2d4caf04afe29a8669c5212c20a75c5b9f8201e1352a91e4878e",
-					"diffPixels": 5609,
-					"diffRatio": 0.168803,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							71
-						],
-						"actual": [
-							468,
-							67
-						]
-					},
+					"hash": "sha256:c9f6402257466593076697e4633ef6a4a091b9f020ad383c7d6098d1e8618f25",
+					"diffPixels": 7203,
+					"diffRatio": 0.216775,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-multiple.diff.png"
@@ -1369,19 +1269,9 @@
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f175e99de3316e7f4718a9880c9d66c2472b744bff8995b92655148d227c9a1f",
-					"diffPixels": 5609,
-					"diffRatio": 0.168803,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							71
-						],
-						"actual": [
-							468,
-							67
-						]
-					},
+					"hash": "sha256:5fdf86083461dad36321c7052d35808517244a144c111ce2a2ac96df9438529d",
+					"diffPixels": 7203,
+					"diffRatio": 0.216775,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-short-key.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-short-key.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-short-key.diff.png"
@@ -1954,17 +1844,17 @@
 					"name": "input-text-variant-noColumns--variant-left",
 					"route": "input-text/variant?noColumns",
 					"status": "changed",
-					"hash": "sha256:8785a9ccf0e4ed7f4e334c15074c6b7df1576670e9fc5527dfaf9927474c15f0",
-					"diffPixels": 33889,
-					"diffRatio": 0.048513,
+					"hash": "sha256:c4fafc53292fdb8727c8b992b072edafbe970b73a11fe13b713453bb620d512b",
+					"diffPixels": 9395,
+					"diffRatio": 0.013708,
 					"sizeMismatch": {
 						"expected": [
 							726,
 							944
 						],
 						"actual": [
-							740,
-							940
+							723,
+							944
 						]
 					},
 					"expected": "test-tag-name-transformer/input-text-variant-noColumns--variant-left.expected.png",
@@ -2209,19 +2099,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:12378bf690047ae5baf8a37c693373cec4c21aed1ca0bdc9694ac9fccf6478ff",
-					"diffPixels": 6404,
-					"diffRatio": 0.209281,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							102
-						],
-						"actual": [
-							300,
-							98
-						]
-					},
+					"hash": "sha256:191b5f073558714a7e088d19e08732c3e5e8e894681dff3631d992ca02defb25",
+					"diffPixels": 8726,
+					"diffRatio": 0.285163,
 					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-inputFile.diff.png"
@@ -2230,19 +2110,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:c8d9abe7202bb03e68d3e1154de320247867602afcc15bd78140be050aa84996",
-					"diffPixels": 6404,
-					"diffRatio": 0.209281,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							102
-						],
-						"actual": [
-							300,
-							98
-						]
-					},
+					"hash": "sha256:32463f1ba82405e60d956dc8360febd09740a5ff21050099e4b9ad69837255da",
+					"diffPixels": 8726,
+					"diffRatio": 0.285163,
 					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -2485,9 +2355,19 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:28529dde372b12013e5d0096711be3fd712669e4f06745694eb1bd06077b263f",
-					"diffPixels": 7866,
-					"diffRatio": 0.018693,
+					"hash": "sha256:a4426336f2d96ae807470431675c7e8f178b851e05d8674cfb9febfd6af2356d",
+					"diffPixels": 20499,
+					"diffRatio": 0.048714,
+					"sizeMismatch": {
+						"expected": [
+							800,
+							526
+						],
+						"actual": [
+							800,
+							441
+						]
+					},
 					"expected": "test-tag-name-transformer/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -2496,9 +2376,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:3cab8e98f58c3bf7527773bfa24be660ecfbfc40b8e3ab9a63ecc2509306c65d",
-					"diffPixels": 7517,
-					"diffRatio": 0.023491,
+					"hash": "sha256:e79e156a806ce59853337ea764569196f2a68f4e6da5c02b6ce83c2f968b6548",
+					"diffPixels": 8418,
+					"diffRatio": 0.026306,
 					"expected": "test-tag-name-transformer/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -2993,7 +2873,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ff2805e4cc14a1d99828c33e750d0aa7604cfb3013b683bb46f9aec5ed1d598a",
+			"digest": "sha256:1da79ad56a910ece66aaf836717c5dd405ebe393a73bff10b3aa2b046c6a09d6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4103,19 +3983,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:af6fa0de734c179c9254e991c269510a29efc6d6a0c4025ddeb195c497db2e89",
-					"diffPixels": 4630,
-					"diffRatio": 0.106378,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							93
-						],
-						"actual": [
-							468,
-							89
-						]
-					},
+					"hash": "sha256:b303e456dd89017bbfc03c635d71f769beb4e8938e14323312fdc4f0615cace4",
+					"diffPixels": 3458,
+					"diffRatio": 0.07945,
 					"expected": "theme-bwst/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -4124,19 +3994,9 @@
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:cf6a7e59c2cd9dcede603ccb47b01e41a8b149e09f37bbf7a4a174929ba92d76",
-					"diffPixels": 4426,
-					"diffRatio": 0.137062,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							69
-						],
-						"actual": [
-							468,
-							65
-						]
-					},
+					"hash": "sha256:a33b60d6512b6c17052af003228f2c60f6d62f782ca5bb12937a227bdf900b9b",
+					"diffPixels": 3425,
+					"diffRatio": 0.106063,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-access-key.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-access-key.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-access-key.diff.png"
@@ -4145,19 +4005,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:23fc9054a9f61887dcd30d41d75ffb014c67032ad262cf26069f89284be2f12a",
-					"diffPixels": 6987,
-					"diffRatio": 0.175641,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							85
-						],
-						"actual": [
-							468,
-							81
-						]
-					},
+					"hash": "sha256:83b7058fbca8bf296dce9b953f61acde16487abfd4315fc940c72ced1f532076",
+					"diffPixels": 3458,
+					"diffRatio": 0.086928,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -4166,19 +4016,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:337f654d09acc232f74228cb02bf95c154d8039a660fe52cde608968ec90efa3",
-					"diffPixels": 4881,
-					"diffRatio": 0.151152,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							69
-						],
-						"actual": [
-							468,
-							65
-						]
-					},
+					"hash": "sha256:dfacfe276e140afb6b03a56a981e19e5fa452f35022e34f90ef504fd2929e505",
+					"diffPixels": 4414,
+					"diffRatio": 0.13669,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-disabled.diff.png"
@@ -4187,19 +4027,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:506d550ac5b0d605d9897eb484b1104650377f4cb7561665b0e961860b4d4954",
-					"diffPixels": 4630,
-					"diffRatio": 0.085286,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							116
-						],
-						"actual": [
-							468,
-							112
-						]
-					},
+					"hash": "sha256:bd8e30d67ad8205b04e7786b86436062a1ca3d2de4d7cab91d01ff3d0ac4c8ba",
+					"diffPixels": 3458,
+					"diffRatio": 0.063697,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-error.diff.png"
@@ -4208,19 +4038,9 @@
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:4a3641bb470f8e5306be1578151a64383d3ea2c9b336fce427ca94f010ecfe64",
-					"diffPixels": 4426,
-					"diffRatio": 0.09955,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							95
-						],
-						"actual": [
-							468,
-							91
-						]
-					},
+					"hash": "sha256:46d72df4eade51113a72a02e0ea7e98cc11dac2c469a6dfa43de53404d836beb",
+					"diffPixels": 3425,
+					"diffRatio": 0.077036,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-msg-default.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-msg-default.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-msg-default.diff.png"
@@ -4229,19 +4049,9 @@
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:6c1ef03ffebf08d95efabbaa4404a790fe514a925fb667e41c80c449729cab94",
-					"diffPixels": 4426,
-					"diffRatio": 0.09955,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							95
-						],
-						"actual": [
-							468,
-							91
-						]
-					},
+					"hash": "sha256:e357efe74038b6a29d35cc79fd2fbe91bd39ab5f34e3291c4fad8b68bff5ffaa",
+					"diffPixels": 3425,
+					"diffRatio": 0.077036,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-msg-info.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-msg-info.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-msg-info.diff.png"
@@ -4250,19 +4060,9 @@
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:d9aaec1b95461ea281ed6850e5fd6467ee32f7cc9a7cdd030b48e8de96152870",
-					"diffPixels": 4426,
-					"diffRatio": 0.09955,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							95
-						],
-						"actual": [
-							468,
-							91
-						]
-					},
+					"hash": "sha256:bceab009cc5630fdad71e97070a57d7fb97952bc8c07bd3276390a92a1c3bc40",
+					"diffPixels": 3425,
+					"diffRatio": 0.077036,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-msg-success.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-msg-success.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-msg-success.diff.png"
@@ -4271,19 +4071,9 @@
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:5fa3f9de316ebc90524f9db7d694d2d683854d02c34b51128c6c609dc0d6b714",
-					"diffPixels": 4426,
-					"diffRatio": 0.09955,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							95
-						],
-						"actual": [
-							468,
-							91
-						]
-					},
+					"hash": "sha256:132e7e8505e8068ab1a72a6af415a8bfe4cda5b077a7e14292204da72a85bd88",
+					"diffPixels": 3425,
+					"diffRatio": 0.077036,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-msg-warning.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-msg-warning.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-msg-warning.diff.png"
@@ -4292,19 +4082,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:c3ccd5488c332b1669698d5a134de37422bce929960bc2d501930b7160a39ce2",
-					"diffPixels": 4426,
-					"diffRatio": 0.137062,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							69
-						],
-						"actual": [
-							468,
-							65
-						]
-					},
+					"hash": "sha256:017587241ef3b525058863f74a9ddf14da7b0cf145b90dc4dee6f8e2865a5ec6",
+					"diffPixels": 3425,
+					"diffRatio": 0.106063,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-multiple.diff.png"
@@ -4313,19 +4093,9 @@
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:17c8f18a302dca4b40632f6030c7e4f00fda535aac6ee40707a1d12ce4078396",
-					"diffPixels": 4426,
-					"diffRatio": 0.137062,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							69
-						],
-						"actual": [
-							468,
-							65
-						]
-					},
+					"hash": "sha256:8fe259fe9d791b6a0e57ee5a68664604907bb46812134734a3d153fcd87b521f",
+					"diffPixels": 3425,
+					"diffRatio": 0.106063,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-short-key.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-short-key.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-short-key.diff.png"
@@ -5138,19 +4908,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:1ba1a84404f0f33b61961738f58a22f3bc3a91cfed0137e22551c61b27e51cc9",
-					"diffPixels": 5137,
-					"diffRatio": 0.167876,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							102
-						],
-						"actual": [
-							300,
-							98
-						]
-					},
+					"hash": "sha256:8bc420c2fce630567d14acfb934f3f15e5970a62c84bf2c941578369cd233684",
+					"diffPixels": 4570,
+					"diffRatio": 0.149346,
 					"expected": "theme-bwst/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "theme-bwst/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "theme-bwst/scenarios-focus-elements-component-inputFile.diff.png"
@@ -5159,19 +4919,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:0b9719622ced08a4ba573ef417de9986c8216fd14039f0efa2e71e389594e702",
-					"diffPixels": 5137,
-					"diffRatio": 0.167876,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							102
-						],
-						"actual": [
-							300,
-							98
-						]
-					},
+					"hash": "sha256:dd73f53699b901411a7238c5ac431849c75a941831fa6a6498132e975bf28acb",
+					"diffPixels": 4570,
+					"diffRatio": 0.149346,
 					"expected": "theme-bwst/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "theme-bwst/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "theme-bwst/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -5414,9 +5164,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:41e7b6be92438d1ca2b843e2aa3511ef93983181bd3ceeb21fc0bf13fa7e79aa",
-					"diffPixels": 12111,
-					"diffRatio": 0.028781,
+					"hash": "sha256:647df0be730329e3b2ec1bc4229c70865a5fc5555219942ce2a0eeaa359f53d3",
+					"diffPixels": 12783,
+					"diffRatio": 0.030378,
 					"sizeMismatch": {
 						"expected": [
 							800,
@@ -5435,9 +5185,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:0ea5f79380285165ac49c1205044c9d7cc3e98dc23d559d99e61717b70cafce2",
-					"diffPixels": 5077,
-					"diffRatio": 0.015866,
+					"hash": "sha256:15477fc049211f1b744755c65454804a218a1e2eff173ca846ef05ecdb10c017",
+					"diffPixels": 4406,
+					"diffRatio": 0.013769,
 					"expected": "theme-bwst/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-bwst/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-bwst/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -5927,7 +5677,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:cbf2d13a6ad0821e92878dd8b87b8d2c5829cab060c4246566b421166fef39b4",
+			"digest": "sha256:5306fc5ed537e90c128be85ec871f3d84ad314f39949e709718dbd85b1a4fa46",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7037,19 +6787,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:46e6bc2eaceeb256c04397fffbdfd5c6728970663793bb51e308b80c6fc28214",
-					"diffPixels": 5791,
-					"diffRatio": 0.135977,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							91
-						],
-						"actual": [
-							468,
-							87
-						]
-					},
+					"hash": "sha256:6965b7a5439df215c6250536436855dc07bb73696080dc4c2925fba31722bbce",
+					"diffPixels": 7281,
+					"diffRatio": 0.170964,
 					"expected": "theme-default/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -7058,19 +6798,9 @@
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:66d05cb6ac9bb21080077eacfdba82f63da67ab4de8cec21bc1c523a54c72db5",
-					"diffPixels": 5609,
-					"diffRatio": 0.168803,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							71
-						],
-						"actual": [
-							468,
-							67
-						]
-					},
+					"hash": "sha256:844b3ded9a5b2b24dfedc13d102db4d313fe780b11decfa5c600f3b1cf73a381",
+					"diffPixels": 7203,
+					"diffRatio": 0.216775,
 					"expected": "theme-default/input-file-basic-noColumns--label-access-key.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-access-key.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-access-key.diff.png"
@@ -7079,19 +6809,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:2c59d88b3a0bf9ee447409666d3f24aa6d26b9b8a72c36e6963d8fed9af6045a",
-					"diffPixels": 8171,
-					"diffRatio": 0.205405,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							85
-						],
-						"actual": [
-							468,
-							81
-						]
-					},
+					"hash": "sha256:f2a12415925a301a8a8c0a07d0decc7f99d6710b4235dbb03ef0db83acbb0685",
+					"diffPixels": 7281,
+					"diffRatio": 0.183032,
 					"expected": "theme-default/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -7100,19 +6820,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:169b1023b7d3fa8a92a807b8cf55548f1a49a759ca3dc3f8e9b7d7c9e940bc4d",
-					"diffPixels": 6983,
-					"diffRatio": 0.216246,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							69
-						],
-						"actual": [
-							468,
-							65
-						]
-					},
+					"hash": "sha256:1f83d92f900df898ec61e135a69c93b00219b595aa331f49be7c83d21b6fb811",
+					"diffPixels": 8171,
+					"diffRatio": 0.253035,
 					"expected": "theme-default/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-disabled.diff.png"
@@ -7121,19 +6831,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:94267c7fc78519e8d9b86452dda364f6d7e7e0fa77b47e71507ed92362e4c1e6",
-					"diffPixels": 5791,
-					"diffRatio": 0.108543,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							114
-						],
-						"actual": [
-							468,
-							110
-						]
-					},
+					"hash": "sha256:93ab488e637e9b5bdc83d55cd52d40ee3a57bef3d4d8f8cf0d08e9514496e789",
+					"diffPixels": 7281,
+					"diffRatio": 0.136471,
 					"expected": "theme-default/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-error.diff.png"
@@ -7142,19 +6842,9 @@
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:818f0cc9cab83f8a6f4eef0e69cdc8743c53a87f4eb23d07b13569984133aae7",
-					"diffPixels": 5609,
-					"diffRatio": 0.130272,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							92
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:0f377794547d2da026322c89e1dd704fa97a384e62d491559fd725598c96439f",
+					"diffPixels": 7203,
+					"diffRatio": 0.167294,
 					"expected": "theme-default/input-file-basic-noColumns--label-msg-default.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-msg-default.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-msg-default.diff.png"
@@ -7163,19 +6853,9 @@
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:33418ae5e9791026f787d37d0d9d9fece405e107e3e7bb53a78976263786298a",
-					"diffPixels": 5609,
-					"diffRatio": 0.130272,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							92
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:ee697cd32ed923309ba630141dfb80f67a6da90ced05bdf83193ed9eb734fdbd",
+					"diffPixels": 7203,
+					"diffRatio": 0.167294,
 					"expected": "theme-default/input-file-basic-noColumns--label-msg-info.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-msg-info.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-msg-info.diff.png"
@@ -7184,19 +6864,9 @@
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f163aa5c389b0e37ba9dda8f37bd33b2f85a743b2f510d27e45c720771e60dd6",
-					"diffPixels": 5609,
-					"diffRatio": 0.130272,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							92
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:8743567e6a5c0dbe6254d5d466540e061d3549a04e180411ce2da77004925eee",
+					"diffPixels": 7203,
+					"diffRatio": 0.167294,
 					"expected": "theme-default/input-file-basic-noColumns--label-msg-success.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-msg-success.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-msg-success.diff.png"
@@ -7205,19 +6875,9 @@
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:36335cab5f3fc6aef7383b02a7a49fe5227da969a4c121f9a6c559a4507fa201",
-					"diffPixels": 5609,
-					"diffRatio": 0.130272,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							92
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:3d99ab5dcdfbed9786d3ec53e4aa2f67acc60c35222232123e0de2fde182280b",
+					"diffPixels": 7203,
+					"diffRatio": 0.167294,
 					"expected": "theme-default/input-file-basic-noColumns--label-msg-warning.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-msg-warning.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-msg-warning.diff.png"
@@ -7226,19 +6886,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:30d87e4165de2d4caf04afe29a8669c5212c20a75c5b9f8201e1352a91e4878e",
-					"diffPixels": 5609,
-					"diffRatio": 0.168803,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							71
-						],
-						"actual": [
-							468,
-							67
-						]
-					},
+					"hash": "sha256:c9f6402257466593076697e4633ef6a4a091b9f020ad383c7d6098d1e8618f25",
+					"diffPixels": 7203,
+					"diffRatio": 0.216775,
 					"expected": "theme-default/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-multiple.diff.png"
@@ -7247,19 +6897,9 @@
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f175e99de3316e7f4718a9880c9d66c2472b744bff8995b92655148d227c9a1f",
-					"diffPixels": 5609,
-					"diffRatio": 0.168803,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							71
-						],
-						"actual": [
-							468,
-							67
-						]
-					},
+					"hash": "sha256:5fdf86083461dad36321c7052d35808517244a144c111ce2a2ac96df9438529d",
+					"diffPixels": 7203,
+					"diffRatio": 0.216775,
 					"expected": "theme-default/input-file-basic-noColumns--label-short-key.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-short-key.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-short-key.diff.png"
@@ -7832,17 +7472,17 @@
 					"name": "input-text-variant-noColumns--variant-left",
 					"route": "input-text/variant?noColumns",
 					"status": "changed",
-					"hash": "sha256:8785a9ccf0e4ed7f4e334c15074c6b7df1576670e9fc5527dfaf9927474c15f0",
-					"diffPixels": 33889,
-					"diffRatio": 0.048513,
+					"hash": "sha256:c4fafc53292fdb8727c8b992b072edafbe970b73a11fe13b713453bb620d512b",
+					"diffPixels": 9395,
+					"diffRatio": 0.013708,
 					"sizeMismatch": {
 						"expected": [
 							726,
 							944
 						],
 						"actual": [
-							740,
-							940
+							723,
+							944
 						]
 					},
 					"expected": "theme-default/input-text-variant-noColumns--variant-left.expected.png",
@@ -8087,19 +7727,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:12378bf690047ae5baf8a37c693373cec4c21aed1ca0bdc9694ac9fccf6478ff",
-					"diffPixels": 6404,
-					"diffRatio": 0.209281,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							102
-						],
-						"actual": [
-							300,
-							98
-						]
-					},
+					"hash": "sha256:191b5f073558714a7e088d19e08732c3e5e8e894681dff3631d992ca02defb25",
+					"diffPixels": 8726,
+					"diffRatio": 0.285163,
 					"expected": "theme-default/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "theme-default/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "theme-default/scenarios-focus-elements-component-inputFile.diff.png"
@@ -8108,19 +7738,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:c8d9abe7202bb03e68d3e1154de320247867602afcc15bd78140be050aa84996",
-					"diffPixels": 6404,
-					"diffRatio": 0.209281,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							102
-						],
-						"actual": [
-							300,
-							98
-						]
-					},
+					"hash": "sha256:32463f1ba82405e60d956dc8360febd09740a5ff21050099e4b9ad69837255da",
+					"diffPixels": 8726,
+					"diffRatio": 0.285163,
 					"expected": "theme-default/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "theme-default/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "theme-default/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -8363,9 +7983,19 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:28529dde372b12013e5d0096711be3fd712669e4f06745694eb1bd06077b263f",
-					"diffPixels": 7866,
-					"diffRatio": 0.018693,
+					"hash": "sha256:a4426336f2d96ae807470431675c7e8f178b851e05d8674cfb9febfd6af2356d",
+					"diffPixels": 20499,
+					"diffRatio": 0.048714,
+					"sizeMismatch": {
+						"expected": [
+							800,
+							526
+						],
+						"actual": [
+							800,
+							441
+						]
+					},
 					"expected": "theme-default/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "theme-default/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "theme-default/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -8374,9 +8004,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:3cab8e98f58c3bf7527773bfa24be660ecfbfc40b8e3ab9a63ecc2509306c65d",
-					"diffPixels": 7517,
-					"diffRatio": 0.023491,
+					"hash": "sha256:e79e156a806ce59853337ea764569196f2a68f4e6da5c02b6ce83c2f968b6548",
+					"diffPixels": 8418,
+					"diffRatio": 0.026306,
 					"expected": "theme-default/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-default/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-default/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -8871,7 +8501,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:064a223aa3d190962a0e56b1c5619864ff948e5435e56acc0919bd0d163e89e8",
+			"digest": "sha256:0085dc9776995f53554363e77fcb26e4d04c4ad93a70c38b20d7e894cc8fed65",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9981,9 +9611,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:7d98b3301646bd910add409e226a55c22f4ca91d37490b90cf7edb89017675f9",
-					"diffPixels": 2434,
-					"diffRatio": 0.061187,
+					"hash": "sha256:f062433df59cf6fe020ee7e805ed4684d8a8a980614f8ef134c9a20391a21d0d",
+					"diffPixels": 2904,
+					"diffRatio": 0.073002,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -9991,7 +9621,7 @@
 						],
 						"actual": [
 							468,
-							74
+							76
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--hide-label-error.expected.png",
@@ -10002,9 +9632,9 @@
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:4ab30505a50db81d41c7fc3dee08a91b6ca7cca8b776cf799dea4d3b9e58744b",
-					"diffPixels": 1486,
-					"diffRatio": 0.0504,
+					"hash": "sha256:322760f0738955dbc08bd08b6cb19eb13d63613bd14359284952a80897464d13",
+					"diffPixels": 1436,
+					"diffRatio": 0.048704,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10012,7 +9642,7 @@
 						],
 						"actual": [
 							468,
-							52
+							54
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-access-key.expected.png",
@@ -10023,9 +9653,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:edb4f2b83740459f9517a75f7ad4ff91f81bafc370fabb4eafe740da596bd855",
-					"diffPixels": 8341,
-					"diffRatio": 0.225603,
+					"hash": "sha256:0fd8ed5685964411b752ecf522901683070bb8fafcb16b0a35683efd55b10279",
+					"diffPixels": 7886,
+					"diffRatio": 0.213297,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10033,7 +9663,7 @@
 						],
 						"actual": [
 							468,
-							68
+							70
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-black-bg.expected.png",
@@ -10044,9 +9674,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f03e6855fef244ae7714e05dbeef9b312effde32539b75c6e9d7594f55e39d59",
-					"diffPixels": 1382,
-					"diffRatio": 0.046873,
+					"hash": "sha256:a8c07f9b455f9ebe1a9f114fecc4f7407f104afb8b4950ee81c9b470355a2f3a",
+					"diffPixels": 1840,
+					"diffRatio": 0.062407,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10054,7 +9684,7 @@
 						],
 						"actual": [
 							468,
-							52
+							54
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-disabled.expected.png",
@@ -10065,9 +9695,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:504aa0dbf1ec30710a165062395748f6dc5c0d4d515a3a2b48458c9232ef76b9",
-					"diffPixels": 2502,
-					"diffRatio": 0.048601,
+					"hash": "sha256:71aee0812ce08410d828616f4a108c954abc0ba93cddc4e98252cf1c8a24e038",
+					"diffPixels": 2914,
+					"diffRatio": 0.056605,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10075,7 +9705,7 @@
 						],
 						"actual": [
 							468,
-							99
+							101
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-error.expected.png",
@@ -10086,9 +9716,9 @@
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:39695fdf352f9cc88f5571e53825f36055f4cbcdfbbdeac0d6b72f51a77a305e",
-					"diffPixels": 2047,
-					"diffRatio": 0.050275,
+					"hash": "sha256:817b4b978d904bbc682fa933f1d4a36ba0f4122fdfc64d45fe97b48ab9943483",
+					"diffPixels": 1977,
+					"diffRatio": 0.048556,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10096,7 +9726,7 @@
 						],
 						"actual": [
 							468,
-							76
+							78
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-msg-default.expected.png",
@@ -10107,9 +9737,9 @@
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:9d33bcb4af9786a33d50d010da11030a028e45cd19e4fa11d0b7d8b5cf3351ae",
-					"diffPixels": 1888,
-					"diffRatio": 0.04637,
+					"hash": "sha256:877608fbe7a7913b6d7902ed63fc833ae314da765d4978d86ac435cfc7497195",
+					"diffPixels": 1810,
+					"diffRatio": 0.044454,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10117,7 +9747,7 @@
 						],
 						"actual": [
 							468,
-							76
+							78
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-msg-info.expected.png",
@@ -10128,9 +9758,9 @@
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:45144923d4440a7e30c440681a0f1d9b3b23c77f1cc93ed0f1945350038cb619",
-					"diffPixels": 2158,
-					"diffRatio": 0.053001,
+					"hash": "sha256:852080f9f85c46cbcf6df33fc8073c1b5120fa4e7c376b350733138d45ee400a",
+					"diffPixels": 2084,
+					"diffRatio": 0.051184,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10138,7 +9768,7 @@
 						],
 						"actual": [
 							468,
-							76
+							78
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-msg-success.expected.png",
@@ -10149,9 +9779,9 @@
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:350ef096550ed88e0fdb602f9bf9e47ae5c7d7c0b4b007a732c4f9ff0ec152a4",
-					"diffPixels": 2043,
-					"diffRatio": 0.050177,
+					"hash": "sha256:41bde2804d74c13b89056b125c7bc11d3752c9a21fb033156a95ea43ae01b66c",
+					"diffPixels": 1985,
+					"diffRatio": 0.048752,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10159,7 +9789,7 @@
 						],
 						"actual": [
 							468,
-							76
+							78
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-msg-warning.expected.png",
@@ -10170,9 +9800,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:639ce0ad8af9eb164b228cd0933d92cf5276ad88355ec38f2f32882fc5f0a176",
-					"diffPixels": 1486,
-					"diffRatio": 0.0504,
+					"hash": "sha256:88dd7e11a96aade7dcd621b1811f9aea0b70e6415b078bbaa315a41eba5da829",
+					"diffPixels": 1436,
+					"diffRatio": 0.048704,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10180,7 +9810,7 @@
 						],
 						"actual": [
 							468,
-							52
+							54
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-multiple.expected.png",
@@ -10191,9 +9821,9 @@
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:73a411f017ddeb74eb26ddfb0e42153f627bc172e4d51ecdb333801144d5726d",
-					"diffPixels": 1486,
-					"diffRatio": 0.0504,
+					"hash": "sha256:d68f3bafb17996d013b50ee91a22b53d0b912de717bafb75e93c1ce5e6af2aed",
+					"diffPixels": 1436,
+					"diffRatio": 0.048704,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10201,7 +9831,7 @@
 						],
 						"actual": [
 							468,
-							52
+							54
 						]
 					},
 					"expected": "theme-desy/input-file-basic-noColumns--label-short-key.expected.png",
@@ -11016,9 +10646,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:155c7982e8d9235895f5c6f876fde0b4830c6eb78ee8430039633931cb793714",
-					"diffPixels": 2219,
-					"diffRatio": 0.07786,
+					"hash": "sha256:f402e2e2f2c5068747fb4b83a20e31d8758c4721a5089c7046f7ee329ff2d2bb",
+					"diffPixels": 2171,
+					"diffRatio": 0.076175,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -11026,7 +10656,7 @@
 						],
 						"actual": [
 							300,
-							84
+							86
 						]
 					},
 					"expected": "theme-desy/scenarios-focus-elements-component-inputFile.expected.png",
@@ -11037,9 +10667,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:b8b6d5de9aefd78279558237685a8ccc823fc6902a78ef41d722e5cddc468e1b",
-					"diffPixels": 2219,
-					"diffRatio": 0.07786,
+					"hash": "sha256:5442b0223a4ac303c3ac8fbd3e5ae7a48c25204c7768cf190d2789d1ac52e9b1",
+					"diffPixels": 2171,
+					"diffRatio": 0.076175,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -11047,7 +10677,7 @@
 						],
 						"actual": [
 							300,
-							84
+							86
 						]
 					},
 					"expected": "theme-desy/scenarios-focus-elements-component-inputFileMultiple.expected.png",
@@ -11292,9 +10922,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:62fc32ef9f4a0cb02653e643f2e0183a3225ce77a970495a940dc6473f48f5bf",
-					"diffPixels": 1273,
-					"diffRatio": 0.003919,
+					"hash": "sha256:1edc31fc4dfa3ce9cb5ac8512d6adc612bfdcf328c7c876d23b9623baea21150",
+					"diffPixels": 1255,
+					"diffRatio": 0.003864,
 					"expected": "theme-desy/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "theme-desy/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "theme-desy/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -11303,9 +10933,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:f4b8f4963b5109faabd5590d43492ca553584f1624fbdcecfa83e334d00278cb",
-					"diffPixels": 1989,
-					"diffRatio": 0.006216,
+					"hash": "sha256:14b54cdf90b5ef42812507894999aa723337d3eaec05abb180980eb3e52dc36b",
+					"diffPixels": 1985,
+					"diffRatio": 0.006203,
 					"expected": "theme-desy/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-desy/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-desy/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -11795,7 +11425,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:3bfdb6721332c7ba011960432da96d97713c38a9456ef687c56f0fb650567483",
+			"digest": "sha256:dd9b9526634bd235631ed23fe271c6a61d8e1b0ffa8fa5d4a6cab3e4651bb696",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12905,9 +12535,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:62b913aa723c356f542d6f1799a96f031c55fc343155330c450ccbb9b332b571",
-					"diffPixels": 5664,
-					"diffRatio": 0.13155,
+					"hash": "sha256:72951be73f91a6d28f28e2530378580ce250a1ca154ea4d830fc4c90becc6d3e",
+					"diffPixels": 6182,
+					"diffRatio": 0.14358,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12915,7 +12545,7 @@
 						],
 						"actual": [
 							468,
-							73
+							90
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--hide-label-error.expected.png",
@@ -12926,9 +12556,9 @@
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:71e59d3cdfc08c259678f397106b891867ac8b7f252dec962be3d8740d512114",
-					"diffPixels": 4892,
-					"diffRatio": 0.134013,
+					"hash": "sha256:dd7cd7d27c65fbe618768bc1e73f1b902b905f9ebbb461c5624fe345aa6693bd",
+					"diffPixels": 5138,
+					"diffRatio": 0.140752,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12936,7 +12566,7 @@
 						],
 						"actual": [
 							468,
-							59
+							76
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-access-key.expected.png",
@@ -12947,9 +12577,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:a0b44df90b4eb0e19d3d8d539e94f60822c15223fa36c02c3948d0b32ac71300",
-					"diffPixels": 10958,
-					"diffRatio": 0.249091,
+					"hash": "sha256:e2f9b3ed537829f374a8cc2add46d3beae3b6475ff67d207456fd2d350d0fdaa",
+					"diffPixels": 5727,
+					"diffRatio": 0.130183,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12957,7 +12587,7 @@
 						],
 						"actual": [
 							468,
-							75
+							92
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-black-bg.expected.png",
@@ -12968,9 +12598,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:fc28879e4094872ebf5d5ec8724960d6a622d7cb59fe503f17838fba412c43b0",
-					"diffPixels": 1824,
-					"diffRatio": 0.049967,
+					"hash": "sha256:c9d441a6ad51476d8dff2fcd2dcc7f583af99d0a3d869f34ae550f35d9190acd",
+					"diffPixels": 2176,
+					"diffRatio": 0.05961,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12978,7 +12608,7 @@
 						],
 						"actual": [
 							468,
-							59
+							76
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-disabled.expected.png",
@@ -12989,9 +12619,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:ef4893e3ccebdd1eaba115d45ff2702379191d47eda3c8730b8c418d09f82d49",
-					"diffPixels": 5664,
-					"diffRatio": 0.097601,
+					"hash": "sha256:10e23a4ed0786e13e1f43c9a2f5ce5fc63c27c94388b12489f846b00e51e0198",
+					"diffPixels": 6182,
+					"diffRatio": 0.106527,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12999,7 +12629,7 @@
 						],
 						"actual": [
 							468,
-							105
+							122
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-error.expected.png",
@@ -13010,9 +12640,9 @@
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:69f108f9f5bfe48ca20dcc354f4f55d95d6b32a1b3ed78de3f332cdb7afe767a",
-					"diffPixels": 5671,
-					"diffRatio": 0.114316,
+					"hash": "sha256:524b7b3dd54c41b60d674db0f3de589e79a839095dc80bfdaece7488a989ffa4",
+					"diffPixels": 5454,
+					"diffRatio": 0.109942,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13020,7 +12650,7 @@
 						],
 						"actual": [
 							468,
-							87
+							104
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-msg-default.expected.png",
@@ -13031,9 +12661,9 @@
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:0b2b2836b62543112554ef7a78b2de21290bf6fcdcac36546e5757536393228e",
-					"diffPixels": 5407,
-					"diffRatio": 0.108995,
+					"hash": "sha256:c4c4de340ec28610b54b95f4e9cf1300ee344dec0c349209e8b4bb9aa4051af8",
+					"diffPixels": 5225,
+					"diffRatio": 0.105326,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13041,7 +12671,7 @@
 						],
 						"actual": [
 							468,
-							87
+							104
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-msg-info.expected.png",
@@ -13052,9 +12682,9 @@
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:ea7faed37835e9059d3bd0356cb450d9d6132f1fd52a69e818e589f40cabfd38",
-					"diffPixels": 5455,
-					"diffRatio": 0.109962,
+					"hash": "sha256:d5f3f84758694d5a24042a19da722f7d7756582dcc5e80bf68ad5131a4ccc0b4",
+					"diffPixels": 5474,
+					"diffRatio": 0.110345,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13062,7 +12692,7 @@
 						],
 						"actual": [
 							468,
-							87
+							104
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-msg-success.expected.png",
@@ -13073,9 +12703,9 @@
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:e321ffe753ccc2b5491d9d4c5b8f806cb1156f863a0db45e6e2eacf113fa957f",
-					"diffPixels": 5287,
-					"diffRatio": 0.106576,
+					"hash": "sha256:e5978cc27b0df1adea06cd9a071f51670846a292acfe781468adc24bcded45b1",
+					"diffPixels": 5275,
+					"diffRatio": 0.106334,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13083,7 +12713,7 @@
 						],
 						"actual": [
 							468,
-							87
+							104
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-msg-warning.expected.png",
@@ -13094,9 +12724,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:e88237a6934b738323c3df3c35b7395eb6cfd58c53a5717a721bbf180e81415f",
-					"diffPixels": 4892,
-					"diffRatio": 0.134013,
+					"hash": "sha256:584315df1b7e4d86e6c23999f10dce3943958e3089a1c424c7734657e01ca351",
+					"diffPixels": 5138,
+					"diffRatio": 0.140752,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13104,7 +12734,7 @@
 						],
 						"actual": [
 							468,
-							59
+							76
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-multiple.expected.png",
@@ -13115,9 +12745,9 @@
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:17ca21027d55b9741464d2432bb5a92e2820c1940c52cc10da33318bfd90200c",
-					"diffPixels": 4892,
-					"diffRatio": 0.134013,
+					"hash": "sha256:13cc9cf74bcbff678ff0bedc231b22a879da3fe03c52075cf62d92f099172497",
+					"diffPixels": 5138,
+					"diffRatio": 0.140752,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13125,7 +12755,7 @@
 						],
 						"actual": [
 							468,
-							59
+							76
 						]
 					},
 					"expected": "theme-ecl/input-file-basic-noColumns--label-short-key.expected.png",
@@ -13940,9 +13570,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:1bbb4a0fec71ffad4154bc62f41bbd6ae88acf3f3e6a3af4243944935b995c90",
-					"diffPixels": 4840,
-					"diffRatio": 0.146667,
+					"hash": "sha256:e15539a452d8ba3cd48529e36b8dbd10207dbfa289cd05548f586eddc61692ab",
+					"diffPixels": 4672,
+					"diffRatio": 0.141576,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -13950,7 +13580,7 @@
 						],
 						"actual": [
 							300,
-							91
+							108
 						]
 					},
 					"expected": "theme-ecl/scenarios-focus-elements-component-inputFile.expected.png",
@@ -13961,9 +13591,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:abaefa921d32a1ef3502a1f30a8f42d55dabd55ac90b2011fd604c03496aabdf",
-					"diffPixels": 4840,
-					"diffRatio": 0.146667,
+					"hash": "sha256:126b6828951527b2680a559d1314b568cd7e73611966b50e09923b3045ff32eb",
+					"diffPixels": 4672,
+					"diffRatio": 0.141576,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -13971,7 +13601,7 @@
 						],
 						"actual": [
 							300,
-							91
+							108
 						]
 					},
 					"expected": "theme-ecl/scenarios-focus-elements-component-inputFileMultiple.expected.png",
@@ -14216,9 +13846,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:6134918992b7c51abe20594ad71b9f5661a1ed44a5a34e0e13c9e1143f65d1a6",
-					"diffPixels": 16338,
-					"diffRatio": 0.041594,
+					"hash": "sha256:9ee31b30e87016685c711ffd0719757fcbdd6b7d4539f65d9fa0d3b67f0ce6a7",
+					"diffPixels": 16356,
+					"diffRatio": 0.04164,
 					"sizeMismatch": {
 						"expected": [
 							800,
@@ -14237,9 +13867,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:95dc79b1c2cbb3e0b4243ab84ff587e85fb232c90491d8f72576b68b03dfd883",
-					"diffPixels": 13809,
-					"diffRatio": 0.043153,
+					"hash": "sha256:659dbc75949a91a9b1df60ebbcbc9295f7adf09713ae8fc2ad6a4fa330e90fd1",
+					"diffPixels": 13863,
+					"diffRatio": 0.043322,
 					"expected": "theme-ecl/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-ecl/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-ecl/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -14729,7 +14359,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:52a46920a620c190f8c1b05a6f0247dfc3e763e0140ff1ac712f31122293668f",
+			"digest": "sha256:d0f826f99221f98824cf15deea4191c18823b239762c1e5d42d7950a13545722",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15839,19 +15469,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:16ed295953ce8352fe019cafdc248ccd2205bde39bfa36217dd4437f62a2f458",
-					"diffPixels": 2592,
-					"diffRatio": 0.032579,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							170
-						],
-						"actual": [
-							468,
-							122
-						]
-					},
+					"hash": "sha256:cd276102f21411d2f873b3c197323d221b41459856b76065ac97ede2b2aca1e0",
+					"diffPixels": 1492,
+					"diffRatio": 0.018753,
 					"expected": "theme-kern/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -15860,19 +15480,9 @@
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:fe6d754279a68cbc3c56652a332118743b1fe78d04f362191cfc90c4fa8acd2c",
-					"diffPixels": 749,
-					"diffRatio": 0.011768,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							136
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:d99026498071bc2fc5fb64251f58aca4bc1ec9ca174da1c19defaee8533d7c44",
+					"diffPixels": 360,
+					"diffRatio": 0.005656,
 					"expected": "theme-kern/input-file-basic-noColumns--label-access-key.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-access-key.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-access-key.diff.png"
@@ -15881,19 +15491,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:085823a98b364bc2827731beb9a96fa6d278acc95ee625d5431bbee3fa68a444",
-					"diffPixels": 8242,
-					"diffRatio": 0.115863,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							152
-						],
-						"actual": [
-							468,
-							104
-						]
-					},
+					"hash": "sha256:dec3be997c8dd68e84bf7a3e142be78d4f4b0d1207a6911e33c828ae4ac7a6ba",
+					"diffPixels": 587,
+					"diffRatio": 0.008252,
 					"expected": "theme-kern/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -15902,19 +15502,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:debce92f5872781716ff2f64d1ae5ccfba77f58204306fabb424e41feb31f327",
+					"hash": "sha256:7b705c232b5708229386826ed9981713a38892137f6e48dc10eaf0fa8d177152",
 					"diffPixels": 624,
 					"diffRatio": 0.009804,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							136
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
 					"expected": "theme-kern/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-disabled.diff.png"
@@ -15923,19 +15513,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:d8d623b54a89c71fe7ae3bcbb6c727c0644505d5bfd6ed2ecbff2e14b149cae0",
-					"diffPixels": 2592,
-					"diffRatio": 0.02576,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							215
-						],
-						"actual": [
-							468,
-							167
-						]
-					},
+					"hash": "sha256:2c02c672efa95e68a8fa5b15b3dfdaf3f8caadf6df8a0bf31d2f8c08c3240a52",
+					"diffPixels": 1492,
+					"diffRatio": 0.014828,
 					"expected": "theme-kern/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-error.diff.png"
@@ -15944,19 +15524,9 @@
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:68590e760ee7cdf8f6bcf057257c23bfae4bc3f5bf26fb0730f2a234a81b6774",
-					"diffPixels": 2169,
-					"diffRatio": 0.027262,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							170
-						],
-						"actual": [
-							468,
-							122
-						]
-					},
+					"hash": "sha256:dffd6f2341056f5293219c09d15ba4af11ac627a4a561e7b39ef045e80fc373b",
+					"diffPixels": 360,
+					"diffRatio": 0.004525,
 					"expected": "theme-kern/input-file-basic-noColumns--label-msg-default.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-msg-default.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-msg-default.diff.png"
@@ -15965,19 +15535,9 @@
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:1c58edfdeb161013509b9ef62ce9f6221a927f93790b1bcf832940a0802e623a",
-					"diffPixels": 1921,
-					"diffRatio": 0.024145,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							170
-						],
-						"actual": [
-							468,
-							122
-						]
-					},
+					"hash": "sha256:deeae34307ab7e1414b08a7b725869ebf2fc845f87b265e37ffdf2674caab1e7",
+					"diffPixels": 360,
+					"diffRatio": 0.004525,
 					"expected": "theme-kern/input-file-basic-noColumns--label-msg-info.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-msg-info.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-msg-info.diff.png"
@@ -15986,19 +15546,9 @@
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:c9ae3a2718f0895eb62ae4cd9bef65c9e46bb4e7cc908bb0b913c26c8ace60d6",
-					"diffPixels": 2058,
-					"diffRatio": 0.025867,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							170
-						],
-						"actual": [
-							468,
-							122
-						]
-					},
+					"hash": "sha256:fcae91927bb1b242b3bb3c9e57bfd79ca10369b6bffcceead0ec335137a3d78a",
+					"diffPixels": 360,
+					"diffRatio": 0.004525,
 					"expected": "theme-kern/input-file-basic-noColumns--label-msg-success.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-msg-success.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-msg-success.diff.png"
@@ -16007,19 +15557,9 @@
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:10ce6a03fa0d283d7aac5621da75f706fa213deefc97a86a9201afe7fbd9b144",
-					"diffPixels": 1901,
-					"diffRatio": 0.023894,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							170
-						],
-						"actual": [
-							468,
-							122
-						]
-					},
+					"hash": "sha256:8546532e5907830461b3b0283a555f9e6b44e79fbde2d107103293e731a38660",
+					"diffPixels": 360,
+					"diffRatio": 0.004525,
 					"expected": "theme-kern/input-file-basic-noColumns--label-msg-warning.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-msg-warning.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-msg-warning.diff.png"
@@ -16028,19 +15568,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:6859a875385a7b789e62504656267cc407571b67a189781a1d1fe7a63b2178f8",
-					"diffPixels": 749,
-					"diffRatio": 0.011768,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							136
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:f8f4e7fd75695c5807088f24f1d96daef85bdf8927ee1257119845e59701846b",
+					"diffPixels": 360,
+					"diffRatio": 0.005656,
 					"expected": "theme-kern/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-multiple.diff.png"
@@ -16049,19 +15579,9 @@
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:5ddf389c96926af114eb4a751454b5f278381ce4c3b199b579b9ebb3be2afb11",
-					"diffPixels": 749,
-					"diffRatio": 0.011768,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							136
-						],
-						"actual": [
-							468,
-							88
-						]
-					},
+					"hash": "sha256:d83ed00e8ef51e6148155362167b8fd01ccc2e4f6369593fa97c0be4f8b776b9",
+					"diffPixels": 360,
+					"diffRatio": 0.005656,
 					"expected": "theme-kern/input-file-basic-noColumns--label-short-key.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-short-key.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-short-key.diff.png"
@@ -16874,19 +16394,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:d38794f02b5f64240bd23de8ccd17770e4ee0319dd2e8784405dced917b0d7ad",
-					"diffPixels": 3197,
-					"diffRatio": 0.063433,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							168
-						],
-						"actual": [
-							300,
-							120
-						]
-					},
+					"hash": "sha256:0f1e908bdd7284ddd15f8374a3a7e165e858481cb380b90d24ca14ae7dee3701",
+					"diffPixels": 3854,
+					"diffRatio": 0.076468,
 					"expected": "theme-kern/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "theme-kern/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "theme-kern/scenarios-focus-elements-component-inputFile.diff.png"
@@ -16895,19 +16405,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:67b6ad797d65da73c279bc410a43354554526e83096b26635401d61b821224f4",
-					"diffPixels": 3197,
-					"diffRatio": 0.063433,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							168
-						],
-						"actual": [
-							300,
-							120
-						]
-					},
+					"hash": "sha256:f47db1d5b257b9d44e6610b5dadc38f15268fb2c383514dfa9c258ac0378844a",
+					"diffPixels": 3854,
+					"diffRatio": 0.076468,
 					"expected": "theme-kern/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "theme-kern/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "theme-kern/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -17150,19 +16650,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:ea4146f99fb448faf8f8ba8766e1858974fe25ca196714a5e760f437f1e8adbd",
-					"diffPixels": 17097,
-					"diffRatio": 0.0361,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							592
-						],
-						"actual": [
-							800,
-							546
-						]
-					},
+					"hash": "sha256:7cea071c3279f9287fd3949612e5db32f33e24db1d14a4c569c138de69e058ff",
+					"diffPixels": 1108,
+					"diffRatio": 0.00234,
 					"expected": "theme-kern/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "theme-kern/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "theme-kern/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -17171,19 +16661,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:37e67b52e3a41c4a4169f9dc0525dbd7bda7551df026f17260c1f7ac4e828a11",
-					"diffPixels": 12756,
-					"diffRatio": 0.034814,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							458
-						],
-						"actual": [
-							800,
-							412
-						]
-					},
+					"hash": "sha256:1a72db3c38fcd969caf9d0f496f1ea43d46b2df3a8a9987bf511eb437c633e36",
+					"diffPixels": 2132,
+					"diffRatio": 0.005819,
 					"expected": "theme-kern/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-kern/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-kern/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -17679,7 +17159,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:568e0fd8083265ac4df4cf9d64e878ce72fe7f07dc7894a9a332f96200f835a8",
+			"digest": "sha256:d28b08b06745fd5c75b2f7aab270d4e712fed7e88d17eb1308a2568cdfb75f07",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -18789,19 +18269,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f6ca388d75df8aab0e68be3eeab7dbd50392602b450b948f3293be27e50c682f",
-					"diffPixels": 1937,
-					"diffRatio": 0.047573,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							87
-						],
-						"actual": [
-							468,
-							70
-						]
-					},
+					"hash": "sha256:e5a65271b8821aaed086f1302b86e4f319484aef5c370cda5b9b11aabd595267",
+					"diffPixels": 978,
+					"diffRatio": 0.02402,
 					"expected": "unstyled/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -18810,19 +18280,9 @@
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:5be8b088bf6a9d0f7047fe3c3c411aaca68d4996766fc732403c560c9851a934",
-					"diffPixels": 973,
-					"diffRatio": 0.031501,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							66
-						],
-						"actual": [
-							468,
-							49
-						]
-					},
+					"hash": "sha256:9cba1dd51b50f0c3a34b2ccbbab3c1e370d907a20f9b6075babdb7371ef00a8c",
+					"diffPixels": 930,
+					"diffRatio": 0.030109,
 					"expected": "unstyled/input-file-basic-noColumns--label-access-key.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-access-key.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-access-key.diff.png"
@@ -18831,19 +18291,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:cd1cd713368735a8f318ce135c578e68068d9f34fd158ef2d42b2285b0b940ae",
-					"diffPixels": 8342,
-					"diffRatio": 0.217375,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							82
-						],
-						"actual": [
-							468,
-							65
-						]
-					},
+					"hash": "sha256:7343b67595e7c2ef480d7b9e62bf16dfadf8d70c4aba4b7038184e423813cc10",
+					"diffPixels": 978,
+					"diffRatio": 0.025485,
 					"expected": "unstyled/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -18852,19 +18302,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:3d760b24c5cbb8176d420e8af38213ec93fb2b9d953c9068267607cb0ef6dffc",
-					"diffPixels": 973,
-					"diffRatio": 0.031501,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							66
-						],
-						"actual": [
-							468,
-							49
-						]
-					},
+					"hash": "sha256:f0c43652317612a0d2f80763c80f90b9b07819a6c39653e7c94b276d0f04b780",
+					"diffPixels": 940,
+					"diffRatio": 0.030433,
 					"expected": "unstyled/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-disabled.diff.png"
@@ -18873,19 +18313,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:0a0d1982e58339dd830737d44fe34699bdfd6c6b7f26738f026184109ed22297",
-					"diffPixels": 1969,
-					"diffRatio": 0.038956,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							108
-						],
-						"actual": [
-							468,
-							91
-						]
-					},
+					"hash": "sha256:34d7ec8e566c0d83edabc9c845aadfdddd76cb7f4a1fc9b91d8ee1e3bf631acc",
+					"diffPixels": 996,
+					"diffRatio": 0.019706,
 					"expected": "unstyled/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-error.diff.png"
@@ -18894,19 +18324,9 @@
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:0ba3a8745d18e509541d05bdc789a53f17cbdcbde0fca48a4cf86cc9b1745c1f",
-					"diffPixels": 1561,
-					"diffRatio": 0.038339,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							87
-						],
-						"actual": [
-							468,
-							70
-						]
-					},
+					"hash": "sha256:079b236a8800e3a9cadda3d6fef78397821841816fdae9ad99a8c3ca33a82f38",
+					"diffPixels": 940,
+					"diffRatio": 0.023087,
 					"expected": "unstyled/input-file-basic-noColumns--label-msg-default.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-msg-default.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-msg-default.diff.png"
@@ -18915,19 +18335,9 @@
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:c546376b44de5bc0bb1b6c9ced2000af2677ca357e870b3ae4de2d6c77bf93c2",
-					"diffPixels": 1271,
-					"diffRatio": 0.031216,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							87
-						],
-						"actual": [
-							468,
-							70
-						]
-					},
+					"hash": "sha256:f8c072accdf95920b488b56c61915f56a6aebad19c039348c412799ada37e7f5",
+					"diffPixels": 940,
+					"diffRatio": 0.023087,
 					"expected": "unstyled/input-file-basic-noColumns--label-msg-info.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-msg-info.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-msg-info.diff.png"
@@ -18936,19 +18346,9 @@
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:b8ec624ad15e8a9f4fe51bf7603add3ecad2972cb628b813857675de2140abdb",
-					"diffPixels": 1541,
-					"diffRatio": 0.037848,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							87
-						],
-						"actual": [
-							468,
-							70
-						]
-					},
+					"hash": "sha256:20d411bcbe1296163843f8d5b434e840c40e9f4741f215758a00f8ec7c0cac29",
+					"diffPixels": 940,
+					"diffRatio": 0.023087,
 					"expected": "unstyled/input-file-basic-noColumns--label-msg-success.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-msg-success.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-msg-success.diff.png"
@@ -18957,19 +18357,9 @@
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:84ff70681fc54ce367bb91466003147b108e9ca550194c0e068654355a220b07",
-					"diffPixels": 1490,
-					"diffRatio": 0.036595,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							87
-						],
-						"actual": [
-							468,
-							70
-						]
-					},
+					"hash": "sha256:750904858786fe557c935d126e838703a16e22c46fafee6ea48c2888e6be3770",
+					"diffPixels": 940,
+					"diffRatio": 0.023087,
 					"expected": "unstyled/input-file-basic-noColumns--label-msg-warning.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-msg-warning.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-msg-warning.diff.png"
@@ -18978,19 +18368,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:65bc5358a005f89167bfeb961559353aa48cf76a36470a558bb70cf7a8228c49",
-					"diffPixels": 973,
-					"diffRatio": 0.031501,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							66
-						],
-						"actual": [
-							468,
-							49
-						]
-					},
+					"hash": "sha256:04ff9bf3a9547b789c38eead7edae17fa514d065695c2dedb60019767fb4d05c",
+					"diffPixels": 940,
+					"diffRatio": 0.030433,
 					"expected": "unstyled/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-multiple.diff.png"
@@ -18999,19 +18379,9 @@
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:ca895d0f6fba9a5f8072c0d7b6460ebdb5e24db25b4599deccd76b3d24aee8a5",
-					"diffPixels": 973,
-					"diffRatio": 0.031501,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							66
-						],
-						"actual": [
-							468,
-							49
-						]
-					},
+					"hash": "sha256:09db2b313a3415b31cce4a6a4061688ad50034cba674491b774d0624b10d9dec",
+					"diffPixels": 930,
+					"diffRatio": 0.030109,
 					"expected": "unstyled/input-file-basic-noColumns--label-short-key.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-short-key.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-short-key.diff.png"
@@ -19824,19 +19194,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:eb22b37a00d34d29f9ef7fc4ba6c7113d48e99059763a9c6f391f263384ad875",
-					"diffPixels": 918,
-					"diffRatio": 0.031546,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							97
-						],
-						"actual": [
-							300,
-							80
-						]
-					},
+					"hash": "sha256:36925ba7eb179f1e855e738356ee877d3cb685731b530140bad839a68d6056e3",
+					"diffPixels": 685,
+					"diffRatio": 0.02354,
 					"expected": "unstyled/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "unstyled/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "unstyled/scenarios-focus-elements-component-inputFile.diff.png"
@@ -19845,19 +19205,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:63e1a3f5d94f3a27604231b79b50e5404de1571cf84f417c6caf19140690dcca",
-					"diffPixels": 918,
-					"diffRatio": 0.031546,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							97
-						],
-						"actual": [
-							300,
-							80
-						]
-					},
+					"hash": "sha256:6cb6da83c70e03744a94ff705636aa64f14d60eb16f67a467651c029cd02e909",
+					"diffPixels": 685,
+					"diffRatio": 0.02354,
 					"expected": "unstyled/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "unstyled/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "unstyled/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -20100,9 +19450,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:3effd4bb926b5707c4616e195fd15a61c7380ead1a4f1886e8e0133adb556028",
-					"diffPixels": 1089,
-					"diffRatio": 0.003403,
+					"hash": "sha256:24337a3a43dd621378487a20f0a03c4603471a69aa6153c1c3b2fc75cdf94bc5",
+					"diffPixels": 1071,
+					"diffRatio": 0.003347,
 					"expected": "unstyled/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "unstyled/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "unstyled/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -20111,9 +19461,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:d9704f29ccec064c0b5ba837c046ac03d7f3f45600e4c92d2b317bd02c02c579",
-					"diffPixels": 1675,
-					"diffRatio": 0.005234,
+					"hash": "sha256:74a954e36a98f11a2db67c53bacff77898c5e7b1907cc2e471e2ca501eeda904",
+					"diffPixels": 1668,
+					"diffRatio": 0.005213,
 					"expected": "unstyled/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "unstyled/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "unstyled/scenarios-same-height-of-all-interactive-elements.diff.png"
