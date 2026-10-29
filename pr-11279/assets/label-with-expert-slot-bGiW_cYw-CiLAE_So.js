@@ -1,0 +1,1 @@
+import{o as e}from"./base-web-component-Bcoukts3-otUhLLzr.js";var t=e(`label`,``,e=>{if(typeof e==`string`||Array.isArray(e))return e;if(typeof e==`number`||typeof e==`boolean`||typeof e==`bigint`)return String(e);throw TypeError(`Cannot convert ${typeof e} to LabelLangSegmentsPropType`)});export{t};
