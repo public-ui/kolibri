@@ -7,7 +7,7 @@ import { skipNavPropsConfig } from '../../internal/functional-components/skip-na
 import { SkipNavFC } from '../../internal/functional-components/skip-nav/component';
 import type { SkipNavLinkItem } from '../../internal/functional-components/skip-nav/link-item';
 import { createSkipNavLinkItem } from '../../internal/functional-components/skip-nav/link-item';
-import { labelWithExpertSlotProp, skipNavLinksProp } from '../../internal/props';
+import { labelProp, skipNavLinksProp } from '../../internal/props';
 import type { FocusableElement, KolFocusOptions, LabelPropType, LinkProps, SkipNavProps, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks } from '../../schema';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
@@ -88,7 +88,7 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 		if (!initial) {
 			removeNavLabel(this.getRenderProp('label'));
 		}
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.getRenderProp('label'));
 	}

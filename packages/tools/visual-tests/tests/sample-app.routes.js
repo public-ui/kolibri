@@ -1028,3 +1028,6 @@ ROUTES.set('scenarios/focus-elements?component=tree', {
 		},
 	},
 });
+ROUTES.set('scenarios/label-lang', {
+	snapshot: {},
+});

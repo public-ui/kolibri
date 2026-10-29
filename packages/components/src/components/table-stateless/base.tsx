@@ -17,7 +17,7 @@ import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-co
 import {
 	fixedColsProp,
 	hasSettingsMenuProp,
-	labelWithExpertSlotProp,
+	labelLangSegmentsProp,
 	tableCallbacksProp,
 	tableDataFootProp,
 	tableDataProp,
@@ -34,6 +34,7 @@ import type {
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
+	LabelLangSegmentsPropType,
 	SelectionChangeEventPayload,
 	SortEventPayload,
 	TableCallbacksPropType,
@@ -167,8 +168,8 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		tableHeadersProp.apply(value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)));
 	}
 
-	protected applyLabel(value?: string): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+	protected applyLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	protected applyLoading(value?: boolean): void {

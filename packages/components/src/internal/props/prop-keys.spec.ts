@@ -21,7 +21,7 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 		reason: 'icons of a form field (left/right state), checkbox state icons, a single icon class, icons of a span (raw)',
 	},
 	label: {
-		definitions: ['labelProp', 'labelWithExpertSlotProp', 'paginationLabelProp'],
+		definitions: ['labelLangSegmentsProp', 'labelProp', 'labelWithExpertSlotProp', 'paginationLabelProp'],
 		reason:
 			"labelProp checks the length ('' or at least two characters) and gives the label hints; labelWithExpertSlotProp accepts every string, and in a component with an expert slot '' switches the slot on; paginationLabelProp behaves like labelWithExpertSlotProp and is kept apart for its meaning, the label of the navigation landmark of the pagination",
 	},

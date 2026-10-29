@@ -1,6 +1,6 @@
-import type { SimpleProp } from './helpers/factory';
+import type { LabelPropType } from '../../schema';
+import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
-import { normalizeString } from './helpers/normalizers';
 import { labelHints } from './hints/label-hints';
 
 /**
@@ -24,7 +24,25 @@ import { labelHints } from './hints/label-hints';
  * @see https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
  * @see https://www.w3.org/TR/accname-1.2/
  */
-export type LabelProp = SimpleProp<'label', string>;
-export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeString, (v) => v === '' || v.length >= 2, {
-	hints: labelHints,
-});
+export type LabelProp = Prop<'label', LabelPropType, LabelPropType>;
+export const labelProp = createPropDefinition<LabelProp>(
+	'label',
+	'',
+	(value: unknown) => {
+		if (typeof value === 'string') {
+			return value;
+		}
+		if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
+			return String(value);
+		}
+		throw new TypeError(`Cannot convert ${typeof value} to LabelPropType`);
+	},
+	(v) => {
+		const r = v === '' || (typeof v === 'string' && v.length >= 2) || Array.isArray(v);
+		return r;
+	},
+
+	{
+		hints: labelHints,
+	},
+);
