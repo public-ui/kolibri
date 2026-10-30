@@ -124,6 +124,11 @@ export class KolTextarea
 
 	/**
 	 * References an external element by ID that provides accessible details for this textarea.
+	 *
+	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
+	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
+	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
+	 * visibly as well. See KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType;
 

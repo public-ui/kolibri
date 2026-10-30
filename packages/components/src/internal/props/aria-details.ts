@@ -7,9 +7,10 @@ import { normalizeString } from './helpers/normalizers';
  *
  * Description:
  * An IDREF list (space-separated) of elements outside the component that provide accessible
- * details for the field. The component resolves the IDs and hands the elements to
- * `ElementInternals.ariaDetailsElements`, because a plain `aria-details` attribute cannot
- * reference across the shadow boundary.
+ * details for the field. The component resolves the IDs and pushes them as element references
+ * to the native control's `ariaDetailsElements`, because a plain `aria-details` attribute cannot
+ * reference across the shadow boundary. Screen reader support is heavily fragmented —
+ * see KNOWN_ISSUES.md.
  *
  * The empty string means "no details"; it resolves to no elements, like an unset value.
  *

@@ -21,6 +21,27 @@
 [MDN: `ariaLabelledByElements`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLabelledByElements),
 [Reference Target proposal (WICG)](https://github.com/WICG/webcomponents/issues/1111)
 
+### Screen reader support for `aria-details` is heavily fragmented (`_ariaDetails`)
+
+Independent of the element reflection gap above, the `aria-details` attribute itself is barely usable with today's screen readers. A complete implementation must master three steps: announce the presence of details, read their content, and signal the end of the details region. No common browser/screen reader combination does this flawlessly (data from [a11ysupport.io](https://a11ysupport.io/tech/aria/aria-details_attribute), as of October 2026):
+
+| Screen reader + browser          | Presence | Content | End | Verdict                                                                           |
+| -------------------------------- | -------- | ------- | --- | --------------------------------------------------------------------------------- |
+| NVDA + Chrome / Edge / Firefox   | ✅       | ✅      | ❌  | Partially usable — reads the content, but never signals where the details end     |
+| JAWS + Chrome / Edge / Firefox   | ✅       | ❌      | ✅  | Poor — announces "details available" but often does not read the content directly |
+| Orca + Firefox                   | ✅       | ✅      | ✅  | Complete — the only combination that fulfils all three steps stably               |
+| VoiceOver + Safari (macOS / iOS) | ❌       | ❌      | ❌  | Ignored completely                                                                |
+| TalkBack + Chrome (Android)      | ❌       | ❌      | ❌  | Ignored completely                                                                |
+| Narrator + Edge (Windows)        | ❌       | ❌      | ❌  | Ignored completely                                                                |
+
+The browsers mostly feed the attribute into the accessibility tree correctly; the gap is on the screen reader side. Unlike `aria-describedby`, `aria-details` references rich, navigable structures rather than a flat text string, and many screen readers cannot navigate that acoustically.
+
+**Recommendation:** never rely on `aria-details` alone. If the details flatten to a text string without loss of information, prefer `_hint` or `aria-describedby` instead. Otherwise, keep the details visible on the page — for example as a `<details>` disclosure or a keyboard-reachable link to the additional information.
+
+[a11ysupport.io: aria-details](https://a11ysupport.io/tech/aria/aria-details_attribute),
+[Scott O'Hara: aria-details](https://www.scottohara.me/blog/2018/11/08/aria-details.html),
+[MDN: aria-details](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-details)
+
 ## select
 
 ### All text inputs
