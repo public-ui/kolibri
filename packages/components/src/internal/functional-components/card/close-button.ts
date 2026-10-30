@@ -20,7 +20,7 @@ export function resolveCardCloseButtonProps(host?: HTMLElement): ResolvedButtonP
 			_hideLabel: true,
 			_icons: { left: { icon: 'kolicon-cross' } },
 			_label: translate('kol-close'),
-			_tooltipAlign: 'left',
+			_tooltipAlign: 'top',
 		},
 		host,
 	);
