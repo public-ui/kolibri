@@ -75,7 +75,7 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 		>
 			<AlertIconFC type={type} />
 
-			{label.length > 0 && (
+			{label?.length > 0 && (
 				<HeadlineTag
 					class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, alertBem('heading', { [`h${level}`]: true }), 'kol-headline--single')}
 					id={headingId}
@@ -89,7 +89,6 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 					accessKey=""
 					ariaControls=""
 					ariaDescription={trimLabel(label)}
-
 					ariaDescriptionId={closerAriaDescriptionId}
 					ariaExpanded={UNSET_BUTTON_PROP}
 					ariaHasPopup=""
@@ -123,7 +122,7 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 				/>
 			)}
 
-			<div aria-describedby={label.length > 0 ? headingId : undefined} class={BEM_CLASS_ALERT__CONTENT}>
+			<div aria-describedby={label?.length > 0 ? headingId : undefined} class={BEM_CLASS_ALERT__CONTENT}>
 				{children}
 			</div>
 		</BemRootNodeFC>

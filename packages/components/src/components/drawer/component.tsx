@@ -11,7 +11,15 @@ import { DrawerFC } from '../../internal/functional-components/drawer/component'
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
-import type { AlignPropType, DrawerProps, HeadingLevel, KoliBriModalEventCallbacks, LabelLangSegmentsPropType, OpenPropType } from '../../schema';
+import type {
+	AlignPropType,
+	DrawerProps,
+	HasCloserPropType,
+	HeadingLevel,
+	KoliBriModalEventCallbacks,
+	LabelLangSegmentsPropType,
+	OpenPropType,
+} from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -61,7 +69,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Defines the visual orientation of the component.
 	 */
-	@Prop() public _align?: AlignPropType;
+	@Prop() public _align?: AlignPropType = undefined;
 
 	@Watch('_align')
 	public watchAlign(value?: AlignPropType): void {
@@ -70,12 +78,11 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 
 	/**
 	 * Defines whether the element can be closed.
-	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
-	public watchHasCloser(value?: boolean): void {
+	public watchHasCloser(value?: HasCloserPropType): void {
 		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
 	}
 
@@ -86,7 +93,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -102,7 +109,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Specifies the EventCallback function to be called when the drawer is closing.
 	 */
-	@Prop() public _on?: KoliBriModalEventCallbacks;
+	@Prop() public _on?: KoliBriModalEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriModalEventCallbacks): void {
@@ -112,7 +119,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType;
+	@Prop() public _open?: OpenPropType = undefined;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {

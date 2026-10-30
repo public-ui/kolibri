@@ -8,17 +8,17 @@ import { describePublicApiContract } from './contract';
 const KOL_ALERT_PUBLIC_API: PublicApiContract = {
 	_alert: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'AlertPropType',
 		required: false,
-		default: 'false',
 		doc: 'Defines whether the screen-readers should read out the notification.',
+		default: 'false',
 	},
 	_hasCloser: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HasCloserPropType',
 		required: false,
+		doc: 'Defines whether the element can be closed.',
 		default: 'false',
-		doc: 'Defines whether the element can be closed. @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.',
 	},
 	_label: {
 		kind: 'prop',
@@ -30,8 +30,8 @@ const KOL_ALERT_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'HeadingLevel',
 		required: false,
-		default: '0',
 		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+		default: '0',
 	},
 	_on: {
 		kind: 'prop',
@@ -43,15 +43,15 @@ const KOL_ALERT_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'AlertTypePropType',
 		required: false,
-		default: "'default'",
 		doc: 'Defines either the type of the component or of the components interactive element.',
+		default: "'default'",
 	},
 	_variant: {
 		kind: 'prop',
 		type: 'AlertVariantPropType',
 		required: false,
-		default: "'msg'",
 		doc: 'Defines which variant should be used for presentation.',
+		default: "'msg'",
 	},
 };
 

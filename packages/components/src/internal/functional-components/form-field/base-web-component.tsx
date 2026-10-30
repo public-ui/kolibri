@@ -187,7 +187,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	/** `false` enables the expert slot, which the field renders for an empty label. */
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
 		const label: unknown = value;
-		labelWithExpertSlotProp.apply(label === false ? '' : value, (v) => this.shared.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(label === false ? '' : value, (v) => this.shared.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyMsg(value?: Stringified<MsgPropType>): void {

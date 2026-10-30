@@ -1,3 +1,4 @@
+import type { BadgeTextPropType } from '../../schema/props/badge-text';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -18,5 +19,5 @@ import { normalizeString } from './helpers/normalizers';
  * - Underlined text must have sufficient contrast (WCAG 1.4.11)
  * - Badge text should complement, not replace, other text alternatives
  */
-export type BadgeTextProp = SimpleProp<'badgeText', string>;
+export type BadgeTextProp = SimpleProp<'badgeText', BadgeTextPropType>;
 export const badgeTextProp = createPropDefinition<BadgeTextProp>('badgeText', '', normalizeString);

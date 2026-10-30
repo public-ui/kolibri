@@ -1,3 +1,4 @@
+import type { HasSettingsMenuPropType } from '../../schema/props/has-settings-menu';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -5,5 +6,5 @@ import { normalizeBoolean } from './helpers/normalizers';
 /**
  * Whether a component shows its settings menu (e.g. the column settings of a table).
  */
-export type HasSettingsMenuProp = SimpleProp<'hasSettingsMenu', boolean>;
+export type HasSettingsMenuProp = SimpleProp<'hasSettingsMenu', HasSettingsMenuPropType>;
 export const hasSettingsMenuProp = createPropDefinition<HasSettingsMenuProp>('hasSettingsMenu', false, normalizeBoolean);

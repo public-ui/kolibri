@@ -1,3 +1,4 @@
+import type { SpellCheckPropType } from '../../schema/props/spell-check';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -10,7 +11,7 @@ import { normalizeBoolean } from './helpers/normalizers';
  *
  * @see https://html.spec.whatwg.org/multipage/interaction.html#attr-spellcheck
  */
-export type SpellCheckProp = SimpleProp<'spellCheck', boolean>;
+export type SpellCheckProp = SimpleProp<'spellCheck', SpellCheckPropType>;
 // The default is `undefined`: without a value the native attribute is not rendered and the
 // browser decides.
-export const spellCheckProp = createPropDefinition<SpellCheckProp>('spellCheck', undefined as unknown as boolean, normalizeBoolean);
+export const spellCheckProp = createPropDefinition<SpellCheckProp>('spellCheck', undefined, normalizeBoolean);

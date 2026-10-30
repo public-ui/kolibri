@@ -1,51 +1,30 @@
-import type { LabelLangSegmentsPropType } from '../../schema';
-import type { Prop } from './helpers/factory';
+import type { LabelLangSegmentsPropType } from '../../schema/props/label';
+import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
+import { normalizeLabelSegments } from './helpers/normalizers';
+import { isValidLabelSegments } from './helpers/validators';
 import { labelHints } from './hints/label-hints';
 
 /**
- * Label prop for accessible names with support for segments using different language
- *
- * Description:
- * The label provides the accessible name for a component. It is announced by screen readers
- * and is essential for users who rely on assistive technology to understand the purpose of
- * interactive elements.
+ * Label prop for accessible names of components that render their label and support language
+ * segments: screen readers pronounce every segment in its own language (`lang`).
  *
  * Usage (according to WCAG 2.1 and WAI-ARIA):
  * - Every interactive element must have a perceivable label (WCAG 4.1.2 Name, Role, Value)
  * - Labels must be descriptive and concise (WCAG 2.4.6 Headings and Labels)
  * - Labels must be programmatically associated with their controls (WCAG 1.3.1 Info and Relationships)
- * - Minimum 2 characters for meaningful labels
+ * - Minimum 2 characters for the joined text of the segments (numbers-only labels are exempt)
  * - Labels longer than 80 characters are accepted, but give a UI/UX hint to keep them concise
- * - An empty label ("") is allowed for cases where the accessible name is provided differently
+ * - An explicitly passed empty string is invalid (the empty string is reserved for the label
+ *   with expert slot)
+ * - `undefined` is the "not set" state, when the accessible name is provided differently
  *
  * @see https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
  * @see https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html
  * @see https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
  * @see https://www.w3.org/TR/accname-1.2/
  */
-export type LabelLangSegmentsProp = Prop<'label', LabelLangSegmentsPropType, LabelLangSegmentsPropType>;
-export const labelLangSegmentsProp = createPropDefinition<LabelLangSegmentsProp>(
-	'label',
-	'',
-	(value: unknown) => {
-		if (Array.isArray(value)) {
-			return value as LabelLangSegmentsPropType;
-		}
-		if (typeof value === 'string') {
-			return value;
-		}
-		if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
-			return String(value);
-		}
-		throw new TypeError(`Cannot convert ${typeof value} to LabelPropType`);
-	},
-	(v) => {
-		const r = v === '' || (typeof v === 'string' && v.length >= 2) || Array.isArray(v);
-		return r;
-	},
-
-	{
-		hints: labelHints,
-	},
-);
+export type LabelLangSegmentsProp = SimpleProp<'label', LabelLangSegmentsPropType>;
+export const labelLangSegmentsProp = createPropDefinition<LabelLangSegmentsProp>('label', undefined, normalizeLabelSegments, isValidLabelSegments, {
+	hints: labelHints,
+});

@@ -1,11 +1,12 @@
-import type { LabelLangSegmentsPropType, LabelPropType } from '../../../schema/props/label';
-import { containsOnlyNumbers, hasEnoughReadableChars } from '../../../schema/props/label';
+import type { LabelLangSegmentsPropType } from '../../../schema/props/label';
+import { containsOnlyNumbers, hasEnoughReadableChars, trimLabel } from '../../../schema/props/label';
 import { a11yHint, uiUxHint } from '../../../schema/utils/a11y.tipps';
 
 /**
  * Hint callback for label properties to warn about accessibility and UX issues.
  *
- * Checks for:
+ * Checks the label as a whole — for a segment list the joined text, so a short language run inside
+ * a valid label does not warn:
  * - Labels with fewer than 3 readable characters (a11y issue)
  * - Labels exceeding 80 characters (UX issue)
  *
@@ -13,15 +14,17 @@ import { a11yHint, uiUxHint } from '../../../schema/utils/a11y.tipps';
  * may be valid in certain contexts (e.g., "123" as a version number).
  *
  * @param _propName - The name of the property (included for API consistency, not currently used)
- * @param value - The normalized label value to check
+ * @param value - The normalized label value
  */
-export function labelHints(_propName: string, value: LabelPropType | LabelLangSegmentsPropType): void {
-	if (typeof value === 'string' && value !== '') {
-		if (hasEnoughReadableChars(value, 3) === false && containsOnlyNumbers(value) === false) {
-			a11yHint(`The heading or label ("${value}") is inaccessible. A label should consist of at least three readable characters.`);
-		}
-		if (value.length > 80) {
-			uiUxHint(`A heading or label should not be longer than 80 characters.`);
-		}
+export function labelHints(_propName: string, value: LabelLangSegmentsPropType | ''): void {
+	const text = typeof value === 'string' ? value : Array.isArray(value) ? trimLabel(value) : '';
+	if (text === '') {
+		return;
+	}
+	if (hasEnoughReadableChars(text, 3) === false && containsOnlyNumbers(text) === false) {
+		a11yHint(`The heading or label ("${text}") is inaccessible. A label should consist of at least three readable characters.`);
+	}
+	if (text.length > 80) {
+		uiUxHint(`A heading or label should not be longer than 80 characters.`);
 	}
 }

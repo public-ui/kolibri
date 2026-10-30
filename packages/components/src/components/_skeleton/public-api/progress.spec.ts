@@ -13,19 +13,19 @@ const KOL_PROGRESS_PUBLIC_API: PublicApiContract = {
 	},
 	_max: {
 		kind: 'prop',
-		type: 'number',
+		type: 'MaxPropType',
 		required: true,
 		doc: 'Defines the maximum value of the element.',
 	},
 	_unit: {
 		kind: 'prop',
-		type: 'string',
+		type: 'UnitPropType',
 		required: false,
 		doc: 'Defines the unit of the step values (not shown).',
 	},
 	_value: {
 		kind: 'prop',
-		type: 'number',
+		type: 'ClampedNumberValuePropType',
 		required: true,
 		doc: 'Defines the value of the element.',
 	},

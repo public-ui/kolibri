@@ -96,7 +96,7 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 		if (!initial) {
 			removeNavLabel(this.getRenderProp('label'));
 		}
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.getRenderProp('label'));
 	}
