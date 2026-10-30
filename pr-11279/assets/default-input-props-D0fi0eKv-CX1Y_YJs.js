@@ -1,1 +1,0 @@
-import"./index-BOxmVLNq-DLtBOS_r.js";import{r as e}from"./label-B5aH0vin-BCQQrWUW.js";function t({ariaDescribedBy:t,hideLabel:n,label:r}){return{title:``,autoCapitalize:`off`,autoCorrect:`off`,"aria-describedby":t?.length?t.join(` `):void 0,"aria-label":n&&r?e(r):void 0}}export{t};
