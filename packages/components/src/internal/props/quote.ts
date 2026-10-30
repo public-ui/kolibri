@@ -1,3 +1,4 @@
+import type { QuotePropType } from '../../schema/props/quote';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -23,5 +24,5 @@ import { normalizeString } from './helpers/normalizers';
  * @see https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-q-element
  * @see https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
  */
-export type QuoteProp = SimpleProp<'quote', string>;
+export type QuoteProp = SimpleProp<'quote', QuotePropType>;
 export const quoteProp = createPropDefinition<QuoteProp>('quote', '', normalizeString);

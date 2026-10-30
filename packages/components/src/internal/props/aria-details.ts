@@ -1,3 +1,4 @@
+import type { AriaDetailsPropType } from '../../schema/props/aria-details';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -15,5 +16,5 @@ import { normalizeString } from './helpers/normalizers';
  *
  * @see https://www.w3.org/TR/wai-aria-1.2/#aria-details
  */
-export type AriaDetailsProp = SimpleProp<'ariaDetails', string>;
+export type AriaDetailsProp = SimpleProp<'ariaDetails', AriaDetailsPropType>;
 export const ariaDetailsProp = createPropDefinition<AriaDetailsProp>('ariaDetails', '', normalizeString);

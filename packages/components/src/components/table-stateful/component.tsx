@@ -32,6 +32,7 @@ import {
 import type { TablePagination } from '../../internal/props/table-pagination';
 import { isTablePaginationShown } from '../../internal/props/table-pagination';
 import type {
+	AllowMultiSortPropType,
 	ChangeHeaderCellsEventPayload,
 	FixedColsPropType,
 	HasSettingsMenuPropType,
@@ -41,7 +42,7 @@ import type {
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
 	KoliBriTableSelectionKeys,
-	LabelPropType,
+	LabelLangSegmentsPropType,
 	PaginationPositionPropType,
 	SelectionChangeEventPayload,
 	SortChangeEventPayload,
@@ -50,11 +51,12 @@ import type {
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCells,
+	TableLoadingPropType,
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { devHint } from '../../schema';
+import { devHint, trimLabel } from '../../schema';
 import { Callback } from '../../schema/enums';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
 import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
@@ -177,7 +179,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
 	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.
 	 */
-	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType;
+	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType = undefined;
 
 	@Watch('_ariaLabelledby')
 	public watchAriaLabelledby(value?: AriaLabelledbyPropType): void {
@@ -187,10 +189,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines whether to allow multi sort.
 	 */
-	@Prop() public _allowMultiSort?: boolean;
+	@Prop() public _allowMultiSort?: AllowMultiSortPropType = undefined;
 
 	@Watch('_allowMultiSort')
-	public watchAllowMultiSort(value?: boolean): void {
+	public watchAllowMultiSort(value?: AllowMultiSortPropType): void {
 		allowMultiSortProp.apply(value, (v) => {
 			this.allowMultiSort = v;
 		});
@@ -199,7 +201,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the primary table data.
 	 */
-	@Prop() public _data!: Stringified<KoliBriTableDataType[]>;
+	@Prop() public _data!: TableDataPropType;
 
 	@Watch('_data')
 	public watchData(value?: TableDataPropType): void {
@@ -212,7 +214,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the data for the table footer.
 	 */
-	@Prop() public _dataFoot?: Stringified<KoliBriTableDataType[]>;
+	@Prop() public _dataFoot?: TableDataFootPropType = undefined;
 
 	@Watch('_dataFoot')
 	public watchDataFoot(value?: TableDataFootPropType): void {
@@ -225,7 +227,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the fixed number of columns from start and end of the table
 	 */
-	@Prop() public _fixedCols?: FixedColsPropType;
+	@Prop() public _fixedCols?: FixedColsPropType = undefined;
 
 	@Watch('_fixedCols')
 	public watchFixedCols(value?: FixedColsPropType): void {
@@ -261,27 +263,27 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		this.applyLabel(value);
 	}
 
 	/**
 	 * Wether the table shows a loading spinner (default: false).
 	 */
-	@Prop() public _loading?: boolean;
+	@Prop() public _loading?: TableLoadingPropType = undefined;
 
 	@Watch('_loading')
-	public watchLoading(value?: boolean): void {
+	public watchLoading(value?: TableLoadingPropType): void {
 		this.applyLoading(value);
 	}
 
 	/**
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
-	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
+	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps> = undefined;
 
 	@Watch('_pagination')
 	public watchPagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
@@ -306,7 +308,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines how rows can be selected and the current selection.
 	 */
-	@Prop() public _selection?: TableSelectionPropType;
+	@Prop() public _selection?: TableSelectionPropType = undefined;
 
 	@Watch('_selection')
 	public watchSelection(value?: TableSelectionPropType): void {
@@ -316,7 +318,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the callback functions for table events.
 	 */
-	@Prop() public _on?: TableStatefulCallbacksPropType;
+	@Prop() public _on?: TableStatefulCallbacksPropType = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: TableStatefulCallbacksPropType): void {
@@ -328,7 +330,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Enables the settings menu if true (default: false).
 	 */
-	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
 
 	@Watch('_hasSettingsMenu')
 	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
@@ -338,7 +340,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -513,7 +515,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 			max: this.pagination._max || this.data.length,
 			label: translate('kol-table-pagination-label', {
 				placeholders: {
-					label: `${this.getRenderProp('label')} (${positionLabel})`,
+					label: `${trimLabel(this.getRenderProp('label'))} (${positionLabel})`,
 				},
 			}),
 		};

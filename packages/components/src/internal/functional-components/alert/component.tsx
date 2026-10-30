@@ -3,11 +3,13 @@ import { h } from '@stencil/core';
 
 import { getHeadlineTag } from '../../../functional-components/Heading/Heading';
 import { translate } from '../../../i18n';
+import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { FunctionalComponentProps } from '../generic-types';
+import { renderLabelWithLang } from '../span/component';
 import type { AlertApi } from './api';
 import { AlertIconFC } from './icon';
 
@@ -73,12 +75,12 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 		>
 			<AlertIconFC type={type} />
 
-			{label.length > 0 && (
+			{label?.length > 0 && (
 				<HeadlineTag
 					class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, alertBem('heading', { [`h${level}`]: true }), 'kol-headline--single')}
 					id={headingId}
 				>
-					{label}
+					{renderLabelWithLang(label)}
 				</HeadlineTag>
 			)}
 
@@ -86,7 +88,7 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 				<ButtonFC
 					accessKey=""
 					ariaControls=""
-					ariaDescription={label.trim()}
+					ariaDescription={trimLabel(label)}
 					ariaDescriptionId={closerAriaDescriptionId}
 					ariaExpanded={UNSET_BUTTON_PROP}
 					ariaHasPopup=""
@@ -120,7 +122,7 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 				/>
 			)}
 
-			<div aria-describedby={label.length > 0 ? headingId : undefined} class={BEM_CLASS_ALERT__CONTENT}>
+			<div aria-describedby={label?.length > 0 ? headingId : undefined} class={BEM_CLASS_ALERT__CONTENT}>
 				{children}
 			</div>
 		</BemRootNodeFC>

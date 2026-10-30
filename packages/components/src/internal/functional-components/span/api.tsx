@@ -1,10 +1,9 @@
-import { allowMarkdownProp, badgeTextProp, hideLabelProp } from '../../../internal/props';
-import { labelProp } from '../../../internal/props/label';
+import { allowMarkdownProp, badgeTextProp, hideLabelProp, labelLangSegmentsProp } from '../../../internal/props';
 import { spanIconsProp } from '../../../internal/props/span-icons';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const spanPropsConfig = {
-	required: [labelProp],
+	required: [labelLangSegmentsProp],
 	optional: [allowMarkdownProp, badgeTextProp, hideLabelProp, spanIconsProp],
 } as const satisfies PropsConfigShape;
 

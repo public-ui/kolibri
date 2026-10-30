@@ -13,13 +13,13 @@ const KOL_AVATAR_PUBLIC_API: PublicApiContract = {
 	},
 	_label: {
 		kind: 'prop',
-		type: 'string',
+		type: 'LabelPropType',
 		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},
 	_src: {
 		kind: 'prop',
-		type: 'string',
+		type: 'SrcPropType',
 		required: false,
 		doc: 'Sets the image `src` attribute to the given string.',
 	},

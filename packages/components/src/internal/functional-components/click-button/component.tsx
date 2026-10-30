@@ -9,8 +9,11 @@ const clickButtonBem = bem.forBlock('kol-click-button');
 const BEM_CLASS_CLICK_BUTTON = clickButtonBem();
 const BEM_CLASS_CLICK_BUTTON__LABEL = clickButtonBem('label');
 
+/**
+ * Renders a native `button` and leaves its keyboard behaviour (Enter, Space, Tab) untouched.
+ */
 export const ClickButtonFC: FC<FunctionalComponentProps<ClickButtonApi>> = ({ label, handleClick, refButton }) => (
-	<button class={BEM_CLASS_CLICK_BUTTON} ref={refButton} onClick={handleClick} onKeyDown={(event) => event.preventDefault()}>
+	<button class={BEM_CLASS_CLICK_BUTTON} ref={refButton} onClick={handleClick}>
 		<span class={BEM_CLASS_CLICK_BUTTON__LABEL}>{label}</span>
 	</button>
 );

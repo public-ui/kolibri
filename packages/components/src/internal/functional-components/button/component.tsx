@@ -1,7 +1,7 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { classNameFromVariant } from '../../../schema';
+import { classNameFromVariant, trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import { AriaDescriptionSpanFC } from '../aria-description-span/component';
@@ -66,7 +66,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 	void tooltipAlign;
 
 	const badgeText = accessKey || shortKey;
-	const hasLabelText = label.length > 0;
+	const hasLabelText = trimLabel(label).length > 0;
 	const hasAriaDescription = ariaDescription.trim().length > 0;
 
 	return (
@@ -97,7 +97,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 				aria-expanded={ariaExpanded || undefined}
 				aria-haspopup={ariaHasPopup || undefined}
 				aria-keyshortcuts={shortKey || undefined}
-				aria-label={hideLabel && hasLabelText ? label : undefined}
+				aria-label={hideLabel && hasLabelText ? trimLabel(label) : undefined}
 				aria-selected={ariaSelected || undefined}
 				class={BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT}
 				disabled={disabled}

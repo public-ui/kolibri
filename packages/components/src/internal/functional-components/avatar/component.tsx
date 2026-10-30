@@ -2,6 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
+import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { AvatarApi } from './api';
@@ -15,7 +16,7 @@ export const AvatarFC: FC<FunctionalComponentProps<AvatarApi>> = (props) => {
 
 	return (
 		<div
-			aria-label={translate('kol-avatar-alt', { placeholders: { name: label } })}
+			aria-label={translate('kol-avatar-alt', { placeholders: { name: trimLabel(label) } })}
 			class="kol-avatar"
 			role="img"
 			style={{

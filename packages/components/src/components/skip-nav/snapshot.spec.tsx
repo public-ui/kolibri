@@ -19,6 +19,7 @@ executeSnapshotTests<SkipNavProps>(
 					_href: 'https://example.com',
 					_label: 'Zum Ende',
 				},
+				{ _href: 'https://example.com', _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 			],
 		},
 	],

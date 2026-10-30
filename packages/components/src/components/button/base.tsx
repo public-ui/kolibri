@@ -35,17 +35,22 @@ import {
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaControlsPropType,
 	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonTypePropType,
 	CustomClassPropType,
+	DisabledPropType,
+	HideLabelPropType,
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
+	NamePropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
+	TabIndexPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
@@ -197,7 +202,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 		validateAccessAndShortKey(value, shortKey);
 	}
 
-	protected applyAriaControls(value?: string): void {
+	protected applyAriaControls(value?: AriaControlsPropType): void {
 		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
 	}
 
@@ -221,11 +226,11 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
 	}
 
-	protected applyDisabled(value?: boolean): void {
+	protected applyDisabled(value?: DisabledPropType): void {
 		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
 	}
 
-	protected applyHideLabel(value?: boolean): void {
+	protected applyHideLabel(value?: HideLabelPropType): void {
 		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
 	}
 
@@ -242,13 +247,17 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.tooltipBehavior.watchLabel(v);
-		});
+		labelWithExpertSlotProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.tooltipBehavior.watchLabel(v);
+			},
+			this.isRequired('label'),
+		);
 	}
 
-	protected applyName(value?: string): void {
+	protected applyName(value?: NamePropType): void {
 		nameProp.apply(value, (v) => this.setRenderProp('name', v));
 		this.formAssociation.watchName(value);
 	}
@@ -270,7 +279,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 		this.formAssociation.watchSyncValueBySelector(value);
 	}
 
-	protected applyTabIndex(value?: number): void {
+	protected applyTabIndex(value?: TabIndexPropType): void {
 		// The props config seeds `tabIndex` with its default `0`, but an unset tabindex must not
 		// render as `tabindex="0"` — buttons are natively tabbable and the attribute would pin them
 		// into the document tab order. Unsetting the prop has to restore that state, so the else
@@ -283,7 +292,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	}
 
 	protected applyTooltipAlign(value?: TooltipAlignPropType): void {
-		tooltipAlignProp.apply(value, (v) => {
+		tooltipAlignProp.apply(value ?? 'top', (v) => {
 			this.setRenderProp('tooltipAlign', v);
 			this.tooltipBehavior.watchAlign(v);
 		});

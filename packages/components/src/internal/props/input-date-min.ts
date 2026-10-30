@@ -14,9 +14,4 @@ import { type InputDateDeps, isValidInputDate, normalizeInputDate } from './help
  */
 export type InputDateMinProp = Prop<'min', Iso8601 | Date, string>;
 // The default is `undefined`: without a bound the attribute is not rendered.
-export const inputDateMinProp = createDependentPropDefinition<InputDateMinProp, InputDateDeps>(
-	'min',
-	undefined as unknown as string,
-	normalizeInputDate,
-	isValidInputDate,
-);
+export const inputDateMinProp = createDependentPropDefinition<InputDateMinProp, InputDateDeps>('min', undefined, normalizeInputDate, isValidInputDate);

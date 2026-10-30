@@ -1,3 +1,4 @@
+import type { SrcPropType } from '../../schema/props/src';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -22,5 +23,5 @@ import { normalizeString } from './helpers/normalizers';
  * @see https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-src
  * @see https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html
  */
-export type SrcProp = SimpleProp<'src', string>;
+export type SrcProp = SimpleProp<'src', SrcPropType>;
 export const srcProp = createPropDefinition<SrcProp>('src', '', normalizeString);

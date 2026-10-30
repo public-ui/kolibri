@@ -1,3 +1,4 @@
+import type { PlaceholderPropType } from '../../schema/props/placeholder';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -10,6 +11,6 @@ import { normalizeString } from './helpers/normalizers';
  *
  * @see https://html.spec.whatwg.org/multipage/input.html#attr-input-placeholder
  */
-export type PlaceholderProp = SimpleProp<'placeholder', string>;
+export type PlaceholderProp = SimpleProp<'placeholder', PlaceholderPropType>;
 // The default is `undefined`: the native attribute is only rendered when a placeholder is set.
-export const placeholderProp = createPropDefinition<PlaceholderProp>('placeholder', undefined as unknown as string, normalizeString);
+export const placeholderProp = createPropDefinition<PlaceholderProp>('placeholder', undefined, normalizeString);

@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
+import type { DialogProps, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from '../dialog/base';
@@ -37,17 +37,17 @@ export class KolModal extends BaseDialogWebComponent implements DialogProps, Omi
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		this.applyLabel(value);
 	}
 
 	/**
 	 * Defines the modal callback functions.
 	 */
-	@Prop() public _on?: KoliBriDialogEventCallbacks;
+	@Prop() public _on?: KoliBriDialogEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriDialogEventCallbacks): void {
@@ -67,10 +67,10 @@ export class KolModal extends BaseDialogWebComponent implements DialogProps, Omi
 	/**
 	 * Defines the width of the modal. (max-width: 100%)
 	 */
-	@Prop() public _width?: string = '100%';
+	@Prop() public _width?: WidthPropType = '100%';
 
 	@Watch('_width')
-	public watchWidth(value?: string): void {
+	public watchWidth(value?: WidthPropType): void {
 		this.applyWidth(value);
 	}
 
