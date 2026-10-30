@@ -6,10 +6,12 @@ import type { FunctionalComponentProps } from '../generic-types';
 import type { AbbrApi } from './api';
 
 /**
- * The `abbr` element around the slotted abbreviation. The deprecated `label` is not rendered.
+ * Renders the `abbr` element around the slotted abbreviation and links the long form from the
+ * (deprecated) label as the `title` expansion — the native mechanism of `abbr`, so short and
+ * long form are both available.
  */
-export const AbbrFC: FC<FunctionalComponentProps<AbbrApi>> = () => (
-	<BemRootNodeFC block="kol-abbr" component="abbr">
+export const AbbrFC: FC<FunctionalComponentProps<AbbrApi>> = ({ label }) => (
+	<BemRootNodeFC block="kol-abbr" component="abbr" title={label || undefined}>
 		<slot />
 	</BemRootNodeFC>
 );
