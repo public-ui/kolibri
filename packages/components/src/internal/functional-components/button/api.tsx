@@ -30,8 +30,8 @@ import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../
  * `label` is the only required prop. All others are optional.
  *
  * Notes on prop choices:
- * - `labelWithExpertSlotProp` (not `labelProp`): no min/max length restriction, matching the
- *   predecessor's `validateLabelWithExpertSlot`. The empty string enables the expert slot.
+ * - `labelWithExpertSlotProp`: same validation as `labelProp` (at least 2 characters, numbers-only
+ *   labels exempt) and its label hints; the empty string additionally enables the expert slot.
  * - `spanIconsProp` (not `iconsProp`): icons are `KoliBriIconsProp` (a string or a per-direction
  *   object), not a plain icon class string.
  * - `linkRoleProp`: the button shares the `'tab' | 'treeitem'` role union with the link

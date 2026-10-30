@@ -1,3 +1,4 @@
+import type { HasCloserPropType } from '../../schema/props/has-closer';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -8,5 +9,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  * The component only offers the control — whether it actually disappears is the consumer's
  * decision, signalled through the `onClose` callback and the `close` DOM event.
  */
-export type HasCloserProp = SimpleProp<'hasCloser', boolean>;
+export type HasCloserProp = SimpleProp<'hasCloser', HasCloserPropType>;
 export const hasCloserProp = createPropDefinition<HasCloserProp>('hasCloser', false, normalizeBoolean);

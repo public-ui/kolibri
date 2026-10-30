@@ -1,15 +1,15 @@
 import type { KolFocusOptions } from '../../../schema';
-import { labelWithExpertSlotProp } from '../../props';
+import { labelProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
  * Props configuration for the tree component.
  *
- * `labelWithExpertSlotProp` (not `labelProp`): the label accepts any string; `labelProp` would
- * reject one-character labels.
+ * `labelProp`: the label is emitted only as the `aria-label` of the tree and is never rendered,
+ * so language segments would have no effect — a plain string suffices.
  */
 export const treePropsConfig = {
-	required: [labelWithExpertSlotProp],
+	required: [labelProp],
 } as const satisfies PropsConfigShape;
 
 export type TreeApi = ApiFromConfig<

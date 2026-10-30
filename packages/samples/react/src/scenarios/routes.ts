@@ -9,12 +9,12 @@ import { FocusElements } from './focus-elements';
 import { TableHorizontalScrollAdvanced } from './horizontal-scrollbar-advanced';
 import { InputGroupWithError } from './input-group-with-error';
 import { InputsGetValue } from './inputs-get-value';
+import { LabelLang } from './label-lang';
 import { PerformanceTest } from './performance-test';
 import { RHFBasic } from './react-hook-form/basic';
 import { RHFDisabled } from './react-hook-form/disabled';
 import { SameHeightOfAllFormElements } from './same-height-of-all-form-elements-with-label';
 import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
-import { SampleFormWithValidation } from './sample-form-with-validation';
 import { Skeleton } from './skeleton';
 import { StaticForm } from './static-form';
 import { ToolbarItemOrder } from './toolbar-item-order';
@@ -29,6 +29,7 @@ export const SCENARIO_ROUTES: Routes = {
 		'date-in-form': DateInForm,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,
+		'label-lang': LabelLang,
 		'input-group-with-error': InputGroupWithError,
 		'inputs-get-value': InputsGetValue,
 		'react-hook-form-adapter': RHFBasic,
@@ -36,7 +37,6 @@ export const SCENARIO_ROUTES: Routes = {
 		'same-height-of-all-interactive-elements': SameHeightOfAllInteractiveElements,
 		'same-height-of-all-form-elements-with-label': SameHeightOfAllFormElements,
 		'static-form': StaticForm,
-		'sample-form-with-validation': SampleFormWithValidation,
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
 		'toolbar-item-order': ToolbarItemOrder,
 		'tooltip-positioning': TooltipPositioning,

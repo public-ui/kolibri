@@ -6,7 +6,7 @@ import type { SkeletonApi } from '../../internal/functional-components/skeleton/
 import { skeletonPropsConfig } from '../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { nameProp } from '../../internal/props';
-import { Log, type KolFocusOptions } from '../../schema';
+import { Log, type KolFocusOptions, type NamePropType } from '../../schema';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 @Component({
@@ -40,10 +40,10 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	 * Sets the name of the skeleton component.
 	 */
 	@Prop()
-	public _name!: string;
+	public _name!: NamePropType;
 
 	@Watch('_name')
-	public watchName(value?: string): void {
+	public watchName(value?: NamePropType): void {
 		nameProp.apply(value, (v) => this.setRenderProp('name', v));
 	}
 

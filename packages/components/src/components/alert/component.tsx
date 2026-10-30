@@ -8,8 +8,17 @@ import { AlertFC } from '../../internal/functional-components/alert/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp } from '../../internal/props';
-import type { AlertProps, AlertTypePropType, AlertVariantPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
+import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../internal/props';
+import type {
+	AlertProps,
+	AlertPropType,
+	AlertTypePropType,
+	AlertVariantPropType,
+	HasCloserPropType,
+	HeadingLevel,
+	KoliBriAlertEventCallbacks,
+	LabelLangSegmentsPropType,
+} from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -45,10 +54,10 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop() public _alert?: boolean = false;
+	@Prop() public _alert?: AlertPropType = false;
 
 	@Watch('_alert')
-	public watchAlert(value?: boolean): void {
+	public watchAlert(value?: AlertPropType): void {
 		alertProp.apply(value, (v) => {
 			this.setRenderProp('alert', v);
 			this.syncAlertEffects(v);
@@ -57,23 +66,22 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 
 	/**
 	 * Defines whether the element can be closed.
-	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
-	public watchHasCloser(value?: boolean): void {
+	public watchHasCloser(value?: HasCloserPropType): void {
 		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
 	}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label?: LabelLangSegmentsPropType = undefined;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -89,7 +97,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines the event callback functions for closing the alert.
 	 */
-	@Prop() public _on?: KoliBriAlertEventCallbacks;
+	@Prop() public _on?: KoliBriAlertEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriAlertEventCallbacks): void {

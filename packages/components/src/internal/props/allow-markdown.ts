@@ -1,3 +1,4 @@
+import type { AllowMarkdownPropType } from '../../schema/props/allow-markdown';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -16,5 +17,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  *
  * @see https://www.markdownguide.org/
  */
-export type AllowMarkdownProp = SimpleProp<'allowMarkdown', boolean>;
+export type AllowMarkdownProp = SimpleProp<'allowMarkdown', AllowMarkdownPropType>;
 export const allowMarkdownProp = createPropDefinition<AllowMarkdownProp>('allowMarkdown', false, normalizeBoolean);

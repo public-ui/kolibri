@@ -38,7 +38,7 @@ const KOL_MODAL_PUBLIC_API: PublicApiContract = {
 	},
 	_label: {
 		kind: 'prop',
-		type: 'LabelPropType',
+		type: 'LabelLangSegmentsPropType',
 		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},
@@ -52,15 +52,15 @@ const KOL_MODAL_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'ModalVariantPropType',
 		required: false,
-		default: "'blank'",
 		doc: 'Defines the variant of the modal.',
+		default: "'blank'",
 	},
 	_width: {
 		kind: 'prop',
-		type: 'string',
+		type: 'WidthPropType',
 		required: false,
-		default: "'100%'",
 		doc: 'Defines the width of the modal. (max-width: 100%)',
+		default: "'100%'",
 	},
 };
 
