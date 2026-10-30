@@ -1,3 +1,4 @@
+import type { HideMsgPropType } from '../../schema/props/hide-msg';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -8,5 +9,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  * Description:
  * Hides the validation message of a form field visually. The field still marks itself invalid.
  */
-export type HideMsgProp = SimpleProp<'hideMsg', boolean>;
+export type HideMsgProp = SimpleProp<'hideMsg', HideMsgPropType>;
 export const hideMsgProp = createPropDefinition<HideMsgProp>('hideMsg', false, normalizeBoolean);

@@ -35,8 +35,6 @@ const getKoliBri = (): Record<string, unknown> => {
 	return kolibri;
 };
 
-export { getKoliBri };
-
 /**
  * The browser console collapses consecutive spaces of a logged string. Non-breaking spaces keep the ASCII art aligned.
  */

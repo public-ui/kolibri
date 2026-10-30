@@ -1,3 +1,4 @@
+import type { HasCounterPropType } from '../../schema/props/has-counter';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -8,5 +9,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  * Description:
  * Shows the character counter below the control.
  */
-export type HasCounterProp = SimpleProp<'hasCounter', boolean>;
+export type HasCounterProp = SimpleProp<'hasCounter', HasCounterPropType>;
 export const hasCounterProp = createPropDefinition<HasCounterProp>('hasCounter', false, normalizeBoolean);

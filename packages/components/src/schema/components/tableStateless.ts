@@ -1,10 +1,18 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { PropAriaLabelledby, PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection, PropVariantClassName } from '../props';
+import type {
+	PropAriaLabelledby,
+	PropLabelLangSegments,
+	PropTableCallbacks,
+	PropTableData,
+	PropTableDataFoot,
+	PropTableSelection,
+	PropVariantClassName,
+} from '../props';
 import type { PropHasSettingsMenu } from '../props/has-settings-menu';
 import type { KoliBriTableDataType, KoliBriTableSelection, Stringified } from '../types';
 import type { KoliBriTableHeaders } from './table';
 
-type RequiredProps = PropLabel & PropTableData;
+type RequiredProps = PropLabelLangSegments & PropTableData;
 
 type OptionalProps = {
 	loading: boolean;
@@ -18,7 +26,7 @@ type OptionalProps = {
 type RequiredStates = {
 	data: KoliBriTableDataType[];
 	headers: KoliBriTableHeaders;
-} & PropLabel;
+} & PropLabelLangSegments;
 
 type OptionalStates = {
 	dataFoot: KoliBriTableDataType[];

@@ -61,13 +61,12 @@ export type ExtractPropKey<P extends Prop<string, unknown, unknown>> =
 
 /**
  * Options for prop definitions, including optional hint callbacks for developer guidance.
+ *
+ * Requiredness is deliberately NOT an option here: it is a property of the component, not of the
+ * value's functionality. The props config slot (`required`/`optional` array) decides, and the
+ * applying component passes the result to `apply` as its third argument.
  */
 export type PropDefinitionOptions<T = unknown> = {
-	/**
-	 * Whether the property is required. If true and no value is provided,
-	 * a warning will be emitted and the default value will be used.
-	 */
-	required?: boolean;
 	/**
 	 * Optional callback for emitting developer hints after successful validation.
 	 * Called with the property name and the normalized value.
@@ -79,15 +78,47 @@ export type PropDefinitionOptions<T = unknown> = {
 export type PropDefinition<TInternal, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = {
 	readonly __phantomProp__?: P;
 	readonly propName: string;
-	getDefaultValue(): TInternal;
+	getDefaultValue(): TInternal | undefined;
 	normalize: (value: unknown) => TInternal | never;
 	validate: (value: TInternal) => boolean;
-	apply: (value: unknown, callback: (normalized: TInternal) => void) => void;
+	apply: (value: unknown, callback: (normalized: TInternal) => void, required?: boolean) => void;
+};
+
+/**
+ * A prop definition created with a default value: `getDefaultValue` is guaranteed non-undefined,
+ * so callers read the fallback without assertions — the default contract is typed, not asserted.
+ * `Omit` replaces the nullable signature instead of intersecting it (an intersection of the two
+ * method types would keep the `| undefined` overload).
+ */
+export type PropDefinitionWithDefault<TInternal, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = Omit<
+	PropDefinition<TInternal, P>,
+	'getDefaultValue'
+> & {
+	getDefaultValue(): TInternal;
 };
 
 export function createPropDefinition<P extends Prop<string, unknown, unknown>, K extends ExtractPropKey<P> = ExtractPropKey<P>>(
 	propName: K,
 	defaultValue: InternalPropValue<P>,
+	normalize: (value: unknown) => InternalPropValue<P> | never,
+	validate?: (value: InternalPropValue<P>) => boolean,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
+): PropDefinitionWithDefault<InternalPropValue<P>, P>;
+export function createPropDefinition<P extends Prop<string, unknown, unknown>, K extends ExtractPropKey<P> = ExtractPropKey<P>>(
+	propName: K,
+	defaultValue: undefined,
+	normalize: (value: unknown) => InternalPropValue<P> | never,
+	validate?: (value: InternalPropValue<P>) => boolean,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
+): PropDefinition<InternalPropValue<P>, P>;
+export function createPropDefinition<P extends Prop<string, unknown, unknown>, K extends ExtractPropKey<P> = ExtractPropKey<P>>(
+	propName: K,
+	/**
+	 * The fallback applied when a value is undefined or null. Pass undefined deliberately for
+	 * props without a meaningful fallback: unset values then flow through as "not set" — there is
+	 * no fallback to validate, requiredness still warns via the config slot.
+	 */
+	defaultValue: InternalPropValue<P> | undefined,
 	normalize: (value: unknown) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>) => boolean = () => true,
 	options?: PropDefinitionOptions<InternalPropValue<P>>,
@@ -97,12 +128,19 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 		getDefaultValue: isObject(defaultValue) ? () => cloneDeep(defaultValue) : () => defaultValue,
 		normalize,
 		validate,
-		apply(value, callback) {
+		apply(value, callback, required) {
 			if (value === undefined || value === null) {
-				if (options?.required) {
+				if (required) {
 					devWarning(`The required property '_${propName}' did not receive a value. The default value is used instead.`);
 				}
-				const fallback = this.getDefaultValue();
+				if (defaultValue === undefined) {
+					// No default means "not set": nothing to validate, the callback receives the unset
+					// state. The cast is the single place bridging the unset state into the typed
+					// callback — the store's honest "unset" typing is the concern of the config (#11435).
+					callback(undefined as unknown as InternalPropValue<P>);
+					return;
+				}
+				const fallback = this.getDefaultValue() as InternalPropValue<P>; // cloneDeep for objects; undefined is ruled out above
 				if (this.validate(fallback)) {
 					callback(fallback);
 				} else {
@@ -129,15 +167,42 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 export type DependentPropDefinition<TInternal, TDeps, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = {
 	readonly __phantomProp__?: P;
 	readonly propName: string;
-	getDefaultValue(): TInternal;
+	getDefaultValue(): TInternal | undefined;
 	normalize: (value: unknown, deps: TDeps) => TInternal | never;
 	validate: (value: TInternal, deps: TDeps) => boolean;
 	apply: (value: unknown, callback: (normalized: TInternal) => void, deps: TDeps) => void;
 };
 
+/**
+ * A dependent prop definition created with a default value: `getDefaultValue` is guaranteed
+ * non-undefined, so callers read the fallback without assertions — the default contract is typed,
+ * not asserted. `Omit` replaces the nullable signature instead of intersecting it (an intersection
+ * of the two method types would keep the `| undefined` overload).
+ */
+export type DependentPropDefinitionWithDefault<TInternal, TDeps, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = Omit<
+	DependentPropDefinition<TInternal, TDeps, P>,
+	'getDefaultValue'
+> & {
+	getDefaultValue(): TInternal;
+};
+
 export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = unknown>(
 	propName: ExtractPropKey<P>,
 	defaultValue: InternalPropValue<P>,
+	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
+	validate?: (value: InternalPropValue<P>, deps: TDeps) => boolean,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
+): DependentPropDefinitionWithDefault<InternalPropValue<P>, TDeps, P>;
+export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = unknown>(
+	propName: ExtractPropKey<P>,
+	defaultValue: undefined,
+	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
+	validate?: (value: InternalPropValue<P>, deps: TDeps) => boolean,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
+): DependentPropDefinition<InternalPropValue<P>, TDeps, P>;
+export function createDependentPropDefinition<P extends Prop<string, unknown, unknown>, TDeps = unknown>(
+	propName: ExtractPropKey<P>,
+	defaultValue: InternalPropValue<P> | undefined,
 	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>, deps: TDeps) => boolean = () => true,
 	options?: PropDefinitionOptions<InternalPropValue<P>>,
@@ -149,7 +214,11 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 		validate,
 		apply(value, callback, deps: TDeps) {
 			if (value === undefined || value === null) {
-				const fallback = this.getDefaultValue();
+				if (defaultValue === undefined) {
+					callback(undefined as unknown as InternalPropValue<P>);
+					return;
+				}
+				const fallback = this.getDefaultValue() as InternalPropValue<P>; // cloneDeep for objects; undefined is ruled out above
 				if (this.validate(fallback, deps)) {
 					callback(fallback);
 				} else {

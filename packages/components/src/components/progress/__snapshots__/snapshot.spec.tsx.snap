@@ -599,3 +599,39 @@ exports[`kol-progress should render with _label="more than max" _variant="cycle"
   </template>
 </kol-progress>
 `;
+
+exports[`kol-progress should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
+<kol-progress>
+  <template shadowrootmode="open">
+    <div class="kol-progress">
+      <div aria-hidden="true" class="kol-progress__bar">
+        <div class="kol-progress__bar-label">
+          <span>
+            <span lang="en">
+              partly english
+            </span>
+            <span>
+              Label
+            </span>
+          </span>
+        </div>
+        <svg height="12" overflow="visible" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect class="kol-progress__bar-background" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="3" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-border" fill="currentColor" height="11" rx="5" stroke="currentColor" stroke-width="1" width="100%" x="1" y="1"></rect>
+          <rect class="kol-progress__bar-progress" fill="currentColor" height="7" rx="3.5" stroke="currentColor" stroke-width="3" x="3" y="3" style="width: calc(0% - 4px);"></rect>
+        </svg>
+        <div class="kol-progress__bar-value" style="width: 3ch;">
+          0
+        </div>
+        <div class="kol-progress__bar-unit">
+          %
+        </div>
+      </div>
+      <progress aria-busy="true" aria-label="partly english Label" class="visually-hidden" max="100" value="0"></progress>
+      <span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+        kol-live-value
+      </span>
+    </div>
+  </template>
+</kol-progress>
+`;

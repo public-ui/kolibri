@@ -14,4 +14,4 @@ import { normalizeInputNumber } from './helpers/normalizers';
  */
 export type InputMaxProp = Prop<'max', number | NumberString, number>;
 // The default is `undefined`: without a bound the attribute is not rendered.
-export const inputMaxProp = createPropDefinition<InputMaxProp>('max', undefined as unknown as number, normalizeInputNumber);
+export const inputMaxProp = createPropDefinition<InputMaxProp>('max', undefined, normalizeInputNumber);

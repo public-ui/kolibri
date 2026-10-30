@@ -7,7 +7,7 @@ import { ariaDescriptionProp } from './aria-description';
 import { ariaOwnsProp } from './aria-owns';
 import { badgeTextProp } from './badge-text';
 import { downloadProp } from './download';
-import { hrefProp, optionalHrefProp } from './href';
+import { hrefProp } from './href';
 import { iconsProp } from './icons';
 import { idProp } from './id';
 import { labelProp } from './label';
@@ -32,12 +32,12 @@ import { widthProp } from './width';
  */
 type PropDefinition = {
 	readonly propName: string;
-	apply: (value: unknown, callback: (normalized: unknown) => void) => void;
+	apply: (value: unknown, callback: (normalized: unknown) => void, required?: boolean) => void;
 };
 
-const applied = (definition: PropDefinition, value: unknown): unknown[] => {
+const applied = (definition: PropDefinition, value: unknown, required?: boolean): unknown[] => {
 	const callback = jest.fn();
-	definition.apply(value, callback);
+	definition.apply(value, callback, required);
 	return callback.mock.calls.map(([normalized]) => normalized);
 };
 
@@ -67,10 +67,9 @@ const STRING_PROPS: ReadonlyArray<{ name: string; definition: PropDefinition; de
 	{ name: 'downloadProp', definition: downloadProp, defaultValue: undefined },
 	{ name: 'iconsProp', definition: iconsProp, defaultValue: 'kolicon-logo' },
 	{ name: 'idProp', definition: idProp, defaultValue: '' },
-	{ name: 'labelWithExpertSlotProp', definition: labelWithExpertSlotProp, defaultValue: '' },
 	{ name: 'linkTargetProp', definition: linkTargetProp, defaultValue: '' },
 	{ name: 'nameProp', definition: nameProp, defaultValue: '' },
-	{ name: 'optionalHrefProp', definition: optionalHrefProp, defaultValue: '' },
+	{ name: 'hrefProp', definition: hrefProp, defaultValue: '' },
 	{ name: 'quoteProp', definition: quoteProp, defaultValue: '' },
 	{ name: 'secondaryHeadlineProp', definition: secondaryHeadlineProp, defaultValue: '' },
 	{ name: 'shortKeyProp', definition: shortKeyProp, defaultValue: '' },
@@ -104,11 +103,11 @@ describe.each(STRING_PROPS)('$name', ({ definition, defaultValue }) => {
 });
 
 /**
- * `hrefProp` differs from `optionalHrefProp` (covered above) only by its `required` flag.
+ * `hrefProp` differs from `hrefProp` (covered above) only by its `required` flag.
  */
 describe('hrefProp', () => {
-	it('applies the default "" for undefined and warns about the missing required value', () => {
-		expect(applied(hrefProp, undefined)).toEqual(['']);
+	it('applies the default "" for undefined and warns about the missing required value (config slot)', () => {
+		expect(applied(hrefProp, undefined, true)).toEqual(['']);
 		expect(warnings()).toEqual([expect.stringContaining(`The required property '_href' did not receive a value.`)]);
 	});
 
@@ -137,21 +136,27 @@ describe('hrefProp', () => {
  * accepted value, the UI/UX hint for a label longer than 80 characters included.
  */
 describe('labelProp', () => {
-	it.each([undefined, null])('applies the default "" for %p', (value) => {
-		expect(applied(labelProp, value)).toEqual(['']);
+	it('applies the "not set" default undefined and warns about the missing required value (config slot)', () => {
+		expect(applied(labelProp, undefined, true)).toEqual([undefined]);
+		expect(warnings()).toEqual([expect.stringContaining(`The required property '_label' did not receive a value.`)]);
+	});
+
+	it('applies the "not set" default undefined for null', () => {
+		expect(applied(labelProp, null)).toEqual([undefined]);
 	});
 
 	it.each<[unknown, string]>([
-		['', ''],
 		['Label', 'Label'],
+		['1', '1'],
+		['1.5', '1.5'],
 		[12, '12'],
 		['a'.repeat(80), 'a'.repeat(80)],
-	])('accepts %p as %p', (value, expected) => {
+	])('accepts %p as %p, a one-character numbers-only label via the exemption', (value, expected) => {
 		expect(applied(labelProp, value)).toEqual([expected]);
 		expect(warnings()).toEqual([]);
 	});
 
-	it.each<unknown>(['a', 1])('ignores %p with a developer warning', (value) => {
+	it.each<unknown>(['', 'a', '.'])('ignores %p with a developer warning', (value) => {
 		expect(applied(labelProp, value)).toEqual([]);
 		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid. The value is ignored.`)]);
 	});
@@ -175,6 +180,43 @@ describe('labelProp', () => {
 		applied(labelProp, value);
 		expect(hints()).toEqual([]);
 	});
+});
+
+/**
+ * `labelWithExpertSlotProp` validates like `labelProp`; its empty string additionally enables
+ * the expert slot on the components that render one.
+ */
+describe('labelWithExpertSlotProp', () => {
+	it.each([undefined, null])('applies the default "" for %p', (value) => {
+		expect(applied(labelWithExpertSlotProp, value)).toEqual(['']);
+	});
+
+	// Distinct values from the `labelProp` describe: `devWarning` logs each distinct message once,
+	// and both props share the prop name `label`.
+	it.each<[unknown, string]>([
+		['', ''],
+		['My label', 'My label'],
+		['1', '1'],
+		['1.5', '1.5'],
+		[12, '12'],
+		['y'.repeat(81), 'y'.repeat(81)],
+	])('accepts %p as %p, a one-character numbers-only label via the exemption', (value, expected) => {
+		expect(applied(labelWithExpertSlotProp, value)).toEqual([expected]);
+		expect(warnings()).toEqual([]);
+	});
+
+	it.each<unknown>(['x'])('ignores %p with a developer warning', (value) => {
+		expect(applied(labelWithExpertSlotProp, value)).toEqual([]);
+		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid`)]);
+	});
+
+	it('emits the a11y hint for an accepted label with fewer than three readable characters', () => {
+		expect(applied(labelWithExpertSlotProp, 'xy')).toEqual(['xy']);
+		expect(hints()).toEqual([expect.stringContaining('The heading or label ("xy") is inaccessible.')]);
+	});
+
+	// The ui/ux hint for a label longer than 80 characters is covered by the `labelProp` describe:
+	// its message does not name the value, so the hint dedupe suppresses a second identical hint.
 });
 
 /**

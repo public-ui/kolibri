@@ -27,8 +27,10 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	/** Stores unprocessed property values as received from the @Prop. */
 	private readonly rawProps: Partial<Record<string, unknown>> = {};
 
-	/** Stores validated and normalized property values ready for rendering. */
-	private renderProps: StrictFields<ResolvedProps<Api>> | undefined;
+	/** Stores validated and normalized property values ready for rendering. Starts empty and is
+	 * seeded by `initRenderProps` in `componentWillLoad`; `StrictFields` types the steady state. */
+	private renderProps: StrictFields<ResolvedProps<Api>> = {} as StrictFields<ResolvedProps<Api>>;
+	private requiredPropNames = new Set<string>();
 
 	/** Writes a value into the web component's reactive Stencil state. */
 	protected readonly setState = <K extends keyof InternalOf<NonNullable<Api['States']>>>(key: K, value: InternalOf<NonNullable<Api['States']>>[K]): void => {
@@ -67,6 +69,18 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	 */
 	protected initRenderProps(config: PropsConfigShape): void {
 		this.renderProps = buildDefaultPropsFromConfig(config) as StrictFields<ResolvedProps<Api>>;
+		this.requiredPropNames = new Set((config.required ?? []).map((definition) => definition.propName));
+	}
+
+	/**
+	 * Whether the props config lists a prop under `required`. Requiredness is a property of the
+	 * component, so it comes from the config slot — the prop definition itself stays neutral.
+	 * Pass the result to `PropDefinition.apply` as its third argument. Before `initRenderProps`
+	 * and outside a component config (items, behaviors) this is `false`: an unset value there is
+	 * a legitimate "not set", not a missing required value.
+	 */
+	protected isRequired(key: string): boolean {
+		return this.requiredPropNames.has(key);
 	}
 
 	/**
@@ -103,13 +117,11 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	 * here once instead of at each call site.
 	 */
 	protected unsetRenderProp<K extends keyof ResolvedProps<Api>>(key: K): void {
-		if (this.renderProps) {
-			this.renderProps[key] = undefined as unknown as StrictFields<ResolvedProps<Api>>[K];
-		}
+		this.renderProps[key] = undefined as unknown as StrictFields<ResolvedProps<Api>>[K];
 	}
 
 	/** Returns the current validated render value for a property. */
 	public getRenderProp<K extends keyof ResolvedProps<Api>>(key: K): StrictFields<ResolvedProps<Api>>[K] {
-		return this.renderProps![key];
+		return this.renderProps[key];
 	}
 }

@@ -10,8 +10,9 @@ import type { DialogApi } from '../../internal/functional-components/dialog/api'
 import { dialogPropsConfig } from '../../internal/functional-components/dialog/api';
 import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { dialogCallbacksProp, labelProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
-import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
+import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
+import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
+import { trimLabel } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -70,8 +71,8 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 
 	// --- Prop application ---
 
-	protected applyLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	protected applyLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyLevel(value?: HeadingLevel): void {
@@ -86,7 +87,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 		variantDialogProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
-	protected applyWidth(value?: string): void {
+	protected applyWidth(value?: WidthPropType): void {
 		widthProp.apply(value, (v) => this.setRenderProp('width', v));
 	}
 
@@ -111,6 +112,11 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 			}
 		} else {
 			dialog?.show?.();
+		}
+
+		this.getRenderProp('on').onToggle?.(true);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.toggle);
 		}
 	}
 
@@ -141,8 +147,10 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 
 		unlockScroll(this);
 		this.getRenderProp('on').onClose?.();
+		this.getRenderProp('on').onToggle?.(false);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
+			dispatchDomEvent(this.host, KolEvent.toggle);
 		}
 	};
 
@@ -192,7 +200,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 				blockClass={dialogBlockClass(variant)}
 				handleCancel={this.handleCancel}
 				handleClose={this.handleClose}
-				label={this.getRenderProp('label')}
+				label={trimLabel(this.getRenderProp('label'))}
 				labelledBy={isCard ? this.getState('headingId') : undefined}
 				modal={this.getState('modal')}
 				refDialog={this.dialogRef}
