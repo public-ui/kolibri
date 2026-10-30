@@ -62,9 +62,10 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	 */
 	@Method()
 	@delegateFocus('buttonRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Toggles the visibility of the skeleton component.
@@ -113,8 +114,7 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	@Listen('keydown', { target: 'window' })
 	public onKeydown(event: KeyboardEvent): void {
 		if (event.key === 'Escape') {
-			// eslint-disable-next-line no-console
-			console.log('Show should be toggled');
+			Log.debug('Show should be toggled');
 			void this.toggle();
 		}
 	}

@@ -93,10 +93,12 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				standalone: inline === false,
 			}}
 		>
-			{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events -- <a href> is natively keyboard-accessible (Enter triggers click); onKeyPress would cause a double-dispatch bug. */}
+			{/* An explicit `href` on the element tells jsx-a11y that the anchor is interactive; the
+			    value comes from `tagAttrs`, so the fallback stays identical. */}
 			<a
 				ref={refAnchor}
 				{...tagAttrs}
+				href={tagAttrs.href}
 				accessKey={accessKey || undefined}
 				aria-current={ariaCurrent || undefined}
 				aria-controls={ariaControls || undefined}

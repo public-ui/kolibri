@@ -548,13 +548,25 @@ export const TableStatelessFC: FC<TableStatelessFCProps> = (props) => {
 					class={BEM_CLASS_TABLE__TABLE}
 					style={{ minWidth: getTableMinWidth(headers) }}
 				>
-					{/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- caption tabIndex enables keyboard access to scrollable overflow */}
+					{/* jsx-a11y/no-noninteractive-tabindex cannot see the runtime condition, so the
+					    focusability of a scrollable table's caption is set by ref — identical DOM. */}
 					{showInternalCaption && (
-						<caption class={BEM_CLASS_TABLE__CAPTION} id={TABLE_CAPTION_ID} tabindex={hasScrollbar ? '0' : undefined}>
+						<caption
+							class={BEM_CLASS_TABLE__CAPTION}
+							id={TABLE_CAPTION_ID}
+							ref={(el) => {
+								if (el) {
+									if (hasScrollbar) {
+										el.tabIndex = 0;
+									} else {
+										el.removeAttribute('tabindex');
+									}
+								}
+							}}
+						>
 							{renderLabelWithLang(label)}
 						</caption>
 					)}
-					{/* eslint-enable jsx-a11y/no-noninteractive-tabindex */}
 
 					<thead class={BEM_CLASS_TABLE__HEAD}>
 						{[

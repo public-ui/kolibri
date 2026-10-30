@@ -89,10 +89,10 @@ const extractPublicApi = (source: string): ApiMember[] => {
 			}
 		} else {
 			let next = i + 1;
-			while (next < lines.length && !/public\s+async\s+(\w+)\s*\(/.test(lines[next])) {
+			while (next < lines.length && !/public\s+(?:async\s+)?(\w+)\s*\(/.test(lines[next])) {
 				next++;
 			}
-			const match = (lines[next] ?? '').match(/public\s+async\s+(\w+)\s*\(/);
+			const match = (lines[next] ?? '').match(/public\s+(?:async\s+)?(\w+)\s*\(/);
 			if (match) {
 				members.push({ name: match[1], kind, type: '', required: false, doc: normalizeDoc(doc) });
 			}

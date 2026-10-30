@@ -29,13 +29,13 @@ describe('kol-textarea counter runtime updates', () => {
 			template: () => <kol-textarea _label="Label" _maxLength={20} _value="Hello" />,
 		});
 
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]')).toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('span.kol-form-field__counter')).toBeNull();
 
 		const component = page.root as HTMLKolTextareaElement;
 		component._hasCounter = true;
 		await page.waitForChanges();
 
-		const counter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]') as HTMLSpanElement;
+		const counter = page.root?.shadowRoot?.querySelector('span.kol-form-field__counter') as HTMLSpanElement;
 		expect(counter).not.toBeNull();
 		expect(counter.innerText).toBe('kol-character-counter-current-of-max');
 	});
@@ -46,13 +46,13 @@ describe('kol-textarea counter runtime updates', () => {
 			template: () => <kol-textarea _label="Label" _hasCounter={true} _maxLength={2} _maxLengthBehavior="hard" _value="Hello" />,
 		});
 
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]')).not.toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('span.kol-form-field__counter')).not.toBeNull();
 
 		const component = page.root as HTMLKolTextareaElement;
 		component._maxLengthBehavior = 'soft';
 		await page.waitForChanges();
 
-		const counter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]') as HTMLSpanElement;
+		const counter = page.root?.shadowRoot?.querySelector('span.kol-form-field__counter') as HTMLSpanElement;
 		expect(counter.innerText).toBe('kol-character-limit-exceeded');
 	});
 
@@ -65,8 +65,8 @@ describe('kol-textarea counter runtime updates', () => {
 
 			jest.useFakeTimers({ doNotFake: ['nextTick', 'setImmediate'] });
 
-			const visualCounter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]') as HTMLSpanElement;
-			const ariaCounter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter-aria"]') as HTMLSpanElement;
+			const visualCounter = page.root?.shadowRoot?.querySelector('span.kol-form-field__counter') as HTMLSpanElement;
+			const ariaCounter = page.root?.shadowRoot?.querySelector('.kol-form-field__counter [aria-live="polite"]') as HTMLSpanElement;
 			const textarea = page.root?.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
 
 			expect(visualCounter.innerText).toBe('kol-character-limit-remaining');
@@ -91,7 +91,7 @@ describe('kol-textarea counter runtime updates', () => {
 
 			jest.useFakeTimers({ doNotFake: ['nextTick', 'setImmediate'] });
 
-			const ariaCounter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter-aria"]') as HTMLSpanElement;
+			const ariaCounter = page.root?.shadowRoot?.querySelector('.kol-form-field__counter [aria-live="polite"]') as HTMLSpanElement;
 			const textarea = page.root?.shadowRoot?.querySelector('textarea') as HTMLTextAreaElement;
 
 			expect(ariaCounter.innerText).toBe('kol-character-counter-current-of-max-aria');

@@ -404,9 +404,8 @@ export class KolInputDate
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | Date | undefined | null> {
-		return this.ctaRef.el && remapDateValue(this.ctaRef.el.value, this.valueType);
+	public getValue(): Promise<string | Date | undefined | null> {
+		return Promise.resolve(this.ctaRef.el && remapDateValue(this.ctaRef.el.value, this.valueType));
 	}
 
 	/**
@@ -414,23 +413,25 @@ export class KolInputDate
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Resets the component's value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async reset() {
+	public reset(): Promise<void> {
 		// `_value` keeps its value; only the rendered and the form value are cleared.
 		this.setRenderProp('value', undefined as unknown as string);
 		// The class must follow the cleared field immediately, not at the next change event.
@@ -443,6 +444,7 @@ export class KolInputDate
 		if (this.ctaRef.el) {
 			this.ctaRef.el.value = '';
 		}
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

@@ -32,9 +32,8 @@ export const TabsFC: FC<FunctionalComponentProps<TabsApi>> = (props) => {
 	return (
 		<BemRootNodeFC block="kol-tabs" modifiers={{ [`align-${align}`]: true }} class={hostClass} ref={refRoot}>
 			<div class={BEM_CLASS_TABS__BUTTON_GROUP}>
-				{/* The tab buttons inside are focusable; the tab list itself is not. */}
-				{/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
-				<div aria-label={label} class={BEM_CLASS_TABS__TABLIST} role="tablist" onKeyDown={handleKeyDown} onBlur={handleBlur}>
+				{/* The tab buttons inside are focusable; the tab list itself is not part of the tab order. */}
+				<div aria-label={label} class={BEM_CLASS_TABS__TABLIST} role="tablist" tabIndex={-1} onKeyDown={handleKeyDown} onBlur={handleBlur}>
 					{tabButtons.map(({ buttonProps, refBox }) => (
 						<div class={BEM_CLASS_TABS__TAB} ref={refBox}>
 							<ButtonFC {...buttonProps} />

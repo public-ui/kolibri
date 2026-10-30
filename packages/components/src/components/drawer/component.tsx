@@ -136,9 +136,9 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	 * Opens the drawer. Pass true to open as a modal drawer.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async show(modal: boolean = false): Promise<void> {
+	public show(modal: boolean = false): Promise<void> {
 		this.showDrawer(modal);
+		return Promise.resolve();
 	}
 
 	/**
@@ -162,9 +162,9 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	 * Closes the drawer.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async close(): Promise<void> {
+	public close(): Promise<void> {
 		this.closeDrawer();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

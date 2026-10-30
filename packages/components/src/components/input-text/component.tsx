@@ -395,9 +395,8 @@ export class KolInputText
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.ctaRef.el?.value;
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
 	}
 
 	/**
@@ -405,16 +404,19 @@ export class KolInputText
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Get selection start of internal element.
@@ -436,31 +438,36 @@ export class KolInputText
 	 * Set selection start and end, and optional in which direction, of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setSelectionRange
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') {
+	public setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none'): Promise<void> {
 		this.ctaRef.el?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Set selection start (and end = start) of internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async setSelectionStart(selectionStart: number) {
+	public setSelectionStart(selectionStart: number): Promise<void> {
 		this.ctaRef.el?.setSelectionRange(selectionStart, selectionStart);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Add string at position of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setRangeText
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async setRangeText(replacement: string, selectionStart?: number, selectionEnd?: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') {
+	public setRangeText(
+		replacement: string,
+		selectionStart?: number,
+		selectionEnd?: number,
+		selectMode?: 'select' | 'start' | 'end' | 'preserve',
+	): Promise<void> {
 		if (selectionStart !== undefined && selectionEnd !== undefined) {
 			this.ctaRef.el?.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
 		} else {
 			this.ctaRef.el?.setRangeText(replacement);
 		}
+		return Promise.resolve();
 	}
 
 	public connectedCallback(): void {
@@ -566,7 +573,6 @@ export class KolInputText
 						class: clsx('kol-input-text__clear-button', 'kol-input-container__smart-button', {
 							'kol-input-text__clear-button--hidden': !canClear,
 						}),
-						'data-testid': 'kol-input-text-clear-button',
 					},
 				)}
 			/>

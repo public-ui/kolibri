@@ -148,6 +148,22 @@ export default [
 		},
 	},
 
+	// The Log utility is the centralized console wrapper: writing to the console is its purpose.
+	{
+		files: ['src/schema/utils/dev.utils.ts'],
+		rules: {
+			'no-console': 'off',
+		},
+	},
+
+	// The blueprint demo components log their interactions by design; the e2e observes the log.
+	{
+		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}'],
+		rules: {
+			'no-console': 'off',
+		},
+	},
+
 	// Skeleton blueprint import rules
 	{
 		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],

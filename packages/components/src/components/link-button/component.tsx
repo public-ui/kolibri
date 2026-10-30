@@ -2,8 +2,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
 
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { LinkApi } from '../../internal/functional-components/link/api';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -19,7 +17,6 @@ import type {
 	HrefPropType,
 	IconsPropType,
 	InlinePropType,
-	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	LinkButtonProps,
 	LinkOnCallbacksPropType,
@@ -45,7 +42,7 @@ import { BaseLinkWebComponent } from '../link/base';
 	},
 	shadow: true,
 })
-export class KolLinkButton extends BaseLinkWebComponent implements ClickableElement, FocusableElement, LinkButtonProps, WebComponentInterface<LinkApi> {
+export class KolLinkButton extends BaseLinkWebComponent implements ClickableElement, FocusableElement, LinkButtonProps {
 	@Element() protected readonly host?: HTMLKolLinkButtonElement;
 
 	@State() public ariaCurrent: string = '';
@@ -243,16 +240,19 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: FocusOptions): Promise<void> {
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.initLinkRenderProps();

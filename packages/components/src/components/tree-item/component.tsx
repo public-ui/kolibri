@@ -88,35 +88,35 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	 */
 	@Method()
 	@directFocus('anchorRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Expands the tree item.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async expand(): Promise<void> {
+	public expand(): Promise<void> {
 		this.setOpen(true);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Collapses the tree item.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async collapse(): Promise<void> {
+	public collapse(): Promise<void> {
 		this.setOpen(false);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Returns whether the tree item is expanded.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async isOpen(): Promise<boolean> {
-		return this.open;
+	public isOpen(): Promise<boolean> {
+		return Promise.resolve(this.open);
 	}
 
 	public componentWillLoad(): void {

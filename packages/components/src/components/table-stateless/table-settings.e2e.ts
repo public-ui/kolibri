@@ -194,7 +194,8 @@ test.describe('kol-table-settings', () => {
 			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
-			const firstUpButton = page.locator('[data-testid="table-settings-move-up"]').first().locator('button');
+			// The up button of the first column is disabled and carries the "not move" label.
+			const firstUpButton = page.getByRole('button', { name: /nach oben|nicht verschoben/ }).first();
 			await expect(firstUpButton).toBeDisabled();
 		});
 
@@ -202,7 +203,8 @@ test.describe('kol-table-settings', () => {
 			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
 			await settingsButton.click();
 
-			const lastDownButton = page.locator('[data-testid="table-settings-move-down"]').last().locator('button');
+			// The down button of the last column is disabled and carries the "not move" label.
+			const lastDownButton = page.getByRole('button', { name: /nach unten|nicht verschoben/ }).last();
 			await expect(lastDownButton).toBeDisabled();
 		});
 
@@ -212,7 +214,7 @@ test.describe('kol-table-settings', () => {
 
 			// Move name column up - find the button in the Name column row
 			const nameRow = page.locator('.kol-table-settings__column').filter({ hasText: 'Name' });
-			const nameUpButton = nameRow.locator('[data-testid="table-settings-move-up"]').locator('button');
+			const nameUpButton = nameRow.getByRole('button', { name: /nach oben/ });
 			await nameUpButton.click();
 
 			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
@@ -230,7 +232,7 @@ test.describe('kol-table-settings', () => {
 
 			// Move ID column down - find the button in the ID column row
 			const idRow = page.locator('.kol-table-settings__column').filter({ hasText: 'ID' });
-			const idDownButton = idRow.locator('[data-testid="table-settings-move-down"]').locator('button');
+			const idDownButton = idRow.getByRole('button', { name: /nach unten/ });
 			await idDownButton.click();
 
 			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
