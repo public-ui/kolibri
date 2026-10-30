@@ -61,6 +61,9 @@ const BEM_CLASS_TABLE__SORT_ORDER = tableBem('sort-order');
 const BEM_CLASS_TABLE__TABLE = tableBem('table');
 const BEM_CLASS_TABLE__CAPTION = `${tableBem('focus-element')} ${tableBem('caption')}`;
 
+/** The id of the internal `<caption>`; the `<table>` names itself by it when no external label is active. */
+export const TABLE_CAPTION_ID = 'caption';
+
 export type TableStatelessFCProps = FunctionalComponentProps<TableStatelessApi> & {
 	/** `ButtonFC` props of the embedded button `key`; the web component keeps one button item per key. */
 	getButtonFcProps: (key: string, props: InternalButtonProps, rootAttributes?: ButtonItemRootAttributes) => ButtonItemFcProps;
@@ -541,13 +544,13 @@ export const TableStatelessFC: FC<TableStatelessFCProps> = (props) => {
 			<div ref={refScrollContainer} class={BEM_CLASS_TABLE__SCROLL_CONTAINER} tabindex={hasScrollbar ? (showInternalCaption ? '-1' : '0') : undefined}>
 				<table
 					ref={refTable}
-					aria-labelledby={showInternalCaption ? 'caption' : undefined}
+					aria-labelledby={showInternalCaption ? TABLE_CAPTION_ID : undefined}
 					class={BEM_CLASS_TABLE__TABLE}
 					style={{ minWidth: getTableMinWidth(headers) }}
 				>
 					{/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- caption tabIndex enables keyboard access to scrollable overflow */}
 					{showInternalCaption && (
-						<caption class={BEM_CLASS_TABLE__CAPTION} id="caption" tabindex={hasScrollbar ? '0' : undefined}>
+						<caption class={BEM_CLASS_TABLE__CAPTION} id={TABLE_CAPTION_ID} tabindex={hasScrollbar ? '0' : undefined}>
 							{renderLabelWithLang(label)}
 						</caption>
 					)}
