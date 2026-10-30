@@ -1,0 +1,104 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "21 changed – 0 of 21 approved, review pending",
+	"computedAt": "2026-10-30T09:12:22.919Z",
+	"pr": 11448,
+	"head": "ed6f804aaae9587da8791aad03b62b2315de6fd9",
+	"digest": "sha256:3926c7600932b0b36efd108c741afd65f46b18f600e657c6d3bacf1763175453",
+	"counts": {
+		"changes": 21,
+		"open": 21,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
