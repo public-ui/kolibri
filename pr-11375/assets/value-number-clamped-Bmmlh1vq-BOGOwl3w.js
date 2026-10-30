@@ -1,0 +1,1 @@
+import{a as e,h as t,i as n,v as r}from"./base-web-component-mTRi0Reh-93uhTsCT.js";var i=e(`max`,100,t,e=>e>0),a=e(`unit`,`%`,r,e=>e.length>0);function o(e,t){return e<t.min?t.min:e>t.max?t.max:e}var s=n(`value`,0,(e,n)=>o(t(e),n),e=>typeof e==`number`&&!isNaN(e)),c=Object.assign(Object.assign({},s),{apply(e,t,n){s.apply(e,e=>t(o(e,n)),n)}});export{i as n,a as r,c as t};
