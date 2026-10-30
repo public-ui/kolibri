@@ -117,7 +117,7 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 					role={UNSET_BUTTON_PROP}
 					shortKey=""
 					tabIndex={UNSET_BUTTON_PROP}
-					tooltipAlign="left"
+					tooltipAlign="top"
 					type="button"
 					variant={['normal']}
 				/>
