@@ -150,7 +150,7 @@ export default [
 
 	// Skeleton blueprint import rules
 	{
-		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
+		files: ['src/components/{click-button,skeleton}/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
 		plugins: {
 			boundaries: boundariesPlugin,
 		},
@@ -161,7 +161,7 @@ export default [
 				},
 			},
 			'boundaries/elements': [
-				{ type: 'skeleton-web-components', pattern: 'src/components/_skeleton/web-components', mode: 'folder' },
+				{ type: 'skeleton-web-components', pattern: ['src/components/click-button', 'src/components/skeleton'], mode: 'folder' },
 				{
 					type: 'skeleton-functional-components',
 					pattern: ['src/internal/functional-components/click-button', 'src/internal/functional-components/skeleton'],

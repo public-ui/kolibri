@@ -22,12 +22,13 @@ Primary goals:
 
 ### Blueprint Layout
 
-The skeleton mirrors the structure recommended for production-ready components. The web component definitions live inside `_skeleton/`, while reusable internals (functional components, behaviors, prop schemas) reside in the shared `src/internal/` directory. Each folder holds a single responsibility to make the pipeline explicit:
+The skeleton mirrors the structure recommended for production-ready components. Its web component definitions live in the regular `src/components/` folders (`click-button/`, `skeleton/`), while reusable internals (functional components, behaviors, prop schemas) reside in the shared `src/internal/` directory. Each folder holds a single responsibility to make the pipeline explicit:
 
 ```text
 src/
 ├── components/
-│   └── _skeleton/                     # Blueprint directory
+│   ├── click-button/               # Blueprint button web component
+│   └── skeleton/                   # Blueprint demo web component
 │       ├── web-components/
 │       │   ├── skeleton/              # Skeleton custom element
 │       │   │   ├── component.tsx      # Orchestrator: props, watchers, lifecycle, render
@@ -38,7 +39,7 @@ src/
 │       │       └── snapshot.spec.tsx
 │       ├── AGENTS.md                  # Agent instructions for this blueprint
 │       └── ARC42.md                   # This document
-└── internal/                          # Shared internals (not inside _skeleton/)
+└── internal/                          # Shared internals
     ├── functional-components/
     │   ├── skeleton/                  # Skeleton-specific logic
     │   │   ├── api.tsx                # Type definitions + props config
@@ -230,7 +231,7 @@ and from the migrated file, and diff the two member lists. Any difference is a f
 an explicit justification in the PR description.
 
 This is enforced continuously by the contract tests in
-[`_skeleton/public-api/`](./public-api/contract.ts): one `<component>.spec.ts` per component folder
+[`src/components/public-api/`](../src/components/public-api/contract.ts): one `<component>.spec.ts` per component folder
 extracts the `@Prop`/`@Method` members (including JSDoc, types, defaults and requiredness) from the
 component sources and compares them against a pinned contract, using the helpers in `contract.ts`.
 **Pin every component before its migration** (against the legacy `shadow.tsx`) and point the pin to
