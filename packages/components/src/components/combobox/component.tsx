@@ -52,17 +52,15 @@ import { InputContainerFC } from '../../internal/functional-components/form-fiel
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
 import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
-import {
-	accessKeyProp,
-	hasClearButtonProp,
-	horizontalIconsProp,
-	placeholderProp,
-	requiredProp,
-	shortKeyProp,
-	stringValueProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { hasClearButtonProp } from '../../internal/props/has-clear-button';
+import { horizontalIconsProp } from '../../internal/props/horizontal-icons';
+import { placeholderProp } from '../../internal/props/placeholder';
+import { requiredProp } from '../../internal/props/required';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { suggestionsProp } from '../../internal/props/suggestions';
+import { stringValueProp } from '../../internal/props/value-string';
+import { variantProp } from '../../internal/props/variant';
 
 /**
  * @slot - The label of the input field.

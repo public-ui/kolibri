@@ -52,17 +52,15 @@ import { ListboxGroupFC } from '../../internal/functional-components/listbox/gro
 import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
 import { singleSelectPropsConfig } from '../../internal/functional-components/single-select/api';
 import { BEM_CLASS_SINGLE_SELECT__DELETE, SingleSelectNoResultsFC, SingleSelectToggleFC } from '../../internal/functional-components/single-select/component';
-import {
-	accessKeyProp,
-	hasClearButtonProp,
-	horizontalIconsProp,
-	placeholderProp,
-	requiredProp,
-	rowsProp,
-	shortKeyProp,
-	singleSelectOptionsProp,
-	variantProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { hasClearButtonProp } from '../../internal/props/has-clear-button';
+import { horizontalIconsProp } from '../../internal/props/horizontal-icons';
+import { placeholderProp } from '../../internal/props/placeholder';
+import { requiredProp } from '../../internal/props/required';
+import { rowsProp } from '../../internal/props/rows';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { singleSelectOptionsProp } from '../../internal/props/single-select-options';
+import { variantProp } from '../../internal/props/variant';
 
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.

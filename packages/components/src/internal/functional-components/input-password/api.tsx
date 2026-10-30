@@ -1,4 +1,4 @@
-import { visibilityToggleProp } from '../../props';
+import { visibilityToggleProp } from '../../props/visibility-toggle';
 import type { FormFieldBaseStates } from '../form-field/api';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import { textInputBasePropsConfig } from '../text-input/api';

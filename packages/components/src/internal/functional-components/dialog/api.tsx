@@ -1,4 +1,8 @@
-import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../props';
+import { dialogCallbacksProp } from '../../props/dialog-callbacks';
+import { labelLangSegmentsProp } from '../../props/label-lang-segment';
+import { levelProp } from '../../props/level';
+import { variantDialogProp } from '../../props/variant-dialog';
+import { widthProp } from '../../props/width';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

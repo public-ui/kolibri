@@ -5,7 +5,11 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { QuoteApi } from '../../internal/functional-components/quote/api';
 import { quotePropsConfig } from '../../internal/functional-components/quote/api';
 import { QuoteFC } from '../../internal/functional-components/quote/component';
-import { hrefProp, labelLangSegmentsProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../internal/props';
+import { hrefProp } from '../../internal/props/href';
+import { labelLangSegmentsProp } from '../../internal/props/label-lang-segment';
+import { quoteProp } from '../../internal/props/quote';
+import type { QuoteVariantType } from '../../internal/props/variant-quote';
+import { variantQuoteProp } from '../../internal/props/variant-quote';
 import type { HrefPropType, LabelLangSegmentsPropType, QuotePropType } from '../../schema';
 
 /**

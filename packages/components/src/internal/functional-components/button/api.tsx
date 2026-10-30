@@ -1,27 +1,25 @@
 import type { KolFocusOptions } from '../../../schema';
-import {
-	accessKeyProp,
-	ariaControlsProp,
-	ariaDescriptionProp,
-	ariaExpandedProp,
-	ariaHasPopupProp,
-	ariaSelectedProp,
-	buttonCallbacksProp,
-	buttonTypeProp,
-	customClassProp,
-	disabledProp,
-	hideLabelProp,
-	idProp,
-	inlineProp,
-	labelWithExpertSlotProp,
-	linkRoleProp,
-	nameProp,
-	shortKeyProp,
-	spanIconsProp,
-	tabIndexProp,
-	tooltipAlignProp,
-	variantProp,
-} from '../../props';
+import { accessKeyProp } from '../../props/access-key';
+import { ariaControlsProp } from '../../props/aria-controls';
+import { ariaDescriptionProp } from '../../props/aria-description';
+import { ariaExpandedProp } from '../../props/aria-expanded';
+import { ariaHasPopupProp } from '../../props/aria-has-popup';
+import { ariaSelectedProp } from '../../props/aria-selected';
+import { buttonCallbacksProp } from '../../props/button-callbacks';
+import { buttonTypeProp } from '../../props/button-type';
+import { customClassProp } from '../../props/custom-class';
+import { disabledProp } from '../../props/disabled';
+import { hideLabelProp } from '../../props/hide-label';
+import { idProp } from '../../props/id';
+import { inlineProp } from '../../props/inline';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { linkRoleProp } from '../../props/link-role';
+import { nameProp } from '../../props/name';
+import { shortKeyProp } from '../../props/short-key';
+import { spanIconsProp } from '../../props/span-icons';
+import { tabIndexProp } from '../../props/tab-index';
+import { tooltipAlignProp } from '../../props/tooltip-align';
+import { variantProp } from '../../props/variant';
 import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../generic-types';
 
 /**

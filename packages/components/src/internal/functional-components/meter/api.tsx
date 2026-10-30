@@ -1,4 +1,12 @@
-import { clampedNumberValueProp, highProp, labelLangSegmentsProp, lowProp, maxProp, minProp, optimumProp, orientationProp, unitProp } from '../../props';
+import { highProp } from '../../props/high';
+import { labelLangSegmentsProp } from '../../props/label-lang-segment';
+import { lowProp } from '../../props/low';
+import { maxProp } from '../../props/max';
+import { minProp } from '../../props/min';
+import { optimumProp } from '../../props/optimum';
+import { orientationProp } from '../../props/orientation';
+import { unitProp } from '../../props/unit';
+import { clampedNumberValueProp } from '../../props/value-number-clamped';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

@@ -43,7 +43,14 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { InputFileApi } from '../../internal/functional-components/input-file/api';
 import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
 import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
-import { acceptProp, accessKeyProp, horizontalIconsProp, multipleProp, requiredProp, shortKeyProp, smartButtonProp, variantProp } from '../../internal/props';
+import { acceptProp } from '../../internal/props/accept';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { horizontalIconsProp } from '../../internal/props/horizontal-icons';
+import { multipleProp } from '../../internal/props/multiple';
+import { requiredProp } from '../../internal/props/required';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { smartButtonProp } from '../../internal/props/smart-button';
+import { variantProp } from '../../internal/props/variant';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 

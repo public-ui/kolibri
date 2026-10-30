@@ -4,24 +4,22 @@ import { validateAccessAndShortKey } from '../../../schema/validators/access-and
 import { nonce } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
-import {
-	accessKeyProp,
-	ariaControlsProp,
-	ariaCurrentValueProp,
-	ariaDescriptionProp,
-	disabledProp,
-	downloadProp,
-	hideLabelProp,
-	hrefProp,
-	inlineProp,
-	labelWithExpertSlotProp,
-	linkCallbacksProp,
-	linkTargetProp,
-	shortKeyProp,
-	spanIconsProp,
-	tabIndexProp,
-	tooltipAlignProp,
-} from '../../props';
+import { accessKeyProp } from '../../props/access-key';
+import { ariaControlsProp } from '../../props/aria-controls';
+import { ariaCurrentValueProp } from '../../props/aria-current-value';
+import { ariaDescriptionProp } from '../../props/aria-description';
+import { disabledProp } from '../../props/disabled';
+import { downloadProp } from '../../props/download';
+import { hideLabelProp } from '../../props/hide-label';
+import { hrefProp } from '../../props/href';
+import { inlineProp } from '../../props/inline';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { linkCallbacksProp } from '../../props/link-callbacks';
+import { linkTargetProp } from '../../props/link-target';
+import { shortKeyProp } from '../../props/short-key';
+import { spanIconsProp } from '../../props/span-icons';
+import { tabIndexProp } from '../../props/tab-index';
+import { tooltipAlignProp } from '../../props/tooltip-align';
 import { BaseWebComponent } from '../base-web-component';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { LinkApi } from '../link/api';

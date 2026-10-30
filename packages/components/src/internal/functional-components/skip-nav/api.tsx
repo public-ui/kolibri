@@ -1,4 +1,5 @@
-import { labelProp, skipNavLinksProp } from '../../props';
+import { labelProp } from '../../props/label';
+import { skipNavLinksProp } from '../../props/skip-nav-links';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { SkipNavLinkItem } from './link-item';
 

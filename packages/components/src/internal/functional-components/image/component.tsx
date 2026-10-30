@@ -1,7 +1,7 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import type { LoadingType } from '../../props';
+import type { LoadingType } from '../../props/loading';
 
 type ImageFCProps = {
 	alt: string;

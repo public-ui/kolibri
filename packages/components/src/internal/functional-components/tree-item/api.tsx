@@ -1,5 +1,7 @@
 import type { KolFocusOptions } from '../../../schema';
-import { activeProp, hrefProp, labelLangSegmentsProp } from '../../props';
+import { activeProp } from '../../props/active';
+import { hrefProp } from '../../props/href';
+import { labelLangSegmentsProp } from '../../props/label-lang-segment';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

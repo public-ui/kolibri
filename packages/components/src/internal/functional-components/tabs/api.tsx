@@ -1,5 +1,11 @@
 import type { KolFocusOptions } from '../../../schema';
-import { alignProp, hasCreateButtonProp, labelProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../props';
+import { alignProp } from '../../props/align';
+import { hasCreateButtonProp } from '../../props/has-create-button';
+import { labelProp } from '../../props/label';
+import { selectedProp } from '../../props/selected';
+import { tabBehaviorProp } from '../../props/tab-behavior';
+import { tabsProp } from '../../props/tabs';
+import { tabsCallbacksProp } from '../../props/tabs-callbacks';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { TabsButton } from './button-item';
 

@@ -3,7 +3,7 @@ import { h } from '@stencil/core';
 
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
-import type { HeadingLevel } from '../../props';
+import type { HeadingLevel } from '../../props/level';
 import type { FunctionalComponentProps } from '../generic-types';
 import { renderLabelWithLang } from '../span/component';
 import type { HeadingApi } from './api';

@@ -1,4 +1,8 @@
-import { clampedNumberValueProp, labelLangSegmentsProp, maxProp, unitProp, variantProgressProp } from '../../props';
+import { labelLangSegmentsProp } from '../../props/label-lang-segment';
+import { maxProp } from '../../props/max';
+import { unitProp } from '../../props/unit';
+import { clampedNumberValueProp } from '../../props/value-number-clamped';
+import { variantProgressProp } from '../../props/variant-progress';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const progressPropsConfig = {

@@ -1,5 +1,7 @@
 import type { KolFocusOptions } from '../../../schema';
-import { errorListProp, formCallbacksProp, requiredTextProp } from '../../props';
+import { errorListProp } from '../../props/error-list';
+import { formCallbacksProp } from '../../props/form-callbacks';
+import { requiredTextProp } from '../../props/required-text';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { FormErrorLinkItem } from './error-link-item';
 

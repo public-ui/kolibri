@@ -1,4 +1,9 @@
-import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelProp, navLinksProp } from '../../props';
+import { collapsibleProp } from '../../props/collapsible';
+import { hasCompactButtonProp } from '../../props/has-compact-button';
+import { hasIconsWhenExpandedProp } from '../../props/has-icons-when-expanded';
+import { hideLabelProp } from '../../props/hide-label';
+import { labelProp } from '../../props/label';
+import { navLinksProp } from '../../props/nav-links';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { NavChildren } from './model';
 

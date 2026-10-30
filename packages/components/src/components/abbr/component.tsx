@@ -6,7 +6,7 @@ import { abbrPropsConfig } from '../../internal/functional-components/abbr/api';
 import { AbbrFC } from '../../internal/functional-components/abbr/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { labelLangSegmentsProp } from '../../internal/props';
+import { labelLangSegmentsProp } from '../../internal/props/label-lang-segment';
 import type { LabelLangSegmentsPropType } from '../../schema';
 
 /**

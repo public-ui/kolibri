@@ -46,23 +46,21 @@ import { SuggestionsFC } from '../../internal/functional-components/form-field/s
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputDateApi } from '../../internal/functional-components/input-date/api';
 import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
-import {
-	accessKeyProp,
-	autoCompleteProp,
-	horizontalIconsProp,
-	inputDateMaxProp,
-	inputDateMinProp,
-	inputDateTypeProp,
-	inputDateValueProp,
-	readOnlyProp,
-	requiredProp,
-	shortKeyProp,
-	smartButtonProp,
-	stepProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { autoCompleteProp } from '../../internal/props/auto-complete';
 import type { InputDateDeps } from '../../internal/props/helpers/iso-date';
+import { horizontalIconsProp } from '../../internal/props/horizontal-icons';
+import { inputDateMaxProp } from '../../internal/props/input-date-max';
+import { inputDateMinProp } from '../../internal/props/input-date-min';
+import { inputDateTypeProp } from '../../internal/props/input-date-type';
+import { readOnlyProp } from '../../internal/props/read-only';
+import { requiredProp } from '../../internal/props/required';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { smartButtonProp } from '../../internal/props/smart-button';
+import { stepProp } from '../../internal/props/step';
+import { suggestionsProp } from '../../internal/props/suggestions';
+import { inputDateValueProp } from '../../internal/props/value-input-date';
+import { variantProp } from '../../internal/props/variant';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';

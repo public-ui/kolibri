@@ -13,18 +13,16 @@ import type {
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
 import clsx from '../../../utils/clsx';
 import type { CtaRef } from '../../../utils/element-interaction';
-import {
-	accessKeyProp,
-	horizontalIconsProp,
-	multipleProp,
-	optionsWithOptgroupProp,
-	requiredProp,
-	rowsProp,
-	selectValueProp,
-	shortKeyProp,
-	tabIndexProp,
-	variantProp,
-} from '../../props';
+import { accessKeyProp } from '../../props/access-key';
+import { horizontalIconsProp } from '../../props/horizontal-icons';
+import { multipleProp } from '../../props/multiple';
+import { optionsWithOptgroupProp } from '../../props/options-with-optgroup';
+import { requiredProp } from '../../props/required';
+import { rowsProp } from '../../props/rows';
+import { selectValueProp } from '../../props/select-value';
+import { shortKeyProp } from '../../props/short-key';
+import { tabIndexProp } from '../../props/tab-index';
+import { variantProp } from '../../props/variant';
 import { getInputAdornments } from '../form-field/adornments';
 import { BaseFormFieldWebComponent } from '../form-field/base-web-component';
 import { FormFieldFC } from '../form-field/component';
