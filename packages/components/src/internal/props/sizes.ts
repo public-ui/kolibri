@@ -1,3 +1,4 @@
+import type { SizesPropType } from '../../schema/props/sizes';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -24,5 +25,5 @@ import { normalizeString } from './helpers/normalizers';
  * @see https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html
  * @see https://www.w3.org/WAI/WCAG21/Understanding/reflow.html
  */
-export type SizesProp = SimpleProp<'sizes', string>;
+export type SizesProp = SimpleProp<'sizes', SizesPropType>;
 export const sizesProp = createPropDefinition<SizesProp>('sizes', '', normalizeString);

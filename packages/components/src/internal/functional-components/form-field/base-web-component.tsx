@@ -8,7 +8,7 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 } from '../../../schema';
-import { buildBadgeTextString } from '../../../schema';
+import { buildBadgeTextString, trimLabel } from '../../../schema';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import {
@@ -119,6 +119,17 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		this.infoPopover.destroy();
 	}
 
+	public connectedCallback(): void {
+		/* A reattached element does not re-render, so the listeners destroyed in
+		   `disconnectedCallback` have to be re-attached here. Before the first render the refs are
+		   unset and the syncs no-op. */
+		this.syncFormField();
+		if (this.tooltipAnchor && this.isTooltipShown()) {
+			this.tooltipBehavior.initContext(this.tooltipAnchor);
+			this.tooltipBehavior.syncListeners(undefined, this.tooltipAnchor, true);
+		}
+	}
+
 	/**
 	 * The info popover of the label, `undefined` without `_infoPopover`. Its toggle button is a ghost
 	 * button by default; it always hides its label and renders inline.
@@ -176,7 +187,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	/** `false` enables the expert slot, which the field renders for an empty label. */
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
 		const label: unknown = value;
-		labelWithExpertSlotProp.apply(label === false ? '' : value, (v) => this.shared.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(label === false ? '' : value, (v) => this.shared.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyMsg(value?: Stringified<MsgPropType>): void {
@@ -303,7 +314,11 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		return Boolean(this.shared.getRenderProp('touched')) && !this.shared.getState('inputHasFocus');
 	}
 
+	/** The element the label tooltip hangs on; kept for the listener re-sync on reconnect. */
+	private tooltipAnchor?: HTMLDivElement;
+
 	private readonly setInputRef = (el?: HTMLDivElement): void => {
+		this.tooltipAnchor = el;
 		if (el && this.isTooltipShown()) {
 			this.tooltipBehavior.initContext(el);
 			this.tooltipBehavior.syncListeners(undefined, el, true);
@@ -316,7 +331,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 
 	private isTooltipShown(): boolean {
 		const shared = this.shared;
-		return isLabelShownAsTooltip({ hideLabel: shared.getRenderProp('hideLabel'), label: shared.getRenderProp('label') });
+		return isLabelShownAsTooltip({ hideLabel: shared.getRenderProp('hideLabel'), label: trimLabel(shared.getRenderProp('label')) });
 	}
 
 	/**

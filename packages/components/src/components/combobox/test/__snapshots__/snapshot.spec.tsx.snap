@@ -1397,3 +1397,85 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
   </template>
 </kol-combobox>
 `;
+
+exports[`kol-combobox should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] 1`] = `
+<kol-combobox _value="Herr">
+  <template shadowrootmode="open">
+    <div class="has-value kol-combobox kol-form-field">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-combobox__group">
+              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete" data-testid="combobox-delete">
+                <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
+                  <span class="kol-button__text kol-span kol-span--hide-label">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+                <div class="kol-button__tooltip">
+                  <div class="kol-tooltip__floating">
+                    <div class="kol-tooltip__arrow"></div>
+                    <span class="kol-span kol-tooltip__content">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          kol-delete-selection
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
+              </button>
+            </div>
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
+                <span>
+                  Frau
+                </span>
+              </li>
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
+                <span>
+                  <mark>
+                    Herr
+                  </mark>
+                </span>
+              </li>
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
+                <span>
+                  Divers
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-combobox>
+`;

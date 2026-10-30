@@ -87,18 +87,6 @@ export function delegateFocus(refPropName: string): MethodDecorator_ {
 }
 
 /**
- * Method decorator for `focus()` that delegates to a controller's `focus` method.
- * Use this for components that own a controller with its own focus implementation.
- * @param ctrlPropName - Class property holding the controller
- */
-export function ctrlFocus(ctrlPropName: string): MethodDecorator_ {
-	return makeFocusDecorator(async (self, options) => {
-		const ctrl = self[ctrlPropName] as { focus?: (options?: KolFocusOptions) => Promise<void> } | undefined;
-		await ctrl?.focus?.(options);
-	});
-}
-
-/**
  * Method decorator for `click()` on shadow components.
  * Waits for theming before delegating click to the ref element.
  * @param refPropName - Class property holding the clickable CtaRef

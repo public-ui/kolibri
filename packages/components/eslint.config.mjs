@@ -79,6 +79,14 @@ export default [
 			'@typescript-eslint/consistent-type-imports': 'warn',
 
 			/**
+			 * The TypeScript-aware variant replaces the base `no-redeclare`: it accepts function
+			 * overload declarations (the typed default contract of the prop-definition factories)
+			 * which the base rule rejects.
+			 */
+			'@typescript-eslint/no-redeclare': 'error',
+			'no-redeclare': 'off',
+
+			/**
 			 * This rule is disabled because it is not possible to use the
 			 * `no-unsafe-assignment` rule without breaking the build.
 			 */
@@ -237,6 +245,20 @@ export default [
 					directories: ['schema/props'],
 				},
 			],
+		},
+	},
+
+	// Requiredness must be threaded into apply — scoped to the web component layer. Appliers
+	// outside a component config (items, behaviors, resolve-props) deliberately omit it.
+	{
+		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/form-field/base-web-component.tsx'],
+		plugins: {
+			kolibri: kolibriPlugin,
+		},
+		rules: {
+			'kolibri/apply-passes-required': 'error',
+			'kolibri/prop-required-no-initializer': 'error',
+			'kolibri/prop-optional-requires-initializer': 'error',
 		},
 	},
 

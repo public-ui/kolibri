@@ -16,5 +16,13 @@ executeSnapshotTests<BreadcrumbProps>(
 				{ _href: 'https://example.com', _label: 'Label 2' },
 			],
 		},
+
+		{
+			_label: 'Aria-Label',
+			_links: [
+				{ _href: 'https://example.com', _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
+				{ _href: 'https://example.com', _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
+			],
+		},
 	],
 );

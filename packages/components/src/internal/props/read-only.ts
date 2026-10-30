@@ -1,3 +1,4 @@
+import type { ReadOnlyPropType } from '../../schema/props/read-only';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -10,5 +11,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  *
  * @see https://html.spec.whatwg.org/multipage/input.html#attr-input-readonly
  */
-export type ReadOnlyProp = SimpleProp<'readOnly', boolean>;
+export type ReadOnlyProp = SimpleProp<'readOnly', ReadOnlyPropType>;
 export const readOnlyProp = createPropDefinition<ReadOnlyProp>('readOnly', false, normalizeBoolean);

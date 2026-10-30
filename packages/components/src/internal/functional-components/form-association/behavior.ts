@@ -40,7 +40,7 @@ const ASSOCIATED_TAG_NAMES = new Set([
 ]);
 
 /** Tells the developer that a form field without a name cannot take part in autocomplete and static submission. */
-export const hintMissingName = (): void => {
+const hintMissingName = (): void => {
 	devHint(
 		`A name on input fields or switches is not strictly required, but it might be relevant for the autocomplete function and for the static submission of the input field.`,
 	);

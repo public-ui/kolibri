@@ -8,7 +8,7 @@ import { tabsPropsConfig } from '../../internal/functional-components/tabs/api';
 import type { TabsButton, TabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { createTabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { TabsFC } from '../../internal/functional-components/tabs/component';
-import { alignProp, hasCreateButtonProp, labelWithExpertSlotProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../internal/props';
+import { alignProp, hasCreateButtonProp, labelProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../internal/props';
 import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
@@ -17,6 +17,7 @@ import type {
 	KolFocusOptions,
 	KoliBriTabsCallbacks,
 	LabelPropType,
+	SelectedPropType,
 	StencilUnknown,
 	Stringified,
 	TabBehaviorPropType,
@@ -105,7 +106,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines which behavior is active.
 	 */
-	@Prop() public _behavior?: TabBehaviorPropType;
+	@Prop() public _behavior?: TabBehaviorPropType = undefined;
 
 	@Watch('_behavior')
 	public watchBehavior(value?: TabBehaviorPropType): void {
@@ -129,13 +130,13 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
 	 * Defines the callback functions for tabs events.
 	 */
-	@Prop() public _on?: KoliBriTabsCallbacks;
+	@Prop() public _on?: KoliBriTabsCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriTabsCallbacks): void {
@@ -145,10 +146,10 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines which tab is active.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
+	@Prop({ mutable: true, reflect: true }) public _selected?: SelectedPropType = 0;
 
 	@Watch('_selected')
-	public watchSelected(value?: number): void {
+	public watchSelected(value?: SelectedPropType): void {
 		this.applySelected(value);
 	}
 
@@ -186,7 +187,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
 		tabBehaviorProp.apply(this._behavior, (v) => this.setRenderProp('behavior', v));
 		hasCreateButtonProp.apply(this._hasCreateButton, (v) => this.setRenderProp('hasCreateButton', v));
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		tabsCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
 		this.applySelected(this._selected);
 		this.applyTabs(this._tabs);
@@ -444,7 +445,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		);
 	}
 
-	private applySelected(value?: number): void {
+	private applySelected(value?: SelectedPropType): void {
 		selectedProp.apply(value, (v) => {
 			this.setRenderProp('selected', v);
 			this.syncSelected();

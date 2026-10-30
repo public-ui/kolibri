@@ -43,12 +43,12 @@ export class KolVersion extends BaseWebComponent<VersionApi> implements VersionP
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(versionPropsConfig);
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	public render(): JSX.Element {

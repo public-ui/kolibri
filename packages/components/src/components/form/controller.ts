@@ -1,5 +1,4 @@
 import { KolFormTag } from '../../core/component-names';
-import type { FormProps } from '../../schema';
 import { devHint, getExperimentalMode, KoliBriDevHelper, Log, setEventTarget } from '../../schema';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
@@ -49,10 +48,12 @@ export const propagateResetEventToForm = (
 			setEventTarget(event, form);
 			form.dispatchEvent(event);
 		} else if (form.tagName === KolFormTag.toUpperCase()) {
-			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
-			const kolForm = form as FormProps;
-			if (typeof kolForm._on?.onReset === 'function') {
-				kolForm._on?.onReset(event);
+			// Dispatch on the inner form element, so the kol-form submit/reset handling runs exactly like for a
+			// native submit: it calls the `_on` callbacks and emits the DOM event (`reset`) on the host.
+			const innerForm = KoliBriDevHelper.querySelector<HTMLFormElement>('form', form);
+			if (innerForm) {
+				setEventTarget(event, innerForm);
+				innerForm.dispatchEvent(event);
 			}
 		}
 	}
@@ -105,14 +106,18 @@ export const propagateSubmitEventToForm = (
 				}
 			});
 		} else if (form.tagName === KolFormTag.toUpperCase()) {
-			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
-			const kolForm = form as FormProps;
-			// Use setTimeout to ensure onChange has been called first
-			setTimeout(() => {
-				if (shouldSubmit() && typeof kolForm._on?.onSubmit === 'function') {
-					kolForm._on?.onSubmit(event);
-				}
-			});
+			// Dispatch on the inner form element, so the kol-form submit handling runs exactly like for a
+			// native submit: it calls the `_on` callbacks and emits the DOM event (`submit`) on the host.
+			const innerForm = KoliBriDevHelper.querySelector<HTMLFormElement>('form', form);
+			if (innerForm) {
+				setEventTarget(event, innerForm);
+				// Use setTimeout to ensure onChange has been called first
+				setTimeout(() => {
+					if (shouldSubmit()) {
+						innerForm.dispatchEvent(event);
+					}
+				});
+			}
 		}
 	}
 };

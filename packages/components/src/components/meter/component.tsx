@@ -8,7 +8,7 @@ import { MeterFC } from '../../internal/functional-components/meter/component';
 import {
 	clampedNumberValueProp,
 	highProp,
-	labelProp,
+	labelLangSegmentsProp,
 	lowProp,
 	maxProp,
 	minProp,
@@ -17,6 +17,16 @@ import {
 	unitProp,
 	type OrientationPropType,
 } from '../../internal/props';
+import type {
+	ClampedNumberValuePropType,
+	HighPropType,
+	LabelLangSegmentsPropType,
+	LowPropType,
+	MaxPropType,
+	MinPropType,
+	OptimumPropType,
+	UnitPropType,
+} from '../../schema';
 
 @Component({
 	tag: 'kol-meter',
@@ -30,10 +40,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * From this value to the max value is the high range of the meter. Below this value is the middle range.
 	 */
 	@Prop()
-	public _high?: number;
+	public _high?: HighPropType = undefined;
 
 	@Watch('_high')
-	public watchHigh(value?: number): void {
+	public watchHigh(value?: HighPropType): void {
 		if (value === undefined) {
 			this.unsetRenderProp('high');
 		} else {
@@ -45,21 +55,21 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label!: string;
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
 	 * From this value to the min value is the low range of the meter. Above this value is the middle range.
 	 */
 	@Prop()
-	public _low?: number;
+	public _low?: LowPropType = undefined;
 
 	@Watch('_low')
-	public watchLow(value?: number): void {
+	public watchLow(value?: LowPropType): void {
 		if (value === undefined) {
 			this.unsetRenderProp('low');
 		} else {
@@ -72,10 +82,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * Default like native component.
 	 */
 	@Prop()
-	public _max: number = 1;
+	public _max: MaxPropType = 1;
 
 	@Watch('_max')
-	public watchMax(value?: number): void {
+	public watchMax(value?: MaxPropType): void {
 		maxProp.apply(value, (v) => {
 			this.setRenderProp('max', v);
 			this.watchValue(this.getRawProp('value'));
@@ -87,10 +97,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * Default like native component.
 	 */
 	@Prop()
-	public _min: number = 0;
+	public _min: MinPropType = 0;
 
 	@Watch('_min')
-	public watchMin(value?: number): void {
+	public watchMin(value?: MinPropType): void {
 		minProp.apply(value, (v) => {
 			this.setRenderProp('min', v);
 			this.watchValue(this.getRawProp('value'));
@@ -104,10 +114,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * If this lies in the middle range, both low and high range will be suboptimum and nothing will be critical.
 	 */
 	@Prop()
-	public _optimum?: number;
+	public _optimum?: OptimumPropType = undefined;
 
 	@Watch('_optimum')
-	public watchOptimum(value?: number): void {
+	public watchOptimum(value?: OptimumPropType): void {
 		if (value === undefined) {
 			this.unsetRenderProp('optimum');
 		} else {
@@ -130,10 +140,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * Defines the unit of the value.
 	 */
 	@Prop()
-	public _unit: string = '%';
+	public _unit: UnitPropType = '%';
 
 	@Watch('_unit')
-	public watchUnit(value?: string): void {
+	public watchUnit(value?: UnitPropType): void {
 		unitProp.apply(value, (v) => this.setRenderProp('unit', v));
 	}
 
@@ -141,10 +151,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	 * Defines the value of the element. Is capped between min and max.
 	 */
 	@Prop()
-	public _value!: number;
+	public _value!: ClampedNumberValuePropType;
 
 	@Watch('_value')
-	public watchValue(value?: number): void {
+	public watchValue(value?: ClampedNumberValuePropType): void {
 		this.setRawProp('value', value);
 		clampedNumberValueProp.apply(
 			value,
@@ -159,7 +169,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 		this.initRenderProps(meterPropsConfig);
 
 		this.watchHigh(this._high);
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		this.watchLow(this._low);
 		maxProp.apply(this._max, (v) => {
 			this.setRenderProp('max', v);

@@ -8,15 +8,21 @@ import { SplitButtonFC } from '../../internal/functional-components/split-button
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaControlsPropType,
 	AriaDescriptionPropType,
+	AriaExpandedPropType,
+	AriaSelectedPropType,
 	ButtonCallbacksPropType,
 	ButtonTypePropType,
 	ClickableElement,
 	CustomClassPropType,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	IconsPropType,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
+	NamePropType,
 	ShortKeyPropType,
 	SplitButtonProps,
 	StencilUnknown,
@@ -69,7 +75,7 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -79,17 +85,17 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop() public _ariaControls?: string;
+	@Prop() public _ariaControls?: AriaControlsPropType = undefined;
 
 	@Watch('_ariaControls')
-	public watchAriaControls(value?: string): void {
+	public watchAriaControls(value?: AriaControlsPropType): void {
 		this.applyAriaControls(value);
 	}
 
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType = undefined;
 
 	@Watch('_ariaDescription')
 	public watchAriaDescription(value?: AriaDescriptionPropType): void {
@@ -99,27 +105,27 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop() public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: AriaExpandedPropType = undefined;
 
 	@Watch('_ariaExpanded')
-	public watchAriaExpanded(value?: boolean): void {
+	public watchAriaExpanded(value?: AriaExpandedPropType): void {
 		this.applyAriaExpanded(value);
 	}
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
-	@Prop() public _ariaSelected?: boolean;
+	@Prop() public _ariaSelected?: AriaSelectedPropType = undefined;
 
 	@Watch('_ariaSelected')
-	public watchAriaSelected(value?: boolean): void {
+	public watchAriaSelected(value?: AriaSelectedPropType): void {
 		this.applyAriaSelected(value);
 	}
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: CustomClassPropType;
+	@Prop() public _customClass?: CustomClassPropType = undefined;
 
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
@@ -129,10 +135,10 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 		this.dropdownItem?.setDisabled(value);
 	}
@@ -140,19 +146,18 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsPropType;
+	@Prop() public _icons?: IconsPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsPropType): void {
@@ -172,17 +177,17 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: string;
+	@Prop() public _name?: NamePropType = undefined;
 
 	@Watch('_name')
-	public watchName(value?: string): void {
+	public watchName(value?: NamePropType): void {
 		this.applyName(value);
 	}
 
 	/**
 	 * Defines the callback functions for button events.
 	 */
-	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown> = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
@@ -196,7 +201,7 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	 *
 	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
-	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType = undefined;
 
 	@Watch('_role')
 	public watchRole(): void {
@@ -207,7 +212,7 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -218,7 +223,7 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -248,7 +253,7 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop() public _value?: StencilUnknown;
+	@Prop() public _value?: StencilUnknown = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StencilUnknown): void {

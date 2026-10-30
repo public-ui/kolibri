@@ -1,10 +1,12 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
+import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 
 import type { ProgressVariantType } from '../../props';
 import type { FunctionalComponentProps } from '../generic-types';
+import { renderLabelWithLang } from '../span/component';
 import type { ProgressApi } from './api';
 
 const FULL_CIRCLE = 342;
@@ -78,11 +80,11 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 	return (
 		<div class={progressBem()}>
 			<div aria-hidden="true" class={progressBem(variant === 'cycle' ? 'cycle' : 'bar')}>
-				{variant === 'bar' && label && <div class={progressBem('bar-label')}>{label}</div>}
+				{variant === 'bar' && label && <div class={progressBem('bar-label')}>{renderLabelWithLang(label)}</div>}
 				{createProgressSVG(variant, max, value)}
 				{variant === 'cycle' && (
 					<div class={progressBem('cycle-text')}>
-						{label && <div class={progressBem('cycle-label')}>{label}</div>}
+						{label && <div class={progressBem('cycle-label')}>{renderLabelWithLang(label)}</div>}
 						<div class={progressBem('cycle-value')}>{`${displayValue} ${unit}`}</div>
 					</div>
 				)}
@@ -95,7 +97,7 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 			</div>
 
 			{/* https://css-tricks.com/html5-progress-element/ */}
-			<progress class="visually-hidden" aria-busy={value < max ? 'true' : 'false'} max={max} value={value}></progress>
+			<progress aria-busy={value < max ? 'true' : 'false'} aria-label={trimLabel(label)} class="visually-hidden" max={max} value={value}></progress>
 			<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 				{liveValueText}
 			</span>

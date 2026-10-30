@@ -7,11 +7,12 @@ import type {
 	CardProps,
 	ClickableElement,
 	FocusableElement,
+	HasCloserPropType,
 	HeadingLevel,
 	HrefPropType,
 	KolFocusOptions,
 	KoliBriCardEventCallbacks,
-	LabelPropType,
+	LabelLangSegmentsPropType,
 	LinkTargetPropType,
 } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
@@ -43,19 +44,18 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 
 	/**
 	 * Defines whether the element can be closed.
-	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
-	public watchHasCloser(value?: boolean): void {
+	public watchHasCloser(value?: HasCloserPropType): void {
 		this.applyHasCloser(value);
 	}
 
 	/**
 	 * Sets the target URI of the link or citation source.
 	 */
-	@Prop() public _href?: HrefPropType;
+	@Prop() public _href?: HrefPropType = undefined;
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
@@ -65,10 +65,10 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		this.applyLabel(value);
 	}
 
@@ -85,7 +85,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	/**
 	 * Defines the event callback functions for the component.
 	 */
-	@Prop() public _on?: KoliBriCardEventCallbacks;
+	@Prop() public _on?: KoliBriCardEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriCardEventCallbacks): void {
@@ -95,7 +95,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	/**
 	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTargetPropType;
+	@Prop() public _target?: LinkTargetPropType = undefined;
 
 	@Watch('_target')
 	public watchTarget(value?: LinkTargetPropType): void {

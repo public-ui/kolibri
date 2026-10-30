@@ -27,7 +27,7 @@ const replaceAll = function (text: string, search: string, replacement: string) 
 
 type Resources = Map<string, string>;
 
-export class I18nService {
+class I18nService {
 	private resourceMap = new Map<Generic.I18n.Locale.ISO_639_1, Resources>();
 	language: Generic.I18n.Locale.ISO_639_1;
 

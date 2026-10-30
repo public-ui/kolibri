@@ -18,7 +18,7 @@ const tooltipBem = bem.forBlock('kol-tooltip');
 
 export const TooltipFC: FC<TooltipFCProps> = ({ label, badgeText, id, refFloating }) => {
 	return (
-		<div class={tooltipBem('floating')} hidden={label.length === 0} ref={refFloating}>
+		<div class={tooltipBem('floating')} hidden={!label} ref={refFloating}>
 			<div class={tooltipBem('arrow')} />
 			<SpanFC class={tooltipBem('content')} badgeText={badgeText} id={id} label={label} />
 		</div>

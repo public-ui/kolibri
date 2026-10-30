@@ -7,8 +7,8 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { TreeItemApi } from '../../internal/functional-components/tree-item/api';
 import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
-import { activeProp, ariaCurrentValueProp, hrefProp, labelWithExpertSlotProp, openProp } from '../../internal/props';
-import type { HrefPropType, KolFocusOptions, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
+import { activeProp, ariaCurrentValueProp, hrefProp, labelLangSegmentsProp, openProp } from '../../internal/props';
+import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType, TreeItemProps } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -46,7 +46,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	/**
 	 * If set (to true) the tree item is the active one.
 	 */
-	@Prop() public _active?: OpenPropType;
+	@Prop() public _active?: OpenPropType = undefined;
 
 	@Watch('_active')
 	public watchActive(value?: OpenPropType): void {
@@ -56,17 +56,17 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType;
+	@Prop() public _open?: OpenPropType = undefined;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
@@ -80,7 +80,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	/**

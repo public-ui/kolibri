@@ -711,6 +711,136 @@ exports[`kol-table-stateful should render with horizontal and vertical headers, 
 </kol-table-stateful>
 `;
 
+exports[`kol-table-stateful should render with label with language  1`] = `
+<kol-table-stateful class="kol-table-stateful">
+  <template shadowrootmode="open">
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            <span>
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
+                </span>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </template>
+</kol-table-stateful>
+`;
+
 exports[`kol-table-stateful should render with pagination as JSON string on both positions 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
