@@ -79,10 +79,6 @@ export const SelectOptionListFC: FC<SelectOptionListFCProps> = ({
 				const key = [preKey, `-${index}`].join('');
 
 				if ('options' in option) {
-					if (!option.options?.length) {
-						return null;
-					}
-
 					const isOptgroupDisabled = Boolean(disabled || option.disabled);
 					const { label, ...other } = option;
 
