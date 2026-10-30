@@ -1,8 +1,6 @@
 import { getOptions } from '../../../core/bootstrap';
 import type { StencilUnknown } from '../../../schema';
 import { devHint, devWarning, getExperimentalMode } from '../../../schema';
-import type { HostInternals } from '../../../utils/aria-labelledby';
-import { attachInternals, resolveTargets } from '../../../utils/aria-labelledby';
 import { ariaDetailsProp, nameProp } from '../../props';
 import { BaseBehavior } from '../base-behavior';
 import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';
@@ -75,7 +73,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 
 	/** The host whose light DOM holds the hidden form element. */
 	public readonly host?: Element;
-	public readonly internals?: HostInternals;
 	public readonly formAssociated?: FormAssociatedElement;
 	public syncToOwnInput?: FormAssociatedElement;
 
@@ -83,7 +80,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 		super(stateAccess, formAssociationPropsConfig);
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
-		this.internals = attachInternals(this.host);
 
 		if (getOptions()?.reflectInputValues && ASSOCIATED_TAG_NAMES.has(this.host?.tagName ?? '') && name) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
@@ -104,14 +100,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 
 	public watchAriaDetails(value?: string): void {
 		ariaDetailsProp.apply(value, (v) => this.setRenderProp('ariaDetails', v));
-		const elements = resolveTargets(this.host, value);
-		if (this.internals) {
-			try {
-				this.internals.ariaDetailsElements = elements;
-			} catch {
-				// ariaDetailsElements is not supported in this environment — silently skip.
-			}
-		}
 	}
 
 	public watchName(value?: string): void {

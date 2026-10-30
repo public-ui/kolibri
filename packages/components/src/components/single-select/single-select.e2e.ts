@@ -1,6 +1,7 @@
 import { expect, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { getAriaDetailsRefIds } from '../../e2e/aria-details';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
@@ -246,15 +247,16 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	test.describe('_ariaDetails', () => {
-		test('accepts valid element reference', async ({ page }) => {
+		test('sets the element reference on the native input', async ({ page }) => {
 			await page.setContent(`
 				<kol-single-select _label="Select option" _aria-details="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
 				<div id="select-details">Choose one of these options carefully</div>
 			`);
 			await page.waitForChanges();
 
-			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
-			expect(value).toBe('select-details');
+			const host = page.locator(COMPONENT_NAME);
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('select-details');
+			expect(await getAriaDetailsRefIds(host)).toEqual(['select-details']);
 		});
 
 		test('updates when prop changes', async ({ page }) => {
@@ -274,6 +276,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('details-2');
+			expect(await getAriaDetailsRefIds(host)).toEqual(['details-2']);
 		});
 
 		test('handles missing ID gracefully', async ({ page }) => {
