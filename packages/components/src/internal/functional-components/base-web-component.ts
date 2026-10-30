@@ -70,6 +70,15 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	}
 
 	/**
+	 * Tells whether {@link initRenderProps} has already run.
+	 * Watch handlers can fire before `componentWillLoad` (e.g. when a prop is set right after the
+	 * element was attached) and must not touch the render props until then.
+	 */
+	protected hasRenderProps(): boolean {
+		return this.renderProps !== undefined;
+	}
+
+	/**
 	 * Stores an unprocessed property value before validation.
 	 * Useful for comparisons in watch handlers to detect actual changes.
 	 */
