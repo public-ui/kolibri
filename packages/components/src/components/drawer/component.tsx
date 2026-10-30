@@ -166,7 +166,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
 		this.cardCloseTooltipBehavior.componentWillLoad({
 			label: this.cardCloseButtonProps.label,
-			align: this.cardCloseButtonProps.tooltipAlign,
+			align: 'left',
 		});
 
 		this.watchAlign(this._align);
