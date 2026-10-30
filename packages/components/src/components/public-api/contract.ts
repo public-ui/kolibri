@@ -105,7 +105,7 @@ const extractPublicApi = (source: string): ApiMember[] => {
 const toContract = (members: ApiMember[]): PublicApiContract => Object.fromEntries(members.map(({ name, ...contract }) => [name, contract]));
 
 /** Reads a source file of a component folder under `src/components`. */
-export const readSource = (component: string, file: string): string => fs.readFileSync(path.join(__dirname, '..', component, file), 'utf8');
+const readSource = (component: string, file: string): string => fs.readFileSync(path.join(__dirname, '..', component, file), 'utf8');
 
 const extractFrom = (component: string, file: string): ApiMember[] => extractPublicApi(readSource(component, file));
 
