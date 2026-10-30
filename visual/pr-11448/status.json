@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "21 changed – 0 of 21 approved, review pending",
-	"computedAt": "2026-10-30T09:55:54.806Z",
+	"description": "14 changed – 0 of 14 approved, review pending",
+	"computedAt": "2026-10-30T10:21:50.567Z",
 	"pr": 11448,
-	"head": "1b30c7a685f79321578339681944d9dbcf55e2a1",
-	"digest": "sha256:3926c7600932b0b36efd108c741afd65f46b18f600e657c6d3bacf1763175453",
+	"head": "05c2106a07b8a5527dfd06106d8934dd72ba9547",
+	"digest": "sha256:ef119e15815fb56ea75a050aa3763b42b789951650295989d951c1c979f768d5",
 	"counts": {
-		"changes": 21,
-		"open": 21,
+		"changes": 14,
+		"open": 14,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -20,19 +20,11 @@
 			"state": "open",
 			"notes": []
 		},
-		"test-tag-name-transformer/drawer-basic-align-left-closer-true": {
-			"state": "open",
-			"notes": []
-		},
 		"test-tag-name-transformer/modal-basic-show-dialog-true": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-bwst/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/drawer-basic-align-left-closer-true": {
 			"state": "open",
 			"notes": []
 		},
@@ -44,19 +36,11 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-default/drawer-basic-align-left-closer-true": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-default/modal-basic-show-dialog-true": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-desy/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/drawer-basic-align-left-closer-true": {
 			"state": "open",
 			"notes": []
 		},
@@ -68,10 +52,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-ecl/drawer-basic-align-left-closer-true": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-ecl/modal-basic-show-dialog-true": {
 			"state": "open",
 			"notes": []
@@ -80,19 +60,11 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-kern/drawer-basic-align-left-closer-true": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-kern/modal-basic-show-dialog-true": {
 			"state": "open",
 			"notes": []
 		},
 		"unstyled/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/drawer-basic-align-left-closer-true": {
 			"state": "open",
 			"notes": []
 		},

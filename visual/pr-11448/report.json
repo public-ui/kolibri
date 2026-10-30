@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11448,
-	"head": "1b30c7a685f79321578339681944d9dbcf55e2a1",
+	"head": "05c2106a07b8a5527dfd06106d8934dd72ba9547",
 	"repository": "public-ui/kolibri",
-	"runId": 41034581862,
-	"generatedAt": "2026-10-30T09:55:53.832Z",
-	"digest": "sha256:3926c7600932b0b36efd108c741afd65f46b18f600e657c6d3bacf1763175453",
+	"runId": 41037564633,
+	"generatedAt": "2026-10-30T10:21:49.617Z",
+	"digest": "sha256:ef119e15815fb56ea75a050aa3763b42b789951650295989d951c1c979f768d5",
 	"baseline": {
 		"sha": "482992c53ec40e689acedc9b88528c2104660f57",
 		"ref": "release/4",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3074,
-		"changed": 21,
+		"unchanged": 3081,
+		"changed": 14,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 439,
-				"changed": 3,
+				"unchanged": 440,
+				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:be5e4b26af68867c8b75352ed5b1fd3aeb9ead56dc1fc4f31c11244ccb66ce40",
+			"digest": "sha256:d28b17dc0a7dbc529ee69225fba863b2b1a32b8529dc88cbefe405c6ba2254ec",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -388,14 +388,9 @@
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
-					"route": "drawer/basic?align=left&closer=true",
-					"status": "changed",
-					"hash": "sha256:335557effd31f4c1eabf49259cc0988901007699521957c560083d5fb64cd6c3",
-					"diffPixels": 621,
-					"diffRatio": 0.002587,
-					"expected": "test-tag-name-transformer/drawer-basic-align-left-closer-true.expected.png",
-					"actual": "test-tag-name-transformer/drawer-basic-align-left-closer-true.actual.png",
-					"diff": "test-tag-name-transformer/drawer-basic-align-left-closer-true.diff.png"
+					"route": "drawer-basic-align-left-closer-true",
+					"status": "unchanged",
+					"hash": "sha256:ca1c235de655f1c2b25d17b50b20f0858863c613ed1e49dccb6d41f462df2035"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -2741,13 +2736,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 439,
-				"changed": 3,
+				"unchanged": 440,
+				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:b734f2cd24fea833e497e4a1a0c8641d02e367eb7ae42b6bb822882368916e56",
+			"digest": "sha256:77f82a73964db40f494290baeb942deb95ec408bdbe07886dc7e0668e2580dc4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3086,14 +3081,9 @@
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
-					"route": "drawer/basic?align=left&closer=true",
-					"status": "changed",
-					"hash": "sha256:ef875447eba051dab0bc8420edee99d368433e5a9ae40b87797ac37b8bd06a03",
-					"diffPixels": 589,
-					"diffRatio": 0.002454,
-					"expected": "theme-bwst/drawer-basic-align-left-closer-true.expected.png",
-					"actual": "theme-bwst/drawer-basic-align-left-closer-true.actual.png",
-					"diff": "theme-bwst/drawer-basic-align-left-closer-true.diff.png"
+					"route": "drawer-basic-align-left-closer-true",
+					"status": "unchanged",
+					"hash": "sha256:b750372865e820b2524d255b3fb3ac08a52e64f7bc42795d039004c7a879c472"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -5439,13 +5429,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 439,
-				"changed": 3,
+				"unchanged": 440,
+				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:be5e4b26af68867c8b75352ed5b1fd3aeb9ead56dc1fc4f31c11244ccb66ce40",
+			"digest": "sha256:d28b17dc0a7dbc529ee69225fba863b2b1a32b8529dc88cbefe405c6ba2254ec",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5784,14 +5774,9 @@
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
-					"route": "drawer/basic?align=left&closer=true",
-					"status": "changed",
-					"hash": "sha256:335557effd31f4c1eabf49259cc0988901007699521957c560083d5fb64cd6c3",
-					"diffPixels": 621,
-					"diffRatio": 0.002587,
-					"expected": "theme-default/drawer-basic-align-left-closer-true.expected.png",
-					"actual": "theme-default/drawer-basic-align-left-closer-true.actual.png",
-					"diff": "theme-default/drawer-basic-align-left-closer-true.diff.png"
+					"route": "drawer-basic-align-left-closer-true",
+					"status": "unchanged",
+					"hash": "sha256:ca1c235de655f1c2b25d17b50b20f0858863c613ed1e49dccb6d41f462df2035"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -8137,13 +8122,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 439,
-				"changed": 3,
+				"unchanged": 440,
+				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:3249161aacc36739db4b7fccfb6b0248176c09b266a5e0ec95bef86b9c850fa3",
+			"digest": "sha256:df8761c47caa10be35fa1948f10fa7229fb8230744f580a6020b4ee63afd5b7b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -8482,14 +8467,9 @@
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
-					"route": "drawer/basic?align=left&closer=true",
-					"status": "changed",
-					"hash": "sha256:af9c1c3798f133bb5b59183f1790431d69571823d4987b042af6f9e7d04a49f8",
-					"diffPixels": 786,
-					"diffRatio": 0.003275,
-					"expected": "theme-desy/drawer-basic-align-left-closer-true.expected.png",
-					"actual": "theme-desy/drawer-basic-align-left-closer-true.actual.png",
-					"diff": "theme-desy/drawer-basic-align-left-closer-true.diff.png"
+					"route": "drawer-basic-align-left-closer-true",
+					"status": "unchanged",
+					"hash": "sha256:ae98d8f9a60e35be3fb2f7ac93ce4ce324cface2d199ab04e3624f0fac836212"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -10835,13 +10815,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 439,
-				"changed": 3,
+				"unchanged": 440,
+				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8c87b35bf5b23311593e4b111b8e7d308254260b2c9a97574a1d02b79bc3423f",
+			"digest": "sha256:58d72b90c03267d00163efa32bccc9149364b9b64d5fa73497762fb98fb4fa9c",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11180,14 +11160,9 @@
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
-					"route": "drawer/basic?align=left&closer=true",
-					"status": "changed",
-					"hash": "sha256:f535af2e38b6051beb52f91a21ab45cb5b99d385b5167d2b19dc0b05f89662bf",
-					"diffPixels": 577,
-					"diffRatio": 0.002404,
-					"expected": "theme-ecl/drawer-basic-align-left-closer-true.expected.png",
-					"actual": "theme-ecl/drawer-basic-align-left-closer-true.actual.png",
-					"diff": "theme-ecl/drawer-basic-align-left-closer-true.diff.png"
+					"route": "drawer-basic-align-left-closer-true",
+					"status": "unchanged",
+					"hash": "sha256:71b0ce522787d0bace1dc4a5ca751e865e7a9c0d27ac474d587a609e260ca641"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -13533,13 +13508,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 440,
-				"changed": 3,
+				"unchanged": 441,
+				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:11b98e4a2756506b1a8aefbdfc9c46848aa5c069e8df0999117b3be20768af5a",
+			"digest": "sha256:f5953d6598f804452acc46fa5233abc1485ae61d269923acbc5a4f17ce31b1ed",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13878,14 +13853,9 @@
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
-					"route": "drawer/basic?align=left&closer=true",
-					"status": "changed",
-					"hash": "sha256:f453d60cc0fb5f0014b8fc2ef9497e49713d934490a93a843bd35df9d7cc3378",
-					"diffPixels": 496,
-					"diffRatio": 0.002067,
-					"expected": "theme-kern/drawer-basic-align-left-closer-true.expected.png",
-					"actual": "theme-kern/drawer-basic-align-left-closer-true.actual.png",
-					"diff": "theme-kern/drawer-basic-align-left-closer-true.diff.png"
+					"route": "drawer-basic-align-left-closer-true",
+					"status": "unchanged",
+					"hash": "sha256:5141c3ec60b999f973757f6b303179fbc825573e8b871d80e3822949d3357900"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -16237,13 +16207,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 439,
-				"changed": 3,
+				"unchanged": 440,
+				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:877b104a3180efeef69bc65f4b4eee1fffa530e5716d2c2e8363a02240e48bae",
+			"digest": "sha256:2a8ed01f1ccd4b547795406e0d9f04ab27a3614ab70df75ec403b6e682c6b376",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16582,14 +16552,9 @@
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
-					"route": "drawer/basic?align=left&closer=true",
-					"status": "changed",
-					"hash": "sha256:561767ac63f7fb82da744e0c310b7be71e4511bc7fb5ca7e5bea8202fc056a7d",
-					"diffPixels": 260,
-					"diffRatio": 0.001083,
-					"expected": "unstyled/drawer-basic-align-left-closer-true.expected.png",
-					"actual": "unstyled/drawer-basic-align-left-closer-true.actual.png",
-					"diff": "unstyled/drawer-basic-align-left-closer-true.diff.png"
+					"route": "drawer-basic-align-left-closer-true",
+					"status": "unchanged",
+					"hash": "sha256:04dee018caedda7b8685897e4e495817d71bdd52cb1244eecccc85312a8531b7"
 				},
 				{
 					"name": "drawer-basic-align-top",
