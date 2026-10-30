@@ -127,7 +127,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 		this.watchType(this._type);
 		this.watchVariant(this._variant);
 
-		this.closerTooltipBehavior.componentWillLoad({ label: this.translateCloseAlert, align: 'left' });
+		this.closerTooltipBehavior.componentWillLoad({ label: this.translateCloseAlert });
 	}
 
 	public componentDidRender(): void {
