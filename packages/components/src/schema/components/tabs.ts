@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { Callback } from '../enums';
-import type { PropAlign, PropDisabled, PropHideLabel, PropLabel, PropTabBehavior, PropTooltipAlign } from '../props';
+import type { PropAlign, PropDisabled, PropHideLabel, PropLabel, PropLabelLangSegments, PropTabBehavior, PropTooltipAlign } from '../props';
 import type { PropHasCreateButton } from '../props/has-create-button';
 import type { EventCallback, EventValueOrEventCallback, KoliBriIconsProp, Stringified } from '../types';
 
@@ -14,7 +14,7 @@ export type KoliBriTabsCallbacks = {
 export type KoliBriTabButtonCallbacks = {
 	[Callback.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
-type RequiredTabButtonProps = PropLabel;
+type RequiredTabButtonProps = PropLabelLangSegments;
 type OptionalTabButtonProps = {
 	icons: Stringified<KoliBriIconsProp>;
 	on: KoliBriTabButtonCallbacks;

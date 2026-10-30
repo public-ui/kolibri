@@ -19,5 +19,7 @@ executeSnapshotTests<LinkButtonProps>(
 		{ ...baseObj, _tooltipAlign: 'top', _hideLabel: true },
 
 		{ _label: 'Label', _href: '', _download: 'download-file.zip', _target: 'blank' },
+
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }], _href: '' },
 	],
 );

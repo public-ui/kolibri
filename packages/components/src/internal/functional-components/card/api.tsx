@@ -1,5 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
-import { cardCallbacksProp, hasCloserProp, labelProp, levelProp, linkTargetProp, optionalHrefProp } from '../../props';
+import { cardCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp, linkTargetProp, optionalHrefProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
@@ -8,11 +8,11 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * Notes on prop choices:
  * - `optionalHrefProp`, not `hrefProp`: a card without a link target is the normal case, so the
  *   required variant's dev warning would fire on almost every card.
- * - `labelProp`, not `labelWithExpertSlotProp`: the card renders its label as a heading and has
+ * - `labelLangSegmentsProp`, not `labelWithExpertSlotProp`: the card renders its label as a heading and has
  *   no expert slot for it.
  */
 export const cardPropsConfig = {
-	required: [labelProp],
+	required: [labelLangSegmentsProp],
 	optional: [cardCallbacksProp, hasCloserProp, levelProp, linkTargetProp, optionalHrefProp],
 } as const satisfies PropsConfigShape;
 

@@ -6,6 +6,7 @@ import type { IconApi } from '../../internal/functional-components/icon/api';
 import { iconPropsConfig } from '../../internal/functional-components/icon/api';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { iconsProp, labelProp } from '../../internal/props';
+import type { LabelPropType } from '../../schema';
 
 /**
  * The **Icon** component allows icons from included icon fonts to be displayed at any position.
@@ -33,10 +34,10 @@ export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentIn
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label!: string;
+	public _label!: LabelPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

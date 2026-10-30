@@ -546,4 +546,23 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await page.locator('input.kol-combobox__input').inputValue()).toBe('');
 		});
 	});
+
+	test.describe('Suggestions set as a JSON attribute after load', () => {
+		test('renders the options immediately, before any filtering', async ({ page }) => {
+			await page.setContent('<kol-combobox _label="Input"></kol-combobox>');
+			const component = page.locator('kol-combobox');
+
+			await component.evaluate((element: HTMLKolComboboxElement, options: string[]) => {
+				element.setAttribute('_suggestions', JSON.stringify(options));
+			}, OPTIONS);
+			await page.waitForChanges();
+
+			const input = page.locator('input.kol-combobox__input');
+			await input.focus();
+			await input.press('ArrowDown');
+			await page.waitForChanges();
+			expect(await isOpen(page)).toBe(true);
+			expect(await getOptionTexts(page)).toEqual(OPTIONS);
+		});
+	});
 });

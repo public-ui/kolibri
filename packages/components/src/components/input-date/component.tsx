@@ -431,6 +431,8 @@ export class KolInputDate
 	public async reset() {
 		// `_value` keeps its value; only the rendered and the form value are cleared.
 		this.setRenderProp('value', undefined as unknown as string);
+		// The class must follow the cleared field immediately, not at the next change event.
+		this.hasValue = false;
 		forceUpdate(this);
 		this.formAssociation.setFormAssociatedValue('');
 

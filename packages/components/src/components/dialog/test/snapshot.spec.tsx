@@ -16,6 +16,12 @@ const cases: DialogProps[] = [
 		_variant: 'card',
 		_width: '80%',
 	},
+	{ _label: [{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }], _variant: 'blank', _width: '80%' },
+	{
+		_label: [{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }],
+		_variant: 'card',
+		_width: '80%',
+	},
 ];
 
 executeSnapshotTests<DialogProps>(KolDialogTag, [KolDialog], cases);

@@ -26,6 +26,10 @@ executeSnapshotTests<TabsProps>(
 					_label: 'Deaktivierter Tab',
 				},
 				{
+					_icons: 'codicon codicon-pie-chart',
+					_label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }],
+				},
+				{
 					_icons: 'codicon codicon-telescope',
 					_label: 'Letzter Tab',
 				},
