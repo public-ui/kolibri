@@ -8,7 +8,9 @@ import { toolbarPropsConfig } from '../../internal/functional-components/toolbar
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
 import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
 import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
-import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
+import { labelProp } from '../../internal/props/label';
+import { orientationProp } from '../../internal/props/orientation';
+import { toolbarItemsProp } from '../../internal/props/toolbar-items';
 import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType, ToolbarProps } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';

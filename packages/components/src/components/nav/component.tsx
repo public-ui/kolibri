@@ -15,7 +15,12 @@ import { navPropsConfig } from '../../internal/functional-components/nav/api';
 import { NavFC } from '../../internal/functional-components/nav/component';
 import type { NavChildren } from '../../internal/functional-components/nav/model';
 import { getInitiallyExpanded, toggleExpanded } from '../../internal/functional-components/nav/model';
-import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelProp, navLinksProp } from '../../internal/props';
+import { collapsibleProp } from '../../internal/props/collapsible';
+import { hasCompactButtonProp } from '../../internal/props/has-compact-button';
+import { hasIconsWhenExpandedProp } from '../../internal/props/has-icons-when-expanded';
+import { hideLabelProp } from '../../internal/props/hide-label';
+import { labelProp } from '../../internal/props/label';
+import { navLinksProp } from '../../internal/props/nav-links';
 import type {
 	ButtonOrLinkOrTextWithChildrenProps,
 	CollapsiblePropType,

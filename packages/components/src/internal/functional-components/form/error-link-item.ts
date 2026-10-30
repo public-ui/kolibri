@@ -1,7 +1,9 @@
 import type { ErrorListPropType, KolFocusOptions } from '../../../schema';
 import { setEventTarget } from '../../../schema';
 import { nonce } from '../../../utils/dev.utils';
-import { hrefProp, labelWithExpertSlotProp, linkCallbacksProp } from '../../props';
+import { hrefProp } from '../../props/href';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { linkCallbacksProp } from '../../props/link-callbacks';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { LinkApi } from '../link/api';
 import { linkPropsConfig } from '../link/api';

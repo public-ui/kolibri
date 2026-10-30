@@ -47,7 +47,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { InputPasswordApi } from '../../internal/functional-components/input-password/api';
 import { inputPasswordPropsConfig } from '../../internal/functional-components/input-password/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { visibilityToggleProp } from '../../internal/props';
+import { visibilityToggleProp } from '../../internal/props/visibility-toggle';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 

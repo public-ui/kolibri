@@ -6,29 +6,27 @@ import type { LinkApi } from '../../internal/functional-components/link/api';
 import { linkPropsConfig } from '../../internal/functional-components/link/api';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import {
-	accessKeyProp,
-	ariaControlsProp,
-	ariaCurrentValueProp,
-	ariaDescriptionProp,
-	ariaExpandedProp,
-	ariaOwnsProp,
-	customClassProp,
-	disabledProp,
-	downloadProp,
-	hideLabelProp,
-	hrefProp,
-	inlineProp,
-	labelWithExpertSlotProp,
-	linkCallbacksProp,
-	linkRoleProp,
-	linkTargetProp,
-	shortKeyProp,
-	spanIconsProp,
-	tabIndexProp,
-	tooltipAlignProp,
-	variantProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { ariaControlsProp } from '../../internal/props/aria-controls';
+import { ariaCurrentValueProp } from '../../internal/props/aria-current-value';
+import { ariaDescriptionProp } from '../../internal/props/aria-description';
+import { ariaExpandedProp } from '../../internal/props/aria-expanded';
+import { ariaOwnsProp } from '../../internal/props/aria-owns';
+import { customClassProp } from '../../internal/props/custom-class';
+import { disabledProp } from '../../internal/props/disabled';
+import { downloadProp } from '../../internal/props/download';
+import { hideLabelProp } from '../../internal/props/hide-label';
+import { hrefProp } from '../../internal/props/href';
+import { inlineProp } from '../../internal/props/inline';
+import { labelWithExpertSlotProp } from '../../internal/props/label-with-expert-slot';
+import { linkCallbacksProp } from '../../internal/props/link-callbacks';
+import { linkRoleProp } from '../../internal/props/link-role';
+import { linkTargetProp } from '../../internal/props/link-target';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { spanIconsProp } from '../../internal/props/span-icons';
+import { tabIndexProp } from '../../internal/props/tab-index';
+import { tooltipAlignProp } from '../../internal/props/tooltip-align';
+import { variantProp } from '../../internal/props/variant';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,

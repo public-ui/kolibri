@@ -11,19 +11,17 @@ import type {
 import { STATE_CHANGE_EVENT } from '../../../schema';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { addNavLabel, removeNavLabel } from '../../../utils/unique-nav-labels';
-import {
-	boundaryCountProp,
-	customClassProp,
-	labelProp,
-	pageProp,
-	pageSizeOptionsProp,
-	pageSizeProp,
-	paginationCallbacksProp,
-	paginationHasButtonsProp,
-	paginationMaxProp,
-	siblingCountProp,
-	tooltipAlignProp,
-} from '../../props';
+import { boundaryCountProp } from '../../props/boundary-count';
+import { customClassProp } from '../../props/custom-class';
+import { labelProp } from '../../props/label';
+import { pageProp } from '../../props/page';
+import { pageSizeProp } from '../../props/page-size';
+import { pageSizeOptionsProp } from '../../props/page-size-options';
+import { paginationCallbacksProp } from '../../props/pagination-callbacks';
+import { paginationHasButtonsProp } from '../../props/pagination-has-buttons';
+import { paginationMaxProp } from '../../props/pagination-max';
+import { siblingCountProp } from '../../props/sibling-count';
+import { tooltipAlignProp } from '../../props/tooltip-align';
 import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
 import { createButtonItem } from '../button/item';
 import { createItemPool } from '../item-pool';

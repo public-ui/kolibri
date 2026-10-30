@@ -1,4 +1,4 @@
-import { labelLangSegmentsProp } from '../../props';
+import { labelLangSegmentsProp } from '../../props/label-lang-segment';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const abbrPropsConfig = {

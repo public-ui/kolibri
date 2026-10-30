@@ -8,7 +8,8 @@ import { BreadcrumbFC } from '../../internal/functional-components/breadcrumb/co
 import type { BreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import { createBreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { breadcrumbLinksProp, labelProp } from '../../internal/props';
+import { breadcrumbLinksProp } from '../../internal/props/breadcrumb-links';
+import { labelProp } from '../../internal/props/label';
 import type { BreadcrumbLinkProps, BreadcrumbProps, LabelPropType, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks } from '../../schema';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';

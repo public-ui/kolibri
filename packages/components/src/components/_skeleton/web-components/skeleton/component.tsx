@@ -5,7 +5,7 @@ import type { WebComponentInterface } from '../../../../internal/functional-comp
 import type { SkeletonApi } from '../../../../internal/functional-components/skeleton/api';
 import { skeletonPropsConfig } from '../../../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
-import { nameProp } from '../../../../internal/props';
+import { nameProp } from '../../../../internal/props/name';
 import { Log, type KolFocusOptions, type NamePropType } from '../../../../schema';
 import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
 

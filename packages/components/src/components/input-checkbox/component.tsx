@@ -40,17 +40,15 @@ import type { InputFCProps } from '../../internal/functional-components/form-fie
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputCheckboxApi } from '../../internal/functional-components/input-checkbox/api';
 import { inputCheckboxPropsConfig } from '../../internal/functional-components/input-checkbox/api';
-import {
-	accessKeyProp,
-	checkboxValueProp,
-	checkedProp,
-	iconsInputCheckboxProp,
-	indeterminateProp,
-	labelAlignProp,
-	requiredProp,
-	shortKeyProp,
-	variantInputCheckboxProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { checkboxValueProp } from '../../internal/props/checkbox-value';
+import { checkedProp } from '../../internal/props/checked';
+import { iconsInputCheckboxProp } from '../../internal/props/icons-input-checkbox';
+import { indeterminateProp } from '../../internal/props/indeterminate';
+import { labelAlignProp } from '../../internal/props/label-align';
+import { requiredProp } from '../../internal/props/required';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { variantInputCheckboxProp } from '../../internal/props/variant-input-checkbox';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';

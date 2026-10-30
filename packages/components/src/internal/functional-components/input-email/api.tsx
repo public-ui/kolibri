@@ -1,4 +1,5 @@
-import { multipleProp, suggestionsProp } from '../../props';
+import { multipleProp } from '../../props/multiple';
+import { suggestionsProp } from '../../props/suggestions';
 import type { FormFieldBaseStates } from '../form-field/api';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import { textInputBasePropsConfig } from '../text-input/api';

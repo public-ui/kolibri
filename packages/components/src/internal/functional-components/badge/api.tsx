@@ -1,5 +1,8 @@
 import type { KolFocusOptions } from '../../../schema';
-import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../props';
+import { colorProp } from '../../props/color';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { smartButtonProp } from '../../props/smart-button';
+import { spanIconsProp } from '../../props/span-icons';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

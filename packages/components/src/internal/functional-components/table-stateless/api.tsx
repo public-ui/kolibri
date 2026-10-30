@@ -1,16 +1,14 @@
 import type { KoliBriTableCell, KoliBriTableDataType, KoliBriTableHeaderCell, SelectionChangeEventPayload, SortEventPayload } from '../../../schema';
-import {
-	fixedColsProp,
-	hasSettingsMenuProp,
-	labelLangSegmentsProp,
-	tableCallbacksProp,
-	tableDataFootProp,
-	tableDataProp,
-	tableHeadersProp,
-	tableLoadingProp,
-	tableSelectionProp,
-	variantProp,
-} from '../../props';
+import { fixedColsProp } from '../../props/fixed-cols';
+import { hasSettingsMenuProp } from '../../props/has-settings-menu';
+import { labelLangSegmentsProp } from '../../props/label-lang-segment';
+import { tableCallbacksProp } from '../../props/table-callbacks';
+import { tableDataProp } from '../../props/table-data';
+import { tableDataFootProp } from '../../props/table-data-foot';
+import { tableHeadersProp } from '../../props/table-headers';
+import { tableLoadingProp } from '../../props/table-loading';
+import { tableSelectionProp } from '../../props/table-selection';
+import { variantProp } from '../../props/variant';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

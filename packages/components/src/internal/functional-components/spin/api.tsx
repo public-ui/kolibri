@@ -1,4 +1,6 @@
-import { labelProp, showProp, variantSpinProp } from '../../props';
+import { labelProp } from '../../props/label';
+import { showProp } from '../../props/show';
+import { variantSpinProp } from '../../props/variant-spin';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const spinPropsConfig = {

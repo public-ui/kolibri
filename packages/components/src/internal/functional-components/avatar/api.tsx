@@ -1,4 +1,6 @@
-import { colorProp, labelProp, srcProp } from '../../props';
+import { colorProp } from '../../props/color';
+import { labelProp } from '../../props/label';
+import { srcProp } from '../../props/src';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const avatarPropsConfig = {

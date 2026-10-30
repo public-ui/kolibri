@@ -5,7 +5,13 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { ImageApi } from '../../internal/functional-components/image/api';
 import { imagePropsConfig } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
-import { altProp, imageCallbacksProp, loadingProp, sizesProp, srcProp, srcsetProp, type LoadingType } from '../../internal/props';
+import { altProp } from '../../internal/props/alt';
+import { imageCallbacksProp } from '../../internal/props/image-callbacks';
+import type { LoadingType } from '../../internal/props/loading';
+import { loadingProp } from '../../internal/props/loading';
+import { sizesProp } from '../../internal/props/sizes';
+import { srcProp } from '../../internal/props/src';
+import { srcsetProp } from '../../internal/props/srcset';
 import type { AltPropType, SizesPropType, SrcPropType, SrcsetPropType } from '../../schema';
 import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';

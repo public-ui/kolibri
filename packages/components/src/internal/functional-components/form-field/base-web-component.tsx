@@ -11,20 +11,18 @@ import type {
 import { buildBadgeTextString, trimLabel } from '../../../schema';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
-import {
-	ariaDetailsProp,
-	disabledProp,
-	hideLabelProp,
-	hideMsgProp,
-	hintProp,
-	infoPopoverProp,
-	inputCallbacksProp,
-	labelWithExpertSlotProp,
-	msgProp,
-	nameProp,
-	tooltipAlignProp,
-	touchedProp,
-} from '../../props';
+import { ariaDetailsProp } from '../../props/aria-details';
+import { disabledProp } from '../../props/disabled';
+import { hideLabelProp } from '../../props/hide-label';
+import { hideMsgProp } from '../../props/hide-msg';
+import { hintProp } from '../../props/hint';
+import { infoPopoverProp } from '../../props/info-popover';
+import { inputCallbacksProp } from '../../props/input-callbacks';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { msgProp } from '../../props/msg';
+import { nameProp } from '../../props/name';
+import { tooltipAlignProp } from '../../props/tooltip-align';
+import { touchedProp } from '../../props/touched';
 import { BaseWebComponent } from '../base-web-component';
 import type { ButtonItemFcProps } from '../button/item';
 import { createButtonItem } from '../button/item';

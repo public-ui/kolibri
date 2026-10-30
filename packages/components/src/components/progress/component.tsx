@@ -5,7 +5,12 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { ProgressApi } from '../../internal/functional-components/progress/api';
 import { progressPropsConfig } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
-import { clampedNumberValueProp, labelLangSegmentsProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
+import { labelLangSegmentsProp } from '../../internal/props/label-lang-segment';
+import { maxProp } from '../../internal/props/max';
+import { unitProp } from '../../internal/props/unit';
+import { clampedNumberValueProp } from '../../internal/props/value-number-clamped';
+import type { ProgressVariantType } from '../../internal/props/variant-progress';
+import { variantProgressProp } from '../../internal/props/variant-progress';
 import type { ClampedNumberValuePropType, LabelLangSegmentsPropType, MaxPropType, UnitPropType } from '../../schema';
 
 /**

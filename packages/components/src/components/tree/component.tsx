@@ -7,7 +7,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { TreeApi } from '../../internal/functional-components/tree/api';
 import { treePropsConfig } from '../../internal/functional-components/tree/api';
 import { TreeFC } from '../../internal/functional-components/tree/component';
-import { labelProp } from '../../internal/props';
+import { labelProp } from '../../internal/props/label';
 import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../schema';
 import { delegateFocus } from '../../utils/element-focus';
 import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';

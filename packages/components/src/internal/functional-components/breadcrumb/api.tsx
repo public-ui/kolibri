@@ -1,4 +1,5 @@
-import { breadcrumbLinksProp, labelProp } from '../../props';
+import { breadcrumbLinksProp } from '../../props/breadcrumb-links';
+import { labelProp } from '../../props/label';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { BreadcrumbLinkItem } from './link-item';
 

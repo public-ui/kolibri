@@ -1,5 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
-import { labelProp } from '../../props';
+import { labelProp } from '../../props/label';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

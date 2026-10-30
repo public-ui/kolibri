@@ -5,18 +5,16 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { MeterApi } from '../../internal/functional-components/meter/api';
 import { meterPropsConfig } from '../../internal/functional-components/meter/api';
 import { MeterFC } from '../../internal/functional-components/meter/component';
-import {
-	clampedNumberValueProp,
-	highProp,
-	labelLangSegmentsProp,
-	lowProp,
-	maxProp,
-	minProp,
-	optimumProp,
-	orientationProp,
-	unitProp,
-	type OrientationPropType,
-} from '../../internal/props';
+import { highProp } from '../../internal/props/high';
+import { labelLangSegmentsProp } from '../../internal/props/label-lang-segment';
+import { lowProp } from '../../internal/props/low';
+import { maxProp } from '../../internal/props/max';
+import { minProp } from '../../internal/props/min';
+import { optimumProp } from '../../internal/props/optimum';
+import type { OrientationPropType } from '../../internal/props/orientation';
+import { orientationProp } from '../../internal/props/orientation';
+import { unitProp } from '../../internal/props/unit';
+import { clampedNumberValueProp } from '../../internal/props/value-number-clamped';
 import type {
 	ClampedNumberValuePropType,
 	HighPropType,

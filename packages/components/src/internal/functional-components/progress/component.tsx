@@ -3,7 +3,7 @@ import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
 import { trimLabel } from '../../../schema';
 
-import type { ProgressVariantType } from '../../props';
+import type { ProgressVariantType } from '../../props/variant-progress';
 import type { FunctionalComponentProps } from '../generic-types';
 import { renderLabelWithLang } from '../span/component';
 import type { ProgressApi } from './api';

@@ -1,4 +1,7 @@
-import { hrefProp, labelLangSegmentsProp, quoteProp, variantQuoteProp } from '../../props';
+import { hrefProp } from '../../props/href';
+import { labelLangSegmentsProp } from '../../props/label-lang-segment';
+import { quoteProp } from '../../props/quote';
+import { variantQuoteProp } from '../../props/variant-quote';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const quotePropsConfig = {

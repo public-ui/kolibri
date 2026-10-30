@@ -1,4 +1,6 @@
-import { hasCounterProp, maxLengthBehaviorProp, maxLengthProp } from '../../props';
+import { hasCounterProp } from '../../props/has-counter';
+import { maxLengthProp } from '../../props/max-length';
+import { maxLengthBehaviorProp } from '../../props/max-length-behavior';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const counterPropsConfig = {

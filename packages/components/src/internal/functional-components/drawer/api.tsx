@@ -1,4 +1,8 @@
-import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../props';
+import { alignProp } from '../../props/align';
+import { drawerCallbacksProp } from '../../props/drawer-callbacks';
+import { hasCloserProp } from '../../props/has-closer';
+import { labelLangSegmentsProp } from '../../props/label-lang-segment';
+import { levelProp } from '../../props/level';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

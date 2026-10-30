@@ -8,7 +8,13 @@ import { AlertFC } from '../../internal/functional-components/alert/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../internal/props';
+import { alertProp } from '../../internal/props/alert';
+import { alertCallbacksProp } from '../../internal/props/alert-callbacks';
+import { alertTypeProp } from '../../internal/props/alert-type';
+import { alertVariantProp } from '../../internal/props/alert-variant';
+import { hasCloserProp } from '../../internal/props/has-closer';
+import { labelLangSegmentsProp } from '../../internal/props/label-lang-segment';
+import { levelProp } from '../../internal/props/level';
 import type {
 	AlertProps,
 	AlertPropType,

@@ -1,6 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 
-import { labelProp, secondaryHeadlineProp } from '../props';
+import { labelProp } from '../props/label';
+import { secondaryHeadlineProp } from '../props/secondary-headline';
 import type { ApiFromConfig, FunctionalComponentProps, PropsConfigShape, WebComponentInterface } from './generic-types';
 
 /** Type-level assertion helpers: a mismatch fails `pnpm lint:tsc`. */

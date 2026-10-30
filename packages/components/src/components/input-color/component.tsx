@@ -39,16 +39,14 @@ import { SuggestionsFC } from '../../internal/functional-components/form-field/s
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputColorApi } from '../../internal/functional-components/input-color/api';
 import { inputColorPropsConfig } from '../../internal/functional-components/input-color/api';
-import {
-	accessKeyProp,
-	autoCompleteProp,
-	horizontalIconsProp,
-	shortKeyProp,
-	smartButtonProp,
-	stringValueProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { autoCompleteProp } from '../../internal/props/auto-complete';
+import { horizontalIconsProp } from '../../internal/props/horizontal-icons';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { smartButtonProp } from '../../internal/props/smart-button';
+import { suggestionsProp } from '../../internal/props/suggestions';
+import { stringValueProp } from '../../internal/props/value-string';
+import { variantProp } from '../../internal/props/variant';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
