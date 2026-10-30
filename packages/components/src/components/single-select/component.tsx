@@ -248,6 +248,9 @@ export class KolSingleSelect
 	/** Shows all options again; an open listbox keeps the filter of the input, a closed one shows the label of the value. */
 	@Watch('_options')
 	public watchOptions(value?: OptionsPropType): void {
+		// Before `componentWillLoad` the render props do not exist yet; the initial options are applied there.
+		if (!this.hasRenderProps()) return;
+
 		this.applyOptions(value);
 		this.filteredOptions = [...(this.getRenderProp('options') ?? [])];
 		if (this.isOpen) {
