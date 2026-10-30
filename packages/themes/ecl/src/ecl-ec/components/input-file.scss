@@ -1,23 +1,38 @@
 @use '../mixins/input-container' as *;
-@use '../mixins/button' as *;
 @use '../../mixins/to-rem' as *;
 
 @layer kol-theme-component {
-	@include button('kol-button');
 	@include input-container;
 
-	.kol-button {
-		&__text {
-			white-space: nowrap;
-		}
+	.kol-input-container {
+		border: 0;
+		padding-inline: 0;
 	}
 
-	.kol-input-container {
-		padding-left: to-rem(8);
-		column-gap: to-rem(8);
+	.kol-form-field__input {
+		.kol-input {
+			&::file-selector-button {
+				color: var(--ecl-color-white);
+				background: var(--ecl-color-primary);
+				display: block;
+				min-height: to-rem(42);
+				margin: 0;
+				margin-bottom: to-rem(28);
 
-		&--is-dragover {
-			border-color: var(--ecl-color-primary);
+				font-family: var(--ecl-font-family-default);
+				font-size: var(--ecl-font-size-m);
+				border: none;
+				margin-inline-end: to-rem(8);
+				padding-inline: to-rem(14);
+
+				&:hover {
+					background-color: var(--ecl-color-primary-180);
+				}
+			}
+
+			&:focus-visible {
+				outline: 0;
+			}
 		}
 	}
 }

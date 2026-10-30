@@ -14,12 +14,17 @@
 	@include kol-button-styles('kol-button');
 
 	.kol-input {
-		opacity: 0;
-		position: absolute;
+		display: flex;
+		position: relative;
 		inset: 0;
 		width: 100%;
 		height: 100%;
+		flex-grow: 1;
+		align-items: center;
+
+		white-space: nowrap;
 		cursor: pointer;
+		text-overflow: ellipsis;
 
 		&::-webkit-file-upload-button,
 		&::file-selector-button {
@@ -35,26 +40,6 @@
 	}
 
 	.kol-input-container {
-		&__container {
-			display: flex;
-			overflow: hidden;
-			align-items: center;
-		}
-
-		&__button {
-			/* The button root is an item of the centered `__container` row. `height: auto` keeps it at its
-			   own height instead of the `height: 100%` of the button styles, which would stretch it to the row. */
-			height: auto;
-		}
-
-		&__filename {
-			overflow: hidden;
-			flex-grow: 1;
-
-			white-space: nowrap;
-			text-overflow: ellipsis;
-		}
-
 		&:has(> .kol-input-container__adornment--start):has(> .kol-input-container__adornment--end) {
 			grid-template-columns: auto 1fr;
 		}
