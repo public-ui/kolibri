@@ -733,12 +733,6 @@ ROUTES.set('scenarios/static-form', {
 		skip: true,
 	},
 });
-ROUTES.set('scenarios/sample-form-with-validation', {
-	snapshot: {
-		forceFullPage: true,
-		skip: true,
-	},
-});
 ROUTES.set('scenarios/disabled-interactive-scenario', {
 	snapshot: {
 		forceFullPage: true,
