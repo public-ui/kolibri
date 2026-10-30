@@ -6,7 +6,7 @@ import type { SpinApi } from '../../internal/functional-components/spin/api';
 import { spinPropsConfig } from '../../internal/functional-components/spin/api';
 import { SpinFC } from '../../internal/functional-components/spin/component';
 import { labelProp, showProp, variantSpinProp, type SpinVariantType } from '../../internal/props';
-import type { LabelPropType } from '../../schema';
+import type { LabelPropType, ShowPropType } from '../../schema';
 
 @Component({
 	tag: 'kol-spin',
@@ -20,10 +20,10 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	 * Makes the element show up.
 	 */
 	@Prop()
-	public _show?: boolean;
+	public _show?: ShowPropType = undefined;
 
 	@Watch('_show')
-	public watchShow(value?: boolean): void {
+	public watchShow(value?: ShowPropType): void {
 		showProp.apply(value, (v) => this.setRenderProp('show', v));
 	}
 
@@ -31,18 +31,18 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label?: LabelPropType;
+	public _label?: LabelPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop()
-	public _variant?: SpinVariantType;
+	public _variant?: SpinVariantType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: SpinVariantType): void {
@@ -53,7 +53,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 		this.initRenderProps(spinPropsConfig);
 
 		showProp.apply(this._show, (v) => this.setRenderProp('show', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		variantSpinProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
 	}
 

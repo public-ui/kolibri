@@ -1,3 +1,4 @@
+import type { ShowPropType } from '../../schema/props/show';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -21,5 +22,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  * @see https://www.w3.org/TR/wai-aria-1.2/#aria-expanded
  * @see https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html
  */
-export type ShowProp = SimpleProp<'show', boolean>;
+export type ShowProp = SimpleProp<'show', ShowPropType>;
 export const showProp = createPropDefinition<ShowProp>('show', false, normalizeBoolean);

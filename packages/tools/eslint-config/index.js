@@ -17,7 +17,10 @@ import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import globals from 'globals';
+import applyPassesRequired from './rules/apply-passes-required.js';
 import noTranslateCastOrConcat from './rules/no-translate-cast-or-concat.js';
+import propOptionalRequiresInitializer from './rules/prop-optional-requires-initializer.js';
+import propRequiredNoInitializer from './rules/prop-required-no-initializer.js';
 import requireBarrelImport from './rules/require-barrel-import.js';
 
 /**
@@ -25,6 +28,9 @@ import requireBarrelImport from './rules/require-barrel-import.js';
  */
 export const kolibriPlugin = {
 	rules: {
+		'apply-passes-required': applyPassesRequired,
+		'prop-required-no-initializer': propRequiredNoInitializer,
+		'prop-optional-requires-initializer': propOptionalRequiresInitializer,
 		'require-barrel-import': requireBarrelImport,
 		'no-translate-cast-or-concat': noTranslateCastOrConcat,
 	},

@@ -14,9 +14,4 @@ import { type InputDateDeps, isValidInputDate, normalizeInputDate } from './help
  */
 export type InputDateMaxProp = Prop<'max', Iso8601 | Date, string>;
 // The default is `undefined`: without a bound the attribute is not rendered.
-export const inputDateMaxProp = createDependentPropDefinition<InputDateMaxProp, InputDateDeps>(
-	'max',
-	undefined as unknown as string,
-	normalizeInputDate,
-	isValidInputDate,
-);
+export const inputDateMaxProp = createDependentPropDefinition<InputDateMaxProp, InputDateDeps>('max', undefined, normalizeInputDate, isValidInputDate);

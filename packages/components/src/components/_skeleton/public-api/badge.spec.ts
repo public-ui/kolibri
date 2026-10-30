@@ -16,26 +16,29 @@ const KOL_BADGE_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'Stringified<PropColor>',
 		required: false,
-		default: "'#000'",
 		doc: 'Defines the backgroundColor and foregroundColor.',
+		default: "'#000'",
 	},
 	_icons: {
 		kind: 'prop',
 		type: 'Stringified<KoliBriIconsProp>',
 		required: false,
 		doc: 'Defines the icon classnames.',
+		default: undefined,
 	},
 	_label: {
 		kind: 'prop',
-		type: 'LabelLangSegmentsPropType',
+		type: 'LabelWithExpertSlotPropType',
 		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+		default: undefined,
 	},
 	_smartButton: {
 		kind: 'prop',
 		type: 'Stringified<InternalButtonProps>',
 		required: false,
 		doc: 'Allows to add a button with an arbitrary action within the element (_hide-label only).',
+		default: undefined,
 	},
 };
 

@@ -14,10 +14,12 @@ import type {
 	AccordionProps,
 	ClickableElement,
 	CollapsibleCallbacksPropType,
+	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
 	KolFocusOptions,
 	LabelLangSegmentsPropType,
+	OpenPropType,
 } from '../../schema';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -77,10 +79,10 @@ export class KolAccordion
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
 	}
 
@@ -91,7 +93,7 @@ export class KolAccordion
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -107,7 +109,7 @@ export class KolAccordion
 	/**
 	 * Defines the callback functions for the collapsible.
 	 */
-	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
+	@Prop() public _on?: CollapsibleCallbacksPropType<boolean> = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {
@@ -116,12 +118,11 @@ export class KolAccordion
 
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
-	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
 
 	@Watch('_open')
-	public watchOpen(value?: boolean): void {
+	public watchOpen(value?: OpenPropType): void {
 		openProp.apply(value, (v) => {
 			this.setRenderProp('open', v);
 			/* The very first pass runs during componentWillLoad: render the final state straight

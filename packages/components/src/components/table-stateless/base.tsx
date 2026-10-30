@@ -41,6 +41,7 @@ import type {
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCellsPropType,
+	TableLoadingPropType,
 	TableSelectionPropType,
 	VariantClassNamePropType,
 } from '../../schema';
@@ -169,10 +170,10 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	}
 
 	protected applyLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
-	protected applyLoading(value?: boolean): void {
+	protected applyLoading(value?: TableLoadingPropType): void {
 		tableLoadingProp.apply(value, (v) => this.setRenderProp('loading', v));
 	}
 

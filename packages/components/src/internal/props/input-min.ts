@@ -14,4 +14,4 @@ import { normalizeInputNumber } from './helpers/normalizers';
  */
 export type InputMinProp = Prop<'min', number | NumberString, number>;
 // The default is `undefined`: without a bound the attribute is not rendered.
-export const inputMinProp = createPropDefinition<InputMinProp>('min', undefined as unknown as number, normalizeInputNumber);
+export const inputMinProp = createPropDefinition<InputMinProp>('min', undefined, normalizeInputNumber);

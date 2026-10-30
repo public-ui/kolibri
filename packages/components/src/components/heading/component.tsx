@@ -7,7 +7,7 @@ import type { HeadingApi } from '../../internal/functional-components/heading/ap
 import { headingPropsConfig } from '../../internal/functional-components/heading/api';
 import { HeadingFC } from '../../internal/functional-components/heading/component';
 import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../internal/props';
-import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType } from '../../schema';
+import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType, SecondaryHeadlinePropType } from '../../schema';
 
 /**
  *
@@ -22,13 +22,13 @@ import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType } from '..
 })
 export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingProps, WebComponentInterface<HeadingApi> {
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -44,17 +44,17 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	/**
 	 * Defines the text of the secondary headline.
 	 */
-	@Prop() public _secondaryHeadline?: string;
+	@Prop() public _secondaryHeadline?: SecondaryHeadlinePropType = undefined;
 
 	@Watch('_secondaryHeadline')
-	public watchSecondaryHeadline(value?: string): void {
+	public watchSecondaryHeadline(value?: SecondaryHeadlinePropType): void {
 		secondaryHeadlineProp.apply(value, (v) => this.setRenderProp('secondaryHeadline', v));
 	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(headingPropsConfig);
 
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		levelProp.apply(this._level, (v) => this.setRenderProp('level', v));
 		secondaryHeadlineProp.apply(this._secondaryHeadline, (v) => this.setRenderProp('secondaryHeadline', v));
 	}

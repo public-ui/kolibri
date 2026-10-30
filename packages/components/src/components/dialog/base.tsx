@@ -11,7 +11,8 @@ import { dialogPropsConfig } from '../../internal/functional-components/dialog/a
 import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
-import { trimLabel, type HeadingLevel, type KoliBriDialogEventCallbacks, type LabelLangSegmentsPropType } from '../../schema';
+import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
+import { trimLabel } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -71,7 +72,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 	// --- Prop application ---
 
 	protected applyLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyLevel(value?: HeadingLevel): void {
@@ -86,7 +87,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 		variantDialogProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
-	protected applyWidth(value?: string): void {
+	protected applyWidth(value?: WidthPropType): void {
 		widthProp.apply(value, (v) => this.setRenderProp('width', v));
 	}
 
