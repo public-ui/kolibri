@@ -543,6 +543,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	public render(): JSX.Element {
 		return (
+			// The host keeps the class `kol-table-stateful`, which consumers of the element can select —
+			// documented exception to the no-Host-class convention, same as kol-select.
 			<Host class="kol-table-stateful">
 				{this.renderPagination('top')}
 				{this.renderTableStatelessFC()}
