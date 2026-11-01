@@ -5,7 +5,8 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { QuoteApi } from '../../internal/functional-components/quote/api';
 import { quotePropsConfig } from '../../internal/functional-components/quote/api';
 import { QuoteFC } from '../../internal/functional-components/quote/component';
-import { hrefProp, labelProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../internal/props';
+import { hrefProp, labelLangSegmentsProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../internal/props';
+import type { HrefPropType, LabelLangSegmentsPropType, QuotePropType } from '../../schema';
 
 /**
  * The **Quote** component has two variants: a short inline (`inline`) and an indented block (`block`) variant. Both variants include a link to the source of the quote.
@@ -22,32 +23,32 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	 * Sets the target URI of the link or citation source.
 	 */
 	@Prop()
-	public _href!: string;
+	public _href!: HrefPropType;
 
 	@Watch('_href')
-	public watchHref(value?: string): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+	public watchHref(value?: HrefPropType): void {
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label?: string;
+	public _label?: LabelLangSegmentsPropType = undefined;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
 	 * Defines the text of the quote.
 	 */
 	@Prop()
-	public _quote!: string;
+	public _quote!: QuotePropType;
 
 	@Watch('_quote')
-	public watchQuote(value?: string): void {
+	public watchQuote(value?: QuotePropType): void {
 		quoteProp.apply(value, (v) => this.setRenderProp('quote', v));
 	}
 
@@ -65,8 +66,8 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	public componentWillLoad(): void {
 		this.initRenderProps(quotePropsConfig);
 
-		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		quoteProp.apply(this._quote, (v) => this.setRenderProp('quote', v));
 		variantQuoteProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
 	}

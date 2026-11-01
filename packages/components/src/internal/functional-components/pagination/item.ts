@@ -3,6 +3,7 @@ import type {
 	CustomClassPropType,
 	InternalButtonProps,
 	KoliBriPaginationButtonCallbacks,
+	LabelPropType,
 	PaginationHasButton,
 	Stringified,
 	TooltipAlignPropType,
@@ -13,12 +14,12 @@ import { addNavLabel, removeNavLabel } from '../../../utils/unique-nav-labels';
 import {
 	boundaryCountProp,
 	customClassProp,
+	labelProp,
 	pageProp,
 	pageSizeOptionsProp,
 	pageSizeProp,
 	paginationCallbacksProp,
 	paginationHasButtonsProp,
-	paginationLabelProp,
 	paginationMaxProp,
 	siblingCountProp,
 	tooltipAlignProp,
@@ -49,7 +50,7 @@ export type PaginationInput = {
 	boundaryCount?: number;
 	customClass?: CustomClassPropType;
 	hasButtons?: boolean | Stringified<PaginationHasButton>;
-	label?: string;
+	label?: LabelPropType;
 	max?: number;
 	on?: KoliBriPaginationButtonCallbacks;
 	page?: number;
@@ -82,7 +83,7 @@ export type PaginationItem = {
 	applyCustomClass: (value?: CustomClassPropType) => void;
 	/** An object sets single buttons and keeps the others. */
 	applyHasButtons: (value?: boolean | Stringified<PaginationHasButton>) => void;
-	applyLabel: (value?: string) => void;
+	applyLabel: (value?: LabelPropType) => void;
 	applyMax: (value?: number) => void;
 	applyOn: (value?: KoliBriPaginationButtonCallbacks) => void;
 	applyPage: (value?: number) => void;
@@ -190,11 +191,11 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		});
 	};
 
-	const applyLabel = (value: string | undefined, initial: boolean): void => {
+	const applyLabel = (value: LabelPropType | undefined, initial: boolean): void => {
 		if (!initial) {
 			removeNavLabel(store.get('label'));
 		}
-		paginationLabelProp.apply(value ?? translatePagination, (v) => store.set('label', v));
+		labelProp.apply(value ?? translatePagination, (v) => store.set('label', v));
 		addNavLabel(store.get('label'));
 	};
 

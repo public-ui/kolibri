@@ -2,7 +2,7 @@ import type { FunctionalComponent as FC, JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
-import type { InternalButtonProps } from '../../../schema';
+import { trimLabel, type InternalButtonProps } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { nonce } from '../../../utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
@@ -120,7 +120,7 @@ export const PaginationContentFC: FC<PaginationFCProps> = ({
 				},
 			})}
 		</span>,
-		<nav class={paginationBem('navigation')} aria-label={label}>
+		<nav class={paginationBem('navigation')} aria-label={trimLabel(label)}>
 			<ul class={paginationBem('navigation-list')}>
 				{hasButtons.first && navigationButton('first', leftDoubleArrowIcon, translate('kol-page-first'), page <= 1)}
 				{hasButtons.previous && navigationButton('previous', leftSingleArrowIcon, translate('kol-page-back'), page <= 1)}

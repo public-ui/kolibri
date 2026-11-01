@@ -38,14 +38,14 @@ const KOL_DRAWER_PUBLIC_API: PublicApiContract = {
 	},
 	_hasCloser: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'HasCloserPropType',
 		required: false,
+		doc: 'Defines whether the element can be closed.',
 		default: 'false',
-		doc: 'Defines whether the element can be closed. @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.',
 	},
 	_label: {
 		kind: 'prop',
-		type: 'LabelPropType',
+		type: 'LabelLangSegmentsPropType',
 		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},
@@ -53,8 +53,8 @@ const KOL_DRAWER_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'HeadingLevel',
 		required: false,
-		default: '0',
 		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+		default: '0',
 	},
 	_on: {
 		kind: 'prop',

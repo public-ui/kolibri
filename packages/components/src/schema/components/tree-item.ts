@@ -1,7 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { PropActive, PropHref, PropLabel, PropOpen } from '../props';
+import type { PropActive, PropHref, PropLabelLangSegments, PropOpen } from '../props';
 
-type RequiredProps = PropLabel & PropHref;
+type RequiredProps = PropLabelLangSegments & PropHref;
 type OptionalProps = PropOpen & PropActive;
 
 type RequiredStates = RequiredProps & { hasChildren: boolean };

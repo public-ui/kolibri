@@ -3,7 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	PropAriaLabelledby,
 	PropHasSettingsMenu,
-	PropLabel,
+	PropLabelLangSegments,
 	PropTableData,
 	PropTableDataFoot,
 	PropTableSelection,
@@ -84,7 +84,7 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 
 type RequiredProps = {
 	headers: Stringified<KoliBriTableHeaders>;
-} & PropLabel &
+} & PropLabelLangSegments &
 	PropTableData;
 type OptionalProps = {
 	allowMultiSort: boolean;
@@ -105,7 +105,7 @@ type RequiredStates = {
 	headers: KoliBriTableHeaders;
 	pagination: KoliBriTablePaginationStates;
 	sortedData: KoliBriTableDataType[];
-} & PropLabel &
+} & PropLabelLangSegments &
 	PropPaginationPosition;
 type OptionalStates = {
 	sortDirection: KoliBriSortDirection;

@@ -139,3 +139,26 @@ exports[`kol-badge should render with _label="Text" 1`] = `
   </template>
 </kol-badge>
 `;
+
+exports[`kol-badge should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
+<kol-badge>
+  <template shadowrootmode="open">
+    <div class="kol-badge" style="background-color: #000; color: #959595;">
+      <span class="kol-badge__label kol-span">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            <span lang="en">
+              partly english
+            </span>
+            <span>
+              Label
+            </span>
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+        </span>
+      </span>
+      <br>
+    </div>
+  </template>
+</kol-badge>
+`;
