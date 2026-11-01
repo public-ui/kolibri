@@ -1424,7 +1424,7 @@ exports[`kol-combobox should render with _label=[{"text":"partly english","lang"
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
               <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
-              <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete" data-testid="combobox-delete">
+              <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
                     <span class="kol-span__container">
