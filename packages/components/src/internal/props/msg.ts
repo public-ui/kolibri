@@ -38,4 +38,4 @@ function validateMsg(value: Stringified<MsgPropType>): boolean {
 
 // The default is `undefined`: a field without a message renders neither the message nor its
 // `aria-describedby` reference, and every reader checks the message for truthiness.
-export const msgProp = createPropDefinition<MsgProp>('msg', undefined as unknown as Stringified<MsgPropType>, normalizeMsg, validateMsg);
+export const msgProp = createPropDefinition<MsgProp>('msg', undefined, normalizeMsg, validateMsg);

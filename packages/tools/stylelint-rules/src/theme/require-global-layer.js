@@ -9,7 +9,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
 });
 
 const meta = {
-	url: 'https://github.com/public-ui/kolibri/blob/main/AGENTS.md#theming',
+	url: 'https://github.com/public-ui/kolibri/blob/develop/AGENTS.md#theming',
 	fixable: false,
 };
 

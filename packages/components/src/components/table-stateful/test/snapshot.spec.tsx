@@ -96,6 +96,14 @@ const CASES: Case[] = [
 			_variant: 'custom',
 		},
 	],
+	[
+		'label with language ',
+		{
+			_label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }],
+			_headers: headers(),
+			_data: FEW_ROWS,
+		},
+	],
 ];
 
 describe('kol-table-stateful', () => {

@@ -32,11 +32,14 @@ import {
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaControlsPropType,
 	AriaCurrentValuePropType,
 	AriaDescriptionPropType,
 	AriaOwnsPropType,
 	CustomClassPropType,
+	DisabledPropType,
 	DownloadPropType,
+	HideLabelPropType,
 	HrefPropType,
 	InlinePropType,
 	KoliBriIconsProp,
@@ -45,6 +48,7 @@ import type {
 	LinkTargetPropType,
 	ShortKeyPropType,
 	Stringified,
+	TabIndexPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
@@ -166,7 +170,7 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
 	}
 
-	protected applyAriaControls(value?: string): void {
+	protected applyAriaControls(value?: AriaControlsPropType): void {
 		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
 	}
 
@@ -190,7 +194,7 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
 	}
 
-	protected applyDisabled(value?: boolean): void {
+	protected applyDisabled(value?: DisabledPropType): void {
 		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
 	}
 
@@ -198,12 +202,12 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 		downloadProp.apply(value, (v) => this.setRenderProp('download', v));
 	}
 
-	protected applyHideLabel(value?: boolean): void {
+	protected applyHideLabel(value?: HideLabelPropType): void {
 		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
 	}
 
 	protected applyHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	protected applyIcons(value?: Stringified<KoliBriIconsProp>): void {
@@ -215,11 +219,15 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.setState('expertSlot', value === '');
-			this.tooltipBehavior.watchLabel(this.getTooltipLabel());
-		});
+		labelWithExpertSlotProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.setState('expertSlot', value === '');
+				this.tooltipBehavior.watchLabel(this.getTooltipLabel());
+			},
+			this.isRequired('label'),
+		);
 	}
 
 	protected applyOn(value?: LinkOnCallbacksPropType): void {
@@ -234,7 +242,7 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
 	}
 
-	protected applyTabIndex(value?: number): void {
+	protected applyTabIndex(value?: TabIndexPropType): void {
 		// The props config seeds `tabIndex` with its default `0`, but an unset tabindex must not
 		// render as `tabindex="0"`. Unsetting the prop has to restore that state, so the else branch
 		// is not optional: without it a reset would keep the previous number.

@@ -8,6 +8,7 @@ import type { LinkApi } from '../link/api';
 import { linkPropsConfig } from '../link/api';
 import { LinkFC } from '../link/component';
 import { buildDefaultPropsFromConfig } from '../props-from-config';
+import { renderLabelWithLang } from '../span/component';
 import type { TreeItemApi } from './api';
 
 const treeItemBem = bem.forBlock('kol-tree-item');
@@ -84,7 +85,7 @@ export const TreeItemFC: FC<FunctionalComponentProps<TreeItemApi>> = ({
 					) : (
 						<span class={BEM_CLASS_TREE_ITEM__TOGGLE_BUTTON_PLACEHOLDER}></span>
 					)}
-					<span class={BEM_CLASS_TREE_ITEM__TEXT}>{label}</span>
+					<span class={BEM_CLASS_TREE_ITEM__TEXT}>{renderLabelWithLang(label)}</span>
 				</span>
 			</LinkFC>
 		</span>

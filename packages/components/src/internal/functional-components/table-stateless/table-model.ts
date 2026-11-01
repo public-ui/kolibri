@@ -59,7 +59,7 @@ export const getNumberOfCols = (horizontalHeaders: KoliBriTableHeaderCell[][], d
 };
 
 /** The longest vertical header column decides the body row count; footer rows are not part of it. */
-export const getNumberOfRows = (verticalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[], footLength: number): number => {
+const getNumberOfRows = (verticalHeaders: KoliBriTableHeaderCell[][], data: KoliBriTableDataType[], footLength: number): number => {
 	const max = Math.max(0, ...verticalHeaders.map((column) => sumSpans(column, 'rowSpan')));
 	return max === 0 ? data.length : max - footLength;
 };
@@ -283,10 +283,10 @@ export const getTableMinWidth = ({ horizontal, vertical }: TableHeaders): string
 	return `calc(${allWidths.map((w) => `${w}px`).join(' + ')})`;
 };
 
-export const normalizeSelectionKeys = (value?: KoliBriTableSelectionKey | KoliBriTableSelectionKey[]): KoliBriTableSelectionKey[] =>
+const normalizeSelectionKeys = (value?: KoliBriTableSelectionKey | KoliBriTableSelectionKey[]): KoliBriTableSelectionKey[] =>
 	value === undefined ? [] : Array.isArray(value) ? value : [value];
 
-export const getSelectionKeyPropertyName = (selection: KoliBriTableSelection | false): string => (selection ? selection.keyPropertyName : undefined) ?? 'id';
+const getSelectionKeyPropertyName = (selection: KoliBriTableSelection | false): string => (selection ? selection.keyPropertyName : undefined) ?? 'id';
 
 /**
  * Selection state derived once per render: string sets allow O(1) membership checks per row

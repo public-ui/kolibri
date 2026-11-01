@@ -1,5 +1,5 @@
 import type { IconsPropType, KolFocusOptions } from '../../../schema';
-import { collapsibleCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../props';
+import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelProp, openProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
@@ -8,14 +8,14 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * `label` is the only required prop. All others are optional.
  *
  * Notes on prop choices:
- * - `labelProp` (not `labelWithExpertSlotProp`): the label labels the toggle button and has no
+ * - `labelLangSegmentsProp` (not `labelWithExpertSlotProp`): the label labels the toggle button and has no
  *   expert slot. It keeps the shared 2–80 character validation and accessibility hints.
  * - `openProp`: the toggle state. The public `_open` prop stays mutable and reflected on the web
  *   component; the render prop mirrors it for the functional component.
  */
 export const collapsiblePropsConfig = {
 	optional: [collapsibleCallbacksProp, disabledProp, levelProp, openProp],
-	required: [labelProp],
+	required: [labelLangSegmentsProp],
 } as const satisfies PropsConfigShape;
 
 export type CollapsibleApi = ApiFromConfig<

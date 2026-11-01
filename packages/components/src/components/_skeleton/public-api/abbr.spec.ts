@@ -8,7 +8,7 @@ import { describePublicApiContract } from './contract';
 const KOL_ABBR_PUBLIC_API: PublicApiContract = {
 	_label: {
 		kind: 'prop',
-		type: 'LabelPropType',
+		type: 'LabelLangSegmentsPropType',
 		required: false,
 		doc: 'DEPRECATED! Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},

@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { HeadingLevel, PropHasCloser, PropHref, PropLabel, PropLinkTarget } from '../props';
+import type { HeadingLevel, PropHasCloser, PropHref, PropLabelLangSegments, PropLinkTarget } from '../props';
 import type { EventCallback } from '../types';
 
 export type KoliBriCardEventCallbacks = {
@@ -9,7 +9,7 @@ export type KoliBriCardEventCallbacks = {
 	onBlur?: EventCallback<FocusEvent>;
 };
 
-type RequiredProps = PropLabel;
+type RequiredProps = PropLabelLangSegments;
 type OptionalProps = {
 	level: HeadingLevel;
 	on: KoliBriCardEventCallbacks;

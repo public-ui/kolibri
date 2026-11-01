@@ -733,12 +733,6 @@ ROUTES.set('scenarios/static-form', {
 		skip: true,
 	},
 });
-ROUTES.set('scenarios/sample-form-with-validation', {
-	snapshot: {
-		forceFullPage: true,
-		skip: true,
-	},
-});
 ROUTES.set('scenarios/disabled-interactive-scenario', {
 	snapshot: {
 		forceFullPage: true,
@@ -1027,4 +1021,7 @@ ROUTES.set('scenarios/focus-elements?component=tree', {
 			height: 0,
 		},
 	},
+});
+ROUTES.set('scenarios/label-lang', {
+	snapshot: {},
 });

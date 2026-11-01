@@ -1,10 +1,12 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
+import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import { LinkFC } from '../link/component';
+import { renderLabelWithLang } from '../span/component';
 import type { BreadcrumbApi } from './api';
 import type { BreadcrumbLinkItem } from './link-item';
 
@@ -42,9 +44,13 @@ const renderLink = (item: BreadcrumbLinkItem, index: number, lastIndex: number, 
 			{index === lastIndex ? (
 				<span class={BEM_CLASS_BREADCRUMB__LIST_ELEMENT_SPAN} aria-current="page">
 					{link._hideLabel ? (
-						<IconFC class={BEM_CLASS_BREADCRUMB__ICON} icons={typeof link._icons === 'string' ? link._icons : 'kolicon-link'} label={link._label} />
+						<IconFC
+							class={BEM_CLASS_BREADCRUMB__ICON}
+							icons={typeof link._icons === 'string' ? link._icons : 'kolicon-link'}
+							label={link._label ? trimLabel(link._label) : link._href} // logic like KolLink
+						/>
 					) : (
-						<>{link._label}</>
+						<>{renderLabelWithLang(link._label)}</>
 					)}
 				</span>
 			) : (

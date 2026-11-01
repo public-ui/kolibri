@@ -15,15 +15,14 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 		definitions: ['tableHeadersProp', 'tableStatefulHeadersProp'],
 		reason: 'the stateful table derives the sort from the headers as given and passes them to the stateless table, which checks them',
 	},
-	href: { definitions: ['hrefProp', 'optionalHrefProp'], reason: 'required link target vs. optional link of the card' },
 	icons: {
 		definitions: ['horizontalIconsProp', 'iconsInputCheckboxProp', 'iconsProp', 'spanIconsProp'],
 		reason: 'icons of a form field (left/right state), checkbox state icons, a single icon class, icons of a span (raw)',
 	},
 	label: {
-		definitions: ['labelProp', 'labelWithExpertSlotProp', 'paginationLabelProp'],
+		definitions: ['labelLangSegmentsProp', 'labelProp', 'labelWithExpertSlotProp'],
 		reason:
-			"labelProp checks the length ('' or at least two characters) and gives the label hints; labelWithExpertSlotProp accepts every string, and in a component with an expert slot '' switches the slot on; paginationLabelProp behaves like labelWithExpertSlotProp and is kept apart for its meaning, the label of the navigation landmark of the pagination",
+			'labelProp validates at least two characters (numbers-only labels are exempt, the empty string is invalid) and gives the label hints; labelLangSegmentsProp additionally accepts language segments with the same rules on the joined text; labelWithExpertSlotProp additionally accepts the empty string, which enables the expert slot of a component — requiredness itself follows the props config slot',
 	},
 	links: {
 		definitions: ['breadcrumbLinksProp', 'navLinksProp', 'skipNavLinksProp'],

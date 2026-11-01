@@ -1,3 +1,4 @@
+import type { RequiredPropType } from '../../schema/props/required';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -12,5 +13,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  * @see https://html.spec.whatwg.org/multipage/input.html#attr-input-required
  * @see https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html
  */
-export type RequiredProp = SimpleProp<'required', boolean>;
+export type RequiredProp = SimpleProp<'required', RequiredPropType>;
 export const requiredProp = createPropDefinition<RequiredProp>('required', false, normalizeBoolean);
