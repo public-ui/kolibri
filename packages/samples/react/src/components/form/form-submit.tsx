@@ -10,19 +10,19 @@ export const FormSubmit: FC = () => {
 	const inputRef = useRef<HTMLKolInputTextElement | null>(null);
 	const alertDivRef = useRef<HTMLDivElement | null>(null);
 	const alertRef = useRef<HTMLKolAlertElement | null>(null);
+
 	const formEventHandlerSuccessReset = {
 		onSubmit: () => SuccessHandler(),
 		onReset: () => ResetHandler(),
 	};
+
 	const formEventHandlerError = {
 		onSubmit: () => ErrorHandler(),
 	};
-	const formEventHandlerReset = {};
 
 	function SuccessHandler() {
 		if (alertDivRef.current) alertDivRef.current.hidden = false;
 		if (alertRef.current) alertRef.current._alert = true;
-		console.log('submitted:');
 	}
 
 	function ErrorHandler() {
@@ -32,7 +32,6 @@ export const FormSubmit: FC = () => {
 
 	function ResetHandler() {
 		dialogResetRef.current?.showModal();
-		console.log('reset:');
 	}
 
 	return (
@@ -44,7 +43,7 @@ export const FormSubmit: FC = () => {
 			<SampleBlock id="form-submit-success" className="grid gap-2">
 				<KolCard _label="Speichern erfolgreich / Zurücksetzen">
 					<div ref={alertDivRef} hidden>
-						<KolAlert ref={alertRef} _label="Speichern erfolgreich" _type="success"></KolAlert>
+						<KolAlert _alert={false} ref={alertRef} _label="Speichern erfolgreich" _type="success"></KolAlert>
 					</div>
 					<KolForm className="w-full" _on={formEventHandlerSuccessReset}>
 						<KolInputText ref={inputRef} id="input1" _label="Input 1" />
@@ -59,6 +58,7 @@ export const FormSubmit: FC = () => {
 									onClick: () => {
 										if (inputRef.current) inputRef.current._value = '';
 										if (alertDivRef.current) alertDivRef.current.hidden = true;
+										if (alertRef.current) alertRef.current._alert = false;
 										dialogResetRef.current?.close();
 									},
 								}}
