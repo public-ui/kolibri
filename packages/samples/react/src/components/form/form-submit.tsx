@@ -87,16 +87,6 @@ export const FormSubmit: FC = () => {
 					</KolForm>
 				</KolCard>
 			</SampleBlock>
-
-			<br />
-			<SampleBlock id="form-submit-reset" className="grid gap-2">
-				<KolCard _label="Zurücksetzen">
-					<KolForm className="w-full" _on={formEventHandlerReset}>
-						<KolInputText id="input1" _label="Input 1" />
-						<br />
-					</KolForm>
-				</KolCard>
-			</SampleBlock>
 		</>
 	);
 };
