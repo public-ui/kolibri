@@ -1,0 +1,1 @@
+import{_ as e,o as t}from"./base-web-component-Bh80ikSy-B6Ze8kog.js";import{t as n}from"./label-hints-ChT9EpIY-BDXc-n0z.js";import{r}from"./validators-CAODrirc-CJ1xj3dm.js";var i=t(`label`,``,e,r,{hints:n});export{i as t};
