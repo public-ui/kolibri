@@ -9,6 +9,9 @@
  *   propagate element references through the Android/iOS accessibility APIs — they see the
  *   table without a label. This is a Chrome/TalkBack limitation, not a bug in this code.
  *   Users who require TalkBack support today should fall back to the `_label` prop.
+ *   VoiceOver on macOS does not announce element references either — natively or through the
+ *   components; see KNOWN_ISSUES.md and the native reference implementations of the
+ *   `input-text/aria-details` sample.
  */
 export type HostInternals = {
 	role: string | null;
