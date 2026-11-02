@@ -1,0 +1,1 @@
+import{c as e}from"./index-CKurlmT2-C1PY3Jk9.js";import{i as t}from"./index-B7O_U5Sm.js";var n=t.forBlock(`kol-click-button`),r=n(),i=n(`label`),a=({label:t,handleClick:n,refButton:a})=>e(`button`,{class:r,ref:a,onClick:n},e(`span`,{class:i},t));export{a as t};
