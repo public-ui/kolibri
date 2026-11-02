@@ -3,8 +3,12 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import type {
 	AriaDetailsPropType,
 	ClickableElement,
+	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
 	InputRadioProps,
 	InputTypeOnDefault,
 	KolFocusOptions,
@@ -13,11 +17,13 @@ import type {
 	NamePropType,
 	RadioOption,
 	RadioOptionsPropType,
+	RequiredPropType,
 	SelectOption,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
 import type { OrientationPropType } from '../../schema/props/orientation';
@@ -87,7 +93,7 @@ export class KolInputRadio
 	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
 	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -96,52 +102,49 @@ export class KolInputRadio
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
+	public watchHideMsg(value?: HideMsgPropType): void {
 		this.applyHideMsg(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: string = '';
+	@Prop() public _hint?: HintPropType = '';
 
 	@Watch('_hint')
-	public watchHint(value?: string): void {
+	public watchHint(value?: HintPropType): void {
 		this.applyHint(value);
 	}
 
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -149,7 +152,7 @@ export class KolInputRadio
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -161,7 +164,7 @@ export class KolInputRadio
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -171,7 +174,7 @@ export class KolInputRadio
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -181,7 +184,7 @@ export class KolInputRadio
 	/**
 	 * Gibt die EventCallback-Funktionen für das Input-Event an.
 	 */
-	@Prop() public _on?: InputTypeOnDefault;
+	@Prop() public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -191,7 +194,7 @@ export class KolInputRadio
 	/**
 	 * Options the user can choose from.
 	 */
-	@Prop() public _options?: RadioOptionsPropType;
+	@Prop() public _options?: RadioOptionsPropType = undefined;
 
 	/** The option map keeps its entries while the list is empty. */
 	@Watch('_options')
@@ -217,12 +220,11 @@ export class KolInputRadio
 
 	/**
 	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: RequiredPropType = false;
 
 	@Watch('_required')
-	public watchRequired(value?: boolean): void {
+	public watchRequired(value?: RequiredPropType): void {
 		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
 	}
 
@@ -230,7 +232,7 @@ export class KolInputRadio
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -249,12 +251,11 @@ export class KolInputRadio
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
+	public watchTouched(value?: TouchedPropType): void {
 		this.applyTouched(value);
 	}
 
@@ -278,7 +279,7 @@ export class KolInputRadio
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

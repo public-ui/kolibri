@@ -7,19 +7,19 @@ import { describePublicApiContract } from './contract';
 const KOL_QUOTE_PUBLIC_API: PublicApiContract = {
 	_href: {
 		kind: 'prop',
-		type: 'string',
+		type: 'HrefPropType',
 		required: true,
 		doc: 'Sets the target URI of the link or citation source.',
 	},
 	_label: {
 		kind: 'prop',
-		type: 'string',
+		type: 'LabelLangSegmentsPropType',
 		required: false,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},
 	_quote: {
 		kind: 'prop',
-		type: 'string',
+		type: 'QuotePropType',
 		required: true,
 		doc: 'Defines the text of the quote.',
 	},
@@ -27,8 +27,8 @@ const KOL_QUOTE_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'QuoteVariantType',
 		required: false,
-		default: "'inline'",
 		doc: 'Defines which variant should be used for presentation.',
+		default: "'inline'",
 	},
 };
 

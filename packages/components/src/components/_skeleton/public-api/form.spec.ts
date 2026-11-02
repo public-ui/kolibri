@@ -30,8 +30,8 @@ const KOL_FORM_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'Stringified<boolean>',
 		required: false,
-		default: 'true',
 		doc: 'Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.',
+		default: 'true',
 	},
 };
 

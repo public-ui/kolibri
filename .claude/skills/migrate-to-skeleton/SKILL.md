@@ -1,6 +1,6 @@
 ---
 name: migrate-to-skeleton
-description: Migriert eine Legacy-KoliBri-Komponente auf die Skeleton-Blueprint-Architektur (WC-Orchestrator → optionale Behaviors + FC + Props-Pattern). Führt durch Gap-Analyse, Props-First, Layer-Refactor, Legacy-Rückbau und die Abnahme-Gates (Unit-Tests, öffentliche API-Parität, Pixel-Gate). Trigger: "Skeleton-Migration", "Komponente migrieren", "auf Skeleton umbauen", "migrate-to-skeleton", "BaseWebComponent", "Prop-Triangle", "propsConfig", "ApiFromConfig", "BemRootNodeFC", "Legacy-Komponente umbauen", "Controller auflösen", "Aspect-Klasse auflösen", "Dead-Schema-Abbau", "Skeleton-Blueprint", "migrate to skeleton".
+description: 'Migriert eine Legacy-KoliBri-Komponente auf die Skeleton-Blueprint-Architektur (WC-Orchestrator → optionale Behaviors + FC + Props-Pattern). Führt durch Gap-Analyse, Props-First, Layer-Refactor, Legacy-Rückbau und die Abnahme-Gates (Unit-Tests, öffentliche API-Parität, Pixel-Gate). Trigger: "Skeleton-Migration", "Komponente migrieren", "auf Skeleton umbauen", "migrate-to-skeleton", "BaseWebComponent", "Prop-Triangle", "propsConfig", "ApiFromConfig", "BemRootNodeFC", "Legacy-Komponente umbauen", "Controller auflösen", "Aspect-Klasse auflösen", "Dead-Schema-Abbau", "Skeleton-Blueprint", "migrate to skeleton".'
 ---
 
 # Migrate to Skeleton
@@ -90,7 +90,7 @@ Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helpe
 Komponente in ihrem Shadow DOM (z. B. einen Button), rendert sie deren FC direkt; die Orchestrierung
 je eingebetteter Instanz liegt in einem Item (`ARC42.md#embedded-components-items`:
 `createButtonItem`, `createLinkItem`, `createPopoverButtonItem`, `createDialogItem`, für eine
-variable Anzahl `createItemPool`). Ein `shadow: false`-Element als Zwischenschicht gibt es nicht mehr; einzige Ausnahme ist `kol-tooltip-wc`, das deprecated bleibt und ausdrücklich nur für DESYBRI erhalten wird.
+variable Anzahl `createItemPool`). Ein `shadow: false`-Element als Zwischenschicht gibt es nicht mehr.
 
 Vier Vorprüfungen:
 

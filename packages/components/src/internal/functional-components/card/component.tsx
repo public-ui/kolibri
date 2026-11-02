@@ -7,6 +7,7 @@ import clsx from '../../../utils/clsx';
 import { ButtonFC } from '../button/component';
 import type { ResolvedButtonProps } from '../button/resolve-props';
 import type { FunctionalComponentProps } from '../generic-types';
+import { renderLabelWithLang } from '../span/component';
 import type { CardApi } from './api';
 
 const cardBem = bem.forBlock('kol-card');
@@ -24,7 +25,7 @@ const NOOP = (): void => {};
 /** The heading renders either on its own or wrapped in the link, so it lives in its own FC. */
 const CardHeadingFC: FC<Pick<FunctionalComponentProps<CardApi>, 'headingId' | 'label' | 'level'>> = ({ headingId, label, level }) => (
 	<KolHeadingFc class={BEM_CLASS_CARD__HEADER} id={headingId} level={level}>
-		{label}
+		{renderLabelWithLang(label)}
 	</KolHeadingFc>
 );
 

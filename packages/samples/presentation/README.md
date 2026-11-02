@@ -1,7 +1,7 @@
 # KoliBri – Presentation App
 
 [![npm](https://img.shields.io/npm/v/@public-ui/presentation)](https://www.npmjs.com/package/@public-ui/presentation)
-[![license](https://img.shields.io/npm/l/@public-ui/presentation)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@public-ui/presentation)](https://github.com/public-ui/kolibri/blob/develop/LICENSE)
 [![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)

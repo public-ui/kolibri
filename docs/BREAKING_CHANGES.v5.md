@@ -120,3 +120,34 @@ The `*Props` types of components that still have consumers (`ButtonProps`, `Inte
 `LinkProps`, `ButtonLinkProps`, `LinkButtonProps`, `SplitButtonProps`, …) stay. Type the public
 props of a migrated element through the element itself, e.g. `Pick<HTMLKolAbbrElement, '_label'>`,
 or through the internal prop definitions in `src/internal/props`.
+
+## Removal of the deprecated `kol-tooltip-wc` element
+
+The `kol-tooltip-wc` element was the last remaining web component without Shadow DOM. It rendered the
+internal tooltip of KoliBri components into the light DOM and was kept deprecated for a single
+integrator only. It is removed together with the `KolTooltipWc` export, the `KolTooltipWcTag`
+constant and the generated `HTMLKolTooltipWcElement` types.
+
+Tooltips that KoliBri components render themselves (for example hints next to labels or buttons) keep
+working unchanged. They are rendered by the components internally and never required the standalone
+element.
+
+There is no standalone replacement. If your application rendered `<kol-tooltip-wc>` on its own,
+migrate to an application-provided tooltip, such as the native `title` attribute or a self-built
+popover. The `@public-ui/kolibri-cli` migration tool removes remaining usages and imports
+automatically (`npx @public-ui/kolibri-cli migrate src`).
+
+**Before (v4):**
+
+```tsx
+import { KolTooltipWc } from '@public-ui/components';
+
+<KolTooltipWc _align="top" _id="my-tooltip" _label="Tooltip text" />;
+```
+
+**After (v5):**
+
+```tsx
+// The element and its exports no longer exist. Remove the usage; tooltips of
+// KoliBri components keep working without it.
+```

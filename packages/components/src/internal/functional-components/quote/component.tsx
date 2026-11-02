@@ -33,7 +33,7 @@ export const QuoteFC: FC<FunctionalComponentProps<QuoteApi>> = (props) => {
 					</span>
 				</q>
 			)}
-			{typeof label === 'string' && label.length > 0 && (
+			{!!label && (
 				<figcaption class={BEM_CLASS_QUOTE__FIGCAPTION}>
 					<cite class={BEM_CLASS_QUOTE__CITE}>
 						<KolLinkTag _href={href} _label={label} _target="_blank" />

@@ -21,5 +21,24 @@ export function remapDateValue(raw: string, type: DateValueType): Date | Iso8601
 	if (raw === '') {
 		return null;
 	}
-	return type === 'Date' ? new Date(raw) : (raw as Iso8601);
+	if (type !== 'Date') {
+		return raw as Iso8601;
+	}
+	return parseDateValue(raw);
+}
+
+/** Matches the date-only ISO 8601 form, which JavaScript parses as UTC midnight. */
+const DATE_ONLY_ISO = /^(\d{4})-(\d{2})-(\d{2})$/;
+
+/**
+ * Parses the value of the native date input into a `Date` of the same local calendar day. The
+ * date-only form is split and built in local time, because `new Date('YYYY-MM-DD')` would read it
+ * as UTC midnight and fall one day west of UTC. Forms with a time parse locally anyway.
+ */
+function parseDateValue(raw: string): Date {
+	const match = DATE_ONLY_ISO.exec(raw);
+	if (!match) {
+		return new Date(raw);
+	}
+	return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
 }

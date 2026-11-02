@@ -80,4 +80,11 @@ describe('SpanFC', () => {
 		expect(page.root).toBeDefined();
 		expect(page.root).toMatchSnapshot();
 	});
+
+	it('should render spans with lang-attr in label', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => <SpanFC label={[{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }]} />);
+
+		expect(page.root).toBeDefined();
+		expect(page.root).toMatchSnapshot();
+	});
 });
