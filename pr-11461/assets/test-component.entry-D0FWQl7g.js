@@ -1,1 +1,0 @@
-import{l as e}from"./index-CKurlmT2-ZVc47_dB.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
