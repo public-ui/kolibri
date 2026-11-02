@@ -166,6 +166,8 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
 		this.cardCloseTooltipBehavior.componentWillLoad({
 			label: this.cardCloseButtonProps.label,
+			// The drawer sits at the viewport edge: a top tooltip has no room above the
+			// button, so it stays `left` regardless of what the resolver returns.
 			align: 'left',
 		});
 
