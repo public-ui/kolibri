@@ -53,6 +53,10 @@ git merge-tree --write-tree origin/develop origin/release/4
 
 - Einen bestehenden Branch **nie rebasen oder force-pushen** – Konfliktlösungen bleiben erhalten, der
   Branch wird nur durch weitere Merges aktualisiert.
+- Rückt `origin/release/4` während der Integration nach und es gibt eine zweite Merge-Runde in
+  denselben Branch, die Verifikation aus Abschnitt 5 vollständig wiederholen. Auflösungen aus der
+  ersten Runde maskieren neue Abweichungen nicht: Git meldet Konflikte, keine stillen Abweichungen
+  (Präzedenz #11452, zweite Runde `3ffa209`).
 
 ## 3. Merge ausführen
 
@@ -72,6 +76,14 @@ wird: `--ours` meint develop, `--theirs` meint release/4.
 **Grundsatz:** develop ist der Zielstand. Der Fix-Inhalt aus release/4 wird portiert, ohne
 v5-eigene Änderungen von develop zu verlieren. Nie eine Seite blind mit `--ours`/`--theirs`
 übernehmen; jede Datei einzeln entscheiden und die Entscheidung für den PR notieren.
+
+**Stille Annahmen:** Git meldet nur Dateien als Konflikt, die **beide** Seiten seit der Merge-Basis
+geändert haben. Dateien, die nur release/4 ändert, übernimmt der Merge automatisch in der
+release/4-Version; behält der Autor dort von Hand den develop-Stand oder verwirft eine
+release/4-Änderung, erscheint das weder in `git status` noch in `git log --merge` als Konflikt.
+Genau so verlor #11452 eine Docs-Zeile, ein Howto und die Sample-Entfernung aus #11336. Solche
+Entscheidungen sind erlaubt, aber sie müssen bewusst fallen, in die Konfliktauflösungs-Liste des PR
+(Abschnitt 6) und werden von der Verifikation in Abschnitt 5, Schritt 6 gefunden.
 
 Je Konflikt zunächst beide Seiten verstehen:
 
@@ -111,6 +123,16 @@ Lint/Build auf – sie vorher selbst suchen, statt sie dem CI zu überlassen.
 - Keine Historien-Kommentare ("aus release/4 übernommen", "während des Merges geändert") im Code.
 - Keine Zusatz-Refactorings, die kein Konflikt erfordert – der PR enthält nur Merge und Auflösung.
 
+### 4.4 Zusammengehörige Dateien aus demselben Stand übernehmen
+
+Fix und Regressionstest, Komponente und Snapshots, Schema und Locales sind Paare: Kommt eine
+Änderung aus release/4, kommen ihre Prüfungen aus demselben Stand mit, und umgekehrt. Code aus
+release/4 mit der Spec aus einem älteren Mischstand zu behalten ist keine Auflösung, sondern ein
+stiller Testverlust. Präzedenz #11452: `behavior.ts` kam mit `event.stopPropagation()`, die
+`behavior.spec.ts` ohne die beiden Assertionen aus #11313. Passt ein Paar nach der Auflösung nicht
+zusammen, beide Dateien mit `git checkout origin/release/4 -- <datei>` auf den Quell-Stand bringen
+oder beide auf dem develop-Stand lassen.
+
 ## 5. Verifizieren und Merge-Commit abschließen
 
 1. Konflikte stagen mit `git add -u` oder expliziten Pfaden. **Nie `git add -A`** – `.zcode/` ist
@@ -122,7 +144,22 @@ Lint/Build auf – sie vorher selbst suchen, statt sie dem CI zu überlassen.
 5. `pnpm lint` und die Unit-Tests der geänderten Pakete (meist `pnpm --filter @public-ui/components test:unit`,
    bei umfangreichen Merges `pnpm test`). Tests bauen implizit – kein separater Build, kein Build
    neben einem laufenden Watcher.
-6. Merge abschließen:
+6. **Treue gegen beide Eltern verifizieren (Pflicht, auch wenn Git keinen Konflikt gemeldet hat):**
+   Der PR-Diff gegen develop zeigt still geschluckte release/4-Änderungen nicht. Deshalb das
+   Ergebnis gegen die Quelle vergleichen:
+
+   ```bash
+   git diff --name-only origin/release/4 | sort > /tmp/abweichungen.txt
+   git diff --name-only $(git merge-base origin/develop origin/release/4) origin/develop | sort > /tmp/develop-seite.txt
+   comm -23 /tmp/abweichungen.txt /tmp/develop-seite.txt
+   ```
+
+   Jede Datei in der letzten Liste weicht vom release/4-Stand ab, ohne dass develop sie seit der
+   Merge-Basis geändert hat: eine Handentscheidung des Merge-Autors. Jede einzeln prüfen und in der
+   Konfliktauflösungs-Liste des PR dokumentieren; ist eine Abweichung unbeabsichtigt, die Datei mit
+   `git checkout origin/release/4 -- <datei>` auf den Quell-Stand bringen (Paarregel, Abschnitt 4.4).
+
+7. Merge abschließen:
 
    ```bash
    git commit --no-edit   # oder eigene Merge-Message, siehe Abschnitt 3
@@ -137,6 +174,10 @@ gh pr create --repo public-ui/kolibri --base develop --head merge/release-4-in-d
 ```
 
 - **Titel** nach Präzedenz (#8847, #9182, #8936): `chore: merge release/4 in develop`.
+- Die Konfliktauflösungs-Liste im Body muss **jede** Abweichung aus der Verifikation (Abschnitt 5,
+  Schritt 6) nennen, nicht nur die Dateien, die Git als Konflikt gemeldet hat. Präzedenz #11452:
+  drei dokumentierte Auflösungen, vier undokumentierte Abweichungen – erst der pr-audit hat sie
+  gefunden.
 - **Beschriftung** auf Englisch, darunter die deutsche Zusammenfassung in einem
   `<details>`-Block (Präzedenz #8847):
 
