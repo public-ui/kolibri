@@ -57,7 +57,7 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	 * A list of error objects that each describe an issue encountered in the form.
 	 * Each error object contains a message and a selector for identifying the form element related to the error.
 	 */
-	@Prop() public _errorList?: ErrorListPropType[];
+	@Prop() public _errorList?: ErrorListPropType[] = undefined;
 
 	@Watch('_errorList')
 	public watchErrorList(value?: ErrorListPropType[]): void {
@@ -70,7 +70,7 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	/**
 	 * Defines the callback functions for form events.
 	 */
-	@Prop() public _on?: KoliBriFormCallbacks;
+	@Prop() public _on?: KoliBriFormCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriFormCallbacks): void {

@@ -47,7 +47,13 @@ export const DialogWithAlert: FC = () => {
 			<div className="grid gap-4">
 				<div>
 					<KolButton _label="Open dialog with alert" _on={onOpenDialog} />
-					<KolDialog ref={dialogRef} _label="Dialog with KolAlert inside" _variant="card" _width="40%" _on={{ onClose: onDialogClose }}>
+					<KolDialog
+						ref={dialogRef}
+						_label="Dialog with KolAlert inside"
+						_variant="card"
+						_width="40%"
+						_on={{ onToggle: (open) => console.log('Dialog onToggle triggered!', open), onClose: onDialogClose }}
+					>
 						<div className="p-4">
 							{showAlert && (
 								<KolAlert _label="Closeable alert" _type="info" _variant="card" _hasCloser _on={{ onClose: onAlertClose }}>

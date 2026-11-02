@@ -1,5 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { PropButtonCallbacks, PropHideLabel, PropHref, PropIcons, PropLabel, PropLinkTarget } from '../props';
+import type { PropButtonCallbacks, PropHideLabel, PropHref, PropIcons, PropLabelLangSegments, PropLinkTarget } from '../props';
 import type { StencilUnknown } from './unknown';
 
 /**
@@ -8,9 +8,9 @@ import type { StencilUnknown } from './unknown';
  * Not all possible props of a link or button are relevant and supported.
  */
 
-type RequiredButtonProps = PropLabel & PropButtonCallbacks<StencilUnknown>;
+type RequiredButtonProps = PropLabelLangSegments & PropButtonCallbacks<StencilUnknown>;
 type RequiredLinkProps = PropHref;
-type RequiredTextProps = PropLabel;
+type RequiredTextProps = PropLabelLangSegments;
 
 type OptionalButtonOrLinkOrTextProps = PropHideLabel & {
 	active: boolean; // TODO: realy needed?
@@ -28,7 +28,7 @@ type OptionalButtonProps = OptionalButtonOrLinkOrTextProps & {
 
 type OptionalButtonOrLinkOrTextWithChildrenProps = OptionalButtonOrLinkOrTextProps & {
 	children: ButtonOrLinkOrTextWithChildrenProps[];
-} & PropLabel;
+} & PropLabelLangSegments;
 type OptionalButtonWithChildrenProps = OptionalButtonProps & {
 	children: ButtonOrLinkOrTextWithChildrenProps[];
 };

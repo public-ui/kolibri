@@ -14,9 +14,4 @@ import { type InputDateDeps, isValidInputDate, normalizeInputDate } from './help
  */
 export type InputDateValueProp = Prop<'value', Iso8601 | Date | null, string>;
 // The default is `undefined`: an empty field has no value.
-export const inputDateValueProp = createDependentPropDefinition<InputDateValueProp, InputDateDeps>(
-	'value',
-	undefined as unknown as string,
-	normalizeInputDate,
-	isValidInputDate,
-);
+export const inputDateValueProp = createDependentPropDefinition<InputDateValueProp, InputDateDeps>('value', undefined, normalizeInputDate, isValidInputDate);

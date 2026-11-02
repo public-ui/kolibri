@@ -8,7 +8,8 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 } from '../../../schema';
-import { buildBadgeTextString } from '../../../schema';
+import { buildBadgeTextString, trimLabel } from '../../../schema';
+import { resolveTargets } from '../../../utils/aria-labelledby';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import {
@@ -66,6 +67,11 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 
 	protected formAssociation!: FormAssociationBehavior;
 
+	/** The native control (`input`, `select` or `textarea`) that carries the ARIA relations of the field. */
+	private ariaDetailsTarget?: HTMLElement;
+	/** The element references last pushed to the target, so unchanged renders skip the DOM write. */
+	private pushedDetailsElements?: HTMLElement[];
+
 	private readonly tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 
 	private readonly smartButton = createButtonItem(() => this.host);
@@ -110,6 +116,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	protected syncFormField(): void {
 		this.smartButton.syncListeners();
 		this.infoPopover.syncListeners();
+		this.syncAriaDetails();
 	}
 
 	/** Call from `disconnectedCallback`. */
@@ -117,6 +124,17 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		this.tooltipBehavior.destroy();
 		this.smartButton.destroy();
 		this.infoPopover.destroy();
+	}
+
+	public connectedCallback(): void {
+		/* A reattached element does not re-render, so the listeners destroyed in
+		   `disconnectedCallback` have to be re-attached here. Before the first render the refs are
+		   unset and the syncs no-op. */
+		this.syncFormField();
+		if (this.tooltipAnchor && this.isTooltipShown()) {
+			this.tooltipBehavior.initContext(this.tooltipAnchor);
+			this.tooltipBehavior.syncListeners(undefined, this.tooltipAnchor, true);
+		}
 	}
 
 	/**
@@ -151,6 +169,33 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	protected applyAriaDetails(value?: string): void {
 		ariaDetailsProp.apply(value, (v) => this.shared.setRenderProp('ariaDetails', v));
 		this.formAssociation.watchAriaDetails(value);
+		this.syncAriaDetails();
+	}
+
+	/**
+	 * Pushes the elements referenced by `_ariaDetails` onto the native control via
+	 * `ariaDetailsElements`: plain `aria-details` IDREFs cannot cross the shadow boundary, and the
+	 * control — not the host — is the element assistive technology operates. The control may mount
+	 * after the prop was set and the referenced element may enter the tree after the first
+	 * resolution, so every render re-resolves and writes only changes.
+	 */
+	private syncAriaDetails(): void {
+		const target = this.host?.shadowRoot?.querySelector<HTMLElement>('input, select, textarea');
+		if (!target || !('ariaDetailsElements' in target)) {
+			return;
+		}
+		const elements = resolveTargets(this.host, this.shared.getRenderProp('ariaDetails'));
+		const pushed = this.pushedDetailsElements;
+		const changed =
+			target !== this.ariaDetailsTarget ||
+			(pushed?.length ?? 0) !== elements.length ||
+			(pushed?.some((element, index) => element !== elements[index]) ?? false);
+		if (!changed) {
+			return;
+		}
+		this.ariaDetailsTarget = target;
+		this.pushedDetailsElements = elements;
+		target.ariaDetailsElements = elements.length ? elements : null;
 	}
 
 	protected applyDisabled(value?: boolean): void {
@@ -176,7 +221,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	/** `false` enables the expert slot, which the field renders for an empty label. */
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
 		const label: unknown = value;
-		labelWithExpertSlotProp.apply(label === false ? '' : value, (v) => this.shared.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(label === false ? '' : value, (v) => this.shared.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyMsg(value?: Stringified<MsgPropType>): void {
@@ -303,7 +348,11 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		return Boolean(this.shared.getRenderProp('touched')) && !this.shared.getState('inputHasFocus');
 	}
 
+	/** The element the label tooltip hangs on; kept for the listener re-sync on reconnect. */
+	private tooltipAnchor?: HTMLDivElement;
+
 	private readonly setInputRef = (el?: HTMLDivElement): void => {
+		this.tooltipAnchor = el;
 		if (el && this.isTooltipShown()) {
 			this.tooltipBehavior.initContext(el);
 			this.tooltipBehavior.syncListeners(undefined, el, true);
@@ -316,7 +365,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 
 	private isTooltipShown(): boolean {
 		const shared = this.shared;
-		return isLabelShownAsTooltip({ hideLabel: shared.getRenderProp('hideLabel'), label: shared.getRenderProp('label') });
+		return isLabelShownAsTooltip({ hideLabel: shared.getRenderProp('hideLabel'), label: trimLabel(shared.getRenderProp('label')) });
 	}
 
 	/**

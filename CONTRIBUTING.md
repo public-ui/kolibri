@@ -43,6 +43,8 @@ You can request new features by submitting an issue to our ticket system. If you
 - For major innovations, please create a ticket with the description of the new function.
 - For small innovations, you can offer and justify the implementation directly as a pull request.
 
+Also see our guides, recommendations and HowTos here [Docs](./docs)
+
 ### Git flow
 
 We work according to the Git flow: https://medium.com/android-news/gitflow-with-github-c675aa4f606a

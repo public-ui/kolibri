@@ -3,7 +3,7 @@
 Command line utilities to help maintain and migrate KoliBri projects.
 
 [![npm](https://img.shields.io/npm/v/@public-ui/kolibri-cli)](https://www.npmjs.com/package/@public-ui/components)
-[![license](https://img.shields.io/npm/l/@public-ui/kolibri-cli)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@public-ui/kolibri-cli)](https://github.com/public-ui/kolibri/blob/develop/LICENSE)
 [![downloads](https://img.shields.io/npm/dt/@public-ui/kolibri-cli)](https://www.npmjs.com/package/@public-ui/kolibri-cli)
 [![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)

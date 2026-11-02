@@ -24,8 +24,8 @@ const KOL_TABS_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'AlignPropType',
 		required: false,
-		default: "'top'",
 		doc: 'Defines the visual orientation of the component.',
+		default: "'top'",
 	},
 	_behavior: {
 		kind: 'prop',
@@ -37,8 +37,8 @@ const KOL_TABS_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'HasCreateButtonPropType',
 		required: false,
-		default: 'false',
 		doc: 'Defines whether the element has a create button.',
+		default: 'false',
 	},
 	_label: {
 		kind: 'prop',
@@ -54,10 +54,10 @@ const KOL_TABS_PUBLIC_API: PublicApiContract = {
 	},
 	_selected: {
 		kind: 'prop',
-		type: 'number',
+		type: 'SelectedPropType',
 		required: false,
-		default: '0',
 		doc: 'Defines which tab is active.',
+		default: '0',
 	},
 	_tabs: {
 		kind: 'prop',

@@ -35,6 +35,22 @@ exports[`SpanFC should hide label when hideLabel is true 1`] = `
 </span>
 `;
 
+exports[`SpanFC should render spans with lang-attr in label 1`] = `
+<span class="kol-span">
+  <span class="kol-span__container">
+    <span class="kol-span__label">
+      <span lang="en">
+        Acquirer
+      </span>
+      <span>
+        -Gutschrift
+      </span>
+    </span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+  </span>
+</span>
+`;
+
 exports[`SpanFC should render with badge text 1`] = `
 <span class="kol-span kol-span--has-badge">
   <span class="kol-span__container">
