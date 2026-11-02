@@ -236,5 +236,3 @@ Alle drei Befehle müssen fehlerfrei durchlaufen.
 Die vollständige Referenzimplementierung findet sich im Skeleton Blueprint:
 
 - **Architektur**: [`ARC42-SKELETON.md`](../../packages/components/docs/ARC42-SKELETON.md)
-- **Agent-Instruktionen**: [`_skeleton/AGENTS.md`](../../packages/components/src/components/_skeleton/AGENTS.md)
-- **Refactoring-Leitfaden**: [`_skeleton/REFACTORING_PROMPT.md`](../../packages/components/src/components/_skeleton/REFACTORING_PROMPT.md)

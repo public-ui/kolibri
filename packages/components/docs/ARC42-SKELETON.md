@@ -27,18 +27,13 @@ The skeleton mirrors the structure recommended for production-ready components. 
 ```text
 src/
 ├── components/
-│   ├── click-button/               # Blueprint button web component
-│   └── skeleton/                   # Blueprint demo web component
-│       ├── web-components/
-│       │   ├── skeleton/              # Skeleton custom element
-│       │   │   ├── component.tsx      # Orchestrator: props, watchers, lifecycle, render
-│       │   │   └── snapshot.spec.tsx  # Snapshot test (Jest) — co-located
-│       │   └── click-button/          # Click-button custom element
-│       │       ├── component.tsx
-│       │       ├── interaction.e2e.ts  # Interaction test (Playwright)
-│       │       └── snapshot.spec.tsx
-│       ├── AGENTS.md                  # Agent instructions for this blueprint
-│       └── ARC42.md                   # This document
+│   ├── click-button/                  # Blueprint button web component
+│   │   ├── component.tsx              # Orchestrator: props, watchers, lifecycle, render
+│   │   ├── interaction.e2e.ts         # Interaction test (Playwright)
+│   │   └── snapshot.spec.tsx          # Snapshot test (Jest) — co-located
+│   └── skeleton/                      # Blueprint demo web component
+│       ├── component.tsx
+│       └── snapshot.spec.tsx
 └── internal/                          # Shared internals
     ├── functional-components/
     │   ├── skeleton/                  # Skeleton-specific logic
