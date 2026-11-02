@@ -35,7 +35,6 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	private cacheValid = false;
 
-	// request animation frame (raf)
 	private rafHandle?: number;
 
 	/**
