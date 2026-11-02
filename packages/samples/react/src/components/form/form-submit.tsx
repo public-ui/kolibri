@@ -1,4 +1,4 @@
-import { KolButton, KolCard, KolDialog, KolForm, KolInputText } from '@public-ui/react-v19';
+import { KolAlert, KolButton, KolCard, KolDialog, KolForm, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useRef } from 'react';
 import { SampleBlock } from '../SampleBlock';
@@ -6,9 +6,9 @@ import { SampleDescription } from '../SampleDescription';
 
 export const FormSubmit: FC = () => {
 	const formRef = useRef<HTMLKolFormElement | null>(null);
-	const dialogSuccessRef = useRef<HTMLKolDialogElement | null>(null);
 	const dialogResetRef = useRef<HTMLKolDialogElement | null>(null);
 	const inputRef = useRef<HTMLKolInputTextElement | null>(null);
+	const alertDivRef = useRef<HTMLDivElement | null>(null);
 	const formEventHandlerSuccess = {
 		onSubmit: () => SuccessHandler(),
 	};
@@ -20,7 +20,7 @@ export const FormSubmit: FC = () => {
 	};
 
 	function SuccessHandler() {
-		dialogSuccessRef.current?.showModal();
+		if (alertDivRef.current) alertDivRef.current.hidden = false;
 		console.log('submitted:');
 	}
 
@@ -42,11 +42,13 @@ export const FormSubmit: FC = () => {
 
 			<SampleBlock id="form-submit-success" className="grid gap-2">
 				<KolCard _label="Speichern erfolgreich">
+					<div ref={alertDivRef} hidden>
+						<KolAlert _alert _label="Speichern erfolgreich" _type="success"></KolAlert>
+					</div>
 					<KolForm className="w-full" _on={formEventHandlerSuccess}>
 						<KolInputText id="input1" _label="Input 1" />
 						<br />
 						<KolButton _label="Speichern erfolgreich" _variant="primary" _type="submit" />
-						<KolDialog ref={dialogSuccessRef} _label="Speichern erfolgreich" _variant="card" _width="300"></KolDialog>
 					</KolForm>
 				</KolCard>
 			</SampleBlock>
