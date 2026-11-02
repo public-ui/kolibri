@@ -1,3 +1,4 @@
+import type { SyncValueBySelectorPropType } from '../../schema/props/sync-value-by-selector';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -9,7 +10,7 @@ import { normalizeString } from './helpers/normalizers';
  * A CSS selector of a native form control outside the component that receives the field value,
  * in experimental mode only. The form association behavior reads it; it is never rendered.
  */
-export type SyncValueBySelectorProp = SimpleProp<'syncValueBySelector', string>;
+export type SyncValueBySelectorProp = SimpleProp<'syncValueBySelector', SyncValueBySelectorPropType>;
 // The default is `undefined` (not `''` like other string props): an empty string is not a valid
 // selector, so "not set" must stay distinguishable and must not reach `document.querySelector`.
-export const syncValueBySelectorProp = createPropDefinition<SyncValueBySelectorProp>('syncValueBySelector', undefined as unknown as string, normalizeString);
+export const syncValueBySelectorProp = createPropDefinition<SyncValueBySelectorProp>('syncValueBySelector', undefined, normalizeString);

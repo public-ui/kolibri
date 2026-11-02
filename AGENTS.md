@@ -500,7 +500,10 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Use ESM import syntax in browser code and scripts whenever supported, instead of `require` imports.
 - Do not create barrel files (e.g. `index.ts` that re-export modules). Import modules directly instead.
 - Stencil component classes follow one member order: statics, `@Element`, `@State`, fields, constructor, each `@Prop`, `@Event`, `@Method`, lifecycle methods, `@Listen`, helpers, `render`; a `@Watch` directly follows the `@Prop` or `@State` it observes (see the skeleton ARC42, _Member order_; pinned by `component-structure.spec.ts`).
-- Reuse the prop definition of `internal/props` for a public prop name (e.g. `disabledProp` for every `_disabled`). Add a variant for the same render key only where it differs functionally, where a shared factory types it per component (callbacks, links, options) or where its meaning differs (`paginationLabelProp`), and document it in `internal/props/prop-keys.spec.ts`.
+- Reuse the prop definition of `internal/props` for a public prop name (e.g. `disabledProp` for every `_disabled`). Add a variant for the same render key only where it differs functionally, where a shared factory types it per component (callbacks, links, options) or where its meaning differs (`labelWithExpertSlotProp` beside `labelProp`), and document it in `internal/props/prop-keys.spec.ts`.
+- Document a prop variant's meaning once, at its type definition in `src/schema/props`. Component JSDocs and public-api pins reference the type instead of restating the meaning in their own words, so the texts cannot drift apart.
+- The expert-slot sentinel of a label is the empty string `''`, never `false`: only `LabelWithExpertSlotPropType` accepts it, `labelProp` and `labelLangSegmentsProp` reject it.
+- Optional `@Prop`s carry an explicit `= undefined` initializer as the documented "no default" contract and required `@Prop`s carry none (enforced by the ESLint rules `kolibri/prop-optional-requires-initializer` and `kolibri/prop-required-no-initializer`).
 - Do not place constant declarations before import statements; imports must always be at the very top of the file.
 - **Scripts must be platform-independent**: All scripts in the `scripts/` folder must work on Windows, macOS, and Linux without requiring external tools or platform-specific dependencies. Use Node.js built-in modules instead of external command-line tools like `rg`, `grep`, `find`, etc.
 - Inline code documentation follows [Inline code documentation](#inline-code-documentation).
@@ -512,6 +515,17 @@ We encourage inline code documentation (JSDoc in TypeScript/TSX, comments in SCS
 - **Document what the code cannot say itself**: the purpose of public API (`@Prop`, `@Method`, `@Event`, exported functions and types), constraints, a non-obvious reason (the "why") and known limitations.
 - **Do not repeat the code**: no comment that restates a name, a type or the next line. The TypeScript signature is the source of truth, so no `@param {string}` or `@returns {void}` type annotations.
 - **Describe the present and the future, never the past**: state what the code is and does and, where relevant, where it is heading (`@deprecated` with its replacement, a `TODO` with an issue link). Do not write history such as "previously", "changed to", "fixed", "new:", and do not refer to the diff, the pull request or a predecessor implementation. History belongs in the commit message, the pull request and the changelog. If an earlier state still matters, state the constraint that follows from it today.
+- **State the rule, not its origin**: a comment describes the current behaviour, never justifies it against a former mistake or an alternative. "The predecessor accepted X", "keeps Y valid that Z would have rejected" and "X, not X" phrasings are history dressed as reasoning — the reader needs the rule, not the deliberation.
+
+  ```ts
+  // ❌ Bad: justifies the present against a past mistake and an alternative.
+  // `labelProp`, not `labelWithExpertSlotProp`: the predecessor's validateLabel accepted any
+  // string; labelProp would reject one-character labels.
+
+  // ✅ Good: the rule, in present tense.
+  // The label names a landmark without an expert slot.
+  ```
+
 - **Write for human and AI readers alike**: clear, easy to follow and free of contradictions. One statement per fact, terms named exactly as in the code, no vague wording ("maybe", "somehow", "for now"). A comment never contradicts the code, another comment or the documentation. Update or delete a comment together with the code it describes, and link the authoritative document instead of copying it.
 - **Published API documentation stays stable**: the JSDoc of public `@Prop`, `@Method` and `@Event` members is published (`custom-elements.json`, `docs-vscode`, adapter IntelliSense). Refactorings and migrations keep it unchanged (see [Public API Contract](packages/components/src/components/_skeleton/ARC42.md#public-api-contract-migration-parity)); rewording it is a change of its own.
 

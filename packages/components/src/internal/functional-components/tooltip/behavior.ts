@@ -1,9 +1,10 @@
 import { autoUpdate } from '@floating-ui/dom';
+import type { LabelLangSegmentsPropType } from '../../../schema';
 import { getDocument } from '../../../schema';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../../utils/overlay';
 import { tooltipClosed, tooltipOpened } from '../../../utils/tooltip-open-tracking';
-import { alignProp, badgeTextProp, idProp, labelProp } from '../../props';
+import { alignProp, badgeTextProp, idProp, labelLangSegmentsProp } from '../../props';
 import { BaseBehavior } from '../base-behavior';
 import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { TooltipApi } from './api';
@@ -30,8 +31,11 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 		this.watchId(props.id);
 	}
 
-	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		// The empty string is the expert-slot sentinel and invalid for this prop: the tooltip renders
+		// no label text and has no expert slot. Mapping it to `undefined` records the "not set"
+		// state instead of logging an invalid-value warning.
+		labelLangSegmentsProp.apply(value || undefined, (v) => {
 			this.setRenderProp('label', v);
 		});
 	}
@@ -66,6 +70,9 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 			if (replacePreviousSibling) {
 				this.previousSibling = next;
 			}
+			/* The removal makes repeated syncs idempotent: renders and reconnects re-run the sync
+			   without duplicating listeners, since the elements persist across a reattachment. */
+			this.removeListeners(next);
 			this.addListeners(next);
 		}
 	}

@@ -1,3 +1,4 @@
+import type { SrcsetPropType } from '../../schema/props/srcset';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -22,5 +23,5 @@ import { normalizeString } from './helpers/normalizers';
  * @see https://html.spec.whatwg.org/multipage/embedded-content.html#attr-img-srcset
  * @see https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html
  */
-export type SrcsetProp = SimpleProp<'srcset', string>;
+export type SrcsetProp = SimpleProp<'srcset', SrcsetPropType>;
 export const srcsetProp = createPropDefinition<SrcsetProp>('srcset', '', normalizeString);

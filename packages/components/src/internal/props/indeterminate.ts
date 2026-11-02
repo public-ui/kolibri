@@ -1,3 +1,4 @@
+import type { IndeterminatePropType } from '../../schema/props/indeterminate';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -9,5 +10,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  * Shows the mixed state, e.g. for a "select all" checkbox of a partial selection. It does not change
  * `checked`; the field clears it when the user toggles the checkbox.
  */
-export type IndeterminateProp = SimpleProp<'indeterminate', boolean>;
+export type IndeterminateProp = SimpleProp<'indeterminate', IndeterminatePropType>;
 export const indeterminateProp = createPropDefinition<IndeterminateProp>('indeterminate', false, normalizeBoolean);

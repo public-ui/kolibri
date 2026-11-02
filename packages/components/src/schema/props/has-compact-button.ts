@@ -2,7 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import { watchBoolean } from '../utils';
 
-type HasCompactButtonPropType = boolean;
+export type HasCompactButtonPropType = boolean;
 
 /**
  * Creates a button below the navigation, that toggles _collapsible. Only available for _orientation="vertical".
