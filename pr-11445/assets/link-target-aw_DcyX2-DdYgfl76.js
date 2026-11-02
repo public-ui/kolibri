@@ -1,1 +1,0 @@
-import{o as e,x as t}from"./base-web-component-B0QkUucC-Bpn3Zsmh.js";var n=e(`target`,``,t);export{n as t};
