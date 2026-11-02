@@ -66,7 +66,7 @@ const KOL_INPUT_TEXT_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'AriaDetailsPropType',
 		required: false,
-		doc: 'References an external element by ID that provides accessible details for this input.',
+		doc: "References an external element by ID that provides accessible details for this input. The IDs are pushed as element references to the native control's `ariaDetailsElements` to cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details visibly as well. See KNOWN_ISSUES.md.",
 	},
 	_autoComplete: {
 		kind: 'prop',

@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SelectFC does render an optgroup without options 1`] = `
+<select autocapitalize="off" autocorrect="off" class="kol-select" id="test">
+  <optgroup class="kol-select__optgroup" label="Group without Options"></optgroup>
+</select>
+`;
+
 exports[`SelectFC forwards disabled to optgroups and options when select is disabled 1`] = `
 <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--disabled" disabled="" id="test">
   <optgroup class="kol-select__optgroup kol-select__optgroup--disabled" disabled="" label="Group 1">
@@ -162,7 +168,11 @@ exports[`SelectOptionListFC disables the optgroups and prefixes the keys 1`] = `
 </select>
 `;
 
-exports[`SelectOptionListFC does not render an optgroup without options 1`] = `<select></select>`;
+exports[`SelectOptionListFC does render an optgroup without options 1`] = `
+<select>
+  <optgroup class="kol-select__optgroup" label="Empty Group"></optgroup>
+</select>
+`;
 
 exports[`SelectOptionListFC renders nothing without options 1`] = `<select></select>`;
 

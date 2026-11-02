@@ -306,7 +306,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host tabindex="0">
 				<TreeFC handleSlotchange={this.handleSlotchange} label={this.getRenderProp('label')} />
 			</Host>
 		);

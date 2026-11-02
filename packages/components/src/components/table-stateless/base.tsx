@@ -14,6 +14,7 @@ import { tableStatelessPropsConfig } from '../../internal/functional-components/
 import { TABLE_CAPTION_ID, TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
 import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-components/table-stateless/table-model';
+import type { TableHeaders } from '../../internal/props';
 import {
 	fixedColsProp,
 	hasSettingsMenuProp,
@@ -26,7 +27,6 @@ import {
 	tableSelectionProp,
 	variantProp,
 } from '../../internal/props';
-import type { TableHeaders } from '../../internal/props/table-headers';
 import type {
 	FixedColsPropType,
 	HasSettingsMenuPropType,
