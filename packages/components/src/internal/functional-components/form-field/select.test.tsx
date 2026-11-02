@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { h } from '@stencil/core';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
 import { SelectFC, SelectOptionFC, SelectOptionListFC } from './select';
@@ -43,6 +44,18 @@ describe('SelectFC', () => {
 		expect(page.root?.querySelectorAll('option')[0].hasAttribute('disabled')).toBe(true);
 		expect(page.root?.querySelectorAll('option')[0].classList.contains('kol-select__option--disabled')).toBe(true);
 	});
+
+	it('does render an optgroup without options', async () => {
+		const optgroupOptions = [
+			{
+				label: 'Group without Options',
+				options: [],
+			},
+		];
+		const page = await renderFunctionalComponentToSpecPage(() => <SelectFC id="test" label="Label" options={optgroupOptions} />);
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.querySelector('optgroup')).not.toBeNull();
+	});
 });
 
 describe('SelectOptionListFC', () => {
@@ -55,7 +68,7 @@ describe('SelectOptionListFC', () => {
 		expect(page.root).toMatchSnapshot();
 	});
 
-	it('does not render an optgroup without options', async () => {
+	it('does render an optgroup without options', async () => {
 		const emptyGroupOptions = [
 			{
 				label: 'Empty Group',
@@ -68,7 +81,7 @@ describe('SelectOptionListFC', () => {
 			</select>
 		));
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.querySelector('optgroup')).toBeNull();
+		expect(page.root?.querySelector('optgroup')).not.toBeNull();
 	});
 
 	it('disables the optgroups and prefixes the keys', async () => {
