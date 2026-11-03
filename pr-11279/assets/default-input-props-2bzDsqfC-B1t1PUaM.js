@@ -1,1 +1,0 @@
-import"./index-CKurlmT2-CQUkxvWg.js";import{f as e}from"./label-CwzlmXPl-BbaunTip.js";function t({ariaDescribedBy:t,hideLabel:n,label:r}){return{title:``,autoCapitalize:`off`,autoCorrect:`off`,"aria-describedby":t?.length?t.join(` `):void 0,"aria-label":n&&r?e(r):void 0}}export{t};
