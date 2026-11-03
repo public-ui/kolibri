@@ -1,6 +1,6 @@
 import { KolAlert, KolButton, KolCard, KolDialog, KolForm, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
@@ -33,10 +33,18 @@ export const FormSubmit: FC = () => {
 	}
 
 	function ResetForm() {
-		setIsSubmitted(false);
 		if (inputRef.current) inputRef.current._value = '';
 		dialogResetRef.current?.close();
 	}
+
+	useEffect(() => {
+		if (isSubmitted) {
+			const toRef = setTimeout(() => {
+				setIsSubmitted(false);
+				clearTimeout(toRef);
+			}, 1000);
+		}
+	}, [isSubmitted]);
 
 	return (
 		<>
@@ -46,7 +54,7 @@ export const FormSubmit: FC = () => {
 
 			<SampleBlock id="form-submit-success" className="grid gap-2">
 				<KolCard _label="Speichern erfolgreich / Zurücksetzen">
-					{isSubmitted ? <KolAlert _alert _label="Speichern erfolgreich" _type="success" /> : ''}
+					{isSubmitted && <KolAlert _alert _label="Speichern erfolgreich" _type="success" />}
 					<KolForm className="w-full" _on={formEventHandlerSuccessReset}>
 						<KolInputText ref={inputRef} id="input1" _label="Input 1" />
 						<br />
