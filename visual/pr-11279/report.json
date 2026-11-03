@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11279,
-	"head": "9298991986ee138cf17f4abeb2ed3aeaa6c318ef",
+	"head": "2ca2c6c8979d73a3b99fe427a6c2cff82f3502a7",
 	"repository": "public-ui/kolibri",
-	"runId": 41594916465,
-	"generatedAt": "2026-11-03T07:37:16.549Z",
-	"digest": "sha256:e397279ec5360339fd7607656a9f73a238ab031ea7e9b990cd5690cad4f5e9bf",
+	"runId": 41604339609,
+	"generatedAt": "2026-11-03T08:57:12.085Z",
+	"digest": "sha256:8101d7af7a864257e57bede232b622147614af2360fa3ff5a7ade4648bc9b089",
 	"baseline": {
-		"sha": "f6a7f51a20d9f5b493e9a65d1a17893f49c5df0e",
+		"sha": "82531345407bd11d365f8560f861ef809f3964bd",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "f6a7f51a20d9f5b493e9a65d1a17893f49c5df0e",
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
 					"ref": "release/4",
-					"runId": 41460031556,
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T14:23:42.835Z",
+					"createdAt": "2026-11-03T07:38:47.752Z",
 					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
 					"fallback": null,
 					"distance": 0,
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:10c4dc99a3ab319f394c756d7113a3f6dcc64930ef694a27c8aa1172b408fa32",
+			"digest": "sha256:c320afd0c6940fbb6228690dc6fc2103718e765bc940c96f4fce907b82f42b77",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1159,9 +1159,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:6965b7a5439df215c6250536436855dc07bb73696080dc4c2925fba31722bbce",
-					"diffPixels": 7281,
-					"diffRatio": 0.170964,
+					"hash": "sha256:f58dd2a5ae3cc9689918b3664cdc8280a474eb0fdf6ba3ce7128da540c1bc12a",
+					"diffPixels": 7252,
+					"diffRatio": 0.170283,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -1181,9 +1181,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f2a12415925a301a8a8c0a07d0decc7f99d6710b4235dbb03ef0db83acbb0685",
-					"diffPixels": 7281,
-					"diffRatio": 0.183032,
+					"hash": "sha256:de170bd46ff4af9c19c6843aa92438ebea0668af60b21a75c81f2cf6a9cdbc7f",
+					"diffPixels": 7252,
+					"diffRatio": 0.182303,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -1192,9 +1192,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:1f83d92f900df898ec61e135a69c93b00219b595aa331f49be7c83d21b6fb811",
-					"diffPixels": 8171,
-					"diffRatio": 0.253035,
+					"hash": "sha256:13bcf2993e3211bae2ecb2a4f01866a45c05641881bb88ffda8dc048f1727f16",
+					"diffPixels": 6995,
+					"diffRatio": 0.216617,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-disabled.diff.png"
@@ -1203,9 +1203,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:93ab488e637e9b5bdc83d55cd52d40ee3a57bef3d4d8f8cf0d08e9514496e789",
-					"diffPixels": 7281,
-					"diffRatio": 0.136471,
+					"hash": "sha256:48481cbaed111f38fcadccbfae8a20d9d4d3e205bf8a6c79bb1dab4bd7c273da",
+					"diffPixels": 7252,
+					"diffRatio": 0.135927,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-error.diff.png"
@@ -1258,9 +1258,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:c9f6402257466593076697e4633ef6a4a091b9f020ad383c7d6098d1e8618f25",
-					"diffPixels": 7203,
-					"diffRatio": 0.216775,
+					"hash": "sha256:2c96193c6316ec2831c1b7b4e0e9f96b3e50949c6181d4ae9ca4b6ab28aa68fc",
+					"diffPixels": 7243,
+					"diffRatio": 0.217979,
 					"expected": "test-tag-name-transformer/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "test-tag-name-transformer/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "test-tag-name-transformer/input-file-basic-noColumns--label-multiple.diff.png"
@@ -2099,9 +2099,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:191b5f073558714a7e088d19e08732c3e5e8e894681dff3631d992ca02defb25",
-					"diffPixels": 8726,
-					"diffRatio": 0.285163,
+					"hash": "sha256:5dedad2ef6bb1889b83cd6757b9ccba84593e7dcefce4d982cc0ab11805dba6f",
+					"diffPixels": 6873,
+					"diffRatio": 0.224608,
 					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-inputFile.diff.png"
@@ -2110,9 +2110,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:32463f1ba82405e60d956dc8360febd09740a5ff21050099e4b9ad69837255da",
-					"diffPixels": 8726,
-					"diffRatio": 0.285163,
+					"hash": "sha256:a83596de579e076bc638db0a6a4f75deba88e75ac233cae0b66e9ee103516090",
+					"diffPixels": 6873,
+					"diffRatio": 0.224608,
 					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -2355,19 +2355,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:a4426336f2d96ae807470431675c7e8f178b851e05d8674cfb9febfd6af2356d",
-					"diffPixels": 20499,
-					"diffRatio": 0.048714,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							526
-						],
-						"actual": [
-							800,
-							441
-						]
-					},
+					"hash": "sha256:7184004961e3d8bfa311e50ee99e37e4154a8f6282c121bb5f4a8632bb8c5c45",
+					"diffPixels": 8829,
+					"diffRatio": 0.020981,
 					"expected": "test-tag-name-transformer/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -2376,9 +2366,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:e79e156a806ce59853337ea764569196f2a68f4e6da5c02b6ce83c2f968b6548",
-					"diffPixels": 8418,
-					"diffRatio": 0.026306,
+					"hash": "sha256:e33d05bd5288e423e7315281a0d7ad5e5fd125c56d22c1804d6ebc674a9d13ef",
+					"diffPixels": 8544,
+					"diffRatio": 0.0267,
 					"expected": "test-tag-name-transformer/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -2805,48 +2795,7 @@
 				}
 			],
 			"errors": [],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-file/basic?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on input-file/basic?noColumns: color-contrast, label"
-				},
-				{
-					"test": "snapshot for input-text/variant?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on input-text/variant?noColumns: label"
-				},
-				{
-					"test": "snapshot for scenarios/static-form",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/static-form: label"
-				},
-				{
-					"test": "snapshot for scenarios/disabled-interactive-scenario",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/disabled-interactive-scenario: color-contrast, label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-interactive-elements",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-interactive-elements: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-form-elements-with-label",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-form-elements-with-label: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFile",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFile: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFileMultiple",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFileMultiple: label"
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-bwst",
@@ -2854,12 +2803,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "f6a7f51a20d9f5b493e9a65d1a17893f49c5df0e",
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
 					"ref": "release/4",
-					"runId": 41460031556,
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T14:21:20.372Z",
+					"createdAt": "2026-11-03T07:38:16.949Z",
 					"digest": "sha256:77f82a73964db40f494290baeb942deb95ec408bdbe07886dc7e0668e2580dc4",
 					"fallback": null,
 					"distance": 0,
@@ -2873,7 +2822,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:321d90fa9416a842c7ba0df7a7fe1a63aacb01b238f681b33eddfeadc2d49f1c",
+			"digest": "sha256:42055ea43743863698380b83dea70df46a1319618a52649ab1bc96b0c8bcb36c",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3983,9 +3932,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f754b7bbc6362ddf25baaf38ee9ecc4fc747622aaac9d7fb3bc777bc28766687",
-					"diffPixels": 7263,
-					"diffRatio": 0.166873,
+					"hash": "sha256:8abeba9ced5cf50b117167ee579e7492181a9206e2f19a8dd234c5a4bd854b40",
+					"diffPixels": 7220,
+					"diffRatio": 0.165885,
 					"expected": "theme-bwst/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -4005,9 +3954,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:6576669d0bf629aa7d6e59188d9a933a18d32a381ec36ba36592a16c320a402c",
-					"diffPixels": 7263,
-					"diffRatio": 0.182579,
+					"hash": "sha256:addd1245d8d8a924f23bfe7ae0f1a6a3cbd4cddaa3c48cd55493340f9386f6ad",
+					"diffPixels": 7220,
+					"diffRatio": 0.181498,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -4016,9 +3965,19 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f5da6beedac0508343cd35d606d28775514d2fd1feb4b131674e9e2fa6e0f445",
-					"diffPixels": 7833,
-					"diffRatio": 0.242568,
+					"hash": "sha256:2b7bf9bdeb7dc449863e6f997c7886ef8f08cb1aec5f162295927721aaff389d",
+					"diffPixels": 8714,
+					"diffRatio": 0.262249,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							69
+						],
+						"actual": [
+							468,
+							71
+						]
+					},
 					"expected": "theme-bwst/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-disabled.diff.png"
@@ -4027,9 +3986,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:7c6e9ac46939e83e091439cdfd2cac0fd3af47d8b4e8980865a825bbdae62f8f",
-					"diffPixels": 7263,
-					"diffRatio": 0.133786,
+					"hash": "sha256:34b5e719ddd0c403433e4a2fd6d3e6285eeb741188f71242122b766279f62cdc",
+					"diffPixels": 7220,
+					"diffRatio": 0.132994,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-error.diff.png"
@@ -4082,9 +4041,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:c744f6b9dce5ca9b32bfb392a748a784a9a7f76554f584ee025283da0122a8b0",
-					"diffPixels": 7148,
-					"diffRatio": 0.221355,
+					"hash": "sha256:77c8b3010481e8d0a67390af3167e47514cbdcffbeeb97d98ca285e2cf5a8013",
+					"diffPixels": 7170,
+					"diffRatio": 0.222036,
 					"expected": "theme-bwst/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-multiple.diff.png"
@@ -4908,9 +4867,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:89dc7465fb8a2c65ca09aa14b0f1a784fbcfea9015d991ab41619330e2ce5e89",
-					"diffPixels": 8092,
-					"diffRatio": 0.264444,
+					"hash": "sha256:5758fa2bb52df1af880cf29c8cf7592bcce52f5057fa24a3766d95479ed43cb2",
+					"diffPixels": 6858,
+					"diffRatio": 0.224118,
 					"expected": "theme-bwst/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "theme-bwst/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "theme-bwst/scenarios-focus-elements-component-inputFile.diff.png"
@@ -4919,9 +4878,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:a33726f24f7d8d0f2a9f36c6e679e25b9b6fc33b5b6748d9ec4e411041b3c18d",
-					"diffPixels": 8092,
-					"diffRatio": 0.264444,
+					"hash": "sha256:5a7fb44109860e95c7582b2177e59ae4ef78e042c5da2b5988dffb971681cf14",
+					"diffPixels": 6858,
+					"diffRatio": 0.224118,
 					"expected": "theme-bwst/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "theme-bwst/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "theme-bwst/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -5164,19 +5123,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:1f5239182b5d4ece376554e5e5623552d0cc50e37be0c59c6e4791ff5b4f0e76",
-					"diffPixels": 16572,
-					"diffRatio": 0.039382,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							526
-						],
-						"actual": [
-							800,
-							441
-						]
-					},
+					"hash": "sha256:520dda91ed465a3ee071e0b088336686f6308a497506d3fc42da4bb58b5ef6f8",
+					"diffPixels": 8458,
+					"diffRatio": 0.0201,
 					"expected": "theme-bwst/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "theme-bwst/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "theme-bwst/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -5185,9 +5134,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:7df4cfdc83a711202df1fafc86872c166afd24c70d78a6394507f1a6d45c3f10",
-					"diffPixels": 8116,
-					"diffRatio": 0.025362,
+					"hash": "sha256:b40ba085f5eed6176a048315e7cc955e81f88e4151de7eed99a429e65e3fb507",
+					"diffPixels": 8128,
+					"diffRatio": 0.0254,
 					"expected": "theme-bwst/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-bwst/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-bwst/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -5614,43 +5563,7 @@
 				}
 			],
 			"errors": [],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-file/basic?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on input-file/basic?noColumns: label"
-				},
-				{
-					"test": "snapshot for scenarios/static-form",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/static-form: label"
-				},
-				{
-					"test": "snapshot for scenarios/disabled-interactive-scenario",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/disabled-interactive-scenario: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-interactive-elements",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-interactive-elements: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-form-elements-with-label",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-form-elements-with-label: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFile",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFile: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFileMultiple",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFileMultiple: label"
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-default",
@@ -5658,12 +5571,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "f6a7f51a20d9f5b493e9a65d1a17893f49c5df0e",
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
 					"ref": "release/4",
-					"runId": 41460031556,
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T14:23:42.835Z",
+					"createdAt": "2026-11-03T07:38:47.752Z",
 					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
 					"fallback": null,
 					"distance": 0,
@@ -5677,7 +5590,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:10c4dc99a3ab319f394c756d7113a3f6dcc64930ef694a27c8aa1172b408fa32",
+			"digest": "sha256:c320afd0c6940fbb6228690dc6fc2103718e765bc940c96f4fce907b82f42b77",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6787,9 +6700,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:6965b7a5439df215c6250536436855dc07bb73696080dc4c2925fba31722bbce",
-					"diffPixels": 7281,
-					"diffRatio": 0.170964,
+					"hash": "sha256:f58dd2a5ae3cc9689918b3664cdc8280a474eb0fdf6ba3ce7128da540c1bc12a",
+					"diffPixels": 7252,
+					"diffRatio": 0.170283,
 					"expected": "theme-default/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -6809,9 +6722,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f2a12415925a301a8a8c0a07d0decc7f99d6710b4235dbb03ef0db83acbb0685",
-					"diffPixels": 7281,
-					"diffRatio": 0.183032,
+					"hash": "sha256:de170bd46ff4af9c19c6843aa92438ebea0668af60b21a75c81f2cf6a9cdbc7f",
+					"diffPixels": 7252,
+					"diffRatio": 0.182303,
 					"expected": "theme-default/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -6820,9 +6733,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:1f83d92f900df898ec61e135a69c93b00219b595aa331f49be7c83d21b6fb811",
-					"diffPixels": 8171,
-					"diffRatio": 0.253035,
+					"hash": "sha256:13bcf2993e3211bae2ecb2a4f01866a45c05641881bb88ffda8dc048f1727f16",
+					"diffPixels": 6995,
+					"diffRatio": 0.216617,
 					"expected": "theme-default/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-disabled.diff.png"
@@ -6831,9 +6744,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:93ab488e637e9b5bdc83d55cd52d40ee3a57bef3d4d8f8cf0d08e9514496e789",
-					"diffPixels": 7281,
-					"diffRatio": 0.136471,
+					"hash": "sha256:48481cbaed111f38fcadccbfae8a20d9d4d3e205bf8a6c79bb1dab4bd7c273da",
+					"diffPixels": 7252,
+					"diffRatio": 0.135927,
 					"expected": "theme-default/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-error.diff.png"
@@ -6886,9 +6799,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:c9f6402257466593076697e4633ef6a4a091b9f020ad383c7d6098d1e8618f25",
-					"diffPixels": 7203,
-					"diffRatio": 0.216775,
+					"hash": "sha256:2c96193c6316ec2831c1b7b4e0e9f96b3e50949c6181d4ae9ca4b6ab28aa68fc",
+					"diffPixels": 7243,
+					"diffRatio": 0.217979,
 					"expected": "theme-default/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "theme-default/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "theme-default/input-file-basic-noColumns--label-multiple.diff.png"
@@ -7727,9 +7640,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:191b5f073558714a7e088d19e08732c3e5e8e894681dff3631d992ca02defb25",
-					"diffPixels": 8726,
-					"diffRatio": 0.285163,
+					"hash": "sha256:5dedad2ef6bb1889b83cd6757b9ccba84593e7dcefce4d982cc0ab11805dba6f",
+					"diffPixels": 6873,
+					"diffRatio": 0.224608,
 					"expected": "theme-default/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "theme-default/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "theme-default/scenarios-focus-elements-component-inputFile.diff.png"
@@ -7738,9 +7651,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:32463f1ba82405e60d956dc8360febd09740a5ff21050099e4b9ad69837255da",
-					"diffPixels": 8726,
-					"diffRatio": 0.285163,
+					"hash": "sha256:a83596de579e076bc638db0a6a4f75deba88e75ac233cae0b66e9ee103516090",
+					"diffPixels": 6873,
+					"diffRatio": 0.224608,
 					"expected": "theme-default/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "theme-default/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "theme-default/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -7983,19 +7896,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:a4426336f2d96ae807470431675c7e8f178b851e05d8674cfb9febfd6af2356d",
-					"diffPixels": 20499,
-					"diffRatio": 0.048714,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							526
-						],
-						"actual": [
-							800,
-							441
-						]
-					},
+					"hash": "sha256:7184004961e3d8bfa311e50ee99e37e4154a8f6282c121bb5f4a8632bb8c5c45",
+					"diffPixels": 8829,
+					"diffRatio": 0.020981,
 					"expected": "theme-default/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "theme-default/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "theme-default/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -8004,9 +7907,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:e79e156a806ce59853337ea764569196f2a68f4e6da5c02b6ce83c2f968b6548",
-					"diffPixels": 8418,
-					"diffRatio": 0.026306,
+					"hash": "sha256:e33d05bd5288e423e7315281a0d7ad5e5fd125c56d22c1804d6ebc674a9d13ef",
+					"diffPixels": 8544,
+					"diffRatio": 0.0267,
 					"expected": "theme-default/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-default/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-default/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -8433,48 +8336,7 @@
 				}
 			],
 			"errors": [],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-file/basic?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on input-file/basic?noColumns: color-contrast, label"
-				},
-				{
-					"test": "snapshot for input-text/variant?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on input-text/variant?noColumns: label"
-				},
-				{
-					"test": "snapshot for scenarios/static-form",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/static-form: label"
-				},
-				{
-					"test": "snapshot for scenarios/disabled-interactive-scenario",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/disabled-interactive-scenario: color-contrast, label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-interactive-elements",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-interactive-elements: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-form-elements-with-label",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-form-elements-with-label: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFile",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFile: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFileMultiple",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFileMultiple: label"
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-desy",
@@ -8482,12 +8344,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "f6a7f51a20d9f5b493e9a65d1a17893f49c5df0e",
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
 					"ref": "release/4",
-					"runId": 41460031556,
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T14:23:41.559Z",
+					"createdAt": "2026-11-03T07:38:03.994Z",
 					"digest": "sha256:df8761c47caa10be35fa1948f10fa7229fb8230744f580a6020b4ee63afd5b7b",
 					"fallback": null,
 					"distance": 0,
@@ -8501,7 +8363,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:2165dfa8753ff0fee2d36da384f50aa7bdc244b0065cd54d5e9cd8138e30f017",
+			"digest": "sha256:95d88ec77516c66340a7967ece8957e12403db28cc2b9c928b177850acec0674",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9611,9 +9473,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f062433df59cf6fe020ee7e805ed4684d8a8a980614f8ef134c9a20391a21d0d",
-					"diffPixels": 2904,
-					"diffRatio": 0.073002,
+					"hash": "sha256:4c18ff212bc5b4ac99677f40138d3d1ef3c1c381dba3ce5810d7aa196d83abfb",
+					"diffPixels": 2432,
+					"diffRatio": 0.061136,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -9653,9 +9515,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:0fd8ed5685964411b752ecf522901683070bb8fafcb16b0a35683efd55b10279",
-					"diffPixels": 7886,
-					"diffRatio": 0.213297,
+					"hash": "sha256:b421f60615d1ce4eeed54d0da2b5d5b42957a7776d1e96cbe5313e5d58e052fc",
+					"diffPixels": 7914,
+					"diffRatio": 0.214054,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -9674,9 +9536,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:a8c07f9b455f9ebe1a9f114fecc4f7407f104afb8b4950ee81c9b470355a2f3a",
-					"diffPixels": 1840,
-					"diffRatio": 0.062407,
+					"hash": "sha256:56c04739575f771c2160cd070b71cb79ecf0a4fa7985883bb13a94b2e69ce9c6",
+					"diffPixels": 1323,
+					"diffRatio": 0.044872,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -9695,9 +9557,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:71aee0812ce08410d828616f4a108c954abc0ba93cddc4e98252cf1c8a24e038",
-					"diffPixels": 2914,
-					"diffRatio": 0.056605,
+					"hash": "sha256:a7ac6898779c087e2c91c7eaeba0256f35ffcb7a61ab80aaaa1179ca088bb031",
+					"diffPixels": 2445,
+					"diffRatio": 0.047494,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -10646,9 +10508,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:f402e2e2f2c5068747fb4b83a20e31d8758c4721a5089c7046f7ee329ff2d2bb",
-					"diffPixels": 2171,
-					"diffRatio": 0.076175,
+					"hash": "sha256:bd92b561b4c60ee52ace6fdd1c0a1254e308bfac725b3e8bf02717206c858237",
+					"diffPixels": 2047,
+					"diffRatio": 0.071825,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -10667,9 +10529,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:5442b0223a4ac303c3ac8fbd3e5ae7a48c25204c7768cf190d2789d1ac52e9b1",
-					"diffPixels": 2171,
-					"diffRatio": 0.076175,
+					"hash": "sha256:123a612c86aaf518ec1d561174453ed7040dae1cc2a22f4cd57e8f3f9e308cb2",
+					"diffPixels": 2047,
+					"diffRatio": 0.071825,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -10922,9 +10784,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:1edc31fc4dfa3ce9cb5ac8512d6adc612bfdcf328c7c876d23b9623baea21150",
-					"diffPixels": 1255,
-					"diffRatio": 0.003864,
+					"hash": "sha256:b8611b8afda03bf8b5baf3a578b07d6c3be267c9b70a9dac8cc4ebff4b8d66bf",
+					"diffPixels": 1280,
+					"diffRatio": 0.003941,
 					"expected": "theme-desy/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "theme-desy/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "theme-desy/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -10933,9 +10795,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:14b54cdf90b5ef42812507894999aa723337d3eaec05abb180980eb3e52dc36b",
-					"diffPixels": 1985,
-					"diffRatio": 0.006203,
+					"hash": "sha256:b83e61ef69c0bc7dd5095d74b8505705d38c7b14c300c5ff1d740c66016c9762",
+					"diffPixels": 2010,
+					"diffRatio": 0.006281,
 					"expected": "theme-desy/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-desy/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-desy/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -11362,43 +11224,7 @@
 				}
 			],
 			"errors": [],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-file/basic?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on input-file/basic?noColumns: label"
-				},
-				{
-					"test": "snapshot for scenarios/static-form",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/static-form: label"
-				},
-				{
-					"test": "snapshot for scenarios/disabled-interactive-scenario",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/disabled-interactive-scenario: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-interactive-elements",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-interactive-elements: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-form-elements-with-label",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-form-elements-with-label: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFile",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFile: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFileMultiple",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFileMultiple: label"
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-ecl",
@@ -11406,12 +11232,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "f6a7f51a20d9f5b493e9a65d1a17893f49c5df0e",
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
 					"ref": "release/4",
-					"runId": 41460031556,
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T14:22:03.156Z",
+					"createdAt": "2026-11-03T07:37:28.213Z",
 					"digest": "sha256:58d72b90c03267d00163efa32bccc9149364b9b64d5fa73497762fb98fb4fa9c",
 					"fallback": null,
 					"distance": 0,
@@ -11425,7 +11251,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:cfffab25636c51d6ae97574205ea056720797b82699b782ffdb6a8bae4a8e7ad",
+			"digest": "sha256:ebbcc6af78e2886064ad5568f3901a9af507cf462a3398898970e87b0c369794",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12535,9 +12361,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:cff2ca99bf6f95b46d36b4848155ff570a82c6aff1342687fd6be50707964a3f",
-					"diffPixels": 9414,
-					"diffRatio": 0.149003,
+					"hash": "sha256:b1f84620e21748e52616874c687f2c6f977bc8ab70136883bd760549ba1421e3",
+					"diffPixels": 9422,
+					"diffRatio": 0.149129,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12577,9 +12403,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:9dc37264f0770bd966b81713e2b060faaa8499f3c2c8eae26bcae5f9640db9cc",
-					"diffPixels": 15911,
-					"diffRatio": 0.24816,
+					"hash": "sha256:3bcfb0139640241324684fe39835f5606a21ba5a7624931ea38a5447446f5809",
+					"diffPixels": 15883,
+					"diffRatio": 0.247723,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12598,9 +12424,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:b492caffdbc12218e61e3866d2372f6d33a7f36b2d9273019730f15168432efd",
-					"diffPixels": 4753,
-					"diffRatio": 0.083934,
+					"hash": "sha256:7d39702941571ba2fd8ea589f6dcd521ceaebcf80131f509ac0df2d9817b3351",
+					"diffPixels": 1251,
+					"diffRatio": 0.022092,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12619,9 +12445,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:d4c1bb0aee4ae454e2dac682b33550e62d26fa2f72e025ec02bae4bf28ad6440",
-					"diffPixels": 9414,
-					"diffRatio": 0.120451,
+					"hash": "sha256:62c8dfb8650abece99f96cdcd59f68df817d89e11992ee6ce0c4ee53ef0ec3f1",
+					"diffPixels": 9422,
+					"diffRatio": 0.120554,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12724,9 +12550,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:11df660969c2f6750f4aa273dbb3872d226abb814c2a299916d4b068dfc21e0f",
-					"diffPixels": 8231,
-					"diffRatio": 0.145352,
+					"hash": "sha256:3bf6007e3a1f2a98dadc2b94ff9c0afa30cb7d0c9dc65cf945b90a70f6c90d11",
+					"diffPixels": 8251,
+					"diffRatio": 0.145705,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13570,9 +13396,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:2fedc70b748e2eca96e11935bf44deca06025426e05ee80a9a35a3a1fd50843d",
-					"diffPixels": 8023,
-					"diffRatio": 0.174793,
+					"hash": "sha256:edd0167b2541cc29893c3f532da0b79a1274152c0f370e1b4ab107195c20d397",
+					"diffPixels": 8270,
+					"diffRatio": 0.180174,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -13591,9 +13417,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:317b08defa89dbe16398bc97ec5d4edf18a70890659891488538f5744c371f50",
-					"diffPixels": 8023,
-					"diffRatio": 0.174793,
+					"hash": "sha256:b52e21ed200675756d92994cc06704f1dd2c9fb5ede18cff3f94f742577c9499",
+					"diffPixels": 8290,
+					"diffRatio": 0.18061,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -13846,9 +13672,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:d2998c346ccea0225f4fcb7c05f5e59bbddeb9e53a4a357ed6171b2fb7d215e6",
-					"diffPixels": 22039,
-					"diffRatio": 0.051589,
+					"hash": "sha256:bde06a4c6473bdc657d1a5a823787aae9ff7fdfd070501b88d336840e8e830df",
+					"diffPixels": 22281,
+					"diffRatio": 0.052156,
 					"sizeMismatch": {
 						"expected": [
 							800,
@@ -13867,9 +13693,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:9466eb59e3dc107f27af1c39ace153ecef104396d5e6c4934abb9213bb85c6e2",
-					"diffPixels": 19030,
-					"diffRatio": 0.054684,
+					"hash": "sha256:7661246e470dce6f61c08769986453f20a8d404a569ef84064c5c2f6e7186ef6",
+					"diffPixels": 19174,
+					"diffRatio": 0.055098,
 					"sizeMismatch": {
 						"expected": [
 							800,
@@ -14306,43 +14132,7 @@
 				}
 			],
 			"errors": [],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-file/basic?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on input-file/basic?noColumns: label"
-				},
-				{
-					"test": "snapshot for scenarios/static-form",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/static-form: label"
-				},
-				{
-					"test": "snapshot for scenarios/disabled-interactive-scenario",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/disabled-interactive-scenario: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-interactive-elements",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-interactive-elements: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-form-elements-with-label",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-form-elements-with-label: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFile",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFile: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFileMultiple",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFileMultiple: label"
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-kern",
@@ -14350,12 +14140,12 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "f6a7f51a20d9f5b493e9a65d1a17893f49c5df0e",
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
 					"ref": "release/4",
-					"runId": 41460031556,
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T14:21:37.905Z",
+					"createdAt": "2026-11-03T07:37:29.999Z",
 					"digest": "sha256:f5953d6598f804452acc46fa5233abc1485ae61d269923acbc5a4f17ce31b1ed",
 					"fallback": null,
 					"distance": 0,
@@ -14369,7 +14159,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:58fdeddba310fc9ac22b91d40c15edc0ec15c419b1f402e81bc19d995b8ced8f",
+			"digest": "sha256:5e1f6f5e2d2ec68c5727575f31b20326b905f16c91f745bbf5321412afe04967",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15479,9 +15269,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:cd276102f21411d2f873b3c197323d221b41459856b76065ac97ede2b2aca1e0",
-					"diffPixels": 1492,
-					"diffRatio": 0.018753,
+					"hash": "sha256:50fbbbed04e4aeffca6ec7b18bf0ec88b0b68d58edc7f39c6a385eba086c2b87",
+					"diffPixels": 358,
+					"diffRatio": 0.0045,
 					"expected": "theme-kern/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -15501,9 +15291,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:dec3be997c8dd68e84bf7a3e142be78d4f4b0d1207a6911e33c828ae4ac7a6ba",
-					"diffPixels": 587,
-					"diffRatio": 0.008252,
+					"hash": "sha256:15a50b556214c9580c4bcb1be79f0c90093510e3916075d5abf31baa6f513afc",
+					"diffPixels": 360,
+					"diffRatio": 0.005061,
 					"expected": "theme-kern/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -15512,9 +15302,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:7b705c232b5708229386826ed9981713a38892137f6e48dc10eaf0fa8d177152",
-					"diffPixels": 624,
-					"diffRatio": 0.009804,
+					"hash": "sha256:1a8f3ccf53dfef4bb5a41f27353ac26d67b81ff040c5478405d7afff63941895",
+					"diffPixels": 236,
+					"diffRatio": 0.003708,
 					"expected": "theme-kern/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-disabled.diff.png"
@@ -15523,9 +15313,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:2c02c672efa95e68a8fa5b15b3dfdaf3f8caadf6df8a0bf31d2f8c08c3240a52",
-					"diffPixels": 1492,
-					"diffRatio": 0.014828,
+					"hash": "sha256:00275474da49983ec6e44ddbb865922517289351ce1d76ddb6ece7af3151d61f",
+					"diffPixels": 358,
+					"diffRatio": 0.003558,
 					"expected": "theme-kern/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-error.diff.png"
@@ -16404,9 +16194,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:0f1e908bdd7284ddd15f8374a3a7e165e858481cb380b90d24ca14ae7dee3701",
-					"diffPixels": 3854,
-					"diffRatio": 0.076468,
+					"hash": "sha256:bf897e0e75a9da040e6c26af633ccc7aa35427cbf4d8488b16be410cd3a201ee",
+					"diffPixels": 360,
+					"diffRatio": 0.007143,
 					"expected": "theme-kern/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "theme-kern/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "theme-kern/scenarios-focus-elements-component-inputFile.diff.png"
@@ -16415,9 +16205,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:f47db1d5b257b9d44e6610b5dadc38f15268fb2c383514dfa9c258ac0378844a",
-					"diffPixels": 3854,
-					"diffRatio": 0.076468,
+					"hash": "sha256:92b032402a05607c30dc039698467af1e1ed9278e70675cf08d260d136106a4b",
+					"diffPixels": 360,
+					"diffRatio": 0.007143,
 					"expected": "theme-kern/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "theme-kern/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "theme-kern/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -16660,9 +16450,19 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:7cea071c3279f9287fd3949612e5db32f33e24db1d14a4c569c138de69e058ff",
-					"diffPixels": 1108,
-					"diffRatio": 0.00234,
+					"hash": "sha256:03671e7f5b785856af58711c81bcefd4797c49e7581b48984146fde2214d2547",
+					"diffPixels": 13791,
+					"diffRatio": 0.024697,
+					"sizeMismatch": {
+						"expected": [
+							800,
+							592
+						],
+						"actual": [
+							800,
+							698
+						]
+					},
 					"expected": "theme-kern/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "theme-kern/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "theme-kern/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -16671,9 +16471,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:1a72db3c38fcd969caf9d0f496f1ea43d46b2df3a8a9987bf511eb437c633e36",
-					"diffPixels": 2132,
-					"diffRatio": 0.005819,
+					"hash": "sha256:c8b0e1e741e7e2fa8a3e9660e36b172d45c0b59074e4ef3019cd7a52d040ff34",
+					"diffPixels": 2476,
+					"diffRatio": 0.006758,
 					"expected": "theme-kern/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-kern/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-kern/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -17106,43 +16906,7 @@
 				}
 			],
 			"errors": [],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-file/basic?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on input-file/basic?noColumns: label"
-				},
-				{
-					"test": "snapshot for scenarios/static-form",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/static-form: label"
-				},
-				{
-					"test": "snapshot for scenarios/disabled-interactive-scenario",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/disabled-interactive-scenario: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-interactive-elements",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-interactive-elements: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-form-elements-with-label",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-form-elements-with-label: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFile",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFile: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFileMultiple",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFileMultiple: label"
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "unstyled",
@@ -17150,12 +16914,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "f6a7f51a20d9f5b493e9a65d1a17893f49c5df0e",
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
 					"ref": "release/4",
-					"runId": 41460031556,
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T14:22:33.680Z",
+					"createdAt": "2026-11-03T07:36:09.145Z",
 					"digest": "sha256:2a8ed01f1ccd4b547795406e0d9f04ab27a3614ab70df75ec403b6e682c6b376",
 					"fallback": null,
 					"distance": 0,
@@ -17169,7 +16933,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:d99a4715a48fa1ac6380cf49828b0e6355e67c9aebec912121117ae8a4e5d8b9",
+			"digest": "sha256:45f6218f70f402b97acc5445bee0f3b6e10780f102aaab4cdb8f316f1b642a55",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -18279,9 +18043,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:e5a65271b8821aaed086f1302b86e4f319484aef5c370cda5b9b11aabd595267",
-					"diffPixels": 978,
-					"diffRatio": 0.02402,
+					"hash": "sha256:4d4bde4eabb7a7a98861def841b8ae657f98ac6d7d3c8595cc067fd478b54b5d",
+					"diffPixels": 1017,
+					"diffRatio": 0.024978,
 					"expected": "unstyled/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -18290,9 +18054,9 @@
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:9cba1dd51b50f0c3a34b2ccbbab3c1e370d907a20f9b6075babdb7371ef00a8c",
-					"diffPixels": 930,
-					"diffRatio": 0.030109,
+					"hash": "sha256:8710adfaec280984b0374a2cb9d624f5312e4ac3aa373c6f11404f66de006d8c",
+					"diffPixels": 1007,
+					"diffRatio": 0.032602,
 					"expected": "unstyled/input-file-basic-noColumns--label-access-key.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-access-key.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-access-key.diff.png"
@@ -18301,9 +18065,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:7343b67595e7c2ef480d7b9e62bf16dfadf8d70c4aba4b7038184e423813cc10",
-					"diffPixels": 978,
-					"diffRatio": 0.025485,
+					"hash": "sha256:3f0da540fd3c4866523ad32422fd85a6f6a8c574b8409f95e6fbaf8d266cb024",
+					"diffPixels": 1044,
+					"diffRatio": 0.027205,
 					"expected": "unstyled/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -18312,9 +18076,9 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f0c43652317612a0d2f80763c80f90b9b07819a6c39653e7c94b276d0f04b780",
-					"diffPixels": 940,
-					"diffRatio": 0.030433,
+					"hash": "sha256:1318328b5444766cc03ff62ea5f4bfaedd7cd14108559ed5604997b76c232156",
+					"diffPixels": 987,
+					"diffRatio": 0.031954,
 					"expected": "unstyled/input-file-basic-noColumns--label-disabled.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-disabled.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-disabled.diff.png"
@@ -18323,9 +18087,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:34d7ec8e566c0d83edabc9c845aadfdddd76cb7f4a1fc9b91d8ee1e3bf631acc",
-					"diffPixels": 996,
-					"diffRatio": 0.019706,
+					"hash": "sha256:04f87a656a4a8ddfc97989e9b1b7488e7e6961baa5f33a2466d089625570c253",
+					"diffPixels": 1044,
+					"diffRatio": 0.020655,
 					"expected": "unstyled/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-error.diff.png"
@@ -18334,9 +18098,9 @@
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:079b236a8800e3a9cadda3d6fef78397821841816fdae9ad99a8c3ca33a82f38",
-					"diffPixels": 940,
-					"diffRatio": 0.023087,
+					"hash": "sha256:c7bb53e9ddf6615ed44d0b3b58850f88443f76e1bb57ff3c8fffcd47d5c38aed",
+					"diffPixels": 1007,
+					"diffRatio": 0.024732,
 					"expected": "unstyled/input-file-basic-noColumns--label-msg-default.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-msg-default.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-msg-default.diff.png"
@@ -18345,9 +18109,9 @@
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:f8c072accdf95920b488b56c61915f56a6aebad19c039348c412799ada37e7f5",
-					"diffPixels": 940,
-					"diffRatio": 0.023087,
+					"hash": "sha256:86f5ca32171e970f1e568d0b2c4baf62220afafd07b4b32965316c4cc29e9d88",
+					"diffPixels": 1007,
+					"diffRatio": 0.024732,
 					"expected": "unstyled/input-file-basic-noColumns--label-msg-info.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-msg-info.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-msg-info.diff.png"
@@ -18356,9 +18120,9 @@
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:20d411bcbe1296163843f8d5b434e840c40e9f4741f215758a00f8ec7c0cac29",
-					"diffPixels": 940,
-					"diffRatio": 0.023087,
+					"hash": "sha256:973eb3a999b01d1088d4203c2f489dcd540308e04c985c535bd7f60bdbfe54e4",
+					"diffPixels": 1007,
+					"diffRatio": 0.024732,
 					"expected": "unstyled/input-file-basic-noColumns--label-msg-success.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-msg-success.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-msg-success.diff.png"
@@ -18367,9 +18131,9 @@
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:750904858786fe557c935d126e838703a16e22c46fafee6ea48c2888e6be3770",
-					"diffPixels": 940,
-					"diffRatio": 0.023087,
+					"hash": "sha256:b2ed6e8e6da9ea3f311c33b0056b233aeecd0c08307324f6acb004cf2fd18bc3",
+					"diffPixels": 1007,
+					"diffRatio": 0.024732,
 					"expected": "unstyled/input-file-basic-noColumns--label-msg-warning.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-msg-warning.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-msg-warning.diff.png"
@@ -18378,9 +18142,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:04ff9bf3a9547b789c38eead7edae17fa514d065695c2dedb60019767fb4d05c",
-					"diffPixels": 940,
-					"diffRatio": 0.030433,
+					"hash": "sha256:5805085262f3f68bc15091a3c954b156763ce4c1553bf3c554f4c12a34825d05",
+					"diffPixels": 1047,
+					"diffRatio": 0.033897,
 					"expected": "unstyled/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-multiple.diff.png"
@@ -18389,9 +18153,9 @@
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:09db2b313a3415b31cce4a6a4061688ad50034cba674491b774d0624b10d9dec",
-					"diffPixels": 930,
-					"diffRatio": 0.030109,
+					"hash": "sha256:ffe279f966396698ca91e5c41993ebbffbc310f89242bb5773b33f6294e31761",
+					"diffPixels": 1007,
+					"diffRatio": 0.032602,
 					"expected": "unstyled/input-file-basic-noColumns--label-short-key.expected.png",
 					"actual": "unstyled/input-file-basic-noColumns--label-short-key.actual.png",
 					"diff": "unstyled/input-file-basic-noColumns--label-short-key.diff.png"
@@ -19204,9 +18968,9 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:36925ba7eb179f1e855e738356ee877d3cb685731b530140bad839a68d6056e3",
-					"diffPixels": 685,
-					"diffRatio": 0.02354,
+					"hash": "sha256:e5625bac5bb8a0cd8fb7766437ee056e23be409752ec3cd85133b40cb7053220",
+					"diffPixels": 1787,
+					"diffRatio": 0.061409,
 					"expected": "unstyled/scenarios-focus-elements-component-inputFile.expected.png",
 					"actual": "unstyled/scenarios-focus-elements-component-inputFile.actual.png",
 					"diff": "unstyled/scenarios-focus-elements-component-inputFile.diff.png"
@@ -19215,9 +18979,9 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:6cb6da83c70e03744a94ff705636aa64f14d60eb16f67a467651c029cd02e909",
-					"diffPixels": 685,
-					"diffRatio": 0.02354,
+					"hash": "sha256:f3f9eb684f04e938ce6fceb2c695e1dbdcfecffb407a50550344e43ee1421e63",
+					"diffPixels": 1787,
+					"diffRatio": 0.061409,
 					"expected": "unstyled/scenarios-focus-elements-component-inputFileMultiple.expected.png",
 					"actual": "unstyled/scenarios-focus-elements-component-inputFileMultiple.actual.png",
 					"diff": "unstyled/scenarios-focus-elements-component-inputFileMultiple.diff.png"
@@ -19460,9 +19224,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:24337a3a43dd621378487a20f0a03c4603471a69aa6153c1c3b2fc75cdf94bc5",
-					"diffPixels": 1071,
-					"diffRatio": 0.003347,
+					"hash": "sha256:000611ee62be05b1bdc562f8fbc467ed49049cc9fdc5911472820ae46e05b337",
+					"diffPixels": 1046,
+					"diffRatio": 0.003269,
 					"expected": "unstyled/scenarios-same-height-of-all-form-elements-with-label.expected.png",
 					"actual": "unstyled/scenarios-same-height-of-all-form-elements-with-label.actual.png",
 					"diff": "unstyled/scenarios-same-height-of-all-form-elements-with-label.diff.png"
@@ -19471,9 +19235,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:74a954e36a98f11a2db67c53bacff77898c5e7b1907cc2e471e2ca501eeda904",
-					"diffPixels": 1668,
-					"diffRatio": 0.005213,
+					"hash": "sha256:dab6280d5a32f0b1423089c9df08d0f9aadcb7a5705fcd7609e814fb30c9f3c4",
+					"diffPixels": 2663,
+					"diffRatio": 0.008322,
 					"expected": "unstyled/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "unstyled/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "unstyled/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -19900,43 +19664,7 @@
 				}
 			],
 			"errors": [],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-file/basic?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on input-file/basic?noColumns: label"
-				},
-				{
-					"test": "snapshot for scenarios/static-form",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/static-form: label"
-				},
-				{
-					"test": "snapshot for scenarios/disabled-interactive-scenario",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/disabled-interactive-scenario: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-interactive-elements",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-interactive-elements: label"
-				},
-				{
-					"test": "snapshot for scenarios/same-height-of-all-form-elements-with-label",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/same-height-of-all-form-elements-with-label: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFile",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFile: label"
-				},
-				{
-					"test": "snapshot for scenarios/focus-elements?component=inputFileMultiple",
-					"file": "axe-snapshots.spec.js",
-					"message": "Error: axe violations on scenarios/focus-elements?component=inputFileMultiple: label"
-				}
-			]
+			"otherFailures": []
 		}
 	]
 }
