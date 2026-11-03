@@ -1,1 +1,0 @@
-import{s as e,v as t}from"./props-from-config-BYKreuP0-CaHyr_AV.js";var n=e(`hasCloser`,!1,t);export{n as t};
