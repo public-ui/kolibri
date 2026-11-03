@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"pr": 11473,
-	"head": "9079e64155b328b8444e56e043fa4eee400572fc",
+	"head": "2857fb0bd95c531c32af12ce7b55a397c8fe35fb",
 	"repository": "public-ui/kolibri",
-	"runId": 41644801695,
-	"generatedAt": "2026-11-03T13:49:19.866Z",
-	"digest": "sha256:42c74cf35243659ed04b229d2f091132259f43d77392051a811e7910a6490aed",
+	"runId": 41662725915,
+	"generatedAt": "2026-11-03T15:40:09.982Z",
+	"digest": "sha256:8f24b7171ca381099905de28ba192022e02b2720153dcc394d307b44690a829f",
 	"baseline": {
-		"sha": "5665a013664b4d6f46f1cd99b4464608789fa347",
-		"ref": "develop",
+		"sha": "82531345407bd11d365f8560f861ef809f3964bd",
+		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
 		"fallback": null,
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3044,
-		"changed": 51,
+		"unchanged": 3060,
+		"changed": 35,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -30,21 +30,21 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "5665a013664b4d6f46f1cd99b4464608789fa347",
-					"ref": "develop",
-					"runId": 41423095872,
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
+					"ref": "release/4",
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T09:52:33.457Z",
-					"digest": "sha256:bfdd6a1f3d440fc90c3e9f6b0a7f93563062f82310e0d450971bdbbbd73ef453",
+					"createdAt": "2026-11-03T07:38:47.752Z",
+					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 436,
-				"changed": 6,
+				"unchanged": 439,
+				"changed": 3,
 				"added": 0,
 				"removed": 0,
 				"error": 0
@@ -371,14 +371,9 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:0ca19242468b38f52ed58729cf0ad58729bea89546596500dd45569187922546",
-					"diffPixels": 524,
-					"diffRatio": 0.000455,
-					"expected": "test-tag-name-transformer/dialog-basic-show-dialog-true.expected.png",
-					"actual": "test-tag-name-transformer/dialog-basic-show-dialog-true.actual.png",
-					"diff": "test-tag-name-transformer/dialog-basic-show-dialog-true.diff.png"
+					"route": "dialog-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:0ca19242468b38f52ed58729cf0ad58729bea89546596500dd45569187922546"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -1870,14 +1865,9 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:06d975b9f260a39cabc1ccd352d9f61ad64ebd394d60ec83e76016142b411420",
-					"diffPixels": 524,
-					"diffRatio": 0.000455,
-					"expected": "test-tag-name-transformer/modal-basic-show-dialog-true.expected.png",
-					"actual": "test-tag-name-transformer/modal-basic-show-dialog-true.actual.png",
-					"diff": "test-tag-name-transformer/modal-basic-show-dialog-true.diff.png"
+					"route": "modal-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:06d975b9f260a39cabc1ccd352d9f61ad64ebd394d60ec83e76016142b411420"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -2190,14 +2180,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
-					"route": "scenarios/focus-elements?component=tree",
-					"status": "changed",
-					"hash": "sha256:7bd8ac8ecb5257b4504416e673f066c2da99fbadd0895f7ce1c4a76822cfcf8e",
-					"diffPixels": 6,
-					"diffRatio": 0.000071,
-					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-tree.expected.png",
-					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-tree.actual.png",
-					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-tree.diff.png"
+					"route": "scenarios-focus-elements-component-tree",
+					"status": "unchanged",
+					"hash": "sha256:7bd8ac8ecb5257b4504416e673f066c2da99fbadd0895f7ce1c4a76822cfcf8e"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-accordion",
@@ -2773,21 +2758,21 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "5665a013664b4d6f46f1cd99b4464608789fa347",
-					"ref": "develop",
-					"runId": 41423095872,
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
+					"ref": "release/4",
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T09:52:51.220Z",
-					"digest": "sha256:1ef734cfc081af59b5a8f3c00fcba4b088b888010f39845af7cc4c4a51afa9a9",
+					"createdAt": "2026-11-03T07:38:16.949Z",
+					"digest": "sha256:77f82a73964db40f494290baeb942deb95ec408bdbe07886dc7e0668e2580dc4",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 437,
-				"changed": 5,
+				"unchanged": 439,
+				"changed": 3,
 				"added": 0,
 				"removed": 0,
 				"error": 0
@@ -3114,14 +3099,9 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:e892ecdbda7b546708b31e94f633ba675d08df2c18b44aa4f47772e0726ec795",
-					"diffPixels": 520,
-					"diffRatio": 0.000451,
-					"expected": "theme-bwst/dialog-basic-show-dialog-true.expected.png",
-					"actual": "theme-bwst/dialog-basic-show-dialog-true.actual.png",
-					"diff": "theme-bwst/dialog-basic-show-dialog-true.diff.png"
+					"route": "dialog-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:e892ecdbda7b546708b31e94f633ba675d08df2c18b44aa4f47772e0726ec795"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -4613,14 +4593,9 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:480bcf65b094e8ee32a9d43f24ee6388d5c884cb9e4c2e246d4f469ff835fa96",
-					"diffPixels": 520,
-					"diffRatio": 0.000451,
-					"expected": "theme-bwst/modal-basic-show-dialog-true.expected.png",
-					"actual": "theme-bwst/modal-basic-show-dialog-true.actual.png",
-					"diff": "theme-bwst/modal-basic-show-dialog-true.diff.png"
+					"route": "modal-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:480bcf65b094e8ee32a9d43f24ee6388d5c884cb9e4c2e246d4f469ff835fa96"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -5511,21 +5486,21 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "5665a013664b4d6f46f1cd99b4464608789fa347",
-					"ref": "develop",
-					"runId": 41423095872,
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
+					"ref": "release/4",
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T09:52:33.457Z",
-					"digest": "sha256:bfdd6a1f3d440fc90c3e9f6b0a7f93563062f82310e0d450971bdbbbd73ef453",
+					"createdAt": "2026-11-03T07:38:47.752Z",
+					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 436,
-				"changed": 6,
+				"unchanged": 439,
+				"changed": 3,
 				"added": 0,
 				"removed": 0,
 				"error": 0
@@ -5852,14 +5827,9 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:0ca19242468b38f52ed58729cf0ad58729bea89546596500dd45569187922546",
-					"diffPixels": 524,
-					"diffRatio": 0.000455,
-					"expected": "theme-default/dialog-basic-show-dialog-true.expected.png",
-					"actual": "theme-default/dialog-basic-show-dialog-true.actual.png",
-					"diff": "theme-default/dialog-basic-show-dialog-true.diff.png"
+					"route": "dialog-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:0ca19242468b38f52ed58729cf0ad58729bea89546596500dd45569187922546"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -7351,14 +7321,9 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:06d975b9f260a39cabc1ccd352d9f61ad64ebd394d60ec83e76016142b411420",
-					"diffPixels": 524,
-					"diffRatio": 0.000455,
-					"expected": "theme-default/modal-basic-show-dialog-true.expected.png",
-					"actual": "theme-default/modal-basic-show-dialog-true.actual.png",
-					"diff": "theme-default/modal-basic-show-dialog-true.diff.png"
+					"route": "modal-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:06d975b9f260a39cabc1ccd352d9f61ad64ebd394d60ec83e76016142b411420"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -7671,14 +7636,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
-					"route": "scenarios/focus-elements?component=tree",
-					"status": "changed",
-					"hash": "sha256:7bd8ac8ecb5257b4504416e673f066c2da99fbadd0895f7ce1c4a76822cfcf8e",
-					"diffPixels": 6,
-					"diffRatio": 0.000071,
-					"expected": "theme-default/scenarios-focus-elements-component-tree.expected.png",
-					"actual": "theme-default/scenarios-focus-elements-component-tree.actual.png",
-					"diff": "theme-default/scenarios-focus-elements-component-tree.diff.png"
+					"route": "scenarios-focus-elements-component-tree",
+					"status": "unchanged",
+					"hash": "sha256:7bd8ac8ecb5257b4504416e673f066c2da99fbadd0895f7ce1c4a76822cfcf8e"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-accordion",
@@ -8254,21 +8214,21 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "5665a013664b4d6f46f1cd99b4464608789fa347",
-					"ref": "develop",
-					"runId": 41423095872,
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
+					"ref": "release/4",
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T09:51:40.893Z",
-					"digest": "sha256:f64919aee0563da37b0f58034e256f6b19b83dcc06f472724c296cacfdd8ddf9",
+					"createdAt": "2026-11-03T07:38:03.994Z",
+					"digest": "sha256:df8761c47caa10be35fa1948f10fa7229fb8230744f580a6020b4ee63afd5b7b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 440,
-				"changed": 2,
+				"unchanged": 442,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
@@ -8595,14 +8555,9 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:8116978cba3ad16dd354efad6e5bc57b7af2d73bf63a6f11dc8fa6ddd561f4b2",
-					"diffPixels": 6136,
-					"diffRatio": 0.005326,
-					"expected": "theme-desy/dialog-basic-show-dialog-true.expected.png",
-					"actual": "theme-desy/dialog-basic-show-dialog-true.actual.png",
-					"diff": "theme-desy/dialog-basic-show-dialog-true.diff.png"
+					"route": "dialog-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:8116978cba3ad16dd354efad6e5bc57b7af2d73bf63a6f11dc8fa6ddd561f4b2"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -10094,14 +10049,9 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:f541f919839d2ee584b8f30993240307c06dc312ebcf2bf4d20d6628a237d496",
-					"diffPixels": 6136,
-					"diffRatio": 0.005326,
-					"expected": "theme-desy/modal-basic-show-dialog-true.expected.png",
-					"actual": "theme-desy/modal-basic-show-dialog-true.actual.png",
-					"diff": "theme-desy/modal-basic-show-dialog-true.diff.png"
+					"route": "modal-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:f541f919839d2ee584b8f30993240307c06dc312ebcf2bf4d20d6628a237d496"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -10947,21 +10897,21 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "5665a013664b4d6f46f1cd99b4464608789fa347",
-					"ref": "develop",
-					"runId": 41423095872,
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
+					"ref": "release/4",
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T09:50:26.763Z",
-					"digest": "sha256:c337b5c85a74a31d7fd208825294ffd0d7b73d0d9283e1394a41de5f9ebd49c3",
+					"createdAt": "2026-11-03T07:37:28.213Z",
+					"digest": "sha256:58d72b90c03267d00163efa32bccc9149364b9b64d5fa73497762fb98fb4fa9c",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 437,
-				"changed": 5,
+				"unchanged": 439,
+				"changed": 3,
 				"added": 0,
 				"removed": 0,
 				"error": 0
@@ -11288,14 +11238,9 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:ebabbc02b7cb128e986a507c7e6e2ac18a18d2a642eb5434315149bae25a477e",
-					"diffPixels": 1233,
-					"diffRatio": 0.00107,
-					"expected": "theme-ecl/dialog-basic-show-dialog-true.expected.png",
-					"actual": "theme-ecl/dialog-basic-show-dialog-true.actual.png",
-					"diff": "theme-ecl/dialog-basic-show-dialog-true.diff.png"
+					"route": "dialog-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:ebabbc02b7cb128e986a507c7e6e2ac18a18d2a642eb5434315149bae25a477e"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -12787,14 +12732,9 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:aa38862b17d3dc82cf316210773793ae10f2c662177bb25ae87b845daa856f9c",
-					"diffPixels": 1233,
-					"diffRatio": 0.00107,
-					"expected": "theme-ecl/modal-basic-show-dialog-true.expected.png",
-					"actual": "theme-ecl/modal-basic-show-dialog-true.actual.png",
-					"diff": "theme-ecl/modal-basic-show-dialog-true.diff.png"
+					"route": "modal-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:aa38862b17d3dc82cf316210773793ae10f2c662177bb25ae87b845daa856f9c"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -13675,26 +13615,26 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "5665a013664b4d6f46f1cd99b4464608789fa347",
-					"ref": "develop",
-					"runId": 41423095872,
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
+					"ref": "release/4",
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T09:51:29.836Z",
-					"digest": "sha256:78758cafba0a822473b631754590bf2ecabd621bb5a17ceaf92f500ce082708e",
+					"createdAt": "2026-11-03T07:37:29.999Z",
+					"digest": "sha256:f5953d6598f804452acc46fa5233abc1485ae61d269923acbc5a4f17ce31b1ed",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 418,
-				"changed": 25,
+				"unchanged": 420,
+				"changed": 23,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8b0fc660b72498f64ab584ebca244b183c22a15c409ea1a0bdd3d9424ca37797",
+			"digest": "sha256:7535ecf5509b4fa90856ef5dc5fa9fa35bf316f84d72010e7fdb0bbc7ba8128e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14155,14 +14095,9 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:59baa2cf9dd1d10a9e030306ce35bf37888e599e6f3721c68473bbe16b96464d",
-					"diffPixels": 3007,
-					"diffRatio": 0.00261,
-					"expected": "theme-kern/dialog-basic-show-dialog-true.expected.png",
-					"actual": "theme-kern/dialog-basic-show-dialog-true.actual.png",
-					"diff": "theme-kern/dialog-basic-show-dialog-true.diff.png"
+					"route": "dialog-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:59baa2cf9dd1d10a9e030306ce35bf37888e599e6f3721c68473bbe16b96464d"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -15669,22 +15604,17 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:270e08aba344b4178dc16802584718482efe02d2f05d2d21f869431d3ee1074a",
-					"diffPixels": 3007,
-					"diffRatio": 0.00261,
-					"expected": "theme-kern/modal-basic-show-dialog-true.expected.png",
-					"actual": "theme-kern/modal-basic-show-dialog-true.actual.png",
-					"diff": "theme-kern/modal-basic-show-dialog-true.diff.png"
+					"route": "modal-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:270e08aba344b4178dc16802584718482efe02d2f05d2d21f869431d3ee1074a"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
 					"route": "nav/basic",
 					"status": "changed",
-					"hash": "sha256:2a3dc50e16f1d13c96a9c8eedf5c97bb64a099fba09351d50397629c0ab34305",
-					"diffPixels": 4289,
-					"diffRatio": 0.028446,
+					"hash": "sha256:025b4de195e68ac2a23aaee0c36a2aa6e825809bb19c7aac3e61340b51454427",
+					"diffPixels": 4178,
+					"diffRatio": 0.02771,
 					"sizeMismatch": {
 						"expected": [
 							401,
@@ -15703,9 +15633,9 @@
 					"name": "nav-basic--navigation-submenu-2",
 					"route": "nav/basic",
 					"status": "changed",
-					"hash": "sha256:6a0ac34cd0f0273b257c7bed7469a4031e3a80b761d63f71f74066ae31e37fb4",
-					"diffPixels": 4317,
-					"diffRatio": 0.023512,
+					"hash": "sha256:af2306455be4e71017e6fb297f72171e3d9b722df814cca3cfe77384ee4d06e1",
+					"diffPixels": 4193,
+					"diffRatio": 0.022836,
 					"sizeMismatch": {
 						"expected": [
 							429,
@@ -15724,9 +15654,9 @@
 					"name": "nav-basic--navigation-submenu-active",
 					"route": "nav/basic",
 					"status": "changed",
-					"hash": "sha256:a288ca0c632a74f2e1a1174356f1204592b2a1600fc8fe1abe53187342760398",
-					"diffPixels": 5612,
-					"diffRatio": 0.038748,
+					"hash": "sha256:842cf04140f6cfcbdd36dbdc00fb32e8fa980593b54f37a6b9251706655ab785",
+					"diffPixels": 5414,
+					"diffRatio": 0.037381,
 					"sizeMismatch": {
 						"expected": [
 							248,
@@ -16653,21 +16583,21 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "5665a013664b4d6f46f1cd99b4464608789fa347",
-					"ref": "develop",
-					"runId": 41423095872,
+					"sha": "82531345407bd11d365f8560f861ef809f3964bd",
+					"ref": "release/4",
+					"runId": 41596750960,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-02T09:50:40.090Z",
-					"digest": "sha256:23346e486ffbfd2fa049dd82a3954520d9f82d9fbfd29d19f1b825e76acb257c",
+					"createdAt": "2026-11-03T07:36:09.145Z",
+					"digest": "sha256:2a8ed01f1ccd4b547795406e0d9f04ab27a3614ab70df75ec403b6e682c6b376",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 440,
-				"changed": 2,
+				"unchanged": 442,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
@@ -16994,14 +16924,9 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:5092c94e6c05ef6d9d797f258ab870389f17dc177977ccf9e6d01e69e53afcf3",
-					"diffPixels": 137,
-					"diffRatio": 0.000119,
-					"expected": "unstyled/dialog-basic-show-dialog-true.expected.png",
-					"actual": "unstyled/dialog-basic-show-dialog-true.actual.png",
-					"diff": "unstyled/dialog-basic-show-dialog-true.diff.png"
+					"route": "dialog-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:5092c94e6c05ef6d9d797f258ab870389f17dc177977ccf9e6d01e69e53afcf3"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -18493,14 +18418,9 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:d2e46e34ba077fd49ba619f672ef7c3661df7840aaaae11a80e8dc414cdac528",
-					"diffPixels": 137,
-					"diffRatio": 0.000119,
-					"expected": "unstyled/modal-basic-show-dialog-true.expected.png",
-					"actual": "unstyled/modal-basic-show-dialog-true.actual.png",
-					"diff": "unstyled/modal-basic-show-dialog-true.diff.png"
+					"route": "modal-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:d2e46e34ba077fd49ba619f672ef7c3661df7840aaaae11a80e8dc414cdac528"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
