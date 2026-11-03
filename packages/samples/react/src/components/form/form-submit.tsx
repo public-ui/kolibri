@@ -24,7 +24,7 @@ export const FormSubmit: FC = () => {
 	}
 
 	function ErrorHandler() {
-		if (formRef.current) formRef.current._errorList = [{ message: 'Error in Input 1 (Field is empty)', selector: '#input1' }];
+		if (formRef.current) formRef.current._errorList = [{ message: 'Error in Input Error (Field is empty)', selector: '#input-error' }];
 		formRef.current?.focusErrorList();
 	}
 
@@ -56,7 +56,7 @@ export const FormSubmit: FC = () => {
 				<KolCard _label="Speichern erfolgreich / Zurücksetzen">
 					{isSubmitted && <KolAlert _alert _label="Speichern erfolgreich" _type="success" />}
 					<KolForm className="w-full" _on={formEventHandlerSuccessReset}>
-						<KolInputText ref={inputRef} id="input1" _label="Input 1" />
+						<KolInputText ref={inputRef} id="input-success" _label="Input Success" />
 						<br />
 						<KolButton _label="Speichern" _variant="primary" _type="submit" /> <></>
 						<KolButton _label="Zurücksetzen" _variant="primary" _type="reset" />
@@ -80,8 +80,8 @@ export const FormSubmit: FC = () => {
 				<KolCard _label="Speichern fehlerhaft">
 					<KolForm className="w-full" _on={formEventHandlerError} ref={formRef}>
 						<KolInputText
-							id="input1"
-							_label="Input 1"
+							id="input-error"
+							_label="Input Error"
 							_readOnly
 							_required
 							_msg={{
