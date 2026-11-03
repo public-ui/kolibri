@@ -60,7 +60,9 @@
 				&--active > .kol-nav__entry-wrapper {
 					.kol-button,
 					.kol-link {
-						font-weight: var(--kern-typography-font-weight-semi-bold);
+						&__interactive-element {
+							font-weight: var(--kern-typography-font-weight-semi-bold);
+						}
 					}
 				}
 			}
