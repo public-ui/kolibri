@@ -6,6 +6,8 @@ import type { SkipNavLinkItem } from './link-item';
  * Props configuration for the skip-nav component.
  *
  * Both props are required. Notes on prop choices:
+ * - `labelProp`: the label is emitted only as the `aria-label` of the `nav` landmark and is never
+ *   rendered, so language segments would have no effect — a plain string suffices.
  * - `skipNavLinksProp`: `Stringified<LinkProps[]>` in, parsed array out, every entry
  *   an object with a string `_href` or `_label`, and the Millersche Zahl hint (>7 entries).
  */

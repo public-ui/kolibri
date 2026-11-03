@@ -4,7 +4,7 @@ import { getDocument } from '../../../schema';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../../utils/overlay';
 import { tooltipClosed, tooltipOpened } from '../../../utils/tooltip-open-tracking';
-import { alignProp, badgeTextProp, idProp, labelProp } from '../../props';
+import { alignProp, badgeTextProp, idProp, labelLangSegmentsProp } from '../../props';
 import { BaseBehavior } from '../base-behavior';
 import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { TooltipApi } from './api';
@@ -32,7 +32,10 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 	}
 
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelProp.apply(value, (v) => {
+		// The empty string is the expert-slot sentinel and invalid for this prop: the tooltip renders
+		// no label text and has no expert slot. Mapping it to `undefined` records the "not set"
+		// state instead of logging an invalid-value warning.
+		labelLangSegmentsProp.apply(value || undefined, (v) => {
 			this.setRenderProp('label', v);
 		});
 	}

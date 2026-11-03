@@ -6,7 +6,8 @@ import { AvatarFC } from '../../internal/functional-components/avatar/component'
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { colorProp, labelProp, srcProp } from '../../internal/props';
-import { trimLabel, type ColorPair, type LabelPropType } from '../../schema';
+import type { ColorPair, LabelPropType, SrcPropType } from '../../schema';
+import { trimLabel } from '../../schema';
 
 /**
  * Formats a single name as an initial by taking the first character and converting it to uppercase.
@@ -60,7 +61,7 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	 * Defines the backgroundColor and foregroundColor.
 	 */
 	@Prop()
-	public _color?: string | ColorPair;
+	public _color?: string | ColorPair = undefined;
 
 	@Watch('_color')
 	public watchColor(value?: string | ColorPair): void {
@@ -75,20 +76,24 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.setState('initials', normalizeInitials(v));
-		});
+		labelProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.setState('initials', normalizeInitials(v));
+			},
+			this.isRequired('label'),
+		);
 	}
 
 	/**
 	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop()
-	public _src?: string;
+	public _src?: SrcPropType = undefined;
 
 	@Watch('_src')
-	public watchSrc(value?: string): void {
+	public watchSrc(value?: SrcPropType): void {
 		srcProp.apply(value, (v) => this.setRenderProp('src', v));
 	}
 
@@ -96,10 +101,14 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 		this.initRenderProps(avatarPropsConfig);
 
 		colorProp.apply(this._color, (v) => this.setRenderProp('color', v));
-		labelProp.apply(this._label, (v) => {
-			this.setRenderProp('label', v);
-			this.setState('initials', normalizeInitials(v));
-		});
+		labelProp.apply(
+			this._label,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.setState('initials', normalizeInitials(v));
+			},
+			this.isRequired('label'),
+		);
 		srcProp.apply(this._src, (v) => this.setRenderProp('src', v));
 	}
 

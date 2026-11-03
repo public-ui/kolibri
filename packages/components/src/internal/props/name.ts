@@ -1,3 +1,4 @@
+import type { NamePropType } from '../../schema/props/name';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -22,5 +23,5 @@ import { normalizeString } from './helpers/normalizers';
  * @see https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-name
  * @see https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
  */
-export type NameProp = SimpleProp<'name', string>;
+export type NameProp = SimpleProp<'name', NamePropType>;
 export const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);

@@ -44,7 +44,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -306,7 +306,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host tabindex="0">
 				<TreeFC handleSlotchange={this.handleSlotchange} label={this.getRenderProp('label')} />
 			</Host>
 		);

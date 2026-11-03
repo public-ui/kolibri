@@ -1,4 +1,4 @@
-import { isObject, type NumberString } from '../../../schema';
+import { isLabelSegment, isObject, type LabelLangSegmentsPropType, type NumberString } from '../../../schema';
 
 export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {
@@ -8,6 +8,24 @@ export function normalizeString(value?: unknown): string | never {
 		return String(value);
 	}
 	throw new TypeError(`Cannot convert ${typeof value} to string`);
+}
+
+/**
+ * Normalizes a label with optional language segments: strings, numbers, booleans and bigints become
+ * strings, a well-formed segment list passes through, anything else throws. The empty string passes
+ * through untouched — whether it is valid is the concern of the validators (expert-slot sentinel).
+ */
+export function normalizeLabelSegments(value?: unknown): LabelLangSegmentsPropType | never {
+	if (typeof value === 'string') {
+		return value;
+	}
+	if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
+		return String(value);
+	}
+	if (Array.isArray(value) && value.every(isLabelSegment)) {
+		return value;
+	}
+	throw new TypeError(`Cannot convert ${typeof value} to a label`);
 }
 
 /**

@@ -6,9 +6,9 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * Props configuration for the badge component.
  *
  * Why these prop definitions:
- * - `labelWithExpertSlotProp`, not `labelProp`: `labelProp` rejects labels shorter than two
- *   characters, and a badge showing a single-digit counter has to keep rendering. The empty
- *   string enables the expert slot.
+ * - `labelWithExpertSlotProp`: the badge renders its label through the span, which provides the
+ *   expert slot (the empty string enables it); single-digit counters ("1") are valid through
+ *   the numbers-only exemption.
  * - `spanIconsProp`, not `iconsProp`: icons are `KoliBriIconsProp` — a string or a per-direction
  *   object, not a plain icon class string.
  * - `smartButtonProp` has no meaningful default: the web component clears the render prop when no

@@ -1,10 +1,13 @@
-import type { LabelPropType } from '../../schema';
-import type { Prop } from './helpers/factory';
+import type { LabelPropType } from '../../schema/props/label';
+import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
+import { normalizeString } from './helpers/normalizers';
+import { isValidLabel } from './helpers/validators';
 import { labelHints } from './hints/label-hints';
 
 /**
- * Label prop for accessible names
+ * Label prop for accessible names of components that do not render their label and therefore do
+ * not support language segments
  *
  * Description:
  * The label provides the accessible name for a component. It is announced by screen readers
@@ -15,34 +18,17 @@ import { labelHints } from './hints/label-hints';
  * - Every interactive element must have a perceivable label (WCAG 4.1.2 Name, Role, Value)
  * - Labels must be descriptive and concise (WCAG 2.4.6 Headings and Labels)
  * - Labels must be programmatically associated with their controls (WCAG 1.3.1 Info and Relationships)
- * - Minimum 2 characters for meaningful labels
+ * - Minimum 2 characters for meaningful labels; an explicitly passed empty string is invalid
+ *   (the empty string is reserved for the label with expert slot)
  * - Labels longer than 80 characters are accepted, but give a UI/UX hint to keep them concise
- * - An empty label ("") is allowed for cases where the accessible name is provided differently
+ * - `undefined` is the "not set" state, when the accessible name is provided differently
  *
  * @see https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
  * @see https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html
  * @see https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
  * @see https://www.w3.org/TR/accname-1.2/
  */
-export type LabelProp = Prop<'label', LabelPropType, LabelPropType>;
-export const labelProp = createPropDefinition<LabelProp>(
-	'label',
-	'',
-	(value: unknown) => {
-		if (typeof value === 'string') {
-			return value;
-		}
-		if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
-			return String(value);
-		}
-		throw new TypeError(`Cannot convert ${typeof value} to LabelPropType`);
-	},
-	(v) => {
-		const r = v === '' || (typeof v === 'string' && v.length >= 2) || Array.isArray(v);
-		return r;
-	},
-
-	{
-		hints: labelHints,
-	},
-);
+export type LabelProp = SimpleProp<'label', LabelPropType>;
+export const labelProp = createPropDefinition<LabelProp>('label', undefined, normalizeString, isValidLabel, {
+	hints: labelHints,
+});

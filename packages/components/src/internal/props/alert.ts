@@ -1,3 +1,4 @@
+import type { AlertPropType } from '../../schema/props/alert';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -17,5 +18,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  * @see https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html
  * @see https://www.w3.org/TR/wai-aria-1.2/#alert
  */
-export type AlertProp = SimpleProp<'alert', boolean>;
+export type AlertProp = SimpleProp<'alert', AlertPropType>;
 export const alertProp = createPropDefinition<AlertProp>('alert', false, normalizeBoolean);

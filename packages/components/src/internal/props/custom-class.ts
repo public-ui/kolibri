@@ -1,9 +1,10 @@
+import type { CustomClassPropType } from '../../schema/props/custom-class';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 import { isSafeClassName } from './helpers/validators';
 
-export type CustomClassProp = SimpleProp<'customClass', string>;
+export type CustomClassProp = SimpleProp<'customClass', CustomClassPropType>;
 
 /**
  * Validates the normalized custom-class value. An empty string is valid (means no custom class);

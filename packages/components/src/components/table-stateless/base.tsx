@@ -11,9 +11,10 @@ import { createLinkItem } from '../../internal/functional-components/link/item';
 import type { EmbeddedLinkProps } from '../../internal/functional-components/link/resolve-props';
 import type { TableStatelessApi } from '../../internal/functional-components/table-stateless/api';
 import { tableStatelessPropsConfig } from '../../internal/functional-components/table-stateless/api';
-import { TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
+import { TABLE_CAPTION_ID, TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
 import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-components/table-stateless/table-model';
+import type { TableHeaders } from '../../internal/props';
 import {
 	fixedColsProp,
 	hasSettingsMenuProp,
@@ -26,7 +27,6 @@ import {
 	tableSelectionProp,
 	variantProp,
 } from '../../internal/props';
-import type { TableHeaders } from '../../internal/props/table-headers';
 import type {
 	FixedColsPropType,
 	HasSettingsMenuPropType,
@@ -41,6 +41,7 @@ import type {
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCellsPropType,
+	TableLoadingPropType,
 	TableSelectionPropType,
 	VariantClassNamePropType,
 } from '../../schema';
@@ -87,6 +88,8 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 
 	private scrollContainerElement?: HTMLDivElement;
 	private tableElement?: HTMLTableElement;
+	/** Whether `syncTableLabel` assigned external label elements — the IDL value alone cannot tell, because a written `aria-labelledby` content attribute reflects back into it. */
+	private hasExternalTableLabelRefs = false;
 	private resizeObserver?: ResizeObserver;
 	private resizeDebounceTimeout?: ReturnType<typeof setTimeout>;
 	private readonly cellRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
@@ -167,10 +170,10 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	}
 
 	protected applyLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
-	protected applyLoading(value?: boolean): void {
+	protected applyLoading(value?: TableLoadingPropType): void {
 		tableLoadingProp.apply(value, (v) => this.setRenderProp('loading', v));
 	}
 
@@ -189,15 +192,23 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 
 	/**
 	 * Labels the `<table>` by elements outside the shadow root. Plain `aria-labelledby` IDREFs cannot
-	 * cross that boundary; element references can.
+	 * cross that boundary; element references can. Explicitly set references override the content
+	 * attribute, so releasing them (`null`) must restore the attribute for the internal caption
+	 * fallback: Chromium drops the coupled attribute on `null`, and a re-render would not rewrite an
+	 * unchanged attribute value.
 	 */
 	protected syncTableLabel(elements?: HTMLElement[]): void {
 		if (!this.tableElement) return;
 		if ('ariaLabelledByElements' in this.tableElement) {
 			if (elements?.length) {
 				this.tableElement.ariaLabelledByElements = elements;
+				this.hasExternalTableLabelRefs = true;
+				Log.debug([this.tableElement, elements, this.tableElement.ariaLabelledByElements]);
+			} else if (this.hasExternalTableLabelRefs) {
+				this.hasExternalTableLabelRefs = false;
+				this.tableElement.ariaLabelledByElements = null;
+				this.tableElement.setAttribute('aria-labelledby', TABLE_CAPTION_ID);
 			}
-			Log.debug([this.tableElement, !!elements?.length, elements, this.tableElement.ariaLabelledByElements]);
 		}
 	}
 

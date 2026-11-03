@@ -13,4 +13,4 @@ import { normalizeInputNumber } from './helpers/normalizers';
  */
 export type InputNumberValueProp = Prop<'value', number | NumberString | null, number>;
 // The default is `undefined`: an empty field has no value, which must stay distinguishable from `0`.
-export const inputNumberValueProp = createPropDefinition<InputNumberValueProp>('value', undefined as unknown as number, normalizeInputNumber);
+export const inputNumberValueProp = createPropDefinition<InputNumberValueProp>('value', undefined, normalizeInputNumber);

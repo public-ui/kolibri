@@ -44,7 +44,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -65,7 +65,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
-	@Prop() public _orientation?: OrientationPropType;
+	@Prop() public _orientation?: OrientationPropType = undefined;
 
 	@Watch('_orientation')
 	public watchOrientation(value?: OrientationPropType): void {

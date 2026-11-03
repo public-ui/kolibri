@@ -39,15 +39,16 @@ test.describe('kol-pagination', () => {
 		});
 
 		test('it calls the onChangePageSize callback when the page size is changed', async ({ page }) => {
-			const callbackPromise = page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement, Callback) => {
+			// The enum member is passed into the page context as a plain argument.
+			const callbackPromise = page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement, onChangePageSize: Callback) => {
 				return new Promise<number>((resolve) => {
 					element._on = {
-						[Callback.onChangePageSize]: (_: Event, pageSize: number) => {
+						[onChangePageSize]: (_: Event, pageSize: number) => {
 							resolve(pageSize);
 						},
 					};
 				});
-			}, Callback);
+			}, Callback.onChangePageSize);
 			await page.waitForChanges();
 			await page.locator('select').selectOption('-1'); // choose second option (20)
 			await page.waitForChanges();

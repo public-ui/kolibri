@@ -20,7 +20,7 @@ const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 	},
 	_allowMultiSort: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'AllowMultiSortPropType',
 		required: false,
 		doc: 'Defines whether to allow multi sort.',
 	},
@@ -32,13 +32,13 @@ const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 	},
 	_data: {
 		kind: 'prop',
-		type: 'Stringified<KoliBriTableDataType[]>',
+		type: 'TableDataPropType',
 		required: true,
 		doc: 'Defines the primary table data.',
 	},
 	_dataFoot: {
 		kind: 'prop',
-		type: 'Stringified<KoliBriTableDataType[]>',
+		type: 'TableDataFootPropType',
 		required: false,
 		doc: 'Defines the data for the table footer.',
 	},
@@ -68,7 +68,7 @@ const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 	},
 	_loading: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'TableLoadingPropType',
 		required: false,
 		doc: 'Wether the table shows a loading spinner (default: false).',
 	},
@@ -88,8 +88,8 @@ const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'PaginationPositionPropType',
 		required: false,
-		default: "'bottom'",
 		doc: 'Controls the position of the pagination.',
+		default: "'bottom'",
 	},
 	_selection: {
 		kind: 'prop',

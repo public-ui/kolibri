@@ -109,7 +109,7 @@ function isActiveElement(element: HTMLElement): boolean {
  *
  * @param document_ - Document to start from; defaults to the global `document`.
  */
-export function deepActiveElement(document_: Document = document): Element | null {
+function deepActiveElement(document_: Document = document): Element | null {
 	let active: Element | null = document_.activeElement;
 	while (active?.shadowRoot?.activeElement) {
 		active = active.shadowRoot.activeElement;

@@ -19,7 +19,7 @@ const KOL_AVATAR_PUBLIC_API: PublicApiContract = {
 	},
 	_src: {
 		kind: 'prop',
-		type: 'string',
+		type: 'SrcPropType',
 		required: false,
 		doc: 'Sets the image `src` attribute to the given string.',
 	},

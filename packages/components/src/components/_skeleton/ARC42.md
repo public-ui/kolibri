@@ -17,6 +17,7 @@ Primary goals:
 - keep the WC as the single orchestrator — no indirection layer between the custom element and the renderer
 - factor out only genuinely reusable cross-component logic into Behaviors
 - enforce consistent validation and type-safety boundaries
+- keep per-prop special treatment to a minimum — validation, defaults and hints are uniform across every component using a prop; deviations are documented exceptions with a reason, not per-component one-offs
 - document an end-to-end implementation pipeline that teams can replicate when bootstrapping new components
 
 ### Blueprint Layout
@@ -360,7 +361,9 @@ Design principles:
 - **Minimal conversion**: Only obvious transformations (string numbers → numbers)
 - **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
 - **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
-- **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `disabledProp` for every `_disabled`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default), where a shared factory types the value per component (callbacks, links, options), or where the meaning of the prop differs (`paginationLabelProp`, the label of the navigation landmark of the pagination, beside `labelWithExpertSlotProp`); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior share the implementation, except a variant kept apart for its meaning (`paginationLabelProp`): under different keys `createAlignPropDefinition` (`_align`, `_popoverAlign`, `_tooltipAlign`), under one key the typed factories `createCallbacksPropDefinition`, `createLinksPropDefinition` and `createOptionsPropDefinition`
+- **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `disabledProp` for every `_disabled`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default), where a shared factory types the value per component (callbacks, links, options), or where the meaning of the prop differs (`labelWithExpertSlotProp` beside `labelProp`: its empty string enables the expert slot); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior share the implementation: under different keys `createAlignPropDefinition` (`_align`, `_popoverAlign`, `_tooltipAlign`), under one key the typed factories `createCallbacksPropDefinition`, `createLinksPropDefinition` and `createOptionsPropDefinition`
+- **One explicit schema type per prop**: every prop value type is the named schema type from `src/schema/props`; as a rule, one readable PropType per functionality is shared by all of its property definitions, and prop bags, prop definitions, `@Prop` declarations, watchers and apply methods reference that name instead of inlining a native type (see _Explicit Schema Types per Prop_)
+- **As few special treatments per prop as possible**: a prop's validation, default and hints are the same for every component using it; a component-specific deviation is a documented exception with a reason (e.g. the `LabelWithExpertSlotPropType` empty-string sentinel), never a silent one-off (see §1 Primary Goals)
 
 #### Dual-Type Props
 
@@ -374,9 +377,102 @@ type ColorProp = Prop<'color', ColorPair | string, ColorPair>;
 //                     └─ Key  └─ Web Component     └─ FC
 
 // Same external and internal type (shorthand):
-type MaxProp = SimpleProp<'max', number>;
-//                        └─ Key └─ Both types
+type NameProp = SimpleProp<'name', NamePropType>;
+//                         └─ Key  └─ Both types
 ```
+
+#### Explicit Schema Types per Prop
+
+Every prop has exactly one named **schema type** in `src/schema/props` (e.g. `DisabledPropType` in
+`schema/props/disabled.ts`). A schema type may be structurally as simple as a native type — naming it
+is the point, not making it complex. The name is the single spelling of the type: the prop bag, the
+prop definition in `internal/props`, the `@Prop` declaration, the watcher and the apply method all
+reference it, and no layer inlines a native type instead:
+
+```typescript
+// schema/props/disabled.ts — the named schema type (its structure does not change)
+export type DisabledPropType = boolean;
+
+// internal/props/disabled.ts — the definition references the schema type
+export type DisabledProp = SimpleProp<'disabled', DisabledPropType>;
+export const disabledProp = createPropDefinition<DisabledProp>('disabled', false, normalizeBoolean);
+
+// components/button/component.tsx — @Prop, watcher and apply carry the schema type
+@Prop() public _disabled?: DisabledPropType = false;
+
+@Watch('_disabled')
+public watchDisabled(value?: DisabledPropType): void {
+	disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+}
+```
+
+One caveat lives in the test toolchain, not in the compiled output: the pinned Stencil transpile does
+not coerce attribute strings for imported type aliases
+([stenciljs/core#4663](https://github.com/stenciljs/core/issues/4663), fixed upstream), so jest sees
+the raw attribute string on an aliased boolean/number prop while the compiled dist metadata resolves
+the alias and the real runtime is unaffected. Tests therefore assert the normalized render props
+instead of raw `@Prop` values; the next Stencil upgrade removes the caveat entirely.
+
+Without the shared name, every layer spells the type its own way (`SimpleProp<'disabled', boolean>`,
+`watchDisabled(value?: boolean)`) and nothing ties the spellings together. With it, `apply`, watcher
+and FC signatures carry the domain term, drift between the layers fails the compiler instead of
+surfacing in review, and an evolution of the schema type moves every layer at once.
+
+As a rule, one readable PropType is defined per functionality and shared by all of its property
+definitions — whether there is one (`disabledProp` for `_disabled`) or several (`inputDateMaxProp`,
+`inputMaxProp`, `maxProp` and `paginationMaxProp` for `_max`, each with its own normalizer,
+validator or default). The shared type — not only the prop key string — is what connects the
+definitions of a functionality. Only in individual cases, where the meaning of the value itself
+differs, is a special readable PropType variant introduced — e.g. `LabelWithExpertSlotPropType`
+beside `LabelPropType`, or the distinct `_value` types of the checkbox, radio, select, date and
+number inputs. `prop-keys.spec.ts` documents the variants per render key.
+
+Naming roles stay distinct: `XxxPropType` is the schema value type, `PropXxx` the schema prop bag
+and `XxxProp` the prop definition in `internal/props`.
+
+Which variant a component uses follows its rendered markup: a `_label` that flows into the `span`
+expert slot (`<slot name="expert">`) is `LabelWithExpertSlotPropType` — the interactive elements,
+the form-field labels and the heading (its label sits in the heading tag next to the expert slot).
+A `_label` that is a landmark name, a caption or a pure `aria-label` without an expert slot stays
+`LabelPropType` — even when the component renders unrelated expert slots elsewhere (e.g. for the
+quote content or the tree item button). The decisive test is who switches the slot: a label is a
+sentinel carrier (`''` enables the slot) only where the label value itself toggles it. A label
+rendered through a slot the component keeps open on its own — the tree item puts its label into
+the always-open expert slot of its embedded link — carries segments but no sentinel, so it binds
+`labelLangSegmentsProp`.
+
+This rule binds new and changed props immediately. Existing props adopt it family by family — prop
+definitions first, then component signatures. Where no named schema type exists yet, it is added: an
+additive, non-breaking change, because naming a type never changes its structure.
+
+#### Label Handling Forms
+
+Six forms govern how a label value flows through the layers. They exist because the validation
+boundary and the render boundary are different places: the web component validates untyped input
+(attributes arrive as strings, adapters pass any runtime value), while a functional component
+receives already-normalized props and never validates.
+
+1. **A functional component trusts its props.** Its prop type comes from the props config slot
+   (`required` → mandatory, `optional` → partial). A guard inside a functional component is never a
+   distrust of validation — it handles the documented "not set" state of an optional prop (the alert
+   without a label renders no heading).
+2. **The "not set" guard is `label?.length > 0`** for optional `string | LabelSegment[] | undefined`
+   labels, in JSX conditions and ternaries alike. The expression must be strictly boolean: a bare
+   `label?.length &&` renders the digit `0` into the DOM when the label is the empty string.
+3. **`trimLabel(label)` is the only way to obtain a plain string** (accessible names, aria-label,
+   aria-description). `trimLabel` is undefined-safe by signature (`undefined` → `''`) and the only
+   place joining segment arrays — call it without `?? ''` or `|| ''`, and never apply string
+   operations to a segment array directly.
+4. **`''` is the expert-slot sentinel, everywhere.** Only components with `labelWithExpertSlotProp`
+   accept it; their span switches to the expert slot. Everywhere else it is an invalid value. The
+   one mapping to "not set" lives where an empty label is legitimate input (the tooltip behavior:
+   `apply(value || undefined, …)`, mapping `''` to the unset state instead of an invalid-value
+   warning).
+5. **Rendered labels go through `renderLabelWithLang`** so each segment keeps its `lang` attribute
+   for screen readers. A pure `aria-label` uses `trimLabel` — language segments would have no
+   effect there, which is why landmark components bind `labelProp`.
+6. **Which prop definition a component binds follows its markup** (see the variant rule above);
+   the forms here stay identical for all three label definitions.
 
 #### `PropDefinition<TInternal>`
 
@@ -390,6 +486,14 @@ maxProp.apply(value, (normalized) => {
 	this.setRenderProp('max', normalized);
 });
 ```
+
+##### Undefined handling, requiredness and the default contract
+
+Three rules separate the layers, so a fachliche validator never has to deal with "not set":
+
+1. **Requiredness is a property of the component, decided by the props config slot.** The `required`/`optional` arrays feed `ApiFromConfig` (`Props.Required`/`Props.Optional`) _and_ drive the runtime warning: `BaseWebComponent.isRequired(key)` answers from the `required` array, and the applying watcher passes it to `apply` as its third argument (`labelProp.apply(value, cb, this.isRequired('label'))`). A prop definition itself carries no requiredness — one definition serves a required prop in one component (the link's `href`) and an optional one in another (the card's) without duplication. Appliers outside a component config (items, behaviors, `resolve-props`) apply without the argument: an unset value there is a legitimate "not set", not a missing required value.
+2. **`apply()` intercepts `undefined` and `null` before any fachliche validation**: after the warning when `required` was passed, the built-in default is substituted and handed to the callback. `normalize` and `validate` never see a raw `undefined` from the `apply` path.
+3. **A definition with a default must accept it as a value; a definition without a default has no fallback at all.** `createPropDefinition` takes `undefined` as a deliberate "no default": an unset value then flows through as "not set" — nothing is validated, the validator only ever sees real values (e.g. `isValidLabel` checks length only). A definition that does carry a default has its fallback validated and throws on an invalid one. Either way the fachliche validation of real values stays untouched by the "not set" state. The factory types this guarantee: a definition created with a default exposes a non-optional `getDefaultValue(): TInternal` (`PropDefinitionWithDefault`), so callers read the fallback without assertions.
 
 #### `DependentPropDefinition<TInternal, TDeps>`
 
@@ -503,17 +607,17 @@ This ensures the renderer never works with raw, unvalidated data. Props must alw
 Incoming props are normalized in dedicated watchers directly inside the WC:
 
 ```ts
-// Prop definition (internal/props/name.ts)
-type NameProp = SimpleProp<'name', string>;
+// Prop definition (internal/props/name.ts); NamePropType is imported from schema/props/name.ts
+type NameProp = SimpleProp<'name', NamePropType>;
 const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);
 ```
 
 ```tsx
 // Web Component (web-components/skeleton/component.tsx)
-@Prop() public _name!: string;
+@Prop() public _name!: NamePropType;
 
 @Watch('_name')
-public watchName(value?: string): void {
+public watchName(value?: NamePropType): void {
 	nameProp.apply(value, (v) => this.setRenderProp('name', v));
 }
 ```
@@ -647,6 +751,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **ARIA ID Uniqueness via readable nonce IDs** | Any DOM `id` referenced by ARIA attributes (e.g. `aria-controls`, `aria-labelledby`) must be unique per component instance and follow the pattern `readable-identifier-<nonce>`. Use `private readonly someId = createUniqueId('readable-identifier')` from `utils/dev.utils`. This prevents ID collisions when components are composed inside a shared DOM scope (e.g. multiple WC instances within one shadow root, or direct light-DOM usage). Shadow DOM alone is not sufficient when a shadow component renders multiple instances of an internal WC in the same shadow root. |
 | **State ownership**                           | The WC owns reactive state (`@State`) and render props; the FC consumes them.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Type safety**                               | `WebComponentInterface`, `BehaviorInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **Explicit schema types**                     | Every prop has exactly one named schema type in `src/schema/props`; prop definitions, `@Prop` declarations, watchers and apply methods reference that name instead of inlining native types (the stenciljs/core#4663 alias caveat is confined to the jest toolchain).                                                                                                                                                                                                                                                                                                              |
 | **Styling boundary**                          | A component's `style.scss` is base styling: layout and structure only, no colors (except the black/white contrast fallback), no spacing and no dark/light color scheme (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Colors, spacing and color schemes are implemented in the theme packages. See [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](../../../../../docs/BASE_STYLING_VS_THEMING_CONCEPT.md).                                                                                                                                                                 |
 | **Watcher placement**                         | Attach `@Watch` only to underscored public props (e.g. `_name`); internal state fields use `@State`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
@@ -710,6 +815,10 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Pattern_: a change of the internal DOM structure or of the BEM classes it needs ships in at least a minor release as a **theming breaking change**: release label `release:theming`, old and new classes listed in the pull request, all themes of this repository adapted in the same change. See [Theming Contract](#theming-contract-shadow-dom-structure-and-bem-classes).
     - _Alternative_: treat every class or node change as a breaking change that waits for the next major release.
     - _Reason_: themes can be adapted to such a change largely automatically through their own visual snapshots and the zero-visual-delta workflow. Holding back structural cleanups (single BEM root, registered classes) until a major release would keep known non-conformities alive for a long time without protecting anyone more than the changelog entry does.
+18. **Explicit schema types per prop**
+    - _Pattern_: every prop's value type is the named schema type from `src/schema/props`; the prop bag, the prop definition in `internal/props`, the `@Prop` declaration, the watcher and the apply method all reference that name, and no layer inlines a native type. See [Explicit Schema Types per Prop](#explicit-schema-types-per-prop).
+    - _Alternative_: type prop definitions and component signatures with bare natives (`SimpleProp<'disabled', boolean>`) and keep the schema name only on the prop bag.
+    - _Reason_: the type is defined once and every layer points at the same name, so drift between the layers fails the compiler instead of surfacing in review; apply and watcher signatures carry the domain term; and the prop definitions binding one render key are connected by their shared schema type, not only by the key string. Naming a type never changes its structure, so adopting it is invisible to consumers. The pinned Stencil's un-coerced attribute parsing for imported aliases (stenciljs/core#4663) is a known test-toolchain caveat, not a reason to inline natives.
 
 ## 10. Quality Requirements
 
@@ -738,6 +847,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.                                  |
 | **Render props**         | Validated, normalized prop values stored on the WC via `setRenderProp` and read via `getRenderProp` for rendering.                             |
 | **Schema Helper**        | Utility providing `normalize` (unknown → TInternal), `validate` (TInternal → boolean) and `apply` (normalize + validate + callback) for props. |
+| **Schema Type**          | Named value type of one prop in `src/schema/props` (e.g. `DisabledPropType`); the single spelling every layer references.                      |
 | **StateAccess**          | `{ setState, getState }` bundle a WC passes to a Behavior; `BaseWebComponent.stateLess` is the no-op sentinel for stateless Behaviors.         |
 | **Stencil**              | Compiler for building framework-agnostic web components.                                                                                       |
 | **Transitional WC**      | A `shadow:false` WC that renders an FC into the light DOM so legacy consumers can reach inner BEM classes; deleted once consumers migrate.     |

@@ -159,9 +159,11 @@ describe('TooltipBehavior', () => {
 				bubbles: true,
 				cancelable: true,
 			});
+			const stopPropagationSpy = jest.spyOn(escapeEvent, 'stopPropagation');
 
 			getDocument().dispatchEvent(escapeEvent);
 
+			expect(stopPropagationSpy).toHaveBeenCalledTimes(1);
 			expect(escapeEvent.defaultPrevented).toBe(true);
 			expect(tooltip.classList.contains('hide')).toBe(true);
 			expect(removeEventListenerSpy).toHaveBeenCalledWith('keydown', registeredHandler);

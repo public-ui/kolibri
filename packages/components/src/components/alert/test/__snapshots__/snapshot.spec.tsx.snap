@@ -1,5 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`KolAlert slot should render a closer without a label as an alert without heading and aria-description 1`] = `
+<kol-alert>
+  <template shadowrootmode="open">
+    <div class="kol-alert kol-alert--hasCloser kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <div class="kol-alert__closer kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-close-button">
+        <button aria-label="kol-close-alert" class="kol-button__interactive-element" type="button">
+          <span class="kol-button__text kol-span kol-span--hide-label">
+            <span class="kol-span__container">
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
+            </span>
+          </span>
+        </button>
+        <div class="kol-button__tooltip">
+          <div class="kol-tooltip__floating">
+            <div class="kol-tooltip__arrow"></div>
+            <span class="kol-span kol-tooltip__content">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  kol-close-alert
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="kol-alert__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-alert>
+`;
+
 exports[`KolAlert slot should render content passed into the slot 1`] = `
 <kol-alert>
   <template shadowrootmode="open">

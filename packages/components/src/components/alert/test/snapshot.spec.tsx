@@ -61,4 +61,15 @@ describe('KolAlert slot', () => {
 
 		expect(page.root).toMatchSnapshot();
 	});
+
+	test('should render a closer without a label as an alert without heading and aria-description', async () => {
+		const components = [KolAlert];
+		const page = await newSpecPage({
+			components,
+			template: () => <KolAlertTag _hasCloser />,
+		});
+		await page.waitForChanges();
+
+		expect(page.root).toMatchSnapshot();
+	});
 });

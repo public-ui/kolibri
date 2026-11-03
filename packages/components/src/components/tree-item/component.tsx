@@ -46,7 +46,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	/**
 	 * If set (to true) the tree item is the active one.
 	 */
-	@Prop() public _active?: OpenPropType;
+	@Prop() public _active?: OpenPropType = undefined;
 
 	@Watch('_active')
 	public watchActive(value?: OpenPropType): void {
@@ -60,13 +60,13 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType;
+	@Prop() public _open?: OpenPropType = undefined;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
@@ -80,7 +80,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	/**

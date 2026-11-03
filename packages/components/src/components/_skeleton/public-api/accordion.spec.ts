@@ -30,10 +30,10 @@ const KOL_ACCORDION_PUBLIC_API: PublicApiContract = {
 	},
 	_disabled: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'DisabledPropType',
 		required: false,
-		default: 'false',
 		doc: 'Makes the element not focusable and ignore all events.',
+		default: 'false',
 	},
 	_label: {
 		kind: 'prop',
@@ -45,8 +45,8 @@ const KOL_ACCORDION_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'HeadingLevel',
 		required: false,
-		default: '0',
 		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+		default: '0',
 	},
 	_on: {
 		kind: 'prop',
@@ -56,10 +56,10 @@ const KOL_ACCORDION_PUBLIC_API: PublicApiContract = {
 	},
 	_open: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'OpenPropType',
 		required: false,
+		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',
 		default: 'false',
-		doc: 'Opens/expands the element when truthy, closes/collapses when falsy. @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.',
 	},
 };
 

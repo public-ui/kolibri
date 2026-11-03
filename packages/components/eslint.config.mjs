@@ -79,6 +79,14 @@ export default [
 			'@typescript-eslint/consistent-type-imports': 'warn',
 
 			/**
+			 * The TypeScript-aware variant replaces the base `no-redeclare`: it accepts function
+			 * overload declarations (the typed default contract of the prop-definition factories)
+			 * which the base rule rejects.
+			 */
+			'@typescript-eslint/no-redeclare': 'error',
+			'no-redeclare': 'off',
+
+			/**
 			 * This rule is disabled because it is not possible to use the
 			 * `no-unsafe-assignment` rule without breaking the build.
 			 */
@@ -142,7 +150,7 @@ export default [
 
 	// Skeleton blueprint import rules
 	{
-		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
+		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
 		plugins: {
 			boundaries: boundariesPlugin,
 		},
@@ -153,6 +161,13 @@ export default [
 				},
 			},
 			'boundaries/elements': [
+				{ type: 'web-components', pattern: 'src/components', mode: 'folder' },
+				{ type: 'core', pattern: 'src/core', mode: 'folder' },
+				{ type: 'i18n', pattern: 'src/i18n.ts', mode: 'file' },
+				{ type: 'utils', pattern: 'src/utils', mode: 'folder' },
+				{ type: 'e2e-helpers', pattern: 'src/e2e', mode: 'folder' },
+				/* Pre-migration heritage: only deprecated components (kol-toast-container) import from here. */
+				{ type: 'legacy-functional-components', pattern: 'src/functional-components', mode: 'folder' },
 				{ type: 'skeleton-web-components', pattern: 'src/components/_skeleton/web-components', mode: 'folder' },
 				{
 					type: 'skeleton-functional-components',
@@ -177,6 +192,28 @@ export default [
 					default: 'disallow',
 					checkUnknownLocals: true,
 					rules: [
+						{
+							from: { type: 'web-components' },
+							allow: {
+								to: {
+									type: [
+										'web-components',
+										'skeleton-web-components',
+										'skeleton-functional-components',
+										'internal-functional-components',
+										'internal-props',
+										'focus-decorator-utils',
+										'schema',
+										'testing-utils',
+										'core',
+										'i18n',
+										'utils',
+										'e2e-helpers',
+										'legacy-functional-components',
+									],
+								},
+							},
+						},
 						{
 							from: { type: 'skeleton-web-components' },
 							allow: {
@@ -221,6 +258,20 @@ export default [
 					directories: ['schema/props'],
 				},
 			],
+		},
+	},
+
+	// Requiredness must be threaded into apply — scoped to the web component layer. Appliers
+	// outside a component config (items, behaviors, resolve-props) deliberately omit it.
+	{
+		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/form-field/base-web-component.tsx'],
+		plugins: {
+			kolibri: kolibriPlugin,
+		},
+		rules: {
+			'kolibri/apply-passes-required': 'error',
+			'kolibri/prop-required-no-initializer': 'error',
+			'kolibri/prop-optional-requires-initializer': 'error',
 		},
 	},
 

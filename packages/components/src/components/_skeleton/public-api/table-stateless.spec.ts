@@ -56,7 +56,7 @@ const KOL_TABLE_STATELESS_PUBLIC_API: PublicApiContract = {
 	},
 	_loading: {
 		kind: 'prop',
-		type: 'boolean',
+		type: 'TableLoadingPropType',
 		required: false,
 		doc: 'Wether the table shows a loading spinner (default: false).',
 	},

@@ -9,12 +9,16 @@ import { PaginationFC } from '../../internal/functional-components/pagination/co
 import type { PaginationItem, PaginationPropsStore, PaginationRenderProps } from '../../internal/functional-components/pagination/item';
 import { createPaginationItem } from '../../internal/functional-components/pagination/item';
 import type {
+	BoundaryCountPropType,
 	CustomClassPropType,
 	KoliBriPaginationButtonCallbacks,
 	LabelPropType,
 	MaxPropType,
+	PagePropType,
+	PageSizePropType,
 	PaginationHasButton,
 	PaginationProps,
+	SiblingCountPropType,
 	Stringified,
 	TooltipAlignPropType,
 } from '../../schema';
@@ -37,17 +41,17 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the amount of pages to show next to the outer arrow buttons.
 	 */
-	@Prop() public _boundaryCount?: number = 1;
+	@Prop() public _boundaryCount?: BoundaryCountPropType = 1;
 
 	@Watch('_boundaryCount')
-	public watchBoundaryCount(value?: number): void {
+	public watchBoundaryCount(value?: BoundaryCountPropType): void {
 		this.item.applyBoundaryCount(value);
 	}
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: CustomClassPropType;
+	@Prop() public _customClass?: CustomClassPropType = undefined;
 
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
@@ -57,7 +61,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType;
+	@Prop() public _label?: LabelPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -77,10 +81,10 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the current page.
 	 */
-	@Prop() public _page!: number;
+	@Prop() public _page!: PagePropType;
 
 	@Watch('_page')
-	public watchPage(value?: number): void {
+	public watchPage(value?: PagePropType): void {
 		this.item.applyPage(value);
 	}
 
@@ -90,7 +94,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
 
 	@Watch('_pageSize')
-	public watchPageSize(value?: number): void {
+	public watchPageSize(value?: PageSizePropType): void {
 		this.item.applyPageSize(value);
 	}
 
@@ -117,10 +121,10 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the amount of pages to show next to the current page.
 	 */
-	@Prop() public _siblingCount?: number = 1;
+	@Prop() public _siblingCount?: SiblingCountPropType = 1;
 
 	@Watch('_siblingCount')
-	public watchSiblingCount(value?: number): void {
+	public watchSiblingCount(value?: SiblingCountPropType): void {
 		this.item.applySiblingCount(value);
 	}
 

@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCharacterLimit, testInputValueReflection } from '../../e2e';
+import { getAriaDetailsRefIds } from '../../e2e/aria-details';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 
@@ -273,18 +274,19 @@ test.describe('kol-input-text', () => {
 		});
 
 		test.describe('_ariaDetails', () => {
-			test('accepts valid element reference', async ({ page }) => {
+			test('sets the element references on the native input', async ({ page }) => {
 				await page.setContent(`
-					<kol-input-text _label="Email" _aria-details="email-details"></kol-input-text>
 					<div id="email-details">We'll use this for account recovery</div>
+					<kol-input-text _label="Email" _aria-details="email-details"></kol-input-text>
 				`);
 				await page.waitForChanges();
 
-				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
-				expect(value).toBe('email-details');
+				const host = page.locator('kol-input-text');
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('email-details');
+				expect(await getAriaDetailsRefIds(host)).toEqual(['email-details']);
 			});
 
-			test('updates when prop changes', async ({ page }) => {
+			test('updates the references when the prop changes', async ({ page }) => {
 				await page.setContent(`
 					<kol-input-text _label="Email" _aria-details="details-1"></kol-input-text>
 					<div id="details-1">Details 1</div>
@@ -293,14 +295,31 @@ test.describe('kol-input-text', () => {
 				await page.waitForChanges();
 
 				const host = page.locator('kol-input-text');
-				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('details-1');
-
 				await host.evaluate((el: HTMLKolInputTextElement) => {
 					el._ariaDetails = 'details-2';
 				});
 				await page.waitForChanges();
 
 				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('details-2');
+				expect(await getAriaDetailsRefIds(host)).toEqual(['details-2']);
+			});
+
+			test('releases the references when the prop empties', async ({ page }) => {
+				await page.setContent(`
+					<div id="email-details">We'll use this for account recovery</div>
+					<kol-input-text _label="Email" _aria-details="email-details"></kol-input-text>
+				`);
+				await page.waitForChanges();
+				const host = page.locator('kol-input-text');
+				expect(await getAriaDetailsRefIds(host)).toEqual(['email-details']);
+
+				await host.evaluate((el: HTMLKolInputTextElement) => {
+					el._ariaDetails = '';
+				});
+				await page.waitForChanges();
+
+				expect(await getAriaDetailsRefIds(host)).toBeNull();
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el.shadowRoot?.querySelector('input')?.hasAttribute('aria-details'))).toBe(false);
 			});
 
 			test('handles missing ID gracefully', async ({ page }) => {
@@ -309,8 +328,9 @@ test.describe('kol-input-text', () => {
 				`);
 				await page.waitForChanges();
 
-				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
-				expect(value).toBe('non-existent-id');
+				const host = page.locator('kol-input-text');
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('non-existent-id');
+				expect(await getAriaDetailsRefIds(host)).toBeNull();
 			});
 
 			test('accepts multiple IDs (space-separated)', async ({ page }) => {
@@ -321,8 +341,30 @@ test.describe('kol-input-text', () => {
 				`);
 				await page.waitForChanges();
 
-				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
-				expect(value).toBe('id1 id2');
+				const host = page.locator('kol-input-text');
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('id1 id2');
+				expect(await getAriaDetailsRefIds(host)).toEqual(['id1', 'id2']);
+			});
+
+			test('resolves a target that enters the tree after the first render', async ({ page }) => {
+				await page.setContent(`<kol-input-text _label="Email" _aria-details="late-details"></kol-input-text>`);
+				await page.waitForChanges();
+				const host = page.locator('kol-input-text');
+				expect(await getAriaDetailsRefIds(host)).toBeNull();
+
+				await page.locator('body').evaluate((body: HTMLBodyElement) => {
+					const late = document.createElement('div');
+					late.id = 'late-details';
+					late.textContent = 'Late details';
+					body.append(late);
+				});
+				// The references re-resolve on the next render of the field.
+				await host.evaluate((el: HTMLKolInputTextElement) => {
+					el._label = 'Email address';
+				});
+				await page.waitForChanges();
+
+				expect(await getAriaDetailsRefIds(host)).toEqual(['late-details']);
 			});
 		});
 	});
