@@ -43,7 +43,7 @@ import { getDateValueType, remapDateValue } from '../../internal/functional-comp
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputDateApi } from '../../internal/functional-components/input-date/api';
 import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
 import {
@@ -105,6 +105,8 @@ export class KolInputDate
 	 * render (#11053).
 	 */
 	private hasValue = false;
+
+	protected readonly propsConfig: PropsConfigShape = inputDatePropsConfig;
 
 	public constructor() {
 		super();
@@ -448,7 +450,6 @@ export class KolInputDate
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputDatePropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 

@@ -43,7 +43,7 @@ import { createButtonItem } from '../../internal/functional-components/button/it
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputPasswordApi } from '../../internal/functional-components/input-password/api';
 import { inputPasswordPropsConfig } from '../../internal/functional-components/input-password/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
@@ -84,6 +84,8 @@ export class KolInputPassword
 	private readonly translateHidePassword = translate('kol-hide-password');
 
 	private readonly translateShowPassword = translate('kol-show-password');
+
+	protected readonly propsConfig: PropsConfigShape = inputPasswordPropsConfig;
 
 	public constructor() {
 		super();
@@ -410,7 +412,6 @@ export class KolInputPassword
 		this.visibilityToggle.syncListeners();
 	}
 	public componentWillLoad(): void {
-		this.initRenderProps(inputPasswordPropsConfig);
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);

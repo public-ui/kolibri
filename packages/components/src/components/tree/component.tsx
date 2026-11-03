@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Listen, Method, Prop, Watch } from '@stenc
 
 import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TreeApi } from '../../internal/functional-components/tree/api';
 import { treePropsConfig } from '../../internal/functional-components/tree/api';
 import { TreeFC } from '../../internal/functional-components/tree/component';
@@ -37,6 +37,8 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	private rafHandle?: number;
 
+	protected readonly propsConfig: PropsConfigShape = treePropsConfig;
+
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
@@ -67,7 +69,6 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(treePropsConfig);
 		this.watchLabel(this._label);
 
 		this.handleTreeChange();

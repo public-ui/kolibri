@@ -9,6 +9,7 @@ import { CardFC } from '../../internal/functional-components/card/component';
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import { dialogPropsConfig } from '../../internal/functional-components/dialog/api';
 import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
+import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
 import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
@@ -45,11 +46,11 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 	/** Resolved once in `componentWillLoad`: the close button's configuration never changes. */
 	private cardCloseButtonProps!: ResolvedButtonProps;
 
+	protected readonly propsConfig: PropsConfigShape = dialogPropsConfig;
+
 	// --- Lifecycle ---
 
 	protected initDialogRenderProps(): void {
-		this.initRenderProps(dialogPropsConfig);
-
 		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
 		this.cardCloseTooltipBehavior.componentWillLoad({
 			label: this.cardCloseButtonProps.label,

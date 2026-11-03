@@ -7,6 +7,7 @@ import type { CardApi } from '../../internal/functional-components/card/api';
 import { cardPropsConfig } from '../../internal/functional-components/card/api';
 import { resolveCardCloseButtonProps } from '../../internal/functional-components/card/close-button';
 import { CardFC } from '../../internal/functional-components/card/component';
+import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { cardCallbacksProp, hasCloserProp, hrefProp, labelLangSegmentsProp, levelProp, linkTargetProp } from '../../internal/props';
 import type { HasCloserPropType, HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelLangSegmentsPropType, LinkTargetPropType } from '../../schema';
@@ -29,11 +30,11 @@ export abstract class BaseCardWebComponent extends BaseWebComponent<CardApi> {
 	/** Resolved once in `componentWillLoad`: the close button's configuration never changes. */
 	private closeButtonProps!: ResolvedButtonProps;
 
+	protected readonly propsConfig: PropsConfigShape = cardPropsConfig;
+
 	// --- Lifecycle ---
 
 	protected initCardRenderProps(): void {
-		this.initRenderProps(cardPropsConfig);
-
 		this.closeButtonProps = resolveCardCloseButtonProps(this.host);
 		this.tooltipBehavior.componentWillLoad({
 			label: this.closeButtonProps.label,

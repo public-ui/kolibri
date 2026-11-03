@@ -36,7 +36,7 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputColorApi } from '../../internal/functional-components/input-color/api';
 import { inputColorPropsConfig } from '../../internal/functional-components/input-color/api';
 import {
@@ -78,6 +78,8 @@ export class KolInputColor
 	@State() public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+
+	protected readonly propsConfig: PropsConfigShape = inputColorPropsConfig;
 
 	public constructor() {
 		super();
@@ -334,7 +336,6 @@ export class KolInputColor
 	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputColorPropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 

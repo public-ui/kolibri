@@ -39,7 +39,7 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { getFileNames } from '../../internal/functional-components/form-field/file-value';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputFileApi } from '../../internal/functional-components/input-file/api';
 import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
 import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
@@ -86,6 +86,8 @@ export class KolInputFile
 	private readonly translateDataBrowseText = translate('kol-data-browse-text');
 
 	private readonly browseButton = createButtonItem(() => this.host);
+
+	protected readonly propsConfig: PropsConfigShape = inputFilePropsConfig;
 
 	public constructor() {
 		super();
@@ -356,7 +358,6 @@ export class KolInputFile
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputFilePropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 

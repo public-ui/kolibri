@@ -3,7 +3,7 @@ import { Component, h, Host, Prop, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { KolibriApi } from '../../internal/functional-components/kolibri/api';
 import { kolibriPropsConfig } from '../../internal/functional-components/kolibri/api';
 import { KolibriFC } from '../../internal/functional-components/kolibri/component';
@@ -19,6 +19,8 @@ import type { KolibriProps, LabeledPropType, PropColor, Stringified } from '../.
 })
 export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriProps, WebComponentInterface<KolibriApi> {
 	private readonly translateKolibriLogo = translate('kol-kolibri-logo');
+
+	protected readonly propsConfig: PropsConfigShape = kolibriPropsConfig;
 
 	/**
 	 * Defines the color of the logo and label.
@@ -41,7 +43,6 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriP
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(kolibriPropsConfig);
 		this.watchColor(this._color);
 		this.watchLabeled(this._labeled);
 	}

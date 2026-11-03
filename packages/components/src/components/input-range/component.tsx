@@ -36,7 +36,7 @@ import { InputFC, type InputFCProps } from '../../internal/functional-components
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { clampRangeValue, getNumberValueType, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputRangeApi } from '../../internal/functional-components/input-range/api';
 import { inputRangePropsConfig } from '../../internal/functional-components/input-range/api';
 import {
@@ -95,6 +95,8 @@ export class KolInputRange
 
 	/** Whether `_value` was set as a string; `getValue()` and the events return the value in this type. */
 	private valueIsNumberString = false;
+
+	protected readonly propsConfig: PropsConfigShape = inputRangePropsConfig;
 
 	public constructor() {
 		super();
@@ -372,7 +374,6 @@ export class KolInputRange
 	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputRangePropsConfig);
 		// The bounds start at the defaults of `_min` and `_max`, so an ignored invalid value keeps them (#11077).
 		this.setRenderProp('min', 0);
 		this.setRenderProp('max', 100);
