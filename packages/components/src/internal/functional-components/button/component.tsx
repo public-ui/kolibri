@@ -54,8 +54,8 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 		tabIndex,
 		type,
 		variant,
-		/* Not rendered as attributes: `on` stays out of the forwarded rest attributes, `tooltipAlign`
-		   is consumed by the tooltip behavior of the web component. */
+		/* Not rendered as attributes: `tooltipAlign` is consumed by the tooltip behavior of the
+		   web component; why `on` stays out of `rest` is the comment on the `void` calls below. */
 		on,
 		tooltipAlign,
 		...rest

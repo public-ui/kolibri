@@ -37,10 +37,8 @@ const CardHeadingFC: FC<Pick<FunctionalComponentProps<CardApi>, 'headingId' | 'l
  * drawer omit them together with `href`.
  */
 export type CardFCProps = Omit<FunctionalComponentProps<CardApi>, 'handleBlur' | 'handleFocus' | 'refCta'> & {
-	/** Observers of the heading link, rendered only when the card carries an `href`. */
 	handleBlur?: FunctionalComponentProps<CardApi>['handleBlur'];
 	handleFocus?: FunctionalComponentProps<CardApi>['handleFocus'];
-	/** Setter for the heading link's anchor element. */
 	refCta?: FunctionalComponentProps<CardApi>['refCta'];
 	/** The close button's normalized `ButtonFC` render props, resolved once by the web component. */
 	closeButtonProps: ResolvedButtonProps;
