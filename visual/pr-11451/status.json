@@ -1,19 +1,84 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "No visual changes",
-	"computedAt": "2026-11-03T05:33:39.521Z",
+	"state": "pending",
+	"description": "16 changed – 0 of 16 approved, review pending",
+	"computedAt": "2026-11-03T13:52:04.533Z",
 	"pr": 11451,
-	"head": "d57b13030b948c297c5eec0df640fc5b7030719e",
-	"digest": "sha256:70fcbc6218a0e26fc4f25d27aacf97903d59157d7ab4d484d874383796b3e4ff",
+	"head": "66cdefba263662bdace031b649ac987d5e1965a6",
+	"digest": "sha256:254047940662ea1db04be19961979b109a04553ebb35aaa12c7ca23a226a0a71",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 16,
+		"open": 16,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-tree": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-tree": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
