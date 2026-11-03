@@ -1,4 +1,4 @@
-import type { PropsConfigShape } from './generic-types';
+import type { ApiFromConfig, ComponentApi, FunctionalComponentProps, PropsConfigShape, ResolvedFunctionalComponentProps } from './generic-types';
 
 /**
  * Builds a record of default property values from a props configuration.
@@ -11,4 +11,27 @@ export function buildDefaultPropsFromConfig(config: PropsConfigShape): Record<st
 		defaults[def.propName] = def.getDefaultValue();
 	}
 	return defaults;
+}
+
+/**
+ * `ApiFromConfig` of a concrete config is a full `ComponentApi`; the intersection keeps the
+ * still-unresolved generic of the signature inside the `ComponentApi` constraint.
+ */
+type ApiOf<Config extends PropsConfigShape> = ApiFromConfig<Config> & ComponentApi;
+
+/**
+ * Resolves a functional component's props: every optional prop omitted by the caller receives its
+ * configured default, everything else passes through unchanged. A key present in `props` wins even
+ * when its value is `undefined` — that is how `unsetRenderProp` keeps genuinely unsettable props
+ * (such as the meter's boundaries) absent instead of carrying their default.
+ *
+ * The config must be the component's own props config. The `props` constraint checks the value
+ * props against the config, so a config of another component fails the call when their required
+ * and optional slots disagree; callbacks, refs and states stay outside that check.
+ */
+export function resolveFcProps<Config extends PropsConfigShape, P extends FunctionalComponentProps<ApiOf<Config>> = FunctionalComponentProps<ApiOf<Config>>>(
+	config: Config,
+	props: P,
+): ResolvedFunctionalComponentProps<ApiOf<Config>> & P {
+	return { ...buildDefaultPropsFromConfig(config), ...props } as ResolvedFunctionalComponentProps<ApiOf<Config>> & P;
 }

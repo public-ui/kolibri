@@ -65,7 +65,9 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.linkItems = this.linkItems.map((item) => {
-				const newValue = location === item.fcProps.href ? item.fcProps.ariaCurrentValue : '';
+				/* An entry without an aria-current value renders no aria-current: '' matches the
+				 * prop's unset state and the `ariaCurrent` state's "not current" value. */
+				const newValue = location === item.fcProps.href ? (item.fcProps.ariaCurrentValue ?? '') : '';
 				if (item.fcProps.ariaCurrent === newValue) {
 					return item;
 				}

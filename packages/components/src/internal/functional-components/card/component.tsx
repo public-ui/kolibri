@@ -7,8 +7,9 @@ import clsx from '../../../utils/clsx';
 import { ButtonFC } from '../button/component';
 import type { ResolvedButtonProps } from '../button/resolve-props';
 import type { FunctionalComponentProps } from '../generic-types';
+import { resolveFcProps } from '../props-from-config';
 import { renderLabelWithLang } from '../span/component';
-import type { CardApi } from './api';
+import { cardPropsConfig, type CardApi } from './api';
 
 const cardBem = bem.forBlock('kol-card');
 const BEM_CLASS_CARD__CLOSE_BUTTON = cardBem('close-button');
@@ -66,7 +67,7 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 		refCta,
 		refTooltip,
 		target,
-	} = props;
+	} = resolveFcProps(cardPropsConfig, props);
 
 	return (
 		<article aria-labelledby={headingId} class={clsx(cardBem(), hostClass)}>

@@ -19,14 +19,16 @@ export const cardPropsConfig = {
 export type CardApi = ApiFromConfig<
 	typeof cardPropsConfig,
 	{
-		/**
-		 * `blur` and `focus` belong to the heading link — the only element the card's own `_on`
-		 * callbacks describe. `close` is the close button's click.
-		 */
 		Callbacks: {
-			blur: (event: FocusEvent) => void;
+			/**
+			 * `blur` and `focus` belong to the heading link — the only element the card's own
+			 * `_on` callbacks describe. They stay unset when the card renders no link: a
+			 * consumer that passes no `href` has no anchor to observe. `close` is the close
+			 * button's click.
+			 */
+			blur?: (event: FocusEvent) => void;
 			close: (event: MouseEvent) => void;
-			focus: (event: FocusEvent) => void;
+			focus?: (event: FocusEvent) => void;
 		};
 		Methods: {
 			click: () => void;
@@ -34,7 +36,8 @@ export type CardApi = ApiFromConfig<
 		};
 		Refs: {
 			closeButton: HTMLButtonElement;
-			cta: HTMLAnchorElement;
+			/** The heading link's anchor; it only exists when the card renders a link. */
+			cta?: HTMLAnchorElement;
 			tooltip: HTMLDivElement;
 		};
 		States: {

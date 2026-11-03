@@ -7,9 +7,10 @@ import clsx from '../../../utils/clsx';
 import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
+import { resolveFcProps } from '../props-from-config';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
-import type { ButtonApi } from './api';
+import { buttonPropsConfig, type ButtonApi } from './api';
 
 const buttonBem = bem.forBlock('kol-button');
 const BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT = buttonBem('interactive-element');
@@ -53,12 +54,12 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 		tabIndex,
 		type,
 		variant,
-		/* Not rendered as attributes: `on` is kept for the StrictFields contract, `tooltipAlign`
+		/* Not rendered as attributes: `on` stays out of the forwarded rest attributes, `tooltipAlign`
 		   is consumed by the tooltip behavior of the web component. */
 		on,
 		tooltipAlign,
 		...rest
-	} = props;
+	} = resolveFcProps(buttonPropsConfig, props);
 
 	// Marking both as intentionally read keeps them out of the forwarded rest attributes without
 	// tripping `no-unused-vars`.
