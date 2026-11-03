@@ -59,5 +59,8 @@ describe('resolveFcProps', () => {
 		type ResolvedLevelIsStrict = Equal<HeadingLevel, typeof resolved.level>;
 		const assertions: readonly [ResolvedHrefIsStrict, ResolvedLevelIsStrict] = [true, true];
 		expect(assertions).toEqual([true, true]);
+
+		// Marking the value as intentionally read keeps it out of `no-unused-vars`: only its types are consumed.
+		void resolved;
 	});
 });
