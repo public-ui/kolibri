@@ -1,6 +1,6 @@
 import { KolAlert, KolButton, KolCard, KolDialog, KolForm, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
@@ -8,8 +8,7 @@ export const FormSubmit: FC = () => {
 	const formRef = useRef<HTMLKolFormElement | null>(null);
 	const dialogResetRef = useRef<HTMLKolDialogElement | null>(null);
 	const inputRef = useRef<HTMLKolInputTextElement | null>(null);
-	const alertDivRef = useRef<HTMLDivElement | null>(null);
-	const alertRef = useRef<HTMLKolAlertElement | null>(null);
+	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	const formEventHandlerSuccessReset = {
 		onSubmit: () => SuccessHandler(),
@@ -21,8 +20,7 @@ export const FormSubmit: FC = () => {
 	};
 
 	function SuccessHandler() {
-		if (alertDivRef.current) alertDivRef.current.hidden = false;
-		if (alertRef.current) alertRef.current._alert = true;
+		setIsSubmitted(true);
 	}
 
 	function ErrorHandler() {
@@ -34,6 +32,12 @@ export const FormSubmit: FC = () => {
 		dialogResetRef.current?.showModal();
 	}
 
+	function ResetForm() {
+		setIsSubmitted(false);
+		if (inputRef.current) inputRef.current._value = '';
+		dialogResetRef.current?.close();
+	}
+
 	return (
 		<>
 			<SampleDescription>
@@ -42,9 +46,7 @@ export const FormSubmit: FC = () => {
 
 			<SampleBlock id="form-submit-success" className="grid gap-2">
 				<KolCard _label="Speichern erfolgreich / Zurücksetzen">
-					<div ref={alertDivRef} hidden>
-						<KolAlert _alert={false} ref={alertRef} _label="Speichern erfolgreich" _type="success"></KolAlert>
-					</div>
+					{isSubmitted ? <KolAlert _alert _label="Speichern erfolgreich" _type="success" /> : ''}
 					<KolForm className="w-full" _on={formEventHandlerSuccessReset}>
 						<KolInputText ref={inputRef} id="input1" _label="Input 1" />
 						<br />
@@ -56,10 +58,7 @@ export const FormSubmit: FC = () => {
 								_variant="primary"
 								_on={{
 									onClick: () => {
-										if (inputRef.current) inputRef.current._value = '';
-										if (alertDivRef.current) alertDivRef.current.hidden = true;
-										if (alertRef.current) alertRef.current._alert = false;
-										dialogResetRef.current?.close();
+										ResetForm();
 									},
 								}}
 							/>
