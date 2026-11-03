@@ -1,1 +1,0 @@
-import{m as e,p as t}from"./props-from-config-BYKreuP0-BNfI4SZb.js";var n=/^[a-zA-Z][a-zA-Z0-9_-]{0,60}$/,r=e=>typeof e==`string`&&n.test(e),i=e,a=e=>e===``||t(e);export{i as n,a as r,r as t};
