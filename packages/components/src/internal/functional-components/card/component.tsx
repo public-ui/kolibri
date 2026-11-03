@@ -30,7 +30,18 @@ const CardHeadingFC: FC<Pick<FunctionalComponentProps<CardApi>, 'headingId' | 'l
 	</KolHeadingFc>
 );
 
-export type CardFCProps = FunctionalComponentProps<CardApi> & {
+/**
+ * The FC-facing view of `CardApi`. The API itself stays the strict contract the web component
+ * implements; only the link observers (`blur`, `focus`, `cta`) become optional here, because a
+ * composer that renders the card without a link has no anchor to observe — dialog, modal and
+ * drawer omit them together with `href`.
+ */
+export type CardFCProps = Omit<FunctionalComponentProps<CardApi>, 'handleBlur' | 'handleFocus' | 'refCta'> & {
+	/** Observers of the heading link, rendered only when the card carries an `href`. */
+	handleBlur?: FunctionalComponentProps<CardApi>['handleBlur'];
+	handleFocus?: FunctionalComponentProps<CardApi>['handleFocus'];
+	/** Setter for the heading link's anchor element. */
+	refCta?: FunctionalComponentProps<CardApi>['refCta'];
 	/** The close button's normalized `ButtonFC` render props, resolved once by the web component. */
 	closeButtonProps: ResolvedButtonProps;
 };

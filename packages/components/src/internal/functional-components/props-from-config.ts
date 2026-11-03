@@ -1,4 +1,4 @@
-import type { ApiFromConfig, ComponentApi, FunctionalComponentProps, PropsConfigShape, ResolvedFunctionalComponentProps } from './generic-types';
+import type { ApiFromConfig, ComponentApi, PropsConfigShape, ResolvedFunctionalComponentProps, ResolvedProps } from './generic-types';
 
 /**
  * Builds a record of default property values from a props configuration.
@@ -26,10 +26,12 @@ type ApiOf<Config extends PropsConfigShape> = ApiFromConfig<Config> & ComponentA
  * (such as the meter's boundaries) absent instead of carrying their default.
  *
  * The config must be the component's own props config. The `props` constraint checks the value
- * props against the config, so a config of another component fails the call when their required
- * and optional slots disagree; callbacks, refs and states stay outside that check.
+ * props against the config — the only domain this function touches — so a config of another
+ * component fails the call when their required and optional slots disagree. Callbacks, refs and
+ * states stay outside the check: a component may treat them freely in its own FC-facing props
+ * type (as the card does for the link observers).
  */
-export function resolveFcProps<Config extends PropsConfigShape, P extends FunctionalComponentProps<ApiOf<Config>> = FunctionalComponentProps<ApiOf<Config>>>(
+export function resolveFcProps<Config extends PropsConfigShape, P extends ResolvedProps<ApiOf<Config>> = ResolvedProps<ApiOf<Config>>>(
 	config: Config,
 	props: P,
 ): ResolvedFunctionalComponentProps<ApiOf<Config>> & P {

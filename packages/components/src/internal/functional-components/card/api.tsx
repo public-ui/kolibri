@@ -22,13 +22,13 @@ export type CardApi = ApiFromConfig<
 		Callbacks: {
 			/**
 			 * `blur` and `focus` belong to the heading link — the only element the card's own
-			 * `_on` callbacks describe. They stay unset when the card renders no link: a
-			 * consumer that passes no `href` has no anchor to observe. `close` is the close
-			 * button's click.
+			 * `_on` callbacks describe. `close` is the close button's click. The web component
+			 * implements all three; the FC-facing `CardFCProps` decides which of them a composer
+			 * may omit.
 			 */
-			blur?: (event: FocusEvent) => void;
+			blur: (event: FocusEvent) => void;
 			close: (event: MouseEvent) => void;
-			focus?: (event: FocusEvent) => void;
+			focus: (event: FocusEvent) => void;
 		};
 		Methods: {
 			click: () => void;
@@ -36,8 +36,8 @@ export type CardApi = ApiFromConfig<
 		};
 		Refs: {
 			closeButton: HTMLButtonElement;
-			/** The heading link's anchor; it only exists when the card renders a link. */
-			cta?: HTMLAnchorElement;
+			/** The heading link's anchor; the web component always provides the ref setter. */
+			cta: HTMLAnchorElement;
 			tooltip: HTMLDivElement;
 		};
 		States: {
