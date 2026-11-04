@@ -9,9 +9,7 @@
 
 		padding: 0;
 
-		.kol-button__interactive-element {
-			padding: var(--kern-metric-baseline-body-default-padding-top, 6px) var(--kern-metric-space-none, 0)
-				var(--kern-metric-baseline-body-default-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+		&__interactive-element {
 			align-items: flex-start;
 
 			line-height: inherit;
@@ -20,8 +18,7 @@
 		&:not(&--stretched):focus-within {
 			box-shadow:
 				var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
-				/* TODO: Variable mit Design überprüfen */ var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 4px
-					var(--kern-color-action-focus-border-inside),
+				var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 4px var(--kern-color-action-focus-border-inside),
 				var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 6px var(--kern-color-action-focus-border-outside);
 			outline-color: transparent;
 			border-radius: var(--kern-metric-border-radius-small, 0.125rem);

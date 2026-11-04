@@ -78,8 +78,8 @@
 
 		&__toggle-button {
 			@include button('kol-button');
-
 			.kol-button__interactive-element {
+				@include ghostButton();
 				padding: 0;
 			}
 		}
