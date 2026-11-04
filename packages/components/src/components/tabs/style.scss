@@ -45,6 +45,9 @@
 
 		&__button-group {
 			display: flex;
+			position: sticky;
+			top: 0;
+			overflow: hidden;
 			order: var(--button-group-order);
 
 			flex-direction: var(--button-group-flex-direction);
