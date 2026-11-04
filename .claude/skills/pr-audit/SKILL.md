@@ -1,6 +1,6 @@
 ---
 name: pr-audit
-description: Prüft Pull Requests interner und externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue und führt die Folgeschritte aus. Befehle - `audit` (Standard, schreibt nichts) listet ohne PR-Angabe zuerst alle offenen, reviewbereiten und grünen PRs zur Auswahl auf (alle oder je Contributor, sequenziell oder parallel per Subagent) und liefert danach eine Ampel-Tabelle mit Status (Draft, Ready, Gemergt, Geschlossen), Gesamtstatus (grün, gelb, rot) und den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn, hint, ready), dazu Out-of-Scope-Änderungen, Folgepunkte und Label-Empfehlungen; `comment` schreibt je offenem PR einen Kommentar in der Sprache des PRs an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Issues an, die den PR als Ursprung nennen; `consolidate` setzt die Folgepunkte gemergter PRs, die ihr ursprüngliches Issue vervollständigen, in einem Sammel-PR um, der die zugehörigen Tickets schließt; `labels` setzt die empfohlenen `release:*`-Labels. Nutze diesen Skill immer, wenn der Nutzer PRs von Internen, Externen, Contributorn oder der Community prüfen, kommentieren, labeln oder daraus Folge-Issues oder einen Sammel-PR machen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um", "korrigier die Release-Labels" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
+description: Prüft Pull Requests interner und externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue und führt die Folgeschritte aus. Befehle - `audit` (Standard, schreibt nichts) listet ohne PR-Angabe zuerst alle offenen, reviewbereiten und grünen PRs zur Auswahl auf (alle oder je Contributor, sequenziell oder parallel per Subagent) und liefert danach eine Ampel-Tabelle mit Status (Draft, Ready, Gemergt, Geschlossen), Gesamtstatus (grün, gelb, rot), dem Approval-Stand je PR (der letzte menschliche Schritt vor dem Merge) und den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn, hint, ready), dazu Out-of-Scope-Änderungen, Folgepunkte und Label-Empfehlungen; `comment` schreibt je offenem PR einen Kommentar in der Sprache des PRs an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Issues an, die den PR als Ursprung nennen; `consolidate` setzt die Folgepunkte gemergter PRs, die ihr ursprüngliches Issue vervollständigen, in einem Sammel-PR um, der die zugehörigen Tickets schließt; `labels` setzt die empfohlenen `release:*`-Labels. Nutze diesen Skill immer, wenn der Nutzer PRs von Internen, Externen, Contributorn oder der Community prüfen, kommentieren, labeln oder daraus Folge-Issues oder einen Sammel-PR machen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um", "korrigier die Release-Labels" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
 ---
 
 # PRs prüfen (intern und extern)
@@ -22,13 +22,13 @@ Aufruf: `/pr-audit [audit|comment|tickets|consolidate|labels] <PRs> [IDs]`
 - **`[IDs]`:** nur bei `tickets` und `consolidate`. Wählt einzelne Folgepunkte aus, z. B. `OOS-2 FU-1`.
 - Ohne Befehl gilt `audit`. Eine Bitte in normalen Worten wählt den passenden Befehl.
 
-| Befehl        | Ergebnis                                                                                                                        | Schreibt auf GitHub     | Abschnitt |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------- |
-| `audit`       | Ohne `<PRs>` zuerst Kandidatenliste zur Auswahl, danach Ampel-Tabelle, Out-of-Scope-Änderungen, Folgepunkte, Label-Empfehlungen | nichts                  | 2–7       |
-| `comment`     | Je offenem, nicht grünem PR ein Kommentar: was der Autor bis Grün ändern muss                                                   | ein Kommentar je PR     | 8         |
-| `tickets`     | Je Folgepunkt ein Folge-Issue, das den PR als Ursprung nennt                                                                    | ein Issue je Folgepunkt | 9         |
-| `consolidate` | Ein Sammel-PR mit allen Folgepunkten **Bezug: Issue** gemergter oder geschlossener PRs                                          | Branch, Commits, ein PR | 10        |
-| `labels`      | Die empfohlenen `release:*`-Labels an den PRs                                                                                   | nur `release:*`-Labels  | 11        |
+| Befehl        | Ergebnis                                                                                                                                            | Schreibt auf GitHub     | Abschnitt |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------- |
+| `audit`       | Ohne `<PRs>` zuerst Kandidatenliste zur Auswahl, danach Ampel-Tabelle mit Approval-Status, Out-of-Scope-Änderungen, Folgepunkte, Label-Empfehlungen | nichts                  | 2–7       |
+| `comment`     | Je offenem, nicht grünem PR ein Kommentar: was der Autor bis Grün ändern muss                                                                       | ein Kommentar je PR     | 8         |
+| `tickets`     | Je Folgepunkt ein Folge-Issue, das den PR als Ursprung nennt                                                                                        | ein Issue je Folgepunkt | 9         |
+| `consolidate` | Ein Sammel-PR mit allen Folgepunkten **Bezug: Issue** gemergter oder geschlossener PRs                                                              | Branch, Commits, ein PR | 10        |
+| `labels`      | Die empfohlenen `release:*`-Labels an den PRs                                                                                                       | nur `release:*`-Labels  | 11        |
 
 Regeln für alle Befehle:
 
@@ -118,8 +118,8 @@ geprüft werden („Ausgabe, dann nächster: prüfen, Ausgabe …“). Die Gesam
 Stand, Gesamttabelle, OOS- und FU-Listen, Label-Empfehlungen, Folgeaktionen — folgt erst, wenn alle
 Ergebnisse da sind.
 
-1. **PR lesen:** Beschreibung, Labels, Commits, Kommentare, Review-Threads, Check-Runs und den Kommentar
-   „Visual Review“ des Bots. Frühere pr-audit-Kommentare über den Marker `<!-- pr-audit:review -->`
+1. **PR lesen:** Beschreibung, Labels, Commits, Kommentare, Review-Threads, Check-Runs, den Review-Entscheid
+   (`reviewDecision` bzw. die Approvals) und den Kommentar „Visual Review” des Bots. Frühere pr-audit-Kommentare über den Marker `<!-- pr-audit:review -->`
    einsammeln (Abschnitt 8): Jeden dortigen Punkt am aktuellen Head nachprüfen und als ✅ **erledigt**,
    ⏳ **offen** oder 🗑 **hinfällig** führen — der Status geht in den Zwischenreport und die
    Gesamtausgabe ein („Vorbefunde“).
@@ -181,9 +181,13 @@ Bewerten:
 | Harmlose Änderung außerhalb des Issues → zusätzlich OOS-Punkt                                    | **hint** | #11084: `classList.add`/`remove` statt `toggle`, nur wegen der Testumgebung.                                         |
 | Lücke zum Issue in einem Randbereich, die das Issue nur am Rand berührt → FU-Punkt, Bezug: Issue | **hint** | #11074: Das selten genutzte Theme `ECL_EU` bekam den Abstand nicht.                                                  |
 
+FU-Punkte markieren den PR nur bis zur Ticket-Anlage; sobald das Folge-Issue existiert, gilt Abschnitt 5.
+
 ### 4.2 Sauber & ordentlich
 
-Gegen `AGENTS.md` prüfen. Typische Befunde und ihr Wert:
+Gegen `AGENTS.md` prüfen. **Nicht Teil der Prüfung sind Commit-Messages:** Der PR-Titel trägt die
+Release-Notes, und über Squash oder Merge-Commits entscheidet der Maintainer erst beim Merge. Die
+Commit-Historie des PRs sagt im Audit nichts. Typische Befunde und ihr Wert:
 
 | Befund                                                                                                                                                                   | Wert     |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
@@ -233,6 +237,11 @@ Der Gesamtstatus folgt allein aus den drei Spalten:
 Rote CI, ein offenes Visual Review oder Merge-Konflikte sind Befunde in der passenden Spalte, keine
 eigene Regel für den Gesamtstatus.
 
+FU-Punkte mit angelegtem Folge-Issue markieren den PR nicht mehr: Sobald das Ticket existiert, ist der
+Punkt an das Ticket übergeben — die betroffene Spalte wird **ready** und der Gesamtstatus steigt
+entsprechend. In der Tabellenspalte steht für solche Punkte nur der Vermerk „FU-n → #ticket“. FU-Punkte
+mit „Folge-Ticket: nein“ und alle OOS-Punkte bleiben Befund, bis sie im PR selbst erledigt sind.
+
 ## 6. Ausgabe des Audits
 
 Auf Deutsch, knapp, in dieser Reihenfolge. Leere Blöcke weglassen. Diese Blöcke sind die Gesamtausgabe
@@ -241,20 +250,26 @@ am Ende; die Zwischenreporte je PR (Abschnitt 3) gehen ihr voraus.
 ### 6.1 Stand
 
 Ein Satz mit der Zahl der PRs je Status, z. B. „3 Ready · 10 gemergt · 0 Draft · 0 geschlossen ohne
-Merge“. Bei einer Folgeprüfung zusätzlich, was sich seit dem letzten Audit geändert hat.
+Merge”, dazu, wie viele davon noch auf ein Approval warten. Bei einer Folgeprüfung zusätzlich, was
+sich seit dem letzten Audit geändert hat.
 
 ### 6.2 Tabelle
 
-| PR  | Status | Gesamt | Kurzbeschreibung | Minimalistisch & korrekt zum Issue | Sauber & ordentlich | Sicher |
-| --- | ------ | ------ | ---------------- | ---------------------------------- | ------------------- | ------ |
+| PR  | Status | Gesamt | Approval | Kurzbeschreibung | Minimalistisch & korrekt zum Issue | Sauber & ordentlich | Sicher |
+| --- | ------ | ------ | -------- | ---------------- | ---------------------------------- | ------------------- | ------ |
 
 - **PR:** Markdown-Link, Kurztitel, Issue-Nummer. Beispiel: `[#11083](…) Link: kein leeres aria-label (#10718)`.
 - **Status:** 📝 Draft · 🔵 Ready · 🟣 Gemergt · ⚫ Geschlossen (ohne Merge). Zeilen in dieser Reihenfolge,
   innerhalb eines Status absteigend nach PR-Nummer.
+- **Approval:** ✅ approved (mit Zahl bzw. Namen) · ⚠️ `CHANGES_REQUESTED` · ❌ offen (`REVIEW_REQUIRED`).
+  Das Audit ist die Vorbetrachtung; das Approval ist der letzte menschliche Schritt, den der Skill nie
+  selbst macht. Es fließt nicht in den Gesamtstatus ein, steht aber in jeder Zeile, weil ein inhaltlich
+  grüner PR ohne Approval noch nicht merge-bereit ist.
 - **Kurzbeschreibung:** ein Satz, was der PR leistet und ob das Issue gelöst ist.
 - **Spalten:** Wert und ein knapper Befund. OOS- und FU-Punkte nur mit ihrer ID nennen, z. B.
-  „💡 **hint**: Test aus dem Issue fehlt (FU-1)“. Gab es frühere pr-audit-Kommentare, den Stand der
-  Vorbefunde kurz in der Zeile nennen (z. B. „Vorbefunde: P1 erledigt, P2 offen“).
+  „💡 **hint**: Test aus dem Issue fehlt (FU-1)“. FU-Punkte mit angelegtem Ticket stehen nur als
+  Vermerk „FU-n → #ticket“ ohne Befundswert (Abschnitt 5). Gab es frühere pr-audit-Kommentare, den
+  Stand der Vorbefunde kurz in der Zeile nennen (z. B. „Vorbefunde: P1 erledigt, P2 offen“).
 
 ### 6.3 Legende
 
@@ -321,7 +336,9 @@ Offen nennen, was nicht geprüft wurde, z. B. „Tests nicht lokal ausgeführt, 
 ## 7. Folgeaktionen anbieten
 
 Am Ende des Audits nur die Befehle anbieten, die etwas zu tun hätten, jeweils mit den konkreten PRs bzw.
-IDs. Beispiel:
+IDs. Gibt es nichts mehr zu `comment`, `tickets`, `labels` oder `consolidate`, fehlen aber noch
+Approvals, das explizit als letzten Schritt nennen („nur Approval offen für …"); der Skill approvt
+selbst nie. Beispiel:
 
 - `comment 11084 11086 11087`: die drei offenen PRs sind nicht grün.
 - `tickets` für OOS-1, OOS-2+3, FU-1, FU-2, FU-3, FU-6.
@@ -353,6 +370,8 @@ geschlossene PRs überspringen und das nennen.
 | FU-Punkt, Bezug: neu   | nicht verlangen; gibt es ein Ticket, ein Satz „tracked separately in #…“ |
 | Label-Abweichung       | nicht verlangen; ein Satz, dass die Maintainer das Label setzen          |
 
+FU-Punkte mit angelegtem Ticket stehen nicht in der Tabelle und werden nicht kommentiert.
+
 **Punkte markieren:** Jeder Kommentar beginnt mit dem Marker `<!-- pr-audit:review -->` (in GitHub
 unsichtbar, über die API auffindbar). Jede Punktnummer `P1, P2, …` läuft pro PR fortlaufend über alle
 pr-audit-Kommentare und bleibt stabil: Ein offener Punkt behält seine ID, bis er erledigt ist. Ein
@@ -367,17 +386,31 @@ nicht in den Kommentar; sie stehen höchstens als Randnotiz im Audit.
 
 **Form:** In der Sprache, in der der Contributor den PR verfasst hat — maßgeblich sind Beschreibung,
 Titel und seine bisherigen Kommentare; das Muster unten zeigt Englisch, Abschnittsüberschriften und
-Footer folgen derselben Sprache. Freundlich, knapp. Leere Abschnitte weglassen; die Nummerierung läuft
-durch. Der Footer steht immer am Ende.
+Footer folgen derselben Sprache. Freundlich, knapp. Kein Dank für das Einsenden des PR und keine
+Ausrufezeichen beim Dank: Die Schlussformel ist „Danke Dir." (englisch „Thank you."), ruhig und mit
+Punkt. Leere Abschnitte weglassen; die Nummerierung läuft durch. Der Footer steht immer am Ende.
+
+**Varianz:** Anrede und Einstieg variieren („Hallo @…", „Hi @…" oder ohne Anrede direkt in die
+Sache), ebenso die Einleitungssätze der Abschnitte. Keine zwei pr-audit-Kommentare klingen gleich;
+das Muster unten ist eine Variante, kein Stempel.
+
+**Wortwahl:** Funktionierendes heißt „passt", nicht „sitzt".
+
+**Prägnanz:** Jeder Punkt ist ein eigener kurzer Absatz in derselben Ordnung: Befund, warum er
+zählt, konkrete Bitte. Was richtig ist, als richtig benennen — angemahnt wird nur der fehlende Teil;
+der Kommentar widerspricht sich nicht selbst. Bei kleinen Änderungen den fertigen Code-Schnipsel
+mitliefern (Datei, Zeile, Code), nicht die Änderung nur beschreiben. Eigene Folgeideen, die über
+den Issue-Scope hinausgehen, gehören nicht in den Kommentar: ein Satz, dass sie als Ticket
+gehandelt werden, genügt.
 
 ```markdown
 <!-- pr-audit:review -->
 
-Hi @<author>, thanks for the PR! To get it ready for merge, please address the following. Everything here is within the scope of #<issue>.
+Hi @<author>, to get it ready for merge, please address the following. Everything here is within the scope of #<issue>.
 
 **Status of previous points**
 
-- P1: ✅ addressed in `<sha>` — thanks!
+- P1: ✅ addressed in `<sha>`.
 - P2: ⏳ still open — see P4 below.
 
 **Required**
@@ -394,7 +427,7 @@ Hi @<author>, thanks for the PR! To get it ready for merge, please address the f
 
 Not part of this PR: <topic> is tracked separately in #<ticket>.
 
-Thanks!
+Thank you.
 
 ---
 
@@ -468,7 +501,8 @@ Refs #<PR>, #<Issue>
 Link posten.
 
 **Antwort im Chat:** Tabelle mit ID, neuem Issue (Link, Titel, Typ) und Ursprungs-PR, dazu übersprungene
-Punkte mit Grund.
+Punkte mit Grund. Das angelegte Ticket entmarkiert seinen FU-Punkt: Beim nächsten Audit führt der PR
+die Spalten ohne diesen Befund, der Gesamtstatus steigt entsprechend (Abschnitt 5).
 
 ## 10. Befehl `consolidate`
 
@@ -606,3 +640,5 @@ Was dieser Lauf zeigt:
 - Derselbe Fehler an anderer Stelle ist ein Folgepunkt mit **Bezug: neu** (FU-6), ein vom Issue
   verlangter Test dagegen **Bezug: Issue** (FU-1).
 - `consolidate` nimmt nur FU-1 bis FU-5, nie OOS-1 oder FU-6 (Tabelle in Abschnitt 10).
+- Der Lauf zeigt die Bewertung nach der alten Regel. Heute entmarken angelegte Folge-Tickets ihre
+  FU-Punkte (Abschnitt 5): #11083 wäre mit #11234 jetzt 🟢 statt 🟡.
