@@ -47,11 +47,10 @@ export const FormSubmit: FC = () => {
 	}, [isSubmitted]);
 
 	return (
-		<>
+		<div className="grid gap-4">
 			<SampleDescription>
 				<p>This example shows the different ways KolForm can react.</p>
 			</SampleDescription>
-
 			<SampleBlock id="form-submit-success" className="grid gap-2">
 				<KolCard _label="Speichern erfolgreich / Zurücksetzen">
 					{isSubmitted && <KolAlert _alert _label="Speichern erfolgreich" _type="success" />}
@@ -78,25 +77,27 @@ export const FormSubmit: FC = () => {
 					<KolButton _label="Nein" _on={{ onClick: () => dialogResetRef.current?.close() }} />
 				</KolDialog>
 			</SampleBlock>
-			<br />
 			<SampleBlock id="form-submit-error" className="grid gap-2">
 				<KolCard _label="Speichern fehlerhaft">
 					<KolForm className="w-full" _on={formEventHandlerError} ref={formRef}>
-						<KolInputText
-							id="input-error"
-							_label="Input Error"
-							_readOnly
-							_required
-							_msg={{
-								_description: 'Input error',
-								_type: 'error',
-							}}
-						/>
-						<br />
-						<KolButton _label="Speichern Fehlerhaft" _variant="primary" _type="submit" />
+						<div className="grid gap-4">
+							<KolInputText
+								id="input-error"
+								_label="Input Error"
+								_readOnly
+								_required
+								_msg={{
+									_description: 'Input error',
+									_type: 'error',
+								}}
+							/>
+							<div className="flex gap-2">
+								<KolButton _label="Speichern Fehlerhaft" _variant="primary" _type="submit" />
+							</div>
+						</div>
 					</KolForm>
 				</KolCard>
 			</SampleBlock>
-		</>
+		</div>
 	);
 };
