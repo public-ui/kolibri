@@ -1,11 +1,12 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { getFeatureFlag } from 'adopted-style-sheets';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { PopoverButtonFC } from '../../internal/functional-components/popover-button/component';
 import { PopoverBehavior } from '../../internal/functional-components/popover/behavior';
-import { popoverAlignProp } from '../../internal/props';
-import type { PopoverAlignPropType } from '../../schema';
+import { popoverAlignProp, variantProp } from '../../internal/props';
+import type { PopoverAlignPropType, VariantClassNamePropType } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { BaseButtonWebComponent } from '../button/base';
 
@@ -111,6 +112,14 @@ export abstract class BasePopoverButtonWebComponent extends BaseButtonWebCompone
 	 */
 	protected closePopover(): void {
 		this.popoverBehavior.setShow(false);
+	}
+
+	protected applyVariant(value?: VariantClassNamePropType): void {
+		// Resolved here rather than as a `@Prop` default: a field initializer runs in the
+		// constructor, where `@Element()` is not yet populated for a `shadow: false` element under
+		// SSR, so the theme-scoped feature flag would silently be ignored there. Keeping it a
+		// fallback also leaves the public API unchanged. The rendered default is `normal` either way.
+		variantProp.apply(value ?? getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal', (v) => this.setRenderProp('variant', v));
 	}
 
 	// --- Prop application ---
