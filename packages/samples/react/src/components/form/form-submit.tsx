@@ -56,24 +56,27 @@ export const FormSubmit: FC = () => {
 				<KolCard _label="Speichern erfolgreich / Zurücksetzen">
 					{isSubmitted && <KolAlert _alert _label="Speichern erfolgreich" _type="success" />}
 					<KolForm className="w-full" _on={formEventHandlerSuccessReset}>
-						<KolInputText ref={inputRef} id="input-success" _label="Input Success" />
-						<br />
-						<KolButton _label="Speichern" _variant="primary" _type="submit" /> <></>
-						<KolButton _label="Zurücksetzen" _variant="primary" _type="reset" />
-						<KolDialog ref={dialogResetRef} _label="Wollen Sie wirklich das Formular zurücksetzen?" _variant="card" _width="300">
-							<KolButton
-								_label="Ja"
-								_variant="primary"
-								_on={{
-									onClick: () => {
-										ResetForm();
-									},
-								}}
-							/>
-							<KolButton _label="Nein" _on={{ onClick: () => dialogResetRef.current?.close() }} />
-						</KolDialog>
+						<div className="grid gap-4">
+							<KolInputText ref={inputRef} id="input-success" _label="Input Success" />
+							<div className="flex gap-2">
+								<KolButton _label="Speichern" _variant="primary" _type="submit" />
+								<KolButton _label="Zurücksetzen" _variant="primary" _type="reset" />
+							</div>
+						</div>
 					</KolForm>
 				</KolCard>
+				<KolDialog ref={dialogResetRef} _label="Wollen Sie wirklich das Formular zurücksetzen?" _variant="card" _width="300">
+					<KolButton
+						_label="Ja"
+						_variant="primary"
+						_on={{
+							onClick: () => {
+								ResetForm();
+							},
+						}}
+					/>
+					<KolButton _label="Nein" _on={{ onClick: () => dialogResetRef.current?.close() }} />
+				</KolDialog>
 			</SampleBlock>
 			<br />
 			<SampleBlock id="form-submit-error" className="grid gap-2">
