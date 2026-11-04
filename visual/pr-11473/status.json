@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "35 changed – 0 of 35 approved, review pending",
-	"computedAt": "2026-11-03T15:40:10.841Z",
+	"description": "32 changed – 0 of 32 approved, review pending",
+	"computedAt": "2026-11-04T10:55:29.229Z",
 	"pr": 11473,
-	"head": "2857fb0bd95c531c32af12ce7b55a397c8fe35fb",
-	"digest": "sha256:8f24b7171ca381099905de28ba192022e02b2720153dcc394d307b44690a829f",
+	"head": "9c6f6acce15f2deb6f2d72d4c30706b07e4d6493",
+	"digest": "sha256:33ca6645878fc298d4b03ee395af2732ec719fca81470a0128f206bef4375f42",
 	"counts": {
-		"changes": 35,
-		"open": 35,
+		"changes": 32,
+		"open": 32,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -61,14 +61,6 @@
 			"notes": []
 		},
 		"theme-ecl/nav-basic--navigation-submenu-active": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/breadcrumb-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/breadcrumb-basic--basic-320": {
 			"state": "open",
 			"notes": []
 		},
@@ -129,10 +121,6 @@
 			"notes": []
 		},
 		"theme-kern/scenarios-focus-elements-component-tree": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/scenarios-label-lang--label-lang-breadcrumb": {
 			"state": "open",
 			"notes": []
 		},
