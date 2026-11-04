@@ -4,7 +4,7 @@
  * so `*ByRole` queries without `hidden: true` find nothing and no accessible name can be matched.
  *
  * Both corrections only touch the test environment; the components themselves stay unchanged.
- * Remove a correction as soon as happy-dom follows the specification in that point.
+ * Remove each correction when the linked happy-dom issue is fixed.
  */
 
 /**
@@ -12,6 +12,8 @@
  * property (CSSOM, `[LegacyNullToEmptyString]`). happy-dom ignores the call instead. The theming
  * runtime hides each host with `visibility: hidden !important` until its styles are adopted and then
  * restores the previous inline value, which is `null` when there was none.
+ *
+ * Remove when https://github.com/capricorn86/happy-dom/issues/2100 is fixed.
  */
 const restoreNullToEmptyString = (): void => {
 	const setProperty = CSSStyleDeclaration.prototype.setProperty;
@@ -24,6 +26,8 @@ const restoreNullToEmptyString = (): void => {
  * Stencil hides all component tags until they are hydrated and reveals them with
  * `.hydrated { visibility: inherit }`. happy-dom does not resolve `inherit` from a stylesheet, so the
  * lower `visibility: hidden` stays in effect. `visible` is what `inherit` resolves to on a visible page.
+ *
+ * Remove when https://github.com/capricorn86/happy-dom/issues/2400 is fixed.
  */
 const revealHydratedHosts = (): void => {
 	const style = document.createElement('style');

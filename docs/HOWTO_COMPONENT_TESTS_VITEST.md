@@ -77,10 +77,10 @@ Copy [`happy-dom-workarounds.ts`](../packages/samples/presentation/src/test/happ
 into your project. It corrects two deviations of happy-dom from the CSS specification that otherwise
 keep every KoliBri host element at `visibility: hidden`:
 
-1. `style.setProperty(name, null)` does not remove the property.
-2. `visibility: inherit` from a stylesheet is ignored, so Stencil's `.hydrated { visibility: inherit }` has no effect.
+1. `style.setProperty(name, null)` does not remove the property ([capricorn86/happy-dom#2100](https://github.com/capricorn86/happy-dom/issues/2100)).
+2. `visibility: inherit` from a stylesheet is ignored, so Stencil's `.hydrated { visibility: inherit }` has no effect ([capricorn86/happy-dom#2400](https://github.com/capricorn86/happy-dom/issues/2400)).
 
-Without these corrections, `findByShadowRole` finds the inner elements only with `hidden: true` and
+Remove a correction when its issue is fixed. Without these corrections, `findByShadowRole` finds the inner elements only with `hidden: true` and
 cannot match them by accessible name.
 
 ## Rules for tests
