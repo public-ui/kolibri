@@ -39,9 +39,8 @@ export const FormSubmit: FC = () => {
 
 	useEffect(() => {
 		if (isSubmitted) {
-			const toRef = setTimeout(() => {
+			setTimeout(() => {
 				setIsSubmitted(false);
-				clearTimeout(toRef);
 			}, 1000);
 		}
 	}, [isSubmitted]);
