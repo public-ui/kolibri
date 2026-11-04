@@ -26,10 +26,9 @@ E2E concern; everything that depends on events and state works in Vitest.
 pnpm add -D vitest happy-dom @testing-library/react @testing-library/user-event @testing-library/jest-dom shadow-dom-testing-library
 ```
 
-**happy-dom is the recommended environment.** It implements everything KoliBri uses natively:
+Use **happy-dom** as the test environment. It implements everything KoliBri uses natively:
 constructable stylesheets with `adoptedStyleSheets` on `Document` and `ShadowRoot`, `ResizeObserver`,
-`MutationObserver` and the `HTMLDialogElement` methods, and it starts faster than jsdom. jsdom works
-with a few polyfills, see [Alternative: jsdom](#alternative-jsdom).
+`MutationObserver` and the `HTMLDialogElement` methods.
 
 ### `vitest.config.ts`
 
@@ -84,46 +83,6 @@ keep every KoliBri host element at `visibility: hidden`:
 
 Remove a correction when its issue is fixed. Without these corrections, `findByShadowRole` finds the inner elements only with `hidden: true` and
 cannot match them by accessible name.
-
-### Alternative: jsdom
-
-If your project is bound to jsdom, replace `happy-dom` with `jsdom` in the dependencies and in
-`vitest.config.ts`. The happy-dom workarounds are not needed. Instead, add the APIs jsdom lacks to
-`vitest.setup.ts`, before `register()`:
-
-```ts
-// jsdom implements no layout observers.
-globalThis.ResizeObserver ??= class {
-	public observe(): void {}
-	public unobserve(): void {}
-	public disconnect(): void {}
-};
-
-// jsdom provides HTMLDialogElement, but not its methods.
-HTMLDialogElement.prototype.show ??= function (this: HTMLDialogElement) {
-	this.open = true;
-};
-HTMLDialogElement.prototype.showModal ??= function (this: HTMLDialogElement) {
-	this.open = true;
-};
-HTMLDialogElement.prototype.close ??= function (this: HTMLDialogElement, returnValue?: string) {
-	if (!this.open) return;
-	if (returnValue !== undefined) this.returnValue = returnValue;
-	this.open = false;
-	this.dispatchEvent(new Event('close'));
-};
-```
-
-- Do not mock `MutationObserver` or `HTMLDialogElement` itself. jsdom provides both, and replacing them
-  breaks Stencil's slot relocation and the `MutationObserver`-based waiting of `waitFor`.
-- `adoptedStyleSheets` needs no polyfill. jsdom does not implement it, and the components then fall
-  back to `<style>` elements.
-- jsdom fires no `change` event when an input inside a shadow root loses focus. Trigger `onChange` with
-  `fireEvent.change(input)` after typing.
-- The dialog polyfill only toggles `open`. Modal behavior such as the backdrop, the top layer and
-  focus trapping is not simulated.
-
-All examples except the `onChange`-on-blur case pass with jsdom 29 and this setup.
 
 ## Rules for tests
 
