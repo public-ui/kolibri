@@ -1,1 +1,0 @@
-import{U as e}from"./index-CKurlmT2-DPf9R6WO.js";import{o as t}from"./base-web-component-Bh80ikSy-9AC6nKHf.js";function n(t){let n=typeof t==`string`?e(t):t;if(typeof n==`object`&&n)return n;throw Error(`Invalid smart button: ${typeof t}`)}var r=t(`smartButton`,{_label:``},n);export{r as t};
