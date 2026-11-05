@@ -1,1 +1,0 @@
-import{c as e}from"./index-CKurlmT2-Dtm8tMZU.js";import{i as t}from"./index-DWvAgaUS.js";import{t as n}from"./component-BN8RQngW-Drd7CQ4I.js";var r=t.forBlock(`kol-tooltip`),i=({label:t,badgeText:i,id:a,refFloating:o})=>e(`div`,{class:r(`floating`),hidden:!t,ref:o},e(`div`,{class:r(`arrow`)}),e(n,{class:r(`content`),badgeText:i,id:a,label:t}));export{i as t};
