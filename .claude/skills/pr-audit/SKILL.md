@@ -1,6 +1,6 @@
 ---
 name: pr-audit
-description: Prüft Pull Requests interner und externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue und führt die Folgeschritte aus. Befehle - `audit` (Standard, schreibt nichts) listet ohne PR-Angabe zuerst alle offenen, reviewbereiten und grünen PRs zur Auswahl auf (alle oder je Contributor, sequenziell oder parallel per Subagent) und liefert danach eine Ampel-Tabelle mit Status (Draft, Ready, Gemergt, Geschlossen), Gesamtstatus (grün, gelb, rot), dem Approval-Stand je PR (der letzte menschliche Schritt vor dem Merge) und den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn, hint, ready), dazu Out-of-Scope-Änderungen, Folgepunkte und Label-Empfehlungen; `comment` schreibt je offenem PR einen Kommentar in der Sprache des PRs an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Issues an, die den PR als Ursprung nennen; `consolidate` setzt die Folgepunkte gemergter PRs, die ihr ursprüngliches Issue vervollständigen, in einem Sammel-PR um, der die zugehörigen Tickets schließt; `labels` setzt die empfohlenen `release:*`-Labels. Nutze diesen Skill immer, wenn der Nutzer PRs von Internen, Externen, Contributorn oder der Community prüfen, kommentieren, labeln oder daraus Folge-Issues oder einen Sammel-PR machen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um", "korrigier die Release-Labels" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
+description: Prüft Pull Requests interner und externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue und führt die Folgeschritte aus. Befehle - `audit` (Standard, schreibt nichts) listet ohne PR-Angabe zuerst alle offenen, reviewbereiten und grünen PRs zur Auswahl auf (alle oder je Contributor, sequenziell oder parallel per Subagent) und liefert danach eine Ampel-Tabelle mit Status (Draft, Ready, Gemergt, Geschlossen), Gesamtstatus (grün, gelb, rot) und den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn, hint, ready), dazu Out-of-Scope-Änderungen, Folgepunkte und Label-Empfehlungen; das Audit schließt die Code-Kommentar-Prüfung nach der Entscheidungs-Kathedrale aus Abschnitt 4.4 ein (keine Historien- oder Redundanz-Kommentare, Erläuterungen nur so wenig wie unbedingt nötig); `comment` schreibt je offenem PR einen Kommentar in der Sprache des PRs an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Issues an, die den PR als Ursprung nennen; `consolidate` setzt die Folgepunkte gemergter PRs, die ihr ursprüngliches Issue vervollständigen, in einem Sammel-PR um, der die zugehörigen Tickets schließt; `labels` setzt die empfohlenen `release:*`-Labels. Nutze diesen Skill immer, wenn der Nutzer PRs von Internen, Externen, Contributorn oder der Community prüfen, kommentieren, labeln oder daraus Folge-Issues oder einen Sammel-PR machen will - auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "prüfe die Code-Kommentare im PR", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um", "korrigier die Release-Labels" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
 ---
 
 # PRs prüfen (intern und extern)
@@ -22,13 +22,13 @@ Aufruf: `/pr-audit [audit|comment|tickets|consolidate|labels] <PRs> [IDs]`
 - **`[IDs]`:** nur bei `tickets` und `consolidate`. Wählt einzelne Folgepunkte aus, z. B. `OOS-2 FU-1`.
 - Ohne Befehl gilt `audit`. Eine Bitte in normalen Worten wählt den passenden Befehl.
 
-| Befehl        | Ergebnis                                                                                                                                            | Schreibt auf GitHub     | Abschnitt |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------- |
-| `audit`       | Ohne `<PRs>` zuerst Kandidatenliste zur Auswahl, danach Ampel-Tabelle mit Approval-Status, Out-of-Scope-Änderungen, Folgepunkte, Label-Empfehlungen | nichts                  | 2–7       |
-| `comment`     | Je offenem, nicht grünem PR ein Kommentar: was der Autor bis Grün ändern muss                                                                       | ein Kommentar je PR     | 8         |
-| `tickets`     | Je Folgepunkt ein Folge-Issue, das den PR als Ursprung nennt                                                                                        | ein Issue je Folgepunkt | 9         |
-| `consolidate` | Ein Sammel-PR mit allen Folgepunkten **Bezug: Issue** gemergter oder geschlossener PRs                                                              | Branch, Commits, ein PR | 10        |
-| `labels`      | Die empfohlenen `release:*`-Labels an den PRs                                                                                                       | nur `release:*`-Labels  | 11        |
+| Befehl        | Ergebnis                                                                                                                        | Schreibt auf GitHub     | Abschnitt |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------- | --------- |
+| `audit`       | Ohne `<PRs>` zuerst Kandidatenliste zur Auswahl, danach Ampel-Tabelle, Out-of-Scope-Änderungen, Folgepunkte, Label-Empfehlungen | nichts                  | 2–7       |
+| `comment`     | Je offenem, nicht grünem PR ein Kommentar: was der Autor bis Grün ändern muss                                                   | ein Kommentar je PR     | 8         |
+| `tickets`     | Je Folgepunkt ein Folge-Issue, das den PR als Ursprung nennt                                                                    | ein Issue je Folgepunkt | 9         |
+| `consolidate` | Ein Sammel-PR mit allen Folgepunkten **Bezug: Issue** gemergter oder geschlossener PRs                                          | Branch, Commits, ein PR | 10        |
+| `labels`      | Die empfohlenen `release:*`-Labels an den PRs                                                                                   | nur `release:*`-Labels  | 11        |
 
 Regeln für alle Befehle:
 
@@ -118,8 +118,8 @@ geprüft werden („Ausgabe, dann nächster: prüfen, Ausgabe …“). Die Gesam
 Stand, Gesamttabelle, OOS- und FU-Listen, Label-Empfehlungen, Folgeaktionen — folgt erst, wenn alle
 Ergebnisse da sind.
 
-1. **PR lesen:** Beschreibung, Labels, Commits, Kommentare, Review-Threads, Check-Runs, den Review-Entscheid
-   (`reviewDecision` bzw. die Approvals) und den Kommentar „Visual Review” des Bots. Frühere pr-audit-Kommentare über den Marker `<!-- pr-audit:review -->`
+1. **PR lesen:** Beschreibung, Labels, Commits, Kommentare, Review-Threads, Check-Runs und den Kommentar
+   „Visual Review“ des Bots. Review-Threads von Maintainedrn zählen als deren Einschränkungen zum Issue (Abschnitt 1), nicht als Review-Stand. Frühere pr-audit-Kommentare über den Marker `<!-- pr-audit:review -->`
    einsammeln (Abschnitt 8): Jeden dortigen Punkt am aktuellen Head nachprüfen und als ✅ **erledigt**,
    ⏳ **offen** oder 🗑 **hinfällig** führen — der Status geht in den Zwischenreport und die
    Gesamtausgabe ein („Vorbefunde“).
@@ -189,17 +189,17 @@ Gegen `AGENTS.md` prüfen. **Nicht Teil der Prüfung sind Commit-Messages:** Der
 Release-Notes, und über Squash oder Merge-Commits entscheidet der Maintainer erst beim Merge. Die
 Commit-Historie des PRs sagt im Audit nichts. Typische Befunde und ihr Wert:
 
-| Befund                                                                                                                                                                   | Wert     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| Vom Issue verlangter Test fehlt (→ FU-Punkt, Bezug: Issue)                                                                                                               | **hint** |
-| Test prüft weniger als sein Name sagt (→ FU-Punkt, Bezug: Issue). Beispiel #11085: Der Test ruft den Watcher direkt auf und findet eine fehlende `@Watch`-Bindung nicht. | **hint** |
-| Doku widerspricht dem neuen Code (→ FU-Punkt, Bezug: Issue). Beispiel #11073: Der Migrationsplan führt den behobenen Fehler noch als offen.                              | **hint** |
-| Überflüssiger oder jetzt redundanter Code. Beispiel #11087: drei `hasValue`-Zuweisungen, die `applyValue()` schon erledigt.                                              | **hint** |
-| PR-Beschreibung passt nicht zum Diff (fließt in die Release-Notes)                                                                                                       | **hint** |
-| Release-Label fehlt oder ist falsch (Regeln in Abschnitt 6.6). Labels setzen Maintainer, nicht der Autor.                                                                | **hint** |
-| Theming-Vertrag verletzt: neue oder geänderte DOM-Elemente oder BEM-Klassen ohne angepasste Themes oder ohne Liste der Klassen in der PR-Beschreibung                    | **warn** |
-| Regelverstoß aus `AGENTS.md` mit Wirkung: `overflow: hidden`, Farbschema im Basis-Styling, `!important` ohne Begründung, Deprecation ohne Migrationsaufgabe              | **warn** |
-| Regelverstoß aus `AGENTS.md` ohne Wirkung: Reihenfolge (Listen, Imports, Union-Literale, Objekt-Schlüssel in Testdaten), Member-Reihenfolge, Kommentar mit Historie      | **hint** |
+| Befund                                                                                                                                                                       | Wert     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Vom Issue verlangter Test fehlt (→ FU-Punkt, Bezug: Issue)                                                                                                                   | **hint** |
+| Test prüft weniger als sein Name sagt (→ FU-Punkt, Bezug: Issue). Beispiel #11085: Der Test ruft den Watcher direkt auf und findet eine fehlende `@Watch`-Bindung nicht.     | **hint** |
+| Doku widerspricht dem neuen Code (→ FU-Punkt, Bezug: Issue). Beispiel #11073: Der Migrationsplan führt den behobenen Fehler noch als offen.                                  | **hint** |
+| Überflüssiger oder jetzt redundanter Code. Beispiel #11087: drei `hasValue`-Zuweisungen, die `applyValue()` schon erledigt.                                                  | **hint** |
+| PR-Beschreibung passt nicht zum Diff (fließt in die Release-Notes)                                                                                                           | **hint** |
+| Release-Label fehlt oder ist falsch (Regeln in Abschnitt 6.6). Labels setzen Maintainer, nicht der Autor.                                                                    | **hint** |
+| Theming-Vertrag verletzt: neue oder geänderte DOM-Elemente oder BEM-Klassen ohne angepasste Themes oder ohne Liste der Klassen in der PR-Beschreibung                        | **warn** |
+| Regelverstoß aus `AGENTS.md` mit Wirkung: `overflow: hidden`, Farbschema im Basis-Styling, `!important` ohne Begründung, Deprecation ohne Migrationsaufgabe                  | **warn** |
+| Regelverstoß aus `AGENTS.md` ohne Wirkung: Reihenfolge (Listen, Imports, Union-Literale, Objekt-Schlüssel in Testdaten), Member-Reihenfolge, Code-Kommentare (Abschnitt 4.4) | **hint** |
 
 ### 4.3 Sicher
 
@@ -224,6 +224,95 @@ git diff --name-only origin/develop...pr-<nr>
 
 CI-Ergebnisse (insbesondere CodeQL) nennen, aber das Lesen des Diffs nicht durch sie ersetzen.
 
+### 4.4 Code-Kommentare bewerten
+
+Der Grundsatz: **Inline-Kommentare sind hilfreich — genau dort, wo eine Passage erklärungsbedürftig
+ist.** Ein Kommentar dient einem Zweck: künftigen Entwicklern und KI schneller zu verstehen, was
+eine Passage tut, wenn der Algorithmus sich nicht leicht selbst erklärt, oder warum eine CSS-Regel
+so aussieht, wenn ihr Hintergrund erst nach dem Nachdenken klar wird. Klar, einfach, prägnant und
+widerspruchsfrei gehört zur Form. Keinen Wert haben Kommentare, die jede Codezeile in einem großen
+Block erklären oder beschreiben, was vorher stand und was geändert wurde — sie wiederholen den
+Code, erzählen eine Geschichte, die nicht relevant ist, und veralten als Erste. Der Maßstab je
+Kommentar: Er liefert die eine Information, die der Code nicht selbst ausdrückt und die der Leser
+braucht, um die Passage korrekt zu verstehen oder zu ändern — nie die Nacherzählung und nie mehr
+als unbedingt nötig.
+
+**Sammeln:** Jeden hinzugefügten oder geänderten Kommentar des Diffs prüfen — JSDoc, Zeilen- und
+Blockkommentare, SCSS, HTML, YAML. Ausgenommen sind generierte Dateien, Snapshots und Vendor-Copies
+sowie Kinkerlitzchen ohne jede Wirkung (Rechtschreibung, Interpunktion). Ein Kommentar auf einer
+unveränderten Codezeile zählt nur, wenn der PR das Verhalten dieser Zeile ändert und der Kommentar
+danach daneben liegt.
+
+**Der Entscheidungsbaum** — je Kommentar von oben durchlaufen; die erste zutreffende Stufe
+entscheidet. Jede Endstufe nennt ihren Wert und die Änderung, die den Befund löst.
+
+1. **Widerspricht der Kommentar dem Code?** Er beschreibt ein Verhalten, das der Code nicht hat;
+   zwei Kommentare widersprechen einander; der Kommentar widerspricht der Dokumentation.
+   → **warn** — ein falscher Kommentar irreführt den nächsten Maintainer riskanter als kein
+   Kommentar. Änderung: löschen oder auf das reale Verhalten bringen.
+
+2. **Ist Code auskommentiert statt gelöscht?** Der Kommentar enthält gültigen Code in
+   Kommentarzeichen — ganze Blöcke oder einzelne Zeilen.
+   → **hint**. Änderung: löschen; die Versionshistorie hält den entfernten Zustand.
+
+3. **Erzählt der Kommentar die Vergangenheit?** Signale: „previously", „bisher", „vorher", „jetzt",
+   „neu:", „no longer", „statt X", „geändert zu", „WAR:"-Blöcke; Verweise auf Diffs, Pull Requests
+   oder Vorzustände als Geschichte („fixed in #…"); Rechtfertigungen gegen einen ehemaligen Zustand
+   oder eine abgelehnte Alternative („X, nicht Y" als Herkunftsgeschichte statt als heutige Regel).
+   → **hint** (Regelverstoß ohne Wirkung). Änderung: die Gegenwarts-Regel schreiben, die der Leser
+   heute braucht. Bleiben dürfen: eine Angabe, die als heutige Einschränkung gilt und aus ihrem
+   Grund folgt („legacy consumers verlangen X"), und eine `@deprecated`-Markierung mit ihrer
+   Ablösung — sie beschreiben die Zukunft, nicht die Vergangenheit. Ein sachlicher Issue-Verweis an
+   einem offenen Constraint („see #… for the open limitation") ist kein Historie-Befund; eine
+   Änderungsgeschichte mit Issue-Nummer schon.
+
+4. **Wiederholt der Kommentar den Code?** Namens-Paraphrase (`// sets the label` über `setLabel`),
+   Typangaben in `@param`/`@returns`, Schrittwiederholung (`// increment` über `i++`), Struktur-
+   Markierung an schließenden Klammern (`// end if`), Absichten-Erzählung von Offensichtlichem.
+   → **hint**. Änderung: löschen; nennt kein Bezeichner den Zweck, lieber den Bezeichner schärfen
+   als kommentieren.
+
+5. **Fehlt eine Pflicht-Doku?** Umgekehrter Befund: eine öffentliche API-Zeile im Diff
+   (`@Prop`, `@Method`, `@Event`, Exporte) ohne Zweck- oder Einschränkungs-Doku, oder ein Umtexten
+   veröffentlichter API-JSDoc ohne funktionale Änderung (ihr Text ist published und stabil).
+   → **hint** — Zweck und Constraints ergänzen; veröffentlichte JSDoc unverändert lassen, ein
+   Umtexten ist eine eigene Änderung. Sagt der neue Text etwas Anderes als der alte, ist es ein
+   **warn**: das geänderte API-Verhalten gehört in den Changelog, nicht still in die Doku.
+
+6. **Trägt der Kommentar eine nicht ableitbare Information?** Das sind: Zweck und Einschränkungen
+   öffentlicher API, nicht offensichtliche Warum-Entscheidungen, die ein späterer Aufräumer sonst
+   „reparieren" würde, Zwänge und Fallstricke (Reihenfolgen, Plattform-Quirks, `JS`-Eigenheiten)
+   und die Erläuterung einer komplexen Passage.
+   → **NEIN**: **hint** — löschen. Der Kommentar ergibt sich aus dem Code, auch wenn ihn niemand
+   wörtlich aufschrieben.
+
+7. **Ist es die minimal mögliche Fassung?** (nur erreichbar mit nicht ableitbarer Information)
+   - Paraphrasiert Zeile für Zeile → kürzen auf den einen nicht ableitbaren Punkt. **hint**
+   - Dupliziert eine autoritative Quelle (ARC42, Migration-Guide, JSDoc am anderen Ort) → durch
+     einen Verweis auf die Quelle ersetzen. **hint**
+   - Beschreibt Verhalten, das ein Test des PRs pinnt → löschen; der Test ist die Autorität.
+     **hint** — außer es bleibt ein nicht testbarer Rest-Constraint, dann genau diesen behalten.
+   - Sonst: **ready** — genau dieser Kommentar bleibt stehen.
+
+Jeder **warn**/**hint** aus dem Baum braucht Datei, Zeile und die konkrete Ersatzfassung oder das
+Lösch-Ziel. Die Befunde fließen in die Spalte „Sauber & ordentlich" und damit in `comment`; sie
+verschieben den Gesamtstatus nach Abschnitt 5 wie jeder andere Befund.
+
+**Beispiel-Paare** (Muster aus `AGENTS.md`, Abschnitt „Inline code documentation"):
+
+- `// Previously this was handled by the controller; changed in the skeleton migration.` → Stufe 3,
+  **hint**. Ersatz: `// Runs before the first render, because the behaviors read the normalized label.`
+- `/** Sets the label. @param {string} value - the label */` über einer trivialen Zuweisung →
+  Stufe 4, **hint**. Ersatz: löschen.
+- Eine auskommentierte alte Implementierung im Diff → Stufe 2, **hint**. Ersatz: löschen.
+- `// The predecessor accepted any string; this one would reject a one-character label.` → Stufe 3,
+  **hint**. Ersatz: `// The label names a landmark without an expert slot.`
+- Ein drei Absätze langer Block über eine Hilfsfunktion, der ihre vier Schritte nacheinander
+  erzählt → Stufe 7, **hint**. Ersatz: der eine Satz, der sagt, warum sie existiert und was sie
+  nicht leistet.
+- `// The scroll lock is counted per owner; the item is the owner of its dialog's lock.` → Stufe 7,
+  **ready** — eine nicht ableitbare Zuständigkeits-Regel in minimaler Fassung.
+
 ## 5. Gesamtstatus
 
 Der Gesamtstatus folgt allein aus den drei Spalten:
@@ -235,7 +324,11 @@ Der Gesamtstatus folgt allein aus den drei Spalten:
 | 🔴     | mindestens ein **warn**                | #11086: ein **warn**  |
 
 Rote CI, ein offenes Visual Review oder Merge-Konflikte sind Befunde in der passenden Spalte, keine
-eigene Regel für den Gesamtstatus.
+eigene Regel für den Gesamtstatus. Der Review-Stand von Maintainedrn — Freigabe,
+`CHANGES_REQUESTED`, offene Threads — ist ebenso kein Befund und trägt keine Spalte: pr-audit ist
+dem Maintainer-Review vorgelagert und bewertet den PR, bevor es dort einen Stand gibt. Ein
+freigegebener PR kann rot bleiben, ein noch nicht freigegebener ist grün, wenn die drei Spalten es
+sind.
 
 FU-Punkte mit angelegtem Folge-Issue markieren den PR nicht mehr: Sobald das Ticket existiert, ist der
 Punkt an das Ticket übergeben — die betroffene Spalte wird **ready** und der Gesamtstatus steigt
@@ -250,21 +343,17 @@ am Ende; die Zwischenreporte je PR (Abschnitt 3) gehen ihr voraus.
 ### 6.1 Stand
 
 Ein Satz mit der Zahl der PRs je Status, z. B. „3 Ready · 10 gemergt · 0 Draft · 0 geschlossen ohne
-Merge”, dazu, wie viele davon noch auf ein Approval warten. Bei einer Folgeprüfung zusätzlich, was
+Merge“. Bei einer Folgeprüfung zusätzlich, was
 sich seit dem letzten Audit geändert hat.
 
 ### 6.2 Tabelle
 
-| PR  | Status | Gesamt | Approval | Kurzbeschreibung | Minimalistisch & korrekt zum Issue | Sauber & ordentlich | Sicher |
-| --- | ------ | ------ | -------- | ---------------- | ---------------------------------- | ------------------- | ------ |
+| PR  | Status | Gesamt | Kurzbeschreibung | Minimalistisch & korrekt zum Issue | Sauber & ordentlich | Sicher |
+| --- | ------ | ------ | ---------------- | ---------------------------------- | ------------------- | ------ |
 
 - **PR:** Markdown-Link, Kurztitel, Issue-Nummer. Beispiel: `[#11083](…) Link: kein leeres aria-label (#10718)`.
 - **Status:** 📝 Draft · 🔵 Ready · 🟣 Gemergt · ⚫ Geschlossen (ohne Merge). Zeilen in dieser Reihenfolge,
   innerhalb eines Status absteigend nach PR-Nummer.
-- **Approval:** ✅ approved (mit Zahl bzw. Namen) · ⚠️ `CHANGES_REQUESTED` · ❌ offen (`REVIEW_REQUIRED`).
-  Das Audit ist die Vorbetrachtung; das Approval ist der letzte menschliche Schritt, den der Skill nie
-  selbst macht. Es fließt nicht in den Gesamtstatus ein, steht aber in jeder Zeile, weil ein inhaltlich
-  grüner PR ohne Approval noch nicht merge-bereit ist.
 - **Kurzbeschreibung:** ein Satz, was der PR leistet und ob das Issue gelöst ist.
 - **Spalten:** Wert und ein knapper Befund. OOS- und FU-Punkte nur mit ihrer ID nennen, z. B.
   „💡 **hint**: Test aus dem Issue fehlt (FU-1)“. FU-Punkte mit angelegtem Ticket stehen nur als
@@ -336,9 +425,7 @@ Offen nennen, was nicht geprüft wurde, z. B. „Tests nicht lokal ausgeführt, 
 ## 7. Folgeaktionen anbieten
 
 Am Ende des Audits nur die Befehle anbieten, die etwas zu tun hätten, jeweils mit den konkreten PRs bzw.
-IDs. Gibt es nichts mehr zu `comment`, `tickets`, `labels` oder `consolidate`, fehlen aber noch
-Approvals, das explizit als letzten Schritt nennen („nur Approval offen für …"); der Skill approvt
-selbst nie. Beispiel:
+IDs. Beispiel:
 
 - `comment 11084 11086 11087`: die drei offenen PRs sind nicht grün.
 - `tickets` für OOS-1, OOS-2+3, FU-1, FU-2, FU-3, FU-6.
@@ -385,16 +472,21 @@ Punkte ohne jede Wirkung — Leerzeilen, Formatierung in generierten Dateien, re
 nicht in den Kommentar; sie stehen höchstens als Randnotiz im Audit.
 
 **Form:** In der Sprache, in der der Contributor den PR verfasst hat — maßgeblich sind Beschreibung,
-Titel und seine bisherigen Kommentare; das Muster unten zeigt Englisch, Abschnittsüberschriften und
-Footer folgen derselben Sprache. Freundlich, knapp. Kein Dank für das Einsenden des PR und keine
+Titel und seine bisherigen Kommentare; das Muster unten zeigt Englisch, Abschnittsüberschriften
+folgen derselben Sprache. Freundlich, knapp. Kein Dank für das Einsenden des PR und keine
 Ausrufezeichen beim Dank: Die Schlussformel ist „Danke Dir." (englisch „Thank you."), ruhig und mit
-Punkt. Leere Abschnitte weglassen; die Nummerierung läuft durch. Der Footer steht immer am Ende.
+Punkt. Leere Abschnitte weglassen; die Nummerierung läuft durch.
 
 **Varianz:** Anrede und Einstieg variieren („Hallo @…", „Hi @…" oder ohne Anrede direkt in die
 Sache), ebenso die Einleitungssätze der Abschnitte. Keine zwei pr-audit-Kommentare klingen gleich;
 das Muster unten ist eine Variante, kein Stempel.
 
-**Wortwahl:** Funktionierendes heißt „passt", nicht „sitzt".
+**Ich-Form:** Der Kommentar spricht in der ersten Person des Reviewers: „beim Nachstellen ist mir
+aufgefallen“, „mir ist beim Durchgehen eine Stelle aufgefallen“. Keine unbestimmte, handlungslose
+Form („beim Nachstellen ist aufgefallen“, „es wurde festgestellt“, „es fällt auf“): Die Ich-Form
+zeigt, dass ein Mensch den Code gelesen hat und für den Befund einsteht.
+
+**Wortwahl:** Funktionierendes heißt „passt“, nicht „sitzt“.
 
 **Prägnanz:** Jeder Punkt ist ein eigener kurzer Absatz in derselben Ordnung: Befund, warum er
 zählt, konkrete Bitte. Was richtig ist, als richtig benennen — angemahnt wird nur der fehlende Teil;
@@ -428,10 +520,6 @@ Hi @<author>, to get it ready for merge, please address the following. Everythin
 Not part of this PR: <topic> is tracked separately in #<ticket>.
 
 Thank you.
-
----
-
-_Generated by [Claude Code](https://claude.ai/code)_
 ```
 
 Der Status-Block steht nur, wenn es Vorbefunde gibt; die Nummerierung läuft über Kommentare fort (P1 und
