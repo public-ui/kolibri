@@ -89,6 +89,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	@Method()
 	@directFocus('anchorRef')
 	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
 		void options;
 		return Promise.resolve();
 	}

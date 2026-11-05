@@ -63,6 +63,7 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	@Method()
 	@delegateFocus('buttonRef')
 	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
 		void options;
 		return Promise.resolve();
 	}

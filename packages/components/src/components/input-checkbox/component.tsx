@@ -339,6 +339,7 @@ export class KolInputCheckbox
 	@Method()
 	@delegateFocus('ctaRef')
 	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
 		void options;
 		return Promise.resolve();
 	}
