@@ -120,7 +120,7 @@ const KOL_INPUT_CHECKBOX_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'InputTypeOnDefault',
 		required: false,
-		doc: 'Gibt die EventCallback-Funktionen für das Input-Event an.',
+		doc: 'Defines the callback functions for input events.',
 	},
 	_required: {
 		kind: 'prop',
