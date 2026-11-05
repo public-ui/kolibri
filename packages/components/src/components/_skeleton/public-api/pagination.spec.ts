@@ -29,8 +29,8 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	_label: {
 		kind: 'prop',
 		type: 'LabelPropType',
-		required: false,
-		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Without a value the requiredness warning fires and the translation `kol-pagination` names the navigation landmark, so the landmark keeps its accessible name.',
 	},
 	_max: {
 		kind: 'prop',

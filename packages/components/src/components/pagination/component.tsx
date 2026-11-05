@@ -60,12 +60,14 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 * Without a value the requiredness warning fires and the translation `kol-pagination` names the
+	 * navigation landmark, so the landmark keeps its accessible name.
 	 */
-	@Prop() public _label?: LabelPropType = undefined;
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		this.item.applyLabel(value);
+		this.item.applyLabel(value, this.isRequired('label'));
 	}
 
 	/**
@@ -165,7 +167,6 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 			boundaryCount: this._boundaryCount,
 			customClass: this._customClass,
 			hasButtons: this._hasButtons,
-			label: this._label,
 			max: this._max,
 			on: this._on,
 			page: this._page,
@@ -174,6 +175,9 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 			siblingCount: this._siblingCount,
 			tooltipAlign: this._tooltipAlign,
 		});
+		// `load` applies an unset label as the fallback, without requiredness: the item applies
+		// without the flag and the watcher does not fire for the initial value.
+		this.item.applyLabel(this._label, this.isRequired('label'));
 	}
 
 	public componentDidRender(): void {

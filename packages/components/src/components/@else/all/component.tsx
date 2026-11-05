@@ -45,7 +45,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-link _href="" _label="Label"></kol-link>
 				<kol-modal _label=""></kol-modal>
 				<kol-nav _label="" _links={[]}></kol-nav>
-				<kol-pagination _on={{}} _page={1} _max={11}></kol-pagination>
+				<kol-pagination _label="" _on={{}} _page={1} _max={11}></kol-pagination>
 				<kol-progress _max={10} _value={5}></kol-progress>
 				<kol-select _label="" _options={[]}></kol-select>
 				<kol-skip-nav _label="" _links={[]}></kol-skip-nav>

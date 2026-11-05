@@ -132,19 +132,19 @@ test.describe('kol-pagination behavior', () => {
 	const selectedPage = (page: Page) => page.locator('kol-pagination .kol-pagination__button--selected .kol-span__label').textContent();
 
 	test('clamps a page beyond the last page on load and reports the clamped page twice', async ({ page }) => {
-		await mount(page, { _max: 10, _page: 20 });
+		await mount(page, { _label: 'Pagination', _max: 10, _page: 20 });
 		expect(await readLog(page)).toEqual(['cb:onChangePage:10:StateChange', 'ev:changepage:10', 'cb:onChangePage:10:StateChange', 'ev:changepage:10']);
 		expect(await selectedPage(page)).toBe('10');
 	});
 
 	test('clamps a page below the first page on load', async ({ page }) => {
-		await mount(page, { _max: 10, _page: 0 });
+		await mount(page, { _label: 'Pagination', _max: 10, _page: 0 });
 		expect(await readLog(page)).toEqual(['cb:onChangePage:1:StateChange', 'ev:changepage:1', 'cb:onChangePage:1:StateChange', 'ev:changepage:1']);
 		expect(await selectedPage(page)).toBe('1');
 	});
 
 	test('clamps a page set after load and keeps the _page prop', async ({ page }) => {
-		await mount(page, { _max: 10, _page: 2 });
+		await mount(page, { _label: 'Pagination', _max: 10, _page: 2 });
 		await readLog(page);
 		await page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement) => {
 			element._page = 99;
@@ -157,7 +157,7 @@ test.describe('kol-pagination behavior', () => {
 	});
 
 	test('reports a page click as click, then the click of the inner button, then asynchronously as page change', async ({ page }) => {
-		await mount(page, { _max: 10, _page: 5 });
+		await mount(page, { _label: 'Pagination', _max: 10, _page: 5 });
 		await readLog(page);
 		await page.getByRole('button', { name: '6' }).click();
 		await page.waitForTimeout(100);
@@ -165,7 +165,7 @@ test.describe('kol-pagination behavior', () => {
 	});
 
 	test('navigates with the first, previous, next and last buttons without changing the selected page itself', async ({ page }) => {
-		await mount(page, { _max: 10, _page: 5 });
+		await mount(page, { _label: 'Pagination', _max: 10, _page: 5 });
 		await readLog(page);
 		for (const position of ['first', 'previous', 'next', 'last']) {
 			await page.locator(`kol-pagination .kol-pagination__button--${position} button`).click();
@@ -197,7 +197,7 @@ test.describe('kol-pagination behavior', () => {
 	});
 
 	test('disables the first and previous buttons on the first page and the next and last buttons on the last page', async ({ page }) => {
-		await mount(page, { _max: 10, _page: 1 });
+		await mount(page, { _label: 'Pagination', _max: 10, _page: 1 });
 		const disabled = (position: string) => page.locator(`kol-pagination .kol-pagination__button--${position} button`).isDisabled();
 		expect([await disabled('first'), await disabled('previous'), await disabled('next'), await disabled('last')]).toEqual([true, true, false, false]);
 		await page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement) => {
@@ -208,7 +208,7 @@ test.describe('kol-pagination behavior', () => {
 	});
 
 	test('changes the page size, keeps the _pageSize prop and clamps the page to the new last page', async ({ page }) => {
-		await mount(page, { _max: 40, _page: 4, _pageSize: 10, _pageSizeOptions: [10, 20] });
+		await mount(page, { _label: 'Pagination', _max: 40, _page: 4, _pageSize: 10, _pageSizeOptions: [10, 20] });
 		await readLog(page);
 		await page.locator('kol-pagination select').selectOption('-1');
 		await page.waitForChanges();
@@ -220,7 +220,7 @@ test.describe('kol-pagination behavior', () => {
 	});
 
 	test('falls back to the first page size option when _pageSize is not an option', async ({ page }) => {
-		await mount(page, { _max: 40, _page: 1, _pageSize: 15, _pageSizeOptions: [10, 20] });
+		await mount(page, { _label: 'Pagination', _max: 40, _page: 1, _pageSize: 15, _pageSizeOptions: [10, 20] });
 		expect(await page.locator('kol-pagination .kol-pagination__entries').textContent()).toContain('10');
 		expect(await page.locator('kol-pagination select').inputValue()).toBe('-0');
 	});
