@@ -251,7 +251,11 @@ entscheidet. Jede Endstufe nennt ihren Wert und die Änderung, die den Befund l�
    → **warn** — ein falscher Kommentar irreführt den nächsten Maintainer riskanter als kein
    Kommentar. Änderung: löschen oder auf das reale Verhalten bringen.
 
-2. **Erzählt der Kommentar die Vergangenheit?** Signale: „previously", „bisher", „vorher", „jetzt",
+2. **Ist Code auskommentiert statt gelöscht?** Der Kommentar enthält gültigen Code in
+   Kommentarzeichen — ganze Blöcke oder einzelne Zeilen.
+   → **hint**. Änderung: löschen; die Versionshistorie hält den entfernten Zustand.
+
+3. **Erzählt der Kommentar die Vergangenheit?** Signale: „previously", „bisher", „vorher", „jetzt",
    „neu:", „no longer", „statt X", „geändert zu", „WAR:"-Blöcke; Verweise auf Diffs, Pull Requests
    oder Vorzustände als Geschichte („fixed in #…"); Rechtfertigungen gegen einen ehemaligen Zustand
    oder eine abgelehnte Alternative („X, nicht Y" als Herkunftsgeschichte statt als heutige Regel).
@@ -262,27 +266,27 @@ entscheidet. Jede Endstufe nennt ihren Wert und die Änderung, die den Befund l�
    einem offenen Constraint („see #… for the open limitation") ist kein Historie-Befund; eine
    Änderungsgeschichte mit Issue-Nummer schon.
 
-3. **Wiederholt der Kommentar den Code?** Namens-Paraphrase (`// sets the label` über `setLabel`),
-   Typangaben in `@param`/`@returns`, Schrittwiederholung (`// increment` über `i++`), Absichten-
-   Erzählung von Offensichtlichem.
+4. **Wiederholt der Kommentar den Code?** Namens-Paraphrase (`// sets the label` über `setLabel`),
+   Typangaben in `@param`/`@returns`, Schrittwiederholung (`// increment` über `i++`), Struktur-
+   Markierung an schließenden Klammern (`// end if`), Absichten-Erzählung von Offensichtlichem.
    → **hint**. Änderung: löschen; nennt kein Bezeichner den Zweck, lieber den Bezeichner schärfen
    als kommentieren.
 
-4. **Fehlt eine Pflicht-Doku?** Umgekehrter Befund: eine öffentliche API-Zeile im Diff
+5. **Fehlt eine Pflicht-Doku?** Umgekehrter Befund: eine öffentliche API-Zeile im Diff
    (`@Prop`, `@Method`, `@Event`, Exporte) ohne Zweck- oder Einschränkungs-Doku, oder ein Umtexten
    veröffentlichter API-JSDoc ohne funktionale Änderung (ihr Text ist published und stabil).
    → **hint** — Zweck und Constraints ergänzen; veröffentlichte JSDoc unverändert lassen, ein
    Umtexten ist eine eigene Änderung. Sagt der neue Text etwas Anderes als der alte, ist es ein
    **warn**: das geänderte API-Verhalten gehört in den Changelog, nicht still in die Doku.
 
-5. **Trägt der Kommentar eine nicht ableitbare Information?** Das sind: Zweck und Einschränkungen
+6. **Trägt der Kommentar eine nicht ableitbare Information?** Das sind: Zweck und Einschränkungen
    öffentlicher API, nicht offensichtliche Warum-Entscheidungen, die ein späterer Aufräumer sonst
    „reparieren" würde, Zwänge und Fallstricke (Reihenfolgen, Plattform-Quirks, `JS`-Eigenheiten)
    und die Erläuterung einer komplexen Passage.
    → **NEIN**: **hint** — löschen. Der Kommentar ergibt sich aus dem Code, auch wenn ihn niemand
    wörtlich aufschrieben.
 
-6. **Ist es die minimal mögliche Fassung?** (nur erreichbar mit nicht ableitbarer Information)
+7. **Ist es die minimal mögliche Fassung?** (nur erreichbar mit nicht ableitbarer Information)
    - Paraphrasiert Zeile für Zeile → kürzen auf den einen nicht ableitbaren Punkt. **hint**
    - Dupliziert eine autoritative Quelle (ARC42, Migration-Guide, JSDoc am anderen Ort) → durch
      einen Verweis auf die Quelle ersetzen. **hint**
@@ -296,16 +300,17 @@ verschieben den Gesamtstatus nach Abschnitt 5 wie jeder andere Befund.
 
 **Beispiel-Paare** (Muster aus `AGENTS.md`, Abschnitt „Inline code documentation"):
 
-- `// Previously this was handled by the controller; changed in the skeleton migration.` → Stufe 2,
+- `// Previously this was handled by the controller; changed in the skeleton migration.` → Stufe 3,
   **hint**. Ersatz: `// Runs before the first render, because the behaviors read the normalized label.`
 - `/** Sets the label. @param {string} value - the label */` über einer trivialen Zuweisung →
-  Stufe 3, **hint**. Ersatz: löschen.
-- `// The predecessor accepted any string; this one would reject a one-character label.` → Stufe 2,
+  Stufe 4, **hint**. Ersatz: löschen.
+- Eine auskommentierte alte Implementierung im Diff → Stufe 2, **hint**. Ersatz: löschen.
+- `// The predecessor accepted any string; this one would reject a one-character label.` → Stufe 3,
   **hint**. Ersatz: `// The label names a landmark without an expert slot.`
 - Ein drei Absätze langer Block über eine Hilfsfunktion, der ihre vier Schritte nacheinander
-  erzählt → Stufe 6, **hint**. Ersatz: der eine Satz, der sagt, warum sie existiert und was sie
+  erzählt → Stufe 7, **hint**. Ersatz: der eine Satz, der sagt, warum sie existiert und was sie
   nicht leistet.
-- `// The scroll lock is counted per owner; the item is the owner of its dialog's lock.` → Stufe 6,
+- `// The scroll lock is counted per owner; the item is the owner of its dialog's lock.` → Stufe 7,
   **ready** — eine nicht ableitbare Zuständigkeits-Regel in minimaler Fassung.
 
 ## 5. Gesamtstatus
