@@ -117,14 +117,8 @@
 			}
 		}
 
-		/*
-		 * The focus ring is drawn on the inner text box instead of the `<button>`: when the user
-		 * overrides the page colors, Firefox repaints native form controls and drops their author
-		 * outlines, while outlines on plain elements survive the override and are repainted in the
-		 * user's colors. The text box is the same size as the interactive element, so the ring does
-		 * not move. Same placement as the link (`__text`) and the inputs (`.kol-input-container`).
-		 */
 		&__interactive-element:focus {
+			// Firefox repaints native form controls under user color overrides and drops author outlines, so the ring lives on the plain text box.
 			outline: none;
 
 			.#{$block-classname}__text {
