@@ -88,7 +88,10 @@
 			.#{$block-classname}__interactive-element:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
-				outline-color: var(--color-danger);
+
+				.#{$block-classname}__text {
+					outline-color: var(--color-danger);
+				}
 			}
 		}
 
@@ -119,8 +122,13 @@
 		}
 
 		&__interactive-element:focus-visible {
-			@include focus-outline;
-			position: relative; // make sure focus outline is visible and not covered by adjacent element
+			// Firefox repaints native form controls under user color overrides and drops author outlines, so the ring lives on the plain text box.
+			outline: none;
+
+			.#{$block-classname}__text {
+				@include focus-outline;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
+			}
 		}
 
 		&__interactive-element:is(:disabled, [aria-disabled='true']):hover &__text {

@@ -13,8 +13,14 @@
 		--button-border-color: transparent;
 
 		&__interactive-element:focus {
-			outline: var(--ecl-color-primary) solid 2px;
-			outline-offset: 2px;
+			// Firefox repaints native form controls under user color overrides and drops author outlines, so the ring lives on the plain text box.
+			outline: none;
+
+			.#{$block-classname}__text {
+				outline: var(--ecl-color-primary) solid 2px;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
+				outline-offset: 2px;
+			}
 		}
 
 		&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
