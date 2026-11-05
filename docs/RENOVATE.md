@@ -187,8 +187,8 @@ To activate it:
      forever for a status that nothing will post. `codeql.yml` therefore has no `paths-ignore`, and
      `visual-review.yml` answers a skipped CI run with `success` (mode `docs-only`, see
      `scripts/visual-review/resolve-context.mjs`). Anything added to the list has to obey the same
-     rule. `check-results` is deliberately absent: a red pipeline stops Renovate, which refuses to
-     merge a red branch, but it does not stop a human.
+     rule. A red pipeline stops Renovate, which refuses to merge a red branch, but it does not stop
+     a human.
    - Every workflow behind a required check needs `synchronize` in its `pull_request` types.
      GitHub wants the check on the **current head commit**, so a workflow that only reacts to
      `opened`/`edited` leaves it unreported after any push and the merge is refused with

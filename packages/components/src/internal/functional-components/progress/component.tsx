@@ -5,8 +5,9 @@ import { trimLabel } from '../../../schema';
 
 import type { ProgressVariantType } from '../../props';
 import type { FunctionalComponentProps } from '../generic-types';
+import { resolveFcProps } from '../props-from-config';
 import { renderLabelWithLang } from '../span/component';
-import type { ProgressApi } from './api';
+import { progressPropsConfig, type ProgressApi } from './api';
 
 const FULL_CIRCLE = 342;
 
@@ -64,7 +65,7 @@ const createProgressSVG = (variant: ProgressVariantType, max: number, value: num
 };
 
 export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => {
-	const { label, max, unit, value, variant, liveValue } = props;
+	const { label, max, unit, value, variant, liveValue } = resolveFcProps(progressPropsConfig, props);
 	const isPercentage = unit === '%';
 	const liveProgressValue = isPercentage ? `${Math.round((liveValue / max) * 100)}` : liveValue;
 	const displayValue = isPercentage ? Math.round((value / max) * 100) : value;

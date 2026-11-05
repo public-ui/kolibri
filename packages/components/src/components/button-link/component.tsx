@@ -40,7 +40,7 @@ import { BaseButtonWebComponent } from '../button/base';
  *
  * A link has the `target` property which optionally opens the link in a new window/tab. This behavior is not yet implemented.
  *
- * Since a link, unlike a button, is not offered in multiple variants (`primary`, `secondary`, etc.), the `_customClass` and `_variant` properties are not available.
+ * Since a link, unlike a button, is not offered in multiple variants (`primary`, `secondary`, etc.), the `_variant` property only accepts custom class names here and the `_customClass` property is not available.
  *
  * @slot expert - Custom label content, e.g. for rich text or icons.
  */
@@ -282,7 +282,7 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkP
 	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initButtonRenderProps();
+		this.unsetButtonTabIndex();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);

@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import { KolTreeTag } from '../../core/component-names';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TreeItemApi } from '../../internal/functional-components/tree-item/api';
 import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
@@ -42,6 +42,8 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	protected readonly anchorRef = createCtaRef<HTMLAnchorElement>();
 
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
+
+	protected readonly propsConfig: PropsConfigShape = treeItemPropsConfig;
 
 	/**
 	 * If set (to true) the tree item is the active one.
@@ -120,7 +122,6 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(treeItemPropsConfig);
 		this.watchActive(this._active);
 		this.watchHref(this._href);
 		this.watchLabel(this._label);

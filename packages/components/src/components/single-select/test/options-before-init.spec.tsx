@@ -7,8 +7,8 @@ const options: Option<StencilUnknown>[] = [
 	{ label: 'Option 2', value: '2' },
 ];
 
-describe('kol-single-select _options watcher before initialization (#11449)', () => {
-	it('does not throw when _options is set right after the element was attached', async () => {
+describe('kol-single-select props assigned before the first render (#11449)', () => {
+	it('renders the options without an error when _options is assigned right after the element was attached', async () => {
 		const page = await newSpecPage({
 			components: [KolSingleSelect],
 			html: '<div></div>',
@@ -26,11 +26,34 @@ describe('kol-single-select _options watcher before initialization (#11449)', ()
 		errorSpy.mockRestore();
 	});
 
-	it('ignores the _options watcher while the render props are not initialized yet', () => {
-		const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+	it('shows the label of the value when _options and _value are assigned before the first render', async () => {
+		const page = await newSpecPage({
+			components: [KolSingleSelect],
+			html: '<div></div>',
+		});
+
+		const select = page.doc.createElement('kol-single-select') as HTMLElement & {
+			_label: string;
+			_options: Option<StencilUnknown>[];
+			_value: StencilUnknown;
+		};
+		select._label = 'Test';
+		page.body.appendChild(select);
+		select._options = options;
+		select._value = '2';
+		await page.waitForChanges();
+
+		const input = select.shadowRoot?.querySelector('input');
+		expect(input?.value).toBe('Option 2');
+	});
+
+	it('seeds the render props with their defaults and applies a watcher without componentWillLoad', () => {
 		const instance = new KolSingleSelect();
 
-		expect(() => instance.watchOptions(options)).not.toThrow();
-		warnSpy.mockRestore();
+		// The defaults exist before the element loads, and a watcher run before `componentWillLoad`
+		// keeps its write in the store.
+		expect(instance.getRenderProp('disabled')).toBe(false);
+		instance.watchOptions(options);
+		expect(instance.getRenderProp('options')).toEqual(options);
 	});
 });

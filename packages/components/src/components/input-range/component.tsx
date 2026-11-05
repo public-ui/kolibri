@@ -36,7 +36,7 @@ import { InputFC, type InputFCProps } from '../../internal/functional-components
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { clampRangeValue, getNumberValueType, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputRangeApi } from '../../internal/functional-components/input-range/api';
 import { inputRangePropsConfig } from '../../internal/functional-components/input-range/api';
 import {
@@ -96,6 +96,8 @@ export class KolInputRange
 	/** Whether `_value` was set as a string; `getValue()` and the events return the value in this type. */
 	private valueIsNumberString = false;
 
+	protected readonly propsConfig: PropsConfigShape = inputRangePropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('range', this._name);
@@ -115,10 +117,7 @@ export class KolInputRange
 	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -249,7 +248,7 @@ export class KolInputRange
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -372,7 +371,6 @@ export class KolInputRange
 	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputRangePropsConfig);
 		// The bounds start at the defaults of `_min` and `_max`, so an ignored invalid value keeps them (#11077).
 		this.setRenderProp('min', 0);
 		this.setRenderProp('max', 100);

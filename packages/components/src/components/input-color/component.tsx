@@ -36,7 +36,7 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputColorApi } from '../../internal/functional-components/input-color/api';
 import { inputColorPropsConfig } from '../../internal/functional-components/input-color/api';
 import {
@@ -79,6 +79,8 @@ export class KolInputColor
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
+	protected readonly propsConfig: PropsConfigShape = inputColorPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('color', this._name);
@@ -98,10 +100,7 @@ export class KolInputColor
 	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -212,7 +211,7 @@ export class KolInputColor
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -334,7 +333,6 @@ export class KolInputColor
 	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputColorPropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 

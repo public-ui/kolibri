@@ -4,7 +4,7 @@ import type { AvatarApi } from '../../internal/functional-components/avatar/api'
 import { avatarPropsConfig } from '../../internal/functional-components/avatar/api';
 import { AvatarFC } from '../../internal/functional-components/avatar/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { colorProp, labelProp, srcProp } from '../../internal/props';
 import type { ColorPair, LabelPropType, SrcPropType } from '../../schema';
 import { trimLabel } from '../../schema';
@@ -57,6 +57,8 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	@State()
 	public initials: string = '';
 
+	protected readonly propsConfig: PropsConfigShape = avatarPropsConfig;
+
 	/**
 	 * Defines the backgroundColor and foregroundColor.
 	 */
@@ -98,8 +100,6 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(avatarPropsConfig);
-
 		colorProp.apply(this._color, (v) => this.setRenderProp('color', v));
 		labelProp.apply(
 			this._label,

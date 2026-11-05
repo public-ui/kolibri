@@ -30,7 +30,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SelectApi } from '../../internal/functional-components/select/api';
 import { selectPropsConfig } from '../../internal/functional-components/select/api';
 import { BaseSelectWebComponent } from '../../internal/functional-components/select/base-web-component';
@@ -59,6 +59,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 
 	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
 
+	protected readonly propsConfig: PropsConfigShape = selectPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('select', this._name);
@@ -77,10 +79,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * References an external element by ID that provides accessible details for this select.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -191,7 +190,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -320,8 +319,6 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(selectPropsConfig);
-
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
 		this.watchName(this._name);

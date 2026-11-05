@@ -39,10 +39,18 @@ function getMeterState(value: number, min: number, max: number, low: number | un
 	}
 }
 
-type MeterFCProps = Omit<FunctionalComponentProps<MeterApi>, 'high' | 'low' | 'optimum'> & {
+/**
+ * The web component passes every prop of this FC explicitly: the boundaries stay `undefined` when
+ * the consumer does not set them (no state classification then), while `max`, `min` and `unit`
+ * always carry their config default.
+ */
+type MeterFCProps = Omit<FunctionalComponentProps<MeterApi>, 'high' | 'low' | 'max' | 'min' | 'optimum' | 'unit'> & {
 	high: number | undefined;
 	low: number | undefined;
+	max: number;
+	min: number;
 	optimum: number | undefined;
+	unit: string;
 };
 
 export const MeterFC: FC<MeterFCProps> = (props) => {
