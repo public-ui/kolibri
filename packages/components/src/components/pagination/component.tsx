@@ -60,8 +60,6 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 * Without a value the requiredness warning fires and the translation `kol-pagination` names the
-	 * navigation landmark, so the landmark keeps its accessible name.
 	 */
 	@Prop() public _label!: LabelPropType;
 

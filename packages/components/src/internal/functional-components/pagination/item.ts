@@ -83,11 +83,6 @@ export type PaginationItem = {
 	applyCustomClass: (value?: CustomClassPropType) => void;
 	/** An object sets single buttons and keeps the others. */
 	applyHasButtons: (value?: boolean | Stringified<PaginationHasButton>) => void;
-	/**
-	 * Applies `_label`; without a value the translation `kol-pagination` names the navigation
-	 * landmark. The web component passes the requiredness of the unset value; applies from `load`
-	 * and `update` stay without it: an unset value there is a legitimate "not set".
-	 */
 	applyLabel: (value?: LabelPropType, required?: boolean) => void;
 	applyMax: (value?: number) => void;
 	applyOn: (value?: KoliBriPaginationButtonCallbacks) => void;
