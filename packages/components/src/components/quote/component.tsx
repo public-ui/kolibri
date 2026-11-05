@@ -20,7 +20,7 @@ import type { HrefPropType, LabelLangSegmentsPropType, QuotePropType } from '../
 })
 export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponentInterface<QuoteApi> {
 	/**
-	 * Sets the target URI of the link or citation source.
+	 * Defines the target URI of the link.
 	 */
 	@Prop()
 	public _href!: HrefPropType;
