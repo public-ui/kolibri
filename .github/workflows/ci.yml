@@ -30,7 +30,6 @@ concurrency:
 
 jobs:
   build-and-check:
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -57,7 +56,6 @@ jobs:
         run: pnpm -r test:unit
 
   e2e-tests:
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
