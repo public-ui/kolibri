@@ -1,1 +1,0 @@
-import{f as e,o as t}from"./base-web-component-lAHXH6AE-DC0uHBGl.js";var n=t(`hasCloser`,!1,e);export{n as t};
