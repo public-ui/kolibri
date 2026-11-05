@@ -1,1 +1,0 @@
-import{o as e,x as t}from"./base-web-component-Bh80ikSy-D1_dy589.js";var n=e(`value`,void 0,t);export{n as t};
