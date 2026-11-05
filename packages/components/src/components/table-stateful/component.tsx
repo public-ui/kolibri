@@ -365,7 +365,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	public componentWillLoad(): void {
-		this.initTableRenderProps();
 		this.applyOn(this.statelessOn);
 		this.internals = attachInternals(this.host);
 		// Early resolution: if the external element is already in the DOM, the first render already uses

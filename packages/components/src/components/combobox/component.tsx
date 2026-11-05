@@ -49,7 +49,7 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
 import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
 import {
@@ -108,6 +108,8 @@ export class KolCombobox
 
 	/** Whether the field has a value, for the class `has-value`; it follows each `change`. */
 	private hasValue = false;
+
+	protected readonly propsConfig: PropsConfigShape = comboboxPropsConfig;
 
 	public constructor() {
 		super();
@@ -371,7 +373,6 @@ export class KolCombobox
 	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(comboboxPropsConfig);
 		// Without `_value` the field starts with the empty string; `undefined` and `null` keep the value.
 		this.setRenderProp('value', '');
 

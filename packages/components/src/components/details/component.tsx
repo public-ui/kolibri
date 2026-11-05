@@ -8,7 +8,7 @@ import { collapsiblePropsConfig } from '../../internal/functional-components/col
 import { CollapsibleFC } from '../../internal/functional-components/collapsible/component';
 import { createCollapsibleOpenAnimation, DEFAULT_COLLAPSIBLE_TRANSITION_MS } from '../../internal/functional-components/collapsible/open-animation';
 import { createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/toggle-handler';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
 import type {
 	ClickableElement,
@@ -79,6 +79,8 @@ export class KolDetails
 		isOpen: () => this.getRenderProp('open') === true,
 		setOpen: (open) => (this._open = open),
 	});
+
+	protected readonly propsConfig: PropsConfigShape = collapsiblePropsConfig;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -152,7 +154,6 @@ export class KolDetails
 	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(collapsiblePropsConfig);
 		this.transitionMs = getFeatureFlag('collapsibleTransitionMs', this.host) ?? DEFAULT_COLLAPSIBLE_TRANSITION_MS;
 
 		this.watchDisabled(this._disabled);

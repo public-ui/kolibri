@@ -44,7 +44,7 @@ import { createButtonItem } from '../../internal/functional-components/button/it
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputTextApi } from '../../internal/functional-components/input-text/api';
 import { inputTextPropsConfig } from '../../internal/functional-components/input-text/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
@@ -83,6 +83,8 @@ export class KolInputText
 	private readonly clearButton = createButtonItem(() => this.host);
 
 	private readonly translateClearSearch = translate('kol-clear-search');
+
+	protected readonly propsConfig: PropsConfigShape = inputTextPropsConfig;
 
 	public constructor() {
 		super();
@@ -470,7 +472,6 @@ export class KolInputText
 		this.clearButton.syncListeners();
 	}
 	public componentWillLoad(): void {
-		this.initRenderProps(inputTextPropsConfig);
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);

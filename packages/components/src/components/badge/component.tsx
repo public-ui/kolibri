@@ -7,7 +7,7 @@ import { BadgeFC } from '../../internal/functional-components/badge/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { ResolvedButtonProps } from '../../internal/functional-components/button/resolve-props';
 import { resolveButtonProps } from '../../internal/functional-components/button/resolve-props';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../internal/props';
 import type {
@@ -63,6 +63,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	 */
 	private smartButtonProps?: ResolvedButtonProps;
 
+	protected readonly propsConfig: PropsConfigShape = badgePropsConfig;
+
 	/**
 	 * Defines the backgroundColor and foregroundColor.
 	 */
@@ -113,7 +115,6 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(badgePropsConfig);
 		// A badge without `_smartButton` renders no button at all, so the seeded default must not
 		// survive initialization — see `applySmartButton`.
 		this.unsetRenderProp('smartButton');

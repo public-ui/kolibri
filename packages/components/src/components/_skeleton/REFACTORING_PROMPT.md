@@ -73,7 +73,7 @@ Erstelle bzw. ersetze die Dateien im Komponentenverzeichnis gemäß der ARC42-Sc
 
 1. **API-Definition** (`api.tsx`) — Interface für die Komponente (nutzt Props-Typen aus Schritt 2)
 2. **Functional Component** — stateless Renderer. Wrappe den Output in `<BemRootNodeFC block="kol-xxx" modifiers={{...}}>` für einen Single-Root BEM-Wrapper.
-3. **Web Component** — Stencil `@Component` mit Lifecycle, Watchers, Rendering; erweitert `BaseWebComponent<Api>`. Die WC **ist der Orchestrator** — sie ruft `this.initRenderProps(config)` in `componentWillLoad` auf und normalisiert Props direkt in `@Watch`-Handlern via `xxxProp.apply(value, v => this.setRenderProp('xxx', v))`. Es gibt keine separate Controller-/Aspect-Klasse.
+3. **Web Component** — Stencil `@Component` mit Lifecycle, Watchers, Rendering; erweitert `BaseWebComponent<Api>`. Die WC **ist der Orchestrator** — sie deklariert die Props-Config als `propsConfig`-Feld, aus dem die Basis die Render-Props beim ersten Zugriff säht, und normalisiert Props direkt in `@Watch`-Handlern via `xxxProp.apply(value, v => this.setRenderProp('xxx', v))`. Es gibt keine separate Controller-/Aspect-Klasse.
 4. **Behaviors** (optional) — Wenn die Komponente wiederverwendbare Logik braucht (z.B. Tooltip-Management), erstelle eine Behavior-Klasse, die `BaseBehavior<Api>` erweitert, und komponiere sie in der WC: `private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess)`.
 5. **CSS/SCSS** — bestehende Styles beibehalten, bei Bedarf anpassen. Bei BEM-Wrapper-Umstellung: Interaktions-Styles (`:focus`, `:hover`) auf `&__anchor` (BEM-Element) statt auf den Block verschieben.
 6. **Tests** — Testdateien **neben** `component.tsx` erstellen bzw. aktualisieren (kein `test/`-Unterordner, siehe ARC42 Design Decision 11):

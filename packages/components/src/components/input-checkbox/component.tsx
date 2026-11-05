@@ -37,7 +37,7 @@ import { CheckboxFC } from '../../internal/functional-components/form-field/chec
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
 import type { InputFCProps } from '../../internal/functional-components/form-field/input';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputCheckboxApi } from '../../internal/functional-components/input-checkbox/api';
 import { inputCheckboxPropsConfig } from '../../internal/functional-components/input-checkbox/api';
 import {
@@ -82,6 +82,8 @@ export class KolInputCheckbox
 	@State() public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+
+	protected readonly propsConfig: PropsConfigShape = inputCheckboxPropsConfig;
 
 	public constructor() {
 		super();
@@ -351,8 +353,6 @@ export class KolInputCheckbox
 	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputCheckboxPropsConfig);
-
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
 		this.watchName(this._name);

@@ -8,7 +8,7 @@ import type { CardFCProps } from '../../internal/functional-components/card/comp
 import type { DrawerApi } from '../../internal/functional-components/drawer/api';
 import { drawerPropsConfig } from '../../internal/functional-components/drawer/api';
 import { DrawerFC } from '../../internal/functional-components/drawer/component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
 import type {
@@ -59,6 +59,8 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 
 	/** Resolved once in `componentWillLoad`: the close button's configuration never changes. */
 	private cardCloseButtonProps!: ResolvedButtonProps;
+
+	protected readonly propsConfig: PropsConfigShape = drawerPropsConfig;
 
 	/**
 	 * Defines the visual orientation of the component.
@@ -162,8 +164,6 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(drawerPropsConfig);
-
 		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
 		this.cardCloseTooltipBehavior.componentWillLoad({
 			label: this.cardCloseButtonProps.label,

@@ -119,7 +119,7 @@ export class KolModal extends BaseDialogWebComponent implements DialogProps, Omi
 	}
 
 	public componentWillLoad(): void {
-		this.initDialogRenderProps();
+		this.initCardCloseButton();
 
 		this.watchLabel(this._label);
 		this.watchOn(this._on);

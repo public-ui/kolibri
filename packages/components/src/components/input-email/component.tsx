@@ -40,7 +40,7 @@ import type {
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputEmailApi } from '../../internal/functional-components/input-email/api';
 import { inputEmailPropsConfig } from '../../internal/functional-components/input-email/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
@@ -73,6 +73,8 @@ export class KolInputEmail
 	@State() public infoPopoverOpen = false;
 
 	@State() public inputHasFocus = false;
+
+	protected readonly propsConfig: PropsConfigShape = inputEmailPropsConfig;
 
 	public constructor() {
 		super();
@@ -399,7 +401,6 @@ export class KolInputEmail
 	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputEmailPropsConfig);
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
