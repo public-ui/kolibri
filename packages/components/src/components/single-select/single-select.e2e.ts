@@ -279,6 +279,24 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await getAriaDetailsRefIds(host)).toEqual(['details-2']);
 		});
 
+		test('releases the references when the prop empties', async ({ page }) => {
+			await page.setContent(`
+				<div id="select-details">Choose one of these options carefully</div>
+				<kol-single-select _label="Select option" _aria-details="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+			`);
+			await page.waitForChanges();
+			const host = page.locator(COMPONENT_NAME);
+			expect(await getAriaDetailsRefIds(host)).toEqual(['select-details']);
+
+			await host.evaluate((el: HTMLKolSingleSelectElement) => {
+				el._ariaDetails = '';
+			});
+			await page.waitForChanges();
+
+			expect(await getAriaDetailsRefIds(host)).toBeNull();
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el.shadowRoot?.querySelector('input')?.hasAttribute('aria-details'))).toBe(false);
+		});
+
 		test('handles missing ID gracefully', async ({ page }) => {
 			await page.setContent(`
 				<kol-single-select _label="Select option" _aria-details="non-existent-id" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
@@ -299,6 +317,29 @@ test.describe(COMPONENT_NAME, () => {
 
 			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
 			expect(value).toBe('id1 id2');
+		});
+
+		test('resolves a target that enters the tree after the first render', async ({ page }) => {
+			await page.setContent(
+				`<kol-single-select _label="Select option" _aria-details="late-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`,
+			);
+			await page.waitForChanges();
+			const host = page.locator(COMPONENT_NAME);
+			expect(await getAriaDetailsRefIds(host)).toBeNull();
+
+			await page.locator('body').evaluate((body: HTMLBodyElement) => {
+				const late = document.createElement('div');
+				late.id = 'late-details';
+				late.textContent = 'Late details';
+				body.append(late);
+			});
+			// The references re-resolve on the next render of the field.
+			await host.evaluate((el: HTMLKolSingleSelectElement) => {
+				el._label = 'Select an option';
+			});
+			await page.waitForChanges();
+
+			expect(await getAriaDetailsRefIds(host)).toEqual(['late-details']);
 		});
 	});
 

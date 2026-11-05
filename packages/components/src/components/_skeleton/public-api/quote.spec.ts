@@ -9,7 +9,7 @@ const KOL_QUOTE_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'HrefPropType',
 		required: true,
-		doc: 'Sets the target URI of the link or citation source.',
+		doc: 'Defines the target URI of the link.',
 	},
 	_label: {
 		kind: 'prop',
