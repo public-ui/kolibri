@@ -74,6 +74,27 @@ jobs:
         run: pnpm --filter @public-ui/sample-react^... build
       - name: Visual Tests
         run: pnpm --filter=@public-ui/${{ matrix.package }} test
+      # Develop-side visual review downloads visual-review-* artifacts from this run. The v2 tests
+      # have no visual reporter, so the snapshot run (green above) is reported as an empty
+      # comparison: no routes changed.
+      - name: Write visual review report
+        if: always()
+        env:
+          PACKAGE: ${{ matrix.package }}
+        run: |
+          mkdir -p "visual-review-${PACKAGE}"
+          node -e '
+            const fs = require("node:fs");
+            fs.writeFileSync(`visual-review-${process.env.PACKAGE}/report.json`, JSON.stringify({ schema: 1, mode: "compare", package: process.env.PACKAGE, items: [] }));
+          '
+      - name: Upload visual review report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: visual-review-${{ matrix.package }}
+          path: visual-review-${{ matrix.package }}
+          if-no-files-found: error
+          retention-days: 14
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
