@@ -226,11 +226,16 @@ CI-Ergebnisse (insbesondere CodeQL) nennen, aber das Lesen des Diffs nicht durch
 
 ### 4.4 Code-Kommentare bewerten
 
-Der Grundsatz: **Der Default ist kein Kommentar.** Ein Kommentar trägt nur dann etwas, wenn er eine
-Information liefert, die der Code nicht selbst ausdrückt und die ein Leser braucht, um den Code
-korrekt zu verwenden oder korrekt zu ändern. Alles darüber hinaus ist Kommentarei und gehört aus dem
-PR heraus. Das Erläutern einer komplexen Passage ist legitim — aber nur die eine nicht ableitbare
-Kernaussage, nie die Paraphrase, und nie mehr als unbedingt nötig.
+Der Grundsatz: **Inline-Kommentare sind hilfreich — genau dort, wo eine Passage erklärungsbedürftig
+ist.** Ein Kommentar dient einem Zweck: künftigen Entwicklern und KI schneller zu verstehen, was
+eine Passage tut, wenn der Algorithmus sich nicht leicht selbst erklärt, oder warum eine CSS-Regel
+so aussieht, wenn ihr Hintergrund erst nach dem Nachdenken klar wird. Klar, einfach, prägnant und
+widerspruchsfrei gehört zur Form. Keinen Wert haben Kommentare, die jede Codezeile in einem großen
+Block erklären oder beschreiben, was vorher stand und was geändert wurde — sie wiederholen den
+Code, erzählen eine Geschichte, die nicht relevant ist, und veralten als Erste. Der Maßstab je
+Kommentar: Er liefert die eine Information, die der Code nicht selbst ausdrückt und die der Leser
+braucht, um die Passage korrekt zu verstehen oder zu ändern — nie die Nacherzählung und nie mehr
+als unbedingt nötig.
 
 **Sammeln:** Jeden hinzugefügten oder geänderten Kommentar des Diffs prüfen — JSDoc, Zeilen- und
 Blockkommentare, SCSS, HTML, YAML. Ausgenommen sind generierte Dateien, Snapshots und Vendor-Copies
