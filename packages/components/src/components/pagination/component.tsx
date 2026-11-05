@@ -173,8 +173,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 			siblingCount: this._siblingCount,
 			tooltipAlign: this._tooltipAlign,
 		});
-		// `load` applies an unset label as the fallback, without requiredness: the item applies
-		// without the flag and the watcher does not fire for the initial value.
+		// The item applies without requiredness and the watcher does not fire for the initial value,
+		// so the component applies the label with its own flag.
 		this.item.applyLabel(this._label, this.isRequired('label'));
 	}
 
