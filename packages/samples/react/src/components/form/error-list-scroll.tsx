@@ -7,17 +7,17 @@ import { SampleDescription } from '../SampleDescription';
 
 const ERROR_LIST: ErrorListPropType[] = [
 	{
-		message: 'Error in Input 2 (default scroll behaviour)',
-		selector: '#input2',
+		message: 'Error in Input 4 (smooth scroll behaviour)',
+		selector: '#input4',
+		options: { behavior: 'smooth', block: 'start', afterFocus: () => console.log('after Focus Input 4') },
 	},
 	{
 		message: 'Error in Input 3 (no scrolling, just alert)',
 		selector: () => alert('Error in Input 3'),
 	},
 	{
-		message: 'Error in Input 4 (custom scroll behaviour)',
-		selector: '#input4',
-		options: { behavior: 'instant', block: 'start', afterFocus: () => console.log('after Focus Input 4') },
+		message: 'Error in Input 2 (default scroll behaviour)',
+		selector: '#input2',
 	},
 ];
 
