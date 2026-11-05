@@ -9,6 +9,14 @@ const propsToLabel = (props: Record<string, unknown>) => {
 
 /**
  * Executes snapshot tests for a component with different prop variants.
+ *
+ * Each variant is additionally pinned against the regression of #11449: the props are assigned to
+ * the element right after it was attached and before its first render. The assignment must neither
+ * log a console error nor be lost, which the seeding of the render props from the props config on
+ * first access guarantees. Assigning before appending the element is deliberately not used: as
+ * reported in #11449, that sequence never reaches the pre-load watchers and therefore pins a
+ * weaker window.
+ *
  * @param {string} ComponentName Name of the component to test in kebab-case.
  * @param {Array} components Array of Web Components to render during the test. Typically, the tested component and its WC counterpart.
  * @param propVariants Array of prop variants to test. Each prop variant is an object with the props to pass to the component.
@@ -25,6 +33,27 @@ export const executeSnapshotTests = <Props extends Record<string, unknown>>(Comp
 			await page.waitForChanges();
 
 			expect(page.root).toMatchSnapshot();
+		});
+
+		it.each(testTable)('should keep assigning props %s before the first render silent', async (_, props) => {
+			const page = await newSpecPage({
+				components,
+				html: '<div></div>',
+			});
+			const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+
+			const element = page.doc.createElement(ComponentName);
+			// The assignment happens after attaching and before the first render, mirroring the
+			// sequence of #11449 (`createElement` → `appendChild` → prop assignment).
+			page.body.appendChild(element);
+			Object.assign(element, props);
+			await page.waitForChanges();
+
+			try {
+				expect(errorSpy).not.toHaveBeenCalled();
+			} finally {
+				errorSpy.mockRestore();
+			}
 		});
 	});
 };
