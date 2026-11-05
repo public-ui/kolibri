@@ -54,6 +54,16 @@ directory rebuilds all of them, `pnpm -r build` in the repo root does the same f
 workspace. Neither must run while a watcher is active: the components build starts with
 `pnpm clear` and deletes the output the watcher owns.
 
+## Component tests
+
+`src/test` holds Vitest component tests that operate the real KoliBri components with
+`@testing-library/user-event` in happy-dom. They are the executable examples of
+[How to simulate user input on KoliBri components in Vitest](../../../docs/HOWTO_COMPONENT_TESTS_VITEST.md).
+
+```bash
+pnpm test:unit
+```
+
 ## Injecting a different theme
 
 Set `THEME_MODULE` to the ESM bundle you want to use and optionally `THEME_EXPORT` to the named export that exposes the theme (defaults to `default`). `THEME_CSS` can point to an extra stylesheet (e.g., custom fonts).

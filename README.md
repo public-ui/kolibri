@@ -129,4 +129,5 @@ pnpm audit signatures --package=@public-ui/components@<version>
 - [Contributing](./CONTRIBUTING.md)
 - [Code of Conduct](./CODE_OF_CONDUCT.md)
 - [Known Issues](http://public-ui.github.io/en/docs/known-issues)
+- [Component tests with Vitest](./docs/HOWTO_COMPONENT_TESTS_VITEST.md)
 - [Security](./docs/SECURITY.md)
