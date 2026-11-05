@@ -231,7 +231,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.initLinkRenderProps();
+		this.unsetLinkTabIndex();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);

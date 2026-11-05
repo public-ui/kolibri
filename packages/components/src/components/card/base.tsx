@@ -34,7 +34,8 @@ export abstract class BaseCardWebComponent extends BaseWebComponent<CardApi> {
 
 	// --- Lifecycle ---
 
-	protected initCardRenderProps(): void {
+	/** Resolves the close button's props and hands them to the tooltip behavior. */
+	protected initCardCloseButton(): void {
 		this.closeButtonProps = resolveCardCloseButtonProps(this.host);
 		this.tooltipBehavior.componentWillLoad({
 			label: this.closeButtonProps.label,

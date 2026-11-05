@@ -50,7 +50,8 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 
 	// --- Lifecycle ---
 
-	protected initDialogRenderProps(): void {
+	/** Resolves the card close button's props and hands them to its tooltip behavior. */
+	protected initCardCloseButton(): void {
 		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
 		this.cardCloseTooltipBehavior.componentWillLoad({
 			label: this.cardCloseButtonProps.label,

@@ -114,7 +114,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	/**
 	 * Marks `tabIndex` as unset. Call first in `componentWillLoad`, before the prop watchers run.
 	 */
-	protected initButtonRenderProps(): void {
+	protected unsetButtonTabIndex(): void {
 		// The first render-prop access seeds the store, so this unset runs against seeded defaults.
 		// An unset tabindex must not render as `tabindex="0"` — buttons are natively tabbable and
 		// the attribute would pin them into the document tab order. `applyTabIndex` does the same
