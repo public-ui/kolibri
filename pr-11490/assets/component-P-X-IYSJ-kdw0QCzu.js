@@ -1,0 +1,1 @@
+import{c as e}from"./index-CKurlmT2-CCV_sf-4.js";import{t}from"./component-zg3u9uZ5-Zb3L3I-V.js";var n=({label:n,badgeText:r,id:i,refFloating:a})=>e(`div`,{class:`kol-tooltip__floating`,hidden:!n,ref:a},e(`div`,{class:`kol-tooltip__arrow`}),e(t,{class:`kol-tooltip__content`,badgeText:r,id:i,label:n}));export{n as t};
