@@ -761,7 +761,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 1. **Eliminate the Aspect layer**
    - _Previous architecture_: a separate `BaseAspect` class sat between the WC and the FC (`WC → Aspect → FC`).
-   - _Reason_: the relationship was strictly 1 WC : 1 Aspect, so the Aspect was pure indirection — every watcher and render-prop access was a pass-through. The WC can manage render props directly (`initRenderProps`/`setRenderProp`/`getRenderProp` on `BaseWebComponent`). Removing the layer halves the number of classes per component, removes a constructor/`StateAccess` handoff, and keeps the data flow in one place. Only genuinely composable, cross-component logic survives as a `Behavior`.
+   - _Reason_: the relationship was strictly 1 WC : 1 Aspect, so the Aspect was pure indirection — every watcher and render-prop access was a pass-through. The WC can manage render props directly (the base seeds them from the declared `propsConfig` field on first access; reads and writes go through `getRenderProp`/`setRenderProp` on `BaseWebComponent`). Removing the layer halves the number of classes per component, removes a constructor/`StateAccess` handoff, and keeps the data flow in one place. Only genuinely composable, cross-component logic survives as a `Behavior`.
 2. **Behaviors for genuinely shared logic only**
    - _Alternative_: also extract per-component logic into a dedicated behavior/controller.
    - _Reason_: a Behavior earns its existence only when the same logic is reused across multiple components (e.g. `TooltipBehavior`). Single-use logic stays as private methods on the WC.
