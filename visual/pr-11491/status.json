@@ -1,0 +1,28 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "2 changed – 0 of 2 approved, review pending",
+	"computedAt": "2026-11-05T06:27:07.292Z",
+	"pr": 11491,
+	"head": "0efbc1a1e509795e66f66da4f1367b2ab69a69a1",
+	"digest": "sha256:c7ae14f9e9da19d7eb28a5f1bff437d9a2d0b9dd5e1104e605d1dfb44a63107b",
+	"counts": {
+		"changes": 2,
+		"open": 2,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/scenarios-focus-elements-component-toolbar": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-toolbar": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
