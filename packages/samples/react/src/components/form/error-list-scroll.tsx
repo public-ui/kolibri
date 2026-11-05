@@ -1,52 +1,50 @@
+import type { ErrorListPropType } from '@public-ui/components';
 import { KolButton, KolForm, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
+const ERROR_LIST: ErrorListPropType[] = [
+	{
+		message: 'Error in Input 2 (default scroll behaviour)',
+		selector: '#input2',
+	},
+	{
+		message: 'Error in Input 3 (no scrolling, just alert)',
+		selector: () => alert('Error in Input 3'),
+	},
+	{
+		message: 'Error in Input 4 (custom scroll behaviour)',
+		selector: '#input4',
+		options: { behavior: 'instant', block: 'start', afterFocus: () => console.log('after Focus Input 4') },
+	},
+];
+
 export const FormErrorListScroll: FC = () => {
 	const formRef = useRef<HTMLKolFormElement | null>(null);
-
-	const scrollTo = () => {
-		formRef.current?.focusErrorList();
-	};
+	const [errorList, setErrorList] = useState<ErrorListPropType[]>([]);
 
 	/**
-	 * Simulate the form submission
+	 * In a real application, the error list is derived from the validation of the submitted form
+	 * data. `focusErrorList` applies its focus asynchronously, after the list has been rendered.
 	 */
-	useEffect(() => {
-		formRef.current?.focusErrorList();
-	}, []);
+	const handleSubmit = () => {
+		setErrorList(ERROR_LIST);
+		void formRef.current?.focusErrorList();
+	};
 
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows a form with error messages.</p>
+				<p>
+					This sample shows a form whose error list is populated as the result of a submit. The submit button is placed at a distance from the error list, so
+					the scrolling to the list becomes visible.
+				</p>
 			</SampleDescription>
 
 			<SampleBlock id="error-list">
-				<KolForm
-					className="w-full"
-					ref={formRef}
-					_on={{
-						onSubmit: scrollTo,
-					}}
-					_errorList={[
-						{
-							message: 'Error in Input 2 (default scroll behaviour)',
-							selector: '#input2',
-						},
-						{
-							message: 'Error in Input 3 (no scrolling, just alert)',
-							selector: () => alert('Error in Input 3'),
-						},
-						{
-							message: 'Error in Input 4 (custom scroll behaviour)',
-							selector: '#input4',
-							options: { behavior: 'instant', block: 'start', afterFocus: () => console.log('after Focus Input 4') },
-						},
-					]}
-				>
+				<KolForm className="w-full" ref={formRef} _errorList={errorList} _on={{ onSubmit: handleSubmit }}>
 					<div className="flex flex-col gap-250">
 						<KolInputText id="input1" _label="Input 1" />
 						<KolInputText
