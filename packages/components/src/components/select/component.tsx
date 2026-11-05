@@ -30,7 +30,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SelectApi } from '../../internal/functional-components/select/api';
 import { selectPropsConfig } from '../../internal/functional-components/select/api';
 import { BaseSelectWebComponent } from '../../internal/functional-components/select/base-web-component';
@@ -58,6 +58,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	@State() public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
+
+	protected readonly propsConfig: PropsConfigShape = selectPropsConfig;
 
 	public constructor() {
 		super();
@@ -318,8 +320,6 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(selectPropsConfig);
-
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
 		this.watchName(this._name);

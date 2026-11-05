@@ -1,7 +1,7 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SkeletonApi } from '../../internal/functional-components/skeleton/api';
 import { skeletonPropsConfig } from '../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
@@ -35,6 +35,8 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
 
 	private intervalId?: ReturnType<typeof setTimeout>;
+
+	protected readonly propsConfig: PropsConfigShape = skeletonPropsConfig;
 
 	/**
 	 * Sets the name of the skeleton component.
@@ -78,8 +80,6 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(skeletonPropsConfig);
-
 		nameProp.apply(this._name, (v) => this.setRenderProp('name', v));
 
 		// Emit loaded event every 2 seconds with current count value

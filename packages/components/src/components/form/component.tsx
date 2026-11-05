@@ -7,7 +7,7 @@ import { formPropsConfig } from '../../internal/functional-components/form/api';
 import { FormFC } from '../../internal/functional-components/form/component';
 import type { FormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
 import { createFormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { errorListProp, formCallbacksProp, requiredTextProp } from '../../internal/props';
 import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
@@ -52,6 +52,8 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	private readonly alertHeadingId = createUniqueId('alert-heading');
 
 	private readonly closerAriaDescriptionId = nonce();
+
+	protected readonly propsConfig: PropsConfigShape = formPropsConfig;
 
 	/**
 	 * A list of error objects that each describe an issue encountered in the form.
@@ -99,7 +101,6 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(formPropsConfig);
 		this.watchErrorList(this._errorList);
 		this.watchOn(this._on);
 		this.watchRequiredText(this._requiredText);

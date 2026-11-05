@@ -256,7 +256,7 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	}
 
 	public componentWillLoad(): void {
-		this.initLinkRenderProps();
+		this.unsetLinkTabIndex();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaCurrentValue(this._ariaCurrentValue);

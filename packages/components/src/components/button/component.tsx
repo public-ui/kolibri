@@ -287,7 +287,7 @@ export class KolButton extends BaseButtonWebComponent implements ButtonProps, Bu
 	}
 
 	public componentWillLoad(): void {
-		this.initButtonRenderProps();
+		this.unsetButtonTabIndex();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);

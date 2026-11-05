@@ -123,7 +123,7 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	}
 
 	public componentWillLoad(): void {
-		this.initDialogRenderProps();
+		this.initCardCloseButton();
 
 		this.watchLabel(this._label);
 		this.watchLevel(this._level);

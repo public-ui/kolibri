@@ -11,9 +11,10 @@ import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
+import { resolveFcProps } from '../props-from-config';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
-import type { LinkApi } from './api';
+import { linkPropsConfig, type LinkApi } from './api';
 
 const linkBem = bem.forBlock('kol-link');
 
@@ -56,7 +57,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 		target,
 		variant,
 		expertSlot,
-	} = props;
+	} = resolveFcProps(linkPropsConfig, props);
 
 	const translateOpenLinkInTab = translate('kol-open-link-in-tab');
 

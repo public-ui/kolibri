@@ -5,7 +5,7 @@ description: Migriert eine Legacy-KoliBri-Komponente auf die Skeleton-Blueprint-
 
 # Migrate to Skeleton
 
-Baut eine Legacy-Komponente auf die Skeleton-Blueprint-Architektur um. Zielbild ist das **2-Schichten-Modell**: **WC (Orchestrator) → optionale Behaviors + FC**. Zwischen Custom Element und FC liegt **keine** Controller-/Aspect-Klasse mehr — der WC erbt von `BaseWebComponent<Api>` und hält die Logik inline (`initRenderProps`, `setRenderProp`, `getRenderProp`, `setState`/`getState`). Hat die Legacy-Komponente noch einen Controller oder Aspect, wird dessen Logik in den WC gezogen. Nur echt komponentenübergreifende Logik wird zu einem `Behavior` (erbt von `BaseBehavior`).
+Baut eine Legacy-Komponente auf die Skeleton-Blueprint-Architektur um. Zielbild ist das **2-Schichten-Modell**: **WC (Orchestrator) → optionale Behaviors + FC**. Zwischen Custom Element und FC liegt **keine** Controller-/Aspect-Klasse mehr — der WC erbt von `BaseWebComponent<Api>` und hält die Logik inline (`propsConfig`-Feld, aus dem die Basis die Render-Props beim ersten Zugriff säht, `setRenderProp`, `getRenderProp`, `setState`/`getState`). Hat die Legacy-Komponente noch einen Controller oder Aspect, wird dessen Logik in den WC gezogen. Nur echt komponentenübergreifende Logik wird zu einem `Behavior` (erbt von `BaseBehavior`).
 
 **Argument:** der Komponentenname ohne `kol-`-Präfix, z. B. `card`, `tooltip`, `alert`. Im Folgenden `<komponente>`.
 
@@ -188,7 +188,7 @@ pnpm --filter @public-ui/components build
 
 - [ ] Gap-Analyse erstellt und als Migrationsplan verwendet
 - [ ] API nutzt `PropsConfigShape` + `ApiFromConfig`, nur benötigte Abschnitte deklariert
-- [ ] WC ist Orchestrator: erbt `BaseWebComponent<Api>`, keine Controller-/Aspect-Klasse, `this.initRenderProps(propsConfig)` einmalig in `componentWillLoad()`
+- [ ] WC ist Orchestrator: erbt `BaseWebComponent<Api>`, keine Controller-/Aspect-Klasse, deklariert `propsConfig` als Feld — die Basis säht die Render-Props daraus beim ersten Zugriff
 - [ ] Prop-Triangle für **jeden** `@Prop()` vollständig (Deklaration, `@Watch`, Anwendung beim Laden)
 - [ ] Watcher wenden die Prop-Factory inline an: `xxxProp.apply(value, (v) => this.setRenderProp('xxx', v))`
 - [ ] Behavior (falls vorhanden) erbt `BaseBehavior<Api>`, implementiert `BehaviorInterface<Api>`, wird über `this.stateAccess` oder begründet über `BaseWebComponent.stateLess` komponiert — inkl. `componentDidRender`-Sync und `disconnectedCallback`-Teardown

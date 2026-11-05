@@ -285,7 +285,7 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkP
 	}
 
 	public componentWillLoad(): void {
-		this.initButtonRenderProps();
+		this.unsetButtonTabIndex();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);

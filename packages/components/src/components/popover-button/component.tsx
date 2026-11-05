@@ -269,7 +269,7 @@ export class KolPopoverButton
 	}
 
 	public componentWillLoad(): void {
-		this.initPopoverButtonRenderProps();
+		this.initPopoverToggle();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaDescription(this._ariaDescription);

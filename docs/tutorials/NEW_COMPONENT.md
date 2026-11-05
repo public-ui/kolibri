@@ -121,7 +121,7 @@ Die Web Component ist der **Orchestrator**: Sie erweitert `BaseWebComponent<Api>
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { MyComponentApi } from '../../internal/functional-components/my-component/api';
 import { myComponentPropsConfig } from '../../internal/functional-components/my-component/api';
 import { MyComponentFC } from '../../internal/functional-components/my-component/component';
@@ -132,6 +132,8 @@ import { nameProp } from '../../internal/props';
 	shadow: true,
 })
 export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements WebComponentInterface<MyComponentApi> {
+	protected readonly propsConfig: PropsConfigShape = myComponentPropsConfig;
+
 	@Prop()
 	public _name!: string;
 
@@ -141,7 +143,6 @@ export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements 
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(myComponentPropsConfig);
 		this.watchName(this._name);
 	}
 
@@ -155,7 +156,7 @@ export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements 
 }
 ```
 
-- `componentWillLoad()` ruft zuerst `this.initRenderProps(propsConfig)` auf und wendet danach alle Props an (Prop-Dreieck: Deklaration, `@Watch()`, Init)
+- Die Basis säht die Render-Props aus dem `propsConfig`-Feld beim ersten Zugriff — auch wenn ein `@Watch` durch eine Prop-Zuweisung vor `componentWillLoad()` feuert; `componentWillLoad()` wendet alle Props an (Prop-Dreieck: Deklaration, `@Watch()`, Init)
 - Watcher rufen die Prop-Factory direkt auf: `nameProp.apply(value, (v) => this.setRenderProp('name', v))`
 - `@State`-Felder werden über `this.setState(key, value)` / `this.getState(key)` verwaltet und im `render()` direkt übergeben
 - Immer `shadow: true` und `<Host>` ohne Klassen-Attribut

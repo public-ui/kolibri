@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { QuoteApi } from '../../internal/functional-components/quote/api';
 import { quotePropsConfig } from '../../internal/functional-components/quote/api';
 import { QuoteFC } from '../../internal/functional-components/quote/component';
@@ -19,6 +19,8 @@ import type { HrefPropType, LabelLangSegmentsPropType, QuotePropType } from '../
 	shadow: true,
 })
 export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponentInterface<QuoteApi> {
+	protected readonly propsConfig: PropsConfigShape = quotePropsConfig;
+
 	/**
 	 * Defines the target URI of the link.
 	 */
@@ -64,8 +66,6 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(quotePropsConfig);
-
 		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		quoteProp.apply(this._quote, (v) => this.setRenderProp('quote', v));

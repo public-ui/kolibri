@@ -5,7 +5,8 @@ import { translate } from '../../../i18n';
 import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import type { FunctionalComponentProps } from '../generic-types';
-import type { AvatarApi } from './api';
+import { resolveFcProps } from '../props-from-config';
+import { avatarPropsConfig, type AvatarApi } from './api';
 
 const avatarBem = bem.forBlock('kol-avatar');
 const BEM_CLASS_AVATAR = avatarBem();
@@ -13,7 +14,7 @@ const BEM_CLASS_AVATAR__IMAGE = avatarBem('image');
 const BEM_CLASS_AVATAR__INITIALS = avatarBem('initials');
 
 export const AvatarFC: FC<FunctionalComponentProps<AvatarApi>> = (props) => {
-	const { color, initials, label, src } = props;
+	const { color, initials, label, src } = resolveFcProps(avatarPropsConfig, props);
 
 	return (
 		<div

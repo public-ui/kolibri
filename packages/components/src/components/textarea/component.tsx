@@ -44,7 +44,7 @@ import { BaseFormFieldWebComponent } from '../../internal/functional-components/
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { TextAreaFC, type TextAreaFCProps } from '../../internal/functional-components/form-field/textarea';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TextareaApi } from '../../internal/functional-components/textarea/api';
 import { textareaPropsConfig } from '../../internal/functional-components/textarea/api';
 import {
@@ -107,6 +107,8 @@ export class KolTextarea
 
 	/** Set while the textarea writes its measured rows to `_rows`, so the watcher keeps `minRows`. */
 	private isWritingRows = false;
+
+	protected readonly propsConfig: PropsConfigShape = textareaPropsConfig;
 
 	public constructor() {
 		super();
@@ -439,7 +441,6 @@ export class KolTextarea
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(textareaPropsConfig);
 		this.watchAriaDetails(this._ariaDetails);
 		this._touched = this._touched === true;
 		this.watchName(this._name);

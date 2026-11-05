@@ -5,8 +5,8 @@ dagegen prüfen.
 
 ## 1. Unvollständiges Prop-Triangle
 
-Jeder `@Prop()` braucht Deklaration, `@Watch()` **und** die Anwendung in `componentWillLoad()`
-(nach `initRenderProps`). Fehlt der Watcher, aktualisiert sich die Prop zur Laufzeit nicht; fehlt
+Jeder `@Prop()` braucht Deklaration, `@Watch()` **und** die Anwendung in `componentWillLoad()`.
+Fehlt der Watcher, aktualisiert sich die Prop zur Laufzeit nicht; fehlt
 die Anwendung beim Laden, rendert der erste Durchlauf den Default statt des gesetzten Werts.
 
 ## 2. `class`-Attribut am `<Host>`

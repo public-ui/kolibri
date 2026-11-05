@@ -111,7 +111,7 @@ The blueprint enforces unidirectional data flow. The WC owns the full lifecycle:
 
 The WC **is** the orchestrator. It extends `BaseWebComponent<Api>`, which provides:
 
-- `initRenderProps(config)` — call once in `componentWillLoad` to seed the render-prop store with defaults from the props config.
+- `propsConfig` — the concrete component declares its props config as this field. The base seeds the render-prop store with its defaults on the first access, so even a `@Watch` fired by a prop assignment before `componentWillLoad` finds the defaults (#11449).
 - `setRenderProp(key, value)` / `getRenderProp(key)` — store and read normalized render props.
 - `setRawProp(key, value)` / `getRawProp(key)` — store/read the last raw (unprocessed) `@Prop` value, useful for change detection in watchers.
 - `stateAccess` — a `{ setState, getState }` bundle passed to composed Behaviors.
@@ -134,6 +134,8 @@ When several custom elements are tag variants of **one** FC (`kol-button`, `kol-
 export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
 	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
+	protected readonly propsConfig: PropsConfigShape = linkPropsConfig;
+
 	@Prop() public _href!: string;
 
 	@Watch('_href')
@@ -142,7 +144,6 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(linkPropsConfig);
 		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
 		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
 		// …all other props…
@@ -537,7 +538,7 @@ export type SkeletonApi = ApiFromConfig<
 >;
 ```
 
-`ApiFromConfig` automatically merges the phantom prop types from the config arrays into the `Props.Required` and `Props.Optional` fields. The same config object is passed to `initRenderProps(config)` in the WC, which derives the initial render-prop defaults.
+`ApiFromConfig` automatically merges the phantom prop types from the config arrays into the `Props.Required` and `Props.Optional` fields. The WC declares the same config object as its `propsConfig` field, from which the base derives the initial render-prop defaults.
 
 The contracts between layers are formalized through TypeScript interfaces in [`generic-types.ts`](../../internal/functional-components/generic-types.ts). These generics (`WebComponentInterface`, `BehaviorInterface` and `FunctionalComponentProps`) guarantee that components share a consistent shape for props, callbacks, emitters and refs.
 
@@ -584,7 +585,7 @@ Arrow function properties automatically bind `this` at definition time. **Never*
 
 ### Implementation Flow
 
-1. **Initialisation** – `componentWillLoad` calls `initRenderProps(config)` and applies the current prop snapshot, ensuring render props reflect external values before the first render. Composed Behaviors are initialized here too.
+1. **Initialisation** – the base seeds the render-prop store with the defaults of `propsConfig` on the first access — earliest possible point is a `@Watch` fired by a prop assignment before `componentWillLoad`. `componentWillLoad` applies the current prop snapshot, ensuring render props reflect external values before the first render. Composed Behaviors are initialized here too.
 2. **Prop updates** – `@Watch` handlers receive raw values, normalize/validate them via schema helpers, and store the result with `setRenderProp`.
 3. **Rendering** – the WC reads render props via `getRenderProp` and feeds them into the FC.
 4. **User interaction** – the FC emits DOM events / calls callbacks. The WC wires these back into its own handlers (or Behavior methods) so state transitions remain encapsulated.
@@ -596,7 +597,7 @@ A critical design principle is that **functional components always render using 
 1. **Normalized and validated external props** — incoming props processed through schema helpers
 2. **Internal component state** — derived or computed values managed by the WC via `@State`
 
-This ensures the renderer never works with raw, unvalidated data. Props must always be initialized before being passed to the FC (`initRenderProps` guarantees this).
+This ensures the renderer never works with raw, unvalidated data. Props must always be initialized before being passed to the FC (the seeding from `propsConfig` on the first access guarantees this).
 
 ### Watcher Example
 
@@ -652,12 +653,13 @@ public watchName(value?: string): void {
 
 ### WC Initialization
 
-`componentWillLoad` seeds render props from the config, then applies the current prop values. It also initializes composed Behaviors:
+The WC declares its props config as the `propsConfig` field; the base seeds the render-prop store from it on the first access. `componentWillLoad` applies the current prop values and initializes composed Behaviors:
 
 ```tsx
 // Web Component
+protected readonly propsConfig: PropsConfigShape = skeletonPropsConfig;
+
 public componentWillLoad(): void {
-	this.initRenderProps(skeletonPropsConfig);
 	nameProp.apply(this._name, (v) => this.setRenderProp('name', v));
 	this.tooltipBehavior.componentWillLoad({ label: this.getTooltipLabel(), align: this.getRenderProp('tooltipAlign') });
 }
@@ -755,7 +757,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 1. **Eliminate the Aspect layer**
    - _Previous architecture_: a separate `BaseAspect` class sat between the WC and the FC (`WC → Aspect → FC`).
-   - _Reason_: the relationship was strictly 1 WC : 1 Aspect, so the Aspect was pure indirection — every watcher and render-prop access was a pass-through. The WC can manage render props directly (`initRenderProps`/`setRenderProp`/`getRenderProp` on `BaseWebComponent`). Removing the layer halves the number of classes per component, removes a constructor/`StateAccess` handoff, and keeps the data flow in one place. Only genuinely composable, cross-component logic survives as a `Behavior`.
+   - _Reason_: the relationship was strictly 1 WC : 1 Aspect, so the Aspect was pure indirection — every watcher and render-prop access was a pass-through. The WC can manage render props directly (the base seeds them from the declared `propsConfig` field on first access; reads and writes go through `getRenderProp`/`setRenderProp` on `BaseWebComponent`). Removing the layer halves the number of classes per component, removes a constructor/`StateAccess` handoff, and keeps the data flow in one place. Only genuinely composable, cross-component logic survives as a `Behavior`.
 2. **Behaviors for genuinely shared logic only**
    - _Alternative_: also extract per-component logic into a dedicated behavior/controller.
    - _Reason_: a Behavior earns its existence only when the same logic is reused across multiple components (e.g. `TooltipBehavior`). Single-use logic stays as private methods on the WC.

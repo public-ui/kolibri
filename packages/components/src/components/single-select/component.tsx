@@ -46,7 +46,7 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
 import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
 import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
@@ -107,6 +107,8 @@ export class KolSingleSelect
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
+
+	protected readonly propsConfig: PropsConfigShape = singleSelectPropsConfig;
 
 	public constructor() {
 		super();
@@ -376,8 +378,6 @@ export class KolSingleSelect
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(singleSelectPropsConfig);
-
 		this.optionRefs = [];
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);

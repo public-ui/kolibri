@@ -123,7 +123,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	}
 
 	public componentWillLoad(): void {
-		this.initCardRenderProps();
+		this.initCardCloseButton();
 
 		this.watchHasCloser(this._hasCloser);
 		this.watchHref(this._href);
