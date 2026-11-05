@@ -23,11 +23,6 @@
 			font-weight: 700;
 		}
 
-		/* The class carrier is a wrapper and never receives focus. */
-		&__interactive-element:focus {
-			outline: none;
-		}
-
 		&--primary {
 			--text-background-color: var(--color-primary);
 			--text-border-color: var(--color-primary);
@@ -78,8 +73,10 @@
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
 
-				position: relative;
-				@include focus-outline;
+				.#{$block-classname}__text {
+					@include focus-outline;
+					position: relative; // make sure focus outline is visible and not covered by adjacent element
+				}
 			}
 		}
 
@@ -87,7 +84,10 @@
 			.#{$block-classname}__interactive-element:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
-				outline-color: var(--color-danger);
+
+				.#{$block-classname}__text {
+					outline-color: var(--color-danger);
+				}
 			}
 		}
 
@@ -117,9 +117,20 @@
 			}
 		}
 
+		/*
+		 * The focus ring is drawn on the inner text box instead of the `<button>`: when the user
+		 * overrides the page colors, Firefox repaints native form controls and drops their author
+		 * outlines, while outlines on plain elements survive the override and are repainted in the
+		 * user's colors. The text box is the same size as the interactive element, so the ring does
+		 * not move. Same placement as the link (`__text`) and the inputs (`.kol-input-container`).
+		 */
 		&__interactive-element:focus {
-			@include focus-outline;
-			position: relative; // make sure focus outline is visible and not covered by adjacent element
+			outline: none;
+
+			.#{$block-classname}__text {
+				@include focus-outline;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
+			}
 		}
 
 		&__interactive-element:is(:disabled, [aria-disabled='true']):hover &__text {
