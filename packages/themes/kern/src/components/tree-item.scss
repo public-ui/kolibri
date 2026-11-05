@@ -9,15 +9,13 @@
 
 		--indentation: #{to-rem(16)};
 
-		@include kol-link('kol-tree-item__text', $anchor-scoped: false);
+		@include kol-link('kol-link');
 
 		&__link {
 			background-color: var(--kern-color-layout-background-hued);
 			display: flex;
 			gap: var(--kern-metric-space-small);
 			flex-direction: row;
-
-			@include kol-link('kol-tree-item__toggle-button', $anchor-scoped: false);
 
 			.kol-tree-item__toggle-button {
 				align-items: center;
