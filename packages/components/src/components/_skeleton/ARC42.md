@@ -496,6 +496,39 @@ Three rules separate the layers, so a fachliche validator never has to deal with
 2. **`apply()` intercepts `undefined` and `null` before any fachliche validation**: after the warning when `required` was passed, the built-in default is substituted and handed to the callback. `normalize` and `validate` never see a raw `undefined` from the `apply` path.
 3. **A definition with a default must accept it as a value; a definition without a default has no fallback at all.** `createPropDefinition` takes `undefined` as a deliberate "no default": an unset value then flows through as "not set" — nothing is validated, the validator only ever sees real values (e.g. `isValidLabel` checks length only). A definition that does carry a default has its fallback validated and throws on an invalid one. Either way the fachliche validation of real values stays untouched by the "not set" state. The factory types this guarantee: a definition created with a default exposes a non-optional `getDefaultValue(): TInternal` (`PropDefinitionWithDefault`), so callers read the fallback without assertions.
 
+##### Requiredness semantics per prop: warning with fallback, warning without one, type contract only
+
+The required slot of the props config states that a prop belongs to the working contract of the
+component. What an unset value then does at runtime is a per-prop decision the component makes when
+it applies the value. Three variants exist; the decision and its reason live in the props config
+documentation of the component (`api.tsx`) and in the apply wiring of its web component, this
+section pins the variants themselves:
+
+1. **Warning with a working fallback.** The unset value warns and a substitute keeps the component
+   fully working — the pattern behind the pagination's `_label`, whose `kol-pagination` translation
+   keeps naming the navigation landmark.
+2. **Warning without a rescuing fallback.** The unset value warns and the neutral default keeps the
+   store honest, but it does not restore the function. The pagination's `_max` is the pattern:
+   without the number of entries nothing paginates, and no sensible substitute exists — 0 stays the
+   honest empty state (no pages, the visible range reads "0 - 0"). The required labels of the
+   landmark components (icon, avatar, toolbar, nav, breadcrumb, tabs, skip-nav, tree, version,
+   click-button, popover-button) follow the same variant with "not set" as their neutral value: the
+   warning fires and the landmark stays unnamed until a label arrives.
+3. **Type contract only.** The slot carries the TypeScript contract, and an unset value is a
+   legitimate, silently supplied state that needs no warning — the requiredness warning is
+   deliberately absent. The pagination's `_page` starts on the first page (the clamping promotes the
+   unset value and reports it as `changepage`), and its `_on` degrades to the DOM events (`click`,
+   `changepage`, `changepagesize`), which keep firing; an empty callbacks object is type-valid and
+   behaves identically to an unset one, so a warning could not tell the two apart.
+
+A component threads requiredness through a single apply point: an item's `load` takes the
+requiredness per key (`load(input, required)` with `required.max` for the pagination), and the
+watchers of the web component pass `isRequired(key)` on later applies. Appliers outside a component
+config — a composed item like the one of `kol-table-stateful`, behaviors, `resolve-props` — apply
+without requiredness: an unset value there is a legitimate "not set", and the composer supplies the
+values it needs itself (the stateful table derives the number of entries from its data and names the
+pagination itself).
+
 #### `DependentPropDefinition<TInternal, TDeps>`
 
 Some props require context from other props to normalize or validate correctly. `createDependentPropDefinition` extends the pattern with a `TDeps` parameter passed through to both `normalize` and `validate`. Its `apply` method takes the deps object as a third argument:
