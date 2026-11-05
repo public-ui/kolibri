@@ -473,7 +473,12 @@ Punkt. Leere Abschnitte weglassen; die Nummerierung läuft durch.
 Sache), ebenso die Einleitungssätze der Abschnitte. Keine zwei pr-audit-Kommentare klingen gleich;
 das Muster unten ist eine Variante, kein Stempel.
 
-**Wortwahl:** Funktionierendes heißt „passt", nicht „sitzt".
+**Ich-Form:** Der Kommentar spricht in der ersten Person des Reviewers: „beim Nachstellen ist mir
+aufgefallen“, „mir ist beim Durchgehen eine Stelle aufgefallen“. Keine unbestimmte, handlungslose
+Form („beim Nachstellen ist aufgefallen“, „es wurde festgestellt“, „es fällt auf“): Die Ich-Form
+zeigt, dass ein Mensch den Code gelesen hat und für den Befund einsteht.
+
+**Wortwahl:** Funktionierendes heißt „passt“, nicht „sitzt“.
 
 **Prägnanz:** Jeder Punkt ist ein eigener kurzer Absatz in derselben Ordnung: Befund, warum er
 zählt, konkrete Bitte. Was richtig ist, als richtig benennen — angemahnt wird nur der fehlende Teil;
