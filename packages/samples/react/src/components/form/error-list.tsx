@@ -6,22 +6,23 @@ import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 /**
- * The error entries demonstrate the three selector variants: a CSS selector with smooth scrolling
- * to the last input, a callback without scrolling, and a CSS selector with default scrolling.
+ * The error entries stay in the order of the form inputs and demonstrate the three selector
+ * variants: a CSS selector with default scrolling on the first invalid input, a callback without
+ * scrolling, and a CSS selector with smooth scrolling to the last input.
  */
 const ERROR_LIST: ErrorListPropType[] = [
 	{
-		message: 'Error in Input 4 (smooth scroll behaviour)',
-		selector: '#input4',
-		options: { behavior: 'smooth', block: 'start', afterFocus: () => console.log('after Focus Input 4') },
+		message: 'Error in Input 2 (default scroll behaviour)',
+		selector: '#input2',
 	},
 	{
 		message: 'Error in Input 3 (no scrolling, just alert)',
 		selector: () => alert('Error in Input 3'),
 	},
 	{
-		message: 'Error in Input 2 (default scroll behaviour)',
-		selector: '#input2',
+		message: 'Error in Input 4 (smooth scroll behaviour)',
+		selector: '#input4',
+		options: { behavior: 'smooth', block: 'start', afterFocus: () => console.log('after Focus Input 4') },
 	},
 ];
 
@@ -42,8 +43,9 @@ export const FormErrorList: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This sample shows a form whose error list is populated as the result of a submit. The error entries demonstrate the different selector variants: a CSS
-					selector with smooth scrolling to the last input, a callback without scrolling, and a CSS selector with default scrolling.
+					This sample shows a form whose error list is populated as the result of a submit. The error entries stay in the order of the form inputs and
+					demonstrate the different selector variants: a CSS selector with default scrolling on the first invalid input, a callback without scrolling, and a CSS
+					selector with smooth scrolling to the last input.
 				</p>
 			</SampleDescription>
 
