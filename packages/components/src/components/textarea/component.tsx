@@ -137,6 +137,8 @@ export class KolTextarea
 
 	/**
 	 * References an external element by ID that provides accessible details for this textarea.
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -270,7 +272,7 @@ export class KolTextarea
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 

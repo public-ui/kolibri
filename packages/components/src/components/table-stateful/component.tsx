@@ -19,8 +19,10 @@ import {
 	selectDisplayedData,
 	sortRows,
 } from '../../internal/functional-components/table-stateful/model';
+import type { TablePagination } from '../../internal/props';
 import {
 	allowMultiSortProp,
+	isTablePaginationShown,
 	paginationPositionProp,
 	tableDataFootProp,
 	tableDataProp,
@@ -28,8 +30,6 @@ import {
 	tableStatefulCallbacksProp,
 	tableStatefulHeadersProp,
 } from '../../internal/props';
-import type { TablePagination } from '../../internal/props/table-pagination';
-import { isTablePaginationShown } from '../../internal/props/table-pagination';
 import type {
 	AllowMultiSortPropType,
 	ChangeHeaderCellsEventPayload,

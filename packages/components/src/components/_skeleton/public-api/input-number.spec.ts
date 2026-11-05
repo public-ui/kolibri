@@ -36,7 +36,7 @@ const KOL_INPUT_NUMBER_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'AriaDetailsPropType',
 		required: false,
-		doc: 'References an external element by ID that provides accessible details for this input. Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary. Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox). Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).',
+		doc: 'References an external element by ID that provides accessible details for this input. Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.',
 	},
 	_autoComplete: {
 		kind: 'prop',
@@ -119,7 +119,7 @@ const KOL_INPUT_NUMBER_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'InputTypeOnDefault',
 		required: false,
-		doc: 'Gibt die EventCallback-Funktionen für das Input-Event an.',
+		doc: 'Defines the callback functions for input events.',
 	},
 	_placeholder: {
 		kind: 'prop',

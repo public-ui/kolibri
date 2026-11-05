@@ -129,7 +129,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	}
 
 	/**
-	 * Sets the target URI of the link or citation source.
+	 * Defines the target URI of the link.
 	 */
 	@Prop() public _href!: HrefPropType;
 

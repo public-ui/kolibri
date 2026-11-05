@@ -30,7 +30,7 @@ const KOL_SELECT_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'AriaDetailsPropType',
 		required: false,
-		doc: 'References an external element by ID that provides accessible details for this select.',
+		doc: 'References an external element by ID that provides accessible details for this select. Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.',
 	},
 	_disabled: {
 		kind: 'prop',
@@ -101,7 +101,7 @@ const KOL_SELECT_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'InputTypeOnDefault',
 		required: false,
-		doc: 'Gibt die EventCallback-Funktionen für das Input-Event an.',
+		doc: 'Defines the callback functions for input events.',
 	},
 	_options: {
 		kind: 'prop',
