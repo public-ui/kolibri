@@ -27,12 +27,6 @@ import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 
 /**
- * The card is never a link, so its `_on` callbacks — which describe that link — have no target
- * here and its anchor ref is never called.
- */
-const NOOP = (): void => {};
-
-/**
  * @slot - The Content of drawer.
  */
 @Component({
@@ -302,19 +296,13 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		return {
 			ariaDescriptionId: this.getState('ariaDescriptionId'),
 			closeButtonProps: this.cardCloseButtonProps,
-			handleBlur: NOOP,
 			handleClose: this.handleCardClose,
-			handleFocus: NOOP,
 			hasCloser: this.getRenderProp('hasCloser'),
 			headingId: this.getState('headingId'),
-			href: '',
 			label: this.getRenderProp('label'),
 			level: this.getRenderProp('level'),
-			on: {},
 			refCloseButton: this.cardCloseButtonRef,
-			refCta: NOOP,
 			refTooltip: this.cardCloseTooltipBehavior.setTooltipElementRef,
-			target: '',
 		};
 	}
 

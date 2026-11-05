@@ -20,12 +20,6 @@ import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 
 /**
- * The card variant renders no link, so its anchor never exists: the card's own `_on` callbacks
- * describe that anchor, and its ref is never called.
- */
-const NOOP = (): void => {};
-
-/**
  * Orchestrator shared by `kol-dialog` and the deprecated `kol-modal`. Both render the same
  * `DialogFC`; the concrete element only declares the Stencil members and delegates from its
  * watchers, methods and lifecycle hooks.
@@ -175,19 +169,13 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 		return {
 			ariaDescriptionId: this.getState('ariaDescriptionId'),
 			closeButtonProps: this.cardCloseButtonProps,
-			handleBlur: NOOP,
 			handleClose: this.handleCardClose,
-			handleFocus: NOOP,
 			hasCloser: true,
 			headingId: this.getState('headingId'),
-			href: '',
 			label: this.getRenderProp('label'),
 			level: this.getRenderProp('level'),
-			on: {},
 			refCloseButton: this.cardCloseButtonRef,
-			refCta: NOOP,
 			refTooltip: this.cardCloseTooltipBehavior.setTooltipElementRef,
-			target: '',
 		};
 	}
 
