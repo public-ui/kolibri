@@ -1,0 +1,1 @@
+import{tt as e}from"./index-CKurlmT2-Cpr21BS1.js";import{_ as t,s as n}from"./props-from-config-Ci0dILpz-Dk1XOKyY.js";function r(r){return n(`links`,[],e=>t(e),e=>e.every(e=>typeof e==`object`&&!!e&&(typeof e._href==`string`||typeof e._label==`string`)),{hints:(t,n)=>e(r,n.length)})}export{r as t};
