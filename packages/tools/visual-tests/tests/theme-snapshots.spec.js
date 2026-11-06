@@ -83,30 +83,8 @@ async function readBlockIds(page, selector) {
 	return page.$$eval(selector, (elements) => elements.map((element) => element.getAttribute('data-visual-block')));
 }
 
-/**
- * Aligns a block's top edge with the pixel grid so the full-page capture can cut the block out of
- * the page raster at whole pixel rows: the content above a block (headings, descriptions) has
- * font-metric heights with fractional pixels, and a fractional block offset would smear every edge
- * in the cropped screenshot. A negative margin cancels the fractional part of the block's page
- * offset; the layout shifts by less than one pixel. The page offset is measured – not the viewport
- * offset: scrolling the block into view uses fractional scroll positions, so the viewport can sit
- * on the pixel grid while the page grid is not zero. The margin is re-measured for every block,
- * also after the narrow viewport change.
- */
-async function snapBlockToPixelGrid(block) {
-	await block.evaluate((element) => {
-		const { top } = element.getBoundingClientRect();
-		const pageTop = top + window.scrollY;
-		const frac = pageTop - Math.floor(pageTop);
-		if (frac > 0) {
-			const marginTop = parseFloat(getComputedStyle(element).marginTop) || 0;
-			element.style.marginTop = `${marginTop - frac}px`;
-		}
-	});
-}
-
 /** Captures one element screenshot per block id and fails on blocks that stay invisible or zero-sized. */
-async function captureBlocks(page, route, blockIds, snapshotName, suffix, options, snapToPixelGrid) {
+async function captureBlocks(page, route, blockIds, snapshotName, suffix, options) {
 	for (const blockId of blockIds) {
 		const block = page.locator(`[data-visual-block="${blockId}"]`);
 		try {
@@ -119,20 +97,7 @@ async function captureBlocks(page, route, blockIds, snapshotName, suffix, option
 				`Route "${route}": data-visual-block "${blockId}" is not visible or has zero size${suffix ? ` at ${NARROW_VIEWPORT.width}px viewport width` : ''}`,
 			);
 		}
-		if (snapToPixelGrid) {
-			await snapBlockToPixelGrid(block);
-			/* Blocks taller than the viewport leave the single-viewport capture path in Firefox: the
-			   scroll-and-capture fallback rasterizes viewport-sized chunks whose seams smear 1px edges.
-			   A full-page screenshot rasterizes the whole page grid in one pass, and the integer block
-			   rectangle cuts the block out of it untouched. */
-			const clip = await block.evaluate((element) => {
-				const { x, y, width, height } = element.getBoundingClientRect();
-				return { x: x + window.scrollX, y: y + window.scrollY, width, height };
-			});
-			await captureSnapshot(page, `${snapshotName}--${blockId}${suffix}.png`, { ...options, fullPage: true, clip });
-		} else {
-			await captureSnapshot(block, `${snapshotName}--${blockId}${suffix}.png`, options);
-		}
+		await captureSnapshot(block, `${snapshotName}--${blockId}${suffix}.png`, options);
 	}
 }
 
@@ -205,14 +170,13 @@ ROUTES.forEach((options, route) => {
 			seenBlockIds.add(blockId);
 		}
 
-		const snapToPixelGrid = options?.snapshot?.pixelGridSnap === true;
-		await captureBlocks(page, route, blockIds, snapshotName, '', ELEMENT_SNAPSHOT_OPTIONS, snapToPixelGrid);
+		await captureBlocks(page, route, blockIds, snapshotName, '', ELEMENT_SNAPSHOT_OPTIONS);
 
 		// Reflow pass – runs last because it changes the viewport for the rest of the test.
 		const narrowBlockIds = await readBlockIds(page, NARROW_SELECTOR);
 		if (narrowBlockIds.length > 0) {
 			await page.setViewportSize(NARROW_VIEWPORT);
-			await captureBlocks(page, route, narrowBlockIds, snapshotName, `-${NARROW_VIEWPORT.width}`, ELEMENT_SNAPSHOT_OPTIONS, snapToPixelGrid);
+			await captureBlocks(page, route, narrowBlockIds, snapshotName, `-${NARROW_VIEWPORT.width}`, ELEMENT_SNAPSHOT_OPTIONS);
 		}
 	});
 });

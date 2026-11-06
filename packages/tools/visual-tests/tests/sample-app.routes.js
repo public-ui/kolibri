@@ -19,10 +19,6 @@ export const ROUTES = new Map();
  *     of one element screenshot per `data-visual-block` container. Required for routes without blocks:
  *     overlays that extend beyond any block (dialog, drawer, toast, open popover), focus-dependent
  *     content (skip-nav) and deliberate composition tests (scenarios/*, form/basic).
- *   - pixelGridSnap: boolean (Default: false) – capture this route's blocks on the page raster: each
- *     block rectangle is cut out of one full-page screenshot instead of capturing the element itself.
- *     Blocks taller than the viewport leave the single-viewport capture path in Firefox, and its
- *     scroll-and-capture fallback smears 1px edges into neighboring rows (form error list box).
  *   - viewportSize:
  *     - width (Default: 800)
  *     - height (Default: 400)
@@ -117,12 +113,13 @@ ROUTES.set('form/basic', {
 		},
 	},
 });
+/* The viewport is taller than the block with the rendered error list: Firefox captures blocks taller
+   than the viewport by scrolling and stitching, which smears the 1px edges of the error list box. */
 ROUTES.set('form/error-list?submitted=true', {
 	snapshot: {
-		pixelGridSnap: true,
 		viewportSize: {
 			width: 500,
-			height: 600,
+			height: 800,
 		},
 	},
 });
