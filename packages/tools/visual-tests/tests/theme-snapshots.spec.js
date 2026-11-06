@@ -95,15 +95,21 @@ async function readBlockIds(page, selector) {
  * the narrow viewport change.
  */
 async function snapBlockToPixelGrid(block) {
-	await block.evaluate((element) => {
+	const debug = await block.evaluate((element) => {
 		const { top } = element.getBoundingClientRect();
 		const pageTop = top + window.scrollY;
 		const frac = pageTop - Math.floor(pageTop);
+		let adjusted = null;
 		if (frac > 0) {
 			const marginTop = parseFloat(getComputedStyle(element).marginTop) || 0;
-			element.style.marginTop = `${marginTop - frac}px`;
+			adjusted = marginTop - frac;
+			element.style.marginTop = `${adjusted}px`;
 		}
+		return { top, scrollY: window.scrollY, pageTop, frac, adjusted };
 	});
+	console.log(
+		`[snap-debug] viewportTop=${debug.top.toFixed(3)} scrollY=${debug.scrollY.toFixed(3)} pageTop=${debug.pageTop.toFixed(3)} frac=${debug.frac.toFixed(3)} adjusted=${debug.adjusted ?? '-'}`,
+	);
 }
 
 /** Captures one element screenshot per block id and fails on blocks that stay invisible or zero-sized. */
