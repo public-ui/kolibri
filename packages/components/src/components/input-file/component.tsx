@@ -318,9 +318,8 @@ export class KolInputFile
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<FileList | null | undefined> {
-		return this.ctaRef.el?.files;
+	public getValue(): Promise<FileList | null | undefined> {
+		return Promise.resolve(this.ctaRef.el?.files);
 	}
 
 	/**
@@ -328,23 +327,26 @@ export class KolInputFile
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Resets the component's value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async reset() {
+	public reset(): Promise<void> {
 		this.formAssociation.setFormAssociatedValue('');
 		this.filename = this.translateFilenameText;
 		this.hasFileSelected = false;
@@ -352,6 +354,7 @@ export class KolInputFile
 		if (this.ctaRef.el) {
 			this.ctaRef.el.value = '';
 		}
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

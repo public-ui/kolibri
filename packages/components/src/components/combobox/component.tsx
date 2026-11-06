@@ -351,9 +351,8 @@ export class KolCombobox
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string> {
-		return this.getRenderProp('value');
+	public getValue(): Promise<string> {
+		return Promise.resolve(this.getRenderProp('value'));
 	}
 
 	/**
@@ -361,16 +360,20 @@ export class KolCombobox
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		// Without `_value` the field starts with the empty string; `undefined` and `null` keep the value.
@@ -753,7 +756,6 @@ export class KolCombobox
 										},
 										{
 											class: BEM_CLASS_COMBOBOX__DELETE,
-											'data-testid': 'combobox-delete',
 											hidden: isDisabled,
 											onBlur: this.stopClearButtonFocusEvent,
 											onFocus: this.stopClearButtonFocusEvent,

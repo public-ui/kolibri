@@ -170,16 +170,20 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Triggers a click on the currently selected tab.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));

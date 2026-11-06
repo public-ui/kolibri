@@ -349,19 +349,18 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	 * Returns the selected rows.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getSelection(): Promise<KoliBriTableDataType[] | null> {
-		return this.getSelectedData((this.getRenderProp('selection') || undefined)?.selectedKeys || []);
+	public getSelection(): Promise<KoliBriTableDataType[] | null> {
+		return Promise.resolve(this.getSelectedData((this.getRenderProp('selection') || undefined)?.selectedKeys || []));
 	}
 
 	/**
 	 * Resets the sort state to the default values defined in the `_headers` prop.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async resetSort(): Promise<void> {
+	public resetSort(): Promise<void> {
 		this.initializeSort(this.headers);
 		this.updateSortedData();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
@@ -543,6 +542,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	public render(): JSX.Element {
 		return (
+			// The host keeps the class `kol-table-stateful`, which consumers of the element can select —
+			// documented exception to the no-Host-class convention, same as kol-select.
 			<Host class="kol-table-stateful">
 				{this.renderPagination('top')}
 				{this.renderTableStatelessFC()}
