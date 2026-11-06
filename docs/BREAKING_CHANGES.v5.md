@@ -186,3 +186,21 @@ import type { KoliBriTableHeaders } from '@public-ui/components';
 
 const headers: KoliBriTableHeaders = { horizontal: [[{ key: 'name', label: 'Name' }]] };
 ```
+
+## Removal of the deprecated `_headerCells` property of `kol-table-stateless`
+
+The `_headerCells` property (attribute `_header-cells`) of `kol-table-stateless` is **removed**. Use
+`_headers`, which takes the same value. The `@public-ui/kolibri-cli` migration tool renames remaining
+usages when it migrates a v4 project (`npx @public-ui/kolibri-cli migrate src`).
+
+**Before (v4):**
+
+```tsx
+<KolTableStateless _label="Orders" _headerCells={headers} _data={data} />
+```
+
+**After (v5):**
+
+```tsx
+<KolTableStateless _label="Orders" _headers={headers} _data={data} />
+```

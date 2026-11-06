@@ -353,20 +353,3 @@ test.describe('kol-table-stateless', () => {
 		});
 	});
 });
-
-test.describe('kol-table-stateless with deprecated _header-cells prop', () => {
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(`<kol-table-stateless
-					_label="Table Stateless"
-					_header-cells='${JSON.stringify(HEADERS)}'
-					_data='${JSON.stringify(DATA)}'
-				/>`);
-		await page.waitForChanges();
-	});
-
-	test('still renders headers and data via the deprecated _header-cells attribute', async ({ page }) => {
-		const kolTableStateless = page.locator('kol-table-stateless');
-		await expect(kolTableStateless.getByRole('button', { name: 'ID' })).toBeVisible();
-		await expect(kolTableStateless.getByText(DATA[0].id)).toBeVisible();
-	});
-});
