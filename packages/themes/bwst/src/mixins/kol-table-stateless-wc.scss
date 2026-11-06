@@ -92,7 +92,7 @@
 
 				font-weight: bold;
 
-				.kol-button__interactive-element:focus {
+				.kol-button__interactive-element:focus .kol-button__text {
 					outline-color: var(--color-mute-variant);
 				}
 				.kol-button__text {
