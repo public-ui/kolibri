@@ -42,7 +42,7 @@ import { InputContainerFC } from '../../internal/functional-components/form-fiel
 import type { NumberValueType } from '../../internal/functional-components/form-field/number-value';
 import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { InputNumberApi } from '../../internal/functional-components/input-number/api';
 import { inputNumberPropsConfig } from '../../internal/functional-components/input-number/api';
@@ -109,6 +109,8 @@ export class KolInputNumber
 	 * render (#11053).
 	 */
 	private hasValue = false;
+
+	protected readonly propsConfig: PropsConfigShape = inputNumberPropsConfig;
 
 	public constructor() {
 		super();
@@ -404,9 +406,8 @@ export class KolInputNumber
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<number | NumberString | null> {
-		return this.remapValue(this.getRenderProp('value'));
+	public getValue(): Promise<number | NumberString | null> {
+		return Promise.resolve(this.remapValue(this.getRenderProp('value')));
 	}
 
 	/**
@@ -414,19 +415,22 @@ export class KolInputNumber
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputNumberPropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 
@@ -543,7 +547,6 @@ export class KolInputNumber
 				aria-hidden="true"
 				tabIndex={-1}
 				class={`${STEP_BUTTON_CLASS} ${STEP_BUTTON_CLASS}-${direction} kol-input-container__smart-button`}
-				data-testid={`kol-input-number-step-${direction}`}
 				onClick={direction === 'up' ? this.handleStepUp : this.handleStepDown}
 				disabled={this._disabled || this._readOnly}
 			>

@@ -9,7 +9,8 @@ import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
 import type { FunctionalComponentProps } from '../generic-types';
-import type { PaginationApi } from './api';
+import { resolveFcProps } from '../props-from-config';
+import { paginationPropsConfig, type PaginationApi } from './api';
 import { getPageCount, getPageItems, getVisibleRange } from './model';
 import type { PageSizeSelectInput } from './page-size-select';
 
@@ -42,22 +43,23 @@ export type PaginationFCProps = FunctionalComponentProps<PaginationApi> & {
 };
 
 /** The content of the pagination: the visible range, the navigation and the page size select. */
-export const PaginationContentFC: FC<PaginationFCProps> = ({
-	boundaryCount,
-	customClass,
-	getButtonFcProps,
-	handlePageClick,
-	hasButtons,
-	label,
-	max,
-	navigationCallbacks,
-	page,
-	pageSize,
-	pageSizeOptions,
-	renderPageSizeSelect,
-	siblingCount,
-	tooltipAlign,
-}) => {
+export const PaginationContentFC: FC<PaginationFCProps> = (props) => {
+	const {
+		boundaryCount,
+		customClass,
+		getButtonFcProps,
+		handlePageClick,
+		hasButtons,
+		label,
+		max,
+		navigationCallbacks,
+		page,
+		pageSize,
+		pageSizeOptions,
+		renderPageSizeSelect,
+		siblingCount,
+		tooltipAlign,
+	} = resolveFcProps(paginationPropsConfig, props);
 	const count = getPageCount(max, pageSize);
 	const { start, end } = getVisibleRange(page, pageSize, max);
 	const navigationButton = (position: NavigationPosition, icons: Record<string, string>, buttonLabel: string, disabled: boolean) => (

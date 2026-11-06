@@ -30,7 +30,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SelectApi } from '../../internal/functional-components/select/api';
 import { selectPropsConfig } from '../../internal/functional-components/select/api';
 import { BaseSelectWebComponent } from '../../internal/functional-components/select/base-web-component';
@@ -58,6 +58,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	@State() public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
+
+	protected readonly propsConfig: PropsConfigShape = selectPropsConfig;
 
 	public constructor() {
 		super();
@@ -302,9 +304,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 * Returns the selected values.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
-		return this.getModelValue();
+	public getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
+		return Promise.resolve(this.getModelValue());
 	}
 
 	/**
@@ -312,13 +313,13 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(selectPropsConfig);
-
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
 		this.watchName(this._name);

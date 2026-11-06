@@ -70,7 +70,7 @@
 		"cross-env": "10.1.0",
 		"eslint": "9.39.5",
 		"nodemon": "3.1.14",
-		"npm-run-all2": "9.0.3",
+		"npm-run-all2": "9.0.4",
 		"postcss": "8.5.31",
 		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",

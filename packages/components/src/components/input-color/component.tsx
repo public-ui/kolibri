@@ -36,7 +36,7 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputColorApi } from '../../internal/functional-components/input-color/api';
 import { inputColorPropsConfig } from '../../internal/functional-components/input-color/api';
 import {
@@ -78,6 +78,8 @@ export class KolInputColor
 	@State() public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+
+	protected readonly propsConfig: PropsConfigShape = inputColorPropsConfig;
 
 	public constructor() {
 		super();
@@ -309,9 +311,8 @@ export class KolInputColor
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.ctaRef.el?.value;
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
 	}
 
 	/**
@@ -319,19 +320,22 @@ export class KolInputColor
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputColorPropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 

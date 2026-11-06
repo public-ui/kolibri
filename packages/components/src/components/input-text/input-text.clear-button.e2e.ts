@@ -13,26 +13,26 @@ type TestWindow = Window & {
 test.describe('kol-input-text clear button', () => {
 	test('should render clear button when type is search and input has value', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search" _value="test"></kol-input-text>');
-		const clearButton = page.getByTestId('kol-input-text-clear-button');
+		const clearButton = page.locator('.kol-input-text__clear-button button');
 		await expect(clearButton).toBeVisible();
 	});
 
 	test('should not render clear button when type is not search', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Text" _type="text" _value="test"></kol-input-text>');
-		const clearButton = page.getByTestId('kol-input-text-clear-button');
+		const clearButton = page.locator('.kol-input-text__clear-button button');
 		await expect(clearButton).not.toBeVisible();
 	});
 
 	test('should not render clear button when input is empty', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search"></kol-input-text>');
-		const clearButton = page.getByTestId('kol-input-text-clear-button');
+		const clearButton = page.locator('.kol-input-text__clear-button button');
 		await expect(clearButton).not.toBeVisible();
 	});
 
 	test('should clear input value when clear button is clicked', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search" _value="test"></kol-input-text>');
 		const input = page.locator('kol-input-text input');
-		const clearButton = page.getByTestId('kol-input-text-clear-button');
+		const clearButton = page.locator('.kol-input-text__clear-button button');
 
 		await expect(input).toHaveValue('test');
 		await clearButton.click();
@@ -43,7 +43,7 @@ test.describe('kol-input-text clear button', () => {
 	test('should show clear button while typing and hide it when field is emptied', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search"></kol-input-text>');
 		const input = page.locator('kol-input-text input');
-		const clearButton = page.getByTestId('kol-input-text-clear-button');
+		const clearButton = page.locator('.kol-input-text__clear-button button');
 
 		await expect(clearButton).not.toBeVisible();
 
@@ -56,19 +56,19 @@ test.describe('kol-input-text clear button', () => {
 
 	test('should not render clear button when disabled', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search" _disabled _value="test"></kol-input-text>');
-		const clearButton = page.getByTestId('kol-input-text-clear-button');
+		const clearButton = page.locator('.kol-input-text__clear-button button');
 		await expect(clearButton).not.toBeVisible();
 	});
 
 	test('should not render clear button when read only', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search" _read-only _value="test"></kol-input-text>');
-		const clearButton = page.getByTestId('kol-input-text-clear-button');
+		const clearButton = page.locator('.kol-input-text__clear-button button');
 		await expect(clearButton).not.toBeVisible();
 	});
 
 	test('should have correct accessible name', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search" _value="test"></kol-input-text>');
-		const clearButton = page.getByTestId('kol-input-text-clear-button').locator('button');
+		const clearButton = page.locator('.kol-input-text__clear-button button');
 		await expect(clearButton).toHaveAccessibleName('Suche löschen');
 	});
 
@@ -78,7 +78,7 @@ test.describe('kol-input-text clear button', () => {
 		test('should fire input and change events and call the callbacks when clear button is clicked', async ({ page }) => {
 			await page.setContent(SEARCH_WITH_VALUE);
 			const component = page.locator('kol-input-text');
-			const clearButton = page.getByTestId('kol-input-text-clear-button');
+			const clearButton = page.locator('.kol-input-text__clear-button button');
 
 			await component.evaluate((element: HTMLKolInputTextElement) => {
 				const testWindow = window as TestWindow;
@@ -115,7 +115,7 @@ test.describe('kol-input-text clear button', () => {
 		test('should fire input and change exactly once when clear button is clicked', async ({ page }) => {
 			await page.setContent(SEARCH_WITH_VALUE);
 			const component = page.locator('kol-input-text');
-			const clearButton = page.getByTestId('kol-input-text-clear-button');
+			const clearButton = page.locator('.kol-input-text__clear-button button');
 
 			await component.evaluate((element: HTMLKolInputTextElement) => {
 				const recordedEvents: RecordedEvent[] = [];
@@ -140,7 +140,7 @@ test.describe('kol-input-text clear button', () => {
 		test('should report the cleared value via getValue()', async ({ page }) => {
 			await page.setContent(SEARCH_WITH_VALUE);
 			const component = page.locator('kol-input-text');
-			const clearButton = page.getByTestId('kol-input-text-clear-button');
+			const clearButton = page.locator('.kol-input-text__clear-button button');
 
 			await clearButton.click();
 			await page.waitForChanges();
@@ -152,7 +152,7 @@ test.describe('kol-input-text clear button', () => {
 			await page.setContent('<kol-input-text _label="Search" _type="search" _name="query"></kol-input-text>');
 			const component = page.locator('kol-input-text');
 			const input = page.locator('kol-input-text input');
-			const clearButton = page.getByTestId('kol-input-text-clear-button');
+			const clearButton = page.locator('.kol-input-text__clear-button button');
 
 			await component.evaluate((element: HTMLKolInputTextElement) => {
 				const recordedEvents: RecordedEvent[] = [];
@@ -181,7 +181,7 @@ test.describe('kol-input-text clear button', () => {
 		test('should keep focus on the input after clearing', async ({ page }) => {
 			await page.setContent(SEARCH_WITH_VALUE);
 			const component = page.locator('kol-input-text');
-			const clearButton = page.getByTestId('kol-input-text-clear-button');
+			const clearButton = page.locator('.kol-input-text__clear-button button');
 
 			await clearButton.click();
 			await page.waitForChanges();

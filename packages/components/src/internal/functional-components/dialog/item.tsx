@@ -62,12 +62,6 @@ export type DialogItem = {
 };
 
 /**
- * The card variant renders no link, so its anchor never exists: the card's own `_on` callbacks
- * describe that anchor, and its ref is never called.
- */
-const NOOP = (): void => {};
-
-/**
  * @param getFlagHost - Element the theme-scoped `buttonVariantDefault` feature flag of the card's
  * close button is resolved against.
  * @param requestRender - Renders the embedding component again, after the dialog switched between
@@ -181,19 +175,13 @@ export const createDialogItem = (
 						? {
 								ariaDescriptionId,
 								closeButtonProps: cardCloseButtonProps,
-								handleBlur: NOOP,
 								handleClose: handleCardClose,
-								handleFocus: NOOP,
 								hasCloser: true,
 								headingId,
-								href: '',
 								label,
 								level,
-								on: {},
 								refCloseButton: cardCloseButtonRef,
-								refCta: NOOP,
 								refTooltip: cardCloseTooltipBehavior.setTooltipElementRef,
-								target: '',
 							}
 						: undefined,
 			};
