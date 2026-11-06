@@ -1,18 +1,18 @@
 {
 	"schema": 1,
 	"pr": 11510,
-	"head": "171c50eb635f30639aa30479bd4dfb438a871b5f",
+	"head": "1cdc8ddf726fee4a722854a48f9e7d1cef44ea31",
 	"repository": "public-ui/kolibri",
-	"runId": 42142388173,
-	"generatedAt": "2026-11-06T01:33:42.201Z",
+	"runId": 42204352922,
+	"generatedAt": "2026-11-06T11:52:19.339Z",
 	"digest": "sha256:254047940662ea1db04be19961979b109a04553ebb35aaa12c7ca23a226a0a71",
 	"baseline": {
-		"sha": "01c767755f79026b118e10edae09224f2bbc5274",
+		"sha": "27079e4869e9f0065be68e5cb156e745804aa9c9",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
 		"fallback": "ancestor",
-		"distance": 2,
+		"distance": 1,
 		"imageMismatch": false,
 		"consistent": true
 	},
@@ -30,15 +30,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "01c767755f79026b118e10edae09224f2bbc5274",
+					"sha": "27079e4869e9f0065be68e5cb156e745804aa9c9",
 					"ref": "release/4",
-					"runId": 42012313362,
+					"runId": 42185553457,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T10:44:45.032Z",
+					"createdAt": "2026-11-06T08:17:00.373Z",
 					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
 					"fallback": "ancestor",
-					"distance": 2,
+					"distance": 1,
 					"imageMismatch": false
 				}
 			},
@@ -2713,15 +2713,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "01c767755f79026b118e10edae09224f2bbc5274",
+					"sha": "27079e4869e9f0065be68e5cb156e745804aa9c9",
 					"ref": "release/4",
-					"runId": 42012313362,
+					"runId": 42185553457,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T10:45:58.133Z",
+					"createdAt": "2026-11-06T08:14:47.499Z",
 					"digest": "sha256:77f82a73964db40f494290baeb942deb95ec408bdbe07886dc7e0668e2580dc4",
 					"fallback": "ancestor",
-					"distance": 2,
+					"distance": 1,
 					"imageMismatch": false
 				}
 			},
@@ -5396,15 +5396,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "01c767755f79026b118e10edae09224f2bbc5274",
+					"sha": "27079e4869e9f0065be68e5cb156e745804aa9c9",
 					"ref": "release/4",
-					"runId": 42012313362,
+					"runId": 42185553457,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T10:44:45.032Z",
+					"createdAt": "2026-11-06T08:17:00.373Z",
 					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
 					"fallback": "ancestor",
-					"distance": 2,
+					"distance": 1,
 					"imageMismatch": false
 				}
 			},
@@ -8079,15 +8079,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "01c767755f79026b118e10edae09224f2bbc5274",
+					"sha": "27079e4869e9f0065be68e5cb156e745804aa9c9",
 					"ref": "release/4",
-					"runId": 42012313362,
+					"runId": 42185553457,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T10:44:04.903Z",
+					"createdAt": "2026-11-06T08:15:58.988Z",
 					"digest": "sha256:df8761c47caa10be35fa1948f10fa7229fb8230744f580a6020b4ee63afd5b7b",
 					"fallback": "ancestor",
-					"distance": 2,
+					"distance": 1,
 					"imageMismatch": false
 				}
 			},
@@ -10762,15 +10762,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "01c767755f79026b118e10edae09224f2bbc5274",
+					"sha": "27079e4869e9f0065be68e5cb156e745804aa9c9",
 					"ref": "release/4",
-					"runId": 42012313362,
+					"runId": 42185553457,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T10:43:57.472Z",
+					"createdAt": "2026-11-06T08:16:34.999Z",
 					"digest": "sha256:58d72b90c03267d00163efa32bccc9149364b9b64d5fa73497762fb98fb4fa9c",
 					"fallback": "ancestor",
-					"distance": 2,
+					"distance": 1,
 					"imageMismatch": false
 				}
 			},
@@ -13445,15 +13445,15 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "01c767755f79026b118e10edae09224f2bbc5274",
+					"sha": "27079e4869e9f0065be68e5cb156e745804aa9c9",
 					"ref": "release/4",
-					"runId": 42012313362,
+					"runId": 42185553457,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T10:44:21.036Z",
+					"createdAt": "2026-11-06T08:14:35.855Z",
 					"digest": "sha256:f5953d6598f804452acc46fa5233abc1485ae61d269923acbc5a4f17ce31b1ed",
 					"fallback": "ancestor",
-					"distance": 2,
+					"distance": 1,
 					"imageMismatch": false
 				}
 			},
@@ -16134,15 +16134,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "01c767755f79026b118e10edae09224f2bbc5274",
+					"sha": "27079e4869e9f0065be68e5cb156e745804aa9c9",
 					"ref": "release/4",
-					"runId": 42012313362,
+					"runId": 42185553457,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T10:45:04.015Z",
+					"createdAt": "2026-11-06T08:14:43.123Z",
 					"digest": "sha256:2a8ed01f1ccd4b547795406e0d9f04ab27a3614ab70df75ec403b6e682c6b376",
 					"fallback": "ancestor",
-					"distance": 2,
+					"distance": 1,
 					"imageMismatch": false
 				}
 			},
