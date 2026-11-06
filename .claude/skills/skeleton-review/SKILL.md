@@ -154,6 +154,32 @@ Pro Befund:
 
 Nur Befunde mit Beleg melden. Was unsicher ist, unter „Offene Fragen“ führen statt als Befund.
 
+### Begründung je Befund-Cluster
+
+Befunde, die auf dieselbe Regel und dieselbe Ursache zurückgehen, bilden einen Cluster (z. B. „R4:
+Wurzel per `bem.forBlock`“ oder „Flaches DOM: Wrapper um eine eingebettete FC“). Damit die Maintainer
+beurteilen können, ob ein Befund echten Nutzen bringt oder nur zwischen zwei Regelauslegungen hin und
+her optimiert, erläutert der Plan **jeden Cluster an genau einem nachvollziehbaren Beispiel** aus dem
+geprüften Code:
+
+1. **Ist:** ein kurzer Code- oder DOM-Ausschnitt mit Datei:Zeile, so wie er heute im Repo steht.
+2. **Warum ein Befund:** die verletzte Regel mit Fundstelle und die konkrete Auswirkung. Die Auswirkung
+   benennt, wen es trifft, also Nutzende (Bug, Barriere), Theme-Autoren (Selektoren, Spezifität) oder nur
+   die Code-Konsistenz (Typsicherheit, Einheitlichkeit). Trifft es nur die Konsistenz, das so schreiben.
+3. **Soll:** derselbe Ausschnitt korrigiert, als Code oder DOM, mit den alten und neuen BEM-Klassen,
+   wenn sich Klassen ändern.
+4. **Bewertung:** ob die Korrektur das gerenderte DOM ändert (Theming-Bruch) oder nicht (reiner
+   Refactor), und eine Empfehlung: umsetzen, bündeln oder zurückstellen.
+
+Vor dem Anlegen des Issues jeden Cluster auf Widersprüche prüfen und gefundene Widersprüche unter
+„Offene Fragen“ führen statt als Befund:
+
+- gegen bestehende Entscheidungen: Migrationspläne unter `docs/`, ADRs, geschlossene Issues und
+  gemergte PRs, die genau diese Struktur bewusst festgelegt haben (z. B. „DOM und BEM bleiben“);
+- zwischen den Regeln dieses Skills: Ein Soll-Zustand, den eine Regel verlangt, darf nicht zugleich
+  von einer anderen Regel als Befund gewertet werden, etwa wenn das Entfernen eines Wrappers (Flaches
+  DOM) die Wurzel einer eingebetteten FC zur Wurzel der Komponente macht und dadurch R3 verletzt.
+
 ## 6. Issue anlegen und ausgeben
 
 - Titel: `Skeleton-Review: <ordnername>`
@@ -170,6 +196,15 @@ Nur Befunde mit Beleg melden. Was unsicher ist, unter „Offene Fragen“ führe
 | #   | Schweregrad | Befund | Beleg | Vorschlag | Aufwand | Bezug |
 | --- | ----------- | ------ | ----- | --------- | ------- | ----- |
 | 1   | …           | …      | …     | …         | …       | …     |
+
+## Begründung je Cluster
+
+### <Cluster, z. B. „R4: Wurzel per bem.forBlock“> (Befunde #…)
+
+- **Ist** (`<datei>:<zeile>`): <Ausschnitt>
+- **Warum ein Befund:** <Regel mit Fundstelle; wen es trifft und wie>
+- **Soll:** <korrigierter Ausschnitt; alte → neue BEM-Klassen>
+- **Bewertung:** <DOM ändert sich ja/nein; umsetzen / bündeln / zurückstellen>
 
 ## Querschnitt
 
