@@ -30,7 +30,13 @@
 				@include link-carrier;
 
 				&:focus {
-					@include link-focus;
+					// Firefox repaints native links under user color overrides and drops author outlines, so the ring lives on the plain text box.
+					outline: none;
+
+					.#{$block-classname}__text {
+						@include link-focus;
+						position: relative; // make sure focus outline is visible and not covered by adjacent element
+					}
 				}
 			}
 		} @else {
@@ -40,7 +46,13 @@
 			   wrapper that never receives focus, so the focus ring has to be scoped to the inner
 			   element to keep parity with the pre-migration component DOM. */
 			&__interactive-element:focus {
-				@include link-focus;
+				// Firefox repaints native links under user color overrides and drops author outlines, so the ring lives on the plain text box.
+				outline: none;
+
+				.#{$block-classname}__text {
+					@include link-focus;
+					position: relative; // make sure focus outline is visible and not covered by adjacent element
+				}
 			}
 		}
 	}

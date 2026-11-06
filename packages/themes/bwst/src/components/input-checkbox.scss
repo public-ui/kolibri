@@ -92,6 +92,11 @@
 	}
 
 	.kol-checkbox--variant-switch {
+		&:focus-within {
+			@include switch-outline;
+			border-radius: 1.25em;
+		}
+
 		.kol-icon {
 			left: to-rem(2);
 			width: 1.25em;
@@ -111,8 +116,8 @@
 			border-width: 0;
 
 			&:focus {
-				@include switch-outline;
-				border-radius: 1.25em;
+				// Firefox repaints native form controls under user color overrides and drops author outlines, so the ring lives on the plain label that wraps the switch track.
+				outline: none;
 			}
 
 			&:before {
