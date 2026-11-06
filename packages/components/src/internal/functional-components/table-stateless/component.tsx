@@ -10,7 +10,6 @@ import type {
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
-	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableRender,
 	StateColumnHeaderCell,
 	StateColumnPropType,
@@ -33,11 +32,11 @@ import type { FixedSide, PrimaryHeaders, SelectionModel, TableDataCell, TableDat
 import {
 	createDataField,
 	createSelectionModel,
-	getColumnHeaderForType,
 	getFixedOffsets,
 	getFixedSide,
 	getNumberOfCols,
 	getOffsetString,
+	getPrimaryHeaderCell,
 	getPrimaryHeaders,
 	getSelectableRows,
 	getSelectAllSelection,
@@ -398,7 +397,7 @@ const renderStateItems = (stateColumn: StateColumnHeaderCell, rowData: KoliBriTa
  * custom `render` function fills it after rendering.
  */
 const renderTableCell = (context: RenderContext, cell: TableDataCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element => {
-	if ((cell as KoliBriTableHeaderCell).visible === false) {
+	if (cell.visible === false) {
 		return '';
 	}
 
@@ -408,14 +407,15 @@ const renderTableCell = (context: RenderContext, cell: TableDataCell, rowIndex: 
 		key = dataKey ? `${dataKey}-${context.primaryHeaders.horizontal ? colIndex : rowIndex}` : key;
 	}
 
-	if ((cell as KoliBriTableHeaderCellWithLogic).headerCell) {
+	if (cell.headerCell) {
 		return renderHeadingCell(context, cell, rowIndex, colIndex, isVertical);
 	}
 
 	const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === context.translateNoEntries;
-	const actionColumn = getColumnHeaderForType(context.headers, context.primaryHeaders, colIndex, 'action') as ActionColumnHeaderCell | undefined;
+	const columnHeader = getPrimaryHeaderCell(context.headers, context.primaryHeaders, colIndex);
+	const actionColumn = columnHeader?.type === 'action' ? columnHeader : undefined;
 	const isActionColumn = Boolean(actionColumn && cell.data);
-	const stateColumn = getColumnHeaderForType(context.headers, context.primaryHeaders, colIndex, 'state') as StateColumnHeaderCell | undefined;
+	const stateColumn = columnHeader?.type === 'state' ? columnHeader : undefined;
 	const isStateColumn = Boolean(stateColumn && cell.data);
 	const fixed = getFixedSideOf(context, colIndex);
 	const { left, right } = getOffsets(context, fixed, cell.colIndex);
