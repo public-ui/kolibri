@@ -1,76 +1,92 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "7 added, 7 removed – 0 of 14 approved, review pending",
-	"computedAt": "2026-11-06T15:32:12.096Z",
+	"state": "success",
+	"description": "14 visual changes approved by deleonio",
+	"computedAt": "2026-11-06T17:43:27.292Z",
 	"pr": 11494,
 	"head": "8d2ec394dcf60f8d606106789907f3217023c920",
 	"digest": "sha256:52b677e93233a4d2f37c3d3a8d422b98dcbf56947507e47e7dc9e7ceaf3e2c59",
 	"counts": {
 		"changes": 14,
-		"open": 14,
-		"approved": 0,
+		"open": 0,
+		"approved": 14,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"deleonio"
+	],
 	"items": {
 		"test-tag-name-transformer/form-error-list--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/form-error-list-submitted-true--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/form-error-list--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/form-error-list-submitted-true--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/form-error-list--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/form-error-list-submitted-true--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/form-error-list--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/form-error-list-submitted-true--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/form-error-list--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/form-error-list-submitted-true--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-kern/form-error-list--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-kern/form-error-list-submitted-true--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/form-error-list--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/form-error-list-submitted-true--error-list": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
