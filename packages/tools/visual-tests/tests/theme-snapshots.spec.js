@@ -84,15 +84,14 @@ async function readBlockIds(page, selector) {
 }
 
 /**
- * Aligns a block's top edge with the pixel grid: the content above a block (headings, descriptions)
- * has font-metric heights with fractional pixels, and the resulting paint phase decides whether
- * Chromium pixel-snaps inner box edges to whole pixel rows. At an unlucky phase a 1px border is
- * overpainted by a neighboring background and vanishes from the snapshot (form error list box).
- * A negative margin cancels the fractional part of the block's page offset; the layout shifts by
- * less than one pixel. The page offset is measured – not the viewport offset: scrolling the block
- * into view uses fractional scroll positions, so the viewport can sit on the pixel grid while the
- * paint phase of the page grid is not zero. The margin is re-measured for every block, also after
- * the narrow viewport change.
+ * Aligns a block's top edge with the pixel grid so the full-page capture can cut the block out of
+ * the page raster at whole pixel rows: the content above a block (headings, descriptions) has
+ * font-metric heights with fractional pixels, and a fractional block offset would smear every edge
+ * in the cropped screenshot. A negative margin cancels the fractional part of the block's page
+ * offset; the layout shifts by less than one pixel. The page offset is measured – not the viewport
+ * offset: scrolling the block into view uses fractional scroll positions, so the viewport can sit
+ * on the pixel grid while the page grid is not zero. The margin is re-measured for every block,
+ * also after the narrow viewport change.
  */
 async function snapBlockToPixelGrid(block) {
 	const debug = await block.evaluate((element) => {
@@ -151,8 +150,18 @@ async function captureBlocks(page, route, blockIds, snapshotName, suffix, option
 		}
 		if (snapToPixelGrid) {
 			await snapBlockToPixelGrid(block);
+			/* Blocks taller than the viewport leave the single-viewport capture path in Firefox: the
+			   scroll-and-capture fallback rasterizes viewport-sized chunks whose seams smear 1px edges.
+			   A full-page screenshot rasterizes the whole page grid in one pass, and the integer block
+			   rectangle cuts the block out of it untouched. */
+			const clip = await block.evaluate((element) => {
+				const { x, y, width, height } = element.getBoundingClientRect();
+				return { x: x + window.scrollX, y: y + window.scrollY, width, height };
+			});
+			await captureSnapshot(page, `${snapshotName}--${blockId}${suffix}.png`, { ...options, fullPage: true, clip });
+		} else {
+			await captureSnapshot(block, `${snapshotName}--${blockId}${suffix}.png`, options);
 		}
-		await captureSnapshot(block, `${snapshotName}--${blockId}${suffix}.png`, options);
 	}
 }
 
