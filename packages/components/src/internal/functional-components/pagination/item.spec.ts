@@ -44,21 +44,6 @@ afterAll(() => {
 });
 
 describe('createPaginationItem', () => {
-	it('names the landmark with the translation when the label is unset, with and without requiredness', () => {
-		const { item } = setup();
-		item.applyLabel(undefined);
-		expect(item.getFcProps().label).toBe('kol-pagination');
-
-		item.applyLabel(undefined, true);
-		expect(item.getFcProps().label).toBe('kol-pagination');
-
-		item.applyLabel('Custom label', true);
-		expect(item.getFcProps().label).toBe('Custom label');
-
-		item.applyLabel(undefined, true);
-		expect(item.getFcProps().label).toBe('kol-pagination');
-	});
-
 	it('reports a page beyond the last page twice on load, because the page is applied again last', async () => {
 		const { item, on, reported } = setup();
 		item.load({ max: 10, on, page: 20 });
@@ -173,6 +158,34 @@ describe('createPaginationItem', () => {
 			item.load({ max: 10, on: {}, page: 1 });
 			item.applyMax(undefined, true);
 			expect(item.getFcProps().max).toBe(0);
+		});
+
+		it('keeps an unset _label warning-free without requiredness, like a composed item, and names the landmark with the translation', () => {
+			const { item } = setup();
+			item.load({ on: {}, page: 1 });
+			expect(item.getFcProps().label).toBe('kol-pagination');
+			expect(warnings()).toEqual([]);
+		});
+
+		it('warns about an unset _label when load marks it required and keeps the landmark named with the translation', () => {
+			const { item } = setup();
+			item.load({ on: {}, page: 1 }, { label: true });
+			expect(item.getFcProps().label).toBe('kol-pagination');
+			expect(warnings()).toEqual([expect.stringContaining(`The required property '_label' did not receive a value.`)]);
+		});
+
+		it('applies a set _label without a warning, also when load marks it required', () => {
+			const { item } = setup();
+			item.load({ label: 'Entries', on: {}, page: 1 }, { label: true });
+			expect(item.getFcProps().label).toBe('Entries');
+			expect(warnings()).toEqual([]);
+		});
+
+		it('returns to the translation when the watcher applies an unset _label with requiredness', () => {
+			const { item } = setup();
+			item.load({ label: 'Entries', on: {}, page: 1 });
+			item.applyLabel(undefined, true);
+			expect(item.getFcProps().label).toBe('kol-pagination');
 		});
 
 		it('starts an unset _page on the first page and reports it, as a type contract without a warning', async () => {

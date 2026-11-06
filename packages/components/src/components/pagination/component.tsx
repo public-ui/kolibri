@@ -168,6 +168,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 				boundaryCount: this._boundaryCount,
 				customClass: this._customClass,
 				hasButtons: this._hasButtons,
+				label: this._label,
 				max: this._max,
 				on: this._on,
 				page: this._page,
@@ -176,13 +177,10 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 				siblingCount: this._siblingCount,
 				tooltipAlign: this._tooltipAlign,
 			},
-			// Of the required slot `_max` and `_label` warn about an unset value; `_page` and `_on` are
+			// Of the required slot `_label` and `_max` warn about an unset value; `_page` and `_on` are
 			// a type contract (see ARC42, "Requiredness semantics per prop").
-			{ max: this.isRequired('max') },
+			{ label: this.isRequired('label'), max: this.isRequired('max') },
 		);
-		// The item applies without requiredness and the watcher does not fire for the initial value,
-		// so the component applies the label with its own flag.
-		this.item.applyLabel(this._label, this.isRequired('label'));
 	}
 
 	public componentDidRender(): void {

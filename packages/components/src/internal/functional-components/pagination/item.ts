@@ -82,8 +82,8 @@ export type PaginationItem = {
 	/** An object sets single buttons and keeps the others. */
 	applyHasButtons: (value?: boolean | Stringified<PaginationHasButton>) => void;
 	/**
-	 * Applies `_label`. The web component passes the requiredness of an unset value; applies from
-	 * `update` stay without it and keep the current label.
+	 * Applies `_label`, substituting the `kol-pagination` translation when it is unset. The web
+	 * component passes the requiredness of an unset value; applies from `update` stay without it.
 	 */
 	applyLabel: (value?: LabelPropType, required?: boolean) => void;
 	/**
@@ -297,7 +297,7 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 			item.applyBoundaryCount(input.boundaryCount);
 			item.applyCustomClass(input.customClass);
 			item.applyHasButtons(input.hasButtons);
-			applyLabel(input.label, true);
+			applyLabel(input.label, true, required?.label);
 			item.applyOn(input.on);
 			item.applyPage(input.page);
 			item.applyPageSize(input.pageSize);
