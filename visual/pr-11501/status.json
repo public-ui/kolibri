@@ -1,27 +1,33 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "10 visual changes approved by deleonio",
-	"computedAt": "2026-11-06T00:44:01.896Z",
+	"state": "failure",
+	"description": "1 of 10 visual changes rejected",
+	"computedAt": "2026-11-06T11:03:45.066Z",
 	"pr": 11501,
 	"head": "09a070817adb4c83fab777d43fd706024e15c5e3",
 	"digest": "sha256:ad6cbe7d40b4e346971f6cd4348a1d976b96c059c0bcb62d6a0a2226b3c365c8",
 	"counts": {
 		"changes": 10,
 		"open": 0,
-		"approved": 10,
-		"rejected": 0,
+		"approved": 9,
+		"rejected": 1,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [
-		"deleonio"
+		"deleonio",
+		"laske185"
 	],
 	"items": {
 		"theme-bwst/scenarios-focus-elements-component-toolbar": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "rejected",
+			"notes": [
+				{
+					"by": "laske185",
+					"text": "Zwischen den Buttons sollen die Ecken eckig bleiben."
+				}
+			],
+			"by": "laske185"
 		},
 		"theme-ecl/dialog-basic-show-dialog-true": {
 			"state": "approved",
@@ -30,8 +36,13 @@
 		},
 		"theme-ecl/drawer-basic-align-left-closer-true": {
 			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"notes": [
+				{
+					"by": "laske185",
+					"text": "Die Ecken werden jetzt rund. Vorher waren sie immer eckig. Das sehe ich aber als Fix, da die Buttons runde Ecken haben."
+				}
+			],
+			"by": "laske185"
 		},
 		"theme-ecl/modal-basic-show-dialog-true": {
 			"state": "approved",
