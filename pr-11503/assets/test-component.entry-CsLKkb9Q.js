@@ -1,0 +1,1 @@
+import{l as e}from"./index-CKurlmT2-Czo7F_hQ.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
