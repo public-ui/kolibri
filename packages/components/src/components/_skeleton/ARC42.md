@@ -511,8 +511,8 @@ section pins the variants themselves:
    store honest, but it does not restore the function. The pagination's `_max` is the pattern:
    without the number of entries nothing paginates, and no sensible substitute exists — 0 stays the
    honest empty state (no pages, the visible range reads "0 - 0"). The required labels of the
-   landmark components (icon, avatar, toolbar, nav, breadcrumb, tabs, skip-nav, tree, version,
-   click-button, popover-button) follow the same variant with "not set" as their neutral value: the
+   landmark components (avatar, breadcrumb, click-button, icon, nav, popover-button, skip-nav, tabs,
+   toolbar, tree, version) follow the same variant with "not set" as their neutral value: the
    warning fires and the landmark stays unnamed until a label arrives.
 3. **Type contract only.** The slot carries the TypeScript contract, and an unset value is a
    legitimate, silently supplied state that needs no warning — the requiredness warning is
