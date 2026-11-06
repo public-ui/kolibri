@@ -57,6 +57,7 @@ export const TableStatelessAsync: FC = () => {
 					}}
 				/>
 				<KolPagination
+					_label="Pagination for the demonstration table"
 					_max={200}
 					_page={1}
 					_siblingCount={0}
