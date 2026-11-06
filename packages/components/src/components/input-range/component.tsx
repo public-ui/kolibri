@@ -347,11 +347,11 @@ export class KolInputRange
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<number | NumberString | undefined> {
+	public getValue(): Promise<number | NumberString | undefined> {
 		if (this.ctaRef.el !== undefined) {
-			return this.readValue(this.ctaRef.el.value);
+			return Promise.resolve(this.readValue(this.ctaRef.el.value));
 		}
+		return Promise.resolve(undefined);
 	}
 
 	/**
@@ -359,16 +359,20 @@ export class KolInputRange
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		// The bounds start at the defaults of `_min` and `_max`, so an ignored invalid value keeps them (#11077).

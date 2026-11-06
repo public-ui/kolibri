@@ -24,10 +24,10 @@ exports[`kol-input-text should render with _label="Label" _name="field" _hasCoun
         </div>
       </div>
       <div class="kol-form-field__counter">
-        <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
+        <span aria-hidden="true" class="kol-form-field__counter">
           kol-character-limit-remaining
         </span>
-        <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="input-text-counter-nonce">
+        <span aria-live="polite" class="visually-hidden" id="input-text-counter-nonce">
           kol-character-limit-remaining
         </span>
       </div>
@@ -60,10 +60,10 @@ exports[`kol-input-text should render with _label="Label" _name="field" _hasCoun
         </div>
       </div>
       <div class="kol-form-field__counter">
-        <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
+        <span aria-hidden="true" class="kol-form-field__counter">
           kol-character-counter-current-of-max
         </span>
-        <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="input-text-counter-nonce">
+        <span aria-live="polite" class="visually-hidden" id="input-text-counter-nonce">
           kol-character-counter-current-of-max-aria
         </span>
       </div>
@@ -96,10 +96,10 @@ exports[`kol-input-text should render with _label="Label" _name="field" _hasCoun
         </div>
       </div>
       <div class="kol-form-field__counter">
-        <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
+        <span aria-hidden="true" class="kol-form-field__counter">
           kol-character-counter-current
         </span>
-        <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="input-text-counter-nonce">
+        <span aria-live="polite" class="visually-hidden" id="input-text-counter-nonce">
           kol-character-counter-current
         </span>
       </div>
@@ -844,7 +844,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _type="s
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" type="search" value="Value">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button kol-input-text__clear-button" data-testid="kol-input-text-clear-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button kol-input-text__clear-button">
               <button aria-label="kol-clear-search" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
@@ -900,7 +900,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _type="s
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" type="search">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button kol-input-text__clear-button kol-input-text__clear-button--hidden" data-testid="kol-input-text-clear-button">
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button kol-input-text__clear-button kol-input-text__clear-button--hidden">
               <button aria-label="kol-clear-search" class="kol-button__interactive-element" disabled="" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
