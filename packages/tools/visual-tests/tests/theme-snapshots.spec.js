@@ -88,13 +88,17 @@ async function readBlockIds(page, selector) {
  * has font-metric heights with fractional pixels, and the resulting paint phase decides whether
  * Chromium pixel-snaps inner box edges to whole pixel rows. At an unlucky phase a 1px border is
  * overpainted by a neighboring background and vanishes from the snapshot (form error list box).
- * A negative margin cancels the fractional part of the viewport offset; the layout shifts by less
- * than one pixel and is re-measured for every block, also after the narrow viewport change.
+ * A negative margin cancels the fractional part of the block's page offset; the layout shifts by
+ * less than one pixel. The page offset is measured – not the viewport offset: scrolling the block
+ * into view uses fractional scroll positions, so the viewport can sit on the pixel grid while the
+ * paint phase of the page grid is not zero. The margin is re-measured for every block, also after
+ * the narrow viewport change.
  */
 async function snapBlockToPixelGrid(block) {
 	await block.evaluate((element) => {
 		const { top } = element.getBoundingClientRect();
-		const frac = top - Math.floor(top);
+		const pageTop = top + window.scrollY;
+		const frac = pageTop - Math.floor(pageTop);
 		if (frac > 0) {
 			const marginTop = parseFloat(getComputedStyle(element).marginTop) || 0;
 			element.style.marginTop = `${marginTop - frac}px`;
