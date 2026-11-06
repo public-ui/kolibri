@@ -1,60 +1,72 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "10 changed – 0 of 10 approved, review pending",
-	"computedAt": "2026-11-06T00:02:50.800Z",
+	"state": "success",
+	"description": "10 visual changes approved by deleonio",
+	"computedAt": "2026-11-06T00:33:16.905Z",
 	"pr": 11501,
 	"head": "09a070817adb4c83fab777d43fd706024e15c5e3",
 	"digest": "sha256:ad6cbe7d40b4e346971f6cd4348a1d976b96c059c0bcb62d6a0a2226b3c365c8",
 	"counts": {
 		"changes": 10,
-		"open": 10,
-		"approved": 0,
+		"open": 0,
+		"approved": 10,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"deleonio"
+	],
 	"items": {
 		"theme-bwst/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/drawer-basic-align-left-closer-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/modal-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/popover-button-basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-linkButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-popoverButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-splitButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
