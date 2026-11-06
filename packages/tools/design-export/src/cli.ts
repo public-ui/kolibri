@@ -69,7 +69,10 @@ export async function run(options: CliOptions = {}): Promise<void> {
 		console.log(`${Object.values(svgs).flat().length} SVG-Exporte erzeugt.`);
 	}
 
-	const states = Object.fromEntries(scenarios.map((scenario) => [scenario.tag, scenario.states]));
+	const states: Record<string, string[]> = {};
+	for (const scenario of scenarios) {
+		states[scenario.tag] = [...new Set([...(states[scenario.tag] ?? []), ...scenario.states])];
+	}
 	const ir = buildIr({
 		componentsVersion: await readPackageVersion(componentsRoot),
 		themeVersion: await readPackageVersion(themeRoot),

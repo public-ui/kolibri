@@ -50,6 +50,18 @@ export function domToSvg(hostSelector: string): string {
 	}
 
 	function serializeElement(element: Element, depth: number): void {
+		// Eingebettete Vektorgrafiken (z. B. der Fortschrittsbalken) werden als
+		// eigenes SVG übernommen statt rekonstruiert: an der Layoutposition verschoben,
+		// mit dem Ebenennamen der BEM-Klasse der Hülle.
+		if (element.tagName.toLowerCase() === 'svg') {
+			const rect = element.getBoundingClientRect();
+			if (rect.width > 0 || rect.height > 0) {
+				svgParts.push(
+					`\n${'  '.repeat(depth + 1)}<g id="${layerName(element.parentElement ?? element)}" data-name="${layerName(element.parentElement ?? element)}" transform="translate(${(rect.x - hostRect.x).toFixed(1)},${(rect.y - hostRect.y).toFixed(1)})">${element.innerHTML}</g>`,
+				);
+			}
+			return;
+		}
 		const style = getComputedStyle(element);
 		if (style.visibility === 'hidden' || style.display === 'none') {
 			return;

@@ -57,15 +57,25 @@
 				for (const frame of document.querySelectorAll('.frame')) {
 					const host = document.createElement(scenario.tag);
 					for (const [name, value] of Object.entries(scenario.props ?? {})) {
-						host[name] = value;
+						// Callbacks lassen sich nicht serialisieren; der Marker wird zur No-op-Funktion.
+						host[name] = value === '@function' ? () => undefined : value;
 					}
 					if (scenario.content !== undefined) {
 						host.textContent = scenario.content;
+					}
+					if (scenario.html !== undefined) {
+						host.innerHTML = scenario.html;
 					}
 					host.dataset.scenario = scenario.id;
 					frame.appendChild(host);
 				}
 			}
+			// Render-Erfolg je Szenario melden: keine Kinder im Shadow DOM heißt leer gerendert.
+			window.__renderReport = scenarios.map((scenario) => ({
+				id: scenario.id,
+				tag: scenario.tag,
+				rendered: document.querySelector(`[data-scenario='${scenario.id}']`)?.shadowRoot?.childElementCount > 0,
+			}));
 			await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 			window.__harnessReady = true;
 		</script>

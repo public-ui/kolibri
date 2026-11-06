@@ -33,7 +33,7 @@ pnpm --filter @public-ui/components... build   # erzeugt custom-elements.json un
 pnpm --filter @public-ui/theme-default build
 pnpm --filter @public-ui/design-export build
 
-# Export (Standard-Szenarien: Button-Varianten mit Zuständen, InputText, Alert, Badge)
+# Export (Standard-Szenarien: alle Komponenten der Bibliothek, plus Button-Varianten und Zustände)
 pnpm --filter @public-ui/design-export start
 
 # Optionen
@@ -67,7 +67,10 @@ Dasselbe Token-Bundle importiert das Tokens-Studio-Plugin (gleiches Format), die
 - SVG ist ein statisches, ebenentreues Abbild: Flex/Grid-Layout wird nicht als Layout im Zielwerkzeug rekonstruiert, sondern über absolute Positionen abgebildet. Pseudo-Elemente und Font-Icons (Koli-Font-Glyphen als `<text>`, Font nicht eingebettet) sind nicht verlustfrei — die Toleranzliste der Konzepte gilt weiter.
 - Mehrseitige Borders mit unterschiedlichen Breiten kollabieren zu einem einheitlichen Stroke.
 - Nur das Default-Theme ist angebunden; weitere Themes folgen über denselben Adapter (Aufnahmekriterium: `kol-theme-global`-Tokens im erwarteten Format).
-- Zustände sind auf `default`, `hover`, `focus` beschränkt; `disabled` ist ein Prop und damit ein eigenes Szenario.
+- Zustände sind auf `default`, `hover`, `focus` beschränkt; `disabled` ist ein Prop und damit ein eigenes Szenario. Die Skip-Navigation wird nur im Fokus-Zustand exportiert (visually hidden by design).
+- Controller-Komponenten ohne sichtbaren geschlossenen Zustand (`kol-dialog`, `kol-drawer`, `kol-modal`) werden übersprungen und im Lauf gemeldet; sie haben erst nach dem Öffnen eine Optik.
+- Eingebettete Vektorgrafiken im Shadow DOM (zum Beispiel der Fortschrittsbalken) werden als SVG übernommen, nicht rekonstruiert. Native Form-Controls und Pseudo-Elemente (etwa der Radio-Kreis) sind nicht verlustfrei abbildbar.
+- `img`-Inhalte werden als Struktur, nicht als Bild serialisiert.
 
 ## Entwicklung
 
