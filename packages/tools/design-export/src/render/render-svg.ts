@@ -11,7 +11,8 @@ import { domToSvg } from './dom-to-svg.js';
  * One render scenario: a component instance with props and the states to capture.
  * Props are element properties (camelCase names, leading underscore kept), so
  * object values like icon or item configs work, not just attribute strings.
- * `content` becomes a text child and lands in the default slot.
+ * `content` becomes a text child in the default slot, `html` becomes slotted
+ * markup (for nested components such as tree items).
  */
 export interface Scenario {
 	id: string;
@@ -19,6 +20,7 @@ export interface Scenario {
 	props: Record<string, unknown>;
 	states: string[];
 	content?: string;
+	html?: string;
 }
 
 export interface RenderResult {
@@ -34,6 +36,11 @@ const MIME_TYPES: Record<string, string> = {
 	'.json': 'application/json',
 	'.woff2': 'font/woff2',
 	'.svg': 'image/svg+xml',
+	'.png': 'image/png',
+	'.jpg': 'image/jpeg',
+	'.jpeg': 'image/jpeg',
+	'.gif': 'image/gif',
+	'.webp': 'image/webp',
 };
 
 /**
@@ -59,13 +66,25 @@ export async function renderScenarios(repoRoot: string, scenarios: Scenario[], o
 
 	const dom: Record<string, DomNode> = {};
 	const svgs: Record<string, { scheme: 'light' | 'dark'; state: string; file: string }[]> = {};
+	const skipped: string[] = [];
 	for (const scenario of scenarios) {
 		for (const scheme of ['light', 'dark'] as const) {
 			const selector = `.frame[data-scheme='${scheme}'] ${scenario.tag}[data-scenario='${scenario.id}']`;
 			const host = page.locator(selector);
-			await host.waitFor({ state: 'visible' });
+			let exported = false;
 			for (const state of scenario.states) {
 				await applyState(page, host, state);
+				// Sichtbarkeit erst NACH dem Zustand prüfen: Komponenten wie die Skip-Navigation
+				// werden erst durch Fokus sichtbar; Controller wie der geschlossene Dialog
+				// bleiben unsichtbar und werden übersprungen.
+				const visible = await host.waitFor({ state: 'visible', timeout: 5000 }).then(
+					() => true,
+					() => false,
+				);
+				if (!visible) {
+					break;
+				}
+				exported = true;
 				const svg = (await page.evaluate(`(${domToSvg.toString()})(${JSON.stringify(selector)})`)) as string;
 				const file = `svg/${scenario.id}.${scheme}.${state}.svg`;
 				await writeFile(join(outDir, file), svg, 'utf-8');
@@ -74,8 +93,31 @@ export async function renderScenarios(repoRoot: string, scenarios: Scenario[], o
 				}
 				(svgs[scenario.tag] ??= []).push({ scheme, state, file });
 			}
+			if (!exported && !skipped.includes(scenario.id)) {
+				skipped.push(scenario.id);
+			}
 		}
 	}
+	// Render-Erfolg je Szenario melden: keine Kinder im Shadow DOM heißt leer gerendert.
+	const report = (await page.evaluate(() =>
+		[...document.querySelectorAll('[data-scenario]')].map((host) => ({
+			id: host.getAttribute('data-scenario') ?? '',
+			tag: host.tagName.toLowerCase(),
+			rendered: (host.shadowRoot?.childElementCount ?? 0) > 0,
+		})),
+	)) as { id: string; tag: string; rendered: boolean }[];
+	const unique = [...new Map(report.map((entry) => [entry.id, entry])).values()];
+	const empty = unique.filter((entry) => !entry.rendered && !skipped.includes(entry.id));
+	console.log(
+		`Render-Erfolg: ${unique.length - empty.length - skipped.length}/${unique.length} Szenarien mit Shadow-DOM-Inhalt${skipped.length > 0 ? `, ${skipped.length} übersprungen (nicht sichtbar)` : ''}.`,
+	);
+	if (skipped.length > 0) {
+		console.warn(`Übersprungen (unsichtbar, z. B. geschlossene Controller-Komponente): ${skipped.join(', ')}`);
+	}
+	if (empty.length > 0) {
+		console.warn(`Leer gerendert (Props nachbessern): ${empty.map((entry) => entry.id).join(', ')}`);
+	}
+
 	await browser.close();
 	await new Promise<void>((resolve) => server.close(() => resolve()));
 	return { dom, svgs };
