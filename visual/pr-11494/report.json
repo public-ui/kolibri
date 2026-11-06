@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11494,
-	"head": "49aaa9fe4061c52f4dc9149380b154b081084fea",
+	"head": "1ffa673b01900c1bd26e53b8e09eccf9cb7adaf5",
 	"repository": "public-ui/kolibri",
-	"runId": 42005432490,
-	"generatedAt": "2026-11-05T10:07:54.703Z",
-	"digest": "sha256:817cd759356f6d9bbf9cbef3a912cefffbe921fee9c515e825c3f5a21607bf3d",
+	"runId": 42142663278,
+	"generatedAt": "2026-11-06T01:41:11.910Z",
+	"digest": "sha256:7f46bf56d45560664ed0dc47de3c832e8f5c98663274274f62bd60c1ecb40e70",
 	"baseline": {
-		"sha": "007df2516770c977726d4c95ea25d73cbda55183",
+		"sha": "599d0347ac966f80775bc424044b28605821adb6",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -18,9 +18,9 @@
 	},
 	"summary": {
 		"unchanged": 3088,
-		"changed": 7,
-		"added": 0,
-		"removed": 0,
+		"changed": 0,
+		"added": 7,
+		"removed": 7,
 		"error": 0
 	},
 	"packages": [
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "007df2516770c977726d4c95ea25d73cbda55183",
+					"sha": "599d0347ac966f80775bc424044b28605821adb6",
 					"ref": "develop",
-					"runId": 41989361459,
+					"runId": 42050063610,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T07:51:08.604Z",
+					"createdAt": "2026-11-05T15:06:06.426Z",
 					"digest": "sha256:bfdd6a1f3d440fc90c3e9f6b0a7f93563062f82310e0d450971bdbbbd73ef453",
 					"fallback": null,
 					"distance": 0,
@@ -44,12 +44,12 @@
 			},
 			"summary": {
 				"unchanged": 441,
-				"changed": 1,
-				"added": 0,
-				"removed": 0,
+				"changed": 0,
+				"added": 1,
+				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:e772dd49a78bf078d5c69ad23c9568b3ccd55813f76833bd5383b9830516296c",
+			"digest": "sha256:b94e0650dcea2fd8804802035969dfc8473310fa3db1ad2eb2aebc06f0c03e0c",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -401,24 +401,17 @@
 				},
 				{
 					"name": "form-error-list--error-list",
-					"route": "form/error-list",
-					"status": "changed",
-					"hash": "sha256:e5047d156a264bb115f0745cdd8dec212244b512f00dc3b6f68e2608a013ffad",
-					"diffPixels": 38353,
-					"diffRatio": 0.141051,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							581
-						],
-						"actual": [
-							468,
-							472
-						]
-					},
-					"expected": "test-tag-name-transformer/form-error-list--error-list.expected.png",
-					"actual": "test-tag-name-transformer/form-error-list--error-list.actual.png",
-					"diff": "test-tag-name-transformer/form-error-list--error-list.diff.png"
+					"route": "form-error-list",
+					"status": "removed",
+					"hash": "sha256:b64477117ef29ff9f4fc98d564b8d5e673b1d322be240aa86cd3899f6a78ea2b",
+					"expected": "test-tag-name-transformer/form-error-list--error-list.expected.png"
+				},
+				{
+					"name": "form-error-list-submitted-true--error-list",
+					"route": "form/error-list?submitted=true",
+					"status": "added",
+					"hash": "sha256:57c406b0f34f7ad6852673425e3aee6afd98b08ae5f76b86a34cc7776b2cc388",
+					"actual": "test-tag-name-transformer/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
 					"name": "heading-basic--basic",
@@ -2728,12 +2721,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "007df2516770c977726d4c95ea25d73cbda55183",
+					"sha": "599d0347ac966f80775bc424044b28605821adb6",
 					"ref": "develop",
-					"runId": 41989361459,
+					"runId": 42050063610,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T07:52:53.131Z",
+					"createdAt": "2026-11-05T15:05:29.614Z",
 					"digest": "sha256:1ef734cfc081af59b5a8f3c00fcba4b088b888010f39845af7cc4c4a51afa9a9",
 					"fallback": null,
 					"distance": 0,
@@ -2742,12 +2735,12 @@
 			},
 			"summary": {
 				"unchanged": 441,
-				"changed": 1,
-				"added": 0,
-				"removed": 0,
+				"changed": 0,
+				"added": 1,
+				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:5b6732a8785351e06266ec9d3f185d539e8d1bae84d63c65caff6bab36934ed8",
+			"digest": "sha256:0e2a9c5bb5275fddfd6754016a6f59bad130ce077b96e6cbfd9433c19728568f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3099,24 +3092,17 @@
 				},
 				{
 					"name": "form-error-list--error-list",
-					"route": "form/error-list",
-					"status": "changed",
-					"hash": "sha256:8074939ed2571d01fbf6dfffe50e6a14427a3a4cf537e432b133ccd0e1f1614f",
-					"diffPixels": 30041,
-					"diffRatio": 0.108246,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							593
-						],
-						"actual": [
-							468,
-							475
-						]
-					},
-					"expected": "theme-bwst/form-error-list--error-list.expected.png",
-					"actual": "theme-bwst/form-error-list--error-list.actual.png",
-					"diff": "theme-bwst/form-error-list--error-list.diff.png"
+					"route": "form-error-list",
+					"status": "removed",
+					"hash": "sha256:d8d0d269b79c89522c2574ff0268a776a8f061c95819faadd496ee1e0e26483a",
+					"expected": "theme-bwst/form-error-list--error-list.expected.png"
+				},
+				{
+					"name": "form-error-list-submitted-true--error-list",
+					"route": "form/error-list?submitted=true",
+					"status": "added",
+					"hash": "sha256:1817d4f0e0c524693c2a983ad20db5e279f7d892303e7f9b2cafaf39f0dda10e",
+					"actual": "theme-bwst/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
 					"name": "heading-basic--basic",
@@ -5426,12 +5412,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "007df2516770c977726d4c95ea25d73cbda55183",
+					"sha": "599d0347ac966f80775bc424044b28605821adb6",
 					"ref": "develop",
-					"runId": 41989361459,
+					"runId": 42050063610,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T07:51:08.604Z",
+					"createdAt": "2026-11-05T15:06:06.426Z",
 					"digest": "sha256:bfdd6a1f3d440fc90c3e9f6b0a7f93563062f82310e0d450971bdbbbd73ef453",
 					"fallback": null,
 					"distance": 0,
@@ -5440,12 +5426,12 @@
 			},
 			"summary": {
 				"unchanged": 441,
-				"changed": 1,
-				"added": 0,
-				"removed": 0,
+				"changed": 0,
+				"added": 1,
+				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:e772dd49a78bf078d5c69ad23c9568b3ccd55813f76833bd5383b9830516296c",
+			"digest": "sha256:b94e0650dcea2fd8804802035969dfc8473310fa3db1ad2eb2aebc06f0c03e0c",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5797,24 +5783,17 @@
 				},
 				{
 					"name": "form-error-list--error-list",
-					"route": "form/error-list",
-					"status": "changed",
-					"hash": "sha256:e5047d156a264bb115f0745cdd8dec212244b512f00dc3b6f68e2608a013ffad",
-					"diffPixels": 38353,
-					"diffRatio": 0.141051,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							581
-						],
-						"actual": [
-							468,
-							472
-						]
-					},
-					"expected": "theme-default/form-error-list--error-list.expected.png",
-					"actual": "theme-default/form-error-list--error-list.actual.png",
-					"diff": "theme-default/form-error-list--error-list.diff.png"
+					"route": "form-error-list",
+					"status": "removed",
+					"hash": "sha256:b64477117ef29ff9f4fc98d564b8d5e673b1d322be240aa86cd3899f6a78ea2b",
+					"expected": "theme-default/form-error-list--error-list.expected.png"
+				},
+				{
+					"name": "form-error-list-submitted-true--error-list",
+					"route": "form/error-list?submitted=true",
+					"status": "added",
+					"hash": "sha256:57c406b0f34f7ad6852673425e3aee6afd98b08ae5f76b86a34cc7776b2cc388",
+					"actual": "theme-default/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
 					"name": "heading-basic--basic",
@@ -8124,12 +8103,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "007df2516770c977726d4c95ea25d73cbda55183",
+					"sha": "599d0347ac966f80775bc424044b28605821adb6",
 					"ref": "develop",
-					"runId": 41989361459,
+					"runId": 42050063610,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T07:52:13.450Z",
+					"createdAt": "2026-11-05T15:04:09.023Z",
 					"digest": "sha256:f64919aee0563da37b0f58034e256f6b19b83dcc06f472724c296cacfdd8ddf9",
 					"fallback": null,
 					"distance": 0,
@@ -8138,12 +8117,12 @@
 			},
 			"summary": {
 				"unchanged": 441,
-				"changed": 1,
-				"added": 0,
-				"removed": 0,
+				"changed": 0,
+				"added": 1,
+				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:eea4540c0f7dac12fe88bdbe1aba08106b2698b4512bd7477b24e72cd55a0c34",
+			"digest": "sha256:c8042be5c7633356ddd2116f55d7973cb2ebd0f8e1c08344f75d9894a94c3c11",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -8495,24 +8474,17 @@
 				},
 				{
 					"name": "form-error-list--error-list",
-					"route": "form/error-list",
-					"status": "changed",
-					"hash": "sha256:5ee1d60570c0883aefec4494f109141cf046f3129cf48d57603c8fe4c18b90cf",
-					"diffPixels": 18237,
-					"diffRatio": 0.072837,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							535
-						],
-						"actual": [
-							468,
-							441
-						]
-					},
-					"expected": "theme-desy/form-error-list--error-list.expected.png",
-					"actual": "theme-desy/form-error-list--error-list.actual.png",
-					"diff": "theme-desy/form-error-list--error-list.diff.png"
+					"route": "form-error-list",
+					"status": "removed",
+					"hash": "sha256:5ae35a4aceda494a35d4b3b8b1fe1fd1670697a84ae7ad3c54e31d7153306aec",
+					"expected": "theme-desy/form-error-list--error-list.expected.png"
+				},
+				{
+					"name": "form-error-list-submitted-true--error-list",
+					"route": "form/error-list?submitted=true",
+					"status": "added",
+					"hash": "sha256:994d3c2c99534326d6773338eed97a4593884f1ad564e6a9b9f4125ae5b23262",
+					"actual": "theme-desy/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
 					"name": "heading-basic--basic",
@@ -10822,12 +10794,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "007df2516770c977726d4c95ea25d73cbda55183",
+					"sha": "599d0347ac966f80775bc424044b28605821adb6",
 					"ref": "develop",
-					"runId": 41989361459,
+					"runId": 42050063610,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T07:51:59.397Z",
+					"createdAt": "2026-11-05T15:04:43.911Z",
 					"digest": "sha256:c337b5c85a74a31d7fd208825294ffd0d7b73d0d9283e1394a41de5f9ebd49c3",
 					"fallback": null,
 					"distance": 0,
@@ -10836,12 +10808,12 @@
 			},
 			"summary": {
 				"unchanged": 441,
-				"changed": 1,
-				"added": 0,
-				"removed": 0,
+				"changed": 0,
+				"added": 1,
+				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:1f4c6d9e56ef3b8f7503d4f85eae7c75a4b82ed9fa4674916c61a5917f743c7d",
+			"digest": "sha256:696054221a1a016ec88ab38ecefe1c0e850085e47cf559d876439dacb52efc1e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11193,24 +11165,17 @@
 				},
 				{
 					"name": "form-error-list--error-list",
-					"route": "form/error-list",
-					"status": "changed",
-					"hash": "sha256:09ca095ea66b7dc2062439484e1cbc9c96f295ab3f33eb2b5fd7c8acb167ff4e",
-					"diffPixels": 17817,
-					"diffRatio": 0.059859,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							636
-						],
-						"actual": [
-							468,
-							523
-						]
-					},
-					"expected": "theme-ecl/form-error-list--error-list.expected.png",
-					"actual": "theme-ecl/form-error-list--error-list.actual.png",
-					"diff": "theme-ecl/form-error-list--error-list.diff.png"
+					"route": "form-error-list",
+					"status": "removed",
+					"hash": "sha256:0a2ec93f34837fe21cbe6a1085310a829be21a5460d473ceb698bcff9888a063",
+					"expected": "theme-ecl/form-error-list--error-list.expected.png"
+				},
+				{
+					"name": "form-error-list-submitted-true--error-list",
+					"route": "form/error-list?submitted=true",
+					"status": "added",
+					"hash": "sha256:d50abf774b3ff06b1ca28950f54fc95f998c55234d3ed6486f54f6dec29b2e20",
+					"actual": "theme-ecl/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
 					"name": "heading-basic--basic",
@@ -13520,12 +13485,12 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "007df2516770c977726d4c95ea25d73cbda55183",
+					"sha": "599d0347ac966f80775bc424044b28605821adb6",
 					"ref": "develop",
-					"runId": 41989361459,
+					"runId": 42050063610,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T07:51:41.423Z",
+					"createdAt": "2026-11-05T15:04:41.021Z",
 					"digest": "sha256:78758cafba0a822473b631754590bf2ecabd621bb5a17ceaf92f500ce082708e",
 					"fallback": null,
 					"distance": 0,
@@ -13534,12 +13499,12 @@
 			},
 			"summary": {
 				"unchanged": 442,
-				"changed": 1,
-				"added": 0,
-				"removed": 0,
+				"changed": 0,
+				"added": 1,
+				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:1cbb44d86304e897e15d88989764d2f606aa1eedc62e04390e7ca5b49fa906ca",
+			"digest": "sha256:9abbefd11c9e2dfdc98cf01f6032a4f81d46df6c3102dde3c965a987d1dad888",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13891,24 +13856,17 @@
 				},
 				{
 					"name": "form-error-list--error-list",
-					"route": "form/error-list",
-					"status": "changed",
-					"hash": "sha256:7dc1a164a4a8bbd541e0bca36dc05e6e73dc3de9385d199bad6af690b9a4089e",
-					"diffPixels": 21479,
-					"diffRatio": 0.059143,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							776
-						],
-						"actual": [
-							468,
-							593
-						]
-					},
-					"expected": "theme-kern/form-error-list--error-list.expected.png",
-					"actual": "theme-kern/form-error-list--error-list.actual.png",
-					"diff": "theme-kern/form-error-list--error-list.diff.png"
+					"route": "form-error-list",
+					"status": "removed",
+					"hash": "sha256:a80dbe1d572f62c41fa583f493f211fc660aa0b8d11fd377b2437979d819dfc6",
+					"expected": "theme-kern/form-error-list--error-list.expected.png"
+				},
+				{
+					"name": "form-error-list-submitted-true--error-list",
+					"route": "form/error-list?submitted=true",
+					"status": "added",
+					"hash": "sha256:aba63b3d96c772a350a1e55597073c53adc6c732e8c23fda56bfde0f07749923",
+					"actual": "theme-kern/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
 					"name": "heading-basic--basic",
@@ -16224,12 +16182,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "007df2516770c977726d4c95ea25d73cbda55183",
+					"sha": "599d0347ac966f80775bc424044b28605821adb6",
 					"ref": "develop",
-					"runId": 41989361459,
+					"runId": 42050063610,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-05T07:51:25.781Z",
+					"createdAt": "2026-11-05T15:04:21.178Z",
 					"digest": "sha256:23346e486ffbfd2fa049dd82a3954520d9f82d9fbfd29d19f1b825e76acb257c",
 					"fallback": null,
 					"distance": 0,
@@ -16238,12 +16196,12 @@
 			},
 			"summary": {
 				"unchanged": 441,
-				"changed": 1,
-				"added": 0,
-				"removed": 0,
+				"changed": 0,
+				"added": 1,
+				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:854bea1fc3606d1e5b6f4ea45d23ef54a60d78f3d74f7f46b70adaffce358a46",
+			"digest": "sha256:b3a7d1d659be8f167d6b2bfca1506d85769f85fe7d2c955cf5e32c990e96b646",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16595,24 +16553,17 @@
 				},
 				{
 					"name": "form-error-list--error-list",
-					"route": "form/error-list",
-					"status": "changed",
-					"hash": "sha256:d4c481e7da693f3e304909a3e329570aef5feea8e7f4755d80d0966268c2eada",
-					"diffPixels": 22299,
-					"diffRatio": 0.09234,
-					"sizeMismatch": {
-						"expected": [
-							468,
-							516
-						],
-						"actual": [
-							468,
-							452
-						]
-					},
-					"expected": "unstyled/form-error-list--error-list.expected.png",
-					"actual": "unstyled/form-error-list--error-list.actual.png",
-					"diff": "unstyled/form-error-list--error-list.diff.png"
+					"route": "form-error-list",
+					"status": "removed",
+					"hash": "sha256:be4a32fc8050b98b5cd3c2982b156a721f5d65867c3a0038f3fc48eec0df91b7",
+					"expected": "unstyled/form-error-list--error-list.expected.png"
+				},
+				{
+					"name": "form-error-list-submitted-true--error-list",
+					"route": "form/error-list?submitted=true",
+					"status": "added",
+					"hash": "sha256:3776677504a9e1ffcc4b7caa98d25025de702bbb1fd379b9e6721cb94acde5c2",
+					"actual": "unstyled/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
 					"name": "heading-basic--basic",
