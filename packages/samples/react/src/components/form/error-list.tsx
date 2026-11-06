@@ -1,7 +1,7 @@
 import type { ErrorListPropType } from '@public-ui/components';
 import { KolButton, KolForm, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
@@ -36,6 +36,15 @@ export const FormErrorList: FC = () => {
 	const [searchParams] = useSearchParams();
 	const submitted = searchParams.get('submitted') === 'true';
 	const [errorList, setErrorList] = useState<ErrorListPropType[]>(() => (submitted ? ERROR_LIST : []));
+
+	/**
+	 * A route loaded as submitted focuses the first error entry, as a submit does.
+	 */
+	useEffect(() => {
+		if (submitted) {
+			void formRef.current?.focusErrorList();
+		}
+	}, [submitted]);
 
 	/**
 	 * In a real application, the error list is derived from the validation of the submitted form
