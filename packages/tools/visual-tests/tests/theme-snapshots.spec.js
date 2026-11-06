@@ -105,11 +105,34 @@ async function snapBlockToPixelGrid(block) {
 			adjusted = marginTop - frac;
 			element.style.marginTop = `${adjusted}px`;
 		}
-		return { top, scrollY: window.scrollY, pageTop, frac, adjusted };
+		const rect = (el) =>
+			el
+				? {
+						top: +(el.getBoundingClientRect().top + scrollY).toFixed(2),
+						height: +el.getBoundingClientRect().height.toFixed(2),
+						bottom: +(el.getBoundingClientRect().bottom + scrollY).toFixed(2),
+					}
+				: null;
+		const form = document.querySelector('kol-form');
+		const alert = form && form.shadowRoot ? form.shadowRoot.querySelector('.kol-alert') : null;
+		const content = alert ? alert.querySelector('.kol-alert__content') : null;
+		const nav = alert ? alert.querySelector('nav') : null;
+		return {
+			top,
+			scrollY: window.scrollY,
+			pageTop,
+			frac,
+			adjusted,
+			dpr: devicePixelRatio,
+			block: rect(element),
+			form: rect(form),
+			alert: rect(alert),
+			content: rect(content),
+			nav: rect(nav),
+			lis: alert ? [...alert.querySelectorAll('li')].map((li) => +li.getBoundingClientRect().height.toFixed(2)) : null,
+		};
 	});
-	console.log(
-		`[snap-debug] viewportTop=${debug.top.toFixed(3)} scrollY=${debug.scrollY.toFixed(3)} pageTop=${debug.pageTop.toFixed(3)} frac=${debug.frac.toFixed(3)} adjusted=${debug.adjusted ?? '-'}`,
-	);
+	console.log(`[snap-debug] ${JSON.stringify(debug)}`);
 }
 
 /** Captures one element screenshot per block id and fails on blocks that stay invisible or zero-sized. */
