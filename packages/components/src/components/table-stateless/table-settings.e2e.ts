@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableHeaderCell, TableHeaderCellsPropType } from '../../schema';
+import type { KoliBriTableHeaderCell, KoliBriTableHeaders } from '../../schema';
 
 const DATA = [
 	{ id: '1001', name: 'John', age: 30 },
@@ -8,7 +8,7 @@ const DATA = [
 	{ id: '1003', name: 'Bob', age: 35 },
 ];
 
-const HEADERS: TableHeaderCellsPropType = {
+const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
 			{ key: 'id', label: 'ID', width: 120 },
