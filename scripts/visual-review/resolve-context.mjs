@@ -70,6 +70,12 @@ export async function resolveContext({ eventName, event, api, repository }) {
 			if (visual.length === 0 || visual.every((job) => job.conclusion === 'skipped')) {
 				return { mode: 'no-visual', pr: pull.number, head: run.head_sha, runId: run.id, reason: 'visual tests did not run' };
 			}
+			// Branches whose CI does not upload visual review reports (older release branches) would fail
+			// the report download of the publish mode.
+			const artifacts = await api.paginate(`repos/${repository}/actions/runs/${run.id}/artifacts`);
+			if (!artifacts.some((artifact) => artifact.name.startsWith('visual-review-'))) {
+				return { mode: 'no-visual', pr: pull.number, head: run.head_sha, runId: run.id, reason: 'visual tests produced no report' };
+			}
 			return { mode: 'publish', pr: pull.number, head: run.head_sha, runId: run.id, reason: `CI run ${run.id} completed` };
 		}
 		case 'issue_comment': {
