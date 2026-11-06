@@ -19,6 +19,11 @@ export const ROUTES = new Map();
  *     of one element screenshot per `data-visual-block` container. Required for routes without blocks:
  *     overlays that extend beyond any block (dialog, drawer, toast, open popover), focus-dependent
  *     content (skip-nav) and deliberate composition tests (scenarios/*, form/basic).
+ *   - pixelGridSnap: boolean (Default: false) – align each block's top edge with the pixel grid before
+ *     its screenshot. The font-metric heights of the content above a block carry fractional pixels and
+ *     set the paint phase: at an unlucky phase Chromium pixel-snaps a neighboring background over a 1px
+ *     border and the border vanishes from the snapshot (form error list box). Routes are only re-phased
+ *     when their block edges actually smear.
  *   - viewportSize:
  *     - width (Default: 800)
  *     - height (Default: 400)
@@ -115,6 +120,7 @@ ROUTES.set('form/basic', {
 });
 ROUTES.set('form/error-list?submitted=true', {
 	snapshot: {
+		pixelGridSnap: true,
 		viewportSize: {
 			width: 500,
 			height: 600,

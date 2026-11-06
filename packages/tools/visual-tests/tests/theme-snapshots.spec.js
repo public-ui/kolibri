@@ -83,8 +83,27 @@ async function readBlockIds(page, selector) {
 	return page.$$eval(selector, (elements) => elements.map((element) => element.getAttribute('data-visual-block')));
 }
 
+/**
+ * Aligns a block's top edge with the pixel grid: the content above a block (headings, descriptions)
+ * has font-metric heights with fractional pixels, and the resulting paint phase decides whether
+ * Chromium pixel-snaps inner box edges to whole pixel rows. At an unlucky phase a 1px border is
+ * overpainted by a neighboring background and vanishes from the snapshot (form error list box).
+ * A negative margin cancels the fractional part of the viewport offset; the layout shifts by less
+ * than one pixel and is re-measured for every block, also after the narrow viewport change.
+ */
+async function snapBlockToPixelGrid(block) {
+	await block.evaluate((element) => {
+		const { top } = element.getBoundingClientRect();
+		const frac = top - Math.floor(top);
+		if (frac > 0) {
+			const marginTop = parseFloat(getComputedStyle(element).marginTop) || 0;
+			element.style.marginTop = `${marginTop - frac}px`;
+		}
+	});
+}
+
 /** Captures one element screenshot per block id and fails on blocks that stay invisible or zero-sized. */
-async function captureBlocks(page, route, blockIds, snapshotName, suffix, options) {
+async function captureBlocks(page, route, blockIds, snapshotName, suffix, options, snapToPixelGrid) {
 	for (const blockId of blockIds) {
 		const block = page.locator(`[data-visual-block="${blockId}"]`);
 		try {
@@ -96,6 +115,9 @@ async function captureBlocks(page, route, blockIds, snapshotName, suffix, option
 			throw new Error(
 				`Route "${route}": data-visual-block "${blockId}" is not visible or has zero size${suffix ? ` at ${NARROW_VIEWPORT.width}px viewport width` : ''}`,
 			);
+		}
+		if (snapToPixelGrid) {
+			await snapBlockToPixelGrid(block);
 		}
 		await captureSnapshot(block, `${snapshotName}--${blockId}${suffix}.png`, options);
 	}
@@ -170,13 +192,14 @@ ROUTES.forEach((options, route) => {
 			seenBlockIds.add(blockId);
 		}
 
-		await captureBlocks(page, route, blockIds, snapshotName, '', ELEMENT_SNAPSHOT_OPTIONS);
+		const snapToPixelGrid = options?.snapshot?.pixelGridSnap === true;
+		await captureBlocks(page, route, blockIds, snapshotName, '', ELEMENT_SNAPSHOT_OPTIONS, snapToPixelGrid);
 
 		// Reflow pass – runs last because it changes the viewport for the rest of the test.
 		const narrowBlockIds = await readBlockIds(page, NARROW_SELECTOR);
 		if (narrowBlockIds.length > 0) {
 			await page.setViewportSize(NARROW_VIEWPORT);
-			await captureBlocks(page, route, narrowBlockIds, snapshotName, `-${NARROW_VIEWPORT.width}`, ELEMENT_SNAPSHOT_OPTIONS);
+			await captureBlocks(page, route, narrowBlockIds, snapshotName, `-${NARROW_VIEWPORT.width}`, ELEMENT_SNAPSHOT_OPTIONS, snapToPixelGrid);
 		}
 	});
 });
