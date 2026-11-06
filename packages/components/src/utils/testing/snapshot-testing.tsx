@@ -43,8 +43,6 @@ export const executeSnapshotTests = <Props extends Record<string, unknown>>(Comp
 			const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
 
 			const element = page.doc.createElement(ComponentName);
-			// The assignment happens after attaching and before the first render, mirroring the
-			// sequence of #11449 (`createElement` → `appendChild` → prop assignment).
 			page.body.appendChild(element);
 			Object.assign(element, props);
 			await page.waitForChanges();

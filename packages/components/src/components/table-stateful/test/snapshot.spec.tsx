@@ -118,9 +118,8 @@ describe('kol-table-stateful', () => {
 		expect(page.root).toMatchSnapshot();
 	});
 
-	// Same scenario as `executeSnapshotTests`: assigning the props right after attaching must not
-	// error before the first render (#11449). Assigning before appending is deliberately not used,
-	// because that sequence never reaches the pre-load watchers.
+	// Assigning before appending is deliberately not used: that sequence never reaches the pre-load
+	// watchers (see the JSDoc of `executeSnapshotTests`).
 	it.each(CASES)('should keep assigning props %s before the first render silent', async (_, props) => {
 		const page = await newSpecPage({
 			components: [KolTableStateful],
@@ -131,6 +130,7 @@ describe('kol-table-stateful', () => {
 		const table = page.doc.createElement('kol-table-stateful');
 		page.body.appendChild(table);
 		Object.assign(table, props);
+		// The table defers its sorted-data update to a macrotask; this wait lets that tick run before `waitForChanges`.
 		await new Promise((resolve) => setTimeout(resolve));
 		await page.waitForChanges();
 
