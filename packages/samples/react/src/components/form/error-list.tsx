@@ -2,6 +2,7 @@ import type { ErrorListPropType } from '@public-ui/components';
 import { KolButton, KolForm, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useRef, useState } from 'react';
+import { useSearchParams } from 'react-router';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
@@ -28,7 +29,13 @@ const ERROR_LIST: ErrorListPropType[] = [
 
 export const FormErrorList: FC = () => {
 	const formRef = useRef<HTMLKolFormElement | null>(null);
-	const [errorList, setErrorList] = useState<ErrorListPropType[]>([]);
+	/**
+	 * The `submitted` query parameter renders the route with the error list already set, so the visual
+	 * tests capture the list; the plain route keeps the list as the result of a submit.
+	 */
+	const [searchParams] = useSearchParams();
+	const submitted = searchParams.get('submitted') === 'true';
+	const [errorList, setErrorList] = useState<ErrorListPropType[]>(() => (submitted ? ERROR_LIST : []));
 
 	/**
 	 * In a real application, the error list is derived from the validation of the submitted form

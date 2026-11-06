@@ -113,7 +113,7 @@ ROUTES.set('form/basic', {
 		},
 	},
 });
-ROUTES.set('form/error-list', {
+ROUTES.set('form/error-list?submitted=true', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
