@@ -7,7 +7,7 @@
 		"license-report": "6.8.5",
 		"lint-staged": "17.4.1",
 		"npm-check-updates": "23.1.0",
-		"npm-run-all2": "9.0.3",
+		"npm-run-all2": "9.0.4",
 		"prettier": "3.9.6",
 		"stylelint": "17.14.1",
 		"stylelint-config-recommended-scss": "17.0.1",
