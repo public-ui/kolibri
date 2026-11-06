@@ -107,5 +107,8 @@ export function domToSvg(hostSelector: string): string {
 	}
 	svgParts.push(`</g>`);
 
-	return `<svg xmlns="http://www.w3.org/2000/svg" width="${Math.ceil(hostRect.width)}" height="${Math.ceil(hostRect.height)}" viewBox="0 0 ${Math.ceil(hostRect.width)} ${Math.ceil(hostRect.height)}">${svgParts.join('')}\n</svg>`;
+	// Der Name am svg-Element wird beim Import zum Layernamen (z.B. in Penpot);
+	// die BEM-Wurzelgruppe darunter bleibt zusätzlich benannt.
+	const hostName = host.tagName.toLowerCase();
+	return `<svg xmlns="http://www.w3.org/2000/svg" id="${hostName}" data-name="${hostName}" width="${Math.ceil(hostRect.width)}" height="${Math.ceil(hostRect.height)}" viewBox="0 0 ${Math.ceil(hostRect.width)} ${Math.ceil(hostRect.height)}">${svgParts.join('')}\n</svg>`;
 }

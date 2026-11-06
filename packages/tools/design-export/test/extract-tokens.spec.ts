@@ -22,6 +22,12 @@ describe('extractTokens', () => {
 		);
 	});
 
+	it('resolves internal var() references to the referenced value', () => {
+		const tokens = extractTokens(':host { --color-light: #ffffff; --color-shadow-contrast: var(--color-light); }');
+		const contrast = tokens.find((token) => token.name === '--color-shadow-contrast');
+		assert.equal(contrast?.value, '#ffffff');
+	});
+
 	it('extracts from the real default theme GLOBAL css', async () => {
 		const { loadThemeStyles } = await import('../src/extract-tokens.js');
 		const styles = await loadThemeStyles(join(process.cwd(), 'node_modules', '@public-ui', 'theme-default', 'dist', 'index.mjs'));
@@ -31,5 +37,7 @@ describe('extractTokens', () => {
 		assert.ok(primary?.light?.startsWith('#'), `--color-primary hat keinen Light-Wert: ${JSON.stringify(primary)}`);
 		assert.ok(primary?.dark?.startsWith('#'), `--color-primary hat keinen Dark-Wert: ${JSON.stringify(primary)}`);
 		assert.ok(tokens.length > 10, `unerwartet wenige Tokens: ${tokens.length}`);
+		const unresolved = tokens.filter((token) => token.value.startsWith('var(') || token.light?.startsWith('var(') || token.dark?.startsWith('var('));
+		assert.deepEqual(unresolved, [], `unaufgelöste Referenzen: ${unresolved.map((token) => token.name).join(', ')}`);
 	});
 });
