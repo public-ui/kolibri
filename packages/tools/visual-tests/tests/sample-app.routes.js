@@ -113,11 +113,13 @@ ROUTES.set('form/basic', {
 		},
 	},
 });
-ROUTES.set('form/error-list', {
+/* The viewport is taller than the block with the rendered error list: Firefox captures blocks taller
+   than the viewport by scrolling and stitching, which smears the 1px edges of the error list box. */
+ROUTES.set('form/error-list?submitted=true', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 600,
+			height: 800,
 		},
 	},
 });
