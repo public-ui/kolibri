@@ -94,44 +94,15 @@ async function readBlockIds(page, selector) {
  * also after the narrow viewport change.
  */
 async function snapBlockToPixelGrid(block) {
-	const debug = await block.evaluate((element) => {
+	await block.evaluate((element) => {
 		const { top } = element.getBoundingClientRect();
 		const pageTop = top + window.scrollY;
 		const frac = pageTop - Math.floor(pageTop);
-		let adjusted = null;
 		if (frac > 0) {
 			const marginTop = parseFloat(getComputedStyle(element).marginTop) || 0;
-			adjusted = marginTop - frac;
-			element.style.marginTop = `${adjusted}px`;
+			element.style.marginTop = `${marginTop - frac}px`;
 		}
-		const rect = (el) =>
-			el
-				? {
-						top: +(el.getBoundingClientRect().top + scrollY).toFixed(2),
-						height: +el.getBoundingClientRect().height.toFixed(2),
-						bottom: +(el.getBoundingClientRect().bottom + scrollY).toFixed(2),
-					}
-				: null;
-		const form = document.querySelector('kol-form');
-		const alert = form && form.shadowRoot ? form.shadowRoot.querySelector('.kol-alert') : null;
-		const content = alert ? alert.querySelector('.kol-alert__content') : null;
-		const nav = alert ? alert.querySelector('nav') : null;
-		return {
-			top,
-			scrollY: window.scrollY,
-			pageTop,
-			frac,
-			adjusted,
-			dpr: devicePixelRatio,
-			block: rect(element),
-			form: rect(form),
-			alert: rect(alert),
-			content: rect(content),
-			nav: rect(nav),
-			lis: alert ? [...alert.querySelectorAll('li')].map((li) => +li.getBoundingClientRect().height.toFixed(2)) : null,
-		};
 	});
-	console.log(`[snap-debug] ${JSON.stringify(debug)}`);
 }
 
 /** Captures one element screenshot per block id and fails on blocks that stay invisible or zero-sized. */
