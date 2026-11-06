@@ -16,7 +16,7 @@ type RequiredProps = PropLabelLangSegments & PropTableData;
 
 type OptionalProps = {
 	loading: boolean;
-	headers: Stringified<KoliBriTableHeaders>; // required sobald headerCells entfernt
+	headers: Stringified<KoliBriTableHeaders>;
 } & PropAriaLabelledby &
 	PropTableCallbacks &
 	PropTableDataFoot &

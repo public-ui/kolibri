@@ -95,18 +95,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 
 	@Watch('_headers')
 	public watchHeaders(value?: Stringified<KoliBriTableHeaders>): void {
-		this.applyHeaders(value ? value : this._headerCells);
-	}
-
-	/**
-	 * @deprecated Will be removed in the future. Use _headers instead.
-	 * Defines the horizontal and vertical table headers.
-	 */
-	@Prop() public _headerCells?: Stringified<KoliBriTableHeaders> = undefined;
-
-	@Watch('_headerCells')
-	public watchHeaderCells(value?: Stringified<KoliBriTableHeaders>): void {
-		this.applyHeaders(this._headers ? this._headers : value);
+		this.applyHeaders(value);
 	}
 
 	/**
