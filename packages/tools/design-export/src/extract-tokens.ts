@@ -24,6 +24,10 @@ const LIGHT_DARK_PATTERN = /light-dark\(([^,()]+),\s*([^()]+)\)/;
  * CSS values. The outer `var(--kolibri-*, …)` fallback wrapper is stripped: the token
  * name is the internal chain link (`--color-primary`), the value is what the theme
  * actually paints when no host page overrides `--kolibri-color-primary`.
+ *
+ * Internal references (`var(--color-light)` without fallback) are resolved to the
+ * referenced token's value, so every exported token is self-contained — design tools
+ * would report the raw `var()` string as a missing reference.
  */
 export function extractTokens(globalCss: string): ThemeToken[] {
 	const tokens: ThemeToken[] = [];
@@ -40,7 +44,39 @@ export function extractTokens(globalCss: string): ThemeToken[] {
 			: { name, value };
 		tokens.push(token);
 	}
+	resolveReferences(tokens);
 	return tokens;
+}
+
+function resolveReferences(tokens: ThemeToken[]): void {
+	const byName = new Map(tokens.map((token) => [token.name, token]));
+	const resolve = (value: string, seen: Set<string>): string => {
+		const match = value.match(/^var\((--[\w-]+)\)$/);
+		if (!match) {
+			return value;
+		}
+		const target = byName.get(match[1]);
+		if (!target || seen.has(target.name)) {
+			return value;
+		}
+		seen.add(target.name);
+		return resolve(target.value, seen);
+	};
+	for (const token of tokens) {
+		const seen = new Set([token.name]);
+		token.value = resolve(token.value, seen);
+		const light = token.light === undefined ? undefined : resolve(token.light, new Set([token.name]));
+		const dark = token.dark === undefined ? undefined : resolve(token.dark, new Set([token.name]));
+		if (light !== undefined && dark !== undefined) {
+			token.light = light;
+			token.dark = dark;
+		}
+		const resolvedPair = token.value.match(LIGHT_DARK_PATTERN);
+		if (resolvedPair) {
+			token.light = resolvedPair[1].trim();
+			token.dark = resolvedPair[2].trim();
+		}
+	}
 }
 
 /**
@@ -68,6 +104,6 @@ export async function loadThemeStyles(themeModule: string): Promise<ThemeStyles>
 }
 
 function unwrapVarFallback(value: string): string {
-	const match = value.match(/^var\(--[\w-]+,\s*(.+)\)$/s);
+	const match = value.match(/^var\(\s*--[\w-]+\s*,\s*(.+)\)\s*$/s);
 	return match ? match[1].trim() : value;
 }
