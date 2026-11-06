@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11494,
-	"head": "6ad98a5adda591389539d9b17bc1e801cbd68524",
+	"head": "f353664bbeb8ecd717587531fa994762dbe6bcc4",
 	"repository": "public-ui/kolibri",
-	"runId": 42229351765,
-	"generatedAt": "2026-11-06T14:14:29.983Z",
-	"digest": "sha256:7f46bf56d45560664ed0dc47de3c832e8f5c98663274274f62bd60c1ecb40e70",
+	"runId": 42233301094,
+	"generatedAt": "2026-11-06T14:41:06.469Z",
+	"digest": "sha256:dfd085c33e882428630cce3efaed8f6cf5791e7f9423df26d59270c81667a01a",
 	"baseline": {
 		"sha": "7bec667450941228b38334fa6d6cb8f06c515f1f",
 		"ref": "develop",
@@ -49,7 +49,7 @@
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:b94e0650dcea2fd8804802035969dfc8473310fa3db1ad2eb2aebc06f0c03e0c",
+			"digest": "sha256:7353b2a5ef97a5c37140f667df240e1f0a41c00310bcce5c7ec25b6ec2d2fcf6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -410,7 +410,7 @@
 					"name": "form-error-list-submitted-true--error-list",
 					"route": "form/error-list?submitted=true",
 					"status": "added",
-					"hash": "sha256:57c406b0f34f7ad6852673425e3aee6afd98b08ae5f76b86a34cc7776b2cc388",
+					"hash": "sha256:46ce83723443d3b333f297011dc7e388d9dee5a855952981eae18dd47c6e9f5b",
 					"actual": "test-tag-name-transformer/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
@@ -2740,7 +2740,7 @@
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:0e2a9c5bb5275fddfd6754016a6f59bad130ce077b96e6cbfd9433c19728568f",
+			"digest": "sha256:ba4812ebfaaa836413b71a434d7140c861e68e687571dce3ea85134c77dc17d3",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3101,7 +3101,7 @@
 					"name": "form-error-list-submitted-true--error-list",
 					"route": "form/error-list?submitted=true",
 					"status": "added",
-					"hash": "sha256:1817d4f0e0c524693c2a983ad20db5e279f7d892303e7f9b2cafaf39f0dda10e",
+					"hash": "sha256:032b3f8c1a91936266a0759ef16a7262664a4e22f478eb12aae64af9934d163d",
 					"actual": "theme-bwst/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
@@ -5431,7 +5431,7 @@
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:b94e0650dcea2fd8804802035969dfc8473310fa3db1ad2eb2aebc06f0c03e0c",
+			"digest": "sha256:7353b2a5ef97a5c37140f667df240e1f0a41c00310bcce5c7ec25b6ec2d2fcf6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5792,7 +5792,7 @@
 					"name": "form-error-list-submitted-true--error-list",
 					"route": "form/error-list?submitted=true",
 					"status": "added",
-					"hash": "sha256:57c406b0f34f7ad6852673425e3aee6afd98b08ae5f76b86a34cc7776b2cc388",
+					"hash": "sha256:46ce83723443d3b333f297011dc7e388d9dee5a855952981eae18dd47c6e9f5b",
 					"actual": "theme-default/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
@@ -8122,7 +8122,7 @@
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:c8042be5c7633356ddd2116f55d7973cb2ebd0f8e1c08344f75d9894a94c3c11",
+			"digest": "sha256:a5d713e1a19f825c70d99d7a3626bacd78266439b04913a946821a78efba0d64",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -8483,7 +8483,7 @@
 					"name": "form-error-list-submitted-true--error-list",
 					"route": "form/error-list?submitted=true",
 					"status": "added",
-					"hash": "sha256:994d3c2c99534326d6773338eed97a4593884f1ad564e6a9b9f4125ae5b23262",
+					"hash": "sha256:bfd45e2c3dae1eff24d33c77c36c52c7d53991cf3e8fb91a8f46c17da1a9d926",
 					"actual": "theme-desy/form-error-list-submitted-true--error-list.actual.png"
 				},
 				{
