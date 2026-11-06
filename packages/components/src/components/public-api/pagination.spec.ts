@@ -29,7 +29,7 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	_label: {
 		kind: 'prop',
 		type: 'LabelPropType',
-		required: false,
+		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},
 	_max: {

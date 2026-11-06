@@ -63,11 +63,11 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType = undefined;
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		this.item.applyLabel(value);
+		this.item.applyLabel(value, this.isRequired('label'));
 	}
 
 	/**
@@ -177,9 +177,9 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 				siblingCount: this._siblingCount,
 				tooltipAlign: this._tooltipAlign,
 			},
-			// Of the required slot only `_max` warns about an unset value; `_page` and `_on` are a
-			// type contract (see ARC42, "Requiredness semantics per prop").
-			{ max: this.isRequired('max') },
+			// Of the required slot `_label` and `_max` warn about an unset value; `_page` and `_on` are
+			// a type contract (see ARC42, "Requiredness semantics per prop").
+			{ label: this.isRequired('label'), max: this.isRequired('max') },
 		);
 	}
 
