@@ -1,0 +1,1 @@
+import{s as e,v as t}from"./props-from-config-BYKreuP0-W3sEAih0.js";var n=e(`disabled`,!1,t);export{n as t};
