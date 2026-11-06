@@ -108,7 +108,7 @@ describe.each(STRING_PROPS)('$name', ({ definition, defaultValue }) => {
 describe('hrefProp', () => {
 	it('applies the default "" for undefined and warns about the missing required value (config slot)', () => {
 		expect(applied(hrefProp, undefined, true)).toEqual(['']);
-		expect(warnings()).toEqual([expect.stringContaining(`The required property '_href' did not receive a value.`)]);
+		expect(warnings()).toEqual([expect.stringContaining(`The required property '_href' did not receive a value. The default value is used instead.`)]);
 	});
 
 	it('applies the default "" for null', () => {
@@ -138,7 +138,7 @@ describe('hrefProp', () => {
 describe('labelProp', () => {
 	it('applies the "not set" default undefined and warns about the missing required value (config slot)', () => {
 		expect(applied(labelProp, undefined, true)).toEqual([undefined]);
-		expect(warnings()).toEqual([expect.stringContaining(`The required property '_label' did not receive a value.`)]);
+		expect(warnings()).toEqual([expect.stringContaining(`The required property '_label' did not receive a value. The property stays unset.`)]);
 	});
 
 	it('applies the "not set" default undefined for null', () => {
