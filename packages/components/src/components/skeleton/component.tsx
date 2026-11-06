@@ -1,13 +1,13 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../../../internal/functional-components/generic-types';
-import type { SkeletonApi } from '../../../../internal/functional-components/skeleton/api';
-import { skeletonPropsConfig } from '../../../../internal/functional-components/skeleton/api';
-import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
-import { nameProp } from '../../../../internal/props';
-import { Log, type KolFocusOptions, type NamePropType } from '../../../../schema';
-import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { SkeletonApi } from '../../internal/functional-components/skeleton/api';
+import { skeletonPropsConfig } from '../../internal/functional-components/skeleton/api';
+import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
+import { nameProp } from '../../internal/props';
+import { Log, type KolFocusOptions, type NamePropType } from '../../schema';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 @Component({
 	tag: 'kol-skeleton',
@@ -64,9 +64,11 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	 */
 	@Method()
 	@delegateFocus('buttonRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Toggles the visibility of the skeleton component.
@@ -113,8 +115,7 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	@Listen('keydown', { target: 'window' })
 	public onKeydown(event: KeyboardEvent): void {
 		if (event.key === 'Escape') {
-			// eslint-disable-next-line no-console
-			console.log('Show should be toggled');
+			Log.debug('Show should be toggled');
 			void this.toggle();
 		}
 	}

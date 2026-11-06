@@ -406,9 +406,8 @@ export class KolInputNumber
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<number | NumberString | null> {
-		return this.remapValue(this.getRenderProp('value'));
+	public getValue(): Promise<number | NumberString | null> {
+		return Promise.resolve(this.remapValue(this.getRenderProp('value')));
 	}
 
 	/**
@@ -416,16 +415,20 @@ export class KolInputNumber
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
@@ -544,7 +547,6 @@ export class KolInputNumber
 				aria-hidden="true"
 				tabIndex={-1}
 				class={`${STEP_BUTTON_CLASS} ${STEP_BUTTON_CLASS}-${direction} kol-input-container__smart-button`}
-				data-testid={`kol-input-number-step-${direction}`}
 				onClick={direction === 'up' ? this.handleStepUp : this.handleStepDown}
 				disabled={this._disabled || this._readOnly}
 			>
