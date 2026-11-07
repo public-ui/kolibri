@@ -60,6 +60,15 @@ export function buildPenpotBundle(tokens: ThemeToken[], themeName: string): Penp
 }
 
 /**
+ * The name Penpot gives a token of this bundle: the DTCG path joined with dots
+ * (`--color-primary-variant` becomes `color.primary-variant`).
+ */
+export function penpotTokenName(name: string): string {
+	const [group, ...rest] = name.replace(/^--/, '').split('-');
+	return rest.length === 0 ? group : `${group}.${rest.join('-')}`;
+}
+
+/**
  * Maps a custom property name onto a DTCG path with one group level
  * (`--color-primary-variant` becomes `color > primary-variant`). Collisions
  * between a group and a token of the same name fail loudly instead of

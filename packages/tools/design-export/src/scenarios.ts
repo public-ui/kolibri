@@ -11,12 +11,25 @@ interface ScenarioSeed {
 	content?: string;
 	/** Slotted markup, for nested components such as tree items. */
 	html?: string;
-	/** Adds the real browser states hover and focus to the default state. */
+	/** Adds the real browser states hover, focus and both at once to the default state. */
 	interactive?: boolean;
 	/** Explicit states, overriding the interactive default (e.g. focus-only for skip navigation). */
 	states?: string[];
 	id?: string;
+	/** Expands the seed to one scenario per `_variant` value; the design library combines them into one variant set. */
+	variants?: readonly string[];
+	/**
+	 * Adds a `_disabled` scenario per variant, with the same states: the design library switches
+	 * `Disabled`, `Hover` and `Focus` independently, so every combination has to exist.
+	 */
+	disableable?: boolean;
 }
+
+/**
+ * The `_variant` values of `kol-button` (schema `button-variant.ts`) without `custom`,
+ * which only names a theme hook and has no styling of its own.
+ */
+export const BUTTON_VARIANTS = ['primary', 'secondary', 'normal', 'tertiary', 'danger', 'ghost'] as const;
 
 const OPTIONS = [
 	{ label: 'Berlin', value: 'berlin' },
@@ -60,10 +73,7 @@ const SEEDS: ScenarioSeed[] = [
 	{ tag: 'kol-avatar', props: { _label: 'Elke Mustermann' } },
 	{ tag: 'kol-breadcrumb', props: { _label: 'Brotkrumen', _links: LINKS } },
 	{ tag: 'kol-badge', props: { _label: 'Neu' } },
-	{ tag: 'kol-button', props: { _label: 'Anmelden', _variant: 'primary' }, interactive: true },
-	{ tag: 'kol-button', id: 'kol-button.disabled', props: { _label: 'Anmelden', _variant: 'primary', _disabled: true } },
-	{ tag: 'kol-button', id: 'kol-button.ghost', props: { _label: 'Abbrechen', _variant: 'ghost' }, interactive: true },
-	{ tag: 'kol-button', id: 'kol-button.danger', props: { _label: 'Löschen', _variant: 'danger' }, interactive: true },
+	{ tag: 'kol-button', props: { _label: 'Anmelden' }, interactive: true, variants: BUTTON_VARIANTS, disableable: true },
 	{ tag: 'kol-button-link', props: { _label: 'Als Link', _on: CALLBACK }, interactive: true },
 	{ tag: 'kol-card', props: { _label: 'Karte' }, content: 'Inhalt der Karte.' },
 	{ tag: 'kol-combobox', props: { _label: 'Stadt', _options: OPTIONS, _on: CALLBACK }, interactive: true },
@@ -119,11 +129,49 @@ const SEEDS: ScenarioSeed[] = [
  * variants. Interactive states are real browser states (hover/focus through
  * Playwright on the interactive element in the shadow DOM).
  */
-export const DEFAULT_SCENARIOS: Scenario[] = SEEDS.map((seed) => ({
-	id: seed.id ?? seed.tag,
-	tag: seed.tag,
-	props: seed.props ?? {},
-	states: seed.states ?? (seed.interactive ? ['default', 'hover', 'focus'] : ['default']),
-	...(seed.content !== undefined ? { content: seed.content } : {}),
-	...(seed.html !== undefined ? { html: seed.html } : {}),
-}));
+export const DEFAULT_SCENARIOS: Scenario[] = SEEDS.flatMap(expandSeed);
+
+/**
+ * Style variants in KoliBri switch only through `_variant`; besides it only `_disabled`
+ * and the browser states change the look. A seed with `variants` therefore expands to
+ * the matrix `_variant` × `_disabled`, each with its states.
+ */
+function expandSeed(seed: ScenarioSeed): Scenario[] {
+	const base: Scenario = {
+		id: seed.id ?? seed.tag,
+		tag: seed.tag,
+		props: seed.props ?? {},
+		states: seed.states ?? (seed.interactive ? ['default', 'hover', 'focus', 'hover-focus'] : ['default']),
+		...(seed.content !== undefined ? { content: seed.content } : {}),
+		...(seed.html !== undefined ? { html: seed.html } : {}),
+	};
+	if (!seed.variants) {
+		return [base];
+	}
+	return seed.variants.flatMap((variant) => {
+		const enabled: Scenario = {
+			...base,
+			id: `${base.id}.${variant}`,
+			props: { ...base.props, _variant: variant },
+			axes: seed.disableable
+				? [
+						['Variant', variant],
+						['Disabled', 'false'],
+					]
+				: [['Variant', variant]],
+		};
+		if (!seed.disableable) {
+			return [enabled];
+		}
+		const disabled: Scenario = {
+			...enabled,
+			id: `${enabled.id}.disabled`,
+			props: { ...enabled.props, _disabled: true },
+			axes: [
+				['Variant', variant],
+				['Disabled', 'true'],
+			],
+		};
+		return [enabled, disabled];
+	});
+}

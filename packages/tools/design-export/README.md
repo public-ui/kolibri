@@ -55,8 +55,27 @@ Ergebnis im Zielordner:
 ## Import in Penpot
 
 1. Tokens: Penpot öffnen → Werkzeuge → Tokens → Import → ZIP (`kolibri-design-tokens.zip`) oder Ordner. Die Theme-Gruppe `Scheme` erscheint mit Light/Dark.
-2. Komponenten: SVG-Dateien ziehen oder `Datei → Importieren`; die Ebenennamen (BEM) bleiben erhalten.
+2. Komponenten: über das Plugin (siehe [Sync per Plugin](#sync-per-plugin)). Die SVG-Dateien bleiben Sichtprüf- und Gate-Artefakt.
 3. Aus Instanzen und Tokens größere Oberflächen orchestrieren; Optik kommt aus dem Token-Bundle, nicht aus Handarbeit.
+
+## Sync per Plugin
+
+`pnpm start:penpot` exportiert und startet den Server für Plugin und Export-Daten. In Penpot den Plugin-Manager öffnen (`Strg/Cmd+Alt+P`) und `http://localhost:8818/penpot-plugin/manifest.json` installieren; das Manifest ändert sich zwischen Versionen nicht, neuer Plugin-Code lädt beim nächsten Öffnen.
+
+Das Plugin importiert nicht, es gleicht ab. Jeder Lauf bringt die Bibliothek der geöffneten Datei auf den Stand des Exports:
+
+| Ebene      | Schlüssel                                                                                  | Verhalten                                                                                              |
+| ---------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| Komponente | Plugin-Daten `kolibri-key` = Szenario-ID                                                   | wird an Ort und Stelle aktualisiert, die ID bleibt; Instanzen in verknüpften Dateien bleiben verbunden |
+| Ebene      | BEM-Name je Elternebene (`#n` ab der zweiten gleichnamigen)                                | Eigenschaften werden aktualisiert, die ID bleibt; Overrides auf der Ebene bleiben erhalten             |
+| Variante   | Werte von `Variant` (`_variant`) und den Schaltern `Disabled`, `Hover`, `Focus`            | neue Werte kommen ins bestehende Variant-Set                                                           |
+| Farbe      | Token aus dem Token-Bundle (`color.primary` …), erkannt über das Light/Dark-Paar der Ebene | Fläche, Rahmen, Text und Fokusring sind an den Token gebunden                                          |
+
+- **Light/Dark**: Es gibt ein Variant-Set je Komponente. Das Scheme schaltet die Theme-Gruppe `Scheme` im Tokens-Panel für die ganze Datei um; das Token-Bundle muss dafür in der Datei importiert sein, fehlende Tokens nennt der Bericht.
+- **Vorschau** führt denselben Abgleich ohne Schreiben aus und listet jede Änderung. Ein zweiter Lauf ohne neuen Export meldet null Änderungen.
+- Nichts verschwindet stillschweigend: Komponenten, die der Export nicht mehr enthält, bekommen `kolibri-deprecated` (und einzelne zusätzlich das Namenspräfix `deprecated /`). Entfernte Ebenen stehen im Bericht, weil Overrides auf ihnen verloren gehen; das passiert nur bei geändertem DOM oder geänderter BEM-Klasse, also bei einem Theming-Breaking-Change.
+- Von Hand ergänzte Ebenen ohne `kolibri-key` bleiben unangetastet. Hauptkomponenten pflegt nur das Plugin; Designer arbeiten in Dateien, die die Bibliothek als Shared Library verknüpfen, und übernehmen Updates über den Penpot-Dialog.
+- Die Version des Exports steht in den Plugin-Daten der Bibliothek (`kolibri-version`).
 
 ## Weg zu Figma
 

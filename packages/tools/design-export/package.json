@@ -20,7 +20,8 @@
 		"start": "node dist/cli.js",
 		"test:unit": "mocha dist-test/test/**/*.spec.js",
 		"unused": "knip",
-		"pretest:unit": "tsc -p tsconfig.test.json --outDir dist-test"
+		"pretest:unit": "tsc -p tsconfig.test.json --outDir dist-test",
+		"start:penpot": "node dist/cli.js && node scripts/penpot-serve.mjs"
 	},
 	"dependencies": {
 		"@public-ui/components": "workspace:*",

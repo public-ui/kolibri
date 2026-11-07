@@ -2,11 +2,15 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import type { TokenBinding } from './bind-tokens.js';
+import { bindTokens } from './bind-tokens.js';
 import { buildIr } from './build-ir.js';
 import { buildPenpotBundle } from './dtcg.js';
 import { extractApi } from './extract-api.js';
 import { extractBem } from './extract-bem.js';
+import type { ThemeToken } from './extract-tokens.js';
 import { extractTokens, loadThemeStyles } from './extract-tokens.js';
+import type { ShapeNode } from './render/dom-to-shapes.js';
 import type { Scenario } from './render/render-svg.js';
 import { renderScenarios } from './render/render-svg.js';
 import { DEFAULT_SCENARIOS } from './scenarios.js';
@@ -61,11 +65,13 @@ export async function run(options: CliOptions = {}): Promise<void> {
 
 	let dom: Record<string, DomNode> = {};
 	let svgs: Record<string, { scheme: 'light' | 'dark'; state: string; file: string }[]> = {};
+	let shapes: Record<string, ShapeNode> = {};
 	if (options.render !== false) {
 		console.log(`Rendere ${scenarios.length} Szenarien (Playwright) …`);
 		const result = await renderScenarios(repoRoot, scenarios, penpotDir, await resolveHarnessPath());
 		dom = result.dom;
 		svgs = result.svgs;
+		shapes = result.shapes;
 		console.log(`${Object.values(svgs).flat().length} SVG-Exporte erzeugt.`);
 	}
 
@@ -86,6 +92,76 @@ export async function run(options: CliOptions = {}): Promise<void> {
 	});
 	await writeFile(join(outDir, 'ir.json'), JSON.stringify(ir, null, '\t'), 'utf-8');
 	console.log(`IR (Schema ${ir.schema}) geschrieben: ${join(outDir, 'ir.json')} — ${ir.components.length} Komponenten.`);
+
+	await writePenpotImport(penpotDir, styles.name, { components: ir.sources.components, theme: ir.sources.theme }, tokens, scenarios, shapes);
+	console.log('Penpot-Plugin-Import (penpot-import.json) geschrieben.');
+	await copyPenpotPlugin(outDir);
+}
+
+/** Copies the plugin sources next to the import data, so one server hosts both. */
+async function copyPenpotPlugin(outDir: string): Promise<void> {
+	const sourceDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'penpot-plugin');
+	const targetDir = join(outDir, 'penpot-plugin');
+	await mkdir(targetDir, { recursive: true });
+	for (const name of ['manifest.json', 'index.js', 'index.html']) {
+		const body = await readFile(join(sourceDir, name)).catch(() => null);
+		if (body) {
+			await writeFile(join(targetDir, name), body);
+		}
+	}
+}
+
+/**
+ * Writes the import payload the Penpot plugin consumes: one native shape tree per
+ * scenario and state, every color bound to the theme token it comes from (identified
+ * through the light and the dark rendering, see `bindTokens`). Entries of one `set`
+ * become one variant set in the design library; `properties` carries their values in
+ * property order, the switches `Hover` and `Focus` last. The plugin reconciles the
+ * library with this payload by `id`, so ids stay stable across releases.
+ */
+async function writePenpotImport(
+	penpotDir: string,
+	themeName: string,
+	version: { components: string; theme: string },
+	tokens: ThemeToken[],
+	scenarios: Scenario[],
+	shapes: Record<string, ShapeNode>,
+): Promise<void> {
+	const binding: TokenBinding = { ambiguous: [], unbound: [] };
+	const components = scenarios
+		.flatMap((scenario) => {
+			const variantSet = scenario.axes !== undefined || scenario.states.length > 1;
+			return scenario.states.map((state) => {
+				const light = shapes[`${scenario.id}#light#${state}`];
+				if (light) {
+					bindTokens(light, shapes[`${scenario.id}#dark#${state}`], tokens, binding);
+				}
+				return {
+					id: variantSet ? `${scenario.id}.${state}` : scenario.id,
+					tag: scenario.tag,
+					set: variantSet ? scenario.tag : undefined,
+					properties: variantSet
+						? [
+								...(scenario.axes ?? []),
+								...(scenario.states.length > 1
+									? [
+											['Hover', String(state.includes('hover'))],
+											['Focus', String(state.includes('focus'))],
+										]
+									: []),
+							]
+						: [],
+					shapes: light,
+				};
+			});
+		})
+		.filter((component) => component.shapes !== undefined);
+	const payload = { schema: '2.0', themeName, version, components };
+	await writeFile(join(penpotDir, 'penpot-import.json'), JSON.stringify(payload, null, '\t'), 'utf-8');
+	const unbound = [...new Set(binding.unbound.map((entry) => entry.slice(entry.lastIndexOf(' ') + 1)))];
+	console.log(
+		`Token-Bindung: ${unbound.length === 0 ? 'alle Farben an Tokens gebunden' : `${unbound.length} Farben ohne Token (${unbound.join(', ')})`}, ${binding.ambiguous.length} mehrdeutig.`,
+	);
 }
 
 /** The harness ships next to the compiled code; during development the source copy is the fallback. */

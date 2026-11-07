@@ -5,7 +5,10 @@ import { createServer } from 'node:http';
 import { join } from 'node:path';
 import type { DomNode } from '../types.js';
 import { collectDomTree } from './collect-dom-tree.js';
+import type { ShapeNode } from './dom-to-shapes.js';
+import { domToShapes } from './dom-to-shapes.js';
 import { domToSvg } from './dom-to-svg.js';
+import { simplifyShapes } from './simplify-shapes.js';
 
 /**
  * One render scenario: a component instance with props and the states to capture.
@@ -21,11 +24,14 @@ export interface Scenario {
 	states: string[];
 	content?: string;
 	html?: string;
+	/** Variant properties of the design library, in property order (e.g. `Variant`, `Disabled`); `State` follows from `states`. */
+	axes?: [string, string][];
 }
 
 export interface RenderResult {
 	dom: Record<string, DomNode>;
 	svgs: Record<string, { scheme: 'light' | 'dark'; state: string; file: string }[]>;
+	shapes: Record<string, ShapeNode>;
 }
 
 const MIME_TYPES: Record<string, string> = {
@@ -66,6 +72,7 @@ export async function renderScenarios(repoRoot: string, scenarios: Scenario[], o
 
 	const dom: Record<string, DomNode> = {};
 	const svgs: Record<string, { scheme: 'light' | 'dark'; state: string; file: string }[]> = {};
+	const shapes: Record<string, ShapeNode> = {};
 	const skipped: string[] = [];
 	for (const scenario of scenarios) {
 		for (const scheme of ['light', 'dark'] as const) {
@@ -90,6 +97,15 @@ export async function renderScenarios(repoRoot: string, scenarios: Scenario[], o
 				await writeFile(join(outDir, file), svg, 'utf-8');
 				if (scheme === 'light') {
 					dom[scenario.tag] = (await page.evaluate(`(${collectDomTree.toString()})(${JSON.stringify(selector)})`)) as DomNode;
+				}
+				// Shape-Baum für den Penpot-Plugin-Import je Scheme und Zustand. Schlüssel ist die
+				// Szenario-ID, weil mehrere Szenarien denselben Tag haben können.
+				{
+					const raw = (await page.evaluate(`(${domToShapes.toString()})(${JSON.stringify(selector)})`)) as ShapeNode;
+					const simplified = simplifyShapes(raw);
+					if (simplified) {
+						shapes[`${scenario.id}#${scheme}#${state}`] = simplified;
+					}
 				}
 				(svgs[scenario.tag] ??= []).push({ scheme, state, file });
 			}
@@ -120,7 +136,7 @@ export async function renderScenarios(repoRoot: string, scenarios: Scenario[], o
 
 	await browser.close();
 	await new Promise<void>((resolve) => server.close(() => resolve()));
-	return { dom, svgs };
+	return { dom, svgs, shapes };
 }
 
 /**
@@ -131,7 +147,7 @@ export async function renderScenarios(repoRoot: string, scenarios: Scenario[], o
  * the transition to settle instead of reading the start value.
  */
 async function applyState(page: import('@playwright/test').Page, host: Locator, state: string): Promise<void> {
-	if (state !== 'hover' && state !== 'focus') {
+	if (state !== 'hover' && state !== 'focus' && state !== 'hover-focus') {
 		return;
 	}
 	const interactive = host.locator('button, a, input, select, textarea').first();
@@ -140,7 +156,15 @@ async function applyState(page: import('@playwright/test').Page, host: Locator, 
 		await target.hover();
 		await page.waitForTimeout(700);
 	} else {
+		// Der Zeiger verlässt das Element, damit der Fokus-Zustand keine Hover-Styles erbt.
+		await page.mouse.move(0, 0);
+		await page.waitForTimeout(700);
 		await target.focus();
+		await page.waitForTimeout(300);
+		if (state === 'hover-focus') {
+			await target.hover();
+			await page.waitForTimeout(700);
+		}
 	}
 }
 
