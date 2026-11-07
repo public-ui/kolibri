@@ -38,8 +38,8 @@ export type PageItem = { page: number; selected: boolean } | 'separator' | null;
  * `null` for the other hidden pages. A gap before the first shown page has no separator.
  *
  * The `null` items render nothing: Stencil drops `null` children, so they do not keep positions stable.
- * The renderer keys every page and separator item instead, which keeps the activated button (and its
- * focus) across a re-render.
+ * The renderer keys every page and separator item instead, so a page keeps its button across a
+ * re-render; the pagination item returns the focus to it (`restorePageFocus`).
  */
 export const getPageItems = (page: number, count: number, boundaryCount: number, siblingCount: number): PageItem[] => {
 	const items: PageItem[] = [];

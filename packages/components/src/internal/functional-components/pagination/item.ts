@@ -157,6 +157,8 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 	);
 	let pageSizeValue: number | undefined = 1;
 	let applied: PaginationInput = {};
+	/** The page a button activated last; its button gets the focus back once that page is rendered. */
+	let pendingFocusPage: number | undefined;
 
 	store.set('label', translatePagination);
 
@@ -197,7 +199,26 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		addNavLabel(store.get('label'));
 	};
 
+	/**
+	 * The keyed page items keep their buttons across a page change, but the renderer reorders them
+	 * with `insertBefore`, and a moved element loses the focus. The button of the newly rendered page
+	 * takes it back, unless the focus has moved on to another element in the meantime.
+	 */
+	const restorePageFocus = (): void => {
+		if (pendingFocusPage === undefined || pendingFocusPage !== store.get('page')) {
+			return;
+		}
+		pendingFocusPage = undefined;
+		const button = buttons.get(`page-${store.get('page')}`).getElement();
+		const root = button?.getRootNode() as Document | ShadowRoot | undefined;
+		const focusLost = !root?.activeElement && (document.activeElement === null || document.activeElement === document.body);
+		if (button?.isConnected && focusLost) {
+			button.focus();
+		}
+	};
+
 	const handlePageClick = (event: Event, page: number): void => {
+		pendingFocusPage = page;
 		store.get('on').onClick?.(event, page);
 		const target = options.getEventTarget();
 		if (target) {
@@ -329,6 +350,7 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		sync: () => {
 			buttons.endRender();
 			pageSizeSelects.endRender();
+			restorePageFocus();
 		},
 		destroy: () => {
 			removeNavLabel(store.get('label'));
