@@ -1,7 +1,7 @@
 import type * as SchemaModule from '../../schema';
 
-jest.mock('../../../schema', () => {
-	const actual: typeof SchemaModule = jest.requireActual('../../../schema');
+jest.mock('../../schema', () => {
+	const actual: typeof SchemaModule = jest.requireActual('../../schema');
 	return { ...actual, devHint: jest.fn() };
 });
 
