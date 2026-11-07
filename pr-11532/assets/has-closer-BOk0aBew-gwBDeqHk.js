@@ -1,1 +1,0 @@
-import{l as e,x as t}from"./props-from-config-CG4O4MKB-BoFryxGU.js";var n=e(`hasCloser`,!1,t);export{n as t};
