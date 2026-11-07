@@ -208,7 +208,6 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 		}
 	}
 
-	/** Whether the node is a tree item of this tree or lies inside one. */
 	private isWithinTree(node: EventTarget | null): boolean {
 		return node instanceof Node && node !== this.host && (this.host?.contains(node) ?? false);
 	}

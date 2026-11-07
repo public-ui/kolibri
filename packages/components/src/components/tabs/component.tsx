@@ -273,7 +273,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		}
 	};
 
-	/** The focus position is kept while the focus moves between the tabs and reset once it leaves the tab list. */
 	private readonly handleFocusOut = (event: FocusEvent): void => {
 		const tablist = event.currentTarget as HTMLElement | null;
 		if (!(event.relatedTarget instanceof Node && tablist?.contains(event.relatedTarget))) {

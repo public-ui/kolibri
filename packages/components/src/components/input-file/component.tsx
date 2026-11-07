@@ -518,8 +518,7 @@ export class KolInputFile
 					>
 						<InputFileNameFC filename={this.filename} hasFile={this.hasFileSelected} />
 						<InputFC {...this.getInputProps()} />
-						{/* The transparent file input covers the button and is the only tab stop: it opens the file
-						    dialog on click, Enter and Space. The button is the visible face of that input. */}
+						{/* The transparent file input covers the button and is the only tab stop; it opens the file dialog on click, Enter and Space. */}
 						<ButtonFC
 							{...this.browseButton.getFcProps(
 								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled, _tabIndex: -1 },
