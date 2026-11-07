@@ -1,5 +1,4 @@
 import type {
-	ActionColumnHeaderCell,
 	FixedColsPropType,
 	KoliBriTableCell,
 	KoliBriTableDataType,
@@ -7,7 +6,6 @@ import type {
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableSelection,
 	KoliBriTableSelectionKey,
-	StateColumnHeaderCell,
 } from '../../../schema';
 import type { TableHeaders } from '../../props/table-headers';
 
@@ -17,7 +15,8 @@ import type { TableHeaders } from '../../props/table-headers';
  * agree on the column model.
  */
 
-export type TableDataCell = KoliBriTableCell & KoliBriTableDataType;
+/** A body or footer cell: a copy of its primary or vertical header cell, completed by the row data. */
+export type TableDataCell = KoliBriTableHeaderCell & KoliBriTableDataType;
 export type TableDataRow = TableDataCell[];
 
 /**
@@ -26,11 +25,11 @@ export type TableDataRow = TableDataCell[];
  * rendered column-wise (`horizontal: false`).
  */
 export type PrimaryHeaders = {
-	cells: KoliBriTableHeaderCell[];
+	cells: KoliBriTableHeaderCellWithLogic[];
 	horizontal: boolean;
 };
 
-const collectKeyedHeaderCells = (rows: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCell[] =>
+const collectKeyedHeaderCells = (rows: KoliBriTableHeaderCellWithLogic[][]): KoliBriTableHeaderCellWithLogic[] =>
 	rows.flatMap((cells) => cells.filter((cell) => typeof cell.key === 'string' || typeof cell.render === 'function'));
 
 export const getPrimaryHeaders = (headers: TableHeaders): PrimaryHeaders => {
@@ -128,22 +127,14 @@ export const getOffsetString = (offsets: number[], index: number | undefined, le
 };
 
 /**
- * Finds the action or state column definition for a given data column.
+ * Finds the header cell that defines a given data column. Its `type` tells an action or state
+ * column apart.
  */
-export const getColumnHeaderForType = (
-	headers: TableHeaders,
-	primaryHeaders: PrimaryHeaders,
-	colIndex: number,
-	type: 'action' | 'state',
-): ActionColumnHeaderCell | StateColumnHeaderCell | undefined => {
+export const getPrimaryHeaderCell = (headers: TableHeaders, primaryHeaders: PrimaryHeaders, colIndex: number): KoliBriTableHeaderCellWithLogic | undefined => {
 	const directionHeaders = primaryHeaders.horizontal ? headers.horizontal : headers.vertical;
 	if (directionHeaders.length === 0) return undefined;
 
-	const header = primaryHeaders.cells[colIndex] as KoliBriTableHeaderCellWithLogic | undefined;
-	if (header?.type === type) {
-		return header;
-	}
-	return undefined;
+	return primaryHeaders.cells[colIndex];
 };
 
 type DataFieldOptions = {
