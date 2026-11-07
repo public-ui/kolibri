@@ -2,14 +2,13 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
 import type { HeadingLevel } from '../../props';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { resolveFcProps } from '../props-from-config';
 import { renderLabelWithLang } from '../span/component';
 import { headingPropsConfig, type HeadingApi } from './api';
 
-const headingBem = bem.forBlock('kol-heading');
 const headlineBem = bem.forBlock('kol-headline');
 
 type HeadlineTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'strong';
@@ -24,20 +23,20 @@ export const HeadingFC: FC<FunctionalComponentProps<HeadingApi>> = (props) => {
 
 	if (!secondaryHeadline) {
 		return (
-			<HeadlineTag class={clsx(headingBem(), headlineBem({ [HeadlineTag]: true, single: true }))}>
+			<BemRootNodeFC component={HeadlineTag} block="kol-heading" class={headlineBem({ [HeadlineTag]: true, single: true })}>
 				{renderLabelWithLang(label)}
 				<slot name="expert" slot="expert" />
-			</HeadlineTag>
+			</BemRootNodeFC>
 		);
 	}
 
 	return (
-		<hgroup class={headingBem({ group: true })}>
+		<BemRootNodeFC component="hgroup" block="kol-heading" modifiers={{ group: true }}>
 			<HeadlineTag class={headlineBem({ [HeadlineTag]: true, group: true, primary: true })}>
 				{renderLabelWithLang(label)}
 				<slot name="expert" slot="expert" />
 			</HeadlineTag>
 			<p class={headlineBem({ group: true, secondary: true })}>{secondaryHeadline}</p>
-		</hgroup>
+		</BemRootNodeFC>
 	);
 };

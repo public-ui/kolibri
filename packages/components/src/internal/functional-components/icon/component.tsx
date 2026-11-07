@@ -3,18 +3,19 @@ import { h } from '@stencil/core';
 
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { IconApi } from './api';
 
 const iconBem = bem.forBlock('kol-icon');
-const BEM_CLASS_ICON = iconBem();
 const BEM_CLASS_ICON__ICON = iconBem('icon');
 
 export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ class: classNames, icons, label, ...htmlAttributes }) => {
 	// label is always a normalized string ('' when unset — see labelProp definition)
 	const hasAriaLabel = label?.length > 0;
 	return (
-		<i
+		<BemRootNodeFC
+			component="i"
 			{...htmlAttributes}
 			/**
 			 * Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen
@@ -24,7 +25,8 @@ export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ class: className
 			 */
 			aria-hidden={hasAriaLabel ? undefined : 'true'}
 			aria-label={hasAriaLabel ? label : undefined}
-			class={clsx(BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, icons, classNames)}
+			block="kol-icon"
+			class={clsx(BEM_CLASS_ICON__ICON, icons, classNames)}
 			role={hasAriaLabel ? 'img' : 'presentation'}
 		/>
 	);

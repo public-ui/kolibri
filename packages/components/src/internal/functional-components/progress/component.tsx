@@ -5,6 +5,7 @@ import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 
 import type { ProgressVariantType } from '../../props';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { resolveFcProps } from '../props-from-config';
 import { renderLabelWithLang } from '../span/component';
@@ -79,7 +80,7 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 		: translate('kol-live-value-bounded', { placeholders: { value: String(liveProgressValue), max: String(max), unit } });
 
 	return (
-		<div class={progressBem()}>
+		<BemRootNodeFC block="kol-progress">
 			<div aria-hidden="true" class={progressBem(variant === 'cycle' ? 'cycle' : 'bar')}>
 				{variant === 'bar' && label && <div class={progressBem('bar-label')}>{renderLabelWithLang(label)}</div>}
 				{createProgressSVG(variant, max, value)}
@@ -102,6 +103,6 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 			<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 				{liveValueText}
 			</span>
-		</div>
+		</BemRootNodeFC>
 	);
 };

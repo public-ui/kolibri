@@ -4,6 +4,7 @@ import { translate } from '../../../i18n';
 
 import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { renderLabelWithLang } from '../span/component';
 import type { MeterApi } from './api';
@@ -90,7 +91,7 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
 
 	return (
-		<div class={meterBem({ vertical: isVertical })}>
+		<BemRootNodeFC block="kol-meter" modifiers={{ vertical: isVertical }}>
 			<div class={meterBem('bar')}>
 				<div class={meterBem('bar-label')}>
 					{renderLabelWithLang(label)}
@@ -121,6 +122,6 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 					<span class={meterBem('unit')}>{unit}</span>
 				</span>
 			</div>
-		</div>
+		</BemRootNodeFC>
 	);
 };
