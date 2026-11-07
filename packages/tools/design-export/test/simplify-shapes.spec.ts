@@ -49,18 +49,28 @@ describe('simplifyShapes', () => {
 		assert.equal(simplifyShapes(tree)?.children.length, 2);
 	});
 
-	it('gives every state the same structure: focus ring, opacity and minimum size move onto the wrapped box', () => {
+	it('keeps the interactive element in every state, so all states have the same layers', () => {
 		const inner = box('kol-button__text', { fill: '#003a5c', radius: [5, 5, 5, 5] });
-		const wrapper = (extra: Partial<ShapeNode>) => box('kol-button__interactive-element', { minHeight: 44, radius: [5, 5, 5, 5], ...extra }, [inner]);
+		const button = (extra: Partial<ShapeNode>) => box('kol-button__interactive-element', { interactive: true, minHeight: 44, ...extra }, [inner]);
+		const names = (node?: ShapeNode): string[] => (node ? [node.name, ...node.children.flatMap(names)] : []);
 
-		const focused = simplifyShapes(wrapper({ outline: { color: '#005a8f', offset: 2, width: 3 } }), 'kol-button');
-		const disabled = simplifyShapes(wrapper({ opacity: 0.5 }), 'kol-button');
+		const plain = simplifyShapes(button({}), 'kol-button');
+		const focused = simplifyShapes(button({ outline: { color: '#005a8f', offset: 2, width: 3 } }), 'kol-button');
+		const disabled = simplifyShapes(button({ opacity: 0.5 }), 'kol-button');
 
-		assert.equal(focused?.name, 'kol-button__text');
-		assert.deepEqual(focused?.outline, { color: '#005a8f', offset: 2, radius: [5, 5, 5, 5], width: 3 });
-		assert.equal(focused?.minHeight, 44);
-		assert.equal(disabled?.name, 'kol-button__text');
+		assert.deepEqual(names(plain), ['kol-button__interactive-element', 'kol-button__text']);
+		assert.deepEqual(names(focused), names(plain));
+		assert.deepEqual(names(disabled), names(plain));
+		assert.equal(focused?.outline?.width, 3);
 		assert.equal(disabled?.opacity, 0.5);
+	});
+
+	it('moves opacity and minimum size of a plain wrapper onto the box it wraps', () => {
+		const inner = box('kol-badge__text', { fill: '#003a5c' });
+		const folded = simplifyShapes(box('kol-badge__wrapper', { minHeight: 44, opacity: 0.5 }, [inner]), 'kol-badge');
+		assert.equal(folded?.name, 'kol-badge__text');
+		assert.equal(folded?.opacity, 0.5);
+		assert.equal(folded?.minHeight, 44);
 	});
 
 	it('keeps a wrapper that would hand a focus ring or opacity to a text', () => {
