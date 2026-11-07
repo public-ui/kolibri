@@ -9,41 +9,48 @@ import { getBlockBem } from './block-bem';
 
 type FCChildren = Parameters<FC>[1];
 
-/** The attributes each root element accepts, so a `component` only takes the attributes of its element. */
-type RootElementAttributes = {
-	abbr: JSXBase.HTMLAttributes<HTMLElement>;
-	article: JSXBase.HTMLAttributes<HTMLElement>;
-	button: JSXBase.ButtonHTMLAttributes<HTMLButtonElement>;
-	details: JSXBase.DetailsHTMLAttributes<HTMLElement>;
-	dialog: JSXBase.DialogHTMLAttributes<HTMLDialogElement>;
-	div: JSXBase.HTMLAttributes<HTMLDivElement>;
-	fieldset: JSXBase.FieldsetHTMLAttributes<HTMLFieldSetElement>;
-	figure: JSXBase.HTMLAttributes<HTMLElement>;
-	h1: JSXBase.HTMLAttributes<HTMLHeadingElement>;
-	h2: JSXBase.HTMLAttributes<HTMLHeadingElement>;
-	h3: JSXBase.HTMLAttributes<HTMLHeadingElement>;
-	h4: JSXBase.HTMLAttributes<HTMLHeadingElement>;
-	h5: JSXBase.HTMLAttributes<HTMLHeadingElement>;
-	h6: JSXBase.HTMLAttributes<HTMLHeadingElement>;
-	hgroup: JSXBase.HTMLAttributes<HTMLElement>;
-	i: JSXBase.HTMLAttributes<HTMLElement>;
-	img: JSXBase.ImgHTMLAttributes<HTMLImageElement>;
-	label: JSXBase.LabelHTMLAttributes<HTMLLabelElement>;
-	li: JSXBase.LiHTMLAttributes<HTMLLIElement>;
-	nav: JSXBase.HTMLAttributes<HTMLElement>;
-	span: JSXBase.HTMLAttributes<HTMLSpanElement>;
-	strong: JSXBase.HTMLAttributes<HTMLElement>;
-	svg: JSXBase.SVGAttributes<SVGSVGElement>;
-};
+/** The elements a component FC can render as its root. */
+export type BemRootNodeComponent =
+	| 'abbr'
+	| 'article'
+	| 'button'
+	| 'details'
+	| 'dialog'
+	| 'div'
+	| 'fieldset'
+	| 'figure'
+	| 'h1'
+	| 'h2'
+	| 'h3'
+	| 'h4'
+	| 'h5'
+	| 'h6'
+	| 'hgroup'
+	| 'i'
+	| 'img'
+	| 'label'
+	| 'li'
+	| 'nav'
+	| 'span'
+	| 'strong'
+	| 'svg';
 
-export type BemRootNodeComponent = keyof RootElementAttributes;
+/**
+ * The global HTML attributes plus the element attributes the roots of the component FCs use. One
+ * merged type instead of one type per element: resolving a union of per-element attribute types for
+ * every call site exceeds the union limit of TypeScript.
+ */
+type BemRootNodeAttributes = Partial<Omit<JSXBase.HTMLAttributes<HTMLElement>, 'class' | 'ref'>> &
+	Partial<Pick<JSXBase.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled' | 'type'>> &
+	Partial<Pick<JSXBase.DetailsHTMLAttributes<HTMLElement>, 'open'>> &
+	Partial<Pick<JSXBase.DialogHTMLAttributes<HTMLDialogElement>, 'onCancel' | 'onClose'>> &
+	Partial<Pick<JSXBase.ImgHTMLAttributes<HTMLImageElement>, 'alt' | 'loading' | 'sizes' | 'src' | 'srcset'>> &
+	Partial<Omit<JSXBase.SVGAttributes<SVGSVGElement>, 'class' | 'ref' | keyof JSXBase.HTMLAttributes<HTMLElement>>> & {
+		/** Receives the root element, whichever element `component` names. */
+		ref?: (element?: never) => void;
+	};
 
-/** Distributes over a union of elements, so an attribute of any of them is accepted. */
-type RootAttributes<TComponent extends BemRootNodeComponent> = TComponent extends BemRootNodeComponent
-	? Partial<Omit<RootElementAttributes[TComponent], 'class'>>
-	: never;
-
-type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema, TComponent extends BemRootNodeComponent = 'div'> = {
+type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 	/**
 	 * BEM block name — must be a key registered in `KoliBriComponentsBemSchema`.
 	 * Constrains `modifiers` to the exact modifier set defined in `bem-registry.ts`.
@@ -64,11 +71,35 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema, TCompon
 	 * Element of the root node, `div` by default: the semantic element of the component, e.g.
 	 * `article` for a card, `button` for a component that is a single button, `dialog` for a dialog,
 	 * `h1`–`h6` or `strong` for a heading, `img` for an image, `label` around the native control of a
-	 * checkbox, `nav` for a navigation or `svg` for a graphic. The remaining attributes are typed for
-	 * that element.
+	 * checkbox, `nav` for a navigation or `svg` for a graphic.
 	 */
-	component?: TComponent;
-} & RootAttributes<TComponent>;
+	component?: BemRootNodeComponent;
+} & BemRootNodeAttributes;
+
+/** The props as the implementation reads them, independent of the element. */
+type BemRootNodeImplementationProps = {
+	block: keyof KoliBriComponentsBemSchema;
+	modifiers?: Record<string, boolean | undefined>;
+	class?: JSXBase.HTMLAttributes<HTMLElement>['class'];
+	component?: BemRootNodeComponent;
+	[attribute: string]: unknown;
+};
+
+const renderBemRootNode = (props: BemRootNodeImplementationProps, children: FCChildren): ReturnType<typeof h> => {
+	const blockBem = getBlockBem(props.block) as unknown as (modifiers?: BemRootNodeImplementationProps['modifiers']) => string;
+	const className = clsx(blockBem(props.modifiers), props.class);
+	// The class takes the position of `block`, so the root keeps the attribute order of the call site.
+	const attributes: Record<string, unknown> = {};
+	for (const [key, value] of Object.entries(props)) {
+		if (key === 'block') {
+			attributes.class = className;
+		} else if (key !== 'class' && key !== 'component' && key !== 'modifiers') {
+			attributes[key] = value;
+		}
+	}
+	const Root = (props.component ?? 'div') as 'div';
+	return <Root {...attributes}>{children}</Root>;
+};
 
 /**
  * Single-Root BEM wrapper for all Skeleton Functional Components.
@@ -96,20 +127,7 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema, TCompon
  * );
  * ```
  */
-export const BemRootNodeFC = <TBlock extends keyof KoliBriComponentsBemSchema, TComponent extends BemRootNodeComponent = 'div'>(
-	props: BemRootNodeFCProps<TBlock, TComponent>,
+export const BemRootNodeFC = renderBemRootNode as unknown as <TBlock extends keyof KoliBriComponentsBemSchema>(
+	props: BemRootNodeFCProps<TBlock>,
 	children: FCChildren,
-) => {
-	const className = clsx(getBlockBem(props.block)(props.modifiers), props.class);
-	// The class takes the position of `block`, so the root keeps the attribute order of the call site.
-	const attributes: Record<string, unknown> = {};
-	for (const [key, value] of Object.entries(props)) {
-		if (key === 'block') {
-			attributes.class = className;
-		} else if (key !== 'class' && key !== 'component' && key !== 'modifiers') {
-			attributes[key] = value;
-		}
-	}
-	const Root = (props.component ?? 'div') as 'div';
-	return <Root {...attributes}>{children}</Root>;
-};
+) => ReturnType<typeof h>;
