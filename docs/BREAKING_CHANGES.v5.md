@@ -151,3 +151,38 @@ import { KolTooltipWc } from '@public-ui/components';
 // The element and its exports no longer exist. Remove the usage; tooltips of
 // KoliBri components keep working without it.
 ```
+
+## Unified header types of `kol-table-stateless` and `kol-table-stateful`
+
+`kol-table-stateless` and `kol-table-stateful` describe their headers with the same type,
+`KoliBriTableHeaders`. The parallel header types of `kol-table-stateless` are **removed**:
+
+| Removed                    | Replacement                        |
+| -------------------------- | ---------------------------------- |
+| `TableHeaderCells`         | `KoliBriTableHeaders`              |
+| `TableHeaderCellsPropType` | `Stringified<KoliBriTableHeaders>` |
+
+The internal `PropTableHeaderCells` type and the `validateTableHeaders` validator are removed as well;
+`kol-table-stateless` validates `_headers` itself.
+
+The `_headers` property of `kol-table-stateless` is typed as `Stringified<KoliBriTableHeaders>`. Its
+header cells are `KoliBriTableHeaderCellWithLogic`, so action columns (`type: 'action'`) and state
+columns (`type: 'state'`) type-check for the stateless table, too. The payloads of the
+`onChangeHeaderCells` and `onSortChange` callbacks (`ChangeHeaderCellsEventPayload`,
+`SortChangeEventPayload['headers']`) are `KoliBriTableHeaders` as well.
+
+**Before (v4):**
+
+```ts
+import type { TableHeaderCells } from '@public-ui/components';
+
+const headers: TableHeaderCells = { horizontal: [[{ key: 'name', label: 'Name' }]] };
+```
+
+**After (v5):**
+
+```ts
+import type { KoliBriTableHeaders } from '@public-ui/components';
+
+const headers: KoliBriTableHeaders = { horizontal: [[{ key: 'name', label: 'Name' }]] };
+```

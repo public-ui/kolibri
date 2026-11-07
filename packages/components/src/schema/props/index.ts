@@ -102,7 +102,6 @@ export * from './table-callbacks';
 export * from './table-data';
 export * from './table-data-foot';
 export * from './table-fixed-cols';
-export * from './table-header-cells';
 export * from './table-loading';
 export * from './table-selection';
 export * from './toolbar-items';

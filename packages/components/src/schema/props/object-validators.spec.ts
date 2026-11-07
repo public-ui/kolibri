@@ -18,8 +18,6 @@ import { checkHasMsg, getMsgType, isMsgDefinedAndInputTouched, normalizeMsg, val
 import { validateTableCallbacks, validateTableStatefulCallbacks } from './table-callbacks';
 import type { FixedColsPropType } from './table-fixed-cols';
 import { validateFixedCols } from './table-fixed-cols';
-import type { TableHeaderCellsPropType } from './table-header-cells';
-import { validateTableHeaders } from './table-header-cells';
 import type { TableSelectionPropType } from './table-selection';
 import { validateTableSelection } from './table-selection';
 import type { VariantClassNamePropType } from './variant-class-name';
@@ -306,49 +304,6 @@ describe('legacy object prop validators', () => {
 		])('isMsgDefinedAndInputTouched(%p, %p) is %p', (msg, touched, expected) => {
 			expect(isMsgDefinedAndInputTouched(msg, touched)).toBe(expected);
 			expect(checkHasMsg(msg, touched)).toBe(expected);
-		});
-	});
-
-	describe('validateTableHeaders', () => {
-		const headers = { horizontal: [[{ key: 'name', label: 'Name', width: 100 }]], vertical: [[{ label: 'Row' }]] };
-
-		it('stores a valid object', () => {
-			const component = createLegacyComponent();
-			validateTableHeaders(component, headers);
-			expect(component.state._headers).toBe(headers);
-		});
-
-		it('parses a JSON string', () => {
-			const component = createLegacyComponent();
-			validateTableHeaders(component, JSON.stringify(headers));
-			expect(component.state._headers).toEqual(headers);
-		});
-
-		it('stores an object without rows', () => {
-			const component = createLegacyComponent();
-			validateTableHeaders(component, {});
-			expect(component.state._headers).toEqual({});
-		});
-
-		it.each([
-			[{ horizontal: [{ label: 'Name' }] }],
-			[{ vertical: 'rows' }],
-			[{ horizontal: [[{ label: 'Name', width: '100px' }]] }],
-			[null],
-			[undefined],
-			['text'],
-		])('keeps the state and warns for %p', (value) => {
-			const component = createLegacyComponent({ _headers: {} });
-			validateTableHeaders(component, value as TableHeaderCellsPropType);
-			expect(component.state._headers).toEqual({});
-			expect(warningsFor('_headers')).toHaveLength(1);
-		});
-
-		it.each([[''], ['[object Object]']])('ignores the string "%s" silently', (value) => {
-			const component = createLegacyComponent({ _headers: {} });
-			validateTableHeaders(component, value);
-			expect(component.state._headers).toEqual({});
-			expect(debugSpy).not.toHaveBeenCalled();
 		});
 	});
 

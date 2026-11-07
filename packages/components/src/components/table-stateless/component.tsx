@@ -8,11 +8,12 @@ import type {
 	HasSettingsMenuPropType,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
+	KoliBriTableHeaders,
 	LabelLangSegmentsPropType,
+	Stringified,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
-	TableHeaderCellsPropType,
 	TableLoadingPropType,
 	TableSelectionPropType,
 	TableStatelessProps,
@@ -90,10 +91,10 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headers?: TableHeaderCellsPropType = undefined;
+	@Prop() public _headers?: Stringified<KoliBriTableHeaders> = undefined;
 
 	@Watch('_headers')
-	public watchHeaders(value?: TableHeaderCellsPropType): void {
+	public watchHeaders(value?: Stringified<KoliBriTableHeaders>): void {
 		this.applyHeaders(value ? value : this._headerCells);
 	}
 
@@ -101,10 +102,10 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	 * @deprecated Will be removed in the future. Use _headers instead.
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headerCells?: TableHeaderCellsPropType = undefined;
+	@Prop() public _headerCells?: Stringified<KoliBriTableHeaders> = undefined;
 
 	@Watch('_headerCells')
-	public watchHeaderCells(value?: TableHeaderCellsPropType): void {
+	public watchHeaderCells(value?: Stringified<KoliBriTableHeaders>): void {
 		this.applyHeaders(this._headers ? this._headers : value);
 	}
 
