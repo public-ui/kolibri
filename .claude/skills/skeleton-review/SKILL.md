@@ -1,20 +1,28 @@
 ---
 name: skeleton-review
-description: Reviewt genau eine KoliBri-Stencil-Komponente gegen die Skeleton-Architektur (BaseWebComponent, Komponenten-FC mit BemRootNodeFC als Wurzel, flaches DOM) und die Regeln aus ARC42 und AGENTS.md und legt einen priorisierten Optimierungsplan als Issue mit dem Label `skeleton-review` an. Nur Report, keine Code-Änderung. Nutze diesen Skill, wenn der Nutzer oder eine Routine eine Komponente gegen die Spezifikation prüfen lassen will – auch bei Formulierungen wie "Skeleton-Review", "nächste Komponente reviewen", "Komponente gegen Spec prüfen", "Optimierungsplan für Komponente" oder "welche Komponente weicht von der Architektur ab".
+description: Reviewt eine KoliBri-Stencil-Komponente (oder im Sammel-Review alle) gegen die Skeleton-Architektur (BaseWebComponent, Komponenten-FC mit BemRootNodeFC als Wurzel, flaches DOM) und die Regeln aus ARC42 und AGENTS.md und legt einen priorisierten Optimierungsplan als Issue mit dem Label `skeleton-review` an. Nur Report, keine Code-Änderung. Nutze diesen Skill, wenn der Nutzer oder eine Routine eine Komponente gegen die Spezifikation prüfen lassen will – auch bei Formulierungen wie "Skeleton-Review", "nächste Komponente reviewen", "Komponente gegen Spec prüfen", "Optimierungsplan für Komponente", "alle Komponenten reviewen" oder "welche Komponente weicht von der Architektur ab".
 ---
 
 # Skeleton-Review einer Komponente
 
 Die Komponenten von KoliBri werden schrittweise auf die Skeleton-Architektur umgestellt. Dieser Skill
-prüft **genau eine Komponente pro Aufruf** gegen die Architektur- und Styling-Regeln und hält das
-Ergebnis als priorisierten Optimierungsplan in einem GitHub-Issue fest. Die Issues sind zugleich das
-Gedächtnis des Skills: Eine Komponente mit Review-Issue kommt in dieser Runde nicht erneut dran.
+prüft **eine Komponente pro Aufruf** gegen die Architektur- und Styling-Regeln und hält das Ergebnis
+als priorisierten Optimierungsplan in einem GitHub-Issue fest. Die Issues sind zugleich das Gedächtnis
+des Skills: Eine Komponente mit Review-Issue kommt in dieser Runde nicht erneut dran. Auf Wunsch prüft
+er mehrere oder alle Komponenten in einem Sammel-Review (Abschnitt 7).
 
-Der Skill **ändert keine Dateien**: kein Commit, kein Push, kein PR. Das Einzige, was er nach außen
-schreibt, ist das Review-Issue. Die Umsetzung der Befunde ist ein eigener Schritt, bei Architektur-
-Verstößen typischerweise über den Skill `migrate-to-skeleton`.
+Der Skill **ändert keine Dateien**: kein Commit, kein Push, kein PR. Nach außen schreibt er nur
+Issues und Issue-Kommentare: das Review-Issue, im Sammel-Review die Cluster-Issues und das Epic, und
+nach Rückfrage den Kommentar zu einem bereits gelösten Issue. Die Umsetzung der Befunde ist ein eigener
+Schritt, bei Architektur-Verstößen typischerweise über den Skill `migrate-to-skeleton`.
 
 Ausgabe und Issue auf Deutsch.
+
+Geprüft wird der Branch `release/4`, sofern der Nutzer keinen anderen nennt. Code, Doku, Themes und
+Skill werden ausschließlich auf diesem Branch gelesen. Jedes Issue nennt Branch und Commit, gegen den
+geprüft wurde, und alle Datei:Zeile-Angaben beziehen sich auf diesen Commit.
+
+Für mehrere oder alle Komponenten in einem Durchgang gilt zusätzlich Abschnitt 7 (Sammel-Review).
 
 ## 1. Spezifikation und Vorrang
 
@@ -76,6 +84,12 @@ Für die gewählte Komponente lesen:
 - das React-Sample unter `packages/samples/react` (`basic.tsx`, Eintrag in `routes.ts`)
 - offene Issues und PRs, die die Komponente nennen (`gh search issues` / `gh search prs` bzw.
   `search_issues` / `search_pull_requests`)
+- gemergte PRs seit dem letzten Review der Komponente, damit bereits Behobenes nicht erneut gemeldet
+  wird
+
+Ist ein offenes Issue im Code bereits gelöst, das mit Beleg (Datei:Zeile, Commit bzw. PR, der es
+behoben hat) in der Ausgabe nennen und vorschlagen, es zu schließen. Geschlossen wird es erst nach
+Rückfrage beim Nutzer, mit einem Kommentar, der den Beleg enthält.
 
 ## 4. Prüfen
 
@@ -83,7 +97,9 @@ Für die gewählte Komponente lesen:
 
 Ein Verstoß hat den Schweregrad **Blocker (Architektur)**.
 
-- **R1:** Jede Stencil-Komponente erbt von `BaseWebComponent`. Fehlt das, auf den Skill
+- **R1:** Jede Stencil-Komponente erbt von `BaseWebComponent`, direkt oder über eine Basisklasse wie
+  `BaseFormFieldWebComponent` oder `BaseTextInputWebComponent`. Die Vererbungskette prüfen; eine Suche
+  nach dem Klassennamen in `component.tsx` reicht nicht. Fehlt die Vererbung, auf den Skill
   `migrate-to-skeleton` als Lösungsweg verweisen.
 - **R2:** `render()` rendert in `<Host>` genau eine Komponenten-FC (z. B. `<AlertFC>`) und keine freie
   Markup-Struktur.
@@ -108,11 +124,11 @@ neuen BEM-Klassen nennen.
 
 Vor dem Melden das umschlossene Kind einordnen:
 
-| Umschlossenes Kind                                                                                                                        | Bewertung                                                                                                                                                                                                           |
-| ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Element der eigenen Komponente (Klasse `kol-<block>__…`)                                                                                  | melden: Das Kind wird zur Wurzel bzw. zum Element und übernimmt Block oder Elementklasse des Wrappers.                                                                                                              |
-| Teilbaustein, der Block oder Elementklasse vom Aufrufer übernimmt (z. B. `DialogFC` mit `blockClass` in drawer)                           | melden: Der Teilbaustein bekommt die Klasse des Wrappers, es entsteht kein zweiter Block.                                                                                                                           |
-| Wurzel einer eingebetteten Komponenten-FC mit eigenem Block (`ButtonFC` → `kol-button`, `LinkFC` → `kol-link`, `BadgeFC` → `kol-badge` …) | **nicht als Befund melden.** Der eigene Block der eingebetteten FC ist korrekt: Über ihn erreichen Basis-Styles und Theme die eingebettete Komponente (ARC42, „Embedded Components (Items)“, Designentscheidung 5). |
+| Umschlossenes Kind                                                                                                                        | Bewertung                                                                                                                                                                                                                    |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Element der eigenen Komponente (Klasse `kol-<block>__…`)                                                                                  | melden: Das Kind wird zur Wurzel bzw. zum Element und übernimmt Block oder Elementklasse des Wrappers.                                                                                                                       |
+| Teilbaustein, der Block oder Elementklasse vom Aufrufer übernimmt (z. B. `DialogFC` mit `blockClass` in drawer)                           | melden: Der Teilbaustein bekommt die Klasse des Wrappers, es entsteht kein zweiter Block.                                                                                                                                    |
+| Wurzel einer eingebetteten Komponenten-FC mit eigenem Block (`ButtonFC` → `kol-button`, `LinkFC` → `kol-link`, `BadgeFC` → `kol-badge` …) | **nicht als Befund melden.** Der eigene Block der eingebetteten FC ist korrekt: Über ihn erreichen Basis-Styles und Theme die eingebettete Komponente (ARC42-SKELETON, „Embedded Components (Items)“, Designentscheidung 5). |
 
 Für den dritten Fall gilt:
 
@@ -146,10 +162,16 @@ Weitere Regeln:
   beobachteten Member.
 - **Basis-SCSS** (Layer `kol-global`/`kol-component`): kein `margin`/`padding`, keine Farben, kein
   `color-scheme`, `light-dark()` oder `prefers-color-scheme`, kein `overflow: hidden`, kein
-  `!important`, keine `@layer` in Utility-Dateien.
+  `!important`, keine `@layer` in Utility-Dateien. Folgende Fälle sind keine Verstöße, sondern werden
+  mit ⚖ als Entscheidungsbedarf geführt, solange AGENTS.md keine Ausnahme dafür nennt: `!important` in
+  `forced-colors`-, `prefers-reduced-motion`-, `[hidden]`- und `.visually-hidden`-Regeln;
+  `overflow: hidden` für `text-overflow: ellipsis` und in `.visually-hidden`; 0-Resets der
+  User-Agent-Abstände (#10756).
 - **Theme-SCSS:** flache BEM-Struktur, kein `$root` und kein `@at-root`, nur Tokens referenzieren, keine
   eigenen Scheme-Media-Queries, keine Redundanz zum Basis-Styling.
 - **CSS Custom Properties:** nur dokumentierte `--kol-<komponente>-<name>`-Tokens, sonst SASS-Variablen.
+  Custom Properties, die JavaScript zur Laufzeit setzt (z. B. per `style={{ '--level': … }}`), lassen sich
+  nicht durch SASS ersetzen; bei ihnen nur das Namensschema prüfen und mit ⚖ führen.
 - **Inline-Doku:** keine Historie, keine Wiederholung des Codes.
 - **Tests und Sample:** Unit- und Snapshot-Tests sowie das React-Sample sind vorhanden und aussagekräftig.
 - **Konventionen:** keine Barrel-Dateien; Listen, Imports und Union-Literale alphabetisch.
@@ -161,11 +183,22 @@ Befunde absteigend nach Schweregrad sortieren:
 | Schweregrad           | Bedeutung                                                                                  |
 | --------------------- | ------------------------------------------------------------------------------------------ |
 | Blocker (Architektur) | Verstoß gegen R1–R5                                                                        |
-| Blocker (Bug/A11y)    | fehlerhaftes Verhalten oder Barriere                                                       |
+| Blocker (Bug/A11y)    | nachvollziehbares Fehlverhalten oder Barriere (Eingabe → falsches Ergebnis)                |
 | Breaking API          | erfordert ein Major-Release                                                                |
 | Breaking Theming      | DOM-/BEM-Änderung; Minor-Release mit Label `release:theming`, alle Themes im Repo anpassen |
 | UX/visuell            | sichtbare Abweichung ohne Bruch                                                            |
 | Polish                | Konventionen, Doku, Kleinigkeiten                                                          |
+
+„Blocker (Bug/A11y)“ nur vergeben, wenn sich ein konkreter Ablauf mit falschem Ergebnis benennen lässt.
+Ein Änderungswunsch am dokumentierten Verhalten ist „UX/visuell“, ein verletzter Vertrag ohne
+sichtbare Folge „Polish“.
+
+Markierungen:
+
+- **⚑** — Der Fehler ist aus Code und Event-Fluss abgeleitet, aber nicht im Browser beobachtet. Der
+  Vorschlag beginnt dann mit einem e2e-Test, der den Fehler reproduziert.
+- **⚖** — Die Regel kollidiert mit einer berechtigten Nutzung. Statt einer Korrektur wird eine
+  Entscheidung vorgeschlagen: umsetzen oder als Ausnahme in AGENTS.md und diesem Skill dokumentieren.
 
 Pro Befund:
 
@@ -175,6 +208,9 @@ Pro Befund:
 - Vorschlag zur Behebung in 1–2 Sätzen
 - Aufwand: S (unter 2 h), M (bis 1 Tag), L (mehr als 1 Tag)
 - bestehendes Issue oder PR, falls vorhanden
+- Darstellung: ob der Fix Pixel ändert. Ein Refactor muss ohne Bild-Diff bleiben
+  (`zero-visual-delta-handoff`). Ein Bugfix, der Pixel ändern muss, nennt die betroffenen Snapshots;
+  sie werden auf der Review-Seite des PRs bewusst freigegeben (`docs/visual-review.md`).
 
 Nur Befunde mit Beleg melden. Was unsicher ist, unter „Offene Fragen“ führen statt als Befund.
 
@@ -207,7 +243,10 @@ Vor dem Anlegen des Issues jeden Cluster auf Widersprüche prüfen und gefundene
 ## 6. Issue anlegen und ausgeben
 
 - Titel: `Skeleton-Review: <ordnername>`
-- Label: `skeleton-review`
+- Label: `skeleton-review`. Gibt es das Label im Repo nicht, das Issue ohne Label anlegen, im Chat
+  darauf hinweisen und für die Auswahl in Abschnitt 2 zusätzlich nach dem Titel suchen.
+- Unmittelbar vor dem Anlegen jeden Befund gegen den aktuellen Kopf des geprüften Branches nachprüfen.
+  Was inzwischen behoben ist, entfällt; geänderte Zeilen werden aktualisiert.
 - Inhalt:
 
 ```markdown
@@ -245,3 +284,28 @@ Theming-Änderungen werden nach dem Skill `zero-visual-delta-handoff` abgesicher
 ```
 
 Zum Schluss im Chat den Link zum Issue und die Zusammenfassung ausgeben.
+
+## 7. Sammel-Review mehrerer Komponenten
+
+Verlangt der Nutzer ein Review mehrerer oder aller Komponenten, gelten die Abschnitte 1–5 je
+Komponente, mit diesen Abweichungen:
+
+1. **Zwei Durchläufe.** Durchlauf 1 sammelt die Befunde je Komponente. Durchlauf 2 prüft jeden Befund
+   kritisch am Code nach: Beleg, Regel und Schweregrad stimmen; offene Fragen werden geklärt, wo der
+   Code es zulässt; übersehene Befunde werden ergänzt. Jeder Befund trägt danach einen Status
+   (bestätigt, korrigiert, neu), Gestrichenes wird mit Grund festgehalten. Mehrere Agenten dürfen
+   parallel arbeiten, jeweils mit festen Gruppen von Komponenten.
+2. **Bündeln statt einzeln anlegen.** Die Befunde werden nach Ursache zu Clustern zusammengefasst
+   (Abschnitt 5, „Begründung je Befund-Cluster“) und dem Nutzer als klassifizierte Übersicht mit Zahlen
+   je Schweregrad und Cluster vorgelegt. Ein Issue je Komponente wird nicht automatisch angelegt.
+3. **Vor dem Anlegen fragen.** Issues werden erst angelegt, wenn der Nutzer es für einen Cluster
+   verlangt. Ein Issue je Cluster enthält alle Fundstellen mit Datei:Zeile, Ursache, Folge, Soll und
+   eine Checkliste, damit jeder Punkt als eigener PR umgesetzt werden kann. Punkte mit eigenem Issue
+   werden nur verlinkt.
+4. **Epic.** Gibt es Issues für mehrere Cluster, fasst ein Issue vom Typ Epic sie als Sub-Issues
+   zusammen, mit einer Tabelle Cluster → Issue und einer empfohlenen Reihenfolge: Fehler für Nutzende
+   zuerst, Architekturentscheidungen vor den Refactors, die von ihnen abhängen.
+5. **Zuweisen und einplanen.** Zuweisungen und Labels setzt der Skill auf Wunsch des Nutzers. Felder
+   eines GitHub-Projekts (Sprint, Status) lassen sich aus einer Claude-Code-Sitzung nicht setzen, weil
+   GraphQL und die Projekt-Endpunkte der Organisation gesperrt sind. Das dem Nutzer am Ende sagen, statt
+   es zu versuchen.
