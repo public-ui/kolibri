@@ -174,7 +174,41 @@ Weitere Regeln:
   nicht durch SASS ersetzen; bei ihnen nur das Namensschema prüfen und mit ⚖ führen.
 - **Inline-Doku:** keine Historie, keine Wiederholung des Codes.
 - **Tests und Sample:** Unit- und Snapshot-Tests sowie das React-Sample sind vorhanden und aussagekräftig.
-- **Konventionen:** keine Barrel-Dateien; Listen, Imports und Union-Literale alphabetisch.
+- **Konventionen:** keine Barrel-Dateien (Ausnahme laut AGENTS.md: `src/internal/props/index.ts` und
+  `src/schema/props/index.ts`); Listen, Imports und Union-Literale alphabetisch.
+
+### Prüfhinweise
+
+Diese Hinweise verhindern Fehlbefunde, die in früheren Reviews aufgetreten sind:
+
+- **Code vor Kommentar.** Kommentare und Doku-Stellen, die ein Muster begründen, am Code nachprüfen.
+  Beispiel: Der Kommentar in BadgeFC „`BemRootNodeFC` forwards only `class`“ ist falsch, denn
+  `BemRootNodeFC` reicht per `...rest` auch `style` weiter. Ein falscher Kommentar ist selbst ein Befund
+  (Inline-Doku).
+- **Zeilennummern je Datei.** Datei:Zeile immer aus der einzelnen Datei ermitteln (`grep -n`,
+  `sed -n`), nie aus einer zusammengefügten Ausgabe mehrerer Dateien.
+- **Zählen statt schätzen.** Angaben wie „in 32 Komponenten“ per Skript ermitteln und alle Fundstellen
+  auflisten. Eine Zahl ohne Liste ist kein Beleg.
+- **Regel richtig zuordnen.**
+  - Eine nicht registrierte Elementklasse eines registrierten Blocks ist „Konventionen“, kein R5.
+  - Ein Teilbaustein mit eigenem Block (`InputFC`, `TextAreaFC`, das native `<select>`) ist ein R3-Fall,
+    kein R4-Fall; er braucht Elementklassen, keine Erweiterung der `component`-Union.
+  - Eine Klasse auf `<Host>` ist ein Befund, außer der Code dokumentiert sie als Ausnahme für Konsumenten
+    (z. B. `kol-table-stateful`, `kol-select`); dann nur mit Verweis auf diese Stelle nennen.
+- **Gemeinsame Ursachen einmal zählen.** Teilen sich Komponenten Code (dialog und modal, link und
+  link-button, combobox und single-select), wird der Befund einmal geführt, mit allen betroffenen
+  Komponenten.
+- **Tote Theme-Regeln.** Bei jedem Befund, der Klassen hinzufügt oder umhängt, prüfen, ob eine heute
+  wirkungslose Theme-Regel dadurch greift (Beispiel: `.kol-table-stateful` im Shadow-Stylesheet trifft
+  den Host nie). Der Fix ändert dann Pixel; das gehört in die Angabe „Darstellung“.
+- **Alle Themes prüfen.** Befunde an Theme-Registrierungen oder Theme-Selektoren gegen alle Themes unter
+  `packages/themes/` prüfen, nicht nur gegen `default`.
+- **IDs im Render.** `nonce()` oder `createUniqueId()` im Körper einer FC erzeugt bei jedem Render eine
+  neue ID. Das ist schwerer als eine reine Konventionsabweichung, weil ARIA-Referenzen sich ändern.
+- **Keyframes.** Farbstopps in `@keyframes` der Basis kann kein Theme überschreiben. Ein fester Farbwert
+  dort ist ein Befund im Paket `components`, nicht im Theme.
+- **Reproduzieren, wo es geht.** Lässt sich ein vermuteter Fehler mit einem vorhandenen Unit- oder
+  Snapshot-Test belegen, das tun und den Test nennen. Sonst ⚑ setzen.
 
 ## 5. Plan erstellen
 
