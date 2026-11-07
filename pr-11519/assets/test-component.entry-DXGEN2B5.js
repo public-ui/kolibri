@@ -1,1 +1,0 @@
-import{l as e}from"./index-CKurlmT2-BtG2_q4i.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
