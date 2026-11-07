@@ -1,0 +1,1 @@
+import{_ as e,g as t}from"./props-from-config-CG4O4MKB-BoFryxGU.js";var n=/^[a-zA-Z][a-zA-Z0-9_-]{0,60}$/,r=e=>typeof e==`string`&&n.test(e),i=e,a=e=>e===``||t(e);export{i as n,a as r,r as t};

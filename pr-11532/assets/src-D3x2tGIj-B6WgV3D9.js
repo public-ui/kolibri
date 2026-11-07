@@ -1,0 +1,1 @@
+import{A as e,l as t}from"./props-from-config-CG4O4MKB-BoFryxGU.js";var n=t(`src`,``,e);export{n as t};
