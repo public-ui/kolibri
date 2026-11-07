@@ -50,7 +50,7 @@ function sameBounds(outer: ShapeNode, inner: ShapeNode): boolean {
  * name, except for a text whose name the walker synthesized from its wrapper.
  */
 function foldedName(outer: ShapeNode, inner: ShapeNode, block: string): string {
-	if (inner.kind === 'text' && inner.name === `${outer.name}__text`) {
+	if (inner.kind === 'text' && inner.name === `${outer.name}::text`) {
 		return outer.name;
 	}
 	const ownBlock = (name: string) => name === block || name.startsWith(`${block}__`);

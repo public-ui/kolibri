@@ -2,40 +2,75 @@ import { describe, it } from 'mocha';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { BUTTON_VARIANTS, DEFAULT_SCENARIOS } from '../src/scenarios.js';
+import { buildScenarios, SEED_TAGS } from '../src/scenarios.js';
 
-describe('DEFAULT_SCENARIOS', () => {
-	it('gives every component of the library at least one scenario', async () => {
+describe('buildScenarios', () => {
+	it('gives every component of the library a seed', async () => {
 		const customElements = JSON.parse(await readFile(join(process.cwd(), 'node_modules', '@public-ui', 'components', 'custom-elements.json'), 'utf-8')) as {
 			tags: { name: string }[];
 		};
-		const tags = customElements.tags.map((tag) => tag.name);
-		const covered = new Set(DEFAULT_SCENARIOS.map((scenario) => scenario.tag));
-		const missing = tags.filter((tag) => !covered.has(tag));
+		const missing = customElements.tags.map((tag) => tag.name).filter((tag) => !SEED_TAGS.includes(tag));
 		assert.deepEqual(missing, [], `Komponenten ohne Szenario: ${missing.join(', ')}`);
 	});
 
-	it('covers every styled _variant of kol-button, as the schema defines them', async () => {
-		const schema = await readFile(join(process.cwd(), '..', '..', 'components', 'src', 'schema', 'props', 'button-variant.ts'), 'utf-8');
-		const options = /buttonVariantPropTypeOptions = \[([^\]]+)\]/.exec(schema)?.[1] ?? '';
-		const values = [...options.matchAll(/'([^']+)'/g)].map((match) => match[1]).filter((value) => value !== 'custom');
-		assert.deepEqual([...BUTTON_VARIANTS], values);
+	it('expands a seed to the matrix of its derived axes, _variant × _disabled', () => {
+		const scenarios = buildScenarios({ 'kol-button': { disabled: true, variants: ['none', 'primary'], variantSource: 'theme-modifier' } }).filter(
+			(scenario) => scenario.tag === 'kol-button',
+		);
+		assert.deepEqual(
+			scenarios.map((scenario) => [scenario.id, scenario.props._variant, scenario.props._disabled, scenario.axes]),
+			[
+				[
+					'kol-button.none',
+					undefined,
+					undefined,
+					[
+						['Variant', 'none'],
+						['Disabled', 'false'],
+					],
+				],
+				[
+					'kol-button.none.disabled',
+					undefined,
+					true,
+					[
+						['Variant', 'none'],
+						['Disabled', 'true'],
+					],
+				],
+				[
+					'kol-button.primary',
+					'primary',
+					undefined,
+					[
+						['Variant', 'primary'],
+						['Disabled', 'false'],
+					],
+				],
+				[
+					'kol-button.primary.disabled',
+					'primary',
+					true,
+					[
+						['Variant', 'primary'],
+						['Disabled', 'true'],
+					],
+				],
+			],
+		);
+		assert.equal(scenarios[0].states, undefined, 'states are derived while rendering');
 	});
 
-	it('expands kol-button to the complete matrix _variant × _disabled × states', () => {
-		const buttons = DEFAULT_SCENARIOS.filter((scenario) => scenario.tag === 'kol-button');
-		assert.equal(buttons.length, BUTTON_VARIANTS.length * 2);
-		const ghostDisabled = buttons.find((scenario) => scenario.id === 'kol-button.ghost.disabled');
-		assert.deepEqual(ghostDisabled?.axes, [
-			['Variant', 'ghost'],
-			['Disabled', 'true'],
-		]);
-		assert.deepEqual(ghostDisabled?.states, ['default', 'hover', 'focus', 'hover-focus']);
-		assert.deepEqual(buttons.find((scenario) => scenario.id === 'kol-button.ghost')?.states, ['default', 'hover', 'focus', 'hover-focus']);
+	it('keeps a seed with fixed states a single component', () => {
+		const skipNav = buildScenarios({ 'kol-skip-nav': { disabled: true } }).filter((scenario) => scenario.tag === 'kol-skip-nav');
+		assert.deepEqual(
+			skipNav.map((scenario) => [scenario.id, scenario.states, scenario.axes]),
+			[['kol-skip-nav.focused', ['focus'], undefined]],
+		);
 	});
 
 	it('uses unique scenario ids', () => {
-		const ids = DEFAULT_SCENARIOS.map((scenario) => scenario.id);
+		const ids = buildScenarios({}).map((scenario) => scenario.id);
 		assert.equal(new Set(ids).size, ids.length, 'Szenario-IDs sind nicht eindeutig');
 	});
 });

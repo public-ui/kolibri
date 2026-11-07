@@ -2,18 +2,18 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { TokenBinding } from './bind-tokens.js';
-import { bindTokens } from './bind-tokens.js';
 import { buildIr } from './build-ir.js';
+import type { StyleAxes } from './derive-axes.js';
+import { deriveAxes, readVariantTypes } from './derive-axes.js';
 import { buildPenpotBundle } from './dtcg.js';
 import { extractApi } from './extract-api.js';
 import { extractBem } from './extract-bem.js';
-import type { ThemeToken } from './extract-tokens.js';
 import { extractTokens, loadThemeStyles } from './extract-tokens.js';
+import { buildPenpotImport, stableStringify } from './penpot-import.js';
 import type { ShapeNode } from './render/dom-to-shapes.js';
 import type { Scenario } from './render/render-svg.js';
 import { renderScenarios } from './render/render-svg.js';
-import { DEFAULT_SCENARIOS } from './scenarios.js';
+import { buildScenarios } from './scenarios.js';
 import type { DomNode } from './types.js';
 import { createZip } from './zip.js';
 
@@ -40,7 +40,6 @@ export async function run(options: CliOptions = {}): Promise<void> {
 	const themeRoot = dirname(dirname(REQUIRE.resolve('@public-ui/theme-default')));
 	const repoRoot = join(componentsRoot, '..', '..');
 	const outDir = options.out ?? join(dirname(fileURLToPath(import.meta.url)), '..', 'dist-export');
-	const scenarios = filterScenarios(DEFAULT_SCENARIOS, options.components);
 
 	console.log('Lade Theme …');
 	const styles = await loadThemeStyles(join(themeRoot, 'dist', 'index.mjs'));
@@ -63,21 +62,38 @@ export async function run(options: CliOptions = {}): Promise<void> {
 	const apis = await extractApi(join(componentsRoot, 'custom-elements.json'));
 	const bems = await extractBem(join(componentsRoot, 'src', 'schema', 'bem-registry.ts'));
 
+	// Stilachsen aus Implementierung (Prop-Typen), BEM-Registry und Theme-CSS, nicht von Hand gepflegt.
+	const variantTypes = readVariantTypes(join(componentsRoot, 'src', 'components.d.ts'));
+	const axes: Record<string, StyleAxes> = Object.fromEntries(
+		apis.map((api) => [
+			api.tag,
+			deriveAxes(
+				api,
+				bems.find((bem) => bem.block === api.tag),
+				styles.componentCss[api.tag],
+				variantTypes[api.tag],
+			),
+		]),
+	);
+	const scenarios = filterScenarios(buildScenarios(axes), options.components);
+
 	let dom: Record<string, DomNode> = {};
 	let svgs: Record<string, { scheme: 'light' | 'dark'; state: string; file: string }[]> = {};
 	let shapes: Record<string, ShapeNode> = {};
+	let states: Record<string, string[]> = {};
 	if (options.render !== false) {
 		console.log(`Rendere ${scenarios.length} Szenarien (Playwright) …`);
 		const result = await renderScenarios(repoRoot, scenarios, penpotDir, await resolveHarnessPath());
 		dom = result.dom;
 		svgs = result.svgs;
 		shapes = result.shapes;
+		states = result.states;
 		console.log(`${Object.values(svgs).flat().length} SVG-Exporte erzeugt.`);
 	}
 
-	const states: Record<string, string[]> = {};
+	const statesByTag: Record<string, string[]> = {};
 	for (const scenario of scenarios) {
-		states[scenario.tag] = [...new Set([...(states[scenario.tag] ?? []), ...scenario.states])];
+		statesByTag[scenario.tag] = [...new Set([...(statesByTag[scenario.tag] ?? []), ...(states[scenario.id] ?? scenario.states ?? ['default'])])];
 	}
 	const ir = buildIr({
 		componentsVersion: await readPackageVersion(componentsRoot),
@@ -87,14 +103,29 @@ export async function run(options: CliOptions = {}): Promise<void> {
 		apis,
 		bems,
 		doms: dom,
-		states,
+		states: statesByTag,
 		svgs,
 	});
 	await writeFile(join(outDir, 'ir.json'), JSON.stringify(ir, null, '\t'), 'utf-8');
 	console.log(`IR (Schema ${ir.schema}) geschrieben: ${join(outDir, 'ir.json')} — ${ir.components.length} Komponenten.`);
 
-	await writePenpotImport(penpotDir, styles.name, { components: ir.sources.components, theme: ir.sources.theme }, tokens, scenarios, shapes);
-	console.log('Penpot-Plugin-Import (penpot-import.json) geschrieben.');
+	const { payload, report } = buildPenpotImport({
+		axes,
+		bems,
+		scenarios,
+		shapes,
+		states,
+		themeName: styles.name,
+		tokens,
+		version: { components: ir.sources.components, theme: ir.sources.theme },
+	});
+	await writeFile(join(penpotDir, 'penpot-import.json'), stableStringify(payload), 'utf-8');
+	const unbound = [...new Set(report.binding.unbound.map((entry) => entry.slice(entry.lastIndexOf(' ') + 1)))];
+	console.log(
+		`Penpot-Plugin-Import (penpot-import.json): ${payload.components.length} Komponenten in ${Object.keys(payload.sets).length} Variant-Sets; Token-Bindung: ${unbound.length === 0 ? 'alle Farben gebunden' : `${unbound.length} Farben ohne Token (${unbound.join(', ')})`}, ${report.binding.ambiguous.length} mehrdeutig.`,
+	);
+	if (report.droppedUnset.length > 0) console.log(`Ungesetztes _variant wie ein Wert gerendert, entfallen: ${report.droppedUnset.join(', ')}`);
+	if (report.unregisteredLayers.length > 0) console.warn(`Ebenen ohne Eintrag in der BEM-Registry: ${report.unregisteredLayers.join(', ')}`);
 	await copyPenpotPlugin(outDir);
 }
 
@@ -109,59 +140,6 @@ async function copyPenpotPlugin(outDir: string): Promise<void> {
 			await writeFile(join(targetDir, name), body);
 		}
 	}
-}
-
-/**
- * Writes the import payload the Penpot plugin consumes: one native shape tree per
- * scenario and state, every color bound to the theme token it comes from (identified
- * through the light and the dark rendering, see `bindTokens`). Entries of one `set`
- * become one variant set in the design library; `properties` carries their values in
- * property order, the switches `Hover` and `Focus` last. The plugin reconciles the
- * library with this payload by `id`, so ids stay stable across releases.
- */
-async function writePenpotImport(
-	penpotDir: string,
-	themeName: string,
-	version: { components: string; theme: string },
-	tokens: ThemeToken[],
-	scenarios: Scenario[],
-	shapes: Record<string, ShapeNode>,
-): Promise<void> {
-	const binding: TokenBinding = { ambiguous: [], unbound: [] };
-	const components = scenarios
-		.flatMap((scenario) => {
-			const variantSet = scenario.axes !== undefined || scenario.states.length > 1;
-			return scenario.states.map((state) => {
-				const light = shapes[`${scenario.id}#light#${state}`];
-				if (light) {
-					bindTokens(light, shapes[`${scenario.id}#dark#${state}`], tokens, binding);
-				}
-				return {
-					id: variantSet ? `${scenario.id}.${state}` : scenario.id,
-					tag: scenario.tag,
-					set: variantSet ? scenario.tag : undefined,
-					properties: variantSet
-						? [
-								...(scenario.axes ?? []),
-								...(scenario.states.length > 1
-									? [
-											['Hover', String(state.includes('hover'))],
-											['Focus', String(state.includes('focus'))],
-										]
-									: []),
-							]
-						: [],
-					shapes: light,
-				};
-			});
-		})
-		.filter((component) => component.shapes !== undefined);
-	const payload = { schema: '2.0', themeName, version, components };
-	await writeFile(join(penpotDir, 'penpot-import.json'), JSON.stringify(payload, null, '\t'), 'utf-8');
-	const unbound = [...new Set(binding.unbound.map((entry) => entry.slice(entry.lastIndexOf(' ') + 1)))];
-	console.log(
-		`Token-Bindung: ${unbound.length === 0 ? 'alle Farben an Tokens gebunden' : `${unbound.length} Farben ohne Token (${unbound.join(', ')})`}, ${binding.ambiguous.length} mehrdeutig.`,
-	);
 }
 
 /** The harness ships next to the compiled code; during development the source copy is the fallback. */
