@@ -4,6 +4,7 @@ import { forceUpdate, h } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../../internal/functional-components/button/item';
 import { createButtonItem } from '../../internal/functional-components/button/item';
+import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { createItemPool } from '../../internal/functional-components/item-pool';
 import type { LinkFCProps } from '../../internal/functional-components/link/component';
 import type { LinkItem } from '../../internal/functional-components/link/item';
@@ -14,6 +15,7 @@ import { tableStatelessPropsConfig } from '../../internal/functional-components/
 import { TABLE_CAPTION_ID, TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
 import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-components/table-stateless/table-model';
+import type { TableHeaders } from '../../internal/props';
 import {
 	fixedColsProp,
 	hasSettingsMenuProp,
@@ -26,7 +28,6 @@ import {
 	tableSelectionProp,
 	variantProp,
 } from '../../internal/props';
-import type { TableHeaders } from '../../internal/props/table-headers';
 import type {
 	FixedColsPropType,
 	HasSettingsMenuPropType,
@@ -114,11 +115,9 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		(item) => item.destroy(),
 	);
 
-	// --- Lifecycle ---
+	protected readonly propsConfig: PropsConfigShape = tableStatelessPropsConfig;
 
-	protected initTableRenderProps(): void {
-		this.initRenderProps(tableStatelessPropsConfig);
-	}
+	// --- Lifecycle ---
 
 	protected observeScrollContainer(): void {
 		if (this.scrollContainerElement && ResizeObserver) {

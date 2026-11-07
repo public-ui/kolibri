@@ -131,7 +131,13 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 		apply(value, callback, required) {
 			if (value === undefined || value === null) {
 				if (required) {
-					devWarning(`The required property '_${propName}' did not receive a value. The default value is used instead.`);
+					// The suffix states what actually happens next: definitions without a default let the
+					// unset value flow through instead of applying a fallback.
+					devWarning(
+						`The required property '_${propName}' did not receive a value. ${
+							defaultValue === undefined ? 'The property stays unset.' : 'The default value is used instead.'
+						}`,
+					);
 				}
 				if (defaultValue === undefined) {
 					// No default means "not set": nothing to validate, the callback receives the unset

@@ -3,7 +3,7 @@ import { getCssStyle, patchTheme, patchThemeTag } from 'adopted-style-sheets';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
-import { getDocument, getExperimentalMode, Log } from './dev.utils';
+import { getDocument, getExperimentalMode, isValidationEnabled, Log } from './dev.utils';
 
 import type { Stringified } from '../types/common';
 import { devHint } from './a11y.tipps';
@@ -158,6 +158,33 @@ export function watchValidator<T>(
 	value?: T,
 	options: WatchOptions = {},
 ): void {
+	/**
+	 * Validation is a development aid and is skipped when the production mode is proven by both the
+	 * runtime mode and the process environment (see `isValidationEnabled`). Only the statically
+	 * decidable fallbacks still run, mirroring the priority of the development branches below: the
+	 * given value (unchecked) wins over `undefined` acceptance, which wins over the default value
+	 * of an unset optional prop; an unset required prop keeps its previous state.
+	 */
+	if (!isValidationEnabled()) {
+		if (value !== undefined) {
+			/**
+			 * Triff zu, wenn der Wert gesetzt ist. Er wird ungeprüft übernommen, ein ungültiger
+			 * Wert wird in der Produktion nicht verworfen.
+			 */
+			setState(component, propName, value, options.hooks);
+		} else if (validationFunction(undefined)) {
+			/**
+			 * Triff zu, wenn UNDEFINED VALIDE ist.
+			 */
+			setState(component, propName, undefined, options.hooks);
+		} else if (options.required !== true && validationFunction(options.defaultValue as T)) {
+			/**
+			 * Triff zu, wenn der Wert UNDEFINED, nicht required und der DEFAULT-VALUE VALIDE ist.
+			 */
+			setState(component, propName, options.defaultValue, options.hooks);
+		}
+		return;
+	}
 	if (validationFunction(value)) {
 		/**
 		 * Triff zu, wenn der Wert VALIDE ist.
@@ -234,9 +261,14 @@ export const watchJsonArrayString = <T>(
 					// value behält den ursprünglichen Wert
 				}
 				if (Array.isArray(value)) {
-					const invalidIndex = value.findIndex((item: T) => !itemValidation(item));
+					/**
+					 * Validation is a development aid: as long as it is enabled (see `isValidationEnabled`),
+					 * the parsed array is validated; otherwise it is applied without validating its items.
+					 */
+					const skipValidation = !isValidationEnabled();
+					const invalidIndex = skipValidation ? -1 : value.findIndex((item: T) => !itemValidation(item));
 					const invalid: unknown = invalidIndex === -1 ? undefined : value[invalidIndex];
-					if (invalidIndex === -1 && arrayValidation(value)) {
+					if (invalidIndex === -1 && (skipValidation || arrayValidation(value))) {
 						setState(component, propName, value, options.hooks);
 					} else {
 						objectObjectHandler(invalid, () => {

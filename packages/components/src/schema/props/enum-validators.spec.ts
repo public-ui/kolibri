@@ -24,11 +24,9 @@ import { validateTypeInputText } from './type-input-text';
 import { validateAlertVariant } from './variant-alert';
 import { validateVariantInputCheckbox } from './variant-input-checkbox';
 import { validateVariantProgress } from './variant-progress';
-import { validateVariantQuote } from './variant-quote';
 import { validateDialogVariant } from './variant/dialog';
 import { validateModalVariant } from './variant/modal';
 import { validatePasswordVariant } from './variant/password-variant';
-import { validateSpinVariant } from './variant/spin';
 
 type EnumValidator = (component: Generic.Element.Component, value?: string) => void;
 
@@ -76,14 +74,12 @@ const validators: [string, EnumValidator, string, string[], string | undefined][
 	['validatePasswordVariant', validatePasswordVariant as EnumValidator, '_variant', ['default', 'visibility-toggle'], undefined],
 	['validatePopoverAlign', validatePopoverAlign as EnumValidator, '_popoverAlign', ALIGN_VALUES, 'top'],
 	['validateResizeTextarea', validateResizeTextarea as EnumValidator, '_resize', ['none', 'vertical'], 'vertical'],
-	['validateSpinVariant', validateSpinVariant as EnumValidator, '_variant', ['cycle', 'dot', 'none'], undefined],
 	['validateTabBehavior', validateTabBehavior as EnumValidator, '_behavior', ['select-automatic', 'select-manual'], undefined],
 	['validateTooltipAlign', validateTooltipAlign as EnumValidator, '_tooltipAlign', ALIGN_VALUES, 'top'],
 	['validateTypeInputDate', validateTypeInputDate as EnumValidator, '_type', ['date', 'datetime-local', 'month', 'time', 'week'], undefined],
 	['validateTypeInputText', validateTypeInputText as EnumValidator, '_type', ['search', 'tel', 'text', 'url'], undefined],
 	['validateVariantInputCheckbox', validateVariantInputCheckbox as EnumValidator, '_variant', ['button', 'default', 'switch'], undefined],
 	['validateVariantProgress', validateVariantProgress as EnumValidator, '_variant', ['bar', 'cycle'], undefined],
-	['validateVariantQuote', validateVariantQuote as EnumValidator, '_variant', ['block', 'inline'], undefined],
 ];
 
 describe('legacy enum prop validators', () => {

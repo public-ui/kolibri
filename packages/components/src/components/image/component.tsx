@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ImageApi } from '../../internal/functional-components/image/api';
 import { imagePropsConfig } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
@@ -22,6 +22,8 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 })
 export class KolImage extends BaseWebComponent<ImageApi> implements WebComponentInterface<ImageApi> {
 	@Element() private readonly host?: HTMLKolImageElement;
+
+	protected readonly propsConfig: PropsConfigShape = imagePropsConfig;
 
 	/**
 	 * Sets the alternative text of the image.
@@ -90,8 +92,6 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(imagePropsConfig);
-
 		altProp.apply(this._alt, (v) => this.setRenderProp('alt', v));
 		loadingProp.apply(this._loading, (v) => this.setRenderProp('loading', v));
 		imageCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));

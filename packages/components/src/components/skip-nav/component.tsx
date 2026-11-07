@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SkipNavApi } from '../../internal/functional-components/skip-nav/api';
 import { skipNavPropsConfig } from '../../internal/functional-components/skip-nav/api';
 import { SkipNavFC } from '../../internal/functional-components/skip-nav/component';
@@ -33,6 +33,8 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 	/** Anchor of the first skip link, used as the delegation target for `focus()`. */
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
 
+	protected readonly propsConfig: PropsConfigShape = skipNavPropsConfig;
+
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
@@ -58,12 +60,13 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(skipNavPropsConfig);
 		this.applyLabel(this._label, true);
 		this.applyLinks(this._links);
 	}

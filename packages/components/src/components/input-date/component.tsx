@@ -43,7 +43,7 @@ import { getDateValueType, remapDateValue } from '../../internal/functional-comp
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputDateApi } from '../../internal/functional-components/input-date/api';
 import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
 import {
@@ -106,6 +106,8 @@ export class KolInputDate
 	 */
 	private hasValue = false;
 
+	protected readonly propsConfig: PropsConfigShape = inputDatePropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('date', this._name);
@@ -124,9 +126,8 @@ export class KolInputDate
 
 	/**
 	 * References an external element by ID that provides accessible details for this input.
-	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -257,7 +258,7 @@ export class KolInputDate
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -404,9 +405,8 @@ export class KolInputDate
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | Date | undefined | null> {
-		return this.ctaRef.el && remapDateValue(this.ctaRef.el.value, this.valueType);
+	public getValue(): Promise<string | Date | undefined | null> {
+		return Promise.resolve(this.ctaRef.el && remapDateValue(this.ctaRef.el.value, this.valueType));
 	}
 
 	/**
@@ -414,23 +414,26 @@ export class KolInputDate
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Resets the component's value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async reset() {
+	public reset(): Promise<void> {
 		// `_value` keeps its value; only the rendered and the form value are cleared.
 		this.setRenderProp('value', undefined as unknown as string);
 		// The class must follow the cleared field immediately, not at the next change event.
@@ -443,10 +446,10 @@ export class KolInputDate
 		if (this.ctaRef.el) {
 			this.ctaRef.el.value = '';
 		}
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputDatePropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 
