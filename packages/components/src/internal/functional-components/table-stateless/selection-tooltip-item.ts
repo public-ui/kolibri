@@ -7,11 +7,7 @@ export type SelectionTooltipRefs = {
 	refTooltip: (element?: HTMLElement) => void;
 };
 
-/**
- * The tooltip of one selection input of the table. The input has no visible label, so the tooltip
- * shows its name on hover and focus; the behavior listens on the input and shows the floating
- * element.
- */
+/** The tooltip of one selection input of the table, which shows the name of the input, since the input has no visible label. */
 export type SelectionTooltipItem = {
 	/** Call once per render pass with the current name of the input. */
 	getRefs(label: string): SelectionTooltipRefs;
