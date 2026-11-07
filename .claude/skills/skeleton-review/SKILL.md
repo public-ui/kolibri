@@ -9,7 +9,7 @@ Die Komponenten von KoliBri werden schrittweise auf die Skeleton-Architektur umg
 prüft **eine Komponente pro Aufruf** gegen die Architektur- und Styling-Regeln und hält das Ergebnis
 als priorisierten Optimierungsplan in einem GitHub-Issue fest. Die Issues sind zugleich das Gedächtnis
 des Skills: Eine Komponente mit Review-Issue kommt in dieser Runde nicht erneut dran. Auf Wunsch prüft
-er mehrere oder alle Komponenten in einem Sammel-Review (Abschnitt 7).
+er mehrere oder alle Komponenten in einem Sammel-Review (Abschnitt 8).
 
 Der Skill **ändert keine Dateien**: kein Commit, kein Push, kein PR. Nach außen schreibt er nur
 Issues und Issue-Kommentare: das Review-Issue, im Sammel-Review die Cluster-Issues und das Epic, und
@@ -22,7 +22,7 @@ Geprüft wird der Branch `release/4`, sofern der Nutzer keinen anderen nennt. Co
 Skill werden ausschließlich auf diesem Branch gelesen. Jedes Issue nennt Branch und Commit, gegen den
 geprüft wurde, und alle Datei:Zeile-Angaben beziehen sich auf diesen Commit.
 
-Für mehrere oder alle Komponenten in einem Durchgang gilt zusätzlich Abschnitt 7 (Sammel-Review).
+Für mehrere oder alle Komponenten in einem Durchgang gilt zusätzlich Abschnitt 8 (Sammel-Review).
 
 ## 1. Spezifikation und Vorrang
 
@@ -210,7 +210,23 @@ Diese Hinweise verhindern Fehlbefunde, die in früheren Reviews aufgetreten sind
 - **Reproduzieren, wo es geht.** Lässt sich ein vermuteter Fehler mit einem vorhandenen Unit- oder
   Snapshot-Test belegen, das tun und den Test nennen. Sonst ⚑ setzen.
 
-## 5. Plan erstellen
+## 5. Zweiter Durchlauf
+
+Jedes Review läuft zweimal, auch bei einer einzelnen Komponente. Durchlauf 1 sammelt die Befunde nach
+Abschnitt 4. Durchlauf 2 prüft das Ergebnis von Durchlauf 1 kritisch am Code und optimiert es:
+
+- Beleg (Datei:Zeile), Regel und Schweregrad jedes Befunds stimmen; sonst korrigieren.
+- Falsche Befunde streichen, mit Grund.
+- Offene Fragen klären, wo der Code es zulässt.
+- Übersehene Befunde ergänzen, insbesondere zu R2–R5 und zum flachen DOM.
+- Die Prüfhinweise aus Abschnitt 4 und die Widerspruchsprüfung aus Abschnitt 6 („Begründung je
+  Befund-Cluster“) anwenden.
+
+Jeder Befund trägt danach einen Status: bestätigt, korrigiert oder neu. Die Ausgabe nennt die Zahl der
+bestätigten, korrigierten, neuen und gestrichenen Befunde und die wichtigsten Korrekturen. Erst das
+Ergebnis von Durchlauf 2 geht in den Plan.
+
+## 6. Plan erstellen
 
 Befunde absteigend nach Schweregrad sortieren:
 
@@ -274,7 +290,7 @@ Vor dem Anlegen des Issues jeden Cluster auf Widersprüche prüfen und gefundene
   von einer anderen Regel als Befund gewertet werden, etwa wenn das Entfernen eines Wrappers (Flaches
   DOM) die Wurzel einer eingebetteten FC zur Wurzel der Komponente macht und dadurch R3 verletzt.
 
-## 6. Issue anlegen und ausgeben
+## 7. Issue anlegen und ausgeben
 
 - Titel: `Skeleton-Review: <ordnername>`
 - Label: `skeleton-review`. Gibt es das Label im Repo nicht, das Issue ohne Label anlegen, im Chat
@@ -317,21 +333,34 @@ Theming-Änderungen werden nach dem Skill `zero-visual-delta-handoff` abgesicher
 über den Skill `migrate-to-skeleton` behoben.
 ```
 
-Zum Schluss im Chat den Link zum Issue und die Zusammenfassung ausgeben.
+Zum Schluss im Chat ausgeben:
 
-## 7. Sammel-Review mehrerer Komponenten
+1. den Link zum Issue und die Zusammenfassung mit der Anzahl der Befunde je Schweregrad;
+2. das Ergebnis von Durchlauf 2 (bestätigt, korrigiert, neu, gestrichen; die wichtigsten Korrekturen);
+3. **je Cluster genau ein nachvollziehbares Beispiel** nach „Begründung je Befund-Cluster“: Ist mit
+   Datei:Zeile, warum es ein Befund ist und wen es trifft, wie es korrekt wäre, und die Bewertung;
+4. eine Fazit-Tabelle über alle Cluster, damit der Nutzer einschätzen kann, ob eine Korrektur echten
+   Nutzen bringt oder nur zwischen Regelauslegungen hin und her optimiert:
 
-Verlangt der Nutzer ein Review mehrerer oder aller Komponenten, gelten die Abschnitte 1–5 je
+| Cluster | Nutzen (Nutzende / Theme-Autoren / nur Konsistenz) | DOM ändert sich | Empfehlung (umsetzen / bündeln / zurückstellen / Regel klären) |
+| ------- | -------------------------------------------------- | --------------- | -------------------------------------------------------------- |
+
+Cluster mit einem Widerspruch zu einer bestehenden Entscheidung oder zu einer anderen Regel bekommen
+die Empfehlung „Regel klären“ und einen Verweis auf die Stelle, an der der Widerspruch steht.
+
+## 8. Sammel-Review mehrerer Komponenten
+
+Verlangt der Nutzer ein Review mehrerer oder aller Komponenten, gelten die Abschnitte 1–6 je
 Komponente, mit diesen Abweichungen:
 
-1. **Zwei Durchläufe.** Durchlauf 1 sammelt die Befunde je Komponente. Durchlauf 2 prüft jeden Befund
-   kritisch am Code nach: Beleg, Regel und Schweregrad stimmen; offene Fragen werden geklärt, wo der
-   Code es zulässt; übersehene Befunde werden ergänzt. Jeder Befund trägt danach einen Status
-   (bestätigt, korrigiert, neu), Gestrichenes wird mit Grund festgehalten. Mehrere Agenten dürfen
-   parallel arbeiten, jeweils mit festen Gruppen von Komponenten.
-2. **Bündeln statt einzeln anlegen.** Die Befunde werden nach Ursache zu Clustern zusammengefasst
-   (Abschnitt 5, „Begründung je Befund-Cluster“) und dem Nutzer als klassifizierte Übersicht mit Zahlen
-   je Schweregrad und Cluster vorgelegt. Ein Issue je Komponente wird nicht automatisch angelegt.
+1. **Zwei Durchläufe über alle Komponenten.** Durchlauf 2 (Abschnitt 5) startet erst, wenn Durchlauf 1
+   für die jeweilige Gruppe abgeschlossen ist. Mehrere Agenten dürfen parallel arbeiten, jeweils mit
+   festen Gruppen von Komponenten; Durchlauf 2 einer Gruppe übernimmt ein anderer Agent als
+   Durchlauf 1, damit die Gegenprüfung nicht am eigenen Ergebnis hängt.
+2. **Bündeln statt einzeln anlegen.** Die Befunde werden nach Ursache zu Clustern zusammengefasst und
+   dem Nutzer als klassifizierte, gebündelte Übersicht vorgelegt: Zahlen je Schweregrad und Cluster,
+   je Cluster ein nachvollziehbares Beispiel und die Fazit-Tabelle aus Abschnitt 7. Ein Issue je
+   Komponente wird nicht automatisch angelegt.
 3. **Vor dem Anlegen fragen.** Issues werden erst angelegt, wenn der Nutzer es für einen Cluster
    verlangt. Ein Issue je Cluster enthält alle Fundstellen mit Datei:Zeile, Ursache, Folge, Soll und
    eine Checkliste, damit jeder Punkt als eigener PR umgesetzt werden kann. Punkte mit eigenem Issue
