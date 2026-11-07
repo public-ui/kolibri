@@ -6,10 +6,13 @@ const TOLERANCE = 1;
 /**
  * A box carries design of its own when it paints its area, insets its content or arranges
  * several children. A corner radius alone paints nothing. Opacity, outline and minimum size
- * do not count: on a wrapper of the same size they transfer to the child unchanged.
+ * do not count: on a wrapper of the same size they transfer to the child unchanged. An
+ * interactive element always stays: it carries the focus ring in focused states, so it keeps
+ * its layer in every state and every variant of a component has the same layers.
  */
 function carriesDesign(node: ShapeNode): boolean {
 	return (
+		node.interactive === true ||
 		node.fill !== undefined ||
 		node.stroke !== undefined ||
 		node.shadow !== undefined ||
@@ -62,8 +65,7 @@ function foldedName(outer: ShapeNode, inner: ShapeNode, block: string): string {
  * same size (or one text) into that child, and drops empty wrappers. The result keeps one
  * layer per visible box, so fill, border, radius and padding sit on the layer that
  * represents the element in the design tool, and every state of a component has the same
- * layer structure: the opacity of a disabled wrapper and the focus ring of a focused one
- * move onto the box they wrap. The classes of folded wrappers stay on the layer, so the
+ * layer structure. The classes of folded wrappers stay on the layer, so the
  * theming contract remains traceable.
  */
 export function simplifyShapes(node: ShapeNode, block = node.name): ShapeNode | undefined {

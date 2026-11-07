@@ -72,6 +72,7 @@
 		<div>
 			<button id="preview" class="secondary" type="button">Vorschau</button>
 			<button id="sync" type="button">Synchronisieren</button>
+			<button id="inspect" class="secondary" type="button">Auswahl prüfen</button>
 		</div>
 		<div id="log"></div>
 		<script>
@@ -139,6 +140,7 @@
 			document.getElementById('ir-url').value = new URL('../penpot/penpot-import.json', location.href.split('#')[0]).href;
 			document.getElementById('preview').addEventListener('click', () => guarded('preview'));
 			document.getElementById('sync').addEventListener('click', () => guarded('sync'));
+			document.getElementById('inspect').addEventListener('click', () => parent.postMessage({ type: 'inspect' }, '*'));
 		</script>
 	</body>
 </html>

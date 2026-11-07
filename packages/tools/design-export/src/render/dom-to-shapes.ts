@@ -25,6 +25,8 @@ export interface ShapeNode {
 	height: number;
 	/** `inline-*` boxes size to their content (hug), block boxes keep their width. */
 	inline?: boolean;
+	/** The element takes focus (button, link, form control): it carries the focus ring and stays its own layer. */
+	interactive?: boolean;
 	fill?: string;
 	/** Penpot name of the color token the fill comes from (see `bindTokens`). */
 	fillToken?: string;
@@ -172,6 +174,7 @@ export function domToShapes(selector: string): ShapeNode {
 				kind: 'box',
 				...rect,
 				inline: style.display.startsWith('inline') || undefined,
+				interactive: element.matches('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])') || undefined,
 				fill: isPainted(style.backgroundColor) ? style.backgroundColor : undefined,
 				stroke: hasStroke ? style.borderTopColor : undefined,
 				strokeWidths: hasStroke ? strokeWidths : undefined,
