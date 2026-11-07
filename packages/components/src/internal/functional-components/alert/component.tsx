@@ -16,6 +16,7 @@ import { AlertIconFC } from './icon';
 const alertBem = bem.forBlock('kol-alert');
 const BEM_CLASS_ALERT__CLOSER = alertBem('closer');
 const BEM_CLASS_ALERT__CONTENT = alertBem('content');
+const BEM_CLASS_CLOSE_BUTTON = bem.forBlock('kol-close-button')();
 
 /**
  * The closer is a plain button: no role override, and an unset tabindex must not render as
@@ -93,7 +94,7 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 					ariaExpanded={UNSET_BUTTON_PROP}
 					ariaHasPopup=""
 					ariaSelected={UNSET_BUTTON_PROP}
-					class={clsx(BEM_CLASS_ALERT__CLOSER, 'kol-close-button')}
+					class={clsx(BEM_CLASS_ALERT__CLOSER, BEM_CLASS_CLOSE_BUTTON)}
 					customClass=""
 					disabled={false}
 					handleBlur={() => undefined}
