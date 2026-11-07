@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import { KolTreeTag } from '../../core/component-names';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TreeItemApi } from '../../internal/functional-components/tree-item/api';
 import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
@@ -42,6 +42,8 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	protected readonly anchorRef = createCtaRef<HTMLAnchorElement>();
 
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
+
+	protected readonly propsConfig: PropsConfigShape = treeItemPropsConfig;
 
 	/**
 	 * If set (to true) the tree item is the active one.
@@ -88,39 +90,39 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	 */
 	@Method()
 	@directFocus('anchorRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Expands the tree item.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async expand(): Promise<void> {
+	public expand(): Promise<void> {
 		this.setOpen(true);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Collapses the tree item.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async collapse(): Promise<void> {
+	public collapse(): Promise<void> {
 		this.setOpen(false);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Returns whether the tree item is expanded.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async isOpen(): Promise<boolean> {
-		return this.open;
+	public isOpen(): Promise<boolean> {
+		return Promise.resolve(this.open);
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(treeItemPropsConfig);
 		this.watchActive(this._active);
 		this.watchHref(this._href);
 		this.watchLabel(this._label);

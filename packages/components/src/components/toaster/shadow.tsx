@@ -37,8 +37,7 @@ export class KolToastContainer implements ToasterAPI {
 	 * Adds a toast to the queue.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async enqueue(toast: Toast) {
+	public enqueue(toast: Toast): Promise<() => void> {
 		const newToastState: ToastState = {
 			toast: {
 				...toast,
@@ -66,17 +65,16 @@ export class KolToastContainer implements ToasterAPI {
 			};
 		}, TRANSITION_TIMEOUT);
 
-		return () => {
+		return Promise.resolve(() => {
 			this.handleClose(newToastState);
-		};
+		});
 	}
 
 	/**
 	 * Closes all toasts.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async closeAll(immediate: boolean = false) {
+	public closeAll(immediate: boolean = false): Promise<void> {
 		if (immediate) {
 			this.state = {
 				...this.state,
@@ -107,6 +105,7 @@ export class KolToastContainer implements ToasterAPI {
 				});
 			}, TRANSITION_TIMEOUT);
 		}
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

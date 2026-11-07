@@ -3,11 +3,14 @@ import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
 
 import { trimLabel } from '../../../schema';
+import { bem } from '../../../schema/bem-registry';
 import type { FunctionalComponentProps } from '../generic-types';
 import { renderLabelWithLang } from '../span/component';
 import type { MeterApi } from './api';
 
 type MeterState = 'optimum' | 'suboptimal' | 'critical';
+
+const meterBem = bem.forBlock('kol-meter');
 
 function getMeterState(value: number, min: number, max: number, low: number | undefined, high: number | undefined, optimum: number | undefined): MeterState {
 	const effectiveLow = low ?? min;
@@ -39,10 +42,18 @@ function getMeterState(value: number, min: number, max: number, low: number | un
 	}
 }
 
-type MeterFCProps = Omit<FunctionalComponentProps<MeterApi>, 'high' | 'low' | 'optimum'> & {
+/**
+ * The web component passes every prop of this FC explicitly: the boundaries stay `undefined` when
+ * the consumer does not set them (no state classification then), while `max`, `min` and `unit`
+ * always carry their config default.
+ */
+type MeterFCProps = Omit<FunctionalComponentProps<MeterApi>, 'high' | 'low' | 'max' | 'min' | 'optimum' | 'unit'> & {
 	high: number | undefined;
 	low: number | undefined;
+	max: number;
+	min: number;
 	optimum: number | undefined;
+	unit: string;
 };
 
 export const MeterFC: FC<MeterFCProps> = (props) => {
@@ -79,19 +90,19 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
 
 	return (
-		<div class={{ 'kol-meter': true, 'kol-meter--vertical': isVertical }}>
-			<div class="kol-meter__bar">
-				<div class="kol-meter__bar-label">
+		<div class={meterBem({ vertical: isVertical })}>
+			<div class={meterBem('bar')}>
+				<div class={meterBem('bar-label')}>
 					{renderLabelWithLang(label)}
 					{hasStateClassification && (
-						<span class={`kol-meter__bar-state kol-meter__bar-state--${state}`}>
+						<span class={meterBem('bar-state', { [state]: true })}>
 							{' – '}
 							{stateLabel}
 						</span>
 					)}
 				</div>
 
-				<div class="kol-meter__bar-track">
+				<div class={meterBem('bar-track')}>
 					<meter
 						aria-label={trimLabel(label)}
 						aria-valuetext={staticValueWithState || undefined}
@@ -103,11 +114,11 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 						value={hasValue ? value : undefined}
 					></meter>
 				</div>
-				<span class="kol-meter__value-unit">
-					<span class="kol-meter__value" style={{ 'min-width': charCount }}>
+				<span class={meterBem('value-unit')}>
+					<span class={meterBem('value')} style={{ 'min-width': charCount }}>
 						{displayValue}
 					</span>
-					<span class="kol-meter__unit">{unit}</span>
+					<span class={meterBem('unit')}>{unit}</span>
 				</span>
 			</div>
 		</div>

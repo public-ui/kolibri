@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TabsApi } from '../../internal/functional-components/tabs/api';
 import { tabsPropsConfig } from '../../internal/functional-components/tabs/api';
 import type { TabsButton, TabsButtonItem } from '../../internal/functional-components/tabs/button-item';
@@ -93,6 +93,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	public tabButtons: TabsButton[] = [];
 
+	protected readonly propsConfig: PropsConfigShape = tabsPropsConfig;
+
 	/**
 	 * Defines the visual orientation of the component.
 	 */
@@ -168,19 +170,22 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Triggers a click on the currently selected tab.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(tabsPropsConfig);
 		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
 		tabBehaviorProp.apply(this._behavior, (v) => this.setRenderProp('behavior', v));
 		hasCreateButtonProp.apply(this._hasCreateButton, (v) => this.setRenderProp('hasCreateButton', v));

@@ -6,7 +6,7 @@ import type { AlertApi } from '../../internal/functional-components/alert/api';
 import { alertPropsConfig } from '../../internal/functional-components/alert/api';
 import { AlertFC } from '../../internal/functional-components/alert/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../internal/props';
 import type {
@@ -50,6 +50,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 
 	/** The closer is rendered with `ButtonFC` directly, so its tooltip behavior lives in the component. */
 	private readonly closerTooltipBehavior = new TooltipBehavior(this.stateAccess);
+
+	protected readonly propsConfig: PropsConfigShape = alertPropsConfig;
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
@@ -125,8 +127,6 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(alertPropsConfig);
-
 		this.watchAlert(this._alert);
 		this.watchHasCloser(this._hasCloser);
 		this.watchLabel(this._label);
@@ -135,7 +135,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 		this.watchType(this._type);
 		this.watchVariant(this._variant);
 
-		this.closerTooltipBehavior.componentWillLoad({ label: this.translateCloseAlert, align: 'left' });
+		this.closerTooltipBehavior.componentWillLoad({ label: this.translateCloseAlert });
 	}
 
 	public componentDidRender(): void {
