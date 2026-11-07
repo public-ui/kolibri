@@ -331,6 +331,26 @@ The `block` and `modifiers` keys are validated against `KoliBriComponentsBemSche
 
 **When not to use it:** `BemRootNodeFC` always renders a `<div>` root. For FCs whose semantic root is another element (e.g. `ClickButtonFC` renders a `<button>`), build the root manually with `bem.forBlock('kol-xxx')(modifiers)` instead — the same typed schema applies. `LinkFC` and `ButtonFC` use `BemRootNodeFC` (both have extra siblings — tooltip, description — alongside their interactive element, so the wrapper is required, not just one non-div root); `SkeletonFC` and `ClickButtonFC` use direct `bem.forBlock` calls because their FC root _is_ the single non-div interactive element.
 
+#### Shared Shell Root of the Form Fields
+
+The 14 form fields (`kol-combobox`, the `kol-input-*` fields, `kol-select`, `kol-single-select`, `kol-textarea`) share one shell. `FormFieldFC` renders the root `BemRootNodeFC block="kol-form-field"`, and its sub-FCs carry registered blocks of their own (`kol-input-container`, `kol-field-control`, `kol-input`, `kol-textarea`, …). The block of the field is an additional class on that shared root:
+
+```html
+<div class="kol-form-field kol-input-email email …">
+	<div class="kol-input-container …">
+		<input class="kol-input …" type="email" />
+	</div>
+</div>
+```
+
+- A component may use the root of a shared shell as its own root when several components render that shell. The shell blocks and their elements are the theming contract every theme styles across all fields; the component block on the root scopes rules to one field.
+- `render()` renders exactly one root FC: for a form field that is `FormFieldFC`, composed with the shell FCs as its children. A per-field FC around this composition is not required.
+- The component block is registered in `bem-registry.ts` like any other block (see _Registration requirement_). The classes without BEM form on the root (`email`, `password`, `has-value`, …) are part of the theming contract; replacing them is a theming breaking change (design decision 17).
+
+#### Embedded Roots Keep Their Element Wrapper
+
+Where a component places an embedded FC with a block of its own, the position is an element of the embedding block that wraps the embedded root, even without siblings: `div.kol-button__tooltip > div.kol-tooltip`, `div.kol-breadcrumb__link > div.kol-link`, `span.kol-tree-item__toggle-button > i.kol-icon`. A BEM mix on one node (`div.kol-tooltip.kol-button__tooltip`) is not used, because the rules of two blocks would compete on that node. Such an element wrapper is no flat-DOM finding; a wrapper around an element of the component's own block is.
+
 ### Embedded Components (Items)
 
 When a component renders another component inside its own shadow DOM — the close button of an alert, the sort buttons of a table, the page size select of a pagination — it renders that component's FC directly, so its own stylesheet and the theme reach the inner `.kol-…` classes. The orchestration the embedded element would own (resolved props with the element's `@Prop` defaults, Behaviors such as the tooltip, refs, event handlers) lives in an **item**: a plain object with closures, created once per embedded instance and owned by the embedding WC.
@@ -817,6 +837,14 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Pattern_: every prop's value type is the named schema type from `src/schema/props`; the prop bag, the prop definition in `internal/props`, the `@Prop` declaration, the watcher and the apply method all reference that name, and no layer inlines a native type. See [Explicit Schema Types per Prop](#explicit-schema-types-per-prop).
     - _Alternative_: type prop definitions and component signatures with bare natives (`SimpleProp<'disabled', boolean>`) and keep the schema name only on the prop bag.
     - _Reason_: the type is defined once and every layer points at the same name, so drift between the layers fails the compiler instead of surfacing in review; apply and watcher signatures carry the domain term; and the prop definitions binding one render key are connected by their shared schema type, not only by the key string. Naming a type never changes its structure, so adopting it is invisible to consumers. The pinned Stencil's un-coerced attribute parsing for imported aliases (stenciljs/core#4663) is a known test-toolchain caveat, not a reason to inline natives.
+19. **Form fields share the `kol-form-field` root**
+    - _Pattern_: the form fields render the shared shell root `kol-form-field` and carry their own block as an additional class; see [Shared Shell Root of the Form Fields](#shared-shell-root-of-the-form-fields).
+    - _Alternative_: give every field a root with its own block and elements (`kol-input-email__label`, `__input`, `__msg`).
+    - _Reason_: the shell is one structure for 14 fields, and every theme styles it once through the shell blocks. Own roots per field would break the theming of all 14 fields in all themes for uniform BEM naming alone, without any change for users.
+20. **Element wrappers around embedded roots instead of BEM mixes**
+    - _Pattern_: an embedded FC root sits inside an element of the embedding block; see [Embedded Roots Keep Their Element Wrapper](#embedded-roots-keep-their-element-wrapper).
+    - _Alternative_: a BEM mix that puts the embedding element class on the embedded root and saves one node.
+    - _Reason_: the wrapper keeps the rules of both blocks on separate nodes; a mix would make them compete and change the theming contract of every affected component.
 
 ## 10. Quality Requirements
 

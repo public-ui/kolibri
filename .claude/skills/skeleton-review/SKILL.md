@@ -86,10 +86,15 @@ Ein Verstoß hat den Schweregrad **Blocker (Architektur)**.
 - **R1:** Jede Stencil-Komponente erbt von `BaseWebComponent`. Fehlt das, auf den Skill
   `migrate-to-skeleton` als Lösungsweg verweisen.
 - **R2:** `render()` rendert in `<Host>` genau eine Komponenten-FC (z. B. `<AlertFC>`) und keine freie
-  Markup-Struktur.
+  Markup-Struktur. Bei den Formularfeldern ist das `FormFieldFC` mit den Teilbausteinen der Hülle als
+  Kindern; eine zusätzliche FC je Feld wird nicht verlangt.
 - **R3:** Die Wurzel dieser Komponenten-FC ist `BemRootNodeFC` mit dem Block der Komponente.
-  Untergeordnete FCs (Teilbausteine wie die `form-field`-FCs) nutzen kein `BemRootNodeFC`, sondern
-  BEM-Elementklassen des umgebenden Blocks.
+  Untergeordnete FCs nutzen kein `BemRootNodeFC`, sondern BEM-Elementklassen des umgebenden Blocks.
+  Ausnahme ist eine gemeinsame Hülle mehrerer Komponenten: Die Formularfelder nutzen die Wurzel
+  `kol-form-field` der Hülle, tragen ihren eigenen Block als zusätzliche Klasse, und die Teilbausteine
+  der Hülle (`kol-input-container`, `kol-field-control`, `kol-input` …) haben eigene registrierte Blöcke.
+  Das ist kein Befund (ARC42-SKELETON, „Shared Shell Root of the Form Fields“). Ein Befund ist nur ein
+  fehlender Registry-Eintrag des Komponentenblocks (R5).
 - **R4:** Das Wurzel-Tag ist frei wählbar über die Prop `component` von `BemRootNodeFC` (Standard `div`;
   ebenso `span`, `a`, `button`, `label`, `fieldset`, `abbr`, `svg` usw.). Eine Wurzel, die direkt mit
   `bem.forBlock(...)` statt mit `BemRootNodeFC` gebaut wird, ist ein Verstoß. Diese Regel hat Vorrang
@@ -107,6 +112,10 @@ Schweregrad **Breaking Theming**.
   BEM-Klassen nennen.
 - Hat das Element Geschwister (z. B. Tooltip, Beschreibung), ist der Wrapper berechtigt und wird nicht
   gemeldet.
+- Umschließt ein Element des eigenen Blocks die Wurzel einer eingebetteten FC mit eigenem Block
+  (z. B. `div.kol-button__tooltip > div.kol-tooltip`), ist der Wrapper berechtigt und wird nicht
+  gemeldet, auch ohne Geschwister. Ein BEM-Mix auf einem Knoten wird nicht vorgeschlagen
+  (ARC42-SKELETON, „Embedded Roots Keep Their Element Wrapper“).
 - Fehlt das benötigte Tag in der `component`-Union von `BemRootNodeFC`, dafür keinen eigenen Befund
   anlegen, sondern auf das offene Issue mit dem Label `skeleton-review` und dem Titel
   „BemRootNodeFC: component-Union erweitern“ verweisen. Gibt es dieses Issue nicht, den Punkt im
