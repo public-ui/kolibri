@@ -18,7 +18,9 @@ exports[`kol-link should render with _href="#" _hideLabel=true _label="   " 1`] 
           <div class="kol-tooltip__arrow"></div>
           <span class="kol-span kol-tooltip__content">
             <span class="kol-span__container">
-              <span class="kol-span__label"></span>
+              <span class="kol-span__label">
+                #
+              </span>
               <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
             </span>
           </span>
@@ -48,7 +50,12 @@ exports[`kol-link should render with _href="#" _hideLabel=true _label=[{"text":"
           <span class="kol-span kol-tooltip__content">
             <span class="kol-span__container">
               <span class="kol-span__label">
-                #
+                <span lang="en">
+                  partly english
+                </span>
+                <span>
+                  Label
+                </span>
               </span>
               <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
             </span>
@@ -74,11 +81,14 @@ exports[`kol-link should render with _href="#" _hideLabel=true 1`] = `
         </span>
       </a>
       <div class="kol-link__tooltip">
-        <div class="kol-tooltip__floating" hidden="">
+        <div class="kol-tooltip__floating">
           <div class="kol-tooltip__arrow"></div>
           <span class="kol-span kol-tooltip__content">
             <span class="kol-span__container">
-              <span class="kol-span__slot"></span>
+              <span class="kol-span__label">
+                #
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
             </span>
           </span>
         </div>

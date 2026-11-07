@@ -10,7 +10,7 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
             <div class="kol-nav__entry-wrapper">
               <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
                 <div class="kol-link kol-link--inline">
-                  <a aria-controls="kol-nav-list-0-0-nonce" aria-expanded="true" class="kol-link__interactive-element" href="#section">
+                  <a class="kol-link__interactive-element" href="#section">
                     <span class="kol-link__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -19,7 +19,6 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                         <span aria-hidden="true" class="kol-span__slot" hidden="">
                           <slot name="expert" slot="expert"></slot>
                         </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                       </span>
                     </span>
                   </a>
@@ -31,7 +30,7 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                 <div class="kol-nav__entry-wrapper">
                   <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
                     <div class="kol-link kol-link--inline">
-                      <a aria-controls="kol-nav-list-0-0-1-0-nonce" aria-expanded="true" class="kol-link__interactive-element" href="#child-link">
+                      <a class="kol-link__interactive-element" href="#child-link">
                         <span class="kol-link__text kol-span">
                           <span class="kol-span__container">
                             <span class="kol-span__label">
@@ -40,7 +39,6 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                             <span aria-hidden="true" class="kol-span__slot" hidden="">
                               <slot name="expert" slot="expert"></slot>
                             </span>
-                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                           </span>
                         </span>
                       </a>
@@ -307,7 +305,7 @@ exports[`kol-nav should render with _label="Nav with an active grandchild, butto
             <div class="kol-nav__entry-wrapper">
               <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
                 <div class="kol-link kol-link--inline">
-                  <a aria-controls="kol-nav-list-0-0-nonce" aria-expanded="true" class="kol-link__interactive-element" href="#section">
+                  <a class="kol-link__interactive-element" href="#section">
                     <span class="kol-link__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -316,7 +314,6 @@ exports[`kol-nav should render with _label="Nav with an active grandchild, butto
                         <span aria-hidden="true" class="kol-span__slot" hidden="">
                           <slot name="expert" slot="expert"></slot>
                         </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                       </span>
                     </span>
                   </a>
@@ -328,7 +325,7 @@ exports[`kol-nav should render with _label="Nav with an active grandchild, butto
                 <div class="kol-nav__entry-wrapper">
                   <div class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
                     <div class="kol-link kol-link--inline">
-                      <a aria-controls="kol-nav-list-0-0-1-0-nonce" aria-expanded="true" class="kol-link__interactive-element" href="#child">
+                      <a class="kol-link__interactive-element" href="#child">
                         <span class="kol-link__text kol-span">
                           <span class="kol-span__container">
                             <span class="kol-span__label">
@@ -337,7 +334,6 @@ exports[`kol-nav should render with _label="Nav with an active grandchild, butto
                             <span aria-hidden="true" class="kol-span__slot" hidden="">
                               <slot name="expert" slot="expert"></slot>
                             </span>
-                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                           </span>
                         </span>
                       </a>
