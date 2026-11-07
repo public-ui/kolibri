@@ -1,0 +1,384 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "91 changed – 0 of 91 approved, review pending",
+	"computedAt": "2026-11-07T20:50:01.412Z",
+	"pr": 11530,
+	"head": "7943954e73a1466edf3e120986fc972926747d9e",
+	"digest": "sha256:6905f1857be5ee05bc63dc7922d58cfce73de22a566f5c20ded109cdf660195e",
+	"counts": {
+		"changes": 91,
+		"open": 91,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-indeterminate": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-indeterminate": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-default": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-info": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-success": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-warning": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-multiple": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-variant-noColumns--variant-left": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputCheckbox": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputFile": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-label-lang--label-lang-alert": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-label-lang--label-lang-checkbox": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-same-height-of-all-form-elements-with-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-same-height-of-all-interactive-elements": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-indeterminate": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-indeterminate": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-msg-default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-msg-info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-msg-success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-msg-warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-multiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-variant-noColumns--variant-left": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputCheckbox": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputFile": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-label-lang--label-lang-alert": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-label-lang--label-lang-checkbox": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-same-height-of-all-form-elements-with-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-same-height-of-all-interactive-elements": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
