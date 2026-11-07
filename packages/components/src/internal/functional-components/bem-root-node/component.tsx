@@ -36,9 +36,9 @@ export type BemRootNodeComponent =
 	| 'svg';
 
 /**
- * The global HTML attributes plus the element attributes the roots of the component FCs use. One
- * merged type instead of one type per element: resolving a union of per-element attribute types for
- * every call site exceeds the union limit of TypeScript.
+ * The global HTML attributes plus the element attributes the roots of the component FCs use, as one
+ * type for all elements: TypeScript cannot resolve a union of per-element attribute types at every
+ * call site within its union limit.
  */
 type BemRootNodeAttributes = Partial<Omit<JSXBase.HTMLAttributes<HTMLElement>, 'class' | 'ref'>> &
 	Partial<Pick<JSXBase.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled' | 'type'>> &
