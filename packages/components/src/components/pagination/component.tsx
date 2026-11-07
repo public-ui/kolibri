@@ -142,12 +142,13 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 
 	/**
 	 * Defines the maximum value of the element.
+	 * Without a value the requiredness warning fires and 0 keeps the empty state of no entries.
 	 */
 	@Prop() public _max!: MaxPropType;
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {
-		this.item.applyMax(value);
+		this.item.applyMax(value, this.isRequired('max'));
 	}
 
 	public componentWillLoad(): void {
@@ -162,19 +163,24 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 			},
 			store,
 		});
-		this.item.load({
-			boundaryCount: this._boundaryCount,
-			customClass: this._customClass,
-			hasButtons: this._hasButtons,
-			label: this._label,
-			max: this._max,
-			on: this._on,
-			page: this._page,
-			pageSize: this._pageSize,
-			pageSizeOptions: this._pageSizeOptions,
-			siblingCount: this._siblingCount,
-			tooltipAlign: this._tooltipAlign,
-		});
+		this.item.load(
+			{
+				boundaryCount: this._boundaryCount,
+				customClass: this._customClass,
+				hasButtons: this._hasButtons,
+				label: this._label,
+				max: this._max,
+				on: this._on,
+				page: this._page,
+				pageSize: this._pageSize,
+				pageSizeOptions: this._pageSizeOptions,
+				siblingCount: this._siblingCount,
+				tooltipAlign: this._tooltipAlign,
+			},
+			// Of the required slot only `_max` warns about an unset value; `_page` and `_on` are a
+			// type contract (see ARC42, "Requiredness semantics per prop").
+			{ max: this.isRequired('max') },
+		);
 	}
 
 	public componentDidRender(): void {
