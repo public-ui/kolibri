@@ -10,7 +10,7 @@ function box(name: string, extra: Partial<ShapeNode> = {}, children: ShapeNode[]
 describe('simplifyShapes', () => {
 	it('folds the unpainted wrappers of a button into the box that paints', () => {
 		const text: ShapeNode = {
-			name: 'kol-span__label__text',
+			name: 'kol-span__label::text',
 			classes: [],
 			kind: 'text',
 			x: 15,

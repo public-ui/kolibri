@@ -58,6 +58,22 @@ Ergebnis im Zielordner:
 2. Komponenten: über das Plugin (siehe [Sync per Plugin](#sync-per-plugin)). Die SVG-Dateien bleiben Sichtprüf- und Gate-Artefakt.
 3. Aus Instanzen und Tokens größere Oberflächen orchestrieren; Optik kommt aus dem Token-Bundle, nicht aus Handarbeit.
 
+## Plugin-Daten deterministisch erzeugen
+
+`penpot-import.json` entsteht ohne Handarbeit aus drei Quellen; gleiche Quellen ergeben byte-identische Ausgabe.
+
+| Quelle                                                                          | liefert                                                                                                  |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Implementierung: `components.d.ts` (TypeScript-Checker), `custom-elements.json` | Werte eines geschlossenen `_variant`-Typs (z. B. Alert `card`/`msg`), ob `_disabled` existiert           |
+| Theme-CSS                                                                       | Werte eines offenen `_variant` (Klassenname): die gestylten Block-Modifier, z. B. `.kol-button--primary` |
+| BEM-Registry                                                                    | Zustands-Modifier, die keine Variante sind; Prüfung aller Ebenennamen                                    |
+| Rendering                                                                       | Hover/Focus für jede Komponente mit fokussierbarem Element; Geometrie, Farben, Layout                    |
+
+- Stilachsen sind `Variant` (`_variant`), `Disabled` (`_disabled`) sowie die Schalter `Hover` und `Focus`. Ein ungesetztes `_variant` entfällt, wenn es wie einer seiner Werte rendert (`kol-button` ohne Variante = `normal`).
+- Die Seeds in `scenarios.ts` legen nur Inhalt fest (Label, Optionen, geslottetes Markup), keine Varianten.
+- Determinismus: Geometrie auf Hundertstel gerundet, Animationen in allen Shadow Roots vor jeder Aufnahme eingefroren statt fester Wartezeiten, JSON mit sortierten Schlüsseln. `pnpm check:determinism` exportiert zweimal und vergleicht die Bytes (`-- --components kol-button` für einen schnellen Lauf).
+- Die CLI meldet Farben ohne Token, mehrdeutige Bindungen und Ebenennamen ohne Eintrag in der BEM-Registry.
+
 ## Sync per Plugin
 
 `pnpm start:penpot` exportiert und startet den Server für Plugin und Export-Daten. In Penpot den Plugin-Manager öffnen (`Strg/Cmd+Alt+P`) und `http://localhost:8818/penpot-plugin/manifest.json` installieren; das Manifest ändert sich zwischen Versionen nicht, neuer Plugin-Code lädt beim nächsten Öffnen.

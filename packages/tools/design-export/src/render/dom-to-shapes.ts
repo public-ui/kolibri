@@ -65,8 +65,11 @@ export function domToShapes(selector: string): ShapeNode {
 	const hostBlock = host.tagName.toLowerCase();
 	const SIDES = ['top', 'right', 'bottom', 'left'];
 
+	// Gerundet auf Hundertstel: Subpixel-Rauschen des Layouts darf die Ausgabe nicht verändern.
+	const round = (value: number): number => Math.round(value * 100) / 100;
+
 	function relative(rect: DOMRect): { x: number; y: number; width: number; height: number } {
-		return { x: rect.x - hostRect.x, y: rect.y - hostRect.y, width: rect.width, height: rect.height };
+		return { x: round(rect.x - hostRect.x), y: round(rect.y - hostRect.y), width: round(rect.width), height: round(rect.height) };
 	}
 
 	function isPainted(color: string): boolean {
@@ -121,7 +124,7 @@ export function domToShapes(selector: string): ShapeNode {
 		const range = document.createRange();
 		range.selectNodeContents(child);
 		return {
-			name: `${nameOf(element)}__text`,
+			name: `${nameOf(element)}::text`,
 			classes: [],
 			kind: 'text',
 			...relative(range.getBoundingClientRect()),
@@ -200,5 +203,5 @@ export function domToShapes(selector: string): ShapeNode {
 	}
 
 	const [root] = walk(host);
-	return root ?? { name: hostBlock, classes: [], kind: 'box', x: 0, y: 0, width: hostRect.width, height: hostRect.height, children: [] };
+	return root ?? { name: hostBlock, classes: [], kind: 'box', x: 0, y: 0, width: round(hostRect.width), height: round(hostRect.height), children: [] };
 }

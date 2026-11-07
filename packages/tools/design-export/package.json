@@ -12,16 +12,17 @@
 	},
 	"scripts": {
 		"build": "tsc && node scripts/copy-harness.mjs",
+		"check:determinism": "node scripts/check-determinism.mjs",
 		"dev": "tsc --watch",
 		"format": "prettier -c src test README.md",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
 		"lint:tsc": "tsc --noemit",
-		"start": "node dist/cli.js",
-		"test:unit": "mocha dist-test/test/**/*.spec.js",
-		"unused": "knip",
 		"pretest:unit": "tsc -p tsconfig.test.json --outDir dist-test",
-		"start:penpot": "node dist/cli.js && node scripts/penpot-serve.mjs"
+		"start": "node dist/cli.js",
+		"start:penpot": "node dist/cli.js && node scripts/penpot-serve.mjs",
+		"test:unit": "mocha dist-test/test/**/*.spec.js",
+		"unused": "knip"
 	},
 	"dependencies": {
 		"@public-ui/components": "workspace:*",
