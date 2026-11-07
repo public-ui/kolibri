@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<style>
+			body {
+				background: #1e1e1e;
+				color: #e6e6e6;
+				font:
+					13px/1.5 system-ui,
+					sans-serif;
+				margin: 0;
+				padding: 12px;
+			}
+			label {
+				display: block;
+				margin: 8px 0 4px;
+			}
+			input[type='url'],
+			select {
+				background: #2a2a2a;
+				border: 1px solid #444;
+				border-radius: 6px;
+				box-sizing: border-box;
+				color: #e6e6e6;
+				padding: 7px 9px;
+				width: 100%;
+			}
+			button {
+				background: #0070e4;
+				border: 0;
+				border-radius: 6px;
+				color: #fff;
+				cursor: pointer;
+				margin: 10px 8px 0 0;
+				padding: 8px 14px;
+			}
+			button.secondary {
+				background: #444;
+			}
+			button:disabled {
+				opacity: 0.5;
+			}
+			#log {
+				background: #151515;
+				border-radius: 6px;
+				font:
+					11px/1.6 ui-monospace,
+					monospace;
+				height: 300px;
+				margin-top: 12px;
+				overflow-y: auto;
+				padding: 8px;
+				white-space: pre-wrap;
+			}
+			.err {
+				color: #ff8f8f;
+			}
+			.ok {
+				color: #8fdc8f;
+			}
+			.head {
+				color: #9fc6ff;
+				margin-top: 6px;
+			}
+		</style>
+	</head>
+	<body>
+		<label for="ir-url">Export-URL (penpot-import.json)</label>
+		<input id="ir-url" type="url" />
+		<p>Light/Dark schaltest du im Tokens-Panel über die Theme-Gruppe <strong>Scheme</strong>.</p>
+		<div>
+			<button id="preview" class="secondary" type="button">Vorschau</button>
+			<button id="sync" type="button">Synchronisieren</button>
+		</div>
+		<div id="log"></div>
+		<script>
+			const logElement = document.getElementById('log');
+			const log = (message, kind = '') => {
+				const line = document.createElement('div');
+				if (kind) line.className = kind;
+				line.textContent = message;
+				logElement.appendChild(line);
+				logElement.scrollTop = 1e9;
+			};
+
+			const SECTIONS = [
+				['addedComponents', 'Neue Komponenten'],
+				['changed', 'Geänderte Eigenschaften'],
+				['addedLayers', 'Neue Ebenen'],
+				['removedLayers', 'Entfernte Ebenen (Overrides darauf gehen verloren)', 'err'],
+				['deprecated', 'Als deprecated markiert (nicht im Export)', 'err'],
+				['missingTokens', 'Tokens fehlen in der Datei (Farben bleiben feste Werte)', 'err'],
+			];
+
+			function showReport(apply, report) {
+				const total = SECTIONS.reduce((sum, [key]) => sum + report[key].length, 0);
+				log(apply ? `Synchronisiert: ${total} Änderungen.` : `Vorschau: ${total} Änderungen, noch nichts geschrieben.`, total === 0 ? 'ok' : '');
+				for (const [key, title, kind] of SECTIONS) {
+					const items = report[key];
+					if (items.length === 0) continue;
+					log(`${title} (${items.length})`, 'head');
+					for (const item of items.slice(0, 40)) log(`  ${item}`, kind);
+					if (items.length > 40) log(`  … und ${items.length - 40} weitere`, kind);
+				}
+			}
+
+			window.addEventListener('message', (event) => {
+				const message = event.data;
+				if (message && message.type === 'log') log(message.message, message.kind);
+				if (message && message.type === 'report') showReport(message.apply, message.report);
+			});
+
+			async function send(type) {
+				const url = document.getElementById('ir-url').value.trim();
+				log(`Lade ${url} …`);
+				const response = await fetch(url);
+				if (!response.ok) {
+					throw new Error(`HTTP ${response.status} — läuft der Export-Server? (pnpm start:penpot im design-export-Paket)`);
+				}
+				const payload = await response.json();
+				// Penpot reicht die Nachricht unverändert an penpot.ui.onMessage weiter (keine Figma-Hülle).
+				parent.postMessage({ type, payload }, '*');
+			}
+
+			async function guarded(type) {
+				const buttons = document.querySelectorAll('button');
+				buttons.forEach((button) => (button.disabled = true));
+				try {
+					await send(type);
+				} catch (error) {
+					log(`Fehler: ${error.message}`, 'err');
+				} finally {
+					buttons.forEach((button) => (button.disabled = false));
+				}
+			}
+
+			// Die Export-Daten liegen auf demselben Server wie das Plugin, ein Verzeichnis höher.
+			document.getElementById('ir-url').value = new URL('../penpot/penpot-import.json', location.href.split('#')[0]).href;
+			document.getElementById('preview').addEventListener('click', () => guarded('preview'));
+			document.getElementById('sync').addEventListener('click', () => guarded('sync'));
+		</script>
+	</body>
+</html>
