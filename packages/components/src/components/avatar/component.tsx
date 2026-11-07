@@ -6,7 +6,7 @@ import { AvatarFC } from '../../internal/functional-components/avatar/component'
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { colorProp, labelProp, srcProp } from '../../internal/props';
-import type { ColorPair, LabelPropType, SrcPropType } from '../../schema';
+import type { AvatarProps, ColorPair, LabelPropType, SrcPropType } from '../../schema';
 import { trimLabel } from '../../schema';
 
 /**
@@ -53,7 +53,7 @@ const normalizeInitials = (value: LabelPropType): string => {
 		default: './style.scss',
 	},
 })
-export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebComponentInterface<AvatarApi> {
+export class KolAvatar extends BaseWebComponent<AvatarApi> implements AvatarProps, WebComponentInterface<AvatarApi> {
 	@State()
 	public initials: string = '';
 

@@ -28,7 +28,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BaseButtonWebComponent } from './base';
 
@@ -47,7 +47,7 @@ import { BaseButtonWebComponent } from './base';
 export class KolButton extends BaseButtonWebComponent implements ButtonProps, ButtonWebComponentInterface, ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	public constructor() {
 		super();

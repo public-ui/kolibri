@@ -6,14 +6,14 @@ import type { SkeletonApi } from '../../internal/functional-components/skeleton/
 import { skeletonPropsConfig } from '../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
 import { nameProp } from '../../internal/props';
-import { Log, type KolFocusOptions, type NamePropType } from '../../schema';
+import { Log, type KolFocusOptions, type NamePropType, type SkeletonProps } from '../../schema';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 @Component({
 	tag: 'kol-skeleton',
 	shadow: true,
 })
-export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebComponentInterface<SkeletonApi> {
+export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements SkeletonProps, WebComponentInterface<SkeletonApi> {
 	/**
 	 * Tracks the current count value for the skeleton.
 	 */

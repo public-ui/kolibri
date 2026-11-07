@@ -113,5 +113,6 @@ type OptionalStates = {
 } & StatefulPropTableCallbacks &
 	PropHasSettingsMenu;
 
+export type TableStatefulProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type TableStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type TableAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

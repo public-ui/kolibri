@@ -24,13 +24,12 @@ export type TreeItemApi = ApiFromConfig<
 		Callbacks: {
 			/**
 			 * Click handler of the link's anchor. Implemented by the web component, which dispatches
-			 * the `KolEvent.click` DOM event with the href on the tree item host.
+			 * the `KolEvent.click` DOM event with the href on the tree item host. A click on the chevron
+			 * expands or collapses the item instead of following the link.
 			 */
 			anchorClick: (event: Event) => void;
 			/** Bound to the default slot, which holds the nested tree items. */
 			slotchange: () => void;
-			/** Bound to the chevron in front of the label: expands or collapses the item. */
-			toggleClick: (event: MouseEvent) => void;
 		};
 		Methods: {
 			collapse: () => void;
@@ -40,6 +39,8 @@ export type TreeItemApi = ApiFromConfig<
 		};
 		Refs: {
 			anchor: HTMLAnchorElement;
+			/** The chevron in front of the label, which the anchor click handler recognizes. */
+			toggle: HTMLSpanElement;
 		};
 		States: {
 			/**

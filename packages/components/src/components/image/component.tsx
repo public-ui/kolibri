@@ -6,7 +6,7 @@ import type { ImageApi } from '../../internal/functional-components/image/api';
 import { imagePropsConfig } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
 import { altProp, imageCallbacksProp, loadingProp, sizesProp, srcProp, srcsetProp, type LoadingType } from '../../internal/props';
-import type { AltPropType, SizesPropType, SrcPropType, SrcsetPropType } from '../../schema';
+import type { AltPropType, ImageProps, SizesPropType, SrcPropType, SrcsetPropType } from '../../schema';
 import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -20,7 +20,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolImage extends BaseWebComponent<ImageApi> implements WebComponentInterface<ImageApi> {
+export class KolImage extends BaseWebComponent<ImageApi> implements ImageProps, WebComponentInterface<ImageApi> {
 	@Element() private readonly host?: HTMLKolImageElement;
 
 	protected readonly propsConfig: PropsConfigShape = imagePropsConfig;

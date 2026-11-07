@@ -6,7 +6,7 @@ import type { QuoteApi } from '../../internal/functional-components/quote/api';
 import { quotePropsConfig } from '../../internal/functional-components/quote/api';
 import { QuoteFC } from '../../internal/functional-components/quote/component';
 import { hrefProp, labelLangSegmentsProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../internal/props';
-import type { HrefPropType, LabelLangSegmentsPropType, QuotePropType } from '../../schema';
+import type { HrefPropType, LabelLangSegmentsPropType, QuoteProps, QuotePropType } from '../../schema';
 
 /**
  * The **Quote** component has two variants: a short inline (`inline`) and an indented block (`block`) variant. Both variants include a link to the source of the quote.
@@ -18,7 +18,7 @@ import type { HrefPropType, LabelLangSegmentsPropType, QuotePropType } from '../
 	},
 	shadow: true,
 })
-export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponentInterface<QuoteApi> {
+export class KolQuote extends BaseWebComponent<QuoteApi> implements QuoteProps, WebComponentInterface<QuoteApi> {
 	protected readonly propsConfig: PropsConfigShape = quotePropsConfig;
 
 	/**

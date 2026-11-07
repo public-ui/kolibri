@@ -6,7 +6,7 @@ import type { SpinApi } from '../../internal/functional-components/spin/api';
 import { spinPropsConfig } from '../../internal/functional-components/spin/api';
 import { SpinFC } from '../../internal/functional-components/spin/component';
 import { labelProp, showProp, variantSpinProp, type SpinVariantType } from '../../internal/props';
-import type { LabelPropType, ShowPropType } from '../../schema';
+import type { LabelPropType, ShowPropType, SpinProps } from '../../schema';
 
 @Component({
 	tag: 'kol-spin',
@@ -15,7 +15,7 @@ import type { LabelPropType, ShowPropType } from '../../schema';
 	},
 	shadow: true,
 })
-export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentInterface<SpinApi> {
+export class KolSpin extends BaseWebComponent<SpinApi> implements SpinProps, WebComponentInterface<SpinApi> {
 	protected readonly propsConfig: PropsConfigShape = spinPropsConfig;
 
 	/**

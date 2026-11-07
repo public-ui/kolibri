@@ -47,13 +47,13 @@ export const TreeItemFC: FC<FunctionalComponentProps<TreeItemApi>> = ({
 	groupId,
 	handleAnchorClick,
 	handleSlotchange,
-	handleToggleClick,
 	hasChildren,
 	href,
 	label,
 	level,
 	open,
 	refAnchor,
+	refToggle,
 }) => (
 	<li class={BEM_CLASS_TREE_ITEM} role="none" style={{ '--level': `${level}` }}>
 		<span class={treeItemBem('link', { active, 'first-level': level === 0 })}>
@@ -74,8 +74,7 @@ export const TreeItemFC: FC<FunctionalComponentProps<TreeItemApi>> = ({
 			>
 				<span class={BEM_CLASS_TREE_ITEM__LINK_INNER}>
 					{hasChildren ? (
-						// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events -- the link itself is the keyboard target; the tree handles the arrow keys.
-						<span class={BEM_CLASS_TREE_ITEM__TOGGLE_BUTTON} onClick={handleToggleClick}>
+						<span class={BEM_CLASS_TREE_ITEM__TOGGLE_BUTTON} ref={refToggle}>
 							<IconFC
 								class={BEM_CLASS_TREE_ITEM__TOGGLE_BUTTON_ICON}
 								icons={`kolicon kolicon-${open ? 'chevron-down' : 'chevron-right'}`}

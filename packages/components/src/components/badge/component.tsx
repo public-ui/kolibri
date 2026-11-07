@@ -21,7 +21,7 @@ import type {
 	Stringified,
 } from '../../schema';
 import { featureHint, objectObjectHandler, setEventTarget } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -45,7 +45,7 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 
 	@State() public labelId: string = createUniqueId('badge-label');
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 

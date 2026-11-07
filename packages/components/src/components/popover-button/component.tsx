@@ -25,7 +25,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BasePopoverButtonWebComponent } from './base';
 
@@ -49,7 +49,7 @@ export class KolPopoverButton
 {
 	@Element() protected readonly host?: HTMLKolPopoverButtonElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public popoverOpen = false;
 

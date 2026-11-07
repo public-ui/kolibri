@@ -7,7 +7,7 @@ import { AbbrFC } from '../../internal/functional-components/abbr/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { labelLangSegmentsProp } from '../../internal/props';
-import type { LabelLangSegmentsPropType } from '../../schema';
+import type { AbbrProps, LabelLangSegmentsPropType } from '../../schema';
 
 /**
  * The **Abbr** component implements the HTML tag `abbr`.
@@ -21,7 +21,7 @@ import type { LabelLangSegmentsPropType } from '../../schema';
 	},
 	shadow: true,
 })
-export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentInterface<AbbrApi> {
+export class KolAbbr extends BaseWebComponent<AbbrApi> implements AbbrProps, WebComponentInterface<AbbrApi> {
 	protected readonly propsConfig: PropsConfigShape = abbrPropsConfig;
 
 	/**

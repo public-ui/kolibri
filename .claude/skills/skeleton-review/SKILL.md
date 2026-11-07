@@ -123,7 +123,11 @@ Schweregrad **Breaking Theming**.
   beobachteten Member.
 - **Basis-SCSS** (Layer `kol-global`/`kol-component`): kein `margin`/`padding`, keine Farben, kein
   `color-scheme`, `light-dark()` oder `prefers-color-scheme`, kein `overflow: hidden`, kein
-  `!important`, keine `@layer` in Utility-Dateien.
+  `!important`, keine `@layer` in Utility-Dateien. Keine Befunde sind die Ausnahmen aus AGENTS.md
+  („General rules for custom themes“): `0`-Resets der User-Agent-Abstände und `margin: auto` zum
+  Zentrieren; `overflow: hidden` in `.visually-hidden`, bei Textkürzung mit `text-overflow` und auf
+  der nicht scrollenden Achse eines Scroll-Containers; `!important` in `forced-colors`,
+  `prefers-reduced-motion`, `[hidden]` und `.visually-hidden`.
 - **Theme-SCSS:** flache BEM-Struktur, kein `$root` und kein `@at-root`, nur Tokens referenzieren, keine
   eigenen Scheme-Media-Queries, keine Redundanz zum Basis-Styling.
 - **CSS Custom Properties:** nur dokumentierte `--kol-<komponente>-<name>`-Tokens, sonst SASS-Variablen.
