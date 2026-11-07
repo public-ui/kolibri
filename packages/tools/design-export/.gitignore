@@ -1,0 +1,4 @@
+dist/
+dist-test/
+dist-export/
+node_modules/
