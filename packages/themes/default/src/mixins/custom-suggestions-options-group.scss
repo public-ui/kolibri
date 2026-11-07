@@ -7,9 +7,12 @@
 		border-color: var(--color-subtle);
 		border-style: solid;
 		border-radius: var(--border-radius);
-		right: 0;
+		right: auto;
 		left: 0;
 		z-index: 5;
+		width: max-content;
+		min-width: 100%;
+		max-width: 90vw;
 		max-height: calc($option-height * $visible-options + to-rem(2));
 		border-width: 1px;
 	}

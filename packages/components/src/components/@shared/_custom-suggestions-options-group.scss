@@ -5,7 +5,12 @@
 		background-color: white;
 		display: block;
 		position: absolute;
+		right: auto;
+		left: 0;
 		z-index: 2;
+		width: max-content;
+		min-width: 100%;
+		max-width: 90vw;
 		max-height: to-rem(250);
 		margin: 0;
 		padding: 0;
