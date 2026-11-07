@@ -23,15 +23,6 @@
 		}
 
 		&__button.kol-button {
-			/* The 40px override must shrink BOTH elements: the root (pinned to the 44px a11y
-			   minimum by the button styles) and the interactive element (pinned directly by the
-			   a11y layer). */
-			min-height: to-rem(40);
-
-			.kol-button__interactive-element {
-				min-height: to-rem(40);
-			}
-
 			.kol-button__text {
 				white-space: nowrap;
 				border-bottom-left-radius: 0;

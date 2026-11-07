@@ -77,6 +77,7 @@ export const DesyV11 = KoliBri.createTheme(
 		'KOL-INPUT-TEXT': inputTextCss,
 		'KOL-LINK': linkCss,
 		'KOL-LINK-BUTTON': linkButtonCss,
+		'KOL-MODAL': dialogCss,
 		'KOL-NAV': navCss,
 		'KOL-PAGINATION': paginationCss,
 		'KOL-POPOVER-BUTTON': popoverButtonCss,

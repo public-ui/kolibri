@@ -3,7 +3,8 @@
 @use './typography.mixin' as *;
 
 @mixin dialog {
-	.kol-dialog {
+	.kol-dialog,
+	.kol-modal {
 		@include card;
 		border-radius: var(--kern-metric-border-radius-large);
 

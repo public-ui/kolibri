@@ -168,9 +168,12 @@
 	 * `--kol-spin-color` chain (#000 for the dot, #333 for the cycle ring); the rules below restate
 	 * exactly those literals in the light branch, so nothing moves, and give the dark branch a
 	 * visible spinner. The animated arc of the cycle variant is driven by `@keyframes` colour stops
-	 * in the base layer, which no theme rule can reach — see the theme README.
+	 * in the base layer, which read the two `--kol-theme-spin-color*` tokens.
 	 */
 	.kol-spin {
+		--kol-theme-spin-color: light-dark(#000000, #{$dark-color-ink});
+		--kol-theme-spin-color-start: light-dark(#ffffff, #{$dark-color-light});
+
 		&__spinner--dot .kol-spin__spinner-element {
 			background-color: var(--kol-spin-color, light-dark(#000000, #{$dark-color-ink}));
 			border-color: var(--color-light);
