@@ -135,6 +135,28 @@ test.describe(COMPONENT_NAME, () => {
 		});
 	});
 
+	test.describe('Keyboard', () => {
+		test('has the file input as its only tab stop', async ({ page }) => {
+			await page.setContent('<button id="before">before</button><kol-input-file _label="File"></kol-input-file><button id="after">after</button>');
+			await page.waitForChanges();
+			await page.locator('#before').focus();
+
+			await page.keyboard.press('Tab');
+			await expect(page.locator('kol-input-file input[type="file"]')).toBeFocused();
+
+			await page.keyboard.press('Tab');
+			await expect(page.locator('#after')).toBeFocused();
+		});
+
+		test('hides the browse button from assistive technology', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File"></kol-input-file>');
+			await page.waitForChanges();
+
+			await expect(page.locator('kol-input-file .kol-input-container__button')).toHaveAttribute('aria-hidden', 'true');
+			await expect(page.locator('kol-input-file .kol-input-container__button button')).toHaveAttribute('tabindex', '-1');
+		});
+	});
+
 	test.describe('reset()', () => {
 		test('should clear the selected files and filename text', async ({ page }) => {
 			await setContentWithRetry(page, `<kol-input-file _label="Input"></kol-input-file>`);

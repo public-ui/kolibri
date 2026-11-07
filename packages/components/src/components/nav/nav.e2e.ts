@@ -60,6 +60,17 @@ test.describe('kol-nav component', () => {
 		});
 	});
 
+	test.describe('link entries with children', () => {
+		test('render neither a toggle icon nor aria-expanded, because a link does not toggle its children', async ({ page }) => {
+			const links = [{ _label: 'Parent link', _href: '#parent', _children: [{ _label: 'Child', _href: '#child' }] }];
+			await page.setContent(`<kol-nav _label="Nav" _links='${JSON.stringify(links)}'></kol-nav>`);
+			const parentLink = page.locator('kol-nav .kol-nav__entry--link a').first();
+
+			await expect(parentLink).not.toHaveAttribute('aria-expanded', /.*/);
+			await expect(page.locator('kol-nav .kol-nav__entry--link .kolicon-plus')).toHaveCount(0);
+		});
+	});
+
 	test.describe('active state classes', () => {
 		test('applies active class to items based on _active flag', async ({ page }) => {
 			await page.setContent(`<kol-nav _label="Nav" _links='${JSON.stringify(LINKS.mixedActive)}'></kol-nav>`);

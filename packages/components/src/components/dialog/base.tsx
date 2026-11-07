@@ -154,9 +154,6 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 	private readonly handleCardClose = (): void => {
 		this.cardCloseTooltipBehavior.hideTooltip();
 		this.closeDialog();
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.close);
-		}
 	};
 
 	// --- Render ---

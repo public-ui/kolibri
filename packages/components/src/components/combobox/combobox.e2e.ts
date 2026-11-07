@@ -197,6 +197,16 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
 	});
 
+	test('names the listbox by the label of the field and announces list autocompletion only', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Direction" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+		const input = page.locator('input.kol-combobox__input');
+		await input.focus();
+		await page.keyboard.press('ArrowDown');
+
+		await expect(page.getByRole('listbox')).toHaveAccessibleName('Direction');
+		await expect(input).toHaveAttribute('aria-autocomplete', 'list');
+	});
+
 	test('should close listbox when pressing Escape', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const input = page.locator('input.kol-combobox__input');

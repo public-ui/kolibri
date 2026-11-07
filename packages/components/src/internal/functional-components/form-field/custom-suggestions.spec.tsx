@@ -39,6 +39,7 @@ describe('CustomSuggestionsOptionFC', () => {
 
 describe('CustomSuggestionsOptionsGroupFC', () => {
 	const defaultProps = {
+		'aria-labelledby': 'label-id',
 		blockSuggestionMouseOver: false,
 	};
 

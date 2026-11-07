@@ -27,13 +27,13 @@ const BEM_CLASS_TABS__TABLIST = tabsBem('tablist');
  * of `__button-create`, which the base and theme styles rely on.
  */
 export const TabsFC: FC<FunctionalComponentProps<TabsApi>> = (props) => {
-	const { align, class: hostClass, createButton, handleBlur, handleKeyDown, hasCreateButton, label, refContent, refRoot, tabButtons } = props;
+	const { align, class: hostClass, createButton, handleFocusOut, handleKeyDown, hasCreateButton, label, refContent, refRoot, tabButtons } = props;
 
 	return (
 		<BemRootNodeFC block="kol-tabs" modifiers={{ [`align-${align}`]: true }} class={hostClass} ref={refRoot}>
 			<div class={BEM_CLASS_TABS__BUTTON_GROUP}>
 				{/* The tab buttons inside are focusable; the tab list itself is not part of the tab order. */}
-				<div aria-label={label} class={BEM_CLASS_TABS__TABLIST} role="tablist" tabIndex={-1} onKeyDown={handleKeyDown} onBlur={handleBlur}>
+				<div aria-label={label} class={BEM_CLASS_TABS__TABLIST} role="tablist" tabIndex={-1} onKeyDown={handleKeyDown} onFocusout={handleFocusOut}>
 					{tabButtons.map(({ buttonProps, refBox }) => (
 						<div class={BEM_CLASS_TABS__TAB} ref={refBox}>
 							<ButtonFC {...buttonProps} />

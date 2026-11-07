@@ -23,9 +23,9 @@ export type TabsApi = ApiFromConfig<
 	typeof tabsPropsConfig,
 	{
 		Callbacks: {
-			/** Blur handler of the tab list; resets the keyboard focus position. */
-			blur: () => void;
-			/** Keydown handler of the tab list: arrow keys move between tabs, Enter and Space activate. */
+			/** Focusout handler of the tab list; resets the keyboard focus position once the focus leaves the tab list. */
+			focusOut: (event: FocusEvent) => void;
+			/** Keydown handler of the tab list: arrow keys move between tabs. Enter and Space activate through the native button click. */
 			keyDown: (event: KeyboardEvent) => void;
 		};
 		Methods: {

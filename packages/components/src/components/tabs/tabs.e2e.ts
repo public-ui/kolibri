@@ -309,4 +309,53 @@ test.describe('kol-tabs', () => {
 			await expect(secondTab).toBeFocused();
 		});
 	});
+
+	test.describe('Keyboard activation', () => {
+		const THREE_TABS = [{ _label: 'First tab' }, { _label: 'Second tab' }, { _label: 'Third tab' }];
+		const content = `<kol-tabs _behavior="select-manual" _tabs='${JSON.stringify(THREE_TABS)}' _label="Tabs">
+				<div>Contents of Tab 1</div>
+				<div>Contents of Tab 2</div>
+				<div>Contents of Tab 3</div>
+			</kol-tabs><button id="after">after</button>`;
+
+		for (const key of ['Enter', ' ']) {
+			test(`it calls onSelect exactly once when "${key}" activates the focused tab`, async ({ page }) => {
+				await page.setContent(content);
+				const kolTabs = page.locator('kol-tabs');
+				await kolTabs.evaluate((element: HTMLKolTabsElement) => {
+					const calls: number[] = [];
+					(window as unknown as { selectCalls: number[] }).selectCalls = calls;
+					element._on = {
+						onSelect: (_event: Event, tabIndex: number) => {
+							calls.push(tabIndex);
+						},
+					};
+				});
+				await page.waitForChanges();
+
+				await kolTabs.getByRole('tab', { name: 'First tab' }).focus();
+				await page.keyboard.press('ArrowRight');
+				await page.keyboard.press(key);
+				await expect(kolTabs.getByRole('tab', { name: 'Second tab' })).toHaveAttribute('aria-selected', 'true');
+				await page.waitForTimeout(100);
+
+				expect(await page.evaluate(() => (window as unknown as { selectCalls: number[] }).selectCalls)).toEqual([1]);
+			});
+		}
+
+		test('it resets the keyboard focus position when the focus leaves the tab list', async ({ page }) => {
+			await page.setContent(content);
+			const kolTabs = page.locator('kol-tabs');
+
+			await kolTabs.getByRole('tab', { name: 'First tab' }).focus();
+			await page.keyboard.press('ArrowRight');
+			await expect(kolTabs.getByRole('tab', { name: 'Second tab' })).toBeFocused();
+
+			await page.locator('#after').focus();
+			await kolTabs.getByRole('tab', { name: 'First tab' }).focus();
+			await page.keyboard.press('ArrowRight');
+
+			await expect(kolTabs.getByRole('tab', { name: 'Second tab' })).toBeFocused();
+		});
+	});
 });

@@ -270,15 +270,15 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 			case KeyboardKey.ArrowLeft:
 				this.goToPreviousTab(event);
 				break;
-			case KeyboardKey.Space:
-			case KeyboardKey.Enter:
-				this.activateFocusedTab(event);
-				break;
 		}
 	};
 
-	private readonly handleBlur = (): void => {
-		this.currentFocusIndex = undefined;
+	/** The focus position is kept while the focus moves between the tabs and reset once it leaves the tab list. */
+	private readonly handleFocusOut = (event: FocusEvent): void => {
+		const tablist = event.currentTarget as HTMLElement | null;
+		if (!(event.relatedTarget instanceof Node && tablist?.contains(event.relatedTarget))) {
+			this.currentFocusIndex = undefined;
+		}
 	};
 
 	private getCurrentFocusIndex(): number {
@@ -305,12 +305,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	private goToPreviousTab(event: KeyboardEvent) {
 		const nextFocusIndex = this.prevPossibleTabIndex(this.getRenderProp('tabs'), this.getCurrentFocusIndex());
 		this.selectNextTabEvent(event, nextFocusIndex, this.getKeyboardTabChangeMode());
-	}
-
-	private activateFocusedTab(event: KeyboardEvent) {
-		if (typeof this.currentFocusIndex === 'number') {
-			this.onSelect(event, this.currentFocusIndex);
-		}
 	}
 
 	private selectNextTabEvent(
@@ -470,7 +464,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 					align={this.getRenderProp('align')}
 					behavior={this.getRenderProp('behavior')}
 					createButton={this.createButton}
-					handleBlur={this.handleBlur}
+					handleFocusOut={this.handleFocusOut}
 					handleKeyDown={this.handleKeyDown}
 					hasCreateButton={this.getRenderProp('hasCreateButton')}
 					label={this.getRenderProp('label')}

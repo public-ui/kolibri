@@ -44,8 +44,10 @@ type ListProps = Pick<NavFCProps, 'expandedChildren' | 'getButtonFcProps' | 'get
  */
 const renderEntry = (props: ListProps, entry: ButtonOrLinkOrTextWithChildrenProps, hasChildren: boolean, expanded: boolean, ariaId: string): JSX.Element => {
 	const { collapsible, compact, getButtonFcProps, getLinkFcProps, handleToggleExpansion, hasIconsWhenExpanded } = props;
+	/* Only a button entry toggles its children; a link entry navigates, so it shows neither the toggle icon nor `aria-expanded`. */
+	const toggleable = collapsible && hasChildren && !isLinkEntry(entry);
 	const icons = buildEntryIcons({
-		collapsible: collapsible && hasChildren,
+		collapsible: toggleable,
 		expanded,
 		hasIconsWhenExpanded,
 		hideLabel: compact,
@@ -65,8 +67,6 @@ const renderEntry = (props: ListProps, entry: ButtonOrLinkOrTextWithChildrenProp
 							...(entry as EmbeddedLinkProps),
 							_hideLabel: compact,
 							_icons: icons,
-							_ariaControls: collapsible && hasChildren && expanded ? ariaId : undefined,
-							_ariaExpanded: collapsible && hasChildren ? expanded : undefined,
 						})}
 					/>
 				</div>
@@ -82,8 +82,8 @@ const renderEntry = (props: ListProps, entry: ButtonOrLinkOrTextWithChildrenProp
 							_disabled: isButtonEntry(entry) ? entry._disabled : undefined,
 							_hideLabel: compact,
 							_icons: icons,
-							_ariaControls: collapsible && hasChildren && expanded ? ariaId : undefined,
-							_ariaExpanded: collapsible && hasChildren ? expanded : undefined,
+							_ariaControls: toggleable && expanded ? ariaId : undefined,
+							_ariaExpanded: toggleable ? expanded : undefined,
 							_on: {
 								onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
 									if (isButtonEntry(entry) && typeof entry._on.onClick === 'function') {
