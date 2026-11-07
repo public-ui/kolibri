@@ -102,15 +102,38 @@ Ein Verstoß hat den Schweregrad **Blocker (Architektur)**.
 
 Schweregrad **Breaking Theming**.
 
-- Jedes Wrapper-Element melden, das genau ein Element ohne Geschwister umschließt und durch dieses als
-  `BemRootNodeFC`-Wurzel ersetzt werden könnte. DOM vorher und nachher sowie die alten und neuen
-  BEM-Klassen nennen.
+Gemeldet wird ein Wrapper-Element, das genau ein Element ohne Geschwister umschließt und sich
+entfernen lässt, ohne dass ein Knoten zwei Blöcke trägt. DOM vorher und nachher sowie die alten und
+neuen BEM-Klassen nennen.
+
+Vor dem Melden das umschlossene Kind einordnen:
+
+| Umschlossenes Kind                                                                                                                        | Bewertung                                                                                                                                                                                                           |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Element der eigenen Komponente (Klasse `kol-<block>__…`)                                                                                  | melden: Das Kind wird zur Wurzel bzw. zum Element und übernimmt Block oder Elementklasse des Wrappers.                                                                                                              |
+| Teilbaustein, der Block oder Elementklasse vom Aufrufer übernimmt (z. B. `DialogFC` mit `blockClass` in drawer)                           | melden: Der Teilbaustein bekommt die Klasse des Wrappers, es entsteht kein zweiter Block.                                                                                                                           |
+| Wurzel einer eingebetteten Komponenten-FC mit eigenem Block (`ButtonFC` → `kol-button`, `LinkFC` → `kol-link`, `BadgeFC` → `kol-badge` …) | **nicht als Befund melden.** Der eigene Block der eingebetteten FC ist korrekt: Über ihn erreichen Basis-Styles und Theme die eingebettete Komponente (ARC42, „Embedded Components (Items)“, Designentscheidung 5). |
+
+Für den dritten Fall gilt:
+
+- Ist der Wrapper die Wurzel der Komponente selbst (z. B. `div.kol-version > div.kol-badge`), ist er
+  immer berechtigt. Ohne ihn hätte die Komponente einen fremden Block an der Wurzel, und das verletzt R3.
+- Ist der Wrapper ein Element der umgebenden Komponente (z. B. `div.kol-breadcrumb__link > div.kol-link`),
+  wäre die Alternative ein BEM-Mix am selben Knoten (`div.kol-link.kol-breadcrumb__link`). Ob ein Mix
+  zulässig ist, ist nicht entschieden (#11516). Solche Wrapper nur unter „Offene Fragen“ führen, mit
+  Verweis auf #11516.
+
+Weitere Regeln:
+
 - Hat das Element Geschwister (z. B. Tooltip, Beschreibung), ist der Wrapper berechtigt und wird nicht
   gemeldet.
+- Ein Wrapper, den eine Animation oder ein Layout-Mechanismus braucht (z. B. die Grid-Höhen-Transition
+  von `__wrapper-animation`), wird nur gemeldet, wenn der Befund zeigt, dass das Verhalten ohne ihn
+  erhalten bleibt.
 - Fehlt das benötigte Tag in der `component`-Union von `BemRootNodeFC`, dafür keinen eigenen Befund
-  anlegen, sondern auf das offene Issue mit dem Label `skeleton-review` und dem Titel
-  „BemRootNodeFC: component-Union erweitern“ verweisen. Gibt es dieses Issue nicht, den Punkt im
-  Abschnitt „Querschnitt“ des Plans aufführen.
+  anlegen, sondern auf #11521 („BemRootNodeFC: component-Union erweitern“) verweisen, solange es offen
+  ist. Ist es geschlossen und das Tag weiterhin nicht enthalten, den Punkt im Abschnitt „Querschnitt“
+  des Plans aufführen.
 
 ### Weitere Prüfpunkte
 
