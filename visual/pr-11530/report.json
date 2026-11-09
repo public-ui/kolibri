@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11530,
-	"head": "9a567ac31fed24ac013cadb6d5a34e314f6151fe",
+	"head": "1ef22889ec287bc13a766f7d1d9515ee3f0c68b4",
 	"repository": "public-ui/kolibri",
-	"runId": 42679594787,
-	"generatedAt": "2026-11-09T19:34:38.395Z",
-	"digest": "sha256:6905f1857be5ee05bc63dc7922d58cfce73de22a566f5c20ded109cdf660195e",
+	"runId": 42694643899,
+	"generatedAt": "2026-11-09T21:03:38.932Z",
+	"digest": "sha256:64ce5b9c3b936e77ae4373f85424a3abd899164e150b0e15b1c56fe000662d2c",
 	"baseline": {
 		"sha": "47b239de37a91e78b04dff79e363685adeee8c5a",
 		"ref": "release/4",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3004,
-		"changed": 91,
+		"unchanged": 2962,
+		"changed": 133,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -3161,13 +3161,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 400,
+				"changed": 42,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:77f82a73964db40f494290baeb942deb95ec408bdbe07886dc7e0668e2580dc4",
+			"digest": "sha256:e825fce179debc72543ec105808425bcee1d8f99eb5e8332b47397f55b9b25e4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3183,33 +3183,108 @@
 				},
 				{
 					"name": "alert-basic--default",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:d06daaccde270b2f48465fbacf98e4a4aa48eff8b36f867f52f3ba4b6d1fcc36"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:5a5b9fb0ea4001b888dafd07720a63025a29905e4b0cbfe278a7d04503e3f369",
+					"diffPixels": 5570,
+					"diffRatio": 0.038172,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							186
+						],
+						"actual": [
+							768,
+							190
+						]
+					},
+					"expected": "theme-bwst/alert-basic--default.expected.png",
+					"actual": "theme-bwst/alert-basic--default.actual.png",
+					"diff": "theme-bwst/alert-basic--default.diff.png"
 				},
 				{
 					"name": "alert-basic--error",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:7ee1b1a4c24318fca40f7572a623cd525543e69831e44d325015233698901501"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:b4250beda5bcc3f47cb029ca3aa119c1dfd75fe73cc155e4961b3591e9469bfc",
+					"diffPixels": 5915,
+					"diffRatio": 0.040536,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							186
+						],
+						"actual": [
+							768,
+							190
+						]
+					},
+					"expected": "theme-bwst/alert-basic--error.expected.png",
+					"actual": "theme-bwst/alert-basic--error.actual.png",
+					"diff": "theme-bwst/alert-basic--error.diff.png"
 				},
 				{
 					"name": "alert-basic--info",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:49b1826e2cb83465624a0055bfb3e15dcd525ed9481b0946d8571aacfb18e4aa"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:b60e5b21960696c76e3ff67a22841097d5e1c8f54962a8814cedece079a91dfd",
+					"diffPixels": 5700,
+					"diffRatio": 0.039063,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							186
+						],
+						"actual": [
+							768,
+							190
+						]
+					},
+					"expected": "theme-bwst/alert-basic--info.expected.png",
+					"actual": "theme-bwst/alert-basic--info.actual.png",
+					"diff": "theme-bwst/alert-basic--info.diff.png"
 				},
 				{
 					"name": "alert-basic--success",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:b002c0bc3408b026ca12fab4dd82329f408287fcf4dce4b84cf765381cd45adf"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:ce5702f72aa7bf2ddd01ae57646d15649bfda4fbc4fa06f405c28d506d617eba",
+					"diffPixels": 5801,
+					"diffRatio": 0.039755,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							186
+						],
+						"actual": [
+							768,
+							190
+						]
+					},
+					"expected": "theme-bwst/alert-basic--success.expected.png",
+					"actual": "theme-bwst/alert-basic--success.actual.png",
+					"diff": "theme-bwst/alert-basic--success.diff.png"
 				},
 				{
 					"name": "alert-basic--warning",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:a486fec9ed409bd9eafb92e0bca4e9c3f40e3658112555c92d3794806828a340"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:53585b346f6072b2bd6052d3b37f249c51d0f36c5b5392e4e66553dcbd6458ec",
+					"diffPixels": 5689,
+					"diffRatio": 0.038987,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							186
+						],
+						"actual": [
+							768,
+							190
+						]
+					},
+					"expected": "theme-bwst/alert-basic--warning.expected.png",
+					"actual": "theme-bwst/alert-basic--warning.actual.png",
+					"diff": "theme-bwst/alert-basic--warning.diff.png"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -3537,15 +3612,25 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-access-key",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:c8abd15d5d6e35a1cc67da156c49ab6ac2ec35294bbeefc346886446fc53c075"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:8baff01793e385368cd606f8c4b226af92d38c86a97ab534a154a4b13c5725ef",
+					"diffPixels": 277,
+					"diffRatio": 0.013452,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-access-key.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-access-key.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-access-key.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:5fc1ed8309a18c27421768697955a5c32530d26253c6dfa90c5fb02e11549668"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:a2a9afc57f5041f6eb67ca77a98fde7ae3d83e2055da63489c180b6554d9c3bc",
+					"diffPixels": 824,
+					"diffRatio": 0.040016,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-checked.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-checked.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-checked.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked-disabled",
@@ -3561,9 +3646,14 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-error",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:c4c7b232ecaeabdc5bc75648133ab01741ea8e8fcbc90c3c3f30e99b67c0b85a"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:08dbbcbf40e628712df787ebc73865f25a2d98493be4eae4c96864504baed688",
+					"diffPixels": 277,
+					"diffRatio": 0.006504,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-error.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-error.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-error.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-hide-error",
@@ -3579,63 +3669,113 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-indeterminate",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:e31f36772523502910a918caa090e4ab20708210cd341165afab138dee2173ca"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:24fbb4079010610d2f9b238de9b8056aef28eda0b5e3c438e62b2fb12674ec11",
+					"diffPixels": 864,
+					"diffRatio": 0.041958,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-indeterminate.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-indeterminate.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-indeterminate.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-info-popover",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:d3d1366cdbdb0cd2149cd95d13fd31bc6ba853ae984f01f5d83a8297b64ba0f6"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:976bddd1d23541a38017f6ccb771aaabb6a82753e8a6dca2f6e5273cb41f24dd",
+					"diffPixels": 277,
+					"diffRatio": 0.013452,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-info-popover.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-info-popover.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-info-popover.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-long-label",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:56e66dda673f2c8652a90d1b80e55e1faa0d6c1b5d8a8129fd5d03bfe4c0f3d4"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:b22ea48d8c461506edb654792ea20ed42d40a2e2aaa5b637f667a18a4cdbd64d",
+					"diffPixels": 4184,
+					"diffRatio": 0.101593,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-long-label.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-long-label.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-long-label.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-short-key",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:255bb224be1f899493b8a05bf7407a37451960d47a876cc491c2135c86a231c1"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:fa929a7d8206e30021914758633188b241a87061da8dce40f024eb00774a27d7",
+					"diffPixels": 277,
+					"diffRatio": 0.013452,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-short-key.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-short-key.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-short-key.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-unchecked",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:44f8686e06ea8ca4e1f5657ee17e7ce9c9ec13e5c374ef2ea21f859e91185e9c"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:b09a47db191950f4463fd5cbfb5f9a7d7461dc568af52197f335263671f4a81b",
+					"diffPixels": 277,
+					"diffRatio": 0.013452,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-unchecked.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-unchecked.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-unchecked.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-access-key",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:45bc5cf73a76411053726a6cb76ddd1cc45d27eb7aecb3f32aa670dbbd1c18a4"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:5a514aa385b93eb550a24842933ba1359456c2c230e2f4df95881c91c8552059",
+					"diffPixels": 984,
+					"diffRatio": 0.047786,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-access-key.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-access-key.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-access-key.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:14d7b77c94b1f88dd280177e7ad911387bb898984649a467a5841c5446d51028"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:59fc14584a5138742def342741eb062ea06c195745706dd6f76716387db50d44",
+					"diffPixels": 838,
+					"diffRatio": 0.040695,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-checked.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-checked.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-checked.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked-disabled",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:cbc48cd8d97888dc2e8cf19c106c99ec5250c695c78f030664c759ecc02275d2"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:3b748aa73581b82d132a2bd0f3023d0a37b8931b6aa23b10b6724874baefac6a",
+					"diffPixels": 488,
+					"diffRatio": 0.023699,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-checked-disabled.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-checked-disabled.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-checked-disabled.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-disabled",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:1e89525a79cd2f376e3f5580536b1915547da9169373a7b3b5de9f6cb74b1cd0"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:779374a06645af7ed48fdb9bb50226622eaab0ac6fef2ca87d2f4812aa4d5467",
+					"diffPixels": 220,
+					"diffRatio": 0.006913,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-disabled.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-disabled.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-disabled.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-error",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:a9d660193b12afebe711e83a3b45d726e79c49153b87bc1f93e4594e9d38ca57"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:27a6075a96e5fc3b2ec14407c8a69675eb487239c2c3bbce5c0fe9b9c563bf5e",
+					"diffPixels": 328,
+					"diffRatio": 0.007702,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-error.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-error.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-error.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-hide-error",
@@ -3645,39 +3785,69 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-indet-disabled",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:0da1568050ac27b3b1a84bd0d3b29a16d79c48f1b47c9ecce44100246260b3c6"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:9630f20df9223d3507fa1179ee51994a9603a14bb0f6668e5b31717e2ceec2a7",
+					"diffPixels": 560,
+					"diffRatio": 0.027195,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-indet-disabled.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-indet-disabled.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-indet-disabled.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-indeterminate",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:22f7d184f9b8771e0cf94488d26531acb22ed56004413dc50cf11fc9f0f3d4a3"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:0500b3bbc6c2e0db309bf6ad7a946a1df6bfbee430f910ae2168d503c76488e9",
+					"diffPixels": 353,
+					"diffRatio": 0.017143,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-indeterminate.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-indeterminate.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-indeterminate.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-info-popover",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:103ca7bb393aa5c048296e9721f57bdc6ff31facd8dd55e9731bd7a6e1a797b4"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:4b4200b7c12d0d1ab46a2dc3ec7555c8db8a71f27069285aa9342edad2d71784",
+					"diffPixels": 433,
+					"diffRatio": 0.021028,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-info-popover.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-info-popover.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-info-popover.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-long-label",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:ae2e625d2c0ef685a488878f6204056cdc7b8238cec607d20e8ca678e3dfcda6"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:6926ca3cc50ac2ab18c0dec9beff4737f34bf4b46d610a4fbd3117f9e9afaed5",
+					"diffPixels": 4724,
+					"diffRatio": 0.114705,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-long-label.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-long-label.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-long-label.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-short-key",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:ba8ff05556ea6553773c8338a5ec9501aa3111340f5068ff8736298ed8184f52"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:1438ea2babcc6d1edc6d6c36da2a5860133ec3ed5214c1de4b5cc04095ac8b65",
+					"diffPixels": 1012,
+					"diffRatio": 0.049145,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-short-key.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-short-key.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-short-key.diff.png"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-unchecked",
-					"route": "input-checkbox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:87d5c602ece6649418ed3f9df15e744ffea824897c9622811e2f0eedf3c50fe9"
+					"route": "input-checkbox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:b41d873c0b0444ff5accc0ea509496a8b6ac4d1b1ab633a8835cfb46a365bdf7",
+					"diffPixels": 390,
+					"diffRatio": 0.018939,
+					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-unchecked.expected.png",
+					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-unchecked.actual.png",
+					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-unchecked.diff.png"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-access-key",
@@ -4275,69 +4445,234 @@
 				},
 				{
 					"name": "input-file-basic-noColumns--hide-label-error",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:9870900ddaf87e30896e86283f3e048f312d0fdc7050c126ab157a30703a1b8f"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:25948f0b7428e3b2b0c7e33793708984dc98b2857b39432c301a32bec2e4f827",
+					"diffPixels": 1536,
+					"diffRatio": 0.034548,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							93
+						],
+						"actual": [
+							468,
+							95
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--hide-label-error.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--hide-label-error.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--hide-label-error.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-access-key",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:e5f85228fcd97a194051bb1ebe346510a218aa6f58d41b98626a0bf275d9d93e"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:82532f4741e662f0546586c3ca2335c28d976f4272822d19115d54e5c7696063",
+					"diffPixels": 1442,
+					"diffRatio": 0.043397,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							69
+						],
+						"actual": [
+							468,
+							71
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-access-key.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-access-key.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-access-key.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-black-bg",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:777919891affb23c960937a34e5cb53969eab8bb030c992fa71a3563d7ecf04a"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:cb9eddfa342eb922a868613bb938ad13425f164f79ea3ac331bc4cb21f8aee10",
+					"diffPixels": 2009,
+					"diffRatio": 0.049342,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							85
+						],
+						"actual": [
+							468,
+							87
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-black-bg.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-black-bg.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-black-bg.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-disabled",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:b8a259788d1a53ee82fcf23539741acbe0f2dba356e4807fd6dce79b69c9df23"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:605af4af252f5c9191602c70dbc7da1081685c7d6a4bb3f68105b0c99131a66a",
+					"diffPixels": 2631,
+					"diffRatio": 0.077011,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							69
+						],
+						"actual": [
+							468,
+							73
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-disabled.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-disabled.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-disabled.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:817528ab1e03f95ec0af116edab1668505a02450ec266f1747d9ca81c3da1594"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:7ab7dbe7f080096f09d163a5442307f6f8b929baaa7cb9bb80c9b32a9dee9cd4",
+					"diffPixels": 1536,
+					"diffRatio": 0.027814,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							116
+						],
+						"actual": [
+							468,
+							118
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-error.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-error.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-error.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:c94f6070516b21c01c063305cf649bd038e3e4a378214912c7cfec9db5113ad6"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:2e32a405f36b0f12b5410a920a5dbb4aa9d78d8ef18ac66ad6bf89af222e5e0b",
+					"diffPixels": 1442,
+					"diffRatio": 0.031765,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							95
+						],
+						"actual": [
+							468,
+							97
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-msg-default.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-msg-default.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-msg-default.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-info",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:04370692fbe7e4a797eb0db3e1d7513e6f498fef52370f1030a8a4a0f4ce9879"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:861a054320e63154a4e09a3aa7ad26cf63f4b8af9786d111ffcf02f05c55a3a9",
+					"diffPixels": 1442,
+					"diffRatio": 0.031765,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							95
+						],
+						"actual": [
+							468,
+							97
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-msg-info.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-msg-info.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-msg-info.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-success",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:d5c9a94c294586544de188f491e86b6d7ad9a7a782370466005d6a5eb7f2fcd4"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:98119fe92b430c10a7c034e9c3414c064fea6b96b19188b218464b3704df3877",
+					"diffPixels": 1442,
+					"diffRatio": 0.031765,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							95
+						],
+						"actual": [
+							468,
+							97
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-msg-success.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-msg-success.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-msg-success.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-warning",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:65b9eb774a7ddd139900c024bac39df67ea8bb12de4a358126312f59fe0d9f73"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:89132dfc07ef085f17b5449aa8c7b83c5ccff3d58de2c959e1f33b9ec9c3d74b",
+					"diffPixels": 1442,
+					"diffRatio": 0.031765,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							95
+						],
+						"actual": [
+							468,
+							97
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-msg-warning.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-msg-warning.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-msg-warning.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-multiple",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:551452544d6deb22022c5f7775875fc44542449a3816595fdb263dab334e8672"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:2de339def1935f1e5df0c83acb9cb0c2a69e9390b2f0424cbb1a8f76ffedd167",
+					"diffPixels": 1442,
+					"diffRatio": 0.043397,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							69
+						],
+						"actual": [
+							468,
+							71
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-multiple.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-multiple.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-multiple.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-short-key",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:bf9f33b34cb1f5122a9bd2a604384aa77600cfcf45121e1b343f17a0c99393dc"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:86fe7b88543c8cb0a5498d8e34202a6a085132f9b34dc18a904d12670924223c",
+					"diffPixels": 1442,
+					"diffRatio": 0.043397,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							69
+						],
+						"actual": [
+							468,
+							71
+						]
+					},
+					"expected": "theme-bwst/input-file-basic-noColumns--label-short-key.expected.png",
+					"actual": "theme-bwst/input-file-basic-noColumns--label-short-key.actual.png",
+					"diff": "theme-bwst/input-file-basic-noColumns--label-short-key.diff.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -5121,9 +5456,14 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputCheckbox",
-					"route": "scenarios-focus-elements-component-inputCheckbox",
-					"status": "unchanged",
-					"hash": "sha256:5cab2d30cfe7ad4b09229635e3589c86ddd135aac6f908ff06cd6d33d241d5c5"
+					"route": "scenarios/focus-elements?component=inputCheckbox",
+					"status": "changed",
+					"hash": "sha256:48284c3b90d7edd464649d259a1f146bd5306087f8d3a1de6c0f53028db9ef44",
+					"diffPixels": 259,
+					"diffRatio": 0.01136,
+					"expected": "theme-bwst/scenarios-focus-elements-component-inputCheckbox.expected.png",
+					"actual": "theme-bwst/scenarios-focus-elements-component-inputCheckbox.actual.png",
+					"diff": "theme-bwst/scenarios-focus-elements-component-inputCheckbox.diff.png"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputColor",
@@ -5145,15 +5485,45 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputFile",
-					"route": "scenarios-focus-elements-component-inputFile",
-					"status": "unchanged",
-					"hash": "sha256:e1b768de9a53562b64db1ca4411117f572ead1443eb4deae6cacc7ed9e2799e6"
+					"route": "scenarios/focus-elements?component=inputFile",
+					"status": "changed",
+					"hash": "sha256:026317c3b163d21580cd4d0f14062c9889ca0ec682e75f85a801d8a62915f93c",
+					"diffPixels": 1972,
+					"diffRatio": 0.063205,
+					"sizeMismatch": {
+						"expected": [
+							300,
+							102
+						],
+						"actual": [
+							300,
+							104
+						]
+					},
+					"expected": "theme-bwst/scenarios-focus-elements-component-inputFile.expected.png",
+					"actual": "theme-bwst/scenarios-focus-elements-component-inputFile.actual.png",
+					"diff": "theme-bwst/scenarios-focus-elements-component-inputFile.diff.png"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
-					"route": "scenarios-focus-elements-component-inputFileMultiple",
-					"status": "unchanged",
-					"hash": "sha256:6d86446574892eca747c221be84653cc71a6a9d4802aa715c14613b6c47f184a"
+					"route": "scenarios/focus-elements?component=inputFileMultiple",
+					"status": "changed",
+					"hash": "sha256:aaa9e4c1cecc4b1d0b318d127ed524fb07a24ccc4b53f2155a29219198afe12e",
+					"diffPixels": 1972,
+					"diffRatio": 0.063205,
+					"sizeMismatch": {
+						"expected": [
+							300,
+							102
+						],
+						"actual": [
+							300,
+							104
+						]
+					},
+					"expected": "theme-bwst/scenarios-focus-elements-component-inputFileMultiple.expected.png",
+					"actual": "theme-bwst/scenarios-focus-elements-component-inputFileMultiple.actual.png",
+					"diff": "theme-bwst/scenarios-focus-elements-component-inputFileMultiple.diff.png"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputNumber",
@@ -5265,9 +5635,24 @@
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-alert",
-					"route": "scenarios-label-lang",
-					"status": "unchanged",
-					"hash": "sha256:5d25f53a5c28346d45e213e966914241dd0ac5c6bc6f807dedd3f3861333e7d7"
+					"route": "scenarios/label-lang",
+					"status": "changed",
+					"hash": "sha256:91c5781d88aa9e5525c22852eb809c82d7db3df87df1bf1700d0a21935d6334f",
+					"diffPixels": 1134,
+					"diffRatio": 0.029531,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							48
+						],
+						"actual": [
+							768,
+							50
+						]
+					},
+					"expected": "theme-bwst/scenarios-label-lang--label-lang-alert.expected.png",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-alert.actual.png",
+					"diff": "theme-bwst/scenarios-label-lang--label-lang-alert.diff.png"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -5301,9 +5686,14 @@
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-checkbox",
-					"route": "scenarios-label-lang",
-					"status": "unchanged",
-					"hash": "sha256:b4d7e31452c9c25993674b656e2feb237b2d35b638a5e3da886f442c26bcd448"
+					"route": "scenarios/label-lang",
+					"status": "changed",
+					"hash": "sha256:53748cfcfc3a3040766c769ea80910e74e2224a0410fd90a4d857f00cc90d2d1",
+					"diffPixels": 741,
+					"diffRatio": 0.021928,
+					"expected": "theme-bwst/scenarios-label-lang--label-lang-checkbox.expected.png",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-checkbox.actual.png",
+					"diff": "theme-bwst/scenarios-label-lang--label-lang-checkbox.diff.png"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-details",
@@ -5391,15 +5781,35 @@
 				},
 				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
-					"route": "scenarios-same-height-of-all-form-elements-with-label",
-					"status": "unchanged",
-					"hash": "sha256:6a5ba377b4ac28c6e3ced53d45bc1512b4fcd8c74a97f0af4ba2e292b4108cda"
+					"route": "scenarios/same-height-of-all-form-elements-with-label",
+					"status": "changed",
+					"hash": "sha256:65f0b901489dfcbedccf75651aecfe02ce5d997144aca72ca4b5bc8a21fcb3d7",
+					"diffPixels": 11909,
+					"diffRatio": 0.028194,
+					"sizeMismatch": {
+						"expected": [
+							800,
+							526
+						],
+						"actual": [
+							800,
+							528
+						]
+					},
+					"expected": "theme-bwst/scenarios-same-height-of-all-form-elements-with-label.expected.png",
+					"actual": "theme-bwst/scenarios-same-height-of-all-form-elements-with-label.actual.png",
+					"diff": "theme-bwst/scenarios-same-height-of-all-form-elements-with-label.diff.png"
 				},
 				{
 					"name": "scenarios-same-height-of-all-interactive-elements",
-					"route": "scenarios-same-height-of-all-interactive-elements",
-					"status": "unchanged",
-					"hash": "sha256:0666956293ad2cc2b401570611f41a982763abd2e1d3f4dc9b8da67b2a7cd5c1"
+					"route": "scenarios/same-height-of-all-interactive-elements",
+					"status": "changed",
+					"hash": "sha256:8f1c929215b15577d1a9381aa424f0496502454efa45189af5dddc909c343e73",
+					"diffPixels": 9860,
+					"diffRatio": 0.030812,
+					"expected": "theme-bwst/scenarios-same-height-of-all-interactive-elements.expected.png",
+					"actual": "theme-bwst/scenarios-same-height-of-all-interactive-elements.actual.png",
+					"diff": "theme-bwst/scenarios-same-height-of-all-interactive-elements.diff.png"
 				},
 				{
 					"name": "select-basic-noColumns--hide-label-error",
