@@ -1,0 +1,1 @@
+import{l as e,x as t}from"./props-from-config-CG4O4MKB-DduaynPl.js";var n=e(`required`,!1,t);export{n as t};

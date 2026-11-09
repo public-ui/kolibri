@@ -1,0 +1,1 @@
+import{A as e,D as t,l as n}from"./props-from-config-CG4O4MKB-DduaynPl.js";var r=n(`max`,100,t,e=>e>0),i=n(`unit`,`%`,e,e=>e.length>0);export{i as n,r as t};

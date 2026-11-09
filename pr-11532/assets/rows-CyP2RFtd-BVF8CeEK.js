@@ -1,0 +1,1 @@
+import{D as e,l as t}from"./props-from-config-CG4O4MKB-DduaynPl.js";var n=t(`rows`,void 0,e,e=>e>=1);export{n as t};
