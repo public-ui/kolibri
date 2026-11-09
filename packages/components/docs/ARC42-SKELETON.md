@@ -354,6 +354,8 @@ When a component renders another component inside its own shadow DOM — the clo
 - A variable number of embedded instances (one action button per table row) goes through `createItemPool` (`item-pool.ts`): each render pass takes its items by key, and `endRender()` syncs them and destroys the ones the pass no longer used.
 - The KoliBri DOM events of the embedded component are dispatched on its FC root, where the embedded element used to be, so they bubble the same way.
 
+**The reactivity boundary is the item.** An item keeps its own state in closures — the `aria-current` of a link item, the edited header cells of the table settings menu. Stencil cannot observe that state, so when it changes, the item calls the `requestRender` callback its factory takes (`() => forceUpdate(this)` in the embedding WC). That callback is the only sanctioned use of `forceUpdate`: data the web component owns itself is a `@State`, and the rendering follows the change without an explicit call.
+
 ### Schema Helper Layer
 
 Web components receive dynamic values from HTML attributes, but internal rendering requires statically typed data. The schema helper layer bridges that gap through **graceful degradation**: attempt minimal type conversion, then validate, but never force invalid data into types.
