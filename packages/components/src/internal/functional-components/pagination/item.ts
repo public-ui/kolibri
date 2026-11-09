@@ -81,7 +81,11 @@ export type PaginationItem = {
 	applyCustomClass: (value?: CustomClassPropType) => void;
 	/** An object sets single buttons and keeps the others. */
 	applyHasButtons: (value?: boolean | Stringified<PaginationHasButton>) => void;
-	applyLabel: (value?: LabelPropType) => void;
+	/**
+	 * Applies `_label`, substituting the `kol-pagination` translation when it is unset. The web
+	 * component passes the requiredness of an unset value; applies from `update` stay without it.
+	 */
+	applyLabel: (value?: LabelPropType, required?: boolean) => void;
 	/**
 	 * Applies `_max`. The web component passes the requiredness of an unset value; applies from
 	 * `update` stay without it and keep the current max.
@@ -195,11 +199,11 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		});
 	};
 
-	const applyLabel = (value: LabelPropType | undefined, initial: boolean): void => {
+	const applyLabel = (value: LabelPropType | undefined, initial: boolean, required?: boolean): void => {
 		if (!initial) {
 			removeNavLabel(store.get('label'));
 		}
-		labelProp.apply(value ?? translatePagination, (v) => store.set('label', v));
+		labelProp.apply(value, (v) => store.set('label', v ?? translatePagination), required);
 		addNavLabel(store.get('label'));
 	};
 
@@ -246,7 +250,7 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		applyBoundaryCount: (value) => boundaryCountProp.apply(value, (v) => store.set('boundaryCount', v)),
 		applyCustomClass: (value) => customClassProp.apply(value, (v) => store.set('customClass', v)),
 		applyHasButtons: (value) => paginationHasButtonsProp.apply(value, (v) => store.set('hasButtons', { ...store.get('hasButtons'), ...v })),
-		applyLabel: (value) => applyLabel(value, false),
+		applyLabel: (value, required) => applyLabel(value, false, required),
 		applyMax: (value, required) => {
 			if ((value === undefined || value === null) && !required) {
 				return;
@@ -293,7 +297,7 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 			item.applyBoundaryCount(input.boundaryCount);
 			item.applyCustomClass(input.customClass);
 			item.applyHasButtons(input.hasButtons);
-			applyLabel(input.label, true);
+			applyLabel(input.label, true, required?.label);
 			item.applyOn(input.on);
 			item.applyPage(input.page);
 			item.applyPageSize(input.pageSize);

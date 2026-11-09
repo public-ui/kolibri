@@ -502,7 +502,8 @@ section pins the variants themselves:
 
 1. **Warning with a working fallback.** The unset value warns and a substitute keeps the component
    fully working — the pattern behind the pagination's `_label`, whose `kol-pagination` translation
-   keeps naming the navigation landmark.
+   keeps naming the navigation landmark. Its requiredness travels in the same `load` required map as
+   the fallback-less `_max` of variant 2.
 2. **Warning without a rescuing fallback.** The unset value warns and the neutral default keeps the
    store honest, but it does not restore the function. The pagination's `_max` is the pattern:
    without the number of entries nothing paginates, and no sensible substitute exists — 0 stays the
@@ -518,7 +519,8 @@ section pins the variants themselves:
    behaves identically to an unset one, so a warning could not tell the two apart.
 
 A component threads requiredness through a single apply point: an item's `load` takes the
-requiredness per key (`load(input, required)` with `required.max` for the pagination), and the
+requiredness per key (`load(input, required)` with `required.label` and `required.max` for the
+pagination), and the
 watchers of the web component pass `isRequired(key)` on later applies. Appliers outside a component
 config — a composed item like the one of `kol-table-stateful`, behaviors, `resolve-props` — apply
 without requiredness: an unset value there is a legitimate "not set", and the composer supplies the

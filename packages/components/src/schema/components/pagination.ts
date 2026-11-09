@@ -36,7 +36,8 @@ export type PaginationHasButton = {
 type RequiredProps = {
 	on: KoliBriPaginationButtonCallbacks;
 	page: number;
-} & PropMax;
+} & PropLabel &
+	PropMax;
 type OptionalProps = {
 	boundaryCount: number;
 	hasButtons: boolean | Stringified<PaginationHasButton>;
@@ -44,7 +45,6 @@ type OptionalProps = {
 	pageSizeOptions: Stringified<number[]>;
 	siblingCount: number;
 } & PropCustomClass &
-	PropLabel &
 	PropTooltipAlign;
 
 export type KoliBriPaginationProps = RequiredProps & OptionalProps;
