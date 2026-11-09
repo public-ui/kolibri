@@ -35,5 +35,10 @@ executeSnapshotTests<PaginationProps>(
 		{ _label: 'Label', _on: {}, _max: 12, _page: 2, _hasButtons: '{"first":false,"next":false}' },
 		{ _label: 'Label', _on: {}, _max: 40, _page: 1, _pageSize: 15, _pageSizeOptions: [10, 20] },
 		{ _label: 'Label', _on: {}, _max: 40, _page: 1, _pageSize: 10, _pageSizeOptions: '[10, 20, 50]' },
+		{
+			// Without the label attribute the translation `kol-pagination` names the landmark; the cast
+			// renders the attribute-less usage a plain HTML consumer has, which the required TS type forbids.
+			...({ _on: {}, _max: 2, _page: 1 } as PaginationProps),
+		},
 	],
 );
