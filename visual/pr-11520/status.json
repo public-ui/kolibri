@@ -1,19 +1,48 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "No visual changes",
-	"computedAt": "2026-11-07T01:26:13.006Z",
+	"state": "pending",
+	"description": "7 added – 0 of 7 approved, review pending",
+	"computedAt": "2026-11-09T15:05:40.062Z",
 	"pr": 11520,
-	"head": "35fee91b04ab4d5e4d60d4a127d68423b750328e",
-	"digest": "sha256:d66b1062ac7bf659c1b71b495b28d7ec666c924dd71bd2297ab5e476c5873c19",
+	"head": "7cdfd0f55c2ab529a70ad25424a3810ceeb01b48",
+	"digest": "sha256:6673b78257ee1f70b2add700e81c05049d2b126481d886af3412c0a90c4fbbc6",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 7,
+		"open": 7,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/single-select-open-listbox-open-listbox-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/single-select-open-listbox-open-listbox-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/single-select-open-listbox-open-listbox-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/single-select-open-listbox-open-listbox-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/single-select-open-listbox-open-listbox-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/single-select-open-listbox-open-listbox-true": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/single-select-open-listbox-open-listbox-true": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
