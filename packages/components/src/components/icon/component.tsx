@@ -6,7 +6,7 @@ import type { IconApi } from '../../internal/functional-components/icon/api';
 import { iconPropsConfig } from '../../internal/functional-components/icon/api';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { iconsProp, labelProp } from '../../internal/props';
-import type { IconProps, LabelPropType } from '../../schema';
+import type { LabelPropType } from '../../schema';
 
 /**
  * The **Icon** component allows icons from included icon fonts to be displayed at any position.
@@ -18,7 +18,7 @@ import type { IconProps, LabelPropType } from '../../schema';
 	},
 	shadow: true,
 })
-export class KolIcon extends BaseWebComponent<IconApi> implements IconProps, WebComponentInterface<IconApi> {
+export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentInterface<IconApi> {
 	protected readonly propsConfig: PropsConfigShape = iconPropsConfig;
 
 	/**

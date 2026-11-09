@@ -23,7 +23,6 @@ import type {
 	LabelLangSegmentsPropType,
 	LowPropType,
 	MaxPropType,
-	MeterProps,
 	MinPropType,
 	OptimumPropType,
 	UnitPropType,
@@ -36,7 +35,7 @@ import type {
 	},
 	shadow: true,
 })
-export class KolMeter extends BaseWebComponent<MeterApi> implements MeterProps, WebComponentInterface<MeterApi> {
+export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponentInterface<MeterApi> {
 	protected readonly propsConfig: PropsConfigShape = meterPropsConfig;
 
 	/**

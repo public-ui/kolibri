@@ -6,7 +6,7 @@ import { clickButtonPropsConfig } from '../../internal/functional-components/cli
 import { ClickButtonFC } from '../../internal/functional-components/click-button/component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { labelProp } from '../../internal/props';
-import type { ClickButtonProps, KolFocusOptions, LabelPropType } from '../../schema';
+import type { KolFocusOptions, LabelPropType } from '../../schema';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
@@ -16,7 +16,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	tag: 'kol-click-button',
 	shadow: true,
 })
-export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements ClickButtonProps, WebComponentInterface<ClickButtonApi> {
+export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements WebComponentInterface<ClickButtonApi> {
 	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
 
 	protected readonly propsConfig: PropsConfigShape = clickButtonPropsConfig;

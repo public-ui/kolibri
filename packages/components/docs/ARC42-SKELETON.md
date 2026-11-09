@@ -205,6 +205,11 @@ the FC has one". Conversely, internal-only capabilities (e.g. `ariaOwns`, `custo
 on `LinkFC`) may stay unreachable from the outside when the predecessor component did not expose
 them either.
 
+The same holds for the `*Api` type in `internal/functional-components/<name>/api.tsx`: its
+callbacks, refs, states and render props are the contract between the WC and its FC. The package
+does not export it, so a fix may rename or reshape these members together with the FC, as long as
+the public `@Prop`/`@Method`/`@Event` set stays unchanged.
+
 **Why the JSDoc is part of the contract:** `stencil build --docs` generates `docs-vscode`,
 `docs-readme` and — via `generateCustomElementsJson` — the `custom-elements.json` descriptors
 directly from `prop.docs` / `method.docs`. A `@Prop` without a JSDoc comment silently loses

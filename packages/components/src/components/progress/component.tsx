@@ -6,7 +6,7 @@ import type { ProgressApi } from '../../internal/functional-components/progress/
 import { progressPropsConfig } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
 import { clampedNumberValueProp, labelLangSegmentsProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
-import type { ClampedNumberValuePropType, LabelLangSegmentsPropType, MaxPropType, ProgressProps, UnitPropType } from '../../schema';
+import type { ClampedNumberValuePropType, LabelLangSegmentsPropType, MaxPropType, UnitPropType } from '../../schema';
 
 /**
  * The **Progress** component visualizes the completion status of a task or process. It supports both determinate (percentage-based) and indeterminate variants.
@@ -18,7 +18,7 @@ import type { ClampedNumberValuePropType, LabelLangSegmentsPropType, MaxPropType
 	},
 	shadow: true,
 })
-export class KolProgress extends BaseWebComponent<ProgressApi> implements ProgressProps, WebComponentInterface<ProgressApi> {
+export class KolProgress extends BaseWebComponent<ProgressApi> implements WebComponentInterface<ProgressApi> {
 	/**
 	 * A11y: Aria live value
 	 */

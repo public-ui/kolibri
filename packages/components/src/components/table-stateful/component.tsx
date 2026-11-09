@@ -52,7 +52,6 @@ import type {
 	TableLoadingPropType,
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
-	TableStatefulProps,
 	VariantClassNamePropType,
 } from '../../schema';
 import { devHint, trimLabel } from '../../schema';
@@ -76,7 +75,7 @@ type PaginationPosition = 'bottom' | 'top';
 	},
 	shadow: true,
 })
-export class KolTableStateful extends BaseTableStatelessWebComponent implements TableStatefulProps, WebComponentInterface<TableStatefulApi> {
+export class KolTableStateful extends BaseTableStatelessWebComponent implements WebComponentInterface<TableStatefulApi> {
 	@Element() protected readonly host?: HTMLKolTableStatefulElement;
 
 	/**
