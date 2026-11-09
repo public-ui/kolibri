@@ -8,6 +8,7 @@ import type {
 	PropTableDataFoot,
 	PropTableSelection,
 	StatefulPropTableCallbacks,
+	TableHeadersPropType,
 } from '../props';
 import type { PropPaginationPosition } from '../props/pagination-position';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
@@ -83,7 +84,7 @@ type KoliBriTablePaginationStates = Generic.Element.Members<
 >;
 
 type RequiredProps = {
-	headers: Stringified<KoliBriTableHeaders>;
+	headers: TableHeadersPropType;
 } & PropLabelLangSegments &
 	PropTableData;
 type OptionalProps = {

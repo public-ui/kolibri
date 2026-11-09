@@ -157,19 +157,20 @@ import { KolTooltipWc } from '@public-ui/components';
 `kol-table-stateless` and `kol-table-stateful` describe their headers with the same type,
 `KoliBriTableHeaders`. The parallel header types of `kol-table-stateless` are **removed**:
 
-| Removed                    | Replacement                        |
-| -------------------------- | ---------------------------------- |
-| `TableHeaderCells`         | `KoliBriTableHeaders`              |
-| `TableHeaderCellsPropType` | `Stringified<KoliBriTableHeaders>` |
+| Removed                    | Replacement            |
+| -------------------------- | ---------------------- |
+| `TableHeaderCells`         | `KoliBriTableHeaders`  |
+| `TableHeaderCellsPropType` | `TableHeadersPropType` |
 
 The internal `PropTableHeaderCells` type and the `validateTableHeaders` validator are removed as well;
 `kol-table-stateless` validates `_headers` itself.
 
-The `_headers` property of `kol-table-stateless` is typed as `Stringified<KoliBriTableHeaders>`. Its
-header cells are `KoliBriTableHeaderCellWithLogic`, so action columns (`type: 'action'`) and state
-columns (`type: 'state'`) type-check for the stateless table, too. The payloads of the
-`onChangeHeaderCells` and `onSortChange` callbacks (`ChangeHeaderCellsEventPayload`,
-`SortChangeEventPayload['headers']`) are `KoliBriTableHeaders` as well.
+The `_headers` property of `kol-table-stateless` is typed as `TableHeadersPropType`
+(`Stringified<KoliBriTableHeaders>`), like the one of `kol-table-stateful`. Its header cells are
+`KoliBriTableHeaderCellWithLogic`, so action columns (`type: 'action'`) and state columns
+(`type: 'state'`) type-check for the stateless table, too. The payloads of the `onChangeHeaderCells`
+and `onSortChange` callbacks (`ChangeHeaderCellsEventPayload`, `SortChangeEventPayload['headers']`)
+are `KoliBriTableHeaders` as well.
 
 **Before (v4):**
 
