@@ -189,6 +189,9 @@ Property initializers run in declaration order. A property whose value another i
 The public API of a web component is exactly its set of `@Prop`/`@Method` members — for KoliBri
 the underscored props (`_href`, `_label`, …) plus the public methods (`focus()`, `click()`, …) —
 **including** their JSDoc comments, their types, their defaults and any `@deprecated` markers.
+The API definition reaches beyond these members: the props config and the `*Api` type also define
+the emitters, listeners, callbacks, refs and states behind them, so changing any of them is an API
+change as well (see below).
 
 **Migration rule: the public API of a migrated component must be identical to its predecessor.**
 When refactoring a legacy component to the skeleton architecture, the migrated WC must expose the
@@ -528,7 +531,7 @@ clampedNumberValueProp.apply(
 
 ### API Definition with `PropsConfigShape` and `ApiFromConfig`
 
-Component APIs are defined using a runtime props config object (`PropsConfigShape`) that groups prop definitions into `required` and `optional` arrays. The `ApiFromConfig<Config, Extra>` utility type derives the full `ComponentApi` type from this config, making the props config the single source of truth for both runtime behaviour (normalization, validation, defaults) and compile-time types:
+Component APIs are defined using a runtime props config object (`PropsConfigShape`) that groups prop definitions into `required` and `optional` arrays. The `ApiFromConfig<Config, Extra>` utility type derives the full `ComponentApi` type from this config, making the props config the single source of truth for both runtime behaviour (normalization, validation, defaults) and the compile-time types of the props. The `Extra` fields — `Callbacks`, `Methods`, `Refs`, `Emitters` and `Listeners` — define the part of the API the props config cannot express. Together, the props config and the `*Api` type are the complete API definition of the component (see _Public API Contract_): renaming, removing or retyping any member — callback or ref included — is an API change, pinned by the public-api contract tests:
 
 ```ts
 export const skeletonPropsConfig = {
@@ -843,18 +846,19 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 12. Glossary
 
-| Term                     | Definition                                                                                                                                     |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                                                  |
-| **BemRootNodeFC**        | Single-root BEM wrapper FC. Renders one `<div class="kol-block kol-block--…">` from a type-checked `block` and `modifiers`.                    |
-| **Behavior**             | Optional, composable unit of reusable logic living inside a WC; extends `BaseBehavior`. Example: `TooltipBehavior`.                            |
-| **Orchestrator (WC)**    | The web component, which directly owns lifecycle, prop normalization, state management, Behavior composition and rendering.                    |
-| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                                                          |
-| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.                                  |
-| **Render props**         | Validated, normalized prop values stored on the WC via `setRenderProp` and read via `getRenderProp` for rendering.                             |
-| **Schema Helper**        | Utility providing `normalize` (unknown → TInternal), `validate` (TInternal → boolean) and `apply` (normalize + validate + callback) for props. |
-| **Schema Type**          | Named value type of one prop in `src/schema/props` (e.g. `DisabledPropType`); the single spelling every layer references.                      |
-| **StateAccess**          | `{ setState, getState }` bundle a WC passes to a Behavior; `BaseWebComponent.stateLess` is the no-op sentinel for stateless Behaviors.         |
-| **Stencil**              | Compiler for building framework-agnostic web components.                                                                                       |
-| **Transitional WC**      | A `shadow:false` WC that renders an FC into the light DOM so legacy consumers can reach inner BEM classes; deleted once consumers migrate.     |
-| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                                                       |
+| Term                     | Definition                                                                                                                                                                                                 |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                                                                                                              |
+| **BemRootNodeFC**        | Single-root BEM wrapper FC. Renders one `<div class="kol-block kol-block--…">` from a type-checked `block` and `modifiers`.                                                                                |
+| **Behavior**             | Optional, composable unit of reusable logic living inside a WC; extends `BaseBehavior`. Example: `TooltipBehavior`.                                                                                        |
+| **Orchestrator (WC)**    | The web component, which directly owns lifecycle, prop normalization, state management, Behavior composition and rendering.                                                                                |
+| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                                                                                                                      |
+| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.                                                                                              |
+| **Render props**         | Validated, normalized prop values stored on the WC via `setRenderProp` and read via `getRenderProp` for rendering.                                                                                         |
+| **Schema Helper**        | Utility providing `normalize` (unknown → TInternal), `validate` (TInternal → boolean) and `apply` (normalize + validate + callback) for props.                                                             |
+| **Schema Type**          | Named value type of one prop in `src/schema/props` (e.g. `DisabledPropType`); the single spelling every layer references.                                                                                  |
+| **`*Api` type**          | The complete API definition of a component: the props config plus the `ApiFromConfig` extras (`Callbacks`, `Methods`, `Refs`, `Emitters`, `Listeners`) in `internal/functional-components/<name>/api.tsx`. |
+| **StateAccess**          | `{ setState, getState }` bundle a WC passes to a Behavior; `BaseWebComponent.stateLess` is the no-op sentinel for stateless Behaviors.                                                                     |
+| **Stencil**              | Compiler for building framework-agnostic web components.                                                                                                                                                   |
+| **Transitional WC**      | A `shadow:false` WC that renders an FC into the light DOM so legacy consumers can reach inner BEM classes; deleted once consumers migrate.                                                                 |
+| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                                                                                                                   |

@@ -115,7 +115,9 @@ Schweregrad **Breaking Theming**.
 ### Weitere Prüfpunkte
 
 - **Öffentliche API:** Props, Events, Methoden, Slots, Typen. Props aus `internal/props` werden
-  wiederverwendet (z. B. `disabledProp`). Öffentliche Member haben JSDoc.
+  wiederverwendet (z. B. `disabledProp`). Öffentliche Member haben JSDoc. Die Props-Config und der
+  `*Api`-Typ in `api.tsx` definieren die API vollständig (Callbacks und Refs eingeschlossen) — jede
+  Änderung an einem `api.tsx`-Member wird als API-Änderung gemeldet.
 - **Barrierefreiheit:** Semantik, ARIA, Fokus, Tastaturbedienung, Mindestgröße interaktiver Elemente,
   `forced-colors`.
 - **Member-Reihenfolge** der Klasse laut ARC42: statics, `@Element`, `@State`, Felder, Konstruktor,

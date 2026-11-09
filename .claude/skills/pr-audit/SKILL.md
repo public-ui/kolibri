@@ -173,13 +173,14 @@ Prüfen:
 
 Bewerten:
 
-| Fall                                                                                             | Wert     | Beispiel                                                                                                             |
-| ------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- |
-| Akzeptanzkriterium fehlt oder ist falsch umgesetzt                                               | **warn** | #11084 (erste Fassung): `componentDidUpdate` hob nach jedem Render die Verzögerung der `aria-live`-Ansage auf.       |
-| Lösung reicht weiter als nötig, mit riskanter Wirkung                                            | **warn** | #11086: `!important` auf allen Eigenschaften von `.visually-hidden` wirkt global und nimmt Themes die Übersteuerung. |
-| Änderung außerhalb des Issues mit riskanter Wirkung (API, global, Themes)                        | **warn** | Ein PR ändert nebenbei den Default einer öffentlichen Prop.                                                          |
-| Harmlose Änderung außerhalb des Issues → zusätzlich OOS-Punkt                                    | **hint** | #11084: `classList.add`/`remove` statt `toggle`, nur wegen der Testumgebung.                                         |
-| Lücke zum Issue in einem Randbereich, die das Issue nur am Rand berührt → FU-Punkt, Bezug: Issue | **hint** | #11074: Das selten genutzte Theme `ECL_EU` bekam den Abstand nicht.                                                  |
+| Fall                                                                                                          | Wert     | Beispiel                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Akzeptanzkriterium fehlt oder ist falsch umgesetzt                                                            | **warn** | #11084 (erste Fassung): `componentDidUpdate` hob nach jedem Render die Verzögerung der `aria-live`-Ansage auf.                                             |
+| Lösung reicht weiter als nötig, mit riskanter Wirkung                                                         | **warn** | #11086: `!important` auf allen Eigenschaften von `.visually-hidden` wirkt global und nimmt Themes die Übersteuerung.                                       |
+| Änderung außerhalb des Issues mit riskanter Wirkung (API, global, Themes)                                     | **warn** | Ein PR ändert nebenbei den Default einer öffentlichen Prop.                                                                                                |
+| Änderung an einer `api.tsx` (Member umbenannt, entfernt oder umtypisiert — Callbacks und Refs eingeschlossen) | **warn** | Die Props-Config und der `*Api`-Typ definieren die API vollständig (ARC42, _Public API Contract_); der PR muss die Änderung explizit nennen und begründen. |
+| Harmlose Änderung außerhalb des Issues → zusätzlich OOS-Punkt                                                 | **hint** | #11084: `classList.add`/`remove` statt `toggle`, nur wegen der Testumgebung.                                                                               |
+| Lücke zum Issue in einem Randbereich, die das Issue nur am Rand berührt → FU-Punkt, Bezug: Issue              | **hint** | #11074: Das selten genutzte Theme `ECL_EU` bekam den Abstand nicht.                                                                                        |
 
 ### 4.2 Sauber & ordentlich
 
