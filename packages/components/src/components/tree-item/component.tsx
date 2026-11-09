@@ -41,8 +41,6 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	protected readonly anchorRef = createCtaRef<HTMLAnchorElement>();
 
-	private toggleElement?: HTMLSpanElement;
-
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	protected readonly propsConfig: PropsConfigShape = treeItemPropsConfig;
@@ -191,13 +189,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 		}
 	}
 
-	/* The chevron sits inside the anchor: a click on it expands or collapses the item without following the link. */
-	private readonly handleAnchorClick = (event: Event): void => {
-		if (this.toggleElement && event.composedPath().includes(this.toggleElement)) {
-			event.preventDefault();
-			const open = this.open;
-			void this.focus().then(() => this.setOpen(!open));
-		}
+	private readonly handleAnchorClick = (): void => {
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.click, this.getRenderProp('href'));
 		}
@@ -207,8 +199,11 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 		this.checkForChildren();
 	};
 
-	private readonly setToggleRef = (element?: HTMLSpanElement): void => {
-		this.toggleElement = element;
+	/* The chevron sits inside the anchor: prevent the navigation, keep the focus on the item. */
+	private readonly handleToggleClick = (event: MouseEvent): void => {
+		event.preventDefault();
+		const open = this.open;
+		void this.focus().then(() => this.setOpen(!open));
 	};
 
 	public render(): JSX.Element {
@@ -220,13 +215,13 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 					groupId={this.groupId}
 					handleAnchorClick={this.handleAnchorClick}
 					handleSlotchange={this.handleSlotchange}
+					handleToggleClick={this.handleToggleClick}
 					hasChildren={this.hasChildren}
 					href={this.getRenderProp('href')}
 					label={this.getRenderProp('label')}
 					level={this.level}
 					open={this.open}
 					refAnchor={this.anchorRef}
-					refToggle={this.setToggleRef}
 				/>
 			</Host>
 		);

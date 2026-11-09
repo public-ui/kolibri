@@ -197,18 +197,19 @@ defaults and the same documentation. It must not add, remove, rename, retype or 
 public member. A behavioural difference behind an unchanged member is a separate, consciously
 reviewed decision — never a side effect of the migration.
 
-**The FC's props are internal, not public API.** The functional component is an internal renderer
-contract: it may offer more (or differently typed) props than the WC exposes. The WC is the API
-gate — it decides which render props are fed from public props and which stay at their internal
-defaults. Never derive the public API from the FC's props, and never add a public `@Prop` "because
-the FC has one". Conversely, internal-only capabilities (e.g. `ariaOwns`, `customClass`, `tabIndex`
-on `LinkFC`) may stay unreachable from the outside when the predecessor component did not expose
-them either.
+**The WC decides which render props are public.** The functional component may offer more (or
+differently typed) render props than the WC exposes as `@Prop`. The WC decides which render props
+are fed from public props and which stay at their internal defaults. Never add a public `@Prop`
+"because the FC has one". Conversely, capabilities without a public prop (e.g. `ariaOwns`,
+`customClass`, `tabIndex` on `LinkFC`) may stay unreachable from the outside when the predecessor
+component did not expose them either.
 
-The same holds for the `*Api` type in `internal/functional-components/<name>/api.tsx`: its
-callbacks, refs, states and render props are the contract between the WC and its FC. The package
-does not export it, so a fix may rename or reshape these members together with the FC, as long as
-the public `@Prop`/`@Method`/`@Event` set stays unchanged.
+**The `*Api` type defines the API.** The props config and the `*Api` type in
+`internal/functional-components/<name>/api.tsx` define the API of the component in full:
+`WebComponentInterface<Api>` derives the `@Prop`s, `@Method`s, emitters and listeners of the WC
+from them, and the FC and the behaviors receive their render props, callbacks, refs and states from
+them. Every member is part of the API contract. Renaming, removing or retyping a member, a callback
+or ref included, is an API change. A fix changes the implementation behind an unchanged member.
 
 **Why the JSDoc is part of the contract:** `stencil build --docs` generates `docs-vscode`,
 `docs-readme` and — via `generateCustomElementsJson` — the `custom-elements.json` descriptors
