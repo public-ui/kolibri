@@ -50,6 +50,7 @@ import type {
 	Stringified,
 	TableDataFootPropType,
 	TableDataPropType,
+	TableHeadersPropType,
 	TableLoadingPropType,
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
@@ -236,10 +237,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
+	@Prop() public _headers!: TableHeadersPropType;
 
 	@Watch('_headers')
-	public watchHeaders(value?: Stringified<KoliBriTableHeaders>): void {
+	public watchHeaders(value?: TableHeadersPropType): void {
 		tableStatefulHeadersProp.apply(value, (headers) => {
 			// Adjusted header cells fit only the same columns. A new object with the same keys (common with
 			// inline headers in React) keeps them.

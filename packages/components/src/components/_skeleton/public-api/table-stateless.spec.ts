@@ -38,13 +38,13 @@ const KOL_TABLE_STATELESS_PUBLIC_API: PublicApiContract = {
 	},
 	_headerCells: {
 		kind: 'prop',
-		type: 'Stringified<KoliBriTableHeaders>',
+		type: 'TableHeadersPropType',
 		required: false,
 		doc: '@deprecated Will be removed in the future. Use _headers instead. Defines the horizontal and vertical table headers.',
 	},
 	_headers: {
 		kind: 'prop',
-		type: 'Stringified<KoliBriTableHeaders>',
+		type: 'TableHeadersPropType',
 		required: false,
 		doc: 'Defines the horizontal and vertical table headers.',
 	},

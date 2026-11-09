@@ -34,14 +34,13 @@ import type {
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
-	KoliBriTableHeaders,
 	LabelLangSegmentsPropType,
 	SelectionChangeEventPayload,
 	SortEventPayload,
-	Stringified,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
+	TableHeadersPropType,
 	TableLoadingPropType,
 	TableSelectionPropType,
 	VariantClassNamePropType,
@@ -166,7 +165,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		hasSettingsMenuProp.apply(value, (v) => this.setRenderProp('hasSettingsMenu', v));
 	}
 
-	protected applyHeaders(value?: Stringified<KoliBriTableHeaders>): void {
+	protected applyHeaders(value?: TableHeadersPropType): void {
 		tableHeadersProp.apply(value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)));
 	}
 
