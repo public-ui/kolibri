@@ -2,6 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { bem } from '../../../schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import type { LinkApi } from '../link/api';
@@ -12,7 +13,6 @@ import { renderLabelWithLang } from '../span/component';
 import type { TreeItemApi } from './api';
 
 const treeItemBem = bem.forBlock('kol-tree-item');
-const BEM_CLASS_TREE_ITEM = treeItemBem();
 const BEM_CLASS_TREE_ITEM__CHILDREN = treeItemBem('children');
 const BEM_CLASS_TREE_ITEM__LINK_INNER = treeItemBem('link-inner');
 const BEM_CLASS_TREE_ITEM__TEXT = treeItemBem('text');
@@ -55,7 +55,7 @@ export const TreeItemFC: FC<FunctionalComponentProps<TreeItemApi>> = ({
 	open,
 	refAnchor,
 }) => (
-	<li class={BEM_CLASS_TREE_ITEM} role="none" style={{ '--level': `${level}` }}>
+	<BemRootNodeFC component="li" block="kol-tree-item" role="none" style={{ '--level': `${level}` }}>
 		<span class={treeItemBem('link', { active, 'first-level': level === 0 })}>
 			<LinkFC
 				{...LINK_DEFAULTS}
@@ -92,5 +92,5 @@ export const TreeItemFC: FC<FunctionalComponentProps<TreeItemApi>> = ({
 		<ul class={BEM_CLASS_TREE_ITEM__CHILDREN} hidden={!hasChildren || !open} role="group" id={groupId}>
 			<slot onSlotchange={handleSlotchange} />
 		</ul>
-	</li>
+	</BemRootNodeFC>
 );

@@ -16,7 +16,7 @@ import type { CardFCProps } from '../card/component';
 import { CardFC } from '../card/component';
 import { TooltipBehavior } from '../tooltip/behavior';
 import type { DialogFCProps } from './component';
-import { dialogBlockClass, DialogFC } from './component';
+import { DialogFC } from './component';
 
 /** The configuration of an embedded dialog: the public props of the dialog elements. */
 export type DialogItemProps = {
@@ -161,13 +161,13 @@ export const createDialogItem = (
 
 			return {
 				dialog: {
-					blockClass: dialogBlockClass(variant),
 					handleCancel,
 					handleClose,
 					label: trimLabel(label),
 					labelledBy: isCard ? headingId : undefined,
 					modal,
 					refDialog: dialogRef,
+					variant,
 					width,
 				},
 				card:

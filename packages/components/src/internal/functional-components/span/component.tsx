@@ -7,6 +7,7 @@ import { showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import { md } from '../../../utils/markdown';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import type { SpanApi } from './api';
@@ -131,15 +132,15 @@ export const SpanFC: FC<
 	const hideExpertSlot = !showExpertSlot(label);
 
 	return (
-		<span
+		<BemRootNodeFC
+			component="span"
 			{...htmlAttributes}
-			class={clsx(
-				spanBem({
-					'has-badge': !!badgeText,
-					'hide-label': !!hideLabel,
-				}),
-				classNames,
-			)}
+			block="kol-span"
+			modifiers={{
+				'has-badge': !!badgeText,
+				'hide-label': !!hideLabel,
+			}}
+			class={classNames}
 		>
 			{renderIcon(top, 'top')}
 			<span class={spanBem('container')}>
@@ -156,6 +157,6 @@ export const SpanFC: FC<
 				{renderIcon(right, 'right')}
 			</span>
 			{renderIcon(bottom, 'bottom')}
-		</span>
+		</BemRootNodeFC>
 	);
 };
