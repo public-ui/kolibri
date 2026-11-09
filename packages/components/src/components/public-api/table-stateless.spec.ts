@@ -38,7 +38,7 @@ const KOL_TABLE_STATELESS_PUBLIC_API: PublicApiContract = {
 	_headers: {
 		kind: 'prop',
 		type: 'TableHeadersPropType',
-		required: false,
+		required: true,
 		doc: 'Defines the horizontal and vertical table headers.',
 	},
 	_label: {

@@ -90,7 +90,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headers?: TableHeadersPropType = undefined;
+	@Prop() public _headers!: TableHeadersPropType;
 
 	@Watch('_headers')
 	public watchHeaders(value?: TableHeadersPropType): void {

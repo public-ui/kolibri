@@ -165,7 +165,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	}
 
 	protected applyHeaders(value?: TableHeadersPropType): void {
-		tableHeadersProp.apply(value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)));
+		tableHeadersProp.apply(value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)), this.isRequired('headers'));
 	}
 
 	protected applyLabel(value?: LabelLangSegmentsPropType): void {
