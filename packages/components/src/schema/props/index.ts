@@ -117,7 +117,5 @@ export * from './variant-alert';
 export * from './variant-class-name';
 export * from './variant-input-checkbox';
 export * from './variant-progress';
-export * from './variant-quote';
-export * from './variant/spin';
 export * from './visibility-toggle';
 export * from './width';

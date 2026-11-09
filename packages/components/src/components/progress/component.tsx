@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ProgressApi } from '../../internal/functional-components/progress/api';
 import { progressPropsConfig } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
@@ -26,6 +26,8 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	public liveValue: number = 0;
 
 	private interval?: ReturnType<typeof setInterval>;
+
+	protected readonly propsConfig: PropsConfigShape = progressPropsConfig;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -93,8 +95,6 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(progressPropsConfig);
-
 		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		maxProp.apply(this._max, (v) => {
 			this.setRenderProp('max', v);

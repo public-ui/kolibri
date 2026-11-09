@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "5.0.0-beta.0",
+	"version": "5.1.0-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,7 +49,7 @@
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"axe-html-reporter": "2.2.11",
 		"http-server": "14.1.1",
-		"npm-run-all2": "9.0.3",
+		"npm-run-all2": "9.0.4",
 		"portfinder": "1.0.38",
 		"react": "19.2.8",
 		"react-dom": "19.2.8",

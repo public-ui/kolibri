@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/hydrate-server",
-	"version": "5.0.0-beta.0",
+	"version": "5.1.0-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -64,7 +64,7 @@
 		"@grpc/proto-loader": "0.8.1",
 		"@public-ui/hydrate": "workspace:*",
 		"commander": "15.0.0",
-		"fastify": "5.12.7"
+		"fastify": "5.12.8"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",

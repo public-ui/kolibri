@@ -19,11 +19,13 @@ export const cardPropsConfig = {
 export type CardApi = ApiFromConfig<
 	typeof cardPropsConfig,
 	{
-		/**
-		 * `blur` and `focus` belong to the heading link — the only element the card's own `_on`
-		 * callbacks describe. `close` is the close button's click.
-		 */
 		Callbacks: {
+			/**
+			 * `blur` and `focus` belong to the heading link — the only element the card's own
+			 * `_on` callbacks describe. `close` is the close button's click. The web component
+			 * implements all three; the FC-facing `CardFCProps` decides which of them a composer
+			 * may omit.
+			 */
 			blur: (event: FocusEvent) => void;
 			close: (event: MouseEvent) => void;
 			focus: (event: FocusEvent) => void;
@@ -34,6 +36,7 @@ export type CardApi = ApiFromConfig<
 		};
 		Refs: {
 			closeButton: HTMLButtonElement;
+			/** The heading link's anchor; the web component always provides the ref setter. */
 			cta: HTMLAnchorElement;
 			tooltip: HTMLDivElement;
 		};

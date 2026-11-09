@@ -158,8 +158,6 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	}
 
 	public componentWillLoad(): void {
-		this.initTableRenderProps();
-
 		this.watchData(this._data);
 		this.watchDataFoot(this._dataFoot);
 		this.watchFixedCols(this._fixedCols);

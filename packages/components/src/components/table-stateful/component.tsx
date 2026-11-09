@@ -20,8 +20,10 @@ import {
 	selectDisplayedData,
 	sortRows,
 } from '../../internal/functional-components/table-stateful/model';
+import type { TablePagination } from '../../internal/props';
 import {
 	allowMultiSortProp,
+	isTablePaginationShown,
 	paginationPositionProp,
 	tableDataFootProp,
 	tableDataProp,
@@ -29,8 +31,6 @@ import {
 	tableStatefulCallbacksProp,
 	tableStatefulHeadersProp,
 } from '../../internal/props';
-import type { TablePagination } from '../../internal/props/table-pagination';
-import { isTablePaginationShown } from '../../internal/props/table-pagination';
 import type {
 	AllowMultiSortPropType,
 	ChangeHeaderCellsEventPayload,
@@ -351,23 +351,21 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	 * Returns the selected rows.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getSelection(): Promise<KoliBriTableDataType[] | null> {
-		return this.getSelectedData((this.getRenderProp('selection') || undefined)?.selectedKeys || []);
+	public getSelection(): Promise<KoliBriTableDataType[] | null> {
+		return Promise.resolve(this.getSelectedData((this.getRenderProp('selection') || undefined)?.selectedKeys || []));
 	}
 
 	/**
 	 * Resets the sort state to the default values defined in the `_headers` prop.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async resetSort(): Promise<void> {
+	public resetSort(): Promise<void> {
 		this.initializeSort(this.headers);
 		this.updateSortedData();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
-		this.initTableRenderProps();
 		this.applyOn(this.statelessOn);
 		this.internals = attachInternals(this.host);
 		// Early resolution: if the external element is already in the DOM, the first render already uses
@@ -564,6 +562,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	public render(): JSX.Element {
 		return (
+			// The host keeps the class `kol-table-stateful`, which consumers of the element can select —
+			// documented exception to the no-Host-class convention, same as kol-select.
 			<Host class="kol-table-stateful">
 				{this.renderPagination('top')}
 				{this.renderTableStatelessFC()}

@@ -118,7 +118,7 @@ test.describe('kol-input-password', () => {
 		test('should toggle the password visibility when button is clicked', async ({ page }) => {
 			await page.setContent('<kol-input-password _label="Password input" _visibility-toggle="true"></kol-input-password>');
 			const input = page.locator('kol-input-password input');
-			const toggleButton = page.getByTestId('kol-input-password-toggle-button');
+			const toggleButton = page.locator('.kol-input-password__password-toggle-button button');
 			await expect(input).toHaveAttribute('type', 'password');
 			await toggleButton.click();
 			await expect(input).toHaveAttribute('type', 'text');
