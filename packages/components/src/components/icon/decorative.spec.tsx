@@ -2,7 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolIcon } from '../component';
+import { KolIcon } from './component';
 
 describe('kol-icon decorative label', () => {
 	it('drops aria-label and role="img" when the label switches to the empty string at runtime', async () => {

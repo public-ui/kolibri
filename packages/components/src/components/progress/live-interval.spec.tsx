@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, jest } from '@jest/globals';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolProgress } from '../component';
+import { KolProgress } from './component';
 
 describe('kol-progress live value interval', () => {
 	afterEach(() => {

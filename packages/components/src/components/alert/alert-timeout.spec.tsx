@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, jest } from '@jest/globals';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolAlert } from '../component';
+import { KolAlert } from './component';
 
 const ALERT_TIMEOUT = 10000;
 

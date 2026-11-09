@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolProgress } from '../component';
+import { KolProgress } from './component';
 
 describe('kol-progress accessible name', () => {
 	it('exposes the label as the accessible name of the visually hidden progress element', async () => {

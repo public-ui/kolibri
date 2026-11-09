@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolTableStateless } from '../component';
+import { KolTableStateless } from './component';
 
 type CellRenderAccess = {
 	cellRenderTimeouts: Map<HTMLElement, ReturnType<typeof setTimeout>>;
