@@ -27,7 +27,15 @@ const BEM_CLASS_TABS__TABLIST = tabsBem('tablist');
  * of `__button-create`, which the base and theme styles rely on.
  */
 export const TabsFC: FC<FunctionalComponentProps<TabsApi>> = (props) => {
-	const { align, class: hostClass, createButton, handleFocusOut, handleKeyDown, hasCreateButton, label, refContent, refRoot, tabButtons } = props;
+	const { align, class: hostClass, createButton, handleBlur, handleKeyDown, hasCreateButton, label, refContent, refRoot, tabButtons } = props;
+
+	/* `blur` does not bubble, so the tab list listens to `focusout` and reports a blur only when the focus leaves it. */
+	const handleFocusOut = (event: FocusEvent): void => {
+		const tablist = event.currentTarget as HTMLElement;
+		if (!(event.relatedTarget instanceof Node && tablist.contains(event.relatedTarget))) {
+			handleBlur();
+		}
+	};
 
 	return (
 		<BemRootNodeFC block="kol-tabs" modifiers={{ [`align-${align}`]: true }} class={hostClass} ref={refRoot}>

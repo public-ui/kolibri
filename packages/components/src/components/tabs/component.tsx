@@ -273,11 +273,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		}
 	};
 
-	private readonly handleFocusOut = (event: FocusEvent): void => {
-		const tablist = event.currentTarget as HTMLElement | null;
-		if (!(event.relatedTarget instanceof Node && tablist?.contains(event.relatedTarget))) {
-			this.currentFocusIndex = undefined;
-		}
+	private readonly handleBlur = (): void => {
+		this.currentFocusIndex = undefined;
 	};
 
 	private getCurrentFocusIndex(): number {
@@ -463,7 +460,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 					align={this.getRenderProp('align')}
 					behavior={this.getRenderProp('behavior')}
 					createButton={this.createButton}
-					handleFocusOut={this.handleFocusOut}
+					handleBlur={this.handleBlur}
 					handleKeyDown={this.handleKeyDown}
 					hasCreateButton={this.getRenderProp('hasCreateButton')}
 					label={this.getRenderProp('label')}
