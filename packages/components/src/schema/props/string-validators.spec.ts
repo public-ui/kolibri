@@ -27,7 +27,6 @@ import { validateLinkTarget } from './link-target';
 import { validateName } from './name';
 import { validatePattern } from './pattern';
 import { validatePlaceholder } from './placeholder';
-import { validateQuote } from './quote';
 import { validateShortKey } from './short-key';
 import { validateUnit } from './unit';
 import { validateWidth } from './width';
@@ -65,7 +64,6 @@ const validators: [string, StringValidator, string, string | typeof KEEP][] = [
 	['validateName', validateName, '_name', KEEP],
 	['validatePattern', validatePattern, '_pattern', KEEP],
 	['validatePlaceholder', validatePlaceholder, '_placeholder', KEEP],
-	['validateQuote', validateQuote, '_quote', KEEP],
 	['validateShortKey', validateShortKey, '_shortKey', KEEP],
 	['validateUnit', validateUnit, '_unit', KEEP],
 	['validateWidth', validateWidth, '_width', '100%'],
@@ -215,13 +213,6 @@ describe('legacy string prop validators', () => {
 			expect(component.state).toEqual({});
 			expect(internals[internalsKey]).toBe(previous);
 			expect(warningsFor(propName)).toHaveLength(1);
-		});
-	});
-
-	describe('validateQuote', () => {
-		it('warns as a required prop for undefined', () => {
-			validateQuote(createLegacyComponent(), undefined);
-			expect(warningsFor('_quote')).toEqual([expect.stringMatching(/Allowed values are: String$/)]);
 		});
 	});
 

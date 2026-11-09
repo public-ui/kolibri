@@ -1,0 +1,43 @@
+name: PR - Close Linked Issues
+
+# GitHub auto-closes issues via closing keywords only when the merge target is
+# the default branch. PRs merged into a release/<n> branch would leave their
+# referenced issues open, so this workflow closes them here.
+
+on:
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  issues: write
+
+jobs:
+  close-issues:
+    # pull_request_target instead of pull_request: fork PRs cannot be granted
+    # issues:write on the plain pull_request event. Acting only on merged PRs
+    # keeps the write access limited to bodies that maintainers merged.
+    if: >-
+      github.repository == 'public-ui/kolibri' &&
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.base.ref, 'release/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v9
+        with:
+          script: |
+            const body = context.payload.pull_request.body ?? '';
+            const pattern = /\b(?:close[sd]?|fix(?:e[sd])?|resolv(?:e[sd]?)?)\b[^\S\n]*:?[^\S\n]*#\d+(?:\s*(?:,|and|&)\s*#\d+)*/gi;
+            const numbers = new Set();
+            for (const match of body.matchAll(pattern)) {
+              for (const ref of match[0].matchAll(/#(\d+)/g)) numbers.add(Number(ref[1]));
+            }
+            for (const issue_number of numbers) {
+              const { data: issue } = await github.rest.issues.get({ ...context.repo, issue_number });
+              if (issue.state !== 'open' || issue.pull_request) continue;
+              await github.rest.issues.update({ ...context.repo, issue_number, state: 'closed', state_reason: 'completed' });
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number,
+                body: `Closed via #${context.payload.pull_request.number} (merged into \`${context.payload.pull_request.base.ref}\`).`,
+              });
+            }

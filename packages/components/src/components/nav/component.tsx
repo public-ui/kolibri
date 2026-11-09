@@ -4,7 +4,7 @@ import { Component, Element, forceUpdate, h, Host, Prop, State, Watch } from '@s
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { ButtonItem, ButtonItemFcProps } from '../../internal/functional-components/button/item';
 import { createButtonItem } from '../../internal/functional-components/button/item';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { createItemPool } from '../../internal/functional-components/item-pool';
 import type { LinkFCProps } from '../../internal/functional-components/link/component';
 import type { LinkItem } from '../../internal/functional-components/link/item';
@@ -66,6 +66,8 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 		(item) => item.syncListeners(),
 		(item) => item.destroy(),
 	);
+
+	protected readonly propsConfig: PropsConfigShape = navPropsConfig;
 
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
@@ -134,7 +136,6 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(navPropsConfig);
 		this.watchCollapsible(this._collapsible);
 		this.watchHideLabel(this._hideLabel);
 		this.watchHasCompactButton(this._hasCompactButton);

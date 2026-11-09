@@ -40,7 +40,7 @@ import { BaseButtonWebComponent } from '../button/base';
  *
  * A link has the `target` property which optionally opens the link in a new window/tab. This behavior is not yet implemented.
  *
- * Since a link, unlike a button, is not offered in multiple variants (`primary`, `secondary`, etc.), the `_customClass` and `_variant` properties are not available.
+ * Since a link, unlike a button, is not offered in multiple variants (`primary`, `secondary`, etc.), the `_variant` property only accepts custom class names here and the `_customClass` property is not available.
  *
  * @slot expert - Custom label content, e.g. for rich text or icons.
  */
@@ -260,9 +260,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkP
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this._value;
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this._value);
 	}
 
 	/**
@@ -270,19 +269,23 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkP
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initButtonRenderProps();
+		this.unsetButtonTabIndex();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);

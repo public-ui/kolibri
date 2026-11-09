@@ -7,35 +7,35 @@ const testInputCharacterLimit = (componentName: string) => {
 			test('Should show current value length when no limits are applied', async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input" _value="abc" _has-counter></${componentName}>`);
 				await page.waitForChanges();
-				await expect(page.getByTestId('input-counter')).toHaveText('3 Zeichen');
-				await expect(page.getByTestId('input-counter-aria')).toHaveText('3 Zeichen');
+				await expect(page.locator('span.kol-form-field__counter')).toHaveText('3 Zeichen');
+				await expect(page.locator('.kol-form-field__counter [aria-live="polite"]')).toHaveText('3 Zeichen');
 			});
 
 			test('Should show current value and max length when theres a max length and _max-length-behavior hard', async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="10" _has-counter></${componentName}>`);
 				await page.waitForChanges();
-				await expect(page.getByTestId('input-counter')).toHaveText('3/10 Zeichen');
-				await expect(page.getByTestId('input-counter-aria')).toHaveText('3 von 10 Zeichen');
+				await expect(page.locator('span.kol-form-field__counter')).toHaveText('3/10 Zeichen');
+				await expect(page.locator('.kol-form-field__counter [aria-live="polite"]')).toHaveText('3 von 10 Zeichen');
 			});
 
 			test('Should refresh the counter when _max-length changes programmatically', async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="10" _has-counter></${componentName}>`);
 				await page.waitForChanges();
-				await expect(page.getByTestId('input-counter')).toHaveText('3/10 Zeichen');
+				await expect(page.locator('span.kol-form-field__counter')).toHaveText('3/10 Zeichen');
 
 				// Shortening the max length must be reflected by the counter even though the value stays unchanged.
 				await page.locator(componentName).evaluate((el) => {
 					el.setAttribute('_max-length', '5');
 				});
 				await page.waitForChanges();
-				await expect(page.getByTestId('input-counter')).toHaveText('3/5 Zeichen');
-				await expect(page.getByTestId('input-counter-aria')).toHaveText('3 von 5 Zeichen');
+				await expect(page.locator('span.kol-form-field__counter')).toHaveText('3/5 Zeichen');
+				await expect(page.locator('.kol-form-field__counter [aria-live="polite"]')).toHaveText('3 von 5 Zeichen');
 			});
 
 			test('Should re-announce the character limit message on blocked input attempts (hard)', async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="3" _has-counter></${componentName}>`);
 				await page.waitForChanges();
-				const ariaCounter = page.getByTestId('input-counter-aria');
+				const ariaCounter = page.locator('.kol-form-field__counter [aria-live="polite"]');
 				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
 				const initialContent = await ariaCounter.textContent();
 
@@ -52,14 +52,14 @@ const testInputCharacterLimit = (componentName: string) => {
 			test('Should re-trigger the live region on focus', async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="3" _has-counter></${componentName}>`);
 				await page.waitForChanges();
-				const ariaCounter = page.getByTestId('input-counter-aria');
+				const ariaCounter = page.locator('.kol-form-field__counter [aria-live="polite"]');
 				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht! ');
 			});
 
 			test('Should not re-trigger the live region for control keys at the limit (hard)', async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="3" _has-counter></${componentName}>`);
 				await page.waitForChanges();
-				const ariaCounter = page.getByTestId('input-counter-aria');
+				const ariaCounter = page.locator('.kol-form-field__counter [aria-live="polite"]');
 				const expectedText = '3 von 3 Zeichen Zeichenlimit erreicht! ';
 				await expect(ariaCounter).toHaveText(expectedText);
 
@@ -74,8 +74,8 @@ const testInputCharacterLimit = (componentName: string) => {
 				test(`should show the initial remaining characters`, async ({ page }) => {
 					await page.setContent(`<${componentName} _label="Input" _max-length="10" _has-counter _max-length-behavior="soft" _value="abc"></${componentName}>`);
 					await page.waitForChanges();
-					await expect(page.getByTestId('input-counter')).toHaveText('Es sind noch 7 Zeichen verfügbar.');
-					await expect(page.getByTestId('input-counter-aria')).toHaveText('Es sind noch 7 Zeichen verfügbar.');
+					await expect(page.locator('span.kol-form-field__counter')).toHaveText('Es sind noch 7 Zeichen verfügbar.');
+					await expect(page.locator('.kol-form-field__counter [aria-live="polite"]')).toHaveText('Es sind noch 7 Zeichen verfügbar.');
 				});
 
 				test(`should update the remaining characters when typing`, async ({ page }) => {
@@ -83,25 +83,25 @@ const testInputCharacterLimit = (componentName: string) => {
 					await page.waitForChanges();
 					await page.locator('input,textarea').fill('abcdef');
 					// Visual counter updates immediately
-					await expect(page.getByTestId('input-counter')).toHaveText('Es sind noch 4 Zeichen verfügbar.');
+					await expect(page.locator('span.kol-form-field__counter')).toHaveText('Es sind noch 4 Zeichen verfügbar.');
 					// Aria counter is debounced by 1 s to avoid noisy screen-reader announcements during typing
-					await expect(page.getByTestId('input-counter-aria')).toHaveText('Es sind noch 4 Zeichen verfügbar.', { timeout: 1500 });
+					await expect(page.locator('.kol-form-field__counter [aria-live="polite"]')).toHaveText('Es sind noch 4 Zeichen verfügbar.', { timeout: 1500 });
 				});
 
 				test('should render an alternative text and modifier class when the limit has been exceeded', async ({ page }) => {
 					await page.setContent(`<${componentName} _label="Input" _max-length="10" _has-counter _max-length-behavior="soft" _value="abc"></${componentName}>`);
 					await page.waitForChanges();
 					await page.locator('input,textarea').fill('a'.repeat(12));
-					await expect(page.getByTestId('input-counter')).toHaveText('Es sind 2 Zeichen zu viel.');
-					await expect(page.getByTestId('input-counter')).toHaveClass('kol-form-field__counter kol-form-field__counter--exceeded');
+					await expect(page.locator('span.kol-form-field__counter')).toHaveText('Es sind 2 Zeichen zu viel.');
+					await expect(page.locator('span.kol-form-field__counter')).toHaveClass('kol-form-field__counter kol-form-field__counter--exceeded');
 					// Aria counter is debounced by 1 s to avoid noisy screen-reader announcements during typing
-					await expect(page.getByTestId('input-counter-aria')).toHaveText('Es sind 2 Zeichen zu viel.', { timeout: 1500 });
+					await expect(page.locator('.kol-form-field__counter [aria-live="polite"]')).toHaveText('Es sind 2 Zeichen zu viel.', { timeout: 1500 });
 				});
 
 				test(`should update the remaining characters in the aria-live region with a delay`, async ({ page }) => {
 					await page.setContent(`<${componentName} _label="Input" _max-length="10" _has-counter _max-length-behavior="soft" _value="abc"></${componentName}>`);
 					await page.waitForChanges();
-					const ariaCounter = page.getByTestId('input-counter-aria');
+					const ariaCounter = page.locator('.kol-form-field__counter [aria-live="polite"]');
 					const initialText = await ariaCounter.textContent();
 					if (initialText !== 'Es sind noch 7 Zeichen verfügbar.') {
 						await expect(ariaCounter).toHaveText('Es sind noch 10 Zeichen verfügbar.');

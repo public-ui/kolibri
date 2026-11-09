@@ -22,7 +22,7 @@ In dieser Reihenfolge maßgeblich:
 
 1. Die Pflichtregeln und Prüfpunkte in diesem Skill (Abschnitt 4). Sie haben Vorrang vor allen
    Dokumenten.
-2. `packages/components/src/components/_skeleton/ARC42.md`
+2. `packages/components/docs/ARC42-SKELETON.md`
 3. `AGENTS.md`: Theming, Color schemes, CSS Custom Properties and SASS Variables, SCSS Architecture
    Guidelines, General rules for custom themes, Coding Conventions, Inline code documentation, Semantic
    Versioning
@@ -39,7 +39,8 @@ grep -l "@Component(" packages/components/src/components/*/component.tsx | sort
 
 Ausgenommen sind:
 
-- `_skeleton`: Referenzimplementierung der Architektur.
+- `tooltip`: `kol-tooltip-wc` ist absichtlich deprecated und bleibt unverändert (siehe `AGENTS.md`).
+- `skeleton` und `click-button`: Referenzimplementierung der Architektur.
 - `@else`: Hilfskomponenten.
 
 Bereits reviewt sind Komponenten, zu denen ein Issue mit dem Label `skeleton-review` und dem Titel
