@@ -1,6 +1,6 @@
 ---
 name: issue-bewerten
-description: Sucht das älteste offene GitHub-Issue im KoliBri-Repo, bei dem das Issue-Feld `Triage` keinen Wert oder den Wert `Unclear` hat und das keine offenen Sub-Issues hat, prüft es gegen den heutigen Stand von Code, Doku, PRs und anderen Issues auf Gültigkeit und gibt eine begründete Empfehlung (umsetzen, Scope anpassen, icebox, schließen, klären). Nutze diesen Skill immer, wenn der Nutzer Backlog-Pflege, Issue-Triage oder das Aufräumen alter Issues angeht – auch bei Formulierungen wie "nimm dir das älteste Issue vor", "ist das alte Ticket noch aktuell", "Backlog-Hygiene", "welches Issue liegt am längsten rum", "lohnt sich das noch" oder "nächstes Issue triagieren".
+description: Sucht das älteste offene GitHub-Issue im KoliBri-Repo, bei dem das Issue-Feld `Triage` keinen Wert oder den Wert `Unclear` hat, das Issue-Feld `Desirability` leer ist und das keine offenen Sub-Issues hat, prüft es gegen den heutigen Stand von Code, Doku, PRs und anderen Issues auf Gültigkeit und gibt eine begründete Empfehlung (umsetzen, Scope anpassen, zurückstellen, ablehnen, klären). Nutze diesen Skill immer, wenn der Nutzer Backlog-Pflege, Issue-Triage oder das Aufräumen alter Issues angeht – auch bei Formulierungen wie "nimm dir das älteste Issue vor", "ist das alte Ticket noch aktuell", "Backlog-Hygiene", "welches Issue liegt am längsten rum", "lohnt sich das noch" oder "nächstes Issue triagieren".
 ---
 
 # Ältestes Issue bewerten
@@ -8,35 +8,34 @@ description: Sucht das älteste offene GitHub-Issue im KoliBri-Repo, bei dem das
 Der Backlog von KoliBri enthält Issues aus mehreren Major-Versionen. Viele alte Issues sind inzwischen
 erledigt, überholt oder nie priorisiert worden – sie verstopfen die Liste und kosten bei jeder Sichtung
 Aufmerksamkeit. Dieser Skill arbeitet den Backlog von hinten ab: **immer das älteste offene Issue ohne
-`Triage`-Wert oder mit `Unclear`**, eins pro Aufruf, mit einer klaren Empfehlung.
+`Triage`-Wert oder mit `Unclear` und ohne `Desirability`-Wert**, eins pro Aufruf, mit einer klaren
+Empfehlung.
 
 Das Ergebnis ist **eine Empfehlung im Chat**. Der Skill ändert am Issue nichts von selbst (kein
 Kommentar, kein Feldwert, kein Schließen) – das entscheidet der Nutzer. Erst die Folgeaktion (einen
-`Triage`-Wert wie Icebox setzen oder schließen) sorgt dafür, dass beim nächsten Aufruf ein anderes Issue
+`Desirability`-Wert setzen oder schließen) sorgt dafür, dass beim nächsten Aufruf ein anderes Issue
 drankommt; deshalb am Ende die passende Aktion anbieten.
 
 ## 1. Issue finden
 
 ```bash
-QUEUE=$( { gh issue list --repo public-ui/kolibri --state open --search "no:field.Triage" --limit 500 --json number;
-            gh issue list --repo public-ui/kolibri --state open --search "field.Triage:Unclear" --limit 500 --json number; } \
-  | jq -s 'add | map(.number)')
-gh api "repos/public-ui/kolibri/issues?state=open&sort=created&direction=asc&per_page=100" --paginate \
-  | jq -r --argjson queue "$QUEUE" '.[] | select(.pull_request == null)
-        | select([.number] | inside($queue))
-        | select((.sub_issues_summary.total // 0) == (.sub_issues_summary.completed // 0))
-        | "#\(.number) · \(.created_at[:10]) · \(.title)"' | head -n 1
+gh api graphql --paginate -f query='query($endCursor:String){ repository(owner:"public-ui",name:"kolibri"){ issues(first:100, states:OPEN, orderBy:{field:CREATED_AT,direction:ASC}, after:$endCursor){ pageInfo{hasNextPage endCursor} nodes{ number title createdAt subIssuesSummary{total completed} issueFieldValues(first:10){ nodes{ ... on IssueFieldSingleSelectValue{ name field{ ... on IssueFieldSingleSelect{ name } } } } } } } } }' \
+  --jq '.data.repository.issues.nodes[]
+    | (reduce (.issueFieldValues.nodes[] | select(.field) | {(.field.name): .name}) as $f ({}; . + $f)) as $v
+    | select(($v.Triage // "Unclear") == "Unclear" and $v.Desirability == null)
+    | select(.subIssuesSummary.total == .subIssuesSummary.completed)
+    | "#\(.number) · \(.createdAt[:10]) · \(.title)"' | head -n 1
 ```
 
-- Berücksichtigt werden nur Issues, bei denen das Org-Issue-Feld `Triage` (nur innerhalb der Organisation
-  sichtbar) keinen Wert oder den Wert `Unclear` hat: `Unclear`-Tickets sollen bewertet werden. Jeder
-  andere Wert nimmt ein Issue aus der Warteschlange. Die REST-Liste liefert keine Feldwerte, deshalb
-  kommt die Menge dieser Issues aus den Suchen `no:field.Triage` und `field.Triage:Unclear`.
+- Berücksichtigt werden nur Issues, bei denen das Org-Issue-Feld `Triage` keinen Wert oder den Wert
+  `Unclear` hat und das Org-Issue-Feld `Desirability` leer ist (beide nur innerhalb der Organisation
+  sichtbar). `Unclear`-Tickets sollen bewertet werden; jeder andere `Triage`-Wert und jeder
+  `Desirability`-Wert nimmt ein Issue aus der Warteschlange. Die Feldwerte kommen aus GraphQL, weil die
+  Suche `no:field.Triage` unvollständige Treffer liefert.
 - **Issues mit offenen Sub-Issues überspringen.** Ein solches Issue ist der Rahmen für Arbeit, die gerade
   in den Sub-Issues läuft, und bleibt offen, bis diese erledigt sind – auch wenn sein eigener Inhalt
   entschieden oder umgesetzt wirkt. Bewertet werden stattdessen die Sub-Issues, wenn sie an der Reihe
-  sind. Der Filter auf `sub_issues_summary` erledigt das; die REST-Liste enthält auch Pull Requests,
-  deshalb filtert `pull_request == null` sie heraus. Die Meldung „The pipe is being closed“ entsteht,
+  sind. Der Filter auf `subIssuesSummary` erledigt das. Die Meldung „The pipe is being closed“ entsteht,
   weil `head` die Ausgabe abschneidet, und ist harmlos.
 - Hat der Nutzer eine Issue-Nummer genannt, diese statt des ältesten nehmen.
 - Kurz nennen, welches Issue es ist (Nummer, Titel, Alter), dann weiter.
@@ -88,15 +87,17 @@ Issue-/PR-Links. Eine Empfehlung ohne Belege ist wenig wert, weil der Nutzer sie
 
 ## 4. Urteil bilden
 
-Eine der folgenden Empfehlungen wählen:
+Eine der folgenden Empfehlungen wählen. Jede Empfehlung hat eine Folgeaktion, die das Issue aus der
+Warteschlange nimmt:
 
-| Empfehlung                         | Wann                                                                                                                                                                   |
-| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Umsetzen**                       | Problem besteht weiter, Lösung passt zum heutigen Projekt, und Aufwand oder Bedarf rechtfertigen es, jetzt Zeit zu investieren.                                        |
-| **Umsetzen mit angepasstem Scope** | Kern ist gültig, aber Teile sind erledigt, überholt oder die Lösung muss neu gedacht werden – und Aufwand/Bedarf rechtfertigen weiterhin eine Umsetzung.               |
-| **Icebox**                         | Grundsätzlich gültig, aber Aufwand und aktuelle Nachfrage stehen in keinem guten Verhältnis zu den vielen anderen offenen Issues; nicht falsch, nur (noch) nicht dran. |
-| **Schließen**                      | Erledigt, überholt, Duplikat oder passt nicht (mehr) zur Ausrichtung des Projekts. Grund benennen.                                                                     |
-| **Klärung nötig**                  | Ohne Rückfrage an Autor/Team nicht entscheidbar. Die konkrete offene Frage formulieren.                                                                                |
+| Empfehlung                         | Folgeaktion                                    | Wann                                                                                                                                                                   |
+| ---------------------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Umsetzen**                       | `Desirability` = `Wanted`                      | Problem besteht weiter, Lösung passt zum heutigen Projekt, und Aufwand oder Bedarf rechtfertigen es, jetzt Zeit zu investieren.                                        |
+| **Umsetzen mit angepasstem Scope** | Scope aktualisieren, `Desirability` = `Wanted` | Kern ist gültig, aber Teile sind erledigt, überholt oder die Lösung muss neu gedacht werden – und Aufwand/Bedarf rechtfertigen weiterhin eine Umsetzung.               |
+| **Zurückstellen**                  | `Desirability` = `Maybe someday`               | Grundsätzlich gültig, aber Aufwand und aktuelle Nachfrage stehen in keinem guten Verhältnis zu den vielen anderen offenen Issues; nicht falsch, nur (noch) nicht dran. |
+| **Ablehnen**                       | `Desirability` = `Won't do`                    | Gültig beschrieben, passt aber nicht zur Ausrichtung des Projekts. Grund benennen; ob das Issue zusätzlich geschlossen wird, entscheidet der Nutzer.                   |
+| **Schließen**                      | Schließen mit Kommentar                        | Erledigt, überholt oder Duplikat. Grund benennen.                                                                                                                      |
+| **Klärung nötig**                  | `Triage` = `Unclear`, Rückfrage im Issue       | Ohne Rückfrage an Autor/Team nicht entscheidbar. Die konkrete offene Frage formulieren.                                                                                |
 
 Abwägen: Nutzen (wer profitiert, wie viele), Aufwand (grob: klein/mittel/groß), Risiko (Breaking
 Change?) und Bedarf (Resonanz). Wenn das Urteil knapp ist, das ehrlich sagen und das ausschlaggebende
@@ -110,9 +111,10 @@ erledigte – „das Problem besteht noch“ ist deshalb eine notwendige, aber k
 für „Umsetzen“. Bei großem Aufwand (neue öffentliche Komponente, größerer Umbau, mehrwöchiges Vorhaben)
 nur dann zu **Umsetzen**/**angepasstem Scope** raten, wenn zusätzlich ein spürbares, aktuelles
 Bedarfssignal vorliegt (aktive externe Nachfrage, wiederkehrende Duplikate, blockiert andere Arbeit).
-Fehlt dieses Signal, eher zu **Icebox** raten, auch wenn der Kern des Issues nach wie vor richtig ist –
-Icebox heißt „richtig, aber angesichts des restlichen Backlogs nicht jetzt“, nicht „falsch“. Bei einem
-sehr alten, breiten Spike-/Epic-Issue ist Icebox oft die ehrlichere Antwort als ein optimistisches
+Fehlt dieses Signal, eher zu **Zurückstellen** raten, auch wenn der Kern des Issues nach wie vor richtig
+ist – Zurückstellen heißt „richtig, aber angesichts des restlichen Backlogs nicht jetzt“, nicht „falsch“.
+Bei einem sehr alten, breiten Spike-/Epic-Issue ist Zurückstellen oft die ehrlichere Antwort als ein
+optimistisches
 „Umsetzen mit angepasstem Scope“, das den tatsächlichen Aufwand kleinredet.
 
 **Bei neuen Komponenten oder neuen Features den vollen Aufwand ansetzen, nicht nur den Komponenten-Code.**
@@ -132,7 +134,7 @@ Source: Wer ein Feature dringend braucht, kann es auch selbst beitragen. Ein ein
 aber nicht weitergeführter externer PR oder eine allgemeine Nachfrage sind kein hinreichender Grund,
 warum das Team selbst den (gerade bei neuen Komponenten oft großen) Aufwand tragen sollte. Nur wenn
 jemand aktuell aktiv daran arbeitet oder verbindlich weitermachen will, zählt das als starkes
-Bedarfssignal für **Umsetzen**; ansonsten eher zu **Icebox** raten und im Issue vermerken, dass ein
+Bedarfssignal für **Umsetzen**; ansonsten eher zu **Zurückstellen** raten und im Issue vermerken, dass ein
 Community-Beitrag willkommen wäre.
 
 ## 5. Ausgabe
@@ -144,7 +146,7 @@ Im Chat, auf Deutsch, in dieser Struktur:
 
 <Link> · erstellt <Datum> (vor <n> Jahren/Monaten) · Labels: <…>
 
-**Empfehlung: <Umsetzen | Umsetzen mit angepasstem Scope | Icebox | Schließen | Klärung nötig>**
+**Empfehlung: <Umsetzen | Umsetzen mit angepasstem Scope | Zurückstellen | Ablehnen | Schließen | Klärung nötig>**
 <1–2 Sätze: das ausschlaggebende Argument>
 
 ### Worum es geht
@@ -172,7 +174,7 @@ Im Chat, auf Deutsch, in dieser Struktur:
 
 ### Vorgeschlagene Folgeaktion
 
-<z. B. „`Triage` auf `Icebox` setzen“, „Schließen mit Kommentar: …“, „Scope im Issue aktualisieren“>
+<z. B. „`Desirability` auf `Maybe someday` setzen“, „Schließen mit Kommentar: …“, „Scope im Issue aktualisieren“>
 ```
 
 Danach fragen, ob die vorgeschlagene Folgeaktion ausgeführt werden soll. Erst bei ausdrücklicher
@@ -180,11 +182,18 @@ Zustimmung handeln (Kommentar posten, Feldwert setzen, Issue schließen) – das
 betrifft ein öffentliches Repo. Einen Kommentar am Issue auf Deutsch oder in der Sprache des Issues
 verfassen und vor dem Posten zeigen.
 
-Den Feldwert `Triage` setzen die Skills über GraphQL (Feld-ID `IFSS_kgDOAu3I4g`, Option `Icebox`
-`IFSSO_kgDOBSCwRg`; die Issue-ID liefert `gh issue view <NR> --json id`):
+Feldwerte setzt der Skill über GraphQL; die Issue-ID liefert `gh issue view <NR> --json id`.
+
+| Feld           | Feld-ID           | Option          | Option-ID          |
+| -------------- | ----------------- | --------------- | ------------------ |
+| `Desirability` | `IFSS_kgDOAvWnJg` | `Wanted`        | `IFSSO_kgDOBS6EpQ` |
+| `Desirability` | `IFSS_kgDOAvWnJg` | `Maybe someday` | `IFSSO_kgDOBS6Epg` |
+| `Desirability` | `IFSS_kgDOAvWnJg` | `Won't do`      | `IFSSO_kgDOBS6Epw` |
+| `Triage`       | `IFSS_kgDOAu3I4g` | `Unclear`       | `IFSSO_kgDOBSCwRw` |
 
 ```bash
-gh api graphql -f query='mutation($i:ID!){ setIssueFieldValue(input:{issueId:$i,issueFields:[{fieldId:"IFSS_kgDOAu3I4g",singleSelectOptionId:"IFSSO_kgDOBSCwRg"}]}){ clientMutationId } }' -f i=<ISSUE_ID>
+gh api graphql -f query='mutation($i:ID!,$f:ID!,$o:ID!){ setIssueFieldValue(input:{issueId:$i,issueFields:[{fieldId:$f,singleSelectOptionId:$o}]}){ clientMutationId } }' \
+  -f i=<ISSUE_ID> -f f=<FELD_ID> -f o=<OPTION_ID>
 ```
 
 Ein Kommentarentwurf muss für sich stehen, auch für Leser:innen ohne diesen Chat-Kontext: Sätze wie
