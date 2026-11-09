@@ -150,7 +150,11 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 		}
 	};
 
-	/** The card's close button closes the dialog, which then fires its own native close event. */
+	/**
+	 * The card's close button only closes the dialog. `handleClose` reacts to the native `close` event that
+	 * every way of closing fires (close button, Escape, `close()`, `closeModal()`) and dispatches `onClose`,
+	 * `onToggle`, `close` and `toggle` exactly once.
+	 */
 	private readonly handleCardClose = (): void => {
 		this.cardCloseTooltipBehavior.hideTooltip();
 		this.closeDialog();
