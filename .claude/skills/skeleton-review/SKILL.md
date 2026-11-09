@@ -22,7 +22,7 @@ In dieser Reihenfolge maßgeblich:
 
 1. Die Pflichtregeln und Prüfpunkte in diesem Skill (Abschnitt 4). Sie haben Vorrang vor allen
    Dokumenten.
-2. `packages/components/src/components/_skeleton/ARC42.md`
+2. `packages/components/docs/ARC42-SKELETON.md`
 3. `AGENTS.md`: Theming, Color schemes, CSS Custom Properties and SASS Variables, SCSS Architecture
    Guidelines, General rules for custom themes, Coding Conventions, Inline code documentation, Semantic
    Versioning
@@ -39,7 +39,8 @@ grep -l "@Component(" packages/components/src/components/*/component.tsx | sort
 
 Ausgenommen sind:
 
-- `_skeleton`: Referenzimplementierung der Architektur.
+- `tooltip`: `kol-tooltip-wc` ist absichtlich deprecated und bleibt unverändert (siehe `AGENTS.md`).
+- `skeleton` und `click-button`: Referenzimplementierung der Architektur.
 - `@else`: Hilfskomponenten.
 
 Bereits reviewt sind Komponenten, zu denen ein Issue mit dem Label `skeleton-review` und dem Titel
@@ -154,32 +155,6 @@ Pro Befund:
 
 Nur Befunde mit Beleg melden. Was unsicher ist, unter „Offene Fragen“ führen statt als Befund.
 
-### Begründung je Befund-Cluster
-
-Befunde, die auf dieselbe Regel und dieselbe Ursache zurückgehen, bilden einen Cluster (z. B. „R4:
-Wurzel per `bem.forBlock`“ oder „Flaches DOM: Wrapper um eine eingebettete FC“). Damit die Maintainer
-beurteilen können, ob ein Befund echten Nutzen bringt oder nur zwischen zwei Regelauslegungen hin und
-her optimiert, erläutert der Plan **jeden Cluster an genau einem nachvollziehbaren Beispiel** aus dem
-geprüften Code:
-
-1. **Ist:** ein kurzer Code- oder DOM-Ausschnitt mit Datei:Zeile, so wie er heute im Repo steht.
-2. **Warum ein Befund:** die verletzte Regel mit Fundstelle und die konkrete Auswirkung. Die Auswirkung
-   benennt, wen es trifft, also Nutzende (Bug, Barriere), Theme-Autoren (Selektoren, Spezifität) oder nur
-   die Code-Konsistenz (Typsicherheit, Einheitlichkeit). Trifft es nur die Konsistenz, das so schreiben.
-3. **Soll:** derselbe Ausschnitt korrigiert, als Code oder DOM, mit den alten und neuen BEM-Klassen,
-   wenn sich Klassen ändern.
-4. **Bewertung:** ob die Korrektur das gerenderte DOM ändert (Theming-Bruch) oder nicht (reiner
-   Refactor), und eine Empfehlung: umsetzen, bündeln oder zurückstellen.
-
-Vor dem Anlegen des Issues jeden Cluster auf Widersprüche prüfen und gefundene Widersprüche unter
-„Offene Fragen“ führen statt als Befund:
-
-- gegen bestehende Entscheidungen: Migrationspläne unter `docs/`, ADRs, geschlossene Issues und
-  gemergte PRs, die genau diese Struktur bewusst festgelegt haben (z. B. „DOM und BEM bleiben“);
-- zwischen den Regeln dieses Skills: Ein Soll-Zustand, den eine Regel verlangt, darf nicht zugleich
-  von einer anderen Regel als Befund gewertet werden, etwa wenn das Entfernen eines Wrappers (Flaches
-  DOM) die Wurzel einer eingebetteten FC zur Wurzel der Komponente macht und dadurch R3 verletzt.
-
 ## 6. Issue anlegen und ausgeben
 
 - Titel: `Skeleton-Review: <ordnername>`
@@ -196,15 +171,6 @@ Vor dem Anlegen des Issues jeden Cluster auf Widersprüche prüfen und gefundene
 | #   | Schweregrad | Befund | Beleg | Vorschlag | Aufwand | Bezug |
 | --- | ----------- | ------ | ----- | --------- | ------- | ----- |
 | 1   | …           | …      | …     | …         | …       | …     |
-
-## Begründung je Cluster
-
-### <Cluster, z. B. „R4: Wurzel per bem.forBlock“> (Befunde #…)
-
-- **Ist** (`<datei>:<zeile>`): <Ausschnitt>
-- **Warum ein Befund:** <Regel mit Fundstelle; wen es trifft und wie>
-- **Soll:** <korrigierter Ausschnitt; alte → neue BEM-Klassen>
-- **Bewertung:** <DOM ändert sich ja/nein; umsetzen / bündeln / zurückstellen>
 
 ## Querschnitt
 

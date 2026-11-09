@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SpinApi } from '../../internal/functional-components/spin/api';
 import { spinPropsConfig } from '../../internal/functional-components/spin/api';
 import { SpinFC } from '../../internal/functional-components/spin/component';
@@ -16,6 +16,8 @@ import type { LabelPropType, ShowPropType } from '../../schema';
 	shadow: true,
 })
 export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentInterface<SpinApi> {
+	protected readonly propsConfig: PropsConfigShape = spinPropsConfig;
+
 	/**
 	 * Makes the element show up.
 	 */
@@ -50,8 +52,6 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(spinPropsConfig);
-
 		showProp.apply(this._show, (v) => this.setRenderProp('show', v));
 		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		variantSpinProp.apply(this._variant, (v) => this.setRenderProp('variant', v));

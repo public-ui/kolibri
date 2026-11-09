@@ -35,7 +35,7 @@ import { FieldControlFC, isFieldControlLabelShownAsTooltip } from '../../interna
 import type { InputFCProps } from '../../internal/functional-components/form-field/input';
 import { fillKeyOptionMap, normalizeOptionValues } from '../../internal/functional-components/form-field/options';
 import { RadioFC } from '../../internal/functional-components/form-field/radio';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputRadioApi } from '../../internal/functional-components/input-radio/api';
 import { inputRadioPropsConfig } from '../../internal/functional-components/input-radio/api';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
@@ -82,6 +82,8 @@ export class KolInputRadio
 	/** Label tooltip of each option while `_hideLabel` is set, keyed by the option ID. */
 	private readonly optionTooltips = new Map<string, TooltipBehavior>();
 
+	protected readonly propsConfig: PropsConfigShape = inputRadioPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('radio', this._name);
@@ -89,9 +91,8 @@ export class KolInputRadio
 
 	/**
 	 * References an external element by ID that provides accessible details for this input.
-	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -182,7 +183,7 @@ export class KolInputRadio
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -290,9 +291,8 @@ export class KolInputRadio
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this._value;
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this._value);
 	}
 
 	/**
@@ -313,8 +313,6 @@ export class KolInputRadio
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputRadioPropsConfig);
-
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
 		this.watchName(this._name);

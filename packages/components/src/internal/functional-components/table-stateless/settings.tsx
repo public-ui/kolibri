@@ -200,36 +200,30 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 				_on={{ onInput: (_, value: unknown) => handleWidthChange(column.key ?? '', value) }}
 			/>
 			<ButtonFC
-				{...buttons.get(`move-up-${column.key}`).getFcProps(
-					{
-						_icons: 'kolicon-chevron-up',
-						_label:
-							column.sortable === false || index === 0
-								? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
-								: translate('kol-table-settings-move-up', { placeholders: { column: column.label } }),
-						_hideLabel: true,
-						_variant: 'ghost',
-						_on: { onClick: () => moveColumn(column.key ?? '', 'up') },
-						_disabled: column.sortable === false || index === 0,
-					},
-					{ 'data-testid': 'table-settings-move-up' },
-				)}
+				{...buttons.get(`move-up-${column.key}`).getFcProps({
+					_icons: 'kolicon-chevron-up',
+					_label:
+						column.sortable === false || index === 0
+							? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
+							: translate('kol-table-settings-move-up', { placeholders: { column: column.label } }),
+					_hideLabel: true,
+					_variant: 'ghost',
+					_on: { onClick: () => moveColumn(column.key ?? '', 'up') },
+					_disabled: column.sortable === false || index === 0,
+				})}
 			/>
 			<ButtonFC
-				{...buttons.get(`move-down-${column.key}`).getFcProps(
-					{
-						_icons: 'kolicon-chevron-down',
-						_label:
-							column.sortable === false || index === columns.length - 1
-								? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
-								: translate('kol-table-settings-move-down', { placeholders: { column: column.label } }),
-						_hideLabel: true,
-						_variant: 'ghost',
-						_on: { onClick: () => moveColumn(column.key ?? '', 'down') },
-						_disabled: column.sortable === false || index === columns.length - 1,
-					},
-					{ 'data-testid': 'table-settings-move-down' },
-				)}
+				{...buttons.get(`move-down-${column.key}`).getFcProps({
+					_icons: 'kolicon-chevron-down',
+					_label:
+						column.sortable === false || index === columns.length - 1
+							? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
+							: translate('kol-table-settings-move-down', { placeholders: { column: column.label } }),
+					_hideLabel: true,
+					_variant: 'ghost',
+					_on: { onClick: () => moveColumn(column.key ?? '', 'down') },
+					_disabled: column.sortable === false || index === columns.length - 1,
+				})}
 			/>
 		</div>
 	);
@@ -283,20 +277,13 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 								<div class="kol-table-settings__columns">{columns.map((column, index) => renderColumn(column, index, columns))}</div>
 								<div class="kol-table-settings__actions">
 									<ButtonFC
-										{...buttons.get('cancel').getFcProps(
-											{
-												_label: translateTableSettingsCancel,
-												_variant: 'secondary',
-												_on: { onClick: () => handleCancel() },
-											},
-											{ 'data-testid': 'table-settings-cancel' },
-										)}
+										{...buttons.get('cancel').getFcProps({
+											_label: translateTableSettingsCancel,
+											_variant: 'secondary',
+											_on: { onClick: () => handleCancel() },
+										})}
 									/>
-									<ButtonFC
-										{...buttons
-											.get('apply')
-											.getFcProps({ _label: translateTableSettingsApply, _variant: 'primary', _type: 'submit' }, { 'data-testid': 'table-settings-apply' })}
-									/>
+									<ButtonFC {...buttons.get('apply').getFcProps({ _label: translateTableSettingsApply, _variant: 'primary', _type: 'submit' })} />
 								</div>
 							</form>
 						</div>

@@ -44,7 +44,7 @@ import { BaseFormFieldWebComponent } from '../../internal/functional-components/
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { TextAreaFC, type TextAreaFCProps } from '../../internal/functional-components/form-field/textarea';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TextareaApi } from '../../internal/functional-components/textarea/api';
 import { textareaPropsConfig } from '../../internal/functional-components/textarea/api';
 import {
@@ -108,6 +108,8 @@ export class KolTextarea
 	/** Set while the textarea writes its measured rows to `_rows`, so the watcher keeps `minRows`. */
 	private isWritingRows = false;
 
+	protected readonly propsConfig: PropsConfigShape = textareaPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('textarea', this._name);
@@ -137,6 +139,8 @@ export class KolTextarea
 
 	/**
 	 * References an external element by ID that provides accessible details for this textarea.
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -270,7 +274,7 @@ export class KolTextarea
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -412,9 +416,8 @@ export class KolTextarea
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.ctaRef.el?.value;
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
 	}
 
 	/**
@@ -422,19 +425,22 @@ export class KolTextarea
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(textareaPropsConfig);
 		this.watchAriaDetails(this._ariaDetails);
 		this._touched = this._touched === true;
 		this.watchName(this._name);
