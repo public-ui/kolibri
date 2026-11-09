@@ -22,4 +22,4 @@ const KOL_KOLIBRI_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-kolibri', component: 'kolibri', pinnedApi: KOL_KOLIBRI_PUBLIC_API, schemaInterface: 'KolibriProps' });
+describePublicApiContract({ tag: 'kol-kolibri', component: 'kolibri', pinnedApi: KOL_KOLIBRI_PUBLIC_API });

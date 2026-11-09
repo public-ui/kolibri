@@ -8,7 +8,7 @@ import type { KolibriApi } from '../../internal/functional-components/kolibri/ap
 import { kolibriPropsConfig } from '../../internal/functional-components/kolibri/api';
 import { KolibriFC } from '../../internal/functional-components/kolibri/component';
 import { kolibriColorProp, labeledProp } from '../../internal/props';
-import type { KolibriProps, LabeledPropType, PropColor, Stringified } from '../../schema';
+import type { LabeledPropType, PropColor, Stringified } from '../../schema';
 
 @Component({
 	tag: 'kol-kolibri',
@@ -17,7 +17,7 @@ import type { KolibriProps, LabeledPropType, PropColor, Stringified } from '../.
 	},
 	shadow: true,
 })
-export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriProps, WebComponentInterface<KolibriApi> {
+export class KolKolibri extends BaseWebComponent<KolibriApi> implements WebComponentInterface<KolibriApi> {
 	private readonly translateKolibriLogo = translate('kol-kolibri-logo');
 
 	protected readonly propsConfig: PropsConfigShape = kolibriPropsConfig;

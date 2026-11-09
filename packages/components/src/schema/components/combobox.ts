@@ -21,6 +21,7 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { Members } from '../types/members';
 
 type RequiredProps = PropLabelWithExpertSlot & PropSuggestions;
 type OptionalProps = {
@@ -66,7 +67,7 @@ type OptionalStates = {
 	PropTouched &
 	PropVariantClassName;
 
-export type ComboboxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type ComboboxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type ComboboxProps = Members<RequiredProps, OptionalProps>;
+export type ComboboxStates = Members<RequiredStates, OptionalStates>;
 export type ComboboxWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type ComboboxAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

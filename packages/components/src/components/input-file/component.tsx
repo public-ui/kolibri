@@ -12,7 +12,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputFileProps,
 	InputTypeOnDefault,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -59,10 +58,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolInputFile
-	extends BaseFormFieldWebComponent<InputFileApi>
-	implements ClickableElement, FocusableElement, InputFileProps, WebComponentInterface<InputFileApi>
-{
+export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputFileApi> {
 	@Element() protected readonly host?: HTMLKolInputFileElement;
 
 	@State() public id = createUniqueId('input-file');

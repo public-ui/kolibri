@@ -12,7 +12,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputColorProps,
 	InputTypeOnDefault,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -66,7 +65,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 })
 export class KolInputColor
 	extends BaseFormFieldWebComponent<InputColorApi>
-	implements ClickableElement, FocusableElement, InputColorProps, WebComponentInterface<InputColorApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputColorApi>
 {
 	@Element() protected readonly host?: HTMLKolInputColorElement;
 

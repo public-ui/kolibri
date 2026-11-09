@@ -173,5 +173,4 @@ describePublicApiContract({
 	tag: 'kol-single-select',
 	component: 'single-select',
 	pinnedApi: KOL_SINGLE_SELECT_PUBLIC_API,
-	schemaInterface: 'SingleSelectProps',
 });

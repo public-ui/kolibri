@@ -67,4 +67,4 @@ const KOL_TABS_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-tabs', component: 'tabs', pinnedApi: KOL_TABS_PUBLIC_API, schemaInterface: 'TabsProps' });
+describePublicApiContract({ tag: 'kol-tabs', component: 'tabs', pinnedApi: KOL_TABS_PUBLIC_API });

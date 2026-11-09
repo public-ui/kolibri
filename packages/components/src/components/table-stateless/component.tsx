@@ -15,7 +15,6 @@ import type {
 	TableHeaderCellsPropType,
 	TableLoadingPropType,
 	TableSelectionPropType,
-	TableStatelessProps,
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
@@ -29,7 +28,7 @@ import { BaseTableStatelessWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolTableStateless extends BaseTableStatelessWebComponent implements TableStatelessProps, WebComponentInterface<TableStatelessApi> {
+export class KolTableStateless extends BaseTableStatelessWebComponent implements WebComponentInterface<TableStatelessApi> {
 	@Element() protected readonly host?: HTMLKolTableStatelessElement;
 
 	@State() public externalLabelElements: HTMLElement[] = [];

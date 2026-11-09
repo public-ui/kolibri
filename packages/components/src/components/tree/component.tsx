@@ -8,7 +8,7 @@ import type { TreeApi } from '../../internal/functional-components/tree/api';
 import { treePropsConfig } from '../../internal/functional-components/tree/api';
 import { TreeFC } from '../../internal/functional-components/tree/component';
 import { labelProp } from '../../internal/props';
-import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../schema';
+import type { FocusableElement, KolFocusOptions, LabelPropType } from '../../schema';
 import { delegateFocus } from '../../utils/element-focus';
 import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
 
@@ -24,7 +24,7 @@ const isTreeItem = (element?: Element | null): element is HTMLKolTreeItemElement
 	},
 	shadow: true,
 })
-export class KolTree extends BaseWebComponent<TreeApi> implements FocusableElement, TreeProps, WebComponentInterface<TreeApi> {
+export class KolTree extends BaseWebComponent<TreeApi> implements FocusableElement, WebComponentInterface<TreeApi> {
 	@Element() protected readonly host?: HTMLKolTreeElement;
 
 	private observer?: MutationObserver;

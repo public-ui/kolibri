@@ -25,6 +25,7 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
+import type { Members } from '../types/members';
 import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -85,7 +86,7 @@ type OptionalStates = {
 	PropTouched &
 	PropVariantClassName;
 
-export type InputEmailProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputEmailStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type InputEmailProps = Members<RequiredProps, OptionalProps>;
+export type InputEmailStates = Members<RequiredStates, OptionalStates>;
 export type InputEmailWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type InputEmailAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

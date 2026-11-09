@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type { HeadingLevel, PropLabelLangSegments } from '../props';
 import type { PropDialogVariant } from '../props/variant/dialog';
 import type { KoliBriModalEventCallbacks } from '../types';
+import type { Members } from '../types/members';
 
 type RequiredProps = PropLabelLangSegments;
 type OptionalProps = {
@@ -18,6 +19,6 @@ type OptionalStates = {
 	on: KoliBriModalEventCallbacks;
 } & PropDialogVariant;
 
-export type DialogProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type DialogStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type DialogProps = Members<RequiredProps, OptionalProps>;
+export type DialogStates = Members<RequiredStates, OptionalStates>;
 export type DialogAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

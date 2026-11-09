@@ -42,4 +42,4 @@ const KOL_BADGE_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-badge', component: 'badge', pinnedApi: KOL_BADGE_PUBLIC_API, schemaInterface: 'BadgeProps' });
+describePublicApiContract({ tag: 'kol-badge', component: 'badge', pinnedApi: KOL_BADGE_PUBLIC_API });

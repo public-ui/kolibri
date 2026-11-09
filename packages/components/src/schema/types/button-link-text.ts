@@ -1,5 +1,5 @@
-import type { Generic } from 'adopted-style-sheets';
 import type { PropButtonCallbacks, PropHideLabel, PropHref, PropIcons, PropLabelLangSegments, PropLinkTarget } from '../props';
+import type { Members } from './members';
 import type { StencilUnknown } from './unknown';
 
 /**
@@ -21,9 +21,9 @@ type OptionalButtonOrLinkOrTextProps = PropHideLabel & {
 type OptionalButtonProps = OptionalButtonOrLinkOrTextProps & {
 	disabled: boolean;
 };
-// type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
-// type LinkProps = Generic.Element.Members<RequiredLinkProps, OptionalButtonOrLinkOrTextProps>;
-// type TextProps = Generic.Element.Members<RequiredTextProps, OptionalButtonOrLinkOrTextProps>;
+// type ButtonProps = Members<RequiredButtonProps, OptionalButtonProps>;
+// type LinkProps = Members<RequiredLinkProps, OptionalButtonOrLinkOrTextProps>;
+// type TextProps = Members<RequiredTextProps, OptionalButtonOrLinkOrTextProps>;
 // type ButtonOrLinkOrTextProps = ButtonProps | LinkProps | TextProps;
 
 type OptionalButtonOrLinkOrTextWithChildrenProps = OptionalButtonOrLinkOrTextProps & {
@@ -32,7 +32,7 @@ type OptionalButtonOrLinkOrTextWithChildrenProps = OptionalButtonOrLinkOrTextPro
 type OptionalButtonWithChildrenProps = OptionalButtonProps & {
 	children: ButtonOrLinkOrTextWithChildrenProps[];
 };
-export type ButtonWithChildrenProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonWithChildrenProps>;
-export type LinkWithChildrenProps = Generic.Element.Members<RequiredLinkProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
-type TextWithChildrenProps = Generic.Element.Members<RequiredTextProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
+export type ButtonWithChildrenProps = Members<RequiredButtonProps, OptionalButtonWithChildrenProps>;
+export type LinkWithChildrenProps = Members<RequiredLinkProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
+type TextWithChildrenProps = Members<RequiredTextProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
 export type ButtonOrLinkOrTextWithChildrenProps = ButtonWithChildrenProps | LinkWithChildrenProps | TextWithChildrenProps;

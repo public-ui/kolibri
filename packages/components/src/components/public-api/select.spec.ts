@@ -168,4 +168,4 @@ const KOL_SELECT_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-select', component: 'select', pinnedApi: KOL_SELECT_PUBLIC_API, schemaInterface: 'SelectProps' });
+describePublicApiContract({ tag: 'kol-select', component: 'select', pinnedApi: KOL_SELECT_PUBLIC_API });

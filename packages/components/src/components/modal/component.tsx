@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
+import type { KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createUniqueId } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from '../dialog/base';
@@ -25,7 +25,7 @@ import { BaseDialogWebComponent } from '../dialog/base';
  * `_level` and its watcher are deliberately absent: adding them would widen the public API of a
  * deprecated component. The card variant therefore always renders its heading at the default level.
  */
-export class KolModal extends BaseDialogWebComponent implements DialogProps, Omit<WebComponentInterface<DialogApi>, '_level' | 'watchLevel'> {
+export class KolModal extends BaseDialogWebComponent implements Omit<WebComponentInterface<DialogApi>, '_level' | 'watchLevel'> {
 	@Element() protected readonly host?: HTMLKolModalElement;
 
 	@State() public ariaDescriptionId: string = createUniqueId('aria-description');

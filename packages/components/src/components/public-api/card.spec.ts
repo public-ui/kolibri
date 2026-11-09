@@ -58,4 +58,4 @@ const KOL_CARD_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-card', component: 'card', pinnedApi: KOL_CARD_PUBLIC_API, schemaInterface: 'CardProps' });
+describePublicApiContract({ tag: 'kol-card', component: 'card', pinnedApi: KOL_CARD_PUBLIC_API });

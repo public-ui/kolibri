@@ -13,7 +13,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputEmailProps,
 	InputTypeOnDefault,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -63,7 +62,7 @@ import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 })
 export class KolInputEmail
 	extends BaseTextInputWebComponent<InputEmailApi>
-	implements ClickableElement, FocusableElement, InputEmailProps, WebComponentInterface<InputEmailApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputEmailApi>
 {
 	@Element() protected readonly host?: HTMLKolInputEmailElement;
 

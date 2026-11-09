@@ -4,7 +4,6 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import type { CardApi } from '../../internal/functional-components/card/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type {
-	CardProps,
 	ClickableElement,
 	FocusableElement,
 	HasCloserPropType,
@@ -35,7 +34,7 @@ import { BaseCardWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolCard extends BaseCardWebComponent implements CardProps, ClickableElement, FocusableElement, WebComponentInterface<CardApi> {
+export class KolCard extends BaseCardWebComponent implements ClickableElement, FocusableElement, WebComponentInterface<CardApi> {
 	@Element() protected readonly host?: HTMLKolCardElement;
 
 	@State() public ariaDescriptionId: string = createUniqueId('aria-description');

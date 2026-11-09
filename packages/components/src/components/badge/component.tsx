@@ -11,7 +11,6 @@ import type { PropsConfigShape, WebComponentInterface } from '../../internal/fun
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../internal/props';
 import type {
-	BadgeProps,
 	FocusableElement,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -40,7 +39,7 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	},
 	shadow: true,
 })
-export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, FocusableElement, WebComponentInterface<BadgeApi> {
+export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableElement, WebComponentInterface<BadgeApi> {
 	@Element() protected readonly host?: HTMLKolBadgeElement;
 
 	@State() public labelId: string = createUniqueId('badge-label');

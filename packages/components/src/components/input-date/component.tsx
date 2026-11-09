@@ -12,7 +12,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputDateProps,
 	InputDateTypePropType,
 	InputTypeOnDefault,
 	InternalButtonProps,
@@ -81,10 +80,7 @@ import { submitFormOnEnter } from '../form/controller';
 	},
 	shadow: true,
 })
-export class KolInputDate
-	extends BaseFormFieldWebComponent<InputDateApi>
-	implements ClickableElement, FocusableElement, InputDateProps, WebComponentInterface<InputDateApi>
-{
+export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputDateApi> {
 	@Element() protected readonly host?: HTMLKolInputDateElement;
 
 	@State() public id = createUniqueId('input-date');

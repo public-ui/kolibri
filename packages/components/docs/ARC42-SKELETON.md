@@ -220,15 +220,16 @@ directly from `prop.docs` / `method.docs`. A `@Prop` without a JSDoc comment sil
 IntelliSense and generated documentation for every adapter package. The same applies to
 `@deprecated` markers, which announce planned removals to consumers.
 
-**Compile-time enforcement:** the WC implements the schema interface from `src/schema` (e.g.
-`implements LinkProps`) **in addition to** `WebComponentInterface<Api>`. The generic
-`WebComponentInterface` alone derives its prop types from the internal prop definitions
-(primitives like `string`/`boolean`), which would allow the public types to silently drift away
-from the schema. The schema alias types (`HrefPropType`, `LabelWithExpertSlotPropType`,
-`AlternativeButtonLinkRolePropType`, …) are structurally identical to the internal external types,
-so both `implements` clauses can coexist. Legacy state-shape requirements of `*API` types (e.g.
-`InternalLinkAPI`'s `state` member) are replaced by the render-prop store; implement the `*Props`
-interface instead.
+**Compile-time enforcement:** the WC implements only `WebComponentInterface<Api>`. The
+schema-alias types of the props (`HrefPropType`, `LabelWithExpertSlotPropType`,
+`AlternativeButtonLinkRolePropType`, …) are held by the prop definitions — their external types
+travel in the phantom keys of the prop definitions into the `Props` of the `*Api` type and from
+there into the `@Prop` declarations (see _Explicit Schema Types per Prop_ and _API Definition with
+`PropsConfigShape` and `ApiFromConfig`_). An additional `implements <Name>Props` from
+`src/schema/components` is therefore not used. The public-api contract tests pin every
+`@Prop`/`@Method` member with its type as written, so a type drift shows up in the pin. Legacy
+state-shape requirements of `*API` types (e.g. `InternalLinkAPI`'s `state` member) are replaced by
+the render-prop store.
 
 **Verification (mandatory before merging a migration):** extract every `@Prop`/`@Method`
 declaration with its preceding JSDoc block from the predecessor file (`git show <base>:<path>`)
@@ -813,7 +814,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Alternative_: group tests into a dedicated `test/` subdirectory.
     - _Reason_: co-located tests are easier to discover and keep related files visible side-by-side.
 15. **Public API parity during migration — the FC face is not the public face**
-    - _Pattern_: a skeleton migration keeps the WC's public `@Prop`/`@Method` set byte-identical to the predecessor: same members, same schema-alias types, same defaults, same JSDoc (including `@deprecated`). The WC implements the schema `*Props` interface alongside `WebComponentInterface<Api>` so drift fails the build. Internal FC props without a public predecessor prop stay internal (fed from defaults, no public `@Prop` added).
+    - _Pattern_: a skeleton migration keeps the WC's public `@Prop`/`@Method` set byte-identical to the predecessor: same members, same schema-alias types, same defaults, same JSDoc (including `@deprecated`). The WC implements only `WebComponentInterface<Api>`: the schema-alias types travel through the prop definitions, and the public-api contract tests pin the members, so drift fails the build. Internal FC props without a public predecessor prop stay internal (fed from defaults, no public `@Prop` added).
     - _Alternative_: expose every FC prop 1:1 as a public `@Prop` and declare props with the internal primitive types.
     - _Reason_: the public API is a compatibility contract (adapters, IntelliSense, `custom-elements.json` are generated from `prop.docs`/`method.docs`). Growing it silently (e.g. link gained `_ariaOwns`, `_customClass`, `_tabIndex`, `click()`) or dropping its documentation is a breaking change disguised as a refactor. See [§4 Public API Contract](#public-api-contract-migration-parity).
 16. **Shared orchestrator base for tag variants of one FC**

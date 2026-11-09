@@ -11,6 +11,7 @@ import type {
 } from '../props';
 import type { PropPaginationPosition } from '../props/pagination-position';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
+import type { Members } from '../types/members';
 import type { BadgeProps } from './badge';
 import type { InternalButtonProps } from './button';
 import type { LinkProps } from './link';
@@ -68,13 +69,13 @@ export type KoliBriTableHeaders = {
 	vertical?: KoliBriTableHeaderCellWithLogic[][];
 };
 
-export type KoliBriTablePaginationProps = Generic.Element.Members<
+export type KoliBriTablePaginationProps = Members<
 	{
 		page: number;
 	},
 	KoliBriPaginationProps
 >;
-type KoliBriTablePaginationStates = Generic.Element.Members<
+type KoliBriTablePaginationStates = Members<
 	{
 		page: number;
 		max: number;
@@ -113,5 +114,5 @@ type OptionalStates = {
 } & StatefulPropTableCallbacks &
 	PropHasSettingsMenu;
 
-export type TableStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type TableStates = Members<RequiredStates, OptionalStates>;
 export type TableAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

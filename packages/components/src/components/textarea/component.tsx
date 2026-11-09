@@ -29,7 +29,6 @@ import type {
 	Stringified,
 	StringValuePropType,
 	SyncValueBySelectorPropType,
-	TextareaProps,
 	TextareaResizePropType,
 	TooltipAlignPropType,
 	TouchedPropType,
@@ -77,10 +76,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolTextarea
-	extends BaseFormFieldWebComponent<TextareaApi>
-	implements ClickableElement, FocusableElement, TextareaProps, WebComponentInterface<TextareaApi>
-{
+export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implements ClickableElement, FocusableElement, WebComponentInterface<TextareaApi> {
 	@Element() protected readonly host?: HTMLKolTextareaElement;
 
 	@State() public id = createUniqueId('textarea');

@@ -199,4 +199,4 @@ const KOL_INPUT_NUMBER_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-number', component: 'input-number', pinnedApi: KOL_INPUT_NUMBER_PUBLIC_API, schemaInterface: 'InputNumberProps' });
+describePublicApiContract({ tag: 'kol-input-number', component: 'input-number', pinnedApi: KOL_INPUT_NUMBER_PUBLIC_API });

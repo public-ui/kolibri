@@ -23,6 +23,7 @@ import type {
 	PropTouched,
 } from '../props';
 import type { InputTypeOnDefault, StencilUnknown, Stringified } from '../types';
+import type { Members } from '../types/members';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -68,7 +69,7 @@ type OptionalStates = {
 	PropTouched &
 	PropLabelAlign;
 
-export type InputCheckboxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputCheckboxStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type InputCheckboxProps = Members<RequiredProps, OptionalProps>;
+export type InputCheckboxStates = Members<RequiredStates, OptionalStates>;
 export type InputCheckboxWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type InputCheckboxAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

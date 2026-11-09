@@ -23,6 +23,7 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, SelectOption, StencilUnknown, Stringified, W3CInputValue } from '../types';
+import type { Members } from '../types/members';
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptionsWithOptgroup;
 type OptionalProps = {
@@ -71,7 +72,7 @@ type OptionalStates = {
 	PropTouched &
 	PropVariantClassName;
 
-export type SelectProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type SelectStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type SelectProps = Members<RequiredProps, OptionalProps>;
+export type SelectStates = Members<RequiredStates, OptionalStates>;
 export type SelectWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type SelectAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

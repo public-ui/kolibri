@@ -9,7 +9,7 @@ import { ToolbarFC } from '../../internal/functional-components/toolbar/componen
 import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
 import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
 import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
-import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType, ToolbarProps } from '../../schema';
+import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { delegateClick, setClick } from '../../utils/element-click';
@@ -26,7 +26,7 @@ const ARROW_KEYS: KeyboardKey[] = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, K
 	},
 	shadow: true,
 })
-export class KolToolbar extends BaseWebComponent<ToolbarApi> implements ClickableElement, FocusableElement, ToolbarProps, WebComponentInterface<ToolbarApi> {
+export class KolToolbar extends BaseWebComponent<ToolbarApi> implements ClickableElement, FocusableElement, WebComponentInterface<ToolbarApi> {
 	@Element() protected readonly host?: HTMLKolToolbarElement;
 
 	@State() public currentIndex: number = 0;

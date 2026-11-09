@@ -1,5 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
 import type {
 	ButtonCallbacksPropType,
 	PropAlternativeButtonLinkRole,
@@ -12,6 +10,7 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { StencilUnknown } from '../types';
+import type { Members } from '../types/members';
 
 type RequiredProps = PropLabelLangSegments;
 type OptionalProps = {
@@ -24,4 +23,4 @@ type OptionalProps = {
 	PropVariantClassName &
 	PropName;
 
-export type SplitButtonProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type SplitButtonProps = Members<RequiredProps, OptionalProps>;

@@ -9,7 +9,7 @@ import type { BreadcrumbLinkItem } from '../../internal/functional-components/br
 import { createBreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { breadcrumbLinksProp, labelProp } from '../../internal/props';
-import type { BreadcrumbLinkProps, BreadcrumbProps, LabelPropType, Stringified } from '../../schema';
+import type { BreadcrumbLinkProps, LabelPropType, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks } from '../../schema';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import type { UnsubscribeFunction } from '../link/ariaCurrentService';
@@ -25,7 +25,7 @@ import { onLocationChange } from '../link/ariaCurrentService';
 	},
 	shadow: true,
 })
-export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements BreadcrumbProps, WebComponentInterface<BreadcrumbApi> {
+export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements WebComponentInterface<BreadcrumbApi> {
 	@Element() protected readonly host?: HTMLKolBreadcrumbElement;
 
 	@State() public linkItems: BreadcrumbLinkItem[] = [];

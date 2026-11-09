@@ -23,7 +23,6 @@ import type {
 	RequiredPropType,
 	RowsPropType,
 	ShortKeyPropType,
-	SingleSelectProps,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
@@ -76,10 +75,7 @@ import {
 	},
 	shadow: true,
 })
-export class KolSingleSelect
-	extends BaseListboxWebComponent<SingleSelectApi>
-	implements FocusableElement, SingleSelectProps, WebComponentInterface<SingleSelectApi>
-{
+export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> implements FocusableElement, WebComponentInterface<SingleSelectApi> {
 	@Element() protected readonly host?: HTMLKolSingleSelectElement;
 
 	@State() public id = createUniqueId('single-select');

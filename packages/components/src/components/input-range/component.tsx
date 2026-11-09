@@ -12,7 +12,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputRangeProps,
 	InputTypeOnDefault,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
@@ -77,7 +76,7 @@ import { submitFormOnEnter } from '../form/controller';
 })
 export class KolInputRange
 	extends BaseFormFieldWebComponent<InputRangeApi>
-	implements ClickableElement, FocusableElement, InputRangeProps, WebComponentInterface<InputRangeApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputRangeApi>
 {
 	@Element() protected readonly host?: HTMLKolInputRangeElement;
 

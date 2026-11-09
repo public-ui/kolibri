@@ -21,6 +21,7 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
+import type { Members } from '../types/members';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -68,7 +69,7 @@ type OptionalStates = {
 	PropTouched &
 	PropVariantClassName;
 
-export type InputRangeProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputRangeStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type InputRangeProps = Members<RequiredProps, OptionalProps>;
+export type InputRangeStates = Members<RequiredStates, OptionalStates>;
 export type InputRangeWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type InputRangeAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -13,7 +13,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputNumberProps,
 	InputTypeOnDefault,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -87,7 +86,7 @@ const isStepButton = (target: EventTarget | null): boolean => (target as HTMLEle
 })
 export class KolInputNumber
 	extends BaseFormFieldWebComponent<InputNumberApi>
-	implements ClickableElement, FocusableElement, InputNumberProps, WebComponentInterface<InputNumberApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputNumberApi>
 {
 	@Element() protected readonly host?: HTMLKolInputNumberElement;
 

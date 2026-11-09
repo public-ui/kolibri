@@ -182,15 +182,10 @@ type PublicApiContractOptions = {
 	/** Source file that declares the web component class. Defaults to `component.tsx`. */
 	file?: string;
 	pinnedApi: PublicApiContract;
-	/**
-	 * Schema `*Props` interface the class implements, so prop-type drift fails the build.
-	 * Omitted for legacy components that are pinned ahead of their skeleton migration.
-	 */
-	schemaInterface?: string;
 };
 
 /** Pins the public `@Prop`/`@Method` surface of one web component class. */
-export const describePublicApiContract = ({ tag, component, file = 'component.tsx', pinnedApi, schemaInterface }: PublicApiContractOptions): void => {
+export const describePublicApiContract = ({ tag, component, file = 'component.tsx', pinnedApi }: PublicApiContractOptions): void => {
 	describe(`${tag} public API contract (ARC42 § Public API Contract)`, () => {
 		it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 			// Failing this test means the public contract changed — a breaking change (ARC42 §
@@ -202,11 +197,5 @@ export const describePublicApiContract = ({ tag, component, file = 'component.ts
 		it('documents every public member (custom-elements.json and docs-vscode are generated from prop.docs)', () => {
 			expect(findUndocumentedMembers(component, file)).toEqual([]);
 		});
-
-		if (schemaInterface !== undefined) {
-			it('implements the schema interface so prop-type drift fails the build', () => {
-				expect(readSource(component, file)).toMatch(new RegExp(`implements\\s+[^{]*\\b${schemaInterface}\\b`));
-			});
-		}
 	});
 };

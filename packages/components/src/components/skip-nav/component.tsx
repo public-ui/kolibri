@@ -8,7 +8,7 @@ import { SkipNavFC } from '../../internal/functional-components/skip-nav/compone
 import type { SkipNavLinkItem } from '../../internal/functional-components/skip-nav/link-item';
 import { createSkipNavLinkItem } from '../../internal/functional-components/skip-nav/link-item';
 import { labelProp, skipNavLinksProp } from '../../internal/props';
-import type { FocusableElement, KolFocusOptions, LabelPropType, LinkProps, SkipNavProps, Stringified } from '../../schema';
+import type { FocusableElement, KolFocusOptions, LabelPropType, LinkProps, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks } from '../../schema';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
@@ -25,7 +25,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 	},
 	shadow: true,
 })
-export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements FocusableElement, SkipNavProps, WebComponentInterface<SkipNavApi> {
+export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements FocusableElement, WebComponentInterface<SkipNavApi> {
 	@Element() protected readonly host?: HTMLKolSkipNavElement;
 
 	@State() public linkItems: SkipNavLinkItem[] = [];

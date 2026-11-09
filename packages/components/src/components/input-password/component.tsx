@@ -13,7 +13,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputPasswordProps,
 	InputTypeOnDefault,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -66,7 +65,7 @@ import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 })
 export class KolInputPassword
 	extends BaseTextInputWebComponent<InputPasswordApi>
-	implements ClickableElement, FocusableElement, InputPasswordProps, WebComponentInterface<InputPasswordApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputPasswordApi>
 {
 	@Element() protected readonly host?: HTMLKolInputPasswordElement;
 

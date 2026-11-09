@@ -13,4 +13,4 @@ const KOL_VERSION_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-version', component: 'version', pinnedApi: KOL_VERSION_PUBLIC_API, schemaInterface: 'VersionProps' });
+describePublicApiContract({ tag: 'kol-version', component: 'version', pinnedApi: KOL_VERSION_PUBLIC_API });

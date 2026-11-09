@@ -63,4 +63,4 @@ const KOL_ACCORDION_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-accordion', component: 'accordion', pinnedApi: KOL_ACCORDION_PUBLIC_API, schemaInterface: 'AccordionProps' });
+describePublicApiContract({ tag: 'kol-accordion', component: 'accordion', pinnedApi: KOL_ACCORDION_PUBLIC_API });

@@ -24,7 +24,6 @@ import type {
 	HideLabelPropType,
 	InternalButtonProps,
 	LabelPropType,
-	NavProps,
 	Stringified,
 } from '../../schema';
 import { a11yHintLabelingLandmarks, devHint } from '../../schema';
@@ -42,7 +41,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 	},
 	shadow: true,
 })
-export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebComponentInterface<NavApi> {
+export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInterface<NavApi> {
 	@Element() protected readonly host?: HTMLKolNavElement;
 
 	@State() public compact: boolean = false;

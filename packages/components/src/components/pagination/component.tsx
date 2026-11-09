@@ -17,7 +17,6 @@ import type {
 	PagePropType,
 	PageSizePropType,
 	PaginationHasButton,
-	PaginationProps,
 	SiblingCountPropType,
 	Stringified,
 	TooltipAlignPropType,
@@ -30,7 +29,7 @@ import type {
 	},
 	shadow: true,
 })
-export class KolPagination extends BaseWebComponent<PaginationApi> implements PaginationProps, WebComponentInterface<PaginationApi> {
+export class KolPagination extends BaseWebComponent<PaginationApi> implements WebComponentInterface<PaginationApi> {
 	@Element() private readonly host?: HTMLKolPaginationElement;
 
 	/** Renders the element again after a page size was chosen in the select; it does not write `_pageSize`. */

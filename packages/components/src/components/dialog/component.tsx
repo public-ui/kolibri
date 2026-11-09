@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
+import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createUniqueId } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from './base';
@@ -18,7 +18,7 @@ import { BaseDialogWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolDialog extends BaseDialogWebComponent implements DialogProps, WebComponentInterface<DialogApi> {
+export class KolDialog extends BaseDialogWebComponent implements WebComponentInterface<DialogApi> {
 	@Element() protected readonly host?: HTMLKolDialogElement;
 
 	@State() public ariaDescriptionId: string = createUniqueId('aria-description');

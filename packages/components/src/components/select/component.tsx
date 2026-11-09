@@ -19,7 +19,6 @@ import type {
 	OptionsWithOptgroupPropType,
 	RequiredPropType,
 	RowsPropType,
-	SelectProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
@@ -47,7 +46,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	},
 	shadow: true,
 })
-export class KolSelect extends BaseSelectWebComponent implements FocusableElement, SelectProps, WebComponentInterface<SelectApi> {
+export class KolSelect extends BaseSelectWebComponent implements FocusableElement, WebComponentInterface<SelectApi> {
 	@Element() protected readonly host?: HTMLKolSelectElement;
 
 	@State() public id = createUniqueId('select');

@@ -145,5 +145,4 @@ describePublicApiContract({
 	tag: 'kol-popover-button',
 	component: 'popover-button',
 	pinnedApi: KOL_POPOVER_BUTTON_PUBLIC_API,
-	schemaInterface: 'PopoverButtonProps',
 });

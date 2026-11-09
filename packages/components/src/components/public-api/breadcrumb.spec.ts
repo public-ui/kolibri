@@ -20,4 +20,4 @@ const KOL_BREADCRUMB_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-breadcrumb', component: 'breadcrumb', pinnedApi: KOL_BREADCRUMB_PUBLIC_API, schemaInterface: 'BreadcrumbProps' });
+describePublicApiContract({ tag: 'kol-breadcrumb', component: 'breadcrumb', pinnedApi: KOL_BREADCRUMB_PUBLIC_API });

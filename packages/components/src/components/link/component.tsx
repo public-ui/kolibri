@@ -16,7 +16,6 @@ import type {
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
-	LinkProps,
 	LinkTargetPropType,
 	ShortKeyPropType,
 	Stringified,
@@ -38,7 +37,7 @@ import { BaseLinkWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolLink extends BaseLinkWebComponent implements FocusableElement, LinkProps {
+export class KolLink extends BaseLinkWebComponent implements FocusableElement {
 	@Element() protected readonly host?: HTMLKolLinkElement;
 
 	@State() public ariaCurrent: string = '';

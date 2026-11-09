@@ -10,7 +10,6 @@ import type { PropsConfigShape, WebComponentInterface } from '../../internal/fun
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../internal/props';
 import type {
-	AlertProps,
 	AlertPropType,
 	AlertTypePropType,
 	AlertVariantPropType,
@@ -35,7 +34,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, WebComponentInterface<AlertApi> {
+export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponentInterface<AlertApi> {
 	@Element() protected readonly host?: HTMLKolAlertElement;
 
 	@State() public headingId: string = createUniqueId('alert-heading');

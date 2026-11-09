@@ -24,6 +24,7 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, Iso8601, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
+import type { Members } from '../types/members';
 import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -82,7 +83,7 @@ type OptionalStates = {
 	PropTouched &
 	PropVariantClassName;
 
-export type InputDateProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputDateStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type InputDateProps = Members<RequiredProps, OptionalProps>;
+export type InputDateStates = Members<RequiredStates, OptionalStates>;
 export type InputDateWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type InputDateAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

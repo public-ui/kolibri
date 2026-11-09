@@ -9,7 +9,7 @@ import type { FormErrorLinkItem } from '../../internal/functional-components/for
 import { createFormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { errorListProp, formCallbacksProp, requiredTextProp } from '../../internal/props';
-import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
+import type { ErrorListPropType, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -40,7 +40,7 @@ const FOCUS_ERROR_LIST_DELAY = 250;
 	},
 	shadow: true,
 })
-export class KolForm extends BaseWebComponent<FormApi> implements FormProps, WebComponentInterface<FormApi> {
+export class KolForm extends BaseWebComponent<FormApi> implements WebComponentInterface<FormApi> {
 	@Element() private readonly host?: HTMLKolFormElement;
 
 	@State() public errorLinkItems: FormErrorLinkItem[] = [];

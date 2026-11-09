@@ -13,7 +13,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputTextProps,
 	InputTextTypePropType,
 	InputTypeOnDefault,
 	InternalButtonProps,
@@ -67,10 +66,7 @@ import { createEventWithTarget, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolInputText
-	extends BaseTextInputWebComponent<InputTextApi>
-	implements ClickableElement, FocusableElement, InputTextProps, WebComponentInterface<InputTextApi>
-{
+export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputTextApi> {
 	@Element() protected readonly host?: HTMLKolInputTextElement;
 
 	@State() public id = createUniqueId('input-text');

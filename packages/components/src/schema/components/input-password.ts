@@ -25,6 +25,7 @@ import type {
 } from '../props';
 import type { PropVisibilityToggle } from '../props/visibility-toggle';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
+import type { Members } from '../types/members';
 import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -85,7 +86,7 @@ type OptionalStates = {
 	PropVariantClassName &
 	PropVisibilityToggle;
 
-export type InputPasswordProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputPasswordStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type InputPasswordProps = Members<RequiredProps, OptionalProps>;
+export type InputPasswordStates = Members<RequiredStates, OptionalStates>;
 export type InputPasswordWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type InputPasswordAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

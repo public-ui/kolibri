@@ -2,6 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { PropCollapsible, PropHasCompactButton, PropHasIconsWhenExpanded, PropHideLabel, PropLabel } from '../props';
 import type { ButtonOrLinkOrTextWithChildrenProps, Stringified } from '../types';
+import type { Members } from '../types/members';
 
 type RequiredProps = {
 	links: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
@@ -18,6 +19,6 @@ type RequiredStates = {
 	PropLabel;
 type OptionalStates = NonNullable<unknown>;
 
-export type NavProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type NavStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type NavProps = Members<RequiredProps, OptionalProps>;
+export type NavStates = Members<RequiredStates, OptionalStates>;
 export type NavAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

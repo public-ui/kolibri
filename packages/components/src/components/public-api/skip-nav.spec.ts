@@ -26,4 +26,4 @@ const KOL_SKIP_NAV_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-skip-nav', component: 'skip-nav', pinnedApi: KOL_SKIP_NAV_PUBLIC_API, schemaInterface: 'SkipNavProps' });
+describePublicApiContract({ tag: 'kol-skip-nav', component: 'skip-nav', pinnedApi: KOL_SKIP_NAV_PUBLIC_API });
