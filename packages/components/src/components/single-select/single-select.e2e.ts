@@ -210,6 +210,13 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(noResult).toBeVisible();
 		});
 
+		test('names the listbox by the label of the field', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-single-select _label="Direction" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await page.locator('input.kol-single-select__input').click();
+
+			await expect(page.getByRole('listbox')).toHaveAccessibleName('Direction');
+		});
+
 		test('should only trigger onChange when the value actually changes', async ({ page }) => {
 			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 

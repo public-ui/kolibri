@@ -776,6 +776,7 @@ export class KolCombobox
 							onKeyDown={this.handleDropdownKeyDown}
 							hidden={!this.isOpen || isDisabled}
 							id={createRelatedUniqueId(this.id, 'listbox')}
+							aria-labelledby={createRelatedUniqueId(this.id, 'label')}
 						>
 							{this.renderOptions()}
 						</CustomSuggestionsOptionsGroupFC>
