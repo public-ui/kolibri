@@ -174,6 +174,24 @@ dialogTags.forEach((tag) => {
 
 				await expect(eventPromise).resolves.toBeUndefined();
 			});
+
+			test('it emits close exactly once when the card close button is clicked', async ({ page }) => {
+				await page.setContent(`<${tag} _variant="card" _label="">Modal content</${tag}>`);
+				const dialogElement = page.locator(tag);
+				await dialogElement.evaluate((element) => {
+					(window as unknown as { closeCount: number }).closeCount = 0;
+					element.addEventListener('close', () => {
+						(window as unknown as { closeCount: number }).closeCount++;
+					});
+				});
+				await dialogElement.evaluate((element) => (element as HTMLKolDialogElement).openModal());
+				await page.locator('.kol-card__close-button button').evaluate((button) => (button as HTMLButtonElement).click());
+				await expect(page.locator('dialog')).toBeHidden();
+				// The native close event is queued as a task, so a second dispatch would arrive within a few frames.
+				await page.waitForTimeout(100);
+
+				expect(await page.evaluate(() => (window as unknown as { closeCount: number }).closeCount)).toBe(1);
+			});
 		});
 
 		test.describe('scroll lock', () => {
