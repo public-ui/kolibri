@@ -72,7 +72,10 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
-		openProp.apply(value, (v) => (this.open = v));
+		openProp.apply(value, (v) => {
+			this.open = v;
+			invalidateOpenItemsCache(this.getTree());
+		});
 	}
 
 	/**
