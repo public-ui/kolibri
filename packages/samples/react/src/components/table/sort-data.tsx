@@ -26,7 +26,13 @@ const compareByDate =
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
 		[
-			{ label: 'order', key: 'order', textAlign: 'center', width: 160 },
+			{
+				label: 'order',
+				key: 'order',
+				textAlign: 'center',
+				width: 160,
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as Data).order - (data1 as Data).order,
+			},
 			{
 				label: 'date',
 				key: 'date',
