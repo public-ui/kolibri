@@ -7,6 +7,8 @@ const optionsGroupBem = getBlockBem('kol-custom-suggestions-options-group');
 const optionBem = getBlockBem('kol-custom-suggestions-option');
 
 export type CustomSuggestionsOptionsGroupFCProps = JSXBase.HTMLAttributes<HTMLUListElement> & {
+	/** Id of the field label, which names the listbox. */
+	'aria-labelledby': string;
 	/** Hides the mouse cursor while the keyboard moves through the options. */
 	blockSuggestionMouseOver: boolean;
 };
@@ -25,10 +27,11 @@ export type CustomSuggestionsOptionFCProps = JSXBase.HTMLAttributes<HTMLLIElemen
 
 /** Listbox of the custom suggestions of `kol-combobox` and `kol-single-select`; `hidden` closes it. */
 export const CustomSuggestionsOptionsGroupFC: FC<CustomSuggestionsOptionsGroupFCProps> = (
-	{ blockSuggestionMouseOver, onKeyDown, style, hidden, id },
+	{ 'aria-labelledby': ariaLabelledBy, blockSuggestionMouseOver, onKeyDown, style, hidden, id },
 	children,
 ) => (
 	<ul
+		aria-labelledby={ariaLabelledBy}
 		id={id}
 		role="listbox"
 		style={style}

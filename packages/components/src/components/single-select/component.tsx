@@ -785,6 +785,7 @@ export class KolSingleSelect
 							style={{ '--visible-options': `${this.getRenderProp('rows') ?? 5}` }}
 							hidden={!this.isOpen || isDisabled}
 							id={createRelatedUniqueId(this.id, 'listbox')}
+							aria-labelledby={createRelatedUniqueId(this.id, 'label')}
 						>
 							{this.renderOptions()}
 						</CustomSuggestionsOptionsGroupFC>
