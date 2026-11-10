@@ -21,9 +21,22 @@ export const SingleSelectToggleFC: FC<SingleSelectToggleFCProps> = ({ disabled, 
 	<IconFC icons="kolicon-chevron-down" label="" class={customSuggestionsToggleBem({ disabled })} onClick={handleClick} />
 );
 
-/** Takes the place of the options when the filter matches none; `role="alert"` lets a screen reader announce it. */
+/**
+ * Takes the place of the options when the filter matches none. It is visual only: a listbox may own
+ * nothing but options and groups, so `SingleSelectNoResultsStatusFC` announces the message instead.
+ */
 export const SingleSelectNoResultsFC: FC<{ message: string }> = ({ message }) => (
-	<li class={BEM_CLASS_SINGLE_SELECT__NO_RESULTS_MESSAGE} role="alert">
+	<li aria-hidden="true" class={BEM_CLASS_SINGLE_SELECT__NO_RESULTS_MESSAGE}>
 		{message}{' '}
 	</li>
+);
+
+/**
+ * Live region outside the listbox that announces the no-results message. It stays in the DOM, so a
+ * screen reader registers it before its text changes; the text is empty while there are results.
+ */
+export const SingleSelectNoResultsStatusFC: FC<{ message: string }> = ({ message }) => (
+	<span class="visually-hidden" role="status">
+		{message}
+	</span>
 );

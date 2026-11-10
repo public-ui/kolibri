@@ -206,8 +206,18 @@ test.describe(COMPONENT_NAME, () => {
 			await setContentWithRetry(page, `<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.fill('Something');
-			const noResult = page.getByText('Keine Ergebnisse gefunden.');
+			const noResult = page.locator('.kol-single-select__no-results-message');
+			await expect(noResult).toHaveText('Keine Ergebnisse gefunden.');
 			await expect(noResult).toBeVisible();
+		});
+
+		test('announces the no results message outside of the listbox, which stays empty', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
+			await page.locator('input.kol-single-select__input').fill('Something');
+
+			await expect(page.getByRole('status')).toHaveText('Keine Ergebnisse gefunden.');
+			await expect(page.locator('[role="listbox"] [role="alert"]')).toHaveCount(0);
+			await expect(page.getByRole('listbox').getByText('Keine Ergebnisse gefunden.')).toHaveAttribute('aria-hidden', 'true');
 		});
 
 		test('names the listbox by the label of the field', async ({ page }) => {
