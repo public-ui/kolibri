@@ -51,7 +51,12 @@ import { BaseListboxWebComponent } from '../../internal/functional-components/li
 import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
 import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
 import { singleSelectPropsConfig } from '../../internal/functional-components/single-select/api';
-import { BEM_CLASS_SINGLE_SELECT__DELETE, SingleSelectNoResultsFC, SingleSelectToggleFC } from '../../internal/functional-components/single-select/component';
+import {
+	BEM_CLASS_SINGLE_SELECT__DELETE,
+	SingleSelectNoResultsFC,
+	SingleSelectNoResultsStatusFC,
+	SingleSelectToggleFC,
+} from '../../internal/functional-components/single-select/component';
 import {
 	accessKeyProp,
 	hasClearButtonProp,
@@ -691,8 +696,12 @@ export class KolSingleSelect
 		} as InputFCProps;
 	}
 
+	private hasNoResults(): boolean {
+		return !Array.isArray(this.filteredOptions) || this.filteredOptions.length === 0;
+	}
+
 	private renderOptions(): JSX.Element | JSX.Element[] {
-		if (!Array.isArray(this.filteredOptions) || this.filteredOptions.length === 0) {
+		if (this.hasNoResults()) {
 			return <SingleSelectNoResultsFC message={this.translateNoResultsMessage} />;
 		}
 
@@ -789,6 +798,7 @@ export class KolSingleSelect
 						>
 							{this.renderOptions()}
 						</CustomSuggestionsOptionsGroupFC>
+						<SingleSelectNoResultsStatusFC message={this.isOpen && !isDisabled && this.hasNoResults() ? this.translateNoResultsMessage : ''} />
 					</InputContainerFC>
 				</FormFieldFC>
 			</Host>
