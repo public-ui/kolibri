@@ -30,19 +30,15 @@ import type {
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
-import { translate } from '../../i18n';
-import { ButtonFC } from '../../internal/functional-components/button/component';
 import { createButtonItem } from '../../internal/functional-components/button/item';
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { getFileNames } from '../../internal/functional-components/form-field/file-value';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputFileApi } from '../../internal/functional-components/input-file/api';
 import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
-import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
 import { acceptProp, accessKeyProp, horizontalIconsProp, multipleProp, requiredProp, shortKeyProp, smartButtonProp, variantProp } from '../../internal/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -72,18 +68,18 @@ export class KolInputFile
 
 	@State() public inputHasFocus = false;
 
-	private readonly translateFilenameText = translate('kol-filename-text');
+	// private readonly translateFilenameText = translate('kol-filename-text');
 
-	@State() private filename: string = this.translateFilenameText;
+	// @State() private filename: string = this.translateFilenameText;
 
-	/** Set by a selection in the file dialog and cleared by `reset()`; a drop does not set it (#10865). */
-	@State() private hasFileSelected = false;
+	// /** Set by a selection in the file dialog and cleared by `reset()`; a drop does not set it (#10865). */
+	// @State() private hasFileSelected = false;
 
 	@State() private isDragover = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
-	private readonly translateDataBrowseText = translate('kol-data-browse-text');
+	// private readonly translateDataBrowseText = translate('kol-data-browse-text');
 
 	private readonly browseButton = createButtonItem(() => this.host);
 
@@ -348,8 +344,8 @@ export class KolInputFile
 	@Method()
 	public reset(): Promise<void> {
 		this.formAssociation.setFormAssociatedValue('');
-		this.filename = this.translateFilenameText;
-		this.hasFileSelected = false;
+		// this.filename = this.translateFilenameText;
+		// this.hasFileSelected = false;
 
 		if (this.ctaRef.el) {
 			this.ctaRef.el.value = '';
@@ -398,8 +394,8 @@ export class KolInputFile
 	private readonly handleFileChange = (event: Event): void => {
 		if (this.ctaRef.el instanceof HTMLInputElement && this.ctaRef.el.type === 'file') {
 			const files = this.ctaRef.el.files;
-			this.hasFileSelected = !!files?.length;
-			this.filename = getFileNames(files) ?? this.translateFilenameText;
+			// this.hasFileSelected = !!files?.length;
+			// this.filename = getFileNames(files) ?? this.translateFilenameText;
 
 			this.handleChange(event, files);
 			this.formAssociation.setFormAssociatedValue(files);
@@ -444,7 +440,7 @@ export class KolInputFile
 		if (event.dataTransfer?.files.length) {
 			const files = event.dataTransfer.files;
 			this.ctaRef.el.files = files;
-			this.filename = getFileNames(files) ?? this.translateFilenameText;
+			// this.filename = getFileNames(files) ?? this.translateFilenameText;
 			this.formAssociation.setFormAssociatedValue(files);
 			this.handleChange(event, files);
 			this.handleInput(event, files);
@@ -516,14 +512,8 @@ export class KolInputFile
 						onDragLeave={this.handleDragLeave}
 						onDrop={this.handleDrop}
 					>
-						<InputFileNameFC filename={this.filename} hasFile={this.hasFileSelected} />
 						<InputFC {...this.getInputProps()} />
-						<ButtonFC
-							{...this.browseButton.getFcProps(
-								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled },
-								{ class: BEM_CLASS_INPUT_CONTAINER__BUTTON },
-							)}
-						/>
+						{/* <InputFileNameFC filename={this.filename} hasFile={this.hasFileSelected} /> */}
 					</InputContainerFC>
 				</FormFieldFC>
 			</Host>
