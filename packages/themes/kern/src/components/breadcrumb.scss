@@ -35,30 +35,26 @@
 	.kol-link {
 		border-radius: var(--kern-metric-border-radius-large);
 
-		/* The padding sits on the anchor below; the normalized wrapper padding would enlarge
-		   the link box beyond the pre-migration anchor-as-root box. */
 		padding: 0;
 		align-items: center;
 		justify-content: center;
 
-		font-size: to-rem(13);
+		&__interactive-element {
+			color: var(--kern-color-layout-text-default);
+			border-radius: var(--kern-metric-border-radius-large);
+			padding: $vertical-padding $horizontal-padding;
+			align-items: center;
+
+			font-size: to-rem(13);
+
+			&:hover {
+				color: var(--kern-color-action-default);
+				background: var(--kern-color-layout-background-hued);
+			}
+		}
 
 		.kol-icon {
 			font-size: to-rem(18);
-		}
-	}
-
-	/* The colour, padding and hover state sat on the anchor-as-root before the skeleton
-	   migration — the interactive anchor has to carry them again. */
-	.kol-link__interactive-element {
-		color: var(--kern-color-layout-text-default);
-		border-radius: var(--kern-metric-border-radius-large);
-		padding: $vertical-padding $horizontal-padding;
-		align-items: center;
-
-		&:hover {
-			color: var(--kern-color-action-default);
-			background: var(--kern-color-layout-background-hued);
 		}
 	}
 

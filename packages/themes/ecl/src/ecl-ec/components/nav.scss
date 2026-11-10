@@ -25,27 +25,40 @@
 
 			.kol-link,
 			.kol-button {
-				display: flex;
-				min-height: var(--a11y-min-size);
-				padding-right: to-rem(var(--kol-nav-item-padding-right));
-				padding-left: to-rem(16);
-
-				/* The link skeleton renders a `.kol-link` wrapper inside the entry element — it must
-				   fill the entry so trailing chevrons stay at the row end like before the migration. */
-				flex: 1 1 auto;
-				align-items: center;
+				flex-grow: 1;
 
 				text-decoration: none;
 
-				/* The UA default underline sits on the anchor itself — the nav rows show none. */
-				.kol-link__interactive-element {
+				&__interactive-element {
+					display: flex;
+					min-height: var(--a11y-min-size);
+					padding-right: to-rem(var(--kol-nav-item-padding-right));
+					padding-left: to-rem(16);
+
+					/* The link skeleton renders a `.kol-link` wrapper inside the entry element — it must
+				   fill the entry so trailing chevrons stay at the row end like before the migration. */
+					flex: 1 1 auto;
+					align-items: center;
+
 					text-decoration: none;
+
+					&:focus {
+						outline: 2px solid var(--ecl-color-primary);
+						border-radius: 1px;
+						outline-offset: 2px;
+					}
 				}
 
-				.kol-span__icon--right {
-					transform: rotate(180deg);
-					&::before {
-						content: '\ea11';
+				.kol-span {
+					&__container {
+						gap: to-rem(8);
+					}
+
+					&__icon--right {
+						transform: rotate(180deg);
+						&::before {
+							content: '\ea11';
+						}
 					}
 				}
 
@@ -79,36 +92,6 @@
 			.kol-link,
 			.kol-button {
 				padding-left: to-rem(var(--kol-nav-item-padding-left));
-
-				.kol-span {
-					&__container {
-						display: grid;
-						gap: 0;
-						justify-content: flex-start;
-						grid-template-areas: 'expander deco label';
-						grid-template-columns: 24px min-content 1fr;
-					}
-
-					&__icon--left {
-						margin-right: to-rem(8);
-						grid-area: deco;
-					}
-
-					&__icon--right {
-						transform: rotate(90deg);
-						width: to-rem(16);
-						margin-right: to-rem(8);
-						grid-area: expander;
-
-						&::before {
-							content: '\ea50';
-						}
-					}
-
-					&__label {
-						grid-area: label;
-					}
-				}
 			}
 
 			.kol-nav__list-item--expanded > .kol-nav__entry-wrapper .kol-span__icon--right {
