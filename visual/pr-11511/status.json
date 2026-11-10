@@ -1,24 +1,27 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "1 changed – 0 of 1 approved, review pending",
-	"computedAt": "2026-11-06T02:15:55.687Z",
+	"state": "failure",
+	"description": "1 of 1 visual changes rejected",
+	"computedAt": "2026-11-10T14:13:03.272Z",
 	"pr": 11511,
 	"head": "3c0e943dc07c60a4c4ee5fcd475bf0f94527f6ab",
 	"digest": "sha256:600900cfc7d78bce5f4acdfc0901f54d0deefa284372311a4f71cfca0774b3de",
 	"counts": {
 		"changes": 1,
-		"open": 1,
+		"open": 0,
 		"approved": 0,
-		"rejected": 0,
+		"rejected": 1,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"laske185"
+	],
 	"items": {
 		"theme-ecl/scenarios-focus-elements-component-tabs": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "laske185"
 		}
 	}
 }
