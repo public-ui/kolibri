@@ -23,7 +23,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input accesskey="V" aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input accesskey="V" aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -100,7 +100,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -177,7 +177,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--disabled" disabled="" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--disabled" disabled="" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete" hidden="">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" disabled="" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -254,7 +254,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="Label" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="Label" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -344,7 +344,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-describedby="combobox-hint-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-describedby="combobox-hint-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -427,7 +427,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           </div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -510,7 +510,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           </div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -589,7 +589,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -704,7 +704,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -781,7 +781,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-describedby="combobox-msg-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-describedby="combobox-msg-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -867,7 +867,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-describedby="combobox-msg-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-describedby="combobox-msg-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -953,7 +953,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -1030,7 +1030,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -1110,7 +1110,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-keyshortcuts="S" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-keyshortcuts="S" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -1187,7 +1187,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -1264,7 +1264,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -1341,7 +1341,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
@@ -1423,7 +1423,7 @@ exports[`kol-combobox should render with _label=[{"text":"partly english","lang"
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="list" aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-labelledby="combobox-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone kol-combobox__delete">
                 <button aria-label="kol-delete-selection" class="kol-button__interactive-element" type="button">
                   <span class="kol-button__text kol-span kol-span--hide-label">
