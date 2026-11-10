@@ -10,7 +10,6 @@ import { validateAccessKey } from './access-key';
 import { validateAlt } from './alt';
 import { validateAriaControls } from './aria-controls';
 import { validateAriaDescription } from './aria-description';
-import { validateAriaDetails } from './aria-details';
 import { validateAriaLabelledby } from './aria-labelledby';
 import { validateAriaOwns } from './aria-owns';
 import { validateBadgeText } from './badge-text';
@@ -90,8 +89,7 @@ type IdrefValidator = (component: unknown, host: HTMLElement | undefined, intern
 /**
  * Validators of an IDREF list that resolve the referenced elements and assign them to the host internals.
  */
-const idrefValidators: [string, IdrefValidator, string, 'ariaDetailsElements' | 'ariaLabelledByElements'][] = [
-	['validateAriaDetails', validateAriaDetails, '_ariaDetails', 'ariaDetailsElements'],
+const idrefValidators: [string, IdrefValidator, string, 'ariaLabelledByElements'][] = [
 	['validateAriaLabelledby', validateAriaLabelledby, '_ariaLabelledby', 'ariaLabelledByElements'],
 ];
 
