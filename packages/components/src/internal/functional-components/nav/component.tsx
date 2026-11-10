@@ -44,8 +44,10 @@ type ListProps = Pick<NavFCProps, 'expandedChildren' | 'getButtonFcProps' | 'get
  */
 const renderEntry = (props: ListProps, entry: ButtonOrLinkOrTextWithChildrenProps, hasChildren: boolean, expanded: boolean, ariaId: string): JSX.Element => {
 	const { collapsible, compact, getButtonFcProps, getLinkFcProps, handleToggleExpansion, hasIconsWhenExpanded } = props;
+	/* Only a button entry renders the toggle icon; a link entry navigates, so it shows no toggle icon. */
+	const toggleable = collapsible && hasChildren && !isLinkEntry(entry);
 	const icons = buildEntryIcons({
-		collapsible: collapsible && hasChildren,
+		collapsible: toggleable,
 		expanded,
 		hasIconsWhenExpanded,
 		hideLabel: compact,

@@ -19,7 +19,6 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                         <span aria-hidden="true" class="kol-span__slot" hidden="">
                           <slot name="expert" slot="expert"></slot>
                         </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                       </span>
                     </span>
                   </a>
@@ -40,7 +39,6 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                             <span aria-hidden="true" class="kol-span__slot" hidden="">
                               <slot name="expert" slot="expert"></slot>
                             </span>
-                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                           </span>
                         </span>
                       </a>
@@ -316,7 +314,6 @@ exports[`kol-nav should render with _label="Nav with an active grandchild, butto
                         <span aria-hidden="true" class="kol-span__slot" hidden="">
                           <slot name="expert" slot="expert"></slot>
                         </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                       </span>
                     </span>
                   </a>
@@ -337,7 +334,6 @@ exports[`kol-nav should render with _label="Nav with an active grandchild, butto
                             <span aria-hidden="true" class="kol-span__slot" hidden="">
                               <slot name="expert" slot="expert"></slot>
                             </span>
-                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                           </span>
                         </span>
                       </a>

@@ -60,6 +60,20 @@ test.describe('kol-nav component', () => {
 		});
 	});
 
+	test.describe('link entries with children', () => {
+		test('render no toggle icon, because a link navigates instead of toggling its children', async ({ page }) => {
+			const links = [{ _label: 'Parent link', _href: '#parent', _active: true, _children: [{ _label: 'Child', _href: '#child' }] }];
+			await page.setContent(`<kol-nav _label="Nav" _links='${JSON.stringify(links)}'></kol-nav>`);
+			const parentLink = page.locator('kol-nav .kol-nav__entry--link a').first();
+
+			// The aria state of the link stays as it is; only the toggle icon goes away.
+			await expect(parentLink).toHaveAttribute('aria-expanded', 'true');
+			await expect(parentLink).toHaveAttribute('aria-controls', /.+/);
+			await expect(page.locator('kol-nav .kol-nav__entry--link .kolicon-plus')).toHaveCount(0);
+			await expect(page.locator('kol-nav .kol-nav__entry--link .kolicon-minus')).toHaveCount(0);
+		});
+	});
+
 	test.describe('active state classes', () => {
 		test('applies active class to items based on _active flag', async ({ page }) => {
 			await page.setContent(`<kol-nav _label="Nav" _links='${JSON.stringify(LINKS.mixedActive)}'></kol-nav>`);
