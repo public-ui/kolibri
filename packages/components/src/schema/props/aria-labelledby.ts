@@ -1,18 +1,17 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { HostInternals } from '../../utils/aria-labelledby';
 import { resolveTargets } from '../../utils/aria-labelledby';
-import { Log, watchValidator } from '../utils';
+import { watchValidator } from '../utils';
 
 /* types */
 /**
  * An IDREF (space-separated) identifying external element(s) that label this component.
  *
- * Internally the component resolves the IDREF to an element reference and sets it via
- * ElementInternals.ariaLabelledByElements so the accessible name crosses the Shadow DOM
- * boundary. Desktop screen readers (NVDA + Chrome, JAWS + Chrome) follow this chain;
- * mobile screen readers (TalkBack, VoiceOver iOS) do not yet support element references
- * across shadow boundaries — use `_label` when TalkBack support is required.
+ * The component resolves the IDREFs and sets them as element references (`ariaLabelledByElements`)
+ * on its native inner element, because IDREF attributes cannot cross the shadow boundary.
+ * Desktop screen readers (NVDA + Chrome, JAWS + Chrome) follow this chain; mobile screen readers
+ * (TalkBack, VoiceOver) do not yet support element references across shadow boundaries —
+ * use `_label` when their support is required.
  */
 export type AriaLabelledbyPropType = string;
 
@@ -21,27 +20,13 @@ export type PropAriaLabelledby = {
 };
 
 /* validator */
-export const validateAriaLabelledby = (
-	component: unknown,
-	host: HTMLElement | undefined,
-	internals: HostInternals | undefined,
-	value?: AriaLabelledbyPropType,
-): HTMLElement[] => {
+export const validateAriaLabelledby = (component: unknown, host: HTMLElement | undefined, value?: AriaLabelledbyPropType): HTMLElement[] => {
 	const isValid = (value?: unknown): boolean => typeof value === 'string' || typeof value === 'undefined';
 	watchValidator(component as Generic.Element.Component, '_ariaLabelledby', isValid, new Set(['string']), value);
 	if (!isValid(value)) {
-		// An invalid value is only logged: it resolves to no element and leaves the internals untouched.
+		// An invalid value is only logged: it resolves to no element.
 		return [];
 	}
 
-	const elements = resolveTargets(host, value);
-	if (internals) {
-		try {
-			internals.ariaLabelledByElements = elements;
-		} catch {
-			// ariaLabelledByElements is not supported in this environment — silently skip.
-		}
-		Log.debug(['WebComponent internals', internals]);
-	}
-	return elements;
+	return resolveTargets(host, value);
 };
