@@ -91,7 +91,7 @@ describe('kol-tree focus behavior', () => {
 		expect(focusSpy).not.toHaveBeenCalled();
 	});
 
-	it('does not delegate when a tree item is already focused', async () => {
+	it('does not delegate when the focus comes back from a tree item', async () => {
 		const page = await renderTree();
 		const root = page.root!;
 		root.setAttribute('data-themed', '');
@@ -99,21 +99,32 @@ describe('kol-tree focus behavior', () => {
 
 		const firstItem = root.querySelector('kol-tree-item')!;
 		const focusSpy = jest.spyOn(KolTreeItem.prototype, 'focus').mockResolvedValue();
-		const activeElementDescriptor = Object.getOwnPropertyDescriptor(document, 'activeElement');
-		Object.defineProperty(document, 'activeElement', { configurable: true, get: () => firstItem });
-		try {
-			dispatchFocusIn(root);
-			await page.waitForChanges();
-			await new Promise((resolve) => setTimeout(resolve, 0));
-		} finally {
-			if (activeElementDescriptor) {
-				Object.defineProperty(document, 'activeElement', activeElementDescriptor);
-			} else {
-				delete (document as { activeElement?: unknown }).activeElement;
-			}
-		}
+		const event = new Event('focusin', { bubbles: true });
+		Object.defineProperty(event, 'relatedTarget', { value: firstItem });
+		root.dispatchEvent(event);
+		await page.waitForChanges();
+		await new Promise((resolve) => setTimeout(resolve, 0));
 
 		expect(focusSpy).not.toHaveBeenCalled();
+	});
+
+	it('leaves the tab order on Shift+Tab from a tree item and rejoins it once the focus has left the tree', async () => {
+		const page = await renderTree();
+		const root = page.root!;
+		const firstItem = root.querySelector('kol-tree-item')!;
+
+		const shiftTab = new Event('keydown', { bubbles: true });
+		Object.defineProperties(shiftTab, { key: { value: 'Tab' }, shiftKey: { value: true } });
+		firstItem.dispatchEvent(shiftTab);
+		expect(root.getAttribute('tabindex')).toBe('-1');
+
+		const outside = document.createElement('button');
+		document.body.appendChild(outside);
+		const focusOut = new Event('focusout', { bubbles: true });
+		Object.defineProperty(focusOut, 'relatedTarget', { value: outside });
+		firstItem.dispatchEvent(focusOut);
+
+		expect(root.getAttribute('tabindex')).toBe('0');
 	});
 
 	it('keeps the roving tabindex on the item anchors', async () => {
