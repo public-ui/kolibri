@@ -1,0 +1,76 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "14 changed – 0 of 14 approved, review pending",
+	"computedAt": "2026-11-10T18:11:57.471Z",
+	"pr": 11561,
+	"head": "5911327de145ea852794b8f83d206d4ac45fe6ec",
+	"digest": "sha256:c99147a5b3625233b8ec17be49b6d36ed2545d0925a8d306b42498d557051d51",
+	"counts": {
+		"changes": 14,
+		"open": 14,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
