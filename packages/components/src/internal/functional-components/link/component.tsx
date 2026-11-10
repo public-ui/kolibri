@@ -127,7 +127,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				<div class="kol-link__tooltip">
 					<TooltipFC
 						badgeText={accessKey || shortKey || ''}
-						label={typeof label === 'string' ? label : typeof href === 'string' ? href : ''}
+						label={trimLabel(label) !== '' ? label : typeof href === 'string' ? href : ''}
 						refFloating={refTooltip}
 					/>
 				</div>
