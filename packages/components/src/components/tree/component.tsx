@@ -12,7 +12,8 @@ import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from
 import { delegateFocus } from '../../utils/element-focus';
 import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
 
-const isTreeItem = (element?: Element | null): element is HTMLKolTreeItemElement => element?.tagName === KolTreeItemTag.toUpperCase();
+const isTreeItem = (element?: EventTarget | null): element is HTMLKolTreeItemElement =>
+	(element as Element | null | undefined)?.tagName === KolTreeItemTag.toUpperCase();
 
 /**
  * @slot - Children as TreeItem Components
@@ -96,8 +97,9 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 			return;
 		}
 
+		/* Read from the event path: inside the shadow root of an application, `document.activeElement` is that application's host. */
+		const currentTreeItem = event.composedPath().find(isTreeItem);
 		const openItems = await this.getOpenTreeItemElements();
-		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
 		const hasModifierKeyPressed = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
 
 		if (!openItems || !currentTreeItem) {
