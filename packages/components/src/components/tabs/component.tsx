@@ -270,10 +270,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 			case KeyboardKey.ArrowLeft:
 				this.goToPreviousTab(event);
 				break;
-			case KeyboardKey.Space:
-			case KeyboardKey.Enter:
-				this.activateFocusedTab(event);
-				break;
 		}
 	};
 
@@ -305,12 +301,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	private goToPreviousTab(event: KeyboardEvent) {
 		const nextFocusIndex = this.prevPossibleTabIndex(this.getRenderProp('tabs'), this.getCurrentFocusIndex());
 		this.selectNextTabEvent(event, nextFocusIndex, this.getKeyboardTabChangeMode());
-	}
-
-	private activateFocusedTab(event: KeyboardEvent) {
-		if (typeof this.currentFocusIndex === 'number') {
-			this.onSelect(event, this.currentFocusIndex);
-		}
 	}
 
 	private selectNextTabEvent(
