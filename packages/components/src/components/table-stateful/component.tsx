@@ -55,11 +55,16 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { devHint, trimLabel } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import { Callback } from '../../schema/enums';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
 import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { BaseTableStatelessWebComponent } from '../table-stateless/base';
+
+// Only the pagination elements use the block: a shadow DOM node with the block class itself would activate theme rules written for the host.
+const tableStatefulBem = bem.forBlock('kol-table-stateful');
+const BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER = tableStatefulBem('pagination-wrapper');
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -531,8 +536,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		const item = this.paginationItems[position];
 		return (
 			item && (
-				<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.paginationPosition}`}>
-					<div class="kol-table-stateful__pagination-wrapper">
+				<div class={tableStatefulBem('pagination', { [this.paginationPosition]: true })}>
+					<div class={BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER}>
 						<PaginationFC {...item.getFcProps()} />
 					</div>
 				</div>

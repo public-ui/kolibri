@@ -358,6 +358,9 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-close-button': {
+		modifiers: null;
+	};
 	'kol-span': {
 		elements: {
 			container: {
@@ -384,6 +387,9 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 			text: {
+				modifiers: null;
+			};
+			tooltip: {
 				modifiers: null;
 			};
 		};
@@ -753,6 +759,40 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-table-settings': {
+		elements: {
+			actions: {
+				modifiers: null;
+			};
+			column: {
+				modifiers: null;
+			};
+			'column-label': {
+				modifiers: null;
+			};
+			columns: {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			'error-message': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-table-stateful': {
+		elements: {
+			pagination: {
+				modifiers: Set<'both' | 'bottom' | 'top'>;
+			};
+			'pagination-wrapper': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-tabs': {
 		elements: {
 			'button-create': {
@@ -1086,6 +1126,9 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
+	'kol-close-button': {
+		modifiers: null,
+	},
 	'kol-span': {
 		elements: {
 			container: { modifiers: null },
@@ -1100,6 +1143,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			'interactive-element': { modifiers: null },
 			icon: { modifiers: null },
 			text: { modifiers: null },
+			tooltip: { modifiers: null },
 		},
 		modifiers: new Set(['disabled', 'external-link', 'hide-label', 'inline', 'standalone']),
 	},
@@ -1318,6 +1362,24 @@ const BEM: KoliBriComponentsBemSchema = {
 			spacer: { modifiers: new Set(['foot', 'head']) },
 			'spacer-line': { modifiers: new Set(['foot', 'head']) },
 			table: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-table-settings': {
+		elements: {
+			actions: { modifiers: null },
+			column: { modifiers: null },
+			'column-label': { modifiers: null },
+			columns: { modifiers: null },
+			content: { modifiers: null },
+			'error-message': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-table-stateful': {
+		elements: {
+			pagination: { modifiers: new Set(['both', 'bottom', 'top']) },
+			'pagination-wrapper': { modifiers: null },
 		},
 		modifiers: null,
 	},

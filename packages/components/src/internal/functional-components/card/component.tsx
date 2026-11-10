@@ -16,6 +16,7 @@ const BEM_CLASS_CARD__CLOSE_BUTTON = cardBem('close-button');
 const BEM_CLASS_CARD__CONTENT = cardBem('content');
 const BEM_CLASS_CARD__HEADER = cardBem('header');
 const BEM_CLASS_CARD__LINK = cardBem('link');
+const BEM_CLASS_CLOSE_BUTTON = bem.forBlock('kol-close-button')();
 
 /**
  * The close button reports only its click. `ButtonFC` requires a handler per callback, and the
@@ -89,7 +90,7 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 			)}
 			<div class={BEM_CLASS_CARD__CONTENT}>{children}</div>
 			{hasCloser && (
-				<div class={clsx(BEM_CLASS_CARD__CLOSE_BUTTON, 'kol-close-button')}>
+				<div class={clsx(BEM_CLASS_CARD__CLOSE_BUTTON, BEM_CLASS_CLOSE_BUTTON)}>
 					<ButtonFC
 						{...closeButtonProps}
 						ariaDescriptionId={ariaDescriptionId}
