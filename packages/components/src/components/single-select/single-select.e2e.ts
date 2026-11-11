@@ -217,7 +217,8 @@ test.describe(COMPONENT_NAME, () => {
 
 			await expect(page.getByRole('status')).toHaveText('Keine Ergebnisse gefunden.');
 			await expect(page.locator('[role="listbox"] [role="alert"]')).toHaveCount(0);
-			await expect(page.getByRole('listbox').getByText('Keine Ergebnisse gefunden.')).toHaveAttribute('aria-hidden', 'true');
+			await expect(page.getByRole('listbox')).not.toContainText('Keine Ergebnisse gefunden.');
+			await expect(page.locator('.kol-single-select__no-results-message')).toBeVisible();
 		});
 
 		test('names the listbox by the label of the field', async ({ page }) => {

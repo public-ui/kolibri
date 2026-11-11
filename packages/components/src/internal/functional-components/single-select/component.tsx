@@ -22,14 +22,12 @@ export const SingleSelectToggleFC: FC<SingleSelectToggleFCProps> = ({ disabled, 
 );
 
 /**
- * Takes the place of the options when the filter matches none. It is visual only: a listbox may own
- * nothing but options and groups, so `SingleSelectNoResultsStatusFC` announces the message instead.
+ * Visible no-results message, rendered as a sibling after the listbox. A listbox owns nothing but
+ * option and group children, and `aria-hidden` does not lift that DOM restriction — inside the
+ * `<ul role="listbox">` the message could only be an `<li>`, which no compliant role can carry.
+ * `SingleSelectNoResultsStatusFC` announces it to assistive technology.
  */
-export const SingleSelectNoResultsFC: FC<{ message: string }> = ({ message }) => (
-	<li aria-hidden="true" class={BEM_CLASS_SINGLE_SELECT__NO_RESULTS_MESSAGE}>
-		{message}{' '}
-	</li>
-);
+export const SingleSelectNoResultsFC: FC<{ message: string }> = ({ message }) => <div class={BEM_CLASS_SINGLE_SELECT__NO_RESULTS_MESSAGE}>{message} </div>;
 
 /**
  * Live region outside the listbox that announces the no-results message. It stays in the DOM, so a
