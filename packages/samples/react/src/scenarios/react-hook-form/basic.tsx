@@ -1,3 +1,4 @@
+import type { ErrorListPropType } from '@public-ui/components';
 import {
 	KolComboboxController,
 	KolInputCheckboxController,
@@ -15,13 +16,11 @@ import {
 	KolTextareaController,
 } from '@public-ui/react-hook-form-adapter';
 import { KolButton, KolForm } from '@public-ui/react-v19';
-import React, { type BaseSyntheticEvent, type FC } from 'react';
+import React, { useState, type BaseSyntheticEvent, type FC } from 'react';
 import type { FieldErrors, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
-
 import { SampleDescription } from '../../components/SampleDescription';
 import { COUNTRY_SUGGESTIONS } from '../../shares/country';
-
 interface FormData {
 	firstName: string;
 	lastName: string;
@@ -101,6 +100,8 @@ export const RHFBasic: FC = () => {
 		shouldFocusError: true,
 	});
 
+	const [errorList, setErrorList] = useState<ErrorListPropType[]>([]);
+
 	const touchAndValidateAll = () => {
 		allFields.forEach((name) => {
 			setValue(name, getValues(name), { shouldTouch: true, shouldValidate: true });
@@ -111,10 +112,12 @@ export const RHFBasic: FC = () => {
 		alert(JSON.stringify(data, null, 2));
 	};
 
+	const formatErrors = (errors: FieldErrors<FormData>) => {};
+
 	const onError = (errors: FieldErrors<FormData>) => {
 		touchAndValidateAll();
 		void trigger(undefined, { shouldFocus: true });
-
+		setErrorList(formatErrors(errors));
 		console.warn('Validation errors:', errors);
 	};
 
@@ -129,6 +132,7 @@ export const RHFBasic: FC = () => {
 
 			<KolForm
 				className="w-full max-w-xl"
+				_errorList={errorList}
 				_on={{
 					onSubmit: (event) => {
 						void handleSubmit(onSubmit, onError)(event as unknown as BaseSyntheticEvent);
