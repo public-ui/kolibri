@@ -1,0 +1,76 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "14 changed – 0 of 14 approved, review pending",
+	"computedAt": "2026-11-11T06:15:14.633Z",
+	"pr": 11573,
+	"head": "78821dbe0fce83bf6b31deac717aaf9c9af26c5b",
+	"digest": "sha256:7dfba2358cdb7a3c158d0ff8aadc07ec5386b28b165931e95a7af3eb4b27b8af",
+	"counts": {
+		"changes": 14,
+		"open": 14,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
