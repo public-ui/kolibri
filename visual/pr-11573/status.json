@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "14 changed – 0 of 14 approved, review pending",
-	"computedAt": "2026-11-11T06:15:14.633Z",
+	"description": "28 changed – 0 of 28 approved, review pending",
+	"computedAt": "2026-11-11T06:42:57.392Z",
 	"pr": 11573,
-	"head": "78821dbe0fce83bf6b31deac717aaf9c9af26c5b",
-	"digest": "sha256:7dfba2358cdb7a3c158d0ff8aadc07ec5386b28b165931e95a7af3eb4b27b8af",
+	"head": "a6bb904933724e4c0b51fcd16fe0f55e833a1ce2",
+	"digest": "sha256:b5e5d09a16a5adc60b7091bbe4999697a030d213f7279de1874ffd37a3cc2868",
 	"counts": {
-		"changes": 14,
-		"open": 14,
+		"changes": 28,
+		"open": 28,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -24,11 +24,27 @@
 			"state": "open",
 			"notes": []
 		},
+		"test-tag-name-transformer/tabs-create-button--create-button": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/tabs-icons-only--icons-only": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-bwst/tabs-basic--icons": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-bwst/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-create-button--create-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-icons-only--icons-only": {
 			"state": "open",
 			"notes": []
 		},
@@ -40,11 +56,27 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-default/tabs-create-button--create-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/tabs-icons-only--icons-only": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-desy/tabs-basic--icons": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-desy/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/tabs-create-button--create-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/tabs-icons-only--icons-only": {
 			"state": "open",
 			"notes": []
 		},
@@ -56,6 +88,14 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-ecl/tabs-create-button--create-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/tabs-icons-only--icons-only": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-kern/tabs-basic--icons": {
 			"state": "open",
 			"notes": []
@@ -64,11 +104,27 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-kern/tabs-create-button--create-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/tabs-icons-only--icons-only": {
+			"state": "open",
+			"notes": []
+		},
 		"unstyled/tabs-basic--icons": {
 			"state": "open",
 			"notes": []
 		},
 		"unstyled/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/tabs-create-button--create-button": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/tabs-icons-only--icons-only": {
 			"state": "open",
 			"notes": []
 		}
