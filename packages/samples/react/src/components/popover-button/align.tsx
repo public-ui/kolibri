@@ -21,7 +21,7 @@ export const PopoverButtonAlign: FC = () => (
 		<SampleBlock id="popover-align" className="grid grid-cols-2 gap-32 p-32 justify-items-center" skipSnapshot>
 			{ALIGNMENTS.map((align) => (
 				<KolPopoverButton key={align} _label={`Popover ${align}`} _popoverAlign={align}>
-					<p className="m-0 p-2 bg-white">
+					<p>
 						Popover placed <strong>{align}</strong>.
 					</p>
 				</KolPopoverButton>
