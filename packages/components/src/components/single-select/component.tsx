@@ -702,7 +702,7 @@ export class KolSingleSelect
 
 	private renderOptions(): JSX.Element | JSX.Element[] {
 		if (this.hasNoResults()) {
-			return <SingleSelectNoResultsFC message={this.translateNoResultsMessage} />;
+			return [];
 		}
 
 		return this.filteredOptions.map((option, index) => (
@@ -745,6 +745,7 @@ export class KolSingleSelect
 
 	public render(): JSX.Element {
 		const isDisabled = this.getRenderProp('disabled') === true;
+		const showNoResults = this.isOpen && !isDisabled && this.hasNoResults();
 		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
@@ -798,7 +799,8 @@ export class KolSingleSelect
 						>
 							{this.renderOptions()}
 						</CustomSuggestionsOptionsGroupFC>
-						<SingleSelectNoResultsStatusFC message={this.isOpen && !isDisabled && this.hasNoResults() ? this.translateNoResultsMessage : ''} />
+						{showNoResults && <SingleSelectNoResultsFC message={this.translateNoResultsMessage} />}
+						<SingleSelectNoResultsStatusFC message={showNoResults ? this.translateNoResultsMessage : ''} />
 					</InputContainerFC>
 				</FormFieldFC>
 			</Host>
