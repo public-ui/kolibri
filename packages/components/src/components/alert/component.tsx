@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import type { AlertApi } from '../../internal/functional-components/alert/api';
@@ -149,8 +149,10 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 		this.syncAlertEffects(false);
 	}
 
+	/** The alert render prop is not reactive, so the removal of `role="alert"` needs an explicit render. */
 	private readonly handleAlertTimeout = (): void => {
 		this.watchAlert(false);
+		forceUpdate(this);
 	};
 
 	private readonly handleCloserClick = (event: MouseEvent): void => {
