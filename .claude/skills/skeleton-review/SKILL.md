@@ -102,10 +102,15 @@ Ein Verstoß hat den Schweregrad **Blocker (Architektur)**.
   nach dem Klassennamen in `component.tsx` reicht nicht. Fehlt die Vererbung, auf den Skill
   `migrate-to-skeleton` als Lösungsweg verweisen.
 - **R2:** `render()` rendert in `<Host>` genau eine Komponenten-FC (z. B. `<AlertFC>`) und keine freie
-  Markup-Struktur.
+  Markup-Struktur. Bei den Formularfeldern ist das `FormFieldFC` mit den Teilbausteinen der Hülle als
+  Kindern; eine zusätzliche FC je Feld wird nicht verlangt.
 - **R3:** Die Wurzel dieser Komponenten-FC ist `BemRootNodeFC` mit dem Block der Komponente.
-  Untergeordnete FCs (Teilbausteine wie die `form-field`-FCs) nutzen kein `BemRootNodeFC`, sondern
-  BEM-Elementklassen des umgebenden Blocks.
+  Untergeordnete FCs nutzen kein `BemRootNodeFC`, sondern BEM-Elementklassen des umgebenden Blocks.
+  Ausnahme ist eine gemeinsame Hülle mehrerer Komponenten: Die Formularfelder nutzen die Wurzel
+  `kol-form-field` der Hülle, tragen ihren eigenen Block als zusätzliche Klasse, und die Teilbausteine
+  der Hülle (`kol-input-container`, `kol-field-control`, `kol-input` …) haben eigene registrierte Blöcke.
+  Das ist kein Befund (ARC42-SKELETON, „Shared Shell Root of the Form Fields“). Ein Befund ist nur ein
+  fehlender Registry-Eintrag des Komponentenblocks (R5).
 - **R4:** Das Wurzel-Tag ist frei wählbar über die Prop `component` von `BemRootNodeFC` (Standard `div`;
   ebenso `span`, `a`, `button`, `label`, `fieldset`, `abbr`, `svg` usw.). Eine Wurzel, die direkt mit
   `bem.forBlock(...)` statt mit `BemRootNodeFC` gebaut wird, ist ein Verstoß. Diese Regel hat Vorrang
@@ -134,10 +139,10 @@ Für den dritten Fall gilt:
 
 - Ist der Wrapper die Wurzel der Komponente selbst (z. B. `div.kol-version > div.kol-badge`), ist er
   immer berechtigt. Ohne ihn hätte die Komponente einen fremden Block an der Wurzel, und das verletzt R3.
-- Ist der Wrapper ein Element der umgebenden Komponente (z. B. `div.kol-breadcrumb__link > div.kol-link`),
-  wäre die Alternative ein BEM-Mix am selben Knoten (`div.kol-link.kol-breadcrumb__link`). Ob ein Mix
-  zulässig ist, ist nicht entschieden (#11516). Solche Wrapper nur unter „Offene Fragen“ führen, mit
-  Verweis auf #11516.
+- Ist der Wrapper ein Element der umgebenden Komponente (z. B. `div.kol-breadcrumb__link > div.kol-link`
+  oder `div.kol-button__tooltip > div.kol-tooltip`), ist er berechtigt und wird nicht gemeldet, auch
+  ohne Geschwister. Ein BEM-Mix am selben Knoten (`div.kol-link.kol-breadcrumb__link`) wird nicht
+  vorgeschlagen (ARC42-SKELETON, „Embedded Roots Keep Their Element Wrapper“).
 
 Weitere Regeln:
 
