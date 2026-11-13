@@ -49,7 +49,7 @@
 		"@unocss/preset-mini": "66.8.1",
 		"@unocss/vite": "66.8.1",
 		"@vitejs/plugin-react-swc": "4.3.3",
-		"adopted-style-sheets": "1.1.9-rc.25",
+		"adopted-style-sheets": "1.2.0-rc.2",
 		"eslint": "9.39.5",
 		"happy-dom": "20.14.6",
 		"knip": "6.42.1",
