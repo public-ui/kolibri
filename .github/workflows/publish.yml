@@ -55,7 +55,8 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: 20
+          # The lockfile needs Node >= 22 (engine-strict).
+          node-version: 24
           registry-url: '${{env.npmjs-registry}}'
           scope: '${{env.scope}}'
       - name: Install pnpm
@@ -198,7 +199,8 @@ jobs:
       # Publish packages on GitHub packages
       - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          # The lockfile needs Node >= 22 (engine-strict).
+          node-version: 24
           registry-url: '${{env.github-registry}}'
           scope: '${{env.scope}}'
 
