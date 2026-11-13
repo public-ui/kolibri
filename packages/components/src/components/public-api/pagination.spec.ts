@@ -36,7 +36,7 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'MaxPropType',
 		required: true,
-		doc: 'Defines the maximum value of the element. Without a value the requiredness warning fires and 0 keeps the empty state of no entries.',
+		doc: 'Defines the maximum value of the element.',
 	},
 	_on: {
 		kind: 'prop',
