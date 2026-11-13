@@ -333,31 +333,6 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
-	'kol-skeleton': {
-		elements: {
-			container: {
-				modifiers: null;
-			};
-			name: {
-				modifiers: null;
-			};
-			counter: {
-				modifiers: null;
-			};
-			actions: {
-				modifiers: null;
-			};
-		};
-		modifiers: Set<'has-name' | 'is-hidden'>;
-	};
-	'kol-click-button': {
-		elements: {
-			label: {
-				modifiers: null;
-			};
-		};
-		modifiers: null;
-	};
 	'kol-span': {
 		elements: {
 			container: {
@@ -1068,21 +1043,6 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			list: { modifiers: null },
 			'list-item': { modifiers: null },
-		},
-		modifiers: null,
-	},
-	'kol-skeleton': {
-		elements: {
-			actions: { modifiers: null },
-			container: { modifiers: null },
-			counter: { modifiers: null },
-			name: { modifiers: null },
-		},
-		modifiers: new Set(['has-name', 'is-hidden']),
-	},
-	'kol-click-button': {
-		elements: {
-			label: { modifiers: null },
 		},
 		modifiers: null,
 	},

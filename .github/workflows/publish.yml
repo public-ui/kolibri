@@ -51,6 +51,7 @@ jobs:
         packages/adapters/preact
         packages/adapters/hydrate
         packages/adapters/react-hook-form-adapter
+        packages/tools/hydrate-server
         packages/tools/kolibri-cli
         packages/tools/mcp
         packages/themes/bwst
