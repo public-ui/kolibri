@@ -2,14 +2,14 @@
 
 ## 1. Introduction and Goals
 
-The `kol-skeleton` component blueprint demonstrates how KoliBri web components can be built in a highly maintainable and decoupled fashion. It is designed as a minimal, yet complete, reference implementation for new components.
+The skeleton architecture describes how KoliBri web components are built in a highly maintainable and decoupled fashion. It is the binding reference structure for new components.
 
 The architecture is organized into **two layers** plus an optional reusable unit of logic:
 
-- **[Web Component (WC)](./web-components/skeleton/component.tsx)** — the orchestrator. It owns the Stencil lifecycle (`@Prop`/`@State`/`@Watch`/`@Method`), normalizes incoming props, manages reactive state, composes optional Behaviors, and feeds fully resolved render props to the Functional Component.
-- **[Behaviors](../../internal/functional-components/base-behavior.ts)** — optional, composable logic modules (e.g. `TooltipBehavior`). A WC may compose zero or more Behaviors. They manage their own render props but receive state access from their host WC.
-- **[Functional Component (FC)](../../internal/functional-components/skeleton/component.tsx)** — a pure, stateless renderer. It renders solely from the props handed to it and never mutates state.
-- **[Schema helpers](../../internal/props/)** — house prop types, normalization and validation helpers shared across layers.
+- **Web Component (WC)** — the orchestrator. It owns the Stencil lifecycle (`@Prop`/`@State`/`@Watch`/`@Method`), normalizes incoming props, manages reactive state, composes optional Behaviors, and feeds fully resolved render props to the Functional Component.
+- **[Behaviors](../src/internal/functional-components/base-behavior.ts)** — optional, composable logic modules (e.g. `TooltipBehavior`). A WC may compose zero or more Behaviors. They manage their own render props but receive state access from their host WC.
+- **Functional Component (FC)** — a pure, stateless renderer. It renders solely from the props handed to it and never mutates state.
+- **[Schema helpers](../src/internal/props/)** — house prop types, normalization and validation helpers shared across layers.
 
 Primary goals:
 
@@ -22,26 +22,20 @@ Primary goals:
 
 ### Blueprint Layout
 
-The skeleton mirrors the structure recommended for production-ready components. Its web component definitions live in the regular `src/components/` folders (`click-button/`, `skeleton/`), while reusable internals (functional components, behaviors, prop schemas) reside in the shared `src/internal/` directory. Each folder holds a single responsibility to make the pipeline explicit:
+The skeleton mirrors the structure recommended for production-ready components. Every web component definition lives in its own folder under `src/components/`, while reusable internals (functional components, behaviors, prop schemas) reside in the shared `src/internal/` directory. Each folder holds a single responsibility to make the pipeline explicit:
 
 ```text
 src/
 ├── components/
-│   ├── click-button/                  # Blueprint button web component
-│   │   ├── component.tsx              # Orchestrator: props, watchers, lifecycle, render
-│   │   ├── interaction.e2e.ts         # Interaction test (Playwright)
-│   │   └── snapshot.spec.tsx          # Snapshot test (Jest) — co-located
-│   └── skeleton/                      # Blueprint demo web component
-│       ├── component.tsx
-│       └── snapshot.spec.tsx
+│   └── <component>/                   # Web component folder — one folder per component
+│       ├── component.tsx              # Orchestrator: props, watchers, lifecycle, render
+│       ├── snapshot.spec.tsx          # Snapshot test (Jest) — co-located
+│       └── <component>.e2e.ts         # Interaction test (Playwright)
 └── internal/                          # Shared internals
     ├── functional-components/
-    │   ├── skeleton/                  # Skeleton-specific logic
+    │   ├── <component>/               # Component-specific logic
     │   │   ├── api.tsx                # Type definitions + props config
     │   │   └── component.tsx          # Stateless functional component
-    │   ├── click-button/              # Reusable button FC
-    │   │   ├── api.tsx
-    │   │   └── component.tsx
     │   ├── tooltip/                   # Tooltip behavior + FC
     │   │   ├── api.tsx
     │   │   ├── behavior.ts            # TooltipBehavior
@@ -62,12 +56,6 @@ src/
 ```
 
 This modular layout is the backbone for the architectural patterns described in the following chapters.
-
-### Usage Example
-
-```html
-<kol-skeleton _name="Example"></kol-skeleton>
-```
 
 ## 2. Architecture Constraints
 
@@ -616,7 +604,7 @@ const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);
 ```
 
 ```tsx
-// Web Component (web-components/skeleton/component.tsx)
+// Web Component (src/components/<component>/component.tsx)
 @Prop() public _name!: NamePropType;
 
 @Watch('_name')
@@ -789,8 +777,8 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
    - _Pattern_: public props (e.g. `_name`) are normalized and stored as render props. UI state that is managed but not exposed as props (like `count`, `show`, `ariaCurrent`) uses `@State` to trigger reactive re-renders.
    - _Reason_: normalized props do not need `@State` — they are held as render props and accessed via `getRenderProp(key)`. This avoids unnecessary re-rendering while keeping reactive state explicit.
 10. **Host element without redundant class attribute**
-    - _Alternative_: add the component name as a class attribute to `<Host>` (e.g. `<Host class="kol-skeleton">`).
-    - _Reason_: the tag name alone (e.g. `<kol-skeleton>`) plus Shadow DOM are sufficient for styling and identification. The BEM root class is emitted by `BemRootNodeFC` inside the FC, not on `<Host>`.
+    - _Alternative_: add the component name as a class attribute to `<Host>` (e.g. `<Host class="kol-abbr">`).
+    - _Reason_: the tag name alone (e.g. `<kol-abbr>`) plus Shadow DOM are sufficient for styling and identification. The BEM root class is emitted by `BemRootNodeFC` inside the FC, not on `<Host>`.
 11. **Omit unused API fields in ComponentApi definitions**
     - _Pattern_: all fields in `ComponentApi` are optional except `States` (`Props`, `Emitters`, `Methods`, `Callbacks`, `Refs`, `Listeners` — `States` is required and defaults to `Record<never, never>` via `ApiFromConfig`). Only define the fields the component actually uses. The generic type extraction in `generic-types.ts` safely defaults missing fields to empty records.
     - _Alternative_: define all fields explicitly, using empty records for unused ones.
