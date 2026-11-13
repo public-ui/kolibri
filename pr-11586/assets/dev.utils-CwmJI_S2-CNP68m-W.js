@@ -1,0 +1,8 @@
+import{C as e,E as t,J as n,K as r,N as i,c as a,n as o}from"./index-hZrFLTZy-BbBWlyL6.js";var s=()=>{try{let t=e();if(!t||typeof t.querySelector!=`function`)return;let i=t.querySelector(`meta[name="kolibri"]`);if(i&&i.hasAttribute(`content`)){let e=i.getAttribute(`content`);typeof e==`string`&&(n(e.includes(`experimental-mode=true`)),r(e.includes(`color-contrast-analysis=true`)))}}catch{}},c=()=>{let e=t().KoliBri;return e===void 0&&(e={},Object.defineProperty(t(),"KoliBri",{value:e,writable:!1})),e},l="\n,--. ,--.         ,--. ,--. ,-----.           ,--.\n|  .'   /  ,---.  |  | `--' |  |) /_  ,--.--. `--'\n|  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.\n|  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |\n`--' `--´  `---´  `--' `--' `------´  `--'    `--'".replace(/ /g,`\xA0`),u=()=>{s(),a.debug(`${l}
+🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${o.kolibriVersion}
+	`,{forceLog:!0})},d=()=>{c().adviceShown!==!0&&(Object.defineProperty(c(),"adviceShown",{get:function(){return!0}}),a.debug(`
+You are using the KoliBri component library. If you have any suggestions for improvement or find a problem, please contact us:
+
+Ticket: https://github.com/public-ui/kolibri/issues/new/choose (for privacy reasons, please use email)
+Email: kolibri@itzbund.de
+`))},f=()=>Math.floor(Math.random()*16777215).toString(16);i()&&(f=()=>`nonce`);var p=e=>`${e}-${f()}`,m=(e,t)=>{let n=e.lastIndexOf(`-`);if(n===-1)return`${e}-${t}`;let r=e.slice(n+1);return r===`nonce`||/^[0-9a-f]+$/.test(r)?`${e.slice(0,n)}-${t}-${r}`:`${e}-${t}`};export{d as a,f as i,p as n,u as r,m as t};
