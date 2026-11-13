@@ -53,7 +53,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -130,7 +130,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -207,7 +207,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -284,7 +284,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -374,7 +374,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -457,7 +457,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -540,7 +540,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -619,7 +619,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -734,7 +734,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -811,7 +811,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -897,7 +897,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -983,7 +983,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -1060,7 +1060,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -1140,7 +1140,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -1217,7 +1217,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -1294,7 +1294,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -1371,7 +1371,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -1453,7 +1453,7 @@ exports[`kol-combobox should render with _label=[{"text":"partly english","lang"
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
+            <ul aria-labelledby="combobox-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
