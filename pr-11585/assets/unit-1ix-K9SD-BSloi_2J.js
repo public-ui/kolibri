@@ -1,0 +1,1 @@
+import{D as e,s as t,w as n}from"./props-from-config-ytxYrJUY-BO9ntu_A.js";var r=t(`max`,100,n,e=>e>0),i=t(`unit`,`%`,e,e=>e.length>0);export{i as n,r as t};
