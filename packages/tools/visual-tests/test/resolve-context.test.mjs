@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { CI_IGNORED_PATHS, isIgnoredByCi, resolveContext } from '../../../../scripts/visual-review/resolve-context.mjs';
+import { CI_IGNORED_PATHS, isIgnoredByCi } from '../../../../scripts/ci-ignored-paths.mjs';
+import { resolveContext } from '../../../../scripts/visual-review/resolve-context.mjs';
 
 const REPO = 'public-ui/kolibri';
 

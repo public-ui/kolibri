@@ -29,41 +29,82 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-check:
+  # Docs-only pull requests (see scripts/ci-ignored-paths.mjs) cannot affect build, lint, tests or
+  # screenshots, so the heavy stages below are skipped for them. The stages are gated per step
+  # instead of per job: every check context of this workflow is required on the protected branches,
+  # and a workflow that never runs leaves those contexts unreported, which blocks the merge
+  # ("Expected — Waiting for status to be reported") – the same reason the pull_request trigger
+  # above has no paths-ignore.
+  changed-files:
     runs-on: ubuntu-latest
+    outputs:
+      docs-only: ${{ steps.check.outputs.docs-only }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
         with:
           persist-credentials: false
+      - name: Detect docs-only pull requests
+        id: check
+        run: node scripts/ci-docs-only-check.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-and-check:
+    needs: changed-files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip build, lint and tests for docs-only pull requests
+        if: needs.changed-files.outputs.docs-only == 'true'
+        run: echo "Only docs and metadata files changed – they cannot affect build, lint or tests."
+      - name: Checkout
+        if: needs.changed-files.outputs.docs-only != 'true'
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
+        if: needs.changed-files.outputs.docs-only != 'true'
       - name: Validate package scripts
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm check:scripts
       # Catches the two skeleton selector mistakes that visual snapshots cannot see, because
       # snapshots photograph resting states: a `&__element` glued to a modifier, and a state
       # predicate left on the class carrier (which is a wrapper element since the migration).
       - name: Validate skeleton selectors
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm check:skeleton-selectors
       - name: Format
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm -r format
       - name: Unused
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm -r unused
       - name: Build
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm -r build
       - name: Lint
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm -r lint
       - name: Unit Tests
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm -r test:unit
 
   e2e-tests:
+    needs: changed-files
     runs-on: ubuntu-latest
     steps:
+      - name: Skip e2e tests for docs-only pull requests
+        if: needs.changed-files.outputs.docs-only == 'true'
+        run: echo "Only docs and metadata files changed – they cannot affect the app under test."
       - name: Checkout
+        if: needs.changed-files.outputs.docs-only != 'true'
         uses: actions/checkout@v7
         with:
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
+        if: needs.changed-files.outputs.docs-only != 'true'
       - name: Cache Playwright browsers
+        if: needs.changed-files.outputs.docs-only != 'true'
         uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
@@ -71,12 +112,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-playwright-
       - name: Install Playwright browsers
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: npx playwright install --with-deps chromium firefox webkit
       - name: E2E Test components
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm --filter @public-ui/components test:e2e
       - name: Presentation build dependencies
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm --filter @public-ui/presentation^... build
       - name: E2E Test react samples
+        if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm --filter @public-ui/presentation test:e2e
       - uses: ./.github/actions/upload-reports
         if: failure()
@@ -89,9 +134,12 @@ jobs:
   # job fails when the comparison itself is broken (a route that throws, an invisible block, a
   # timeout) or when axe reports a violation on a route without `axe.skipFailures` (see
   # packages/tools/visual-tests/tests/sample-app.routes.js). `color-contrast` counts only for the
-  # default theme; the other themes report it without failing.
+  # default theme; the other themes report it without failing. Docs-only pull requests skip the job
+  # entirely; the "Visual Review" workflow reads the skipped jobs as no-visual and reports a plain
+  # success for them.
   visual-tests:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && needs.changed-files.outputs.docs-only != 'true'
+    needs: changed-files
     permissions:
       contents: read
       actions: read
