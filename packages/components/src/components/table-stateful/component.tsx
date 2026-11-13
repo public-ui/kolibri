@@ -57,7 +57,6 @@ import type {
 import { devHint, trimLabel } from '../../schema';
 import { Callback } from '../../schema/enums';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
-import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { BaseTableStatelessWebComponent } from '../table-stateless/base';
 
@@ -99,8 +98,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@State() public sortedData: KoliBriTableDataType[] = [];
 
 	@State() public stickyColsDisabled: boolean = false;
-
-	private internals?: HostInternals;
 
 	/** All rows of `_data`; the displayed page is sliced from the sorted rows. */
 	private data: KoliBriTableDataType[] = [];
@@ -173,9 +170,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	/**
 	 * References an external element by ID that serves as the accessible label for this table.
-	 * Uses ElementInternals.ariaLabelledByElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.
+	 * The component resolves the IDs and sets them as element references (`ariaLabelledByElements`)
+	 * on the native `<table>` inside the shadow root, because IDREF attributes cannot cross that
+	 * boundary. Desktop screen readers (NVDA, JAWS with Chrome/Firefox) follow the references;
+	 * VoiceOver and TalkBack do not — use `_label` instead.
 	 */
 	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType = undefined;
 
@@ -365,7 +363,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	public componentWillLoad(): void {
 		this.applyOn(this.statelessOn);
-		this.internals = attachInternals(this.host);
 		// Early resolution: if the external element is already in the DOM, the first render already uses
 		// it, so the AT sees the correct name from the start.
 		this.resolveExternalLabel(this._ariaLabelledby);
@@ -523,7 +520,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	private resolveExternalLabel(value?: AriaLabelledbyPropType): void {
-		this.externalLabelElements = validateAriaLabelledby(this, this.host, this.internals, value);
+		this.externalLabelElements = validateAriaLabelledby(this, this.host, value);
 		this.syncTableLabel(this.externalLabelElements);
 	}
 
