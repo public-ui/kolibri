@@ -1,10 +1,10 @@
 {
-	"version": "4.5.0",
+	"version": "4.6.0-rc.1",
 	"devDependencies": {
 		"@evilmartians/lefthook": "2.2.2",
 		"js-yaml": "5.5.0",
 		"license-report": "6.8.6",
-		"npm-run-all2": "9.0.3",
+		"npm-run-all2": "9.0.4",
 		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.16.0",

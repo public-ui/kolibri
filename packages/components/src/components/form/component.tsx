@@ -7,7 +7,7 @@ import { formPropsConfig } from '../../internal/functional-components/form/api';
 import { FormFC } from '../../internal/functional-components/form/component';
 import type { FormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
 import { createFormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { errorListProp, formCallbacksProp, requiredTextProp } from '../../internal/props';
 import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
@@ -53,6 +53,8 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 
 	private readonly closerAriaDescriptionId = nonce();
 
+	protected readonly propsConfig: PropsConfigShape = formPropsConfig;
+
 	/**
 	 * A list of error objects that each describe an issue encountered in the form.
 	 * Each error object contains a message and a selector for identifying the form element related to the error.
@@ -91,15 +93,14 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	 * Scrolls to the error list and focuses the first link.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async focusErrorList(options?: KolFocusOptions): Promise<void> {
+	public focusErrorList(options?: KolFocusOptions): Promise<void> {
 		setTimeout(() => {
 			this.errorLinkItems[0]?.focus(options ?? SCROLL_OPTIONS_FALLBACK);
 		}, FOCUS_ERROR_LIST_DELAY);
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(formPropsConfig);
 		this.watchErrorList(this._errorList);
 		this.watchOn(this._on);
 		this.watchRequiredText(this._requiredText);

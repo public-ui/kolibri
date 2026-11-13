@@ -36,7 +36,7 @@ import { InputFC, type InputFCProps } from '../../internal/functional-components
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { clampRangeValue, getNumberValueType, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputRangeApi } from '../../internal/functional-components/input-range/api';
 import { inputRangePropsConfig } from '../../internal/functional-components/input-range/api';
 import {
@@ -95,6 +95,8 @@ export class KolInputRange
 
 	/** Whether `_value` was set as a string; `getValue()` and the events return the value in this type. */
 	private valueIsNumberString = false;
+
+	protected readonly propsConfig: PropsConfigShape = inputRangePropsConfig;
 
 	public constructor() {
 		super();
@@ -246,7 +248,7 @@ export class KolInputRange
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -345,11 +347,11 @@ export class KolInputRange
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<number | NumberString | undefined> {
+	public getValue(): Promise<number | NumberString | undefined> {
 		if (this.ctaRef.el !== undefined) {
-			return this.readValue(this.ctaRef.el.value);
+			return Promise.resolve(this.readValue(this.ctaRef.el.value));
 		}
+		return Promise.resolve(undefined);
 	}
 
 	/**
@@ -357,19 +359,22 @@ export class KolInputRange
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputRangePropsConfig);
 		// The bounds start at the defaults of `_min` and `_max`, so an ignored invalid value keeps them (#11077).
 		this.setRenderProp('min', 0);
 		this.setRenderProp('max', 100);

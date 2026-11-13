@@ -45,7 +45,7 @@ Use the `condition && <Element />` pattern to render JSX elements only when a co
 
 Avoid using `hidden={condition}` unless the element should always be present in the DOM but visually hidden.
 
-For detailed guidance on event handler patterns and memory leak prevention, see [`src/components/_skeleton/ARC42.md`](../components/_skeleton/ARC42.md#event-handler-policy).
+For detailed guidance on event handler patterns and memory leak prevention, see [`docs/ARC42-SKELETON.md`](docs/ARC42-SKELETON.md#event-handler-policy).
 
 ### Language texts
 
@@ -97,6 +97,6 @@ The `align` prop controls the orientation of the component itself. When aligning
 
 ### Architecture and Component Structure
 
-> **The [`src/components/_skeleton/ARC42.md`](src/components/_skeleton/ARC42.md) is the authoritative architectural specification.**
+> **The [`docs/ARC42-SKELETON.md`](docs/ARC42-SKELETON.md) is the authoritative architectural specification.**
 > All layer responsibilities, type contracts, coding patterns, implementation steps and design rationale are documented there.
 > Consult it before creating new components or refactoring existing ones.

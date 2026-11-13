@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { VersionApi } from '../../internal/functional-components/version/api';
 import { versionPropsConfig } from '../../internal/functional-components/version/api';
 import { VersionFC } from '../../internal/functional-components/version/component';
@@ -36,6 +36,8 @@ const VERSION_ICON = { left: { icon: 'kolicon-version', label: translate('kol-ve
 	shadow: true,
 })
 export class KolVersion extends BaseWebComponent<VersionApi> implements VersionProps, WebComponentInterface<VersionApi> {
+	protected readonly propsConfig: PropsConfigShape = versionPropsConfig;
+
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
@@ -47,7 +49,6 @@ export class KolVersion extends BaseWebComponent<VersionApi> implements VersionP
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(versionPropsConfig);
 		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 

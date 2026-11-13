@@ -1,11 +1,11 @@
 # Neue Komponente erstellen
 
-> Schritt-für-Schritt-Anleitung basierend auf dem [Skeleton Blueprint](../../packages/components/src/components/_skeleton/ARC42.md).
+> Schritt-für-Schritt-Anleitung basierend auf dem [Skeleton Blueprint](../../packages/components/docs/ARC42-SKELETON.md).
 
 ## Grundprinzipien
 
 - Auflistungen werden immer alphabetisch sortiert
-- Die [ARC42.md](../../packages/components/src/components/_skeleton/ARC42.md) ist die führende Architektur-Spezifikation — lies sie vollständig, bevor du eine neue Komponente erstellst
+- Die [ARC42.md](../../packages/components/docs/ARC42-SKELETON.md) ist die führende Architektur-Spezifikation — lies sie vollständig, bevor du eine neue Komponente erstellst
 - **2-Schichten-Architektur**: Die Web Component ist der Orchestrator — es gibt keine separate Controller/Aspect-Schicht. Nur wirklich wiederverwendbare Logik wird als Behavior (`BaseBehavior`, z.B. `TooltipBehavior`) ausgegliedert
 - Alle Web Components verwenden `shadow: true` — Komponenten ohne Shadow DOM werden als Functional Components implementiert
 - Props leben in `src/internal/props/` mit eigenem `PropDefinition` pro Prop
@@ -54,7 +54,7 @@ export const nameProp = createPropDefinition<NameProp>('name', '', normalizeStri
 - Export in `src/internal/props/index.ts` hinzufügen
 - Bestehende Props aus `index.ts` wiederverwenden, wenn möglich
 
-Details: [ARC42 §4 — Schema Helper Layer](../../packages/components/src/components/_skeleton/ARC42.md#schema-helper-layer)
+Details: [ARC42 §4 — Schema Helper Layer](../../packages/components/docs/ARC42-SKELETON.md#schema-helper-layer)
 
 ## Schritt 3 — API-Definition
 
@@ -83,7 +83,7 @@ export type MyComponentApi = ApiFromConfig<
 >;
 ```
 
-Details: [ARC42 §4 — API Definition with PropsConfigShape](../../packages/components/src/components/_skeleton/ARC42.md#api-definition-with-propsconfigshape-and-apifromconfig)
+Details: [ARC42 §4 — API Definition with PropsConfigShape](../../packages/components/docs/ARC42-SKELETON.md#api-definition-with-propsconfigshape-and-apifromconfig)
 
 ## Schritt 4 — Functional Component
 
@@ -109,7 +109,7 @@ export const MyComponentFC: FC<FunctionalComponentProps<MyComponentApi>> = ({ na
 - Genau ein Root-Node via `BemRootNodeFC`: Der `block` und die optionalen `modifiers` werden gegen `KoliBriComponentsBemSchema` in `src/schema/bem-registry.ts` typgeprüft — der Block muss dort **zweifach registriert** sein: im exportierten Typ `KoliBriComponentsBemSchema` (Kompilierung) und im Runtime-`BEM`-Const (konsumiert vom kolibri-cli SCSS-Generator). Nur-Typ-Registrierung kompiliert, bricht aber lautlos die Theme-SCSS-Generierung
 - `BemRootNodeFC` rendert immer ein `<div>` als Root. Für FCs mit anderem semantischem Root (z.B. `<button>`, siehe `ClickButtonFC`) stattdessen `bem.forBlock('kol-xxx')(modifiers)` direkt nutzen
 - Die zugehörige `style.scss` ist Basis-Styling: nur Layout und Struktur, keine Farben (außer dem Schwarz/Weiß-Kontrast-Fallback), keine Abstände und **kein Dark/Light-Color-Scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Farben und Color Schemes werden ausschließlich im Theme umgesetzt — siehe [Basis-Styling vs. Theming Konzept](../BASE_STYLING_VS_THEMING_CONCEPT.md)
-- Details: [ARC42 §4 — Functional Component Layer](../../packages/components/src/components/_skeleton/ARC42.md#functional-component-layer)
+- Details: [ARC42 §4 — Functional Component Layer](../../packages/components/docs/ARC42-SKELETON.md#functional-component-layer)
 
 ## Schritt 5 — Web Component
 
@@ -121,7 +121,7 @@ Die Web Component ist der **Orchestrator**: Sie erweitert `BaseWebComponent<Api>
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { MyComponentApi } from '../../internal/functional-components/my-component/api';
 import { myComponentPropsConfig } from '../../internal/functional-components/my-component/api';
 import { MyComponentFC } from '../../internal/functional-components/my-component/component';
@@ -132,6 +132,8 @@ import { nameProp } from '../../internal/props';
 	shadow: true,
 })
 export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements WebComponentInterface<MyComponentApi> {
+	protected readonly propsConfig: PropsConfigShape = myComponentPropsConfig;
+
 	@Prop()
 	public _name!: string;
 
@@ -141,7 +143,6 @@ export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements 
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(myComponentPropsConfig);
 		this.watchName(this._name);
 	}
 
@@ -155,13 +156,13 @@ export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements 
 }
 ```
 
-- `componentWillLoad()` ruft zuerst `this.initRenderProps(propsConfig)` auf und wendet danach alle Props an (Prop-Dreieck: Deklaration, `@Watch()`, Init)
+- Die Basis säht die Render-Props aus dem `propsConfig`-Feld beim ersten Zugriff — auch wenn ein `@Watch` durch eine Prop-Zuweisung vor `componentWillLoad()` feuert; `componentWillLoad()` wendet alle Props an (Prop-Dreieck: Deklaration, `@Watch()`, Init)
 - Watcher rufen die Prop-Factory direkt auf: `nameProp.apply(value, (v) => this.setRenderProp('name', v))`
 - `@State`-Felder werden über `this.setState(key, value)` / `this.getState(key)` verwaltet und im `render()` direkt übergeben
 - Immer `shadow: true` und `<Host>` ohne Klassen-Attribut
 - `@Watch` nur auf unterstrichene Props
-- Wiederverwendbare Logik für mehrere Komponenten wird als Behavior ausgegliedert (`BaseBehavior`, z.B. `TooltipBehavior`): `private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess)` — Details: [ARC42 §4 — Behavior Layer](../../packages/components/src/components/_skeleton/ARC42.md#behavior-layer)
-- Details: [ARC42 §4 — Web Component Layer](../../packages/components/src/components/_skeleton/ARC42.md#web-component-layer)
+- Wiederverwendbare Logik für mehrere Komponenten wird als Behavior ausgegliedert (`BaseBehavior`, z.B. `TooltipBehavior`): `private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess)` — Details: [ARC42 §4 — Behavior Layer](../../packages/components/docs/ARC42-SKELETON.md#behavior-layer)
+- Details: [ARC42 §4 — Web Component Layer](../../packages/components/docs/ARC42-SKELETON.md#web-component-layer)
 
 Wenn ein Behavior garantiert kein `@State` benötigt, verwende den Sentinel:
 
@@ -205,7 +206,7 @@ test.describe('kol-my-component', () => {
 });
 ```
 
-Details: [ARC42 §9 — Design Decision 11](../../packages/components/src/components/_skeleton/ARC42.md#9-design-decisions)
+Details: [ARC42 §9 — Design Decision 11](../../packages/components/docs/ARC42-SKELETON.md#9-design-decisions)
 
 ## Schritt 7 — Beispiel in React-Sample-App
 
@@ -235,6 +236,4 @@ Alle drei Befehle müssen fehlerfrei durchlaufen.
 
 Die vollständige Referenzimplementierung findet sich im Skeleton Blueprint:
 
-- **Architektur**: [`_skeleton/ARC42.md`](../../packages/components/src/components/_skeleton/ARC42.md)
-- **Agent-Instruktionen**: [`_skeleton/AGENTS.md`](../../packages/components/src/components/_skeleton/AGENTS.md)
-- **Refactoring-Leitfaden**: [`_skeleton/REFACTORING_PROMPT.md`](../../packages/components/src/components/_skeleton/REFACTORING_PROMPT.md)
+- **Architektur**: [`ARC42-SKELETON.md`](../../packages/components/docs/ARC42-SKELETON.md)

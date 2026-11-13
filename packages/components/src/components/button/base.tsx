@@ -7,7 +7,7 @@ import type { ButtonApi } from '../../internal/functional-components/button/api'
 import { buttonPropsConfig } from '../../internal/functional-components/button/api';
 import { ButtonFC } from '../../internal/functional-components/button/component';
 import { FormAssociationBehavior } from '../../internal/functional-components/form-association/behavior';
-import type { FunctionalComponentProps } from '../../internal/functional-components/generic-types';
+import type { FunctionalComponentProps, PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import {
 	accessKeyProp,
@@ -81,6 +81,8 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 
+	protected readonly propsConfig: PropsConfigShape = buttonPropsConfig;
+
 	// --- Composed behaviors ---
 
 	protected readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
@@ -110,17 +112,17 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	// --- Lifecycle helpers (called from the concrete element's lifecycle methods) ---
 
 	/**
-	 * Seeds the render props. Call first in `componentWillLoad`, before the prop watchers run.
+	 * Marks `tabIndex` as unset. Call first in `componentWillLoad`, before the prop watchers run.
 	 */
-	protected initButtonRenderProps(): void {
-		this.initRenderProps(buttonPropsConfig);
-		// Seed `tabIndex` as unset before any watcher runs: an unset tabindex must not render as
-		// `tabindex="0"` — buttons are natively tabbable and the attribute would pin them into the
-		// document tab order. `applyTabIndex` does the same for elements that expose `_tabIndex`,
-		// but a `shadow: false` element can abort mid-initialization under SSR (the form association
-		// finds no host with a shadow root, because `instanceof Element` fails in Stencil's mock DOM,
-		// then throws on `attachInternals(undefined)`, and Stencil swallows the error but renders
-		// anyway, #11034). Without this line the props config default `0` would survive such an abort.
+	protected unsetButtonTabIndex(): void {
+		// The first render-prop access seeds the store, so this unset runs against seeded defaults.
+		// An unset tabindex must not render as `tabindex="0"` — buttons are natively tabbable and
+		// the attribute would pin them into the document tab order. `applyTabIndex` does the same
+		// for elements that expose `_tabIndex`, but a `shadow: false` element can abort
+		// mid-initialization under SSR (the form association finds no host with a shadow root,
+		// because `instanceof Element` fails in Stencil's mock DOM, then throws on
+		// `attachInternals(undefined)`, and Stencil swallows the error but renders anyway, #11034).
+		// Without this line the props config default `0` would survive such an abort.
 		this.unsetRenderProp('tabIndex');
 	}
 

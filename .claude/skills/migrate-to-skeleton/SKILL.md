@@ -5,7 +5,7 @@ description: Migriert eine Legacy-KoliBri-Komponente auf die Skeleton-Blueprint-
 
 # Migrate to Skeleton
 
-Baut eine Legacy-Komponente auf die Skeleton-Blueprint-Architektur um. Zielbild ist das **2-Schichten-Modell**: **WC (Orchestrator) → optionale Behaviors + FC**. Zwischen Custom Element und FC liegt **keine** Controller-/Aspect-Klasse mehr — der WC erbt von `BaseWebComponent<Api>` und hält die Logik inline (`initRenderProps`, `setRenderProp`, `getRenderProp`, `setState`/`getState`). Hat die Legacy-Komponente noch einen Controller oder Aspect, wird dessen Logik in den WC gezogen. Nur echt komponentenübergreifende Logik wird zu einem `Behavior` (erbt von `BaseBehavior`).
+Baut eine Legacy-Komponente auf die Skeleton-Blueprint-Architektur um. Zielbild ist das **2-Schichten-Modell**: **WC (Orchestrator) → optionale Behaviors + FC**. Zwischen Custom Element und FC liegt **keine** Controller-/Aspect-Klasse mehr — der WC erbt von `BaseWebComponent<Api>` und hält die Logik inline (`propsConfig`-Feld, aus dem die Basis die Render-Props beim ersten Zugriff säht, `setRenderProp`, `getRenderProp`, `setState`/`getState`). Hat die Legacy-Komponente noch einen Controller oder Aspect, wird dessen Logik in den WC gezogen. Nur echt komponentenübergreifende Logik wird zu einem `Behavior` (erbt von `BaseBehavior`).
 
 **Argument:** der Komponentenname ohne `kol-`-Präfix, z. B. `card`, `tooltip`, `alert`. Im Folgenden `<komponente>`.
 
@@ -19,9 +19,9 @@ Bei Widersprüchen gilt diese Reihenfolge:
    - `packages/components/src/internal/functional-components/base-web-component.ts`
    - `packages/components/src/internal/functional-components/base-behavior.ts`
    - `packages/components/src/internal/functional-components/generic-types.ts`
-   - `packages/components/src/components/_skeleton/web-components/skeleton/component.tsx`
+   - `packages/components/src/components/skeleton/component.tsx`
    - `packages/components/src/internal/functional-components/skeleton/api.tsx` und `.../skeleton/component.tsx`
-2. **`packages/components/src/components/_skeleton/ARC42.md`** — die maßgebliche Spezifikation (Architekturnarrativ, Typverträge, 15 Design Decisions).
+2. **`packages/components/docs/ARC42-SKELETON.md`** — die maßgebliche Spezifikation (Architekturnarrativ, Typverträge, 15 Design Decisions).
 3. **Migrierte Vorbilder** (Produktionsform, jeweils pixelgeprüft gegen ihren Vorgänger):
    - `packages/components/src/components/button/component.tsx` + `internal/functional-components/button/` (inkl. `button/item.ts` für eingebettete Buttons)
    - `packages/components/src/components/link/component.tsx` + `internal/functional-components/link/` (inkl. `link/item.ts`) — enthält das vollständige Behavior-Lebenszyklus-Muster
@@ -36,7 +36,7 @@ Weicht ARC42 vom Code ab, ist das ein Fehler in einem von beiden: Doku korrigier
 
 ## 2. Arbeitsverzeichnisse
 
-- `packages/components/src/components/_skeleton/` — **schreibgeschützte** Referenz.
+- `packages/components/src/components/skeleton/` und `packages/components/src/components/click-button/` — Referenzkomponenten des Blueprints.
 - `packages/components/src/components/<komponente>/` und `packages/components/src/internal/functional-components/<komponente>/` — Arbeitsbereich.
 - `packages/components/src/internal/props/` — gemeinsame Prop-Definitionen (54 vorhanden), wird erweitert.
 
@@ -62,7 +62,7 @@ Erst die Props, dann alles andere. Das Props-Inventar **ist** der öffentliche A
 3. Für neue Props je eine Datei `internal/props/<prop-name>.ts` anlegen (`SimpleProp` bzw. `Prop`, Normalisierung und Validierung über `createPropDefinition`) — Muster: `internal/props/level.ts`, Snippet in `reference/patterns.md`.
 4. Neue Props in `packages/components/src/internal/props/index.ts` exportieren.
 
-Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helper-layer`.
+Hintergrund: `packages/components/docs/ARC42-SKELETON.md#schema-helper-layer`.
 
 ## 5. Phase 3 — Refactor nach Schichten
 
@@ -75,7 +75,7 @@ Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helpe
 4. **Web Component** — `components/<komponente>/component.tsx`, der Orchestrator
    `@Component({ tag: 'kol-<komponente>', shadow: true })`, erbt `BaseWebComponent<Api>`, implementiert `WebComponentInterface<Api>` **und** das Schema-`*Props`-Interface (z. B. `implements LinkProps`), damit API-Drift den Build bricht. Aufbau, Prop-Triangle, Behavior-Lebenszyklus und Zustandszugriff: `reference/patterns.md`.
 5. **Öffentliche API-Parität sichern**
-   Der migrierte WC muss **exakt** dieselbe `@Prop`/`@Method`-Oberfläche bieten wie der Vorgänger — gleiche Member, gleiche Schema-Alias-Typen, gleiche Defaults, gleiche JSDoc (`custom-elements.json`, `docs-vscode` und die Adapter-IntelliSense werden daraus erzeugt). Oberfläche in `packages/components/src/components/_skeleton/public-api/<komponente>.spec.ts` festnageln (Helfer in `contract.ts`) und gegen den Vorgänger diffen. Existiert der Pin schon gegen `shadow.tsx`, zeigt die Migration ihn auf `component.tsx` und ergänzt `schemaInterface`; der Inhalt bleibt unverändert. Details: `ARC42.md#public-api-contract-migration-parity`.
+   Der migrierte WC muss **exakt** dieselbe `@Prop`/`@Method`-Oberfläche bieten wie der Vorgänger — gleiche Member, gleiche Schema-Alias-Typen, gleiche Defaults, gleiche JSDoc (`custom-elements.json`, `docs-vscode` und die Adapter-IntelliSense werden daraus erzeugt). Oberfläche in `packages/components/src/components/public-api/<komponente>.spec.ts` festnageln (Helfer in `contract.ts`) und gegen den Vorgänger diffen. Existiert der Pin schon gegen `shadow.tsx`, zeigt die Migration ihn auf `component.tsx` und ergänzt `schemaInterface`; der Inhalt bleibt unverändert. Details: `ARC42.md#public-api-contract-migration-parity`.
 6. **CSS/SCSS** — `packages/components/src/components/<komponente>/style.scss`
    Bestehende Basis-Styles behalten, Selektoren an die neue BEM-Struktur anpassen. `style.scss` bleibt Basis-Styling: nur Layout und Struktur, keine Farben (außer dem Schwarz-/Weiß-Kontrast-Fallback), **kein Dark-/Light-Color-Scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Farben und Color Schemes gehören in die Theme-Pakete (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
 7. **Tests** — ko-lokalisiert neben `component.tsx`
@@ -188,7 +188,7 @@ pnpm --filter @public-ui/components build
 
 - [ ] Gap-Analyse erstellt und als Migrationsplan verwendet
 - [ ] API nutzt `PropsConfigShape` + `ApiFromConfig`, nur benötigte Abschnitte deklariert
-- [ ] WC ist Orchestrator: erbt `BaseWebComponent<Api>`, keine Controller-/Aspect-Klasse, `this.initRenderProps(propsConfig)` einmalig in `componentWillLoad()`
+- [ ] WC ist Orchestrator: erbt `BaseWebComponent<Api>`, keine Controller-/Aspect-Klasse, deklariert `propsConfig` als Feld — die Basis säht die Render-Props daraus beim ersten Zugriff
 - [ ] Prop-Triangle für **jeden** `@Prop()` vollständig (Deklaration, `@Watch`, Anwendung beim Laden)
 - [ ] Watcher wenden die Prop-Factory inline an: `xxxProp.apply(value, (v) => this.setRenderProp('xxx', v))`
 - [ ] Behavior (falls vorhanden) erbt `BaseBehavior<Api>`, implementiert `BehaviorInterface<Api>`, wird über `this.stateAccess` oder begründet über `BaseWebComponent.stateLess` komponiert — inkl. `componentDidRender`-Sync und `disconnectedCallback`-Teardown
@@ -196,7 +196,7 @@ pnpm --filter @public-ui/components build
 - [ ] Die Render-Funktion nutzt durchgängig die Render-FunctionalComponents (`ButtonFC`, `LinkFC`, …) über Items (Fallstrick 8)
 - [ ] Kein Arbeitsplan eingecheckt; Kommentare folgen [Inline code documentation](../../../AGENTS.md#inline-code-documentation)
 - [ ] `<Host>` ohne redundantes `class`-Attribut
-- [ ] Öffentliche `@Prop`/`@Method`-Oberfläche identisch zum Vorgänger, in `_skeleton/public-api/<komponente>.spec.ts` festgenagelt, Schema-`*Props`-Interface implementiert
+- [ ] Öffentliche `@Prop`/`@Method`-Oberfläche identisch zum Vorgänger, in `src/components/public-api/<komponente>.spec.ts` festgenagelt, Schema-`*Props`-Interface implementiert
 - [ ] Kein toter Code, keine verwaisten Dateien; Dead-Schema-Abbau geprüft (inkl. Ausnahme für veröffentlichte Typen)
 - [ ] Tests ko-lokalisiert und aktualisiert
 - [ ] `pnpm format`, `pnpm lint`, `test:unit` erfolgreich
@@ -220,7 +220,7 @@ Zum Abschluss liefern:
 - `reference/patterns.md` — Prop-Triangle, WC-Orchestrator, `StateAccess`/`stateLess`, Behavior-Lebenszyklus, Prop-Definition, Ziel-Dateistruktur
 - `reference/pitfalls.md` — 16 Fallstricke, jeder schon einmal als Regression aufgetreten
 
-**Im Repo** (Anker in `packages/components/src/components/_skeleton/ARC42.md`):
+**Im Repo** (Anker in `packages/components/docs/ARC42-SKELETON.md`):
 
 | Thema                                | Anker                                                     |
 | ------------------------------------ | --------------------------------------------------------- |
@@ -236,5 +236,3 @@ Zum Abschluss liefern:
 | Verzeichnislayout                    | `#blueprint-layout`                                       |
 | Eingebettete Komponenten (Items)     | `#embedded-components-items`                              |
 | Design Decisions                     | `#9-design-decisions`                                     |
-
-Ergänzend: `packages/components/src/components/_skeleton/AGENTS.md` (Props-First-Begründung, API-Parität) und `packages/components/src/components/_skeleton/TODO_PROP_ENFORCEMENT.md` (offene Punkte der Prop-Durchsetzung).

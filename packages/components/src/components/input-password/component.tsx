@@ -43,7 +43,7 @@ import { createButtonItem } from '../../internal/functional-components/button/it
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputPasswordApi } from '../../internal/functional-components/input-password/api';
 import { inputPasswordPropsConfig } from '../../internal/functional-components/input-password/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
@@ -84,6 +84,8 @@ export class KolInputPassword
 	private readonly translateHidePassword = translate('kol-hide-password');
 
 	private readonly translateShowPassword = translate('kol-show-password');
+
+	protected readonly propsConfig: PropsConfigShape = inputPasswordPropsConfig;
 
 	public constructor() {
 		super();
@@ -247,7 +249,7 @@ export class KolInputPassword
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -381,9 +383,8 @@ export class KolInputPassword
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.ctaRef.el?.value;
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
 	}
 
 	/**
@@ -391,23 +392,26 @@ export class KolInputPassword
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public connectedCallback(): void {
 		super.connectedCallback();
 		this.visibilityToggle.syncListeners();
 	}
 	public componentWillLoad(): void {
-		this.initRenderProps(inputPasswordPropsConfig);
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
@@ -480,7 +484,6 @@ export class KolInputPassword
 					},
 					{
 						class: 'kol-input-password__password-toggle-button kol-input-container__smart-button',
-						'data-testid': 'kol-input-password-toggle-button',
 					},
 				)}
 			/>

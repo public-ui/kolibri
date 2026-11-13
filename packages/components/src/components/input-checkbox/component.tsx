@@ -37,7 +37,7 @@ import { CheckboxFC } from '../../internal/functional-components/form-field/chec
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
 import type { InputFCProps } from '../../internal/functional-components/form-field/input';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputCheckboxApi } from '../../internal/functional-components/input-checkbox/api';
 import { inputCheckboxPropsConfig } from '../../internal/functional-components/input-checkbox/api';
 import {
@@ -82,6 +82,8 @@ export class KolInputCheckbox
 	@State() public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+
+	protected readonly propsConfig: PropsConfigShape = inputCheckboxPropsConfig;
 
 	public constructor() {
 		super();
@@ -223,7 +225,7 @@ export class KolInputCheckbox
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -329,9 +331,8 @@ export class KolInputCheckbox
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this.getModelValue();
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this.getModelValue());
 	}
 
 	/**
@@ -339,20 +340,22 @@ export class KolInputCheckbox
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputCheckboxPropsConfig);
-
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
 		this.watchName(this._name);
