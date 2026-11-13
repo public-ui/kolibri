@@ -54,7 +54,10 @@ overrides:
   minimatch@>=9.0.0 <9.0.6: '>=9.0.6'
   minimatch@>=9.0.0 <9.0.7: '>=9.0.7'
   nanoid@<3.3.8: '>=3.3.8'
-  playwright@<1.55.1: '>=1.55.1'
+  # No playwright override here: @playwright/test pins playwright 1.47.2 exactly and
+  # must pair with it, otherwise every browser launch fails. Nothing else in this
+  # workspace consumes bare playwright.
+
   postcss@<8.5.10: '>=8.5.10'
   postcss@<=8.5.11: '>=8.5.12'
   postcss@<=8.5.17: '>=8.5.18'
