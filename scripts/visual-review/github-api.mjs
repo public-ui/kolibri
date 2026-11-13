@@ -1,5 +1,5 @@
 /**
- * Minimal GitHub REST client for the visual-review scripts – node's fetch, no dependency.
+ * Minimal GitHub REST client for the CI scripts – node's fetch, no dependency.
  * Pagination follows the `Link: <…>; rel="next"` header.
  */
 import * as fs from 'node:fs';

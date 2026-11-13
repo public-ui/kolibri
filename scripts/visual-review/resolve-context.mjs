@@ -13,39 +13,10 @@
  */
 import * as fs from 'node:fs';
 import { pathToFileURL } from 'node:url';
+import { isIgnoredByCi } from '../ci-ignored-paths.mjs';
 import { createApi, repositoryFromEnv, setOutputs } from './github-api.mjs';
 
-/** Mirrors `paths-ignore` of the pull_request trigger in .github/workflows/ci.yml – keep in sync. */
-export const CI_IGNORED_PATHS = [
-	'*.md',
-	'**/*.md',
-	'docs/**',
-	'LICENSE',
-	'.github/ISSUE_TEMPLATE/**',
-	'.github/PULL_REQUEST_TEMPLATE/**',
-	'renovate.json',
-	'publiccode.yml',
-	'.vscode/**',
-	'license-reports/**',
-	'*.jpg',
-	'*.png',
-	'*.svg',
-];
 const VISUAL_JOB = /^visual-tests \(/;
-
-function globToRegExp(glob) {
-	const source = glob
-		.split('**')
-		.map((part) => part.split('*').map(escapeRegExp).join('[^/]*'))
-		.join('.*');
-	return new RegExp(`^${source}$`);
-}
-
-const IGNORED = CI_IGNORED_PATHS.map(globToRegExp);
-
-export function isIgnoredByCi(file) {
-	return IGNORED.some((pattern) => pattern.test(file));
-}
 
 export async function resolveContext({ eventName, event, api, repository }) {
 	const skip = (reason) => ({ mode: 'skip', pr: null, head: null, runId: null, reason });
@@ -118,10 +89,6 @@ async function findOpenPull({ api, repository, run }) {
 	if (!owner || !run.head_branch) return undefined;
 	const byBranch = await api.get(`repos/${repository}/pulls?state=open&head=${encodeURIComponent(`${owner}:${run.head_branch}`)}`);
 	return byBranch.find(matches);
-}
-
-function escapeRegExp(text) {
-	return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
