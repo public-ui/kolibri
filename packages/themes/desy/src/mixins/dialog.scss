@@ -2,7 +2,8 @@
 @use './card' as *;
 
 @mixin kol-dialog {
-	.kol-dialog {
+	.kol-dialog,
+	.kol-modal {
 		@include card;
 
 		border-radius: 4px;

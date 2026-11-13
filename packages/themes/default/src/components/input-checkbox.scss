@@ -78,8 +78,8 @@
 	}
 
 	.kol-checkbox--variant-default {
-		width: initial;
-		min-width: initial;
+		/* The label keeps the 44px click area of the base styles; the 24px box stays at its start. */
+		justify-content: flex-start;
 
 		.kol-input {
 			border-radius: var(--border-radius);

@@ -49,6 +49,19 @@ $duration: 0.4s;
 					animation: slideOutBottom $duration forwards;
 				}
 			}
+
+			/* Without the slide animation, the drawer opens in place and closes at once (see `closeDrawer`). */
+			@media (prefers-reduced-motion: reduce) {
+				&--left,
+				&--right,
+				&--top,
+				&--bottom {
+					&,
+					&.kol-drawer__wrapper--is-closing {
+						animation: none;
+					}
+				}
+			}
 		}
 	}
 }

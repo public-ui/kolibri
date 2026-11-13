@@ -79,6 +79,7 @@ export const DEFAULT = KoliBri.createTheme(
 		'KOL-LINK': linkCss,
 		'KOL-LINK-BUTTON': linkButtonCss,
 		'KOL-METER': meterCss,
+		'KOL-MODAL': dialogCss,
 		'KOL-NAV': navCss,
 		'KOL-PAGINATION': paginationCss,
 		'KOL-POPOVER-BUTTON': popoverButtonCss,

@@ -30,6 +30,7 @@ import { renderLabelWithLang } from '../span/component';
 import { SpinFC } from '../spin/component';
 import { TooltipFC } from '../tooltip/component';
 import { tableStatelessPropsConfig, type TableStatelessApi } from './api';
+import type { SelectionTooltipRefs } from './selection-tooltip-item';
 import type { FixedSide, PrimaryHeaders, SelectionModel, TableDataCell, TableDataRow } from './table-model';
 import {
 	createDataField,
@@ -70,6 +71,8 @@ export type TableStatelessFCProps = FunctionalComponentProps<TableStatelessApi> 
 	getButtonFcProps: (key: string, props: InternalButtonProps, rootAttributes?: ButtonItemRootAttributes) => ButtonItemFcProps;
 	/** `LinkFC` props of the embedded link `key`; the web component keeps one link item per key. */
 	getLinkFcProps: (key: string, props: EmbeddedLinkProps) => LinkFCProps;
+	/** Tooltip refs of the selection input `key`; the web component keeps one tooltip item per key. */
+	getSelectionTooltipRefs: (key: string, label: string) => SelectionTooltipRefs;
 	/** Renders the settings menu; the web component keeps its state. */
 	renderSettings: (horizontalHeaderCells: KoliBriTableHeaderCell[][]) => JSX.Element;
 };
@@ -80,7 +83,7 @@ export type TableStatelessFCProps = FunctionalComponentProps<TableStatelessApi> 
  * dereference them without unset handling.
  */
 type RenderContext = ResolvedFunctionalComponentProps<TableStatelessApi> &
-	Pick<TableStatelessFCProps, 'getButtonFcProps' | 'getLinkFcProps' | 'renderSettings'> & {
+	Pick<TableStatelessFCProps, 'getButtonFcProps' | 'getLinkFcProps' | 'getSelectionTooltipRefs' | 'renderSettings'> & {
 		fixedOffsets: number[];
 		maxCols: number;
 		primaryHeaders: PrimaryHeaders;
@@ -121,11 +124,13 @@ const renderSelectionCell = (context: RenderContext, row: TableDataRow, rowIndex
 	const disabled = selectionModel.disabledKeys.has(keyPropertyString);
 
 	const label = selection.label(firstCellData);
+	const { refInput, refTooltip } = context.getSelectionTooltipRefs(`selection-${keyPropertyString}`, label);
 	const props = {
 		name: 'selection',
 		checked: selected,
 		disabled,
 		id: String(keyProperty),
+		ref: refInput,
 		['aria-label']: label,
 	};
 	return (
@@ -159,7 +164,7 @@ const renderSelectionCell = (context: RenderContext, row: TableDataRow, rowIndex
 					</label>
 				)}
 				<div class={BEM_CLASS_TABLE__SELECTION_INPUT_TOOLTIP}>
-					<TooltipFC label={label} badgeText="" id={`${keyProperty}-label`} refFloating={() => {}} />
+					<TooltipFC label={label} badgeText="" id={`${keyProperty}-label`} refFloating={refTooltip} />
 				</div>
 			</div>
 		</td>
@@ -197,6 +202,7 @@ const renderHeadingSelectionCell = (context: RenderContext): JSX.Element => {
 	} else {
 		label = translate('kol-table-selection-indeterminate');
 	}
+	const { refInput, refTooltip } = context.getSelectionTooltipRefs('selection-all', label);
 	return (
 		<th scope="col" key={`thead-0-selection`} class={tableBem('cell', { header: true, selection: true })}>
 			<span class="visually-hidden">{translate('kol-table-selection')}</span>
@@ -205,6 +211,7 @@ const renderHeadingSelectionCell = (context: RenderContext): JSX.Element => {
 					<IconFC class={BEM_CLASS_TABLE__SELECTION_ICON} icons={`kolicon ${indeterminate ? 'kolicon-minus' : isChecked ? 'kolicon-check' : ''}`} label="" />
 					<input
 						class={tableBem('selection-input', { checkbox: true })}
+						ref={refInput}
 						name="selection"
 						checked={isChecked && !indeterminate}
 						indeterminate={indeterminate}
@@ -216,7 +223,7 @@ const renderHeadingSelectionCell = (context: RenderContext): JSX.Element => {
 					/>
 				</label>
 				<div class={BEM_CLASS_TABLE__SELECTION_INPUT_TOOLTIP}>
-					<TooltipFC label={label} badgeText="" refFloating={() => {}} />
+					<TooltipFC label={label} badgeText="" refFloating={refTooltip} />
 				</div>
 			</div>
 		</th>
