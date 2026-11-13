@@ -158,6 +158,10 @@ export const extractApiTypeMembers = (source: string): ApiTypeContract => {
 		if (memberMatch) {
 			contract[group]![memberMatch[1]] = { type: memberMatch[2].trim(), doc: normalizeDoc(doc) };
 			doc = [];
+		} else if (line.trim().length > 0) {
+			// An unrecognized member line must fail loudly: a silently skipped member would leave
+			// its rename, removal or retype unpinned.
+			throw new Error(`Unparsable line inside the ${group} group: "${line.trim()}"`);
 		}
 	}
 	return contract;
