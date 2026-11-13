@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11503,
-	"head": "f338e95b02e317b0312560b3c4c684a220af15f5",
+	"head": "221da32cc0843191aba2a3634ffa79451a292799",
 	"repository": "public-ui/kolibri",
-	"runId": 42625371035,
-	"generatedAt": "2026-11-09T13:40:37.043Z",
-	"digest": "sha256:254047940662ea1db04be19961979b109a04553ebb35aaa12c7ca23a226a0a71",
+	"runId": 43423438186,
+	"generatedAt": "2026-11-13T12:27:17.068Z",
+	"digest": "sha256:09a07266565d4a04a1f9a8c9ccc11bd6aa31b7141a8f4410babd5fbd0e6c19fd",
 	"baseline": {
-		"sha": "55a05992b4d6a4b4c1949656d15fa5283811f36a",
+		"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "55a05992b4d6a4b4c1949656d15fa5283811f36a",
+					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
 					"ref": "release/4",
-					"runId": 42582063896,
+					"runId": 43410307187,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-09T08:10:09.154Z",
-					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
+					"createdAt": "2026-11-13T10:44:15.889Z",
+					"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
+			"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2545,25 +2545,25 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:71b4e1c6ba6066ca2f277d158c66a0a097162ba3f77240df3d41e3d956328470"
+					"hash": "sha256:0f9a3ba249fcd2764536ed2638debbd4ce1f9e3527e3af38c61e051278955c40"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:ba037962d33fb67fbc4d3feb8ce74228586f4a6372cf2022b6db59684c15d2f7"
+					"hash": "sha256:a5ea1bd21b84b6418fb5f014b0e3375289299480e1c31b8b46071225003d9795"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:8453dce1096a201f310d5959a1a2bb06bb5d0e563429a2a3d55e03ec36a7ec9e"
+					"hash": "sha256:4d708cca660fd4bbbce9b1233c5115ec5e5aef8f36652c0bb85237c7d8dabe66"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:e68bbd849064461e97eba78bcf073cbf20fa4a10cadc14a365da4194a80b8466"
+					"hash": "sha256:0eb09d4ff9a2b8b3eb738ebd86b1dd5534c97a704402b450586e1a3c2ff8d4e4"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -2713,13 +2713,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "55a05992b4d6a4b4c1949656d15fa5283811f36a",
+					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
 					"ref": "release/4",
-					"runId": 42582063896,
+					"runId": 43410307187,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-09T08:08:29.377Z",
-					"digest": "sha256:77f82a73964db40f494290baeb942deb95ec408bdbe07886dc7e0668e2580dc4",
+					"createdAt": "2026-11-13T10:42:16.129Z",
+					"digest": "sha256:a6a4986d2da03e4052e87d0dea797f01c2c870cd31c6a2fcd32481b279d19d60",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2732,7 +2732,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:77f82a73964db40f494290baeb942deb95ec408bdbe07886dc7e0668e2580dc4",
+			"digest": "sha256:a6a4986d2da03e4052e87d0dea797f01c2c870cd31c6a2fcd32481b279d19d60",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5228,25 +5228,25 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:bb07a1beaa214960143610571acd502602de24fe4f38c715b1740e8b9940697c"
+					"hash": "sha256:35029a3c2c176017d3b3ff2859f241d6946c01839d5deb6c8fbf4342172a8c8e"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:acbf82915677c5317fbcfbef9b63e8b29093a544f20827d6c380624776e925c0"
+					"hash": "sha256:b70e4bf75bea75c28b4e3eef5f201aba281716dc257c5c82b9d7e88c8794b0e0"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:392029c5695f1ee11fb0ba0ce231b3f782de87dce044153494626554beb0a267"
+					"hash": "sha256:c176d21a84cdc62a8839402ba21d7026082dd7be6b81eb40aa4152eac058bcce"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:5cb47b712eb209d2ccf0064f75c79e53b0afaef1973701a1f228d1d4b1edf86b"
+					"hash": "sha256:31db1ecce6791a4c84342a9623d4ac430ea0a56b62a805c4fc643912c5d35c41"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -5396,13 +5396,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "55a05992b4d6a4b4c1949656d15fa5283811f36a",
+					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
 					"ref": "release/4",
-					"runId": 42582063896,
+					"runId": 43410307187,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-09T08:10:09.154Z",
-					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
+					"createdAt": "2026-11-13T10:44:15.889Z",
+					"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5415,7 +5415,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
+			"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7911,25 +7911,25 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:71b4e1c6ba6066ca2f277d158c66a0a097162ba3f77240df3d41e3d956328470"
+					"hash": "sha256:0f9a3ba249fcd2764536ed2638debbd4ce1f9e3527e3af38c61e051278955c40"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:ba037962d33fb67fbc4d3feb8ce74228586f4a6372cf2022b6db59684c15d2f7"
+					"hash": "sha256:a5ea1bd21b84b6418fb5f014b0e3375289299480e1c31b8b46071225003d9795"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:8453dce1096a201f310d5959a1a2bb06bb5d0e563429a2a3d55e03ec36a7ec9e"
+					"hash": "sha256:4d708cca660fd4bbbce9b1233c5115ec5e5aef8f36652c0bb85237c7d8dabe66"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:e68bbd849064461e97eba78bcf073cbf20fa4a10cadc14a365da4194a80b8466"
+					"hash": "sha256:0eb09d4ff9a2b8b3eb738ebd86b1dd5534c97a704402b450586e1a3c2ff8d4e4"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -8079,13 +8079,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "55a05992b4d6a4b4c1949656d15fa5283811f36a",
+					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
 					"ref": "release/4",
-					"runId": 42582063896,
+					"runId": 43410307187,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-09T08:07:01.127Z",
-					"digest": "sha256:df8761c47caa10be35fa1948f10fa7229fb8230744f580a6020b4ee63afd5b7b",
+					"createdAt": "2026-11-13T10:43:29.706Z",
+					"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -8098,7 +8098,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:df8761c47caa10be35fa1948f10fa7229fb8230744f580a6020b4ee63afd5b7b",
+			"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10594,25 +10594,25 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:fd12ef016418786ee6f9ddcbbacf79e9b9602eb485a5bd35722b3d60ec490ce8"
+					"hash": "sha256:08125703161426c26642c62af284f4fb5e4b62600356d07a25c3f2925080c5c2"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:4307b647c8d3a9ec6639b1410620989e03de161503ae06b30f3086d072835e14"
+					"hash": "sha256:823b83fd26f10ea8d34563eeb7b9b687031227663f099cdda082f67e749c130e"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:82a73b3c7f8f1f17f0cf5212d5ba4a6424d40c10581272bdc7f4192db3733f30"
+					"hash": "sha256:aaff789c03bad06bfdee8be5339ea308f76cd6b8c6ffc06a11d39d9c160153ca"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:33c9baa8e5adcfa98b69042d9f419ae7734556c2909b3b1fb5283020bbf78f02"
+					"hash": "sha256:e5623864b9dfb7148cd28b141ab96ca519c50d27210726dcf709b04909aba52b"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -10762,13 +10762,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "55a05992b4d6a4b4c1949656d15fa5283811f36a",
+					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
 					"ref": "release/4",
-					"runId": 42582063896,
+					"runId": 43410307187,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-09T08:08:20.183Z",
-					"digest": "sha256:58d72b90c03267d00163efa32bccc9149364b9b64d5fa73497762fb98fb4fa9c",
+					"createdAt": "2026-11-13T10:41:52.409Z",
+					"digest": "sha256:527ce0a79edd72d63df83b0e9449b83dcd80e12a624acce57b722410850da306",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10781,7 +10781,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:58d72b90c03267d00163efa32bccc9149364b9b64d5fa73497762fb98fb4fa9c",
+			"digest": "sha256:527ce0a79edd72d63df83b0e9449b83dcd80e12a624acce57b722410850da306",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13277,31 +13277,31 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:28151ad74b1b5e19497a134c3921c5739e29ca8b28bb3dac89b097f76ce86b64"
+					"hash": "sha256:91261ca43a246e8320bde8ee9c79d5d321a775667a616f8a7e66ad39b3c5e737"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:35e2f6422a53c8668e77c9ae2b3bdfbe17a6c6fe4adfc1f7817aefcbf89fa84b"
+					"hash": "sha256:559047e72fca1c141a20c3b8885bd8f8d59712557cfe04dc5b4b86f819563b99"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:8807608e1bfaa8e2115bc4de2ae43941cfe05acc162199c50d86bedfbc8374a9"
+					"hash": "sha256:0f31976654a511489f24e727d4009f715587b549972b254576c462feb702dd5a"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:48c7df44950ed44619ffff5707b70608b5e76ab9eca3a546fdea06d357a193eb"
+					"hash": "sha256:bbfdbba1324fe082766e7114a10b6e56c3778d827ef8ff0f730dec8358f274de"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
 					"route": "textarea-adjust-height",
 					"status": "unchanged",
-					"hash": "sha256:1af2f1ea781c849828bdd58b122c77d2b869a75aff401767a580174c8b533f12"
+					"hash": "sha256:d3073587bb5a8935ea0c063b4a198a06d05ed3da854554a7c5a251f14999eccd"
 				},
 				{
 					"name": "textarea-basic-noColumns--hide-label-error",
@@ -13445,13 +13445,13 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "55a05992b4d6a4b4c1949656d15fa5283811f36a",
+					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
 					"ref": "release/4",
-					"runId": 42582063896,
+					"runId": 43410307187,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-09T08:08:23.064Z",
-					"digest": "sha256:f5953d6598f804452acc46fa5233abc1485ae61d269923acbc5a4f17ce31b1ed",
+					"createdAt": "2026-11-13T10:42:41.852Z",
+					"digest": "sha256:4160f0bc0e435a83b94bf43bd9e6a98ea3d8b14ca18d12bfe3c2ce837c279acc",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -13464,7 +13464,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:f5953d6598f804452acc46fa5233abc1485ae61d269923acbc5a4f17ce31b1ed",
+			"digest": "sha256:4160f0bc0e435a83b94bf43bd9e6a98ea3d8b14ca18d12bfe3c2ce837c279acc",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15966,25 +15966,25 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:307bbd9f3f629958c53f4e52569ed3a17d4a02ec4fee9e356ec2f7f013c038e0"
+					"hash": "sha256:4d7c4410547ab717dc9b0ff497fe9e7653c2f67a55f02510142384230ac72c86"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:83a80b1ac62422932aef42aaab61f0837dba9987ae4d752b4af8a49b1e78d552"
+					"hash": "sha256:59e34ad63ab6311e52055d1a1d5d910715f4bd2c28566b394cdde6d26975b7e2"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:12224f80a565aad61a01f48bbdac62abe9be36a88031ec2e3d181a56c5e7954e"
+					"hash": "sha256:c6b2a20f02c118ae0aa961bd43e062262409feaae12647119883a1f694b6e47c"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:fbd3e363d93ed71c8ba933eee6d7e831c70fef3fcdbac73d74a924adcb600164"
+					"hash": "sha256:1425f163cac7d4d330a40a5c35960d0685f3bb794d7b05e53b690404b318a170"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -16134,13 +16134,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "55a05992b4d6a4b4c1949656d15fa5283811f36a",
+					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
 					"ref": "release/4",
-					"runId": 42582063896,
+					"runId": 43410307187,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-09T08:07:10.136Z",
-					"digest": "sha256:2a8ed01f1ccd4b547795406e0d9f04ab27a3614ab70df75ec403b6e682c6b376",
+					"createdAt": "2026-11-13T10:42:51.283Z",
+					"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -16153,7 +16153,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:2a8ed01f1ccd4b547795406e0d9f04ab27a3614ab70df75ec403b6e682c6b376",
+			"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -18649,25 +18649,25 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:b2364ccaf6b1876b5135fe63294a86bd15f83347018fb03d80e90f8067ff32ce"
+					"hash": "sha256:531f6b75c028e9c58c0c4eae5952fbe6e4a1b9e69b40b41fe1348aaaf7d85711"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:7219e9da679a89cb4f892150616ff335dc62389b7991770772c6a4fbd4fa4ea7"
+					"hash": "sha256:e81327d71e70f10bbc64d2ceeb3ed901c6dd4faa02c646db6a9304ff92cfbdac"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:4aaf5e1a518631669d638ae000f8d1a4a4fc859bbf9c6c0dbc09217973ab95c9"
+					"hash": "sha256:2099d2b6a7325823a75c10d2368a9a2955bb5cb9bdbe445079f9f2ae606995e9"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:d5aa614aca92c682209017a92e227d1a20bd66cb2b03d45e8f64514b6663f921"
+					"hash": "sha256:b7f8c52d9925b3ddec36a440abc1c0c121e84eee4badd708d46b3acbd81504fd"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
