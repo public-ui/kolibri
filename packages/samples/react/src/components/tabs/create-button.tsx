@@ -32,12 +32,12 @@ export const CreateButton: FC = () => {
 			<SampleBlock id="create-button">
 				<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with create button" _hasCreateButton _on={{ onCreate: addTab }}>
 					{tabs.map((tab, index) => (
-						<div key={`tab-${index}`} slot={`tab-${index}`}>
+						<p key={`tab-${index}`} slot={`tab-${index}`}>
 							Contents of {tab._label}
-						</div>
+						</p>
 					))}
 
-					<div slot="tab-1">Contents of Tab 2</div>
+					<p slot="tab-1">Contents of Tab 2</p>
 				</KolTabs>
 			</SampleBlock>
 		</>

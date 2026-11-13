@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.5.0",
+	"version": "4.6.0-rc.1",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -49,7 +49,7 @@
 		"@unocss/preset-mini": "66.8.1",
 		"@unocss/vite": "66.8.1",
 		"@vitejs/plugin-react-swc": "4.3.3",
-		"adopted-style-sheets": "1.1.9-rc.25",
+		"adopted-style-sheets": "1.2.0-rc.3",
 		"eslint": "9.39.5",
 		"happy-dom": "20.14.6",
 		"knip": "6.42.1",

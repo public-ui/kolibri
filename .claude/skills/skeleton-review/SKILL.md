@@ -1,20 +1,28 @@
 ---
 name: skeleton-review
-description: Reviewt genau eine KoliBri-Stencil-Komponente gegen die Skeleton-Architektur (BaseWebComponent, Komponenten-FC mit BemRootNodeFC als Wurzel, flaches DOM) und die Regeln aus ARC42 und AGENTS.md und legt einen priorisierten Optimierungsplan als Issue mit dem Label `skeleton-review` an. Nur Report, keine Code-Änderung. Nutze diesen Skill, wenn der Nutzer oder eine Routine eine Komponente gegen die Spezifikation prüfen lassen will – auch bei Formulierungen wie "Skeleton-Review", "nächste Komponente reviewen", "Komponente gegen Spec prüfen", "Optimierungsplan für Komponente" oder "welche Komponente weicht von der Architektur ab".
+description: Reviewt eine KoliBri-Stencil-Komponente (oder im Sammel-Review alle) gegen die Skeleton-Architektur (BaseWebComponent, Komponenten-FC mit BemRootNodeFC als Wurzel, flaches DOM) und die Regeln aus ARC42 und AGENTS.md und legt einen priorisierten Optimierungsplan als Issue mit dem Label `skeleton-review` an. Nur Report, keine Code-Änderung. Nutze diesen Skill, wenn der Nutzer oder eine Routine eine Komponente gegen die Spezifikation prüfen lassen will – auch bei Formulierungen wie "Skeleton-Review", "nächste Komponente reviewen", "Komponente gegen Spec prüfen", "Optimierungsplan für Komponente", "alle Komponenten reviewen" oder "welche Komponente weicht von der Architektur ab".
 ---
 
 # Skeleton-Review einer Komponente
 
 Die Komponenten von KoliBri werden schrittweise auf die Skeleton-Architektur umgestellt. Dieser Skill
-prüft **genau eine Komponente pro Aufruf** gegen die Architektur- und Styling-Regeln und hält das
-Ergebnis als priorisierten Optimierungsplan in einem GitHub-Issue fest. Die Issues sind zugleich das
-Gedächtnis des Skills: Eine Komponente mit Review-Issue kommt in dieser Runde nicht erneut dran.
+prüft **eine Komponente pro Aufruf** gegen die Architektur- und Styling-Regeln und hält das Ergebnis
+als priorisierten Optimierungsplan in einem GitHub-Issue fest. Die Issues sind zugleich das Gedächtnis
+des Skills: Eine Komponente mit Review-Issue kommt in dieser Runde nicht erneut dran. Auf Wunsch prüft
+er mehrere oder alle Komponenten in einem Sammel-Review (Abschnitt 8).
 
-Der Skill **ändert keine Dateien**: kein Commit, kein Push, kein PR. Das Einzige, was er nach außen
-schreibt, ist das Review-Issue. Die Umsetzung der Befunde ist ein eigener Schritt, bei Architektur-
-Verstößen typischerweise über den Skill `migrate-to-skeleton`.
+Der Skill **ändert keine Dateien**: kein Commit, kein Push, kein PR. Nach außen schreibt er nur
+Issues und Issue-Kommentare: das Review-Issue, im Sammel-Review die Cluster-Issues und das Epic, und
+nach Rückfrage den Kommentar zu einem bereits gelösten Issue. Die Umsetzung der Befunde ist ein eigener
+Schritt, bei Architektur-Verstößen typischerweise über den Skill `migrate-to-skeleton`.
 
 Ausgabe und Issue auf Deutsch.
+
+Geprüft wird der Branch `release/4`, sofern der Nutzer keinen anderen nennt. Code, Doku, Themes und
+Skill werden ausschließlich auf diesem Branch gelesen. Jedes Issue nennt Branch und Commit, gegen den
+geprüft wurde, und alle Datei:Zeile-Angaben beziehen sich auf diesen Commit.
+
+Für mehrere oder alle Komponenten in einem Durchgang gilt zusätzlich Abschnitt 8 (Sammel-Review).
 
 ## 1. Spezifikation und Vorrang
 
@@ -76,6 +84,12 @@ Für die gewählte Komponente lesen:
 - das React-Sample unter `packages/samples/react` (`basic.tsx`, Eintrag in `routes.ts`)
 - offene Issues und PRs, die die Komponente nennen (`gh search issues` / `gh search prs` bzw.
   `search_issues` / `search_pull_requests`)
+- gemergte PRs seit dem letzten Review der Komponente, damit bereits Behobenes nicht erneut gemeldet
+  wird
+
+Ist ein offenes Issue im Code bereits gelöst, das mit Beleg (Datei:Zeile, Commit bzw. PR, der es
+behoben hat) in der Ausgabe nennen und vorschlagen, es zu schließen. Geschlossen wird es erst nach
+Rückfrage beim Nutzer, mit einem Kommentar, der den Beleg enthält.
 
 ## 4. Prüfen
 
@@ -83,13 +97,20 @@ Für die gewählte Komponente lesen:
 
 Ein Verstoß hat den Schweregrad **Blocker (Architektur)**.
 
-- **R1:** Jede Stencil-Komponente erbt von `BaseWebComponent`. Fehlt das, auf den Skill
+- **R1:** Jede Stencil-Komponente erbt von `BaseWebComponent`, direkt oder über eine Basisklasse wie
+  `BaseFormFieldWebComponent` oder `BaseTextInputWebComponent`. Die Vererbungskette prüfen; eine Suche
+  nach dem Klassennamen in `component.tsx` reicht nicht. Fehlt die Vererbung, auf den Skill
   `migrate-to-skeleton` als Lösungsweg verweisen.
 - **R2:** `render()` rendert in `<Host>` genau eine Komponenten-FC (z. B. `<AlertFC>`) und keine freie
-  Markup-Struktur.
+  Markup-Struktur. Bei den Formularfeldern ist das `FormFieldFC` mit den Teilbausteinen der Hülle als
+  Kindern; eine zusätzliche FC je Feld wird nicht verlangt.
 - **R3:** Die Wurzel dieser Komponenten-FC ist `BemRootNodeFC` mit dem Block der Komponente.
-  Untergeordnete FCs (Teilbausteine wie die `form-field`-FCs) nutzen kein `BemRootNodeFC`, sondern
-  BEM-Elementklassen des umgebenden Blocks.
+  Untergeordnete FCs nutzen kein `BemRootNodeFC`, sondern BEM-Elementklassen des umgebenden Blocks.
+  Ausnahme ist eine gemeinsame Hülle mehrerer Komponenten: Die Formularfelder nutzen die Wurzel
+  `kol-form-field` der Hülle, tragen ihren eigenen Block als zusätzliche Klasse, und die Teilbausteine
+  der Hülle (`kol-input-container`, `kol-field-control`, `kol-input` …) haben eigene registrierte Blöcke.
+  Das ist kein Befund (ARC42-SKELETON, „Shared Shell Root of the Form Fields“). Ein Befund ist nur ein
+  fehlender Registry-Eintrag des Komponentenblocks (R5).
 - **R4:** Das Wurzel-Tag ist frei wählbar über die Prop `component` von `BemRootNodeFC` (Standard `div`;
   ebenso `span`, `a`, `button`, `label`, `fieldset`, `abbr`, `svg` usw.). Eine Wurzel, die direkt mit
   `bem.forBlock(...)` statt mit `BemRootNodeFC` gebaut wird, ist ein Verstoß. Diese Regel hat Vorrang
@@ -102,15 +123,38 @@ Ein Verstoß hat den Schweregrad **Blocker (Architektur)**.
 
 Schweregrad **Breaking Theming**.
 
-- Jedes Wrapper-Element melden, das genau ein Element ohne Geschwister umschließt und durch dieses als
-  `BemRootNodeFC`-Wurzel ersetzt werden könnte. DOM vorher und nachher sowie die alten und neuen
-  BEM-Klassen nennen.
+Gemeldet wird ein Wrapper-Element, das genau ein Element ohne Geschwister umschließt und sich
+entfernen lässt, ohne dass ein Knoten zwei Blöcke trägt. DOM vorher und nachher sowie die alten und
+neuen BEM-Klassen nennen.
+
+Vor dem Melden das umschlossene Kind einordnen:
+
+| Umschlossenes Kind                                                                                                                        | Bewertung                                                                                                                                                                                                                    |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Element der eigenen Komponente (Klasse `kol-<block>__…`)                                                                                  | melden: Das Kind wird zur Wurzel bzw. zum Element und übernimmt Block oder Elementklasse des Wrappers.                                                                                                                       |
+| Teilbaustein, der Block oder Elementklasse vom Aufrufer übernimmt (z. B. `DialogFC` mit `blockClass` in drawer)                           | melden: Der Teilbaustein bekommt die Klasse des Wrappers, es entsteht kein zweiter Block.                                                                                                                                    |
+| Wurzel einer eingebetteten Komponenten-FC mit eigenem Block (`ButtonFC` → `kol-button`, `LinkFC` → `kol-link`, `BadgeFC` → `kol-badge` …) | **nicht als Befund melden.** Der eigene Block der eingebetteten FC ist korrekt: Über ihn erreichen Basis-Styles und Theme die eingebettete Komponente (ARC42-SKELETON, „Embedded Components (Items)“, Designentscheidung 5). |
+
+Für den dritten Fall gilt:
+
+- Ist der Wrapper die Wurzel der Komponente selbst (z. B. `div.kol-version > div.kol-badge`), ist er
+  immer berechtigt. Ohne ihn hätte die Komponente einen fremden Block an der Wurzel, und das verletzt R3.
+- Ist der Wrapper ein Element der umgebenden Komponente (z. B. `div.kol-breadcrumb__link > div.kol-link`
+  oder `div.kol-button__tooltip > div.kol-tooltip`), ist er berechtigt und wird nicht gemeldet, auch
+  ohne Geschwister. Ein BEM-Mix am selben Knoten (`div.kol-link.kol-breadcrumb__link`) wird nicht
+  vorgeschlagen (ARC42-SKELETON, „Embedded Roots Keep Their Element Wrapper“).
+
+Weitere Regeln:
+
 - Hat das Element Geschwister (z. B. Tooltip, Beschreibung), ist der Wrapper berechtigt und wird nicht
   gemeldet.
+- Ein Wrapper, den eine Animation oder ein Layout-Mechanismus braucht (z. B. die Grid-Höhen-Transition
+  von `__wrapper-animation`), wird nur gemeldet, wenn der Befund zeigt, dass das Verhalten ohne ihn
+  erhalten bleibt.
 - Fehlt das benötigte Tag in der `component`-Union von `BemRootNodeFC`, dafür keinen eigenen Befund
-  anlegen, sondern auf das offene Issue mit dem Label `skeleton-review` und dem Titel
-  „BemRootNodeFC: component-Union erweitern“ verweisen. Gibt es dieses Issue nicht, den Punkt im
-  Abschnitt „Querschnitt“ des Plans aufführen.
+  anlegen, sondern auf #11521 („BemRootNodeFC: component-Union erweitern“) verweisen, solange es offen
+  ist. Ist es geschlossen und das Tag weiterhin nicht enthalten, den Punkt im Abschnitt „Querschnitt“
+  des Plans aufführen.
 
 ### Weitere Prüfpunkte
 
@@ -123,26 +167,93 @@ Schweregrad **Breaking Theming**.
   beobachteten Member.
 - **Basis-SCSS** (Layer `kol-global`/`kol-component`): kein `margin`/`padding`, keine Farben, kein
   `color-scheme`, `light-dark()` oder `prefers-color-scheme`, kein `overflow: hidden`, kein
-  `!important`, keine `@layer` in Utility-Dateien.
+  `!important`, keine `@layer` in Utility-Dateien. Folgende Fälle sind keine Verstöße, sondern werden
+  mit ⚖ als Entscheidungsbedarf geführt, solange AGENTS.md keine Ausnahme dafür nennt: `!important` in
+  `forced-colors`-, `prefers-reduced-motion`-, `[hidden]`- und `.visually-hidden`-Regeln;
+  `overflow: hidden` für `text-overflow: ellipsis` und in `.visually-hidden`; 0-Resets der
+  User-Agent-Abstände (#10756).
 - **Theme-SCSS:** flache BEM-Struktur, kein `$root` und kein `@at-root`, nur Tokens referenzieren, keine
   eigenen Scheme-Media-Queries, keine Redundanz zum Basis-Styling.
 - **CSS Custom Properties:** nur dokumentierte `--kol-<komponente>-<name>`-Tokens, sonst SASS-Variablen.
+  Custom Properties, die JavaScript zur Laufzeit setzt (z. B. per `style={{ '--level': … }}`), lassen sich
+  nicht durch SASS ersetzen; bei ihnen nur das Namensschema prüfen und mit ⚖ führen.
 - **Inline-Doku:** keine Historie, keine Wiederholung des Codes.
 - **Tests und Sample:** Unit- und Snapshot-Tests sowie das React-Sample sind vorhanden und aussagekräftig.
-- **Konventionen:** keine Barrel-Dateien; Listen, Imports und Union-Literale alphabetisch.
+- **Konventionen:** keine Barrel-Dateien (Ausnahme laut AGENTS.md: `src/internal/props/index.ts` und
+  `src/schema/props/index.ts`); Listen, Imports und Union-Literale alphabetisch.
 
-## 5. Plan erstellen
+### Prüfhinweise
+
+Diese Hinweise verhindern Fehlbefunde, die in früheren Reviews aufgetreten sind:
+
+- **Code vor Kommentar.** Kommentare und Doku-Stellen, die ein Muster begründen, am Code nachprüfen.
+  Beispiel: Der Kommentar in BadgeFC „`BemRootNodeFC` forwards only `class`“ ist falsch, denn
+  `BemRootNodeFC` reicht per `...rest` auch `style` weiter. Ein falscher Kommentar ist selbst ein Befund
+  (Inline-Doku).
+- **Zeilennummern je Datei.** Datei:Zeile immer aus der einzelnen Datei ermitteln (`grep -n`,
+  `sed -n`), nie aus einer zusammengefügten Ausgabe mehrerer Dateien.
+- **Zählen statt schätzen.** Angaben wie „in 32 Komponenten“ per Skript ermitteln und alle Fundstellen
+  auflisten. Eine Zahl ohne Liste ist kein Beleg.
+- **Regel richtig zuordnen.**
+  - Eine nicht registrierte Elementklasse eines registrierten Blocks ist „Konventionen“, kein R5.
+  - Ein Teilbaustein mit eigenem Block (`InputFC`, `TextAreaFC`, das native `<select>`) ist ein R3-Fall,
+    kein R4-Fall; er braucht Elementklassen, keine Erweiterung der `component`-Union.
+  - Eine Klasse auf `<Host>` ist ein Befund, außer der Code dokumentiert sie als Ausnahme für Konsumenten
+    (z. B. `kol-table-stateful`, `kol-select`); dann nur mit Verweis auf diese Stelle nennen.
+- **Gemeinsame Ursachen einmal zählen.** Teilen sich Komponenten Code (dialog und modal, link und
+  link-button, combobox und single-select), wird der Befund einmal geführt, mit allen betroffenen
+  Komponenten.
+- **Tote Theme-Regeln.** Bei jedem Befund, der Klassen hinzufügt oder umhängt, prüfen, ob eine heute
+  wirkungslose Theme-Regel dadurch greift (Beispiel: `.kol-table-stateful` im Shadow-Stylesheet trifft
+  den Host nie). Der Fix ändert dann Pixel; das gehört in die Angabe „Darstellung“.
+- **Alle Themes prüfen.** Befunde an Theme-Registrierungen oder Theme-Selektoren gegen alle Themes unter
+  `packages/themes/` prüfen, nicht nur gegen `default`.
+- **IDs im Render.** `nonce()` oder `createUniqueId()` im Körper einer FC erzeugt bei jedem Render eine
+  neue ID. Das ist schwerer als eine reine Konventionsabweichung, weil ARIA-Referenzen sich ändern.
+- **Keyframes.** Farbstopps in `@keyframes` der Basis kann kein Theme überschreiben. Ein fester Farbwert
+  dort ist ein Befund im Paket `components`, nicht im Theme.
+- **Reproduzieren, wo es geht.** Lässt sich ein vermuteter Fehler mit einem vorhandenen Unit- oder
+  Snapshot-Test belegen, das tun und den Test nennen. Sonst ⚑ setzen.
+
+## 5. Zweiter Durchlauf
+
+Jedes Review läuft zweimal, auch bei einer einzelnen Komponente. Durchlauf 1 sammelt die Befunde nach
+Abschnitt 4. Durchlauf 2 prüft das Ergebnis von Durchlauf 1 kritisch am Code und optimiert es:
+
+- Beleg (Datei:Zeile), Regel und Schweregrad jedes Befunds stimmen; sonst korrigieren.
+- Falsche Befunde streichen, mit Grund.
+- Offene Fragen klären, wo der Code es zulässt.
+- Übersehene Befunde ergänzen, insbesondere zu R2–R5 und zum flachen DOM.
+- Die Prüfhinweise aus Abschnitt 4 und die Widerspruchsprüfung aus Abschnitt 6 („Begründung je
+  Befund-Cluster“) anwenden.
+
+Jeder Befund trägt danach einen Status: bestätigt, korrigiert oder neu. Die Ausgabe nennt die Zahl der
+bestätigten, korrigierten, neuen und gestrichenen Befunde und die wichtigsten Korrekturen. Erst das
+Ergebnis von Durchlauf 2 geht in den Plan.
+
+## 6. Plan erstellen
 
 Befunde absteigend nach Schweregrad sortieren:
 
 | Schweregrad           | Bedeutung                                                                                  |
 | --------------------- | ------------------------------------------------------------------------------------------ |
 | Blocker (Architektur) | Verstoß gegen R1–R5                                                                        |
-| Blocker (Bug/A11y)    | fehlerhaftes Verhalten oder Barriere                                                       |
+| Blocker (Bug/A11y)    | nachvollziehbares Fehlverhalten oder Barriere (Eingabe → falsches Ergebnis)                |
 | Breaking API          | erfordert ein Major-Release                                                                |
 | Breaking Theming      | DOM-/BEM-Änderung; Minor-Release mit Label `release:theming`, alle Themes im Repo anpassen |
 | UX/visuell            | sichtbare Abweichung ohne Bruch                                                            |
 | Polish                | Konventionen, Doku, Kleinigkeiten                                                          |
+
+„Blocker (Bug/A11y)“ nur vergeben, wenn sich ein konkreter Ablauf mit falschem Ergebnis benennen lässt.
+Ein Änderungswunsch am dokumentierten Verhalten ist „UX/visuell“, ein verletzter Vertrag ohne
+sichtbare Folge „Polish“.
+
+Markierungen:
+
+- **⚑** — Der Fehler ist aus Code und Event-Fluss abgeleitet, aber nicht im Browser beobachtet. Der
+  Vorschlag beginnt dann mit einem e2e-Test, der den Fehler reproduziert.
+- **⚖** — Die Regel kollidiert mit einer berechtigten Nutzung. Statt einer Korrektur wird eine
+  Entscheidung vorgeschlagen: umsetzen oder als Ausnahme in AGENTS.md und diesem Skill dokumentieren.
 
 Pro Befund:
 
@@ -152,13 +263,45 @@ Pro Befund:
 - Vorschlag zur Behebung in 1–2 Sätzen
 - Aufwand: S (unter 2 h), M (bis 1 Tag), L (mehr als 1 Tag)
 - bestehendes Issue oder PR, falls vorhanden
+- Darstellung: ob der Fix Pixel ändert. Ein Refactor muss ohne Bild-Diff bleiben
+  (`zero-visual-delta-handoff`). Ein Bugfix, der Pixel ändern muss, nennt die betroffenen Snapshots;
+  sie werden auf der Review-Seite des PRs bewusst freigegeben (`docs/visual-review.md`).
 
 Nur Befunde mit Beleg melden. Was unsicher ist, unter „Offene Fragen“ führen statt als Befund.
 
-## 6. Issue anlegen und ausgeben
+### Begründung je Befund-Cluster
+
+Befunde, die auf dieselbe Regel und dieselbe Ursache zurückgehen, bilden einen Cluster (z. B. „R4:
+Wurzel per `bem.forBlock`“ oder „Flaches DOM: Wrapper um eine eingebettete FC“). Damit die Maintainer
+beurteilen können, ob ein Befund echten Nutzen bringt oder nur zwischen zwei Regelauslegungen hin und
+her optimiert, erläutert der Plan **jeden Cluster an genau einem nachvollziehbaren Beispiel** aus dem
+geprüften Code:
+
+1. **Ist:** ein kurzer Code- oder DOM-Ausschnitt mit Datei:Zeile, so wie er heute im Repo steht.
+2. **Warum ein Befund:** die verletzte Regel mit Fundstelle und die konkrete Auswirkung. Die Auswirkung
+   benennt, wen es trifft, also Nutzende (Bug, Barriere), Theme-Autoren (Selektoren, Spezifität) oder nur
+   die Code-Konsistenz (Typsicherheit, Einheitlichkeit). Trifft es nur die Konsistenz, das so schreiben.
+3. **Soll:** derselbe Ausschnitt korrigiert, als Code oder DOM, mit den alten und neuen BEM-Klassen,
+   wenn sich Klassen ändern.
+4. **Bewertung:** ob die Korrektur das gerenderte DOM ändert (Theming-Bruch) oder nicht (reiner
+   Refactor), und eine Empfehlung: umsetzen, bündeln oder zurückstellen.
+
+Vor dem Anlegen des Issues jeden Cluster auf Widersprüche prüfen und gefundene Widersprüche unter
+„Offene Fragen“ führen statt als Befund:
+
+- gegen bestehende Entscheidungen: Migrationspläne unter `docs/`, ADRs, geschlossene Issues und
+  gemergte PRs, die genau diese Struktur bewusst festgelegt haben (z. B. „DOM und BEM bleiben“);
+- zwischen den Regeln dieses Skills: Ein Soll-Zustand, den eine Regel verlangt, darf nicht zugleich
+  von einer anderen Regel als Befund gewertet werden, etwa wenn das Entfernen eines Wrappers (Flaches
+  DOM) die Wurzel einer eingebetteten FC zur Wurzel der Komponente macht und dadurch R3 verletzt.
+
+## 7. Issue anlegen und ausgeben
 
 - Titel: `Skeleton-Review: <ordnername>`
-- Label: `skeleton-review`
+- Label: `skeleton-review`. Gibt es das Label im Repo nicht, das Issue ohne Label anlegen, im Chat
+  darauf hinweisen und für die Auswahl in Abschnitt 2 zusätzlich nach dem Titel suchen.
+- Unmittelbar vor dem Anlegen jeden Befund gegen den aktuellen Kopf des geprüften Branches nachprüfen.
+  Was inzwischen behoben ist, entfällt; geänderte Zeilen werden aktualisiert.
 - Inhalt:
 
 ```markdown
@@ -171,6 +314,15 @@ Nur Befunde mit Beleg melden. Was unsicher ist, unter „Offene Fragen“ führe
 | #   | Schweregrad | Befund | Beleg | Vorschlag | Aufwand | Bezug |
 | --- | ----------- | ------ | ----- | --------- | ------- | ----- |
 | 1   | …           | …      | …     | …         | …       | …     |
+
+## Begründung je Cluster
+
+### <Cluster, z. B. „R4: Wurzel per bem.forBlock“> (Befunde #…)
+
+- **Ist** (`<datei>:<zeile>`): <Ausschnitt>
+- **Warum ein Befund:** <Regel mit Fundstelle; wen es trifft und wie>
+- **Soll:** <korrigierter Ausschnitt; alte → neue BEM-Klassen>
+- **Bewertung:** <DOM ändert sich ja/nein; umsetzen / bündeln / zurückstellen>
 
 ## Querschnitt
 
@@ -186,4 +338,42 @@ Theming-Änderungen werden nach dem Skill `zero-visual-delta-handoff` abgesicher
 über den Skill `migrate-to-skeleton` behoben.
 ```
 
-Zum Schluss im Chat den Link zum Issue und die Zusammenfassung ausgeben.
+Zum Schluss im Chat ausgeben:
+
+1. den Link zum Issue und die Zusammenfassung mit der Anzahl der Befunde je Schweregrad;
+2. das Ergebnis von Durchlauf 2 (bestätigt, korrigiert, neu, gestrichen; die wichtigsten Korrekturen);
+3. **je Cluster genau ein nachvollziehbares Beispiel** nach „Begründung je Befund-Cluster“: Ist mit
+   Datei:Zeile, warum es ein Befund ist und wen es trifft, wie es korrekt wäre, und die Bewertung;
+4. eine Fazit-Tabelle über alle Cluster, damit der Nutzer einschätzen kann, ob eine Korrektur echten
+   Nutzen bringt oder nur zwischen Regelauslegungen hin und her optimiert:
+
+| Cluster | Nutzen (Nutzende / Theme-Autoren / nur Konsistenz) | DOM ändert sich | Empfehlung (umsetzen / bündeln / zurückstellen / Regel klären) |
+| ------- | -------------------------------------------------- | --------------- | -------------------------------------------------------------- |
+
+Cluster mit einem Widerspruch zu einer bestehenden Entscheidung oder zu einer anderen Regel bekommen
+die Empfehlung „Regel klären“ und einen Verweis auf die Stelle, an der der Widerspruch steht.
+
+## 8. Sammel-Review mehrerer Komponenten
+
+Verlangt der Nutzer ein Review mehrerer oder aller Komponenten, gelten die Abschnitte 1–6 je
+Komponente, mit diesen Abweichungen:
+
+1. **Zwei Durchläufe über alle Komponenten.** Durchlauf 2 (Abschnitt 5) startet erst, wenn Durchlauf 1
+   für die jeweilige Gruppe abgeschlossen ist. Mehrere Agenten dürfen parallel arbeiten, jeweils mit
+   festen Gruppen von Komponenten; Durchlauf 2 einer Gruppe übernimmt ein anderer Agent als
+   Durchlauf 1, damit die Gegenprüfung nicht am eigenen Ergebnis hängt.
+2. **Bündeln statt einzeln anlegen.** Die Befunde werden nach Ursache zu Clustern zusammengefasst und
+   dem Nutzer als klassifizierte, gebündelte Übersicht vorgelegt: Zahlen je Schweregrad und Cluster,
+   je Cluster ein nachvollziehbares Beispiel und die Fazit-Tabelle aus Abschnitt 7. Ein Issue je
+   Komponente wird nicht automatisch angelegt.
+3. **Vor dem Anlegen fragen.** Issues werden erst angelegt, wenn der Nutzer es für einen Cluster
+   verlangt. Ein Issue je Cluster enthält alle Fundstellen mit Datei:Zeile, Ursache, Folge, Soll und
+   eine Checkliste, damit jeder Punkt als eigener PR umgesetzt werden kann. Punkte mit eigenem Issue
+   werden nur verlinkt.
+4. **Epic.** Gibt es Issues für mehrere Cluster, fasst ein Issue vom Typ Epic sie als Sub-Issues
+   zusammen, mit einer Tabelle Cluster → Issue und einer empfohlenen Reihenfolge: Fehler für Nutzende
+   zuerst, Architekturentscheidungen vor den Refactors, die von ihnen abhängen.
+5. **Zuweisen und einplanen.** Zuweisungen und Labels setzt der Skill auf Wunsch des Nutzers. Felder
+   eines GitHub-Projekts (Sprint, Status) lassen sich aus einer Claude-Code-Sitzung nicht setzen, weil
+   GraphQL und die Projekt-Endpunkte der Organisation gesperrt sind. Das dem Nutzer am Ende sagen, statt
+   es zu versuchen.
