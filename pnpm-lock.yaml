@@ -12,9 +12,9 @@ overrides:
   axios@>=1.15.2 <1.18.0: '>=1.18.0'
   axios@>=1.7.0 <1.18.0: '>=1.18.0'
   body-parser@<1.20.6: '>=1.20.6'
-  brace-expansion@<1.1.16: '>=1.1.16'
-  brace-expansion@<=5.0.7: '>=5.0.8'
-  brace-expansion@>=2.0.0 <2.1.2: '>=2.1.2'
+  brace-expansion@<1.1.16: '>=1.1.16 <2'
+  brace-expansion@>=2.0.0 <2.1.2: '>=2.1.2 <3'
+  brace-expansion@>=5.0.0 <5.0.8: '>=5.0.8 <6'
   diff@>=5.0.0 <5.2.2: '>=5.2.2'
   dompurify@<3.4.9: '>=3.4.9'
   dompurify@<=3.4.10: '>=3.4.11'
@@ -29,8 +29,8 @@ overrides:
   js-yaml@>=4.0.0 <4.1.1: '>=4.1.1'
   js-yaml@>=4.0.0 <4.3.0: '>=4.3.0'
   js-yaml@>=4.0.0 <=4.1.1: '>=4.2.0'
-  minimatch@<3.1.3: '>=3.1.3'
-  minimatch@<3.1.4: '>=3.1.4'
+  minimatch@<3.1.3: '>=3.1.3 <4'
+  minimatch@<3.1.4: '>=3.1.4 <4'
   minimatch@>=4.0.0 <4.2.4: '>=4.2.4'
   minimatch@>=4.0.0 <4.2.5: '>=4.2.5'
   minimatch@>=9.0.0 <9.0.6: '>=9.0.6'
@@ -43,8 +43,8 @@ overrides:
   qs@<6.14.1: '>=6.14.1'
   qs@>=6.11.1 <=6.15.1: '>=6.15.2'
   qs@>=6.7.0 <=6.14.1: '>=6.14.2'
-  react-router@>=6.0.0 <7.18.0: '>=7.18.0'
-  react-router@>=6.4.0 <7.18.0: '>=7.18.0'
+  react-router@>=6.0.0 <6.30.4: '>=7.18.0'
+  react-router@>6.30.4 <7.18.0: '>=7.18.0'
   semver@>=7.0.0 <7.5.2: '>=7.5.2'
   serialize-javascript@<=7.0.2: '>=7.0.3'
   serialize-javascript@>=5.0.0 <7.0.5: '>=7.0.5'
@@ -59,6 +59,11 @@ overrides:
   webpack@>=5.49.0 <5.104.0: '>=5.104.0'
   webpack@>=5.49.0 <=5.104.0: '>=5.104.1'
   websocket-driver@<0.7.5: '>=0.7.5'
+
+patchedDependencies:
+  '@public-ui/stencil-react-output-target@0.6.0':
+    hash: 2305478515b6f70aab66b59f1a57c525b545197395c71b066dcb869578fc3852
+    path: patches/@public-ui__stencil-react-output-target@0.6.0.patch
 
 importers:
 
@@ -396,7 +401,7 @@ importers:
         version: 0.9.0(@stencil/core@4.20.0)
       '@public-ui/stencil-react-output-target':
         specifier: 0.6.0
-        version: 0.6.0(@stencil/core@4.20.0)
+        version: 0.6.0(patch_hash=2305478515b6f70aab66b59f1a57c525b545197395c71b066dcb869578fc3852)(@stencil/core@4.20.0)
       '@public-ui/stencil-solid-output-target':
         specifier: 0.2.0
         version: 0.2.0(@stencil/core@4.20.0)
@@ -703,8 +708,8 @@ importers:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
       react-router:
-        specifier: '>=7.18.0'
-        version: 8.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 6.30.4
+        version: 6.30.4(react@18.3.1)
       react-router-dom:
         specifier: 6.30.4
         version: 6.30.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -5052,6 +5057,9 @@ packages:
     resolution: {integrity: sha512-GAwkz0AihzY5bkwIY5QDR+LvsRQgB/B+1foMPvi0FZPMl5fjD7ICiznUiBdLYMH1QYe6vqu4gWYytZOccLouFw==}
     engines: {node: '>= 10.0.0'}
 
+  balanced-match@1.0.2:
+    resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
+
   balanced-match@4.0.4:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
     engines: {node: 18 || 20 || >=22}
@@ -5149,12 +5157,14 @@ packages:
     resolution: {integrity: sha512-9gYgQKXx+1nP8mP7CzFyaUARhg7D3n1dF/FnErWmu9l6JvGpNUN278h0aSb+QjoiKSWG+iZ3uHrcqk0qrY9RQQ==}
     engines: {node: '>=10'}
 
-  brace-expansion@5.0.5:
-    resolution: {integrity: sha512-VZznLgtwhn+Mact9tfiwx64fA9erHH/MCXEUfB/0bX/6Fz6ny5EGTXYltMocqg4xFAQZtnO3DHWWXi8RiuN7cQ==}
-    engines: {node: 18 || 20 || >=22}
+  brace-expansion@1.1.22:
+    resolution: {integrity: sha512-CKLDTuSsN0+r1ThM0WkzzBI7dnPI6xEGfa/JnVYIK9JNBA1N1NyPwXVHor//NKD/y3sDxp764sZdLhFK7pH8XQ==}
 
-  brace-expansion@5.0.8:
-    resolution: {integrity: sha512-JZyDyq3D4AUifKTPOB7DELf6XsB3WdPuNxCtob1vFXPsSXhdAiHBWJ/tJ8HAc9aH84BK+5JFZLNkJKx3G9kzQg==}
+  brace-expansion@2.1.8:
+    resolution: {integrity: sha512-BnlDzDYQoplTsZSvPi86CNzmbcb07X8ufR8fk1zivaiEJlXJkiq1MQyDCVmlWcsWbj6aWXqHnrwwevbrm/Saig==}
+
+  brace-expansion@5.0.13:
+    resolution: {integrity: sha512-Vh3dmFbc4wZeox7M9I/0L9GfFd83Su4+yCck/OF9Gi/P/dAHn0RT7X4K9R7gMNMhDck3DvhR6QXsnQdjjgwNvQ==}
     engines: {node: 20 || >=22}
 
   braces@2.3.2:
@@ -5576,6 +5586,9 @@ packages:
     resolution: {integrity: sha512-9mAqGPHLakhCLeNyxPkK4xVo746zQ/czLH1Ky+vkitMnWfWZps8r0qXuwhwizagCRttsL4lfG4pIOvaWLpAP0w==}
     engines: {node: '>= 0.8.0'}
 
+  concat-map@0.0.1:
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+
   concat-stream@2.0.0:
     resolution: {integrity: sha512-MWufYdFw53ccGjCA+Ol7XJYpAlW6/prSMzuPOTRnJGcGzuhLn4Scrz7qf6o8bROZ514ltazcIFJZevcfbo0x7A==}
     engines: {'0': node >= 6.0}
@@ -5661,9 +5674,6 @@ packages:
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
-
-  cookie-es@3.1.1:
-    resolution: {integrity: sha512-UaXxwISYJPTr9hwQxMFYZ7kNhSXboMXP+Z3TRX6f1/NyaGPfuNUZOWP1pUEb75B2HjfklIYLVRfWiFZJyC6Npg==}
 
   cookie-signature@1.2.2:
     resolution: {integrity: sha512-D76uU73ulSXrD1UXF4KE2TMxVVwhsnCgfAyTg9k8P6KGZjlXKrOLe4dJQKI3Bxi5wjesZoFXJWElNWBjPZMbhg==}
@@ -7310,6 +7320,7 @@ packages:
   image-size@0.5.5:
     resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
     engines: {node: '>=0.10.0'}
+    deprecated: Please migrate to image-size@2.x
     hasBin: true
 
   image-ssim@0.2.0:
@@ -8131,8 +8142,8 @@ packages:
   launch-editor@2.14.1:
     resolution: {integrity: sha512-QWBrQsMpH7gPr965dsKD/3cKWiNoTjpATQf++Xq63N6sKRGMwlVXz41O1IZTMfZQgBctD/K5Zt06+/I6pP6+HA==}
 
-  legacy-javascript@0.0.1:
-    resolution: {integrity: sha512-lPyntS4/aS7jpuvOlitZDFifBCb4W8L/3QU0PLbUTUj+zYah8rfVjYic88yG7ZKTxhS5h9iz7duT8oUXKszLhg==}
+  legacy-javascript@0.0.4:
+    resolution: {integrity: sha512-UTmeKBVxnfJcpmpOvzzNnLsQT99BXHpPlc/ZKddIRmWmrR0fw6335I3lq4+sJoP60UTbBNaYsGYVPc65YB1x3A==}
 
   lerna@8.2.4:
     resolution: {integrity: sha512-0gaVWDIVT7fLfprfwpYcQajb7dBJv3EGavjG7zvJ+TmGx3/wovl5GklnSwM2/WeE0Z2wrIz7ndWhBcDUHVjOcQ==}
@@ -8664,9 +8675,12 @@ packages:
     peerDependencies:
       webpack: '>=5.104.1'
 
-  minimatch@10.2.2:
-    resolution: {integrity: sha512-+G4CpNBxa5MprY+04MbgOw1v7So6n5JY166pFi9KfYwT78fxScCeSNQSNzp6dpPSW2rONOps6Ocam1wFhCgoVw==}
+  minimatch@10.2.6:
+    resolution: {integrity: sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==}
     engines: {node: 18 || 20 || >=22}
+
+  minimatch@3.1.5:
+    resolution: {integrity: sha512-VgjWUsnnT6n+NUk6eZq77zeFdpW2LWDzP6zFGrCbHXiYNul5Dzqk2HHQ5uFH2DNW5Xbp8+jVzaeNt94ssEEl4w==}
 
   minimatch@5.1.9:
     resolution: {integrity: sha512-7o1wEA2RyMP7Iu7GNba9vc0RWWGACJOCZBJX2GJWip0ikV+wcOsgVuY9uE8CPiyQhkGFSlhuSkZPavN7u1c2Fw==}
@@ -10169,15 +10183,11 @@ packages:
       react: '>=16.8'
       react-dom: '>=16.8'
 
-  react-router@8.3.0:
-    resolution: {integrity: sha512-qyPMvW83jGIct3yiieisxdk9M745anqhpIMKN5m1t6yBMfgVPpt77aHOqs5fUlEJRMCGffg9BaQLH9oPVOL7xQ==}
-    engines: {node: '>=22.22.0'}
+  react-router@6.30.4:
+    resolution: {integrity: sha512-SVUsDe+DybHM/WmYKIVYhZh1o5Dcuf16yM6WjG02Q9XVFMZIJyHYhwrr6bFBXZkVP6z69kNkMyBCujt8FaFLJA==}
+    engines: {node: '>=14.0.0'}
     peerDependencies:
-      react: '>=19.2.7'
-      react-dom: '>=19.2.7'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
+      react: '>=16.8'
 
   react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
@@ -11302,8 +11312,8 @@ packages:
   third-party-web@0.27.0:
     resolution: {integrity: sha512-h0JYX+dO2Zr3abCQpS6/uFjujaOjA1DyDzGQ41+oFn9VW/ARiq9g5ln7qEP9+BTzDpOMyIfsfj4OvfgXAsMUSA==}
 
-  third-party-web@0.29.2:
-    resolution: {integrity: sha512-fegtha91tq2DHphyoiBXVHjVi2YG9zFaRnboT9C28tO1en9Y3wJsfspuy40F+u5wl3hHVbw7cnd1b67kEGHb8g==}
+  third-party-web@0.30.0:
+    resolution: {integrity: sha512-p+PfyL5U0ediGzvwPzMSdD9MnC8rHW6nWJJVLIQvqN7RsSqfaZ+7n4c9GILqH36EYR0eXB9CzAeCRnKFr/9uJg==}
 
   throat@5.0.0:
     resolution: {integrity: sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA==}
@@ -14360,7 +14370,7 @@ snapshots:
       ignore: 5.3.2
       import-fresh: 3.3.1
       js-yaml: 4.3.0
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
@@ -14410,7 +14420,7 @@ snapshots:
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
       debug: 4.4.3(supports-color@8.1.1)
-      minimatch: 10.2.2
+      minimatch: 3.1.5
     transitivePeerDependencies:
       - supports-color
 
@@ -14418,7 +14428,7 @@ snapshots:
     dependencies:
       '@humanwhocodes/object-schema': 2.0.3
       debug: 4.4.3(supports-color@8.1.1)
-      minimatch: 10.2.2
+      minimatch: 3.1.5
     transitivePeerDependencies:
       - supports-color
 
@@ -14888,7 +14898,7 @@ snapshots:
       '@types/nightwatch': 1.3.4
       '@types/sinon': 10.0.20
       '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.9.3))(eslint@8.57.0)(typescript@5.9.3)
-      '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.9.3)
+      '@typescript-eslint/parser': 6.21.0(eslint@8.57.1)(typescript@5.9.3)
       chai: 4.4.1
       chromedriver: 124.0.4
       cross-env: 7.0.3
@@ -14925,7 +14935,7 @@ snapshots:
       '@types/nightwatch': 1.3.4
       '@types/sinon': 10.0.20
       '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.9.3))(eslint@8.57.0)(typescript@5.9.3)
-      '@typescript-eslint/parser': 6.21.0(eslint@8.57.1)(typescript@5.9.3)
+      '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.9.3)
       chai: 4.4.1
       chromedriver: 129.0.4
       cross-env: 7.0.3
@@ -14993,7 +15003,7 @@ snapshots:
       libnpmpublish: 9.0.9
       load-json-file: 6.2.0
       make-dir: 4.0.0
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       multimatch: 5.0.0
       node-fetch: 2.6.7(encoding@0.1.13)
       npm-package-arg: 11.0.2
@@ -15111,7 +15121,7 @@ snapshots:
       json-parse-even-better-errors: 3.0.2
       json-stringify-nice: 1.1.4
       lru-cache: 10.4.3
-      minimatch: 10.2.2
+      minimatch: 9.0.9
       nopt: 7.2.1
       npm-install-checks: 6.3.0
       npm-package-arg: 11.0.2
@@ -15159,7 +15169,7 @@ snapshots:
     dependencies:
       '@npmcli/name-from-folder': 2.0.0
       glob: 10.5.0
-      minimatch: 10.2.2
+      minimatch: 9.0.9
       read-package-json-fast: 3.0.2
 
   '@npmcli/metavuln-calculator@7.1.1':
@@ -15216,7 +15226,7 @@ snapshots:
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.2
-      minimatch: 10.2.2
+      minimatch: 9.0.9
       nx: 20.8.4(@swc/core@1.13.5)
       semver: 7.8.5
       tmp: 0.2.7
@@ -15685,8 +15695,8 @@ snapshots:
 
   '@paulirish/trace_engine@0.0.59':
     dependencies:
-      legacy-javascript: 0.0.1
-      third-party-web: 0.29.2
+      legacy-javascript: 0.0.4
+      third-party-web: 0.30.0
 
   '@peculiar/asn1-cms@2.8.0':
     dependencies:
@@ -15800,7 +15810,7 @@ snapshots:
     dependencies:
       '@stencil/core': 4.20.0
 
-  '@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.20.0)':
+  '@public-ui/stencil-react-output-target@0.6.0(patch_hash=2305478515b6f70aab66b59f1a57c525b545197395c71b066dcb869578fc3852)(@stencil/core@4.20.0)':
     dependencies:
       '@stencil/core': 4.20.0
 
@@ -16217,7 +16227,7 @@ snapshots:
   '@ts-morph/common@0.12.3':
     dependencies:
       fast-glob: 3.3.3
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       mkdirp: 1.0.4
       path-browserify: 1.0.1
 
@@ -16234,7 +16244,7 @@ snapshots:
   '@tufjs/models@2.0.1':
     dependencies:
       '@tufjs/canonical-json': 2.0.0
-      minimatch: 10.2.2
+      minimatch: 9.0.9
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -16605,7 +16615,7 @@ snapshots:
       debug: 4.4.3(supports-color@8.1.1)
       globby: 11.1.0
       is-glob: 4.0.3
-      minimatch: 10.2.2
+      minimatch: 9.0.9
       semver: 7.8.5
       ts-api-utils: 1.4.3(typescript@5.9.3)
     optionalDependencies:
@@ -17238,7 +17248,7 @@ snapshots:
       '@babel/core': 7.24.7
       find-cache-dir: 4.0.0
       schema-utils: 4.3.3
-      webpack: 5.104.1(@swc/core@1.5.28)(esbuild@0.28.1)(webpack-cli@4.10.0)
+      webpack: 5.104.1(@swc/core@1.13.5)(esbuild@0.28.1)
 
   babel-plugin-istanbul@6.1.1:
     dependencies:
@@ -17362,6 +17372,8 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.7
 
+  balanced-match@1.0.2: {}
+
   balanced-match@4.0.4: {}
 
   bare-events@2.6.0:
@@ -17466,11 +17478,16 @@ snapshots:
       widest-line: 3.1.0
       wrap-ansi: 7.0.0
 
-  brace-expansion@5.0.5:
+  brace-expansion@1.1.22:
     dependencies:
-      balanced-match: 4.0.4
+      balanced-match: 1.0.2
+      concat-map: 0.0.1
 
-  brace-expansion@5.0.8:
+  brace-expansion@2.1.8:
+    dependencies:
+      balanced-match: 1.0.2
+
+  brace-expansion@5.0.13:
     dependencies:
       balanced-match: 4.0.4
 
@@ -17950,6 +17967,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  concat-map@0.0.1: {}
+
   concat-stream@2.0.0:
     dependencies:
       buffer-from: 1.1.2
@@ -18053,8 +18072,6 @@ snapshots:
   convert-source-map@1.9.0: {}
 
   convert-source-map@2.0.0: {}
-
-  cookie-es@3.1.1: {}
 
   cookie-signature@1.2.2: {}
 
@@ -18960,7 +18977,7 @@ snapshots:
       hasown: 2.0.2
       jsx-ast-utils: 3.3.5
       language-tags: 1.0.9
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       object.fromentries: 2.0.8
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
@@ -18977,7 +18994,7 @@ snapshots:
       estraverse: 5.3.0
       hasown: 2.0.2
       jsx-ast-utils: 3.3.5
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       object.entries: 1.1.9
       object.fromentries: 2.0.8
       object.values: 1.2.1
@@ -19038,7 +19055,7 @@ snapshots:
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
       lodash.merge: 4.6.2
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       natural-compare: 1.4.0
       optionator: 0.9.4
       strip-ansi: 6.0.1
@@ -19081,7 +19098,7 @@ snapshots:
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
       lodash.merge: 4.6.2
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       natural-compare: 1.4.0
       optionator: 0.9.4
       strip-ansi: 6.0.1
@@ -19434,12 +19451,12 @@ snapshots:
       fs-extra: 9.1.0
       glob: 7.2.3
       memfs: 3.5.3
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       schema-utils: 2.7.0
       semver: 7.8.5
       tapable: 1.1.3
       typescript: 5.9.3
-      webpack: 5.104.1(@swc/core@1.5.28)(esbuild@0.28.1)(webpack-cli@4.10.0)
+      webpack: 5.104.1(@swc/core@1.13.5)(esbuild@0.28.1)
     optionalDependencies:
       eslint: 8.57.1
 
@@ -19699,14 +19716,14 @@ snapshots:
     dependencies:
       foreground-child: 3.3.1
       jackspeak: 3.4.3
-      minimatch: 10.2.2
+      minimatch: 9.0.9
       minipass: 7.1.2
       package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
 
   glob@13.0.6:
     dependencies:
-      minimatch: 10.2.2
+      minimatch: 10.2.6
       minipass: 7.1.3
       path-scurry: 2.0.2
 
@@ -19715,7 +19732,7 @@ snapshots:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       once: 1.4.0
       path-is-absolute: 1.0.1
 
@@ -19724,7 +19741,7 @@ snapshots:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       once: 1.4.0
       path-is-absolute: 1.0.1
 
@@ -20092,7 +20109,7 @@ snapshots:
 
   ignore-walk@6.0.5:
     dependencies:
-      minimatch: 10.2.2
+      minimatch: 9.0.9
 
   ignore@5.3.2: {}
 
@@ -20564,7 +20581,7 @@ snapshots:
       async: 3.2.6
       chalk: 4.1.2
       filelist: 1.0.4
-      minimatch: 10.2.2
+      minimatch: 3.1.5
 
   jest-changed-files@26.6.2:
     dependencies:
@@ -21173,7 +21190,7 @@ snapshots:
       picocolors: 1.1.1
       shell-quote: 1.10.0
 
-  legacy-javascript@0.0.1: {}
+  legacy-javascript@0.0.4: {}
 
   lerna@8.2.4(@swc/core@1.13.5)(@types/node@24.10.9)(encoding@0.1.13):
     dependencies:
@@ -21218,7 +21235,7 @@ snapshots:
       libnpmpublish: 9.0.9
       load-json-file: 6.2.0
       make-dir: 4.0.0
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       multimatch: 5.0.0
       node-fetch: 2.6.7(encoding@0.1.13)
       npm-package-arg: 11.0.2
@@ -21844,21 +21861,25 @@ snapshots:
       tapable: 2.3.0
       webpack: 5.104.1(@swc/core@1.5.28)(esbuild@0.28.1)(webpack-cli@4.10.0)
 
-  minimatch@10.2.2:
+  minimatch@10.2.6:
     dependencies:
-      brace-expansion: 5.0.8
+      brace-expansion: 5.0.13
+
+  minimatch@3.1.5:
+    dependencies:
+      brace-expansion: 1.1.22
 
   minimatch@5.1.9:
     dependencies:
-      brace-expansion: 5.0.5
+      brace-expansion: 2.1.8
 
   minimatch@8.0.5:
     dependencies:
-      brace-expansion: 5.0.5
+      brace-expansion: 2.1.8
 
   minimatch@9.0.9:
     dependencies:
-      brace-expansion: 5.0.8
+      brace-expansion: 2.1.8
 
   minimist-options@4.1.0:
     dependencies:
@@ -21984,7 +22005,7 @@ snapshots:
       he: 1.2.0
       js-yaml: 4.3.0
       log-symbols: 4.1.0
-      minimatch: 10.2.2
+      minimatch: 9.0.9
       ms: 2.1.3
       nanoid: 3.3.16
       serialize-javascript: 6.0.2
@@ -22012,7 +22033,7 @@ snapshots:
     dependencies:
       loader-utils: 2.0.4
       monaco-editor: 0.56.0
-      webpack: 5.104.1(@swc/core@1.5.28)(esbuild@0.28.1)(webpack-cli@4.10.0)
+      webpack: 5.104.1(@swc/core@1.13.5)(esbuild@0.28.1)
 
   monaco-editor@0.56.0:
     dependencies:
@@ -22038,7 +22059,7 @@ snapshots:
       array-differ: 3.0.0
       array-union: 2.1.0
       arrify: 2.0.1
-      minimatch: 10.2.2
+      minimatch: 3.1.5
 
   mustache@4.2.0: {}
 
@@ -22112,7 +22133,7 @@ snapshots:
       lodash.escape: 4.0.1
       lodash.merge: 4.6.2
       lodash.pick: 4.4.0
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       minimist: 1.2.6
       mocha: 9.2.2
       nightwatch-axe-verbose: 2.5.1
@@ -22155,7 +22176,7 @@ snapshots:
       lodash.escape: 4.0.1
       lodash.merge: 4.6.2
       lodash.pick: 4.4.0
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       minimist: 1.2.6
       mocha: 9.2.2
       nightwatch-axe-verbose: 2.5.1
@@ -22237,7 +22258,7 @@ snapshots:
       chokidar: 3.6.0
       debug: 4.4.3(supports-color@5.5.0)
       ignore-by-default: 1.0.1
-      minimatch: 10.2.2
+      minimatch: 10.2.6
       pstree.remy: 1.1.8
       semver: 7.7.4
       simple-update-notifier: 2.0.0
@@ -22328,7 +22349,7 @@ snapshots:
       chalk: 2.4.2
       cross-spawn: 6.0.6
       memorystream: 0.3.1
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       pidtree: 0.3.1
       read-pkg: 3.0.0
       shell-quote: 1.10.0
@@ -22373,7 +22394,7 @@ snapshots:
       jest-diff: 29.7.0
       jsonc-parser: 3.2.0
       lines-and-columns: 2.0.3
-      minimatch: 10.2.2
+      minimatch: 9.0.9
       node-machine-id: 1.1.12
       npm-run-path: 4.0.1
       open: 8.4.2
@@ -23566,7 +23587,7 @@ snapshots:
       shell-quote: 1.10.0
       strip-ansi: 6.0.1
       text-table: 0.2.0
-      webpack: 5.104.1(@swc/core@1.5.28)(esbuild@0.28.1)(webpack-cli@4.10.0)
+      webpack: 5.104.1(@swc/core@1.13.5)(esbuild@0.28.1)
     optionalDependencies:
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -23606,14 +23627,12 @@ snapshots:
       '@remix-run/router': 1.23.3
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      react-router: 8.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-router: 6.30.4(react@18.3.1)
 
-  react-router@8.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-router@6.30.4(react@18.3.1):
     dependencies:
-      cookie-es: 3.1.1
+      '@remix-run/router': 1.23.3
       react: 18.3.1
-    optionalDependencies:
-      react-dom: 18.3.1(react@18.3.1)
 
   react@18.2.0:
     dependencies:
@@ -23691,7 +23710,7 @@ snapshots:
 
   recursive-readdir@2.2.3:
     dependencies:
-      minimatch: 10.2.2
+      minimatch: 3.1.5
 
   redent@3.0.0:
     dependencies:
@@ -24820,6 +24839,18 @@ snapshots:
       ansi-escapes: 4.3.2
       supports-hyperlinks: 2.3.0
 
+  terser-webpack-plugin@5.3.16(@swc/core@1.13.5)(esbuild@0.28.1)(webpack@5.104.1):
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.29
+      jest-worker: 27.5.1
+      schema-utils: 4.3.3
+      serialize-javascript: 7.0.7
+      terser: 5.49.0
+      webpack: 5.104.1(@swc/core@1.13.5)(esbuild@0.28.1)
+    optionalDependencies:
+      '@swc/core': 1.13.5
+      esbuild: 0.28.1
+
   terser-webpack-plugin@5.3.16(@swc/core@1.5.28)(esbuild@0.28.1)(webpack@5.104.1):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.29
@@ -24843,7 +24874,7 @@ snapshots:
     dependencies:
       '@istanbuljs/schema': 0.1.3
       glob: 7.2.3
-      minimatch: 10.2.2
+      minimatch: 3.1.5
 
   text-decoder@1.2.3:
     dependencies:
@@ -24861,7 +24892,7 @@ snapshots:
 
   third-party-web@0.27.0: {}
 
-  third-party-web@0.29.2: {}
+  third-party-web@0.30.0: {}
 
   throat@5.0.0: {}
 
@@ -25040,7 +25071,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.28.2
       locutus: 2.0.32
-      minimatch: 10.2.2
+      minimatch: 3.1.5
       walk: 2.3.15
 
   type-check@0.4.0:
@@ -25512,6 +25543,38 @@ snapshots:
   webpack-sources@3.3.3: {}
 
   webpack-virtual-modules@0.6.2: {}
+
+  webpack@5.104.1(@swc/core@1.13.5)(esbuild@0.28.1):
+    dependencies:
+      '@types/eslint-scope': 3.7.7
+      '@types/estree': 1.0.8
+      '@types/json-schema': 7.0.15
+      '@webassemblyjs/ast': 1.14.1
+      '@webassemblyjs/wasm-edit': 1.14.1
+      '@webassemblyjs/wasm-parser': 1.14.1
+      acorn: 8.15.0
+      acorn-import-phases: 1.0.4(acorn@8.15.0)
+      browserslist: 4.28.7
+      chrome-trace-event: 1.0.4
+      enhanced-resolve: 5.18.3
+      es-module-lexer: 2.0.0
+      eslint-scope: 5.1.1
+      events: 3.3.0
+      glob-to-regexp: 0.4.1
+      graceful-fs: 4.2.11
+      json-parse-even-better-errors: 2.3.1
+      loader-runner: 4.3.1
+      mime-types: 2.1.35
+      neo-async: 2.6.2
+      schema-utils: 4.3.3
+      tapable: 2.3.0
+      terser-webpack-plugin: 5.3.16(@swc/core@1.13.5)(esbuild@0.28.1)(webpack@5.104.1)
+      watchpack: 2.5.0
+      webpack-sources: 3.3.3
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
 
   webpack@5.104.1(@swc/core@1.5.28)(esbuild@0.28.1)(webpack-cli@4.10.0):
     dependencies:

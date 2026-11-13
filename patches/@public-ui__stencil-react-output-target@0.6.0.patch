@@ -1,0 +1,25 @@
+diff --git a/react-component-lib/createOverlayComponent.tsx b/react-component-lib/createOverlayComponent.tsx
+index 288c38dd54c138fea45127e45acf9d0b96dbf99a..c1e371f57063b56297f7758a4d14c2543d408b78 100644
+--- a/react-component-lib/createOverlayComponent.tsx
++++ b/react-component-lib/createOverlayComponent.tsx
+@@ -137,6 +137,6 @@ export const createOverlayComponent = <OverlayComponent extends object, OverlayT
+   }
+ 
+   return React.forwardRef<OverlayType, Props>((props, ref) => {
+-    return <Overlay {...props} forwardedRef={ref} />;
++    return <Overlay {...(props as Props)} forwardedRef={ref} />;
+   });
+ };
+diff --git a/react-component-lib/utils/index.tsx b/react-component-lib/utils/index.tsx
+index 6053b18bd8aee90783f2d3666781ad51956b8600..4e94febe4ba91a6893ea2795220a6eb93b68333a 100644
+--- a/react-component-lib/utils/index.tsx
++++ b/react-component-lib/utils/index.tsx
+@@ -30,7 +30,7 @@ export const mergeRefs = (
+ 
+ export const createForwardRef = <PropType, ElementType>(ReactComponent: any, displayName: string) => {
+   const forwardRef = (
+-    props: StencilReactExternalProps<PropType, ElementType>,
++    props: React.PropsWithoutRef<StencilReactExternalProps<PropType, ElementType>>,
+     ref: StencilReactForwardedRef<ElementType>
+   ) => {
+     return <ReactComponent {...props} forwardedRef={ref} />;
