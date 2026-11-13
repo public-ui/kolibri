@@ -38,7 +38,7 @@ exports[`kol-table-stateful should render with a multiple selection 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -51,7 +51,7 @@ exports[`kol-table-stateful should render with a multiple selection 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -63,7 +63,7 @@ exports[`kol-table-stateful should render with a multiple selection 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -76,7 +76,7 @@ exports[`kol-table-stateful should render with a multiple selection 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -245,7 +245,7 @@ exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
               <th aria-sort="ascending" class="kol-table__cell kol-table__cell--ascending kol-table__cell--header" data-sort="sort-ASC" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -258,7 +258,7 @@ exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -270,7 +270,7 @@ exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -283,7 +283,7 @@ exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -368,7 +368,7 @@ exports[`kol-table-stateful should render with an initial descending sort 1`] = 
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -381,7 +381,7 @@ exports[`kol-table-stateful should render with an initial descending sort 1`] = 
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -393,7 +393,7 @@ exports[`kol-table-stateful should render with an initial descending sort 1`] = 
               <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -406,7 +406,7 @@ exports[`kol-table-stateful should render with an initial descending sort 1`] = 
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -546,7 +546,7 @@ exports[`kol-table-stateful should render with data without sorting 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -559,7 +559,7 @@ exports[`kol-table-stateful should render with data without sorting 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -571,7 +571,7 @@ exports[`kol-table-stateful should render with data without sorting 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -584,7 +584,7 @@ exports[`kol-table-stateful should render with data without sorting 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -732,7 +732,7 @@ exports[`kol-table-stateful should render with label with language  1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -745,7 +745,7 @@ exports[`kol-table-stateful should render with label with language  1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -757,7 +757,7 @@ exports[`kol-table-stateful should render with label with language  1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -770,7 +770,7 @@ exports[`kol-table-stateful should render with label with language  1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -908,7 +908,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -920,14 +920,14 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 1
                   </span>
                 </div>
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -939,14 +939,14 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 2
                   </span>
                 </div>
               </li>
               <li>
                 <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -958,7 +958,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 3
                   </span>
                 </div>
@@ -1071,7 +1071,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -1084,7 +1084,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -1096,7 +1096,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -1109,7 +1109,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -1229,7 +1229,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -1241,14 +1241,14 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 1
                   </span>
                 </div>
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -1260,14 +1260,14 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 2
                   </span>
                 </div>
               </li>
               <li>
                 <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -1279,7 +1279,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 3
                   </span>
                 </div>
@@ -1399,7 +1399,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -1412,7 +1412,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -1424,7 +1424,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -1437,7 +1437,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -1634,7 +1634,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
               </li>
               <li>
                 <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -1646,14 +1646,14 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 1
                   </span>
                 </div>
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -1665,14 +1665,14 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 2
                   </span>
                 </div>
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -1684,7 +1684,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 3
                   </span>
                 </div>
@@ -1804,7 +1804,7 @@ exports[`kol-table-stateful should render with pagination false 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -1817,7 +1817,7 @@ exports[`kol-table-stateful should render with pagination false 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -1829,7 +1829,7 @@ exports[`kol-table-stateful should render with pagination false 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -1842,7 +1842,7 @@ exports[`kol-table-stateful should render with pagination false 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -2189,7 +2189,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -2201,14 +2201,14 @@ exports[`kol-table-stateful should render with pagination object on the second p
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 1
                   </span>
                 </div>
               </li>
               <li>
                 <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -2220,14 +2220,14 @@ exports[`kol-table-stateful should render with pagination object on the second p
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 2
                   </span>
                 </div>
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -2239,7 +2239,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 3
                   </span>
                 </div>
@@ -2249,7 +2249,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -2261,7 +2261,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 5
                   </span>
                 </div>
@@ -2368,7 +2368,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -2381,7 +2381,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -2393,7 +2393,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -2406,7 +2406,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -2502,7 +2502,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -2515,7 +2515,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -2527,7 +2527,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -2540,7 +2540,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -2737,7 +2737,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
               </li>
               <li>
                 <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -2749,14 +2749,14 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 1
                   </span>
                 </div>
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -2768,14 +2768,14 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 2
                   </span>
                 </div>
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -2787,7 +2787,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 3
                   </span>
                 </div>
@@ -2907,7 +2907,7 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -2920,7 +2920,7 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -2932,7 +2932,7 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -2945,7 +2945,7 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -3027,7 +3027,7 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
               </li>
               <li>
                 <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -3039,14 +3039,14 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 1
                   </span>
                 </div>
               </li>
               <li>
                 <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                  <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
@@ -3058,7 +3058,7 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
                       </span>
                     </span>
                   </button>
-                  <span class="visually-hidden" id="nonce">
+                  <span class="visually-hidden" id="aria-description-nonce">
                     kol-page 2
                   </span>
                 </div>
@@ -3151,7 +3151,7 @@ exports[`kol-table-stateful should render with pagination without data 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -3164,7 +3164,7 @@ exports[`kol-table-stateful should render with pagination without data 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -3176,7 +3176,7 @@ exports[`kol-table-stateful should render with pagination without data 1`] = `
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -3189,7 +3189,7 @@ exports[`kol-table-stateful should render with pagination without data 1`] = `
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -3507,7 +3507,7 @@ exports[`kol-table-stateful should render with the props passed to the stateless
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none kol-table__cell--sticky-left" data-sort="sort-NOS" scope="col" style="left: 0px;">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -3520,7 +3520,7 @@ exports[`kol-table-stateful should render with the props passed to the stateless
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -3532,7 +3532,7 @@ exports[`kol-table-stateful should render with the props passed to the stateless
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -3545,7 +3545,7 @@ exports[`kol-table-stateful should render with the props passed to the stateless
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -3647,7 +3647,7 @@ exports[`kol-table-stateful should render with two initial sorts with multi sort
               <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -3660,7 +3660,7 @@ exports[`kol-table-stateful should render with two initial sorts with multi sort
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort – kol-table-sort-order
                     </span>
                   </div>
@@ -3675,7 +3675,7 @@ exports[`kol-table-stateful should render with two initial sorts with multi sort
               <th aria-sort="ascending" class="kol-table__cell kol-table__cell--ascending kol-table__cell--header" data-sort="sort-ASC" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -3688,7 +3688,7 @@ exports[`kol-table-stateful should render with two initial sorts with multi sort
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort – kol-table-sort-order
                     </span>
                   </div>
@@ -3776,7 +3776,7 @@ exports[`kol-table-stateful should render with two initial sorts without multi s
               <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -3789,7 +3789,7 @@ exports[`kol-table-stateful should render with two initial sorts without multi s
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>
@@ -3801,7 +3801,7 @@ exports[`kol-table-stateful should render with two initial sorts without multi s
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
                   <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
-                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                       <span class="kol-button__text kol-span">
                         <span class="kol-span__container">
                           <span class="kol-span__label">
@@ -3814,7 +3814,7 @@ exports[`kol-table-stateful should render with two initial sorts without multi s
                         </span>
                       </span>
                     </button>
-                    <span class="visually-hidden" id="nonce">
+                    <span class="visually-hidden" id="aria-description-nonce">
                       kol-sort
                     </span>
                   </div>

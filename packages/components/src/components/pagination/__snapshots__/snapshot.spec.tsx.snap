@@ -80,7 +80,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -92,14 +92,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -111,7 +111,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 2
               </span>
             </div>
@@ -242,7 +242,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=0
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -254,7 +254,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=0
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
@@ -388,7 +388,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -400,14 +400,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -419,7 +419,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 2
               </span>
             </div>
@@ -429,7 +429,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -441,14 +441,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 8
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -460,14 +460,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 9
               </span>
             </div>
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -479,7 +479,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 10
               </span>
             </div>
@@ -610,7 +610,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=2
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -622,7 +622,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=2
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
@@ -632,7 +632,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=2
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -644,14 +644,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=2
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 9
               </span>
             </div>
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -663,7 +663,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=2
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 10
               </span>
             </div>
@@ -767,7 +767,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -779,14 +779,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -798,14 +798,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 2
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -817,7 +817,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 3
               </span>
             </div>
@@ -827,7 +827,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -839,7 +839,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 12
               </span>
             </div>
@@ -916,7 +916,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -928,14 +928,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 5
               </span>
             </div>
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -947,14 +947,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 6
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -966,7 +966,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 7
               </span>
             </div>
@@ -1073,7 +1073,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1085,14 +1085,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1104,14 +1104,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 2
               </span>
             </div>
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1123,14 +1123,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 3
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1142,14 +1142,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 4
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1161,7 +1161,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 5
               </span>
             </div>
@@ -1327,7 +1327,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1339,14 +1339,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1358,7 +1358,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 2
               </span>
             </div>
@@ -1368,7 +1368,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1380,7 +1380,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 4
               </span>
             </div>
@@ -1546,7 +1546,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1558,14 +1558,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1577,7 +1577,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 2
               </span>
             </div>
@@ -1587,7 +1587,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1599,7 +1599,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 4
               </span>
             </div>
@@ -1762,7 +1762,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
           </li>
           <li>
             <div class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1774,7 +1774,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
@@ -1784,7 +1784,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
           </li>
           <li>
             <div class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1796,14 +1796,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 49
               </span>
             </div>
           </li>
           <li>
             <div aria-current="page" class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1815,14 +1815,14 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 50
               </span>
             </div>
           </li>
           <li>
             <div class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1834,7 +1834,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 51
               </span>
             </div>
@@ -1844,7 +1844,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
           </li>
           <li>
             <div class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1856,7 +1856,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 100
               </span>
             </div>
@@ -1987,7 +1987,7 @@ exports[`kol-pagination should render with _on={} _max=2 _page=1 1`] = `
           </li>
           <li>
             <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1999,14 +1999,14 @@ exports[`kol-pagination should render with _on={} _max=2 _page=1 1`] = `
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 1
               </span>
             </div>
           </li>
           <li>
             <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
-              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+              <button aria-describedby="aria-description-nonce" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -2018,7 +2018,7 @@ exports[`kol-pagination should render with _on={} _max=2 _page=1 1`] = `
                   </span>
                 </span>
               </button>
-              <span class="visually-hidden" id="nonce">
+              <span class="visually-hidden" id="aria-description-nonce">
                 kol-page 2
               </span>
             </div>
