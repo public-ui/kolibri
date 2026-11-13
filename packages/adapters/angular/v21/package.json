@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/angular-v21",
-	"version": "2.2.24-rc.0",
+	"version": "2.2.24-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -70,7 +70,6 @@
 		"@angular/compiler-cli": "21.2.22",
 		"@angular/core": "21.2.22",
 		"@public-ui/components": "workspace:*",
-
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
 		"prettier": "3.9.6",
