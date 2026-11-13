@@ -11,7 +11,8 @@ import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { sass } from '@stencil/sass';
 import { version as KOLIBRI_VERSION } from './package.json' assert { type: 'json' };
 
-const TAGS = [
+const TAGS = [ // probe comment for CI environment check
+	
 	'kol-abbr',
 	'kol-accordion',
 	'kol-alert',
