@@ -3,7 +3,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import { onLocationChange, type UnsubscribeFunction } from '../../../components/link/ariaCurrentService';
 import type { AlignPropType } from '../../../schema';
 import { setEventTarget } from '../../../schema';
-import { nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { BaseWebComponent } from '../base-web-component';
@@ -43,7 +43,7 @@ export type LinkItem = {
 export const createLinkItem = (requestRender: () => void): LinkItem => {
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 	const ctaRef = createCtaRef<HTMLAnchorElement>();
-	const ariaDescriptionId = nonce();
+	const ariaDescriptionId = createUniqueId('aria-description');
 	let resolved: ResolvedLinkProps | undefined;
 	let ariaCurrent = '';
 	let rootElement: HTMLElement | undefined;
