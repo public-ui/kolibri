@@ -1,0 +1,1 @@
+import{D as e,s as t}from"./props-from-config-ytxYrJUY-B-ErBL2e.js";var n=t(`placeholder`,void 0,e);export{n as t};
