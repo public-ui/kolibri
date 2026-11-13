@@ -1,8 +1,8 @@
+import { setTagTransformer } from '@stencil/core';
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister } from 'adopted-style-sheets';
 import type { Mode } from '../schema';
 import { Log, setRuntimeMode } from '../schema';
-import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
 
 type KoliBriOptions = RegisterOptions & {
@@ -23,6 +23,7 @@ type KoliBriOptions = RegisterOptions & {
 
 let initialized = false;
 let options: KoliBriOptions | undefined;
+let tagTransformerSet = false;
 
 export const bootstrap = async (
 	themes:
@@ -37,7 +38,18 @@ export const bootstrap = async (
 
 	initializeI18n(koliBriOptions?.translation?.name ?? 'de', koliBriOptions?.translations);
 	if (koliBriOptions?.transformTagName) {
-		setCustomTagNames(koliBriOptions?.transformTagName);
+		/*
+		 * The transformer has to be registered before the first component is defined, otherwise
+		 * elements resolve under their untransformed tag. Overwriting a transformer after that
+		 * point leaves already defined elements unusable.
+		 */
+		if (tagTransformerSet) {
+			Log.warn('The tag name transformer was already registered. Components already defined keep their current tag and will not resolve under the new one.', {
+				forceLog: true,
+			});
+		}
+		setTagTransformer(koliBriOptions.transformTagName);
+		tagTransformerSet = true;
 	}
 	const coreRegisterReturnValue = await coreRegister(themes, loaders, koliBriOptions);
 	initialized = true;

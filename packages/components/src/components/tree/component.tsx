@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Method, Prop, transformTag, Watch } from '@stencil/core';
 
 import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
@@ -12,7 +12,7 @@ import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from
 import { delegateFocus } from '../../utils/element-focus';
 import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
 
-const isTreeItem = (element?: Element | null): element is HTMLKolTreeItemElement => element?.tagName === KolTreeItemTag.toUpperCase();
+const isTreeItem = (element?: Element | null): element is HTMLKolTreeItemElement => element?.tagName === transformTag(KolTreeItemTag).toUpperCase();
 
 /**
  * @slot - Children as TreeItem Components
@@ -89,7 +89,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 	@Listen('keydown')
 	public async handleKeyDown(event: KeyboardEvent): Promise<void> {
 		const openItems = await this.getOpenTreeItemElements();
-		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
+		const currentTreeItem = document.activeElement?.closest<HTMLKolTreeItemElement>(transformTag(KolTreeItemTag));
 		const hasModifierKeyPressed = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
 
 		if (!openItems || !currentTreeItem) {
@@ -167,7 +167,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 				break;
 			}
 			case '*': {
-				const siblings = currentTreeItem.parentElement?.querySelectorAll(KolTreeItemTag);
+				const siblings = currentTreeItem.parentElement?.querySelectorAll<HTMLKolTreeItemElement>(transformTag(KolTreeItemTag));
 				siblings?.forEach((element) => {
 					void element.expand();
 				});
@@ -179,7 +179,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 	@Listen('focusin')
 	public handleFocusIn(event: FocusEvent): void {
 		// Only delegate if no tree item is already focused
-		if (event.target === this.host && !document.activeElement?.closest(KolTreeItemTag)) {
+		if (event.target === this.host && !document.activeElement?.closest(transformTag(KolTreeItemTag))) {
 			// Defer to next frame to ensure tree is fully ready
 			requestAnimationFrame(() => {
 				void this.focus();
@@ -189,7 +189,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	@Listen('focusout')
 	public handleFocusOut(event: FocusEvent): void {
-		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
+		if (event.relatedTarget && !(event.relatedTarget as Element).closest(transformTag(KolTreeTag))) {
 			/* Tree lost focus */
 			this.ensureActiveItemVisibility();
 		}
@@ -242,7 +242,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 	 */
 	private getTreeItemElements(): HTMLKolTreeItemElement[] {
 		return this.getTopLevelTreeItems().reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
-			const children = currentValue.querySelectorAll(KolTreeItemTag);
+			const children = currentValue.querySelectorAll<HTMLKolTreeItemElement>(transformTag(KolTreeItemTag));
 
 			return [...accumulator, currentValue, ...children];
 		}, []);
@@ -285,7 +285,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 				if (rootNode._active) {
 					return rootNode;
 				}
-				const childMatch = rootNode.querySelector<HTMLKolTreeItemElement>(`${KolTreeItemTag}[_active="true"]`);
+				const childMatch = rootNode.querySelector<HTMLKolTreeItemElement>(`${transformTag(KolTreeItemTag)}[_active="true"]`);
 				if (childMatch?._active) {
 					return childMatch;
 				}
