@@ -1,13 +1,19 @@
 # Welcome to KoliBri
 
-[![npm](https://img.shields.io/npm/v/@public-ui/components)](https://www.npmjs.com/package/@public-ui/components)
+[![a11y](https://img.shields.io/badge/a11y-WCAG_2.2_%2B_BITV_2.0-1B7F4D)](#mission)
+[![last commit](https://img.shields.io/github/last-commit/public-ui/kolibri/develop)](https://github.com/public-ui/kolibri/commits/develop)
+
+[![MCP server](https://img.shields.io/npm/v/@public-ui/mcp?label=MCP%20server)](https://public-ui-kolibri-mcp.vercel.app/)
+[![Agent skills](https://img.shields.io/badge/Agent_Skills-repo-58427C)](https://github.com/public-ui/agent-skills)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](./CONTRIBUTING.md)
+
+[![weekly downloads](https://img.shields.io/npm/dw/@public-ui/components)](https://www.npmjs.com/package/@public-ui/components)
+[![dependents](https://img.shields.io/librariesio/dependents/npm/@public-ui/components)](https://libraries.io/npm/@public-ui/components)
+[![stars](https://img.shields.io/github/stars/public-ui/kolibri)](https://github.com/public-ui/kolibri/stargazers)
+[![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)](https://github.com/public-ui/kolibri/graphs/contributors)
+
 [![license](https://img.shields.io/npm/l/@public-ui/components)](https://github.com/public-ui/kolibri/blob/develop/LICENSE)
-[![downloads](https://img.shields.io/npm/dt/@public-ui/components)](https://www.npmjs.com/package/@public-ui/components)
-[![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
-[![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
-[![size](https://img.shields.io/bundlephobia/min/@public-ui/components)](https://bundlephobia.com/result?p=@public-ui/components)
-![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
-[![mcp-oplist](https://mcptoplist.com/badge/glama%2Fpublic-ui%2Fkolibri.svg)](https://mcptoplist.com/server/glama%2Fpublic-ui%2Fkolibri)
+[![SLSA 3](https://slsa.dev/images/gh-badge-level3.svg)](#slsaprovenance)
 
 > "The accessible HTML standard"
 

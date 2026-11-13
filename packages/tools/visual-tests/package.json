@@ -46,7 +46,7 @@
 		"@unocss/preset-mini": "66.8.1",
 		"@unocss/vite": "66.8.1",
 		"@vitejs/plugin-react-swc": "4.3.3",
-		"adopted-style-sheets": "1.1.9-rc.25",
+		"adopted-style-sheets": "1.2.0-rc.3",
 		"axe-html-reporter": "2.2.11",
 		"http-server": "14.1.1",
 		"npm-run-all2": "9.0.4",

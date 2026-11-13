@@ -43,6 +43,7 @@ export default {
 	pagination: 'Paginierung',
 	'pagination-position-bottom': 'unten',
 	'pagination-position-top': 'oben',
+	progress: 'Fortschritt',
 	readonly: 'schreibgeschützt',
 	'show-password': 'Passwort einblenden',
 	'show-suggestions': 'Vorschläge anzeigen',

@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  '@stencil/core@4.45.2':
-    hash: 1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b
-    path: patches/@stencil__core@4.45.2.patch
-
 importers:
 
   .:
@@ -390,34 +385,34 @@ importers:
         version: link:../icons
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))
+        version: 0.9.0(@stencil/core@4.45.3)
       '@public-ui/stencil-react-output-target':
         specifier: 0.6.0
-        version: 0.6.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))
+        version: 0.6.0(@stencil/core@4.45.3)
       '@public-ui/stencil-solid-output-target':
         specifier: 0.2.0
-        version: 0.2.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))
+        version: 0.2.0(@stencil/core@4.45.3)
       '@public-ui/stencil-vue-output-target':
         specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))
+        version: 0.9.0(@stencil/core@4.45.3)
       '@public-ui/stylelint-rules':
         specifier: workspace:*
         version: link:../tools/stylelint-rules
       '@revolist/svelte-output-target':
         specifier: 0.0.7
-        version: 0.0.7(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))
+        version: 0.0.7(@stencil/core@4.45.3)
       '@stencil-community/postcss':
         specifier: 2.2.0
-        version: 2.2.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))
+        version: 2.2.0(@stencil/core@4.45.3)
       '@stencil/core':
-        specifier: 4.45.2
-        version: 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+        specifier: 4.45.3
+        version: 4.45.3
       '@stencil/playwright':
-        specifier: 0.5.1
-        version: 0.5.1(@playwright/test@1.63.0)(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))
+        specifier: 0.6.1
+        version: 0.6.1(@playwright/test@1.63.0)(@stencil/core@4.45.3)
       '@stencil/sass':
-        specifier: 3.3.2
-        version: 3.3.2(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))
+        specifier: 3.3.3
+        version: 3.3.3(@stencil/core@4.45.3)
       '@types/jest':
         specifier: 29.5.14
         version: 29.5.14
@@ -434,8 +429,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       adopted-style-sheets:
-        specifier: 1.1.9-rc.25
-        version: 1.1.9-rc.25
+        specifier: 1.2.0-rc.3
+        version: 1.2.0-rc.3
       autoprefixer:
         specifier: 10.6.1
         version: 10.6.1(postcss@8.5.31)
@@ -573,8 +568,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       adopted-style-sheets:
-        specifier: 1.1.9-rc.25
-        version: 1.1.9-rc.25
+        specifier: 1.2.0-rc.3
+        version: 1.2.0-rc.3
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
@@ -685,8 +680,8 @@ importers:
         specifier: 4.3.3
         version: 4.3.3(vite@8.3.4(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
       adopted-style-sheets:
-        specifier: 1.1.9-rc.25
-        version: 1.1.9-rc.25
+        specifier: 1.2.0-rc.3
+        version: 1.2.0-rc.3
       eslint:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
@@ -736,8 +731,8 @@ importers:
         specifier: workspace:*
         version: link:../../adapters/react-v19
       '@stencil/core':
-        specifier: 4.45.2
-        version: 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+        specifier: 4.45.3
+        version: 4.45.3
       '@types/node':
         specifier: 26.4.0
         version: 26.4.0
@@ -782,8 +777,8 @@ importers:
         specifier: 19.2.5
         version: 19.2.5(@types/react@19.2.18)
       adopted-style-sheets:
-        specifier: 1.1.9-rc.25
-        version: 1.1.9-rc.25
+        specifier: 1.2.0-rc.3
+        version: 1.2.0-rc.3
       eslint:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
@@ -1530,8 +1525,8 @@ importers:
         specifier: 4.3.3
         version: 4.3.3(vite@8.3.4(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
       adopted-style-sheets:
-        specifier: 1.1.9-rc.25
-        version: 1.1.9-rc.25
+        specifier: 1.2.0-rc.3
+        version: 1.2.0-rc.3
       axe-html-reporter:
         specifier: 2.2.11
         version: 2.2.11(axe-core@4.14.0)
@@ -5510,20 +5505,20 @@ packages:
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0 || >=4.0.0'
 
-  '@stencil/core@4.45.2':
-    resolution: {integrity: sha512-CNkPVZsqyNMjFMX9bEkMJsvBbQxjLw480OaoamoqiLPdQCFjJQReeOjnWX1A5ivSn3UYEIJ6MoN5VXDkaHGt8Q==}
+  '@stencil/core@4.45.3':
+    resolution: {integrity: sha512-QcQv3786blBPbINSIXXqpufsQGJosp++GCjcPpSwcxks2/UtVV2ILggpGG4SSd+AteSbMv+8ewpGea00nGqOEw==}
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
 
-  '@stencil/playwright@0.5.1':
-    resolution: {integrity: sha512-PgvljAczt+lmcl66TwteNnfZmvTGZpJnThaj6fT7mu3K7+xY/2W0rqa+5yqqPoo5ZlNXsbLsuFvKDFXq+g8HJQ==}
+  '@stencil/playwright@0.6.1':
+    resolution: {integrity: sha512-tavqMzp8ri+jPHukC68oEov8fV9BCrKMJPUH1UzQVbaDnh7HNsd/mvDKSF0JrK+UcQB7UpZXQCLHUHPEBDLrTQ==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       '@playwright/test': '>=1.50.0'
-      '@stencil/core': ^4.0.0 || ^5.0.0 || >=5.0.0-alpha.19 <5.0.0-next.0
+      '@stencil/core': ^4.0.0 || ^5.0.0-alpha.19
 
-  '@stencil/sass@3.3.2':
-    resolution: {integrity: sha512-Hv9T2r0RTbpcerawHn1jQJ72z3jVK5Ew5PEKDLo6gBK+pdz8+zxWSCtRfbXLJgeG4UVR54vs0awq9/DXBithIw==}
+  '@stencil/sass@3.3.3':
+    resolution: {integrity: sha512-NiaoOry3xvPcsRyQFHps/Ug8okgTVlPqHmJkx0QN0GSEcAB67ryF/4sGRejgpIMUidnyzl1OjGEHXFnq1L6phg==}
     engines: {node: '>=22.0.0', pnpm: '>=9.0.0'}
     peerDependencies:
       '@stencil/core': ^4.0.0 || ^5.0.0 || >=5.0.0-alpha.19 <5.0.0-next.0
@@ -6401,8 +6396,8 @@ packages:
     resolution: {integrity: sha512-Xwrja8nx9e5o2N1my4DsKCeKpdrnACyr1wtbPxBDgGzKzKyE9kRtBFA8mWldI+RVlD7CBZNWY/wQ2+ydwOR6kQ==}
     engines: {node: '>=14.0'}
 
-  adopted-style-sheets@1.1.9-rc.25:
-    resolution: {integrity: sha512-YTAJ3i7V3e3azDb6uktTcslbLRd+JCvIuOtGtJOI7YWja8EQ0uQdDX+ZRCDpUML3R47h+pMhhTNFWoUVPbo5dA==}
+  adopted-style-sheets@1.2.0-rc.3:
+    resolution: {integrity: sha512-KgJAqhLusbB6E7qql4WAiHknJ/SyRnA88GcHWPiBdxT2G0+C+iJmrMlBlVSWWN1dGxoCCvUWt+uyz+yLeIJP5g==}
 
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -17370,21 +17365,21 @@ snapshots:
 
   '@protobufjs/utf8@1.1.2': {}
 
-  '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))':
+  '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.45.3)':
     dependencies:
-      '@stencil/core': 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+      '@stencil/core': 4.45.3
 
-  '@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))':
+  '@public-ui/stencil-react-output-target@0.6.0(@stencil/core@4.45.3)':
     dependencies:
-      '@stencil/core': 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+      '@stencil/core': 4.45.3
 
-  '@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))':
+  '@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.45.3)':
     dependencies:
-      '@stencil/core': 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+      '@stencil/core': 4.45.3
 
-  '@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))':
+  '@public-ui/stencil-vue-output-target@0.9.0(@stencil/core@4.45.3)':
     dependencies:
-      '@stencil/core': 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+      '@stencil/core': 4.45.3
 
   '@puppeteer/browsers@2.13.2(bare-buffer@3.7.1)':
     dependencies:
@@ -17458,9 +17453,9 @@ snapshots:
       '@resvg/resvg-js-win32-ia32-msvc': 2.6.2
       '@resvg/resvg-js-win32-x64-msvc': 2.6.2
 
-  '@revolist/svelte-output-target@0.0.7(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))':
+  '@revolist/svelte-output-target@0.0.7(@stencil/core@4.45.3)':
     dependencies:
-      '@stencil/core': 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+      '@stencil/core': 4.45.3
 
   '@rolldown/binding-android-arm-eabi@1.2.16':
     optional: true
@@ -17901,12 +17896,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@stencil-community/postcss@2.2.0(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))':
+  '@stencil-community/postcss@2.2.0(@stencil/core@4.45.3)':
     dependencies:
-      '@stencil/core': 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+      '@stencil/core': 4.45.3
       postcss: 8.4.49
 
-  '@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)':
+  '@stencil/core@4.45.3':
     optionalDependencies:
       '@rollup/rollup-darwin-arm64': 4.44.0
       '@rollup/rollup-darwin-x64': 4.44.0
@@ -17917,17 +17912,17 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.44.0
       '@rollup/rollup-win32-x64-msvc': 4.44.0
 
-  '@stencil/playwright@0.5.1(@playwright/test@1.63.0)(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))':
+  '@stencil/playwright@0.6.1(@playwright/test@1.63.0)(@stencil/core@4.45.3)':
     dependencies:
       '@playwright/test': 1.63.0
-      '@stencil/core': 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+      '@stencil/core': 4.45.3
       deepmerge: 4.3.1
       fast-deep-equal: 3.1.3
       find-up: 8.0.0
 
-  '@stencil/sass@3.3.2(@stencil/core@4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b))':
+  '@stencil/sass@3.3.3(@stencil/core@4.45.3)':
     dependencies:
-      '@stencil/core': 4.45.2(patch_hash=1f356d60e6eba6efaa61e9e788fa745aafe1ca3f3b7c295f8443eb920ddbf65b)
+      '@stencil/core': 4.45.3
       sass-embedded: 1.105.2
 
   '@sveltejs/acorn-typescript@1.0.13(acorn@8.19.0)':
@@ -19010,7 +19005,7 @@ snapshots:
 
   adm-zip@0.6.1: {}
 
-  adopted-style-sheets@1.1.9-rc.25:
+  adopted-style-sheets@1.2.0-rc.3:
     dependencies:
       loglevel: 1.9.2
 
