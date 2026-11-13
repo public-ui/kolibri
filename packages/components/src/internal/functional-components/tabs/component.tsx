@@ -29,11 +29,19 @@ const BEM_CLASS_TABS__TABLIST = tabsBem('tablist');
 export const TabsFC: FC<FunctionalComponentProps<TabsApi>> = (props) => {
 	const { align, class: hostClass, createButton, handleBlur, handleKeyDown, hasCreateButton, label, refContent, refRoot, tabButtons } = props;
 
+	/* `blur` does not bubble, so the tab list listens to `focusout` and reports a blur only when the focus leaves it. */
+	const handleFocusOut = (event: FocusEvent): void => {
+		const tablist = event.currentTarget as HTMLElement;
+		if (!(event.relatedTarget instanceof Node && tablist.contains(event.relatedTarget))) {
+			handleBlur();
+		}
+	};
+
 	return (
 		<BemRootNodeFC block="kol-tabs" modifiers={{ [`align-${align}`]: true }} class={hostClass} ref={refRoot}>
 			<div class={BEM_CLASS_TABS__BUTTON_GROUP}>
 				{/* The tab buttons inside are focusable; the tab list itself is not part of the tab order. */}
-				<div aria-label={label} class={BEM_CLASS_TABS__TABLIST} role="tablist" tabIndex={-1} onKeyDown={handleKeyDown} onBlur={handleBlur}>
+				<div aria-label={label} class={BEM_CLASS_TABS__TABLIST} role="tablist" tabIndex={-1} onKeyDown={handleKeyDown} onFocusout={handleFocusOut}>
 					{tabButtons.map(({ buttonProps, refBox }) => (
 						<div class={BEM_CLASS_TABS__TAB} ref={refBox}>
 							<ButtonFC {...buttonProps} />
