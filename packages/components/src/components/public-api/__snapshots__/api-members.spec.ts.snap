@@ -152,29 +152,6 @@ exports[`card pins the members of the *Api type (callbacks, methods, refs, emitt
 }
 `;
 
-exports[`click-button pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
-{
-  "Callbacks": {
-    "click": {
-      "doc": "",
-      "type": "() => void",
-    },
-  },
-  "Methods": {
-    "focus": {
-      "doc": "",
-      "type": "() => void",
-    },
-  },
-  "Refs": {
-    "button": {
-      "doc": "",
-      "type": "HTMLButtonElement",
-    },
-  },
-}
-`;
-
 exports[`collapsible pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
 {
   "Callbacks": {
@@ -458,49 +435,6 @@ exports[`quote pins the members of the *Api type (callbacks, methods, refs, emit
 exports[`select pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
 
 exports[`single-select pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
-
-exports[`skeleton pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
-{
-  "Callbacks": {
-    "click": {
-      "doc": "",
-      "type": "() => void",
-    },
-  },
-  "Emitters": {
-    "loaded": {
-      "doc": "",
-      "type": "number",
-    },
-    "rendered": {
-      "doc": "",
-      "type": "void",
-    },
-  },
-  "Listeners": {
-    "keydown": {
-      "doc": "",
-      "type": "KeyboardEvent",
-    },
-  },
-  "Methods": {
-    "focus": {
-      "doc": "",
-      "type": "(options?: KolFocusOptions) => void",
-    },
-    "toggle": {
-      "doc": "",
-      "type": "() => void",
-    },
-  },
-  "Refs": {
-    "button": {
-      "doc": "",
-      "type": "HTMLButtonElement",
-    },
-  },
-}
-`;
 
 exports[`skip-nav pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
 
