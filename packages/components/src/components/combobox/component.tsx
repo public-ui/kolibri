@@ -650,7 +650,7 @@ export class KolCombobox
 			type: 'text',
 			role: 'combobox',
 			'aria-activedescendant': this.getActiveDescendant(),
-			'aria-autocomplete': 'both',
+			'aria-autocomplete': 'list',
 			'aria-controls': createRelatedUniqueId(id, 'listbox'),
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
 			'aria-expanded': this.isOpen ? 'true' : 'false',
