@@ -429,8 +429,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       adopted-style-sheets:
-        specifier: 1.2.0-rc.2
-        version: 1.2.0-rc.2
+        specifier: 1.1.9-rc.25
+        version: 1.1.9-rc.25
       autoprefixer:
         specifier: 10.6.1
         version: 10.6.1(postcss@8.5.31)
@@ -568,8 +568,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       adopted-style-sheets:
-        specifier: 1.2.0-rc.2
-        version: 1.2.0-rc.2
+        specifier: 1.1.9-rc.25
+        version: 1.1.9-rc.25
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
@@ -677,8 +677,8 @@ importers:
         specifier: 4.3.3
         version: 4.3.3(vite@8.3.4(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
       adopted-style-sheets:
-        specifier: 1.2.0-rc.2
-        version: 1.2.0-rc.2
+        specifier: 1.1.9-rc.25
+        version: 1.1.9-rc.25
       eslint:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
@@ -774,8 +774,8 @@ importers:
         specifier: 19.2.5
         version: 19.2.5(@types/react@19.2.18)
       adopted-style-sheets:
-        specifier: 1.2.0-rc.2
-        version: 1.2.0-rc.2
+        specifier: 1.1.9-rc.25
+        version: 1.1.9-rc.25
       eslint:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
@@ -1522,8 +1522,8 @@ importers:
         specifier: 4.3.3
         version: 4.3.3(vite@8.3.4(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
       adopted-style-sheets:
-        specifier: 1.2.0-rc.2
-        version: 1.2.0-rc.2
+        specifier: 1.1.9-rc.25
+        version: 1.1.9-rc.25
       axe-html-reporter:
         specifier: 2.2.11
         version: 2.2.11(axe-core@4.14.0)
@@ -6249,8 +6249,8 @@ packages:
     resolution: {integrity: sha512-Xwrja8nx9e5o2N1my4DsKCeKpdrnACyr1wtbPxBDgGzKzKyE9kRtBFA8mWldI+RVlD7CBZNWY/wQ2+ydwOR6kQ==}
     engines: {node: '>=14.0'}
 
-  adopted-style-sheets@1.2.0-rc.2:
-    resolution: {integrity: sha512-5E7jGqU7GRqSb/VWubKoVAA7JxIl/jk4/SWcp3EZ2udAWtEsMHR8vfQmxRZVdnoyqsQHv9NUuTqWxm/v2a9Z3Q==}
+  adopted-style-sheets@1.1.9-rc.25:
+    resolution: {integrity: sha512-YTAJ3i7V3e3azDb6uktTcslbLRd+JCvIuOtGtJOI7YWja8EQ0uQdDX+ZRCDpUML3R47h+pMhhTNFWoUVPbo5dA==}
 
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -18756,7 +18756,7 @@ snapshots:
 
   adm-zip@0.6.1: {}
 
-  adopted-style-sheets@1.2.0-rc.2:
+  adopted-style-sheets@1.1.9-rc.25:
     dependencies:
       loglevel: 1.9.2
 
