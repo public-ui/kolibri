@@ -26,8 +26,8 @@ exports[`kol-input-file should render with _accept=".txt" _icons={"left":{"icon"
               kol-filename-text
             </span>
             <input accept=".txt" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" multiple="" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -99,8 +99,8 @@ exports[`kol-input-file should render with _accept="image/*,.pdf" _label="Label"
               kol-filename-text
             </span>
             <input accept="image/*,.pdf" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -144,8 +144,8 @@ exports[`kol-input-file should render with _label="Label" _multiple=true _name="
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" multiple="" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -192,8 +192,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -237,8 +237,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -282,8 +282,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--disabled kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" disabled="" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--disabled kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" disabled="" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -327,8 +327,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input aria-label="Label" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -385,8 +385,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input aria-describedby="input-file-hint-nonce" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -436,8 +436,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -487,8 +487,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -534,8 +534,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -617,8 +617,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -662,8 +662,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input aria-describedby="input-file-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -716,8 +716,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input aria-describedby="input-file-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -770,8 +770,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -815,8 +815,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -863,8 +863,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -909,8 +909,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -980,8 +980,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--touched" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1025,8 +1025,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1070,8 +1070,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1115,8 +1115,8 @@ exports[`kol-input-file should render with _label="Label" _name="field" _require
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--required" id="input-file-nonce" name="field" required="" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1160,8 +1160,8 @@ exports[`kol-input-file should render with _label="Label" 1`] = `
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
@@ -1210,8 +1210,8 @@ exports[`kol-input-file should render with _label=[{"text":"partly english","lan
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" type="button">
+            <div aria-hidden="true" class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">
