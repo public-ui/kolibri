@@ -81,7 +81,7 @@ export type PaginationItem = {
 	applyCustomClass: (value?: CustomClassPropType) => void;
 	/** An object sets single buttons and keeps the others. */
 	applyHasButtons: (value?: boolean | Stringified<PaginationHasButton>) => void;
-	applyLabel: (value?: LabelPropType) => void;
+	applyLabel: (value?: LabelPropType, required?: boolean) => void;
 	applyMax: (value?: number) => void;
 	applyOn: (value?: KoliBriPaginationButtonCallbacks) => void;
 	applyPage: (value?: number) => void;
@@ -189,11 +189,11 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		});
 	};
 
-	const applyLabel = (value: LabelPropType | undefined, initial: boolean): void => {
+	const applyLabel = (value: LabelPropType | undefined, initial: boolean, required?: boolean): void => {
 		if (!initial) {
 			removeNavLabel(store.get('label'));
 		}
-		labelProp.apply(value ?? translatePagination, (v) => store.set('label', v));
+		labelProp.apply(value, (v) => store.set('label', v ?? translatePagination), required);
 		addNavLabel(store.get('label'));
 	};
 
@@ -240,7 +240,7 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		applyBoundaryCount: (value) => boundaryCountProp.apply(value, (v) => store.set('boundaryCount', v)),
 		applyCustomClass: (value) => customClassProp.apply(value, (v) => store.set('customClass', v)),
 		applyHasButtons: (value) => paginationHasButtonsProp.apply(value, (v) => store.set('hasButtons', { ...store.get('hasButtons'), ...v })),
-		applyLabel: (value) => applyLabel(value, false),
+		applyLabel: (value, required) => applyLabel(value, false, required),
 		applyMax: (value) => {
 			if (value === undefined || value === null) {
 				return;
