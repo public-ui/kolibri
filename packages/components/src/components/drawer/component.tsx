@@ -20,7 +20,7 @@ import type {
 	LabelLangSegmentsPropType,
 	OpenPropType,
 } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
@@ -39,7 +39,7 @@ import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProps, WebComponentInterface<DrawerApi> {
 	@Element() private readonly host?: HTMLKolDrawerElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	/** Named `expanded` because the deprecated `open()` method occupies the member name `open`. */
 	@State() public expanded: boolean = false;

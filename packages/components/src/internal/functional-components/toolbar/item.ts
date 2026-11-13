@@ -3,7 +3,7 @@ import { getFeatureFlag } from 'adopted-style-sheets';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../../../components/form/controller';
 import type { ToolbarItemPropType } from '../../../schema';
 import { setEventTarget } from '../../../schema';
-import { nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { BaseWebComponent } from '../base-web-component';
@@ -78,7 +78,7 @@ export const createToolbarItem = (
 const createButtonItem = (item: Extract<ToolbarItemPropType, { type: 'button' }>, getFlagHost: () => HTMLElement | undefined): ToolbarButtonItem => {
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 	const ctaRef = createCtaRef<HTMLButtonElement>();
-	const ariaDescriptionId = nonce();
+	const ariaDescriptionId = createUniqueId('aria-description');
 	let wrapper: HTMLElement | undefined;
 
 	const props = resolveButtonProps(item, getFlagHost());
@@ -153,7 +153,7 @@ const createButtonItem = (item: Extract<ToolbarItemPropType, { type: 'button' }>
 const createLinkItem = (item: Extract<ToolbarItemPropType, { type: 'link' }>, getFlagHost: () => HTMLElement | undefined): ToolbarLinkItem => {
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 	const ctaRef = createCtaRef<HTMLAnchorElement>();
-	const ariaDescriptionId = nonce();
+	const ariaDescriptionId = createUniqueId('aria-description');
 	let wrapper: HTMLElement | undefined;
 
 	const link: EmbeddedLinkProps = item;

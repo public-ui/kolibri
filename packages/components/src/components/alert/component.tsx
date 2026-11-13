@@ -19,7 +19,7 @@ import type {
 	KoliBriAlertEventCallbacks,
 	LabelLangSegmentsPropType,
 } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -40,7 +40,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 
 	@State() public headingId: string = createUniqueId('alert-heading');
 
-	@State() public closerAriaDescriptionId: string = nonce();
+	@State() public closerAriaDescriptionId: string = createUniqueId('closer-description');
 
 	private alertTimeout?: ReturnType<typeof setTimeout>;
 

@@ -3,7 +3,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import type { AlertPropType, IdPropType, MsgPropType, Stringified } from '../../../schema';
 import { normalizeMsg } from '../../../schema';
 import clsx from '../../../utils/clsx';
-import { createRelatedUniqueId, createUniqueId, nonce } from '../../../utils/dev.utils';
+import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { AlertFC } from '../alert/component';
 
 export type FormFieldMsgFCProps = JSXBase.HTMLAttributes<HTMLElement> & {
@@ -21,10 +21,10 @@ export const FormFieldMsgFC: FC<FormFieldMsgFCProps> = ({ alert, hideMsg, msg, i
 		<AlertFC
 			alert={hideMsg ? false : (message?._alert ?? alert === true)}
 			class={clsx('kol-form-field__msg', hideMsg && 'visually-hidden', classNames)}
-			closerAriaDescriptionId={nonce()}
+			closerAriaDescriptionId={createRelatedUniqueId(id, 'msg-closer-description')}
 			handleCloserClick={() => undefined}
 			hasCloser={false}
-			headingId={createUniqueId('alert-heading')}
+			headingId={createRelatedUniqueId(id, 'msg-heading')}
 			id={createRelatedUniqueId(id, 'msg')}
 			label=""
 			level={0}

@@ -1,0 +1,645 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`abbr pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`alert pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "closerClick": {
+      "doc": "Click handler bound to the closer button. Implemented by the web component, which stops the event propagation, invokes the consumer's \`onClose\` callback and dispatches the custom \`KolEvent.close\` event on the host element.",
+      "type": "(event: MouseEvent) => void",
+    },
+  },
+  "Refs": {
+    "closerButton": {
+      "doc": "Interactive closer button element; also the anchor for the closer tooltip.",
+      "type": "HTMLButtonElement",
+    },
+    "closerTooltip": {
+      "doc": "Floating tooltip container of the closer button, managed by the TooltipBehavior.",
+      "type": "HTMLDivElement",
+    },
+  },
+}
+`;
+
+exports[`avatar pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`badge pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "blur": {
+      "doc": "",
+      "type": "(event: FocusEvent) => void",
+    },
+    "click": {
+      "doc": "",
+      "type": "(event: MouseEvent) => void",
+    },
+    "focus": {
+      "doc": "",
+      "type": "(event: FocusEvent) => void",
+    },
+    "mouseDown": {
+      "doc": "",
+      "type": "(event: MouseEvent) => void",
+    },
+  },
+  "Methods": {
+    "focus": {
+      "doc": "",
+      "type": "(options?: KolFocusOptions) => void",
+    },
+  },
+  "Refs": {
+    "smartButton": {
+      "doc": "",
+      "type": "HTMLButtonElement",
+    },
+    "tooltip": {
+      "doc": "",
+      "type": "HTMLDivElement",
+    },
+  },
+}
+`;
+
+exports[`breadcrumb pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`button pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "blur": {
+      "doc": "Blur handler bound to the button element. Implemented by the web component, which also dispatches the custom \`KolEvent.blur\` event on the host element.",
+      "type": "(event: FocusEvent) => void",
+    },
+    "click": {
+      "doc": "Click handler bound to the button element. Implemented by the web component, which propagates submit/reset to the surrounding form and dispatches \`KolEvent.click\`.",
+      "type": "(event: MouseEvent) => void",
+    },
+    "focus": {
+      "doc": "Focus handler bound to the button element. Implemented by the web component, which also dispatches the custom \`KolEvent.focus\` event on the host element.",
+      "type": "(event: FocusEvent) => void",
+    },
+    "mouseDown": {
+      "doc": "Mousedown handler bound to the button element. Implemented by the web component, which also dispatches the custom \`KolEvent.mousedown\` event on the host element.",
+      "type": "(event: MouseEvent) => void",
+    },
+  },
+  "Methods": {
+    "click": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "focus": {
+      "doc": "",
+      "type": "(options?: KolFocusOptions) => void",
+    },
+  },
+  "Refs": {
+    "button": {
+      "doc": "",
+      "type": "HTMLButtonElement",
+    },
+    "tooltip": {
+      "doc": "",
+      "type": "HTMLDivElement",
+    },
+  },
+}
+`;
+
+exports[`card pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "blur": {
+      "doc": "\`blur\` and \`focus\` belong to the heading link — the only element the card's own \`_on\` callbacks describe. \`close\` is the close button's click. The web component implements all three; the FC-facing \`CardFCProps\` decides which of them a composer may omit.",
+      "type": "(event: FocusEvent) => void",
+    },
+    "close": {
+      "doc": "",
+      "type": "(event: MouseEvent) => void",
+    },
+    "focus": {
+      "doc": "",
+      "type": "(event: FocusEvent) => void",
+    },
+  },
+  "Methods": {
+    "click": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "focus": {
+      "doc": "",
+      "type": "(options?: KolFocusOptions) => void",
+    },
+  },
+  "Refs": {
+    "closeButton": {
+      "doc": "",
+      "type": "HTMLButtonElement",
+    },
+    "cta": {
+      "doc": "The heading link's anchor; the web component always provides the ref setter.",
+      "type": "HTMLAnchorElement",
+    },
+    "tooltip": {
+      "doc": "",
+      "type": "HTMLDivElement",
+    },
+  },
+}
+`;
+
+exports[`collapsible pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "toggle": {
+      "doc": "Click handler bound to the \`<summary>\` element. Implemented by the web component, which suppresses the user agent's own toggle (so the collapse can be animated), flips the mutable \`_open\` prop and — delayed so the reflected attribute is already updated — dispatches the custom \`KolEvent.click\`/\`KolEvent.toggle\` events on the host element and invokes the consumer's \`onClick\`/\`onToggle\` callbacks.",
+      "type": "(event: MouseEvent) => void",
+    },
+  },
+  "Methods": {
+    "click": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "focus": {
+      "doc": "",
+      "type": "(options?: KolFocusOptions) => void",
+    },
+  },
+  "Refs": {
+    "headingButton": {
+      "doc": "The \`<summary>\` element — the disclosure control \`focus()\` and \`click()\` delegate to.",
+      "type": "HTMLElement",
+    },
+  },
+}
+`;
+
+exports[`combobox pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`counter pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`dialog pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "cancel": {
+      "doc": "",
+      "type": "(event: Event) => void",
+    },
+    "close": {
+      "doc": "",
+      "type": "(event: Event) => void",
+    },
+  },
+  "Methods": {
+    "close": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "closeModal": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "openModal": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "show": {
+      "doc": "",
+      "type": "(modal?: boolean) => void",
+    },
+    "showModal": {
+      "doc": "",
+      "type": "() => void",
+    },
+  },
+  "Refs": {
+    "dialog": {
+      "doc": "",
+      "type": "HTMLDialogElement",
+    },
+  },
+}
+`;
+
+exports[`drawer pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "animationEnd": {
+      "doc": "Animation handler on the sliding wrapper. The drawer closes its \`<dialog>\` only once the slide-out animation has finished, so the panel stays visible while it plays.",
+      "type": "(event: AnimationEvent) => void",
+    },
+    "cancel": {
+      "doc": "Both handle the native events of the \`<dialog>\` element.",
+      "type": "(event: Event) => void",
+    },
+    "close": {
+      "doc": "",
+      "type": "(event: Event) => void",
+    },
+  },
+  "Methods": {
+    "close": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "open": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "show": {
+      "doc": "",
+      "type": "(modal?: boolean) => void",
+    },
+    "showModal": {
+      "doc": "",
+      "type": "() => void",
+    },
+  },
+  "Refs": {
+    "dialog": {
+      "doc": "",
+      "type": "HTMLDialogElement",
+    },
+    "wrapper": {
+      "doc": "The sliding wrapper — the element the themes animate. The web component reads its computed \`animation-name\` to tell a themed drawer, which closes after its animation, from an unstyled one, which closes right away.",
+      "type": "HTMLDivElement",
+    },
+  },
+}
+`;
+
+exports[`form pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "reset": {
+      "doc": "Reset handler bound to the form element. Implemented by the web component, which prevents the default, invokes \`_on.onReset\` and dispatches \`KolEvent.reset\` on the host.",
+      "type": "(event: Event) => void",
+    },
+    "submit": {
+      "doc": "Submit handler bound to the form element. Implemented by the web component, which prevents the default, invokes \`_on.onSubmit\` and dispatches \`KolEvent.submit\` on the host.",
+      "type": "(event: Event) => void",
+    },
+  },
+  "Methods": {
+    "focusErrorList": {
+      "doc": "",
+      "type": "(options?: KolFocusOptions) => void",
+    },
+  },
+}
+`;
+
+exports[`form-association pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`form-field pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`heading pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`icon pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`image pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-checkbox pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-color pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-date pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-email pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-file pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-number pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-password pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-radio pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-range pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`input-text pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`kolibri pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`link pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "anchorClick": {
+      "doc": "Click handler bound to the anchor element. Implemented by the web component (\`handleAnchorClick\`), which also dispatches the custom \`KolEvent.click\` event on the host element.",
+      "type": "(event: Event) => void",
+    },
+  },
+  "Methods": {
+    "click": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "focus": {
+      "doc": "",
+      "type": "(options?: FocusOptions) => void",
+    },
+  },
+  "Refs": {
+    "anchor": {
+      "doc": "",
+      "type": "HTMLAnchorElement",
+    },
+    "tooltip": {
+      "doc": "",
+      "type": "HTMLDivElement",
+    },
+  },
+}
+`;
+
+exports[`meter pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`nav pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "toggleCompact": {
+      "doc": "The compact button was clicked.",
+      "type": "() => void",
+    },
+    "toggleExpansion": {
+      "doc": "An entry was clicked; its children expand or collapse.",
+      "type": "(children?: NavChildren) => void",
+    },
+  },
+}
+`;
+
+exports[`pagination pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "pageClick": {
+      "doc": "A page button or a navigation button was clicked; \`page\` is its target page.",
+      "type": "(event: Event, page: number) => void",
+    },
+    "pageSizeChange": {
+      "doc": "The page size select changed.",
+      "type": "(event: Event, value: unknown) => void",
+    },
+  },
+}
+`;
+
+exports[`popover pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`popover-button pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "blur": {
+      "doc": "Blur handler bound to the button element. Implemented by the web component, which also dispatches the custom \`KolEvent.blur\` event on the host element.",
+      "type": "(event: FocusEvent) => void",
+    },
+    "click": {
+      "doc": "Click handler bound to the button element. Implemented by the web component; toggles the popover and dispatches \`KolEvent.click\`. Not exposed as a consumer callback.",
+      "type": "(event: MouseEvent) => void",
+    },
+    "focus": {
+      "doc": "Focus handler bound to the button element. Implemented by the web component, which also dispatches the custom \`KolEvent.focus\` event on the host element.",
+      "type": "(event: FocusEvent) => void",
+    },
+    "mouseDown": {
+      "doc": "Mousedown handler bound to the button element. Implemented by the web component, which also dispatches the custom \`KolEvent.mousedown\` event on the host element.",
+      "type": "(event: MouseEvent) => void",
+    },
+  },
+  "Refs": {
+    "button": {
+      "doc": "",
+      "type": "HTMLButtonElement",
+    },
+    "popover": {
+      "doc": "",
+      "type": "HTMLDivElement",
+    },
+    "tooltip": {
+      "doc": "",
+      "type": "HTMLDivElement",
+    },
+  },
+}
+`;
+
+exports[`progress pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`quote pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`select pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`single-select pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`skip-nav pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`span pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`spin pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`split-button pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Refs": {
+    "dropdown": {
+      "doc": "The box around the dropdown. It carries the consumer class the predecessor put on its \`kol-popover-button-wc\` element, and is the element the popover button's synthetic \`KolEvent\` DOM events are dispatched on.",
+      "type": "HTMLDivElement",
+    },
+  },
+}
+`;
+
+exports[`table-stateful pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Listeners": {
+    "changeHeaderCells": {
+      "doc": "The settings menu applied new horizontal header cells.",
+      "type": "CustomEvent<KoliBriTableHeaderCell[][]>",
+    },
+    "keydown": {
+      "doc": "Arrow up/down moves the focus between the selection checkboxes.",
+      "type": "KeyboardEvent",
+    },
+  },
+  "Methods": {
+    "getSelection": {
+      "doc": "Returns the selected rows.",
+      "type": "() => KoliBriTableDataType[] | null",
+    },
+    "resetSort": {
+      "doc": "Resets the sort to the one defined in the headers.",
+      "type": "() => void",
+    },
+  },
+}
+`;
+
+exports[`table-stateless pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "renderCell": {
+      "doc": "Runs a cell's custom \`render\` function against its rendered \`<td>\`.",
+      "type": "(cell: KoliBriTableCell, element?: HTMLElement) => void",
+    },
+    "selectionChange": {
+      "doc": "A selection checkbox or radio changed; the payload is the complete new selection.",
+      "type": "(event: Event, payload: SelectionChangeEventPayload) => void",
+    },
+    "sort": {
+      "doc": "A sort button of a header cell was clicked.",
+      "type": "(event: MouseEvent, payload: SortEventPayload) => void",
+    },
+  },
+  "Listeners": {
+    "changeHeaderCells": {
+      "doc": "The settings menu applied new horizontal header cells.",
+      "type": "CustomEvent<KoliBriTableHeaderCell[][]>",
+    },
+    "keydown": {
+      "doc": "Arrow up/down moves the focus between the selection checkboxes.",
+      "type": "KeyboardEvent",
+    },
+  },
+  "Refs": {
+    "scrollContainer": {
+      "doc": "",
+      "type": "HTMLDivElement",
+    },
+    "table": {
+      "doc": "",
+      "type": "HTMLTableElement",
+    },
+  },
+}
+`;
+
+exports[`tabs pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "blur": {
+      "doc": "Blur handler of the tab list; resets the keyboard focus position.",
+      "type": "() => void",
+    },
+    "keyDown": {
+      "doc": "Keydown handler of the tab list: arrow keys move between tabs, Enter and Space activate.",
+      "type": "(event: KeyboardEvent) => void",
+    },
+  },
+  "Methods": {
+    "click": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "focus": {
+      "doc": "",
+      "type": "(options?: KolFocusOptions) => void",
+    },
+  },
+  "Refs": {
+    "content": {
+      "doc": "The tab panel container. The panels are created imperatively by the web component, because every panel projects a light-DOM child through a named slot.",
+      "type": "HTMLDivElement",
+    },
+    "root": {
+      "doc": "The BEM root, used to look up a tab button by id when moving the focus.",
+      "type": "HTMLDivElement",
+    },
+  },
+}
+`;
+
+exports[`text-input pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`textarea pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+
+exports[`toolbar pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Methods": {
+    "click": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "focus": {
+      "doc": "",
+      "type": "(options?: KolFocusOptions) => void",
+    },
+  },
+}
+`;
+
+exports[`tooltip pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Methods": {
+    "hideTooltip": {
+      "doc": "",
+      "type": "() => void",
+    },
+  },
+}
+`;
+
+exports[`tree pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "slotchange": {
+      "doc": "Bound to the default slot. \`slotchange\` is not composed, so it never reaches the host element: the web component has to listen on the slot itself to track the top-level items.",
+      "type": "() => void",
+    },
+  },
+  "Methods": {
+    "focus": {
+      "doc": "",
+      "type": "(options?: KolFocusOptions) => void",
+    },
+  },
+}
+`;
+
+exports[`tree-item pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "anchorClick": {
+      "doc": "Click handler of the link's anchor. Implemented by the web component, which dispatches the \`KolEvent.click\` DOM event with the href on the tree item host.",
+      "type": "(event: Event) => void",
+    },
+    "slotchange": {
+      "doc": "Bound to the default slot, which holds the nested tree items.",
+      "type": "() => void",
+    },
+    "toggleClick": {
+      "doc": "Bound to the chevron in front of the label: expands or collapses the item.",
+      "type": "(event: MouseEvent) => void",
+    },
+  },
+  "Methods": {
+    "collapse": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "expand": {
+      "doc": "",
+      "type": "() => void",
+    },
+    "focus": {
+      "doc": "",
+      "type": "(options?: KolFocusOptions) => void",
+    },
+    "isOpen": {
+      "doc": "",
+      "type": "() => boolean",
+    },
+  },
+  "Refs": {
+    "anchor": {
+      "doc": "",
+      "type": "HTMLAnchorElement",
+    },
+  },
+}
+`;
+
+exports[`version pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;

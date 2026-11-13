@@ -5,7 +5,7 @@ import { KolInputCheckboxTag, KolInputNumberTag } from '../../../core/component-
 import { translate } from '../../../i18n';
 import type { KoliBriTableHeaderCell } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
-import { createUniqueId, nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { AlertFC } from '../alert/component';
 import { ButtonFC } from '../button/component';
@@ -72,7 +72,7 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 	);
 	const dialog = createDialogItem(getHost, requestRender, () => rootElement);
 	const alertHeadingId = createUniqueId('alert-heading');
-	const alertCloserAriaDescriptionId = nonce();
+	const alertCloserAriaDescriptionId = createUniqueId('closer-description');
 
 	let receivedHeaderCells: KoliBriTableHeaderCell[][] | undefined;
 	let headerCells: KoliBriTableHeaderCell[][] = [];
