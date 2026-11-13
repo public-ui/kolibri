@@ -102,7 +102,9 @@ export class KolAlertWc implements API {
 					)}
 				</div>
 				{this.state._variant === 'card' && (
-					<div class="content">
+					// Themes may limit the card height and make this content scrollable;
+					// a scrollable region must be reachable by keyboard (WCAG 2.1.1).
+					<div class="content" tabIndex={0}>
 						<slot />
 					</div>
 				)}
