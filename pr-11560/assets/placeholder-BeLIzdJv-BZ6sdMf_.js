@@ -1,1 +1,0 @@
-import{D as e,s as t}from"./props-from-config-Ci0dILpz-BjIuo3R1.js";var n=t(`placeholder`,void 0,e);export{n as t};
