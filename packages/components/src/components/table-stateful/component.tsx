@@ -50,7 +50,7 @@ import type {
 	Stringified,
 	TableDataFootPropType,
 	TableDataPropType,
-	TableHeaderCells,
+	TableHeadersPropType,
 	TableLoadingPropType,
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
@@ -83,7 +83,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	 * The header cells adjusted in the settings menu (visibility, width, order). They are reapplied on
 	 * every render, so sorting, paging, selecting or new data keep the adjustments.
 	 */
-	@State() private adjustedHeaderCells?: TableHeaderCells;
+	@State() private adjustedHeaderCells?: KoliBriTableHeaders;
 
 	/** The pagination settings; page and page size follow the pagination. */
 	@State() private pagination: TablePagination = { _page: 1, _pageSize: 10, _max: 0 };
@@ -235,10 +235,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
+	@Prop() public _headers!: TableHeadersPropType;
 
 	@Watch('_headers')
-	public watchHeaders(value?: Stringified<KoliBriTableHeaders>): void {
+	public watchHeaders(value?: TableHeadersPropType): void {
 		tableStatefulHeadersProp.apply(value, (headers) => {
 			// Adjusted header cells fit only the same columns. A new object with the same keys (common with
 			// inline headers in React) keeps them.
@@ -452,7 +452,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.emitSortChange(sortChangePayload);
 	};
 
-	private buildHeaderCells(): TableHeaderCells {
+	private buildHeaderCells(): KoliBriTableHeaders {
 		return buildHeaderCells(this.headers, this.adjustedHeaderCells, this.sortData, this.disableSort, this.allowMultiSort);
 	}
 

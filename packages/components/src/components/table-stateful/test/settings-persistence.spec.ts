@@ -1,5 +1,5 @@
 import { headerKeysChanged } from '../../../internal/functional-components/table-stateful/model';
-import type { KoliBriTableHeaders, TableHeaderCells } from '../../../schema';
+import type { KoliBriTableHeaders } from '../../../schema';
 import { KolTableStateful } from '../component';
 
 /**
@@ -11,9 +11,9 @@ type SortDataEntry = { label: string; key: string; compareFn: () => number; dire
 type Internal = {
 	headers: KoliBriTableHeaders;
 	sortData: SortDataEntry[];
-	adjustedHeaderCells?: TableHeaderCells;
-	buildHeaderCells: () => TableHeaderCells;
-	handleChangeHeaderCells: (headerCells: TableHeaderCells) => void;
+	adjustedHeaderCells?: KoliBriTableHeaders;
+	buildHeaderCells: () => KoliBriTableHeaders;
+	handleChangeHeaderCells: (headerCells: KoliBriTableHeaders) => void;
 };
 
 const HEADERS: KoliBriTableHeaders = {

@@ -8,7 +8,6 @@ import type {
 	KoliBriTableHeaders,
 	KoliBriTableSelection,
 	KoliBriTableSelectionKeys,
-	TableHeaderCells,
 } from '../../../schema';
 
 /** One sorted column; the order of the entries is the sort priority. */
@@ -233,11 +232,11 @@ export function mergeAdjustedHeaderCells(headers: KoliBriTableHeaders, adjusted:
  */
 export function buildHeaderCells(
 	headers: KoliBriTableHeaders,
-	adjustedHeaderCells: TableHeaderCells | undefined,
+	adjustedHeaderCells: KoliBriTableHeaders | undefined,
 	sortData: SortData[],
 	disableSort: boolean,
 	allowMultiSort: boolean,
-): TableHeaderCells {
+): KoliBriTableHeaders {
 	const overlaySortState = (cell: KoliBriTableHeaderCellWithLogic) =>
 		cell
 			? {

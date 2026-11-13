@@ -1,9 +1,9 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
+import type { KoliBriTableHeaders, KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
-const HEADERS: TableHeaderCellsPropType = {
+const HEADERS: KoliBriTableHeaders = {
 	horizontal: [[{ key: 'id', label: 'ID', sortDirection: 'ASC', width: 160 }]],
 };
 

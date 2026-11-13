@@ -56,7 +56,7 @@ const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 	},
 	_headers: {
 		kind: 'prop',
-		type: 'Stringified<KoliBriTableHeaders>',
+		type: 'TableHeadersPropType',
 		required: true,
 		doc: 'Defines the horizontal and vertical table headers.',
 	},
