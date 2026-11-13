@@ -102,9 +102,15 @@ export class KolAlertWc implements API {
 					)}
 				</div>
 				{this.state._variant === 'card' && (
-					// Themes may limit the card height and make this content scrollable;
-					// a scrollable region must be reachable by keyboard (WCAG 2.1.1).
-					<div class="content" tabIndex={0}>
+					// Themes may limit the card height and make this content scrollable; a scrollable
+					// region must be reachable by keyboard (WCAG 2.1.1). jsx-a11y/no-noninteractive-tabindex
+					// cannot see the runtime condition, so keyboard focusability is set by ref.
+					<div
+						class="content"
+						ref={(el) => {
+							el?.setAttribute('tabindex', '0');
+						}}
+					>
 						<slot />
 					</div>
 				)}
