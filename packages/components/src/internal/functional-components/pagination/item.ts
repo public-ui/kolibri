@@ -81,7 +81,7 @@ export type PaginationItem = {
 	applyCustomClass: (value?: CustomClassPropType) => void;
 	/** An object sets single buttons and keeps the others. */
 	applyHasButtons: (value?: boolean | Stringified<PaginationHasButton>) => void;
-	applyLabel: (value?: LabelPropType) => void;
+	applyLabel: (value?: LabelPropType, required?: boolean) => void;
 	applyMax: (value?: number) => void;
 	applyOn: (value?: KoliBriPaginationButtonCallbacks) => void;
 	applyPage: (value?: number) => void;
@@ -157,6 +157,8 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 	);
 	let pageSizeValue: number | undefined = 1;
 	let applied: PaginationInput = {};
+	/** The page a button activated last; its button gets the focus back once that page is rendered. */
+	let pendingFocusPage: number | undefined;
 
 	store.set('label', translatePagination);
 
@@ -189,15 +191,34 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		});
 	};
 
-	const applyLabel = (value: LabelPropType | undefined, initial: boolean): void => {
+	const applyLabel = (value: LabelPropType | undefined, initial: boolean, required?: boolean): void => {
 		if (!initial) {
 			removeNavLabel(store.get('label'));
 		}
-		labelProp.apply(value ?? translatePagination, (v) => store.set('label', v));
+		labelProp.apply(value, (v) => store.set('label', v ?? translatePagination), required);
 		addNavLabel(store.get('label'));
 	};
 
+	/**
+	 * The keyed page items keep their buttons across a page change, but the renderer reorders them
+	 * with `insertBefore`, and a moved element loses the focus. The button of the newly rendered page
+	 * takes it back, unless the focus has moved on to another element in the meantime.
+	 */
+	const restorePageFocus = (): void => {
+		if (pendingFocusPage === undefined || pendingFocusPage !== store.get('page')) {
+			return;
+		}
+		pendingFocusPage = undefined;
+		const button = buttons.get(`page-${store.get('page')}`).getElement();
+		const root = button?.getRootNode() as Document | ShadowRoot | undefined;
+		const focusLost = !root?.activeElement && (document.activeElement === null || document.activeElement === document.body);
+		if (button?.isConnected && focusLost) {
+			button.focus();
+		}
+	};
+
 	const handlePageClick = (event: Event, page: number): void => {
+		pendingFocusPage = page;
 		store.get('on').onClick?.(event, page);
 		const target = options.getEventTarget();
 		if (target) {
@@ -240,7 +261,7 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		applyBoundaryCount: (value) => boundaryCountProp.apply(value, (v) => store.set('boundaryCount', v)),
 		applyCustomClass: (value) => customClassProp.apply(value, (v) => store.set('customClass', v)),
 		applyHasButtons: (value) => paginationHasButtonsProp.apply(value, (v) => store.set('hasButtons', { ...store.get('hasButtons'), ...v })),
-		applyLabel: (value) => applyLabel(value, false),
+		applyLabel: (value, required) => applyLabel(value, false, required),
 		applyMax: (value) => {
 			if (value === undefined || value === null) {
 				return;
@@ -329,6 +350,7 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		sync: () => {
 			buttons.endRender();
 			pageSizeSelects.endRender();
+			restorePageFocus();
 		},
 		destroy: () => {
 			removeNavLabel(store.get('label'));

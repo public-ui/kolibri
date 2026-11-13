@@ -43,6 +43,7 @@ export enum KeyEnum {
 	pagination,
 	'pagination-position-bottom',
 	'pagination-position-top',
+	progress,
 	readonly,
 	'show-password',
 	'show-suggestions',

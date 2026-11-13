@@ -5,7 +5,7 @@ import type { PropsConfigShape, WebComponentInterface } from '../../internal/fun
 import type { IconApi } from '../../internal/functional-components/icon/api';
 import { iconPropsConfig } from '../../internal/functional-components/icon/api';
 import { IconFC } from '../../internal/functional-components/icon/component';
-import { iconsProp, labelProp } from '../../internal/props';
+import { iconsProp, labelDecorativeProp } from '../../internal/props';
 import type { LabelPropType } from '../../schema';
 
 /**
@@ -40,12 +40,12 @@ export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentIn
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		labelDecorativeProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	public componentWillLoad(): void {
 		iconsProp.apply(this._icons, (v) => this.setRenderProp('icons', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		labelDecorativeProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	public render(): JSX.Element {
