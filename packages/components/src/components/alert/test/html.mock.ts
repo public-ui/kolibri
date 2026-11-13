@@ -89,12 +89,12 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 						: ''
 				}
 			</div>${
-				props._variant === 'card'
-					? `<div class="content">
+			props._variant === 'card'
+				? `<div class="content" tabindex="0">
 						<slot />
 					</div>`
-					: ''
-			}
+				: ''
+		}
     </kol-alert-wc>
   </mock:shadow-root>
  ${innerHTML}
