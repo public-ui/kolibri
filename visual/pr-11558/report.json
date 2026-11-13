@@ -1,18 +1,18 @@
 {
 	"schema": 1,
 	"pr": 11558,
-	"head": "0724cc23a8fcac80ba1d7ec1fb01538c65037eb8",
+	"head": "f1f123e7734f4ff68a4351ad8c33ae3fae6cbf85",
 	"repository": "public-ui/kolibri",
-	"runId": 42852037367,
-	"generatedAt": "2026-11-10T17:59:53.483Z",
-	"digest": "sha256:254047940662ea1db04be19961979b109a04553ebb35aaa12c7ca23a226a0a71",
+	"runId": 43391637371,
+	"generatedAt": "2026-11-13T08:32:42.972Z",
+	"digest": "sha256:b41f6f4a70c4782cc48d0d079a17887f9eb4e2f008a549f2b637b576294046b7",
 	"baseline": {
-		"sha": "6ecc95875e65d2e12fd774c40d9ccc0d3b821a40",
+		"sha": "15d03cd6cc96cb5f2fb74d39241cbeb8c51cd30a",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
-		"fallback": "ancestor",
-		"distance": 1,
+		"fallback": null,
+		"distance": 0,
 		"imageMismatch": false,
 		"consistent": true
 	},
@@ -30,15 +30,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6ecc95875e65d2e12fd774c40d9ccc0d3b821a40",
+					"sha": "15d03cd6cc96cb5f2fb74d39241cbeb8c51cd30a",
 					"ref": "release/4",
-					"runId": 42831474376,
+					"runId": 43391620664,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-10T14:17:26.328Z",
+					"createdAt": "2026-11-13T08:21:42.350Z",
 					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
-					"fallback": "ancestor",
-					"distance": 1,
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -2713,15 +2713,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6ecc95875e65d2e12fd774c40d9ccc0d3b821a40",
+					"sha": "15d03cd6cc96cb5f2fb74d39241cbeb8c51cd30a",
 					"ref": "release/4",
-					"runId": 42831474376,
+					"runId": 43391620664,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-10T14:18:15.817Z",
+					"createdAt": "2026-11-13T08:20:55.872Z",
 					"digest": "sha256:77f82a73964db40f494290baeb942deb95ec408bdbe07886dc7e0668e2580dc4",
-					"fallback": "ancestor",
-					"distance": 1,
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -5396,15 +5396,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6ecc95875e65d2e12fd774c40d9ccc0d3b821a40",
+					"sha": "15d03cd6cc96cb5f2fb74d39241cbeb8c51cd30a",
 					"ref": "release/4",
-					"runId": 42831474376,
+					"runId": 43391620664,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-10T14:17:26.328Z",
+					"createdAt": "2026-11-13T08:21:42.350Z",
 					"digest": "sha256:3411819f4974fa2b30608b2402b97c497b537ce840a5bff04a21b7ae7b4b4071",
-					"fallback": "ancestor",
-					"distance": 1,
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -8079,15 +8079,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6ecc95875e65d2e12fd774c40d9ccc0d3b821a40",
+					"sha": "15d03cd6cc96cb5f2fb74d39241cbeb8c51cd30a",
 					"ref": "release/4",
-					"runId": 42831474376,
+					"runId": 43391620664,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-10T14:17:40.575Z",
+					"createdAt": "2026-11-13T08:21:58.865Z",
 					"digest": "sha256:df8761c47caa10be35fa1948f10fa7229fb8230744f580a6020b4ee63afd5b7b",
-					"fallback": "ancestor",
-					"distance": 1,
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -10762,15 +10762,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6ecc95875e65d2e12fd774c40d9ccc0d3b821a40",
+					"sha": "15d03cd6cc96cb5f2fb74d39241cbeb8c51cd30a",
 					"ref": "release/4",
-					"runId": 42831474376,
+					"runId": 43391620664,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-10T14:17:52.145Z",
-					"digest": "sha256:58d72b90c03267d00163efa32bccc9149364b9b64d5fa73497762fb98fb4fa9c",
-					"fallback": "ancestor",
-					"distance": 1,
+					"createdAt": "2026-11-13T08:20:54.706Z",
+					"digest": "sha256:9b86ea5cf71428405b64a30c7cdb7738029ecbbffef65b2f698a7210f061b2dd",
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -10781,7 +10781,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:58d72b90c03267d00163efa32bccc9149364b9b64d5fa73497762fb98fb4fa9c",
+			"digest": "sha256:9b86ea5cf71428405b64a30c7cdb7738029ecbbffef65b2f698a7210f061b2dd",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13301,7 +13301,7 @@
 					"name": "textarea-adjust-height--adjust-height",
 					"route": "textarea-adjust-height",
 					"status": "unchanged",
-					"hash": "sha256:1af2f1ea781c849828bdd58b122c77d2b869a75aff401767a580174c8b533f12"
+					"hash": "sha256:d3073587bb5a8935ea0c063b4a198a06d05ed3da854554a7c5a251f14999eccd"
 				},
 				{
 					"name": "textarea-basic-noColumns--hide-label-error",
@@ -13445,15 +13445,15 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "6ecc95875e65d2e12fd774c40d9ccc0d3b821a40",
+					"sha": "15d03cd6cc96cb5f2fb74d39241cbeb8c51cd30a",
 					"ref": "release/4",
-					"runId": 42831474376,
+					"runId": 43391620664,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-10T14:17:09.629Z",
+					"createdAt": "2026-11-13T08:20:11.422Z",
 					"digest": "sha256:f5953d6598f804452acc46fa5233abc1485ae61d269923acbc5a4f17ce31b1ed",
-					"fallback": "ancestor",
-					"distance": 1,
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -16134,15 +16134,15 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6ecc95875e65d2e12fd774c40d9ccc0d3b821a40",
+					"sha": "15d03cd6cc96cb5f2fb74d39241cbeb8c51cd30a",
 					"ref": "release/4",
-					"runId": 42831474376,
+					"runId": 43391620664,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-10T14:16:48.433Z",
+					"createdAt": "2026-11-13T08:19:51.978Z",
 					"digest": "sha256:2a8ed01f1ccd4b547795406e0d9f04ab27a3614ab70df75ec403b6e682c6b376",
-					"fallback": "ancestor",
-					"distance": 1,
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
