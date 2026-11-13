@@ -14,7 +14,7 @@
 		 * white on the element in light mode changes what the blurred shadow above composites against,
 		 * which moves a handful of anti-aliased pixels along its edge.
 		 */
-		background-color: light-dark(transparent, var(--color-light));
+		background-color: var(--color-surface-raised);
 		border-radius: var(--border-radius);
 		display: grid;
 		width: 100%;

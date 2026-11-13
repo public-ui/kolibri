@@ -3,7 +3,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../../../components/form/controller';
 import type { InternalButtonProps, StencilUnknown } from '../../../schema';
 import { setEventTarget } from '../../../schema';
-import { nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { BaseWebComponent } from '../base-web-component';
@@ -62,7 +62,7 @@ export type ButtonItem = {
 export const createButtonItem = (getFlagHost: () => HTMLElement | undefined): ButtonItem => {
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 	const ctaRef = createCtaRef<HTMLButtonElement>();
-	const ariaDescriptionId = nonce();
+	const ariaDescriptionId = createUniqueId('aria-description');
 	let resolved: ResolvedButtonProps | undefined;
 	let value: StencilUnknown;
 	let rootElement: HTMLElement | undefined;

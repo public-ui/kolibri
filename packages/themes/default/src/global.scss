@@ -88,6 +88,14 @@
 		 */
 		--color-backdrop: var(--kolibri-color-backdrop, light-dark(transparent, rgb(0, 0, 0, 0.55)));
 		/*
+		 * Surfaces that only the dark scheme names: in light mode they stay transparent, so what the
+		 * base layer paints there does not move.
+		 */
+		--color-surface-raised: var(--kolibri-color-surface-raised, light-dark(transparent, var(--color-light)));
+		--color-surface-raised-disabled: var(--kolibri-color-surface-raised-disabled, light-dark(transparent, var(--color-mute)));
+		/* The blurred drawer shadow of the light scheme; dark mode draws `--color-edge` instead. */
+		--color-shadow-subtle: var(--kolibri-color-shadow-subtle, light-dark(var(--color-subtle), transparent));
+		/*
 		 * `kol-a11y` paints the host box of every component from these two tokens (see `a11y.scss` in
 		 * `@public-ui/components`). Overriding the tokens rather than `color` / `background-color`
 		 * leaves that layer's intent intact and keeps the light rendering byte identical.
