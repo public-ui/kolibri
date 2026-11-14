@@ -421,4 +421,24 @@ test.describe('kol-tree - Interaction', () => {
 		await page.keyboard.press('ArrowDown');
 		await expect(treeItems.nth(1).locator('.kol-link__interactive-element').first()).toBeFocused();
 	});
+
+	test('ArrowDown follows an item opened through the _open prop', async ({ page }) => {
+		await page.setContent(NESTED_TREE);
+		const treeItems = page.locator('kol-tree-item');
+		await expect(page.locator('kol-tree')).toHaveClass(/hydrated/);
+		const item2Link = treeItems.nth(1).locator('.kol-link__interactive-element').first();
+
+		// Fill the open-items cache while Item 2 is collapsed.
+		await treeItems.nth(0).locator('.kol-link__interactive-element').first().focus();
+		await page.keyboard.press('ArrowDown');
+		await expect(item2Link).toBeFocused();
+
+		await treeItems.nth(1).evaluate((element: HTMLKolTreeItemElement) => {
+			element._open = true;
+		});
+		await expect(item2Link).toHaveAttribute('aria-expanded', 'true');
+
+		await page.keyboard.press('ArrowDown');
+		await expect(treeItems.nth(2).locator('.kol-link__interactive-element').first()).toBeFocused();
+	});
 });
