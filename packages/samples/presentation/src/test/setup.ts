@@ -5,12 +5,12 @@
  * See docs/HOWTO_COMPONENT_TESTS_VITEST.md for the recommended test patterns.
  */
 
-import '../legacy-element-constructor';
 import { register } from '@public-ui/components';
 import { DEFAULT } from '@public-ui/theme-default';
 import '@testing-library/jest-dom/vitest';
 import { cleanup, configure } from '@testing-library/react';
 import { afterEach } from 'vitest';
+import '../legacy-element-constructor';
 import { applyHappyDomWorkarounds } from './happy-dom-workarounds';
 
 applyHappyDomWorkarounds();
