@@ -36,21 +36,31 @@ test.use({
 	},
 });
 
-const blocklist = [];
-
 ROUTES.forEach((options, route) => {
-	if (blocklist.includes(route)) {
+	// Skip unnecessary axe tests
+	if (options?.axe?.skip === true || process.argv.includes('--update-snapshots=changed')) {
 		return;
 	}
 	test(`snapshot for ${route}`, async ({ page }, testInfo) => {
 		const outputPath = rename(testInfo.outputDir);
-		await page.goto(`/#${route}?hideMenus`, { waitUntil: 'networkidle' });
-		if (options?.viewportSize) {
-			await page.setViewportSize(options.viewportSize);
+		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
+		await page.goto(`/#${route}${hideMenusParam}`);
+		await page.waitForLoadState('networkidle');
+		await page.addStyleTag({
+			content: `
+				* {
+					transition: none !important;
+					animation: none !important;
+				}
+			`,
+		});
+		if (options?.snapshot?.viewportSize) {
+			await page.setViewportSize(options?.snapshot?.viewportSize);
 		}
-		if (options?.waitForTimeout) {
-			await page.waitForTimeout(options.waitForTimeout);
+		if (options?.snapshot?.waitForTimeout) {
+			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
 		}
+
 		await injectAxe(page);
 		await checkA11y(
 			page,
@@ -67,12 +77,12 @@ ROUTES.forEach((options, route) => {
 					html: true,
 				},
 			},
-			options?.axe?.skipFailures ?? true,
+			options?.axe?.skipFailures ?? false,
 			'html',
 			{
 				outputDirPath: outputPath.replace(/\/[^/]+$/, ''),
 				outputDir: `axe-${themeName}`,
-				reportFileName: `${route.replace('/', '-')}.html`,
+				reportFileName: `${route.replace(/[/?]/g, '-')}.html`,
 			},
 		);
 	});
