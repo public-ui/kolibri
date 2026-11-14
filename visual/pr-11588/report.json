@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11588,
-	"head": "b758814823bcd2676f52f34a926a2d96b8e806a4",
+	"head": "ce98d2f3b785dbc0c85a29b38be466eaf85be493",
 	"repository": "public-ui/kolibri",
-	"runId": 43556121072,
-	"generatedAt": "2026-11-14T04:33:49.466Z",
-	"digest": "sha256:09a07266565d4a04a1f9a8c9ccc11bd6aa31b7141a8f4410babd5fbd0e6c19fd",
+	"runId": 43560760069,
+	"generatedAt": "2026-11-14T05:35:31.893Z",
+	"digest": "sha256:7dbba2cb2dc6d0ff1e819df61cd452694314417ee3404187c1d9cdacfd9c576c",
 	"baseline": {
 		"sha": "548f9b3db6bfdbbd5c25268b4e78f615416abc88",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3095,
-		"changed": 0,
+		"unchanged": 3060,
+		"changed": 35,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 436,
+				"changed": 6,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
+			"digest": "sha256:e92ea9fcfd6f40b6c0f76c0c917be1f4d20bda6abd030543a503339944c35d6d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -125,9 +125,24 @@
 				},
 				{
 					"name": "avatar-size--size",
-					"route": "avatar-size",
-					"status": "unchanged",
-					"hash": "sha256:94cc3c35a8f194854277df1ac5a3148140682af54dbd704fd685375c81893864"
+					"route": "avatar/size",
+					"status": "changed",
+					"hash": "sha256:fa657d4a31950667d358206fdac4dc18e1dadca9069d2efb374ca00c8ca8b6f3",
+					"diffPixels": 31304,
+					"diffRatio": 0.370024,
+					"sizeMismatch": {
+						"expected": [
+							434,
+							150
+						],
+						"actual": [
+							564,
+							100
+						]
+					},
+					"expected": "test-tag-name-transformer/avatar-size--size.expected.png",
+					"actual": "test-tag-name-transformer/avatar-size--size.actual.png",
+					"diff": "test-tag-name-transformer/avatar-size--size.diff.png"
 				},
 				{
 					"name": "badge-basic--basic-horizontal",
@@ -1547,9 +1562,14 @@
 				},
 				{
 					"name": "input-text-background-noColumns--background-unset",
-					"route": "input-text-background-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:5447eeff7dd618e985e712884f969d60acb67a64e5189353ab746270cc232910"
+					"route": "input-text/background?noColumns",
+					"status": "changed",
+					"hash": "sha256:e4383bb2f91e8bb7a9d0cf508dac02c4ebc8fd51743672e863fcea8ad5ec01fd",
+					"diffPixels": 4274,
+					"diffRatio": 0.142069,
+					"expected": "test-tag-name-transformer/input-text-background-noColumns--background-unset.expected.png",
+					"actual": "test-tag-name-transformer/input-text-background-noColumns--background-unset.actual.png",
+					"diff": "test-tag-name-transformer/input-text-background-noColumns--background-unset.diff.png"
 				},
 				{
 					"name": "input-text-basic-noColumns--disabled",
@@ -1853,9 +1873,24 @@
 				},
 				{
 					"name": "meter-orientation--vertical",
-					"route": "meter-orientation",
-					"status": "unchanged",
-					"hash": "sha256:5c87523f101e9019e032caea43d9726f927312b5becf8414286fe72b83d5e53d"
+					"route": "meter/orientation",
+					"status": "changed",
+					"hash": "sha256:6e3aeb8be67a9cfb4941eb64fec98b8e459a924b9190d80a440a6e8ec6e820a8",
+					"diffPixels": 3211,
+					"diffRatio": 0.016461,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							254
+						],
+						"actual": [
+							768,
+							182
+						]
+					},
+					"expected": "test-tag-name-transformer/meter-orientation--vertical.expected.png",
+					"actual": "test-tag-name-transformer/meter-orientation--vertical.actual.png",
+					"diff": "test-tag-name-transformer/meter-orientation--vertical.diff.png"
 				},
 				{
 					"name": "meter-orientation--vertical-ranges-optimum",
@@ -2441,9 +2476,24 @@
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
-					"route": "table-column-alignment",
-					"status": "unchanged",
-					"hash": "sha256:28046a96d54cfd401b2a5c78719c422d5d9344e7e8c0f5779f36896b6f0d9e21"
+					"route": "table/column-alignment",
+					"status": "changed",
+					"hash": "sha256:826c534a81c3b43bddc4fb815feae1f2af94a11b7855847535d799fc320aef4b",
+					"diffPixels": 47123,
+					"diffRatio": 0.080522,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							762
+						],
+						"actual": [
+							768,
+							762
+						]
+					},
+					"expected": "test-tag-name-transformer/table-column-alignment--column-alignment.expected.png",
+					"actual": "test-tag-name-transformer/table-column-alignment--column-alignment.actual.png",
+					"diff": "test-tag-name-transformer/table-column-alignment--column-alignment.diff.png"
 				},
 				{
 					"name": "table-complex-headers--complex-headers",
@@ -2471,9 +2521,24 @@
 				},
 				{
 					"name": "table-non-hidable-columns--non-hidable",
-					"route": "table-non-hidable-columns",
-					"status": "unchanged",
-					"hash": "sha256:101ed845eca136cd7808dc55f13ebb5239d777ae501075db7cbcd27da6133593"
+					"route": "table/non-hidable-columns",
+					"status": "changed",
+					"hash": "sha256:86cff50919b491e2f508dbc332ae158bbfd66b5ef6f69c4df52080b67c96910b",
+					"diffPixels": 9036,
+					"diffRatio": 0.065003,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							181
+						],
+						"actual": [
+							768,
+							181
+						]
+					},
+					"expected": "test-tag-name-transformer/table-non-hidable-columns--non-hidable.expected.png",
+					"actual": "test-tag-name-transformer/table-non-hidable-columns--non-hidable.actual.png",
+					"diff": "test-tag-name-transformer/table-non-hidable-columns--non-hidable.diff.png"
 				},
 				{
 					"name": "table-state-columns--action-columns",
@@ -2519,9 +2584,24 @@
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
-					"route": "table-sticky-header",
-					"status": "unchanged",
-					"hash": "sha256:9cdf7c713d14e4dedad846945e317ee98968685e67d50514b468ee83c0b1baee"
+					"route": "table/sticky-header",
+					"status": "changed",
+					"hash": "sha256:208b1f28027a92f0a1b467765ab70f7aede4c49d773c37ec9f05c4c4ac101454",
+					"diffPixels": 3872,
+					"diffRatio": 0.003817,
+					"sizeMismatch": {
+						"expected": [
+							1268,
+							750
+						],
+						"actual": [
+							1268,
+							800
+						]
+					},
+					"expected": "test-tag-name-transformer/table-sticky-header--sticky-header.expected.png",
+					"actual": "test-tag-name-transformer/table-sticky-header--sticky-header.actual.png",
+					"diff": "test-tag-name-transformer/table-sticky-header--sticky-header.diff.png"
 				},
 				{
 					"name": "table-variant--variant-no",
@@ -2726,13 +2806,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 437,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a6a4986d2da03e4052e87d0dea797f01c2c870cd31c6a2fcd32481b279d19d60",
+			"digest": "sha256:cfe1355afffc545dfb744e5d33eb0415c6e76c81689e3991f9f7b0f1a5e232bb",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2808,9 +2888,24 @@
 				},
 				{
 					"name": "avatar-size--size",
-					"route": "avatar-size",
-					"status": "unchanged",
-					"hash": "sha256:84a607cd14ce7c68a00fa6873b6d2c1cdca99f50f065c800447e5b7b9549fd00"
+					"route": "avatar/size",
+					"status": "changed",
+					"hash": "sha256:63727382cdbc03b58342686e658471b1e762fad5e600596a5a45c673b792ad84",
+					"diffPixels": 31371,
+					"diffRatio": 0.370816,
+					"sizeMismatch": {
+						"expected": [
+							434,
+							150
+						],
+						"actual": [
+							564,
+							100
+						]
+					},
+					"expected": "theme-bwst/avatar-size--size.expected.png",
+					"actual": "theme-bwst/avatar-size--size.actual.png",
+					"diff": "theme-bwst/avatar-size--size.diff.png"
 				},
 				{
 					"name": "badge-basic--basic-horizontal",
@@ -4230,9 +4325,14 @@
 				},
 				{
 					"name": "input-text-background-noColumns--background-unset",
-					"route": "input-text-background-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:18a201dc86ee352aa98cf77f306efe5e672139d67b310bcf2999a8524c76c4be"
+					"route": "input-text/background?noColumns",
+					"status": "changed",
+					"hash": "sha256:076cb8104e76704e7f5d517c24aacb72cbc0f2d7b800786a600634be6af23aa6",
+					"diffPixels": 4319,
+					"diffRatio": 0.143565,
+					"expected": "theme-bwst/input-text-background-noColumns--background-unset.expected.png",
+					"actual": "theme-bwst/input-text-background-noColumns--background-unset.actual.png",
+					"diff": "theme-bwst/input-text-background-noColumns--background-unset.diff.png"
 				},
 				{
 					"name": "input-text-basic-noColumns--disabled",
@@ -4536,9 +4636,24 @@
 				},
 				{
 					"name": "meter-orientation--vertical",
-					"route": "meter-orientation",
-					"status": "unchanged",
-					"hash": "sha256:2c61f2979de828206338e53515ab725ab6a859607032044e0ce34f78e969b35e"
+					"route": "meter/orientation",
+					"status": "changed",
+					"hash": "sha256:1d2d31068ed0a672ab0c1ebf5da34f4d3c8e0959a2632254d81042a8b099bb1b",
+					"diffPixels": 4405,
+					"diffRatio": 0.023507,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							244
+						],
+						"actual": [
+							768,
+							172
+						]
+					},
+					"expected": "theme-bwst/meter-orientation--vertical.expected.png",
+					"actual": "theme-bwst/meter-orientation--vertical.actual.png",
+					"diff": "theme-bwst/meter-orientation--vertical.diff.png"
 				},
 				{
 					"name": "meter-orientation--vertical-ranges-optimum",
@@ -5124,9 +5239,24 @@
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
-					"route": "table-column-alignment",
-					"status": "unchanged",
-					"hash": "sha256:3dca8102414a6c744638aed16e1bbfc81920ff76f77b1167cee3a3f0c0613cb7"
+					"route": "table/column-alignment",
+					"status": "changed",
+					"hash": "sha256:2b47dd00b51bd7be614680b805d2395f73632f77116d73647c5c2dae0fa8f4f5",
+					"diffPixels": 6998,
+					"diffRatio": 0.012313,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							740
+						],
+						"actual": [
+							768,
+							740
+						]
+					},
+					"expected": "theme-bwst/table-column-alignment--column-alignment.expected.png",
+					"actual": "theme-bwst/table-column-alignment--column-alignment.actual.png",
+					"diff": "theme-bwst/table-column-alignment--column-alignment.diff.png"
 				},
 				{
 					"name": "table-complex-headers--complex-headers",
@@ -5154,9 +5284,24 @@
 				},
 				{
 					"name": "table-non-hidable-columns--non-hidable",
-					"route": "table-non-hidable-columns",
-					"status": "unchanged",
-					"hash": "sha256:76f40469543d01e8f10635002e6f57859eb36dbdb2dcf22763279b9b84b6a33e"
+					"route": "table/non-hidable-columns",
+					"status": "changed",
+					"hash": "sha256:2b2b06db737d9539b36c9a8bd008da6a1ee1adf8219827fed24a5ce95f3f94f5",
+					"diffPixels": 1434,
+					"diffRatio": 0.010919,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							171
+						],
+						"actual": [
+							768,
+							171
+						]
+					},
+					"expected": "theme-bwst/table-non-hidable-columns--non-hidable.expected.png",
+					"actual": "theme-bwst/table-non-hidable-columns--non-hidable.actual.png",
+					"diff": "theme-bwst/table-non-hidable-columns--non-hidable.diff.png"
 				},
 				{
 					"name": "table-state-columns--action-columns",
@@ -5409,13 +5554,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 436,
+				"changed": 6,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
+			"digest": "sha256:e92ea9fcfd6f40b6c0f76c0c917be1f4d20bda6abd030543a503339944c35d6d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5491,9 +5636,24 @@
 				},
 				{
 					"name": "avatar-size--size",
-					"route": "avatar-size",
-					"status": "unchanged",
-					"hash": "sha256:94cc3c35a8f194854277df1ac5a3148140682af54dbd704fd685375c81893864"
+					"route": "avatar/size",
+					"status": "changed",
+					"hash": "sha256:fa657d4a31950667d358206fdac4dc18e1dadca9069d2efb374ca00c8ca8b6f3",
+					"diffPixels": 31304,
+					"diffRatio": 0.370024,
+					"sizeMismatch": {
+						"expected": [
+							434,
+							150
+						],
+						"actual": [
+							564,
+							100
+						]
+					},
+					"expected": "theme-default/avatar-size--size.expected.png",
+					"actual": "theme-default/avatar-size--size.actual.png",
+					"diff": "theme-default/avatar-size--size.diff.png"
 				},
 				{
 					"name": "badge-basic--basic-horizontal",
@@ -6913,9 +7073,14 @@
 				},
 				{
 					"name": "input-text-background-noColumns--background-unset",
-					"route": "input-text-background-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:5447eeff7dd618e985e712884f969d60acb67a64e5189353ab746270cc232910"
+					"route": "input-text/background?noColumns",
+					"status": "changed",
+					"hash": "sha256:e4383bb2f91e8bb7a9d0cf508dac02c4ebc8fd51743672e863fcea8ad5ec01fd",
+					"diffPixels": 4274,
+					"diffRatio": 0.142069,
+					"expected": "theme-default/input-text-background-noColumns--background-unset.expected.png",
+					"actual": "theme-default/input-text-background-noColumns--background-unset.actual.png",
+					"diff": "theme-default/input-text-background-noColumns--background-unset.diff.png"
 				},
 				{
 					"name": "input-text-basic-noColumns--disabled",
@@ -7219,9 +7384,24 @@
 				},
 				{
 					"name": "meter-orientation--vertical",
-					"route": "meter-orientation",
-					"status": "unchanged",
-					"hash": "sha256:5c87523f101e9019e032caea43d9726f927312b5becf8414286fe72b83d5e53d"
+					"route": "meter/orientation",
+					"status": "changed",
+					"hash": "sha256:6e3aeb8be67a9cfb4941eb64fec98b8e459a924b9190d80a440a6e8ec6e820a8",
+					"diffPixels": 3211,
+					"diffRatio": 0.016461,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							254
+						],
+						"actual": [
+							768,
+							182
+						]
+					},
+					"expected": "theme-default/meter-orientation--vertical.expected.png",
+					"actual": "theme-default/meter-orientation--vertical.actual.png",
+					"diff": "theme-default/meter-orientation--vertical.diff.png"
 				},
 				{
 					"name": "meter-orientation--vertical-ranges-optimum",
@@ -7807,9 +7987,24 @@
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
-					"route": "table-column-alignment",
-					"status": "unchanged",
-					"hash": "sha256:28046a96d54cfd401b2a5c78719c422d5d9344e7e8c0f5779f36896b6f0d9e21"
+					"route": "table/column-alignment",
+					"status": "changed",
+					"hash": "sha256:826c534a81c3b43bddc4fb815feae1f2af94a11b7855847535d799fc320aef4b",
+					"diffPixels": 47123,
+					"diffRatio": 0.080522,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							762
+						],
+						"actual": [
+							768,
+							762
+						]
+					},
+					"expected": "theme-default/table-column-alignment--column-alignment.expected.png",
+					"actual": "theme-default/table-column-alignment--column-alignment.actual.png",
+					"diff": "theme-default/table-column-alignment--column-alignment.diff.png"
 				},
 				{
 					"name": "table-complex-headers--complex-headers",
@@ -7837,9 +8032,24 @@
 				},
 				{
 					"name": "table-non-hidable-columns--non-hidable",
-					"route": "table-non-hidable-columns",
-					"status": "unchanged",
-					"hash": "sha256:101ed845eca136cd7808dc55f13ebb5239d777ae501075db7cbcd27da6133593"
+					"route": "table/non-hidable-columns",
+					"status": "changed",
+					"hash": "sha256:86cff50919b491e2f508dbc332ae158bbfd66b5ef6f69c4df52080b67c96910b",
+					"diffPixels": 9036,
+					"diffRatio": 0.065003,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							181
+						],
+						"actual": [
+							768,
+							181
+						]
+					},
+					"expected": "theme-default/table-non-hidable-columns--non-hidable.expected.png",
+					"actual": "theme-default/table-non-hidable-columns--non-hidable.actual.png",
+					"diff": "theme-default/table-non-hidable-columns--non-hidable.diff.png"
 				},
 				{
 					"name": "table-state-columns--action-columns",
@@ -7885,9 +8095,24 @@
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
-					"route": "table-sticky-header",
-					"status": "unchanged",
-					"hash": "sha256:9cdf7c713d14e4dedad846945e317ee98968685e67d50514b468ee83c0b1baee"
+					"route": "table/sticky-header",
+					"status": "changed",
+					"hash": "sha256:208b1f28027a92f0a1b467765ab70f7aede4c49d773c37ec9f05c4c4ac101454",
+					"diffPixels": 3872,
+					"diffRatio": 0.003817,
+					"sizeMismatch": {
+						"expected": [
+							1268,
+							750
+						],
+						"actual": [
+							1268,
+							800
+						]
+					},
+					"expected": "theme-default/table-sticky-header--sticky-header.expected.png",
+					"actual": "theme-default/table-sticky-header--sticky-header.actual.png",
+					"diff": "theme-default/table-sticky-header--sticky-header.diff.png"
 				},
 				{
 					"name": "table-variant--variant-no",
@@ -8092,13 +8317,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 437,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
+			"digest": "sha256:708b22b888fd8ab770ceed6d541d4f1dfe08e5b80c9d46133aa9e6c165ed1bac",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -8174,9 +8399,24 @@
 				},
 				{
 					"name": "avatar-size--size",
-					"route": "avatar-size",
-					"status": "unchanged",
-					"hash": "sha256:5b98da40a5c42956d3cc093d84794c6eab416e239672d2c872cb3d273db745ba"
+					"route": "avatar/size",
+					"status": "changed",
+					"hash": "sha256:5bdd79b4bc02e4b4d6052bdeb8a225af0d2e77a4af44709331767d0d8c211c58",
+					"diffPixels": 31207,
+					"diffRatio": 0.368877,
+					"sizeMismatch": {
+						"expected": [
+							434,
+							150
+						],
+						"actual": [
+							564,
+							100
+						]
+					},
+					"expected": "theme-desy/avatar-size--size.expected.png",
+					"actual": "theme-desy/avatar-size--size.actual.png",
+					"diff": "theme-desy/avatar-size--size.diff.png"
 				},
 				{
 					"name": "badge-basic--basic-horizontal",
@@ -9596,9 +9836,14 @@
 				},
 				{
 					"name": "input-text-background-noColumns--background-unset",
-					"route": "input-text-background-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:f806516336b15eb35624f8a364c4f7a1b74b48210cb8302b1bd56318f96b8129"
+					"route": "input-text/background?noColumns",
+					"status": "changed",
+					"hash": "sha256:7ed84c83c66dc4d399f8f40a64c506027cdb1715bbcfa604f17729f3ddd627a7",
+					"diffPixels": 4039,
+					"diffRatio": 0.14036,
+					"expected": "theme-desy/input-text-background-noColumns--background-unset.expected.png",
+					"actual": "theme-desy/input-text-background-noColumns--background-unset.actual.png",
+					"diff": "theme-desy/input-text-background-noColumns--background-unset.diff.png"
 				},
 				{
 					"name": "input-text-basic-noColumns--disabled",
@@ -9902,9 +10147,24 @@
 				},
 				{
 					"name": "meter-orientation--vertical",
-					"route": "meter-orientation",
-					"status": "unchanged",
-					"hash": "sha256:a46b527a7ece901cdbc26d6d8bb2dc26a57a0ce17691a7768317a8d00bda3930"
+					"route": "meter/orientation",
+					"status": "changed",
+					"hash": "sha256:93c4407b0e181696a7ee5741ad9f861c6590753e7741d381769bc355beaaa8af",
+					"diffPixels": 4406,
+					"diffRatio": 0.023609,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							243
+						],
+						"actual": [
+							768,
+							171
+						]
+					},
+					"expected": "theme-desy/meter-orientation--vertical.expected.png",
+					"actual": "theme-desy/meter-orientation--vertical.actual.png",
+					"diff": "theme-desy/meter-orientation--vertical.diff.png"
 				},
 				{
 					"name": "meter-orientation--vertical-ranges-optimum",
@@ -10490,9 +10750,24 @@
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
-					"route": "table-column-alignment",
-					"status": "unchanged",
-					"hash": "sha256:49df61ea3b65dee1ca8d04741d69262bf4ccfa15975697a2ef7a7d2a3b43e3fc"
+					"route": "table/column-alignment",
+					"status": "changed",
+					"hash": "sha256:39d1f47e213fc25ac7d5c0975feef783e98f752af1c3cec1893c94dd029f76e3",
+					"diffPixels": 5404,
+					"diffRatio": 0.008032,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							876
+						],
+						"actual": [
+							768,
+							876
+						]
+					},
+					"expected": "theme-desy/table-column-alignment--column-alignment.expected.png",
+					"actual": "theme-desy/table-column-alignment--column-alignment.actual.png",
+					"diff": "theme-desy/table-column-alignment--column-alignment.diff.png"
 				},
 				{
 					"name": "table-complex-headers--complex-headers",
@@ -10520,9 +10795,24 @@
 				},
 				{
 					"name": "table-non-hidable-columns--non-hidable",
-					"route": "table-non-hidable-columns",
-					"status": "unchanged",
-					"hash": "sha256:bc22ffc260eee7221d8412416ec264e6a15dfb4e9cc245fb09dca548553253cd"
+					"route": "table/non-hidable-columns",
+					"status": "changed",
+					"hash": "sha256:abba257c359bdaecc2fad1a71ffaa32dc56462a1f64f8ae4d9a692ce35403773",
+					"diffPixels": 942,
+					"diffRatio": 0.0055,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							223
+						],
+						"actual": [
+							768,
+							223
+						]
+					},
+					"expected": "theme-desy/table-non-hidable-columns--non-hidable.expected.png",
+					"actual": "theme-desy/table-non-hidable-columns--non-hidable.actual.png",
+					"diff": "theme-desy/table-non-hidable-columns--non-hidable.diff.png"
 				},
 				{
 					"name": "table-state-columns--action-columns",
@@ -10775,13 +11065,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 438,
+				"changed": 4,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:527ce0a79edd72d63df83b0e9449b83dcd80e12a624acce57b722410850da306",
+			"digest": "sha256:fd36bb30547a6a7f96d783b35be9399ec6ca2c77f01d28903a099bdefe082937",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10857,9 +11147,24 @@
 				},
 				{
 					"name": "avatar-size--size",
-					"route": "avatar-size",
-					"status": "unchanged",
-					"hash": "sha256:7b97de4b237c04dbf225c37eba16d9e354bb5506bbaec859eba71c0a36583cde"
+					"route": "avatar/size",
+					"status": "changed",
+					"hash": "sha256:abc34ee79d9f6d0fd94dd0a6243e9dc2f175a13c366f039143dd5d7400c2dcdb",
+					"diffPixels": 31302,
+					"diffRatio": 0.37,
+					"sizeMismatch": {
+						"expected": [
+							434,
+							150
+						],
+						"actual": [
+							564,
+							100
+						]
+					},
+					"expected": "theme-ecl/avatar-size--size.expected.png",
+					"actual": "theme-ecl/avatar-size--size.actual.png",
+					"diff": "theme-ecl/avatar-size--size.diff.png"
 				},
 				{
 					"name": "badge-basic--basic-horizontal",
@@ -12279,9 +12584,14 @@
 				},
 				{
 					"name": "input-text-background-noColumns--background-unset",
-					"route": "input-text-background-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:07cceaa85c45923216bf0892ddcaea878ac1a5ebdbd3caa810f821ae7040c6b4"
+					"route": "input-text/background?noColumns",
+					"status": "changed",
+					"hash": "sha256:2984a9d2dfaecdf0cb41f2a90c331956beb0d2dbbca83c6ebe7eb6bbc8d73e44",
+					"diffPixels": 5564,
+					"diffRatio": 0.17602,
+					"expected": "theme-ecl/input-text-background-noColumns--background-unset.expected.png",
+					"actual": "theme-ecl/input-text-background-noColumns--background-unset.actual.png",
+					"diff": "theme-ecl/input-text-background-noColumns--background-unset.diff.png"
 				},
 				{
 					"name": "input-text-basic-noColumns--disabled",
@@ -12585,9 +12895,24 @@
 				},
 				{
 					"name": "meter-orientation--vertical",
-					"route": "meter-orientation",
-					"status": "unchanged",
-					"hash": "sha256:eb7e5b372a8097cb470c2c89fabaa6501373af36e7ed850f428372a859429993"
+					"route": "meter/orientation",
+					"status": "changed",
+					"hash": "sha256:fbeccaf132304d1afa39a65d3fca1ab7ef2de7f542ea60a20c3a350f235d384e",
+					"diffPixels": 4514,
+					"diffRatio": 0.0237,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							248
+						],
+						"actual": [
+							768,
+							176
+						]
+					},
+					"expected": "theme-ecl/meter-orientation--vertical.expected.png",
+					"actual": "theme-ecl/meter-orientation--vertical.actual.png",
+					"diff": "theme-ecl/meter-orientation--vertical.diff.png"
 				},
 				{
 					"name": "meter-orientation--vertical-ranges-optimum",
@@ -13173,9 +13498,24 @@
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
-					"route": "table-column-alignment",
-					"status": "unchanged",
-					"hash": "sha256:52b7fea6046aab866d4b2482a614dbb9cd0f05d56dea65d25b432024e12667ac"
+					"route": "table/column-alignment",
+					"status": "changed",
+					"hash": "sha256:d387287c1348eb78d4b62e1481a1682d1877d37cdeb2a874826fd4cf66e7fbe3",
+					"diffPixels": 3295,
+					"diffRatio": 0.006622,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							775
+						],
+						"actual": [
+							642,
+							775
+						]
+					},
+					"expected": "theme-ecl/table-column-alignment--column-alignment.expected.png",
+					"actual": "theme-ecl/table-column-alignment--column-alignment.actual.png",
+					"diff": "theme-ecl/table-column-alignment--column-alignment.diff.png"
 				},
 				{
 					"name": "table-complex-headers--complex-headers",
@@ -13458,13 +13798,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 443,
-				"changed": 0,
+				"unchanged": 438,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:4160f0bc0e435a83b94bf43bd9e6a98ea3d8b14ca18d12bfe3c2ce837c279acc",
+			"digest": "sha256:d9298a0cec85b0e7ba109dcb69368ba4e72cb764e33cfd6c76757ee233fc8782",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13540,9 +13880,24 @@
 				},
 				{
 					"name": "avatar-size--size",
-					"route": "avatar-size",
-					"status": "unchanged",
-					"hash": "sha256:d0fddffc938e99bbf77b818e0e0e4ca98e3b26faf5913af7a5c5f185b3874bdc"
+					"route": "avatar/size",
+					"status": "changed",
+					"hash": "sha256:28fbf7863dce5edd2b9e2db42e27a816185aa171d18ae8747fad080dd4882085",
+					"diffPixels": 31321,
+					"diffRatio": 0.370225,
+					"sizeMismatch": {
+						"expected": [
+							434,
+							150
+						],
+						"actual": [
+							564,
+							100
+						]
+					},
+					"expected": "theme-kern/avatar-size--size.expected.png",
+					"actual": "theme-kern/avatar-size--size.actual.png",
+					"diff": "theme-kern/avatar-size--size.diff.png"
 				},
 				{
 					"name": "badge-basic--basic-horizontal",
@@ -14962,9 +15317,14 @@
 				},
 				{
 					"name": "input-text-background-noColumns--background-unset",
-					"route": "input-text-background-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:ff3da8c90a6de21894bcc231e7e8f961e399c1aa6698d8e79ab5bec699677570"
+					"route": "input-text/background?noColumns",
+					"status": "changed",
+					"hash": "sha256:22a1390a306fbc4cd020637d7ec168541a9d9e7b6c62bd0f27ffa2258291a11d",
+					"diffPixels": 6863,
+					"diffRatio": 0.20052,
+					"expected": "theme-kern/input-text-background-noColumns--background-unset.expected.png",
+					"actual": "theme-kern/input-text-background-noColumns--background-unset.actual.png",
+					"diff": "theme-kern/input-text-background-noColumns--background-unset.diff.png"
 				},
 				{
 					"name": "input-text-basic-noColumns--disabled",
@@ -15268,9 +15628,24 @@
 				},
 				{
 					"name": "meter-orientation--vertical",
-					"route": "meter-orientation",
-					"status": "unchanged",
-					"hash": "sha256:d988306ee4cd8e5be67043ac6248206738e47ed1385b27d2b34bd0fc83f8536c"
+					"route": "meter/orientation",
+					"status": "changed",
+					"hash": "sha256:24d5252517405ec30309965de4315aaeb3c1968353688e4f20388c5e753cb0a4",
+					"diffPixels": 4164,
+					"diffRatio": 0.020081,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							270
+						],
+						"actual": [
+							768,
+							198
+						]
+					},
+					"expected": "theme-kern/meter-orientation--vertical.expected.png",
+					"actual": "theme-kern/meter-orientation--vertical.actual.png",
+					"diff": "theme-kern/meter-orientation--vertical.diff.png"
 				},
 				{
 					"name": "meter-orientation--vertical-ranges-optimum",
@@ -15856,9 +16231,24 @@
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
-					"route": "table-column-alignment",
-					"status": "unchanged",
-					"hash": "sha256:f7456822982c00af0430ecc56098083ca496253574e7b5cee3eb0a24954b50f7"
+					"route": "table/column-alignment",
+					"status": "changed",
+					"hash": "sha256:1a6708dab9deaccc37a7206a1bdd6ecbbad7f4e55d8b109c46863f8deae65804",
+					"diffPixels": 37931,
+					"diffRatio": 0.052209,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							946
+						],
+						"actual": [
+							768,
+							906
+						]
+					},
+					"expected": "theme-kern/table-column-alignment--column-alignment.expected.png",
+					"actual": "theme-kern/table-column-alignment--column-alignment.actual.png",
+					"diff": "theme-kern/table-column-alignment--column-alignment.diff.png"
 				},
 				{
 					"name": "table-complex-headers--complex-headers",
@@ -15886,9 +16276,24 @@
 				},
 				{
 					"name": "table-non-hidable-columns--non-hidable",
-					"route": "table-non-hidable-columns",
-					"status": "unchanged",
-					"hash": "sha256:ce455d9fb6da73d96c997a35c460e62a17ff068c1e378a19317ce865f4bb5144"
+					"route": "table/non-hidable-columns",
+					"status": "changed",
+					"hash": "sha256:17943aeb3f3749a0b980b987241b9e5b56879636a7525d0e9dc32c91e1b8bced",
+					"diffPixels": 1820,
+					"diffRatio": 0.012605,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							188
+						],
+						"actual": [
+							768,
+							188
+						]
+					},
+					"expected": "theme-kern/table-non-hidable-columns--non-hidable.expected.png",
+					"actual": "theme-kern/table-non-hidable-columns--non-hidable.actual.png",
+					"diff": "theme-kern/table-non-hidable-columns--non-hidable.diff.png"
 				},
 				{
 					"name": "table-state-columns--action-columns",
@@ -16147,13 +16552,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 438,
+				"changed": 4,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
+			"digest": "sha256:07689693609b6e4bf4637c2cf5c186b39081d2b7ade4e92b18d6d02dce3d52a4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16229,9 +16634,24 @@
 				},
 				{
 					"name": "avatar-size--size",
-					"route": "avatar-size",
-					"status": "unchanged",
-					"hash": "sha256:5b98da40a5c42956d3cc093d84794c6eab416e239672d2c872cb3d273db745ba"
+					"route": "avatar/size",
+					"status": "changed",
+					"hash": "sha256:5bdd79b4bc02e4b4d6052bdeb8a225af0d2e77a4af44709331767d0d8c211c58",
+					"diffPixels": 31207,
+					"diffRatio": 0.368877,
+					"sizeMismatch": {
+						"expected": [
+							434,
+							150
+						],
+						"actual": [
+							564,
+							100
+						]
+					},
+					"expected": "unstyled/avatar-size--size.expected.png",
+					"actual": "unstyled/avatar-size--size.actual.png",
+					"diff": "unstyled/avatar-size--size.diff.png"
 				},
 				{
 					"name": "badge-basic--basic-horizontal",
@@ -17651,9 +18071,14 @@
 				},
 				{
 					"name": "input-text-background-noColumns--background-unset",
-					"route": "input-text-background-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:ef32f2f606d2456cd093254b9919b34e7abe50bf26b1fe44238ac35607a64caf"
+					"route": "input-text/background?noColumns",
+					"status": "changed",
+					"hash": "sha256:c000e5e10cf2dff6c667a7a3983f592e98c9a55bbe3bead4ec495203f9c11e13",
+					"diffPixels": 10567,
+					"diffRatio": 0.361735,
+					"expected": "unstyled/input-text-background-noColumns--background-unset.expected.png",
+					"actual": "unstyled/input-text-background-noColumns--background-unset.actual.png",
+					"diff": "unstyled/input-text-background-noColumns--background-unset.diff.png"
 				},
 				{
 					"name": "input-text-basic-noColumns--disabled",
@@ -17957,9 +18382,24 @@
 				},
 				{
 					"name": "meter-orientation--vertical",
-					"route": "meter-orientation",
-					"status": "unchanged",
-					"hash": "sha256:a46b527a7ece901cdbc26d6d8bb2dc26a57a0ce17691a7768317a8d00bda3930"
+					"route": "meter/orientation",
+					"status": "changed",
+					"hash": "sha256:93c4407b0e181696a7ee5741ad9f861c6590753e7741d381769bc355beaaa8af",
+					"diffPixels": 4406,
+					"diffRatio": 0.023609,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							243
+						],
+						"actual": [
+							768,
+							171
+						]
+					},
+					"expected": "unstyled/meter-orientation--vertical.expected.png",
+					"actual": "unstyled/meter-orientation--vertical.actual.png",
+					"diff": "unstyled/meter-orientation--vertical.diff.png"
 				},
 				{
 					"name": "meter-orientation--vertical-ranges-optimum",
@@ -18545,9 +18985,24 @@
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
-					"route": "table-column-alignment",
-					"status": "unchanged",
-					"hash": "sha256:a3964de29c79cf2009b3328b5f1178cc528a9907ad94cf89f2c5f2acbd624d6e"
+					"route": "table/column-alignment",
+					"status": "changed",
+					"hash": "sha256:4e98acc82a81040dba55f5dbd8d939514fa11defb31798751fbe770dcbd39754",
+					"diffPixels": 1723,
+					"diffRatio": 0.003671,
+					"sizeMismatch": {
+						"expected": [
+							600,
+							722
+						],
+						"actual": [
+							650,
+							722
+						]
+					},
+					"expected": "unstyled/table-column-alignment--column-alignment.expected.png",
+					"actual": "unstyled/table-column-alignment--column-alignment.actual.png",
+					"diff": "unstyled/table-column-alignment--column-alignment.diff.png"
 				},
 				{
 					"name": "table-complex-headers--complex-headers",

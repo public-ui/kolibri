@@ -1,19 +1,160 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "No visual changes",
-	"computedAt": "2026-11-14T04:33:50.064Z",
+	"state": "pending",
+	"description": "35 changed – 0 of 35 approved, review pending",
+	"computedAt": "2026-11-14T05:35:32.586Z",
 	"pr": 11588,
-	"head": "b758814823bcd2676f52f34a926a2d96b8e806a4",
-	"digest": "sha256:09a07266565d4a04a1f9a8c9ccc11bd6aa31b7141a8f4410babd5fbd0e6c19fd",
+	"head": "ce98d2f3b785dbc0c85a29b38be466eaf85be493",
+	"digest": "sha256:7dbba2cb2dc6d0ff1e819df61cd452694314417ee3404187c1d9cdacfd9c576c",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 35,
+		"open": 35,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/avatar-size--size": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-background-noColumns--background-unset": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/meter-orientation--vertical": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-column-alignment--column-alignment": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-non-hidable-columns--non-hidable": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-sticky-header--sticky-header": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/avatar-size--size": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-background-noColumns--background-unset": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/meter-orientation--vertical": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/table-column-alignment--column-alignment": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/table-non-hidable-columns--non-hidable": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/avatar-size--size": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-background-noColumns--background-unset": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/meter-orientation--vertical": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-column-alignment--column-alignment": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-non-hidable-columns--non-hidable": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-sticky-header--sticky-header": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/avatar-size--size": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-background-noColumns--background-unset": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/meter-orientation--vertical": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-column-alignment--column-alignment": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-non-hidable-columns--non-hidable": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/avatar-size--size": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-text-background-noColumns--background-unset": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/meter-orientation--vertical": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-column-alignment--column-alignment": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/avatar-size--size": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-background-noColumns--background-unset": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/meter-orientation--vertical": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-column-alignment--column-alignment": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-non-hidable-columns--non-hidable": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/avatar-size--size": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-background-noColumns--background-unset": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/meter-orientation--vertical": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/table-column-alignment--column-alignment": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
