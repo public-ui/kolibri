@@ -1,5 +1,5 @@
 import React from 'react';
-import { createComponent, type StencilReactComponent } from '@stencil/react-output-target/runtime';
+import { createComponent as createReactComponent, type StencilReactComponent } from '@stencil/react-output-target/runtime';
 
 type ComponentArgs<I extends HTMLElement, E, C, R extends keyof C> = Parameters<typeof createComponent<I, E, C, R>>[0];
 
@@ -18,11 +18,12 @@ export const createComponent = <
 	args: ComponentArgs<I, E, C, R>,
 ): StencilReactComponent<I, E, C, R> => {
 	let component: StencilReactComponent<I, E, C, R> | undefined;
+	const { transformTag, tagName, ...options } = args;
 
 	return React.forwardRef(
 		(props: Parameters<StencilReactComponent<I, E, C, R>>[0], ref: React.Ref<I>) =>
 			React.createElement(
-				(component ??= createComponent({ ...args, tagName: args.transformTag ? args.transformTag(args.tagName) : args.tagName })),
+				(component ??= createReactComponent({ ...options, tagName: transformTag ? transformTag(tagName) : tagName })),
 				{ ...props, ref },
 			),
 	) as StencilReactComponent<I, E, C, R>;

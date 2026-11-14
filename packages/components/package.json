@@ -28,6 +28,8 @@
 		},
 		"./assets/*": "./assets/*",
 		"./custom-elements.json": "./custom-elements.json",
+		"./dist/components": "./dist/components/index.js",
+		"./dist/components/*": "./dist/components/*",
 		"./loader": {
 			"types": "./loader/index.d.ts",
 			"import": "./loader/index.mjs",
