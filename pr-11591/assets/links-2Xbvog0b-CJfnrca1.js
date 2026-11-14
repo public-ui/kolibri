@@ -1,0 +1,1 @@
+import{et as e}from"./index-BA1lWJok.js";import{c as t,v as n}from"./bem-registry-CzD7Hxkx-CHnAVEUM.js";function r(r){return t(`links`,[],e=>n(e),e=>e.every(e=>typeof e==`object`&&!!e&&(typeof e._href==`string`||typeof e._label==`string`)),{hints:(t,n)=>e(r,n.length)})}export{r as t};
