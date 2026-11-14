@@ -42,6 +42,12 @@
 	}
 
 	.kol-button__interactive-element:focus {
-		@include focus-outline;
+		// Firefox repaints native form controls under user color overrides and drops author outlines, so the ring lives on the plain text box.
+		outline: none;
+
+		.kol-button__text {
+			@include focus-outline;
+			position: relative; // make sure focus outline is visible and not covered by adjacent element
+		}
 	}
 }

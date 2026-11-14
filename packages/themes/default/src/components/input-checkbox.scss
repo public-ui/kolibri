@@ -94,6 +94,11 @@
 	}
 
 	.kol-checkbox--variant-switch {
+		&:focus-within {
+			@include switch-outline;
+			border-radius: 1.25em;
+		}
+
 		.kol-icon {
 			// The base layer paints the switch icon black; it sits on the `--color-light` knob.
 			color: var(--color-ink);
@@ -115,8 +120,8 @@
 			border-width: 0;
 
 			&:focus {
-				@include switch-outline;
-				border-radius: 1.25em;
+				// Firefox repaints native form controls under user color overrides and drops author outlines, so the ring lives on the plain label that wraps the switch track.
+				outline: none;
 			}
 
 			&:before {
