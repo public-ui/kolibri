@@ -3,7 +3,9 @@ import { register as coreRegister } from 'adopted-style-sheets';
 import type { Mode } from '../schema';
 import { Log, setRuntimeMode } from '../schema';
 import { initializeI18n } from './i18n';
+import { getSharedState } from './shared-state';
 import { registerTagNameTransformer } from './tag-transformer';
+import { shareThemeStore } from './theme-store';
 
 type KoliBriOptions = RegisterOptions & {
 	/**
@@ -21,17 +23,11 @@ type KoliBriOptions = RegisterOptions & {
 	reflectInputValues?: boolean;
 };
 
-/**
- * The runtime is bundled per output target: the lazy loader and the custom-elements build each
- * carry their own copy of this module, while applications register through the root entry only.
- * The options are mirrored through this global slot so every bundle copy resolves them.
- */
-type KoliBriGlobals = { options?: KoliBriOptions };
-
-const readSharedOptions = (): KoliBriOptions | undefined => (globalThis as { KoliBriGlobals?: KoliBriGlobals }).KoliBriGlobals?.options;
+const shared = getSharedState('bootstrap', (): { options?: KoliBriOptions } => ({}));
 
 let initialized = false;
-let options: KoliBriOptions | undefined;
+
+shareThemeStore();
 
 export const bootstrap = async (
 	themes:
@@ -50,8 +46,7 @@ export const bootstrap = async (
 	}
 	const coreRegisterReturnValue = await coreRegister(themes, loaders, koliBriOptions);
 	initialized = true;
-	options = koliBriOptions;
-	((globalThis as { KoliBriGlobals?: KoliBriGlobals }).KoliBriGlobals ??= {}).options = koliBriOptions;
+	shared.options = koliBriOptions;
 
 	// Only log development message when actually in development mode
 	Log.info('Development mode active - Enhanced debugging features available');
@@ -61,4 +56,4 @@ export const bootstrap = async (
 
 export const register = bootstrap;
 export const isInitialized = () => initialized;
-export const getOptions = (): KoliBriOptions | undefined => options ?? readSharedOptions();
+export const getOptions = (): KoliBriOptions | undefined => shared.options;

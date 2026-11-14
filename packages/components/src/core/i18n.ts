@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 import locale_de from '../locales/de';
 import locale_en from '../locales/en';
+import { getSharedState } from './shared-state';
 
 export type ResourcePrefix = 'Kol';
 export type ComponentKeys = keyof typeof locale_de;
@@ -101,24 +102,9 @@ class I18nService {
 	}
 }
 
-/**
- * The runtime is bundled per output target: the lazy loader, the custom-elements build and the root
- * entry each carry their own copy of this module. The initialized service is mirrored through this
- * global slot so every bundle copy translates with the language and translations the application
- * registered through bootstrap.
- */
-type I18nGlobals = { i18n?: I18nService };
+const shared = getSharedState('i18n', (): { instance?: I18nService } => ({}));
 
-const readSharedI18n = (): I18nService | undefined => (globalThis as { KoliBriGlobals?: I18nGlobals }).KoliBriGlobals?.i18n;
-
-let i18n: I18nService;
-
-export const getI18nInstance = () => {
-	// The shared instance wins over the bundle-local one: a translate call that runs before bootstrap
-	// seeds the bundle-local instance with the fallback language and would otherwise pin every later
-	// translate call of this bundle copy to it.
-	return readSharedI18n() ?? i18n;
-};
+export const getI18nInstance = (): I18nService | undefined => shared.instance;
 
 export const initializeI18n = (
 	lng: Generic.I18n.Locale.ISO_639_1,
@@ -127,8 +113,8 @@ export const initializeI18n = (
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
 		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>> = TRANSLATIONS,
 ) => {
-	i18n = new I18nService(lng);
+	const i18n = new I18nService(lng);
 	i18n.addTranslations(translations);
-	((globalThis as { KoliBriGlobals?: I18nGlobals }).KoliBriGlobals ??= {}).i18n = i18n;
+	shared.instance = i18n;
 	return i18n;
 };
