@@ -26,6 +26,8 @@
 			"import": "./dist/index.js",
 			"require": "./dist/index.cjs.js"
 		},
+		"./dist/components": "./dist/components/index.js",
+		"./dist/components/*": "./dist/components/*",
 		"./loader": {
 			"types": "./loader/index.d.ts",
 			"import": "./loader/index.mjs",
