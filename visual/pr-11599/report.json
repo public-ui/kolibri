@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11599,
-	"head": "b0dfa268bebc79a2332c2cb286d39a8af8d64c41",
+	"head": "cf066c9624f655b467f9ce91b3bec0f5dba0e5c5",
 	"repository": "public-ui/kolibri",
-	"runId": 43628991981,
-	"generatedAt": "2026-11-14T19:09:32.734Z",
-	"digest": "sha256:a762ae9787f5fcacde0a454573a09102842751118357e88b1ba0bc2ec23e48dd",
+	"runId": 43634110119,
+	"generatedAt": "2026-11-14T20:02:42.994Z",
+	"digest": "sha256:09a07266565d4a04a1f9a8c9ccc11bd6aa31b7141a8f4410babd5fbd0e6c19fd",
 	"baseline": {
 		"sha": "548f9b3db6bfdbbd5c25268b4e78f615416abc88",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3067,
-		"changed": 28,
+		"unchanged": 3095,
+		"changed": 0,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 438,
-				"changed": 4,
+				"unchanged": 442,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:69ac2c7e5c6beab777df0fa562187e02bb09080e350e2ea81f47e457dc8ef30b",
+			"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1949,14 +1949,9 @@
 				},
 				{
 					"name": "quote-block--block",
-					"route": "quote/block",
-					"status": "changed",
-					"hash": "sha256:13a064fe52178df6dae9337c909bc2ecb6ce36067e59903287d04f6dab0a8fff",
-					"diffPixels": 237,
-					"diffRatio": 0.00187,
-					"expected": "test-tag-name-transformer/quote-block--block.expected.png",
-					"actual": "test-tag-name-transformer/quote-block--block.actual.png",
-					"diff": "test-tag-name-transformer/quote-block--block.diff.png"
+					"route": "quote-block",
+					"status": "unchanged",
+					"hash": "sha256:7272577977eb21659f3a1b967d52987be0a463e7f73ea7d32585d12ded33544d"
 				},
 				{
 					"name": "scenarios-accordion-components",
@@ -2056,14 +2051,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRadio",
-					"route": "scenarios/focus-elements?component=inputRadio",
-					"status": "changed",
-					"hash": "sha256:545237f6d4e25b076c0396d7ad1ceab2ad7dd178527cec2660db17027922fa54",
-					"diffPixels": 187,
-					"diffRatio": 0.004183,
-					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-inputRadio.expected.png",
-					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-inputRadio.actual.png",
-					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-inputRadio.diff.png"
+					"route": "scenarios-focus-elements-component-inputRadio",
+					"status": "unchanged",
+					"hash": "sha256:d7c139106a498881133c6656cde53d335fa37a2bc413310396453eeb080146ef"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRange",
@@ -2139,14 +2129,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-toolbar",
-					"route": "scenarios/focus-elements?component=toolbar",
-					"status": "changed",
-					"hash": "sha256:176e57cd24839271698293aed1f81e28d8615618c7b60b97e4f8d21d3e664749",
-					"diffPixels": 1194,
-					"diffRatio": 0.051688,
-					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-toolbar.expected.png",
-					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-toolbar.actual.png",
-					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-toolbar.diff.png"
+					"route": "scenarios-focus-elements-component-toolbar",
+					"status": "unchanged",
+					"hash": "sha256:39619b45373cf0cf8c07c7ec8ed62b2c7df11b07a1d602321cd8ea441b85ef8d"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -2492,24 +2477,9 @@
 				},
 				{
 					"name": "table-state-columns--action-columns",
-					"route": "table/state-columns",
-					"status": "changed",
-					"hash": "sha256:e97215afb7fdfbf0630b22b989f261c8300797a46d681f4e74e033fc93d8b2a7",
-					"diffPixels": 17828,
-					"diffRatio": 0.093489,
-					"sizeMismatch": {
-						"expected": [
-							968,
-							197
-						],
-						"actual": [
-							968,
-							181
-						]
-					},
-					"expected": "test-tag-name-transformer/table-state-columns--action-columns.expected.png",
-					"actual": "test-tag-name-transformer/table-state-columns--action-columns.actual.png",
-					"diff": "test-tag-name-transformer/table-state-columns--action-columns.diff.png"
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:db2e47346d5a3004242cc0ee07c49eb86f629fcf44417ecc1d83c7530de8b166"
 				},
 				{
 					"name": "table-stateful-async",
@@ -2756,13 +2726,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 438,
-				"changed": 4,
+				"unchanged": 442,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:1885d9ff6a1cfd737210ea668a9059efc5e74ad66727262af374ff747ec4eaf1",
+			"digest": "sha256:a6a4986d2da03e4052e87d0dea797f01c2c870cd31c6a2fcd32481b279d19d60",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4662,14 +4632,9 @@
 				},
 				{
 					"name": "quote-block--block",
-					"route": "quote/block",
-					"status": "changed",
-					"hash": "sha256:f384c0ae1fae582b105f6fff1554b3fc0651185384d35bcc76b37f51f64a024f",
-					"diffPixels": 217,
-					"diffRatio": 0.001519,
-					"expected": "theme-bwst/quote-block--block.expected.png",
-					"actual": "theme-bwst/quote-block--block.actual.png",
-					"diff": "theme-bwst/quote-block--block.diff.png"
+					"route": "quote-block",
+					"status": "unchanged",
+					"hash": "sha256:37514d4a029ff9675ae7a8b704a848ba01df7361f8470663a1f7dcb744a1a69b"
 				},
 				{
 					"name": "scenarios-accordion-components",
@@ -4769,14 +4734,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRadio",
-					"route": "scenarios/focus-elements?component=inputRadio",
-					"status": "changed",
-					"hash": "sha256:0a500ed16b07e3815c039d29080820e7d877cf43421e288c24699d15badeddd4",
-					"diffPixels": 189,
-					"diffRatio": 0.004228,
-					"expected": "theme-bwst/scenarios-focus-elements-component-inputRadio.expected.png",
-					"actual": "theme-bwst/scenarios-focus-elements-component-inputRadio.actual.png",
-					"diff": "theme-bwst/scenarios-focus-elements-component-inputRadio.diff.png"
+					"route": "scenarios-focus-elements-component-inputRadio",
+					"status": "unchanged",
+					"hash": "sha256:6456d0e10840bfb5a56a5bae4a54aafee31beddf8da7ef441f3b504d096c06ce"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRange",
@@ -4852,14 +4812,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-toolbar",
-					"route": "scenarios/focus-elements?component=toolbar",
-					"status": "changed",
-					"hash": "sha256:3dd66bcf9d18dc2db1c4db087dd7effa3e8df2058bd71d5b5919eaa4513d8c03",
-					"diffPixels": 918,
-					"diffRatio": 0.040263,
-					"expected": "theme-bwst/scenarios-focus-elements-component-toolbar.expected.png",
-					"actual": "theme-bwst/scenarios-focus-elements-component-toolbar.actual.png",
-					"diff": "theme-bwst/scenarios-focus-elements-component-toolbar.diff.png"
+					"route": "scenarios-focus-elements-component-toolbar",
+					"status": "unchanged",
+					"hash": "sha256:87197410b03bde886c8028dbc856504029ee04e57629ab82f06d4039972b3abd"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -5205,24 +5160,9 @@
 				},
 				{
 					"name": "table-state-columns--action-columns",
-					"route": "table/state-columns",
-					"status": "changed",
-					"hash": "sha256:8e08292fb4e303036f2276709e844880cb778f397b4d70736b117f0e06c04c60",
-					"diffPixels": 15753,
-					"diffRatio": 0.087025,
-					"sizeMismatch": {
-						"expected": [
-							968,
-							187
-						],
-						"actual": [
-							968,
-							171
-						]
-					},
-					"expected": "theme-bwst/table-state-columns--action-columns.expected.png",
-					"actual": "theme-bwst/table-state-columns--action-columns.actual.png",
-					"diff": "theme-bwst/table-state-columns--action-columns.diff.png"
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:90fadca3b0eaf737b20a98aed0184a39c734d3e6d428d05b9c8c821ff7fda4c4"
 				},
 				{
 					"name": "table-stateful-async",
@@ -5469,13 +5409,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 438,
-				"changed": 4,
+				"unchanged": 442,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:69ac2c7e5c6beab777df0fa562187e02bb09080e350e2ea81f47e457dc8ef30b",
+			"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7375,14 +7315,9 @@
 				},
 				{
 					"name": "quote-block--block",
-					"route": "quote/block",
-					"status": "changed",
-					"hash": "sha256:13a064fe52178df6dae9337c909bc2ecb6ce36067e59903287d04f6dab0a8fff",
-					"diffPixels": 237,
-					"diffRatio": 0.00187,
-					"expected": "theme-default/quote-block--block.expected.png",
-					"actual": "theme-default/quote-block--block.actual.png",
-					"diff": "theme-default/quote-block--block.diff.png"
+					"route": "quote-block",
+					"status": "unchanged",
+					"hash": "sha256:7272577977eb21659f3a1b967d52987be0a463e7f73ea7d32585d12ded33544d"
 				},
 				{
 					"name": "scenarios-accordion-components",
@@ -7482,14 +7417,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRadio",
-					"route": "scenarios/focus-elements?component=inputRadio",
-					"status": "changed",
-					"hash": "sha256:545237f6d4e25b076c0396d7ad1ceab2ad7dd178527cec2660db17027922fa54",
-					"diffPixels": 187,
-					"diffRatio": 0.004183,
-					"expected": "theme-default/scenarios-focus-elements-component-inputRadio.expected.png",
-					"actual": "theme-default/scenarios-focus-elements-component-inputRadio.actual.png",
-					"diff": "theme-default/scenarios-focus-elements-component-inputRadio.diff.png"
+					"route": "scenarios-focus-elements-component-inputRadio",
+					"status": "unchanged",
+					"hash": "sha256:d7c139106a498881133c6656cde53d335fa37a2bc413310396453eeb080146ef"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRange",
@@ -7565,14 +7495,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-toolbar",
-					"route": "scenarios/focus-elements?component=toolbar",
-					"status": "changed",
-					"hash": "sha256:176e57cd24839271698293aed1f81e28d8615618c7b60b97e4f8d21d3e664749",
-					"diffPixels": 1194,
-					"diffRatio": 0.051688,
-					"expected": "theme-default/scenarios-focus-elements-component-toolbar.expected.png",
-					"actual": "theme-default/scenarios-focus-elements-component-toolbar.actual.png",
-					"diff": "theme-default/scenarios-focus-elements-component-toolbar.diff.png"
+					"route": "scenarios-focus-elements-component-toolbar",
+					"status": "unchanged",
+					"hash": "sha256:39619b45373cf0cf8c07c7ec8ed62b2c7df11b07a1d602321cd8ea441b85ef8d"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -7918,24 +7843,9 @@
 				},
 				{
 					"name": "table-state-columns--action-columns",
-					"route": "table/state-columns",
-					"status": "changed",
-					"hash": "sha256:e97215afb7fdfbf0630b22b989f261c8300797a46d681f4e74e033fc93d8b2a7",
-					"diffPixels": 17828,
-					"diffRatio": 0.093489,
-					"sizeMismatch": {
-						"expected": [
-							968,
-							197
-						],
-						"actual": [
-							968,
-							181
-						]
-					},
-					"expected": "theme-default/table-state-columns--action-columns.expected.png",
-					"actual": "theme-default/table-state-columns--action-columns.actual.png",
-					"diff": "theme-default/table-state-columns--action-columns.diff.png"
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:db2e47346d5a3004242cc0ee07c49eb86f629fcf44417ecc1d83c7530de8b166"
 				},
 				{
 					"name": "table-stateful-async",
@@ -8182,13 +8092,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 438,
-				"changed": 4,
+				"unchanged": 442,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:077c2d762ae1e798106292b83f492fd99750b30a3884dd798db58c2e03035987",
+			"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10088,24 +9998,9 @@
 				},
 				{
 					"name": "quote-block--block",
-					"route": "quote/block",
-					"status": "changed",
-					"hash": "sha256:0d63182984b13616a3937e5a2ebb8b06845e962b31fef4584ba84e06ee714736",
-					"diffPixels": 193,
-					"diffRatio": 0.001366,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							184
-						],
-						"actual": [
-							768,
-							181
-						]
-					},
-					"expected": "theme-desy/quote-block--block.expected.png",
-					"actual": "theme-desy/quote-block--block.actual.png",
-					"diff": "theme-desy/quote-block--block.diff.png"
+					"route": "quote-block",
+					"status": "unchanged",
+					"hash": "sha256:05aff455521d0aca328c125fe5c6d1da81bacfad70b595bbe0de9ca36dab7589"
 				},
 				{
 					"name": "scenarios-accordion-components",
@@ -10205,14 +10100,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRadio",
-					"route": "scenarios/focus-elements?component=inputRadio",
-					"status": "changed",
-					"hash": "sha256:57d2c37dd420a2922e8343670807530e22fb41213e389748ca5ac2ee8cd4697d",
-					"diffPixels": 97,
-					"diffRatio": 0.002608,
-					"expected": "theme-desy/scenarios-focus-elements-component-inputRadio.expected.png",
-					"actual": "theme-desy/scenarios-focus-elements-component-inputRadio.actual.png",
-					"diff": "theme-desy/scenarios-focus-elements-component-inputRadio.diff.png"
+					"route": "scenarios-focus-elements-component-inputRadio",
+					"status": "unchanged",
+					"hash": "sha256:0f27d8d238404b23b850d5581fdb0086e4ebc99372e84ab03d4805b5fd4aed98"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRange",
@@ -10288,14 +10178,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-toolbar",
-					"route": "scenarios/focus-elements?component=toolbar",
-					"status": "changed",
-					"hash": "sha256:ce5c68de03eb57a89e53c761abc2127849ba282682b4137fb08e7527612313d4",
-					"diffPixels": 1201,
-					"diffRatio": 0.05719,
-					"expected": "theme-desy/scenarios-focus-elements-component-toolbar.expected.png",
-					"actual": "theme-desy/scenarios-focus-elements-component-toolbar.actual.png",
-					"diff": "theme-desy/scenarios-focus-elements-component-toolbar.diff.png"
+					"route": "scenarios-focus-elements-component-toolbar",
+					"status": "unchanged",
+					"hash": "sha256:fdbdc765c27cdb1a1e6a42d64f166ba901a00c9d09ad6d2762074cb2885ee7d6"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -10641,14 +10526,9 @@
 				},
 				{
 					"name": "table-state-columns--action-columns",
-					"route": "table/state-columns",
-					"status": "changed",
-					"hash": "sha256:1500b9cbe6dca82c7df54fec8632cc827bc699cfd7bea2005c95ad9fb12ac1e8",
-					"diffPixels": 4285,
-					"diffRatio": 0.01985,
-					"expected": "theme-desy/table-state-columns--action-columns.expected.png",
-					"actual": "theme-desy/table-state-columns--action-columns.actual.png",
-					"diff": "theme-desy/table-state-columns--action-columns.diff.png"
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:74dd4be41d171d1c530efe1ac3b353f9c43e9e679faa8d6e2af64eb9a31e3e34"
 				},
 				{
 					"name": "table-stateful-async",
@@ -10895,13 +10775,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 438,
-				"changed": 4,
+				"unchanged": 442,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:285cc41194395586053d0b7a6785351f11a58842da22f790e425f10ac710e8b3",
+			"digest": "sha256:527ce0a79edd72d63df83b0e9449b83dcd80e12a624acce57b722410850da306",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12801,24 +12681,9 @@
 				},
 				{
 					"name": "quote-block--block",
-					"route": "quote/block",
-					"status": "changed",
-					"hash": "sha256:930b33471d1640774ee39d6a0fa3ba55109caf53630232618b86d4478b235586",
-					"diffPixels": 289,
-					"diffRatio": 0.001307,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							288
-						],
-						"actual": [
-							768,
-							272
-						]
-					},
-					"expected": "theme-ecl/quote-block--block.expected.png",
-					"actual": "theme-ecl/quote-block--block.actual.png",
-					"diff": "theme-ecl/quote-block--block.diff.png"
+					"route": "quote-block",
+					"status": "unchanged",
+					"hash": "sha256:880013978c484d2ec73edae4e83a921b2df846d16f77d47cd06f3914d2572db3"
 				},
 				{
 					"name": "scenarios-accordion-components",
@@ -12918,14 +12783,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRadio",
-					"route": "scenarios/focus-elements?component=inputRadio",
-					"status": "changed",
-					"hash": "sha256:a24ae023085073a8500fb1b1294f0d504312d0eac2e00299457693b9f352b338",
-					"diffPixels": 106,
-					"diffRatio": 0.002325,
-					"expected": "theme-ecl/scenarios-focus-elements-component-inputRadio.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-inputRadio.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-inputRadio.diff.png"
+					"route": "scenarios-focus-elements-component-inputRadio",
+					"status": "unchanged",
+					"hash": "sha256:de672e8a15dee9b6440d22d19c365c55440b71acf2c6dd40c3ddc66ecb066546"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRange",
@@ -13001,14 +12861,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-toolbar",
-					"route": "scenarios/focus-elements?component=toolbar",
-					"status": "changed",
-					"hash": "sha256:5b719a31d4532e2a521b84f4594039b3bb1b2e91d60b7b0f90f611553771c412",
-					"diffPixels": 744,
-					"diffRatio": 0.032208,
-					"expected": "theme-ecl/scenarios-focus-elements-component-toolbar.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-toolbar.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-toolbar.diff.png"
+					"route": "scenarios-focus-elements-component-toolbar",
+					"status": "unchanged",
+					"hash": "sha256:aa5c369baae4d6dc5c98ed2633f3ba98ef57d8c2380f8e7f7d50b8a9e695134b"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -13354,24 +13209,9 @@
 				},
 				{
 					"name": "table-state-columns--action-columns",
-					"route": "table/state-columns",
-					"status": "changed",
-					"hash": "sha256:b563b1aa959d033eed343913ff8cd7564ce8f04d55152892ad39d175e1f51858",
-					"diffPixels": 11830,
-					"diffRatio": 0.057108,
-					"sizeMismatch": {
-						"expected": [
-							968,
-							214
-						],
-						"actual": [
-							968,
-							198
-						]
-					},
-					"expected": "theme-ecl/table-state-columns--action-columns.expected.png",
-					"actual": "theme-ecl/table-state-columns--action-columns.actual.png",
-					"diff": "theme-ecl/table-state-columns--action-columns.diff.png"
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:54c380854c1e553844f4596923943eb3239a875d70c61ab55ec8532bb3757f39"
 				},
 				{
 					"name": "table-stateful-async",
@@ -13618,13 +13458,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 439,
-				"changed": 4,
+				"unchanged": 443,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:038dd569daf4e0c6b8c02dc44150e8dfc89716fe62aa3d5abf8eb6cea568b5c2",
+			"digest": "sha256:4160f0bc0e435a83b94bf43bd9e6a98ea3d8b14ca18d12bfe3c2ce837c279acc",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15524,24 +15364,9 @@
 				},
 				{
 					"name": "quote-block--block",
-					"route": "quote/block",
-					"status": "changed",
-					"hash": "sha256:b6c5a8ea83d26db57f6008ec9955626918e84c5692cf50c9e4e301c8a68d1a4f",
-					"diffPixels": 217,
-					"diffRatio": 0.001962,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							144
-						],
-						"actual": [
-							768,
-							130
-						]
-					},
-					"expected": "theme-kern/quote-block--block.expected.png",
-					"actual": "theme-kern/quote-block--block.actual.png",
-					"diff": "theme-kern/quote-block--block.diff.png"
+					"route": "quote-block",
+					"status": "unchanged",
+					"hash": "sha256:7fd478aed18008060b6fcb6a515174f3f6ca0f29b6c4ba328459831394a2abfc"
 				},
 				{
 					"name": "scenarios-accordion-components",
@@ -15641,14 +15466,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRadio",
-					"route": "scenarios/focus-elements?component=inputRadio",
-					"status": "changed",
-					"hash": "sha256:ddda64fabd90c8b1dd78cffaa6ce44ce8f7f7a0b3fc3380edf8d0645439465ee",
-					"diffPixels": 412,
-					"diffRatio": 0.007803,
-					"expected": "theme-kern/scenarios-focus-elements-component-inputRadio.expected.png",
-					"actual": "theme-kern/scenarios-focus-elements-component-inputRadio.actual.png",
-					"diff": "theme-kern/scenarios-focus-elements-component-inputRadio.diff.png"
+					"route": "scenarios-focus-elements-component-inputRadio",
+					"status": "unchanged",
+					"hash": "sha256:01f7a53ade9ab164aa8e9a72299b3ed60451d80e2076b93f05fe3509fbb41253"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRange",
@@ -15724,14 +15544,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-toolbar",
-					"route": "scenarios/focus-elements?component=toolbar",
-					"status": "changed",
-					"hash": "sha256:c402d2e8423ed8fdc94582bbc9e9ba97d9f73e5b006487ee6bc32d993384f748",
-					"diffPixels": 1357,
-					"diffRatio": 0.056542,
-					"expected": "theme-kern/scenarios-focus-elements-component-toolbar.expected.png",
-					"actual": "theme-kern/scenarios-focus-elements-component-toolbar.actual.png",
-					"diff": "theme-kern/scenarios-focus-elements-component-toolbar.diff.png"
+					"route": "scenarios-focus-elements-component-toolbar",
+					"status": "unchanged",
+					"hash": "sha256:d6f37e951b8ac751954cbf21ea84372935b1da46eb823b1ee026c5e037ea8698"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -16077,24 +15892,9 @@
 				},
 				{
 					"name": "table-state-columns--action-columns",
-					"route": "table/state-columns",
-					"status": "changed",
-					"hash": "sha256:7148ca05b294eb48e1c9b81b937e2e95b6deded3da4c6f5ea1ce3bbd2e34a95a",
-					"diffPixels": 16341,
-					"diffRatio": 0.082751,
-					"sizeMismatch": {
-						"expected": [
-							968,
-							204
-						],
-						"actual": [
-							968,
-							188
-						]
-					},
-					"expected": "theme-kern/table-state-columns--action-columns.expected.png",
-					"actual": "theme-kern/table-state-columns--action-columns.actual.png",
-					"diff": "theme-kern/table-state-columns--action-columns.diff.png"
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:6ea4b9a4d6251611f9cb4145db955a35776b362fa52b317b88c735d18527914c"
 				},
 				{
 					"name": "table-stateful-async",
@@ -16347,13 +16147,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 438,
-				"changed": 4,
+				"unchanged": 442,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:5406b6c0e98dc26c0167f25798b4a2a3828bd8084f152cebab1b7e883b910d0f",
+			"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -18253,14 +18053,9 @@
 				},
 				{
 					"name": "quote-block--block",
-					"route": "quote/block",
-					"status": "changed",
-					"hash": "sha256:f535558fbc7fb9a334d0b0c09138a377cd615544fd33e3fba0aa4db3a82d6e43",
-					"diffPixels": 212,
-					"diffRatio": 0.001542,
-					"expected": "unstyled/quote-block--block.expected.png",
-					"actual": "unstyled/quote-block--block.actual.png",
-					"diff": "unstyled/quote-block--block.diff.png"
+					"route": "quote-block",
+					"status": "unchanged",
+					"hash": "sha256:52049d2594e4d7c41925740bab4818a69f57f17103e325eeb4b61518bffd0465"
 				},
 				{
 					"name": "scenarios-accordion-components",
@@ -18360,14 +18155,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRadio",
-					"route": "scenarios/focus-elements?component=inputRadio",
-					"status": "changed",
-					"hash": "sha256:086148127ec25f8bcbe39b8a45da121f8a1ae0097a9e74f0844ded9527d0a299",
-					"diffPixels": 104,
-					"diffRatio": 0.002153,
-					"expected": "unstyled/scenarios-focus-elements-component-inputRadio.expected.png",
-					"actual": "unstyled/scenarios-focus-elements-component-inputRadio.actual.png",
-					"diff": "unstyled/scenarios-focus-elements-component-inputRadio.diff.png"
+					"route": "scenarios-focus-elements-component-inputRadio",
+					"status": "unchanged",
+					"hash": "sha256:42221a29372547ac63bc02e140902cf3b44d40350fd678c757ea283b64c23df2"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputRange",
@@ -18443,14 +18233,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-toolbar",
-					"route": "scenarios/focus-elements?component=toolbar",
-					"status": "changed",
-					"hash": "sha256:2c352028b5f655d7bd722a0d79de53b0bd83a0fb8e84c5afdae90d3bc0cc211a",
-					"diffPixels": 1046,
-					"diffRatio": 0.045877,
-					"expected": "unstyled/scenarios-focus-elements-component-toolbar.expected.png",
-					"actual": "unstyled/scenarios-focus-elements-component-toolbar.actual.png",
-					"diff": "unstyled/scenarios-focus-elements-component-toolbar.diff.png"
+					"route": "scenarios-focus-elements-component-toolbar",
+					"status": "unchanged",
+					"hash": "sha256:df80c3e54f8f072de10ca404572d80b91d943ca38c622622eaa5c567f142c33f"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -18796,14 +18581,9 @@
 				},
 				{
 					"name": "table-state-columns--action-columns",
-					"route": "table/state-columns",
-					"status": "changed",
-					"hash": "sha256:affae4df862772a407b7b1de9a3f9261ddaecf2cc928cd803f4d9a342ac5bf1d",
-					"diffPixels": 4615,
-					"diffRatio": 0.038761,
-					"expected": "unstyled/table-state-columns--action-columns.expected.png",
-					"actual": "unstyled/table-state-columns--action-columns.actual.png",
-					"diff": "unstyled/table-state-columns--action-columns.diff.png"
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:a6d4727c9668950f220b464c695da1c32cdd9dc9f739ba1927b112cb512091ea"
 				},
 				{
 					"name": "table-stateful-async",

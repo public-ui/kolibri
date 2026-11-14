@@ -1,132 +1,19 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "28 changed – 0 of 28 approved, review pending",
-	"computedAt": "2026-11-14T19:09:33.632Z",
+	"state": "success",
+	"description": "No visual changes",
+	"computedAt": "2026-11-14T20:02:43.565Z",
 	"pr": 11599,
-	"head": "b0dfa268bebc79a2332c2cb286d39a8af8d64c41",
-	"digest": "sha256:a762ae9787f5fcacde0a454573a09102842751118357e88b1ba0bc2ec23e48dd",
+	"head": "cf066c9624f655b467f9ce91b3bec0f5dba0e5c5",
+	"digest": "sha256:09a07266565d4a04a1f9a8c9ccc11bd6aa31b7141a8f4410babd5fbd0e6c19fd",
 	"counts": {
-		"changes": 28,
-		"open": 28,
+		"changes": 0,
+		"open": 0,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {
-		"test-tag-name-transformer/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-focus-elements-component-inputRadio": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/scenarios-focus-elements-component-inputRadio": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-focus-elements-component-inputRadio": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/scenarios-focus-elements-component-inputRadio": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/scenarios-focus-elements-component-inputRadio": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/scenarios-focus-elements-component-inputRadio": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/scenarios-focus-elements-component-inputRadio": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		}
-	}
+	"items": {}
 }
