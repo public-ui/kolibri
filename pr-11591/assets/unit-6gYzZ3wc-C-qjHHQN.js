@@ -1,1 +1,0 @@
-import{O as e,T as t,c as n}from"./bem-registry-CzD7Hxkx-Cnz5uWPb.js";var r=n(`max`,100,t,e=>e>0),i=n(`unit`,`%`,e,e=>e.length>0);export{i as n,r as t};

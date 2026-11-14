@@ -1,1 +1,0 @@
-import{c as e,y as t}from"./bem-registry-CzD7Hxkx-Cnz5uWPb.js";var n=e(`multiple`,!1,t);export{n as t};

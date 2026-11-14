@@ -1,1 +1,0 @@
-import{B as e,c as t,l as n}from"./index-DBw-K342.js";var r=(e,r)=>(t()??n(`de`)).translate(e,r);e()&&(r=e=>e);export{r as t};

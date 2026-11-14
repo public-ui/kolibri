@@ -1,0 +1,1 @@
+import{c as e,y as t}from"./bem-registry-CzD7Hxkx-TF4ispM8.js";var n=e(`required`,!1,t);export{n as t};
