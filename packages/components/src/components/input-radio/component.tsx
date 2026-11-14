@@ -300,8 +300,7 @@ export class KolInputRadio
 	 */
 	@Method()
 	public async focus(options?: KolFocusOptions) {
-		const input = this.getFocusableInput();
-		return delegateFocus(this.host!, () => setFocus(input, options));
+		return delegateFocus(this.host!, () => setFocus(this.getFocusableInput(), options));
 	}
 
 	/**
