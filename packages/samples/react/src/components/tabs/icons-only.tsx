@@ -41,10 +41,10 @@ export const TabsIconsOnly: FC = () => (
 
 		<SampleBlock id="icons-only">
 			<KolTabs _label="Tabs with icons" _tabs={tabs}>
-				<div slot="tab-0">Contents of Tab 1</div>
-				<div slot="tab-1">Contents of Tab 2</div>
-				<div slot="tab-2">Contents of Tab 3</div>
-				<div slot="tab-3">Contents of Tab 4</div>
+				<p slot="tab-0">Contents of Tab 1</p>
+				<p slot="tab-1">Contents of Tab 2</p>
+				<p slot="tab-2">Contents of Tab 3</p>
+				<p slot="tab-3">Contents of Tab 4</p>
 			</KolTabs>
 		</SampleBlock>
 	</>

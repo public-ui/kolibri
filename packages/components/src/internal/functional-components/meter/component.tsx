@@ -12,21 +12,18 @@ type MeterState = 'optimum' | 'suboptimal' | 'critical';
 
 const meterBem = bem.forBlock('kol-meter');
 
+/** Classifies the value like the native `<meter>`, which takes (min + max) / 2 as the optimum when none is set. */
 function getMeterState(value: number, min: number, max: number, low: number | undefined, high: number | undefined, optimum: number | undefined): MeterState {
 	const effectiveLow = low ?? min;
 	const effectiveHigh = high ?? max;
-
-	if (optimum === undefined) {
-		const inMidRegion = value >= effectiveLow && value <= effectiveHigh;
-		return inMidRegion ? 'optimum' : 'suboptimal';
-	}
+	const effectiveOptimum = optimum ?? (min + max) / 2;
 
 	const inLowRegion = value < effectiveLow;
 	const inHighRegion = value > effectiveHigh;
 	const inMidRegion = !inLowRegion && !inHighRegion;
 
-	const optimumInLow = optimum < effectiveLow;
-	const optimumInHigh = optimum > effectiveHigh;
+	const optimumInLow = effectiveOptimum < effectiveLow;
+	const optimumInHigh = effectiveOptimum > effectiveHigh;
 
 	if (optimumInLow) {
 		if (inLowRegion) return 'optimum';

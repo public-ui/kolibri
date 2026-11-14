@@ -32,6 +32,16 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 			expect(await readRows()).toBe(3);
 		});
+
+		test('leaves no inline overflow behind after measuring the rows', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Textarea" _adjust-height _rows="3"></${COMPONENT_NAME}>`);
+			const textarea = page.locator('textarea');
+
+			await textarea.fill('1\n2\n3\n4');
+			await page.waitForChanges();
+
+			expect(await textarea.evaluate((element: HTMLTextAreaElement) => element.style.overflow)).toBe('');
+		});
 	});
 
 	test.describe('Callbacks and Events', () => {

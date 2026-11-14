@@ -46,4 +46,13 @@ describe('MeterFC', () => {
 
 		expect(getText(page.root!)).toBe('25');
 	});
+
+	it('takes the middle of the range as the optimum when none is set, like the native meter', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<MeterFC high={80} label="Label" low={60} max={100} min={0} optimum={undefined} orientation="horizontal" unit="%" value={70} />
+		));
+
+		expect(page.root!.querySelector('.kol-meter__bar-state--suboptimal')).not.toBeNull();
+		expect(getValueText(page.root!)).toContain('kol-meter-state-suboptimal');
+	});
 });

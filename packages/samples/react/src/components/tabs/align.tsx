@@ -44,10 +44,10 @@ export const TabsAlign: FC = () => (
 					<div key={align} className="grid gap-4">
 						<KolHeading _level={2} _label={text} />
 						<KolTabs _tabs={tabs} _align={align} _label={text}>
-							<div slot="tab-0">Contents of Tab 1</div>
-							<div slot="tab-1">Contents of Tab 2</div>
-							<div slot="tab-2">Contents of Tab 3</div>
-							<div slot="tab-3">Contents of Tab 4</div>
+							<p slot="tab-0">Contents of Tab 1</p>
+							<p slot="tab-1">Contents of Tab 2</p>
+							<p slot="tab-2">Contents of Tab 3</p>
+							<p slot="tab-3">Contents of Tab 4</p>
 						</KolTabs>
 					</div>
 				);
