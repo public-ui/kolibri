@@ -16,7 +16,7 @@ concurrency:
 jobs:
   build-and-check:
     continue-on-error: true
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -36,7 +36,7 @@ jobs:
 
   e2e-tests:
     continue-on-error: true
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -61,7 +61,7 @@ jobs:
     strategy:
       matrix:
         package: ['test-tag-name-transformer', 'theme-default', 'theme-bwst']
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -101,7 +101,7 @@ jobs:
           name: report-${{ matrix.package }}
 
   check-results:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [build-and-check, e2e-tests, visual-tests]
     if: always()
     steps:
