@@ -81,8 +81,16 @@ export type PaginationItem = {
 	applyCustomClass: (value?: CustomClassPropType) => void;
 	/** An object sets single buttons and keeps the others. */
 	applyHasButtons: (value?: boolean | Stringified<PaginationHasButton>) => void;
+	/**
+	 * Applies `_label`, substituting the `kol-pagination` translation when it is unset. The web
+	 * component passes the requiredness of an unset value; applies from `update` stay without it.
+	 */
 	applyLabel: (value?: LabelPropType, required?: boolean) => void;
-	applyMax: (value?: number) => void;
+	/**
+	 * Applies `_max`. The web component passes the requiredness of an unset value; applies from
+	 * `update` stay without it and keep the current max.
+	 */
+	applyMax: (value?: number, required?: boolean) => void;
 	applyOn: (value?: KoliBriPaginationButtonCallbacks) => void;
 	applyPage: (value?: number) => void;
 	/** Applies `_pageSize`; it also becomes the page size a choice in the select is compared against. */
@@ -92,9 +100,11 @@ export type PaginationItem = {
 	applyTooltipAlign: (value?: TooltipAlignPropType) => void;
 	/**
 	 * Applies all inputs in the load order of the element. The page is applied again last: only then are
-	 * page size and number of entries known to clamp it, so a clamped page is reported twice.
+	 * page size and number of entries known to clamp it, so a clamped page is reported twice. The
+	 * applying component marks the keys whose unset value warns; every key left out applies as a
+	 * legitimate "not set", so a composed item stays warning-free.
 	 */
-	load: (input: PaginationInput) => void;
+	load: (input: PaginationInput, required?: Partial<{ [K in keyof PaginationInput]: boolean }>) => void;
 	/**
 	 * Applies the inputs that differ from the last passed ones, like the props of a child element in a
 	 * render: a value passed again unchanged is not applied, even if the item changed it meanwhile.
@@ -262,14 +272,18 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		applyCustomClass: (value) => customClassProp.apply(value, (v) => store.set('customClass', v)),
 		applyHasButtons: (value) => paginationHasButtonsProp.apply(value, (v) => store.set('hasButtons', { ...store.get('hasButtons'), ...v })),
 		applyLabel: (value, required) => applyLabel(value, false, required),
-		applyMax: (value) => {
-			if (value === undefined || value === null) {
+		applyMax: (value, required) => {
+			if ((value === undefined || value === null) && !required) {
 				return;
 			}
-			paginationMaxProp.apply(value, (max) => {
-				store.set('max', max);
-				syncPage(store.get('page'), store.get('pageSize'), max);
-			});
+			paginationMaxProp.apply(
+				value,
+				(max) => {
+					store.set('max', max);
+					syncPage(store.get('page'), store.get('pageSize'), max);
+				},
+				required,
+			);
 		},
 		applyOn: (value) => paginationCallbacksProp.apply(value, (v) => store.set('on', v)),
 		applyPage: (value) => {
@@ -299,19 +313,19 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		applySiblingCount: (value) => siblingCountProp.apply(value, (v) => store.set('siblingCount', v)),
 		/** Pagination buttons show the tooltip on top by default; the shared prop defaults to `'right'`. */
 		applyTooltipAlign: (value) => tooltipAlignProp.apply(value ?? 'top', (v) => store.set('tooltipAlign', v)),
-		load: (input) => {
+		load: (input, required) => {
 			applied = { ...input };
 			item.applyBoundaryCount(input.boundaryCount);
 			item.applyCustomClass(input.customClass);
 			item.applyHasButtons(input.hasButtons);
-			applyLabel(input.label, true);
+			applyLabel(input.label, true, required?.label);
 			item.applyOn(input.on);
 			item.applyPage(input.page);
 			item.applyPageSize(input.pageSize);
 			item.applyPageSizeOptions(input.pageSizeOptions);
 			item.applySiblingCount(input.siblingCount);
 			item.applyTooltipAlign(input.tooltipAlign);
-			item.applyMax(input.max);
+			item.applyMax(input.max, required?.max);
 			item.applyPage(input.page);
 		},
 		update: (input) => {

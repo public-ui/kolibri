@@ -147,7 +147,7 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {
-		this.item.applyMax(value);
+		this.item.applyMax(value, this.isRequired('max'));
 	}
 
 	public componentWillLoad(): void {
@@ -162,21 +162,24 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 			},
 			store,
 		});
-		this.item.load({
-			boundaryCount: this._boundaryCount,
-			customClass: this._customClass,
-			hasButtons: this._hasButtons,
-			max: this._max,
-			on: this._on,
-			page: this._page,
-			pageSize: this._pageSize,
-			pageSizeOptions: this._pageSizeOptions,
-			siblingCount: this._siblingCount,
-			tooltipAlign: this._tooltipAlign,
-		});
-		// The item applies without requiredness and the watcher does not fire for the initial value,
-		// so the component applies the label with its own flag.
-		this.item.applyLabel(this._label, this.isRequired('label'));
+		this.item.load(
+			{
+				boundaryCount: this._boundaryCount,
+				customClass: this._customClass,
+				hasButtons: this._hasButtons,
+				label: this._label,
+				max: this._max,
+				on: this._on,
+				page: this._page,
+				pageSize: this._pageSize,
+				pageSizeOptions: this._pageSizeOptions,
+				siblingCount: this._siblingCount,
+				tooltipAlign: this._tooltipAlign,
+			},
+			// Of the required slot `_label` and `_max` warn about an unset value; `_page` and `_on` are
+			// a type contract (see ARC42, "Requiredness semantics per prop").
+			{ label: this.isRequired('label'), max: this.isRequired('max') },
+		);
 	}
 
 	public componentDidRender(): void {
