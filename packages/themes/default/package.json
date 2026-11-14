@@ -86,7 +86,17 @@
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "workspace:*"
+		"@fortawesome/fontawesome-free": "6.7.2",
+		"@public-ui/components": "workspace:*",
+		"@vscode/codicons": "0.0.46-24"
+	},
+	"peerDependenciesMeta": {
+		"@fortawesome/fontawesome-free": {
+			"optional": true
+		},
+		"@vscode/codicons": {
+			"optional": true
+		}
 	},
 	"exports": {
 		".": {
@@ -94,6 +104,7 @@
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs"
 		},
+		"./assets/*": "./assets/*",
 		"./color-scheme.css": "./color-scheme.css"
 	},
 	"main": "./dist/index.cjs",
