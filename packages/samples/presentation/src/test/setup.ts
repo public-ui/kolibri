@@ -10,7 +10,6 @@ import { DEFAULT } from '@public-ui/theme-default';
 import '@testing-library/jest-dom/vitest';
 import { cleanup, configure } from '@testing-library/react';
 import { afterEach } from 'vitest';
-import '../legacy-element-constructor';
 import { applyHappyDomWorkarounds } from './happy-dom-workarounds';
 
 applyHappyDomWorkarounds();

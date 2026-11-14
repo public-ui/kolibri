@@ -30,18 +30,19 @@ export type StencilReactComponent<I extends HTMLElement, E extends EventNames, C
  * and its property setting runs in a layout effect that does not fire in every environment the
  * adapters support (component tests with happy-dom render the elements without it).
  *
- * The `tagName` resolution and the element definition run at module scope, like in the generated
- * proxies: applications register the tag name transformer before the first route renders (the
- * documented bootstrap order), so the tag resolves against the registered transformer here.
+ * The generated proxies call `createComponent` at module scope, before the application registers the
+ * tag name transformer. The wrapper therefore resolves the tag and defines the custom element on the
+ * first render, so the transformer must be registered before the first render.
  */
 export const createComponent = <I extends HTMLElement, E extends EventNames, C, R extends keyof C = never>(
 	args: ComponentArgs<I, E, C, R>,
 ): StencilReactComponent<I, E, C, R> => {
 	const { transformTag, tagName, ...options } = args;
-	const component = createReactComponent({ ...options, tagName: transformTag ? transformTag(tagName) : tagName });
+	let component: ReturnType<typeof createReactComponent<I, E, C, R>> | undefined;
 
 	return React.forwardRef(
 		(props: Parameters<StencilReactComponent<I, E, C, R>>[0], ref: React.Ref<I>) => {
+			component ??= createReactComponent({ ...options, tagName: transformTag ? transformTag(tagName) : tagName });
 			const setProps = Object.fromEntries(Object.entries(props).filter(([, value]) => value !== undefined));
 			return React.createElement(component, {
 				...setProps,

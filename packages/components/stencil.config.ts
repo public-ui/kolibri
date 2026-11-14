@@ -1,14 +1,13 @@
 import { promises as fsPromises } from 'fs';
 
 import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
-
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
 import { svelteOutputTarget } from '@revolist/svelte-output-target';
 import { postcss } from '@stencil-community/postcss';
-import { reactOutputTarget } from '@stencil/react-output-target';
 import type { Config } from '@stencil/core';
 import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 import { version as KOLIBRI_VERSION } from './package.json' assert { type: 'json' };
 
