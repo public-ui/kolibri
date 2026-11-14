@@ -1,1 +1,0 @@
-import"./index-C3Bp-kav-CcygNGka.js";import{s as e,v as t}from"./props-from-config-D5GU-acM-Blkw9_gL.js";var n=e(`multiple`,!1,t);export{n as t};
