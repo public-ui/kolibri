@@ -23,6 +23,10 @@ for (const file of proxies.map((proxy) => join(scriptDir, proxy))) {
 			"import type { Components } from '@public-ui/components/dist/components';",
 			// The dist-custom-elements type output carries no `Components` namespace; the root types do.
 			"import type { Components } from '@public-ui/components';",
+		)
+		.replace(
+			"import type { StencilReactComponent } from '@stencil/react-output-target/runtime';",
+			"import type { StencilReactComponent } from '../kolibri-src/create-component';",
 		);
 	if (rewritten === source) {
 		throw new Error(`react-codemod: no generated import found in ${file}`);
