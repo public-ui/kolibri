@@ -91,6 +91,19 @@ your public assets — the declarations and glyph classes are identical:
 | `theme-bwst`                  | Noto Sans (text font) | `pnpm add @fontsource/noto-sans` + `import '@fontsource/noto-sans/400.css';` and `700.css`           |
 | `theme-kern`                  | Fira Sans (text font) | `pnpm add @fontsource/fira-sans` + `import '@fontsource/fira-sans/400.css';` … `700.css`             |
 
+The icon fonts that KoliBri packages ship themselves are importable the same way, through the
+packages' `./assets/*` exports:
+
+| Package      | Font                        | Import                                                                     |
+| ------------ | --------------------------- | -------------------------------------------------------------------------- |
+| every theme  | KolIcons                    | `import '@public-ui/components/assets/kolicons/style.css';`                |
+| `theme-ecl`  | ECL Icons (theme-specific)  | `import '@public-ui/theme-ecl/assets/ecl-icons/style.css';`                |
+| `theme-desy` | Desy Icons (theme-specific) | `import '@public-ui/theme-desy/assets/desy-icons/style.css';`              |
+| `theme-kern` | Material Symbols subset     | `import '@public-ui/theme-kern/assets/material-symbols-subset/style.css';` |
+
+No icon font needs to be copied into a public assets folder — the bundler resolves the font files
+of the imported CSS on its own.
+
 Prefer the package imports for new code: **version 5 removes the bundled copies** from the theme
 assets (see [BREAKING_CHANGES.v5.md](./BREAKING_CHANGES.v5.md)), where the import above becomes the
 only supported way. Loading the bundled font files from your public assets folder keeps working

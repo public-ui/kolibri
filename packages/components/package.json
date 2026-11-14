@@ -31,6 +31,7 @@
 			"import": "./loader/index.mjs",
 			"require": "./dist/loader/index.cjs.js"
 		},
+		"./assets/*": "./assets/*",
 		"./custom-elements.json": "./custom-elements.json",
 		"./package.json": "./package.json"
 	},

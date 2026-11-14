@@ -104,6 +104,7 @@
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs"
 		},
+		"./assets/*": "./assets/*",
 		"./color-scheme.css": "./color-scheme.css"
 	},
 	"main": "./dist/index.cjs",
