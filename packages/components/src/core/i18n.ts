@@ -114,7 +114,10 @@ const readSharedI18n = (): I18nService | undefined => (globalThis as { KoliBriGl
 let i18n: I18nService;
 
 export const getI18nInstance = () => {
-	return i18n ?? readSharedI18n();
+	// The shared instance wins over the bundle-local one: a translate call that runs before bootstrap
+	// seeds the bundle-local instance with the fallback language and would otherwise pin every later
+	// translate call of this bundle copy to it.
+	return readSharedI18n() ?? i18n;
 };
 
 export const initializeI18n = (
