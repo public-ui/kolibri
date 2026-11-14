@@ -1,1 +1,0 @@
-import{c as e,y as t}from"./bem-registry-CzD7Hxkx-BtDrWjZS.js";var n=e(`disabled`,!1,t);export{n as t};

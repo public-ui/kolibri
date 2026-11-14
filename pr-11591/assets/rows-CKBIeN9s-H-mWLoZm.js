@@ -1,1 +1,0 @@
-import{T as e,c as t}from"./bem-registry-CzD7Hxkx-BtDrWjZS.js";var n=t(`rows`,void 0,e,e=>e>=1);export{n as t};
