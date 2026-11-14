@@ -71,8 +71,10 @@ import { KERN_V2 } from '@public-ui/theme-kern';
 ### Assets
 
 The meta package aggregated the assets (fonts, icons) of all themes into a single `assets` folder.
-Without it, copy the assets from each individual theme package you use. Note that the foreign icon
-fonts and fonts are peer dependencies now and are no longer part of these assets — see
+Without it, load the assets from each individual theme package you use. The icon fonts are
+importable through the packages' `./assets/*` exports — the bundler resolves the font files of the
+imported CSS on its own, so no copying into a public assets directory is needed. Note that the
+foreign icon fonts and fonts are peer dependencies now and are no longer part of these assets — see
 [Foreign icon fonts and fonts are peer dependencies now](#foreign-icon-fonts-and-fonts-are-peer-dependencies-now).
 
 **Before (v4):**
@@ -85,13 +87,21 @@ fonts and fonts are peer dependencies now and are no longer part of these assets
 }
 ```
 
-**After:**
+**After (v5):**
+
+```ts
+// main.ts / index.tsx
+import '@public-ui/components/assets/kolicons/style.css';
+import '@public-ui/theme-ecl/assets/ecl-icons/style.css'; // if you use the ECL theme
+```
+
+Only non-CSS assets such as the `kolibri.ico` favicon or the `inject-variants_*.json` data still
+need to be copied, and only if your application uses them:
 
 ```jsonc
 {
 	"scripts": {
-		"prebuild:theme-default": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" public/assets --dot",
-		"prebuild:theme-ecl": "cpy \"node_modules/@public-ui/theme-ecl/assets/**/*\" public/assets --dot",
+		"prebuild:theme-ecl": "cpy \"node_modules/@public-ui/theme-ecl/assets/{kolibri.ico,variants/**}\" public/assets --dot",
 	},
 }
 ```
@@ -107,7 +117,17 @@ the font files of the imported CSS on its own.
 KoliBri's own fonts keep shipping with their packages: the **KolIcons** font ships with
 `@public-ui/components`, and theme-specific icon fonts (`desy-icons` with `@public-ui/theme-desy`,
 `ecl-icons` with `@public-ui/theme-ecl`, `material-symbols-subset` with `@public-ui/theme-kern`)
-stay part of their theme. KoliBri publishes no icon font packages of its own on npm.
+stay part of their theme. KoliBri publishes no icon font packages of its own on npm. Like the peer
+dependency fonts, they are loaded with one CSS import each through the packages' `./assets/*`
+exports — no copying of asset folders:
+
+```ts
+// main.ts / index.tsx
+import '@public-ui/components/assets/kolicons/style.css';
+import '@public-ui/theme-ecl/assets/ecl-icons/style.css';
+import '@public-ui/theme-desy/assets/desy-icons/style.css';
+import '@public-ui/theme-kern/assets/material-symbols-subset/style.css';
+```
 
 | Theme package              | New peer dependency                     | Replaces the bundled        |
 | -------------------------- | --------------------------------------- | --------------------------- |

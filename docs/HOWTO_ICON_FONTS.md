@@ -82,9 +82,17 @@ KolIcons classes — only the font itself must be imported once at document leve
 | `theme-kern`                  | Fira Sans (text font) | `import '@fontsource/fira-sans/400.css';` … `import '@fontsource/fira-sans/700.css';` |
 
 The font packages come with the theme packages as peer dependencies — no separate installation and
-no copying of font files is required. A theme-specific icon font (`desy-icons`, `ecl-icons`,
-`material-symbols-subset`) ships with its theme's assets and needs no extra import.
+no copying of font files is required. KoliBri's own icon fonts are importable the same way, through
+the packages' `./assets/*` exports:
 
-Before v5 these fonts were checked into the theme assets and had to be copied out of
-`node_modules/@public-ui/theme-*` manually; the legacy path
+| Package      | Font                        | Import                                                                     |
+| ------------ | --------------------------- | -------------------------------------------------------------------------- |
+| every theme  | KolIcons                    | `import '@public-ui/components/assets/kolicons/style.css';`                |
+| `theme-ecl`  | ECL Icons (theme-specific)  | `import '@public-ui/theme-ecl/assets/ecl-icons/style.css';`                |
+| `theme-desy` | Desy Icons (theme-specific) | `import '@public-ui/theme-desy/assets/desy-icons/style.css';`              |
+| `theme-kern` | Material Symbols subset     | `import '@public-ui/theme-kern/assets/material-symbols-subset/style.css';` |
+
+No icon font needs to be copied into a public assets folder — the bundler resolves the font files
+of the imported CSS on its own. Before v5 the fonts were checked into the theme assets and had to
+be copied out of `node_modules/@public-ui/theme-*` manually; the legacy path
 `@public-ui/components/assets/codicons/codicon.css` no longer exists.
