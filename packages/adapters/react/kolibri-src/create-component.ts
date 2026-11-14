@@ -24,10 +24,11 @@ export type StencilReactComponent<I extends HTMLElement, E extends EventNames, C
 	>;
 
 /**
- * The proxies run through this wrapper to write the props onto the host element through the
- * element ref. The property setting of the Stencil React runtime runs in a layout effect that does
- * not fire in every environment the adapters support (component tests with happy-dom render the
- * elements without it), so the props would reach the elements too late or not at all there.
+ * The proxies run through this wrapper to strip undefined props and to write the remaining props
+ * onto the host element through the element ref. The Stencil React runtime writes undefined
+ * properties to the element, which would override documented defaults like the checkbox `_value`,
+ * and its property setting runs in a layout effect that does not fire in every environment the
+ * adapters support (component tests with happy-dom render the elements without it).
  *
  * The `tagName` resolution and the element definition run at module scope, like in the generated
  * proxies: applications register the tag name transformer before the first route renders (the
@@ -40,16 +41,15 @@ export const createComponent = <I extends HTMLElement, E extends EventNames, C, 
 	const component = createReactComponent({ ...options, tagName: transformTag ? transformTag(tagName) : tagName });
 
 	return React.forwardRef(
-		(props: Parameters<StencilReactComponent<I, E, C, R>>[0], ref: React.Ref<I>) =>
-			React.createElement(component, {
-				...props,
+		(props: Parameters<StencilReactComponent<I, E, C, R>>[0], ref: React.Ref<I>) => {
+			const setProps = Object.fromEntries(Object.entries(props).filter(([, value]) => value !== undefined));
+			return React.createElement(component, {
+				...setProps,
 				ref: React.useCallback(
 					(element: I | null) => {
 						if (element !== null) {
-							for (const [key, value] of Object.entries(props)) {
-								// Undefined props stay unset: the element keeps its documented default, like the
-								// fork-based proxies did when React passed the prop as undefined.
-								if (value !== undefined && key !== 'className' && key !== 'children' && key !== 'ref' && key in element) {
+							for (const [key, value] of Object.entries(setProps)) {
+								if (key !== 'children' && key !== 'ref' && key in element) {
 									(element as unknown as Record<string, unknown>)[key] = value;
 								}
 							}
@@ -60,8 +60,9 @@ export const createComponent = <I extends HTMLElement, E extends EventNames, C, 
 							ref.current = element;
 						}
 					},
-					[ref, props],
+					[ref, setProps],
 				),
-			}),
+			});
+		},
 	) as unknown as StencilReactComponent<I, E, C, R>;
 };
