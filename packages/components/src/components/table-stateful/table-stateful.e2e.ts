@@ -1,7 +1,7 @@
 import { expect, type Page } from '@playwright/test';
 import type { E2EPage } from '@stencil/playwright';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableDataType, KoliBriTableHeaders, SortChangeEventPayload } from '../../schema';
+import type { KoliBriTableDataType, KoliBriTableHeaders, SortChangeEventPayload } from '../../../internals/src/schema/index';
 
 const DATA = [{ id: '1001' }, { id: '1002' }];
 const DATA_NUM = [{ id: 1001 }, { id: 1002 }];

@@ -1,13 +1,13 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { SplitButtonApi } from '../../../../internals/src/controller/split-button/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import clsx from '../../../../internals/src/utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
-import type { FunctionalComponentProps } from '../generic-types';
 import { PopoverButtonFC } from '../popover-button/component';
-import type { SplitButtonApi } from './api';
 
 const splitButtonBem = bem.forBlock('kol-split-button');
 const BEM_CLASS_SPLIT_BUTTON__BUTTON = splitButtonBem('button');

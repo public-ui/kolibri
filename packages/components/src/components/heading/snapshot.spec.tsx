@@ -1,5 +1,5 @@
-import { KolHeadingTag } from '../../core/component-names';
-import type { HeadingProps } from '../../schema';
+import { KolHeadingTag } from '../../../internals/src/core/component-names';
+import type { HeadingProps } from '../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolHeading } from './component';

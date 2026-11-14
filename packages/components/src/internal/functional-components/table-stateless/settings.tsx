@@ -1,18 +1,18 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { KolInputCheckboxTag, KolInputNumberTag } from '../../../core/component-names';
-import { translate } from '../../../i18n';
-import type { KoliBriTableHeaderCell } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import { createUniqueId, nonce } from '../../../utils/dev.utils';
-import { dispatchDomEvent, KolEvent } from '../../../utils/events';
+import type { ButtonItem } from '../../../../internals/src/controller/button/item';
+import { createButtonItem } from '../../../../internals/src/controller/button/item';
+import { createItemPool } from '../../../../internals/src/controller/item-pool';
+import { KolInputCheckboxTag, KolInputNumberTag } from '../../../../internals/src/core/component-names';
+import { translate } from '../../../../internals/src/i18n';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import type { KoliBriTableHeaderCell } from '../../../../internals/src/schema/index';
+import { createUniqueId, nonce } from '../../../../internals/src/utils/dev.utils';
+import { dispatchDomEvent, KolEvent } from '../../../../internals/src/utils/events';
 import { AlertFC } from '../alert/component';
 import { ButtonFC } from '../button/component';
-import type { ButtonItem } from '../button/item';
-import { createButtonItem } from '../button/item';
 import { createDialogItem, DialogItemFC } from '../dialog/item';
-import { createItemPool } from '../item-pool';
 
 const BEM_CLASS_TABLE__SETTINGS = bem.forBlock('kol-table')('settings');
 

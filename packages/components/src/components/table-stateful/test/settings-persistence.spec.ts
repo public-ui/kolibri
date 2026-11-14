@@ -1,5 +1,5 @@
-import { headerKeysChanged } from '../../../internal/functional-components/table-stateful/model';
-import type { KoliBriTableHeaders } from '../../../schema';
+import { headerKeysChanged } from '../../../../internals/src/controller/table-stateful/model';
+import type { KoliBriTableHeaders } from '../../../../internals/src/schema/index';
 import { KolTableStateful } from '../component';
 
 /**

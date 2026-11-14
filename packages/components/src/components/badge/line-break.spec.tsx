@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import type { BadgeProps } from '../../schema';
+import type { BadgeProps } from '../../../internals/src/schema/index';
 import { KolBadge } from './component';
 
 // The block-level root and the trailing <br /> are load-bearing for NVDA read mode (see BadgeFC),

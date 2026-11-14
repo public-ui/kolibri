@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { PopoverButtonWebComponentInterface } from '../../internal/functional-components/popover-button/api';
+import type { PopoverButtonWebComponentInterface } from '../../../internals/src/controller/popover-button/api';
 import type {
 	AccessKeyPropType,
 	AriaDescriptionPropType,
@@ -24,9 +24,9 @@ import type {
 	TabIndexPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import { nonce } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+} from '../../../internals/src/schema/index';
+import { nonce } from '../../../internals/src/utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { BasePopoverButtonWebComponent } from './base';
 
 /**

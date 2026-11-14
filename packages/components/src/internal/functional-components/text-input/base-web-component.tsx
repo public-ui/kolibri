@@ -1,20 +1,8 @@
 import { h } from '@stencil/core';
 import type { VNode } from '@stencil/core/internal';
-import { submitFormOnEnter } from '../../../components/form/controller';
-import type {
-	AccessKeyPropType,
-	AutoCompletePropType,
-	IconsHorizontalPropType,
-	InternalButtonProps,
-	MaxLengthBehaviorPropType,
-	ShortKeyPropType,
-	Stringified,
-	VariantClassNamePropType,
-	W3CInputValue,
-} from '../../../schema';
-import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
-import clsx from '../../../utils/clsx';
-import { createCtaRef } from '../../../utils/element-interaction';
+import { submitFormOnEnter } from '../../../../internals/src/components/form/controller';
+import { BaseWebComponent } from '../../../../internals/src/controller/base-web-component';
+import type { TextInputBaseApi } from '../../../../internals/src/controller/text-input/api';
 import {
 	accessKeyProp,
 	autoCompleteProp,
@@ -27,15 +15,27 @@ import {
 	smartButtonProp,
 	stringValueProp,
 	variantProp,
-} from '../../props';
-import { BaseWebComponent } from '../base-web-component';
+} from '../../../../internals/src/props/index';
+import type {
+	AccessKeyPropType,
+	AutoCompletePropType,
+	IconsHorizontalPropType,
+	InternalButtonProps,
+	MaxLengthBehaviorPropType,
+	ShortKeyPropType,
+	Stringified,
+	VariantClassNamePropType,
+	W3CInputValue,
+} from '../../../../internals/src/schema/index';
+import { validateAccessAndShortKey } from '../../../../internals/src/schema/validators/access-and-short-key';
+import clsx from '../../../../internals/src/utils/clsx';
+import { createCtaRef } from '../../../../internals/src/utils/element-interaction';
 import { CounterBehavior } from '../counter/behavior';
 import { getInputAdornments } from '../form-field/adornments';
 import { BaseFormFieldWebComponent } from '../form-field/base-web-component';
 import type { FormFieldFCProps } from '../form-field/component';
 import type { InputFCProps } from '../form-field/input';
 import { SuggestionsFC } from '../form-field/suggestions';
-import type { TextInputBaseApi } from './api';
 
 type TextInputFieldProps = {
 	/** Native type; `kol-input-text` passes it where its state carried `_type`, before the value. */

@@ -1,8 +1,8 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { CardApi } from '../../internal/functional-components/card/api';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { CardApi } from '../../../internals/src/controller/card/api';
+import type { WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type {
 	CardProps,
 	ClickableElement,
@@ -14,9 +14,9 @@ import type {
 	KoliBriCardEventCallbacks,
 	LabelLangSegmentsPropType,
 	LinkTargetPropType,
-} from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+} from '../../../internals/src/schema/index';
+import { createUniqueId, nonce } from '../../../internals/src/utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { BaseCardWebComponent } from './base';
 
 /**

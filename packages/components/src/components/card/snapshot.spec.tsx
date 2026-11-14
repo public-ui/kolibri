@@ -1,5 +1,5 @@
-import { KolCardTag } from '../../core/component-names';
-import type { CardProps } from '../../schema';
+import { KolCardTag } from '../../../internals/src/core/component-names';
+import type { CardProps } from '../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolCard } from './component';
 

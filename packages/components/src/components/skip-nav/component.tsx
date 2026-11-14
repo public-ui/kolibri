@@ -1,17 +1,17 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { SkipNavApi } from '../../internal/functional-components/skip-nav/api';
-import { skipNavPropsConfig } from '../../internal/functional-components/skip-nav/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { SkipNavApi } from '../../../internals/src/controller/skip-nav/api';
+import { skipNavPropsConfig } from '../../../internals/src/controller/skip-nav/api';
+import type { SkipNavLinkItem } from '../../../internals/src/controller/skip-nav/link-item';
+import { createSkipNavLinkItem } from '../../../internals/src/controller/skip-nav/link-item';
+import { labelProp, skipNavLinksProp } from '../../../internals/src/props/index';
+import type { FocusableElement, KolFocusOptions, LabelPropType, LinkProps, SkipNavProps, Stringified } from '../../../internals/src/schema/index';
+import { a11yHintLabelingLandmarks } from '../../../internals/src/schema/index';
+import { createCtaRef, delegateFocus } from '../../../internals/src/utils/element-interaction';
+import { addNavLabel, removeNavLabel } from '../../../internals/src/utils/unique-nav-labels';
 import { SkipNavFC } from '../../internal/functional-components/skip-nav/component';
-import type { SkipNavLinkItem } from '../../internal/functional-components/skip-nav/link-item';
-import { createSkipNavLinkItem } from '../../internal/functional-components/skip-nav/link-item';
-import { labelProp, skipNavLinksProp } from '../../internal/props';
-import type { FocusableElement, KolFocusOptions, LabelPropType, LinkProps, SkipNavProps, Stringified } from '../../schema';
-import { a11yHintLabelingLandmarks } from '../../schema';
-import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 
 /**
  * The **SkipNav** component renders a hidden navigation that allows keyboard and assistive

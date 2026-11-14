@@ -1,10 +1,10 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import { translate } from '../../../i18n';
-import type { LabelLangSegmentsPropType } from '../../../schema';
-import { buildBadgeTextString } from '../../../schema';
-import clsx from '../../../utils/clsx';
-import { createRelatedUniqueId } from '../../../utils/dev.utils';
+import { translate } from '../../../../internals/src/i18n';
+import type { LabelLangSegmentsPropType } from '../../../../internals/src/schema/index';
+import { buildBadgeTextString } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
+import { createRelatedUniqueId } from '../../../../internals/src/utils/dev.utils';
 import type { PopoverButtonFCProps } from '../popover-button/component';
 import { PopoverButtonFC } from '../popover-button/component';
 import { SpanFC } from '../span/component';

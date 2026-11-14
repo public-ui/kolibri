@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { assertSelectValueMatchesMultiplicity, normalizeSelectValue } from './select-value';
+import { assertSelectValueMatchesMultiplicity, normalizeSelectValue } from '../../../../internals/src/controller/form-field/select-value';
 
 const options = [
 	{ label: 'Eins', value: 1 },

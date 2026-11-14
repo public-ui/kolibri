@@ -1,16 +1,14 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { ResolvedButtonProps } from '../../internal/functional-components/button/resolve-props';
-import { resolveCardCloseButtonProps } from '../../internal/functional-components/card/close-button';
-import type { CardFCProps } from '../../internal/functional-components/card/component';
-import type { DrawerApi } from '../../internal/functional-components/drawer/api';
-import { drawerPropsConfig } from '../../internal/functional-components/drawer/api';
-import { DrawerFC } from '../../internal/functional-components/drawer/component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { ResolvedButtonProps } from '../../../internals/src/controller/button/resolve-props';
+import { resolveCardCloseButtonProps } from '../../../internals/src/controller/card/close-button';
+import type { DrawerApi } from '../../../internals/src/controller/drawer/api';
+import { drawerPropsConfig } from '../../../internals/src/controller/drawer/api';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import { TooltipBehavior } from '../../../internals/src/controller/tooltip/behavior';
+import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp, openProp } from '../../../internals/src/props/index';
 import type {
 	AlignPropType,
 	DrawerProps,
@@ -19,12 +17,14 @@ import type {
 	KoliBriModalEventCallbacks,
 	LabelLangSegmentsPropType,
 	OpenPropType,
-} from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
-import { createCtaRef } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
-import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
+} from '../../../internals/src/schema/index';
+import { createUniqueId, nonce } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef } from '../../../internals/src/utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
+import { lockScroll, unlockScroll } from '../../../internals/src/utils/scroll-lock';
+import { handleCancelOverlay } from '../../../internals/src/utils/tooltip-open-tracking';
+import type { CardFCProps } from '../../internal/functional-components/card/component';
+import { DrawerFC } from '../../internal/functional-components/drawer/component';
 
 /**
  * @slot - The Content of drawer.

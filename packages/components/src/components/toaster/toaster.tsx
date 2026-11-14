@@ -1,7 +1,7 @@
+import { KolToastContainerTag } from '../../../internals/src/core/component-names';
+import type { Toast, ToasterOptions } from '../../../internals/src/schema/index';
+import { Log } from '../../../internals/src/schema/index';
 import { isInitialized } from '../../core/bootstrap';
-import { KolToastContainerTag } from '../../core/component-names';
-import type { Toast, ToasterOptions } from '../../schema';
-import { Log } from '../../schema';
 
 /**
  * @deprecated Will be removed in the next major version. For more information, please refer to: https://github.com/public-ui/kolibri/issues/8372

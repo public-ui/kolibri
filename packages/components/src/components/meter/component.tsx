@@ -1,10 +1,9 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { MeterApi } from '../../internal/functional-components/meter/api';
-import { meterPropsConfig } from '../../internal/functional-components/meter/api';
-import { MeterFC } from '../../internal/functional-components/meter/component';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { MeterApi } from '../../../internals/src/controller/meter/api';
+import { meterPropsConfig } from '../../../internals/src/controller/meter/api';
 import {
 	clampedNumberValueProp,
 	highProp,
@@ -16,7 +15,7 @@ import {
 	orientationProp,
 	unitProp,
 	type OrientationPropType,
-} from '../../internal/props';
+} from '../../../internals/src/props/index';
 import type {
 	ClampedNumberValuePropType,
 	HighPropType,
@@ -26,7 +25,8 @@ import type {
 	MinPropType,
 	OptimumPropType,
 	UnitPropType,
-} from '../../schema';
+} from '../../../internals/src/schema/index';
+import { MeterFC } from '../../internal/functional-components/meter/component';
 
 @Component({
 	tag: 'kol-meter',

@@ -1,7 +1,7 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 
 const inputContainerBem = bem.forBlock('kol-input-container');
 

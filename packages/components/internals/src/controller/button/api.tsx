@@ -1,0 +1,134 @@
+import {
+	accessKeyProp,
+	ariaControlsProp,
+	ariaDescriptionProp,
+	ariaExpandedProp,
+	ariaHasPopupProp,
+	ariaSelectedProp,
+	buttonCallbacksProp,
+	buttonTypeProp,
+	customClassProp,
+	disabledProp,
+	hideLabelProp,
+	idProp,
+	inlineProp,
+	labelWithExpertSlotProp,
+	linkRoleProp,
+	nameProp,
+	shortKeyProp,
+	spanIconsProp,
+	tabIndexProp,
+	tooltipAlignProp,
+	variantProp,
+} from '../../props';
+import type { KolFocusOptions } from '../../schema/index';
+import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../generic-types';
+
+/**
+ * Props configuration for the button component.
+ *
+ * `label` is the only required prop. All others are optional.
+ *
+ * Notes on prop choices:
+ * - `labelWithExpertSlotProp`: same validation as `labelProp` (at least 2 characters, numbers-only
+ *   labels exempt) and its label hints; the empty string additionally enables the expert slot.
+ * - `spanIconsProp` (not `iconsProp`): icons are `KoliBriIconsProp` (a string or a per-direction
+ *   object), not a plain icon class string.
+ * - `linkRoleProp`: the button shares the `'tab' | 'treeitem'` role union with the link
+ *   (`AlternativeButtonLinkRolePropType`), so it reuses the same definition.
+ * - `_syncValueBySelector` and `_value` are deliberately absent: neither is rendered, and both are
+ *   opaque pass-throughs to `FormAssociationBehavior` (a CSS selector resolved against the
+ *   document, and an arbitrary `StencilUnknown` payload). They stay raw `@Prop`s on the web
+ *   component, which forwards them to the behavior from their watchers.
+ */
+export const buttonPropsConfig = {
+	required: [labelWithExpertSlotProp],
+	optional: [
+		accessKeyProp,
+		ariaControlsProp,
+		ariaDescriptionProp,
+		ariaExpandedProp,
+		ariaHasPopupProp,
+		ariaSelectedProp,
+		buttonCallbacksProp,
+		buttonTypeProp,
+		customClassProp,
+		disabledProp,
+		hideLabelProp,
+		idProp,
+		inlineProp,
+		linkRoleProp,
+		nameProp,
+		shortKeyProp,
+		spanIconsProp,
+		tabIndexProp,
+		tooltipAlignProp,
+		variantProp,
+	],
+} as const satisfies PropsConfigShape;
+
+export type ButtonApi = ApiFromConfig<
+	typeof buttonPropsConfig,
+	{
+		Callbacks: {
+			/**
+			 * Blur handler bound to the button element. Implemented by the web component, which
+			 * also dispatches the custom `KolEvent.blur` event on the host element.
+			 */
+			blur: (event: FocusEvent) => void;
+			/**
+			 * Click handler bound to the button element. Implemented by the web component, which
+			 * propagates submit/reset to the surrounding form and dispatches `KolEvent.click`.
+			 */
+			click: (event: MouseEvent) => void;
+			/**
+			 * Focus handler bound to the button element. Implemented by the web component, which
+			 * also dispatches the custom `KolEvent.focus` event on the host element.
+			 */
+			focus: (event: FocusEvent) => void;
+			/**
+			 * Mousedown handler bound to the button element. Implemented by the web component,
+			 * which also dispatches the custom `KolEvent.mousedown` event on the host element.
+			 */
+			mouseDown: (event: MouseEvent) => void;
+		};
+		Methods: {
+			click: () => void;
+			focus: (options?: KolFocusOptions) => void;
+		};
+		Refs: {
+			button: HTMLButtonElement;
+			tooltip: HTMLDivElement;
+		};
+		States: {
+			/**
+			 * DOM id of the visually-hidden span that carries the aria description. Generated once
+			 * per web component instance and referenced by the button's aria-describedby attribute,
+			 * since aria-description lacks screen reader support.
+			 */
+			ariaDescriptionId: string;
+		};
+	}
+>;
+
+/**
+ * Web component interface for the public `kol-button`.
+ *
+ * `_ariaHasPopup`, `_id` and `_tabIndex` are internal props: components that embed `ButtonFC`
+ * set them through `createButtonItem` or `resolveButtonProps`. They are part of `ButtonApi`, but
+ * not of the public `kol-button` surface, so their watchers are omitted here instead of being
+ * declared as no-ops.
+ */
+export type ButtonWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchId' | 'watchTabIndex'>;
+
+/**
+ * Web component interface for `kol-button-link`: like `kol-button` it has no `_ariaHasPopup`,
+ * `_id` and `_tabIndex`, and — a link having no variants to customise — no `_customClass` either.
+ */
+export type ButtonLinkWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchCustomClass' | 'watchId' | 'watchTabIndex'>;
+
+/**
+ * Web component interface for `kol-split-button`: like `kol-button` it has no `_ariaHasPopup`,
+ * `_id` and `_tabIndex`; its primary button is always standalone, so there is no `_inline` either.
+ */
+export type SplitButtonWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchId' | 'watchInline' | 'watchTabIndex'>;

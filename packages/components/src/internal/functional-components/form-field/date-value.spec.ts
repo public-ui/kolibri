@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { getDateValueType, remapDateValue } from './date-value';
+import { getDateValueType, remapDateValue } from '../../../../internals/src/controller/form-field/date-value';
 
 /**
  * Pins the value handling of the legacy `kol-input-date` (G3b.1 of

@@ -1,20 +1,20 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { trimLabel, type HeadingLevel, type KoliBriDialogEventCallbacks, type LabelLangSegmentsPropType } from '../../../schema';
-import type { ModalVariantPropType } from '../../../schema/props/variant/modal';
-import { createUniqueId, nonce } from '../../../utils/dev.utils';
-import { createCtaRef } from '../../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../../utils/events';
-import { lockScroll, unlockScroll } from '../../../utils/scroll-lock';
-import { handleCancelOverlay } from '../../../utils/tooltip-open-tracking';
-import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../props';
-import { BaseWebComponent } from '../base-web-component';
-import type { ResolvedButtonProps } from '../button/resolve-props';
-import { resolveCardCloseButtonProps } from '../card/close-button';
+import { BaseWebComponent } from '../../../../internals/src/controller/base-web-component';
+import type { ResolvedButtonProps } from '../../../../internals/src/controller/button/resolve-props';
+import { resolveCardCloseButtonProps } from '../../../../internals/src/controller/card/close-button';
+import { TooltipBehavior } from '../../../../internals/src/controller/tooltip/behavior';
+import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../../../internals/src/props/index';
+import { trimLabel, type HeadingLevel, type KoliBriDialogEventCallbacks, type LabelLangSegmentsPropType } from '../../../../internals/src/schema/index';
+import type { ModalVariantPropType } from '../../../../internals/src/schema/props/variant/modal';
+import { createUniqueId, nonce } from '../../../../internals/src/utils/dev.utils';
+import { createCtaRef } from '../../../../internals/src/utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../../../internals/src/utils/events';
+import { lockScroll, unlockScroll } from '../../../../internals/src/utils/scroll-lock';
+import { handleCancelOverlay } from '../../../../internals/src/utils/tooltip-open-tracking';
 import type { CardFCProps } from '../card/component';
 import { CardFC } from '../card/component';
-import { TooltipBehavior } from '../tooltip/behavior';
 import type { DialogFCProps } from './component';
 import { dialogBlockClass, DialogFC } from './component';
 

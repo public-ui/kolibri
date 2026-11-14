@@ -1,8 +1,8 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 
-import { translate } from '../../../i18n';
-import type { AlertType } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
+import { translate } from '../../../../internals/src/i18n';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import type { AlertType } from '../../../../internals/src/schema/index';
 import { IconFC } from '../icon/component';
 
 const alertBem = bem.forBlock('kol-alert');

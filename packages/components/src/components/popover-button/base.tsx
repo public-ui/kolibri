@@ -1,12 +1,12 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import { PopoverBehavior } from '../../../internals/src/controller/popover/behavior';
+import { popoverAlignProp } from '../../../internals/src/props/index';
+import type { PopoverAlignPropType } from '../../../internals/src/schema/index';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { PopoverButtonFC } from '../../internal/functional-components/popover-button/component';
-import { PopoverBehavior } from '../../internal/functional-components/popover/behavior';
-import { popoverAlignProp } from '../../internal/props';
-import type { PopoverAlignPropType } from '../../schema';
-import { createUniqueId } from '../../utils/dev.utils';
 import { BaseButtonWebComponent } from '../button/base';
 
 /**

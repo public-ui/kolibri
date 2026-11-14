@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import * as componentNames from './component-names';
+import * as componentNames from '../../internals/src/core/component-names';
 
 const tagEntries = (): [string, string][] => Object.entries(componentNames).filter((entry): entry is [string, string] => entry[0].endsWith('Tag'));
 

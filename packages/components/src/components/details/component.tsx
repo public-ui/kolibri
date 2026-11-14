@@ -2,14 +2,13 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { CollapsibleApi } from '../../internal/functional-components/collapsible/api';
-import { collapsiblePropsConfig } from '../../internal/functional-components/collapsible/api';
-import { CollapsibleFC } from '../../internal/functional-components/collapsible/component';
-import { createCollapsibleOpenAnimation, DEFAULT_COLLAPSIBLE_TRANSITION_MS } from '../../internal/functional-components/collapsible/open-animation';
-import { createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/toggle-handler';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { CollapsibleApi } from '../../../internals/src/controller/collapsible/api';
+import { collapsiblePropsConfig } from '../../../internals/src/controller/collapsible/api';
+import { createCollapsibleOpenAnimation, DEFAULT_COLLAPSIBLE_TRANSITION_MS } from '../../../internals/src/controller/collapsible/open-animation';
+import { createCollapsibleToggleHandler } from '../../../internals/src/controller/collapsible/toggle-handler';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelProp, openProp } from '../../../internals/src/props/index';
 import type {
 	ClickableElement,
 	CollapsibleCallbacksPropType,
@@ -20,9 +19,10 @@ import type {
 	KolFocusOptions,
 	LabelLangSegmentsPropType,
 	OpenPropType,
-} from '../../schema';
-import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+} from '../../../internals/src/schema/index';
+import { createRelatedUniqueId, createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
+import { CollapsibleFC } from '../../internal/functional-components/collapsible/component';
 
 /**
  * The **Details** component allows additional information to be initially shown with a short introductory text,

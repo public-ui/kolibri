@@ -1,9 +1,9 @@
 import { describe, expect, it } from '@jest/globals';
 
-import type { HeadingLevel } from '../props';
-import { hrefProp, labelLangSegmentsProp, levelProp } from '../props';
-import type { ApiFromConfig, FunctionalComponentProps, PropsConfigShape } from './generic-types';
-import { resolveFcProps } from './props-from-config';
+import type { ApiFromConfig, FunctionalComponentProps, PropsConfigShape } from '../../../internals/src/controller/generic-types';
+import { resolveFcProps } from '../../../internals/src/controller/props-from-config';
+import type { HeadingLevel } from '../../../internals/src/props/index';
+import { hrefProp, labelLangSegmentsProp, levelProp } from '../../../internals/src/props/index';
 
 /** Type-level assertion helper: a mismatch fails `pnpm lint:tsc`. */
 type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;

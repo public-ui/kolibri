@@ -1,5 +1,5 @@
-import { KolTabsTag } from '../../../core/component-names';
-import type { TabsProps } from '../../../schema';
+import { KolTabsTag } from '../../../../internals/src/core/component-names';
+import type { TabsProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolTabs } from '../component';

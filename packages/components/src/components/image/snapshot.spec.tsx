@@ -1,4 +1,4 @@
-import { KolImageTag } from '../../core/component-names';
+import { KolImageTag } from '../../../internals/src/core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolImage } from './component';
 

@@ -1,8 +1,8 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolAlertTag } from '../../../core/component-names';
-import type { AlertProps, AlertType } from '../../../schema';
+import { KolAlertTag } from '../../../../internals/src/core/component-names';
+import type { AlertProps, AlertType } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolAlert } from '../component';

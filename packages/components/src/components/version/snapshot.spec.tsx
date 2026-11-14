@@ -1,5 +1,5 @@
-import { KolVersionTag } from '../../core/component-names';
-import type { VersionProps } from '../../schema';
+import { KolVersionTag } from '../../../internals/src/core/component-names';
+import type { VersionProps } from '../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolVersion } from './component';
 

@@ -1,16 +1,11 @@
-import { translate } from '../../../i18n';
-import type {
-	CustomClassPropType,
-	InternalButtonProps,
-	KoliBriPaginationButtonCallbacks,
-	LabelPropType,
-	PaginationHasButton,
-	Stringified,
-	TooltipAlignPropType,
-} from '../../../schema';
-import { STATE_CHANGE_EVENT } from '../../../schema';
-import { dispatchDomEvent, KolEvent } from '../../../utils/events';
-import { addNavLabel, removeNavLabel } from '../../../utils/unique-nav-labels';
+import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../../../../internals/src/controller/button/item';
+import { createButtonItem } from '../../../../internals/src/controller/button/item';
+import type { ResolvedFunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { createItemPool } from '../../../../internals/src/controller/item-pool';
+import { paginationPropsConfig, type PaginationApi } from '../../../../internals/src/controller/pagination/api';
+import { clampPage, getPageCount, resolvePageSize } from '../../../../internals/src/controller/pagination/model';
+import { buildDefaultPropsFromConfig } from '../../../../internals/src/controller/props-from-config';
+import { translate } from '../../../../internals/src/i18n';
 import {
 	boundaryCountProp,
 	customClassProp,
@@ -23,15 +18,20 @@ import {
 	paginationMaxProp,
 	siblingCountProp,
 	tooltipAlignProp,
-} from '../../props';
-import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
-import { createButtonItem } from '../button/item';
-import type { ResolvedFunctionalComponentProps } from '../generic-types';
-import { createItemPool } from '../item-pool';
-import { buildDefaultPropsFromConfig } from '../props-from-config';
-import { paginationPropsConfig, type PaginationApi } from './api';
+} from '../../../../internals/src/props/index';
+import type {
+	CustomClassPropType,
+	InternalButtonProps,
+	KoliBriPaginationButtonCallbacks,
+	LabelPropType,
+	PaginationHasButton,
+	Stringified,
+	TooltipAlignPropType,
+} from '../../../../internals/src/schema/index';
+import { STATE_CHANGE_EVENT } from '../../../../internals/src/schema/index';
+import { dispatchDomEvent, KolEvent } from '../../../../internals/src/utils/events';
+import { addNavLabel, removeNavLabel } from '../../../../internals/src/utils/unique-nav-labels';
 import type { PaginationFCProps } from './component';
-import { clampPage, getPageCount, resolvePageSize } from './model';
 import { PageSizeSelect } from './page-size-select';
 
 /** The render props of the pagination, as the item keeps them: config defaults applied. */

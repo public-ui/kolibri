@@ -1,12 +1,19 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { ProgressApi } from '../../internal/functional-components/progress/api';
-import { progressPropsConfig } from '../../internal/functional-components/progress/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { ProgressApi } from '../../../internals/src/controller/progress/api';
+import { progressPropsConfig } from '../../../internals/src/controller/progress/api';
+import {
+	clampedNumberValueProp,
+	labelLangSegmentsProp,
+	maxProp,
+	unitProp,
+	variantProgressProp,
+	type ProgressVariantType,
+} from '../../../internals/src/props/index';
+import type { ClampedNumberValuePropType, LabelLangSegmentsPropType, MaxPropType, UnitPropType } from '../../../internals/src/schema/index';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
-import { clampedNumberValueProp, labelLangSegmentsProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
-import type { ClampedNumberValuePropType, LabelLangSegmentsPropType, MaxPropType, UnitPropType } from '../../schema';
 
 /**
  * The **Progress** component visualizes the completion status of a task or process. It supports both determinate (percentage-based) and indeterminate variants.

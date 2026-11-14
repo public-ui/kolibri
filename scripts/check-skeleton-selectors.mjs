@@ -42,7 +42,7 @@ import { fileURLToPath } from 'node:url';
 
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
-const SCAN_ROOTS = ['packages/components/src', 'packages/themes'];
+const SCAN_ROOTS = ['packages/components/src', 'packages/components/internals/src', 'packages/themes'];
 
 /** Blocks whose class carrier became a wrapper element with the skeleton migration. */
 const WRAPPER_BLOCKS = ['kol-button', 'kol-link'];

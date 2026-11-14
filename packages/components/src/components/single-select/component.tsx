@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { translate } from '../../i18n';
+import { translate } from '../../../internals/src/i18n';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -30,33 +30,19 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import type { EventDetail } from '../../schema/interfaces/EventDetail';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import clsx from '../../utils/clsx';
-import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
-import { containsDeepActiveElement } from '../../utils/element-focus';
-import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
-import { createEventWithTarget, KolEvent } from '../../utils/events';
+} from '../../../internals/src/schema/index';
+import type { EventDetail } from '../../../internals/src/schema/interfaces/EventDetail';
+import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
+import clsx from '../../../internals/src/utils/clsx';
+import { createRelatedUniqueId, createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { containsDeepActiveElement } from '../../../internals/src/utils/element-focus';
+import { createCtaRef, delegateFocus } from '../../../internals/src/utils/element-interaction';
+import { createEventWithTarget, KolEvent } from '../../../internals/src/utils/events';
 
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
-import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
-import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
-import { singleSelectPropsConfig } from '../../internal/functional-components/single-select/api';
-import {
-	BEM_CLASS_SINGLE_SELECT__DELETE,
-	SingleSelectNoResultsFC,
-	SingleSelectNoResultsStatusFC,
-	SingleSelectToggleFC,
-} from '../../internal/functional-components/single-select/component';
+import { createButtonItem } from '../../../internals/src/controller/button/item';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { SingleSelectApi } from '../../../internals/src/controller/single-select/api';
+import { singleSelectPropsConfig } from '../../../internals/src/controller/single-select/api';
 import {
 	accessKeyProp,
 	hasClearButtonProp,
@@ -67,7 +53,21 @@ import {
 	shortKeyProp,
 	singleSelectOptionsProp,
 	variantProp,
-} from '../../internal/props';
+} from '../../../internals/src/props/index';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
+import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
+import {
+	BEM_CLASS_SINGLE_SELECT__DELETE,
+	SingleSelectNoResultsFC,
+	SingleSelectNoResultsStatusFC,
+	SingleSelectToggleFC,
+} from '../../internal/functional-components/single-select/component';
 
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.

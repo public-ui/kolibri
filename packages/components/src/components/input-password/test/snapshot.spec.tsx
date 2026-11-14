@@ -1,5 +1,5 @@
-import { KolInputPasswordTag } from '../../../core/component-names';
-import type { InputPasswordProps } from '../../../schema';
+import { KolInputPasswordTag } from '../../../../internals/src/core/component-names';
+import type { InputPasswordProps } from '../../../../internals/src/schema/index';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
 import { KolInputPassword } from '../component';

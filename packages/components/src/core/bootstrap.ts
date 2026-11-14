@@ -1,9 +1,10 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister } from 'adopted-style-sheets';
-import type { Mode } from '../schema';
-import { Log, setRuntimeMode } from '../schema';
-import { setCustomTagNames } from './component-names';
-import { initializeI18n } from './i18n';
+import { setCustomTagNames } from '../../internals/src/core/component-names';
+import { initializeI18n } from '../../internals/src/core/i18n';
+import { setRegisterOptions } from '../../internals/src/core/options';
+import type { Mode } from '../../internals/src/schema/index';
+import { Log, setRuntimeMode } from '../../internals/src/schema/index';
 
 type KoliBriOptions = RegisterOptions & {
 	/**
@@ -22,7 +23,6 @@ type KoliBriOptions = RegisterOptions & {
 };
 
 let initialized = false;
-let options: KoliBriOptions | undefined;
 
 export const bootstrap = async (
 	themes:
@@ -41,7 +41,7 @@ export const bootstrap = async (
 	}
 	const coreRegisterReturnValue = await coreRegister(themes, loaders, koliBriOptions);
 	initialized = true;
-	options = koliBriOptions;
+	setRegisterOptions(koliBriOptions);
 
 	// Only log development message when actually in development mode
 	Log.info('Development mode active - Enhanced debugging features available');
@@ -51,4 +51,3 @@ export const bootstrap = async (
 
 export const register = bootstrap;
 export const isInitialized = () => initialized;
-export const getOptions = () => options;

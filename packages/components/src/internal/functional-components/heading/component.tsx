@@ -1,13 +1,13 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
-import type { HeadingLevel } from '../../props';
-import type { FunctionalComponentProps } from '../generic-types';
-import { resolveFcProps } from '../props-from-config';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { headingPropsConfig, type HeadingApi } from '../../../../internals/src/controller/heading/api';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import type { HeadingLevel } from '../../../../internals/src/props/index';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import clsx from '../../../../internals/src/utils/clsx';
 import { renderLabelWithLang } from '../span/component';
-import { headingPropsConfig, type HeadingApi } from './api';
 
 const headingBem = bem.forBlock('kol-heading');
 const headlineBem = bem.forBlock('kol-headline');

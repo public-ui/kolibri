@@ -1,11 +1,11 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { kolibriPropsConfig, type KolibriApi } from '../../../../internals/src/controller/kolibri/api';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import { resolveFcProps } from '../props-from-config';
-import { kolibriPropsConfig, type KolibriApi } from './api';
 
 const kolibriBem = bem.forBlock('kol-kolibri');
 

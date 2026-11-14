@@ -1,13 +1,13 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 
+import type { AlignPropType } from '../../../internals/src/schema/props/align';
+import type { Optgroup, Option, SelectOption } from '../../../internals/src/schema/types/input/types';
+import { Log } from '../../../internals/src/schema/utils/dev.utils';
+import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
+import { validateAlignment } from '../../../internals/src/schema/validators/alignment';
+import { isObject, isString, isStyle, STATE_CHANGE_EVENT } from '../../../internals/src/schema/validators/common';
+import { validateInputSelectOptions } from '../../../internals/src/schema/validators/options';
 import { createLegacyComponent, getInvalidValueWarnings, getLoggedMessages } from '../../utils/testing/legacy-component';
-import type { AlignPropType } from '../props/align';
-import type { Optgroup, Option, SelectOption } from '../types/input/types';
-import { Log } from '../utils/dev.utils';
-import { validateAccessAndShortKey } from './access-and-short-key';
-import { validateAlignment } from './alignment';
-import { isObject, isString, isStyle, STATE_CHANGE_EVENT } from './common';
-import { validateInputSelectOptions } from './options';
 
 describe('schema validators', () => {
 	let debugSpy: jest.SpiedFunction<typeof Log.debug>;

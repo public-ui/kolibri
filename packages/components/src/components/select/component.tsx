@@ -28,14 +28,14 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
+} from '../../../internals/src/schema/index';
 
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { SelectApi } from '../../internal/functional-components/select/api';
-import { selectPropsConfig } from '../../internal/functional-components/select/api';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { SelectApi } from '../../../internals/src/controller/select/api';
+import { selectPropsConfig } from '../../../internals/src/controller/select/api';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { BaseSelectWebComponent } from '../../internal/functional-components/select/base-web-component';
-import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot

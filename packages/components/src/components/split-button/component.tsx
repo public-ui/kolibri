@@ -1,10 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { SplitButtonWebComponentInterface } from '../../internal/functional-components/button/api';
-import type { PopoverButtonItem } from '../../internal/functional-components/popover-button/item';
-import { createPopoverButtonItem } from '../../internal/functional-components/popover-button/item';
-import { SplitButtonFC } from '../../internal/functional-components/split-button/component';
+import type { SplitButtonWebComponentInterface } from '../../../internals/src/controller/button/api';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -29,12 +26,15 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
-} from '../../schema';
+} from '../../../internals/src/schema/index';
+import type { PopoverButtonItem } from '../../internal/functional-components/popover-button/item';
+import { createPopoverButtonItem } from '../../internal/functional-components/popover-button/item';
+import { SplitButtonFC } from '../../internal/functional-components/split-button/component';
 
-import { translate } from '../../i18n';
-import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { translate } from '../../../internals/src/i18n';
+import clsx from '../../../internals/src/utils/clsx';
+import { nonce } from '../../../internals/src/utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { BaseButtonWebComponent } from '../button/base';
 
 /**

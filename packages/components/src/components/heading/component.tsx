@@ -1,13 +1,13 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { HeadingApi } from '../../internal/functional-components/heading/api';
-import { headingPropsConfig } from '../../internal/functional-components/heading/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { HeadingApi } from '../../../internals/src/controller/heading/api';
+import { headingPropsConfig } from '../../../internals/src/controller/heading/api';
+import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../../internals/src/props/index';
+import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType, SecondaryHeadlinePropType } from '../../../internals/src/schema/index';
 import { HeadingFC } from '../../internal/functional-components/heading/component';
-import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../internal/props';
-import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType, SecondaryHeadlinePropType } from '../../schema';
 
 /**
  *

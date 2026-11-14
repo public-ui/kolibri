@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-import type { RadioOption, SelectOption } from '../../../schema';
-import { fillKeyOptionMap, normalizeOptionValues } from './options';
+import { fillKeyOptionMap, normalizeOptionValues } from '../../../../internals/src/controller/form-field/options';
+import type { RadioOption, SelectOption } from '../../../../internals/src/schema/index';
 
 describe('fillKeyOptionMap', () => {
 	const keysOf = (options: SelectOption<unknown>[]): Array<[string, unknown]> => {

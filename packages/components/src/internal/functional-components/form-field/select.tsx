@@ -1,11 +1,11 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import type { MsgPropType, SelectOption, StencilUnknown, Stringified, W3CInputValue } from '../../../schema';
-import { getMsgType, isMsgDefinedAndInputTouched } from '../../../schema';
-import clsx from '../../../utils/clsx';
-import { getBlockBem } from '../bem-root-node/block-bem';
-import type { DefaultInputProps } from './default-input-props';
-import { getDefaultInputProps } from './default-input-props';
+import { getBlockBem } from '../../../../internals/src/controller/bem-root-node/block-bem';
+import type { DefaultInputProps } from '../../../../internals/src/controller/form-field/default-input-props';
+import { getDefaultInputProps } from '../../../../internals/src/controller/form-field/default-input-props';
+import type { MsgPropType, SelectOption, StencilUnknown, Stringified, W3CInputValue } from '../../../../internals/src/schema/index';
+import { getMsgType, isMsgDefinedAndInputTouched } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
 
 const selectBem = getBlockBem('kol-select');
 

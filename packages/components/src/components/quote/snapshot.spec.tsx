@@ -1,5 +1,5 @@
-import { KolQuoteTag } from '../../core/component-names';
-import type { LabelLangSegmentsPropType } from '../../schema';
+import { KolQuoteTag } from '../../../internals/src/core/component-names';
+import type { LabelLangSegmentsPropType } from '../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolQuote } from './component';
 

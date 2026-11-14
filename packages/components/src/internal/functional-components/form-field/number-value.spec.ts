@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-import type { NumberValueType } from './number-value';
-import { clampRangeValue, getNumberValueType, parseInputNumberValue, remapNumberValue } from './number-value';
+import type { NumberValueType } from '../../../../internals/src/controller/form-field/number-value';
+import { clampRangeValue, getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../../../internals/src/controller/form-field/number-value';
 
 /**
  * Pins the value handling of the legacy `kol-input-number` and `kol-input-range` (G3a.1 of

@@ -1,4 +1,4 @@
-import { KolAbbrTag } from '../../core/component-names';
+import { KolAbbrTag } from '../../../internals/src/core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolAbbr } from './component';

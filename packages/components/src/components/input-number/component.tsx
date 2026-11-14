@@ -31,21 +31,15 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+} from '../../../internals/src/schema/index';
+import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
 
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { NumberValueType } from '../../internal/functional-components/form-field/number-value';
-import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
-import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { IconFC } from '../../internal/functional-components/icon/component';
-import type { InputNumberApi } from '../../internal/functional-components/input-number/api';
-import { inputNumberPropsConfig } from '../../internal/functional-components/input-number/api';
+import { submitFormOnEnter } from '../../../internals/src/components/form/controller';
+import type { NumberValueType } from '../../../internals/src/controller/form-field/number-value';
+import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../../internals/src/controller/form-field/number-value';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputNumberApi } from '../../../internals/src/controller/input-number/api';
+import { inputNumberPropsConfig } from '../../../internals/src/controller/input-number/api';
 import {
 	accessKeyProp,
 	autoCompleteProp,
@@ -61,11 +55,17 @@ import {
 	stepProp,
 	suggestionsProp,
 	variantProp,
-} from '../../internal/props';
-import clsx from '../../utils/clsx';
-import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { submitFormOnEnter } from '../form/controller';
+} from '../../../internals/src/props/index';
+import clsx from '../../../internals/src/utils/clsx';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
+import { IconFC } from '../../internal/functional-components/icon/component';
 
 const STEP_BUTTON_CLASS = 'kol-input-number__step-button';
 

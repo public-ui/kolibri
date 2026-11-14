@@ -1,14 +1,14 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { ImageApi } from '../../internal/functional-components/image/api';
-import { imagePropsConfig } from '../../internal/functional-components/image/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { ImageApi } from '../../../internals/src/controller/image/api';
+import { imagePropsConfig } from '../../../internals/src/controller/image/api';
+import { altProp, imageCallbacksProp, loadingProp, sizesProp, srcProp, srcsetProp, type LoadingType } from '../../../internals/src/props/index';
+import type { KoliBriImageEventCallbacks } from '../../../internals/src/schema/components/image';
+import type { AltPropType, SizesPropType, SrcPropType, SrcsetPropType } from '../../../internals/src/schema/index';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
 import { ImageFC } from '../../internal/functional-components/image/component';
-import { altProp, imageCallbacksProp, loadingProp, sizesProp, srcProp, srcsetProp, type LoadingType } from '../../internal/props';
-import type { AltPropType, SizesPropType, SrcPropType, SrcsetPropType } from '../../schema';
-import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * The **Image** component renders an image with support for responsive loading via `srcset` and `sizes`, lazy loading, and accessible alternative text.
