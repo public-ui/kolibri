@@ -5,6 +5,7 @@
  * See docs/HOWTO_COMPONENT_TESTS_VITEST.md for the recommended test patterns.
  */
 
+import '../legacy-element-constructor';
 import { register } from '@public-ui/components';
 import { DEFAULT } from '@public-ui/theme-default';
 import '@testing-library/jest-dom/vitest';
