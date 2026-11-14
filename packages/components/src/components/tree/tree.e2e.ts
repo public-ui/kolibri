@@ -390,4 +390,21 @@ test.describe('kol-tree - Interaction', () => {
 		await item1.locator('.kol-link__interactive-element').first().click();
 		expect(await detail).toBe('#item1');
 	});
+
+	test('Shift+Tab from the first item leaves the tree instead of trapping the focus', async ({ page }) => {
+		await page.setContent(`<button id="before">before</button>${NESTED_TREE}<button id="after">after</button>`);
+		await expect(page.locator('kol-tree')).toHaveClass(/hydrated/);
+		const firstLink = page.locator('kol-tree-item').first().locator('.kol-link__interactive-element').first();
+
+		await page.locator('#before').focus();
+		await page.keyboard.press('Tab');
+		await expect(firstLink).toBeFocused();
+
+		await page.keyboard.press('Shift+Tab');
+		await expect(page.locator('#before')).toBeFocused();
+
+		// The tree rejoins the tab order once the focus has left it.
+		await page.keyboard.press('Tab');
+		await expect(firstLink).toBeFocused();
+	});
 });
