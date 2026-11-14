@@ -356,13 +356,19 @@ defineKolToastContainer();
 ### Tag name transformation
 
 `defineCustomElements(window, { transformTagName })` is removed. Register the transformer with
-`setTagNameTransformer` from the adapter before the first render and before `defineKolToastContainer`.
-The adapter limits it to `kol-*` tags.
+`setTagNameTransformer` from the adapter before the first render and before `defineKolToastContainer`,
+and pass the same function as `transformTagName` to `bootstrap`: the adapter transforms the tags of
+the React components, `bootstrap` the tags the root entry creates (the toast container of the
+`ToasterService`). Both limit the transformation to `kol-*` tags.
 
 ```ts
+import { bootstrap } from '@public-ui/components';
 import { setTagNameTransformer } from '@public-ui/react-v19';
 
-setTagNameTransformer((tagName) => `${tagName}-app`);
+const transformTagName = (tagName: string) => `${tagName}-app`;
+
+setTagNameTransformer(transformTagName);
+await bootstrap(DEFAULT, [], { transformTagName });
 ```
 
 ### Supported React versions and types
