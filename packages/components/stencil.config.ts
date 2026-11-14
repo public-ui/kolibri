@@ -1,11 +1,12 @@
 import { promises as fsPromises } from 'fs';
 
 import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
-import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
+
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
 import { svelteOutputTarget } from '@revolist/svelte-output-target';
 import { postcss } from '@stencil-community/postcss';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import type { Config } from '@stencil/core';
 import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { sass } from '@stencil/sass';
@@ -163,16 +164,14 @@ if (process.env.NODE_ENV === 'production') {
 			directivesProxyFile: '../adapters/angular/v21/src/components.ts',
 		}),
 		reactOutputTarget({
-			componentCorePackage: '@public-ui/components',
+			outDir: '../adapters/react/src',
 			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/react/src/index.ts',
-			includeDefineCustomElements: false,
+			transformTag: true,
 		}),
 		reactOutputTarget({
-			componentCorePackage: '@public-ui/components',
+			outDir: '../adapters/react-v19/src',
 			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/react-v19/src/index.ts',
-			includeDefineCustomElements: false,
+			transformTag: true,
 		}),
 		solidOutputTarget({
 			componentCorePackage: '@public-ui/components',
@@ -193,6 +192,7 @@ if (process.env.NODE_ENV === 'production') {
 			includeDefineCustomElements: false,
 		}),
 		{
+			externalRuntime: false,
 			minify: true,
 			type: 'dist-custom-elements',
 		},
