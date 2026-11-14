@@ -311,3 +311,63 @@ import type { KoliBriTableHeaders } from '@public-ui/components';
 
 const headers: KoliBriTableHeaders = { horizontal: [[{ key: 'name', label: 'Name' }]] };
 ```
+
+## React adapters register through the custom elements build
+
+`@public-ui/react` and `@public-ui/react-v19` are generated with the official
+[`@stencil/react-output-target`](https://www.npmjs.com/package/@stencil/react-output-target) instead
+of the `@public-ui/stencil-react-output-target` fork. Each React component defines its custom element
+from `@public-ui/components/dist/components` on its first render. The lazy loader is no longer part
+of a React application.
+
+### Registration
+
+Remove the `defineCustomElements` loader from `bootstrap`. Elements the loader defines do not receive
+the props of the React components, so both registrations must not be mixed.
+
+**Before (v4):**
+
+```ts
+import { bootstrap } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await bootstrap(DEFAULT, defineCustomElements);
+```
+
+**After (v5):**
+
+```ts
+import { bootstrap } from '@public-ui/components';
+
+await bootstrap(DEFAULT, []);
+```
+
+### Toaster
+
+The toaster creates its container element itself instead of rendering it through a React component.
+Define that element once before the first toast:
+
+```ts
+import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/dist/components/kol-toast-container.js';
+
+defineKolToastContainer();
+```
+
+### Tag name transformation
+
+`defineCustomElements(window, { transformTagName })` is removed. Register the transformer with
+`setTagNameTransformer` from the adapter before the first render and before `defineKolToastContainer`.
+The adapter limits it to `kol-*` tags.
+
+```ts
+import { setTagNameTransformer } from '@public-ui/react-v19';
+
+setTagNameTransformer((tagName) => `${tagName}-app`);
+```
+
+### Supported React versions and types
+
+- `@public-ui/react` supports React 18 only (peer range `18.x`), because the Stencil React runtime
+  requires React 18 or 19. React 19 applications use `@public-ui/react-v19`.
+- The `StyleReactProps` type export of `@public-ui/react-v19` is removed. The props of the React
+  components accept `class` and CSS custom properties in `style`.
