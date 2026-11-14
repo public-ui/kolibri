@@ -2,8 +2,8 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router';
 
-import './legacy-element-constructor';
 import { bootstrap } from '@public-ui/components';
+import './legacy-element-constructor';
 /* The toaster creates its container element imperatively, outside the react adapter render:
    its custom element must be defined up front. */
 import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/dist/components/kol-toast-container.js';
