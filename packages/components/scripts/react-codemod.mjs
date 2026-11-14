@@ -16,10 +16,6 @@ for (const file of proxies.map((proxy) => join(scriptDir, proxy))) {
 	const source = readFileSync(file, 'utf8');
 	const rewritten = source
 		.replace(
-			"import { createComponent } from '@stencil/react-output-target/runtime';",
-			"import { createComponent } from '../kolibri-src/create-component';",
-		)
-		.replace(
 			"import type { Components } from '@public-ui/components/dist/components';",
 			// The dist-custom-elements type output carries no `Components` namespace; the root types do.
 			"import type { Components } from '@public-ui/components';",
@@ -27,6 +23,14 @@ for (const file of proxies.map((proxy) => join(scriptDir, proxy))) {
 		.replace(
 			"import type { StencilReactComponent } from '@stencil/react-output-target/runtime';",
 			"import type { StencilReactComponent } from '../kolibri-src/create-component';",
+		)
+		.replace(
+			"import { createComponent } from '@stencil/react-output-target/runtime';",
+			"import { createComponent } from '../kolibri-src/create-component';",
+		)
+		.replace(
+			"import { transformTag } from './tag-transformer.js';",
+			"import { transformTag } from '../kolibri-src/tag-transformer';",
 		);
 	if (rewritten === source) {
 		throw new Error(`react-codemod: no generated import found in ${file}`);
