@@ -12,6 +12,15 @@ describe('bootstrap tag name transformation', () => {
 		expect(page.root?.tagName).toBe('APP-KOL-BUTTON');
 	});
 
+	it('transforms component tags only, because the stencil runtime would otherwise rename native HTML tags as well', async () => {
+		await bootstrap([], [], { transformTagName: (tagName) => `app-${tagName}` });
+
+		const page = await newSpecPage({ components: [KolButton], template: () => <KolButtonTag _label="Label"></KolButtonTag> });
+		const html = page.root!.shadowRoot!.innerHTML;
+		expect(html).not.toContain('<app-');
+		expect(page.root?.tagName).toBe('APP-KOL-BUTTON');
+	});
+
 	it('warns when a transformer is registered twice', async () => {
 		const warn = jest.spyOn(console, 'warn').mockImplementation(() => ({}));
 
