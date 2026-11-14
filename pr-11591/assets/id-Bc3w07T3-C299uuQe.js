@@ -1,1 +1,0 @@
-import{O as e,c as t}from"./bem-registry-CzD7Hxkx-Bv5JaLmF.js";var n=t(`id`,``,e);export{n as t};

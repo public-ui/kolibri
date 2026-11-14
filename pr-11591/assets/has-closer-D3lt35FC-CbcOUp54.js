@@ -1,1 +1,0 @@
-import{c as e,y as t}from"./bem-registry-CzD7Hxkx-Bv5JaLmF.js";var n=e(`hasCloser`,!1,t);export{n as t};

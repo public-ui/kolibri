@@ -1,1 +1,0 @@
-import{V as e,l as t,u as n}from"./index-Dp687ss5.js";var r=(e,r)=>(t()??n(`de`)).translate(e,r);e()&&(r=e=>e);export{r as t};

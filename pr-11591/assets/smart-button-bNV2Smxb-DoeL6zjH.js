@@ -1,0 +1,1 @@
+import{q as e}from"./index-DB_3hi-Z.js";import{c as t}from"./bem-registry-CzD7Hxkx-8GkibQF-.js";function n(t){let n=typeof t==`string`?e(t):t;if(typeof n==`object`&&n)return n;throw Error(`Invalid smart button: ${typeof t}`)}var r=t(`smartButton`,{_label:``},n);export{r as t};
