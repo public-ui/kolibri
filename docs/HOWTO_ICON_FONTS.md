@@ -78,10 +78,11 @@ However, we recommend migrating all Codicons to KolIcons for consistency and red
 ## Using Third-Party Icon Fonts of the Themes (Optional Peer Dependencies)
 
 Some themes style icons (and text) with third-party fonts. The theme packages declare them as
-**optional peer dependencies**: they are not installed automatically, and the bundled copies in the
-theme assets keep working unchanged. When your application uses one of these fonts, install the
-package and import its CSS once at document level instead of copying the bundled font folders into
-your public assets — the declarations and glyph classes are identical:
+**optional peer dependencies**: they are not installed automatically by npm, and the bundled copies
+in the theme assets keep working unchanged. When your application uses one of these fonts, install
+the package and import its CSS once at document level instead of copying the bundled font folders
+into your public assets. The glyph classes are identical, and so are the `@font-face` declarations
+of the icon fonts:
 
 | Theme                         | Font                  | Install + Import                                                                                     |
 | ----------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------- |
@@ -90,6 +91,10 @@ your public assets — the declarations and glyph classes are identical:
 | `theme-bwst`                  | Font Awesome 6        | `pnpm add @fortawesome/fontawesome-free` + `import '@fortawesome/fontawesome-free/css/all.min.css';` |
 | `theme-bwst`                  | Noto Sans (text font) | `pnpm add @fontsource/noto-sans` + `import '@fontsource/noto-sans/400.css';` and `700.css`           |
 | `theme-kern`                  | Fira Sans (text font) | `pnpm add @fontsource/fira-sans` + `import '@fontsource/fira-sans/400.css';` … `700.css`             |
+
+The text font imports register their standard family names: `Noto Sans` and `Fira Sans`. `theme-bwst`
+keeps referencing its bundled `Noto Sans Regular` until v5, so importing Noto Sans does not change
+bwst's rendering — the bundled copy stays the font of that theme for now.
 
 The icon fonts that KoliBri packages ship themselves are importable the same way, through the
 packages' `./assets/*` exports:
