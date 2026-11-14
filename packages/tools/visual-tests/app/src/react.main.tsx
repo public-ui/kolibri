@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router';
 
 import { bootstrap, getDefaultThemeName, KoliBriDevHelper } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
 import { App, setCustomThemes } from '@public-ui/sample-react';
 
 import type { Generic } from 'adopted-style-sheets';
@@ -45,12 +44,7 @@ void (async () => {
 	try {
 		await bootstrap(
 			await getThemes(),
-			() => {
-				// @see https://github.com/ionic-team/stencil/issues/2847
-				defineCustomElements(window, {
-					transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
-				} as any);
-			},
+			[],
 			{
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 				reflectInputValues: true,
