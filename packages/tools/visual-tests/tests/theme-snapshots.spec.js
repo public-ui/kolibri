@@ -1,37 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { ROUTES } from './sample-app.routes.js';
 
-// https://github.com/microsoft/playwright/issues/7575#issuecomment-1288164474
-export const configureSnapshotPath =
-	() =>
-	// eslint-disable-next-line no-empty-pattern
-	({}, testInfo) => {
-		const originalSnapshotPath = testInfo.snapshotPath;
-		testInfo.snapshotPath = (snapshotName) => {
-			const result = originalSnapshotPath
-				.apply(testInfo, [snapshotName])
-
-				// Remove browser name from snapshot name
-				// .replace('-chromium', '')
-				// .replace('-firefox', '')
-
-				// Remove os name from snapshot name
-				// .replace('-darwin', '')
-				// .replace('-linux', '')
-				// .replace('-windows', '')
-
-				// Remove test counter from snapshot name
-				.replace('-1-', '-')
-
-				// Make different snapshot folder for different themes
-				.replace('theme-snapshots.spec.js', `theme-${(process.env.THEME_EXPORT || 'default').toLocaleLowerCase()}`)
-				.replace('-snapshots', '');
-			return result;
-		};
-	};
-
-test.beforeEach(configureSnapshotPath());
-
 // https://playwright.dev/docs/emulation
 test.use({
 	colorScheme: 'light',
@@ -44,24 +13,66 @@ test.use({
 	},
 });
 
-const blocklist = [];
+const DEFAULT_SNAPSHOT_OPTIONS = {
+	animations: 'disabled',
+	fullPage: true,
+	maxDiffPixelRatio: 0,
+	scale: 'css', // 'css' or 'device'
+	timeout: 10000,
+};
 
 ROUTES.forEach((options, route) => {
-	if (blocklist.includes(route)) {
+	// Skip unnecessary snapshot tests
+	if (options?.snapshot?.skip === true && options?.snapshot?.zoom?.skip === true) {
 		return;
 	}
 	test(`snapshot for ${route}`, async ({ page }) => {
-		await page.goto(`/#${route}?hideMenus`, { waitUntil: 'networkidle' });
-		if (options?.viewportSize) {
-			await page.setViewportSize(options.viewportSize);
-		}
-		if (options?.waitForTimeout) {
-			await page.waitForTimeout(options.waitForTimeout);
-		}
-		await expect(page).toHaveScreenshot({
-			fullPage: true,
-			maxDiffPixelRatio: 0.025,
-			...options,
+		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
+		await page.goto(`/#${route}${hideMenusParam}`);
+		await page.waitForLoadState('networkidle');
+		await page.addStyleTag({
+			content: `
+				* {
+					transition: none !important;
+					animation: none !important;
+				}
+			`,
 		});
+		if (options?.snapshot?.viewportSize) {
+			await page.setViewportSize(options?.snapshot?.viewportSize);
+		}
+		if (options?.snapshot?.waitForTimeout) {
+			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
+		}
+
+		/**
+		 * We would like to use a readable name for the snapshot file.
+		 */
+		const snapshotName = `snapshot-for-${route.replace(/(\/|\?|&|=)/g, '-')}`;
+
+		const SNAPSHOT_OPTIONS = {
+			...DEFAULT_SNAPSHOT_OPTIONS,
+			...options?.snapshot?.options,
+		};
+
+		// Skip unnecessary normal tests
+		if (options?.snapshot?.skip !== true) {
+			await expect(page).toHaveScreenshot(`${snapshotName}.png`, SNAPSHOT_OPTIONS);
+		}
+
+		// Skip unnecessary zoom tests
+		if (options?.snapshot?.zoom?.skip !== true) {
+			await page.evaluate(() => {
+				// eslint-disable-next-line no-undef
+				document.body.style.zoom = '400%';
+				// document.body.style.transform = 'scale(4)';
+				// document.body.style.transformOrigin = 'top left';
+				// document.body.style.width = '25vw';
+			});
+			await expect(page).toHaveScreenshot(`${snapshotName}-zoom.png`, {
+				...SNAPSHOT_OPTIONS,
+				...options?.snapshot?.zoom?.options,
+			});
+		}
 	});
 });

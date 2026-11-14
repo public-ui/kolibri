@@ -90,7 +90,7 @@ export const getAlertHtml = (props: Props, innerHTML = '', additionalHTML = ''):
 				}
 			</div>${
 				props._variant === 'card'
-					? `<div class="content">
+					? `<div class="content" tabindex="0">
 						<slot />
 					</div>`
 					: ''

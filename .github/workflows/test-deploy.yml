@@ -8,7 +8,8 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    # The pinned Playwright cannot install browsers on the ubuntu-26.04 runner image.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
         with:
@@ -19,7 +20,8 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: 20
+          # The lockfile needs Node >= 22 (engine-strict).
+          node-version: 24
       - name: Install pnpm
         uses: pnpm/action-setup@v6
         id: pnpm-install

@@ -27,13 +27,14 @@
 		"kolibri-visual-test": "src/index.js"
 	},
 	"dependencies": {
-		"@playwright/test": "1.47.2",
+		"@playwright/test": "1.60.0",
 		"@public-ui/sample-react": "workspace:*",
 		"axe-playwright": "2.2.2",
 		"http-server": "14.1.1",
 		"portfinder": "1.0.38"
 	},
 	"devDependencies": {
+		"@babel/core": "7.29.7",
 		"@babel/eslint-parser": "7.29.7",
 		"@babel/plugin-syntax-import-attributes": "7.29.7",
 		"@babel/preset-env": "7.29.7",
