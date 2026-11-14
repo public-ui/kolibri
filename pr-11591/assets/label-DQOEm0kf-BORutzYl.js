@@ -1,0 +1,1 @@
+import{O as e,c as t}from"./bem-registry-CzD7Hxkx-2LaNRmli.js";import{n}from"./validators-Z7N5X5-r-CGZyyj0h.js";import{t as r}from"./label-hints-BASo0aol-DCsBAP88.js";var i=t(`label`,void 0,e,n,{hints:r});export{i as t};
