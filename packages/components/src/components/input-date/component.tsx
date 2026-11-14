@@ -31,21 +31,17 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import { deprecatedHint } from '../../schema';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+} from '../../../internals/src/schema/index';
+import { deprecatedHint } from '../../../internals/src/schema/index';
+import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
 
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import type { DateValueType } from '../../internal/functional-components/form-field/date-value';
-import { getDateValueType, remapDateValue } from '../../internal/functional-components/form-field/date-value';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputDateApi } from '../../internal/functional-components/input-date/api';
-import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
+import { submitFormOnEnter } from '../../../internals/src/components/form/controller';
+import type { DateValueType } from '../../../internals/src/controller/form-field/date-value';
+import { getDateValueType, remapDateValue } from '../../../internals/src/controller/form-field/date-value';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputDateApi } from '../../../internals/src/controller/input-date/api';
+import { inputDatePropsConfig } from '../../../internals/src/controller/input-date/api';
+import type { InputDateDeps } from '../../../internals/src/props/helpers/iso-date';
 import {
 	accessKeyProp,
 	autoCompleteProp,
@@ -61,12 +57,16 @@ import {
 	stepProp,
 	suggestionsProp,
 	variantProp,
-} from '../../internal/props';
-import type { InputDateDeps } from '../../internal/props/helpers/iso-date';
-import clsx from '../../utils/clsx';
-import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { submitFormOnEnter } from '../form/controller';
+} from '../../../internals/src/props/index';
+import clsx from '../../../internals/src/utils/clsx';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
 
 /**
  * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.

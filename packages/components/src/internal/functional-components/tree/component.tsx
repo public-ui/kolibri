@@ -1,9 +1,9 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
-import type { FunctionalComponentProps } from '../generic-types';
-import type { TreeApi } from './api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { TreeApi } from '../../../../internals/src/controller/tree/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 
 const treeBem = bem.forBlock('kol-tree');
 const BEM_CLASS_TREE = treeBem();

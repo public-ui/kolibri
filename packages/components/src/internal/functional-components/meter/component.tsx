@@ -1,12 +1,12 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
-import { translate } from '../../../i18n';
+import { translate } from '../../../../internals/src/i18n';
 
-import { trimLabel } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import type { FunctionalComponentProps } from '../generic-types';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { MeterApi } from '../../../../internals/src/controller/meter/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import { trimLabel } from '../../../../internals/src/schema/index';
 import { renderLabelWithLang } from '../span/component';
-import type { MeterApi } from './api';
 
 type MeterState = 'optimum' | 'suboptimal' | 'critical';
 

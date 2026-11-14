@@ -1,5 +1,5 @@
-import { KolPopoverButtonTag } from '../../../core/component-names';
-import type { PopoverButtonProps } from '../../../schema';
+import { KolPopoverButtonTag } from '../../../../internals/src/core/component-names';
+import type { PopoverButtonProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolPopoverButton } from '../component';

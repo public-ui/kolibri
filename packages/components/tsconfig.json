@@ -4,7 +4,12 @@
 		"allowUnreachableCode": false,
 		"declaration": false,
 		"experimentalDecorators": true,
-		"lib": ["dom", "dom.iterable", "ES2017", "ESNext.Disposable"],
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"ES2017",
+			"ESNext.Disposable"
+		],
 		"moduleResolution": "node",
 		"module": "ESNext",
 		"target": "ES2017",
@@ -16,10 +21,23 @@
 		"forceConsistentCasingInFileNames": true,
 		"importHelpers": true,
 		"removeComments": true,
-		"typeRoots": ["node_modules/@types"],
+		"typeRoots": [
+			"node_modules/@types"
+		],
 		"strict": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"@public-ui/internals/*": [
+				"internals/src/*"
+			]
+		}
 	},
-	"include": ["src"],
-	"exclude": ["node_modules", "dist"]
+	"include": [
+		"src"
+	],
+	"exclude": [
+		"node_modules",
+		"dist"
+	]
 }

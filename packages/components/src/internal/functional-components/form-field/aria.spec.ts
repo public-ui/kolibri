@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { getFormFieldAria } from './aria';
+import { getFormFieldAria } from '../../../../internals/src/controller/form-field/aria';
 
 const error = { _type: 'error' as const, _description: 'Error' };
 

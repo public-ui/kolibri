@@ -1,13 +1,13 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { ToolbarApi } from '../../../../internals/src/controller/toolbar/api';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../../../internals/src/controller/toolbar/item';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
-import type { FunctionalComponentProps } from '../generic-types';
 import { LinkFC } from '../link/component';
-import type { ToolbarApi } from './api';
-import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
 
 const BEM_CLASS_TOOLBAR__ITEM = bem.forBlock('kol-toolbar')('item');
 

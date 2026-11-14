@@ -1,5 +1,5 @@
-import { KolSplitButtonTag } from '../../../core/component-names';
-import type { SplitButtonProps } from '../../../schema';
+import { KolSplitButtonTag } from '../../../../internals/src/core/component-names';
+import type { SplitButtonProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolSplitButton } from '../component';

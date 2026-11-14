@@ -1,4 +1,4 @@
-import { KolMeterTag } from '../../core/component-names';
+import { KolMeterTag } from '../../../internals/src/core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolMeter } from './component';
 

@@ -1,18 +1,25 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { ResolvedButtonProps } from '../../internal/functional-components/button/resolve-props';
-import type { CardApi } from '../../internal/functional-components/card/api';
-import { cardPropsConfig } from '../../internal/functional-components/card/api';
-import { resolveCardCloseButtonProps } from '../../internal/functional-components/card/close-button';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { ResolvedButtonProps } from '../../../internals/src/controller/button/resolve-props';
+import type { CardApi } from '../../../internals/src/controller/card/api';
+import { cardPropsConfig } from '../../../internals/src/controller/card/api';
+import { resolveCardCloseButtonProps } from '../../../internals/src/controller/card/close-button';
+import type { PropsConfigShape } from '../../../internals/src/controller/generic-types';
+import { TooltipBehavior } from '../../../internals/src/controller/tooltip/behavior';
+import { cardCallbacksProp, hasCloserProp, hrefProp, labelLangSegmentsProp, levelProp, linkTargetProp } from '../../../internals/src/props/index';
+import type {
+	HasCloserPropType,
+	HeadingLevel,
+	HrefPropType,
+	KoliBriCardEventCallbacks,
+	LabelLangSegmentsPropType,
+	LinkTargetPropType,
+} from '../../../internals/src/schema/index';
+import { createCtaRef } from '../../../internals/src/utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
 import { CardFC } from '../../internal/functional-components/card/component';
-import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { cardCallbacksProp, hasCloserProp, hrefProp, labelLangSegmentsProp, levelProp, linkTargetProp } from '../../internal/props';
-import type { HasCloserPropType, HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelLangSegmentsPropType, LinkTargetPropType } from '../../schema';
-import { createCtaRef } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * Orchestrator of `kol-card` (ARC42 § 9, decision 16). The element only declares the Stencil members

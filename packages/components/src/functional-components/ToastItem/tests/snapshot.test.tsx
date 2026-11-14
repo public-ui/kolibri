@@ -1,5 +1,5 @@
 import { h } from '@stencil/core';
-import type { Toast } from '../../../schema';
+import type { Toast } from '../../../../internals/src/schema/index';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
 import ToastItemFc from '../ToastItem';
 

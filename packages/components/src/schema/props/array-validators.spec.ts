@@ -1,18 +1,18 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import type { Generic } from 'adopted-style-sheets';
 
+import type { OptionsPropType, OptionsWithOptgroupPropType } from '../../../internals/src/schema/props/options';
+import { validateOptions, validateOptionsWithOptgroup } from '../../../internals/src/schema/props/options';
+import type { SuggestionsPropType } from '../../../internals/src/schema/props/suggestions';
+import { validateSuggestions } from '../../../internals/src/schema/props/suggestions';
+import { validateTableData } from '../../../internals/src/schema/props/table-data';
+import { validateTableDataFoot } from '../../../internals/src/schema/props/table-data-foot';
+import type { ToolbarItemsPropType } from '../../../internals/src/schema/props/toolbar-items';
+import { validateToolbarItems } from '../../../internals/src/schema/props/toolbar-items';
+import type { KoliBriTableDataType } from '../../../internals/src/schema/types/table';
+import { Log } from '../../../internals/src/schema/utils/dev.utils';
+import type { SetStateHooks } from '../../../internals/src/schema/utils/prop.validators';
 import { createLegacyComponent, getLoggedMessages } from '../../utils/testing/legacy-component';
-import type { KoliBriTableDataType } from '../types/table';
-import { Log } from '../utils/dev.utils';
-import type { SetStateHooks } from '../utils/prop.validators';
-import type { OptionsPropType, OptionsWithOptgroupPropType } from './options';
-import { validateOptions, validateOptionsWithOptgroup } from './options';
-import type { SuggestionsPropType } from './suggestions';
-import { validateSuggestions } from './suggestions';
-import { validateTableData } from './table-data';
-import { validateTableDataFoot } from './table-data-foot';
-import type { ToolbarItemsPropType } from './toolbar-items';
-import { validateToolbarItems } from './toolbar-items';
 
 type ArrayValidator = (component: Generic.Element.Component, value?: string | object[], setStateHooks?: SetStateHooks) => void;
 

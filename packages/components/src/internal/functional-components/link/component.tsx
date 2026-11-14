@@ -1,20 +1,20 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { translate } from '../../../i18n';
-import { devHint, trimLabel } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import { classNameFromVariant } from '../../../schema/props/variant-class-name';
-import clsx from '../../../utils/clsx';
-import { preventFocus } from '../../../utils/element-interaction';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { linkPropsConfig, type LinkApi } from '../../../../internals/src/controller/link/api';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import { translate } from '../../../../internals/src/i18n';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import { devHint, trimLabel } from '../../../../internals/src/schema/index';
+import { classNameFromVariant } from '../../../../internals/src/schema/props/variant-class-name';
+import clsx from '../../../../internals/src/utils/clsx';
+import { preventFocus } from '../../../../internals/src/utils/element-interaction';
 import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
-import { resolveFcProps } from '../props-from-config';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
-import { linkPropsConfig, type LinkApi } from './api';
 
 const linkBem = bem.forBlock('kol-link');
 

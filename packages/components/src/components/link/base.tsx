@@ -1,12 +1,13 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
-import type { LinkApi } from '../../internal/functional-components/link/api';
-import { linkPropsConfig } from '../../internal/functional-components/link/api';
-import { LinkFC } from '../../internal/functional-components/link/component';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
+import type { UnsubscribeFunction } from '../../../internals/src/components/link/ariaCurrentService';
+import { onLocationChange } from '../../../internals/src/components/link/ariaCurrentService';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape } from '../../../internals/src/controller/generic-types';
+import type { LinkApi } from '../../../internals/src/controller/link/api';
+import { linkPropsConfig } from '../../../internals/src/controller/link/api';
+import { TooltipBehavior } from '../../../internals/src/controller/tooltip/behavior';
 import {
 	accessKeyProp,
 	ariaControlsProp,
@@ -29,7 +30,7 @@ import {
 	tabIndexProp,
 	tooltipAlignProp,
 	variantProp,
-} from '../../internal/props';
+} from '../../../internals/src/props/index';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -52,12 +53,11 @@ import type {
 	TabIndexPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import { setEventTarget } from '../../schema';
-import { createCtaRef } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { UnsubscribeFunction } from './ariaCurrentService';
-import { onLocationChange } from './ariaCurrentService';
+} from '../../../internals/src/schema/index';
+import { setEventTarget } from '../../../internals/src/schema/index';
+import { createCtaRef } from '../../../internals/src/utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
+import { LinkFC } from '../../internal/functional-components/link/component';
 
 /**
  * Shared orchestrator implementation for every custom element that renders `LinkFC`:

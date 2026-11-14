@@ -1,0 +1,30 @@
+{
+	"name": "@public-ui/components-lit",
+	"version": "5.0.0-beta.1",
+	"license": "EUPL-1.2",
+	"private": true,
+	"description": "Experimental Lit implementation of the KoliBri components, sharing the framework-free internals with the Stencil package.",
+	"type": "module",
+	"scripts": {
+		"build": "vite build",
+		"compile:scss": "node scripts/compile-scss.mjs",
+		"format": "prettier --check src page",
+		"lint": "eslint src",
+		"preview": "vite preview --port 4610 --strictPort",
+		"verify": "node verify/parity.mjs"
+	},
+	"dependencies": {
+		"@public-ui/internals": "workspace:*",
+		"lit": "3.3.2"
+	},
+	"devDependencies": {
+		"@public-ui/components": "workspace:*",
+		"@public-ui/theme-default": "workspace:*",
+		"@typescript-eslint/parser": "8.58.2",
+		"eslint": "9.39.5",
+		"prettier": "3.9.10",
+		"sass": "1.94.2",
+		"typescript": "5.9.3",
+		"vite": "7.3.0"
+	}
+}

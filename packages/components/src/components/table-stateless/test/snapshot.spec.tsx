@@ -1,5 +1,5 @@
-import { KolTableStatelessTag } from '../../../core/component-names';
-import type { TableStatelessProps } from '../../../schema';
+import { KolTableStatelessTag } from '../../../../internals/src/core/component-names';
+import type { TableStatelessProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolTableStateless } from '../component';

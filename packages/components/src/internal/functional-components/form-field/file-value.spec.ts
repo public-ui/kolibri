@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { getFileNames } from './file-value';
+import { getFileNames } from '../../../../internals/src/controller/form-field/file-value';
 
 const file = (name: string): File => ({ name }) as File;
 

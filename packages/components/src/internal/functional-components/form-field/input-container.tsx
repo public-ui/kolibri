@@ -1,8 +1,8 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase, VNode } from '@stencil/core/internal';
-import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 
 const inputContainerBem = bem.forBlock('kol-input-container');

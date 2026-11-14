@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableHeaders, KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload } from '../../schema';
+import type { KoliBriTableHeaders, KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload } from '../../../internals/src/schema/index';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
 const HEADERS: KoliBriTableHeaders = {

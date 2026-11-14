@@ -1,21 +1,28 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { ToolbarApi } from '../../internal/functional-components/toolbar/api';
-import { toolbarPropsConfig } from '../../internal/functional-components/toolbar/api';
+import type { UnsubscribeFunction } from '../../../internals/src/components/link/ariaCurrentService';
+import { onLocationChange } from '../../../internals/src/components/link/ariaCurrentService';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { ToolbarApi } from '../../../internals/src/controller/toolbar/api';
+import { toolbarPropsConfig } from '../../../internals/src/controller/toolbar/api';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../../internals/src/controller/toolbar/item';
+import { createToolbarItem } from '../../../internals/src/controller/toolbar/item';
+import { labelProp, orientationProp, toolbarItemsProp } from '../../../internals/src/props/index';
+import { KeyboardKey } from '../../../internals/src/schema/enums/index';
+import type {
+	ClickableElement,
+	FocusableElement,
+	KolFocusOptions,
+	LabelPropType,
+	ToolbarItemsPropType,
+	ToolbarProps,
+} from '../../../internals/src/schema/index';
+import type { OrientationPropType } from '../../../internals/src/schema/props/orientation';
+import { delegateClick, setClick } from '../../../internals/src/utils/element-click';
+import { delegateFocus, setFocus } from '../../../internals/src/utils/element-focus';
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
-import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
-import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
-import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
-import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType, ToolbarProps } from '../../schema';
-import { KeyboardKey } from '../../schema/enums';
-import type { OrientationPropType } from '../../schema/props/orientation';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
-import type { UnsubscribeFunction } from '../link/ariaCurrentService';
-import { onLocationChange } from '../link/ariaCurrentService';
 
 const ARROW_KEYS: KeyboardKey[] = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, KeyboardKey.ArrowRight, KeyboardKey.ArrowLeft];
 

@@ -1,16 +1,16 @@
 import type { JSXBase } from '@stencil/core/internal';
 
-import { onLocationChange, type UnsubscribeFunction } from '../../../components/link/ariaCurrentService';
-import type { AlignPropType } from '../../../schema';
-import { setEventTarget } from '../../../schema';
-import { nonce } from '../../../utils/dev.utils';
-import { createCtaRef } from '../../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../../utils/events';
-import { BaseWebComponent } from '../base-web-component';
-import { TooltipBehavior } from '../tooltip/behavior';
+import { onLocationChange, type UnsubscribeFunction } from '../../../../internals/src/components/link/ariaCurrentService';
+import { BaseWebComponent } from '../../../../internals/src/controller/base-web-component';
+import type { EmbeddedLinkProps, ResolvedLinkProps } from '../../../../internals/src/controller/link/resolve-props';
+import { resolveLinkProps } from '../../../../internals/src/controller/link/resolve-props';
+import { TooltipBehavior } from '../../../../internals/src/controller/tooltip/behavior';
+import type { AlignPropType } from '../../../../internals/src/schema/index';
+import { setEventTarget } from '../../../../internals/src/schema/index';
+import { nonce } from '../../../../internals/src/utils/dev.utils';
+import { createCtaRef } from '../../../../internals/src/utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../../../internals/src/utils/events';
 import type { LinkFCProps } from './component';
-import type { EmbeddedLinkProps, ResolvedLinkProps } from './resolve-props';
-import { resolveLinkProps } from './resolve-props';
 
 /** Attributes the embedding component puts on the `.kol-link` root, e.g. its BEM element class. */
 type LinkItemRootAttributes = Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;

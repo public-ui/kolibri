@@ -1,5 +1,5 @@
-import { KolFormTag } from '../../../core/component-names';
-import type { FormProps } from '../../../schema';
+import { KolFormTag } from '../../../../internals/src/core/component-names';
+import type { FormProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolForm } from '../component';

@@ -1,15 +1,14 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { BadgeApi } from '../../internal/functional-components/badge/api';
-import { badgePropsConfig } from '../../internal/functional-components/badge/api';
-import { BadgeFC } from '../../internal/functional-components/badge/component';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { ResolvedButtonProps } from '../../internal/functional-components/button/resolve-props';
-import { resolveButtonProps } from '../../internal/functional-components/button/resolve-props';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../internal/props';
+import type { BadgeApi } from '../../../internals/src/controller/badge/api';
+import { badgePropsConfig } from '../../../internals/src/controller/badge/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { ResolvedButtonProps } from '../../../internals/src/controller/button/resolve-props';
+import { resolveButtonProps } from '../../../internals/src/controller/button/resolve-props';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import { TooltipBehavior } from '../../../internals/src/controller/tooltip/behavior';
+import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../../internals/src/props/index';
 import type {
 	BadgeProps,
 	FocusableElement,
@@ -19,11 +18,12 @@ import type {
 	LabelWithExpertSlotPropType,
 	PropColor,
 	Stringified,
-} from '../../schema';
-import { featureHint, objectObjectHandler, setEventTarget } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
-import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
+} from '../../../internals/src/schema/index';
+import { featureHint, objectObjectHandler, setEventTarget } from '../../../internals/src/schema/index';
+import { createUniqueId, nonce } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef, delegateFocus } from '../../../internals/src/utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
+import { BadgeFC } from '../../internal/functional-components/badge/component';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 

@@ -1,5 +1,5 @@
-import type { ButtonOrLinkOrTextWithChildrenProps } from '../../../schema';
-import { buildEntryIcons, getInitiallyExpanded, getLeftIcon, isButtonEntry, isLinkEntry, toggleExpanded } from './model';
+import { buildEntryIcons, getInitiallyExpanded, getLeftIcon, isButtonEntry, isLinkEntry, toggleExpanded } from '../../../../internals/src/controller/nav/model';
+import type { ButtonOrLinkOrTextWithChildrenProps } from '../../../../internals/src/schema/index';
 
 describe('nav model', () => {
 	describe('getInitiallyExpanded', () => {

@@ -1,4 +1,4 @@
-import { KolIconTag } from '../../../core/component-names';
+import { KolIconTag } from '../../../../internals/src/core/component-names';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolIcon } from '../component';

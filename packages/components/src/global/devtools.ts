@@ -1,3 +1,5 @@
+import { Env } from '@stencil/core';
+import { setKolibriVersion } from '../../internals/src/core/version';
 import {
 	getColorContrastAnalysis,
 	getDocument,
@@ -12,8 +14,8 @@ import {
 	Log,
 	parseJson,
 	stringifyJson,
-} from '../schema';
-import { initKoliBri, renderDevAdvice } from '../utils/dev.utils';
+} from '../../internals/src/schema/index';
+import { initKoliBri, renderDevAdvice } from '../../internals/src/utils/dev.utils';
 
 const getKoliBri = (): Record<string, unknown> => {
 	let kolibri = getWindow().KoliBri;
@@ -42,6 +44,9 @@ function prototypeKoliBri<T>(name: string, cb: T) {
 const metaModeLog = (name: string, active: boolean) => Log.debug(`${name} ${active ? '' : 'not '}activated`);
 
 export const initialize = (): void => {
+	if (Env.kolibriVersion !== undefined) {
+		setKolibriVersion(Env.kolibriVersion);
+	}
 	initKoliBri();
 	if (isDevMode()) {
 		renderDevAdvice();

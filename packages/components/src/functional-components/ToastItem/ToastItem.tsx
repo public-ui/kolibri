@@ -1,10 +1,10 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+import { type Toast } from '../../../internals/src/schema/index';
 import { AlertFC } from '../../internal/functional-components/alert/component';
-import { type Toast } from '../../schema';
 
-import clsx from '../../utils/clsx';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import clsx from '../../../internals/src/utils/clsx';
+import { createUniqueId, nonce } from '../../../internals/src/utils/dev.utils';
 
 type ToastItemProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 	status: 'adding' | 'settled' | 'removing';

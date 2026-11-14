@@ -1,8 +1,8 @@
 import { h } from '@stencil/core';
 import type { VNode } from '@stencil/core/internal';
-import type { IconOrIconClass, KoliBriHorizontalIcons } from '../../../schema';
+import type { ButtonItemFcProps } from '../../../../internals/src/controller/button/item';
+import type { IconOrIconClass, KoliBriHorizontalIcons } from '../../../../internals/src/schema/index';
 import { ButtonFC } from '../button/component';
-import type { ButtonItemFcProps } from '../button/item';
 import { IconFC } from '../icon/component';
 
 type InputAdornmentsOptions = {

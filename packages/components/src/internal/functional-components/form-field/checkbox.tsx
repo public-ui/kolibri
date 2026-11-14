@@ -1,8 +1,8 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import { getMsgType, isMsgDefinedAndInputTouched } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import { getMsgType, isMsgDefinedAndInputTouched } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { IconFC } from '../icon/component';
 import { InputFC, type InputFCProps } from './input';

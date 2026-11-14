@@ -2,14 +2,14 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 import { isString } from 'lodash-es';
 
-import type { IconOrIconClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriIconsProp, LabelLangSegmentsPropType } from '../../../schema';
-import { showExpertSlot } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
-import { md } from '../../../utils/markdown';
-import type { FunctionalComponentProps } from '../generic-types';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { SpanApi } from '../../../../internals/src/controller/span/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import type { IconOrIconClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriIconsProp, LabelLangSegmentsPropType } from '../../../../internals/src/schema/index';
+import { showExpertSlot } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
+import { md } from '../../../../internals/src/utils/markdown';
 import { IconFC } from '../icon/component';
-import type { SpanApi } from './api';
 
 const spanBem = bem.forBlock('kol-span');
 

@@ -189,6 +189,7 @@ export default [
 				},
 				{ type: 'focus-decorator-utils', pattern: ['src/utils/element-interaction.ts', 'src/utils/element-focus.ts'], mode: 'file' },
 				{ type: 'testing-utils', pattern: 'src/utils/testing', mode: 'folder' },
+				{ type: 'internals', pattern: 'internals/src', mode: 'folder' },
 				{ type: 'web-components', pattern: 'src/components', mode: 'folder' },
 				{ type: 'core', pattern: 'src/core', mode: 'folder' },
 				{ type: 'i18n', pattern: 'src/i18n.ts', mode: 'file' },
@@ -218,6 +219,7 @@ export default [
 								to: {
 									type: [
 										'web-components',
+										'internals',
 										'skeleton-web-components',
 										'skeleton-functional-components',
 										'internal-functional-components',

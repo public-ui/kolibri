@@ -1,10 +1,10 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
-import type { FunctionalComponentProps } from '../generic-types';
-import type { IconApi } from './api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { IconApi } from '../../../../internals/src/controller/icon/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import clsx from '../../../../internals/src/utils/clsx';
 
 const iconBem = bem.forBlock('kol-icon');
 const BEM_CLASS_ICON = iconBem();

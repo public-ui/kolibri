@@ -1,9 +1,9 @@
 import { h, type FunctionalComponent as FC, type VNode } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import type { LabelAlignPropType, LabelLangSegmentsPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../../schema';
-import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import { createRelatedUniqueId } from '../../../utils/dev.utils';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import type { LabelAlignPropType, LabelLangSegmentsPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../../../internals/src/schema/index';
+import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../../internals/src/schema/index';
+import { createRelatedUniqueId } from '../../../../internals/src/utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { TooltipFC } from '../tooltip/component';
 import { FormFieldHintFC } from './hint';

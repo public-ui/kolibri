@@ -1,5 +1,5 @@
-import { KolSkipNavTag } from '../../core/component-names';
-import type { SkipNavProps } from '../../schema';
+import { KolSkipNavTag } from '../../../internals/src/core/component-names';
+import type { SkipNavProps } from '../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolSkipNav } from './component';
 

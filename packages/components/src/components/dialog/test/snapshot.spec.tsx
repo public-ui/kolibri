@@ -1,5 +1,5 @@
-import { KolDialogTag, KolModalTag } from '../../../core/component-names';
-import type { DialogProps, ModalProps } from '../../../schema';
+import { KolDialogTag, KolModalTag } from '../../../../internals/src/core/component-names';
+import type { DialogProps, ModalProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolModal } from '../../modal/component';

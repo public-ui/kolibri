@@ -1,8 +1,8 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
 
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { TableStatelessApi } from '../../internal/functional-components/table-stateless/api';
+import type { WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { TableStatelessApi } from '../../../internals/src/controller/table-stateless/api';
 import type {
 	FixedColsPropType,
 	HasSettingsMenuPropType,
@@ -17,8 +17,8 @@ import type {
 	TableSelectionPropType,
 	TableStatelessProps,
 	VariantClassNamePropType,
-} from '../../schema';
-import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+} from '../../../internals/src/schema/index';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../../internals/src/schema/props/aria-labelledby';
 import { BaseTableStatelessWebComponent } from './base';
 
 @Component({

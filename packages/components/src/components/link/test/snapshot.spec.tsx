@@ -1,8 +1,8 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolLinkTag } from '../../../core/component-names';
-import type { LinkProps } from '../../../schema';
+import { KolLinkTag } from '../../../../internals/src/core/component-names';
+import type { LinkProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolLink } from '../component';

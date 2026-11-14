@@ -1,15 +1,15 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
 
-import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { TreeApi } from '../../internal/functional-components/tree/api';
-import { treePropsConfig } from '../../internal/functional-components/tree/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { TreeApi } from '../../../internals/src/controller/tree/api';
+import { treePropsConfig } from '../../../internals/src/controller/tree/api';
+import { KolTreeItemTag, KolTreeTag } from '../../../internals/src/core/component-names';
+import { labelProp } from '../../../internals/src/props/index';
+import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../../internals/src/schema/index';
+import { delegateFocus } from '../../../internals/src/utils/element-focus';
 import { TreeFC } from '../../internal/functional-components/tree/component';
-import { labelProp } from '../../internal/props';
-import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../schema';
-import { delegateFocus } from '../../utils/element-focus';
 import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
 
 const isTreeItem = (element?: Element | null): element is HTMLKolTreeItemElement => element?.tagName === KolTreeItemTag.toUpperCase();

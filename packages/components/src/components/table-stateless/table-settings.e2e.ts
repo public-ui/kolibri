@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableHeaderCell, KoliBriTableHeaders } from '../../schema';
+import type { KoliBriTableHeaderCell, KoliBriTableHeaders } from '../../../internals/src/schema/index';
 
 const DATA = [
 	{ id: '1001', name: 'John', age: 30 },

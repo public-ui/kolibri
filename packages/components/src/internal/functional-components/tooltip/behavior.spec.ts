@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
-import { getDocument } from '../../../schema';
-import { BaseWebComponent } from '../base-web-component';
-import { TooltipBehavior } from './behavior';
+import { BaseWebComponent } from '../../../../internals/src/controller/base-web-component';
+import { TooltipBehavior } from '../../../../internals/src/controller/tooltip/behavior';
+import { getDocument } from '../../../../internals/src/schema/index';
 
 type TooltipFixture = {
 	behavior: TooltipBehavior;

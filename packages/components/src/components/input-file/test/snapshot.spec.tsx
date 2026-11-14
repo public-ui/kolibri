@@ -1,5 +1,5 @@
-import { KolInputFileTag } from '../../../core/component-names';
-import type { InputFileProps } from '../../../schema';
+import { KolInputFileTag } from '../../../../internals/src/core/component-names';
+import type { InputFileProps } from '../../../../internals/src/schema/index';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
 import { KolInputFile } from '../component';

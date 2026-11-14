@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import type { Option, StencilUnknown } from '../../../schema';
+import type { Option, StencilUnknown } from '../../../../internals/src/schema/index';
 import { KolSingleSelect } from '../component';
 
 const booleanOptions: Option<StencilUnknown>[] = [

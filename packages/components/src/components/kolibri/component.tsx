@@ -1,14 +1,14 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 
-import { translate } from '../../i18n';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { KolibriApi } from '../../internal/functional-components/kolibri/api';
-import { kolibriPropsConfig } from '../../internal/functional-components/kolibri/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { KolibriApi } from '../../../internals/src/controller/kolibri/api';
+import { kolibriPropsConfig } from '../../../internals/src/controller/kolibri/api';
+import { translate } from '../../../internals/src/i18n';
+import { kolibriColorProp, labeledProp } from '../../../internals/src/props/index';
+import type { KolibriProps, LabeledPropType, PropColor, Stringified } from '../../../internals/src/schema/index';
 import { KolibriFC } from '../../internal/functional-components/kolibri/component';
-import { kolibriColorProp, labeledProp } from '../../internal/props';
-import type { KolibriProps, LabeledPropType, PropColor, Stringified } from '../../schema';
 
 @Component({
 	tag: 'kol-kolibri',
