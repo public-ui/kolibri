@@ -10,8 +10,8 @@
 (function () {
 	if (typeof window !== 'undefined' && window.Reflect !== undefined && window.customElements !== undefined) {
 		const base = HTMLElement;
-		const wrapper = function (): HTMLElement {
-			return Reflect.construct(base, [], this.constructor);
+		const wrapper = function (this: HTMLElement): HTMLElement {
+			return Reflect.construct(base, [], new.target ?? base);
 		} as unknown as typeof HTMLElement;
 		window.HTMLElement = wrapper;
 		HTMLElement.prototype = base.prototype;
