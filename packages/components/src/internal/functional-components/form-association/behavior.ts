@@ -72,7 +72,7 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 
 	/** The host whose light DOM holds the hidden form element. */
 	public readonly host?: Element;
-	public readonly formAssociated?: FormAssociatedElement;
+	public formAssociated?: FormAssociatedElement;
 	public syncToOwnInput?: FormAssociatedElement;
 
 	public constructor(stateAccess: StateAccess<FormAssociationApi>, { host, type, name }: FormAssociationOptions) {
@@ -80,15 +80,27 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
 
-		if (getOptions()?.reflectInputValues && ASSOCIATED_TAG_NAMES.has(this.host?.tagName ?? '') && name) {
-			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
-				this.host?.removeChild(el);
-			});
-			this.formAssociated = this.createFormAssociatedElement();
-			this.formAssociated.setAttribute('data-form-associated', '');
-			this.formAssociated.setAttribute('hidden', '');
-			this.host?.appendChild(this.formAssociated);
+		this.ensureFormAssociatedElement(name);
+	}
+
+	/**
+	 * Creates the hidden form element when it does not exist yet. The caller's constructor runs
+	 * before the element carries attributes or properties, so a `name` that arrives later — props
+	 * are set by frameworks after `createElement` in the custom-elements registration path — must
+	 * (re)trigger this creation.
+	 */
+	public ensureFormAssociatedElement(name?: string): void {
+		if (this.formAssociated || !(getOptions()?.reflectInputValues && ASSOCIATED_TAG_NAMES.has(this.host?.tagName ?? '') && name)) {
+			return;
 		}
+		this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
+			this.host?.removeChild(el);
+		});
+		this.formAssociated = this.createFormAssociatedElement();
+		this.formAssociated.setAttribute('data-form-associated', '');
+		this.formAssociated.setAttribute('hidden', '');
+		this.setNameAttribute(name);
+		this.host?.appendChild(this.formAssociated);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<FormAssociationApi>): void {
@@ -103,7 +115,9 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 		});
 		if (typeof value === 'undefined') {
 			hintMissingName();
+			return;
 		}
+		this.ensureFormAssociatedElement(value);
 	}
 
 	public watchSyncValueBySelector(value?: string): void {
