@@ -47,7 +47,9 @@ export const createComponent = <I extends HTMLElement, E extends EventNames, C, 
 					(element: I | null) => {
 						if (element !== null) {
 							for (const [key, value] of Object.entries(props)) {
-								if (key !== 'className' && key !== 'children' && key !== 'ref' && key in element) {
+								// Undefined props stay unset: the element keeps its documented default, like the
+								// fork-based proxies did when React passed the prop as undefined.
+								if (value !== undefined && key !== 'className' && key !== 'children' && key !== 'ref' && key in element) {
 									(element as unknown as Record<string, unknown>)[key] = value;
 								}
 							}
