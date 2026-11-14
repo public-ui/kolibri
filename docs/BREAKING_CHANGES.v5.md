@@ -71,7 +71,9 @@ import { KERN_V2 } from '@public-ui/theme-kern';
 ### Assets
 
 The meta package aggregated the assets (fonts, icons) of all themes into a single `assets` folder.
-Without it, copy the assets from each individual theme package you use.
+Without it, copy the assets from each individual theme package you use. Note that the foreign icon
+fonts and fonts are peer dependencies now and are no longer part of these assets — see
+[Foreign icon fonts and fonts are peer dependencies now](#foreign-icon-fonts-and-fonts-are-peer-dependencies-now).
 
 **Before (v4):**
 
@@ -93,6 +95,108 @@ Without it, copy the assets from each individual theme package you use.
 	},
 }
 ```
+
+## Foreign icon fonts and fonts are peer dependencies now
+
+The theme packages no longer bundle third-party icon fonts and fonts in their `assets` folder. They
+are **peer dependencies** instead: installing `@public-ui/theme-*` pulls the font packages into your
+application automatically, and one CSS import per font at document level is the whole integration.
+No copying of font folders into a public assets directory is needed anymore — the bundler resolves
+the font files of the imported CSS on its own.
+
+KoliBri's own fonts keep shipping with their packages: the **KolIcons** font ships with
+`@public-ui/components`, and theme-specific icon fonts (`desy-icons` with `@public-ui/theme-desy`,
+`ecl-icons` with `@public-ui/theme-ecl`, `material-symbols-subset` with `@public-ui/theme-kern`)
+stay part of their theme. KoliBri publishes no icon font packages of its own on npm.
+
+| Theme package              | New peer dependency                     | Replaces the bundled        |
+| -------------------------- | --------------------------------------- | --------------------------- |
+| `@public-ui/theme-default` | `@fortawesome/fontawesome-free` `6.7.2` | Font Awesome Free 6.1.1     |
+| `@public-ui/theme-default` | `@vscode/codicons` `0.0.46-24`          | Codicons                    |
+| `@public-ui/theme-bwst`    | `@fortawesome/fontawesome-free` `6.7.2` | (referenced, never shipped) |
+| `@public-ui/theme-bwst`    | `@fontsource/noto-sans` `5.3.0`         | Noto Sans                   |
+| `@public-ui/theme-desy`    | `@vscode/codicons` `0.0.46-24`          | Codicons                    |
+| `@public-ui/theme-kern`    | `@fontsource/fira-sans` `5.3.0`         | Fira Sans                   |
+
+### Package dependency
+
+Install the font packages your application actually uses (the peer dependency of the theme pulls
+them in automatically; an explicit dependency documents the intent and works with installers that do
+not auto-install peers):
+
+**Before (v4):** nothing to install — the fonts were checked into the theme package and had to be
+copied out of `node_modules/@public-ui/theme-default/assets/…` manually.
+
+**After (v5):**
+
+```jsonc
+{
+	"dependencies": {
+		"@public-ui/theme-default": "^5.0.0",
+		"@fortawesome/fontawesome-free": "6.7.2",
+		"@vscode/codicons": "0.0.46-24",
+	},
+}
+```
+
+### Integration
+
+Import the font CSS once in the application entry point. It declares the `@font-face` rules at
+document level, from where the shadow DOM of the components picks the fonts up. The glyph classes
+stay in the theme, so `_icons="fas fa-house"` and `_icons="codicon codicon-plus"` keep working
+unchanged:
+
+**Before (v4):**
+
+```jsonc
+{
+	"scripts": {
+		"prebuild": "cpy \"node_modules/@public-ui/theme-default/assets/fontawesome-free/**/*\" public/assets --dot && cpy \"node_modules/@public-ui/theme-default/assets/codicons/**/*\" public/assets --dot",
+	},
+}
+```
+
+```html
+<link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" /> <link rel="stylesheet" href="/assets/codicons/codicon.css" />
+```
+
+**After (v5):**
+
+```ts
+// main.ts / index.tsx
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@vscode/codicons/dist/codicon.css';
+```
+
+The sample host app demonstrates the new integration in `packages/samples/presentation`.
+
+### Why peer dependencies
+
+- **Smaller packages and clean licensing.** Third-party font binaries (Font Awesome, Codicons,
+  Noto Sans, Fira Sans) no longer sit in KoliBri's git repository and npm packages; their licenses
+  are fulfilled by the upstream packages themselves.
+- **Upstream updates without binary commits.** Bumping a font is a package.json change instead of
+  re-committing font files by hand.
+- **The application owns the version.** Like the framework adapters, the fonts are the consuming
+  application's choice; a peer dependency states that contract instead of hiding it in an assets
+  folder.
+- **Simpler integration.** A CSS import replaces the manual copying of asset folders, and relative
+  or absolute font URLs (`../webfonts/…`, `/assets/codicons/…`) that depended on the deployment
+  layout disappear.
+
+### Notes
+
+- The glyph classes of the themes follow **Font Awesome 6**; the peer dependency is pinned to the
+  latest 6.x release. Font Awesome 7 renamed classes and is not covered by the theme glyph sets.
+- `@public-ui/theme-bwst` already referenced Font Awesome glyphs without shipping them — those icons
+  rendered with a fallback font. With the peer dependency the theme's Font Awesome icons resolve
+  for the first time.
+- The default font family of `@public-ui/theme-bwst` is now `Noto Sans` (as provided by
+  `@fontsource/noto-sans`); the previously bundled files registered themselves as `Noto Sans
+Regular`.
+- The `@font-face` rules must be declared at document level. Adopted style sheets inside a shadow
+  root do not register fonts, which is why the themes never carried a working declaration for these
+  fonts — the bundled `@font-face` blocks were dead weight that this change removes.
 
 ## Removal of legacy schema types of skeleton-migrated components
 

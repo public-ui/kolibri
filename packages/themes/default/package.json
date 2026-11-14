@@ -63,6 +63,7 @@
 		"pretest:update:e2e:dark": "pnpm build"
 	},
 	"devDependencies": {
+		"@fortawesome/fontawesome-free": "6.7.2",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/eslint-config": "workspace:*",
 		"@public-ui/stylelint-rules": "workspace:*",
@@ -70,6 +71,7 @@
 		"@rollup/plugin-commonjs": "29.0.3",
 		"@rollup/plugin-node-resolve": "16.0.3",
 		"@rollup/plugin-typescript": "12.3.0",
+		"@vscode/codicons": "0.0.46-24",
 		"autoprefixer": "10.6.1",
 		"cross-env": "10.1.0",
 		"eslint": "9.39.5",
@@ -86,7 +88,9 @@
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "workspace:*"
+		"@fortawesome/fontawesome-free": "6.7.2",
+		"@public-ui/components": "workspace:*",
+		"@vscode/codicons": "0.0.46-24"
 	},
 	"exports": {
 		".": {

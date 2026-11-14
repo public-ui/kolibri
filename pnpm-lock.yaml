@@ -651,6 +651,15 @@ importers:
         specifier: 8.4.0
         version: 8.4.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
+      '@fontsource/fira-sans':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/noto-sans':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fortawesome/fontawesome-free':
+        specifier: 6.7.2
+        version: 6.7.2
       '@playwright/test':
         specifier: 1.63.0
         version: 1.63.0
@@ -684,6 +693,9 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: 4.3.3
         version: 4.3.3(vite@8.3.4(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(sass-embedded@1.105.2)(sass@1.105.2)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
+      '@vscode/codicons':
+        specifier: 0.0.46-24
+        version: 0.0.46-24
       adopted-style-sheets:
         specifier: 1.1.9-rc.25
         version: 1.1.9-rc.25
@@ -874,6 +886,12 @@ importers:
 
   packages/themes/bwst:
     devDependencies:
+      '@fontsource/noto-sans':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fortawesome/fontawesome-free':
+        specifier: 6.7.2
+        version: 6.7.2
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -940,6 +958,9 @@ importers:
 
   packages/themes/default:
     devDependencies:
+      '@fortawesome/fontawesome-free':
+        specifier: 6.7.2
+        version: 6.7.2
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -961,6 +982,9 @@ importers:
       '@rollup/plugin-typescript':
         specifier: 12.3.0
         version: 12.3.0(rollup@4.64.12)(tslib@2.8.1)(typescript@5.9.3)
+      '@vscode/codicons':
+        specifier: 0.0.46-24
+        version: 0.0.46-24
       autoprefixer:
         specifier: 10.6.1
         version: 10.6.1(postcss@8.5.31)
@@ -1027,6 +1051,9 @@ importers:
       '@rollup/plugin-typescript':
         specifier: 12.3.0
         version: 12.3.0(rollup@4.64.12)(tslib@2.8.1)(typescript@5.9.3)
+      '@vscode/codicons':
+        specifier: 0.0.46-24
+        version: 0.0.46-24
       autoprefixer:
         specifier: 10.6.1
         version: 10.6.1(postcss@8.5.31)
@@ -1141,6 +1168,9 @@ importers:
 
   packages/themes/kern:
     devDependencies:
+      '@fontsource/fira-sans':
+        specifier: 5.3.0
+        version: 5.3.0
       '@kern-ux/native':
         specifier: 2.3.0
         version: 2.3.0
@@ -3212,6 +3242,16 @@ packages:
 
   '@floating-ui/utils@0.2.12':
     resolution: {integrity: sha512-HpCo8tmWzLVad5s2d19EhAz5zqrrQ6s69qd6moPMQvkOuSwDT1YgRfWSVuc4ennqrgv3OHppiOGMQ7oC13yIww==}
+
+  '@fontsource/fira-sans@5.3.0':
+    resolution: {integrity: sha512-z1SKSG7eRhm3srlb7rQ3j77QP4TP7OFxCZ4wUWhCdt+3hOF9K0AyvybpAsz6+JWNcCVV7AqC7dbOT3e67P2r5A==}
+
+  '@fontsource/noto-sans@5.3.0':
+    resolution: {integrity: sha512-fBCog2PY7DiVVTEEqtI/Qdinx/knobHYfoGpjFXdfBX5RoJaBp1Prw2G75p0OIsdlMZg3cLo0c+YbIUYOxnQJw==}
+
+  '@fortawesome/fontawesome-free@6.7.2':
+    resolution: {integrity: sha512-JUOtgFW6k9u4Y+xeIaEiLr3+cjoUPiAuLXoyKOJSia6Duzb7pq+A76P9ZdPDoAoxHdHzq6gE9/jKBGXlZT8FbA==}
+    engines: {node: '>=6'}
 
   '@gar/promise-retry@1.0.3':
     resolution: {integrity: sha512-GmzA9ckNokPypTg10pgpeHNQe7ph+iIKKmhKu3Ob9ANkswreCx7R3cKmY781K8QK3AqVL3xVh9A42JvIAbkkSA==}
@@ -6188,6 +6228,9 @@ packages:
 
   '@vitest/utils@4.1.12':
     resolution: {integrity: sha512-Q3awXrwOfEV+qc3WmO5ONyE0yO7Q1gQ9/oyHxGLZ/pl7N3NO/ZztqQwKLuwMkV+CA1JYSIeO3gkHnRDIo4AVaA==}
+
+  '@vscode/codicons@0.0.46-24':
+    resolution: {integrity: sha512-KIDWUYxG6eh+DHRg+3G4bS487T+g1ZkLfB4HylOBbCcHsvLdfLMRM/m92DS1Ljhi8nglLr9ucwwWhHTEAC+DpA==}
 
   '@vue/compiler-core@3.5.44':
     resolution: {integrity: sha512-k34nCytbK8PQ1gR2mGROYOw6Pnv/mumqIdrZ3x2tbyXZDWm7ViKGLTfdB+DRrWqEQsLgGJvn0WN9jBif5zCTLQ==}
@@ -15880,6 +15923,12 @@ snapshots:
 
   '@floating-ui/utils@0.2.12': {}
 
+  '@fontsource/fira-sans@5.3.0': {}
+
+  '@fontsource/noto-sans@5.3.0': {}
+
+  '@fortawesome/fontawesome-free@6.7.2': {}
+
   '@gar/promise-retry@1.0.3': {}
 
   '@grpc/grpc-js@1.14.6':
@@ -18648,6 +18697,8 @@ snapshots:
       '@vitest/pretty-format': 4.1.12
       convert-source-map: 2.0.0
       tinyrainbow: 3.2.0
+
+  '@vscode/codicons@0.0.46-24': {}
 
   '@vue/compiler-core@3.5.44':
     dependencies:

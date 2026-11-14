@@ -64,13 +64,27 @@ Load a page that renders `kol-icon` or any component using `_icons`. You should 
 
 Keeping the CSS import in place ensures AI agents and developers alike ship the correct assets whenever `kol-icon` is used.
 
-## Using Codicons (Optional Legacy Support)
+## Using Third-Party Icon Fonts
 
-If your application still uses Codicons from an earlier version, you can optionally load both fonts:
+Some themes style icons with third-party icon fonts. These fonts are **peer dependencies** of the
+theme packages and are no longer bundled in the theme assets (see
+[BREAKING_CHANGES.v5.md](./BREAKING_CHANGES.v5.md#foreign-icon-fonts-and-fonts-are-peer-dependencies-now)).
+Their glyph classes are part of the theme and work through the `_icons` property exactly like the
+KolIcons classes — only the font itself must be imported once at document level by the application:
 
-```ts
-import '@public-ui/components/assets/kolicons/style.css';
-import '@public-ui/components/assets/codicons/codicon.css';
-```
+| Theme                         | Font                  | Import                                                                                |
+| ----------------------------- | --------------------- | ------------------------------------------------------------------------------------- |
+| every theme                   | KolIcons              | `import '@public-ui/components/assets/kolicons/style.css';`                           |
+| `theme-default`               | Font Awesome 6        | `import '@fortawesome/fontawesome-free/css/all.min.css';`                             |
+| `theme-default`, `theme-desy` | Codicons              | `import '@vscode/codicons/dist/codicon.css';`                                         |
+| `theme-bwst`                  | Font Awesome 6        | `import '@fortawesome/fontawesome-free/css/all.min.css';`                             |
+| `theme-bwst`                  | Noto Sans (text font) | `import '@fontsource/noto-sans/400.css';` + `import '@fontsource/noto-sans/700.css';` |
+| `theme-kern`                  | Fira Sans (text font) | `import '@fontsource/fira-sans/400.css';` … `import '@fontsource/fira-sans/700.css';` |
 
-However, we recommend migrating all Codicons to KolIcons for consistency and reduced bundle size.
+The font packages come with the theme packages as peer dependencies — no separate installation and
+no copying of font files is required. A theme-specific icon font (`desy-icons`, `ecl-icons`,
+`material-symbols-subset`) ships with its theme's assets and needs no extra import.
+
+Before v5 these fonts were checked into the theme assets and had to be copied out of
+`node_modules/@public-ui/theme-*` manually; the legacy path
+`@public-ui/components/assets/codicons/codicon.css` no longer exists.

@@ -56,17 +56,17 @@
 	}
 }
 
+/*
+ * Codicons are a peer dependency of this package. The font files are no longer bundled: the
+ * glyph classes below style the icons inside the shadow roots, while the `@font-face`
+ * declaration comes from the peer dependency's CSS that the application imports once at
+ * document level (see BREAKING_CHANGES.v5.md).
+ */
 @mixin codicon {
 	/*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-
-	@font-face {
-		font-family: codicon;
-		font-display: block;
-		src: url('/assets/codicons/codicon.ttf?be64b7213e352cd7f91ef58198e71237') format('truetype');
-	}
 
 	.codicon[class*='codicon-'] {
 		display: inline-block;
