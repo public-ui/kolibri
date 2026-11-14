@@ -48,7 +48,14 @@ export const bootstrap = async (
 				forceLog: true,
 			});
 		}
-		setTagTransformer(koliBriOptions.transformTagName);
+		const transformTagName = koliBriOptions.transformTagName;
+		/*
+		 * The native Stencil transformer applies to every tag rendered through `h()`, including
+		 * native HTML tags like `div` or `span`. The public `transformTagName` option only names
+		 * KoliBri component tags, so the registration limits it to `kol-*` and passes other tags
+		 * through unchanged.
+		 */
+		setTagTransformer((tag: string) => (tag.startsWith('kol-') ? transformTagName(tag) : tag));
 		tagTransformerSet = true;
 	}
 	const coreRegisterReturnValue = await coreRegister(themes, loaders, koliBriOptions);
