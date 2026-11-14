@@ -1,0 +1,1 @@
+import{O as e,c as t}from"./bem-registry-CzD7Hxkx-YjyqumyX.js";var n=t(`href`,``,e,e=>typeof e==`string`);export{n as t};
