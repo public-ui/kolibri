@@ -75,11 +75,18 @@ ROUTES.forEach((options, route) => {
 			...options?.snapshot?.options,
 		};
 
+		/**
+		 * Routes with fixed-position overlays (modal, popover, toast) are captured as a whole page:
+		 * a clip to the body height would cut the overlay off at the body edge or drop it entirely,
+		 * because fixed elements position themselves at the viewport and not at the document.
+		 */
+		const forceFullPage = options?.snapshot?.forceFullPage === true;
+
 		// Skip unnecessary normal tests
 		if (options?.snapshot?.skip !== true) {
 			await expect(page).toHaveScreenshot(`${snapshotName}.png`, {
 				...SNAPSHOT_OPTIONS,
-				clip: await contentClip(page),
+				clip: forceFullPage ? undefined : await contentClip(page),
 			});
 		}
 
@@ -95,7 +102,7 @@ ROUTES.forEach((options, route) => {
 			await expect(page).toHaveScreenshot(`${snapshotName}-zoom.png`, {
 				...SNAPSHOT_OPTIONS,
 				...options?.snapshot?.zoom?.options,
-				clip: await contentClip(page),
+				clip: forceFullPage ? undefined : await contentClip(page),
 			});
 		}
 	});

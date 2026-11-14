@@ -10,6 +10,8 @@ export const ROUTES = new Map();
  *
  * Snapshot options:
  * - snapshot:
+ *   - forceFullPage: boolean (Default: false) — capture the whole page without the body clip, for
+ *     routes whose fixed-position overlays (modal, popover, toast) extend beyond the body height
  *   - options:
  *     - maxDiffPixelRatio: number (Default: 0)
  *   - skip: boolean (Default: false)
@@ -577,6 +579,7 @@ ROUTES.set('modal/basic', {
 });
 ROUTES.set('modal/basic?show-modal=true', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 1920,
 			height: 600,
@@ -614,6 +617,7 @@ ROUTES.set('pagination/basic', {
 });
 ROUTES.set('popover-button/basic', {
 	snapshot: {
+		forceFullPage: true,
 		zoom: {
 			skip: true,
 		},
@@ -953,6 +957,7 @@ ROUTES.set('textarea/with-counter', {
 });
 ROUTES.set('toast/configurator', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 600,
 			height: 750,
