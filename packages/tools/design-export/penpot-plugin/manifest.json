@@ -1,0 +1,7 @@
+{
+	"name": "KoliBri Import",
+	"description": "Imports the KoliBri design export as native, editable Penpot components.",
+	"permissions": ["content:read", "content:write", "library:read", "library:write", "user:read"],
+	"code": "index.js",
+	"version": 2
+}

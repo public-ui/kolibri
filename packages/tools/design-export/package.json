@@ -1,0 +1,41 @@
+{
+	"name": "@public-ui/design-export",
+	"version": "4.0.0",
+	"description": "Exports KoliBri web components into design tool files: a tool-neutral intermediate representation (IR), a Penpot design token bundle (W3C DTCG) and SVG component libraries.",
+	"license": "EUPL-1.2",
+	"type": "module",
+	"engines": {
+		"node": ">=20"
+	},
+	"bin": {
+		"design-export": "dist/cli.js"
+	},
+	"scripts": {
+		"build": "tsc && node scripts/copy-harness.mjs",
+		"check:determinism": "node scripts/check-determinism.mjs",
+		"dev": "tsc --watch",
+		"format": "prettier -c src test README.md",
+		"lint": "pnpm lint:eslint && pnpm lint:tsc",
+		"lint:eslint": "eslint src",
+		"lint:tsc": "tsc --noemit",
+		"pretest:unit": "tsc -p tsconfig.test.json --outDir dist-test",
+		"start": "node dist/cli.js",
+		"start:penpot": "node dist/cli.js && node scripts/penpot-serve.mjs",
+		"test:unit": "mocha dist-test/test/**/*.spec.js",
+		"unused": "knip"
+	},
+	"dependencies": {
+		"@public-ui/components": "workspace:*",
+		"@public-ui/theme-default": "workspace:*"
+	},
+	"devDependencies": {
+		"@public-ui/eslint-config": "workspace:*",
+		"@types/mocha": "10.0.10",
+		"@types/node": "26.4.0",
+		"@playwright/test": "1.63.0",
+		"eslint": "9.39.5",
+		"mocha": "11.8.0",
+		"prettier": "3.9.10",
+		"typescript": "5.9.3"
+	}
+}

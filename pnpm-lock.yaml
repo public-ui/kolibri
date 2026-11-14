@@ -1254,6 +1254,40 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
+  packages/tools/design-export:
+    dependencies:
+      '@public-ui/components':
+        specifier: workspace:*
+        version: link:../../components
+      '@public-ui/theme-default':
+        specifier: workspace:*
+        version: link:../../themes/default
+    devDependencies:
+      '@playwright/test':
+        specifier: 1.63.0
+        version: 1.63.0
+      '@public-ui/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@types/mocha':
+        specifier: 10.0.10
+        version: 10.0.10
+      '@types/node':
+        specifier: 26.4.0
+        version: 26.4.0
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)
+      mocha:
+        specifier: 11.8.0
+        version: 11.8.0
+      prettier:
+        specifier: 3.9.10
+        version: 3.9.10
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
   packages/tools/eslint-config:
     dependencies:
       '@eslint/js':
@@ -23556,7 +23590,7 @@ snapshots:
       glob: 10.5.0
       he: 1.2.0
       is-path-inside: 3.0.3
-      js-yaml: 4.3.1
+      js-yaml: 4.3.2
       log-symbols: 4.1.0
       minimatch: 9.0.9
       ms: 2.1.3
