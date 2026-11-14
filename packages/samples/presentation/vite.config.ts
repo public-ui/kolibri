@@ -47,6 +47,12 @@ export default defineConfig({
 		fs: {
 			allow: [
 				path.resolve(__dirname),
+				/*
+				 * The app imports the icon font CSS of the KoliBri packages (see src/main.ts); in the dev
+				 * server their font files are served through `/@fs` URLs that point into the workspace,
+				 * so the monorepo root must be served as well.
+				 */
+				path.resolve(__dirname, '..', '..'),
 				...(process.env.THEME_MODULE ? [path.resolve(process.env.THEME_MODULE)] : []),
 				...(process.env.THEME_CSS ? [path.resolve(process.env.THEME_CSS, '..')] : []),
 			],
