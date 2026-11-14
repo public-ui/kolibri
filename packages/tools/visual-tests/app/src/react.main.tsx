@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router';
 
 import { bootstrap, getDefaultThemeName, KoliBriDevHelper } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
 import { App, setCustomThemes } from '@public-ui/sample-react';
 
 import type { Generic } from 'adopted-style-sheets';
@@ -43,47 +42,38 @@ const getThemes = async (): Promise<Theme[]> => {
 
 void (async () => {
 	try {
-		await bootstrap(
-			await getThemes(),
-			() => {
-				// @see https://github.com/ionic-team/stencil/issues/2847
-				defineCustomElements(window, {
-					transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
-				} as any);
+		await bootstrap(await getThemes(), [], {
+			environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+			reflectInputValues: true,
+			// Feature flags declared by a theme (KoliBri.createTheme's third argument) are stored per
+			// theme. Each component resolves the flag for its active theme (nearest data-theme ancestor
+			// / fixed default), so different themes can differ on the same page. Pass `features` here
+			// only to force a global app-level override that wins over every theme:
+			// features: { inputNumberButtons: 'show' },
+			/* The theme is injected via THEME_MODULE, so auto-detection must stay disabled. */
+			theme: undefined,
+			translation: {
+				name: 'en',
 			},
-			{
-				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-				reflectInputValues: true,
-				// Feature flags declared by a theme (KoliBri.createTheme's third argument) are stored per
-				// theme. Each component resolves the flag for its active theme (nearest data-theme ancestor
-				// / fixed default), so different themes can differ on the same page. Pass `features` here
-				// only to force a global app-level override that wins over every theme:
-				// features: { inputNumberButtons: 'show' },
-				/* The theme is injected via THEME_MODULE, so auto-detection must stay disabled. */
-				theme: undefined,
-				translation: {
-					name: 'en',
-				},
-				/**
-				 * You can add your own translations here.
-				 */
-				translations: ENABLE_I18N_OVERWRITING
-					? new Set([
-							(t) =>
-								t('en', {
-									// https://github.com/public-ui/kolibri/blob/develop/packages/components/src/locales/en.ts
-									'kol-error': 'Tiny error!',
-								}),
-							(t) =>
-								t('de', {
-									// https://github.com/public-ui/kolibri/blob/develop/packages/components/src/locales/de.ts
-									'kol-error': 'Kleiner Fehler!',
-								}),
-						])
-					: undefined,
-				transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
-			},
-		);
+			/**
+			 * You can add your own translations here.
+			 */
+			translations: ENABLE_I18N_OVERWRITING
+				? new Set([
+						(t) =>
+							t('en', {
+								// https://github.com/public-ui/kolibri/blob/develop/packages/components/src/locales/en.ts
+								'kol-error': 'Tiny error!',
+							}),
+						(t) =>
+							t('de', {
+								// https://github.com/public-ui/kolibri/blob/develop/packages/components/src/locales/de.ts
+								'kol-error': 'Kleiner Fehler!',
+							}),
+					])
+				: undefined,
+			transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
+		});
 
 		/**
 		 * You should patch the theme after the components and your default theme are registered.

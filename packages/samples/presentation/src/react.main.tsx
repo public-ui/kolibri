@@ -3,7 +3,10 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router';
 
 import { bootstrap } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
+import './legacy-element-constructor';
+/* The toaster creates its container element imperatively, outside the react adapter render:
+   its custom element must be defined up front. */
+import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/dist/components/kol-toast-container.js';
 import { BWSt } from '@public-ui/theme-bwst';
 import { DEFAULT } from '@public-ui/theme-default';
 import { DesyV11 } from '@public-ui/theme-desy';
@@ -32,26 +35,22 @@ const getThemes = async () => {
 	return [DEFAULT, BWSt, ECL_EC, ECL_EU, KERN_V2, DesyV11] as Theme[];
 };
 
+defineKolToastContainer();
+
 void (async () => {
 	try {
-		await bootstrap(
-			await getThemes(),
-			() => {
-				defineCustomElements(window);
+		await bootstrap(await getThemes(), [], {
+			environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+			reflectInputValues: true,
+			theme: process.env.THEME_MODULE
+				? undefined
+				: {
+						detect: 'auto',
+					},
+			translation: {
+				name: 'en',
 			},
-			{
-				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-				reflectInputValues: true,
-				theme: process.env.THEME_MODULE
-					? undefined
-					: {
-							detect: 'auto',
-						},
-				translation: {
-					name: 'en',
-				},
-			},
-		);
+		});
 	} catch (error) {
 		console.warn('Theme registration failed:', error);
 	}

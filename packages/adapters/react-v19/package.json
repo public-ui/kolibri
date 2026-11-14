@@ -48,6 +48,7 @@
 		"build": "unbuild"
 	},
 	"devDependencies": {
+		"@lit/react": "1.0.8",
 		"@public-ui/components": "workspace:*",
 		"@types/react": "19.3.0",
 		"@types/react-dom": "19.3.0",
@@ -76,5 +77,8 @@
 	"types": "./dist/index.d.ts",
 	"files": [
 		"dist"
-	]
+	],
+	"dependencies": {
+		"@stencil/react-output-target": "1.8.1"
+	}
 }

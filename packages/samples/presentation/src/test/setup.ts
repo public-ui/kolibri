@@ -6,16 +6,16 @@
  */
 
 import { register } from '@public-ui/components';
-import { defineCustomElements } from '@public-ui/components/loader';
 import { DEFAULT } from '@public-ui/theme-default';
 import '@testing-library/jest-dom/vitest';
 import { cleanup, configure } from '@testing-library/react';
 import { afterEach } from 'vitest';
+import '../legacy-element-constructor';
 import { applyHappyDomWorkarounds } from './happy-dom-workarounds';
 
 applyHappyDomWorkarounds();
 
-await register(DEFAULT, defineCustomElements);
+await register(DEFAULT, []);
 
 // Stencil loads each component chunk lazily on its first use. The first `findBy*` query in a test
 // file includes that load, which can exceed the default timeout of 1000 ms.

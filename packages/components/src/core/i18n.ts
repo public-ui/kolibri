@@ -101,10 +101,20 @@ class I18nService {
 	}
 }
 
+/**
+ * The runtime is bundled per output target: the lazy loader, the custom-elements build and the root
+ * entry each carry their own copy of this module. The initialized service is mirrored through this
+ * global slot so every bundle copy translates with the language and translations the application
+ * registered through bootstrap.
+ */
+type I18nGlobals = { i18n?: I18nService };
+
+const readSharedI18n = (): I18nService | undefined => (globalThis as { KoliBriGlobals?: I18nGlobals }).KoliBriGlobals?.i18n;
+
 let i18n: I18nService;
 
 export const getI18nInstance = () => {
-	return i18n;
+	return i18n ?? readSharedI18n();
 };
 
 export const initializeI18n = (
@@ -116,5 +126,6 @@ export const initializeI18n = (
 ) => {
 	i18n = new I18nService(lng);
 	i18n.addTranslations(translations);
+	((globalThis as { KoliBriGlobals?: I18nGlobals }).KoliBriGlobals ??= {}).i18n = i18n;
 	return i18n;
 };
