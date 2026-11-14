@@ -74,3 +74,24 @@ import '@public-ui/components/assets/codicons/codicon.css';
 ```
 
 However, we recommend migrating all Codicons to KolIcons for consistency and reduced bundle size.
+
+## Using Third-Party Icon Fonts of the Themes (Optional Peer Dependencies)
+
+Some themes style icons (and text) with third-party fonts. The theme packages declare them as
+**optional peer dependencies**: they are not installed automatically, and the bundled copies in the
+theme assets keep working unchanged. When your application uses one of these fonts, install the
+package and import its CSS once at document level instead of copying the bundled font folders into
+your public assets — the declarations and glyph classes are identical:
+
+| Theme                         | Font                  | Install + Import                                                                                     |
+| ----------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------- |
+| `theme-default`               | Font Awesome 6        | `pnpm add @fortawesome/fontawesome-free` + `import '@fortawesome/fontawesome-free/css/all.min.css';` |
+| `theme-default`, `theme-desy` | Codicons              | `pnpm add @vscode/codicons` + `import '@vscode/codicons/dist/codicon.css';`                          |
+| `theme-bwst`                  | Font Awesome 6        | `pnpm add @fortawesome/fontawesome-free` + `import '@fortawesome/fontawesome-free/css/all.min.css';` |
+| `theme-bwst`                  | Noto Sans (text font) | `pnpm add @fontsource/noto-sans` + `import '@fontsource/noto-sans/400.css';` and `700.css`           |
+| `theme-kern`                  | Fira Sans (text font) | `pnpm add @fontsource/fira-sans` + `import '@fontsource/fira-sans/400.css';` … `700.css`             |
+
+Prefer the package imports for new code: **version 5 removes the bundled copies** from the theme
+assets (see [BREAKING_CHANGES.v5.md](./BREAKING_CHANGES.v5.md)), where the import above becomes the
+only supported way. Loading the bundled font files from your public assets folder keeps working
+throughout v4.

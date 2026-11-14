@@ -83,7 +83,13 @@
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
+		"@fontsource/fira-sans": "5.3.0",
 		"@public-ui/components": "workspace:*"
+	},
+	"peerDependenciesMeta": {
+		"@fontsource/fira-sans": {
+			"optional": true
+		}
 	},
 	"exports": {
 		".": {

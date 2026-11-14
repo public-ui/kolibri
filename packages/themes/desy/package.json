@@ -82,7 +82,13 @@
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "workspace:*"
+		"@public-ui/components": "workspace:*",
+		"@vscode/codicons": "0.0.46-24"
+	},
+	"peerDependenciesMeta": {
+		"@vscode/codicons": {
+			"optional": true
+		}
 	},
 	"exports": {
 		".": {
