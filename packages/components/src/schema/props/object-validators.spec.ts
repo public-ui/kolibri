@@ -1,27 +1,27 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import type { Generic } from 'adopted-style-sheets';
 
+import { validateButtonCallbacks } from '../../../internals/src/schema/props/button-callbacks';
+import { validateColor } from '../../../internals/src/schema/props/color';
+import type { ErrorListPropType } from '../../../internals/src/schema/props/error-list';
+import { validateErrorList } from '../../../internals/src/schema/props/error-list';
+import type { IconsPropType } from '../../../internals/src/schema/props/icons';
+import { isIcon, mapIconProp2State, validateIcons } from '../../../internals/src/schema/props/icons';
+import type { InputCheckboxIconsPropType } from '../../../internals/src/schema/props/icons-input-checkbox';
+import { validateIconsInputCheckbox } from '../../../internals/src/schema/props/icons-input-checkbox';
+import { validateLinkCallbacks } from '../../../internals/src/schema/props/link-on-callbacks';
+import type { MsgPropType } from '../../../internals/src/schema/props/msg';
+import { checkHasMsg, getMsgType, isMsgDefinedAndInputTouched, normalizeMsg, validateMsg } from '../../../internals/src/schema/props/msg';
+import { validateTableCallbacks, validateTableStatefulCallbacks } from '../../../internals/src/schema/props/table-callbacks';
+import type { FixedColsPropType } from '../../../internals/src/schema/props/table-fixed-cols';
+import { validateFixedCols } from '../../../internals/src/schema/props/table-fixed-cols';
+import type { TableSelectionPropType } from '../../../internals/src/schema/props/table-selection';
+import { validateTableSelection } from '../../../internals/src/schema/props/table-selection';
+import type { VariantClassNamePropType } from '../../../internals/src/schema/props/variant-class-name';
+import { classNameFromVariant, validateVariantClassName } from '../../../internals/src/schema/props/variant-class-name';
+import type { KoliBriTableSelection } from '../../../internals/src/schema/types/table';
+import { Log } from '../../../internals/src/schema/utils/dev.utils';
 import { createLegacyComponent, getInvalidValueWarnings } from '../../utils/testing/legacy-component';
-import type { KoliBriTableSelection } from '../types/table';
-import { Log } from '../utils/dev.utils';
-import { validateButtonCallbacks } from './button-callbacks';
-import { validateColor } from './color';
-import type { ErrorListPropType } from './error-list';
-import { validateErrorList } from './error-list';
-import type { IconsPropType } from './icons';
-import { isIcon, mapIconProp2State, validateIcons } from './icons';
-import type { InputCheckboxIconsPropType } from './icons-input-checkbox';
-import { validateIconsInputCheckbox } from './icons-input-checkbox';
-import { validateLinkCallbacks } from './link-on-callbacks';
-import type { MsgPropType } from './msg';
-import { checkHasMsg, getMsgType, isMsgDefinedAndInputTouched, normalizeMsg, validateMsg } from './msg';
-import { validateTableCallbacks, validateTableStatefulCallbacks } from './table-callbacks';
-import type { FixedColsPropType } from './table-fixed-cols';
-import { validateFixedCols } from './table-fixed-cols';
-import type { TableSelectionPropType } from './table-selection';
-import { validateTableSelection } from './table-selection';
-import type { VariantClassNamePropType } from './variant-class-name';
-import { classNameFromVariant, validateVariantClassName } from './variant-class-name';
 
 type ObjectValidator = (component: Generic.Element.Component, value?: object) => void;
 

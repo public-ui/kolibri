@@ -1,12 +1,12 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
+import type { BadgeApi } from '../../../../internals/src/controller/badge/api';
+import type { ResolvedButtonProps } from '../../../../internals/src/controller/button/resolve-props';
+import type { FunctionalComponentProps, ResolvedProps, StrictFields } from '../../../../internals/src/controller/generic-types';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { ButtonFC } from '../button/component';
-import type { ResolvedButtonProps } from '../button/resolve-props';
-import type { FunctionalComponentProps, ResolvedProps, StrictFields } from '../generic-types';
 import { SpanFC } from '../span/component';
-import type { BadgeApi } from './api';
 
 const badgeBem = bem.forBlock('kol-badge');
 const BEM_CLASS_BADGE__LABEL = badgeBem('label');

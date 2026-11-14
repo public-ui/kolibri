@@ -25,25 +25,25 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import type { OrientationPropType } from '../../schema/props/orientation';
+} from '../../../internals/src/schema/index';
+import type { OrientationPropType } from '../../../internals/src/schema/props/orientation';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { submitFormOnEnter } from '../../../internals/src/components/form/controller';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import { fillKeyOptionMap, normalizeOptionValues } from '../../../internals/src/controller/form-field/options';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputRadioApi } from '../../../internals/src/controller/input-radio/api';
+import { inputRadioPropsConfig } from '../../../internals/src/controller/input-radio/api';
+import { TooltipBehavior } from '../../../internals/src/controller/tooltip/behavior';
+import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, variantProp } from '../../../internals/src/props/index';
+import { createRelatedUniqueId, createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { delegateClick, setClick } from '../../../internals/src/utils/element-click';
+import { delegateFocus, setFocus } from '../../../internals/src/utils/element-focus';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { FieldControlFC, isFieldControlLabelShownAsTooltip } from '../../internal/functional-components/form-field/field-control';
 import type { InputFCProps } from '../../internal/functional-components/form-field/input';
-import { fillKeyOptionMap, normalizeOptionValues } from '../../internal/functional-components/form-field/options';
 import { RadioFC } from '../../internal/functional-components/form-field/radio';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputRadioApi } from '../../internal/functional-components/input-radio/api';
-import { inputRadioPropsConfig } from '../../internal/functional-components/input-radio/api';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, variantProp } from '../../internal/props';
-import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
-import { submitFormOnEnter } from '../form/controller';
 
 /**
  * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Only a single value can be selected at a time. Selected radio elements are typically represented by a filled, visually highlighted circle.

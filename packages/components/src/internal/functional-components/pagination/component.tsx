@@ -1,16 +1,16 @@
 import type { FunctionalComponent as FC, JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { translate } from '../../../i18n';
-import { trimLabel, type InternalButtonProps } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
+import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../../../../internals/src/controller/button/item';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { paginationPropsConfig, type PaginationApi } from '../../../../internals/src/controller/pagination/api';
+import { getPageCount, getPageItems, getVisibleRange } from '../../../../internals/src/controller/pagination/model';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import { translate } from '../../../../internals/src/i18n';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import { trimLabel, type InternalButtonProps } from '../../../../internals/src/schema/index';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
-import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
-import type { FunctionalComponentProps } from '../generic-types';
-import { resolveFcProps } from '../props-from-config';
-import { paginationPropsConfig, type PaginationApi } from './api';
-import { getPageCount, getPageItems, getVisibleRange } from './model';
 import type { PageSizeSelectInput } from './page-size-select';
 
 const paginationBem = bem.forBlock('kol-pagination');

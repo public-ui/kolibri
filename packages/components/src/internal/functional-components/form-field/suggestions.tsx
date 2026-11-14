@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import type { W3CInputValue } from '../../../schema';
-import { createRelatedUniqueId } from '../../../utils/dev.utils';
+import type { W3CInputValue } from '../../../../internals/src/schema/index';
+import { createRelatedUniqueId } from '../../../../internals/src/utils/dev.utils';
 
 export type SuggestionsFCProps = JSXBase.HTMLAttributes<HTMLDataListElement> & {
 	/** ID of the input; the datalist gets the related `list` ID. */

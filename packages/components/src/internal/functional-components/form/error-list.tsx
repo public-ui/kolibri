@@ -1,11 +1,11 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { translate } from '../../../i18n';
-import { bem } from '../../../schema/bem-registry';
+import type { FormErrorLinkItem } from '../../../../internals/src/controller/form/error-link-item';
+import { translate } from '../../../../internals/src/i18n';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { AlertFC } from '../alert/component';
 import { LinkFC } from '../link/component';
-import type { FormErrorLinkItem } from './error-link-item';
 
 const formBem = bem.forBlock('kol-form');
 const BEM_CLASS_FORM__ALERT = formBem('alert');

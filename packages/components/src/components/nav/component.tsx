@@ -1,21 +1,17 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { ButtonItem, ButtonItemFcProps } from '../../internal/functional-components/button/item';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { createItemPool } from '../../internal/functional-components/item-pool';
-import type { LinkFCProps } from '../../internal/functional-components/link/component';
-import type { LinkItem } from '../../internal/functional-components/link/item';
-import { createLinkItem } from '../../internal/functional-components/link/item';
-import type { EmbeddedLinkProps } from '../../internal/functional-components/link/resolve-props';
-import type { NavApi } from '../../internal/functional-components/nav/api';
-import { navPropsConfig } from '../../internal/functional-components/nav/api';
-import { NavFC } from '../../internal/functional-components/nav/component';
-import type { NavChildren } from '../../internal/functional-components/nav/model';
-import { getInitiallyExpanded, toggleExpanded } from '../../internal/functional-components/nav/model';
-import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelProp, navLinksProp } from '../../internal/props';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { ButtonItem, ButtonItemFcProps } from '../../../internals/src/controller/button/item';
+import { createButtonItem } from '../../../internals/src/controller/button/item';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import { createItemPool } from '../../../internals/src/controller/item-pool';
+import type { EmbeddedLinkProps } from '../../../internals/src/controller/link/resolve-props';
+import type { NavApi } from '../../../internals/src/controller/nav/api';
+import { navPropsConfig } from '../../../internals/src/controller/nav/api';
+import type { NavChildren } from '../../../internals/src/controller/nav/model';
+import { getInitiallyExpanded, toggleExpanded } from '../../../internals/src/controller/nav/model';
+import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelProp, navLinksProp } from '../../../internals/src/props/index';
 import type {
 	ButtonOrLinkOrTextWithChildrenProps,
 	CollapsiblePropType,
@@ -26,10 +22,14 @@ import type {
 	LabelPropType,
 	NavProps,
 	Stringified,
-} from '../../schema';
-import { a11yHintLabelingLandmarks, devHint } from '../../schema';
-import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
+} from '../../../internals/src/schema/index';
+import { a11yHintLabelingLandmarks, devHint } from '../../../internals/src/schema/index';
+import { createRelatedUniqueId, createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { addNavLabel, removeNavLabel } from '../../../internals/src/utils/unique-nav-labels';
+import type { LinkFCProps } from '../../internal/functional-components/link/component';
+import type { LinkItem } from '../../internal/functional-components/link/item';
+import { createLinkItem } from '../../internal/functional-components/link/item';
+import { NavFC } from '../../internal/functional-components/nav/component';
 
 /**
  * The **Nav** component renders a group of related links or navigation elements that perform an action or display content when clicked.

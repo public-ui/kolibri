@@ -1,5 +1,5 @@
-import { KolInputRangeTag } from '../../../core/component-names';
-import type { InputRangeProps } from '../../../schema';
+import { KolInputRangeTag } from '../../../../internals/src/core/component-names';
+import type { InputRangeProps } from '../../../../internals/src/schema/index';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
 import { KolInputRange } from '../component';

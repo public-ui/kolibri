@@ -1,4 +1,4 @@
-import { KolProgressTag } from '../../core/component-names';
+import { KolProgressTag } from '../../../internals/src/core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolProgress } from './component';
 

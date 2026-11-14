@@ -1,9 +1,9 @@
 import type { JSX } from '@stencil/core';
-import type { InputTypeOnDefault, Option, ShortKeyPropType, StencilUnknown, Stringified } from '../../../schema';
-import { createUniqueId } from '../../../utils/dev.utils';
-import { createCtaRef } from '../../../utils/element-interaction';
-import type { PropsConfigShape } from '../generic-types';
-import { selectPropsConfig } from '../select/api';
+import type { PropsConfigShape } from '../../../../internals/src/controller/generic-types';
+import { selectPropsConfig } from '../../../../internals/src/controller/select/api';
+import type { InputTypeOnDefault, Option, ShortKeyPropType, StencilUnknown, Stringified } from '../../../../internals/src/schema/index';
+import { createUniqueId } from '../../../../internals/src/utils/dev.utils';
+import { createCtaRef } from '../../../../internals/src/utils/element-interaction';
 import { BaseSelectWebComponent } from '../select/base-web-component';
 
 /** The props of the page size select that change with the pagination. */

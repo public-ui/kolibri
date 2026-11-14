@@ -1,10 +1,10 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
-import type { FunctionalComponentProps } from '../generic-types';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { SkipNavApi } from '../../../../internals/src/controller/skip-nav/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { LinkFC } from '../link/component';
-import type { SkipNavApi } from './api';
 
 const skipNavBem = bem.forBlock('kol-skip-nav');
 const BEM_CLASS_SKIP_NAV = skipNavBem();

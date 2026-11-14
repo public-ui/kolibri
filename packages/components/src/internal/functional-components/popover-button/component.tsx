@@ -1,11 +1,11 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { PopoverButtonApi } from '../../../../internals/src/controller/popover-button/api';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
-import type { FunctionalComponentProps } from '../generic-types';
 import { PopoverFC } from '../popover/component';
-import type { PopoverButtonApi } from './api';
 
 export type PopoverButtonFCProps = FunctionalComponentProps<PopoverButtonApi> & {
 	/** Ref of the `.kol-popover-button` root. */

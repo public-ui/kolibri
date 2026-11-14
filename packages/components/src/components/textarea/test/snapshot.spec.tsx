@@ -1,5 +1,5 @@
-import { KolTextareaTag } from '../../../core/component-names';
-import type { TextareaProps } from '../../../schema';
+import { KolTextareaTag } from '../../../../internals/src/core/component-names';
+import type { TextareaProps } from '../../../../internals/src/schema/index';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
 import { KolTextarea } from '../component';

@@ -1,5 +1,5 @@
-import { KolBreadcrumbTag } from '../../core/component-names';
-import type { BreadcrumbProps } from '../../schema';
+import { KolBreadcrumbTag } from '../../../internals/src/core/component-names';
+import type { BreadcrumbProps } from '../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolBreadcrumb } from './component';

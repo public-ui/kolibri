@@ -1,11 +1,11 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import type { TooltipAlignPropType } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import type { FunctionalComponentProps } from '../generic-types';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { TooltipApi } from '../../../../internals/src/controller/tooltip/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import type { TooltipAlignPropType } from '../../../../internals/src/schema/index';
 import { SpanFC } from '../span/component';
-import type { TooltipApi } from './api';
 
 type TooltipFCProps = Pick<FunctionalComponentProps<TooltipApi>, 'label'> & {
 	badgeText?: string;

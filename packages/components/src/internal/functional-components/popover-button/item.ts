@@ -1,9 +1,11 @@
 import { getFeatureFlag } from 'adopted-style-sheets';
 
-import type { AlignPropType, IconsPropType, InternalButtonProps, LabelWithExpertSlotPropType, PopoverButtonProps } from '../../../schema';
-import { createUniqueId, nonce } from '../../../utils/dev.utils';
-import { createCtaRef } from '../../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../../utils/events';
+import { BaseWebComponent } from '../../../../internals/src/controller/base-web-component';
+import { resolveButtonProps } from '../../../../internals/src/controller/button/resolve-props';
+import { popoverButtonPropsConfig } from '../../../../internals/src/controller/popover-button/api';
+import { PopoverBehavior } from '../../../../internals/src/controller/popover/behavior';
+import { buildDefaultPropsFromConfig } from '../../../../internals/src/controller/props-from-config';
+import { TooltipBehavior } from '../../../../internals/src/controller/tooltip/behavior';
 import {
 	buttonTypeProp,
 	disabledProp,
@@ -14,13 +16,17 @@ import {
 	spanIconsProp,
 	tooltipAlignProp,
 	variantProp,
-} from '../../props';
-import { BaseWebComponent } from '../base-web-component';
-import { resolveButtonProps } from '../button/resolve-props';
-import { PopoverBehavior } from '../popover/behavior';
-import { buildDefaultPropsFromConfig } from '../props-from-config';
-import { TooltipBehavior } from '../tooltip/behavior';
-import { popoverButtonPropsConfig } from './api';
+} from '../../../../internals/src/props/index';
+import type {
+	AlignPropType,
+	IconsPropType,
+	InternalButtonProps,
+	LabelWithExpertSlotPropType,
+	PopoverButtonProps,
+} from '../../../../internals/src/schema/index';
+import { createUniqueId, nonce } from '../../../../internals/src/utils/dev.utils';
+import { createCtaRef } from '../../../../internals/src/utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../../../internals/src/utils/events';
 import type { PopoverButtonFCProps } from './component';
 
 /**

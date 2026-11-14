@@ -1,8 +1,8 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
-import type { LoadingType } from '../../props';
+import type { LoadingType } from '../../../../internals/src/props/index';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 
 type ImageFCProps = {
 	alt: string;

@@ -1,9 +1,9 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import type { AlertPropType, IdPropType, MsgPropType, Stringified } from '../../../schema';
-import { normalizeMsg } from '../../../schema';
-import clsx from '../../../utils/clsx';
-import { createRelatedUniqueId, createUniqueId, nonce } from '../../../utils/dev.utils';
+import type { AlertPropType, IdPropType, MsgPropType, Stringified } from '../../../../internals/src/schema/index';
+import { normalizeMsg } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
+import { createRelatedUniqueId, createUniqueId, nonce } from '../../../../internals/src/utils/dev.utils';
 import { AlertFC } from '../alert/component';
 
 export type FormFieldMsgFCProps = JSXBase.HTMLAttributes<HTMLElement> & {

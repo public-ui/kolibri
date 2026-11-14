@@ -1,11 +1,11 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase, VNode } from '@stencil/core/internal';
-import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
-import clsx from '../../../utils/clsx';
-import { createRelatedUniqueId } from '../../../utils/dev.utils';
-import { getBlockBem } from '../bem-root-node/block-bem';
-import type { DefaultInputProps } from './default-input-props';
-import { getDefaultInputProps } from './default-input-props';
+import { getBlockBem } from '../../../../internals/src/controller/bem-root-node/block-bem';
+import type { DefaultInputProps } from '../../../../internals/src/controller/form-field/default-input-props';
+import { getDefaultInputProps } from '../../../../internals/src/controller/form-field/default-input-props';
+import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
+import { createRelatedUniqueId } from '../../../../internals/src/utils/dev.utils';
 
 /**
  * Stencil only writes a property whose value changed: `null` writes the empty value on the first

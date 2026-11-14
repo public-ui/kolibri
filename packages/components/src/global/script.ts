@@ -1,7 +1,7 @@
 import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
 
 import { setMode } from '@stencil/core';
-import { Log } from '../schema';
+import { Log } from '../../internals/src/schema/index';
 
 export default () => {
 	setMode((elm) => {

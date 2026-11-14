@@ -1,19 +1,19 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { KolTreeTag } from '../../core/component-names';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { TreeItemApi } from '../../internal/functional-components/tree-item/api';
-import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
+import type { UnsubscribeFunction } from '../../../internals/src/components/link/ariaCurrentService';
+import { onLocationChange } from '../../../internals/src/components/link/ariaCurrentService';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { TreeItemApi } from '../../../internals/src/controller/tree-item/api';
+import { treeItemPropsConfig } from '../../../internals/src/controller/tree-item/api';
+import { KolTreeTag } from '../../../internals/src/core/component-names';
+import { activeProp, ariaCurrentValueProp, hrefProp, labelLangSegmentsProp, openProp } from '../../../internals/src/props/index';
+import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType, TreeItemProps } from '../../../internals/src/schema/index';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef, directFocus } from '../../../internals/src/utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
-import { activeProp, ariaCurrentValueProp, hrefProp, labelLangSegmentsProp, openProp } from '../../internal/props';
-import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType, TreeItemProps } from '../../schema';
-import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, directFocus } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { UnsubscribeFunction } from '../link/ariaCurrentService';
-import { onLocationChange } from '../link/ariaCurrentService';
 import { invalidateOpenItemsCache } from '../tree/open-items-cache';
 
 /**

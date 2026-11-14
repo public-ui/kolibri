@@ -1,6 +1,6 @@
-import { createRelatedUniqueId } from '../../../utils/dev.utils';
-import type { CtaRef } from '../../../utils/element-interaction';
-import type { FormFieldBaseApi } from '../form-field/api';
+import type { FormFieldBaseApi } from '../../../../internals/src/controller/form-field/api';
+import { createRelatedUniqueId } from '../../../../internals/src/utils/dev.utils';
+import type { CtaRef } from '../../../../internals/src/utils/element-interaction';
 import { BaseFormFieldWebComponent } from '../form-field/base-web-component';
 
 /**

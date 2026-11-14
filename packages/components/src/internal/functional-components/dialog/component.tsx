@@ -1,11 +1,11 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
-import type { ModalVariantPropType } from '../../../schema/props/variant/modal';
-import clsx from '../../../utils/clsx';
-import type { FunctionalComponentProps } from '../generic-types';
-import type { DialogApi } from './api';
+import type { DialogApi } from '../../../../internals/src/controller/dialog/api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import type { ModalVariantPropType } from '../../../../internals/src/schema/props/variant/modal';
+import clsx from '../../../../internals/src/utils/clsx';
 
 const dialogBem = bem.forBlock('kol-dialog');
 const modalBem = bem.forBlock('kol-modal');

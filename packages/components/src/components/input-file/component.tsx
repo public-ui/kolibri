@@ -27,25 +27,34 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+} from '../../../internals/src/schema/index';
+import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
 
-import { translate } from '../../i18n';
+import { createButtonItem } from '../../../internals/src/controller/button/item';
+import { getFileNames } from '../../../internals/src/controller/form-field/file-value';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputFileApi } from '../../../internals/src/controller/input-file/api';
+import { inputFilePropsConfig } from '../../../internals/src/controller/input-file/api';
+import { translate } from '../../../internals/src/i18n';
+import {
+	acceptProp,
+	accessKeyProp,
+	horizontalIconsProp,
+	multipleProp,
+	requiredProp,
+	shortKeyProp,
+	smartButtonProp,
+	variantProp,
+} from '../../../internals/src/props/index';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { getFileNames } from '../../internal/functional-components/form-field/file-value';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputFileApi } from '../../internal/functional-components/input-file/api';
-import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
 import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
-import { acceptProp, accessKeyProp, horizontalIconsProp, multipleProp, requiredProp, shortKeyProp, smartButtonProp, variantProp } from '../../internal/props';
-import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * The **File** input type creates an input field for file uploads. One or multiple files can be selected and submitted with a form.

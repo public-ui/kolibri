@@ -1,5 +1,4 @@
-import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders } from '../../../schema';
-import type { SortData } from './model';
+import type { SortData } from '../../../../internals/src/controller/table-stateful/model';
 import {
 	buildHeaderCells,
 	changeCellSort,
@@ -12,7 +11,8 @@ import {
 	mergeAdjustedHeaderCells,
 	selectDisplayedData,
 	sortRows,
-} from './model';
+} from '../../../../internals/src/controller/table-stateful/model';
+import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders } from '../../../../internals/src/schema/index';
 
 type Row = { id: number; city: string };
 

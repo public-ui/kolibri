@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 
-import { labelProp, secondaryHeadlineProp } from '../props';
-import type { ApiFromConfig, FunctionalComponentProps, PropsConfigShape, WebComponentInterface } from './generic-types';
+import type { ApiFromConfig, FunctionalComponentProps, PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import { labelProp, secondaryHeadlineProp } from '../../../internals/src/props/index';
 
 /** Type-level assertion helpers: a mismatch fails `pnpm lint:tsc`. */
 type Expect<T extends true> = T;

@@ -1,5 +1,5 @@
-import { KolInputTextTag } from '../../../core/component-names';
-import type { InputTextProps } from '../../../schema';
+import { KolInputTextTag } from '../../../../internals/src/core/component-names';
+import type { InputTextProps } from '../../../../internals/src/schema/index';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
 import { KolInputText } from '../component';

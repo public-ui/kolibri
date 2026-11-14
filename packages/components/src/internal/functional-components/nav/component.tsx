@@ -1,20 +1,20 @@
 import type { FunctionalComponent as FC, JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { translate } from '../../../i18n';
-import type { ButtonOrLinkOrTextWithChildrenProps, InternalButtonProps, StencilUnknown, Stringified } from '../../../schema';
-import clsx from '../../../utils/clsx';
-import { createRelatedUniqueId } from '../../../utils/dev.utils';
+import type { ButtonItemFcProps } from '../../../../internals/src/controller/button/item';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { EmbeddedLinkProps } from '../../../../internals/src/controller/link/resolve-props';
+import { navPropsConfig, type NavApi } from '../../../../internals/src/controller/nav/api';
+import { buildEntryIcons, getLeftIcon, isButtonEntry, isLinkEntry } from '../../../../internals/src/controller/nav/model';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import { translate } from '../../../../internals/src/i18n';
+import type { ButtonOrLinkOrTextWithChildrenProps, InternalButtonProps, StencilUnknown, Stringified } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
+import { createRelatedUniqueId } from '../../../../internals/src/utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
-import type { ButtonItemFcProps } from '../button/item';
-import type { FunctionalComponentProps } from '../generic-types';
 import type { LinkFCProps } from '../link/component';
 import { LinkFC } from '../link/component';
-import type { EmbeddedLinkProps } from '../link/resolve-props';
-import { resolveFcProps } from '../props-from-config';
-import { navPropsConfig, type NavApi } from './api';
-import { buildEntryIcons, getLeftIcon, isButtonEntry, isLinkEntry } from './model';
 
 export type NavFCProps = Omit<FunctionalComponentProps<NavApi>, 'hideLabel'> & {
 	/** ID of the `nav` landmark; the compact button controls it. */

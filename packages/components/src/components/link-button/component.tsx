@@ -24,10 +24,10 @@ import type {
 	ShortKeyPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import { nonce } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+} from '../../../internals/src/schema/index';
+import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
+import { nonce } from '../../../internals/src/utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { BaseLinkWebComponent } from '../link/base';
 
 /**

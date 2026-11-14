@@ -2,7 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 import type { RGB } from 'color-convert';
 import { hex } from 'wcag-contrast';
 
-import { calcColorContrast, createContrastColorPair, getColorContrast } from './contrast';
+import { calcColorContrast, createContrastColorPair, getColorContrast } from '../../../internals/src/schema/utils/contrast';
 
 /**
  * WCAG 1.4.3 Contrast (Minimum), Level AA, for normal text.

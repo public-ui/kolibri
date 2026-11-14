@@ -2,10 +2,10 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 
-import type { KoliBriComponentsBemSchema } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
-import type { BlockModifiers } from './block-bem';
-import { getBlockBem } from './block-bem';
+import type { BlockModifiers } from '../../../../internals/src/controller/bem-root-node/block-bem';
+import { getBlockBem } from '../../../../internals/src/controller/bem-root-node/block-bem';
+import type { KoliBriComponentsBemSchema } from '../../../../internals/src/schema/bem-registry';
+import clsx from '../../../../internals/src/utils/clsx';
 
 type FCChildren = Parameters<FC>[1];
 

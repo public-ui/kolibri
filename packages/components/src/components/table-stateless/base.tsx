@@ -1,21 +1,16 @@
 import type { JSX } from '@stencil/core';
 import { forceUpdate, h } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../../internal/functional-components/button/item';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
-import { createItemPool } from '../../internal/functional-components/item-pool';
-import type { LinkFCProps } from '../../internal/functional-components/link/component';
-import type { LinkItem } from '../../internal/functional-components/link/item';
-import { createLinkItem } from '../../internal/functional-components/link/item';
-import type { EmbeddedLinkProps } from '../../internal/functional-components/link/resolve-props';
-import type { TableStatelessApi } from '../../internal/functional-components/table-stateless/api';
-import { tableStatelessPropsConfig } from '../../internal/functional-components/table-stateless/api';
-import { TABLE_CAPTION_ID, TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
-import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
-import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-components/table-stateless/table-model';
-import type { TableHeaders } from '../../internal/props';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../../../internals/src/controller/button/item';
+import { createButtonItem } from '../../../internals/src/controller/button/item';
+import type { PropsConfigShape } from '../../../internals/src/controller/generic-types';
+import { createItemPool } from '../../../internals/src/controller/item-pool';
+import type { EmbeddedLinkProps } from '../../../internals/src/controller/link/resolve-props';
+import type { TableStatelessApi } from '../../../internals/src/controller/table-stateless/api';
+import { tableStatelessPropsConfig } from '../../../internals/src/controller/table-stateless/api';
+import { getNumberOfCols, getPrimaryHeaders } from '../../../internals/src/controller/table-stateless/table-model';
+import type { TableHeaders } from '../../../internals/src/props/index';
 import {
 	fixedColsProp,
 	hasSettingsMenuProp,
@@ -27,7 +22,8 @@ import {
 	tableLoadingProp,
 	tableSelectionProp,
 	variantProp,
-} from '../../internal/props';
+} from '../../../internals/src/props/index';
+import { Callback } from '../../../internals/src/schema/enums/index';
 import type {
 	FixedColsPropType,
 	HasSettingsMenuPropType,
@@ -45,11 +41,15 @@ import type {
 	TableLoadingPropType,
 	TableSelectionPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import { Log } from '../../schema';
-import { Callback } from '../../schema/enums';
-import { nonce } from '../../utils/dev.utils';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
+} from '../../../internals/src/schema/index';
+import { Log } from '../../../internals/src/schema/index';
+import { nonce } from '../../../internals/src/utils/dev.utils';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
+import type { LinkFCProps } from '../../internal/functional-components/link/component';
+import type { LinkItem } from '../../internal/functional-components/link/item';
+import { createLinkItem } from '../../internal/functional-components/link/item';
+import { TABLE_CAPTION_ID, TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
+import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 
 const RESIZE_DEBOUNCE_DELAY = 150;
 

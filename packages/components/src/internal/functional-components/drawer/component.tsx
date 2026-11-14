@@ -1,14 +1,14 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
+import { drawerPropsConfig, type DrawerApi } from '../../../../internals/src/controller/drawer/api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { CardFCProps } from '../card/component';
 import { CardFC } from '../card/component';
 import { DialogFC } from '../dialog/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import { resolveFcProps } from '../props-from-config';
-import { drawerPropsConfig, type DrawerApi } from './api';
 
 const drawerBem = bem.forBlock('kol-drawer');
 const BEM_CLASS_DRAWER__CONTENT = drawerBem('content');

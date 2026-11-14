@@ -1,15 +1,15 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import type { ResolvedButtonProps } from '../../../../internals/src/controller/button/resolve-props';
+import { cardPropsConfig, type CardApi } from '../../../../internals/src/controller/card/api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import clsx from '../../../../internals/src/utils/clsx';
 import KolHeadingFc from '../../../functional-components/Heading/Heading';
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
 import { ButtonFC } from '../button/component';
-import type { ResolvedButtonProps } from '../button/resolve-props';
-import type { FunctionalComponentProps } from '../generic-types';
-import { resolveFcProps } from '../props-from-config';
 import { renderLabelWithLang } from '../span/component';
-import { cardPropsConfig, type CardApi } from './api';
 
 const cardBem = bem.forBlock('kol-card');
 const BEM_CLASS_CARD__CLOSE_BUTTON = cardBem('close-button');

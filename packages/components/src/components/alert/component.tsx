@@ -1,14 +1,21 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
 
-import { translate } from '../../i18n';
-import type { AlertApi } from '../../internal/functional-components/alert/api';
-import { alertPropsConfig } from '../../internal/functional-components/alert/api';
-import { AlertFC } from '../../internal/functional-components/alert/component';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../internal/props';
+import type { AlertApi } from '../../../internals/src/controller/alert/api';
+import { alertPropsConfig } from '../../../internals/src/controller/alert/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import { TooltipBehavior } from '../../../internals/src/controller/tooltip/behavior';
+import { translate } from '../../../internals/src/i18n';
+import {
+	alertCallbacksProp,
+	alertProp,
+	alertTypeProp,
+	alertVariantProp,
+	hasCloserProp,
+	labelLangSegmentsProp,
+	levelProp,
+} from '../../../internals/src/props/index';
 import type {
 	AlertProps,
 	AlertPropType,
@@ -18,10 +25,11 @@ import type {
 	HeadingLevel,
 	KoliBriAlertEventCallbacks,
 	LabelLangSegmentsPropType,
-} from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
-import { createCtaRef } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
+} from '../../../internals/src/schema/index';
+import { createUniqueId, nonce } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef } from '../../../internals/src/utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
+import { AlertFC } from '../../internal/functional-components/alert/component';
 
 /**
  * The **Alert** component provides visual feedback to users. It consists of a color-coded container, a heading, content text, and an icon. The icon used and the color scheme depend on the `_type` of the alert.

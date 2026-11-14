@@ -35,18 +35,18 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
+} from '../../../internals/src/schema/index';
 
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputEmailApi } from '../../../internals/src/controller/input-email/api';
+import { inputEmailPropsConfig } from '../../../internals/src/controller/input-email/api';
+import { multipleProp, suggestionsProp } from '../../../internals/src/props/index';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputEmailApi } from '../../internal/functional-components/input-email/api';
-import { inputEmailPropsConfig } from '../../internal/functional-components/input-email/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { multipleProp, suggestionsProp } from '../../internal/props';
-import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * The **Email** input type creates an input field for email addresses. It supports built-in format validation, multiple addresses via the `_multiple` property, and auto-complete suggestions.
