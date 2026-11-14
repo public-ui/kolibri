@@ -7,9 +7,11 @@ test.use({
 	locale: 'de-DE',
 	isMobile: false,
 	timezoneId: 'Europe/Berlin',
+	// The height must be a real value: with `height: 0`, Firefox gives full-width blocks
+	// no size and the page collapses to a narrow column.
 	viewport: {
 		width: 800,
-		height: 0,
+		height: 400,
 	},
 });
 
