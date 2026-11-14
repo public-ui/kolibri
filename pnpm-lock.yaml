@@ -166,6 +166,9 @@ importers:
         specifier: 1.8.1
         version: 1.8.1(@stencil/core@4.45.3)(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
+      '@lit/react':
+        specifier: 1.0.8
+        version: 1.0.8(@types/react@18.3.31)
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -267,6 +270,9 @@ importers:
         specifier: 1.8.1
         version: 1.8.1(@stencil/core@4.45.3)(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
     devDependencies:
+      '@lit/react':
+        specifier: 1.0.8
+        version: 1.0.8(@types/react@19.3.0)
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
