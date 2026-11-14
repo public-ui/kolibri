@@ -1,0 +1,1 @@
+import"./index-hZrFLTZy-AgdKyfig.js";import{S as e,s as t}from"./props-from-config-0wNhqBGJ-CTzQ9ZNW.js";var n=[0,1,2,3,4,5,6],r=t(`level`,0,t=>e(t),e=>n.includes(e));export{r as t};
