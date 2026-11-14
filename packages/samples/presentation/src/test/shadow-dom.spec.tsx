@@ -3,10 +3,20 @@
  * upgrade, render into an open shadow root and are visible to accessibility queries.
  */
 
+import { defineCustomElement as defineKolButton } from '@public-ui/components/dist/components/kol-button.js';
+import { defineCustomElement as defineKolDialog } from '@public-ui/components/dist/components/kol-dialog.js';
+import { defineCustomElement as defineKolInputText } from '@public-ui/components/dist/components/kol-input-text.js';
+import { KolButton } from '@public-ui/react-v19';
 import { render } from '@testing-library/react';
 import React from 'react';
 import { screen } from 'shadow-dom-testing-library';
 import { describe, expect, test, vi } from 'vitest';
+
+/* The React adapters define their components on the first render. These tests render raw custom
+   elements, so the definitions are registered explicitly here. */
+defineKolButton();
+defineKolDialog();
+defineKolInputText();
 
 type KolInputTextElement = HTMLElement & { _label?: string };
 
@@ -49,7 +59,10 @@ describe('KoliBri custom elements', () => {
 	});
 
 	test('is visible after hydration, so role queries match by accessible name', async () => {
-		render(React.createElement('kol-button', { _label: 'Label' }));
+		/* Rendered through the React adapter: raw custom elements that are connected before their
+		   first render stay in the pre-hydration stub in happy-dom, while the adapter defines and
+		   renders them on the first render of the wrapper. */
+		render(<KolButton _label="Label" />);
 
 		const button = await screen.findByShadowRole('button', { name: 'Label' });
 
