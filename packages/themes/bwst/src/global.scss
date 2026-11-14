@@ -4,7 +4,11 @@
 	:host {
 		--border-radius: var(--kolibri-border-radius, #{to-rem(4)});
 		//--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
-		--font-family: var(--kolibri-font-family, 'Noto Sans Regular', Arial, helvetica, sans-serif);
+		/*
+		 * `Noto Sans` is a peer dependency (@fontsource/noto-sans). The application imports its
+		 * CSS at document level; without it the font family falls back to Arial.
+		 */
+		--font-family: var(--kolibri-font-family, 'Noto Sans', Arial, helvetica, sans-serif);
 		--font-size: var(--kolibri-font-size, #{to-rem(16)});
 		--spacing: var(--kolibri-spacing, #{to-rem(4)});
 		--border-width: var(--kolibri-border-width, 1px);

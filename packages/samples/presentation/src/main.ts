@@ -1,4 +1,14 @@
 import 'uno.css'; // https://github.com/antfu/unocss
+/* Font CSS of the foreign icon fonts and fonts. They are peer dependencies of the theme packages:
+   importing their CSS once at document level is the whole integration (see BREAKING_CHANGES.v5.md). */
+import '@fontsource/fira-sans/400.css';
+import '@fontsource/fira-sans/500.css';
+import '@fontsource/fira-sans/600.css';
+import '@fontsource/fira-sans/700.css';
+import '@fontsource/noto-sans/400.css';
+import '@fontsource/noto-sans/700.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@vscode/codicons/dist/codicon.css';
 // App style
 import './style.scss';
 

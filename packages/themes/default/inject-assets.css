@@ -1,2 +1,7 @@
-@import url('./assets/fontawesome-free/css/all.min.css');
-@import url('./assets/codicons/codicon.css');
+/*
+ * Font CSS for the visual tests and the theme preview. Font Awesome and Codicons are peer
+ * dependencies; their files are served from `assets/peer-fonts/` (copied from node_modules by the
+ * visual test runner and by serve.sh, see BREAKING_CHANGES.v5.md).
+ */
+@import url('./assets/peer-fonts/fontawesome-free/css/all.min.css');
+@import url('./assets/peer-fonts/codicons/codicon.css');
