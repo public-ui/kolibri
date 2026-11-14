@@ -63,8 +63,10 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	 * `aria-labelledby`, `focusTabById` selector). Must not be derived from `_label`:
 	 * label characters (e.g. commas, which split CSS selector lists) would break the
 	 * `button#...` lookup, and identical labels on multiple `<kol-tabs>` would collide.
+	 * In the custom elements build the component is the host element, where a field named `id`
+	 * would write the host's `id` attribute.
 	 */
-	private readonly id = createUniqueId('tabs');
+	private readonly tabsId = createUniqueId('tabs');
 
 	/** One orchestrated button per tab, rebuilt whenever `_tabs` changes. */
 	private tabButtonItems: TabsButtonItem[] = [];
@@ -324,7 +326,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	private focusTabById(index: number): void {
 		if (this.rootElement /* SSR instanceof HTMLElement */) {
-			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.id}-tab-${index}`, this.rootElement);
+			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.tabsId}-tab-${index}`, this.rootElement);
 			button?.focus();
 		}
 	}
@@ -366,8 +368,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		const tabs = this.getRenderProp('tabs');
 		for (let i = 0; i < tabs.length; i++) {
 			const div = document.createElement('div');
-			div.setAttribute('aria-labelledby', `${this.id}-tab-${i}`);
-			div.setAttribute('id', `${this.id}-panel-${i}`);
+			div.setAttribute('aria-labelledby', `${this.tabsId}-tab-${i}`);
+			div.setAttribute('id', `${this.tabsId}-panel-${i}`);
 			div.setAttribute('role', 'tabpanel');
 			div.setAttribute('hidden', '');
 			// Panels are not tabbable, see https://github.com/public-ui/kolibri/issues/10082
@@ -408,13 +410,13 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 			const isSelected = selected === index;
 			return item.getButton(
 				{
-					_ariaControls: `${this.id}-panel-${index}`,
+					_ariaControls: `${this.tabsId}-panel-${index}`,
 					_ariaSelected: isSelected,
 					_customClass: isSelected ? 'selected' : '',
 					_disabled: tab._disabled,
 					_hideLabel: tab._hideLabel,
 					_icons: tab._icons,
-					_id: `${this.id}-tab-${index}`,
+					_id: `${this.tabsId}-tab-${index}`,
 					_label: tab._label, // TODO: ariaLabel-Konzept prüfen
 					_on: this.tabButtonCallbacks as ButtonCallbacksPropType<StencilUnknown>,
 					_role: 'tab',
