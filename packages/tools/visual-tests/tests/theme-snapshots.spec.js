@@ -7,9 +7,13 @@ test.use({
 	locale: 'de-DE',
 	isMobile: false,
 	timezoneId: 'Europe/Berlin',
+	/* The height must be a real value: with `height: 0`, Firefox gives full-width blocks no size and
+	   the document collapses to its narrowest intrinsic width. A real height lets the layout render
+	   normally, while the screenshots clip to the page content so the viewport height does not leak
+	   into the captured image. */
 	viewport: {
 		width: 800,
-		height: 0,
+		height: 400,
 	},
 });
 
@@ -20,6 +24,22 @@ const DEFAULT_SNAPSHOT_OPTIONS = {
 	scale: 'css', // 'css' or 'device'
 	timeout: 10000,
 };
+
+/**
+ * Clips the screenshot to the page content: the document is at least as tall as the viewport, while
+ * the body only extends as far as its content renders. Clipping from the document origin with the
+ * viewport width keeps the captured geometry identical to a full-page capture, whose height and
+ * width the document only grew beyond when the content itself demanded it.
+ */
+async function contentClip(page) {
+	const bodyBoundingBox = await page.locator('body').boundingBox();
+	return {
+		x: 0,
+		y: 0,
+		width: page.viewportSize().width,
+		height: Math.ceil(bodyBoundingBox.y + bodyBoundingBox.height),
+	};
+}
 
 ROUTES.forEach((options, route) => {
 	// Skip unnecessary snapshot tests
@@ -55,9 +75,19 @@ ROUTES.forEach((options, route) => {
 			...options?.snapshot?.options,
 		};
 
+		/**
+		 * Routes with fixed-position overlays (modal, popover, toast) are captured as a whole page:
+		 * a clip to the body height would cut the overlay off at the body edge or drop it entirely,
+		 * because fixed elements position themselves at the viewport and not at the document.
+		 */
+		const forceFullPage = options?.snapshot?.forceFullPage === true;
+
 		// Skip unnecessary normal tests
 		if (options?.snapshot?.skip !== true) {
-			await expect(page).toHaveScreenshot(`${snapshotName}.png`, SNAPSHOT_OPTIONS);
+			await expect(page).toHaveScreenshot(`${snapshotName}.png`, {
+				...SNAPSHOT_OPTIONS,
+				clip: forceFullPage ? undefined : await contentClip(page),
+			});
 		}
 
 		// Skip unnecessary zoom tests
@@ -72,6 +102,7 @@ ROUTES.forEach((options, route) => {
 			await expect(page).toHaveScreenshot(`${snapshotName}-zoom.png`, {
 				...SNAPSHOT_OPTIONS,
 				...options?.snapshot?.zoom?.options,
+				clip: forceFullPage ? undefined : await contentClip(page),
 			});
 		}
 	});
