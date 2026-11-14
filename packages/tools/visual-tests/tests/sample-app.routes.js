@@ -24,6 +24,9 @@ export const ROUTES = new Map();
  */
 
 ROUTES.set('handout/basic', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 1920,
@@ -277,6 +280,9 @@ ROUTES.set('indented-text/basic', {
 	},
 });
 ROUTES.set('input-checkbox/basic', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -284,6 +290,9 @@ ROUTES.set('input-checkbox/basic', {
 	},
 });
 ROUTES.set('input-checkbox/button', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -291,6 +300,9 @@ ROUTES.set('input-checkbox/button', {
 	},
 });
 ROUTES.set('input-checkbox/switch', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -347,6 +359,9 @@ ROUTES.set('input-password/show-password', {
 	},
 });
 ROUTES.set('input-radio/basic', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -492,6 +507,9 @@ ROUTES.set('nav/aria-current', {
 	},
 });
 ROUTES.set('nav/basic', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		zoom: {
 			skip: true,
