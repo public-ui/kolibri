@@ -237,15 +237,8 @@ export const config: Config = {
 		enableImportInjection: true,
 		// initializeNextTick: true,
 		// lifecycleDOMEvents: true,
-		/*
-		 * The lazy loader still resolves its define tags through the `transformTagName` option of
-		 * `defineCustomElements()`, which this deprecated flag enables. Removing it belongs to the
-		 * adapter migration (phase 2), when the React registration stops using the loader anyway;
-		 * dropping it early leaves consumers on the loader path without their transformation.
-		 */
 		// scriptDataOpts: true,
 		// slotChildNodesFix: true,
-		tagNameTransform: true,
 	},
 	// enableCache: true,
 	invisiblePrehydration: true,
