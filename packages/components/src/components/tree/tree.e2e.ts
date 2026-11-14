@@ -407,4 +407,18 @@ test.describe('kol-tree - Interaction', () => {
 		await page.keyboard.press('Tab');
 		await expect(firstLink).toBeFocused();
 	});
+
+	test('the arrow keys work when the tree is placed inside a shadow root', async ({ page }) => {
+		await page.setContent('<div id="app"></div>');
+		await page.evaluate((tree) => {
+			const host = document.querySelector('#app')!;
+			host.attachShadow({ mode: 'open' }).innerHTML = tree;
+		}, NESTED_TREE);
+		const treeItems = page.locator('#app kol-tree-item');
+		await expect(page.locator('#app kol-tree')).toHaveClass(/hydrated/);
+
+		await treeItems.nth(0).locator('.kol-link__interactive-element').first().focus();
+		await page.keyboard.press('ArrowDown');
+		await expect(treeItems.nth(1).locator('.kol-link__interactive-element').first()).toBeFocused();
+	});
 });
