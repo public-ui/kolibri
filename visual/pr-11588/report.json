@@ -1,18 +1,18 @@
 {
 	"schema": 1,
 	"pr": 11588,
-	"head": "6a12cd76c404c2162ddc26d70416dabacc5433e8",
+	"head": "b758814823bcd2676f52f34a926a2d96b8e806a4",
 	"repository": "public-ui/kolibri",
-	"runId": 43554143010,
-	"generatedAt": "2026-11-14T04:11:07.894Z",
+	"runId": 43556121072,
+	"generatedAt": "2026-11-14T04:33:49.466Z",
 	"digest": "sha256:09a07266565d4a04a1f9a8c9ccc11bd6aa31b7141a8f4410babd5fbd0e6c19fd",
 	"baseline": {
 		"sha": "548f9b3db6bfdbbd5c25268b4e78f615416abc88",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
-		"fallback": null,
-		"distance": 0,
+		"fallback": "ancestor",
+		"distance": 4,
 		"imageMismatch": false,
 		"consistent": true
 	},
@@ -37,8 +37,8 @@
 					"playwright": "1.63.0",
 					"createdAt": "2026-11-13T20:45:10.973Z",
 					"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
-					"fallback": null,
-					"distance": 0,
+					"fallback": "ancestor",
+					"distance": 4,
 					"imageMismatch": false
 				}
 			},
@@ -2720,8 +2720,8 @@
 					"playwright": "1.63.0",
 					"createdAt": "2026-11-13T20:44:41.066Z",
 					"digest": "sha256:a6a4986d2da03e4052e87d0dea797f01c2c870cd31c6a2fcd32481b279d19d60",
-					"fallback": null,
-					"distance": 0,
+					"fallback": "ancestor",
+					"distance": 4,
 					"imageMismatch": false
 				}
 			},
@@ -5403,8 +5403,8 @@
 					"playwright": "1.63.0",
 					"createdAt": "2026-11-13T20:45:10.973Z",
 					"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
-					"fallback": null,
-					"distance": 0,
+					"fallback": "ancestor",
+					"distance": 4,
 					"imageMismatch": false
 				}
 			},
@@ -8086,8 +8086,8 @@
 					"playwright": "1.63.0",
 					"createdAt": "2026-11-13T20:43:51.499Z",
 					"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
-					"fallback": null,
-					"distance": 0,
+					"fallback": "ancestor",
+					"distance": 4,
 					"imageMismatch": false
 				}
 			},
@@ -10769,8 +10769,8 @@
 					"playwright": "1.63.0",
 					"createdAt": "2026-11-13T20:44:52.041Z",
 					"digest": "sha256:527ce0a79edd72d63df83b0e9449b83dcd80e12a624acce57b722410850da306",
-					"fallback": null,
-					"distance": 0,
+					"fallback": "ancestor",
+					"distance": 4,
 					"imageMismatch": false
 				}
 			},
@@ -13452,8 +13452,8 @@
 					"playwright": "1.63.0",
 					"createdAt": "2026-11-13T20:44:27.853Z",
 					"digest": "sha256:4160f0bc0e435a83b94bf43bd9e6a98ea3d8b14ca18d12bfe3c2ce837c279acc",
-					"fallback": null,
-					"distance": 0,
+					"fallback": "ancestor",
+					"distance": 4,
 					"imageMismatch": false
 				}
 			},
@@ -16141,8 +16141,8 @@
 					"playwright": "1.63.0",
 					"createdAt": "2026-11-13T20:43:26.440Z",
 					"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
-					"fallback": null,
-					"distance": 0,
+					"fallback": "ancestor",
+					"distance": 4,
 					"imageMismatch": false
 				}
 			},
