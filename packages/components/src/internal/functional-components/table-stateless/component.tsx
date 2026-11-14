@@ -1,7 +1,6 @@
 import type { FunctionalComponent as FC, JSX } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
-import { KolBadgeTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
 import type {
 	ActionColumnHeaderCell,
@@ -387,7 +386,7 @@ const renderStateItems = (stateColumn: StateColumnHeaderCell, rowData: KoliBriTa
 		<div class={BEM_CLASS_TABLE__CELL_STATES}>
 			{states.map((state, stateIndex) => {
 				if (state.type === 'badge') {
-					return <KolBadgeTag key={`state-${key}-${stateIndex}`} {...state} />;
+					return <kol-badge key={`state-${key}-${stateIndex}`} {...state} />;
 				}
 				return null;
 			})}
