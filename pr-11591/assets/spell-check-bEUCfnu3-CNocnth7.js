@@ -1,1 +1,0 @@
-import{c as e,y as t}from"./bem-registry-CzD7Hxkx-ZtCzfTON.js";var n=e(`spellCheck`,void 0,t);export{n as t};

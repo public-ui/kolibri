@@ -1,0 +1,1 @@
+import{s as e}from"./index-Dp687ss5.js";var t=class{constructor(n){new.target===t&&e(this,n)}};export{t as test_component};
