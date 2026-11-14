@@ -1,0 +1,1 @@
+import"./index-C3Bp-kav-B5Xilx7b.js";var e=(t,n,r=``)=>{n.forEach((n,i)=>{let a=`${r}-${i}`;typeof n==`object`&&n&&typeof n.label==`string`&&n.label.length>0&&(Array.isArray(n.options)?e(t,n.options,a):t.set(a,n))})},t=e=>e.map(e=>typeof e==`object`&&e&&typeof e.label==`string`?Object.assign(Object.assign({},e),{value:e.value??e.label}):e);export{t as n,e as t};

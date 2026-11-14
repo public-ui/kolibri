@@ -1,0 +1,1 @@
+import"./index-C3Bp-kav-B5Xilx7b.js";import{S as e,s as t}from"./props-from-config-D5GU-acM-DJpKgfPv.js";var n=[0,1,2,3,4,5,6],r=t(`level`,0,t=>e(t),e=>n.includes(e));export{r as t};
