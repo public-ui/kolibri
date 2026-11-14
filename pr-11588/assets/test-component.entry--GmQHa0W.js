@@ -1,1 +1,0 @@
-import{V as e}from"./index-C3Bp-kav-B5Xilx7b.js";var t=class{constructor(n){new.target===t&&e(this,n)}};export{t as test_component};
