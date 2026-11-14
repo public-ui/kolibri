@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "63 changed – 0 of 63 approved, review pending",
-	"computedAt": "2026-11-14T18:10:20.099Z",
+	"description": "28 changed – 0 of 28 approved, review pending",
+	"computedAt": "2026-11-14T19:09:33.632Z",
 	"pr": 11599,
-	"head": "d26f2e160243c2584e6a5f0511366f3ae08fd24a",
-	"digest": "sha256:1682e9c3de1b19974dd4bc9b57b20caf73691beb17b42c4d12845b38050a61af",
+	"head": "b0dfa268bebc79a2332c2cb286d39a8af8d64c41",
+	"digest": "sha256:a762ae9787f5fcacde0a454573a09102842751118357e88b1ba0bc2ec23e48dd",
 	"counts": {
-		"changes": 63,
-		"open": 63,
+		"changes": 28,
+		"open": 28,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -16,18 +16,6 @@
 	},
 	"reviewers": [],
 	"items": {
-		"test-tag-name-transformer/avatar-size--size": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-text-background-noColumns--background-unset": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/meter-orientation--vertical": {
-			"state": "open",
-			"notes": []
-		},
 		"test-tag-name-transformer/quote-block--block": {
 			"state": "open",
 			"notes": []
@@ -40,31 +28,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"test-tag-name-transformer/table-column-alignment--column-alignment": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/table-non-hidable-columns--non-hidable": {
-			"state": "open",
-			"notes": []
-		},
 		"test-tag-name-transformer/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/table-sticky-header--sticky-header": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/avatar-size--size": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-text-background-noColumns--background-unset": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/meter-orientation--vertical": {
 			"state": "open",
 			"notes": []
 		},
@@ -80,27 +44,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-bwst/table-column-alignment--column-alignment": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/table-non-hidable-columns--non-hidable": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-bwst/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/avatar-size--size": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-text-background-noColumns--background-unset": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/meter-orientation--vertical": {
 			"state": "open",
 			"notes": []
 		},
@@ -116,31 +60,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-default/table-column-alignment--column-alignment": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/table-non-hidable-columns--non-hidable": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-default/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/table-sticky-header--sticky-header": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/avatar-size--size": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/input-text-background-noColumns--background-unset": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/meter-orientation--vertical": {
 			"state": "open",
 			"notes": []
 		},
@@ -156,27 +76,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-desy/table-column-alignment--column-alignment": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/table-non-hidable-columns--non-hidable": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-desy/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/avatar-size--size": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-text-background-noColumns--background-unset": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/meter-orientation--vertical": {
 			"state": "open",
 			"notes": []
 		},
@@ -192,23 +92,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-ecl/table-column-alignment--column-alignment": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-ecl/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/avatar-size--size": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/input-text-background-noColumns--background-unset": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/meter-orientation--vertical": {
 			"state": "open",
 			"notes": []
 		},
@@ -224,27 +108,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-kern/table-column-alignment--column-alignment": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/table-non-hidable-columns--non-hidable": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-kern/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/avatar-size--size": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/input-text-background-noColumns--background-unset": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/meter-orientation--vertical": {
 			"state": "open",
 			"notes": []
 		},
@@ -257,10 +121,6 @@
 			"notes": []
 		},
 		"unstyled/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/table-column-alignment--column-alignment": {
 			"state": "open",
 			"notes": []
 		},
