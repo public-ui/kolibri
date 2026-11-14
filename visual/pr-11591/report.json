@@ -1,10 +1,10 @@
 {
 	"schema": 1,
 	"pr": 11591,
-	"head": "6b68c10d507556c433dc151bc2c71b8fdbca5a6a",
+	"head": "8ec0c91dc09817549ec247db2c7add8819e562ad",
 	"repository": "public-ui/kolibri",
-	"runId": 43568164083,
-	"generatedAt": "2026-11-14T07:02:34.124Z",
+	"runId": 43569697753,
+	"generatedAt": "2026-11-14T07:22:51.199Z",
 	"digest": "sha256:09a07266565d4a04a1f9a8c9ccc11bd6aa31b7141a8f4410babd5fbd0e6c19fd",
 	"baseline": {
 		"sha": "548f9b3db6bfdbbd5c25268b4e78f615416abc88",
