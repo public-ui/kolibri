@@ -24,8 +24,9 @@ export type StencilReactComponent<I extends HTMLElement, E extends EventNames, C
 	>;
 
 /**
- * The proxies run through this wrapper to strip undefined props and to write the remaining props
- * onto the host element through the element ref. The Stencil React runtime writes undefined
+ * The proxies run through this wrapper to strip undefined props and to write the remaining component
+ * props (`_`-prefixed) onto the host element through the element ref; `style`, `className` and the
+ * event handlers stay with React and the runtime. The Stencil React runtime writes undefined
  * properties to the element, which would override documented defaults like the checkbox `_value`,
  * and its property setting runs in a layout effect that does not fire in every environment the
  * adapters support (component tests with happy-dom render the elements without it).
@@ -50,7 +51,7 @@ export const createComponent = <I extends HTMLElement, E extends EventNames, C, 
 					(element: I | null) => {
 						if (element !== null) {
 							for (const [key, value] of Object.entries(setProps)) {
-								if (key !== 'children' && key !== 'ref' && key in element) {
+								if (key.startsWith('_') && key in element) {
 									(element as unknown as Record<string, unknown>)[key] = value;
 								}
 							}
