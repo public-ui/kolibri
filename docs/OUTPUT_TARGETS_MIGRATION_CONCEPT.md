@@ -114,9 +114,11 @@ Die Brücke im Core (`bootstrap.ts`) verkürzt sich im Wesentlichen auf:
 import { setTagTransformer } from '@stencil/core';
 
 if (koliBriOptions?.transformTagName) {
-	setTagTransformer(koliBriOptions.transformTagName);
+	setTagTransformer((tag: string) => (tag.startsWith('kol-') ? koliBriOptions.transformTagName(tag) : tag));
 }
 ```
+
+Die Begrenzung auf `kol-*` ist Pflicht: der native Transformer greift bei jedem String-Tag, das `h()` rendert, auch bei nativen HTML-Tags wie `div` oder `span`. Der öffentliche `transformTagName`-Option ist hingegen nur für Komponenten-Tags gedacht; ohne die Begrenzung würde ein naiver Transformer wie `(tag) => \`app-${tag}\`` die innere Struktur jeder Komponente zerstören.
 
 Da der Transformer vor dem ersten `define` gesetzt sein muss, prüft der Core die Reihenfolge und gibt im Zweifel die native Warnung plus einen KoliBri-Hinweis aus. Die Adapter-Brücken (`kolibri-src`-Schicht der Adapter-Packages) exportieren `setTagNameTransformer` weiter und rufen dieselbe native API.
 

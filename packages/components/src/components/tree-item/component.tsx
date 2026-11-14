@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, transformTag, Watch } from '@stencil/core';
 
 import { KolTreeTag } from '../../core/component-names';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
@@ -150,7 +150,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	private determineTreeItemDepth(): void {
 		let level = 0;
 		let traverseItem: HTMLElement | null = this.host?.parentElement ?? null;
-		while (traverseItem !== null && traverseItem.tagName.toLowerCase() !== KolTreeTag && traverseItem !== document.body) {
+		while (traverseItem !== null && traverseItem.tagName.toLowerCase() !== transformTag(KolTreeTag) && traverseItem !== document.body) {
 			traverseItem = traverseItem.parentElement;
 			level += 1;
 		}
@@ -169,7 +169,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	private getTree(): Element | undefined {
 		let element: Element | null | undefined = this.host;
 		while (element) {
-			const tree = element.closest(KolTreeTag);
+			const tree = element.closest(transformTag(KolTreeTag));
 			if (tree) {
 				return tree;
 			}

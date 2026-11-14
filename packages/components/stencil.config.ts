@@ -231,15 +231,14 @@ export const config: Config = {
 	// buildEs5: true,
 	// https://stenciljs.com/docs/config-extras
 	extras: {
+		additionalTagTransformers: true,
 		// appendChildSlotFix: true,
 		// cloneNodeFix: true,
 		enableImportInjection: true,
 		// initializeNextTick: true,
 		// lifecycleDOMEvents: true,
-		// scopedSlotTextContentFix: true,
 		// scriptDataOpts: true,
 		// slotChildNodesFix: true,
-		tagNameTransform: true,
 	},
 	// enableCache: true,
 	invisiblePrehydration: true,
