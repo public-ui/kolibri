@@ -88,22 +88,11 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headers?: TableHeadersPropType = undefined;
+	@Prop() public _headers!: TableHeadersPropType;
 
 	@Watch('_headers')
 	public watchHeaders(value?: TableHeadersPropType): void {
-		this.applyHeaders(value ? value : this._headerCells);
-	}
-
-	/**
-	 * @deprecated Will be removed in the future. Use _headers instead.
-	 * Defines the horizontal and vertical table headers.
-	 */
-	@Prop() public _headerCells?: TableHeadersPropType = undefined;
-
-	@Watch('_headerCells')
-	public watchHeaderCells(value?: TableHeadersPropType): void {
-		this.applyHeaders(this._headers ? this._headers : value);
+		this.applyHeaders(value);
 	}
 
 	/**

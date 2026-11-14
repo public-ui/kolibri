@@ -21,8 +21,8 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  *   lazy-loading hint of embedded content.
  */
 export const tableStatelessPropsConfig = {
-	required: [labelLangSegmentsProp, tableDataProp],
-	optional: [fixedColsProp, hasSettingsMenuProp, tableCallbacksProp, tableDataFootProp, tableHeadersProp, tableLoadingProp, tableSelectionProp, variantProp],
+	required: [labelLangSegmentsProp, tableDataProp, tableHeadersProp],
+	optional: [fixedColsProp, hasSettingsMenuProp, tableCallbacksProp, tableDataFootProp, tableLoadingProp, tableSelectionProp, variantProp],
 } as const satisfies PropsConfigShape;
 
 export type TableStatelessApi = ApiFromConfig<
