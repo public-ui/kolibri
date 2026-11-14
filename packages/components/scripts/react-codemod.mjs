@@ -14,12 +14,18 @@ const proxies = ['../../adapters/react/src/components.ts', '../../adapters/react
 
 for (const file of proxies.map((proxy) => join(scriptDir, proxy))) {
 	const source = readFileSync(file, 'utf8');
-	const rewritten = source.replace(
-		"import { createComponent } from '@stencil/react-output-target/runtime';",
-		"import { createComponent } from '../kolibri-src/create-component';",
-	);
+	const rewritten = source
+		.replace(
+			"import { createComponent } from '@stencil/react-output-target/runtime';",
+			"import { createComponent } from '../kolibri-src/create-component';",
+		)
+		.replace(
+			"import type { Components } from '@public-ui/components/dist/components';",
+			// The dist-custom-elements type output carries no `Components` namespace; the root types do.
+			"import type { Components } from '@public-ui/components';",
+		);
 	if (rewritten === source) {
-		throw new Error(`react-codemod: no createComponent import found in ${file}`);
+		throw new Error(`react-codemod: no generated import found in ${file}`);
 	}
 	writeFileSync(file, rewritten);
 	console.log(`react-codemod: deferred proxy creation in ${file}`);
