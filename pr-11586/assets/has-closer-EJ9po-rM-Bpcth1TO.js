@@ -1,0 +1,1 @@
+import"./index-CTXvav5z-C2tN3OaL.js";import{s as e,v as t}from"./props-from-config-DNNvu8cb-D6Hixv6X.js";var n=e(`hasCloser`,!1,t);export{n as t};

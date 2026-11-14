@@ -1,0 +1,1 @@
+import"./index-CTXvav5z-C2tN3OaL.js";import{C as e,s as t}from"./props-from-config-DNNvu8cb-D6Hixv6X.js";import{i as n}from"./validators-CvGxE6xx-7fiv8VES.js";import{t as r}from"./label-hints-CcriRZRJ-JOc52eWQ.js";var i=t(`label`,``,e,n,{hints:r});export{i as t};
