@@ -4,6 +4,10 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router';
 
 import { bootstrap, getDefaultThemeName, KoliBriDevHelper } from '@public-ui/components';
+import './legacy-element-constructor';
+/* The toaster creates its container element imperatively, outside the react adapter render:
+   its custom element must be defined up front. */
+import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/dist/components/kol-toast-container.js';
 import { App, setCustomThemes } from '@public-ui/sample-react';
 
 import type { Generic } from 'adopted-style-sheets';
@@ -39,6 +43,8 @@ const getThemes = async (): Promise<Theme[]> => {
 	const themeModule = (await import('@kolibri-vt/theme')) as Record<string, Theme>;
 	return [themeModule[(process.env.THEME_EXPORT as string) || 'default']];
 };
+
+defineKolToastContainer();
 
 void (async () => {
 	try {
