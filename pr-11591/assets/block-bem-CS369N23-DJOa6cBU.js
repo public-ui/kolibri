@@ -1,1 +1,0 @@
-import{x as e}from"./index-CakcFFK2.js";var t=new Map;function n(n){let r=t.get(n);return r||(r=e.forBlock(n),t.set(n,r)),r}export{n as t};
