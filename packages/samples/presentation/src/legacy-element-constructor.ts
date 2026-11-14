@@ -10,11 +10,12 @@
 (function () {
 	if (typeof window !== 'undefined' && window.Reflect !== undefined && window.customElements !== undefined) {
 		const base = HTMLElement;
-		window.HTMLElement = function (): HTMLElement {
+		const wrapper = function (): HTMLElement {
 			return Reflect.construct(base, [], this.constructor);
-		};
+		} as unknown as typeof HTMLElement;
+		window.HTMLElement = wrapper;
 		HTMLElement.prototype = base.prototype;
-		HTMLElement.prototype.constructor = HTMLElement;
+		HTMLElement.prototype.constructor = wrapper;
 		Object.setPrototypeOf(HTMLElement, base);
 	}
 })();
