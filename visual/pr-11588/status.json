@@ -2,10 +2,10 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "13 route(s) failed before the screenshots could be compared",
-	"computedAt": "2026-11-14T09:15:48.610Z",
+	"computedAt": "2026-11-14T10:50:39.433Z",
 	"pr": 11588,
-	"head": "dc6a078c3ed269a8725de9197e2b7f421f3a2a81",
-	"digest": "sha256:214c156579a1d1824c0e2b9e5ee5c3c7705166dcf06b371d93a76b4e70889461",
+	"head": "2bc0777d58e5e09bceb07fa668c8f3964db5cbad",
+	"digest": "sha256:42fbb05ea5121fcd7e5c4f07f13e6db06e749c197a2e5e98b887b1387fb5c35a",
 	"counts": {
 		"changes": 2680,
 		"open": 2680,

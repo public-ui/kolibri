@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11588,
-	"head": "dc6a078c3ed269a8725de9197e2b7f421f3a2a81",
+	"head": "2bc0777d58e5e09bceb07fa668c8f3964db5cbad",
 	"repository": "public-ui/kolibri",
-	"runId": 43575969624,
-	"generatedAt": "2026-11-14T09:15:47.875Z",
-	"digest": "sha256:214c156579a1d1824c0e2b9e5ee5c3c7705166dcf06b371d93a76b4e70889461",
+	"runId": 43583441722,
+	"generatedAt": "2026-11-14T10:50:38.446Z",
+	"digest": "sha256:42fbb05ea5121fcd7e5c4f07f13e6db06e749c197a2e5e98b887b1387fb5c35a",
 	"baseline": {
 		"sha": "548f9b3db6bfdbbd5c25268b4e78f615416abc88",
 		"ref": "develop",
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 3
 			},
-			"digest": "sha256:c44948ee501d66e8452b5434c22b97a109a88b193deadc5b9842fd962f713350",
+			"digest": "sha256:76d9c3cecf8fd26c8477d2e17009753f8cbc8bdf5b3b46b30d07f058684e84d7",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6594,9 +6594,9 @@
 					"name": "scenarios-focus-elements-component-badge",
 					"route": "scenarios/focus-elements?component=badge",
 					"status": "changed",
-					"hash": "sha256:0ba1ac178f25ed959b8c42dec9c7135636f42fde18ee5c429ce27ae9a3440708",
-					"diffPixels": 1810,
-					"diffRatio": 0.079386,
+					"hash": "sha256:8a5f1b364c4f2c780ddb43508907de43ea2c7cfa1bc3daac874d2a361f12cd30",
+					"diffPixels": 2046,
+					"diffRatio": 0.089737,
 					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-badge.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-badge.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-badge.diff.png"
