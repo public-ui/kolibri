@@ -28,6 +28,7 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
@@ -54,6 +55,8 @@ import {
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';
+
+const checkboxBem = bem.forBlock('kol-input-checkbox');
 
 /**
  * The **Checkbox** input type generates a rectangular box that can be activated and deactivated by clicking. When activated, a colored checkmark is shown inside the box.
@@ -494,11 +497,11 @@ export class KolInputCheckbox
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-checkbox', {
-							'kol-input-checkbox--checked': checked,
-							'kol-input-checkbox--indeterminate': indeterminate,
-							[`kol-input-checkbox--variant-${variant}`]: true,
-							[`kol-input-checkbox--label-align-${this.getRenderProp('labelAlign')}`]: true,
+						class: checkboxBem({
+							checked,
+							indeterminate,
+							[`variant-${variant}`]: true,
+							[`label-align-${this.getRenderProp('labelAlign')}`]: true,
 						}),
 						accessKey,
 						shortKey,
@@ -508,10 +511,10 @@ export class KolInputCheckbox
 					})}
 				>
 					<FieldControlFC
-						class={clsx('kol-input-checkbox__field-control', {
-							'kol-input-checkbox__field-control--checked': checked,
-							'kol-input-checkbox__field-control--indeterminate': indeterminate,
-							[`kol-input-checkbox__field-control--variant-${variant}`]: true,
+						class={checkboxBem('field-control', {
+							checked,
+							indeterminate,
+							[`variant-${variant}`]: true,
 						})}
 						id={this.id}
 						label={this.getRenderProp('label')}
