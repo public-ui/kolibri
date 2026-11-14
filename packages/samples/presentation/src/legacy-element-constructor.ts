@@ -10,7 +10,7 @@
 (function () {
 	if (typeof window !== 'undefined' && window.Reflect !== undefined && window.customElements !== undefined) {
 		const base = HTMLElement;
-		window.HTMLElement = function () {
+		window.HTMLElement = function (): HTMLElement {
 			return Reflect.construct(base, [], this.constructor);
 		};
 		HTMLElement.prototype = base.prototype;
