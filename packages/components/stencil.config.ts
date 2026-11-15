@@ -174,6 +174,11 @@ if (process.env.NODE_ENV === 'production') {
 			excludeComponents: EXCLUDE_TAGS,
 			transformTag: true,
 		}),
+		/*
+		 * Solid and Svelte have no official Stencil output target: Solid generates through the
+		 * @public-ui/stencil-solid-output-target fork, Svelte through a community target without tag
+		 * name transformation.
+		 */
 		solidOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,

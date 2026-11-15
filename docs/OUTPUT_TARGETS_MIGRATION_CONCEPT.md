@@ -4,6 +4,16 @@
 **Umfang:** packages/components (Stencil-Build), packages/adapters/\*, Doku und Migration-Guide
 **Ziel:** Die vier eigenen Forks der Framework-Output-Targets werden durch die offiziellen Stencil-Pakete ersetzt. Das TagName-Replace-Feature (`transformTagName`) bleibt dabei als öffentliche Funktion erhalten und wird auf die native Stencil-API (`setTagTransformer`/`transformTag`) umgestellt.
 
+## Umsetzungsstand
+
+| Phase | Pull Request | Umsetzung                                                                                                                                                                                                                                                          |
+| ----- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1     | #11586       | `bootstrap` registriert über `setTagTransformer`, begrenzt auf `kol-*`; die `Kol*Tag`-Konstanten tragen dauerhaft `kol-*`.                                                                                                                                         |
+| 2     | #11599       | React über `@stencil/react-output-target` und `dist-custom-elements`; der Codemod `scripts/react-codemod.mjs` löst den Tag beim ersten Render auf; den Zustand der Bundle-Kopien teilt `core/shared-state.ts`.                                                     |
+| 3     | #11604       | Angular über `@stencil/angular-output-target` mit `outputType: 'component'` (Lazy-Loader); der Codemod `scripts/angular-codemod.mjs` bringt die Vorlagen aus `scripts/angular-component-lib` auf (Runtime-Re-Hosting, Entscheidungspunkt 2).                       |
+| 4     | #11605       | Vue über `@stencil/vue-output-target` mit `transformTag: true` (Lazy-Loader); der Codemod `scripts/vue-codemod.mjs` bindet die Proxies an das native `transformTag`.                                                                                               |
+| 5     | #11606       | Solid und Svelte bleiben bei ihren Targets (Abschnitt 3.4); die Forks für Angular, React und Vue sind im Build nicht mehr eingebunden. Die Deprecation der Fork-Pakete auf npm, die Feature-Doku auf public-ui.github.io und der Release-Zug folgen mit Release 5. |
+
 ---
 
 ## 1. Ausgangslage

@@ -23,14 +23,11 @@
   visual tests of all themes.
 - **Breaking Changes (v5):**
   - v5.0.0-alpha.7 is not production-ready (alpha channel)
-  - Multiple output-target packages block v5 upgrade:
-    - @public-ui/stencil-angular-output-target
-    - @public-ui/stencil-react-output-target
-    - @public-ui/stencil-solid-output-target
-    - @public-ui/stencil-vue-output-target
+  - The fork @public-ui/stencil-solid-output-target blocks the v5 upgrade; the official Angular,
+    React and Vue output targets accept @stencil/core 5
   - @stencil/playwright requires >=4.13.0, conflicts with 5.x
 - **Risk:** VERY HIGH – Core platform dependency
-- **Recommendation:** Stay on 4.x until the output targets support v5
+- **Recommendation:** Stay on 4.x until the Solid output target supports v5
 - **Effort:** Would require coordinating 4+ downstream packages
 
 ### 2. **eslint** | 9.39.4 → 10.1.0
@@ -247,13 +244,10 @@
 
 ```
 1. @stencil/core@5 BLOCKED by:
-   - @public-ui/stencil-angular-output-target (requires >=4)
-   - @public-ui/stencil-react-output-target (requires >=4)
    - @public-ui/stencil-solid-output-target (requires >=2.17.2)
-   - @public-ui/stencil-vue-output-target (requires >=4)
    - @stencil/playwright (requires >=4.13.0)
    ACTION: Stay on the latest 4.x (see Critical #1);
-   v5 blocked until output-targets are v5-compatible
+   v5 blocked until the Solid output target is v5-compatible
 
 2. eslint@10.0.0 blocks:
    - @stencil-community/eslint-plugin (requires ^8.0.0 || ^9.0.0)
