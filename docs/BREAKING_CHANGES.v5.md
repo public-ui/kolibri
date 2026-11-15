@@ -514,3 +514,17 @@ import { defineCustomElements } from '@public-ui/components/loader';
 
 await register(DEFAULT, defineCustomElements, { transformTagName: (tagName) => `${tagName}-app` });
 ```
+
+## Vue adapter is generated with the official Stencil output target
+
+`@public-ui/vue` is generated with the official
+[`@stencil/vue-output-target`](https://www.npmjs.com/package/@stencil/vue-output-target) instead of
+the `@public-ui/stencil-vue-output-target` fork. The registration through the lazy loader is
+unchanged.
+
+- `@public-ui/vue` requires Vue 3.4.38 or newer (peer range `^3.4.38`), the minimum of the Stencil Vue
+  runtime.
+- The components resolve their tag on every render through the Stencil runtime. `setTagNameTransformer`
+  from the adapter registers the transformer with it, the same registration as
+  `bootstrap({ transformTagName })`, so one of the two is enough. Register it before `register`/`bootstrap`
+  runs the loader.
