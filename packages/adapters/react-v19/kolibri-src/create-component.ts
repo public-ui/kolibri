@@ -1,9 +1,11 @@
 import React from 'react';
+import { getRegisteredTagNameTransformer } from '@public-ui/components';
 import {
 	createComponent as createReactComponent,
 	type StencilReactComponent as BaseStencilReactComponent,
 } from '@stencil/react-output-target/runtime';
 import type { EventName } from '@lit/react';
+import { getTagTransformer, setTagTransformer as clientSetTagTransformer } from '../src/tag-transformer';
 
 type EventNames = Record<string, EventName | string>;
 type ComponentArgs<I extends HTMLElement, E extends EventNames, C, R extends keyof C> = Parameters<
@@ -41,9 +43,22 @@ export const createComponent = <I extends HTMLElement, E extends EventNames, C, 
 	const { transformTag, tagName, ...options } = args;
 	let component: ReturnType<typeof createReactComponent<I, E, C, R>> | undefined;
 
+	/*
+	 * `bootstrap({ transformTagName })` registers through the root entry, a runtime copy this
+	 * adapter does not see. The shared state carries the transformer, and the generated copy is
+	 * seeded with it, so either registration covers the proxies and their inner rendering.
+	 */
+	const resolveTagName = (): string => {
+		const registered = getRegisteredTagNameTransformer();
+		if (registered && !getTagTransformer()) {
+			clientSetTagTransformer(registered);
+		}
+		return transformTag ? transformTag(tagName) : tagName;
+	};
+
 	return React.forwardRef(
 		(props: Parameters<StencilReactComponent<I, E, C, R>>[0], ref: React.Ref<I>) => {
-			component ??= createReactComponent({ ...options, tagName: transformTag ? transformTag(tagName) : tagName });
+			component ??= createReactComponent({ ...options, tagName: resolveTagName() });
 			const setProps = Object.fromEntries(Object.entries(props).filter(([, value]) => value !== undefined));
 			return React.createElement(component, {
 				...setProps,
