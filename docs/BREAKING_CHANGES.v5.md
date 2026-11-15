@@ -469,3 +469,48 @@ await bootstrap(DEFAULT, []);
   requires React 18 or 19. React 19 applications use `@public-ui/react-v19`.
 - The `StyleReactProps` type export of `@public-ui/react-v19` is removed. The props of the React
   components accept `class` and CSS custom properties in `style`.
+
+## Angular adapters are generated with the official Stencil output target
+
+`@public-ui/angular-v20` and `@public-ui/angular-v21` are generated with the official
+[`@stencil/angular-output-target`](https://www.npmjs.com/package/@stencil/angular-output-target)
+instead of the `@public-ui/stencil-angular-output-target` fork. The components stay standalone
+components and the registration through the lazy loader (`register(DEFAULT, defineCustomElements)`)
+is unchanged.
+
+### Required inputs
+
+Props that a KoliBri component requires are required Angular inputs, for example `_label`. A template
+that omits one no longer compiles (`NG8008`). Bind every required input.
+
+**Before (v4):**
+
+```html
+<kol-button></kol-button>
+```
+
+**After (v5):**
+
+```html
+<kol-button _label="Save"></kol-button>
+```
+
+### Methods
+
+The component methods (`focus()`, `click()`, `getValue()`, …) are callable on the Angular component,
+for example through `@ViewChild`.
+
+### Tag name transformation
+
+`setTagNameTransformer` from the adapter registers the transformer with the Stencil runtime, the same
+registration as `bootstrap({ transformTagName })`, so one of the two is enough. Register it before
+`register`/`bootstrap` runs the loader and before the first component renders. Angular fixes the
+selector of a component at compile time, so under a transformer the KoliBri element with the
+transformed tag renders inside the `kol-*` host of the Angular component.
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await register(DEFAULT, defineCustomElements, { transformTagName: (tagName) => `${tagName}-app` });
+```
