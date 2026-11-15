@@ -33,6 +33,7 @@ The central configuration (`.stylelintrc.json` in the root) contains:
 - **Rules**:
   - BEM CSS naming conventions
   - SCSS-specific rules
+  - No `text-overflow: ellipsis`: truncated text cannot be read completely at 200 % text size, 320 px width or with increased text spacing (WCAG 1.4.4, 1.4.10, 1.4.12). Let the text wrap instead.
   - CSS property ordering by groups:
     - Custom Properties (`--*`)
     - Composite (Transform, Opacity, etc.)
