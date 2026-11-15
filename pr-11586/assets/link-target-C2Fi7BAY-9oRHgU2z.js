@@ -1,1 +1,0 @@
-import"./index-CTXvav5z-Bno15dgS.js";import{D as e,s as t}from"./props-from-config-DNNvu8cb-B13gK0JH.js";var n=t(`target`,``,e);export{n as t};
