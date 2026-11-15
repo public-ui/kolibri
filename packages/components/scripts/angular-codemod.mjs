@@ -38,7 +38,6 @@ const rewriteComponent = (_match, tagName, inputs, className, elementType) => {
       <ng-content></ng-content>
     </ng-template>\`,
   imports: [NgIf, NgTemplateOutlet, ReplaceTagDirective],
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [${inputs}],
   providers: [{ provide: StencilProxyComponent, useExisting: forwardRef(() => ${className}) }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
