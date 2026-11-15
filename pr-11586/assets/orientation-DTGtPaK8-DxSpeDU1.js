@@ -1,1 +1,0 @@
-import"./index-CTXvav5z-CjnTwRb0.js";import{D as e,s as t}from"./props-from-config-DNNvu8cb-BTvYM8ri.js";var n=[`horizontal`,`vertical`];function r(t){let r=e(t);if(n.includes(r))return r;throw Error(`Invalid orientation: ${r}`)}var i=t(`orientation`,`horizontal`,r);export{i as n,r as t};
