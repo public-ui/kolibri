@@ -502,11 +502,11 @@ for example through `@ViewChild`.
 
 ### Tag name transformation
 
-`setTagNameTransformer` from the adapter registers the transformer with the Stencil runtime, the same
-registration as `bootstrap({ transformTagName })`, so one of the two is enough. Register it before
-`register`/`bootstrap` runs the loader and before the first component renders. Angular fixes the
-selector of a component at compile time, so under a transformer the KoliBri element with the
-transformed tag renders inside the `kol-*` host of the Angular component.
+The registration is the one described in the chapter above: `setTagNameTransformer` from the
+adapter or `transformTagName` with `register`/`bootstrap` — one registration is enough. Register it
+before `register`/`bootstrap` runs the loader and before the first component renders. Angular
+fixes the selector of a component at compile time, so under a transformer the KoliBri element
+with the transformed tag renders inside the `kol-*` host of the Angular component.
 
 ```ts
 import { register } from '@public-ui/components';
