@@ -57,7 +57,7 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"vue": "3.x"
+		"vue": "^3.4.38"
 	},
 	"sideEffects": false,
 	"type": "module",
@@ -73,5 +73,8 @@
 	"types": "./dist/index.d.ts",
 	"files": [
 		"dist"
-	]
+	],
+	"dependencies": {
+		"@stencil/vue-output-target": "0.15.0"
+	}
 }

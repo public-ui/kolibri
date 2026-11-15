@@ -1,7 +1,6 @@
 import { promises as fsPromises } from 'fs';
 
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
-import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
 import { svelteOutputTarget } from '@revolist/svelte-output-target';
 import { postcss } from '@stencil-community/postcss';
 import { angularOutputTarget } from '@stencil/angular-output-target';
@@ -9,6 +8,7 @@ import type { Config } from '@stencil/core';
 import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 import { version as KOLIBRI_VERSION } from './package.json' assert { type: 'json' };
 
 const TAGS = [
@@ -189,8 +189,9 @@ if (process.env.NODE_ENV === 'production') {
 		vueOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/vue/src/index.ts',
 			includeDefineCustomElements: false,
+			proxiesFile: '../adapters/vue/src/index.ts',
+			transformTag: true,
 		}),
 		{
 			externalRuntime: false,
