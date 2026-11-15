@@ -3,6 +3,7 @@ export * from './components.d';
 export { setCurrentLocation } from './components/link/ariaCurrentService';
 export { ToasterService } from './components/toaster/toaster';
 export { bootstrap, isInitialized, register } from './core/bootstrap';
+export { getRegisteredTagNameTransformer, registerTagNameTransformer } from './core/tag-transformer';
 export * from './enums/bund';
 export * from './kolibri';
 export { KoliBri, KoliBriDevHelper } from './schema';
