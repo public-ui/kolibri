@@ -1,0 +1,72 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "13 changed – 0 of 13 approved, review pending",
+	"computedAt": "2026-11-15T10:05:31.447Z",
+	"pr": 11610,
+	"head": "f15529c39fae2ea6053fa31b78d7522bc654a805",
+	"digest": "sha256:7a74bb068805afe39513ed42ccde6e346ec3b9c137670c736969e088b2846e8f",
+	"counts": {
+		"changes": 13,
+		"open": 13,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputFile": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputFile": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputFile": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputFile": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputFile": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/select-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/select-basic-noColumns--label-salutation-icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/select-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
