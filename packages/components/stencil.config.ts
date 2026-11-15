@@ -1,10 +1,10 @@
 import { promises as fsPromises } from 'fs';
 
-import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
 import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
 import { svelteOutputTarget } from '@revolist/svelte-output-target';
 import { postcss } from '@stencil-community/postcss';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 import type { Config } from '@stencil/core';
 import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
 import { reactOutputTarget } from '@stencil/react-output-target';
@@ -154,13 +154,15 @@ if (process.env.NODE_ENV === 'production') {
 	outputTargets = outputTargets.concat([
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v20/src/components.ts',
+			excludeComponents: EXCLUDE_TAGS,
+			outputType: 'component',
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v21/src/components.ts',
+			excludeComponents: EXCLUDE_TAGS,
+			outputType: 'component',
 		}),
 		reactOutputTarget({
 			outDir: '../adapters/react/src',

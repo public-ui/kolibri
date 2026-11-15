@@ -46,16 +46,16 @@ importers:
     devDependencies:
       '@angular/common':
         specifier: 20.3.34
-        version: 20.3.34(@angular/core@20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
+        version: 20.3.34(@angular/core@20.3.34(@angular/compiler@20.3.34)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
       '@angular/compiler':
-        specifier: 20.3.20
-        version: 20.3.20
+        specifier: 20.3.34
+        version: 20.3.34
       '@angular/compiler-cli':
         specifier: 20.3.34
-        version: 20.3.34(@angular/compiler@20.3.20)(typescript@5.9.3)
+        version: 20.3.34(@angular/compiler@20.3.34)(typescript@5.9.3)
       '@angular/core':
-        specifier: 20.3.20
-        version: 20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)
+        specifier: 20.3.34
+        version: 20.3.34(@angular/compiler@20.3.34)(rxjs@7.8.2)(zone.js@0.16.3)
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../../components
@@ -79,16 +79,16 @@ importers:
     devDependencies:
       '@angular/common':
         specifier: 21.2.25
-        version: 21.2.25(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
+        version: 21.2.25(@angular/core@21.2.25(@angular/compiler@21.2.25)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
       '@angular/compiler':
-        specifier: 21.2.12
-        version: 21.2.12
+        specifier: 21.2.25
+        version: 21.2.25
       '@angular/compiler-cli':
         specifier: 21.2.25
-        version: 21.2.25(@angular/compiler@21.2.12)(typescript@5.9.3)
+        version: 21.2.25(@angular/compiler@21.2.25)(typescript@5.9.3)
       '@angular/core':
-        specifier: 21.2.12
-        version: 21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3)
+        specifier: 21.2.25
+        version: 21.2.25(@angular/compiler@21.2.25)(rxjs@7.8.2)(zone.js@0.16.3)
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../../components
@@ -397,9 +397,6 @@ importers:
       '@public-ui/icons':
         specifier: workspace:*
         version: link:../icons
-      '@public-ui/stencil-angular-output-target':
-        specifier: 0.9.0
-        version: 0.9.0(@stencil/core@4.45.3)
       '@public-ui/stencil-solid-output-target':
         specifier: 0.2.0
         version: 0.2.0(@stencil/core@4.45.3)
@@ -415,6 +412,9 @@ importers:
       '@stencil-community/postcss':
         specifier: 2.2.0
         version: 2.2.0(@stencil/core@4.45.3)
+      '@stencil/angular-output-target':
+        specifier: 1.6.0
+        version: 1.6.0(@stencil/core@4.45.3)
       '@stencil/core':
         specifier: 4.45.3
         version: 4.45.3
@@ -1881,38 +1881,21 @@ packages:
       typescript:
         optional: true
 
-  '@angular/compiler@20.3.20':
-    resolution: {integrity: sha512-wLzXAtBdRH7LsgHSUmeGqFpkiGutr/Y8cpq4rhcX1J/OHQIWgFTW6+3LltMpKSfJn4wqHj8IIWc+TqrPHfkhKg==}
-    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
-
-  '@angular/compiler@21.2.12':
-    resolution: {integrity: sha512-246iBwMAVGzrYPqu/Wwzb9L/kt+dkT12Hllr/dYZu6aHeIxaHPRZoPBKSweAgOPXeOl+q+nlPtK34glsMb1CRw==}
+  '@angular/compiler@20.3.34':
+    resolution: {integrity: sha512-8agPW384c/JER1ersPTmJJfcCOnlYcBbdj0MYRxNdiYe+7gtnspF3ORuJmxqCEpMS17AljSmk2skwUcYnHB6xA==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
   '@angular/compiler@21.2.25':
     resolution: {integrity: sha512-jR/TiwrHeLEOPT3fVp9q14UkCsBNni8xUIfof8F7JZW4Ze7/LpTLI2OWxajckWmR0+kCKam5RhWeFd5m/F553Q==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
-  '@angular/core@20.3.20':
-    resolution: {integrity: sha512-LwUFAGGlqFiu81Umf+oFmAS+swHR9xumNVradrFkDpmy4zkhveO2N2L4QUIm6ZcV0YBkNyoIa/IrJqyVAmwdWQ==}
+  '@angular/core@20.3.34':
+    resolution: {integrity: sha512-xOvSmGoao3SVPz//R7zTrq7+WdrIGi+WNpAdxJEvJJXuSpLGS3kSUqukjY4kOMochg2v0NCEPIdCyH+yPs8JSw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
     peerDependencies:
-      '@angular/compiler': 20.3.20
+      '@angular/compiler': 20.3.34
       rxjs: ^6.5.3 || ^7.4.0
       zone.js: ~0.15.0
-    peerDependenciesMeta:
-      '@angular/compiler':
-        optional: true
-      zone.js:
-        optional: true
-
-  '@angular/core@21.2.12':
-    resolution: {integrity: sha512-wcD6tzE30nwg58KmAU19347Jf/1F/vFg2CEd9Qcu5cA1Z4s3umzvaqs/7988ne4HaS4iJEpvTbRvGss7EYZEfA==}
-    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
-    peerDependencies:
-      '@angular/compiler': 21.2.12
-      rxjs: ^6.5.3 || ^7.4.0
-      zone.js: ~0.15.0 || ~0.16.0
     peerDependenciesMeta:
       '@angular/compiler':
         optional: true
@@ -4791,11 +4774,6 @@ packages:
   '@protobufjs/utf8@1.1.2':
     resolution: {integrity: sha512-b1UQwcEZ4yCnMCD8DAL1VlbvBJE9/IX4FTIp7BG1xYpf29SLazLSrqUkj4w7Y5y7cCVP6E5tcqqcI0xemPkHug==}
 
-  '@public-ui/stencil-angular-output-target@0.9.0':
-    resolution: {integrity: sha512-kmF0p9OqBm/ZEUXS9fu+eTyjcLi1Ryv8/bXFlGu62M/xmIoY8yofUuqxuSA6eEi6gqyOL3CkugDeIXwL+upfFw==}
-    peerDependencies:
-      '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
-
   '@public-ui/stencil-solid-output-target@0.2.0':
     resolution: {integrity: sha512-w06wR57l0i3gMY4QoxA8AuoIYo9tWXdU+1SRa4kNFiZXgLZzeFg0/WYX3aNLbOybreN6E1iNnF6wJO5ncE1yHA==}
     peerDependencies:
@@ -5561,6 +5539,11 @@ packages:
     resolution: {integrity: sha512-PuPdjqgF6HdvSLwS6fpLf1TRzd3bd6zqpsICCUA0u9sxPnwrsIpx1xYyA/K9hSWrmyUg0WhHPvkX9k26N5DCnw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0 || >=4.0.0'
+
+  '@stencil/angular-output-target@1.6.0':
+    resolution: {integrity: sha512-jCmT75nbjqeqoXGlDc5BErI+i5LWHmedR59+jQQNjOWybu6AUOlfyHtuVVnA3Ru3desyLqhdj2wk1iOoTfmzhA==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0 || >=3 || >=4.0.0 || ^5.0.0 || >=5.0.0-beta.18'
 
   '@stencil/core@4.45.3':
     resolution: {integrity: sha512-QcQv3786blBPbINSIXXqpufsQGJosp++GCjcPpSwcxks2/UtVV2ILggpGG4SSd+AteSbMv+8ewpGea00nGqOEw==}
@@ -14609,15 +14592,9 @@ snapshots:
       - chokidar
       - supports-color
 
-  '@angular/common@20.3.34(@angular/core@20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
+  '@angular/common@20.3.34(@angular/core@20.3.34(@angular/compiler@20.3.34)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
     dependencies:
-      '@angular/core': 20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)
-      rxjs: 7.8.2
-      tslib: 2.8.1
-
-  '@angular/common@21.2.25(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
-    dependencies:
-      '@angular/core': 21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3)
+      '@angular/core': 20.3.34(@angular/compiler@20.3.34)(rxjs@7.8.2)(zone.js@0.16.3)
       rxjs: 7.8.2
       tslib: 2.8.1
 
@@ -14627,28 +14604,12 @@ snapshots:
       rxjs: 7.8.2
       tslib: 2.8.1
 
-  '@angular/compiler-cli@20.3.34(@angular/compiler@20.3.20)(typescript@5.9.3)':
+  '@angular/compiler-cli@20.3.34(@angular/compiler@20.3.34)(typescript@5.9.3)':
     dependencies:
-      '@angular/compiler': 20.3.20
+      '@angular/compiler': 20.3.34
       '@babel/core': 7.29.7
       '@jridgewell/sourcemap-codec': 1.6.0
       chokidar: 4.0.3
-      convert-source-map: 1.9.0
-      reflect-metadata: 0.2.2
-      semver: 7.8.5
-      tslib: 2.8.1
-      yargs: 18.2.0
-    optionalDependencies:
-      typescript: 5.9.3
-    transitivePeerDependencies:
-      - supports-color
-
-  '@angular/compiler-cli@21.2.25(@angular/compiler@21.2.12)(typescript@5.9.3)':
-    dependencies:
-      '@angular/compiler': 21.2.12
-      '@babel/core': 7.29.7
-      '@jridgewell/sourcemap-codec': 1.6.0
-      chokidar: 5.0.0
       convert-source-map: 1.9.0
       reflect-metadata: 0.2.2
       semver: 7.8.5
@@ -14675,11 +14636,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@angular/compiler@20.3.20':
-    dependencies:
-      tslib: 2.8.1
-
-  '@angular/compiler@21.2.12':
+  '@angular/compiler@20.3.34':
     dependencies:
       tslib: 2.8.1
 
@@ -14687,20 +14644,12 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@angular/core@20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)':
+  '@angular/core@20.3.34(@angular/compiler@20.3.34)(rxjs@7.8.2)(zone.js@0.16.3)':
     dependencies:
       rxjs: 7.8.2
       tslib: 2.8.1
     optionalDependencies:
-      '@angular/compiler': 20.3.20
-      zone.js: 0.16.3
-
-  '@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3)':
-    dependencies:
-      rxjs: 7.8.2
-      tslib: 2.8.1
-    optionalDependencies:
-      '@angular/compiler': 21.2.12
+      '@angular/compiler': 20.3.34
       zone.js: 0.16.3
 
   '@angular/core@21.2.25(@angular/compiler@21.2.25)(rxjs@7.8.2)(zone.js@0.16.3)':
@@ -17488,10 +17437,6 @@ snapshots:
 
   '@protobufjs/utf8@1.1.2': {}
 
-  '@public-ui/stencil-angular-output-target@0.9.0(@stencil/core@4.45.3)':
-    dependencies:
-      '@stencil/core': 4.45.3
-
   '@public-ui/stencil-solid-output-target@0.2.0(@stencil/core@4.45.3)':
     dependencies:
       '@stencil/core': 4.45.3
@@ -18019,6 +17964,10 @@ snapshots:
     dependencies:
       '@stencil/core': 4.45.3
       postcss: 8.4.49
+
+  '@stencil/angular-output-target@1.6.0(@stencil/core@4.45.3)':
+    dependencies:
+      '@stencil/core': 4.45.3
 
   '@stencil/core@4.45.3':
     optionalDependencies:
