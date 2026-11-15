@@ -522,9 +522,24 @@ await register(DEFAULT, defineCustomElements, { transformTagName: (tagName) => `
 the `@public-ui/stencil-vue-output-target` fork. The registration through the lazy loader is
 unchanged.
 
-- `@public-ui/vue` requires Vue 3.4.38 or newer (peer range `^3.4.38`), the minimum of the Stencil Vue
-  runtime.
-- The components resolve their tag on every render through the Stencil runtime. `setTagNameTransformer`
-  from the adapter registers the transformer with it, the same registration as
-  `bootstrap({ transformTagName })`, so one of the two is enough. Register it before `register`/`bootstrap`
-  runs the loader.
+### Vue 3.4.38 or newer
+
+`@public-ui/vue` requires Vue 3.4.38 or newer (peer range `^3.4.38`), the minimum of the Stencil
+Vue runtime. Applications on Vue 3.0 to 3.4 stay on `@public-ui/vue` of KoliBri 4 or upgrade Vue
+first.
+
+### Tag name transformation
+
+The components resolve their tag on every render through the Stencil runtime. The registration is
+the one described in the chapter above: `setTagNameTransformer` from the adapter or
+`transformTagName` with `register`/`bootstrap` — one registration is enough. Register it before
+`register`/`bootstrap` runs the loader.
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+import { setTagNameTransformer } from '@public-ui/vue';
+
+setTagNameTransformer((tagName) => `${tagName}-app`);
+await register(DEFAULT, defineCustomElements);
+```
