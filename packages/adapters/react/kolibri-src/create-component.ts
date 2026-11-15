@@ -12,8 +12,8 @@ type ComponentArgs<I extends HTMLElement, E extends EventNames, C, R extends key
 
 /**
  * The props of the generated proxies: the props of the Stencil React runtime widened by the `class`
- * attribute and CSS custom properties in `style`. The runtime's `HTMLAttributes` typing covers
- * neither, while the fork-based proxies accepted both, so existing consumers keep compiling.
+ * attribute and CSS custom properties in `style`, which the runtime's `HTMLAttributes` typing does
+ * not cover and which the proxies accept.
  */
 export type StencilReactComponent<I extends HTMLElement, E extends EventNames, C, R extends keyof C = never> =
 	React.FunctionComponent<
