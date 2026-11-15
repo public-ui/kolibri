@@ -312,6 +312,77 @@ import type { KoliBriTableHeaders } from '@public-ui/components';
 const headers: KoliBriTableHeaders = { horizontal: [[{ key: 'name', label: 'Name' }]] };
 ```
 
+## Framework adapters are generated with the official Stencil output targets
+
+KoliBri 4 generated the React, Angular and Vue adapters through own forks of the Stencil output
+targets (`@public-ui/stencil-{react,angular,vue}-output-target`), because the official targets
+could not transform tag names. Stencil now provides the tag name transformation natively
+(`setTagTransformer`), so v5 generates all three adapters with the official targets and the forks
+are retired. The framework chapters below describe the per-framework changes; everything that
+changes for every application follows here.
+
+See `docs/OUTPUT_TARGETS_MIGRATION_CONCEPT.md` for the background and the decisions.
+
+### Tag name transformation
+
+The untyped `transformTagName` option of the lazy loader is removed:
+`defineCustomElements(window, { transformTagName })` has no effect anymore. Register the
+transformer with `bootstrap({ transformTagName })` or with `setTagNameTransformer` from your
+adapter — one registration is enough, the adapter and `bootstrap` share it. Register it before the
+first KoliBri element is defined or rendered; the registration limits the transformation to `kol-*`
+tags and warns when it arrives after components were defined.
+
+**Before (v4), option on the loader:**
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await register(DEFAULT, defineCustomElements);
+defineCustomElements(window, { transformTagName: (tagName) => `${tagName}-app` });
+```
+
+**After (v5), option on `register`/`bootstrap` (or `setTagNameTransformer` from the adapter):**
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await register(DEFAULT, defineCustomElements, { transformTagName: (tagName) => `${tagName}-app` });
+```
+
+A transformer passed to `register`/`bootstrap` keeps working — it now registers with the native
+Stencil runtime instead of rewriting the tag constants.
+
+### The `Kol*Tag` constants keep their `kol-*` value
+
+KoliBri 4 rewrote the exported `Kol*Tag` constants (for example `KolButtonTag`) when a transformer
+was registered, so the constants carried the transformed names. The constants keep their default
+value permanently now; the transformation runs inside the Stencil runtime. Code that addresses
+elements by a tag constant resolves the name through `transformTag`:
+
+**Before (v4):**
+
+```ts
+import { KolButtonTag } from '@public-ui/components';
+
+document.querySelector(KolButtonTag); // 'kol-button-app' after the registration
+```
+
+**After (v5):**
+
+```ts
+import { KolButtonTag, transformTag } from '@public-ui/components';
+
+document.querySelector(transformTag(KolButtonTag)); // 'kol-button-app'
+```
+
+### Adapter support
+
+React, Angular and Vue support the tag name transformation as before. Solid, Svelte and the hydrate
+package do not support it officially (see the concept document); `setTagNameTransformer` of the
+Solid adapter is untested.
+
 ## React adapters register through the custom elements build
 
 `@public-ui/react` and `@public-ui/react-v19` are generated with the official
@@ -355,11 +426,11 @@ defineKolToastContainer();
 
 ### Tag name transformation
 
-`defineCustomElements(window, { transformTagName })` is removed. Register the transformer before
-the first render and before `defineKolToastContainer` with `setTagNameTransformer` from the adapter
-or as `transformTagName` with `bootstrap` — one of the two is enough, each covers the React
-components and the tags the root entry creates (the toast container of the `ToasterService`).
-The registration limits the transformation to `kol-*` tags.
+The registration is the one described in the chapter above: `setTagNameTransformer` from the
+adapter or `transformTagName` with `bootstrap` — one registration covers the React components and
+the tags the root entry creates (the toast container of the `ToasterService`), because the adapter
+bridge and `bootstrap` share it. Register it before the first render and before
+`defineKolToastContainer`.
 
 ```ts
 import { bootstrap } from '@public-ui/components';
