@@ -141,15 +141,16 @@ Zwei Punkte lassen sich mit den offiziellen Targets nicht ohne Weiteres abbilden
 
 ### 3.4 Adapter im Einzelnen
 
-| Adapter                                   | Ziel                                                                                                       | Tag-Replacement                        |
-| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| React 18 (`@public-ui/react`)             | offizielles Target + Codemod (Renderzeit-Auflösung), Umstieg auf `dist-custom-elements`                    | vollständig, wie heute                 |
-| React 19 (`@public-ui/react-v19`)         | dito; perspektivisch Zusammenführung mit react, da die neue Runtime 18 und 19 abdeckt                      | vollständig                            |
-| Angular v20/v21                           | offizielles Target + eigene `angular-component-lib`-Vorlagen und Proxy-Codemod                             | vollständig, Runtime statt Postinstall |
-| Vue                                       | offizielles Target, `transformTag: true`, Lazy-Pfad über Loader-Plugin                                     | vollständig (offiziell)                |
-| Solid                                     | Fork vorerst weiter (kein offizielles Target); mittelfristig eigenes Target ins Repo holen oder upstreamen | vollständig (Fork)                     |
-| Svelte                                    | Community-Target ohne Tag-Replacement; Lücke dokumentieren, Upstream-Issue zu `svelte:element` prüfen      | **Lücke wie heute**                    |
-| Preact, Vaadin, react-standalone, hydrate | ohne Transformer wie heute weiter; hydrate bleibt Basis für späteres `@stencil/ssr`-Angebot                | unverändert                            |
+| Adapter                           | Ziel                                                                                                       | Tag-Replacement                        |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| React 18 (`@public-ui/react`)     | offizielles Target + Codemod (Renderzeit-Auflösung), Umstieg auf `dist-custom-elements`                    | vollständig, wie heute                 |
+| React 19 (`@public-ui/react-v19`) | dito; perspektivisch Zusammenführung mit react, da die neue Runtime 18 und 19 abdeckt                      | vollständig                            |
+| Angular v20/v21                   | offizielles Target + eigene `angular-component-lib`-Vorlagen und Proxy-Codemod                             | vollständig, Runtime statt Postinstall |
+| Vue                               | offizielles Target, `transformTag: true`, Lazy-Pfad über Loader-Plugin                                     | vollständig (offiziell)                |
+| Solid                             | Fork vorerst weiter (kein offizielles Target); mittelfristig eigenes Target ins Repo holen oder upstreamen | **offiziell nicht unterstützt**        |
+| Svelte                            | Community-Target ohne Tag-Replacement; Upstream-Issue zu `svelte:element` prüfen                           | **offiziell nicht unterstützt**        |
+| Preact, Vaadin, react-standalone  | ohne Transformer wie heute weiter                                                                          | unverändert                            |
+| hydrate                           | bleibt Basis für ein späteres `@stencil/ssr`-Angebot                                                       | **offiziell nicht unterstützt**        |
 
 ---
 
@@ -202,7 +203,7 @@ Jede Phase endet mit `pnpm format`, `pnpm lint`, `pnpm test` und einem grünen v
 - **Registrierungswechsel bei React:** Lazy-Loader hin zu per-Komponenten-Define ändert Ladeverhalten und Bundle-Zuschnitt. Getrennt messen (Bundle-Analyse, Performance-Sample) und gegebenenfalls in einem eigenen Schritt vor Phase 2 ausrollen.
 - **`@lit/react`-Semantik:** Props mit Unterstrich-Präfix, Event-Namen und Ref-Weitergabe gegen die goldenen Samples testen; das `className`-Merging der offiziellen Runtime ist neu.
 - **Doppeltransformation im Übergang:** Core-Mutation und native Transformation dürfen nie gleichzeitig aktiv sein; Phase 1 und 2 daher nacheinander und mit Tests absichern.
-- **Solid und Svelte bleiben Sonderfälle:** Kein offizielles Target beziehungsweise kein Tag-Replacement. Beides ist heute schon so, die Migration verschärft es nicht, muss es aber dokumentieren.
+- **Solid, Svelte und hydrate unterstützen die Tag-Namen-Transformation offiziell nicht.** Solid und Svelte haben kein offizielles Target; `setTagNameTransformer` des Solid-Adapters ist ungetestet.
 - **Upstream-Kopplung:** Die `transformTag`-Option der Targets ist relativ jung (Angular-Patch-Script, React-eager-Binding). Vor dem Abschluss von Phase 2 bis 4 die verwendeten Minor-Versionen pinnen und Änderungen im Monorepo verfolgen.
 
 ## 6. Entscheidungspunkte
