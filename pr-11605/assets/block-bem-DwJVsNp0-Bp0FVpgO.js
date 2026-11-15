@@ -1,0 +1,1 @@
+import"./index-B8zjBjzi-B4SIlz-2.js";import{C as e}from"./index-DQ-XPPSz.js";var t=new Map;function n(n){let r=t.get(n);return r||(r=e.forBlock(n),t.set(n,r)),r}export{n as t};
