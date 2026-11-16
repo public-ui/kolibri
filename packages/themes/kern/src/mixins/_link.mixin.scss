@@ -25,7 +25,7 @@
 
 			color: var(--kern-color-action-default);
 			display: inline-flex;
-			align-items: flex-start;
+			align-items: center;
 			text-decoration-line: underline;
 			text-decoration-skip-ink: auto;
 			text-decoration-style: solid;
@@ -38,7 +38,8 @@
 
 				&:active,
 				&:hover {
-					.kol-span__label {
+					.kol-span__label,
+					.kol-span--hide-label {
 						text-decoration-line: underline;
 						text-decoration-skip-ink: auto;
 						text-decoration-style: solid;
@@ -99,7 +100,8 @@
 				}
 			}
 		}
-		&--small {
+
+		&--small &__interactive-element {
 			color: var(--kern-color-action-default);
 			gap: var(--kern-metric-space-2x-small);
 			@include body-small;

@@ -35,6 +35,10 @@
 					outline-color: var(--kern-color-action-focus-background);
 				}
 
+				&__interactive-element {
+					padding: 0;
+				}
+
 				.kol-span,
 				.kol-span__container,
 				.kol-span__label,
