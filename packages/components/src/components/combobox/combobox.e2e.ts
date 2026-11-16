@@ -197,6 +197,24 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
 	});
 
+	test('announces list autocompletion only', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Direction" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+		const input = page.locator('input.kol-combobox__input');
+		await input.focus();
+		await page.keyboard.press('ArrowDown');
+
+		await expect(input).toHaveAttribute('aria-autocomplete', 'list');
+	});
+
+	test('names the listbox by the label of the field', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Direction" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+		const input = page.locator('input.kol-combobox__input');
+		await input.focus();
+		await page.keyboard.press('ArrowDown');
+
+		await expect(page.getByRole('listbox')).toHaveAccessibleName('Direction');
+	});
+
 	test('should close listbox when pressing Escape', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const input = page.locator('input.kol-combobox__input');
@@ -316,7 +334,7 @@ test.describe(COMPONENT_NAME, () => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)} _value="North"></kol-combobox>`);
 		const component = page.locator('kol-combobox');
 		const input = page.locator('input.kol-combobox__input');
-		const clearButton = page.locator('[data-testid="combobox-delete"]');
+		const clearButton = page.locator('.kol-combobox__delete button');
 
 		let blurCallbackFired = false;
 		let blurEventFired = false;
@@ -534,7 +552,7 @@ test.describe(COMPONENT_NAME, () => {
 		test('clears the value with the clear button, keeps the focus on the input and closes the list', async ({ page }) => {
 			await page.locator('input.kol-combobox__input').fill('North');
 			await readEvents(page);
-			await page.locator('[data-testid="combobox-delete"] button').click();
+			await page.locator('.kol-combobox__delete button').click();
 			await page.waitForChanges();
 			// The click commits the typed text first (native `change` of the input), then clears it.
 			expect(await readEvents(page)).toEqual([

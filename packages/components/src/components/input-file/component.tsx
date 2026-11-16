@@ -28,6 +28,7 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { translate } from '../../i18n';
@@ -39,13 +40,16 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { getFileNames } from '../../internal/functional-components/form-field/file-value';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputFileApi } from '../../internal/functional-components/input-file/api';
 import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
 import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
 import { acceptProp, accessKeyProp, horizontalIconsProp, multipleProp, requiredProp, shortKeyProp, smartButtonProp, variantProp } from '../../internal/props';
+import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+
+const fileBem = bem.forBlock('kol-input-file');
 
 /**
  * The **File** input type creates an input field for file uploads. One or multiple files can be selected and submitted with a form.
@@ -87,6 +91,8 @@ export class KolInputFile
 
 	private readonly browseButton = createButtonItem(() => this.host);
 
+	protected readonly propsConfig: PropsConfigShape = inputFilePropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('file', this._name);
@@ -116,10 +122,7 @@ export class KolInputFile
 	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -230,7 +233,7 @@ export class KolInputFile
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -319,9 +322,8 @@ export class KolInputFile
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<FileList | null | undefined> {
-		return this.ctaRef.el?.files;
+	public getValue(): Promise<FileList | null | undefined> {
+		return Promise.resolve(this.ctaRef.el?.files);
 	}
 
 	/**
@@ -329,23 +331,26 @@ export class KolInputFile
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Resets the component's value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async reset() {
+	public reset(): Promise<void> {
 		this.formAssociation.setFormAssociatedValue('');
 		this.filename = this.translateFilenameText;
 		this.hasFileSelected = false;
@@ -353,10 +358,10 @@ export class KolInputFile
 		if (this.ctaRef.el) {
 			this.ctaRef.el.value = '';
 		}
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputFilePropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 
@@ -497,7 +502,7 @@ export class KolInputFile
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: 'kol-input-file file',
+						class: clsx(fileBem(), 'file'),
 						accessKey: this.getRenderProp('accessKey') || undefined,
 						shortKey: this.getRenderProp('shortKey') || undefined,
 						variant: this.getRenderProp('variant'),

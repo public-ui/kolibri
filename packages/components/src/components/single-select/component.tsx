@@ -46,12 +46,17 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
 import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
 import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
 import { singleSelectPropsConfig } from '../../internal/functional-components/single-select/api';
-import { BEM_CLASS_SINGLE_SELECT__DELETE, SingleSelectNoResultsFC, SingleSelectToggleFC } from '../../internal/functional-components/single-select/component';
+import {
+	BEM_CLASS_SINGLE_SELECT__DELETE,
+	SingleSelectNoResultsFC,
+	SingleSelectNoResultsStatusFC,
+	SingleSelectToggleFC,
+} from '../../internal/functional-components/single-select/component';
 import {
 	accessKeyProp,
 	hasClearButtonProp,
@@ -108,6 +113,8 @@ export class KolSingleSelect
 
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 
+	protected readonly propsConfig: PropsConfigShape = singleSelectPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('single-select', this._name);
@@ -127,10 +134,7 @@ export class KolSingleSelect
 	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -241,7 +245,7 @@ export class KolSingleSelect
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -363,9 +367,8 @@ export class KolSingleSelect
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this._value;
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this._value);
 	}
 
 	/**
@@ -373,13 +376,13 @@ export class KolSingleSelect
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(singleSelectPropsConfig);
-
 		this.optionRefs = [];
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
@@ -693,9 +696,13 @@ export class KolSingleSelect
 		} as InputFCProps;
 	}
 
+	private hasNoResults(): boolean {
+		return !Array.isArray(this.filteredOptions) || this.filteredOptions.length === 0;
+	}
+
 	private renderOptions(): JSX.Element | JSX.Element[] {
-		if (!Array.isArray(this.filteredOptions) || this.filteredOptions.length === 0) {
-			return <SingleSelectNoResultsFC message={this.translateNoResultsMessage} />;
+		if (this.hasNoResults()) {
+			return [];
 		}
 
 		return this.filteredOptions.map((option, index) => (
@@ -738,6 +745,7 @@ export class KolSingleSelect
 
 	public render(): JSX.Element {
 		const isDisabled = this.getRenderProp('disabled') === true;
+		const showNoResults = this.isOpen && !isDisabled && this.hasNoResults();
 		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
@@ -775,7 +783,7 @@ export class KolSingleSelect
 												onBlur: this.handleClearButtonBlur,
 											},
 										},
-										{ class: BEM_CLASS_SINGLE_SELECT__DELETE, 'data-testid': 'single-select-delete', hidden: isDisabled },
+										{ class: BEM_CLASS_SINGLE_SELECT__DELETE, hidden: isDisabled },
 									)}
 								/>
 							)}
@@ -787,9 +795,12 @@ export class KolSingleSelect
 							style={{ '--visible-options': `${this.getRenderProp('rows') ?? 5}` }}
 							hidden={!this.isOpen || isDisabled}
 							id={createRelatedUniqueId(this.id, 'listbox')}
+							aria-labelledby={createRelatedUniqueId(this.id, 'label')}
 						>
 							{this.renderOptions()}
 						</CustomSuggestionsOptionsGroupFC>
+						{showNoResults && <SingleSelectNoResultsFC message={this.translateNoResultsMessage} />}
+						<SingleSelectNoResultsStatusFC message={showNoResults ? this.translateNoResultsMessage : ''} />
 					</InputContainerFC>
 				</FormFieldFC>
 			</Host>

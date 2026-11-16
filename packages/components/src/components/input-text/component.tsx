@@ -44,15 +44,18 @@ import { createButtonItem } from '../../internal/functional-components/button/it
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputTextApi } from '../../internal/functional-components/input-text/api';
 import { inputTextPropsConfig } from '../../internal/functional-components/input-text/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
 import { inputTextTypeProp, spellCheckProp, suggestionsProp } from '../../internal/props';
+import { bem } from '../../schema/bem-registry';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
+
+const textBem = bem.forBlock('kol-input-text');
 
 /**
  * The **Text** input type creates an input field for plain text, search terms, URLs, or phone numbers.
@@ -84,6 +87,8 @@ export class KolInputText
 
 	private readonly translateClearSearch = translate('kol-clear-search');
 
+	protected readonly propsConfig: PropsConfigShape = inputTextPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('text', this._name);
@@ -112,10 +117,7 @@ export class KolInputText
 	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -246,7 +248,7 @@ export class KolInputText
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -400,9 +402,8 @@ export class KolInputText
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.ctaRef.el?.value;
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
 	}
 
 	/**
@@ -410,16 +411,20 @@ export class KolInputText
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Get selection start of internal element.
@@ -441,31 +446,36 @@ export class KolInputText
 	 * Set selection start and end, and optional in which direction, of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setSelectionRange
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') {
+	public setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none'): Promise<void> {
 		this.ctaRef.el?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Set selection start (and end = start) of internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async setSelectionStart(selectionStart: number) {
+	public setSelectionStart(selectionStart: number): Promise<void> {
 		this.ctaRef.el?.setSelectionRange(selectionStart, selectionStart);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Add string at position of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setRangeText
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async setRangeText(replacement: string, selectionStart?: number, selectionEnd?: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') {
+	public setRangeText(
+		replacement: string,
+		selectionStart?: number,
+		selectionEnd?: number,
+		selectMode?: 'select' | 'start' | 'end' | 'preserve',
+	): Promise<void> {
 		if (selectionStart !== undefined && selectionEnd !== undefined) {
 			this.ctaRef.el?.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
 		} else {
 			this.ctaRef.el?.setRangeText(replacement);
 		}
+		return Promise.resolve();
 	}
 
 	public connectedCallback(): void {
@@ -473,7 +483,6 @@ export class KolInputText
 		this.clearButton.syncListeners();
 	}
 	public componentWillLoad(): void {
-		this.initRenderProps(inputTextPropsConfig);
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
@@ -568,10 +577,9 @@ export class KolInputText
 						_on: { onClick: this.handleClearButtonClick },
 					},
 					{
-						class: clsx('kol-input-text__clear-button', 'kol-input-container__smart-button', {
+						class: clsx(textBem('clear-button'), 'kol-input-container__smart-button', {
 							'kol-input-text__clear-button--hidden': !canClear,
 						}),
-						'data-testid': 'kol-input-text-clear-button',
 					},
 				)}
 			/>
@@ -584,7 +592,7 @@ export class KolInputText
 
 		return (
 			<Host>
-				<FormFieldFC {...this.getTextFormFieldProps(`kol-input-text ${type}`)}>
+				<FormFieldFC {...this.getTextFormFieldProps(clsx(textBem(), type))}>
 					<InputContainerFC
 						disabled={this.getRenderProp('disabled')}
 						msg={this.getRenderProp('msg')}

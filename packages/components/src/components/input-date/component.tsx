@@ -33,6 +33,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { deprecatedHint } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
@@ -43,7 +44,7 @@ import { getDateValueType, remapDateValue } from '../../internal/functional-comp
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputDateApi } from '../../internal/functional-components/input-date/api';
 import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
 import {
@@ -67,6 +68,8 @@ import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';
+
+const dateBem = bem.forBlock('kol-input-date');
 
 /**
  * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.
@@ -106,6 +109,8 @@ export class KolInputDate
 	 */
 	private hasValue = false;
 
+	protected readonly propsConfig: PropsConfigShape = inputDatePropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('date', this._name);
@@ -125,10 +130,7 @@ export class KolInputDate
 	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -259,7 +261,7 @@ export class KolInputDate
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -406,9 +408,8 @@ export class KolInputDate
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | Date | undefined | null> {
-		return this.ctaRef.el && remapDateValue(this.ctaRef.el.value, this.valueType);
+	public getValue(): Promise<string | Date | undefined | null> {
+		return Promise.resolve(this.ctaRef.el && remapDateValue(this.ctaRef.el.value, this.valueType));
 	}
 
 	/**
@@ -416,23 +417,26 @@ export class KolInputDate
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Resets the component's value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async reset() {
+	public reset(): Promise<void> {
 		// `_value` keeps its value; only the rendered and the form value are cleared.
 		this.setRenderProp('value', undefined as unknown as string);
 		// The class must follow the cleared field immediately, not at the next change event.
@@ -445,10 +449,10 @@ export class KolInputDate
 		if (this.ctaRef.el) {
 			this.ctaRef.el.value = '';
 		}
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputDatePropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 
@@ -591,7 +595,7 @@ export class KolInputDate
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-date', this.getRenderProp('type'), {
+						class: clsx(dateBem(), this.getRenderProp('type'), {
 							'has-value': this.hasValue,
 						}),
 						accessKey: this.getRenderProp('accessKey') || undefined,

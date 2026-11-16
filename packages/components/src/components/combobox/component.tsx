@@ -49,7 +49,7 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
 import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
 import {
@@ -109,6 +109,8 @@ export class KolCombobox
 	/** Whether the field has a value, for the class `has-value`; it follows each `change`. */
 	private hasValue = false;
 
+	protected readonly propsConfig: PropsConfigShape = comboboxPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('combobox', this._name);
@@ -128,10 +130,7 @@ export class KolCombobox
 	/**
 	 * References an external element by ID that provides accessible details for this combobox.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -242,7 +241,7 @@ export class KolCombobox
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -352,9 +351,8 @@ export class KolCombobox
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string> {
-		return this.getRenderProp('value');
+	public getValue(): Promise<string> {
+		return Promise.resolve(this.getRenderProp('value'));
 	}
 
 	/**
@@ -362,19 +360,22 @@ export class KolCombobox
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(comboboxPropsConfig);
 		// Without `_value` the field starts with the empty string; `undefined` and `null` keep the value.
 		this.setRenderProp('value', '');
 
@@ -649,7 +650,7 @@ export class KolCombobox
 			type: 'text',
 			role: 'combobox',
 			'aria-activedescendant': this.getActiveDescendant(),
-			'aria-autocomplete': 'both',
+			'aria-autocomplete': 'list',
 			'aria-controls': createRelatedUniqueId(id, 'listbox'),
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
 			'aria-expanded': this.isOpen ? 'true' : 'false',
@@ -755,7 +756,6 @@ export class KolCombobox
 										},
 										{
 											class: BEM_CLASS_COMBOBOX__DELETE,
-											'data-testid': 'combobox-delete',
 											hidden: isDisabled,
 											onBlur: this.stopClearButtonFocusEvent,
 											onFocus: this.stopClearButtonFocusEvent,
@@ -776,6 +776,7 @@ export class KolCombobox
 							onKeyDown={this.handleDropdownKeyDown}
 							hidden={!this.isOpen || isDisabled}
 							id={createRelatedUniqueId(this.id, 'listbox')}
+							aria-labelledby={createRelatedUniqueId(this.id, 'label')}
 						>
 							{this.renderOptions()}
 						</CustomSuggestionsOptionsGroupFC>

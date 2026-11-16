@@ -32,6 +32,7 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
@@ -42,7 +43,7 @@ import { InputContainerFC } from '../../internal/functional-components/form-fiel
 import type { NumberValueType } from '../../internal/functional-components/form-field/number-value';
 import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { InputNumberApi } from '../../internal/functional-components/input-number/api';
 import { inputNumberPropsConfig } from '../../internal/functional-components/input-number/api';
@@ -67,7 +68,8 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';
 
-const STEP_BUTTON_CLASS = 'kol-input-number__step-button';
+const numberBem = bem.forBlock('kol-input-number');
+const STEP_BUTTON_CLASS = numberBem('step-button');
 
 /** Focus moving between the input and a step button is no focus change of the field. */
 const isStepButton = (target: EventTarget | null): boolean => (target as HTMLElement | null)?.classList?.contains(STEP_BUTTON_CLASS) === true;
@@ -110,6 +112,8 @@ export class KolInputNumber
 	 */
 	private hasValue = false;
 
+	protected readonly propsConfig: PropsConfigShape = inputNumberPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('number', this._name);
@@ -129,10 +133,7 @@ export class KolInputNumber
 	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -263,7 +264,7 @@ export class KolInputNumber
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -407,9 +408,8 @@ export class KolInputNumber
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<number | NumberString | null> {
-		return this.remapValue(this.getRenderProp('value'));
+	public getValue(): Promise<number | NumberString | null> {
+		return Promise.resolve(this.remapValue(this.getRenderProp('value')));
 	}
 
 	/**
@@ -417,19 +417,22 @@ export class KolInputNumber
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputNumberPropsConfig);
 		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
 		this.unsetRenderProp('smartButton');
 
@@ -546,7 +549,6 @@ export class KolInputNumber
 				aria-hidden="true"
 				tabIndex={-1}
 				class={`${STEP_BUTTON_CLASS} ${STEP_BUTTON_CLASS}-${direction} kol-input-container__smart-button`}
-				data-testid={`kol-input-number-step-${direction}`}
 				onClick={direction === 'up' ? this.handleStepUp : this.handleStepDown}
 				disabled={this._disabled || this._readOnly}
 			>
@@ -614,7 +616,7 @@ export class KolInputNumber
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-number', 'number', {
+						class: clsx(numberBem(), 'number', {
 							'has-value': this.hasValue,
 						}),
 						accessKey: this.getRenderProp('accessKey') || undefined,

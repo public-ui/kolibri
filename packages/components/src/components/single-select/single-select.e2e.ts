@@ -131,7 +131,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 			await page.waitForTimeout(500);
 
-			const clearButton = page.getByTestId('single-select-delete');
+			const clearButton = page.locator('.kol-single-select__delete button');
 			await expect(clearButton).toHaveCount(1);
 			await clearButton.click({ force: true });
 
@@ -155,7 +155,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 			await expect(input).toHaveValue(TEST_LABEL);
 
-			const clearButton = page.getByTestId('single-select-delete');
+			const clearButton = page.locator('.kol-single-select__delete button');
 			await expect(clearButton).not.toBeVisible();
 		});
 
@@ -206,8 +206,26 @@ test.describe(COMPONENT_NAME, () => {
 			await setContentWithRetry(page, `<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.fill('Something');
-			const noResult = page.getByText('Keine Ergebnisse gefunden.');
+			const noResult = page.locator('.kol-single-select__no-results-message');
+			await expect(noResult).toHaveText('Keine Ergebnisse gefunden.');
 			await expect(noResult).toBeVisible();
+		});
+
+		test('announces the no results message outside of the listbox, which stays empty', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
+			await page.locator('input.kol-single-select__input').fill('Something');
+
+			await expect(page.getByRole('status')).toHaveText('Keine Ergebnisse gefunden.');
+			await expect(page.locator('[role="listbox"] [role="alert"]')).toHaveCount(0);
+			await expect(page.getByRole('listbox')).not.toContainText('Keine Ergebnisse gefunden.');
+			await expect(page.locator('.kol-single-select__no-results-message')).toBeVisible();
+		});
+
+		test('names the listbox by the label of the field', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-single-select _label="Direction" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await page.locator('input.kol-single-select__input').click();
+
+			await expect(page.getByRole('listbox')).toHaveAccessibleName('Direction');
 		});
 
 		test('should only trigger onChange when the value actually changes', async ({ page }) => {
@@ -279,6 +297,24 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await getAriaDetailsRefIds(host)).toEqual(['details-2']);
 		});
 
+		test('releases the references when the prop empties', async ({ page }) => {
+			await page.setContent(`
+				<div id="select-details">Choose one of these options carefully</div>
+				<kol-single-select _label="Select option" _aria-details="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+			`);
+			await page.waitForChanges();
+			const host = page.locator(COMPONENT_NAME);
+			expect(await getAriaDetailsRefIds(host)).toEqual(['select-details']);
+
+			await host.evaluate((el: HTMLKolSingleSelectElement) => {
+				el._ariaDetails = '';
+			});
+			await page.waitForChanges();
+
+			expect(await getAriaDetailsRefIds(host)).toBeNull();
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el.shadowRoot?.querySelector('input')?.hasAttribute('aria-details'))).toBe(false);
+		});
+
 		test('handles missing ID gracefully', async ({ page }) => {
 			await page.setContent(`
 				<kol-single-select _label="Select option" _aria-details="non-existent-id" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
@@ -299,6 +335,29 @@ test.describe(COMPONENT_NAME, () => {
 
 			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
 			expect(value).toBe('id1 id2');
+		});
+
+		test('resolves a target that enters the tree after the first render', async ({ page }) => {
+			await page.setContent(
+				`<kol-single-select _label="Select option" _aria-details="late-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`,
+			);
+			await page.waitForChanges();
+			const host = page.locator(COMPONENT_NAME);
+			expect(await getAriaDetailsRefIds(host)).toBeNull();
+
+			await page.locator('body').evaluate((body: HTMLBodyElement) => {
+				const late = document.createElement('div');
+				late.id = 'late-details';
+				late.textContent = 'Late details';
+				body.append(late);
+			});
+			// The references re-resolve on the next render of the field.
+			await host.evaluate((el: HTMLKolSingleSelectElement) => {
+				el._label = 'Select an option';
+			});
+			await page.waitForChanges();
+
+			expect(await getAriaDetailsRefIds(host)).toEqual(['late-details']);
 		});
 	});
 
@@ -442,7 +501,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 			await readEvents(page);
-			await page.locator('[data-testid="single-select-delete"] button').click();
+			await page.locator('.kol-single-select__delete button').click();
 			await page.waitForChanges();
 			expect(await readEvents(page)).toEqual([
 				['input', null],

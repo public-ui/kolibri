@@ -20,15 +20,16 @@ import { bem } from '../../../schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
-import type { FunctionalComponentProps } from '../generic-types';
+import type { FunctionalComponentProps, ResolvedFunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import type { LinkFCProps } from '../link/component';
 import { LinkFC } from '../link/component';
 import type { EmbeddedLinkProps } from '../link/resolve-props';
+import { resolveFcProps } from '../props-from-config';
 import { renderLabelWithLang } from '../span/component';
 import { SpinFC } from '../spin/component';
 import { TooltipFC } from '../tooltip/component';
-import type { TableStatelessApi } from './api';
+import { tableStatelessPropsConfig, type TableStatelessApi } from './api';
 import type { FixedSide, PrimaryHeaders, SelectionModel, TableDataCell, TableDataRow } from './table-model';
 import {
 	createDataField,
@@ -75,15 +76,17 @@ export type TableStatelessFCProps = FunctionalComponentProps<TableStatelessApi> 
 
 /**
  * Everything the render helpers derive once per render and share: the column model, the sticky
- * offsets and the selection state.
+ * offsets and the selection state. The props carry their config defaults, because the helpers
+ * dereference them without unset handling.
  */
-type RenderContext = TableStatelessFCProps & {
-	fixedOffsets: number[];
-	maxCols: number;
-	primaryHeaders: PrimaryHeaders;
-	selectionModel: SelectionModel;
-	translateNoEntries: string;
-};
+type RenderContext = ResolvedFunctionalComponentProps<TableStatelessApi> &
+	Pick<TableStatelessFCProps, 'getButtonFcProps' | 'getLinkFcProps' | 'renderSettings'> & {
+		fixedOffsets: number[];
+		maxCols: number;
+		primaryHeaders: PrimaryHeaders;
+		selectionModel: SelectionModel;
+		translateNoEntries: string;
+	};
 
 const getFixedSideOf = (context: RenderContext, index: number | undefined): FixedSide | undefined =>
 	getFixedSide(context.fixedCols, context.stickyColsDisabled, context.maxCols, index);
@@ -502,6 +505,7 @@ const renderFoot = (context: RenderContext): JSX.Element | null => {
  * keys and the event handling; this renderer only derives the column model from its props.
  */
 export const TableStatelessFC: FC<TableStatelessFCProps> = (props) => {
+	const resolved = resolveFcProps(tableStatelessPropsConfig, props);
 	const {
 		data,
 		dataFoot,
@@ -517,13 +521,13 @@ export const TableStatelessFC: FC<TableStatelessFCProps> = (props) => {
 		selection,
 		stickyColsDisabled,
 		variant,
-	} = props;
+	} = resolved;
 
 	const translateNoEntries = translate('kol-no-entries');
 	const primaryHeaders = getPrimaryHeaders(headers);
 	const maxCols = getNumberOfCols(headers.horizontal, data);
 	const context: RenderContext = {
-		...props,
+		...resolved,
 		fixedOffsets: getFixedOffsets(primaryHeaders.cells, maxCols, fixedCols, stickyColsDisabled),
 		maxCols,
 		primaryHeaders,
@@ -548,13 +552,25 @@ export const TableStatelessFC: FC<TableStatelessFCProps> = (props) => {
 					class={BEM_CLASS_TABLE__TABLE}
 					style={{ minWidth: getTableMinWidth(headers) }}
 				>
-					{/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- caption tabIndex enables keyboard access to scrollable overflow */}
+					{/* jsx-a11y/no-noninteractive-tabindex cannot see the runtime condition, so the
+					    focusability of a scrollable table's caption is set by ref — identical DOM. */}
 					{showInternalCaption && (
-						<caption class={BEM_CLASS_TABLE__CAPTION} id={TABLE_CAPTION_ID} tabindex={hasScrollbar ? '0' : undefined}>
+						<caption
+							class={BEM_CLASS_TABLE__CAPTION}
+							id={TABLE_CAPTION_ID}
+							ref={(el) => {
+								if (el) {
+									if (hasScrollbar) {
+										el.tabIndex = 0;
+									} else {
+										el.removeAttribute('tabindex');
+									}
+								}
+							}}
+						>
 							{renderLabelWithLang(label)}
 						</caption>
 					)}
-					{/* eslint-enable jsx-a11y/no-noninteractive-tabindex */}
 
 					<thead class={BEM_CLASS_TABLE__HEAD}>
 						{[

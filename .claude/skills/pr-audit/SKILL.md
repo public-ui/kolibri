@@ -1,6 +1,6 @@
 ---
 name: pr-audit
-description: Prüft Pull Requests interner und externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue und führt die Folgeschritte aus. Befehle - `audit` (Standard, schreibt nichts) listet ohne PR-Angabe zuerst alle offenen, reviewbereiten und grünen PRs zur Auswahl auf (alle oder je Contributor, sequenziell oder parallel per Subagent) und liefert danach eine Ampel-Tabelle mit Status (Draft, Ready, Gemergt, Geschlossen), Gesamtstatus (grün, gelb, rot) und den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn, hint, ready), dazu Out-of-Scope-Änderungen, Folgepunkte und Label-Empfehlungen; `comment` schreibt je offenem PR einen Kommentar in der Sprache des PRs an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Issues an, die den PR als Ursprung nennen; `consolidate` setzt die Folgepunkte gemergter PRs, die ihr ursprüngliches Issue vervollständigen, in einem Sammel-PR um, der die zugehörigen Tickets schließt; `labels` setzt die empfohlenen `release:*`-Labels. Nutze diesen Skill immer, wenn der Nutzer PRs von Internen, Externen, Contributorn oder der Community prüfen, kommentieren, labeln oder daraus Folge-Issues oder einen Sammel-PR machen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um", "korrigier die Release-Labels" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
+description: Prüft Pull Requests interner und externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue und führt die Folgeschritte aus. Befehle - `audit` (Standard, schreibt nichts) listet ohne PR-Angabe zuerst alle offenen, reviewbereiten und grünen PRs zur Auswahl auf (alle oder je Contributor, sequenziell oder parallel per Subagent) und liefert danach eine Ampel-Tabelle mit Status (Draft, Ready, Gemergt, Geschlossen), Gesamtstatus (grün, gelb, rot) und den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn, hint, ready), dazu Out-of-Scope-Änderungen, Folgepunkte und Label-Empfehlungen; das Audit schließt die Code-Kommentar-Prüfung nach der Entscheidungs-Kathedrale aus Abschnitt 4.4 ein (keine Historien- oder Redundanz-Kommentare, Erläuterungen nur so wenig wie unbedingt nötig); `comment` schreibt je offenem PR einen Kommentar in der Sprache des PRs an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Issues an, die den PR als Ursprung nennen; `consolidate` setzt die Folgepunkte gemergter PRs, die ihr ursprüngliches Issue vervollständigen, in einem Sammel-PR um, der die zugehörigen Tickets schließt; `labels` setzt die empfohlenen `release:*`-Labels. Nutze diesen Skill immer, wenn der Nutzer PRs von Internen, Externen, Contributorn oder der Community prüfen, kommentieren, labeln oder daraus Folge-Issues oder einen Sammel-PR machen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "prüfe die Code-Kommentare im PR", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um", "korrigier die Release-Labels" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
 ---
 
 # PRs prüfen (intern und extern)
@@ -185,17 +185,17 @@ Bewerten:
 
 Gegen `AGENTS.md` prüfen. Typische Befunde und ihr Wert:
 
-| Befund                                                                                                                                                                   | Wert     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| Vom Issue verlangter Test fehlt (→ FU-Punkt, Bezug: Issue)                                                                                                               | **hint** |
-| Test prüft weniger als sein Name sagt (→ FU-Punkt, Bezug: Issue). Beispiel #11085: Der Test ruft den Watcher direkt auf und findet eine fehlende `@Watch`-Bindung nicht. | **hint** |
-| Doku widerspricht dem neuen Code (→ FU-Punkt, Bezug: Issue). Beispiel #11073: Der Migrationsplan führt den behobenen Fehler noch als offen.                              | **hint** |
-| Überflüssiger oder jetzt redundanter Code. Beispiel #11087: drei `hasValue`-Zuweisungen, die `applyValue()` schon erledigt.                                              | **hint** |
-| PR-Beschreibung passt nicht zum Diff (fließt in die Release-Notes)                                                                                                       | **hint** |
-| Release-Label fehlt oder ist falsch (Regeln in Abschnitt 6.6). Labels setzen Maintainer, nicht der Autor.                                                                | **hint** |
-| Theming-Vertrag verletzt: neue oder geänderte DOM-Elemente oder BEM-Klassen ohne angepasste Themes oder ohne Liste der Klassen in der PR-Beschreibung                    | **warn** |
-| Regelverstoß aus `AGENTS.md` mit Wirkung: `overflow: hidden`, Farbschema im Basis-Styling, `!important` ohne Begründung, Deprecation ohne Migrationsaufgabe              | **warn** |
-| Regelverstoß aus `AGENTS.md` ohne Wirkung: Reihenfolge (Listen, Imports, Union-Literale, Objekt-Schlüssel in Testdaten), Member-Reihenfolge, Kommentar mit Historie      | **hint** |
+| Befund                                                                                                                                                                       | Wert     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Vom Issue verlangter Test fehlt (→ FU-Punkt, Bezug: Issue)                                                                                                                   | **hint** |
+| Test prüft weniger als sein Name sagt (→ FU-Punkt, Bezug: Issue). Beispiel #11085: Der Test ruft den Watcher direkt auf und findet eine fehlende `@Watch`-Bindung nicht.     | **hint** |
+| Doku widerspricht dem neuen Code (→ FU-Punkt, Bezug: Issue). Beispiel #11073: Der Migrationsplan führt den behobenen Fehler noch als offen.                                  | **hint** |
+| Überflüssiger oder jetzt redundanter Code. Beispiel #11087: drei `hasValue`-Zuweisungen, die `applyValue()` schon erledigt.                                                  | **hint** |
+| PR-Beschreibung passt nicht zum Diff (fließt in die Release-Notes)                                                                                                           | **hint** |
+| Release-Label fehlt oder ist falsch (Regeln in Abschnitt 6.6). Labels setzen Maintainer, nicht der Autor.                                                                    | **hint** |
+| Theming-Vertrag verletzt: neue oder geänderte DOM-Elemente oder BEM-Klassen ohne angepasste Themes oder ohne Liste der Klassen in der PR-Beschreibung                        | **warn** |
+| Regelverstoß aus `AGENTS.md` mit Wirkung: `overflow: hidden`, Farbschema im Basis-Styling, `!important` ohne Begründung, Deprecation ohne Migrationsaufgabe                  | **warn** |
+| Regelverstoß aus `AGENTS.md` ohne Wirkung: Reihenfolge (Listen, Imports, Union-Literale, Objekt-Schlüssel in Testdaten), Member-Reihenfolge, Code-Kommentare (Abschnitt 4.4) | **hint** |
 
 ### 4.3 Sicher
 
@@ -219,6 +219,85 @@ git diff --name-only origin/develop...pr-<nr>
 | XSS über `innerHTML` oder ungeprüfte Inhalte, geschwächte Eingabeprüfung mit realem Risiko                                                                                               | **warn**                           |
 
 CI-Ergebnisse (insbesondere CodeQL) nennen, aber das Lesen des Diffs nicht durch sie ersetzen.
+
+### 4.4 Code-Kommentare bewerten
+
+Der Grundsatz: **Der Default ist kein Kommentar.** Ein Kommentar trägt nur dann etwas, wenn er eine
+Information liefert, die der Code nicht selbst ausdrückt und die ein Leser braucht, um den Code
+korrekt zu verwenden oder korrekt zu ändern. Alles darüber hinaus ist Kommentarei und gehört aus dem
+PR heraus. Das Erläutern einer komplexen Passage ist legitim — aber nur die eine nicht ableitbare
+Kernaussage, nie die Paraphrase, und nie mehr als unbedingt nötig.
+
+**Sammeln:** Jeden hinzugefügten oder geänderten Kommentar des Diffs prüfen — JSDoc, Zeilen- und
+Blockkommentare, SCSS, HTML, YAML. Ausgenommen sind generierte Dateien, Snapshots und Vendor-Copies
+sowie Kinkerlitzchen ohne jede Wirkung (Rechtschreibung, Interpunktion). Ein Kommentar auf einer
+unveränderten Codezeile zählt nur, wenn der PR das Verhalten dieser Zeile ändert und der Kommentar
+danach daneben liegt.
+
+**Der Entscheidungsbaum** — je Kommentar von oben durchlaufen; die erste zutreffende Stufe
+entscheidet. Jede Endstufe nennt ihren Wert und die Änderung, die den Befund löst.
+
+1. **Widerspricht der Kommentar dem Code?** Er beschreibt ein Verhalten, das der Code nicht hat;
+   zwei Kommentare widersprechen einander; der Kommentar widerspricht der Dokumentation.
+   → **warn** — ein falscher Kommentar irreführt den nächsten Maintainer riskanter als kein
+   Kommentar. Änderung: löschen oder auf das reale Verhalten bringen.
+
+2. **Erzählt der Kommentar die Vergangenheit?** Signale: „previously", „bisher", „vorher", „jetzt",
+   „neu:", „no longer", „statt X", „geändert zu", „WAR:"-Blöcke; Verweise auf Diffs, Pull Requests
+   oder Vorzustände als Geschichte („fixed in #…"); Rechtfertigungen gegen einen ehemaligen Zustand
+   oder eine abgelehnte Alternative („X, nicht Y" als Herkunftsgeschichte statt als heutige Regel).
+   → **hint** (Regelverstoß ohne Wirkung). Änderung: die Gegenwarts-Regel schreiben, die der Leser
+   heute braucht. Bleiben dürfen: eine Angabe, die als heutige Einschränkung gilt und aus ihrem
+   Grund folgt („legacy consumers verlangen X"), und eine `@deprecated`-Markierung mit ihrer
+   Ablösung — sie beschreiben die Zukunft, nicht die Vergangenheit. Ein sachlicher Issue-Verweis an
+   einem offenen Constraint („see #… for the open limitation") ist kein Historie-Befund; eine
+   Änderungsgeschichte mit Issue-Nummer schon.
+
+3. **Wiederholt der Kommentar den Code?** Namens-Paraphrase (`// sets the label` über `setLabel`),
+   Typangaben in `@param`/`@returns`, Schrittwiederholung (`// increment` über `i++`), Absichten-
+   Erzählung von Offensichtlichem.
+   → **hint**. Änderung: löschen; nennt kein Bezeichner den Zweck, lieber den Bezeichner schärfen
+   als kommentieren.
+
+4. **Fehlt eine Pflicht-Doku?** Umgekehrter Befund: eine öffentliche API-Zeile im Diff
+   (`@Prop`, `@Method`, `@Event`, Exporte) ohne Zweck- oder Einschränkungs-Doku, oder ein Umtexten
+   veröffentlichter API-JSDoc ohne funktionale Änderung (ihr Text ist published und stabil).
+   → **hint** — Zweck und Constraints ergänzen; veröffentlichte JSDoc unverändert lassen, ein
+   Umtexten ist eine eigene Änderung. Sagt der neue Text etwas Anderes als der alte, ist es ein
+   **warn**: das geänderte API-Verhalten gehört in den Changelog, nicht still in die Doku.
+
+5. **Trägt der Kommentar eine nicht ableitbare Information?** Das sind: Zweck und Einschränkungen
+   öffentlicher API, nicht offensichtliche Warum-Entscheidungen, die ein späterer Aufräumer sonst
+   „reparieren" würde, Zwänge und Fallstricke (Reihenfolgen, Plattform-Quirks, `JS`-Eigenheiten)
+   und die Erläuterung einer komplexen Passage.
+   → **NEIN**: **hint** — löschen. Der Kommentar ergibt sich aus dem Code, auch wenn ihn niemand
+   wörtlich aufschrieben.
+
+6. **Ist es die minimal mögliche Fassung?** (nur erreichbar mit nicht ableitbarer Information)
+   - Paraphrasiert Zeile für Zeile → kürzen auf den einen nicht ableitbaren Punkt. **hint**
+   - Dupliziert eine autoritative Quelle (ARC42, Migration-Guide, JSDoc am anderen Ort) → durch
+     einen Verweis auf die Quelle ersetzen. **hint**
+   - Beschreibt Verhalten, das ein Test des PRs pinnt → löschen; der Test ist die Autorität.
+     **hint** — außer es bleibt ein nicht testbarer Rest-Constraint, dann genau diesen behalten.
+   - Sonst: **ready** — genau dieser Kommentar bleibt stehen.
+
+Jeder **warn**/**hint** aus dem Baum braucht Datei, Zeile und die konkrete Ersatzfassung oder das
+Lösch-Ziel. Die Befunde fließen in die Spalte „Sauber & ordentlich" und damit in `comment`; sie
+verschieben den Gesamtstatus nach Abschnitt 5 wie jeder andere Befund.
+
+**Beispiel-Paare** (Muster aus `AGENTS.md`, Abschnitt „Inline code documentation"):
+
+- `// Previously this was handled by the controller; changed in the skeleton migration.` → Stufe 2,
+  **hint**. Ersatz: `// Runs before the first render, because the behaviors read the normalized label.`
+- `/** Sets the label. @param {string} value - the label */` über einer trivialen Zuweisung →
+  Stufe 3, **hint**. Ersatz: löschen.
+- `// The predecessor accepted any string; this one would reject a one-character label.` → Stufe 2,
+  **hint**. Ersatz: `// The label names a landmark without an expert slot.`
+- Ein drei Absätze langer Block über eine Hilfsfunktion, der ihre vier Schritte nacheinander
+  erzählt → Stufe 6, **hint**. Ersatz: der eine Satz, der sagt, warum sie existiert und was sie
+  nicht leistet.
+- `// The scroll lock is counted per owner; the item is the owner of its dialog's lock.` → Stufe 6,
+  **ready** — eine nicht ableitbare Zuständigkeits-Regel in minimaler Fassung.
 
 ## 5. Gesamtstatus
 

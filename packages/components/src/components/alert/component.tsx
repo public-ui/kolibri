@@ -1,12 +1,12 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import type { AlertApi } from '../../internal/functional-components/alert/api';
 import { alertPropsConfig } from '../../internal/functional-components/alert/api';
 import { AlertFC } from '../../internal/functional-components/alert/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../internal/props';
 import type {
@@ -50,6 +50,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 
 	/** The closer is rendered with `ButtonFC` directly, so its tooltip behavior lives in the component. */
 	private readonly closerTooltipBehavior = new TooltipBehavior(this.stateAccess);
+
+	protected readonly propsConfig: PropsConfigShape = alertPropsConfig;
 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
@@ -125,8 +127,6 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(alertPropsConfig);
-
 		this.watchAlert(this._alert);
 		this.watchHasCloser(this._hasCloser);
 		this.watchLabel(this._label);
@@ -149,8 +149,10 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 		this.syncAlertEffects(false);
 	}
 
+	/** The alert render prop is not reactive, so the removal of `role="alert"` needs an explicit render. */
 	private readonly handleAlertTimeout = (): void => {
 		this.watchAlert(false);
+		forceUpdate(this);
 	};
 
 	private readonly handleCloserClick = (event: MouseEvent): void => {

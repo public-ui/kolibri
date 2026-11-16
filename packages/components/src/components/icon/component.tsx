@@ -1,11 +1,11 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { IconApi } from '../../internal/functional-components/icon/api';
 import { iconPropsConfig } from '../../internal/functional-components/icon/api';
 import { IconFC } from '../../internal/functional-components/icon/component';
-import { iconsProp, labelProp } from '../../internal/props';
+import { iconsProp, labelDecorativeProp } from '../../internal/props';
 import type { LabelPropType } from '../../schema';
 
 /**
@@ -19,6 +19,8 @@ import type { LabelPropType } from '../../schema';
 	shadow: true,
 })
 export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentInterface<IconApi> {
+	protected readonly propsConfig: PropsConfigShape = iconPropsConfig;
+
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
@@ -38,14 +40,12 @@ export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentIn
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		labelDecorativeProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(iconPropsConfig);
-
 		iconsProp.apply(this._icons, (v) => this.setRenderProp('icons', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		labelDecorativeProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	public render(): JSX.Element {

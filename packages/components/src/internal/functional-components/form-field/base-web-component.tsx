@@ -168,7 +168,6 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 
 	protected applyAriaDetails(value?: string): void {
 		ariaDetailsProp.apply(value, (v) => this.shared.setRenderProp('ariaDetails', v));
-		this.formAssociation.watchAriaDetails(value);
 		this.syncAriaDetails();
 	}
 
@@ -218,10 +217,8 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		infoPopoverProp.apply(value, (v) => this.shared.setRenderProp('infoPopover', v));
 	}
 
-	/** `false` enables the expert slot, which the field renders for an empty label. */
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		const label: unknown = value;
-		labelWithExpertSlotProp.apply(label === false ? '' : value, (v) => this.shared.setRenderProp('label', v), this.isRequired('label'));
+		labelWithExpertSlotProp.apply(value, (v) => this.shared.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyMsg(value?: Stringified<MsgPropType>): void {

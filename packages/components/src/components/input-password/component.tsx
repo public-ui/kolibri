@@ -36,6 +36,7 @@ import type {
 	VisibilityTogglePropType,
 } from '../../schema';
 import { devHint } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 
 import { translate } from '../../i18n';
 import { ButtonFC } from '../../internal/functional-components/button/component';
@@ -43,13 +44,16 @@ import { createButtonItem } from '../../internal/functional-components/button/it
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputPasswordApi } from '../../internal/functional-components/input-password/api';
 import { inputPasswordPropsConfig } from '../../internal/functional-components/input-password/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
 import { visibilityToggleProp } from '../../internal/props';
+import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+
+const passwordBem = bem.forBlock('kol-input-password');
 
 /**
  * The **Password** input type creates an input field for passwords. The input is masked with dot symbols.
@@ -85,6 +89,8 @@ export class KolInputPassword
 
 	private readonly translateShowPassword = translate('kol-show-password');
 
+	protected readonly propsConfig: PropsConfigShape = inputPasswordPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('password', this._name);
@@ -103,10 +109,7 @@ export class KolInputPassword
 	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
-	 * The IDs are pushed as element references to the native control's `ariaDetailsElements` to
-	 * cross the Shadow DOM boundary. Screen reader support is heavily fragmented (only Orca is
-	 * complete; VoiceOver, TalkBack and Narrator ignore the relation) — provide the details
-	 * visibly as well. See KNOWN_ISSUES.md.
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
@@ -250,7 +253,7 @@ export class KolInputPassword
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
 	@Prop() public _on?: InputTypeOnDefault = undefined;
 
@@ -384,9 +387,8 @@ export class KolInputPassword
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.ctaRef.el?.value;
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
 	}
 
 	/**
@@ -394,23 +396,26 @@ export class KolInputPassword
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public connectedCallback(): void {
 		super.connectedCallback();
 		this.visibilityToggle.syncListeners();
 	}
 	public componentWillLoad(): void {
-		this.initRenderProps(inputPasswordPropsConfig);
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
@@ -482,8 +487,7 @@ export class KolInputPassword
 						_on: { onClick: this.handleVisibilityToggle },
 					},
 					{
-						class: 'kol-input-password__password-toggle-button kol-input-container__smart-button',
-						'data-testid': 'kol-input-password-toggle-button',
+						class: clsx(passwordBem('password-toggle-button'), 'kol-input-container__smart-button'),
 					},
 				)}
 			/>
@@ -495,7 +499,7 @@ export class KolInputPassword
 
 		return (
 			<Host>
-				<FormFieldFC {...this.getTextFormFieldProps('kol-input-password password')}>
+				<FormFieldFC {...this.getTextFormFieldProps(clsx(passwordBem(), 'password'))}>
 					<InputContainerFC
 						disabled={this.getRenderProp('disabled')}
 						msg={this.getRenderProp('msg')}

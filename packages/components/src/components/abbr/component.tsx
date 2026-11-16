@@ -5,7 +5,7 @@ import type { AbbrApi } from '../../internal/functional-components/abbr/api';
 import { abbrPropsConfig } from '../../internal/functional-components/abbr/api';
 import { AbbrFC } from '../../internal/functional-components/abbr/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { labelLangSegmentsProp } from '../../internal/props';
 import type { LabelLangSegmentsPropType } from '../../schema';
 
@@ -22,6 +22,8 @@ import type { LabelLangSegmentsPropType } from '../../schema';
 	shadow: true,
 })
 export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentInterface<AbbrApi> {
+	protected readonly propsConfig: PropsConfigShape = abbrPropsConfig;
+
 	/**
 	 * DEPRECATED!
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -34,7 +36,6 @@ export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentIn
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(abbrPropsConfig);
 		this.watchLabel(this._label);
 	}
 

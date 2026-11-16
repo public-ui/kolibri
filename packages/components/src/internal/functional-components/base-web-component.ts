@@ -28,9 +28,17 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	private readonly rawProps: Partial<Record<string, unknown>> = {};
 
 	/** Stores validated and normalized property values ready for rendering. Starts empty and is
-	 * seeded by `initRenderProps` in `componentWillLoad`; `StrictFields` types the steady state. */
+	 * seeded from {@link propsConfig} on the first access; `StrictFields` types the steady state. */
 	private renderProps: StrictFields<ResolvedProps<Api>> = {} as StrictFields<ResolvedProps<Api>>;
 	private requiredPropNames = new Set<string>();
+	private renderPropsSeeded = false;
+
+	/**
+	 * The props config of the concrete component. The store of render props is seeded with its
+	 * defaults on the first access, so a `@Watch` handler fired by a prop assignment before
+	 * `componentWillLoad` finds the defaults as well (#11449).
+	 */
+	protected abstract readonly propsConfig: PropsConfigShape;
 
 	/** Writes a value into the web component's reactive Stencil state. */
 	protected readonly setState = <K extends keyof InternalOf<NonNullable<Api['States']>>>(key: K, value: InternalOf<NonNullable<Api['States']>>[K]): void => {
@@ -64,22 +72,28 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	});
 
 	/**
-	 * Initializes the render-prop store from a props configuration.
-	 * Must be called once in `componentWillLoad` before any `setRenderProp` / `getRenderProp` call.
+	 * Seeds the render-prop store from the props config: every prop with its configured default and
+	 * the set of required prop names. The first access to a render prop seeds it, so a watcher run
+	 * before `componentWillLoad` works against the defaults and its writes are kept.
 	 */
-	protected initRenderProps(config: PropsConfigShape): void {
-		this.renderProps = buildDefaultPropsFromConfig(config) as StrictFields<ResolvedProps<Api>>;
-		this.requiredPropNames = new Set((config.required ?? []).map((definition) => definition.propName));
+	private seedRenderProps(): void {
+		if (this.renderPropsSeeded) {
+			return;
+		}
+		this.renderPropsSeeded = true;
+		this.renderProps = buildDefaultPropsFromConfig(this.propsConfig) as StrictFields<ResolvedProps<Api>>;
+		this.requiredPropNames = new Set((this.propsConfig.required ?? []).map((definition) => definition.propName));
 	}
 
 	/**
 	 * Whether the props config lists a prop under `required`. Requiredness is a property of the
 	 * component, so it comes from the config slot — the prop definition itself stays neutral.
-	 * Pass the result to `PropDefinition.apply` as its third argument. Before `initRenderProps`
-	 * and outside a component config (items, behaviors) this is `false`: an unset value there is
-	 * a legitimate "not set", not a missing required value.
+	 * Pass the result to `PropDefinition.apply` as its third argument. Outside a component config
+	 * (items, behaviors) this is `false`: an unset value there is a legitimate "not set", not a
+	 * missing required value.
 	 */
 	protected isRequired(key: string): boolean {
+		this.seedRenderProps();
 		return this.requiredPropNames.has(key);
 	}
 
@@ -101,27 +115,28 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	 * This is the value the functional component will receive.
 	 */
 	protected setRenderProp<K extends keyof ResolvedProps<Api>>(key: K, value: StrictFields<ResolvedProps<Api>>[K]): void {
-		if (this.renderProps) {
-			this.renderProps[key] = value;
-		}
+		this.seedRenderProps();
+		this.renderProps[key] = value;
 	}
 
 	/**
 	 * Clears a render prop back to "not set" so the functional component renders no attribute for
 	 * it.
 	 *
-	 * `initRenderProps` seeds every prop with its configured default, but a few props must be
-	 * absent rather than carry that default — `tabIndex` on a natively focusable element would
-	 * otherwise emit `tabindex="0"` and pin it into the document tab order. `StrictFields` types
-	 * the store as fully populated, which holds for every other prop, so the exception is asserted
-	 * here once instead of at each call site.
+	 * The seeding gives every prop its configured default, but a few props must be absent rather
+	 * than carry that default — `tabIndex` on a natively focusable element would otherwise emit
+	 * `tabindex="0"` and pin it into the document tab order. `StrictFields` types the store as
+	 * fully populated, which holds for every other prop, so the exception is asserted here once
+	 * instead of at each call site.
 	 */
 	protected unsetRenderProp<K extends keyof ResolvedProps<Api>>(key: K): void {
+		this.seedRenderProps();
 		this.renderProps[key] = undefined as unknown as StrictFields<ResolvedProps<Api>>[K];
 	}
 
 	/** Returns the current validated render value for a property. */
 	public getRenderProp<K extends keyof ResolvedProps<Api>>(key: K): StrictFields<ResolvedProps<Api>>[K] {
+		this.seedRenderProps();
 		return this.renderProps[key];
 	}
 }

@@ -4,7 +4,7 @@ import { h } from '@stencil/core';
 import { bem } from '../../../schema/bem-registry';
 import { ButtonFC } from '../button/component';
 import type { ResolvedButtonProps } from '../button/resolve-props';
-import type { FunctionalComponentProps } from '../generic-types';
+import type { FunctionalComponentProps, ResolvedProps, StrictFields } from '../generic-types';
 import { SpanFC } from '../span/component';
 import type { BadgeApi } from './api';
 
@@ -30,7 +30,9 @@ export type BadgeSmartButtonFCProps = Pick<
  * subtracting from the intersection collapses the precise types into the optional HTML attributes
  * it is intersected with.
  */
-type BadgeFCProps = Pick<FunctionalComponentProps<BadgeApi>, 'color' | 'icons' | 'label'> & {
+type BadgeFCProps = Pick<FunctionalComponentProps<BadgeApi>, 'icons' | 'label'> & {
+	/** The web component always resolves the color pair; the badge paints it as inline styles. */
+	color: StrictFields<ResolvedProps<BadgeApi>>['color'];
 	smartButton?: BadgeSmartButtonFCProps;
 };
 
