@@ -25,7 +25,7 @@ exports[`CustomSuggestionsOptionFC renders with different index and option 1`] =
 `;
 
 exports[`CustomSuggestionsOptionsGroupFC renders default state 1`] = `
-<ul class="kol-custom-suggestions-options-group kol-custom-suggestions-options-group--open" role="listbox">
+<ul aria-labelledby="label-id" class="kol-custom-suggestions-options-group kol-custom-suggestions-options-group--open" role="listbox">
   <li>
     Test Content
   </li>
@@ -33,7 +33,7 @@ exports[`CustomSuggestionsOptionsGroupFC renders default state 1`] = `
 `;
 
 exports[`CustomSuggestionsOptionsGroupFC renders with blocked mouse over 1`] = `
-<ul class="kol-custom-suggestions-options-group kol-custom-suggestions-options-group--cursor-hidden kol-custom-suggestions-options-group--open" role="listbox">
+<ul aria-labelledby="label-id" class="kol-custom-suggestions-options-group kol-custom-suggestions-options-group--cursor-hidden kol-custom-suggestions-options-group--open" role="listbox">
   <li>
     Test Content
   </li>
