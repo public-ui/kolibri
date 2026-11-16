@@ -89,7 +89,7 @@ Die einzige Besonderheit: `ariaActiveDescendantElement` ist singular (ein Elemen
 <KolTableStateless
   _ariaLabelledby="orders-heading"
   _label="Fallback falls Element nicht gefunden"
-  _headerCells={headers}
+  _headers={headers}
   _data={data}
 />
 ```

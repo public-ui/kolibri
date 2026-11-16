@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-table-stateless`: 12 props, including the deprecated `_headerCells`,
- * and no methods.
+ * Pinned public API of `kol-table-stateless`: 11 props and no methods.
  */
 const KOL_TABLE_STATELESS_PUBLIC_API: PublicApiContract = {
 	_ariaLabelledby: {
@@ -36,16 +35,10 @@ const KOL_TABLE_STATELESS_PUBLIC_API: PublicApiContract = {
 		required: false,
 		doc: 'Enables the settings menu if true (default: false).',
 	},
-	_headerCells: {
-		kind: 'prop',
-		type: 'TableHeadersPropType',
-		required: false,
-		doc: '@deprecated Will be removed in the future. Use _headers instead. Defines the horizontal and vertical table headers.',
-	},
 	_headers: {
 		kind: 'prop',
 		type: 'TableHeadersPropType',
-		required: false,
+		required: true,
 		doc: 'Defines the horizontal and vertical table headers.',
 	},
 	_label: {
