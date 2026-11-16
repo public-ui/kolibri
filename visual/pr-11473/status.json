@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "32 changed – 0 of 32 approved, review pending",
-	"computedAt": "2026-11-16T08:00:34.930Z",
+	"description": "35 changed – 0 of 35 approved, review pending",
+	"computedAt": "2026-11-16T13:11:16.076Z",
 	"pr": 11473,
-	"head": "6d91277ba33d70213f159e11891e69b853ab87a4",
-	"digest": "sha256:6034a37167e205d719c68f87b0a24e277bff8661e651c2aa9460ed7aa058d481",
+	"head": "703875e07fa592d8753aa4467bf45a1dbd50e4bf",
+	"digest": "sha256:b70defdbbf53acefeb4083bb0462f26812c0405121920c1e3864af2a7c50ee37",
 	"counts": {
-		"changes": 32,
-		"open": 32,
+		"changes": 35,
+		"open": 35,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -64,11 +64,19 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-kern/button-link-basic--access-key": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-kern/button-link-basic--basic": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-kern/button-link-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/button-link-basic--short-key": {
 			"state": "open",
 			"notes": []
 		},
@@ -100,7 +108,11 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-kern/link-link-variant--variants": {
+		"theme-kern/link-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/link-icons--icons": {
 			"state": "open",
 			"notes": []
 		},
