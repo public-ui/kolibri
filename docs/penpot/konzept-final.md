@@ -1,6 +1,6 @@
 # KoliBri-Komponenten in Penpot bereitstellen
 
-**Konzept, Version 1.0.** Alternative zum Figma-Konzept v1.0 (`docs/figma/konzept-final.md`). Der Aufbau folgt jenem Konzept Abschnitt für Abschnitt, damit beide Dokumente direkt vergleichbar sind. Die Zwischenrepräsentation ist in beiden Konzepten dieselbe; Penpot ersetzt das Zielwerkzeug, nicht die Herleitung.
+**Konzept, Version 1.0.** Alternative zum Figma-Konzept v1.0 (#11379, dort als `docs/figma/konzept-final.md`; die Datei liegt bis zum Merge nur in jenem Pull Request). Der Aufbau folgt jenem Konzept Abschnitt für Abschnitt, damit beide Dokumente direkt vergleichbar sind. Die Zwischenrepräsentation ist in beiden Konzepten dieselbe; Penpot ersetzt das Zielwerkzeug, nicht die Herleitung.
 
 ## 1. Ausgangslage und Zielrichtung
 
