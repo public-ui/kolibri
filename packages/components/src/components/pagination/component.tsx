@@ -141,7 +141,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 	}
 
 	/**
-	 * Defines the maximum value of the element.
+	 * Defines the maximum value of the element. An unset value warns without a rescuing fallback: nothing paginates without the
+	 * number of entries, and 0 stays the honest empty state (ARC42, "Requiredness semantics per prop").
 	 */
 	@Prop() public _max!: MaxPropType;
 
