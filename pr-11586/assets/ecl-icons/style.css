@@ -1,12 +1,12 @@
 @layer kol-theme-component {
   @font-face {
     font-family: "ecl-icons";
-    src: url('ecl-icons.eot?t=1794777952255'); /* IE9*/
-    src: url('ecl-icons.eot?t=1794777952255#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url("ecl-icons.woff2?t=1794777952255") format("woff2"),
-    url("ecl-icons.woff?t=1794777952255") format("woff"),
-    url('ecl-icons.ttf?t=1794777952255') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-    url('ecl-icons.svg?t=1794777952255#ecl-icons') format('svg'); /* iOS 4.1- */
+    src: url('ecl-icons.eot?t=1794840596031'); /* IE9*/
+    src: url('ecl-icons.eot?t=1794840596031#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url("ecl-icons.woff2?t=1794840596031") format("woff2"),
+    url("ecl-icons.woff?t=1794840596031") format("woff"),
+    url('ecl-icons.ttf?t=1794840596031') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('ecl-icons.svg?t=1794840596031#ecl-icons') format('svg'); /* iOS 4.1- */
   }
 
   [class^="ecl-icons-"], [class*=" ecl-icons-"] {
