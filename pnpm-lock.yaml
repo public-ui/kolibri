@@ -268,7 +268,7 @@ importers:
     dependencies:
       '@stencil/react-output-target':
         specifier: 1.8.1
-        version: 1.8.1(@stencil/core@4.45.3)(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        version: 1.8.1(@stencil/core@4.45.3)(@types/react@19.3.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       '@lit/react':
         specifier: 1.0.8
@@ -286,11 +286,11 @@ importers:
         specifier: 10.2.6
         version: 10.2.6
       react:
-        specifier: 19.3.1
-        version: 19.3.1
+        specifier: 19.2.8
+        version: 19.2.8
       react-dom:
-        specifier: 19.3.1
-        version: 19.3.1(react@19.3.1)
+        specifier: 19.2.8
+        version: 19.2.8(react@19.2.8)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -18051,6 +18051,18 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
+  '@stencil/react-output-target@1.8.1(@stencil/core@4.45.3)(@types/react@19.3.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
+    dependencies:
+      '@lit/react': 1.0.8(@types/react@19.3.0)
+      '@stencil/core': 4.45.3
+      html-react-parser: 5.2.17(@types/react@19.3.0)(react@19.2.8)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+      react-style-stringify: 1.2.0
+      ts-morph: 28.0.0
+    transitivePeerDependencies:
+      - '@types/react'
+
   '@stencil/react-output-target@1.8.1(@stencil/core@4.45.3)(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
     dependencies:
       '@lit/react': 1.0.8(@types/react@19.3.0)
@@ -22147,6 +22159,16 @@ snapshots:
       style-to-js: 1.1.21
     optionalDependencies:
       '@types/react': 18.3.31
+
+  html-react-parser@5.2.17(@types/react@19.3.0)(react@19.2.8):
+    dependencies:
+      domhandler: 5.0.3
+      html-dom-parser: 5.1.8
+      react: 19.2.8
+      react-property: 2.0.2
+      style-to-js: 1.1.21
+    optionalDependencies:
+      '@types/react': 19.3.0
 
   html-react-parser@5.2.17(@types/react@19.3.0)(react@19.3.1):
     dependencies:
