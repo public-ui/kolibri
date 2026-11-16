@@ -39,12 +39,18 @@ export type KoliBriTableSelectedHead = { key: string; label: string; sortDirecti
 
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType, sortDirection?: KoliBriSortDirection) => number;
 
+/**
+ * Header cell of a data column. `kol-table-stateful` sorts the rows of the column with `compareFn`.
+ */
 export type DefaultHeaderCell = KoliBriTableHeaderCell & {
 	type?: 'default';
 	compareFn?: KoliBriDataCompareFn;
-	sortDirection?: KoliBriSortDirection;
 };
 
+/**
+ * Header cell of any column type: `type` selects a default, action or state column; a cell without
+ * `type` is a `DefaultHeaderCell`.
+ */
 export type KoliBriTableHeaderCellWithLogic = DefaultHeaderCell | ActionColumnHeaderCell | StateColumnHeaderCell;
 
 /**
