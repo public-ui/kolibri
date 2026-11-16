@@ -33,7 +33,7 @@ Aus dem Formularumfeld ist bisher nur `kol-form` auf Skeleton umgestellt.
 
 ## Rahmenbedingungen
 
-- **Zero visual delta, BEM bleibt.** DOM und Klassen (`.kol-form-field`, `.kol-input-container`, `.kol-field-control` …) bleiben byte-identisch. Themes werden nicht angefasst, es gibt keinen CLI-/SCSS-Migrations-Task. Das Pixel-Gate verlangt 0 Diffs pro Theme.
+- **Zero visual delta, BEM bleibt.** DOM und Klassen (`.kol-form-field`, `.kol-input-container`, `.kol-field-control` …) bleiben byte-identisch. Themes werden nicht angefasst, es gibt keinen CLI-/SCSS-Migrations-Task. Das Pixel-Gate verlangt 0 Diffs pro Theme. Die gemeinsame Wurzel `kol-form-field` mit dem Komponentenblock als zusätzlicher Klasse ist ein zulässiges Skeleton-Muster (ARC42-SKELETON, „Shared Shell Root of the Form Fields“, Designentscheidung 19); der Komponentenblock wird in `schema/bem-registry.ts` registriert.
 - **Formular-Anbindung 1:1 als Behavior.** Die heutige Semantik (versteckte native Elemente im Light DOM, `_syncValueBySelector`, `ariaDetails` über `attachInternals`) wandert aus der Controller-Kette in ein wiederverwendbares `FormAssociationBehavior`, das auch `kol-button` nutzt. Einen Umstieg auf natives `formAssociated` gibt es in dieser Migration nicht.
 - **Identische öffentliche API.** Gleiche `@Prop`/`@Method`-Member, Alias-Typen, Defaults und JSDoc. Die Oberfläche ist vor der Migration in `_skeleton/public-api/<komponente>.spec.ts` festgenagelt.
 

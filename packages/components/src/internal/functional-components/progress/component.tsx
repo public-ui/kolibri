@@ -98,7 +98,14 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 			</div>
 
 			{/* https://css-tricks.com/html5-progress-element/ */}
-			<progress aria-busy={value < max ? 'true' : 'false'} aria-label={trimLabel(label)} class="visually-hidden" max={max} value={value}></progress>
+			{/* Without a label the progress keeps a generic accessible name, since a `progress` element needs one. */}
+			<progress
+				aria-busy={value < max ? 'true' : 'false'}
+				aria-label={trimLabel(label) || translate('kol-progress')}
+				class="visually-hidden"
+				max={max}
+				value={value}
+			></progress>
 			<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 				{liveValueText}
 			</span>
