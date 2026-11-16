@@ -508,6 +508,47 @@ export type KoliBriComponentsBemSchema = {
 			| 'warning'
 		>;
 	};
+	'kol-input-checkbox': {
+		elements: {
+			'field-control': {
+				modifiers: Set<'checked' | 'indeterminate' | 'variant-button' | 'variant-default' | 'variant-switch'>;
+			};
+		};
+		modifiers: Set<'checked' | 'indeterminate' | 'label-align-left' | 'label-align-right' | 'variant-button' | 'variant-default' | 'variant-switch'>;
+	};
+	'kol-input-color': {
+		elements: {
+			input: {
+				modifiers: Set<'color'>;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-input-date': {
+		modifiers: null;
+	};
+	'kol-input-email': {
+		modifiers: null;
+	};
+	'kol-input-file': {
+		modifiers: null;
+	};
+	'kol-input-number': {
+		elements: {
+			'step-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-input-password': {
+		elements: {
+			'password-toggle-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-input-radio': {
 		elements: {
 			input: {
@@ -596,6 +637,14 @@ export type KoliBriComponentsBemSchema = {
 			};
 			'inputs-wrapper': {
 				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-input-text': {
+		elements: {
+			'clear-button': {
+				modifiers: Set<'hidden'>;
 			};
 		};
 		modifiers: null;
@@ -1159,6 +1208,39 @@ const BEM: KoliBriComponentsBemSchema = {
 			'warning',
 		]),
 	},
+	'kol-input-checkbox': {
+		elements: {
+			'field-control': { modifiers: new Set(['checked', 'indeterminate', 'variant-button', 'variant-default', 'variant-switch']) },
+		},
+		modifiers: new Set(['checked', 'indeterminate', 'label-align-left', 'label-align-right', 'variant-button', 'variant-default', 'variant-switch']),
+	},
+	'kol-input-color': {
+		elements: {
+			input: { modifiers: new Set(['color']) },
+		},
+		modifiers: null,
+	},
+	'kol-input-date': {
+		modifiers: null,
+	},
+	'kol-input-email': {
+		modifiers: null,
+	},
+	'kol-input-file': {
+		modifiers: null,
+	},
+	'kol-input-number': {
+		elements: {
+			'step-button': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-input-password': {
+		elements: {
+			'password-toggle-button': { modifiers: null },
+		},
+		modifiers: null,
+	},
 	'kol-input-radio': {
 		elements: {
 			input: { modifiers: null },
@@ -1214,6 +1296,12 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			input: { modifiers: new Set(['number', 'range']) },
 			'inputs-wrapper': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-input-text': {
+		elements: {
+			'clear-button': { modifiers: new Set(['hidden']) },
 		},
 		modifiers: null,
 	},

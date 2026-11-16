@@ -28,6 +28,7 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { translate } from '../../i18n';
@@ -44,8 +45,11 @@ import type { InputFileApi } from '../../internal/functional-components/input-fi
 import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
 import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
 import { acceptProp, accessKeyProp, horizontalIconsProp, multipleProp, requiredProp, shortKeyProp, smartButtonProp, variantProp } from '../../internal/props';
+import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+
+const fileBem = bem.forBlock('kol-input-file');
 
 /**
  * The **File** input type creates an input field for file uploads. One or multiple files can be selected and submitted with a form.
@@ -498,7 +502,7 @@ export class KolInputFile
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: 'kol-input-file file',
+						class: clsx(fileBem(), 'file'),
 						accessKey: this.getRenderProp('accessKey') || undefined,
 						shortKey: this.getRenderProp('shortKey') || undefined,
 						variant: this.getRenderProp('variant'),
