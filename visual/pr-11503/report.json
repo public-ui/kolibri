@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11503,
-	"head": "221da32cc0843191aba2a3634ffa79451a292799",
+	"head": "487eee7e6f982c241f6570b8956c6c6b534b2f78",
 	"repository": "public-ui/kolibri",
-	"runId": 43423438186,
-	"generatedAt": "2026-11-13T12:27:17.068Z",
-	"digest": "sha256:09a07266565d4a04a1f9a8c9ccc11bd6aa31b7141a8f4410babd5fbd0e6c19fd",
+	"runId": 43897466022,
+	"generatedAt": "2026-11-16T16:06:25.823Z",
+	"digest": "sha256:ef476db82f0f172f30f42b36312786c23021ec08750988ca4817a698bff3a2b2",
 	"baseline": {
-		"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
+		"sha": "cd53744dba819d5798c3ce50cebfc8a17b47a3b9",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
+					"sha": "cd53744dba819d5798c3ce50cebfc8a17b47a3b9",
 					"ref": "release/4",
-					"runId": 43410307187,
+					"runId": 43878314214,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-13T10:44:15.889Z",
-					"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
+					"createdAt": "2026-11-16T13:49:23.640Z",
+					"digest": "sha256:3e979ebbc2534cc402b81cc5394a9fb8d2cefb21539ab7d2927381bf27332ab8",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
+			"digest": "sha256:3e979ebbc2534cc402b81cc5394a9fb8d2cefb21539ab7d2927381bf27332ab8",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2131,7 +2131,7 @@
 					"name": "scenarios-focus-elements-component-toolbar",
 					"route": "scenarios-focus-elements-component-toolbar",
 					"status": "unchanged",
-					"hash": "sha256:39619b45373cf0cf8c07c7ec8ed62b2c7df11b07a1d602321cd8ea441b85ef8d"
+					"hash": "sha256:75777b86471f86ae366c413d464dd0e5e03753f93e8b096185cd1e6d7cbbe615"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -2713,12 +2713,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
+					"sha": "cd53744dba819d5798c3ce50cebfc8a17b47a3b9",
 					"ref": "release/4",
-					"runId": 43410307187,
+					"runId": 43878314214,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-13T10:42:16.129Z",
+					"createdAt": "2026-11-16T13:50:18.800Z",
 					"digest": "sha256:a6a4986d2da03e4052e87d0dea797f01c2c870cd31c6a2fcd32481b279d19d60",
 					"fallback": null,
 					"distance": 0,
@@ -5396,13 +5396,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
+					"sha": "cd53744dba819d5798c3ce50cebfc8a17b47a3b9",
 					"ref": "release/4",
-					"runId": 43410307187,
+					"runId": 43878314214,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-13T10:44:15.889Z",
-					"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
+					"createdAt": "2026-11-16T13:49:23.640Z",
+					"digest": "sha256:3e979ebbc2534cc402b81cc5394a9fb8d2cefb21539ab7d2927381bf27332ab8",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5415,7 +5415,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
+			"digest": "sha256:3e979ebbc2534cc402b81cc5394a9fb8d2cefb21539ab7d2927381bf27332ab8",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7497,7 +7497,7 @@
 					"name": "scenarios-focus-elements-component-toolbar",
 					"route": "scenarios-focus-elements-component-toolbar",
 					"status": "unchanged",
-					"hash": "sha256:39619b45373cf0cf8c07c7ec8ed62b2c7df11b07a1d602321cd8ea441b85ef8d"
+					"hash": "sha256:75777b86471f86ae366c413d464dd0e5e03753f93e8b096185cd1e6d7cbbe615"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -8079,12 +8079,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
+					"sha": "cd53744dba819d5798c3ce50cebfc8a17b47a3b9",
 					"ref": "release/4",
-					"runId": 43410307187,
+					"runId": 43878314214,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-13T10:43:29.706Z",
+					"createdAt": "2026-11-16T13:48:51.537Z",
 					"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
 					"fallback": null,
 					"distance": 0,
@@ -10762,12 +10762,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
+					"sha": "cd53744dba819d5798c3ce50cebfc8a17b47a3b9",
 					"ref": "release/4",
-					"runId": 43410307187,
+					"runId": 43878314214,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-13T10:41:52.409Z",
+					"createdAt": "2026-11-16T13:49:25.475Z",
 					"digest": "sha256:527ce0a79edd72d63df83b0e9449b83dcd80e12a624acce57b722410850da306",
 					"fallback": null,
 					"distance": 0,
@@ -13445,12 +13445,12 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
+					"sha": "cd53744dba819d5798c3ce50cebfc8a17b47a3b9",
 					"ref": "release/4",
-					"runId": 43410307187,
+					"runId": 43878314214,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-13T10:42:41.852Z",
+					"createdAt": "2026-11-16T13:48:35.627Z",
 					"digest": "sha256:4160f0bc0e435a83b94bf43bd9e6a98ea3d8b14ca18d12bfe3c2ce837c279acc",
 					"fallback": null,
 					"distance": 0,
@@ -16134,12 +16134,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "9fba2444761204a42a2dce93d2d73765b051da6b",
+					"sha": "cd53744dba819d5798c3ce50cebfc8a17b47a3b9",
 					"ref": "release/4",
-					"runId": 43410307187,
+					"runId": 43878314214,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-13T10:42:51.283Z",
+					"createdAt": "2026-11-16T13:48:30.216Z",
 					"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
 					"fallback": null,
 					"distance": 0,
