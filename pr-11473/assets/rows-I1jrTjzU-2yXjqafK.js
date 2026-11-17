@@ -1,1 +1,0 @@
-import{s as e,w as t}from"./props-from-config-ytxYrJUY-SHTukO1a.js";var n=e(`rows`,void 0,t,e=>e>=1);export{n as t};
