@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         package: ['test-tag-name-transformer', 'theme-default', 'theme-bwst']
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout base branch
         uses: actions/checkout@v7

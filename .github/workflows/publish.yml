@@ -41,7 +41,7 @@ permissions:
 jobs:
   publish:
     if: github.repository == 'public-ui/kolibri'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/create-github-app-token@v3
         id: app-token
