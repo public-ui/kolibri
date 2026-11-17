@@ -56,5 +56,6 @@ describe('deriveAxes', () => {
 		assert.deepEqual(axes.variants, ['none', ...styled.sort()]);
 		assert.equal(axes.disabled, true);
 		assert.deepEqual(types['kol-alert'], { kind: 'closed', values: ['card', 'msg'] });
-	});
+		// The TypeScript checker reads the whole `components.d.ts`; on a cold start that exceeds mocha's 2 s default.
+	}).timeout(30000);
 });
