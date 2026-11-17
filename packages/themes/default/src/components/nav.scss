@@ -2,6 +2,7 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/icon' as *;
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
@@ -33,8 +34,6 @@
 				color: var(--color-primary);
 				display: flex;
 				min-height: var(--a11y-min-size);
-				padding-right: to-rem(var(--kol-nav-item-padding-right));
-				padding-left: to-rem(8);
 				gap: to-rem(8);
 
 				/* The link skeleton renders the entry as `.kol-link` wrapper inside the entry element.
@@ -44,16 +43,21 @@
 
 				text-decoration: none;
 
-				/* The UA default underline sits on the anchor itself. */
-				.kol-link__interactive-element {
+				&__interactive-element {
+					display: flex;
+					height: 100%;
+					padding-right: to-rem(var(--kol-nav-item-padding-right));
+					padding-left: to-rem(8);
+					align-items: center;
+					/* The UA default underline sits on the anchor itself. */
 					text-decoration: none;
 				}
 
-				.kol-link__interactive-element:focus-visible {
+				&__interactive-element:focus-visible {
 					@include focus-outline;
 				}
 
-				.kol-nav__list & {
+				.kol-nav__list &__interactive-element {
 					padding-left: to-rem(var(--kol-nav-item-padding-left));
 					border-left: 2px solid transparent;
 				}
@@ -74,68 +78,18 @@
 			}
 		}
 
-		&__toggle-button {
-			.kol-button {
-				margin-bottom: to-rem(5);
+		&__compact {
+			@include kol-button('kol-button');
 
-				/* The class carrier is a wrapper and never receives focus. */
-				&__interactive-element:focus {
-					outline: none;
-				}
+			padding-block: to-rem(6);
 
-				/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
-				   would always be true, re-enabling hover styling for disabled buttons. */
-				&__interactive-element:not([disabled]):hover {
-					--text-background-color: var(--color-primary-variant);
-					--text-border-color: var(--color-primary-variant);
-					--text-color: var(--color-light);
-				}
-
+			.kol-nav__toggle-button .kol-button__interactive-element {
+				@include kol-button-ghost;
 				--text-background-color: var(--color-light);
-				--text-border-color: var(--color-light);
 				--text-color: var(--color-primary);
-				--text-box-shadow: none;
 
-				&__text {
-					color: var(--text-color);
-					background-color: var(--text-background-color);
-					border-radius: var(--border-radius);
-					min-width: var(--a11y-min-size);
-					min-height: var(--a11y-min-size);
-
-					transition-duration: 0.5s;
-					transition-property: background-color, color, border-color;
-
-					.kol-span__container {
-						justify-content: center;
-					}
-
-					&:hover {
-						color: var(--text-color);
-						background-color: var(--text-background-color);
-						box-shadow: 0 2px 8px 2px var(--color-shadow);
-						border-color: var(--text-border-color);
-					}
-				}
-
-				&--hide-label &__text {
-					width: unset;
-					padding: to-rem(12.8);
-
-					.kol-span__label {
-						display: none;
-					}
-				}
-
-				&__interactive-element:focus {
-					@include focus-outline;
-				}
-
-				&__interactive-element:disabled:hover &__text {
-					color: var(--text-color);
-					background-color: var(--text-background-color);
-					box-shadow: none;
-					border-color: var(--text-border-color);
+				.kol-button__text {
+					height: var(--a11y-min-size);
 				}
 			}
 		}
