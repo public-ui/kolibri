@@ -1,0 +1,19 @@
+{
+	"schema": 1,
+	"state": "failure",
+	"description": "7 route(s) failed before the screenshots could be compared",
+	"computedAt": "2026-11-17T08:40:03.178Z",
+	"pr": 11619,
+	"head": "fe41bc9d854f35d33baea62129ee7cc8ebf1aa78",
+	"digest": "sha256:ef476db82f0f172f30f42b36312786c23021ec08750988ca4817a698bff3a2b2",
+	"counts": {
+		"changes": 0,
+		"open": 0,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 7,
+		"errorItems": 98
+	},
+	"reviewers": [],
+	"items": {}
+}
