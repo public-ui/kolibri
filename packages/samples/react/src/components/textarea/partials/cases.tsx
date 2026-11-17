@@ -74,7 +74,7 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, TextareaCasesPro
 				<KolTextarea
 					{...props}
 					ref={ref}
-					_label="With Icon Left"
+					_label="With icon left"
 					_value='"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy"'
 					_icons={{
 						left: 'kolicon-settings',
@@ -85,7 +85,7 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, TextareaCasesPro
 				<KolTextarea
 					{...props}
 					ref={ref}
-					_label="With Icon Right"
+					_label="With icon right"
 					_value='"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy"'
 					_icons={{
 						right: 'kolicon-settings',
@@ -96,7 +96,7 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, TextareaCasesPro
 				<KolTextarea
 					{...props}
 					ref={ref}
-					_label="With Icon Left and Right"
+					_label="With icon left and right"
 					_value='"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy"'
 					_icons={{
 						right: 'kolicon-settings',
