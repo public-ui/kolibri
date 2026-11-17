@@ -5,7 +5,7 @@ import type { ComponentApi, ComponentBem } from './types.js';
 export type VariantType = { kind: 'closed'; values: string[] } | { kind: 'open' };
 
 /** Where the values of the `Variant` axis come from, so a design library can be audited against its sources. */
-export type VariantSource = 'css-modifier' | 'prop-type' | 'theme-modifier';
+type VariantSource = 'css-modifier' | 'prop-type' | 'theme-modifier';
 
 /**
  * The style axes of one component. In KoliBri a style variant switches only through `_variant`;

@@ -3,7 +3,7 @@ import { UNSET_VARIANT } from './derive-axes.js';
 import type { Scenario } from './render/render-svg.js';
 
 /** Props value that the harness replaces with a no-op callback. */
-export const CALLBACK = '@function';
+const CALLBACK = '@function';
 
 /**
  * Content of one component instance. A seed fixes only content (label, options, slotted

@@ -38,7 +38,7 @@ export interface RenderResult {
 }
 
 /** States of a component that contains a focusable element: the browser states hover and focus, alone and together. */
-export const INTERACTIVE_STATES = ['default', 'hover', 'focus', 'hover-focus'];
+const INTERACTIVE_STATES = ['default', 'hover', 'focus', 'hover-focus'];
 
 const FOCUSABLE = 'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 /** Interactive elements a pointer can reach: visible and not visually hidden. */

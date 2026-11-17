@@ -4,7 +4,7 @@ import type { ComponentBem } from './types.js';
 const BEM_CONST_START = /^const BEM.*= \{\s*$/;
 const COMPONENT_LINE = /^\s*'(?<tag>kol-[\w-]+)': \{\s*$/;
 const ELEMENT_MULTILINE = /^\s*'?(?<name>[\w-]+)'?: \{\s*$/;
-const ELEMENT_INLINE = /^\s*'?(?<name>[\w-]+)'?: \{ modifiers: (?:null|Set<[^>]*>|new Set\([^)]*\)) \},?\s*$/;
+const ELEMENT_INLINE = /^\s*'?(?<name>[\w-]+)'?: \{ modifiers: (?:null|Set<[^>]*>|new Set\(\[(?<values>[^\]]*)\]\)) \},?\s*$/;
 const BLOCK_MODIFIERS_LINE = /^\s*modifiers: new Set\(\[(?<values>'[\w-]+'(?:\s*,\s*'[\w-]+')*)\]\),?\s*$/;
 
 /**
@@ -25,12 +25,14 @@ export async function extractBem(registryPath: string): Promise<ComponentBem[]> 
 	}
 	const components: ComponentBem[] = [];
 	let current: { bem: ComponentBem; depth: number } | undefined;
+	let element: string | undefined;
 	for (const line of source.split('\n').slice(start)) {
 		const opens = (line.match(/\{/g) ?? []).length;
 		const closes = (line.match(/\}/g) ?? []).length;
 		const componentMatch = line.match(COMPONENT_LINE);
 		if (current === undefined && componentMatch) {
 			current = { bem: { block: componentMatch.groups?.tag ?? '', elements: [], modifiers: [] }, depth: opens };
+			element = undefined;
 			continue;
 		}
 		if (current) {
@@ -40,14 +42,24 @@ export async function extractBem(registryPath: string): Promise<ComponentBem[]> 
 			if (elementName && !current.bem.elements.includes(elementName)) {
 				current.bem.elements.push(elementName);
 			}
-			const modifiersMatch = current.depth === 1 ? line.match(BLOCK_MODIFIERS_LINE) : null;
-			if (modifiersMatch) {
+			if (elementName) {
+				element = elementName;
+				const inlineValues = line.match(ELEMENT_INLINE)?.groups?.values;
+				if (inlineValues) setElementModifiers(current.bem, elementName, parseModifierSet(inlineValues));
+			}
+			const modifiersMatch = current.depth === 1 || current.depth === 3 ? line.match(BLOCK_MODIFIERS_LINE) : null;
+			if (modifiersMatch && current.depth === 1) {
 				current.bem.modifiers = parseModifierSet(modifiersMatch.groups?.values);
+			} else if (modifiersMatch && element) {
+				setElementModifiers(current.bem, element, parseModifierSet(modifiersMatch.groups?.values));
 			}
 			current.depth += opens - closes;
 			if (current.depth <= 0) {
 				current.bem.elements.sort();
 				current.bem.modifiers.sort();
+				if (current.bem.elementModifiers) {
+					current.bem.elementModifiers = Object.fromEntries(Object.entries(current.bem.elementModifiers).sort(([a], [b]) => a.localeCompare(b)));
+				}
 				components.push(current.bem);
 				current = undefined;
 			}
@@ -76,6 +88,10 @@ function matchElement(line: string, depth: number): string | null {
 		return multiline.groups.name;
 	}
 	return null;
+}
+
+function setElementModifiers(bem: ComponentBem, element: string, modifiers: string[]): void {
+	if (modifiers.length > 0) bem.elementModifiers = { ...bem.elementModifiers, [element]: modifiers };
 }
 
 function parseModifierSet(values: string | undefined): string[] {

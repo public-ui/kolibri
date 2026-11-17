@@ -20,6 +20,8 @@ export interface ComponentBem {
 	block: string;
 	elements: string[];
 	modifiers: string[];
+	/** Modifiers per element, for the elements that declare any. */
+	elementModifiers?: Record<string, string[]>;
 }
 
 /**

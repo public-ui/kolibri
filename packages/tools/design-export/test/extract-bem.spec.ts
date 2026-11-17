@@ -47,13 +47,18 @@ export { BEM };
 `;
 
 describe('extractBem', () => {
-	it('reads only the BEM constant, both element spellings and block modifiers', async () => {
+	it('reads only the BEM constant, both element spellings, block and element modifiers', async () => {
 		const path = join(tmpdir(), `bem-registry-${Date.now()}.ts`);
 		await writeFile(path, REGISTRY_FIXTURE, 'utf-8');
 		const bems = await extractBem(path);
 		assert.equal(bems.length, 3);
 		const button = bems.find((bem) => bem.block === 'kol-button');
-		assert.deepEqual(button, { block: 'kol-button', elements: ['interactive-element', 'text', 'tooltip'], modifiers: ['disabled', 'hide-label'] });
+		assert.deepEqual(button, {
+			block: 'kol-button',
+			elementModifiers: { tooltip: ['visible'] },
+			elements: ['interactive-element', 'text', 'tooltip'],
+			modifiers: ['disabled', 'hide-label'],
+		});
 		assert.deepEqual(
 			bems.find((bem) => bem.block === 'kol-abbr'),
 			{ block: 'kol-abbr', elements: [], modifiers: [] },
@@ -77,5 +82,6 @@ describe('extractBem', () => {
 		const button = bems.find((bem) => bem.block === 'kol-button');
 		assert.ok(button?.elements.includes('text'));
 		assert.ok(button?.modifiers.includes('disabled'));
+		assert.deepEqual(bems.find((bem) => bem.block === 'kol-alert')?.elementModifiers?.heading, ['h0', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
 	});
 });

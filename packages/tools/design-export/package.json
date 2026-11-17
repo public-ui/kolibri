@@ -13,6 +13,7 @@
 	"scripts": {
 		"build": "tsc && node scripts/copy-harness.mjs",
 		"check:determinism": "node scripts/check-determinism.mjs",
+		"check:determinism:spec": "node scripts/check-determinism.mjs --spec",
 		"dev": "tsc --watch",
 		"format": "prettier -c src test README.md",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
@@ -21,21 +22,41 @@
 		"pretest:unit": "tsc -p tsconfig.test.json --outDir dist-test",
 		"start": "node dist/cli.js",
 		"start:penpot": "node dist/cli.js && node scripts/penpot-serve.mjs",
+		"start:spec": "node dist/spec-cli.js",
 		"test:unit": "mocha dist-test/test/**/*.spec.js",
 		"unused": "knip"
 	},
 	"dependencies": {
 		"@public-ui/components": "workspace:*",
-		"@public-ui/theme-default": "workspace:*"
+		"@public-ui/theme-default": "workspace:*",
+		"postcss": "8.5.31",
+		"postcss-selector-parser": "7.1.6",
+		"sass-embedded": "1.105.2"
 	},
 	"devDependencies": {
+		"@playwright/test": "1.63.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@types/mocha": "10.0.10",
 		"@types/node": "26.4.0",
-		"@playwright/test": "1.63.0",
 		"eslint": "9.39.5",
+		"knip": "6.42.1",
 		"mocha": "11.8.0",
 		"prettier": "3.9.10",
+		"prettier-plugin-organize-imports": "4.3.0",
 		"typescript": "5.9.3"
+	},
+	"knip": {
+		"entry": [
+			"figma-plugin/code.js",
+			"penpot-plugin/index.js",
+			"scripts/*.mjs",
+			"src/spec-cli.ts"
+		],
+		"project": [
+			"figma-plugin/**/*.js",
+			"penpot-plugin/**/*.js",
+			"scripts/**/*.mjs",
+			"src/**/*.ts"
+		]
 	}
 }

@@ -8,11 +8,15 @@ import { fileURLToPath } from 'node:url';
 /**
  * Runs the design export twice into separate directories and compares the Penpot plugin payload
  * byte for byte. Exits with 1 when the two runs differ. Further arguments go to the CLI, e.g.
- * `--components kol-button` for a quick check. Plain Node built-ins, no dependencies.
+ * `--components kol-button` for a quick check. `--spec` checks the browser-free transformation
+ * (`spec-cli.js`) and compares its Penpot and Figma payloads and the coverage report instead.
+ * Plain Node built-ins, no dependencies.
  */
 const packageRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
-const cli = join(packageRoot, 'dist', 'cli.js');
-const passThrough = process.argv.slice(2);
+const spec = process.argv.includes('--spec');
+const cli = join(packageRoot, 'dist', spec ? 'spec-cli.js' : 'cli.js');
+const passThrough = process.argv.slice(2).filter((arg) => arg !== '--spec');
+const files = spec ? ['spec/penpot-import.json', 'spec/figma-import.json', 'spec/spec-coverage.json'] : ['penpot/penpot-import.json'];
 
 async function exportOnce(label) {
 	const out = await mkdtemp(join(tmpdir(), `design-export-${label}-`));
@@ -21,7 +25,7 @@ async function exportOnce(label) {
 		process.stderr.write(result.stdout + result.stderr);
 		throw new Error(`Export ${label} failed with exit code ${result.status}.`);
 	}
-	const body = await readFile(join(out, 'penpot', 'penpot-import.json'));
+	const body = Buffer.concat(await Promise.all(files.map((file) => readFile(join(out, file)))));
 	await rm(out, { force: true, recursive: true });
 	return { body, hash: createHash('sha256').update(body).digest('hex') };
 }
@@ -35,4 +39,4 @@ if (first.hash !== second.hash) {
 	console.error(`Nicht deterministisch: Läufe unterscheiden sich ab Zeile ${line + 1}:\n  - ${a[line]}\n  + ${b[line]}`);
 	process.exit(1);
 }
-console.log(`Deterministisch: zwei Läufe, identisches penpot-import.json (sha256 ${first.hash.slice(0, 16)}…, ${first.body.length} Bytes).`);
+console.log(`Deterministisch: zwei Läufe, identische Ausgabe (${files.join(', ')}; sha256 ${first.hash.slice(0, 16)}…, ${first.body.length} Bytes).`);
