@@ -168,7 +168,6 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 
 	protected applyAriaDetails(value?: string): void {
 		ariaDetailsProp.apply(value, (v) => this.shared.setRenderProp('ariaDetails', v));
-		this.formAssociation.watchAriaDetails(value);
 		this.syncAriaDetails();
 	}
 
