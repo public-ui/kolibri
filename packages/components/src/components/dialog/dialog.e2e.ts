@@ -77,6 +77,57 @@ dialogTags.forEach((tag) => {
 
 				await expect(callbackPromise).resolves.toBeUndefined();
 			});
+
+			test('it calls the onToggle callback with true on open and with false on close', async ({ page }) => {
+				await page.setContent(`<${tag} _label="">Modal content</${tag}>`);
+				const dialogElement = page.locator(tag);
+
+				const callbackPromise = dialogElement.evaluate((element) => {
+					const dialog = element as HTMLKolDialogElement;
+					const values: (boolean | undefined)[] = [];
+					return new Promise<(boolean | undefined)[]>((resolve) => {
+						dialog._on = {
+							onToggle: (value?: boolean) => {
+								values.push(value);
+								if (values.length === 2) {
+									resolve(values);
+								}
+							},
+						};
+					});
+				});
+
+				await dialogElement.evaluate(async (element) => {
+					const dialog = element as HTMLKolDialogElement;
+					await dialog.openModal();
+					await dialog.closeModal();
+				});
+
+				await expect(callbackPromise).resolves.toEqual([true, false]);
+			});
+
+			test('it calls the onToggle callback with false when the dialog closes natively', async ({ page }) => {
+				await page.setContent(`<${tag} _label="">Modal content</${tag}>`);
+				const dialogElement = page.locator(tag);
+
+				const callbackPromise = dialogElement.evaluate((element) => {
+					const dialog = element as HTMLKolDialogElement;
+					return new Promise<boolean | undefined>((resolve) => {
+						dialog._on = {
+							onToggle: (value?: boolean) => {
+								if (value === false) {
+									resolve(value);
+								}
+							},
+						};
+					});
+				});
+
+				await dialogElement.evaluate(async (element) => (element as HTMLKolDialogElement).openModal());
+				await page.keyboard.press('Escape');
+
+				await expect(callbackPromise).resolves.toBe(false);
+			});
 		});
 
 		test.describe('DOM events', () => {

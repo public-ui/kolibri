@@ -1,3 +1,4 @@
+import type { HrefPropType } from '../../schema/props/href';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -15,22 +16,13 @@ import { normalizeString } from './helpers/normalizers';
  * - Fragment: href="#section"
  * - Explicit empty string: href="" (no link target, should prevent navigation)
  *
- * The prop is required: leaving it unset (undefined) logs a dev warning and falls back to
- * the empty-string default. A target-less link must be set explicitly via an empty string.
+ * Requiredness follows the props config slot of the component (kol-link requires its target,
+ * a card does not); an unset value applies the empty-string default.
  *
  * Consumers should check if href is non-empty before rendering clickable links.
  * An empty href means the component should not resolve to a link.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
  */
-export type HrefProp = SimpleProp<'href', string>;
-export const hrefProp = createPropDefinition<HrefProp>('href', '', normalizeString, (v) => typeof v === 'string', { required: true });
-
-/**
- * Href for components where a link target is one shape among several — a card renders a heading
- * link when a target is set and plain heading text when it is not.
- *
- * Same normalization as `hrefProp`, without its `required` flag: here an unset value is the
- * documented "no link" case, so warning about it would be noise.
- */
-export const optionalHrefProp = createPropDefinition<HrefProp>('href', '', normalizeString, (v) => typeof v === 'string');
+export type HrefProp = SimpleProp<'href', HrefPropType>;
+export const hrefProp = createPropDefinition<HrefProp>('href', '', normalizeString, (v) => typeof v === 'string');

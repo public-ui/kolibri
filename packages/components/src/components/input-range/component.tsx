@@ -1,11 +1,16 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	AccessKeyPropType,
 	AriaDetailsPropType,
 	AutoCompletePropType,
 	ClickableElement,
+	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	InputRangeProps,
 	InputTypeOnDefault,
@@ -19,6 +24,7 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
@@ -30,7 +36,7 @@ import { InputFC, type InputFCProps } from '../../internal/functional-components
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { clampRangeValue, getNumberValueType, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputRangeApi } from '../../internal/functional-components/input-range/api';
 import { inputRangePropsConfig } from '../../internal/functional-components/input-range/api';
 import {
@@ -90,6 +96,8 @@ export class KolInputRange
 	/** Whether `_value` was set as a string; `getValue()` and the events return the value in this type. */
 	private valueIsNumberString = false;
 
+	protected readonly propsConfig: PropsConfigShape = inputRangePropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('range', this._name);
@@ -98,21 +106,20 @@ export class KolInputRange
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: string;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
+	public watchAccessKey(value?: AccessKeyPropType): void {
 		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
 	/**
 	 * References an external element by ID that provides accessible details for this input.
-	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -131,52 +138,49 @@ export class KolInputRange
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
+	public watchHideMsg(value?: HideMsgPropType): void {
 		this.applyHideMsg(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: string = '';
+	@Prop() public _hint?: HintPropType = '';
 
 	@Watch('_hint')
-	public watchHint(value?: string): void {
+	public watchHint(value?: HintPropType): void {
 		this.applyHint(value);
 	}
 
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType;
+	@Prop() public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -186,7 +190,7 @@ export class KolInputRange
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -194,7 +198,7 @@ export class KolInputRange
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -226,7 +230,7 @@ export class KolInputRange
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -236,7 +240,7 @@ export class KolInputRange
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -244,9 +248,9 @@ export class KolInputRange
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault;
+	@Prop() public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -256,7 +260,7 @@ export class KolInputRange
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -267,7 +271,7 @@ export class KolInputRange
 	/**
 	 * Defines the step size for value changes.
 	 */
-	@Prop() public _step?: number | NumberString;
+	@Prop() public _step?: number | NumberString = undefined;
 
 	@Watch('_step')
 	public watchStep(value?: number | NumberString): void {
@@ -277,7 +281,7 @@ export class KolInputRange
 	/**
 	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _suggestions?: SuggestionsPropType;
+	@Prop() public _suggestions?: SuggestionsPropType = undefined;
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
@@ -288,7 +292,7 @@ export class KolInputRange
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -307,19 +311,18 @@ export class KolInputRange
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
+	public watchTouched(value?: TouchedPropType): void {
 		this.applyTouched(value);
 	}
 
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString;
+	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: number | NumberString | null): void {
@@ -333,7 +336,7 @@ export class KolInputRange
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -344,11 +347,11 @@ export class KolInputRange
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<number | NumberString | undefined> {
+	public getValue(): Promise<number | NumberString | undefined> {
 		if (this.ctaRef.el !== undefined) {
-			return this.readValue(this.ctaRef.el.value);
+			return Promise.resolve(this.readValue(this.ctaRef.el.value));
 		}
+		return Promise.resolve(undefined);
 	}
 
 	/**
@@ -356,19 +359,22 @@ export class KolInputRange
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputRangePropsConfig);
 		// The bounds start at the defaults of `_min` and `_max`, so an ignored invalid value keeps them (#11077).
 		this.setRenderProp('min', 0);
 		this.setRenderProp('max', 100);

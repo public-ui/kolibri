@@ -35,9 +35,9 @@ export type PageItem = { page: number; selected: boolean } | 'separator' | null;
 /**
  * One item per page: a page button for the first and last `boundaryCount` pages and `siblingCount`
  * pages on each side of the current page, a separator for the first hidden page after a shown one, and
- * `null` for the other hidden pages. The `null` items keep the positions of the rendered children
- * stable, so a re-render keeps the navigation buttons after the list (and their focus). A gap before the
- * first shown page has no separator.
+ * `null` for the other hidden pages, which render nothing. A gap before the first shown page has no
+ * separator. The renderer keys the page and separator items; `restorePageFocus` of the pagination
+ * item keeps the focus on the activated page.
  */
 export const getPageItems = (page: number, count: number, boundaryCount: number, siblingCount: number): PageItem[] => {
 	const items: PageItem[] = [];

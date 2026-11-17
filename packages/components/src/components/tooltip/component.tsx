@@ -22,7 +22,7 @@ export class KolTooltipWc {
 	/**
 	 * Defines the elements badge text.
 	 */
-	@Prop() public _badgeText?: BadgeTextPropType;
+	@Prop() public _badgeText?: BadgeTextPropType = undefined;
 
 	/**
 	 * Defines the alignment of the tooltip, popover or tabs in relation to the element.
@@ -39,7 +39,7 @@ export class KolTooltipWc {
 	 * @deprecated Will be removed in next major release. The ID is now generated internally and cannot be set via props.
 	 * @internal
 	 */
-	@Prop() public _id?: IdPropType;
+	@Prop() public _id?: IdPropType = undefined;
 
 	@Watch('_id')
 	public validateId(value?: IdPropType): void {

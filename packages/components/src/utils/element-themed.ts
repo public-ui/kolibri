@@ -39,4 +39,4 @@ function waitForThemed(host: HTMLElement): Promise<void> {
 	});
 }
 
-export { MAX_TIMEOUT_DURATION, waitForThemed };
+export { waitForThemed };

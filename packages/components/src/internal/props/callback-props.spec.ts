@@ -115,8 +115,8 @@ describe.each([
 });
 
 describe('dialogCallbacksProp', () => {
-	it('keeps only onCancel and onClose', () => {
-		expect(applied(dialogCallbacksProp, { onCancel, onClick, onClose, onToggle })).toEqual([{ onCancel, onClose }]);
+	it('keeps only onCancel, onClose and onToggle', () => {
+		expect(applied(dialogCallbacksProp, { onCancel, onClick, onClose, onToggle })).toEqual([{ onCancel, onClose, onToggle }]);
 	});
 
 	it('drops callbacks that are not functions', () => {

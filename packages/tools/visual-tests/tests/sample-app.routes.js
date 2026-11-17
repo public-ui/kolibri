@@ -636,11 +636,7 @@ ROUTES.set('table/stateless-async', {
 	},
 });
 ROUTES.set('tabs/basic');
-ROUTES.set('tabs/create-button', {
-	axe: {
-		skipFailures: true,
-	},
-});
+ROUTES.set('tabs/create-button');
 ROUTES.set('tabs/icons-only', {
 	snapshot: {
 		viewportSize: {
@@ -732,12 +728,6 @@ ROUTES.set('scenarios/accordion-components', {
 	},
 });
 ROUTES.set('scenarios/static-form', {
-	snapshot: {
-		forceFullPage: true,
-		skip: true,
-	},
-});
-ROUTES.set('scenarios/sample-form-with-validation', {
 	snapshot: {
 		forceFullPage: true,
 		skip: true,
@@ -1031,4 +1021,7 @@ ROUTES.set('scenarios/focus-elements?component=tree', {
 			height: 0,
 		},
 	},
+});
+ROUTES.set('scenarios/label-lang', {
+	snapshot: {},
 });

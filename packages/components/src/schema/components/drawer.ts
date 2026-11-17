@@ -1,16 +1,16 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { HeadingLevel, PropAlign, PropHasCloser, PropLabel, PropOpen } from '../props';
+import type { HeadingLevel, PropAlign, PropHasCloser, PropLabelLangSegments, PropOpen } from '../props';
 import type { KoliBriModalEventCallbacks } from '../types';
 
-type RequiredProps = PropLabel;
+type RequiredProps = PropLabelLangSegments;
 type OptionalProps = PropAlign &
 	PropHasCloser &
 	PropOpen & {
 		level?: HeadingLevel;
 		on: KoliBriModalEventCallbacks;
 	};
-type RequiredStates = PropAlign & PropOpen & PropLabel;
+type RequiredStates = PropAlign & PropOpen & PropLabelLangSegments;
 type OptionalStates = PropHasCloser & {
 	level?: HeadingLevel;
 	on: KoliBriModalEventCallbacks;

@@ -51,6 +51,8 @@ describe('colorProp', () => {
 		['#00336680', { backgroundColor: '#00336680', foregroundColor: '#7dcaff' }],
 		[pair, { backgroundColor: '#036', foregroundColor: '#fff' }],
 		[JSON.stringify(pair), { backgroundColor: '#036', foregroundColor: '#fff' }],
+		[['#003366', '#ffffff'], { backgroundColor: '#036', foregroundColor: '#fff' }],
+		[JSON.stringify(['#003366', '#ffffff']), { backgroundColor: '#036', foregroundColor: '#fff' }],
 		[
 			{ backgroundColor: '#ffffff', foregroundColor: '#ffffff' },
 			{ backgroundColor: '#fff', foregroundColor: '#595959' },

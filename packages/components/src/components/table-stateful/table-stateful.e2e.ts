@@ -104,6 +104,39 @@ test.describe('kol-table-stateful', () => {
 		await expect(table.locator('caption')).toHaveCount(0);
 	});
 
+	test('releases the external label references when _ariaLabelledby is emptied or set to a missing ID', async ({ page }) => {
+		await page.setContent(
+			`<span id="external-caption">Caption</span><kol-table-stateful _label="Internal Fallback" _headers='${JSON.stringify(HEADERS)}' _data='${JSON.stringify(DATA)}'></kol-table-stateful>`,
+		);
+		const kolTableStateful = page.locator('kol-table-stateful');
+		const table = kolTableStateful.locator('table');
+		const setAriaLabelledby = (value: string) =>
+			kolTableStateful.evaluate((el: HTMLKolTableStatefulElement, nextValue: string) => {
+				(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = nextValue;
+			}, value);
+		const externalStillReferenced = () =>
+			table.evaluate((element) => {
+				const refs = (element as unknown as { ariaLabelledByElements?: (Element | null)[] | null }).ariaLabelledByElements;
+				return refs?.some((ref) => ref instanceof HTMLElement && ref.id === 'external-caption') ?? false;
+			});
+
+		await setAriaLabelledby('external-caption');
+		await page.waitForChanges();
+		// External element resolved — the table must no longer point to its internal caption.
+		await expect(table).not.toHaveAttribute('aria-labelledby', 'caption');
+
+		// Explicit element references win over the aria-labelledby content attribute: pointing
+		// _ariaLabelledby at an ID without an element or emptying it must release them, so the
+		// caption fallback names the table again.
+		for (const value of ['does-not-exist', '']) {
+			await setAriaLabelledby(value);
+			await page.waitForChanges();
+			await expect(table).toHaveAttribute('aria-labelledby', 'caption');
+			await expect(table.locator('caption')).toHaveText('Internal Fallback');
+			expect(await externalStillReferenced()).toBe(false);
+		}
+	});
+
 	test.describe('resetSort()', () => {
 		test('resets manual sort back to the default sort defined in headers', async ({ page }) => {
 			await page.setContent(`<kol-table-stateful

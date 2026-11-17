@@ -1,3 +1,4 @@
+import type { MaxPropType } from '../../schema/props/max';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeNumber } from './helpers/normalizers';
@@ -23,5 +24,5 @@ import { normalizeNumber } from './helpers/normalizers';
  * @see https://www.w3.org/TR/wai-aria-1.2/#aria-valuemax
  * @see https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
  */
-export type MaxProp = SimpleProp<'max', number>;
+export type MaxProp = SimpleProp<'max', MaxPropType>;
 export const maxProp = createPropDefinition<MaxProp>('max', 100, normalizeNumber, (v) => v > 0);

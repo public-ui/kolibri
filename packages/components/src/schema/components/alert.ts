@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { HeadingLevel, PropAlert, PropAlertType, PropAlertVariant, PropHasCloser, PropLabel } from '../props';
+import type { HeadingLevel, PropAlert, PropAlertType, PropAlertVariant, PropHasCloser, PropLabelLangSegments } from '../props';
 import type { EventCallback } from '../types';
 
 export type KoliBriAlertEventCallbacks = {
@@ -11,7 +11,7 @@ type RequiredAlertProps = NonNullable<unknown>;
 type OptionalAlertProps = {
 	level: HeadingLevel;
 	on: KoliBriAlertEventCallbacks;
-} & PropLabel &
+} & PropLabelLangSegments &
 	PropAlert &
 	PropHasCloser &
 	PropAlertType &

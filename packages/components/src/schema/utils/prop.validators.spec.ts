@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals
 import type { Generic } from 'adopted-style-sheets';
 
 import { createLegacyComponent, getInvalidValueWarnings, getLoggedMessages } from '../../utils/testing/legacy-component';
-import { Log, setExperimentalMode } from './dev.utils';
+import { Log, setExperimentalMode, setRuntimeMode } from './dev.utils';
 import {
 	emptyStringByArrayHandler,
 	KoliBriDevHelper,
@@ -250,6 +250,71 @@ describe('legacy watch helpers', () => {
 		});
 	});
 
+	describe('watchValidator in production mode', () => {
+		const savedNodeEnv = process.env['NODE_ENV'];
+
+		beforeEach(() => {
+			setRuntimeMode('production');
+			process.env['NODE_ENV'] = 'production';
+		});
+
+		afterEach(() => {
+			process.env['NODE_ENV'] = savedNodeEnv;
+			setRuntimeMode('test');
+		});
+
+		it('validates when the environment does not prove production, as in a browser bundle without process', () => {
+			delete process.env['NODE_ENV'];
+			const component = createLegacyComponent({ _wpUnknown: 'old' });
+			watchValidator(component, '_wpUnknown', isString, new Set(['String']), 42 as unknown as string);
+			expect(component.state._wpUnknown).toBe('old');
+			expect(warningsFor('_wpUnknown')).toHaveLength(1);
+		});
+
+		it('stores any given value without running the validation function', () => {
+			const validation = jest.fn(isString);
+			const component = createLegacyComponent({ _wpInvalid: 'old' });
+			watchValidator(component, '_wpInvalid', validation, new Set(['String']), 42 as unknown as string);
+			expect(validation).not.toHaveBeenCalled();
+			expect(component.state._wpInvalid).toBe(42);
+			expect(warningsFor('_wpInvalid')).toEqual([]);
+		});
+
+		it('stores the default value for an unset optional prop', () => {
+			const component = createLegacyComponent({ _wpDefault: 'old' });
+			watchValidator(component, '_wpDefault', isString, new Set(['String']), undefined, { defaultValue: 'fallback' });
+			expect(component.state._wpDefault).toBe('fallback');
+		});
+
+		it('keeps the previous state for an unset optional prop without a valid default value', () => {
+			const component = createLegacyComponent({ _wpNoDefault: 'old' });
+			watchValidator(component, '_wpNoDefault', isString, new Set(['String']), undefined);
+			expect(component.state._wpNoDefault).toBe('old');
+			const badDefault = createLegacyComponent();
+			watchValidator(badDefault, '_wpBadDefault', isString, new Set(['String']), undefined, { defaultValue: 1 });
+			expect(badDefault.state).toEqual({});
+		});
+
+		it('stores undefined when the validation function accepts it', () => {
+			const component = createLegacyComponent({ _wpUndefined: 'old' });
+			watchValidator(component, '_wpUndefined', () => true, new Set(['any']), undefined, { defaultValue: 'fallback' });
+			expect(component.state).toHaveProperty('_wpUndefined', undefined);
+		});
+
+		it('keeps the previous state for a required prop without a value', () => {
+			const component = createLegacyComponent({ _wpRequired: 'old' });
+			watchValidator(component, '_wpRequired', isString, new Set(['String']), undefined, { required: true });
+			expect(component.state._wpRequired).toBe('old');
+		});
+
+		it('passes the hooks to setState', () => {
+			const afterPatch = jest.fn<Generic.Element.StateHooksCallback>();
+			const component = createLegacyComponent();
+			watchValidator(component, '_wpHooks', isString, new Set(['String']), 1 as unknown as string, { hooks: { afterPatch } });
+			expect(afterPatch).toHaveBeenCalledWith(1, { _wpHooks: 1 }, component, '_wpHooks');
+		});
+	});
+
 	describe('watchBoolean', () => {
 		it.each([[true], [false]])('stores %p', (value) => {
 			const component = createLegacyComponent();
@@ -470,6 +535,47 @@ describe('legacy watch helpers', () => {
 			const component = createLegacyComponent();
 			watchJsonArrayString(component, '_list', isString, undefined, undefined, { defaultValue: ['fallback'], required: true });
 			expect(component.state._list).toEqual([]);
+		});
+	});
+
+	describe('watchJsonArrayString in production mode', () => {
+		const savedNodeEnv = process.env['NODE_ENV'];
+
+		beforeEach(() => {
+			setRuntimeMode('production');
+			process.env['NODE_ENV'] = 'production';
+		});
+
+		afterEach(() => {
+			process.env['NODE_ENV'] = savedNodeEnv;
+			setRuntimeMode('test');
+		});
+
+		it('validates the items when the environment does not prove production, as in a browser bundle without process', () => {
+			delete process.env['NODE_ENV'];
+			const component = createLegacyComponent({ _list: ['old'] });
+			watchJsonArrayString(component, '_list', isString, ['a', 1] as unknown as string[]);
+			expect(component.state._list).toEqual(['old']);
+		});
+
+		it('stores an array with invalid items without running the item validation', () => {
+			const itemValidation = jest.fn(isString);
+			const component = createLegacyComponent({ _list: ['old'] });
+			watchJsonArrayString(component, '_list', itemValidation, ['a', 1] as unknown as string[]);
+			expect(itemValidation).not.toHaveBeenCalled();
+			expect(component.state._list).toEqual(['a', 1]);
+		});
+
+		it('stores a parsed JSON string with invalid items', () => {
+			const component = createLegacyComponent({ _list: ['old'] });
+			watchJsonArrayString(component, '_list', isString, "['a',1]");
+			expect(component.state._list).toEqual(['a', 1]);
+		});
+
+		it('keeps the previous state for a value that is not an array', () => {
+			const component = createLegacyComponent({ _list: ['old'] });
+			watchJsonArrayString(component, '_list', isString, 'plain text');
+			expect(component.state._list).toEqual(['old']);
 		});
 	});
 

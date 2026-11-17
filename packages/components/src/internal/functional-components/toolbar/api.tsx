@@ -1,5 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
-import { labelWithExpertSlotProp, orientationProp, toolbarItemsProp } from '../../props';
+import { labelProp, orientationProp, toolbarItemsProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
 
@@ -7,12 +7,12 @@ import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
  * Props configuration for the toolbar component.
  *
  * Notes on prop choices:
- * - `labelWithExpertSlotProp`, not `labelProp`: the predecessor's `validateLabel` accepted any
- *   string; `labelProp` would reject one-character labels. The toolbar has no expert slot.
+ * - `labelProp`: the label is emitted only as the `aria-label` of the toolbar and is never
+ *   rendered, so language segments would have no effect — a plain string suffices.
  * - `orientationProp` defaults to `'horizontal'`, like the predecessor's `validateOrientation`.
  */
 export const toolbarPropsConfig = {
-	required: [labelWithExpertSlotProp, toolbarItemsProp],
+	required: [labelProp, toolbarItemsProp],
 	optional: [orientationProp],
 } as const satisfies PropsConfigShape;
 

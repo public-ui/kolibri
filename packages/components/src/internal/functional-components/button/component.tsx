@@ -1,15 +1,16 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { classNameFromVariant } from '../../../schema';
+import { classNameFromVariant, trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
+import { resolveFcProps } from '../props-from-config';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
-import type { ButtonApi } from './api';
+import { buttonPropsConfig, type ButtonApi } from './api';
 
 const buttonBem = bem.forBlock('kol-button');
 const BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT = buttonBem('interactive-element');
@@ -53,12 +54,12 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 		tabIndex,
 		type,
 		variant,
-		/* Not rendered as attributes: `on` is kept for the StrictFields contract, `tooltipAlign`
-		   is consumed by the tooltip behavior of the web component. */
+		/* Not rendered as attributes: `tooltipAlign` is consumed by the tooltip behavior of the
+		   web component; why `on` stays out of `rest` is the comment on the `void` calls below. */
 		on,
 		tooltipAlign,
 		...rest
-	} = props;
+	} = resolveFcProps(buttonPropsConfig, props);
 
 	// Marking both as intentionally read keeps them out of the forwarded rest attributes without
 	// tripping `no-unused-vars`.
@@ -66,7 +67,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 	void tooltipAlign;
 
 	const badgeText = accessKey || shortKey;
-	const hasLabelText = label.length > 0;
+	const hasLabelText = trimLabel(label).length > 0;
 	const hasAriaDescription = ariaDescription.trim().length > 0;
 
 	return (
@@ -97,7 +98,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 				aria-expanded={ariaExpanded || undefined}
 				aria-haspopup={ariaHasPopup || undefined}
 				aria-keyshortcuts={shortKey || undefined}
-				aria-label={hideLabel && hasLabelText ? label : undefined}
+				aria-label={hideLabel && hasLabelText ? trimLabel(label) : undefined}
 				aria-selected={ariaSelected || undefined}
 				class={BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT}
 				disabled={disabled}

@@ -8,16 +8,18 @@ import { collapsiblePropsConfig } from '../../internal/functional-components/col
 import { CollapsibleFC } from '../../internal/functional-components/collapsible/component';
 import { createCollapsibleOpenAnimation, DEFAULT_COLLAPSIBLE_TRANSITION_MS } from '../../internal/functional-components/collapsible/open-animation';
 import { createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/toggle-handler';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { collapsibleCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../internal/props';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
 import type {
 	ClickableElement,
 	CollapsibleCallbacksPropType,
 	DetailsProps,
+	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
 	KolFocusOptions,
-	LabelPropType,
+	LabelLangSegmentsPropType,
+	OpenPropType,
 } from '../../schema';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -78,24 +80,26 @@ export class KolDetails
 		setOpen: (open) => (this._open = open),
 	});
 
+	protected readonly propsConfig: PropsConfigShape = collapsiblePropsConfig;
+
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
 	}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -111,7 +115,7 @@ export class KolDetails
 	/**
 	 * Defines the callback functions for the collapsible.
 	 */
-	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
+	@Prop() public _on?: CollapsibleCallbacksPropType<boolean> = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {
@@ -120,12 +124,11 @@ export class KolDetails
 
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
-	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
 
 	@Watch('_open')
-	public watchOpen(value?: boolean): void {
+	public watchOpen(value?: OpenPropType): void {
 		openProp.apply(value, (v) => {
 			this.setRenderProp('open', v);
 			/* The very first pass runs during componentWillLoad: render the final state straight
@@ -139,19 +142,22 @@ export class KolDetails
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Triggers a click on the heading toggle button.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(collapsiblePropsConfig);
 		this.transitionMs = getFeatureFlag('collapsibleTransitionMs', this.host) ?? DEFAULT_COLLAPSIBLE_TRANSITION_MS;
 
 		this.watchDisabled(this._disabled);

@@ -59,7 +59,7 @@ Custom Event vom Host-Element neu ausgelöst.
 
 ### Eingebettete Komponenten
 
-Rendert eine Komponente eine andere Komponente in ihrem Shadow DOM (z. B. die Sortier-Buttons von `kol-table-stateless` oder die Buttons von `kol-pagination`), rendert sie deren Functional Component über ein Item (`createButtonItem`, `createLinkItem`, …, siehe [ARC42 – Embedded Components (Items)](../packages/components/src/components/_skeleton/ARC42.md#embedded-components-items)). Das Item übernimmt dieselben Schritte wie der Handler oben, dispatcht das Custom Event aber auf dem Wurzelknoten der Functional Component (`.kol-button`, `.kol-link`). Von dort bubblet es mit `composed: true` durch den Shadow DOM der einbettenden Komponente und über deren Host nach außen.
+Rendert eine Komponente eine andere Komponente in ihrem Shadow DOM (z. B. die Sortier-Buttons von `kol-table-stateless` oder die Buttons von `kol-pagination`), rendert sie deren Functional Component über ein Item (`createButtonItem`, `createLinkItem`, …, siehe [ARC42 – Embedded Components (Items)](../packages/components/docs/ARC42-SKELETON.md#embedded-components-items)). Das Item übernimmt dieselben Schritte wie der Handler oben, dispatcht das Custom Event aber auf dem Wurzelknoten der Functional Component (`.kol-button`, `.kol-link`). Von dort bubblet es mit `composed: true` durch den Shadow DOM der einbettenden Komponente und über deren Host nach außen.
 
 ## Utility-Funktionen und Typen
 

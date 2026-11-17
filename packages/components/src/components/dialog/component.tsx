@@ -3,7 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
+import type { DialogProps, HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from './base';
@@ -30,10 +30,10 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		this.applyLabel(value);
 	}
 
@@ -50,7 +50,7 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	/**
 	 * Defines the modal callback functions.
 	 */
-	@Prop() public _on?: KoliBriDialogEventCallbacks;
+	@Prop() public _on?: KoliBriDialogEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriDialogEventCallbacks): void {
@@ -70,10 +70,10 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	/**
 	 * Defines the width of the modal. (max-width: 100%)
 	 */
-	@Prop() public _width?: string = '100%';
+	@Prop() public _width?: WidthPropType = '100%';
 
 	@Watch('_width')
-	public watchWidth(value?: string): void {
+	public watchWidth(value?: WidthPropType): void {
 		this.applyWidth(value);
 	}
 
@@ -98,18 +98,18 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	 * Opens the dialog. Pass true to open as a modal dialog.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async show(modal: boolean = false): Promise<void> {
+	public show(modal: boolean = false): Promise<void> {
 		this.showDialog(modal);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Closes the dialog.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async close(): Promise<void> {
+	public close(): Promise<void> {
 		this.closeDialog();
+		return Promise.resolve();
 	}
 
 	/**
@@ -119,10 +119,11 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	@Method()
 	public async closeModal(): Promise<void> {
 		await this.close();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
-		this.initDialogRenderProps();
+		this.initCardCloseButton();
 
 		this.watchLabel(this._label);
 		this.watchLevel(this._level);

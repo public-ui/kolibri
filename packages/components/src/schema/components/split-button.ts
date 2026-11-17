@@ -6,14 +6,14 @@ import type {
 	PropDisabled,
 	PropHideLabel,
 	PropIcons,
-	PropLabel,
+	PropLabelLangSegments,
 	PropName,
 	PropTooltipAlign,
 	PropVariantClassName,
 } from '../props';
 import type { StencilUnknown } from '../types';
 
-type RequiredProps = PropLabel;
+type RequiredProps = PropLabelLangSegments;
 type OptionalProps = {
 	on?: ButtonCallbacksPropType<StencilUnknown>;
 } & PropDisabled &

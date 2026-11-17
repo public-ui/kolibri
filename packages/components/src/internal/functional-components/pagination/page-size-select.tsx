@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import type { InputTypeOnDefault, Option, ShortKeyPropType, StencilUnknown, Stringified } from '../../../schema';
 import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
+import type { PropsConfigShape } from '../generic-types';
 import { selectPropsConfig } from '../select/api';
 import { BaseSelectWebComponent } from '../select/base-web-component';
 
@@ -38,6 +39,8 @@ export class PageSizeSelect extends BaseSelectWebComponent {
 	private focused = false;
 	private touched = false;
 	private value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
+
+	protected readonly propsConfig: PropsConfigShape = selectPropsConfig;
 
 	public constructor(
 		private readonly getHost: () => HTMLElement | undefined,
@@ -120,7 +123,6 @@ export class PageSizeSelect extends BaseSelectWebComponent {
 		this.passed = input;
 		this._on = input.on;
 		this.value = input.value;
-		this.initRenderProps(selectPropsConfig);
 
 		this.applyAriaDetails(undefined);
 		this.applyName(undefined);

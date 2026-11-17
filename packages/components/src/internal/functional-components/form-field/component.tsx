@@ -1,7 +1,14 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { translate } from '../../../i18n';
-import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../../schema';
+import type {
+	LabelLangSegmentsPropType,
+	MaxLengthBehaviorPropType,
+	MsgPropType,
+	Stringified,
+	TooltipAlignPropType,
+	VariantClassNamePropType,
+} from '../../../schema';
 import { buildBadgeTextString, classNameFromVariant, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
@@ -21,7 +28,7 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	disabled?: boolean;
 	msg?: Stringified<MsgPropType>;
 	hint?: string;
-	label: string;
+	label: LabelLangSegmentsPropType;
 	/** Space-separated IDs the root element references through `aria-describedby`. */
 	ariaDescribedBy?: string;
 	hideLabel?: boolean;
@@ -169,8 +176,8 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 			</div>
 			{counter && !(counter.maxLengthBehavior === 'soft' && typeof counter.maxLength !== 'number') && (
 				<div class={formFieldBem('counter')}>
-					<span data-testid="input-counter" aria-hidden="true" class={formFieldBem('counter')} ref={counter.visualRef} />
-					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
+					<span aria-hidden="true" class={formFieldBem('counter')} ref={counter.visualRef} />
+					<span aria-live="polite" class="visually-hidden" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
 				</div>
 			)}
 			{showMsg && <FormFieldMsgFC id={id} alert={alert} hideMsg={hideMsg} msg={msg} />}

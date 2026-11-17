@@ -1,10 +1,17 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	AccessKeyPropType,
 	AriaDetailsPropType,
+	CheckedPropType,
 	ClickableElement,
+	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IndeterminatePropType,
 	InputCheckboxIconsProp,
 	InputCheckboxProps,
 	InputTypeOnDefault,
@@ -13,12 +20,15 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	TouchedPropType,
 } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
@@ -28,7 +38,7 @@ import { CheckboxFC } from '../../internal/functional-components/form-field/chec
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
 import type { InputFCProps } from '../../internal/functional-components/form-field/input';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputCheckboxApi } from '../../internal/functional-components/input-checkbox/api';
 import { inputCheckboxPropsConfig } from '../../internal/functional-components/input-checkbox/api';
 import {
@@ -45,6 +55,8 @@ import {
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';
+
+const checkboxBem = bem.forBlock('kol-input-checkbox');
 
 /**
  * The **Checkbox** input type generates a rectangular box that can be activated and deactivated by clicking. When activated, a colored checkmark is shown inside the box.
@@ -74,6 +86,8 @@ export class KolInputCheckbox
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
+	protected readonly propsConfig: PropsConfigShape = inputCheckboxPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('checkbox', this._name);
@@ -82,74 +96,70 @@ export class KolInputCheckbox
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: string;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
+	public watchAccessKey(value?: AccessKeyPropType): void {
 		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
 	/**
 	 * Defines whether the checkbox is checked or not. Can be read and written.
-	 * @TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _checked?: CheckedPropType = false;
 
 	@Watch('_checked')
-	public watchChecked(value?: boolean): void {
+	public watchChecked(value?: CheckedPropType): void {
 		checkedProp.apply(value, (v) => this.setRenderProp('checked', v));
 		this.syncFormAssociatedValue();
 	}
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
+	public watchHideMsg(value?: HideMsgPropType): void {
 		this.applyHideMsg(value);
 	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: string = '';
+	@Prop() public _hint?: HintPropType = '';
 
 	@Watch('_hint')
-	public watchHint(value?: string): void {
+	public watchHint(value?: HintPropType): void {
 		this.applyHint(value);
 	}
 
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: Stringified<InputCheckboxIconsProp>;
+	@Prop() public _icons?: Stringified<InputCheckboxIconsProp> = undefined;
 
 	/** Merges the given icons into the current ones, so the other states keep their icons. */
 	@Watch('_icons')
@@ -160,7 +170,7 @@ export class KolInputCheckbox
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -169,17 +179,16 @@ export class KolInputCheckbox
 
 	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
-	 * @TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
+	@Prop({ mutable: true, reflect: true }) public _indeterminate?: IndeterminatePropType = undefined;
 
 	@Watch('_indeterminate')
-	public watchIndeterminate(value?: boolean): void {
+	public watchIndeterminate(value?: IndeterminatePropType): void {
 		indeterminateProp.apply(value, (v) => this.setRenderProp('indeterminate', v));
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -201,7 +210,7 @@ export class KolInputCheckbox
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -211,7 +220,7 @@ export class KolInputCheckbox
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -219,9 +228,9 @@ export class KolInputCheckbox
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault;
+	@Prop() public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -230,22 +239,20 @@ export class KolInputCheckbox
 
 	/**
 	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: RequiredPropType = false;
 
 	@Watch('_required')
-	public watchRequired(value?: boolean): void {
+	public watchRequired(value?: RequiredPropType): void {
 		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
 	}
 
 	/**
 	 * References an external element by ID that provides accessible details for this input.
-	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -255,7 +262,7 @@ export class KolInputCheckbox
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -267,7 +274,7 @@ export class KolInputCheckbox
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -286,12 +293,11 @@ export class KolInputCheckbox
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
+	public watchTouched(value?: TouchedPropType): void {
 		this.applyTouched(value);
 	}
 
@@ -328,9 +334,8 @@ export class KolInputCheckbox
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this.getModelValue();
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this.getModelValue());
 	}
 
 	/**
@@ -338,20 +343,22 @@ export class KolInputCheckbox
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputCheckboxPropsConfig);
-
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
 		this.watchName(this._name);
@@ -490,11 +497,11 @@ export class KolInputCheckbox
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-checkbox', {
-							'kol-input-checkbox--checked': checked,
-							'kol-input-checkbox--indeterminate': indeterminate,
-							[`kol-input-checkbox--variant-${variant}`]: true,
-							[`kol-input-checkbox--label-align-${this.getRenderProp('labelAlign')}`]: true,
+						class: checkboxBem({
+							checked,
+							indeterminate,
+							[`variant-${variant}`]: true,
+							[`label-align-${this.getRenderProp('labelAlign')}`]: true,
 						}),
 						accessKey,
 						shortKey,
@@ -504,10 +511,10 @@ export class KolInputCheckbox
 					})}
 				>
 					<FieldControlFC
-						class={clsx('kol-input-checkbox__field-control', {
-							'kol-input-checkbox__field-control--checked': checked,
-							'kol-input-checkbox__field-control--indeterminate': indeterminate,
-							[`kol-input-checkbox__field-control--variant-${variant}`]: true,
+						class={checkboxBem('field-control', {
+							checked,
+							indeterminate,
+							[`variant-${variant}`]: true,
 						})}
 						id={this.id}
 						label={this.getRenderProp('label')}

@@ -1,3 +1,4 @@
+import type { AltPropType } from '../../schema/props/alt';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -16,7 +17,7 @@ import { normalizeString } from './helpers/normalizers';
  *
  * @see https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html
  */
-export type AltProp = SimpleProp<'alt', string>;
+export type AltProp = SimpleProp<'alt', AltPropType>;
 export const altProp = createPropDefinition<AltProp>(
 	'alt',
 	'', // Default: empty string allows decorative images

@@ -4,7 +4,7 @@ import { Component, Element, forceUpdate, h, Host, Prop, State, Watch } from '@s
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { ButtonItem, ButtonItemFcProps } from '../../internal/functional-components/button/item';
 import { createButtonItem } from '../../internal/functional-components/button/item';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { createItemPool } from '../../internal/functional-components/item-pool';
 import type { LinkFCProps } from '../../internal/functional-components/link/component';
 import type { LinkItem } from '../../internal/functional-components/link/item';
@@ -15,10 +15,12 @@ import { navPropsConfig } from '../../internal/functional-components/nav/api';
 import { NavFC } from '../../internal/functional-components/nav/component';
 import type { NavChildren } from '../../internal/functional-components/nav/model';
 import { getInitiallyExpanded, toggleExpanded } from '../../internal/functional-components/nav/model';
-import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelWithExpertSlotProp, navLinksProp } from '../../internal/props';
+import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelProp, navLinksProp } from '../../internal/props';
 import type {
 	ButtonOrLinkOrTextWithChildrenProps,
 	CollapsiblePropType,
+	HasCompactButtonPropType,
+	HasIconsWhenExpandedPropType,
 	HideLabelPropType,
 	InternalButtonProps,
 	LabelPropType,
@@ -65,11 +67,12 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 		(item) => item.destroy(),
 	);
 
+	protected readonly propsConfig: PropsConfigShape = navPropsConfig;
+
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
-	 * @TODO: Change type back to `CollapsiblePropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _collapsible?: boolean = true;
+	@Prop() public _collapsible?: CollapsiblePropType = true;
 
 	@Watch('_collapsible')
 	public watchCollapsible(value?: CollapsiblePropType): void {
@@ -79,29 +82,28 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	/**
 	 * Creates a button below the navigation, that toggles _collapsible.
 	 */
-	@Prop() public _hasCompactButton?: boolean = false;
+	@Prop() public _hasCompactButton?: HasCompactButtonPropType = false;
 
 	@Watch('_hasCompactButton')
-	public watchHasCompactButton(value?: boolean): void {
+	public watchHasCompactButton(value?: HasCompactButtonPropType): void {
 		hasCompactButtonProp.apply(value, (v) => this.setRenderProp('hasCompactButton', v));
 	}
 
 	/**
 	 * Shows icons next to the navigation item labels, even when the navigation is not collapsed.
 	 */
-	@Prop() public _hasIconsWhenExpanded?: boolean = false;
+	@Prop() public _hasIconsWhenExpanded?: HasIconsWhenExpandedPropType = false;
 
 	@Watch('_hasIconsWhenExpanded')
-	public watchHasIconsWhenExpanded(value?: boolean): void {
+	public watchHasIconsWhenExpanded(value?: HasIconsWhenExpandedPropType): void {
 		hasIconsWhenExpandedProp.apply(value, (v) => this.setRenderProp('hasIconsWhenExpanded', v));
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -134,7 +136,6 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(navPropsConfig);
 		this.watchCollapsible(this._collapsible);
 		this.watchHideLabel(this._hideLabel);
 		this.watchHasCompactButton(this._hasCompactButton);
@@ -166,7 +167,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 		if (!initial) {
 			removeNavLabel(this.getRenderProp('label'));
 		}
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.getRenderProp('label'));
 	}

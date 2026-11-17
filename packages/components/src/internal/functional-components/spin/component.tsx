@@ -6,7 +6,8 @@ import { bem } from '../../../schema/bem-registry';
 import type { SpinVariantType } from '../../props';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
-import type { SpinApi } from './api';
+import { resolveFcProps } from '../props-from-config';
+import { spinPropsConfig, type SpinApi } from './api';
 
 const spinBem = bem.forBlock('kol-spin');
 const BEM_CLASS_SPIN__LOADER = spinBem('loader');
@@ -24,7 +25,7 @@ function renderSpinVariant(variant: SpinVariantType): unknown {
 }
 
 export const SpinFC: FC<FunctionalComponentProps<SpinApi>> = (props) => {
-	const { show, label, variant } = props;
+	const { show, label, variant } = resolveFcProps(spinPropsConfig, props);
 
 	return (
 		<BemRootNodeFC block="kol-spin">

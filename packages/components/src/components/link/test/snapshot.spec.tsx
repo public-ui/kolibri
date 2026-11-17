@@ -27,6 +27,8 @@ executeSnapshotTests<LinkProps>(
 
 		{ _href: '#', _hideLabel: true },
 		{ _href: '#', _hideLabel: true, _label: '   ' },
+		{ _href: '#', _hideLabel: true, _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
+		{ _href: '#', _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 	],
 );
 

@@ -1,11 +1,12 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ProgressApi } from '../../internal/functional-components/progress/api';
 import { progressPropsConfig } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
-import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
+import { clampedNumberValueProp, labelLangSegmentsProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
+import type { ClampedNumberValuePropType, LabelLangSegmentsPropType, MaxPropType, UnitPropType } from '../../schema';
 
 /**
  * The **Progress** component visualizes the completion status of a task or process. It supports both determinate (percentage-based) and indeterminate variants.
@@ -26,25 +27,27 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	private interval?: ReturnType<typeof setInterval>;
 
+	protected readonly propsConfig: PropsConfigShape = progressPropsConfig;
+
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label?: string;
+	public _label?: LabelLangSegmentsPropType = undefined;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
 	 * Defines the maximum value of the element.
 	 */
 	@Prop()
-	public _max!: number;
+	public _max!: MaxPropType;
 
 	@Watch('_max')
-	public watchMax(value?: number): void {
+	public watchMax(value?: MaxPropType): void {
 		maxProp.apply(value, (v) => {
 			this.setRenderProp('max', v);
 			this.watchValue(this.getRawProp('value'));
@@ -55,10 +58,10 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	 * Defines the unit of the step values (not shown).
 	 */
 	@Prop()
-	public _unit?: string;
+	public _unit?: UnitPropType = undefined;
 
 	@Watch('_unit')
-	public watchUnit(value?: string): void {
+	public watchUnit(value?: UnitPropType): void {
 		unitProp.apply(value, (v) => this.setRenderProp('unit', v));
 	}
 
@@ -66,10 +69,10 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	 * Defines the value of the element.
 	 */
 	@Prop()
-	public _value!: number;
+	public _value!: ClampedNumberValuePropType;
 
 	@Watch('_value')
-	public watchValue(value?: number): void {
+	public watchValue(value?: ClampedNumberValuePropType): void {
 		this.setRawProp('value', value);
 		clampedNumberValueProp.apply(
 			value,
@@ -84,17 +87,20 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop()
-	public _variant?: ProgressVariantType;
+	public _variant?: ProgressVariantType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: ProgressVariantType): void {
 		variantProgressProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
-	public componentWillLoad(): void {
-		this.initRenderProps(progressPropsConfig);
+	/** Runs on every (re)insertion into the DOM, so a moved element keeps announcing its value. */
+	public connectedCallback(): void {
+		this.startLiveValueInterval();
+	}
 
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+	public componentWillLoad(): void {
+		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		maxProp.apply(this._max, (v) => {
 			this.setRenderProp('max', v);
 			this.watchValue(this.getRawProp('value'));
@@ -104,7 +110,6 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 		variantProgressProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
 
 		this.setState('liveValue', this.getRenderProp('value'));
-		this.startLiveValueInterval();
 	}
 
 	public disconnectedCallback(): void {
@@ -116,6 +121,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	// a11y: says the value of the component every 5s
 	private startLiveValueInterval(): void {
+		clearInterval(this.interval);
 		this.interval = setInterval(() => {
 			const value = this.getRenderProp('value');
 			this.setState('liveValue', value);

@@ -47,7 +47,6 @@ const TAGS = [
 	'kol-progress',
 	'kol-quote',
 	'kol-select',
-	'kol-skeleton',
 	'kol-skip-nav',
 	'kol-spin',
 	'kol-split-button',
@@ -61,7 +60,7 @@ const TAGS = [
 	'kol-tree-item',
 	'kol-version',
 ];
-const EXCLUDE_TAGS = ['kol-click-button', 'kol-tooltip-wc'];
+const EXCLUDE_TAGS = ['kol-tooltip-wc'];
 const BUNDLES: {
 	components: string[];
 }[] = [];

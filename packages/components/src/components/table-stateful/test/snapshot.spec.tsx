@@ -96,6 +96,14 @@ const CASES: Case[] = [
 			_variant: 'custom',
 		},
 	],
+	[
+		'label with language ',
+		{
+			_label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }],
+			_headers: headers(),
+			_data: FEW_ROWS,
+		},
+	],
 ];
 
 describe('kol-table-stateful', () => {
@@ -108,5 +116,28 @@ describe('kol-table-stateful', () => {
 		await page.waitForChanges();
 
 		expect(page.root).toMatchSnapshot();
+	});
+
+	// Assigning before appending is deliberately not used: that sequence never reaches the pre-load
+	// watchers (see the JSDoc of `executeSnapshotTests`).
+	it.each(CASES)('should keep assigning props %s before the first render silent', async (_, props) => {
+		const page = await newSpecPage({
+			components: [KolTableStateful],
+			html: '<div></div>',
+		});
+		const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+
+		const table = page.doc.createElement('kol-table-stateful');
+		page.body.appendChild(table);
+		Object.assign(table, props);
+		// The table defers its sorted-data update to a macrotask; this wait lets that tick run before `waitForChanges`.
+		await new Promise((resolve) => setTimeout(resolve));
+		await page.waitForChanges();
+
+		try {
+			expect(errorSpy).not.toHaveBeenCalled();
+		} finally {
+			errorSpy.mockRestore();
+		}
 	});
 });

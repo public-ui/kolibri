@@ -25,7 +25,14 @@ function buildByType(_type: AlertType) {
 executeSnapshotTests<AlertProps>(
 	KolAlertTag,
 	[KolAlert],
-	[...buildByType('default'), ...buildByType('error'), ...buildByType('info'), ...buildByType('success'), ...buildByType('warning')],
+	[
+		...buildByType('default'),
+		...buildByType('error'),
+		...buildByType('info'),
+		...buildByType('success'),
+		...buildByType('warning'),
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
+	],
 );
 
 describe('KolAlert slot', () => {
@@ -49,6 +56,17 @@ describe('KolAlert slot', () => {
 		const page = await newSpecPage({
 			components,
 			template: () => <KolAlertTag _hasCloser _label="closable alert" />,
+		});
+		await page.waitForChanges();
+
+		expect(page.root).toMatchSnapshot();
+	});
+
+	test('should render a closer without a label as an alert without heading and aria-description', async () => {
+		const components = [KolAlert];
+		const page = await newSpecPage({
+			components,
+			template: () => <KolAlertTag _hasCloser />,
 		});
 		await page.waitForChanges();
 
