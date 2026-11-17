@@ -70,6 +70,9 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, TextareaCasesPro
 			<SampleBlock {...block('short-key')}>
 				<KolTextarea {...props} ref={ref} _label="With short key" _rows={3} _placeholder="Placeholder" _value="Lorem ipsum" _shortKey="s" />
 			</SampleBlock>
+			<SampleBlock {...block('with icon')}>
+				<KolTextarea {...props} ref={ref} _label="With Icon" _value="Lorem ipsum" _icons="kolicon-settings" />
+			</SampleBlock>
 		</div>
 	);
 });
