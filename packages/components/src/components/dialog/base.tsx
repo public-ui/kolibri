@@ -8,7 +8,7 @@ import type { CardFCProps } from '../../internal/functional-components/card/comp
 import { CardFC } from '../../internal/functional-components/card/component';
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import { dialogPropsConfig } from '../../internal/functional-components/dialog/api';
-import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
+import { DialogFC } from '../../internal/functional-components/dialog/component';
 import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
@@ -187,13 +187,13 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 
 		return (
 			<DialogFC
-				blockClass={dialogBlockClass(variant)}
 				handleCancel={this.handleCancel}
 				handleClose={this.handleClose}
 				label={trimLabel(this.getRenderProp('label'))}
 				labelledBy={isCard ? this.getState('headingId') : undefined}
 				modal={this.getState('modal')}
 				refDialog={this.dialogRef}
+				variant={variant}
 				width={this.getRenderProp('width')}
 			>
 				{isCard ? <CardFC {...this.buildCardProps()}>{this.renderSlot()}</CardFC> : this.renderSlot()}
