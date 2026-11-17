@@ -91,7 +91,7 @@ async function captureBlocks(page, route, blockIds, snapshotName, suffix, option
 			/* Playwright's `visible` requires a non-empty bounding box, so this covers zero-size blocks
 			   as well. Waiting instead of measuring once matters after a viewport change: components can
 			   report a zero height for a moment while they re-layout. */
-			await block.waitFor({ state: 'visible', timeout: BLOCK_VISIBLE_TIMEOUT });
+			await block.waitFor({ state: 'stable', timeout: BLOCK_VISIBLE_TIMEOUT });
 		} catch {
 			throw new Error(
 				`Route "${route}": data-visual-block "${blockId}" is not visible or has zero size${suffix ? ` at ${NARROW_VIEWPORT.width}px viewport width` : ''}`,
