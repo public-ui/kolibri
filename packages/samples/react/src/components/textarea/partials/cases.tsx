@@ -70,7 +70,7 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, TextareaCasesPro
 			<SampleBlock {...block('short-key')}>
 				<KolTextarea {...props} ref={ref} _label="With short key" _rows={3} _placeholder="Placeholder" _value="Lorem ipsum" _shortKey="s" />
 			</SampleBlock>
-			<SampleBlock {...block('with icon left')}>
+			<SampleBlock {...block('with-icon-left')}>
 				<KolTextarea
 					{...props}
 					ref={ref}
@@ -81,7 +81,7 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, TextareaCasesPro
 					}}
 				/>
 			</SampleBlock>
-			<SampleBlock {...block('with icon right')}>
+			<SampleBlock {...block('with-icon-right')}>
 				<KolTextarea
 					{...props}
 					ref={ref}
@@ -92,7 +92,7 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, TextareaCasesPro
 					}}
 				/>
 			</SampleBlock>
-			<SampleBlock {...block('with icon left and right')}>
+			<SampleBlock {...block('with-icon-left-and-right')}>
 				<KolTextarea
 					{...props}
 					ref={ref}
