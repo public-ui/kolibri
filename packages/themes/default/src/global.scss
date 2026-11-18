@@ -1,6 +1,5 @@
 @use 'mixins/palette' as *;
 @use 'mixins/to-rem' as *;
-@use 'mixins/icon' as *;
 
 @layer kol-theme-global {
 	:host {
@@ -213,16 +212,4 @@
 	[disabled]:where(:not(fieldset)):focus {
 		opacity: 0.5;
 	}
-
-	/*
-	 * The icon font rules ship once in this global sheet instead of in every component sheet. The
-	 * adopter places this sheet in every shadow root as one shared `CSSStyleSheet`, so each root
-	 * receives the rules either way, while the icon CSS exists once instead of per component. No
-	 * component rule targets the `.fa-*`/`.codicon-*` classes, so the rules resolve identically
-	 * from this lower layer.
-	 *
-	 * `kol-icon` has no entry in the theme's tag map, so — like `kol-spin` — it only ever receives
-	 * this global sheet, which is exactly where its font rules live.
-	 */
-	@include kol-icon-theme;
 }

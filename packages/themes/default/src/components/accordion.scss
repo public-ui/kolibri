@@ -2,8 +2,10 @@
 @use '../mixins/elevation' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/typography' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
+	@include kol-icon-theme;
 	.kol-accordion {
 		@include kol-elevation-outline;
 

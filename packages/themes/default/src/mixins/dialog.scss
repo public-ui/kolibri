@@ -1,8 +1,10 @@
 @use './to-rem' as *;
 @use './card' as *;
 @use './elevation' as *;
+@use './icon' as *;
 
 @mixin kol-dialog {
+	@include kol-icon-theme;
 	@include kol-card;
 
 	.kol-dialog,
