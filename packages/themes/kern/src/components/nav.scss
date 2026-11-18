@@ -34,7 +34,12 @@
 				padding-left: to-rem(var(--kol-nav-item-padding-left));
 				align-items: center;
 
-				text-decoration: none;
+				text-decoration-line: underline;
+				text-decoration-skip-ink: auto;
+				text-decoration-style: solid;
+				text-decoration-thickness: var(--kern-1);
+				text-underline-offset: var(--kern-metric-space-2x-small);
+				text-underline-position: from-font;
 			}
 		}
 
