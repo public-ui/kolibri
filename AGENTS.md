@@ -567,7 +567,7 @@ private setLabel(value: string): void {}
 - Text snapshots of the unit tests can be updated with `pnpm test:update:unit` or via the `update-snapshots.yml` GitHub workflow. Visual screenshots are **not** committed: differences are approved on the review page of the pull request (see `docs/visual-review.md`); `pnpm snapshots:pull` fetches the current baseline for local runs.
 - Individual packages provide their own test scripts (e.g. `pnpm --filter @public-ui/components test:unit`).
   - These also perform implicit builds, so explicit pre-build is unnecessary.
-- The **size gate** compares the artifact sizes of `@public-ui/components` and `@public-ui/theme-default` with their committed `size-baseline.json` and fails on growth beyond the tolerance. After `pnpm --filter @public-ui/components build:size` and `pnpm --filter @public-ui/theme-default build`, run `pnpm size`; the treemap is in `<package>/size-report/treemap.html`. Run `pnpm size:update` only to accept a growth deliberately, and give the reason in the pull request. See [`docs/SIZE_GATE.md`](docs/SIZE_GATE.md).
+- The **size gate** compares the artifact sizes of `@public-ui/components` and `@public-ui/theme-default` with their committed `size-baseline.json` and fails on growth beyond the tolerance. After `pnpm -r build`, run `pnpm size`. Run `pnpm size:update` only to accept a growth deliberately, and give the reason in the pull request. The treemap and the restructuring candidates come from the size analysis: the manually started workflow _Size Analysis_, or locally `pnpm --filter "@public-ui/components..." build:size`, `pnpm --filter @public-ui/theme-default build` and `pnpm size:analyze`. See [`docs/SIZE_GATE.md`](docs/SIZE_GATE.md).
 
 ## Pull Request Guidelines
 

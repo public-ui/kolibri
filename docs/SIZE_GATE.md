@@ -1,13 +1,30 @@
 # Size gate
 
-The size gate tracks the artifact size of `@public-ui/components` and `@public-ui/theme-default` in
-every pull request. It renders a treemap of where the bytes come from, names restructuring
-candidates and fails the CI when an artifact grows beyond the tolerance of its committed baseline.
+KoliBri tracks the artifact size of `@public-ui/components` and `@public-ui/theme-default` in two
+parts, both run by the workspace tool [`@public-ui/size-gate`](../packages/tools/size-gate/README.md)
+(`kolibri-size-gate`):
 
-The tool is the workspace package [`@public-ui/size-gate`](../packages/tools/size-gate/README.md)
-(`kolibri-size-gate`).
+- **Size gate (every pull request).** The CI job `build-and-check` compares the sizes with the
+  committed `size-baseline.json` of each package and fails when an artifact grows beyond the
+  tolerance. It needs no source maps.
+- **Size analysis (manual start).** The workflow _Size Analysis_ builds with source maps and renders
+  a treemap of where the bytes come from, the hotspots, duplicated modules, CSS repeated across sheets
+  and the restructuring candidates. Start it with Actions → _Size Analysis_ → _Run workflow_ on the
+  branch to analyse; the result is the artifact `size-analysis` and the job summary.
 
 ## Run it locally
+
+Size gate, after a regular build:
+
+```bash
+pnpm --filter "@public-ui/theme-default..." build
+```
+
+```bash
+pnpm size
+```
+
+Size analysis, after a build with source maps:
 
 ```bash
 pnpm --filter "@public-ui/components..." build:size
@@ -18,24 +35,28 @@ pnpm --filter @public-ui/theme-default build
 ```
 
 ```bash
-pnpm size
+pnpm size:analyze
 ```
 
 `build:size` is the regular build with `KOLIBRI_SOURCE_MAP=true`. The build then moves the source maps
 out of `dist` and `www` into `packages/components/source-maps/` and removes the `sourceMappingURL`
 comments (`scripts/stash-source-maps.mjs`): bundlers resolve the lazy loader's dynamic import
 `./${bundleId}.entry.js…` with the glob `./*.entry.js*` and would otherwise fail on the `.map` files.
-`dist` is therefore identical to a build without source maps. Without source maps the gate still
-measures every chunk exactly, but cannot attribute the bytes to modules. Each package writes
-`size-report/` with `treemap.html` (interactive), `report.md` (the CI summary) and `report.json`.
+`dist` is therefore identical to a build without source maps, and the gate measures the same sizes
+either way. Each package writes `size-report/` with `report.md`, `report.json` and, in the analysis,
+`treemap.html`.
 
 ## Status comment on the pull request
 
-The CI job `build-and-check` keeps one comment on every pull request, marked with
-`<!-- size-gate -->`, and updates it on every push. It shows whether the gate passed, the
-reports of both packages and a link to the CI run with the `size-report` artifact. If the gate
-did not run because an earlier step failed, the comment says so. Pull requests from forks get a
-read-only token; for them the comment is not written and the job summary carries the report.
+The size gate keeps at most one comment on a pull request, marked with `<!-- size-gate -->`:
+
+- It is created only when the gate fails or a metric changes notably: a failed or new metric, or a
+  change of at least 1 KB (gzip, raw for `redundant`). It lists at most five such metrics per
+  package; the job summary of the CI run lists all of them.
+- Once it exists, every later run updates it. Without a notable change it shrinks to one line, so it
+  never shows a stale status. If the gate did not run because an earlier step failed, it says so.
+- Pull requests from forks get a read-only token; for them no comment is written and the job summary
+  carries the report.
 
 ## What is measured
 
@@ -68,17 +89,18 @@ in its chunk, because compression works across module borders.
 | ------------------------------------------------------------------ | ------- |
 | `core`, `entry:*`, `sheet:*` grow by more than max(2 %, 1 KB gzip) | fail    |
 | `total`, `sheets`, `redundant` grow by more than 2 %               | fail    |
-| A package becomes a new hotspot                                    | fail    |
-| A module is newly duplicated across chunks                         | fail    |
 | A new component or sheet appears                                   | warning |
 | A metric shrinks by more than its tolerance                        | notice  |
 
 The tolerance lives in `size-baseline.json` (`tolerance.percent`, `tolerance.bytes`) of each package.
+A new hotspot or a newly duplicated module fails the gate through the growth of `core` or `entry:*`;
+the analysis names it as such (`hotspots` and `duplicates` in the baseline, compared for information).
 
 ## When the gate fails
 
-1. Open the treemap from the CI artifact `size-report` (or `size-report/treemap.html` locally) and
-   zoom into the metric that grew. The table below the map lists the current level by size.
+1. Run the _Size Analysis_ on the branch (or `pnpm size:analyze` locally), open `treemap.html` from
+   the artifact `size-analysis` and zoom into the metric that grew. The table below the map lists the
+   current level by size.
 2. Reduce the growth where it is unintended: import a dependency where it is needed instead of in a
    shared module, load rarely used code with a dynamic `import()`, move CSS that many sheets repeat
    into the `GLOBAL` sheet of the theme.
@@ -87,7 +109,7 @@ The tolerance lives in `size-baseline.json` (`tolerance.percent`, `tolerance.byt
 
 ## Restructuring candidates
 
-Every report ranks candidates by their impact. They do not fail the gate; they point to the largest
+The analysis ranks candidates by their impact. They do not fail anything; they point to the largest
 savings.
 
 | Kind                 | Impact                                                                 |

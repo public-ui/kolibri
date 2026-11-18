@@ -16,10 +16,11 @@ export function allowedValue(baselineValue, rule, tolerance) {
  *
  * - A metric above its allowed value fails, a new metric warns.
  * - A metric below its baseline by more than the tolerance is reported, so the baseline can be lowered.
- * - A key that is new in a set (`hotspots`, `duplicates`) fails: it names a structural regression the
- *   size tolerance would hide.
+ * - The sets (`hotspots`, `duplicates`) are compared in `analysis` mode only, for information: a new
+ *   or resolved key is a warning or an improvement and never fails. A new heavy dependency fails the
+ *   gate through the growth of `core` or `entry:*`.
  */
-export function evaluate(report, baseline) {
+export function evaluate(report, baseline, { mode = 'gate' } = {}) {
 	const tolerance = { ...DEFAULT_TOLERANCE, ...baseline?.tolerance };
 	const rows = [];
 	const failures = [];
@@ -50,13 +51,16 @@ export function evaluate(report, baseline) {
 		}
 	}
 
-	for (const [name, keys] of Object.entries(report.sets ?? {})) {
-		const known = new Set(baseline?.sets?.[name] ?? []);
-		for (const key of keys.filter((candidate) => !known.has(candidate))) {
-			failures.push(`New ${name.replace(/s$/, '')}: \`${key}\`.`);
-		}
-		for (const key of [...known].filter((candidate) => !keys.includes(candidate))) {
-			improvements.push(`Resolved ${name.replace(/s$/, '')}: \`${key}\`.`);
+	if (mode === 'analysis') {
+		for (const [name, keys] of Object.entries(report.sets ?? {})) {
+			const known = new Set(baseline?.sets?.[name] ?? []);
+			const singular = name.replace(/s$/, '');
+			for (const key of keys.filter((candidate) => !known.has(candidate))) {
+				warnings.push(`New ${singular}: \`${key}\`.`);
+			}
+			for (const key of [...known].filter((candidate) => !keys.includes(candidate))) {
+				improvements.push(`Resolved ${singular}: \`${key}\`.`);
+			}
 		}
 	}
 
@@ -65,6 +69,7 @@ export function evaluate(report, baseline) {
 
 /**
  * Creates the baseline from a report. Keys are sorted, so a baseline update shows as a small diff.
+ * A report without source maps cannot know the sets; the previous ones are kept.
  */
 export function toBaseline(report, previous) {
 	const metrics = {};
@@ -72,9 +77,10 @@ export function toBaseline(report, previous) {
 		const { brotli, gzip, raw } = report.metrics[id].sizes;
 		metrics[id] = { brotli, gzip, raw };
 	}
+	const source = report.sourceMaps ? (report.sets ?? {}) : (previous?.sets ?? {});
 	const sets = {};
-	for (const name of Object.keys(report.sets ?? {}).sort()) {
-		sets[name] = [...report.sets[name]].sort();
+	for (const name of Object.keys(source).sort()) {
+		sets[name] = [...source[name]].sort();
 	}
 	return { metrics, sets, tolerance: { ...DEFAULT_TOLERANCE, ...previous?.tolerance } };
 }

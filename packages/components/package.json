@@ -94,6 +94,7 @@
 		"unused": "knip",
 		"build:size": "cross-env KOLIBRI_SOURCE_MAP=true pnpm build",
 		"size": "kolibri-size-gate components",
+		"size:analyze": "kolibri-size-gate components --mode analysis",
 		"size:update": "kolibri-size-gate components --update"
 	},
 	"dependencies": {

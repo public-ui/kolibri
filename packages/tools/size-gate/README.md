@@ -5,19 +5,21 @@ regressions against a committed baseline. Private workspace tool; see
 [docs/SIZE_GATE.md](../../../docs/SIZE_GATE.md) for the metrics and the workflow.
 
 ```bash
-kolibri-size-gate <components|theme> [--update] [--dir <dist>] [--baseline <file>] [--out <dir>]
+kolibri-size-gate <components|theme> [--mode gate|analysis] [--update] [--dir <dist>] [--maps <dir>] [--baseline <file>] [--out <dir>]
 ```
 
-| Option       | Default                                 | Effect                                                    |
-| ------------ | --------------------------------------- | --------------------------------------------------------- |
-| `components` |                                         | Analyses `dist/esm` of `@public-ui/components`.           |
-| `theme`      |                                         | Analyses `dist/index.mjs` of a theme package.             |
-| `--update`   |                                         | Writes the current sizes as the new baseline.             |
-| `--dir`      | `dist/esm` (components), `dist` (theme) | Build output to analyse.                                  |
-| `--baseline` | `size-baseline.json`                    | Baseline file.                                            |
-| `--out`      | `size-report`                           | Directory for `report.json`, `report.md`, `treemap.html`. |
+| Option       | Default                                 | Effect                                                                                                                                                                           |
+| ------------ | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `components` |                                         | Analyses `dist/esm` of `@public-ui/components`.                                                                                                                                  |
+| `theme`      |                                         | Analyses `dist/index.mjs` of a theme package.                                                                                                                                    |
+| `--mode`     | `gate`                                  | `gate`: compares with the baseline and exits with 1 on growth beyond the tolerance. `analysis`: adds treemap, hotspots, duplicates and restructuring candidates and never fails. |
+| `--update`   |                                         | Writes the current sizes as the new baseline.                                                                                                                                    |
+| `--dir`      | `dist/esm` (components), `dist` (theme) | Build output to analyse.                                                                                                                                                         |
+| `--maps`     | `source-maps/esm` (components)          | Source maps, if they do not sit next to the chunks.                                                                                                                              |
+| `--baseline` | `size-baseline.json`                    | Baseline file.                                                                                                                                                                   |
+| `--out`      | `size-report`                           | Directory for `report.json`, `report.md` and, in the analysis, `treemap.html`.                                                                                                   |
 
-The command runs in the package directory, exits with 1 when the gate fails and appends the Markdown
+The command runs in the package directory, exits with 1 when the gate fails (never in `analysis` mode) and appends the Markdown
 report to `$GITHUB_STEP_SUMMARY` when it is set.
 
 ## Modules

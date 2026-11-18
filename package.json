@@ -38,6 +38,7 @@
 		"pack": "pnpm -r exec pnpm pack",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"size": "pnpm -r size",
+		"size:analyze": "pnpm -r size:analyze",
 		"size:update": "pnpm -r size:update",
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm unused",
 		"snapshots:pull": "node scripts/visual-review/pull-baseline.mjs",

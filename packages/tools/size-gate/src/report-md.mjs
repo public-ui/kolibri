@@ -24,9 +24,11 @@ function list(title, items) {
 
 /**
  * Renders the result of one package as Markdown for the console and the GitHub step summary.
+ * `gate` mode shows the comparison with the baseline; `analysis` mode adds the restructuring candidates.
  */
-export function renderMarkdown({ name, report, result }) {
-	const head = `## 📦 Size gate \`${name}\`: ${result.passed ? '✅ passed' : '❌ failed'}\n\n`;
+export function renderMarkdown({ mode = 'gate', name, report, result }) {
+	const analysis = mode === 'analysis';
+	const head = analysis ? `## 🔎 Size analysis \`${name}\`\n\n` : `## 📦 Size gate \`${name}\`: ${result.passed ? '✅ passed' : '❌ failed'}\n\n`;
 	const tolerance = `Tolerance: +${result.tolerance.percent} % or +${formatBytes(result.tolerance.bytes)} per component, +${result.tolerance.percent} % for totals. Sizes are gzip unless the row says otherwise.\n\n`;
 	const failures = result.failures.length === 0 ? '' : `### Failures\n\n${result.failures.map((failure) => `- ${failure}`).join('\n')}\n\n`;
 
@@ -49,7 +51,7 @@ export function renderMarkdown({ name, report, result }) {
 	const hidden = result.rows.length - rows.length;
 	const unchanged = hidden > 0 ? `${hidden} further metrics are unchanged.\n\n` : '';
 
-	const candidates = report.candidates.slice(0, MAX_CANDIDATES);
+	const candidates = analysis ? report.candidates.slice(0, MAX_CANDIDATES) : [];
 	const candidateTable =
 		candidates.length === 0
 			? ''
@@ -62,7 +64,10 @@ export function renderMarkdown({ name, report, result }) {
 					.join('\n') +
 				'\n\n';
 
-	const maps = report.sourceMaps ? '' : '> ⚠️ No source maps found: sizes are exact per chunk, but the attribution to modules is unavailable.\n\n';
+	const maps = !analysis || report.sourceMaps ? '' : '> ⚠️ No source maps found: sizes are exact per chunk, but the attribution to modules is unavailable.\n\n';
+	const footer = analysis
+		? 'The interactive treemap is `size-report/treemap.html` (artifact `size-analysis`).\n'
+		: 'Treemap and restructuring candidates: run the workflow *Size Analysis* or `pnpm size:analyze` locally (see docs/SIZE_GATE.md).\n';
 
 	return (
 		head +
@@ -74,6 +79,6 @@ export function renderMarkdown({ name, report, result }) {
 		candidateTable +
 		list('Warnings', result.warnings) +
 		list('Improvements – run `pnpm size:update` to lower the baseline', result.improvements) +
-		'The interactive treemap is `size-report/treemap.html` (CI artifact `size-report`).\n'
+		footer
 	);
 }

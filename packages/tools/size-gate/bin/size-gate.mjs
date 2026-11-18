@@ -28,10 +28,15 @@ const TARGETS = {
 	},
 };
 
-const USAGE = `Usage: kolibri-size-gate <components|theme> [--update] [--dir <dist>] [--maps <dir>] [--baseline <file>] [--out <dir>]
+const MODES = ['analysis', 'gate'];
 
-  components  analyses dist/esm of @public-ui/components (build with KOLIBRI_SOURCE_MAP=true for module attribution)
-  theme       analyses dist/index.mjs of a theme package
+const USAGE = `Usage: kolibri-size-gate <components|theme> [--mode gate|analysis] [--update] [--dir <dist>] [--maps <dir>] [--baseline <file>] [--out <dir>]
+
+  components  measures dist/esm of @public-ui/components
+  theme       measures dist/index.mjs of a theme package
+  --mode      gate (default): compares the sizes with the baseline and exits with 1 on growth beyond the tolerance
+              analysis: adds the treemap, hotspots, duplicates and restructuring candidates and never fails;
+              components need a build with KOLIBRI_SOURCE_MAP=true for the attribution to modules
   --maps      directory of the source maps (components: source-maps/esm, falls back to the chunk directory)
   --update    writes the current sizes as the new baseline`;
 
@@ -50,12 +55,13 @@ async function main() {
 			dir: { type: 'string' },
 			help: { short: 'h', type: 'boolean' },
 			maps: { type: 'string' },
+			mode: { default: 'gate', type: 'string' },
 			out: { default: 'size-report', type: 'string' },
 			update: { type: 'boolean' },
 		},
 	});
 	const target = TARGETS[positionals[0]];
-	if (values.help || !target) {
+	if (values.help || !target || !MODES.includes(values.mode)) {
 		console.log(USAGE);
 		return values.help ? 0 : 2;
 	}
@@ -67,6 +73,7 @@ async function main() {
 		return 2;
 	}
 
+	const analysis = values.mode === 'analysis';
 	const maps = values.maps ?? target.maps;
 	const report = await target.analyze(dir, maps ? { mapDir: resolve(maps) } : {});
 	const baselinePath = resolve(values.baseline);
@@ -77,24 +84,29 @@ async function main() {
 		console.log(`Baseline written to ${baselinePath}.`);
 	}
 
-	const result = evaluate(report, baseline);
+	const result = evaluate(report, baseline, { mode: values.mode });
 	if (baseline === null) {
 		result.passed = false;
 		result.failures.unshift(`No baseline at \`${values.baseline}\`. Run \`pnpm size:update\` and commit it.`);
 	}
 
-	const markdown = renderMarkdown({ name, report, result });
+	const markdown = renderMarkdown({ mode: values.mode, name, report, result });
 	const out = resolve(values.out);
 	mkdirSync(out, { recursive: true });
 	writeFileSync(join(out, 'report.json'), JSON.stringify({ name, report, result }, null, '\t'));
 	writeFileSync(join(out, 'report.md'), markdown);
-	writeFileSync(join(out, 'treemap.html'), renderHtml({ markdownSummary: target.summary(report), name, report, tree: target.tree(report) }));
+	if (analysis) {
+		writeFileSync(join(out, 'treemap.html'), renderHtml({ markdownSummary: target.summary(report), name, report, tree: target.tree(report) }));
+	}
 	if (process.env.GITHUB_STEP_SUMMARY) {
 		appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${markdown}\n`);
 	}
 
 	console.log(markdown);
-	console.log(`Report: ${join(out, 'treemap.html')}`);
+	if (analysis) {
+		console.log(`Treemap: ${join(out, 'treemap.html')}`);
+		return 0;
+	}
 	return result.passed ? 0 : 1;
 }
 
