@@ -1,0 +1,56 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "9 changed – 0 of 9 approved, review pending",
+	"computedAt": "2026-11-18T13:21:01.834Z",
+	"pr": 11634,
+	"head": "dab675b652b0eac466e08061393204de81a3dbfe",
+	"digest": "sha256:2d1f964a7988ffb8c3275bf288aabfa0dcfe236d0e2892900b1dc980ac4e629a",
+	"counts": {
+		"changes": 9,
+		"open": 9,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/nav-basic--navigation-submenu": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/nav-basic--navigation-submenu": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/nav-basic--navigation-submenu": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
