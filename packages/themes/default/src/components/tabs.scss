@@ -1,10 +1,7 @@
 @use '../mixins/to-rem' as *;
-@use '../mixins/icon' as *;
 @use '~@public-ui/components/index' as *;
 
 @layer kol-theme-component {
-	@include kol-icon-theme;
-
 	@property --kol-tabs-small-width {
 		inherits: true;
 		initial-value: '400px';
