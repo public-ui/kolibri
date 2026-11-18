@@ -60,12 +60,16 @@
 		"pretest": "pnpm build",
 		"pretest:dark": "pnpm build",
 		"pretest:update:e2e": "pnpm build",
-		"pretest:update:e2e:dark": "pnpm build"
+		"pretest:update:e2e:dark": "pnpm build",
+		"size": "kolibri-size-gate theme",
+		"size:analyze": "kolibri-size-gate theme --mode analysis",
+		"size:update": "kolibri-size-gate theme --update"
 	},
 	"devDependencies": {
 		"@fortawesome/fontawesome-free": "6.7.2",
 		"@public-ui/components": "workspace:*",
 		"@public-ui/eslint-config": "workspace:*",
+		"@public-ui/size-gate": "workspace:*",
 		"@public-ui/stylelint-rules": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
 		"@rollup/plugin-commonjs": "29.0.3",

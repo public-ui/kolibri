@@ -1,5 +1,4 @@
 @use '../../mixins/to-rem' as *;
-@use './icon' as *;
 
 @mixin radio($block-classname) {
 	.#{$block-classname} {

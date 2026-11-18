@@ -109,12 +109,13 @@ export const getI18nInstance = () => {
 
 export const initializeI18n = (
 	lng: Generic.I18n.Locale.ISO_639_1,
-	translations:
+	translations?:
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
-		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>> = TRANSLATIONS,
+		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>,
 ) => {
 	i18n = new I18nService(lng);
+	i18n.addTranslations(TRANSLATIONS);
 	i18n.addTranslations(translations);
 	return i18n;
 };
