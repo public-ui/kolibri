@@ -34,6 +34,10 @@
 			}
 		}
 
+		&__image {
+			border-top-left-radius: var(--kol-card-border-radius);
+		}
+
 		&__link {
 			color: var(--kern-color-action-default);
 			&:focus {

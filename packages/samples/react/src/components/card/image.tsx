@@ -6,24 +6,31 @@ import type { FC } from 'react';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
-export const CardImage: FC = () => (
-	<>
-		<SampleDescription>
-			<p>KolCard can have an image.</p>
-		</SampleDescription>
+export const CardImage: FC = () => {
+	const image = {
+		uri: 'assets/sample-image.png',
+		alt: 'KoliBri design system illustration showing three people working on laptops surrounded by UI components, charts, and the KoliBri hummingbird logo',
+	};
 
-		<SampleBlock id="basic" className="w-full grid grid-cols-2 gap-4" narrow>
-			<KolCard _label="Card with title and content" _image="assets/sample-image.png">
-				<p>Card contents.</p>
-			</KolCard>
+	return (
+		<>
+			<SampleDescription>
+				<p>KolCard can have an image.</p>
+			</SampleDescription>
 
-			<KolCard _label="Card with closer" _hasCloser _image="assets/sample-image.png">
-				<p>This card has a close button.</p>
-			</KolCard>
+			<SampleBlock id="basic" className="w-full grid grid-cols-2 gap-4" narrow>
+				<KolCard _label="Card with title and content" _image={image}>
+					<p>Card contents.</p>
+				</KolCard>
 
-			<KolCard _label="Card with title and content" _href="#/back-page" _image="assets/sample-image.png">
-				<p>This card has a link.</p>
-			</KolCard>
-		</SampleBlock>
-	</>
-);
+				<KolCard _label="Card with closer" _hasCloser _image={image}>
+					<p>This card has a close button.</p>
+				</KolCard>
+
+				<KolCard _label="Card with title and content" _href="#/back-page" _image={image}>
+					<p>This card has a link.</p>
+				</KolCard>
+			</SampleBlock>
+		</>
+	);
+};

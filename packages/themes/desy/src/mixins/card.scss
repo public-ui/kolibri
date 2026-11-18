@@ -44,6 +44,10 @@
 			line-height: to-rem(16);
 		}
 
+		&__image {
+			border-top-left-radius: 4px;
+		}
+
 		&__link {
 			text-decoration: none;
 
