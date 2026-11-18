@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "9 changed – 0 of 9 approved, review pending",
-	"computedAt": "2026-11-18T13:21:01.834Z",
+	"description": "13 changed – 0 of 13 approved, review pending",
+	"computedAt": "2026-11-18T13:46:41.819Z",
 	"pr": 11634,
-	"head": "dab675b652b0eac466e08061393204de81a3dbfe",
-	"digest": "sha256:2d1f964a7988ffb8c3275bf288aabfa0dcfe236d0e2892900b1dc980ac4e629a",
+	"head": "2064b896831c9f734edaebc235b7707d0883b096",
+	"digest": "sha256:5fa7c33dbf5efe2e50f83e2222cde2e71f24f92f015a4667f27dfd316fbe43f9",
 	"counts": {
-		"changes": 9,
-		"open": 9,
+		"changes": 13,
+		"open": 13,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -49,6 +49,22 @@
 			"notes": []
 		},
 		"theme-default/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/nav-basic--navigation-submenu": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/nav-basic--navigation-submenu-2": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/nav-basic--navigation-submenu-active": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-label-lang--label-lang-nav": {
 			"state": "open",
 			"notes": []
 		}
