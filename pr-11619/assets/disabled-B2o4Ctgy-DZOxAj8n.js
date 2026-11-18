@@ -1,0 +1,1 @@
+import{l as e,x as t}from"./props-from-config-BOUcpF7e-DAF_RXhP.js";var n=e(`disabled`,!1,t);export{n as t};

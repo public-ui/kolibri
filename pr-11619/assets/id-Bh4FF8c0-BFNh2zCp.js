@@ -1,0 +1,1 @@
+import{A as e,l as t}from"./props-from-config-BOUcpF7e-DAF_RXhP.js";var n=t(`id`,``,e);export{n as t};
