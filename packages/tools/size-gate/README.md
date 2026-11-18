@@ -22,19 +22,20 @@ report to `$GITHUB_STEP_SUMMARY` when it is set.
 
 ## Modules
 
-| File                         | Responsibility                                                  |
-| ---------------------------- | --------------------------------------------------------------- |
-| `src/sizes.mjs`              | raw, gzip and brotli sizes                                      |
-| `src/package-of.mjs`         | source path → owner (package, Stencil runtime, own folder, CSS) |
-| `src/attribute.mjs`          | bytes per source of a generated file via its source map         |
-| `src/graph.mjs`              | import graph, static closure and load count of the chunks       |
-| `src/css-duplicates.mjs`     | CSS rules repeated across sheets                                |
-| `src/analyze-components.mjs` | core, entries, hotspots, duplicates of `dist/esm`               |
-| `src/analyze-theme.mjs`      | CSS strings per tag, duplicates, comments of a theme bundle     |
-| `src/gate.mjs`               | comparison with the baseline                                    |
-| `src/report-md.mjs`          | Markdown report                                                 |
-| `src/report-html.mjs`        | self-contained treemap page                                     |
-| `src/tree.mjs`               | treemap hierarchy                                               |
+| File                         | Responsibility                                                   |
+| ---------------------------- | ---------------------------------------------------------------- |
+| `src/sizes.mjs`              | raw, gzip and brotli sizes                                       |
+| `src/package-of.mjs`         | source path → owner (package, Stencil runtime, own folder, CSS)  |
+| `src/attribute.mjs`          | bytes per source of a generated file via its source map          |
+| `src/graph.mjs`              | import graph, static closure and load count of the chunks        |
+| `src/css-duplicates.mjs`     | CSS rules repeated across sheets                                 |
+| `src/analyze-components.mjs` | core, entries, hotspots, duplicates of `dist/esm`                |
+| `src/analyze-theme.mjs`      | CSS strings per tag, duplicates, comments of a theme bundle      |
+| `src/gate.mjs`               | comparison with the baseline                                     |
+| `src/pr-comment.mjs`         | status comment on the pull request (CI step `Size gate comment`) |
+| `src/report-md.mjs`          | Markdown report                                                  |
+| `src/report-html.mjs`        | self-contained treemap page                                      |
+| `src/tree.mjs`               | treemap hierarchy                                                |
 
 ```bash
 pnpm --filter @public-ui/size-gate test:unit
