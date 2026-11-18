@@ -38,7 +38,7 @@ test('derives core, entries and the load count from the import graph', async () 
 		],
 	);
 	assert.equal(report.files.find((file) => file.file === 'unused.js').loadCount, 0);
-	assert.equal(report.files.find((file) => file.file === 'loader.js').sizes.raw, Buffer.byteLength(`import './index-x.js';`));
+	assert.equal(report.files.find((file) => file.file === 'loader.js').sizes.raw, Buffer.byteLength(`import './index-x.js';\n`));
 	assert.equal(report.sourceMaps, false);
 	assert.ok('entry:c' in report.metrics);
 	assert.deepEqual(report.sets, { duplicates: [], hotspots: [] });

@@ -14,6 +14,7 @@ const TARGETS = {
 	components: {
 		analyze: analyzeComponents,
 		dir: 'dist/esm',
+		maps: 'source-maps/esm',
 		summary: (report) =>
 			`Core ${formatBytes(report.core.sizes.gzip)} gzip (${report.core.files.length} files) · ${report.entries.length} entries, median ${formatBytes(report.entryMedian)} gzip on top of the core · total ${formatBytes(report.total.gzip)} gzip.`,
 		tree: componentsTree,
@@ -27,10 +28,11 @@ const TARGETS = {
 	},
 };
 
-const USAGE = `Usage: kolibri-size-gate <components|theme> [--update] [--dir <dist>] [--baseline <file>] [--out <dir>]
+const USAGE = `Usage: kolibri-size-gate <components|theme> [--update] [--dir <dist>] [--maps <dir>] [--baseline <file>] [--out <dir>]
 
   components  analyses dist/esm of @public-ui/components (build with KOLIBRI_SOURCE_MAP=true for module attribution)
   theme       analyses dist/index.mjs of a theme package
+  --maps      directory of the source maps (components: source-maps/esm, falls back to the chunk directory)
   --update    writes the current sizes as the new baseline`;
 
 async function writeBaseline(path, baseline) {
@@ -47,6 +49,7 @@ async function main() {
 			baseline: { default: 'size-baseline.json', type: 'string' },
 			dir: { type: 'string' },
 			help: { short: 'h', type: 'boolean' },
+			maps: { type: 'string' },
 			out: { default: 'size-report', type: 'string' },
 			update: { type: 'boolean' },
 		},
@@ -64,7 +67,8 @@ async function main() {
 		return 2;
 	}
 
-	const report = await target.analyze(dir);
+	const maps = values.maps ?? target.maps;
+	const report = await target.analyze(dir, maps ? { mapDir: resolve(maps) } : {});
 	const baselinePath = resolve(values.baseline);
 	let baseline = existsSync(baselinePath) ? JSON.parse(readFileSync(baselinePath, 'utf8')) : null;
 	if (values.update) {

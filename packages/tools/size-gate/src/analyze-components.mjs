@@ -38,7 +38,7 @@ function median(values) {
 	return sorted.length % 2 === 0 ? Math.round((sorted[middle - 1] + sorted[middle]) / 2) : sorted[middle];
 }
 
-async function readChunks(dir) {
+async function readChunks(dir, mapDir) {
 	const chunks = new Map();
 	const files = [];
 	for (const file of readdirSync(dir)
@@ -48,7 +48,7 @@ async function readChunks(dir) {
 		const code = readGenerated(path);
 		chunks.set(file, code);
 		const sizes = measure(code);
-		const attribution = await attributeFile(path, code);
+		const attribution = await attributeFile(path, code, mapDir);
 		const modules = [];
 		if (attribution) {
 			for (const [source, raw] of attribution) {
@@ -62,7 +62,8 @@ async function readChunks(dir) {
 }
 
 /**
- * Analyses the lazy-loading build of the components package (`dist/esm`).
+ * Analyses the lazy-loading build of the components package (`dist/esm`). `options.mapDir` names the
+ * directory of the source maps when they do not sit next to the chunks.
  *
  * - **core**: the boot files with their static imports plus every chunk that at least `coreShare` of
  *   all entries load. A page that uses any component pays for it once.
@@ -76,7 +77,7 @@ async function readChunks(dir) {
  */
 export async function analyzeComponents(dir, options = {}) {
 	const settings = { ...COMPONENT_DEFAULTS, ...options };
-	const { chunks, files } = await readChunks(dir);
+	const { chunks, files } = await readChunks(dir, settings.mapDir);
 	const byFile = new Map(files.map((entry) => [entry.file, entry]));
 	const sizesOf = (file) => byFile.get(file).sizes;
 

@@ -21,7 +21,11 @@ pnpm --filter @public-ui/theme-default build
 pnpm size
 ```
 
-`build:size` is the regular build with `KOLIBRI_SOURCE_MAP=true`. Without source maps the gate still
+`build:size` is the regular build with `KOLIBRI_SOURCE_MAP=true`. The build then moves the source maps
+out of `dist` and `www` into `packages/components/source-maps/` and removes the `sourceMappingURL`
+comments (`scripts/stash-source-maps.mjs`): bundlers resolve the lazy loader's dynamic import
+`./${bundleId}.entry.js…` with the glob `./*.entry.js*` and would otherwise fail on the `.map` files.
+`dist` is therefore identical to a build without source maps. Without source maps the gate still
 measures every chunk exactly, but cannot attribute the bytes to modules. Each package writes
 `size-report/` with `treemap.html` (interactive), `report.md` (the CI summary) and `report.json`.
 

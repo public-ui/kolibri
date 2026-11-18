@@ -253,6 +253,7 @@ export const config: Config = {
 	/**
 	 * `KOLIBRI_SOURCE_MAP=true` writes source maps in prod mode as well. The size gate
 	 * (`pnpm size`) needs them to attribute the bytes of every chunk to its source modules.
+	 * `scripts/stash-source-maps.mjs` moves them out of the outputs after the build.
 	 */
 	sourceMap: process.env.KOLIBRI_SOURCE_MAP === 'true' || 'dev',
 	plugins: [
