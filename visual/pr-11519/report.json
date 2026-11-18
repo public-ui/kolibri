@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11519,
-	"head": "ecbbf9fcc4be4a555135df0ffb0d2c69f65e2bcf",
+	"head": "113c6b9965857e4e502fa08da9ebe76e7a0b4a91",
 	"repository": "public-ui/kolibri",
-	"runId": 44356497315,
-	"generatedAt": "2026-11-18T17:31:10.435Z",
-	"digest": "sha256:410157afaf3d5454ffc581cfe6c65136ce93fcd9591b9bac5dd2c00c15564c33",
+	"runId": 44369930838,
+	"generatedAt": "2026-11-18T18:49:04.646Z",
+	"digest": "sha256:89b671bd1e5239c13ea8de67b47961573b471dfca0b36e79870a995368cc3a4d",
 	"baseline": {
-		"sha": "12d74b193da2a7196a06f2ed0f9af33fe1fa4821",
+		"sha": "faa337c5e25bf9004c3c1e2da962a68b8be77878",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "12d74b193da2a7196a06f2ed0f9af33fe1fa4821",
+					"sha": "faa337c5e25bf9004c3c1e2da962a68b8be77878",
 					"ref": "release/4",
-					"runId": 44103897150,
+					"runId": 44318696333,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-17T14:46:14.272Z",
+					"createdAt": "2026-11-18T14:02:19.716Z",
 					"digest": "sha256:e42a980c5cbc6be40b05470cfe3a3ac3ee2e24ac46a17751d18bb86ca18db69f",
 					"fallback": "ancestor",
 					"distance": 3,
@@ -2713,12 +2713,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "12d74b193da2a7196a06f2ed0f9af33fe1fa4821",
+					"sha": "faa337c5e25bf9004c3c1e2da962a68b8be77878",
 					"ref": "release/4",
-					"runId": 44103897150,
+					"runId": 44318696333,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-17T14:42:51.255Z",
+					"createdAt": "2026-11-18T14:01:38.451Z",
 					"digest": "sha256:0bdf9ec5b3d86afec151c96417638bfffeaf3751ed6e3f0c97d6e10c80a69b8d",
 					"fallback": "ancestor",
 					"distance": 3,
@@ -5396,12 +5396,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "12d74b193da2a7196a06f2ed0f9af33fe1fa4821",
+					"sha": "faa337c5e25bf9004c3c1e2da962a68b8be77878",
 					"ref": "release/4",
-					"runId": 44103897150,
+					"runId": 44318696333,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-17T14:46:14.272Z",
+					"createdAt": "2026-11-18T14:02:19.716Z",
 					"digest": "sha256:e42a980c5cbc6be40b05470cfe3a3ac3ee2e24ac46a17751d18bb86ca18db69f",
 					"fallback": "ancestor",
 					"distance": 3,
@@ -8079,13 +8079,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "12d74b193da2a7196a06f2ed0f9af33fe1fa4821",
+					"sha": "faa337c5e25bf9004c3c1e2da962a68b8be77878",
 					"ref": "release/4",
-					"runId": 44103897150,
+					"runId": 44318696333,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-17T14:45:48.446Z",
-					"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
+					"createdAt": "2026-11-18T14:02:13.557Z",
+					"digest": "sha256:707d4287475fbb4c2e29919ff5d07de4d512d64165d39be8ea4a35336b63e9a8",
 					"fallback": "ancestor",
 					"distance": 3,
 					"imageMismatch": false
@@ -8098,7 +8098,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
+			"digest": "sha256:707d4287475fbb4c2e29919ff5d07de4d512d64165d39be8ea4a35336b63e9a8",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10186,7 +10186,7 @@
 					"name": "scenarios-focus-elements-component-tree",
 					"route": "scenarios-focus-elements-component-tree",
 					"status": "unchanged",
-					"hash": "sha256:ce01cf023979683c7ae571e6bc969123709fdd621401216d49da445db004bf61"
+					"hash": "sha256:9e6dcec3016e92946109a854a3a04019fa46a5da2627e17455631b66c997e465"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-accordion",
@@ -10744,7 +10744,7 @@
 					"name": "tree-basic-home--tree",
 					"route": "tree-basic-home",
 					"status": "unchanged",
-					"hash": "sha256:f93abbd0d91b6548c0e2c694c32adb193a544fbf1ca7d0999521a7612a3be2ce"
+					"hash": "sha256:a1b7b68e75d2610b1a14be69b37f5fca181ef84386053a65b295e805a88be3d8"
 				},
 				{
 					"name": "version-basic--basic",
@@ -10762,13 +10762,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "12d74b193da2a7196a06f2ed0f9af33fe1fa4821",
+					"sha": "faa337c5e25bf9004c3c1e2da962a68b8be77878",
 					"ref": "release/4",
-					"runId": 44103897150,
+					"runId": 44318696333,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-17T14:44:46.977Z",
-					"digest": "sha256:4650de231bb9123ee8088f79520c9e8f9a1446dffbf17fb42287ffa6b30f0a69",
+					"createdAt": "2026-11-18T14:01:27.481Z",
+					"digest": "sha256:ce51b44d1c4bc825a212d89d9e9dce5d5a92bd1084fc4eb8947d3ab854a293c7",
 					"fallback": "ancestor",
 					"distance": 3,
 					"imageMismatch": false
@@ -10781,7 +10781,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:4650de231bb9123ee8088f79520c9e8f9a1446dffbf17fb42287ffa6b30f0a69",
+			"digest": "sha256:ce51b44d1c4bc825a212d89d9e9dce5d5a92bd1084fc4eb8947d3ab854a293c7",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10793,7 +10793,7 @@
 					"name": "accordion-basic--basic",
 					"route": "accordion-basic",
 					"status": "unchanged",
-					"hash": "sha256:1cd9fddbc4f061cad11c7031a6e8988208da477386d9a18424b4f9a56ada9652"
+					"hash": "sha256:81464815a6738d8b19fc88eea047f1bc75ce616db81f1e58e2e181f736c7c086"
 				},
 				{
 					"name": "alert-basic--default",
@@ -10889,13 +10889,13 @@
 					"name": "breadcrumb-basic--basic",
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
-					"hash": "sha256:3bcdff4dacc8dac16bfbf3eb05457f9d29cadcc49230a003e96082f5c35fdbd2"
+					"hash": "sha256:8355d4145c6306e7c5f6383485242ef8e73c36ff52dcf3202d435761da58864a"
 				},
 				{
 					"name": "breadcrumb-basic--basic-320",
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
-					"hash": "sha256:16ccfd976b1da5d12a20b81c4580195218837024c6b9644688b6fa543bff9e93"
+					"hash": "sha256:c4b64293ea423c0195e02c2a5302c2c8bc5151c16dfb90362a1e8b245164865c"
 				},
 				{
 					"name": "button-basic--disabled",
@@ -11159,13 +11159,13 @@
 					"name": "input-checkbox-basic-noColumns--left-checked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c81de6367911d4bc16f2b894dc5f332e486785a8a4ca1da40654695ac530f799"
+					"hash": "sha256:86c513a7ba1ee356c20499c266324d0fe9b8cda5215906da13b5e3c1cf94e145"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:a076ab8cfa0b030cf61436de5b755457597a0170d0bbb8009a8ece90c201a7cb"
+					"hash": "sha256:3b038dd44459df4f5485bd4b262fe88ec1eae7737c9fc65612d99fba5da304c8"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-disabled",
@@ -11189,13 +11189,13 @@
 					"name": "input-checkbox-basic-noColumns--left-indet-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:3813b901173c85d1745e5fd29cde93d4a4a3173643d0a7c7be96ecd53e9b362f"
+					"hash": "sha256:e28a151cd626f2a45e17b0e86547c72d4039d4de4d322e5116bdb7e378888fff"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-indeterminate",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:eb5ef304c800234d2f902afc4d719b3c7d849d13a5523b30ed1cdd9ad70ac175"
+					"hash": "sha256:2b0870d913861484133e2b97224595944362253683424acd2223340bd89c9d13"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-info-popover",
@@ -11207,7 +11207,7 @@
 					"name": "input-checkbox-basic-noColumns--left-long-label",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:56f85546dd1f63d684ed96c551253d1b91b2826ae81df589d80fef8895806d04"
+					"hash": "sha256:d41f4fcc70a82061b0f2203627cc83b1d78bfa519965dda20effe662e254d2f2"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-short-key",
@@ -11231,13 +11231,13 @@
 					"name": "input-checkbox-basic-noColumns--right-checked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:8e3e7d4cdccc1e8620a1333ac1fce1a0a98b8cae55c5d276efd4abb9b62596f9"
+					"hash": "sha256:b146b49a74b8791e2e71a50bed681a855749d93e35b10a7ae72d7ec6e80b96c6"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c812b9bb61f728c170b0c2f5193fae413bd2897679ec956031cf53c7c950a7c3"
+					"hash": "sha256:b766b2e6fc1e6d4e1d3619488acd2622d4bb49033630174f75cc89a431b06d2d"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-disabled",
@@ -11261,13 +11261,13 @@
 					"name": "input-checkbox-basic-noColumns--right-indet-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:fea41ec15cbd7e54a95c4bbac66b66880e5c52d90ddbb5bbf27c83fa15f7bc6f"
+					"hash": "sha256:49b62d938b6a79e38a432ed9a7f3a052835483bb9f11371b8a3ee9286701ef26"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-indeterminate",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:a8cf1e0294acd0d3e19a79ae5877fa4d0fa3ad775cf6f150aacea137d57da61a"
+					"hash": "sha256:0fd6b32e1db33eb0ef6e59e40b5b68ee0bd99df8b910f5f8b0529b2d2da85e0f"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-info-popover",
@@ -11279,7 +11279,7 @@
 					"name": "input-checkbox-basic-noColumns--right-long-label",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:d70d89d1982fc6aad249304e85d32ac36596dd326a5f70ab1589d2932f97e230"
+					"hash": "sha256:a77c32e0bb4a4ae5646027c11836e912256e824141b219e2879c8d964c6c5ce3"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-short-key",
@@ -11297,289 +11297,289 @@
 					"name": "input-checkbox-button-noColumns--left-access-key",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6e409c8b1a940f720e46d1f747804f09dc0ea02ddd6134f8bee8076058c3518d"
+					"hash": "sha256:7548d2be0fbac39b567524042345457d904873b8d250a7bb5b6398c82189bd54"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-checked",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:77cc1f9167008cdae33eb5e4e6889248dbea09c15705440f4c33ee110043a591"
+					"hash": "sha256:e0fa4534a77af0e720233a3d414f7dbb42be045841793cab91da0faf80ce5833"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-checked-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:b05a745ea8cb23f5d415db96ba246895cf6c0f671e9c4b53c1b0b4d99692dab0"
+					"hash": "sha256:bca194bf5fd37e39204eb78fde59a40acfbedab912daba2da051a5e9e9ba2666"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:d454d455c528e5b44fcadd060ffe04e73fe6b9dff613446750e0b89bf5c52577"
+					"hash": "sha256:9a0af7c7691fda15b73e9b4873c62edca34f37f486b51bf5aab37784d7aeb263"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-error",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:cd46ff42ea1da8e344449a636777ccbae5821d56a3cb3d75e4e73604861774d6"
+					"hash": "sha256:8a542319c5f7867e1a3d2d0fdd8a9f7f2846717be91b247403a4e94a153e9b76"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-hide-error",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:cdd36a0b9d319b4211c691f341f5d5aa2cf706fb65400e3cdea6eda72176c32f"
+					"hash": "sha256:66c9e1f24134bc60460fa4c75d78389600cd068ed3d8fe663dc82ceca4f5dde6"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-indet-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:33710104c7dc8d97623240dece2a6a438e8e08c772ce32f944fa45187c475c3a"
+					"hash": "sha256:fe3982a675ab6759a124dd7002f373df7bb5affaad3ec7dd3f5b550ad635dec5"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-indeterminate",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c4dccda2c5c0c634d21a6c859a7d89cc32d705b81b25e77b1a40f60ad3c6fcfb"
+					"hash": "sha256:6f5ba25288e9f9a8c06e8d060e9e49cddf8279d0433b89b69aa02e351e6be3da"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-info-popover",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:eb4844ddb1adb8e44d9fd11b275ab5d27f5946eee51b342bdb8b5e3acac3f3d8"
+					"hash": "sha256:7b3f054920c659b64184276ee606671e563071e0961e733b8b2ad547acd0b967"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-long-label",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:135d0ea044b12955fef09375c485fa319b4faacd577425f7c075118092179b9c"
+					"hash": "sha256:de6b651b67ac655ea2bdeb945aec39be1a682ff1f4b38bb88bef6c22ee4e147c"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-short-key",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:a808ddfb8695ca6f8b0e5d753e2931fbe194445093dac74a35c2eb1e155fd176"
+					"hash": "sha256:4cfd5909c661a114957b67f68ac604c2bbfe5c56e73e668d19c8780fbebfade0"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-unchecked",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:f3863c06d250fb5d319b4ba5e2fed2bb9569c77e5d5107b8857d22bb127e67a8"
+					"hash": "sha256:1f58a434bdbc68b924c0eb7a34df6579c9b83e1949429be60dbb2737f81a4a72"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-access-key",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5db741ef381d44aa42a6ad494b89f68a36c781b27f62ebd8c53e75031670c0f6"
+					"hash": "sha256:449ed12775e6f1e839bc2b9c2127e08c7d61a3b8236dfcfbe7ed61fc380902b9"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-checked",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:13fb4e11d450d2269260f7c74d44a4f3fe5883c023f617e912ec1abc5b1508e7"
+					"hash": "sha256:620d974259190293ce82732bfbc7e4c332204848f4cbe1d31314a0c013271d2b"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-checked-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:e0e025c0f7396009018f75c74ac8cf9cb987f42d19d6e4dd857f531a504b05f8"
+					"hash": "sha256:a71d94a03601d8d3e481466beeeb3a9f68512ed8359fb3ec8d0fd845ce1d5e88"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:9906b457ca4452cb771c6b51347bee557d223de0b56a1d319928f699aa05f68e"
+					"hash": "sha256:d396396198cfe39ab6b8cb8f8af5c29c3125eb29a94b69d48d998d6e81a8a8d5"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-error",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:52376faf24046eb611345821acce8b0bc8856171dd3a79096c16f305b666aec8"
+					"hash": "sha256:60c4b82a625d888aef85499e47df0b9ee25d06e32ecc4e0c432d76b0395bf746"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-hide-error",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:cdd36a0b9d319b4211c691f341f5d5aa2cf706fb65400e3cdea6eda72176c32f"
+					"hash": "sha256:66c9e1f24134bc60460fa4c75d78389600cd068ed3d8fe663dc82ceca4f5dde6"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-indet-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:07aa7131c7f1cef435f09716dbd18245fdd6d56a540ec58dc33e73c8898f414e"
+					"hash": "sha256:92ac85c66f41b1e62d7eaa15bf8c40e7ba172137360138d1a4f0b1247d0df5b2"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-indeterminate",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:192483aec96b4628c328fc86781d87bac8c45cd862f9c840ffd3b3a4a76c7b6a"
+					"hash": "sha256:912c6d623a98b3b76c351f06a007cf895638d726e60f82c0999918bd02b24006"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-info-popover",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:f4fb621e744aaf7a25f6bb45d60590b55c410bf41c43664b4f2e65928f760092"
+					"hash": "sha256:9aa44827b9a8b8d8fca75ca47ae76cf5c939e221ef732366eea34a6b58b05abf"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-long-label",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:3e9ec166424c8f0aa159c1c119304631279dd7f4f1eb0a7a5328d9ea7e670172"
+					"hash": "sha256:9426503f497624ae623de0e5acff559d4e0f28d5e93ee3ebe18388d3a562b0c1"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-short-key",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:884acf04fa7c21cfb4ee0e6e4a943b9e3980690650c2f5f96f4c1f4397482104"
+					"hash": "sha256:6a548f066e5f98e33044cb46a7a32a8755e80647d939691924bbf1515c1b230e"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-unchecked",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:7f19ab2adc2393dd8d6a53ca6760e0f2cb463a4932565acb20fc60374d25fb1d"
+					"hash": "sha256:3eac5a8c8f1212a7925af0e28d36f397839d10d51e8951cd807fa450563fe2ad"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-access-key",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:195a521a5ee559606047a55fb7985af11e011b362f6a26f40a37f0339145d4e6"
+					"hash": "sha256:e6b6ba3a93b20a2e9e98a17866c26069cf37d1354ea582808a05e51f03d66194"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-checked",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:9517a9e1e30db921da56e8bd0b252b14239a66f42c6f5052572b0fcde892a8d7"
+					"hash": "sha256:07e0e642e3ad99bc7a09d294647c119c23858ed65564f6284219bd11684a488d"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-checked-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c3bb7dbf5ed73c481cceb9ab777d38f7923bac60204a262985ab8aa3bc0ffd5c"
+					"hash": "sha256:850ae308fbd5e9c1dc35d87de8223b6556051ec9771794e765ebaa9a1ab59726"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:2c76ab04c612b0e3f0bad6e8c502e1b6c8b8ffd7b60b24f23f3273e4267a9d9b"
+					"hash": "sha256:adf921847e063e43cab6d7852f4f03e6d28331e2f9e56b16a48fb0d316c17627"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-error",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c1a6156aa60e7b3f1a2d747742e7722fa2ac3298a22cbb454fa56ff3a13e4cd4"
+					"hash": "sha256:85cd9971d93b3f10effb275ad60f3ae1a4525eb4563ae77976aa94255d34c016"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-hide-error",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c717c2fb33cae285377b724dbcef0c8b5267da9ec7638457b83ffb7e32305667"
+					"hash": "sha256:5db3884e341d4e24d58f913fe8ad259ff6903157e78d0591557f09aede9572f2"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-indet-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:59ed56bcbe76a662efa0e8ecb552cac9368194acdb91b330095914cb65c7d1da"
+					"hash": "sha256:93968106adb1aa5e1d29d9fd4d48e0e4d9eb31553bfb2c305f869897694d99e9"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-indeterminate",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:e1799b6182fa40d8e20258b3b51890947d935eb68b3efb017621ce2f07009e2a"
+					"hash": "sha256:7fea048d1760611e82a1f9d42b4675c00d5a690fa2201afd90d301acac705526"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-info-popover",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:32fa0fc03972f8356453c4349c955c3793ed2171cb775ceeb1af2da8d4a1c5a2"
+					"hash": "sha256:f424f2c4d28c2d8c754eec41949bac81c9fb72cf87bc0695aa45f4abd3488633"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-long-label",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:1a6005ca1fc00f0863422ade99ee33a0251c58c49045eb94645180743fb97d7c"
+					"hash": "sha256:7598a9a7158bc1531218450fda8819c676a742bba6c886cece94a24eb1df8c96"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-short-key",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:f0f9c68feb27b7f38d9e783e97eb383649849e61e83483e4e7287ce2841ca1fb"
+					"hash": "sha256:ca07edfe5b3a8aaf31621f0e38e9ca55401a4ef074cbd8786aadc8ed1046421b"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-unchecked",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:d7faa5c1fd06f694777dc6823e39553107519db80b416c8e5e6672c1c6e30fea"
+					"hash": "sha256:b54663a09c73ab8f2046ca704e0f65d58d28eae3bc7a5102ccd2d99e58aa8c40"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-access-key",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:a42e4a2a4f46af76d5802bffc29a5d6a39548ee08bfaa3d619ca4167add87047"
+					"hash": "sha256:06cafc4885fb170672e905c405e2a91eb7de10a54e292063b750d8504f7bd933"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-checked",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:913295d786d11ece6e3f67dd6e9c4600e535ab545f49a5ca744bf320174f0a03"
+					"hash": "sha256:fd896c15088f60b253af9238c3642093e2408d3aef0db1409674828de2a29d62"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-checked-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:77cb5699fb45b0de497129cf7c48b83aefac6f13f66ce55967431fdc628b105d"
+					"hash": "sha256:84f0fc94e8084935fd98afff76f2275885d346cd38fdbc5a568acf5a5758400e"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5f195062503ef8dc81f00c1ea155c139edb7ad98ff4acf6667a3d0fd4f44b892"
+					"hash": "sha256:72705379b1467865bf352dfeeee86d68e6f89f2475cc93fbca205367d5911fb8"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-error",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:34cc5010c6aa24be790020b6f99f2217b5f7698811e98d0f636010d539205d04"
+					"hash": "sha256:e8d0f918baf9d573b9faf93968c894f4a42df4224d343840d5373a0a1d44e390"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-hide-error",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c717c2fb33cae285377b724dbcef0c8b5267da9ec7638457b83ffb7e32305667"
+					"hash": "sha256:5db3884e341d4e24d58f913fe8ad259ff6903157e78d0591557f09aede9572f2"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-indet-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:76beca8983e0c4127300833f2ed70073c1764ff7c397eb3e5b3c5363e04949ad"
+					"hash": "sha256:ffd1f212c040bfb1ba9aafa371ae8812b25ee7a485944b941580b410c67b759e"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-indeterminate",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:4fe2715590a96994dd4895636d6a89991d3e157d9af0afc3571ca064133a14fd"
+					"hash": "sha256:a5bff3d8bca7b27bbf27925e62a6f0b54e293be340ee7c861d62888e1043b8ca"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-info-popover",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6780ac33cf4fc1ac4e855a8aede098a5b7c6dcaf3d30871ed195e66ae569b42f"
+					"hash": "sha256:0642357f03680a22a5769de17a74d5113a8bae4910f96e207d7d6eee8a060529"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-long-label",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:006cbe1017f0d769efd17a70de993e9bb2bb5cff9491897fcc09f3ab5cb7fbb4"
+					"hash": "sha256:326edd504802410687d52685eeca88f068430f974fa003293c7b8049cc6d27c1"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-short-key",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:094c569b3d982f8b18e05c931d762c485b8ff37d8d1b14343250141bdf26f871"
+					"hash": "sha256:d1c350a31dab0edf1802554368bda5e2c3a931f4dffae661ac01495897fcab02"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-unchecked",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:19162114ca717c7bdebc32343e52a7809e489cbe0b97aa9b6da95d3153819725"
+					"hash": "sha256:399accb0edae307bb417f406ed76ba94f2c2b1e57f16d5f3937f92a3a6ef1665"
 				},
 				{
 					"name": "input-color-basic-noColumns--hide-label-suggestions-error",
@@ -12545,7 +12545,7 @@
 					"name": "link-icons--icons",
 					"route": "link-icons",
 					"status": "unchanged",
-					"hash": "sha256:99e6cd7734336b7f8023f77e3ff22b736b6c0e80d887832c3f609401b36e8820"
+					"hash": "sha256:2d8a1130f80d148fd91aec0dd99691f3820f23b7eb6f6168a6e7a454b25c0a7d"
 				},
 				{
 					"name": "link-link-variant--variants",
@@ -12557,7 +12557,7 @@
 					"name": "link-target--target",
 					"route": "link-target",
 					"status": "unchanged",
-					"hash": "sha256:daacb381b545a22b20a4d0c7111a4dae71d42d573cb131cddc73cd738c28b1d7"
+					"hash": "sha256:125a30cf2d94885c5e5a2218c4a7f4a2f5824555064f68801e339cf4b9ef2133"
 				},
 				{
 					"name": "meter-basic--basic",
@@ -12599,7 +12599,7 @@
 					"name": "modal-basic-show-dialog-true",
 					"route": "modal-basic-show-dialog-true",
 					"status": "unchanged",
-					"hash": "sha256:aa38862b17d3dc82cf316210773793ae10f2c662177bb25ae87b845daa856f9c"
+					"hash": "sha256:b87d85c64c9119d1c212d17a615d147e7863e60ca89fdb7f07131e3d41395a33"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -12683,19 +12683,19 @@
 					"name": "quote-block--block",
 					"route": "quote-block",
 					"status": "unchanged",
-					"hash": "sha256:880013978c484d2ec73edae4e83a921b2df846d16f77d47cd06f3914d2572db3"
+					"hash": "sha256:3a9dc0e1626916e5160d693f24b16113fb9d191175c610d7a9b5e8ab4f00ccbf"
 				},
 				{
 					"name": "scenarios-accordion-components",
 					"route": "scenarios-accordion-components",
 					"status": "unchanged",
-					"hash": "sha256:f543884ac87495716cd6e7703dbe5831542cfd7f0b8a52364e814fe285dcdb8e"
+					"hash": "sha256:12fd7638f8286dbbf2fff12b42cf22415025e6032d5d4797d22321e3d81064bd"
 				},
 				{
 					"name": "scenarios-focus-elements-component-accordion",
 					"route": "scenarios-focus-elements-component-accordion",
 					"status": "unchanged",
-					"hash": "sha256:5820f6edadb561ad98f6d684b5959575040c07364e5ddad8da3057c2dfd736e2"
+					"hash": "sha256:eee85d1c775fc1abe5eb8ffb8cc6370e7f16f7ba9427e86b06611a458d684a94"
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
@@ -12869,13 +12869,13 @@
 					"name": "scenarios-focus-elements-component-tree",
 					"route": "scenarios-focus-elements-component-tree",
 					"status": "unchanged",
-					"hash": "sha256:8f1b1fb8c05428326b5866097d229b33f485ff0e5722f5bb8566a74fcb8878aa"
+					"hash": "sha256:c4a053a9e828cb43d2e4685ab9436f483a087dd2d72fe1b6a3560b9788afca03"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-accordion",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:a475bb613f0422f4c323a54baad7009327f294741f39fddba050693e92c74ed0"
+					"hash": "sha256:2090ff222fe6f155e33110765dd7551413273d80832658caa0ba987f0d586395"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-alert",
@@ -12893,7 +12893,7 @@
 					"name": "scenarios-label-lang--label-lang-breadcrumb",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:e23c3e4e75472bf92115f2cb9589fcac9fe7e8c56d5a5fcc851a414550008462"
+					"hash": "sha256:89013c54178d15602c2f221115a7030ddceb7d6f0ff5531c653ed0b773023d72"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-button",
@@ -12977,7 +12977,7 @@
 					"name": "scenarios-label-lang--label-lang-quote",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:5f327d755ccae91c2ea79e927220908b4c5b5a4896aaf50ab87bfd8465fd1cc8"
+					"hash": "sha256:24f48435959abc10845b21f777500e80775ad9da71100bfb18f94e45aed38401"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-table",
@@ -13277,7 +13277,7 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:91261ca43a246e8320bde8ee9c79d5d321a775667a616f8a7e66ad39b3c5e737"
+					"hash": "sha256:1cdb91d939335693aa8ce37450c4b97326a2930e6118249ee04920f76caa1c4e"
 				},
 				{
 					"name": "tabs-basic--regular",
@@ -13289,13 +13289,13 @@
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:0f31976654a511489f24e727d4009f715587b549972b254576c462feb702dd5a"
+					"hash": "sha256:d862d2fc19d93a98674a3bac269129af6c9075b2431d51f112e018e7d905861e"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:bbfdbba1324fe082766e7114a10b6e56c3778d827ef8ff0f730dec8358f274de"
+					"hash": "sha256:18ff62fb9d4577dff08bfbe8de89e99c40043226da660e638d150ce62a3be492"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -13427,7 +13427,7 @@
 					"name": "tree-basic-home--tree",
 					"route": "tree-basic-home",
 					"status": "unchanged",
-					"hash": "sha256:b3ddbec52d7e57e4f796f15a8d65a43d6655aeaa1fb7513f0c3468e1570b1151"
+					"hash": "sha256:fd6ad1e63386f27f8f971e0fc849c4be9c09271d60f7c2487ddd96e6aeec49b2"
 				},
 				{
 					"name": "version-basic--basic",
@@ -13445,12 +13445,12 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "12d74b193da2a7196a06f2ed0f9af33fe1fa4821",
+					"sha": "faa337c5e25bf9004c3c1e2da962a68b8be77878",
 					"ref": "release/4",
-					"runId": 44103897150,
+					"runId": 44318696333,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-17T14:43:23.955Z",
+					"createdAt": "2026-11-18T14:01:45.695Z",
 					"digest": "sha256:bc1d62310fb67e5e58091bee587bd29211178554352a246c610a93ed20b9b383",
 					"fallback": "ancestor",
 					"distance": 3,
@@ -16134,12 +16134,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "12d74b193da2a7196a06f2ed0f9af33fe1fa4821",
+					"sha": "faa337c5e25bf9004c3c1e2da962a68b8be77878",
 					"ref": "release/4",
-					"runId": 44103897150,
+					"runId": 44318696333,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-17T14:44:32.116Z",
+					"createdAt": "2026-11-18T14:02:05.100Z",
 					"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
 					"fallback": "ancestor",
 					"distance": 3,
