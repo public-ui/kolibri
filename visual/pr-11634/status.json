@@ -1,72 +1,87 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "13 changed – 0 of 13 approved, review pending",
-	"computedAt": "2026-11-18T13:46:41.819Z",
+	"state": "success",
+	"description": "13 visual changes approved by deleonio",
+	"computedAt": "2026-11-18T13:53:12.352Z",
 	"pr": 11634,
 	"head": "2064b896831c9f734edaebc235b7707d0883b096",
 	"digest": "sha256:5fa7c33dbf5efe2e50f83e2222cde2e71f24f92f015a4667f27dfd316fbe43f9",
 	"counts": {
 		"changes": 13,
-		"open": 13,
-		"approved": 0,
+		"open": 0,
+		"approved": 13,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"deleonio"
+	],
 	"items": {
 		"test-tag-name-transformer/nav-basic--navigation-submenu": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/nav-basic--navigation-submenu-2": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/nav-basic--navigation-submenu-active": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/nav-basic--navigation-submenu": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/nav-basic--navigation-submenu-2": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/nav-basic--navigation-submenu-active": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/nav-basic--navigation-submenu": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/nav-basic--navigation-submenu-2": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/nav-basic--navigation-submenu-active": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-kern/nav-basic--navigation-submenu": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-kern/nav-basic--navigation-submenu-2": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-kern/nav-basic--navigation-submenu-active": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-kern/scenarios-label-lang--label-lang-nav": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
