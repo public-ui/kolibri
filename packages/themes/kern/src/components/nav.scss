@@ -20,6 +20,8 @@
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
 			padding: 0;
+			padding-right: var(--kol-nav-list-item-padding);
+			padding-left: to-rem(var(--kol-nav-item-padding-left));
 			align-items: center;
 
 			@include kol-enabled-wrapper {
@@ -29,11 +31,6 @@
 			}
 
 			&__interactive-element {
-				min-height: var(--a11y-min-size);
-				padding-right: var(--kol-nav-list-item-padding);
-				padding-left: to-rem(var(--kol-nav-item-padding-left));
-				align-items: center;
-
 				text-decoration-line: underline;
 				text-decoration-skip-ink: auto;
 				text-decoration-style: solid;
