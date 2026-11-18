@@ -1,6 +1,9 @@
 import { formatBytes } from './sizes.mjs';
 
-const cell = (text) => String(text).replace(/\|/g, '\\|').replace(/\n/g, ' ');
+/**
+ * Escapes text for a Markdown table cell: backslashes first, so the escape of `|` cannot be undone.
+ */
+const cell = (text) => String(text).replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/\n/g, ' ');
 const STATUS = { fail: '❌', improved: '✅', new: '🆕', ok: '➖' };
 const ALWAYS = new Set(['core', 'redundant', 'sheets', 'total']);
 const MAX_ROWS = 25;

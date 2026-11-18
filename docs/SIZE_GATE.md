@@ -25,6 +25,14 @@ pnpm size
 measures every chunk exactly, but cannot attribute the bytes to modules. Each package writes
 `size-report/` with `treemap.html` (interactive), `report.md` (the CI summary) and `report.json`.
 
+## Status comment on the pull request
+
+The CI job `build-and-check` keeps one comment on every pull request, marked with
+`<!-- size-gate -->`, and updates it on every push. It shows whether the gate passed, the
+reports of both packages and a link to the CI run with the `size-report` artifact. If the gate
+did not run because an earlier step failed, the comment says so. Pull requests from forks get a
+read-only token; for them the comment is not written and the job summary carries the report.
+
 ## What is measured
 
 All sizes are measured with gzip level 9 and brotli quality 11; the gate compares gzip, except where a
