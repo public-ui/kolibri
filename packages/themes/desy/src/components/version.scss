@@ -1,8 +1,6 @@
 @use '../mixins/badge' as *;
-@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	@include icon;
 	@include kol-badge;
 
 	.kol-badge__label {
