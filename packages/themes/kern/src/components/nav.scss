@@ -37,6 +37,13 @@
 				text-decoration-thickness: var(--kern-1);
 				text-underline-offset: var(--kern-metric-space-2x-small);
 				text-underline-position: from-font;
+
+				/* Icon entries stay without the underline, like the shared link mixin's
+				   `:has(.kol-icon)` suppression — the wrapper's `none` does not reach the
+				   explicit line set on the interactive element. */
+				&:has(.kol-icon) {
+					text-decoration-line: none;
+				}
 			}
 		}
 
@@ -72,10 +79,6 @@
 			&--nested {
 				margin-top: var(--kern-metric-space-small);
 			}
-		}
-
-		&__navigation {
-			margin-bottom: var(--kern-metric-space-small);
 		}
 
 		&__toggle-button {
