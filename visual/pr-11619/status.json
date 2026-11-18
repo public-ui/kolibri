@@ -1,19 +1,108 @@
 {
 	"schema": 1,
-	"state": "failure",
-	"description": "7 route(s) failed before the screenshots could be compared",
-	"computedAt": "2026-11-17T08:40:03.178Z",
+	"state": "pending",
+	"description": "1 changed, 21 added – 0 of 22 approved, review pending",
+	"computedAt": "2026-11-18T13:54:11.896Z",
 	"pr": 11619,
-	"head": "fe41bc9d854f35d33baea62129ee7cc8ebf1aa78",
-	"digest": "sha256:ef476db82f0f172f30f42b36312786c23021ec08750988ca4817a698bff3a2b2",
+	"head": "3d69d4a3dd9255b020f666b0fae1539bca5be18c",
+	"digest": "sha256:2f8e06992b5dd8d0e8c59e163d2374a134063759d82f60b225bc3020520e4469",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 22,
+		"open": 22,
 		"approved": 0,
 		"rejected": 0,
-		"routeErrors": 7,
-		"errorItems": 98
+		"routeErrors": 0,
+		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/textarea-basic-noColumns--label-with-icon-left": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/textarea-basic-noColumns--label-with-icon-left-and-right": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/textarea-basic-noColumns--label-with-icon-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/textarea-basic-noColumns--label-with-icon-left": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/textarea-basic-noColumns--label-with-icon-left-and-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/textarea-basic-noColumns--label-with-icon-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/textarea-basic-noColumns--label-with-icon-left": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/textarea-basic-noColumns--label-with-icon-left-and-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/textarea-basic-noColumns--label-with-icon-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/textarea-basic-noColumns--label-with-icon-left": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/textarea-basic-noColumns--label-with-icon-left-and-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/textarea-basic-noColumns--label-with-icon-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/textarea-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/textarea-basic-noColumns--label-with-icon-left": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/textarea-basic-noColumns--label-with-icon-left-and-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/textarea-basic-noColumns--label-with-icon-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/textarea-basic-noColumns--label-with-icon-left": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/textarea-basic-noColumns--label-with-icon-left-and-right": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/textarea-basic-noColumns--label-with-icon-right": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/textarea-basic-noColumns--label-with-icon-left": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/textarea-basic-noColumns--label-with-icon-left-and-right": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/textarea-basic-noColumns--label-with-icon-right": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
