@@ -51,6 +51,22 @@ exports[`kol-card should render with _label="Überschrift" _href="#/blank_link" 
 </kol-card>
 `;
 
+exports[`kol-card should render with _label="Überschrift" _image={"uri":"https://some-url.tld/images/awesome.jpg","alt":"awesome alt text"} 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <article aria-labelledby="card-heading-nonce" class="kol-card">
+      <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="card-heading-nonce">
+        Überschrift
+      </strong>
+      <img alt="awesome alt text" class="kol-card__image" src="https://some-url.tld/images/awesome.jpg">
+      <div class="kol-card__content">
+        <slot></slot>
+      </div>
+    </article>
+  </template>
+</kol-card>
+`;
+
 exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=false 1`] = `
 <kol-card>
   <template shadowrootmode="open">
