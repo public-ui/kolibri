@@ -6,6 +6,7 @@ import { SampleDescription } from '../SampleDescription';
 
 export const FormSubmit: FC = () => {
 	const formRef = useRef<HTMLKolFormElement | null>(null);
+	const alertRef = useRef<HTMLKolAlertElement | null>(null);
 	const dialogResetRef = useRef<HTMLKolDialogElement | null>(null);
 	const inputRef = useRef<HTMLKolInputTextElement | null>(null);
 	const [isSubmitted, setIsSubmitted] = useState(false);
@@ -33,15 +34,18 @@ export const FormSubmit: FC = () => {
 	}
 
 	function ResetForm() {
+		setIsSubmitted(false);
 		if (inputRef.current) inputRef.current._value = '';
 		dialogResetRef.current?.close();
 	}
 
 	useEffect(() => {
-		if (isSubmitted) {
-			setTimeout(() => {
-				setIsSubmitted(false);
-			}, 1000);
+		if (alertRef.current) {
+			if (isSubmitted) {
+				alertRef.current._alert = true;
+			} else {
+				alertRef.current._alert = false;
+			}
 		}
 	}, [isSubmitted]);
 
