@@ -1,9 +1,7 @@
 @use './button' as *;
 @use './to-rem' as *;
-@use './icon' as *;
 
 @mixin popover-button {
-	@include kol-icon-theme;
 	@include kol-button('kol-button');
 
 	.kol-popover-button {
