@@ -2,11 +2,8 @@
 @use '../breakpoints' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/link' as *;
-@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	@include icon;
-
 	.kol-details {
 		/* The host is an inline-block, so the line box around it is sized from the block's baseline.
 		   The predecessor took that baseline from the collapsed wrapper: its content was clipped to
