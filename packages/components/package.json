@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "4.6.0-rc.2",
+	"version": "4.6.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -73,8 +73,8 @@
 	"scripts": {
 		"assets:kolicons": "pnpm --filter @public-ui/icons build",
 		"build": "pnpm build:light",
-		"build:light": "node -e \"require('node:fs').mkdirSync('doc', { recursive: true })\" && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && pnpm format -w",
-		"clear": "rimraf -g dist doc www ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
+		"build:light": "node -e \"require('node:fs').mkdirSync('doc', { recursive: true })\" && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && node scripts/stash-source-maps.mjs && pnpm format -w",
+		"clear": "rimraf -g dist doc source-maps www ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src",
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc && pnpm lint:i18n",
 		"lint:eslint": "eslint src",
@@ -91,7 +91,11 @@
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
 		"prebuild:light": "pnpm clear",
 		"pretest:e2e": "pnpm assets:kolicons",
-		"unused": "knip"
+		"unused": "knip",
+		"build:size": "cross-env KOLIBRI_SOURCE_MAP=true pnpm build",
+		"size": "kolibri-size-gate components",
+		"size:analyze": "kolibri-size-gate components --mode analysis",
+		"size:update": "kolibri-size-gate components --update"
 	},
 	"dependencies": {
 		"@floating-ui/dom": "1.8.0",
@@ -108,6 +112,7 @@
 		"@playwright/test": "1.63.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@public-ui/icons": "workspace:*",
+		"@public-ui/size-gate": "workspace:*",
 		"@public-ui/stencil-angular-output-target": "0.9.0",
 		"@public-ui/stencil-react-output-target": "0.6.0",
 		"@public-ui/stencil-solid-output-target": "0.2.0",

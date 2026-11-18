@@ -383,6 +383,9 @@ importers:
       '@public-ui/icons':
         specifier: workspace:*
         version: link:../icons
+      '@public-ui/size-gate':
+        specifier: workspace:*
+        version: link:../tools/size-gate
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
         version: 0.9.0(@stencil/core@4.45.3)
@@ -938,6 +941,9 @@ importers:
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../../tools/eslint-config
+      '@public-ui/size-gate':
+        specifier: workspace:*
+        version: link:../../tools/size-gate
       '@public-ui/stylelint-rules':
         specifier: workspace:*
         version: link:../../tools/stylelint-rules
@@ -1467,6 +1473,31 @@ importers:
       unbuild:
         specifier: 3.6.1
         version: 3.6.1(sass@1.105.2)(typescript@5.9.3)(vue@3.5.44(typescript@5.9.3))
+
+  packages/tools/size-gate:
+    dependencies:
+      postcss:
+        specifier: 8.5.31
+        version: 8.5.31
+      prettier:
+        specifier: 3.9.10
+        version: 3.9.10
+      source-map:
+        specifier: 0.7.6
+        version: 0.7.6
+    devDependencies:
+      '@public-ui/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)
+      knip:
+        specifier: 6.42.1
+        version: 6.42.1
+      prettier-plugin-organize-imports:
+        specifier: 4.3.0
+        version: 4.3.0(prettier@3.9.10)(typescript@5.9.3)
 
   packages/tools/stylelint-rules:
     devDependencies:
