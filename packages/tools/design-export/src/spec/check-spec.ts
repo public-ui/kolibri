@@ -2,7 +2,7 @@ import type { ComponentBem } from '../types.js';
 import type { BlockDesignSpec, DesignNode } from './types.js';
 
 /**
- * Validates design facets against the BEM registry: every block, element and modifier a facet
+ * Validates design specifications against the BEM registry: every block, element and modifier a specification
  * names must be registered, and every embedded block must be a registered block. Fails loudly,
  * because a layer name outside the registry would break the theming contract in the design tool.
  */
@@ -37,7 +37,7 @@ export function checkSpecs(specs: BlockDesignSpec[], bems: ComponentBem[]): void
 			if (node.embeds && !byBlock.has(node.embeds)) errors.push(`${spec.block}: embedded block ${node.embeds} is not registered`);
 		});
 	}
-	if (errors.length > 0) throw new Error(`Design facets do not match the BEM registry:\n- ${errors.join('\n- ')}`);
+	if (errors.length > 0) throw new Error(`Design specifications do not match the BEM registry:\n- ${errors.join('\n- ')}`);
 }
 
 function walk(node: DesignNode, visit: (node: DesignNode) => void): void {

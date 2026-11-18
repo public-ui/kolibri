@@ -67,7 +67,7 @@ export interface TransformResult {
 }
 
 /**
- * The deterministic transformation `design facet + CSS + tokens → Penpot and Figma`. Runs without a
+ * The deterministic transformation `design specification + CSS + tokens → Penpot and Figma`. Runs without a
  * browser; the same input gives byte-identical files (`stableStringify`).
  */
 export function transform(input: TransformInput): TransformResult {
@@ -99,7 +99,7 @@ export function transform(input: TransformInput): TransformResult {
 				tree: toFigmaNode(shapes),
 			});
 		}
-		if (variantSet) sets[block] = { properties: variants[0].properties.map(([name]) => name), variantSource: 'design-spec' };
+		if (variantSet) sets[block] = { properties: variants[0].properties.map(([name]) => name), variantSource: 'bem-dialect' };
 		figmaSets.push({ name: block, properties: variantSet ? variants[0].properties.map(([name]) => name) : [], components: figmaComponents });
 		reports[block] = {
 			missingEmbeds: [...new Set(report.missingEmbeds)].sort(),

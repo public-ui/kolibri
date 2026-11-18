@@ -11,6 +11,8 @@ export interface ThemeStyles {
 export interface ComponentApi {
 	tag: string;
 	attributes: string[];
+	/** TypeScript type text per attribute, e.g. `"card" | "msg" | undefined`. */
+	attributeTypes?: Record<string, string>;
 	events: string[];
 	slots: { name: string; description?: string }[];
 }

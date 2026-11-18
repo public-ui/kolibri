@@ -8,19 +8,19 @@ import type { BlockDesignSpec, DesignNode } from './types.js';
 /**
  * Per block: which facts the deterministic transformation needs, where each comes from today and
  * what is missing. The report is the measurable form of the gap analysis in
- * `docs/design-export/BEM-SPEC-DESIGN-FACET.md`.
+ * `docs/design-export/BEM-DIALECT.md`.
  */
 export interface BlockCoverage {
 	block: string;
 	/** Present in `custom-elements.json` (public web component) or only an embedded block. */
 	publicComponent: boolean;
-	/** A design facet exists (tree, node kinds, bindings, axes, sample). */
+	/** A design specification exists: the functional component of the block was read. */
 	designFacet: boolean;
-	/** Registry modifiers (block and element) without a prop binding in the facet. */
+	/** Registry modifiers (block and element) without a prop binding in the specification. */
 	unboundModifiers: string[];
-	/** Registry elements the facet tree does not place. */
+	/** Registry elements the element tree does not place. */
 	unplacedElements: string[];
-	/** Facet elements that are not in the registry: a contract violation, the transformation refuses them. */
+	/** Elements of the tree that are not in the registry: a contract violation, the transformation refuses them. */
 	unregisteredElements: string[];
 	/** Classes of this block the CSS styles but the registry does not name, e.g. open variant values (`kol-button--primary`). */
 	classesOutsideRegistry: string[];
@@ -84,7 +84,7 @@ function axisCovers(spec: BlockDesignSpec, modifier: string): boolean {
 	});
 }
 
-/** Collects the elements a facet tree places (`elements`) and the element modifiers it binds (`''`). */
+/** Collects the elements an element tree places (`elements`) and the element modifiers it binds (`''`). */
 function collectPlaced(node: DesignNode, placed: Map<string, Set<string>>): void {
 	const add = (key: string, value: string) => {
 		if (!placed.has(key)) placed.set(key, new Set());
@@ -148,11 +148,11 @@ export function renderCoverage(coverage: BlockCoverage[], apis: ComponentApi[]):
 		'',
 		`- Blöcke in der BEM-Registry: ${coverage.length} (davon ${coverage.filter((entry) => entry.publicComponent).length} öffentliche Komponenten)`,
 		`- Öffentliche Komponenten ohne eigenen Block in der Registry: ${withoutBlock.length}${withoutBlock.length > 0 ? ` (${withoutBlock.map((tag) => `\`${tag}\``).join(', ')})` : ''}`,
-		`- Blöcke mit Design-Facette: ${withFacet.length} (${withFacet.map((entry) => `\`${entry.block}\``).join(', ')})`,
+		`- Blöcke mit Baum aus der Functional Component: ${withFacet.length} (${withFacet.map((entry) => `\`${entry.block}\``).join(', ')})`,
 		`- Blöcke, deren CSS Klassen außerhalb der Registry stylt: ${outside.length}`,
 		`- Nicht statisch auswertbare Regeln: ${sum(coverage.map((entry) => sum(Object.values(entry.unsupportedRules))))}`,
 		'',
-		'| Block | Facette | ungebundene Modifier | Klassen außerhalb der Registry | fremde Klassen | nicht statisch auswertbar | Farben ohne Token |',
+		'| Block | Baum | ungebundene Modifier | Klassen außerhalb der Registry | fremde Klassen | nicht statisch auswertbar | Farben ohne Token |',
 		'| --- | --- | --- | --- | --- | --- | --- |',
 		...coverage.map((entry) =>
 			[

@@ -4,7 +4,7 @@ import selectorParser from 'postcss-selector-parser';
 import type { InteractionState } from './types.js';
 
 /**
- * Static CSS cascade for the element trees of the design facet: the compiled base and theme CSS
+ * Static CSS cascade for the element trees of the design specification: the compiled base and theme CSS
  * of a component are matched against a virtual tree instead of a rendered DOM.
  *
  * It works because the theming contract keeps selectors flat (BEM classes, a few attributes,

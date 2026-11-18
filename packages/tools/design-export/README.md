@@ -95,17 +95,18 @@ Das Plugin importiert nicht, es gleicht ab. Jeder Lauf bringt die Bibliothek der
 
 ## Transformation aus der Spezifikation (ohne Browser)
 
-`pnpm start:spec` erzeugt die Design-Dateien deterministisch aus BEM-Registry, Design-Facette, kompiliertem CSS und Theme-Tokens, ohne Playwright. Welche Fakten die BEM-Spezifikation dafür heute liefert und welche ergänzt werden müssen, steht in [docs/design-export/BEM-SPEC-DESIGN-FACET.md](../../../docs/design-export/BEM-SPEC-DESIGN-FACET.md).
+`pnpm start:spec` erzeugt die Design-Dateien deterministisch und ohne Playwright aus dem, was das Repository schon enthält: BEM-Registry (gelesen über den BEM-Dialekt), Functional Components, kompiliertes CSS und Theme-Tokens. Nichts wird von Hand gepflegt. Regeln, Beispiel und die nötigen Änderungen an der Registry stehen in [docs/design-export/BEM-DIALECT.md](../../../docs/design-export/BEM-DIALECT.md).
 
-| Baustein                   | Datei                     | Aufgabe                                                                                                     |
-| -------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Design-Facette (Vorschlag) | `src/spec/types.ts`       | Elementbaum, Ebenenart, Prop → Modifier, Achsen, interaktives Element, eingebettete Blöcke, Muster-Inhalte  |
-| Pilot-Facetten             | `src/spec/pilot-specs.ts` | `kol-alert`, `kol-badge`, `kol-button`, `kol-span`; `checkSpecs` prüft jeden Namen gegen die Registry       |
-| Statische Kaskade          | `src/spec/cascade.ts`     | Layer, Spezifität, `!important`, Vererbung, Zustände; meldet nicht auswertbare Regeln statt zu raten        |
-| Transformation             | `src/spec/transform.ts`   | Varianten aus den Achsen, Penpot-Payload (Format der gerenderten Pipeline) und Figma-Payload                |
-| Abdeckungsbericht          | `src/spec/coverage.ts`    | je Block: ungebundene Modifier, Klassen außerhalb der Registry, nicht auswertbare Regeln, Farben ohne Token |
+| Baustein          | Datei                                                   | Aufgabe                                                                                                   |
+| ----------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| BEM-Dialekt       | `src/dialect/bem-dialect.ts`                            | Modifier → Variant-Properties (`has-closer` → Boolean `Closer`, `variant-card` → Enum `Variant`), Befunde |
+| Baum-Leser        | `src/dialect/extract-fc-tree.ts`                        | Ebenenbaum aus dem JSX der Functional Components: BEM-Elemente, Bedingungen, eingebettete Items, Slots    |
+| Spezifikation     | `src/dialect/to-spec.ts`                                | Dialekt + Baum → Eingabe der Transformation; offene Varianten aus dem Theme-CSS                           |
+| Statische Kaskade | `src/spec/cascade.ts`                                   | Layer, Spezifität, `!important`, Vererbung, Zustände; meldet nicht auswertbare Regeln statt zu raten      |
+| Transformation    | `src/spec/transform.ts`                                 | Varianten aus den Properties, Penpot-Payload (Format der gerenderten Pipeline) und Figma-Payload          |
+| Berichte          | `src/dialect/dialect-report.ts`, `src/spec/coverage.ts` | Properties und nötige BEM-Änderungen; Abdeckung des statischen Wegs je Block                              |
 
-Ergebnis in `dist-export/spec/`: `penpot-import.json`, `figma-import.json`, `kolibri-design-tokens.zip`, `spec-coverage.md` und `spec-coverage.json`. `pnpm check:determinism:spec` exportiert zweimal und vergleicht die Bytes.
+Ergebnis in `dist-export/spec/`: `penpot-import.json`, `figma-import.json`, `kolibri-design-tokens.zip`, `bem-dialect.md`, `spec-coverage.md` und `spec-coverage.json`. `pnpm check:determinism:spec` exportiert zweimal und vergleicht die Bytes.
 
 - **Penpot:** Token-ZIP importieren, dann im Plugin (siehe [Sync per Plugin](#sync-per-plugin)) die Export-URL auf `…/spec/penpot-import.json` setzen.
 - **Figma:** In Figma Desktop `Plugins → Development → Import plugin from manifest…` mit `figma-plugin/manifest.json`, `figma-import.json` im Plugin-Fenster wählen. Das Plugin legt die Variablen-Sammlung `KoliBri <theme>` mit den Modi Light/Dark an und baut je Block ein Component Set auf der Seite `KoliBri`. Komponenten werden über die Plugin-Daten `kolibri-key` wiedergefunden und an Ort und Stelle neu aufgebaut, Instanzen bleiben verknüpft. Das Scheme schaltet ein Frame über seinen Variablenmodus um (Konzept #11379).

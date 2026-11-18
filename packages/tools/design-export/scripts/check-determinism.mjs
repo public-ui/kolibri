@@ -9,14 +9,14 @@ import { fileURLToPath } from 'node:url';
  * Runs the design export twice into separate directories and compares the Penpot plugin payload
  * byte for byte. Exits with 1 when the two runs differ. Further arguments go to the CLI, e.g.
  * `--components kol-button` for a quick check. `--spec` checks the browser-free transformation
- * (`spec-cli.js`) and compares its Penpot and Figma payloads and the coverage report instead.
+ * (`spec-cli.js`) and compares its Penpot and Figma payloads and both reports instead.
  * Plain Node built-ins, no dependencies.
  */
 const packageRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const spec = process.argv.includes('--spec');
 const cli = join(packageRoot, 'dist', spec ? 'spec-cli.js' : 'cli.js');
 const passThrough = process.argv.slice(2).filter((arg) => arg !== '--spec');
-const files = spec ? ['spec/penpot-import.json', 'spec/figma-import.json', 'spec/spec-coverage.json'] : ['penpot/penpot-import.json'];
+const files = spec ? ['spec/penpot-import.json', 'spec/figma-import.json', 'spec/spec-coverage.json', 'spec/bem-dialect.md'] : ['penpot/penpot-import.json'];
 
 async function exportOnce(label) {
 	const out = await mkdtemp(join(tmpdir(), `design-export-${label}-`));

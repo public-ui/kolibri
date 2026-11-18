@@ -8,7 +8,7 @@ import type { ComponentApi } from './types.js';
  */
 export async function extractApi(customElementsJsonPath: string): Promise<ComponentApi[]> {
 	const raw = JSON.parse(await readFile(customElementsJsonPath, 'utf-8')) as {
-		tags?: { name: string; attributes?: { name: string }[]; events?: { name: string }[]; slots?: { name: string; description?: string }[] }[];
+		tags?: { name: string; attributes?: { name: string; type?: string }[]; events?: { name: string }[]; slots?: { name: string; description?: string }[] }[];
 	};
 	if (!Array.isArray(raw.tags)) {
 		throw new Error(`${customElementsJsonPath} has no tags array; build the components package first.`);
@@ -17,6 +17,12 @@ export async function extractApi(customElementsJsonPath: string): Promise<Compon
 		.map((tag) => ({
 			tag: tag.name,
 			attributes: (tag.attributes ?? []).map((attribute) => attribute.name).sort(),
+			attributeTypes: Object.fromEntries(
+				(tag.attributes ?? [])
+					.filter((attribute) => attribute.type !== undefined)
+					.map((attribute) => [attribute.name, attribute.type as string])
+					.sort(([a], [b]) => a.localeCompare(b)),
+			),
 			events: (tag.events ?? []).map((event) => event.name).sort(),
 			slots: (tag.slots ?? []).map((slot) => ({ name: slot.name ?? '', description: slot.description })),
 		}))

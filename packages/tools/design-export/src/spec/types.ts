@@ -1,15 +1,9 @@
 /**
- * Design facet of the BEM specification: the facts a design tool needs that the BEM registry
- * (`packages/components/src/schema/bem-registry.ts`) does not carry today.
+ * Design specification of one block: the input of the transformation `spec → Penpot/Figma`.
  *
- * The registry names the block, its elements and their modifiers as flat sets. A design tool
- * additionally needs the tree the elements form, what kind of layer each element is, which prop
- * switches which modifier, which modifiers are design axes and what content a library instance
- * shows. With this facet the transformation `spec → Penpot/Figma` runs without a browser and
- * gives byte-identical output for identical sources (see `docs/design-export/BEM-SPEC-DESIGN-FACET.md`).
- *
- * The format is a proposal: the pilot specs live in this package until the facet moves into the
- * registry next to `BEM`.
+ * Nobody writes it by hand. `dialect/to-spec.ts` generates it from the BEM registry (design
+ * properties through the BEM dialect) and the functional component (element tree); see
+ * `docs/design-export/BEM-DIALECT.md`.
  */
 export interface BlockDesignSpec {
 	/** BEM block, equal to the tag name (`kol-button`). */
@@ -68,6 +62,8 @@ export interface DesignNode {
 	 * attribute while the component is disabled.
 	 */
 	interactive?: boolean;
+	/** The node carries the `hidden` attribute (the expert slot): the library shows it hidden. */
+	hidden?: boolean;
 	/** Embedded component rendered through its functional component (item), e.g. `kol-span`. */
 	embeds?: string;
 	/** Props passed to the embedded component, as prop names of this component or literals. */

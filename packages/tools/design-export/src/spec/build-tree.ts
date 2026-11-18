@@ -17,7 +17,7 @@ export interface BuildReport {
 	unresolvedValues: string[];
 	/** Colors painted without a theme token: they do not follow the scheme in the design tool. */
 	untokenizedColors: string[];
-	/** Embedded blocks without a design facet; rendered as an empty frame. */
+	/** Embedded blocks without a design specification; rendered as an empty frame. */
 	missingEmbeds: string[];
 }
 
@@ -69,7 +69,7 @@ function blockClasses(spec: BlockDesignSpec, props: InstanceProps): string[] {
 }
 
 /**
- * Builds the shape tree of one library instance from the design facet, the compiled CSS and the
+ * Builds the shape tree of one library instance from the design specification, the compiled CSS and the
  * theme tokens. Pure: the same spec, props, state, CSS and tokens give the same tree.
  */
 export function buildShapes(
@@ -113,6 +113,7 @@ function instantiate(
 	}
 	const attributes: Record<string, string> = {};
 	if (node.interactive && props._disabled === true) attributes.disabled = '';
+	if (node.hidden) attributes.hidden = '';
 	const cascade: CascadeNode = { tag: node.tag, classes, attributes, parent, states: new Set() };
 	const name = node.element ? `${block}__${node.element}` : block;
 	const instance: Instance = { node, cascade, block, name, classes, children: [] };
