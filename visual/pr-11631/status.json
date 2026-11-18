@@ -1,40 +1,62 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "63 changed – 0 of 63 approved, review pending",
-	"computedAt": "2026-11-18T09:28:09.090Z",
+	"state": "failure",
+	"description": "4 of 63 visual changes rejected",
+	"computedAt": "2026-11-18T09:38:16.827Z",
 	"pr": 11631,
 	"head": "6ae8f9df59936617f3224e7a41d6bc4d599797d7",
 	"digest": "sha256:020cf7cef922e16d8dbac790563195f361cd6077e568e8ba1af2dc4c89bbb80f",
 	"counts": {
 		"changes": 63,
-		"open": 63,
-		"approved": 0,
-		"rejected": 0,
+		"open": 58,
+		"approved": 1,
+		"rejected": 4,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"laske185"
+	],
 	"items": {
 		"theme-desy/scenarios-focus-elements-component-tree": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [
+				{
+					"by": "laske185",
+					"text": "Bug oder Feature? Das Icon vom Chevron hat sich geändert."
+				}
+			],
+			"by": "laske185"
 		},
 		"theme-desy/tree-basic-home--tree": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [
+				{
+					"by": "laske185",
+					"text": "Auch neues Icon"
+				}
+			],
+			"by": "laske185"
 		},
 		"theme-ecl/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/breadcrumb-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [
+				{
+					"by": "laske185",
+					"text": "Icons haben sich geändert"
+				}
+			],
+			"by": "laske185"
 		},
 		"theme-ecl/breadcrumb-basic--basic-320": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/input-checkbox-basic-noColumns--left-checked": {
 			"state": "open",
