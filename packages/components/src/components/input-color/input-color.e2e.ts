@@ -174,7 +174,8 @@ test.describe(COMPONENT_NAME, () => {
 			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
 			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
 			touchedAfterBlur: true,
-			initialValue: '#000000',
+			// Without a preset value the prop stays unset; the native initial value is read via getValue().
+			initialValue: undefined,
 			formData: [],
 			experimentalFormData: [['field', TEST_VALUE]],
 			syncedValue: TEST_VALUE,

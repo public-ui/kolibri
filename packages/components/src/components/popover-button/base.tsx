@@ -64,13 +64,14 @@ export abstract class BasePopoverButtonWebComponent extends BaseButtonWebCompone
 	// --- Lifecycle helpers (called from the concrete element's lifecycle methods) ---
 
 	/**
-	 * Seeds the render props. Call first in `componentWillLoad`, before the prop watchers run.
+	 * Unsets `tabIndex`, installs the popover toggle as the click callback and starts the popover
+	 * behavior. Call first in `componentWillLoad`, before the prop watchers run.
 	 *
 	 * The click callback is installed here and never replaced: the popover button exposes no
 	 * `_on` prop, so the button click always toggles the popover (and only that).
 	 */
-	protected initPopoverButtonRenderProps(): void {
-		this.initButtonRenderProps();
+	protected initPopoverToggle(): void {
+		this.unsetButtonTabIndex();
 		this.applyOn({ onClick: this.togglePopover });
 		this.popoverBehavior.componentWillLoad({ align: popoverAlignProp.getDefaultValue() });
 	}

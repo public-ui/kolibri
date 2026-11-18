@@ -40,12 +40,6 @@
 		cursor: pointer;
 	}
 
-	.kol-span__label {
-		.kol-span .kol-span__label--hide-label & {
-			display: none;
-		}
-	}
-
 	/* Reset browser agent style. */
 	button:disabled {
 		color: unset;

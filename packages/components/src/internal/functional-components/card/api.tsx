@@ -1,5 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
-import { cardCallbacksProp, hasCloserProp, labelProp, levelProp, linkTargetProp, optionalHrefProp } from '../../props';
+import { cardCallbacksProp, hasCloserProp, hrefProp, labelLangSegmentsProp, levelProp, linkTargetProp } from '../../props';
 import { imageProp } from '../../props/image';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
@@ -7,24 +7,26 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * Props configuration for the card component.
  *
  * Notes on prop choices:
- * - `optionalHrefProp`, not `hrefProp`: a card without a link target is the normal case, so the
- *   required variant's dev warning would fire on almost every card.
- * - `labelProp`, not `labelWithExpertSlotProp`: the card renders its label as a heading and has
+ * - `hrefProp` in the optional array: a card without a link target is the normal case, so the
+ *   config slot keeps the required warning off (requiredness follows the slot).
+ * - `labelLangSegmentsProp`, not `labelWithExpertSlotProp`: the card renders its label as a heading and has
  *   no expert slot for it.
  */
 export const cardPropsConfig = {
-	required: [labelProp],
-	optional: [cardCallbacksProp, hasCloserProp, imageProp, levelProp, linkTargetProp, optionalHrefProp],
+	required: [labelLangSegmentsProp],
+	optional: [cardCallbacksProp, hasCloserProp, hrefProp, imageProp, levelProp, linkTargetProp],
 } as const satisfies PropsConfigShape;
 
 export type CardApi = ApiFromConfig<
 	typeof cardPropsConfig,
 	{
-		/**
-		 * `blur` and `focus` belong to the heading link — the only element the card's own `_on`
-		 * callbacks describe. `close` is the close button's click.
-		 */
 		Callbacks: {
+			/**
+			 * `blur` and `focus` belong to the heading link — the only element the card's own
+			 * `_on` callbacks describe. `close` is the close button's click. The web component
+			 * implements all three; the FC-facing `CardFCProps` decides which of them a composer
+			 * may omit.
+			 */
 			blur: (event: FocusEvent) => void;
 			close: (event: MouseEvent) => void;
 			focus: (event: FocusEvent) => void;
@@ -35,6 +37,7 @@ export type CardApi = ApiFromConfig<
 		};
 		Refs: {
 			closeButton: HTMLButtonElement;
+			/** The heading link's anchor; the web component always provides the ref setter. */
 			cta: HTMLAnchorElement;
 			tooltip: HTMLDivElement;
 		};

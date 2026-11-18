@@ -19,5 +19,6 @@ executeSnapshotTests<TextareaProps>(
 		{ _label: 'Label', _name: 'field', _maxLength: 10, _value: 'Value' },
 		{ _label: 'Label', _name: 'field', _resize: 'none', _value: 'Value' },
 		{ _label: 'Label', _name: 'field', _placeholder: 'Platzhalter', _required: true },
+		{ _label: 'Label', _name: 'field', _spellCheck: false },
 	],
 );

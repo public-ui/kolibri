@@ -3,11 +3,11 @@ import { Component, Element, h, Host, Listen, Method, Prop, Watch } from '@stenc
 
 import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TreeApi } from '../../internal/functional-components/tree/api';
 import { treePropsConfig } from '../../internal/functional-components/tree/api';
 import { TreeFC } from '../../internal/functional-components/tree/component';
-import { labelWithExpertSlotProp } from '../../internal/props';
+import { labelProp } from '../../internal/props';
 import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../schema';
 import { delegateFocus } from '../../utils/element-focus';
 import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
@@ -37,6 +37,8 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	private rafHandle?: number;
 
+	protected readonly propsConfig: PropsConfigShape = treePropsConfig;
+
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
@@ -44,7 +46,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -67,7 +69,6 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(treePropsConfig);
 		this.watchLabel(this._label);
 
 		this.handleTreeChange();
@@ -306,7 +307,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	public render(): JSX.Element {
 		return (
-			<Host>
+			<Host tabindex="0">
 				<TreeFC handleSlotchange={this.handleSlotchange} label={this.getRenderProp('label')} />
 			</Host>
 		);

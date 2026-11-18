@@ -5,7 +5,9 @@ import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import type { HeadingLevel } from '../../props';
 import type { FunctionalComponentProps } from '../generic-types';
-import type { HeadingApi } from './api';
+import { resolveFcProps } from '../props-from-config';
+import { renderLabelWithLang } from '../span/component';
+import { headingPropsConfig, type HeadingApi } from './api';
 
 const headingBem = bem.forBlock('kol-heading');
 const headlineBem = bem.forBlock('kol-headline');
@@ -17,13 +19,13 @@ function getHeadlineTag(level: HeadingLevel | number): HeadlineTag {
 }
 
 export const HeadingFC: FC<FunctionalComponentProps<HeadingApi>> = (props) => {
-	const { label, level, secondaryHeadline } = props;
+	const { label, level, secondaryHeadline } = resolveFcProps(headingPropsConfig, props);
 	const HeadlineTag = getHeadlineTag(level);
 
 	if (!secondaryHeadline) {
 		return (
 			<HeadlineTag class={clsx(headingBem(), headlineBem({ [HeadlineTag]: true, single: true }))}>
-				{label}
+				{renderLabelWithLang(label)}
 				<slot name="expert" slot="expert" />
 			</HeadlineTag>
 		);
@@ -32,7 +34,7 @@ export const HeadingFC: FC<FunctionalComponentProps<HeadingApi>> = (props) => {
 	return (
 		<hgroup class={headingBem({ group: true })}>
 			<HeadlineTag class={headlineBem({ [HeadlineTag]: true, group: true, primary: true })}>
-				{label}
+				{renderLabelWithLang(label)}
 				<slot name="expert" slot="expert" />
 			</HeadlineTag>
 			<p class={headlineBem({ group: true, secondary: true })}>{secondaryHeadline}</p>

@@ -1,3 +1,4 @@
+import type { PageSizePropType } from '../../schema/props/page-size';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeNumberType } from './helpers/normalizers';
@@ -9,5 +10,5 @@ import { normalizeNumberType } from './helpers/normalizers';
  * The number of entries per page. With page size options, a value that is not an option falls back
  * to the first option.
  */
-export type PageSizeProp = SimpleProp<'pageSize', number>;
+export type PageSizeProp = SimpleProp<'pageSize', PageSizePropType>;
 export const pageSizeProp = createPropDefinition<PageSizeProp>('pageSize', 1, normalizeNumberType);

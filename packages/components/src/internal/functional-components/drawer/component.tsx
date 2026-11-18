@@ -7,7 +7,8 @@ import type { CardFCProps } from '../card/component';
 import { CardFC } from '../card/component';
 import { DialogFC } from '../dialog/component';
 import type { FunctionalComponentProps } from '../generic-types';
-import type { DrawerApi } from './api';
+import { resolveFcProps } from '../props-from-config';
+import { drawerPropsConfig, type DrawerApi } from './api';
 
 const drawerBem = bem.forBlock('kol-drawer');
 const BEM_CLASS_DRAWER__CONTENT = drawerBem('content');
@@ -34,7 +35,10 @@ export type DrawerFCProps = FunctionalComponentProps<DrawerApi> & {
  * the element file, so the element supplies its own slot.
  */
 export const DrawerFC: FC<DrawerFCProps> = (props, children) => {
-	const { align, cardProps, expanded, handleAnimationEnd, handleCancel, handleClose, headingId, label, modal, refDialog, refWrapper } = props;
+	const { align, cardProps, expanded, handleAnimationEnd, handleCancel, handleClose, headingId, label, modal, refDialog, refWrapper } = resolveFcProps(
+		drawerPropsConfig,
+		props,
+	);
 
 	return (
 		<BemRootNodeFC block="kol-drawer">

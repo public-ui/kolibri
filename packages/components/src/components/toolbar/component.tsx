@@ -2,14 +2,14 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ToolbarApi } from '../../internal/functional-components/toolbar/api';
 import { toolbarPropsConfig } from '../../internal/functional-components/toolbar/api';
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
 import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
 import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
-import { labelWithExpertSlotProp, orientationProp, toolbarItemsProp } from '../../internal/props';
-import type { ClickableElement, FocusableElement, KolFocusOptions, ToolbarItemsPropType, ToolbarProps } from '../../schema';
+import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
+import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType, ToolbarProps } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { delegateClick, setClick } from '../../utils/element-click';
@@ -37,14 +37,16 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
+	protected readonly propsConfig: PropsConfigShape = toolbarPropsConfig;
+
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+	public watchLabel(value?: LabelPropType): void {
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -65,7 +67,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
-	@Prop() public _orientation?: OrientationPropType;
+	@Prop() public _orientation?: OrientationPropType = undefined;
 
 	@Watch('_orientation')
 	public watchOrientation(value?: OrientationPropType): void {
@@ -95,8 +97,6 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(toolbarPropsConfig);
-
 		this.watchLabel(this._label);
 		this.watchItems(this._items);
 		this.watchOrientation(this._orientation);

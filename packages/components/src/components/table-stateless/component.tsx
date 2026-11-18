@@ -8,16 +8,17 @@ import type {
 	HasSettingsMenuPropType,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
+	LabelLangSegmentsPropType,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
-	TableHeaderCellsPropType,
+	TableHeadersPropType,
+	TableLoadingPropType,
 	TableSelectionPropType,
 	TableStatelessProps,
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
-import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { BaseTableStatelessWebComponent } from './base';
 
 @Component({
@@ -40,15 +41,14 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 
 	@State() public stickyColsDisabled: boolean = false;
 
-	private internals?: HostInternals;
-
 	/**
 	 * References an external element by ID that serves as the accessible label for this table.
-	 * Uses ElementInternals.ariaLabelledByElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.
+	 * The component resolves the IDs and sets them as element references (`ariaLabelledByElements`)
+	 * on the native `<table>` inside the shadow root, because IDREF attributes cannot cross that
+	 * boundary. Desktop screen readers (NVDA, JAWS with Chrome/Firefox) follow the references;
+	 * VoiceOver and TalkBack do not — use `_label` instead.
 	 */
-	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType;
+	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType = undefined;
 
 	@Watch('_ariaLabelledby')
 	public watchAriaLabelledby(value?: AriaLabelledbyPropType): void {
@@ -68,7 +68,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the data for the table footer.
 	 */
-	@Prop() public _dataFoot?: TableDataFootPropType;
+	@Prop() public _dataFoot?: TableDataFootPropType = undefined;
 
 	@Watch('_dataFoot')
 	public watchDataFoot(value?: TableDataFootPropType): void {
@@ -78,7 +78,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the fixed number of columns from start and end of the table
 	 */
-	@Prop() public _fixedCols?: FixedColsPropType;
+	@Prop() public _fixedCols?: FixedColsPropType = undefined;
 
 	@Watch('_fixedCols')
 	public watchFixedCols(value?: FixedColsPropType): void {
@@ -88,48 +88,37 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headers?: TableHeaderCellsPropType;
+	@Prop() public _headers!: TableHeadersPropType;
 
 	@Watch('_headers')
-	public watchHeaders(value?: TableHeaderCellsPropType): void {
-		this.applyHeaders(value ? value : this._headerCells);
-	}
-
-	/**
-	 * @deprecated Will be removed in the future. Use _headers instead.
-	 * Defines the horizontal and vertical table headers.
-	 */
-	@Prop() public _headerCells?: TableHeaderCellsPropType;
-
-	@Watch('_headerCells')
-	public watchHeaderCells(value?: TableHeaderCellsPropType): void {
-		this.applyHeaders(this._headers ? this._headers : value);
+	public watchHeaders(value?: TableHeadersPropType): void {
+		this.applyHeaders(value);
 	}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
 		this.applyLabel(value);
 	}
 
 	/**
 	 * Wether the table shows a loading spinner (default: false).
 	 */
-	@Prop() public _loading?: boolean;
+	@Prop() public _loading?: TableLoadingPropType = undefined;
 
 	@Watch('_loading')
-	public watchLoading(value?: boolean): void {
+	public watchLoading(value?: TableLoadingPropType): void {
 		this.applyLoading(value);
 	}
 
 	/**
 	 * Defines the callback functions for table events.
 	 */
-	@Prop() public _on?: TableCallbacksPropType;
+	@Prop() public _on?: TableCallbacksPropType = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: TableCallbacksPropType): void {
@@ -139,7 +128,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines how rows can be selected and the current selection.
 	 */
-	@Prop() public _selection?: TableSelectionPropType;
+	@Prop() public _selection?: TableSelectionPropType = undefined;
 
 	@Watch('_selection')
 	public watchSelection(value?: TableSelectionPropType): void {
@@ -149,7 +138,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Enables the settings menu if true (default: false).
 	 */
-	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
 
 	@Watch('_hasSettingsMenu')
 	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
@@ -159,7 +148,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -167,8 +156,6 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	}
 
 	public componentWillLoad(): void {
-		this.initTableRenderProps();
-
 		this.watchData(this._data);
 		this.watchDataFoot(this._dataFoot);
 		this.watchFixedCols(this._fixedCols);
@@ -180,7 +167,6 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 		this.watchSelection(this._selection);
 		this.watchVariant(this._variant);
 
-		this.internals = attachInternals(this.host);
 		// Early resolution: if the external element is already in the DOM (common when the
 		// label element is rendered before this component), the first render already uses
 		// it, so the AT sees the correct name from the start.
@@ -215,7 +201,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	}
 
 	private resolveExternalLabel(value?: AriaLabelledbyPropType): void {
-		this.externalLabelElements = validateAriaLabelledby(this, this.host, this.internals, value);
+		this.externalLabelElements = validateAriaLabelledby(this, this.host, value);
 		this.syncTableLabel(this.externalLabelElements);
 	}
 

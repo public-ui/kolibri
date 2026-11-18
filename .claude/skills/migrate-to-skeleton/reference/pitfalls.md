@@ -5,8 +5,8 @@ dagegen prüfen.
 
 ## 1. Unvollständiges Prop-Triangle
 
-Jeder `@Prop()` braucht Deklaration, `@Watch()` **und** die Anwendung in `componentWillLoad()`
-(nach `initRenderProps`). Fehlt der Watcher, aktualisiert sich die Prop zur Laufzeit nicht; fehlt
+Jeder `@Prop()` braucht Deklaration, `@Watch()` **und** die Anwendung in `componentWillLoad()`.
+Fehlt der Watcher, aktualisiert sich die Prop zur Laufzeit nicht; fehlt
 die Anwendung beim Laden, rendert der erste Durchlauf den Default statt des gesetzten Werts.
 
 ## 2. `class`-Attribut am `<Host>`
@@ -133,7 +133,7 @@ nicht weggelassen.
 `link-button` und `button-link` haben keine eigene Migrationsarbeit gebraucht, sobald ihr
 semantisches Vorbild (`link` bzw. `button`) migriert war — beide erben direkt dessen `Base*WebComponent`
 und rendern dessen FC. Vor dem Start einer Satelliten-Migration prüfen, ob `component.tsx` bereits
-`Base*WebComponent` erbt, `render*FC()` aufruft und in `_skeleton/public-api/<komponente>.spec.ts` gegen `component.tsx` gepinnt ist. Ist
+`Base*WebComponent` erbt, `render*FC()` aufruft und in `src/components/public-api/<komponente>.spec.ts` gegen `component.tsx` gepinnt ist. Ist
 das der Fall, gibt es keinen Code zu ändern — das Tracking-Issue ist lediglich nicht nachgeführt.
 
 ## 14. `KolEvent`-Typen heißen wie die nativen Events — nie auf dem Element dispatchen, das den Handler trägt

@@ -473,3 +473,35 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=100 1`] = `
   </template>
 </kol-meter>
 `;
+
+exports[`kol-meter should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] 1`] = `
+<kol-meter>
+  <template shadowrootmode="open">
+    <div class="kol-meter">
+      <div class="kol-meter__bar">
+        <div class="kol-meter__bar-label">
+          <span>
+            <span lang="en">
+              partly english
+            </span>
+            <span>
+              Label
+            </span>
+          </span>
+        </div>
+        <div class="kol-meter__bar-track">
+          <meter aria-label="partly english Label" aria-valuetext="kol-live-value" max="1" min="0" value="0"></meter>
+        </div>
+        <span class="kol-meter__value-unit">
+          <span class="kol-meter__value" style="min-width: 1ch;">
+            0
+          </span>
+          <span class="kol-meter__unit">
+            %
+          </span>
+        </span>
+      </div>
+    </div>
+  </template>
+</kol-meter>
+`;

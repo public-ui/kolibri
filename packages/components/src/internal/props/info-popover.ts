@@ -19,8 +19,4 @@ function normalizeInfoPopover(value: unknown): FormFieldLabelInfoPopoverProps | 
 }
 
 // The default is `undefined`: without an info popover the label renders no popover button.
-export const infoPopoverProp = createPropDefinition<InfoPopoverProp>(
-	'infoPopover',
-	undefined as unknown as FormFieldLabelInfoPopoverProps,
-	normalizeInfoPopover,
-);
+export const infoPopoverProp = createPropDefinition<InfoPopoverProp>('infoPopover', undefined, normalizeInfoPopover);

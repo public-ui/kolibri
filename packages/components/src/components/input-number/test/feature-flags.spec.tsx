@@ -29,8 +29,8 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 		const page = await render();
 		await page.waitForChanges();
 
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-up"]')).not.toBeNull();
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-down"]')).not.toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-up')).not.toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-down')).not.toBeNull();
 	});
 
 	it('renders step buttons when flag is "show"', async () => {
@@ -38,8 +38,8 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 		const page = await render();
 		await page.waitForChanges();
 
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-up"]')).not.toBeNull();
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-down"]')).not.toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-up')).not.toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-down')).not.toBeNull();
 	});
 
 	it('hides step buttons when flag is "hide"', async () => {
@@ -47,8 +47,8 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 		const page = await render();
 		await page.waitForChanges();
 
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-up"]')).toBeNull();
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-down"]')).toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-up')).toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-down')).toBeNull();
 	});
 
 	it('keeps step buttons hidden when disabled, even if the flag is "show"', async () => {
@@ -56,8 +56,8 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 		const page = await render({ _disabled: true });
 		await page.waitForChanges();
 
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-up"]')).toBeNull();
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-down"]')).toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-up')).toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-down')).toBeNull();
 	});
 
 	it('keeps step buttons hidden when read-only, even if the flag is "show"', async () => {
@@ -65,7 +65,7 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 		const page = await render({ _readOnly: true });
 		await page.waitForChanges();
 
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-up"]')).toBeNull();
-		expect(page.root?.shadowRoot?.querySelector('[data-testid="kol-input-number-step-down"]')).toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-up')).toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('.kol-input-number__step-button-down')).toBeNull();
 	});
 });

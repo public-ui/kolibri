@@ -106,6 +106,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 			_on={{
 				onSort: (_e, payload) => console.log('sort', payload),
 				onSelectionChange: (_e, value) => console.log('selection', value),
+				onChangeHeaderCells: (_e, value) => console.log('header settings changed', value),
 			}}
 		/>
 	</>

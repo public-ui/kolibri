@@ -12,7 +12,8 @@ import type { FunctionalComponentProps } from '../generic-types';
 import type { LinkFCProps } from '../link/component';
 import { LinkFC } from '../link/component';
 import type { EmbeddedLinkProps } from '../link/resolve-props';
-import type { NavApi } from './api';
+import { resolveFcProps } from '../props-from-config';
+import { navPropsConfig, type NavApi } from './api';
 import { buildEntryIcons, getLeftIcon, isButtonEntry, isLinkEntry } from './model';
 
 export type NavFCProps = Omit<FunctionalComponentProps<NavApi>, 'hideLabel'> & {
@@ -26,10 +27,11 @@ export type NavFCProps = Omit<FunctionalComponentProps<NavApi>, 'hideLabel'> & {
 	getLinkFcProps: (key: string, props: EmbeddedLinkProps) => LinkFCProps;
 };
 
-type ListProps = Pick<
-	NavFCProps,
-	'collapsible' | 'compact' | 'expandedChildren' | 'getButtonFcProps' | 'getLinkFcProps' | 'handleToggleExpansion' | 'hasIconsWhenExpanded'
-> & {
+type ListProps = Pick<NavFCProps, 'expandedChildren' | 'getButtonFcProps' | 'getLinkFcProps' | 'handleToggleExpansion'> & {
+	/** The navigation flags, resolved to their config defaults by `NavFC`. */
+	collapsible: boolean;
+	compact: boolean;
+	hasIconsWhenExpanded: boolean;
 	deep: number;
 	id: string;
 	links: ButtonOrLinkOrTextWithChildrenProps[];
@@ -128,53 +130,57 @@ const NavListFC: FC<ListProps> = (props) => (
 );
 
 /** The navigation with its nested lists and the optional compact button. */
-export const NavFC: FC<NavFCProps> = ({
-	collapsible,
-	compact,
-	expandedChildren,
-	getButtonFcProps,
-	getLinkFcProps,
-	handleToggleCompact,
-	handleToggleExpansion,
-	hasCompactButton,
-	hasIconsWhenExpanded,
-	label,
-	links,
-	listId,
-	navId,
-}) => (
-	<BemRootNodeFC block="kol-nav" modifiers={{ 'is-compact': compact }}>
-		<nav aria-label={label} class="kol-nav__navigation" id={navId}>
-			<NavListFC
-				collapsible={collapsible}
-				compact={compact}
-				deep={0}
-				expandedChildren={expandedChildren}
-				getButtonFcProps={getButtonFcProps}
-				getLinkFcProps={getLinkFcProps}
-				handleToggleExpansion={handleToggleExpansion}
-				hasIconsWhenExpanded={hasIconsWhenExpanded}
-				id={listId}
-				links={links}
-			/>
-		</nav>
-		{hasCompactButton && (
-			<div class="kol-nav__compact">
-				{/* `.kol-nav__toggle-button` stays a wrapper: the themes style its `.kol-button` as a descendant. */}
-				<div class="kol-nav__toggle-button">
-					<ButtonFC
-						{...getButtonFcProps('compact-toggle', {
-							_ariaControls: navId,
-							_ariaExpanded: !compact,
-							_icons: compact ? 'kolicon-chevron-right' : 'kolicon-chevron-left',
-							_hideLabel: true,
-							_label: compact ? translate('kol-nav-maximize') : translate('kol-nav-minimize'),
-							_on: { onClick: handleToggleCompact },
-							_tooltipAlign: 'right',
-						})}
-					/>
+export const NavFC: FC<NavFCProps> = (props) => {
+	const {
+		collapsible,
+		compact,
+		expandedChildren,
+		getButtonFcProps,
+		getLinkFcProps,
+		handleToggleCompact,
+		handleToggleExpansion,
+		hasCompactButton,
+		hasIconsWhenExpanded,
+		label,
+		links,
+		listId,
+		navId,
+	} = resolveFcProps(navPropsConfig, props);
+
+	return (
+		<BemRootNodeFC block="kol-nav" modifiers={{ 'is-compact': compact }}>
+			<nav aria-label={label} class="kol-nav__navigation" id={navId}>
+				<NavListFC
+					collapsible={collapsible}
+					compact={compact}
+					deep={0}
+					expandedChildren={expandedChildren}
+					getButtonFcProps={getButtonFcProps}
+					getLinkFcProps={getLinkFcProps}
+					handleToggleExpansion={handleToggleExpansion}
+					hasIconsWhenExpanded={hasIconsWhenExpanded}
+					id={listId}
+					links={links}
+				/>
+			</nav>
+			{hasCompactButton && (
+				<div class="kol-nav__compact">
+					{/* `.kol-nav__toggle-button` stays a wrapper: the themes style its `.kol-button` as a descendant. */}
+					<div class="kol-nav__toggle-button">
+						<ButtonFC
+							{...getButtonFcProps('compact-toggle', {
+								_ariaControls: navId,
+								_ariaExpanded: !compact,
+								_icons: compact ? 'kolicon-chevron-right' : 'kolicon-chevron-left',
+								_hideLabel: true,
+								_label: compact ? translate('kol-nav-maximize') : translate('kol-nav-minimize'),
+								_on: { onClick: handleToggleCompact },
+								_tooltipAlign: 'right',
+							})}
+						/>
+					</div>
 				</div>
-			</div>
-		)}
-	</BemRootNodeFC>
-);
+			)}
+		</BemRootNodeFC>
+	);
+};

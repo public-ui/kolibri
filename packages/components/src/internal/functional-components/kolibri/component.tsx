@@ -4,7 +4,8 @@ import { h } from '@stencil/core';
 import { bem } from '../../../schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
-import type { KolibriApi } from './api';
+import { resolveFcProps } from '../props-from-config';
+import { kolibriPropsConfig, type KolibriApi } from './api';
 
 const kolibriBem = bem.forBlock('kol-kolibri');
 
@@ -14,7 +15,8 @@ export type KolibriFCProps = FunctionalComponentProps<KolibriApi> & {
 };
 
 /** The KoliBri logo, with the label below it when `labeled` is set. */
-export const KolibriFC: FC<KolibriFCProps> = ({ ariaLabel, color, labeled }) => {
+export const KolibriFC: FC<KolibriFCProps> = (props) => {
+	const { ariaLabel, color, labeled } = resolveFcProps(kolibriPropsConfig, props);
 	const fillColor = `rgb(${color.red},${color.green},${color.blue})`;
 	return (
 		<BemRootNodeFC

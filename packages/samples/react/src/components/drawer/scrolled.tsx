@@ -58,7 +58,7 @@ export const DrawerScrolled: FC = () => {
 									gap: '20px',
 								}}
 							>
-								<p>✅ Content with proper overflow handling - scrollable within drawer bounds</p>
+								<p>Content with proper overflow handling - scrollable within drawer bounds</p>
 								<div>
 									<h3>Large Content Area (Scrollable)</h3>
 									<p>

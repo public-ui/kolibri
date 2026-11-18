@@ -1,3 +1,4 @@
+import type { ActivePropType } from '../../schema/props/active';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -12,5 +13,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  *
  * @see https://www.w3.org/WAI/ARIA/apg/patterns/treeview/
  */
-export type ActiveProp = SimpleProp<'active', boolean>;
+export type ActiveProp = SimpleProp<'active', ActivePropType>;
 export const activeProp = createPropDefinition<ActiveProp>('active', false, normalizeBoolean);

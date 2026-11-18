@@ -8,21 +8,23 @@ import type { CardFCProps } from '../../internal/functional-components/card/comp
 import type { DrawerApi } from '../../internal/functional-components/drawer/api';
 import { drawerPropsConfig } from '../../internal/functional-components/drawer/api';
 import { DrawerFC } from '../../internal/functional-components/drawer/component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { alignProp, drawerCallbacksProp, hasCloserProp, labelProp, levelProp, openProp } from '../../internal/props';
-import type { AlignPropType, DrawerProps, HeadingLevel, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
+import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
+import type {
+	AlignPropType,
+	DrawerProps,
+	HasCloserPropType,
+	HeadingLevel,
+	KoliBriModalEventCallbacks,
+	LabelLangSegmentsPropType,
+	OpenPropType,
+} from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
-
-/**
- * The card is never a link, so its `_on` callbacks — which describe that link — have no target
- * here and its anchor ref is never called.
- */
-const NOOP = (): void => {};
 
 /**
  * @slot - The Content of drawer.
@@ -58,10 +60,12 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/** Resolved once in `componentWillLoad`: the close button's configuration never changes. */
 	private cardCloseButtonProps!: ResolvedButtonProps;
 
+	protected readonly propsConfig: PropsConfigShape = drawerPropsConfig;
+
 	/**
 	 * Defines the visual orientation of the component.
 	 */
-	@Prop() public _align?: AlignPropType;
+	@Prop() public _align?: AlignPropType = undefined;
 
 	@Watch('_align')
 	public watchAlign(value?: AlignPropType): void {
@@ -70,23 +74,22 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 
 	/**
 	 * Defines whether the element can be closed.
-	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hasCloser?: boolean = false;
+	@Prop() public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
-	public watchHasCloser(value?: boolean): void {
+	public watchHasCloser(value?: HasCloserPropType): void {
 		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
 	}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -102,7 +105,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Specifies the EventCallback function to be called when the drawer is closing.
 	 */
-	@Prop() public _on?: KoliBriModalEventCallbacks;
+	@Prop() public _on?: KoliBriModalEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriModalEventCallbacks): void {
@@ -112,7 +115,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType;
+	@Prop() public _open?: OpenPropType = undefined;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
@@ -129,9 +132,9 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	 * Opens the drawer. Pass true to open as a modal drawer.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async show(modal: boolean = false): Promise<void> {
+	public show(modal: boolean = false): Promise<void> {
 		this.showDrawer(modal);
+		return Promise.resolve();
 	}
 
 	/**
@@ -155,18 +158,18 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	 * Closes the drawer.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async close(): Promise<void> {
+	public close(): Promise<void> {
 		this.closeDrawer();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(drawerPropsConfig);
-
 		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
 		this.cardCloseTooltipBehavior.componentWillLoad({
 			label: this.cardCloseButtonProps.label,
-			align: this.cardCloseButtonProps.tooltipAlign,
+			// The drawer sits at the viewport edge: a top tooltip has no room above the
+			// button, so it stays `left` regardless of what the resolver returns.
+			align: 'left',
 		});
 
 		this.watchAlign(this._align);
@@ -293,20 +296,14 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		return {
 			ariaDescriptionId: this.getState('ariaDescriptionId'),
 			closeButtonProps: this.cardCloseButtonProps,
-			handleBlur: NOOP,
 			handleClose: this.handleCardClose,
-			handleFocus: NOOP,
 			hasCloser: this.getRenderProp('hasCloser'),
 			headingId: this.getState('headingId'),
-			href: '',
 			image: '',
 			label: this.getRenderProp('label'),
 			level: this.getRenderProp('level'),
-			on: {},
 			refCloseButton: this.cardCloseButtonRef,
-			refCta: NOOP,
 			refTooltip: this.cardCloseTooltipBehavior.setTooltipElementRef,
-			target: '',
 		};
 	}
 

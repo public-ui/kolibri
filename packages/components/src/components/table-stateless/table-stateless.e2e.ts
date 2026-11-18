@@ -1,9 +1,9 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
+import type { KoliBriTableHeaders, KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
-const HEADERS: TableHeaderCellsPropType = {
+const HEADERS: KoliBriTableHeaders = {
 	horizontal: [[{ key: 'id', label: 'ID', sortDirection: 'ASC', width: 160 }]],
 };
 
@@ -249,6 +249,43 @@ test.describe('kol-table-stateless', () => {
 		await expect(table.locator('caption')).toHaveText('Internal');
 	});
 
+	test('releases the external label references when _ariaLabelledby is emptied or set to a missing ID', async ({ page }) => {
+		await page.locator('body').evaluate((body: HTMLBodyElement) => {
+			const external = document.createElement('span');
+			external.id = 'external-caption';
+			external.textContent = 'External Caption';
+			body.prepend(external);
+		});
+		const kolTableStateless = page.locator('kol-table-stateless');
+		const table = kolTableStateless.locator('table');
+		const setAriaLabelledby = (value: string) =>
+			kolTableStateless.evaluate((el: HTMLKolTableStatelessElement, nextValue: string) => {
+				(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = nextValue;
+			}, value);
+		const externalStillReferenced = () =>
+			table.evaluate((element) => {
+				const refs = (element as unknown as { ariaLabelledByElements?: (Element | null)[] | null }).ariaLabelledByElements;
+				return refs?.some((ref) => ref instanceof HTMLElement && ref.id === 'external-caption') ?? false;
+			});
+		await kolTableStateless.evaluate((el: HTMLKolTableStatelessElement) => {
+			el._label = 'Internal Fallback';
+		});
+		await setAriaLabelledby('external-caption');
+		await page.waitForChanges();
+		await expect(table).not.toHaveAttribute('aria-labelledby', 'caption');
+
+		// Explicit element references win over the aria-labelledby content attribute: pointing
+		// _ariaLabelledby at an ID without an element or emptying it must release them, so the
+		// caption fallback names the table again.
+		for (const value of ['does-not-exist', '']) {
+			await setAriaLabelledby(value);
+			await page.waitForChanges();
+			await expect(table).toHaveAttribute('aria-labelledby', 'caption');
+			await expect(table.locator('caption')).toHaveText('Internal Fallback');
+			expect(await externalStillReferenced()).toBe(false);
+		}
+	});
+
 	test.describe('Keyboard access to the scroll container', () => {
 		test('it keeps the caption out of the tab order when nothing overflows', async ({ page }) => {
 			await expect(page.locator('kol-table-stateless').locator('caption')).not.toHaveAttribute('tabindex');
@@ -314,22 +351,5 @@ test.describe('kol-table-stateless', () => {
 			expect(await scrollContainer.evaluate((element) => getComputedStyle(element).overflowY)).toBe('hidden');
 			await expect(kolTableStateless.locator('caption')).not.toHaveAttribute('tabindex');
 		});
-	});
-});
-
-test.describe('kol-table-stateless with deprecated _header-cells prop', () => {
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(`<kol-table-stateless
-					_label="Table Stateless"
-					_header-cells='${JSON.stringify(HEADERS)}'
-					_data='${JSON.stringify(DATA)}'
-				/>`);
-		await page.waitForChanges();
-	});
-
-	test('still renders headers and data via the deprecated _header-cells attribute', async ({ page }) => {
-		const kolTableStateless = page.locator('kol-table-stateless');
-		await expect(kolTableStateless.getByRole('button', { name: 'ID' })).toBeVisible();
-		await expect(kolTableStateless.getByText(DATA[0].id)).toBeVisible();
 	});
 });

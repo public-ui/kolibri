@@ -7,7 +7,9 @@ import clsx from '../../../utils/clsx';
 import { ButtonFC } from '../button/component';
 import type { ResolvedButtonProps } from '../button/resolve-props';
 import type { FunctionalComponentProps } from '../generic-types';
-import type { CardApi } from './api';
+import { resolveFcProps } from '../props-from-config';
+import { renderLabelWithLang } from '../span/component';
+import { cardPropsConfig, type CardApi } from './api';
 
 const cardBem = bem.forBlock('kol-card');
 const BEM_CLASS_CARD__CLOSE_BUTTON = cardBem('close-button');
@@ -25,11 +27,20 @@ const NOOP = (): void => {};
 /** The heading renders either on its own or wrapped in the link, so it lives in its own FC. */
 const CardHeadingFC: FC<Pick<FunctionalComponentProps<CardApi>, 'headingId' | 'label' | 'level'>> = ({ headingId, label, level }) => (
 	<KolHeadingFc class={BEM_CLASS_CARD__HEADER} id={headingId} level={level}>
-		{label}
+		{renderLabelWithLang(label)}
 	</KolHeadingFc>
 );
 
-export type CardFCProps = FunctionalComponentProps<CardApi> & {
+/**
+ * The FC-facing view of `CardApi`. The API itself stays the strict contract the web component
+ * implements; only the link observers (`blur`, `focus`, `cta`) become optional here, because a
+ * composer that renders the card without a link has no anchor to observe — dialog, modal and
+ * drawer omit them together with `href`.
+ */
+export type CardFCProps = Omit<FunctionalComponentProps<CardApi>, 'handleBlur' | 'handleFocus' | 'refCta'> & {
+	handleBlur?: FunctionalComponentProps<CardApi>['handleBlur'];
+	handleFocus?: FunctionalComponentProps<CardApi>['handleFocus'];
+	refCta?: FunctionalComponentProps<CardApi>['refCta'];
 	/** The close button's normalized `ButtonFC` render props, resolved once by the web component. */
 	closeButtonProps: ResolvedButtonProps;
 };
@@ -67,7 +78,7 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 		refCta,
 		refTooltip,
 		target,
-	} = props;
+	} = resolveFcProps(cardPropsConfig, props);
 
 	return (
 		<article aria-labelledby={headingId} class={clsx(cardBem(), hostClass)}>

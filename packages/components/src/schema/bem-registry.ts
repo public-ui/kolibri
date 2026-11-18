@@ -336,31 +336,6 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
-	'kol-skeleton': {
-		elements: {
-			container: {
-				modifiers: null;
-			};
-			name: {
-				modifiers: null;
-			};
-			counter: {
-				modifiers: null;
-			};
-			actions: {
-				modifiers: null;
-			};
-		};
-		modifiers: Set<'has-name' | 'is-hidden'>;
-	};
-	'kol-click-button': {
-		elements: {
-			label: {
-				modifiers: null;
-			};
-		};
-		modifiers: null;
-	};
 	'kol-span': {
 		elements: {
 			container: {
@@ -821,6 +796,81 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-image': {
+		modifiers: null;
+	};
+	'kol-popover': {
+		elements: {
+			arrow: {
+				modifiers: Set<'top' | 'right' | 'bottom' | 'left'>;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-progress': {
+		elements: {
+			bar: {
+				modifiers: null;
+			};
+			'bar-background': {
+				modifiers: null;
+			};
+			'bar-border': {
+				modifiers: null;
+			};
+			'bar-label': {
+				modifiers: null;
+			};
+			'bar-progress': {
+				modifiers: null;
+			};
+			'bar-unit': {
+				modifiers: null;
+			};
+			'bar-value': {
+				modifiers: null;
+			};
+			cycle: {
+				modifiers: null;
+			};
+			'cycle-background': {
+				modifiers: null;
+			};
+			'cycle-border': {
+				modifiers: null;
+			};
+			'cycle-label': {
+				modifiers: null;
+			};
+			'cycle-progress': {
+				modifiers: null;
+			};
+			'cycle-text': {
+				modifiers: null;
+			};
+			'cycle-value': {
+				modifiers: null;
+			};
+			'cycle-whitespace': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-tooltip': {
+		elements: {
+			arrow: {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			floating: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 };
 
 /**
@@ -997,21 +1047,6 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			list: { modifiers: null },
 			'list-item': { modifiers: null },
-		},
-		modifiers: null,
-	},
-	'kol-skeleton': {
-		elements: {
-			actions: { modifiers: null },
-			container: { modifiers: null },
-			counter: { modifiers: null },
-			name: { modifiers: null },
-		},
-		modifiers: new Set(['has-name', 'is-hidden']),
-	},
-	'kol-click-button': {
-		elements: {
-			label: { modifiers: null },
 		},
 		modifiers: null,
 	},
@@ -1284,6 +1319,45 @@ const BEM: KoliBriComponentsBemSchema = {
 			'toggle-button': { modifiers: null },
 			'toggle-button-icon': { modifiers: null },
 			'toggle-button-placeholder': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-image': {
+		modifiers: null,
+	},
+	'kol-popover': {
+		elements: {
+			arrow: {
+				modifiers: new Set(['top', 'right', 'bottom', 'left']),
+			},
+		},
+		modifiers: null,
+	},
+	'kol-progress': {
+		elements: {
+			bar: { modifiers: null },
+			'bar-background': { modifiers: null },
+			'bar-border': { modifiers: null },
+			'bar-label': { modifiers: null },
+			'bar-progress': { modifiers: null },
+			'bar-unit': { modifiers: null },
+			'bar-value': { modifiers: null },
+			cycle: { modifiers: null },
+			'cycle-background': { modifiers: null },
+			'cycle-border': { modifiers: null },
+			'cycle-label': { modifiers: null },
+			'cycle-progress': { modifiers: null },
+			'cycle-text': { modifiers: null },
+			'cycle-value': { modifiers: null },
+			'cycle-whitespace': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-tooltip': {
+		elements: {
+			arrow: { modifiers: null },
+			content: { modifiers: null },
+			floating: { modifiers: null },
 		},
 		modifiers: null,
 	},

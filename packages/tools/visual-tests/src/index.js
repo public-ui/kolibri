@@ -67,6 +67,28 @@ if (fs.existsSync(themeAssetsPath)) {
 	console.log(`No theme assets found at ${themeAssetsPath}; continuing without overlay.`);
 }
 
+/* Foreign icon fonts are peer dependencies of the theme packages and are no longer checked into the
+   theme assets. Copy their CSS and font files from node_modules into `assets/peer-fonts/` so the
+   theme's inject-assets.css `@import url('./assets/peer-fonts/…')` statements keep resolving. */
+const peerFontPackages = [
+	{ from: '.', package: '@fontsource/fira-sans', to: 'assets/peer-fonts/fira-sans' },
+	{ from: '.', package: '@fontsource/noto-sans', to: 'assets/peer-fonts/noto-sans' },
+	{ from: 'css', package: '@fortawesome/fontawesome-free', to: 'assets/peer-fonts/fontawesome-free/css' },
+	{ from: 'webfonts', package: '@fortawesome/fontawesome-free', to: 'assets/peer-fonts/fontawesome-free/webfonts' },
+	{ from: 'dist', package: '@vscode/codicons', to: 'assets/peer-fonts/codicons' },
+];
+
+for (const { from, package: packageName, to } of peerFontPackages) {
+	for (const base of [process.cwd(), visualsTestModulePath]) {
+		const source = path.join(base, 'node_modules', packageName, from);
+		if (fs.existsSync(source)) {
+			fs.cpSync(source, path.join(buildPath, to), { recursive: true });
+			console.log(`Peer font assets copied from ${source}.`);
+			break;
+		}
+	}
+}
+
 /* The app loads the theme's inject-assets.css (font-face/icon declarations) via a relative <link>,
    so copy it into the served build root. Its own @import url('./assets/…') statements then resolve
    against the overlaid assets above. */

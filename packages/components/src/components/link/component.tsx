@@ -1,17 +1,18 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { LinkApi } from '../../internal/functional-components/link/api';
 import type {
 	AccessKeyPropType,
+	AriaControlsPropType,
 	AriaCurrentValuePropType,
 	AriaDescriptionPropType,
+	AriaExpandedPropType,
+	DisabledPropType,
 	DownloadPropType,
 	FocusableElement,
+	HideLabelPropType,
 	HrefPropType,
 	InlinePropType,
-	KolFocusOptions,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
@@ -37,7 +38,7 @@ import { BaseLinkWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolLink extends BaseLinkWebComponent implements FocusableElement, LinkProps, WebComponentInterface<LinkApi> {
+export class KolLink extends BaseLinkWebComponent implements FocusableElement, LinkProps {
 	@Element() protected readonly host?: HTMLKolLinkElement;
 
 	@State() public ariaCurrent: string = '';
@@ -49,7 +50,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -59,7 +60,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the value for the aria-current attribute.
 	 */
-	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType = undefined;
 
 	@Watch('_ariaCurrentValue')
 	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
@@ -69,17 +70,17 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop() public _ariaControls?: string;
+	@Prop() public _ariaControls?: AriaControlsPropType = undefined;
 
 	@Watch('_ariaControls')
-	public watchAriaControls(value?: string): void {
+	public watchAriaControls(value?: AriaControlsPropType): void {
 		this.applyAriaControls(value);
 	}
 
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType = undefined;
 
 	@Watch('_ariaDescription')
 	public watchAriaDescription(value?: AriaDescriptionPropType): void {
@@ -88,29 +89,28 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 * @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _ariaExpanded?: boolean;
+	@Prop() public _ariaExpanded?: AriaExpandedPropType = undefined;
 
 	@Watch('_ariaExpanded')
-	public watchAriaExpanded(value?: boolean): void {
+	public watchAriaExpanded(value?: AriaExpandedPropType): void {
 		this.applyAriaExpanded(value);
 	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Tells the browser that the link contains a file. Optionally sets the filename.
 	 */
-	@Prop() public _download?: DownloadPropType;
+	@Prop() public _download?: DownloadPropType = undefined;
 
 	@Watch('_download')
 	public watchDownload(value?: DownloadPropType): void {
@@ -120,17 +120,16 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
 	/**
-	 * Sets the target URI of the link or citation source.
+	 * Defines the target URI of the link.
 	 */
 	@Prop() public _href!: HrefPropType;
 
@@ -142,7 +141,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
+	@Prop() public _icons?: Stringified<KoliBriIconsProp> = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
@@ -160,9 +159,9 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label?: LabelWithExpertSlotPropType;
+	@Prop() public _label?: LabelWithExpertSlotPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -172,7 +171,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines the callback functions for links.
 	 */
-	@Prop() public _on?: LinkOnCallbacksPropType;
+	@Prop() public _on?: LinkOnCallbacksPropType = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: LinkOnCallbacksPropType): void {
@@ -182,7 +181,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -192,7 +191,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTargetPropType;
+	@Prop() public _target?: LinkTargetPropType = undefined;
 
 	@Watch('_target')
 	public watchTarget(value?: LinkTargetPropType): void {
@@ -212,7 +211,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -224,12 +223,14 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: FocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initLinkRenderProps();
+		this.unsetLinkTabIndex();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);

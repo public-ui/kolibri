@@ -5,8 +5,13 @@ import type {
 	AriaDetailsPropType,
 	AutoCompletePropType,
 	ClickableElement,
+	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
+	HasCounterPropType,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
 	IconsHorizontalPropType,
 	InputTextProps,
 	InputTextTypePropType,
@@ -15,14 +20,21 @@ import type {
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
+	MaxLengthPropType,
 	MsgPropType,
 	NamePropType,
+	PatternPropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
 	ShortKeyPropType,
 	SpellCheckPropType,
 	Stringified,
+	StringValuePropType,
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
 
@@ -32,7 +44,7 @@ import { createButtonItem } from '../../internal/functional-components/button/it
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputTextApi } from '../../internal/functional-components/input-text/api';
 import { inputTextPropsConfig } from '../../internal/functional-components/input-text/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
@@ -72,6 +84,8 @@ export class KolInputText
 
 	private readonly translateClearSearch = translate('kol-clear-search');
 
+	protected readonly propsConfig: PropsConfigShape = inputTextPropsConfig;
+
 	public constructor() {
 		super();
 		this.initFormAssociation('text', this._name);
@@ -80,7 +94,7 @@ export class KolInputText
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -99,8 +113,10 @@ export class KolInputText
 
 	/**
 	 * References an external element by ID that provides accessible details for this input.
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -110,10 +126,10 @@ export class KolInputText
 	/**
 	 * Shows a character counter for the input element.
 	 */
-	@Prop() public _hasCounter?: boolean = false;
+	@Prop() public _hasCounter?: HasCounterPropType = false;
 
 	@Watch('_hasCounter')
-	public watchHasCounter(value?: boolean): void {
+	public watchHasCounter(value?: HasCounterPropType): void {
 		this.applyHasCounter(value);
 	}
 
@@ -129,52 +145,49 @@ export class KolInputText
 
 	/**
 	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
+	public watchDisabled(value?: DisabledPropType): void {
 		this.applyDisabled(value);
 	}
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
+	public watchHideMsg(value?: HideMsgPropType): void {
 		this.applyHideMsg(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
+	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
 	}
 
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: string = '';
+	@Prop() public _hint?: HintPropType = '';
 
 	@Watch('_hint')
-	public watchHint(value?: string): void {
+	public watchHint(value?: HintPropType): void {
 		this.applyHint(value);
 	}
 
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType;
+	@Prop() public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -184,7 +197,7 @@ export class KolInputText
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -192,7 +205,7 @@ export class KolInputText
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -204,17 +217,17 @@ export class KolInputText
 	/**
 	 * Defines the maximum number of input characters.
 	 */
-	@Prop() public _maxLength?: number;
+	@Prop() public _maxLength?: MaxLengthPropType = undefined;
 
 	@Watch('_maxLength')
-	public watchMaxLength(value?: number): void {
+	public watchMaxLength(value?: MaxLengthPropType): void {
 		this.applyMaxLength(value);
 	}
 
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -224,7 +237,7 @@ export class KolInputText
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -232,9 +245,9 @@ export class KolInputText
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault;
+	@Prop() public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -244,49 +257,47 @@ export class KolInputText
 	/**
 	 * Defines a validation pattern for the input field.
 	 */
-	@Prop() public _pattern?: string;
+	@Prop() public _pattern?: PatternPropType = undefined;
 
 	@Watch('_pattern')
-	public watchPattern(value?: string): void {
+	public watchPattern(value?: PatternPropType): void {
 		this.applyPattern(value);
 	}
 
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: string;
+	@Prop() public _placeholder?: PlaceholderPropType = undefined;
 
 	@Watch('_placeholder')
-	public watchPlaceholder(value?: string): void {
+	public watchPlaceholder(value?: PlaceholderPropType): void {
 		this.applyPlaceholder(value);
 	}
 
 	/**
 	 * Makes the input element read only.
-	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _readOnly?: boolean = false;
+	@Prop() public _readOnly?: ReadOnlyPropType = false;
 
 	@Watch('_readOnly')
-	public watchReadOnly(value?: boolean): void {
+	public watchReadOnly(value?: ReadOnlyPropType): void {
 		this.applyReadOnly(value);
 	}
 
 	/**
 	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: RequiredPropType = false;
 
 	@Watch('_required')
-	public watchRequired(value?: boolean): void {
+	public watchRequired(value?: RequiredPropType): void {
 		this.applyRequired(value);
 	}
 
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -296,7 +307,7 @@ export class KolInputText
 	/**
 	 * Defines whether the browser should check the spelling and grammar.
 	 */
-	@Prop() public _spellCheck?: SpellCheckPropType;
+	@Prop() public _spellCheck?: SpellCheckPropType = undefined;
 
 	@Watch('_spellCheck')
 	public watchSpellCheck(value?: SpellCheckPropType): void {
@@ -306,7 +317,7 @@ export class KolInputText
 	/**
 	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _suggestions?: SuggestionsPropType;
+	@Prop() public _suggestions?: SuggestionsPropType = undefined;
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
@@ -316,7 +327,7 @@ export class KolInputText
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
+	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
@@ -327,7 +338,7 @@ export class KolInputText
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -346,12 +357,11 @@ export class KolInputText
 
 	/**
 	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
+	public watchTouched(value?: TouchedPropType): void {
 		this.applyTouched(value);
 	}
 
@@ -368,17 +378,17 @@ export class KolInputText
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: StringValuePropType = undefined;
 
 	@Watch('_value')
-	public watchValue(value?: string): void {
+	public watchValue(value?: StringValuePropType): void {
 		this.applyValue(value);
 	}
 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -389,9 +399,8 @@ export class KolInputText
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.ctaRef.el?.value;
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
 	}
 
 	/**
@@ -399,16 +408,20 @@ export class KolInputText
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Get selection start of internal element.
@@ -430,35 +443,43 @@ export class KolInputText
 	 * Set selection start and end, and optional in which direction, of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setSelectionRange
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') {
+	public setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none'): Promise<void> {
 		this.ctaRef.el?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Set selection start (and end = start) of internal element.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async setSelectionStart(selectionStart: number) {
+	public setSelectionStart(selectionStart: number): Promise<void> {
 		this.ctaRef.el?.setSelectionRange(selectionStart, selectionStart);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Add string at position of internal element; just like https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setRangeText
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async setRangeText(replacement: string, selectionStart?: number, selectionEnd?: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') {
+	public setRangeText(
+		replacement: string,
+		selectionStart?: number,
+		selectionEnd?: number,
+		selectMode?: 'select' | 'start' | 'end' | 'preserve',
+	): Promise<void> {
 		if (selectionStart !== undefined && selectionEnd !== undefined) {
 			this.ctaRef.el?.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
 		} else {
 			this.ctaRef.el?.setRangeText(replacement);
 		}
+		return Promise.resolve();
 	}
 
+	public connectedCallback(): void {
+		super.connectedCallback();
+		this.clearButton.syncListeners();
+	}
 	public componentWillLoad(): void {
-		this.initRenderProps(inputTextPropsConfig);
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
@@ -556,7 +577,6 @@ export class KolInputText
 						class: clsx('kol-input-text__clear-button', 'kol-input-container__smart-button', {
 							'kol-input-text__clear-button--hidden': !canClear,
 						}),
-						'data-testid': 'kol-input-text-clear-button',
 					},
 				)}
 			/>

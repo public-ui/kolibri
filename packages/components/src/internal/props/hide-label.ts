@@ -1,3 +1,4 @@
+import type { HideLabelPropType } from '../../schema/props/hide-label';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -18,5 +19,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  * @see https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
  * @see https://www.a11yproject.com/posts/how-to-hide-content/
  */
-export type HideLabelProp = SimpleProp<'hideLabel', boolean>;
+export type HideLabelProp = SimpleProp<'hideLabel', HideLabelPropType>;
 export const hideLabelProp = createPropDefinition<HideLabelProp>('hideLabel', false, normalizeBoolean);

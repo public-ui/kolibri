@@ -1181,3 +1181,53 @@ exports[`kol-input-file should render with _label="Label" 1`] = `
   </template>
 </kol-input-file>
 `;
+
+exports[`kol-input-file should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" 1`] = `
+<kol-input-file _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="file kol-form-field kol-input-file">
+      <label class="kol-form-field__label" for="input-file-nonce" id="input-file-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <span class="kol-input-container__filename">
+              kol-filename-text
+            </span>
+            <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-file>
+`;
