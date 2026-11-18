@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11634,
-	"head": "7093756bd3d304c3c1ac6397521b818c0c8f352b",
+	"head": "cef9aaff04526d92ecf1ddbd252c02163aa76df7",
 	"repository": "public-ui/kolibri",
-	"runId": 44319302643,
-	"generatedAt": "2026-11-18T14:30:46.215Z",
-	"digest": "sha256:5fa7c33dbf5efe2e50f83e2222cde2e71f24f92f015a4667f27dfd316fbe43f9",
+	"runId": 44400869267,
+	"generatedAt": "2026-11-18T21:40:24.020Z",
+	"digest": "sha256:f548166f042ce495854e46573ff4d51c84e18add778093d5c2438ec496e4d14c",
 	"baseline": {
 		"sha": "faa337c5e25bf9004c3c1e2da962a68b8be77878",
 		"ref": "release/4",
@@ -13509,7 +13509,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:116cb9edd01c37d78688e5472ae4071540702a41098fac76a631e92a06c34f96",
+			"digest": "sha256:d50dc33f7e8d21084ea2b1f73bc54c3afc54187c78ca78b66f096900919b9ee1",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15333,9 +15333,9 @@
 					"name": "nav-basic--navigation-submenu",
 					"route": "nav/basic",
 					"status": "changed",
-					"hash": "sha256:43292e7a4e4ec579bd4e6d08869470f33c1372dc280c14111c1e33bf858b8851",
-					"diffPixels": 1190,
-					"diffRatio": 0.007893,
+					"hash": "sha256:f51ccbfe5b7d54746c97638c97ec13eba0005a9831957ff38d3c60b29f603846",
+					"diffPixels": 2285,
+					"diffRatio": 0.015155,
 					"expected": "theme-kern/nav-basic--navigation-submenu.expected.png",
 					"actual": "theme-kern/nav-basic--navigation-submenu.actual.png",
 					"diff": "theme-kern/nav-basic--navigation-submenu.diff.png"
@@ -15344,9 +15344,9 @@
 					"name": "nav-basic--navigation-submenu-2",
 					"route": "nav/basic",
 					"status": "changed",
-					"hash": "sha256:7fe4469dd4c4c1ac116c4a12113045294c545b8b1439ad53b74620efa93999f0",
-					"diffPixels": 1403,
-					"diffRatio": 0.007641,
+					"hash": "sha256:02eab5720d3848c3bc981add64f0ee43988110d79b77820394c8a689572143e4",
+					"diffPixels": 2885,
+					"diffRatio": 0.015712,
 					"expected": "theme-kern/nav-basic--navigation-submenu-2.expected.png",
 					"actual": "theme-kern/nav-basic--navigation-submenu-2.actual.png",
 					"diff": "theme-kern/nav-basic--navigation-submenu-2.diff.png"
@@ -15355,9 +15355,9 @@
 					"name": "nav-basic--navigation-submenu-active",
 					"route": "nav/basic",
 					"status": "changed",
-					"hash": "sha256:5dbabf1658fdb1adbe06813354d7c6210a22b1b25d7c215b8ae1d5f9d5b1b61c",
-					"diffPixels": 1590,
-					"diffRatio": 0.010978,
+					"hash": "sha256:9639349143726030a7110559f39c51f064ed119cbb27d34ecb7def3846d8547e",
+					"diffPixels": 6000,
+					"diffRatio": 0.041427,
 					"expected": "theme-kern/nav-basic--navigation-submenu-active.expected.png",
 					"actual": "theme-kern/nav-basic--navigation-submenu-active.actual.png",
 					"diff": "theme-kern/nav-basic--navigation-submenu-active.diff.png"
@@ -15702,9 +15702,9 @@
 					"name": "scenarios-label-lang--label-lang-nav",
 					"route": "scenarios/label-lang",
 					"status": "changed",
-					"hash": "sha256:5d52e7f9905bc7a1abfbbabeefa34298de0ec5d0e4656be0bd7a0e92e9f8af5d",
-					"diffPixels": 366,
-					"diffRatio": 0.003971,
+					"hash": "sha256:6c6883754b8837e04ea879660eecdbcdfffe740e3f45d441a5c3d8d254fd2a94",
+					"diffPixels": 1534,
+					"diffRatio": 0.016645,
 					"expected": "theme-kern/scenarios-label-lang--label-lang-nav.expected.png",
 					"actual": "theme-kern/scenarios-label-lang--label-lang-nav.actual.png",
 					"diff": "theme-kern/scenarios-label-lang--label-lang-nav.diff.png"
