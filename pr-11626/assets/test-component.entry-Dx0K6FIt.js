@@ -1,1 +1,0 @@
-import{c as e}from"./index-DEcM8BEc-CTEYE1p3.js";var t=class{constructor(n){new.target===t&&e(this,n)}};export{t as test_component};
