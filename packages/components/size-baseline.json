@@ -1,0 +1,287 @@
+{
+	"metrics": {
+		"core": {
+			"brotli": 168638,
+			"gzip": 200544,
+			"raw": 784551
+		},
+		"entry:kol-abbr": {
+			"brotli": 1652,
+			"gzip": 1956,
+			"raw": 5707
+		},
+		"entry:kol-accordion": {
+			"brotli": 5758,
+			"gzip": 6642,
+			"raw": 21392
+		},
+		"entry:kol-alert": {
+			"brotli": 6316,
+			"gzip": 7292,
+			"raw": 23687
+		},
+		"entry:kol-avatar": {
+			"brotli": 4142,
+			"gzip": 4761,
+			"raw": 14329
+		},
+		"entry:kol-badge": {
+			"brotli": 6883,
+			"gzip": 7938,
+			"raw": 26292
+		},
+		"entry:kol-breadcrumb": {
+			"brotli": 8014,
+			"gzip": 9308,
+			"raw": 28299
+		},
+		"entry:kol-button": {
+			"brotli": 8333,
+			"gzip": 9652,
+			"raw": 37985
+		},
+		"entry:kol-button-link": {
+			"brotli": 8366,
+			"gzip": 9704,
+			"raw": 38189
+		},
+		"entry:kol-card": {
+			"brotli": 7261,
+			"gzip": 8374,
+			"raw": 26646
+		},
+		"entry:kol-combobox": {
+			"brotli": 27473,
+			"gzip": 31442,
+			"raw": 113826
+		},
+		"entry:kol-details": {
+			"brotli": 5781,
+			"gzip": 6664,
+			"raw": 21434
+		},
+		"entry:kol-dialog": {
+			"brotli": 9305,
+			"gzip": 10773,
+			"raw": 33715
+		},
+		"entry:kol-drawer": {
+			"brotli": 9318,
+			"gzip": 10775,
+			"raw": 35066
+		},
+		"entry:kol-form": {
+			"brotli": 8683,
+			"gzip": 10026,
+			"raw": 32209
+		},
+		"entry:kol-heading": {
+			"brotli": 2350,
+			"gzip": 2741,
+			"raw": 8208
+		},
+		"entry:kol-icon": {
+			"brotli": 1259,
+			"gzip": 1447,
+			"raw": 4157
+		},
+		"entry:kol-image": {
+			"brotli": 2338,
+			"gzip": 2745,
+			"raw": 8927
+		},
+		"entry:kol-input-checkbox": {
+			"brotli": 23711,
+			"gzip": 27144,
+			"raw": 98864
+		},
+		"entry:kol-input-color": {
+			"brotli": 23890,
+			"gzip": 27434,
+			"raw": 94700
+		},
+		"entry:kol-input-date": {
+			"brotli": 26011,
+			"gzip": 29825,
+			"raw": 103683
+		},
+		"entry:kol-input-email": {
+			"brotli": 28011,
+			"gzip": 32175,
+			"raw": 112455
+		},
+		"entry:kol-input-file": {
+			"brotli": 23937,
+			"gzip": 27481,
+			"raw": 97529
+		},
+		"entry:kol-input-number": {
+			"brotli": 25941,
+			"gzip": 29742,
+			"raw": 102763
+		},
+		"entry:kol-input-password": {
+			"brotli": 27734,
+			"gzip": 31766,
+			"raw": 112891
+		},
+		"entry:kol-input-radio": {
+			"brotli": 24488,
+			"gzip": 28042,
+			"raw": 99704
+		},
+		"entry:kol-input-range": {
+			"brotli": 25093,
+			"gzip": 28718,
+			"raw": 100523
+		},
+		"entry:kol-input-text": {
+			"brotli": 28788,
+			"gzip": 33017,
+			"raw": 116506
+		},
+		"entry:kol-kolibri": {
+			"brotli": 2093,
+			"gzip": 2450,
+			"raw": 7183
+		},
+		"entry:kol-link": {
+			"brotli": 7438,
+			"gzip": 8558,
+			"raw": 29916
+		},
+		"entry:kol-link-button": {
+			"brotli": 7467,
+			"gzip": 8610,
+			"raw": 30038
+		},
+		"entry:kol-meter": {
+			"brotli": 4028,
+			"gzip": 4678,
+			"raw": 16734
+		},
+		"entry:kol-modal": {
+			"brotli": 9273,
+			"gzip": 10741,
+			"raw": 33481
+		},
+		"entry:kol-nav": {
+			"brotli": 13437,
+			"gzip": 15625,
+			"raw": 49288
+		},
+		"entry:kol-pagination": {
+			"brotli": 30782,
+			"gzip": 35187,
+			"raw": 125282
+		},
+		"entry:kol-popover-button": {
+			"brotli": 10550,
+			"gzip": 12144,
+			"raw": 47174
+		},
+		"entry:kol-progress": {
+			"brotli": 3672,
+			"gzip": 4243,
+			"raw": 14814
+		},
+		"entry:kol-quote": {
+			"brotli": 2417,
+			"gzip": 2827,
+			"raw": 8709
+		},
+		"entry:kol-select": {
+			"brotli": 25136,
+			"gzip": 28731,
+			"raw": 102152
+		},
+		"entry:kol-single-select": {
+			"brotli": 27818,
+			"gzip": 31890,
+			"raw": 116000
+		},
+		"entry:kol-skip-nav": {
+			"brotli": 7603,
+			"gzip": 8833,
+			"raw": 26296
+		},
+		"entry:kol-spin": {
+			"brotli": 3360,
+			"gzip": 3889,
+			"raw": 13272
+		},
+		"entry:kol-split-button": {
+			"brotli": 13206,
+			"gzip": 15234,
+			"raw": 56772
+		},
+		"entry:kol-table-stateful": {
+			"brotli": 55726,
+			"gzip": 63753,
+			"raw": 245122
+		},
+		"entry:kol-table-stateless": {
+			"brotli": 30691,
+			"gzip": 35105,
+			"raw": 133968
+		},
+		"entry:kol-tabs": {
+			"brotli": 7811,
+			"gzip": 8977,
+			"raw": 35032
+		},
+		"entry:kol-textarea": {
+			"brotli": 25813,
+			"gzip": 29559,
+			"raw": 106427
+		},
+		"entry:kol-toast-container": {
+			"brotli": 5595,
+			"gzip": 6440,
+			"raw": 22265
+		},
+		"entry:kol-toolbar": {
+			"brotli": 11168,
+			"gzip": 13033,
+			"raw": 42380
+		},
+		"entry:kol-tooltip-wc": {
+			"brotli": 1006,
+			"gzip": 1135,
+			"raw": 3290
+		},
+		"entry:kol-tree": {
+			"brotli": 4109,
+			"gzip": 4762,
+			"raw": 16914
+		},
+		"entry:kol-tree-item": {
+			"brotli": 6676,
+			"gzip": 7759,
+			"raw": 23698
+		},
+		"entry:kol-version": {
+			"brotli": 3998,
+			"gzip": 4626,
+			"raw": 13956
+		},
+		"entry:test-component": {
+			"brotli": 225,
+			"gzip": 269,
+			"raw": 390
+		},
+		"total": {
+			"brotli": 460490,
+			"gzip": 534651,
+			"raw": 2123211
+		}
+	},
+	"sets": {
+		"duplicates": [],
+		"hotspots": ["@floating-ui/dom", "entities", "linkify-it", "lodash-es", "markdown-it"]
+	},
+	"tolerance": {
+		"bytes": 1024,
+		"percent": 2
+	}
+}

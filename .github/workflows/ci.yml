@@ -50,10 +50,27 @@ jobs:
         run: pnpm -r unused
       - name: Build
         run: pnpm -r build
+        env:
+          # Source maps let the size gate attribute every chunk to its modules.
+          KOLIBRI_SOURCE_MAP: 'true'
       - name: Lint
         run: pnpm -r lint
       - name: Unit Tests
         run: pnpm -r test:unit
+      # Compares the artifact sizes of the components and theme-default with their committed
+      # baselines (size-baseline.json) and writes a treemap; see docs/SIZE_GATE.md.
+      - name: Size gate
+        run: pnpm -r size
+      - name: Upload size report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: size-report
+          path: |
+            packages/components/size-report/
+            packages/themes/default/size-report/
+          if-no-files-found: ignore
+          retention-days: 14
 
   e2e-tests:
     runs-on: ubuntu-latest

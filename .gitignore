@@ -17,6 +17,7 @@
 dist/
 node_modules
 playwright-report/
+size-report/
 test-results/
 visual-report/
 visual-baseline/
