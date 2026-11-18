@@ -2,7 +2,7 @@ import { glob } from 'glob';
 import { promises as fs } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import simpleGit from 'simple-git';
+import { simpleGit } from 'simple-git';
 import { TEMPLATE_REPOS, type IndexedTemplateResource, type TemplateRepoConfig } from './config.js';
 
 /**

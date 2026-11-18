@@ -36,8 +36,9 @@ Einsteiger-Eignung.
 `Unclear` ist damit zugleich Ausschluss und Ergebnis: Ausgegebene `Unclear`-Werte halten
 Issues aus der Triage heraus, bis der Text nachgeschärft und der Wert entfernt ist.
 Weitere Ausschlüsse: die Labels `po:doing`, `need:reproduction`, `need:to-refine`,
-`to-answer-and-close`, `intern`, `Stale` und der Triage-Wert `Icebox` (bewusst aus der
-Bewertung genommen, wird von diesem Skill weder gesetzt noch überschrieben). Beanspruchte
+`to-answer-and-close`, `intern`, `Stale` und die Werte `Maybe someday` und
+`Won't do` im Org-Issue-Field `Desirability` (ob ein Issue überhaupt umgesetzt
+werden soll; dieser Skill setzt und ändert es nicht). Beanspruchte
 Issues (offener PR oder Assignee) erhalten keinen Wert; trägt ein beanspruchtes Issue noch
 einen Wert aus einem früheren Lauf, schlägt der Bericht das Entfernen vor und normalisiert
 den Stand damit auf „Wert bedeutet: aktuell frei und klassifiziert“. Aus dem ersten Lauf:
@@ -56,9 +57,13 @@ gh pr list --repo public-ui/kolibri --state open --limit 300 \
 Der aktuelle Triage-Stand steht nicht in `--json`, sondern kommt aus der Suche über das Feld:
 
 ```bash
-for v in "Good first issue" "Up for grabs" "Here be dragons" "Icebox" "Unclear"; do
+for v in "Good first issue" "Up for grabs" "Here be dragons" "Unclear"; do
   gh issue list --repo public-ui/kolibri --state open --limit 300 \
     --search "field.Triage:\"$v\"" --json number --jq "map(.number) | \"$v: \\(.)\""
+done
+for v in "Maybe someday" "Won't do"; do
+  gh issue list --repo public-ui/kolibri --state open --limit 300 \
+    --search "field.Desirability:\"$v\"" --json number --jq "map(.number) | \"$v: \\(.)\""
 done
 ```
 
@@ -109,7 +114,7 @@ Daneben die Differenz zum aktuellen Triage-Stand: welche Werte gesetzt, welche e
 
 Erst nach ausdrücklicher Bestätigung des Nutzers. Feld-ID `IFSS_kgDOAu3I4g`; Optionen:
 `Good first issue` `IFSSO_kgDOBSCwQw`, `Up for grabs` `IFSSO_kgDOBSCwRA`,
-`Here be dragons` `IFSSO_kgDOBSCwRQ`, `Icebox` `IFSSO_kgDOBSCwRg`, `Unclear` `IFSSO_kgDOBSCwRw`. Die Issue-ID liefert
+`Here be dragons` `IFSSO_kgDOBSCwRQ`, `Unclear` `IFSSO_kgDOBSCwRw`. Die Issue-ID liefert
 `gh issue view <NR> --repo public-ui/kolibri --json id`.
 
 `updateIssueField` ersetzt die gesamte Optionsliste, löscht dabei alle Feldwerte und vergibt neue Option-IDs; ein

@@ -143,7 +143,6 @@ type ExtractMethods<T extends ComponentApi> = ApiField<T, 'Methods'>;
 type ExtractRefs<T extends ComponentApi> = ApiField<T, 'Refs'>;
 type ExtractStates<T extends ComponentApi> = InternalOf<ApiField<T, 'States'>>;
 
-type InternalProps<T extends ComponentApi> = InternalOf<AllProps<T>>;
 type ExternalProps<T extends ComponentApi> = ExternalOf<AllProps<T>>;
 
 // ============================================================================
@@ -248,12 +247,29 @@ type FunctionalComponentEmitters<Emitters> = {
 	[K in keyof Emitters as `on${Capitalize<string & K>}`]: EventEmitter<Emitters[K]>;
 };
 
-export type FunctionalComponentProps<T extends ComponentApi> = StrictFields<InternalProps<T>> &
-	StrictFields<ExtractStates<T>> &
-	ComponentCallbacks<ExtractCallbacks<T>> &
+/**
+ * The parts of an FC's props that the props config does not define: callbacks, refs and emitters,
+ * and the HTML attributes no prop owns.
+ */
+type FunctionalComponentExtras<T extends ComponentApi> = ComponentCallbacks<ExtractCallbacks<T>> &
 	ComponentRefs<ExtractRefs<T>> &
 	FunctionalComponentEmitters<ExtractEmitters<T>> &
-	Partial<Omit<JSXBase.HTMLAttributes<HTMLElement>, keyof InternalProps<T> | keyof ExtractStates<T>>>;
+	Partial<Omit<JSXBase.HTMLAttributes<HTMLElement>, keyof ResolvedProps<T> | keyof ExtractStates<T>>>;
+
+/**
+ * The input contract of a functional component.
+ * Required props are mandatory, optional props may be omitted: `undefined` means "not set" and
+ * resolves to the prop's configured default (see `resolveFcProps`).
+ */
+export type FunctionalComponentProps<T extends ComponentApi> = ResolvedProps<T> & StrictFields<ExtractStates<T>> & FunctionalComponentExtras<T>;
+
+/**
+ * The strict view a functional component's render body may dereference: every optional prop is
+ * replaced by its configured default. Produced by `resolveFcProps`.
+ */
+export type ResolvedFunctionalComponentProps<T extends ComponentApi> = StrictFields<ResolvedProps<T>> &
+	StrictFields<ExtractStates<T>> &
+	FunctionalComponentExtras<T>;
 
 // ============================================================================
 // Behavior Types
@@ -269,7 +285,7 @@ type BehaviorListeners<Listeners> = {
 
 export type BehaviorInterface<T extends ComponentApi = ComponentApi> = {
 	componentWillLoad(props: ResolvedInputProps<T>): void;
-	getRenderProp<K extends keyof InternalProps<T>>(key: K): StrictFields<InternalProps<T>>[K];
+	getRenderProp<K extends keyof ResolvedProps<T>>(key: K): StrictFields<ResolvedProps<T>>[K];
 } & ComponentWatchers<ExternalProps<T>> &
 	BehaviorCallbackHandlers<ExtractCallbacks<T>> &
 	BehaviorListeners<ExtractListeners<T>>;

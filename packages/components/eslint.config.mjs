@@ -148,9 +148,25 @@ export default [
 		},
 	},
 
+	// The Log utility is the centralized console wrapper: writing to the console is its purpose.
+	{
+		files: ['src/schema/utils/dev.utils.ts'],
+		rules: {
+			'no-console': 'off',
+		},
+	},
+
+	// The demo components (click-button, skeleton) log their interactions by design; the e2e observes the log.
+	{
+		files: ['src/components/{click-button,skeleton}/**/*.{ts,tsx}'],
+		rules: {
+			'no-console': 'off',
+		},
+	},
+
 	// Skeleton blueprint import rules
 	{
-		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
+		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
 		plugins: {
 			boundaries: boundariesPlugin,
 		},
@@ -161,17 +177,28 @@ export default [
 				},
 			},
 			'boundaries/elements': [
-				{ type: 'skeleton-web-components', pattern: 'src/components/_skeleton/web-components', mode: 'folder' },
+				/*
+				 * Most specific pattern first: the plugin types a file with its first
+				 * matching element, so the specific entries must precede the generic ones.
+				 */
+				{ type: 'skeleton-web-components', pattern: ['src/components/click-button', 'src/components/skeleton'], mode: 'folder' },
 				{
 					type: 'skeleton-functional-components',
 					pattern: ['src/internal/functional-components/click-button', 'src/internal/functional-components/skeleton'],
 					mode: 'folder',
 				},
 				{ type: 'focus-decorator-utils', pattern: ['src/utils/element-interaction.ts', 'src/utils/element-focus.ts'], mode: 'file' },
+				{ type: 'testing-utils', pattern: 'src/utils/testing', mode: 'folder' },
+				{ type: 'web-components', pattern: 'src/components', mode: 'folder' },
+				{ type: 'core', pattern: 'src/core', mode: 'folder' },
+				{ type: 'i18n', pattern: 'src/i18n.ts', mode: 'file' },
+				{ type: 'utils', pattern: 'src/utils', mode: 'folder' },
+				{ type: 'e2e-helpers', pattern: 'src/e2e', mode: 'folder' },
+				/* Pre-migration heritage: only deprecated components (kol-toast-container) import from here. */
+				{ type: 'legacy-functional-components', pattern: 'src/functional-components', mode: 'folder' },
 				{ type: 'internal-functional-components', pattern: 'src/internal/functional-components', mode: 'folder' },
 				{ type: 'internal-props', pattern: 'src/internal/props', mode: 'folder' },
 				{ type: 'schema', pattern: 'src/schema', mode: 'folder' },
-				{ type: 'testing-utils', pattern: 'src/utils/testing', mode: 'folder' },
 			],
 		},
 		rules: {
@@ -185,6 +212,28 @@ export default [
 					default: 'disallow',
 					checkUnknownLocals: true,
 					rules: [
+						{
+							from: { type: 'web-components' },
+							allow: {
+								to: {
+									type: [
+										'web-components',
+										'skeleton-web-components',
+										'skeleton-functional-components',
+										'internal-functional-components',
+										'internal-props',
+										'focus-decorator-utils',
+										'schema',
+										'testing-utils',
+										'core',
+										'i18n',
+										'utils',
+										'e2e-helpers',
+										'legacy-functional-components',
+									],
+								},
+							},
+						},
 						{
 							from: { type: 'skeleton-web-components' },
 							allow: {

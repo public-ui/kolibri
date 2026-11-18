@@ -1,2 +1,7 @@
+/*
+ * Font CSS for the visual tests and the theme preview. Codicons are a peer dependency; their files
+ * are served from `assets/peer-fonts/` (copied from node_modules by the visual test runner and by
+ * serve.sh, see BREAKING_CHANGES.v5.md).
+ */
 @import url('./assets/desy-icons/style.css');
-@import url('./assets/codicons/codicon.css');
+@import url('./assets/peer-fonts/codicons/codicon.css');

@@ -1,13 +1,13 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { TableHeaderCellsPropType } from '../../schema';
+import type { KoliBriTableHeaders } from '../../schema';
 
 const DATA = [
 	{ id: '1001', name: 'John', age: 30 },
 	{ id: '1002', name: 'Jane', age: 25 },
 ];
 
-const HEADERS_WITH_NON_HIDABLE: TableHeaderCellsPropType = {
+const HEADERS_WITH_NON_HIDABLE: KoliBriTableHeaders = {
 	horizontal: [
 		[
 			{ key: 'id', label: 'ID', hidable: false, width: 120 },

@@ -1,7 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import type { Generic } from 'adopted-style-sheets';
 
-import type { HostInternals } from '../../utils/aria-labelledby';
 import { createLegacyComponent, getInvalidValueWarnings, getLoggedMessages } from '../../utils/testing/legacy-component';
 import { Log } from '../utils/dev.utils';
 import type { WatchStringOptions } from '../utils/prop.validators';
@@ -10,7 +9,6 @@ import { validateAccessKey } from './access-key';
 import { validateAlt } from './alt';
 import { validateAriaControls } from './aria-controls';
 import { validateAriaDescription } from './aria-description';
-import { validateAriaDetails } from './aria-details';
 import { validateAriaLabelledby } from './aria-labelledby';
 import { validateAriaOwns } from './aria-owns';
 import { validateBadgeText } from './badge-text';
@@ -27,7 +25,6 @@ import { validateLinkTarget } from './link-target';
 import { validateName } from './name';
 import { validatePattern } from './pattern';
 import { validatePlaceholder } from './placeholder';
-import { validateQuote } from './quote';
 import { validateShortKey } from './short-key';
 import { validateUnit } from './unit';
 import { validateWidth } from './width';
@@ -65,7 +62,6 @@ const validators: [string, StringValidator, string, string | typeof KEEP][] = [
 	['validateName', validateName, '_name', KEEP],
 	['validatePattern', validatePattern, '_pattern', KEEP],
 	['validatePlaceholder', validatePlaceholder, '_placeholder', KEEP],
-	['validateQuote', validateQuote, '_quote', KEEP],
 	['validateShortKey', validateShortKey, '_shortKey', KEEP],
 	['validateUnit', validateUnit, '_unit', KEEP],
 	['validateWidth', validateWidth, '_width', '100%'],
@@ -87,15 +83,12 @@ const validatorsWithOptions: [string, StringValidator, string][] = [
 	['validateWidth', validateWidth, '_width'],
 ];
 
-type IdrefValidator = (component: unknown, host: HTMLElement | undefined, internals: HostInternals | undefined, value?: string) => HTMLElement[];
+type IdrefValidator = (component: unknown, host: HTMLElement | undefined, value?: string) => HTMLElement[];
 
 /**
- * Validators of an IDREF list that resolve the referenced elements and assign them to the host internals.
+ * Validators of an IDREF list that resolve the referenced elements.
  */
-const idrefValidators: [string, IdrefValidator, string, 'ariaDetailsElements' | 'ariaLabelledByElements'][] = [
-	['validateAriaDetails', validateAriaDetails, '_ariaDetails', 'ariaDetailsElements'],
-	['validateAriaLabelledby', validateAriaLabelledby, '_ariaLabelledby', 'ariaLabelledByElements'],
-];
+const idrefValidators: [string, IdrefValidator, string][] = [['validateAriaLabelledby', validateAriaLabelledby, '_ariaLabelledby']];
 
 describe('legacy string prop validators', () => {
 	let debugSpy: jest.SpiedFunction<typeof Log.debug>;
@@ -151,7 +144,7 @@ describe('legacy string prop validators', () => {
 		});
 	});
 
-	describe.each(idrefValidators)('%s', (_name, validate, propName, internalsKey) => {
+	describe.each(idrefValidators)('%s', (_name, validate, propName) => {
 		const globals = globalThis as { Document?: unknown };
 		const hadDocument = 'Document' in globals;
 		let target: HTMLElement;
@@ -173,55 +166,24 @@ describe('legacy string prop validators', () => {
 			}
 		});
 
-		const createInternals = (): HostInternals => ({ ariaLabelledByElements: [], role: null });
-
-		it('stores the IDREF, resolves the existing elements and assigns them to the internals', () => {
+		it('stores the IDREF and resolves the existing elements', () => {
 			const component = createLegacyComponent();
-			const internals = createInternals();
-			const elements = validate(component, undefined, internals, `${propName}-target ${propName}-missing`);
+			const elements = validate(component, undefined, `${propName}-target ${propName}-missing`);
 			expect(component.state[propName]).toBe(`${propName}-target ${propName}-missing`);
 			expect(elements).toEqual([target]);
-			expect(internals[internalsKey]).toEqual([target]);
-			expect(debugSpy).toHaveBeenCalledWith(['WebComponent internals', internals]);
-		});
-
-		it('returns the elements without internals', () => {
-			expect(validate(createLegacyComponent(), undefined, undefined, `${propName}-target`)).toEqual([target]);
 		});
 
 		it('stores undefined and resolves no elements', () => {
 			const component = createLegacyComponent({ [propName]: 'old' });
-			const internals = createInternals();
-			expect(validate(component, undefined, internals, undefined)).toEqual([]);
+			expect(validate(component, undefined, undefined)).toEqual([]);
 			expect(component.state).toHaveProperty(propName, undefined);
-			expect(internals[internalsKey]).toEqual([]);
-		});
-
-		it('ignores internals that reject the element references', () => {
-			const internals = createInternals();
-			Object.defineProperty(internals, internalsKey, {
-				set: () => {
-					throw new Error('not supported');
-				},
-			});
-			expect(validate(createLegacyComponent(), undefined, internals, `${propName}-target`)).toEqual([target]);
 		});
 
 		it.each<unknown>([1, { id: 'target' }])('only warns for the invalid value %p and resolves no element', (value) => {
 			const component = createLegacyComponent();
-			const internals = createInternals();
-			const previous = internals[internalsKey];
-			expect(validate(component, undefined, internals, value as string)).toEqual([]);
+			expect(validate(component, undefined, value as string)).toEqual([]);
 			expect(component.state).toEqual({});
-			expect(internals[internalsKey]).toBe(previous);
 			expect(warningsFor(propName)).toHaveLength(1);
-		});
-	});
-
-	describe('validateQuote', () => {
-		it('warns as a required prop for undefined', () => {
-			validateQuote(createLegacyComponent(), undefined);
-			expect(warningsFor('_quote')).toEqual([expect.stringMatching(/Allowed values are: String$/)]);
 		});
 	});
 

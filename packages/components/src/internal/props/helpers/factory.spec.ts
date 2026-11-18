@@ -1,6 +1,19 @@
-import { describe, expect, it, jest } from '@jest/globals';
+import { afterAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
+import { Log } from '../../../schema/utils/dev.utils';
 import type { SimpleProp } from './factory';
 import { createDependentPropDefinition, createPropDefinition } from './factory';
+
+const toText = (message: unknown): string => (Array.isArray(message) ? message.join(' ') : String(message));
+const warn = jest.spyOn(Log, 'warn').mockImplementation(() => undefined);
+const warnings = (): string[] => warn.mock.calls.map(([message]) => toText(message));
+
+beforeEach(() => {
+	warn.mockClear();
+});
+
+afterAll(() => {
+	warn.mockRestore();
+});
 
 describe('createPropDefinition', () => {
 	describe('getDefaultValue', () => {
@@ -119,6 +132,30 @@ describe('createPropDefinition', () => {
 			def.apply('value', callback);
 
 			expect(callback).not.toHaveBeenCalled();
+		});
+
+		it('should warn that the property stays unset when a required prop without a default receives no value', () => {
+			type MyProp = SimpleProp<'myProp', string>;
+			const def = createPropDefinition<MyProp>('myProp', undefined, (v) => v as string);
+
+			const callback = jest.fn();
+			def.apply(undefined, callback, true);
+
+			expect(callback).toHaveBeenCalledWith(undefined);
+			expect(warnings()).toEqual([expect.stringContaining(`The required property '_myProp' did not receive a value. The property stays unset.`)]);
+		});
+
+		it('should warn that the default value is used when a required prop with a default receives no value', () => {
+			type MyProp = SimpleProp<'myPropWithDefault', string>;
+			const def = createPropDefinition<MyProp>('myPropWithDefault', 'default', (v) => v as string);
+
+			const callback = jest.fn();
+			def.apply(undefined, callback, true);
+
+			expect(callback).toHaveBeenCalledWith('default');
+			expect(warnings()).toEqual([
+				expect.stringContaining(`The required property '_myPropWithDefault' did not receive a value. The default value is used instead.`),
+			]);
 		});
 	});
 });

@@ -26,7 +26,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input accesskey="V" aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -43,6 +43,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -74,7 +75,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -91,6 +92,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -122,7 +124,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-single-select__input" disabled="" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-custom-suggestions-toggle--disabled kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -139,6 +141,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -170,7 +173,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-label="Label" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -187,6 +190,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
         <div class="kol-form-field__tooltip">
@@ -231,7 +235,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-describedby="single-select-hint-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -248,6 +252,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -285,7 +290,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -302,6 +307,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
@@ -339,7 +345,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -356,6 +362,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
         </div>
@@ -389,7 +396,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -406,6 +413,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
@@ -475,7 +483,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -492,6 +500,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -523,7 +532,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-describedby="single-select-msg-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -540,6 +549,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -580,7 +590,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-describedby="single-select-msg-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -597,6 +607,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -637,7 +648,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -654,6 +665,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -685,7 +697,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -702,6 +714,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -736,7 +749,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-keyshortcuts="S" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -753,6 +766,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -784,7 +798,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -801,6 +815,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -832,7 +847,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -849,6 +864,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -880,7 +896,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -897,6 +913,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -933,7 +950,7 @@ exports[`kol-single-select should render with _label=[{"text":"partly english","
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
               <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -950,6 +967,7 @@ exports[`kol-single-select should render with _label=[{"text":"partly english","
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>

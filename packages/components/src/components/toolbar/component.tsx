@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ToolbarApi } from '../../internal/functional-components/toolbar/api';
 import { toolbarPropsConfig } from '../../internal/functional-components/toolbar/api';
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
@@ -36,6 +36,8 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	@State() public location: string = '';
 
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
+
+	protected readonly propsConfig: PropsConfigShape = toolbarPropsConfig;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -95,8 +97,6 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(toolbarPropsConfig);
-
 		this.watchLabel(this._label);
 		this.watchItems(this._items);
 		this.watchOrientation(this._orientation);

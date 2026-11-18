@@ -1,9 +1,7 @@
 import { getOptions } from '../../../core/bootstrap';
 import type { StencilUnknown } from '../../../schema';
 import { devHint, devWarning, getExperimentalMode } from '../../../schema';
-import type { HostInternals } from '../../../utils/aria-labelledby';
-import { attachInternals, resolveTargets } from '../../../utils/aria-labelledby';
-import { ariaDetailsProp, nameProp } from '../../props';
+import { nameProp } from '../../props';
 import { BaseBehavior } from '../base-behavior';
 import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { FormAssociationApi, FormAssociationType } from './api';
@@ -63,8 +61,7 @@ type FormAssociationOptions = {
  * With `register(…, { reflectInputValues: true })` it appends a hidden native element to the light
  * DOM of the host and mirrors the value into it; the element's `name` is only set in experimental
  * mode. Also in experimental mode, `syncValueBySelector` mirrors the value into a native control
- * outside the component. `ariaDetails` is resolved into `ElementInternals.ariaDetailsElements`,
- * because an IDREF cannot cross the shadow boundary.
+ * outside the component.
  *
  * Construct it in the constructor of the concrete element, after `super()`: `@Element()` is only
  * populated there, and the hidden element depends on the name known at that point.
@@ -75,7 +72,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 
 	/** The host whose light DOM holds the hidden form element. */
 	public readonly host?: Element;
-	public readonly internals?: HostInternals;
 	public readonly formAssociated?: FormAssociatedElement;
 	public syncToOwnInput?: FormAssociatedElement;
 
@@ -83,7 +79,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 		super(stateAccess, formAssociationPropsConfig);
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
-		this.internals = attachInternals(this.host);
 
 		if (getOptions()?.reflectInputValues && ASSOCIATED_TAG_NAMES.has(this.host?.tagName ?? '') && name) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
@@ -99,19 +94,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 	public componentWillLoad(props: ResolvedInputProps<FormAssociationApi>): void {
 		this.watchName(props.name);
 		this.watchSyncValueBySelector(props.syncValueBySelector);
-		this.watchAriaDetails(props.ariaDetails);
-	}
-
-	public watchAriaDetails(value?: string): void {
-		ariaDetailsProp.apply(value, (v) => this.setRenderProp('ariaDetails', v));
-		const elements = resolveTargets(this.host, value);
-		if (this.internals) {
-			try {
-				this.internals.ariaDetailsElements = elements;
-			} catch {
-				// ariaDetailsElements is not supported in this environment — silently skip.
-			}
-		}
 	}
 
 	public watchName(value?: string): void {

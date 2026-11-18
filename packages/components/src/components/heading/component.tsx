@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { HeadingApi } from '../../internal/functional-components/heading/api';
 import { headingPropsConfig } from '../../internal/functional-components/heading/api';
 import { HeadingFC } from '../../internal/functional-components/heading/component';
@@ -21,6 +21,8 @@ import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType, Secondary
 	shadow: true,
 })
 export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingProps, WebComponentInterface<HeadingApi> {
+	protected readonly propsConfig: PropsConfigShape = headingPropsConfig;
+
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
@@ -52,8 +54,6 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(headingPropsConfig);
-
 		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		levelProp.apply(this._level, (v) => this.setRenderProp('level', v));
 		secondaryHeadlineProp.apply(this._secondaryHeadline, (v) => this.setRenderProp('secondaryHeadline', v));

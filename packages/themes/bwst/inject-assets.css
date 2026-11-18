@@ -1,1 +1,7 @@
-@import url('./assets/noto-sans/noto-sans.css');
+/*
+ * Font CSS for the visual tests and the theme preview. Noto Sans and Font Awesome are peer
+ * dependencies; their files are served from `assets/peer-fonts/` (copied from node_modules by the
+ * visual test runner and by serve.sh, see BREAKING_CHANGES.v5.md).
+ */
+@import url('./assets/peer-fonts/noto-sans/400.css');
+@import url('./assets/peer-fonts/noto-sans/700.css');

@@ -1,8 +1,8 @@
-import { ariaDetailsProp, nameProp, syncValueBySelectorProp } from '../../props';
+import { nameProp, syncValueBySelectorProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const formAssociationPropsConfig = {
-	optional: [ariaDetailsProp, nameProp, syncValueBySelectorProp],
+	optional: [nameProp, syncValueBySelectorProp],
 } as const satisfies PropsConfigShape;
 
 export type FormAssociationApi = ApiFromConfig<typeof formAssociationPropsConfig>;

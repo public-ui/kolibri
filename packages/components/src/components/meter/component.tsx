@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { MeterApi } from '../../internal/functional-components/meter/api';
 import { meterPropsConfig } from '../../internal/functional-components/meter/api';
 import { MeterFC } from '../../internal/functional-components/meter/component';
@@ -36,6 +36,8 @@ import type {
 	shadow: true,
 })
 export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponentInterface<MeterApi> {
+	protected readonly propsConfig: PropsConfigShape = meterPropsConfig;
+
 	/**
 	 * From this value to the max value is the high range of the meter. Below this value is the middle range.
 	 */
@@ -166,8 +168,6 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(meterPropsConfig);
-
 		this.watchHigh(this._high);
 		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		this.watchLow(this._low);

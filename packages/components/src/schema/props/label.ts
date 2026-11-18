@@ -94,6 +94,11 @@ export type LabelLangSegmentsPropType = LabelPropType | LabelSegment[];
 export type LabelWithExpertSlotPropType = LabelLangSegmentsPropType | '';
 
 /**
+ * Defines the semantic label of an icon. Set to `''` to mark the icon as decorative: it is then hidden from assistive technology.
+ */
+export type LabelDecorativePropType = LabelPropType | '';
+
+/**
  * The label property is used to label different elements:
  * - abbr -> title text
  * - button -> label text

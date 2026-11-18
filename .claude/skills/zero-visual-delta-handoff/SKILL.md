@@ -543,8 +543,8 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   blieb ein `<span>` statt `BemRootNodeFC` — ein Badge ist Inline-Inhalt, und ARC42
   § „BemRootNodeFC Pattern" erlaubt den direkten `bem.forBlock`-Weg für nicht-`div`-Wurzeln.
 - **Neu gelernt (Früher-gewusst-Test bestanden)**: Eine Render-Prop, die _fehlen_ darf, ist mit
-  `StrictFields` nicht ausdrückbar. Lösung: `unsetRenderProp(key)` direkt nach `initRenderProps`
-  **und** vor jedem `apply`, plus ein `Omit<…> & { key?: T }`-Override am FC-Prop-Typ (Muster, das
+  `StrictFields` nicht ausdrückbar. Lösung: `unsetRenderProp(key)` in `componentWillLoad` vor den
+  Watchern **und** vor jedem `apply`, plus ein `Omit<…> & { key?: T }`-Override am FC-Prop-Typ (Muster, das
   `SpanFC` schon nutzt). Ohne das Unset leckt der Config-Default ins DOM — dieselbe Klasse Fehler
   wie der `tabindex="0"`-Leak aus Erfahrung #21, nur mit einem leeren Button als Symptom.
 - **Diagnose-Falle unterwegs**: Ein Pfad-Glob (`themes/*/src/…`) in einem JSDoc-Block **beendet den

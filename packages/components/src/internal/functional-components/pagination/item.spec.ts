@@ -23,6 +23,21 @@ const setup = () => {
 const flush = () => new Promise((resolve) => setTimeout(resolve));
 
 describe('createPaginationItem', () => {
+	it('names the landmark with the translation when the label is unset, with and without requiredness', () => {
+		const { item } = setup();
+		item.applyLabel(undefined);
+		expect(item.getFcProps().label).toBe('kol-pagination');
+
+		item.applyLabel(undefined, true);
+		expect(item.getFcProps().label).toBe('kol-pagination');
+
+		item.applyLabel('Custom label', true);
+		expect(item.getFcProps().label).toBe('Custom label');
+
+		item.applyLabel(undefined, true);
+		expect(item.getFcProps().label).toBe('kol-pagination');
+	});
+
 	it('reports a page beyond the last page twice on load, because the page is applied again last', async () => {
 		const { item, on, reported } = setup();
 		item.load({ max: 10, on, page: 20 });

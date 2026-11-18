@@ -4,6 +4,7 @@ import { forceUpdate, h } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../../internal/functional-components/button/item';
 import { createButtonItem } from '../../internal/functional-components/button/item';
+import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { createItemPool } from '../../internal/functional-components/item-pool';
 import type { LinkFCProps } from '../../internal/functional-components/link/component';
 import type { LinkItem } from '../../internal/functional-components/link/item';
@@ -14,6 +15,7 @@ import { tableStatelessPropsConfig } from '../../internal/functional-components/
 import { TABLE_CAPTION_ID, TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
 import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-components/table-stateless/table-model';
+import type { TableHeaders } from '../../internal/props';
 import {
 	fixedColsProp,
 	hasSettingsMenuProp,
@@ -26,7 +28,6 @@ import {
 	tableSelectionProp,
 	variantProp,
 } from '../../internal/props';
-import type { TableHeaders } from '../../internal/props/table-headers';
 import type {
 	FixedColsPropType,
 	HasSettingsMenuPropType,
@@ -40,7 +41,7 @@ import type {
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
-	TableHeaderCellsPropType,
+	TableHeadersPropType,
 	TableLoadingPropType,
 	TableSelectionPropType,
 	VariantClassNamePropType,
@@ -114,11 +115,9 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		(item) => item.destroy(),
 	);
 
-	// --- Lifecycle ---
+	protected readonly propsConfig: PropsConfigShape = tableStatelessPropsConfig;
 
-	protected initTableRenderProps(): void {
-		this.initRenderProps(tableStatelessPropsConfig);
-	}
+	// --- Lifecycle ---
 
 	protected observeScrollContainer(): void {
 		if (this.scrollContainerElement && ResizeObserver) {
@@ -131,6 +130,8 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	protected teardownTable(): void {
 		this.resizeObserver?.disconnect();
 		clearTimeout(this.resizeDebounceTimeout);
+		this.cellRenderTimeouts.forEach((timeout) => clearTimeout(timeout));
+		this.cellRenderTimeouts.clear();
 		this.buttonItems.destroy();
 		this.linkItems.destroy();
 		this.settings.destroy();
@@ -165,8 +166,8 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		hasSettingsMenuProp.apply(value, (v) => this.setRenderProp('hasSettingsMenu', v));
 	}
 
-	protected applyHeaders(value?: TableHeaderCellsPropType): void {
-		tableHeadersProp.apply(value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)));
+	protected applyHeaders(value?: TableHeadersPropType): void {
+		tableHeadersProp.apply(value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)), this.isRequired('headers'));
 	}
 
 	protected applyLabel(value?: LabelLangSegmentsPropType): void {
@@ -347,6 +348,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		this.cellRenderTimeouts.set(
 			element,
 			setTimeout(() => {
+				this.cellRenderTimeouts.delete(element);
 				if (typeof cell.render === 'function') {
 					const renderContent = cell.render(element, cell, cell.data, this.getRenderProp('data'));
 					if (typeof renderContent === 'string') {

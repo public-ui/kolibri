@@ -30,7 +30,7 @@ Dasselbe gilt für alle anderen interaktiven Komponenten, z. B. `kol-link` (`<a>
 
 ### Eingebettete Komponenten
 
-Rendert eine Komponente eine andere Komponente in ihrem Shadow DOM (z. B. die Sortier-Buttons von `kol-table-stateless` oder die Buttons von `kol-pagination`), dann rendert sie deren Functional Component über ein Item (`createButtonItem`, `createLinkItem`, …, siehe [ARC42 – Embedded Components (Items)](../packages/components/src/components/_skeleton/ARC42.md#embedded-components-items)). Ein eingebetteter Button ist kein eigenes Element und hat kein eigenes `focus()`. Der Browser fokussiert sein natives `<button>` direkt, per Tab-Navigation oder Klick. Das `focus()` der einbettenden Komponente zielt auf deren eigenes primäres Element.
+Rendert eine Komponente eine andere Komponente in ihrem Shadow DOM (z. B. die Sortier-Buttons von `kol-table-stateless` oder die Buttons von `kol-pagination`), dann rendert sie deren Functional Component über ein Item (`createButtonItem`, `createLinkItem`, …, siehe [ARC42 – Embedded Components (Items)](../packages/components/docs/ARC42-SKELETON.md#embedded-components-items)). Ein eingebetteter Button ist kein eigenes Element und hat kein eigenes `focus()`. Der Browser fokussiert sein natives `<button>` direkt, per Tab-Navigation oder Klick. Das `focus()` der einbettenden Komponente zielt auf deren eigenes primäres Element.
 
 ### Das `data-themed`-Attribut
 

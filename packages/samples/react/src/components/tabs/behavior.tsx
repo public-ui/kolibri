@@ -41,19 +41,19 @@ export const TabsBehavior: FC = () => (
 			<div className="grid gap-4">
 				<KolHeading _level={2} _label='Tabs with "select manual" behavior' />
 				<KolTabs _tabs={tabs} _behavior="select-manual" _label="Tabs with select manual behavior">
-					<div slot="tab-0">Contents of Tab 1</div>
-					<div slot="tab-1">Contents of Tab 2</div>
-					<div slot="tab-2">Contents of Tab 3</div>
-					<div slot="tab-3">Contents of Tab 4</div>
+					<p slot="tab-0">Contents of Tab 1</p>
+					<p slot="tab-1">Contents of Tab 2</p>
+					<p slot="tab-2">Contents of Tab 3</p>
+					<p slot="tab-3">Contents of Tab 4</p>
 				</KolTabs>
 			</div>
 			<div className="grid gap-4">
 				<KolHeading _level={2} _label='Tabs with "select automatic" behavior' />
 				<KolTabs _tabs={tabs} className="mt-4" _behavior="select-automatic" _label="Tabs with select automatic behavior">
-					<div slot="tab-0">Contents of Tab 1</div>
-					<div slot="tab-1">Contents of Tab 2</div>
-					<div slot="tab-2">Contents of Tab 3</div>
-					<div slot="tab-3">Contents of Tab 4</div>
+					<p slot="tab-0">Contents of Tab 1</p>
+					<p slot="tab-1">Contents of Tab 2</p>
+					<p slot="tab-2">Contents of Tab 3</p>
+					<p slot="tab-3">Contents of Tab 4</p>
 				</KolTabs>
 			</div>
 		</div>

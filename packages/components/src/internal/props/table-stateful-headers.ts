@@ -1,4 +1,4 @@
-import type { KoliBriTableHeaders, Stringified } from '../../schema';
+import type { KoliBriTableHeaders, TableHeadersPropType } from '../../schema';
 import { parseJson } from '../../schema';
 import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
@@ -7,7 +7,7 @@ import { createPropDefinition } from './helpers/factory';
  * Header cells of `kol-table-stateful`, as given. The stateful table derives the sort from them and
  * passes the cells on to the stateless table, which normalizes and checks them.
  */
-export type TableStatefulHeadersProp = Prop<'headers', Stringified<KoliBriTableHeaders>, KoliBriTableHeaders>;
+export type TableStatefulHeadersProp = Prop<'headers', TableHeadersPropType, KoliBriTableHeaders>;
 
 export const tableStatefulHeadersProp = createPropDefinition<TableStatefulHeadersProp>('headers', { horizontal: [], vertical: [] }, (value: unknown) => {
 	const headers = typeof value === 'string' ? parseJson<unknown>(value) : value;

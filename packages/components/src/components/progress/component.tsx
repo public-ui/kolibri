@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ProgressApi } from '../../internal/functional-components/progress/api';
 import { progressPropsConfig } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
@@ -26,6 +26,8 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	public liveValue: number = 0;
 
 	private interval?: ReturnType<typeof setInterval>;
+
+	protected readonly propsConfig: PropsConfigShape = progressPropsConfig;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -92,9 +94,12 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 		variantProgressProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
-	public componentWillLoad(): void {
-		this.initRenderProps(progressPropsConfig);
+	/** Runs on every (re)insertion into the DOM, so a moved element keeps announcing its value. */
+	public connectedCallback(): void {
+		this.startLiveValueInterval();
+	}
 
+	public componentWillLoad(): void {
 		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		maxProp.apply(this._max, (v) => {
 			this.setRenderProp('max', v);
@@ -105,7 +110,6 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 		variantProgressProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
 
 		this.setState('liveValue', this.getRenderProp('value'));
-		this.startLiveValueInterval();
 	}
 
 	public disconnectedCallback(): void {
@@ -117,6 +121,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	// a11y: says the value of the component every 5s
 	private startLiveValueInterval(): void {
+		clearInterval(this.interval);
 		this.interval = setInterval(() => {
 			const value = this.getRenderProp('value');
 			this.setState('liveValue', value);

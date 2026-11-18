@@ -13,6 +13,7 @@ export type {
 	KoliBriTableCell,
 	KoliBriTableHeaderCell,
 	KoliBriTableHeaderCellWithLogic,
+	KoliBriTableHeaders,
 	KoliBriTableSelection,
 	KoliBriTableSelectionKeys,
 	Optgroup,

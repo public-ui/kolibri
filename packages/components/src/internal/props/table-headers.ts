@@ -1,4 +1,4 @@
-import type { KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders, Stringified, TableHeaderCells } from '../../schema';
+import type { KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders, TableHeadersPropType } from '../../schema';
 import { parseJson } from '../../schema';
 import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
@@ -8,7 +8,7 @@ import { createPropDefinition } from './helpers/factory';
  * arrays — an omitted direction renders exactly like an empty one.
  */
 export type TableHeaders = Required<KoliBriTableHeaders>;
-export type TableHeadersProp = Prop<'headers', Stringified<TableHeaderCells>, TableHeaders>;
+export type TableHeadersProp = Prop<'headers', TableHeadersPropType, TableHeaders>;
 
 const isHeaderRows = (rows: unknown): rows is KoliBriTableHeaderCellWithLogic[][] => Array.isArray(rows) && rows.every((row) => Array.isArray(row));
 

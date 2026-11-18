@@ -30,7 +30,7 @@
 		"@angular/compiler-cli": "21.2.25",
 		"@types/jasmine": "6.0.0",
 		"@tailwindcss/postcss": "4.3.3",
-		"adopted-style-sheets": "1.1.9-rc.25",
+		"adopted-style-sheets": "1.2.0-rc.3",
 		"cross-env": "10.1.0",
 		"hono": "4.13.13",
 		"karma-jasmine": "5.1.0",

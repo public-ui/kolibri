@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
 import { linkPropsConfig } from '../../internal/functional-components/link/api';
 import { LinkFC } from '../../internal/functional-components/link/component';
@@ -85,15 +86,17 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	protected readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
+	protected readonly propsConfig: PropsConfigShape = linkPropsConfig;
+
 	// --- Lifecycle helpers (called from the concrete element's lifecycle methods) ---
 
 	/**
-	 * Seeds the render props. Call first in `componentWillLoad`, before the prop watchers run.
+	 * Marks `tabIndex` as unset. Call first in `componentWillLoad`, before the prop watchers run.
 	 */
-	protected initLinkRenderProps(): void {
-		this.initRenderProps(linkPropsConfig);
+	protected unsetLinkTabIndex(): void {
 		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
-		// the attribute would trigger focus outlines that the predecessor did not draw.
+		// the attribute would trigger focus outlines that the predecessor did not draw. The first
+		// render-prop access seeds the store, so this unset runs against seeded defaults.
 		this.unsetRenderProp('tabIndex');
 	}
 

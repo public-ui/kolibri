@@ -9,6 +9,7 @@ import { CardFC } from '../../internal/functional-components/card/component';
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import { dialogPropsConfig } from '../../internal/functional-components/dialog/api';
 import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
+import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
 import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
@@ -18,12 +19,6 @@ import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
-
-/**
- * The card variant renders no link, so its anchor never exists: the card's own `_on` callbacks
- * describe that anchor, and its ref is never called.
- */
-const NOOP = (): void => {};
 
 /**
  * Orchestrator shared by `kol-dialog` and the deprecated `kol-modal`. Both render the same
@@ -45,11 +40,12 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 	/** Resolved once in `componentWillLoad`: the close button's configuration never changes. */
 	private cardCloseButtonProps!: ResolvedButtonProps;
 
+	protected readonly propsConfig: PropsConfigShape = dialogPropsConfig;
+
 	// --- Lifecycle ---
 
-	protected initDialogRenderProps(): void {
-		this.initRenderProps(dialogPropsConfig);
-
+	/** Resolves the card close button's props and hands them to its tooltip behavior. */
+	protected initCardCloseButton(): void {
 		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
 		this.cardCloseTooltipBehavior.componentWillLoad({
 			label: this.cardCloseButtonProps.label,
@@ -175,19 +171,13 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 		return {
 			ariaDescriptionId: this.getState('ariaDescriptionId'),
 			closeButtonProps: this.cardCloseButtonProps,
-			handleBlur: NOOP,
 			handleClose: this.handleCardClose,
-			handleFocus: NOOP,
 			hasCloser: true,
 			headingId: this.getState('headingId'),
-			href: '',
 			label: this.getRenderProp('label'),
 			level: this.getRenderProp('level'),
-			on: {},
 			refCloseButton: this.cardCloseButtonRef,
-			refCta: NOOP,
 			refTooltip: this.cardCloseTooltipBehavior.setTooltipElementRef,
-			target: '',
 		};
 	}
 

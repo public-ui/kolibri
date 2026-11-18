@@ -1,11 +1,11 @@
 import { expect, type Page } from '@playwright/test';
 import type { E2EPage } from '@stencil/playwright';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableDataType, KoliBriTableHeaders, SortChangeEventPayload, TableHeaderCells } from '../../schema';
+import type { KoliBriTableDataType, KoliBriTableHeaders, SortChangeEventPayload } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }];
 const DATA_NUM = [{ id: 1001 }, { id: 1002 }];
-const HEADERS: TableHeaderCells = {
+const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
 		[
 			{

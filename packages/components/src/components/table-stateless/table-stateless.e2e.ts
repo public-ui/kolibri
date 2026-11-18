@@ -1,9 +1,9 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
+import type { KoliBriTableHeaders, KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
-const HEADERS: TableHeaderCellsPropType = {
+const HEADERS: KoliBriTableHeaders = {
 	horizontal: [[{ key: 'id', label: 'ID', sortDirection: 'ASC', width: 160 }]],
 };
 
@@ -351,22 +351,5 @@ test.describe('kol-table-stateless', () => {
 			expect(await scrollContainer.evaluate((element) => getComputedStyle(element).overflowY)).toBe('hidden');
 			await expect(kolTableStateless.locator('caption')).not.toHaveAttribute('tabindex');
 		});
-	});
-});
-
-test.describe('kol-table-stateless with deprecated _header-cells prop', () => {
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(`<kol-table-stateless
-					_label="Table Stateless"
-					_header-cells='${JSON.stringify(HEADERS)}'
-					_data='${JSON.stringify(DATA)}'
-				/>`);
-		await page.waitForChanges();
-	});
-
-	test('still renders headers and data via the deprecated _header-cells attribute', async ({ page }) => {
-		const kolTableStateless = page.locator('kol-table-stateless');
-		await expect(kolTableStateless.getByRole('button', { name: 'ID' })).toBeVisible();
-		await expect(kolTableStateless.getByText(DATA[0].id)).toBeVisible();
 	});
 });

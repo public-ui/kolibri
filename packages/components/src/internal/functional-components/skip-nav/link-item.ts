@@ -54,9 +54,10 @@ export const createSkipNavLinkItem = (link: LinkProps, getHost: () => HTMLElemen
 	const ctaRef = createCtaRef<HTMLAnchorElement>();
 	const renderProps = buildDefaultPropsFromConfig(linkPropsConfig);
 
-	// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and the
-	// attribute would trigger focus outlines that the predecessor did not draw.
-	delete renderProps.tabIndex;
+	// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable, and the
+	// attribute adds a redundant focus stop with a visible focus outline. The explicit undefined
+	// marks "not set": `LinkFC` applies the config default only to omitted keys.
+	renderProps.tabIndex = undefined;
 
 	const apply = (prop: { propName: string; apply(value: unknown, callback: (normalized: unknown) => void): void }, value: unknown): void =>
 		prop.apply(value, (v) => {

@@ -7,16 +7,19 @@ import type {
 	PropTableDataFoot,
 	PropTableSelection,
 	PropVariantClassName,
+	TableHeadersPropType,
 } from '../props';
 import type { PropHasSettingsMenu } from '../props/has-settings-menu';
-import type { KoliBriTableDataType, KoliBriTableSelection, Stringified } from '../types';
+import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
 import type { KoliBriTableHeaders } from './table';
 
-type RequiredProps = PropLabelLangSegments & PropTableData;
+type RequiredProps = {
+	headers: TableHeadersPropType;
+} & PropLabelLangSegments &
+	PropTableData;
 
 type OptionalProps = {
 	loading: boolean;
-	headers: Stringified<KoliBriTableHeaders>; // required sobald headerCells entfernt
 } & PropAriaLabelledby &
 	PropTableCallbacks &
 	PropTableDataFoot &

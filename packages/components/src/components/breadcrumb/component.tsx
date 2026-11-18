@@ -7,7 +7,7 @@ import { breadcrumbPropsConfig } from '../../internal/functional-components/brea
 import { BreadcrumbFC } from '../../internal/functional-components/breadcrumb/component';
 import type { BreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import { createBreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { breadcrumbLinksProp, labelProp } from '../../internal/props';
 import type { BreadcrumbLinkProps, BreadcrumbProps, LabelPropType, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks } from '../../schema';
@@ -38,6 +38,8 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 	 */
 	public showCurrentPage: boolean = true;
 
+	protected readonly propsConfig: PropsConfigShape = breadcrumbPropsConfig;
+
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
@@ -59,13 +61,14 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(breadcrumbPropsConfig);
 		this.applyLabel(this._label, true);
 		this.applyLinks(this._links);
 
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.linkItems = this.linkItems.map((item) => {
-				const newValue = location === item.fcProps.href ? item.fcProps.ariaCurrentValue : '';
+				/* An entry without an aria-current value renders no aria-current: '' matches the
+				 * prop's unset state and the `ariaCurrent` state's "not current" value. */
+				const newValue = location === item.fcProps.href ? (item.fcProps.ariaCurrentValue ?? '') : '';
 				if (item.fcProps.ariaCurrent === newValue) {
 					return item;
 				}
