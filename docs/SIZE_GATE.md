@@ -123,9 +123,6 @@ savings.
 
 The first baseline (4.6.0-rc.3) lists, among others:
 
-- `markdown-it` with `entities`, `linkify-it`, `mdurl`, `uc.micro` and `punycode.js` in the core:
-  about 93 KB gzip on every page, although only `kol-badge` renders Markdown
-  (`packages/components/src/utils/markdown.ts`).
 - The icon font CSS of `@include kol-icon-theme` in 40 sheets of `theme-default` (8.8 MB raw) and a
   second copy scoped to `.kol-form-field__label` in 17 sheets (4.7 MB raw), see
   [#11623](https://github.com/public-ui/kolibri/issues/11623).
