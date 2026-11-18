@@ -299,7 +299,6 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 			handleClose: this.handleCardClose,
 			hasCloser: this.getRenderProp('hasCloser'),
 			headingId: this.getState('headingId'),
-			image: '',
 			label: this.getRenderProp('label'),
 			level: this.getRenderProp('level'),
 			refCloseButton: this.cardCloseButtonRef,

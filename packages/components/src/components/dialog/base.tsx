@@ -174,7 +174,6 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 			handleClose: this.handleCardClose,
 			hasCloser: true,
 			headingId: this.getState('headingId'),
-			image: '',
 			label: this.getRenderProp('label'),
 			level: this.getRenderProp('level'),
 			refCloseButton: this.cardCloseButtonRef,
