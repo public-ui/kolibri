@@ -1,0 +1,1 @@
+import{l as e,x as t}from"./props-from-config-BOUcpF7e-_ikR-jF7.js";var n=e(`hasCloser`,!1,t);export{n as t};

@@ -1,0 +1,1 @@
+import{A as e,l as t}from"./props-from-config-BOUcpF7e-_ikR-jF7.js";var n=t(`target`,``,e);export{n as t};
