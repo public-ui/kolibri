@@ -215,11 +215,12 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	/**
 	 * Arrow keys move through all tabs, disabled ones included, so a disabled tab stays reachable and
-	 * its tooltip readable. Selecting it is refused in `selectNextTabEvent`.
+	 * its tooltip readable; both ends wrap around. Selecting a disabled tab is refused in
+	 * `selectNextTabEvent`.
 	 */
-	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number): number => Math.min(offset + 1, tabs.length - 1);
+	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number): number => (offset + 1) % tabs.length;
 
-	private prevPossibleTabIndex = (_tabs: TabButtonProps[], offset: number): number => Math.max(offset - 1, 0);
+	private prevPossibleTabIndex = (tabs: TabButtonProps[], offset: number): number => (offset - 1 + tabs.length) % tabs.length;
 
 	private selectNextNotDisabledTab = (selected: number, tabs: TabButtonProps[], upOrDown = true, initialSelected?: number): number => {
 		if (selected > tabs.length - 1) {
