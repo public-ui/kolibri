@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "266 changed, 182 added – 0 of 448 approved, review pending",
-	"computedAt": "2026-10-27T07:59:13.875Z",
+	"description": "279 changed, 182 added – 0 of 461 approved, review pending",
+	"computedAt": "2026-11-19T10:22:56.238Z",
 	"pr": 11042,
-	"head": "a0d470dfda8074dfed13049bee7a91fbcc6c3c5e",
-	"digest": "sha256:88bb26423195d5a5091360f234d5da5d76871483cd05e9a59713736e4d687541",
+	"head": "f44ffa8af5655019f82d7c8c6b7b75b2b88d2bbc",
+	"digest": "sha256:c41063d8428ca2587518374dd2687545b68efc2a443da6e70afd42c4760916b9",
 	"counts": {
-		"changes": 448,
-		"open": 448,
+		"changes": 461,
+		"open": 461,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -20,6 +20,10 @@
 			"state": "open",
 			"notes": []
 		},
+		"test-tag-name-transformer/button-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
 		"test-tag-name-transformer/button-link-basic--disabled": {
 			"state": "open",
 			"notes": []
@@ -28,11 +32,19 @@
 			"state": "open",
 			"notes": []
 		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
 		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-indet-disabled": {
 			"state": "open",
 			"notes": []
 		},
 		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-disabled": {
 			"state": "open",
 			"notes": []
 		},
@@ -272,11 +284,19 @@
 			"state": "open",
 			"notes": []
 		},
+		"test-tag-name-transformer/textarea-basic-noColumns--label-disabled-value": {
+			"state": "open",
+			"notes": []
+		},
 		"test-tag-name-transformer/toolbar-disabled--disabled": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-bwst/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/button-basic--disabled": {
 			"state": "open",
 			"notes": []
 		},
@@ -584,6 +604,10 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-default/button-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-default/button-link-basic--disabled": {
 			"state": "open",
 			"notes": []
@@ -592,11 +616,19 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-default/input-checkbox-basic-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-default/input-checkbox-basic-noColumns--left-indet-disabled": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-default/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-disabled": {
 			"state": "open",
 			"notes": []
 		},
@@ -836,11 +868,19 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-default/textarea-basic-noColumns--label-disabled-value": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-default/toolbar-disabled--disabled": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-desy/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-basic--disabled": {
 			"state": "open",
 			"notes": []
 		},
@@ -1101,6 +1141,10 @@
 			"notes": []
 		},
 		"theme-desy/toolbar-disabled--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/button-basic--disabled": {
 			"state": "open",
 			"notes": []
 		},
@@ -1365,6 +1409,10 @@
 			"notes": []
 		},
 		"theme-kern/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/button-basic--disabled": {
 			"state": "open",
 			"notes": []
 		},
@@ -1664,7 +1712,11 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-kern/table-variant--variants": {
+		"theme-kern/table-variant--variant-0": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-variant--variant-1": {
 			"state": "open",
 			"notes": []
 		},
