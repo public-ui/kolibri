@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11444,
-	"head": "7b5c4f82fb6aed8b8e208cda9e7d5e3951dea5f5",
+	"head": "3e61a016f84e7eb2da0a395a1f0d240993e91689",
 	"repository": "public-ui/kolibri",
-	"runId": 44330924469,
-	"generatedAt": "2026-11-18T15:21:10.513Z",
-	"digest": "sha256:69a42300d051063ee3f0d31057aa4ee12d3132f466f656521109bc11386e7a28",
+	"runId": 44475403738,
+	"generatedAt": "2026-11-19T07:14:00.524Z",
+	"digest": "sha256:9041fb711c7058841d5cb73d12ce926e9012267576178199e8be01e40a38a71c",
 	"baseline": {
 		"sha": "a8cc83805312f8e4242dd21599035ac8b12be3c2",
 		"ref": "develop",
@@ -19,7 +19,7 @@
 	"summary": {
 		"unchanged": 3085,
 		"changed": 10,
-		"added": 0,
+		"added": 14,
 		"removed": 0,
 		"error": 0
 	},
@@ -45,11 +45,11 @@
 			"summary": {
 				"unchanged": 439,
 				"changed": 3,
-				"added": 0,
+				"added": 2,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ba6b730e85879728d87364ebe9975f905ca04ce77c7b02ce9de8a0db707a6f1f",
+			"digest": "sha256:f2245e2b3614c5748d8146ae28d464a3762fea4f7a90376fc7ffda8e2904844b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -340,6 +340,20 @@
 					"route": "card-headlines",
 					"status": "unchanged",
 					"hash": "sha256:33e111449474c9f60447d8b240a16cff4c1c2f73bb2fb764e435396d38aa64e8"
+				},
+				{
+					"name": "card-image--basic",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:2a3edb22d18d2e0d2a05af3bad9738c98b08f552458316ec07c0ec2089105547",
+					"actual": "test-tag-name-transformer/card-image--basic.actual.png"
+				},
+				{
+					"name": "card-image--basic-320",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:9cfe6e865318a326aa92cf8cd95b91b598338dcefdc19a4b18fb31d0a3dbdc93",
+					"actual": "test-tag-name-transformer/card-image--basic-320.actual.png"
 				},
 				{
 					"name": "card-linked--linked",
@@ -2753,11 +2767,11 @@
 			"summary": {
 				"unchanged": 442,
 				"changed": 0,
-				"added": 0,
+				"added": 2,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:48bd85195b6a7dd0c64f9f143e4c5118c7f5d7f86558eff0d336f14b09af97db",
+			"digest": "sha256:cdfa12cf783abd45a6a826136921e26be057ac3bb5343ea6174253f5a8ed22d4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3028,6 +3042,20 @@
 					"route": "card-headlines",
 					"status": "unchanged",
 					"hash": "sha256:637cfa4faf01fc93ca6c524885e53a21dff865aeac4c41c55c8fb044b9ec54df"
+				},
+				{
+					"name": "card-image--basic",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:5362fab3045e50582dc9de2d861acf577a99c6c95e2db0ff20fa90c2830440ad",
+					"actual": "theme-bwst/card-image--basic.actual.png"
+				},
+				{
+					"name": "card-image--basic-320",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:5329cbc8641bb73a5a65d5bc9bdac33ddc64b477b6d64d395008932b5de63fb6",
+					"actual": "theme-bwst/card-image--basic-320.actual.png"
 				},
 				{
 					"name": "card-linked--linked",
@@ -5436,11 +5464,11 @@
 			"summary": {
 				"unchanged": 439,
 				"changed": 3,
-				"added": 0,
+				"added": 2,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ba6b730e85879728d87364ebe9975f905ca04ce77c7b02ce9de8a0db707a6f1f",
+			"digest": "sha256:f2245e2b3614c5748d8146ae28d464a3762fea4f7a90376fc7ffda8e2904844b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5731,6 +5759,20 @@
 					"route": "card-headlines",
 					"status": "unchanged",
 					"hash": "sha256:33e111449474c9f60447d8b240a16cff4c1c2f73bb2fb764e435396d38aa64e8"
+				},
+				{
+					"name": "card-image--basic",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:2a3edb22d18d2e0d2a05af3bad9738c98b08f552458316ec07c0ec2089105547",
+					"actual": "theme-default/card-image--basic.actual.png"
+				},
+				{
+					"name": "card-image--basic-320",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:9cfe6e865318a326aa92cf8cd95b91b598338dcefdc19a4b18fb31d0a3dbdc93",
+					"actual": "theme-default/card-image--basic-320.actual.png"
 				},
 				{
 					"name": "card-linked--linked",
@@ -8144,11 +8186,11 @@
 			"summary": {
 				"unchanged": 442,
 				"changed": 0,
-				"added": 0,
+				"added": 2,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
+			"digest": "sha256:b80933b8f33ec50632bfdd07abfa81c84b6729e482a2dfd9ea2f79096e78c9d6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -8419,6 +8461,20 @@
 					"route": "card-headlines",
 					"status": "unchanged",
 					"hash": "sha256:4ee7c58209c39d7ea4a0d45d842c797f4b7aafbf3a6dddf11f6bc5380dc7e41a"
+				},
+				{
+					"name": "card-image--basic",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:04420aba0fc445a7e8c04d63921f06d1a478051d7ad1489c785acf86c17056eb",
+					"actual": "theme-desy/card-image--basic.actual.png"
+				},
+				{
+					"name": "card-image--basic-320",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:8751e9a7c27bbf6ebcf358a96afbfbe123074f31afb8964f1b5ba409bc00ff7b",
+					"actual": "theme-desy/card-image--basic-320.actual.png"
 				},
 				{
 					"name": "card-linked--linked",
@@ -10827,11 +10883,11 @@
 			"summary": {
 				"unchanged": 441,
 				"changed": 1,
-				"added": 0,
+				"added": 2,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:cd26609073a59cb509a88485e69bd93716c44c123b3ce4579eafa6add589fa3f",
+			"digest": "sha256:b056abcbaa4afc5b7e3d626c7008fac02e0f43051d4f95189f282314f4f0fee6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11117,6 +11173,20 @@
 					"route": "card-headlines",
 					"status": "unchanged",
 					"hash": "sha256:4f76891180cde5f5873df99b247f527f8391acbcdfc2ec49e8124c7fa5fd4bc2"
+				},
+				{
+					"name": "card-image--basic",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:57ae0f81a11dc59e85ff1de4981f5347b0f0cce7b5fb99ab76bbfd4e38ca3a41",
+					"actual": "theme-ecl/card-image--basic.actual.png"
+				},
+				{
+					"name": "card-image--basic-320",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:4dc9e27c064dd3a7251aa07503def46bd99803f40381cc4b0ff48fc2eb41a5ae",
+					"actual": "theme-ecl/card-image--basic-320.actual.png"
 				},
 				{
 					"name": "card-linked--linked",
@@ -13525,11 +13595,11 @@
 			"summary": {
 				"unchanged": 440,
 				"changed": 3,
-				"added": 0,
+				"added": 2,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ee39a9753c5ee96bab0cea205597b75762801b628f266607b2735ff82853ccbc",
+			"digest": "sha256:4ed935c04ffb74fa3e58a51b01efbcc7d2686650c835edf218967843db0f57f7",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13820,6 +13890,20 @@
 					"route": "card-headlines",
 					"status": "unchanged",
 					"hash": "sha256:a402d7d41e27dc920ea608f48f7e4a7b3fdb59a19e2495f705a0b5ecab334d34"
+				},
+				{
+					"name": "card-image--basic",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:5592427481a40688d57a5dfd207a9b1f114eb07a14a308a5ea7896e53c2faf5b",
+					"actual": "theme-kern/card-image--basic.actual.png"
+				},
+				{
+					"name": "card-image--basic-320",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:be02cc71ef46c2fd5c3092fa9afe185cf061edaecdb60566efc220758f58f28b",
+					"actual": "theme-kern/card-image--basic-320.actual.png"
 				},
 				{
 					"name": "card-linked--linked",
@@ -16239,11 +16323,11 @@
 			"summary": {
 				"unchanged": 442,
 				"changed": 0,
-				"added": 0,
+				"added": 2,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
+			"digest": "sha256:511ee81573ead74ec299f3de4c1f2b958afb5a75b7403f8f632d02dae4553716",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16514,6 +16598,20 @@
 					"route": "card-headlines",
 					"status": "unchanged",
 					"hash": "sha256:dffff98efe3c9addcb6028964211152e1645e6c3dad457ce625c2d34128e3a8d"
+				},
+				{
+					"name": "card-image--basic",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:f1f95831e05360055ed60673e968e96baf9ca1020d99e5129295d6aadfb9dc9d",
+					"actual": "unstyled/card-image--basic.actual.png"
+				},
+				{
+					"name": "card-image--basic-320",
+					"route": "card/image",
+					"status": "added",
+					"hash": "sha256:a125c92ba6702fcd9aed76f4c78d30876a52dbefd182e97c6361dc11c43d0308",
+					"actual": "unstyled/card-image--basic-320.actual.png"
 				},
 				{
 					"name": "card-linked--linked",

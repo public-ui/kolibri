@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "10 changed – 0 of 10 approved, review pending",
-	"computedAt": "2026-11-18T15:21:11.371Z",
+	"description": "10 changed, 14 added – 0 of 24 approved, review pending",
+	"computedAt": "2026-11-19T07:14:01.461Z",
 	"pr": 11444,
-	"head": "7b5c4f82fb6aed8b8e208cda9e7d5e3951dea5f5",
-	"digest": "sha256:69a42300d051063ee3f0d31057aa4ee12d3132f466f656521109bc11386e7a28",
+	"head": "3e61a016f84e7eb2da0a395a1f0d240993e91689",
+	"digest": "sha256:9041fb711c7058841d5cb73d12ce926e9012267576178199e8be01e40a38a71c",
 	"counts": {
-		"changes": 10,
-		"open": 10,
+		"changes": 24,
+		"open": 24,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -24,7 +24,23 @@
 			"state": "open",
 			"notes": []
 		},
+		"test-tag-name-transformer/card-image--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/card-image--basic-320": {
+			"state": "open",
+			"notes": []
+		},
 		"test-tag-name-transformer/card-linked--linked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/card-image--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/card-image--basic-320": {
 			"state": "open",
 			"notes": []
 		},
@@ -36,11 +52,35 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-default/card-image--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/card-image--basic-320": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-default/card-linked--linked": {
 			"state": "open",
 			"notes": []
 		},
+		"theme-desy/card-image--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/card-image--basic-320": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-ecl/card-basic--basic-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/card-image--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/card-image--basic-320": {
 			"state": "open",
 			"notes": []
 		},
@@ -52,7 +92,23 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-kern/card-image--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/card-image--basic-320": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-kern/card-linked--linked": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/card-image--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/card-image--basic-320": {
 			"state": "open",
 			"notes": []
 		}
