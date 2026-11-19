@@ -3,9 +3,9 @@
 		"primary",
 		"secondary",
 		"tertiary",
-		"normal",
-		"danger",
-		"ghost"
+		"primary destructive",
+		"secondary destructive",
+		"tertiary destructive"
 	],
 	"iconVariants": [
 		"desy-home",

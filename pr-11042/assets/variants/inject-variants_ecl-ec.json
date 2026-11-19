@@ -1,11 +1,15 @@
 {
 	"buttonVariants": [
 		"primary",
+		"primary highlight",
+		"primary neutral",
+		"primary inverted",
 		"secondary",
+		"secondary neutral",
+		"secondary inverted",
 		"tertiary",
-		"normal",
-		"danger",
-		"ghost"
+		"tertiary neutral",
+		"tertiary inverted"
 	],
 	"iconVariants": [
 		"ecl-icons-livestreaming",
