@@ -1,3 +1,4 @@
+import { transformTag } from '@stencil/core';
 import { KolFormTag } from '../../core/component-names';
 import { devHint, getExperimentalMode, KoliBriDevHelper, Log, setEventTarget } from '../../schema';
 
@@ -6,7 +7,7 @@ const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | 
 		devHint(`↓ Search form element start.`);
 		Log.debug(el);
 	}
-	while (el instanceof HTMLElement && el.tagName !== 'FORM' && el.tagName !== KolFormTag.toUpperCase()) {
+	while (el instanceof HTMLElement && el.tagName !== 'FORM' && el.tagName !== transformTag(KolFormTag).toUpperCase()) {
 		try {
 			if (el.parentElement instanceof HTMLElement) {
 				el = el.parentElement;
@@ -47,7 +48,7 @@ export const propagateResetEventToForm = (
 		if (form.tagName === 'FORM') {
 			setEventTarget(event, form);
 			form.dispatchEvent(event);
-		} else if (form.tagName === KolFormTag.toUpperCase()) {
+		} else if (form.tagName === transformTag(KolFormTag).toUpperCase()) {
 			// Dispatch on the inner form element, so the kol-form submit/reset handling runs exactly like for a
 			// native submit: it calls the `_on` callbacks and emits the DOM event (`reset`) on the host.
 			const innerForm = KoliBriDevHelper.querySelector<HTMLFormElement>('form', form);
@@ -105,7 +106,7 @@ export const propagateSubmitEventToForm = (
 					form.dispatchEvent(event);
 				}
 			});
-		} else if (form.tagName === KolFormTag.toUpperCase()) {
+		} else if (form.tagName === transformTag(KolFormTag).toUpperCase()) {
 			// Dispatch on the inner form element, so the kol-form submit handling runs exactly like for a
 			// native submit: it calls the `_on` callbacks and emits the DOM event (`submit`) on the host.
 			const innerForm = KoliBriDevHelper.querySelector<HTMLFormElement>('form', form);

@@ -2,8 +2,10 @@ import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-she
 import { register as coreRegister } from 'adopted-style-sheets';
 import type { Mode } from '../schema';
 import { Log, setRuntimeMode } from '../schema';
-import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
+import { getSharedState } from './shared-state';
+import { registerTagNameTransformer } from './tag-transformer';
+import { shareThemeStore } from './theme-store';
 
 type KoliBriOptions = RegisterOptions & {
 	/**
@@ -21,8 +23,11 @@ type KoliBriOptions = RegisterOptions & {
 	reflectInputValues?: boolean;
 };
 
+const shared = getSharedState('bootstrap', (): { options?: KoliBriOptions } => ({}));
+
 let initialized = false;
-let options: KoliBriOptions | undefined;
+
+shareThemeStore();
 
 export const bootstrap = async (
 	themes:
@@ -37,11 +42,11 @@ export const bootstrap = async (
 
 	initializeI18n(koliBriOptions?.translation?.name ?? 'de', koliBriOptions?.translations);
 	if (koliBriOptions?.transformTagName) {
-		setCustomTagNames(koliBriOptions?.transformTagName);
+		registerTagNameTransformer(koliBriOptions.transformTagName);
 	}
 	const coreRegisterReturnValue = await coreRegister(themes, loaders, koliBriOptions);
 	initialized = true;
-	options = koliBriOptions;
+	shared.options = koliBriOptions;
 
 	// Only log development message when actually in development mode
 	Log.info('Development mode active - Enhanced debugging features available');
@@ -51,4 +56,4 @@ export const bootstrap = async (
 
 export const register = bootstrap;
 export const isInitialized = () => initialized;
-export const getOptions = () => options;
+export const getOptions = (): KoliBriOptions | undefined => shared.options;

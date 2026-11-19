@@ -1,14 +1,14 @@
 import { promises as fsPromises } from 'fs';
 
-import { angularOutputTarget } from '@public-ui/stencil-angular-output-target';
-import { reactOutputTarget } from '@public-ui/stencil-react-output-target';
 import { solidOutputTarget } from '@public-ui/stencil-solid-output-target';
-import { vueOutputTarget } from '@public-ui/stencil-vue-output-target';
 import { svelteOutputTarget } from '@revolist/svelte-output-target';
 import { postcss } from '@stencil-community/postcss';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 import type { Config } from '@stencil/core';
 import type { JsonDocs, OutputTarget } from '@stencil/core/internal';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 import { version as KOLIBRI_VERSION } from './package.json' assert { type: 'json' };
 
 const TAGS = [
@@ -154,26 +154,31 @@ if (process.env.NODE_ENV === 'production') {
 	outputTargets = outputTargets.concat([
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v20/src/components.ts',
+			excludeComponents: EXCLUDE_TAGS,
+			outputType: 'component',
 		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
 			directivesProxyFile: '../adapters/angular/v21/src/components.ts',
+			excludeComponents: EXCLUDE_TAGS,
+			outputType: 'component',
 		}),
 		reactOutputTarget({
-			componentCorePackage: '@public-ui/components',
+			outDir: '../adapters/react/src',
 			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/react/src/index.ts',
-			includeDefineCustomElements: false,
+			transformTag: true,
 		}),
 		reactOutputTarget({
-			componentCorePackage: '@public-ui/components',
+			outDir: '../adapters/react-v19/src',
 			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/react-v19/src/index.ts',
-			includeDefineCustomElements: false,
+			transformTag: true,
 		}),
+		/*
+		 * Solid and Svelte have no official Stencil output target: Solid generates through the
+		 * @public-ui/stencil-solid-output-target fork, Svelte through a community target without tag
+		 * name transformation.
+		 */
 		solidOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
@@ -189,10 +194,12 @@ if (process.env.NODE_ENV === 'production') {
 		vueOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,
-			proxiesFile: '../adapters/vue/src/index.ts',
 			includeDefineCustomElements: false,
+			proxiesFile: '../adapters/vue/src/index.ts',
+			transformTag: true,
 		}),
 		{
+			externalRuntime: false,
 			minify: true,
 			type: 'dist-custom-elements',
 		},
@@ -231,15 +238,14 @@ export const config: Config = {
 	// buildEs5: true,
 	// https://stenciljs.com/docs/config-extras
 	extras: {
+		additionalTagTransformers: true,
 		// appendChildSlotFix: true,
 		// cloneNodeFix: true,
 		enableImportInjection: true,
 		// initializeNextTick: true,
 		// lifecycleDOMEvents: true,
-		// scopedSlotTextContentFix: true,
 		// scriptDataOpts: true,
 		// slotChildNodesFix: true,
-		tagNameTransform: true,
 	},
 	// enableCache: true,
 	invisiblePrehydration: true,

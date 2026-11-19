@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 

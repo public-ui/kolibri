@@ -1,9 +1,11 @@
 import { getThemeDetails, setThemeStyle } from 'adopted-style-sheets';
 
 import { setMode } from '@stencil/core';
+import { shareThemeStore } from '../core/theme-store';
 import { Log } from '../schema';
 
 export default () => {
+	shareThemeStore();
 	setMode((elm) => {
 		try {
 			if (elm.shadowRoot instanceof ShadowRoot) {

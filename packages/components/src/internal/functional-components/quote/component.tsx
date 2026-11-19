@@ -1,7 +1,6 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { KolLinkTag } from '../../../core/component-names';
 import { bem } from '../../../schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
@@ -37,7 +36,7 @@ export const QuoteFC: FC<FunctionalComponentProps<QuoteApi>> = (props) => {
 			{!!label && (
 				<figcaption class={BEM_CLASS_QUOTE__FIGCAPTION}>
 					<cite class={BEM_CLASS_QUOTE__CITE}>
-						<KolLinkTag _href={href} _label={label} _target="_blank" />
+						<kol-link _href={href} _label={label} _target="_blank" />
 					</cite>
 				</figcaption>
 			)}

@@ -1,7 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { KolInputCheckboxTag, KolInputNumberTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
 import type { KoliBriTableHeaderCell } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
@@ -18,8 +17,6 @@ const BEM_CLASS_TABLE__SETTINGS = bem.forBlock('kol-table')('settings');
 const tableSettingsBem = bem.forBlock('kol-table-settings');
 const BEM_CLASS_TABLE_SETTINGS = tableSettingsBem();
 const BEM_CLASS_TABLE_SETTINGS__ACTIONS = tableSettingsBem('actions');
-const BEM_CLASS_TABLE_SETTINGS__COLUMN = tableSettingsBem('column');
-const BEM_CLASS_TABLE_SETTINGS__COLUMN_LABEL = tableSettingsBem('column-label');
 const BEM_CLASS_TABLE_SETTINGS__COLUMNS = tableSettingsBem('columns');
 const BEM_CLASS_TABLE_SETTINGS__CONTENT = tableSettingsBem('content');
 const BEM_CLASS_TABLE_SETTINGS__ERROR_MESSAGE = tableSettingsBem('error-message');
@@ -185,8 +182,8 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 	};
 
 	const renderColumn = (column: KoliBriTableHeaderCell, index: number, columns: KoliBriTableHeaderCell[]): JSX.Element => (
-		<div key={column.key} class={BEM_CLASS_TABLE_SETTINGS__COLUMN}>
-			<KolInputCheckboxTag
+		<div key={column.key} class="kol-table-settings__column">
+			<kol-input-checkbox
 				_checked={column.visible !== false}
 				_label={
 					column.hidable
@@ -198,8 +195,8 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 				_disabled={column.hidable === false}
 				_on={{ onInput: (_, value: unknown) => handleVisibilityChange(column.key ?? '', value) }}
 			/>
-			<span class={BEM_CLASS_TABLE_SETTINGS__COLUMN_LABEL}>{column.label}</span>
-			<KolInputNumberTag
+			<span class="kol-table-settings__column-label">{column.label}</span>
+			<kol-input-number
 				_hideLabel
 				_value={parseColumnWidth(column.width)}
 				_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
