@@ -99,8 +99,8 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, TextareaCasesPro
 					_label="With icon left and right"
 					_value="Loorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy modi tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
 					_icons={{
-						right: 'kolicon-settings',
 						left: 'kolicon-settings',
+						right: 'kolicon-settings',
 					}}
 				/>
 			</SampleBlock>
