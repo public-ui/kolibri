@@ -84,3 +84,23 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, InputFileCases
 		</div>
 	);
 });
+
+export const InputFileCasesDragnDrop = forwardRef<HTMLKolInputFileElement, InputFileCasesProps>(function InputFileCases({ blockIdPrefix, ...props }) {
+	const block = (caseId: string) => ({ id: `${blockIdPrefix}-${caseId}` });
+	return (
+		<div className="grid gap-4">
+			<SampleBlock {...block('accept')}>
+				<KolInputFile {...props} _label="Accept" _touched />
+			</SampleBlock>
+			<SampleBlock {...block('accept-multiple')}>
+				<KolInputFile {...props} _label="Accept multiple" _multiple _touched />
+			</SampleBlock>
+			<SampleBlock {...block('accept-disabled')}>
+				<KolInputFile {...props} _label="Accept disabled" _disabled _touched />
+			</SampleBlock>
+			<SampleBlock {...block('accept-multiple-disabled')}>
+				<KolInputFile {...props} _label="Accept multiple disabled" _multiple _disabled _touched />
+			</SampleBlock>
+		</div>
+	);
+});
