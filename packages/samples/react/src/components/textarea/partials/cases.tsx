@@ -70,6 +70,40 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, TextareaCasesPro
 			<SampleBlock {...block('short-key')}>
 				<KolTextarea {...props} ref={ref} _label="With short key" _rows={3} _placeholder="Placeholder" _value="Lorem ipsum" _shortKey="s" />
 			</SampleBlock>
+			<SampleBlock {...block('with-icon-left')}>
+				<KolTextarea
+					{...props}
+					ref={ref}
+					_label="With icon left"
+					_value="Loorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy modi tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+					_icons={{
+						left: 'kolicon-settings',
+					}}
+				/>
+			</SampleBlock>
+			<SampleBlock {...block('with-icon-right')}>
+				<KolTextarea
+					{...props}
+					ref={ref}
+					_label="With icon right"
+					_value="Loorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy modi tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+					_icons={{
+						right: 'kolicon-settings',
+					}}
+				/>
+			</SampleBlock>
+			<SampleBlock {...block('with-icon-left-and-right')}>
+				<KolTextarea
+					{...props}
+					ref={ref}
+					_label="With icon left and right"
+					_value="Loorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy modi tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+					_icons={{
+						left: 'kolicon-settings',
+						right: 'kolicon-settings',
+					}}
+				/>
+			</SampleBlock>
 		</div>
 	);
 });
