@@ -25,7 +25,7 @@ export const InputFileVariantsDragnDrop = forwardRef<HTMLKolInputFileElement, Co
 				<InputFileCasesDragnDrop blockIdPrefix="label" {...props} _accept=".pdf" />
 			</SampleGroup>
 			<SampleGroup heading="File (hideLabel)">
-				<InputFileCasesDragnDrop blockIdPrefix="hide-label" snapshotOnly="error" {...props} _accept=".pdf" _hideLabel />
+				<InputFileCasesDragnDrop blockIdPrefix="hide-label" {...props} _accept=".pdf" _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);
