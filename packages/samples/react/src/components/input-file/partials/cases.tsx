@@ -85,13 +85,8 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, InputFileCases
 	);
 });
 
-export const InputFileCasesDragnDrop = forwardRef<HTMLKolInputFileElement, InputFileCasesProps>(function InputFileCases({
-	blockIdPrefix,
-	snapshotOnly,
-	...props
-}) {
-	// Blocks outside `snapshotOnly` stay visible in the sample but are excluded from the snapshots.
-	const block = (caseId: string) => ({ id: `${blockIdPrefix}-${caseId}`, skipSnapshot: snapshotOnly !== undefined && caseId !== snapshotOnly });
+export const InputFileCasesDragnDrop = forwardRef<HTMLKolInputFileElement, InputFileCasesProps>(function InputFileCases({ blockIdPrefix, ...props }) {
+	const block = (caseId: string) => ({ id: `${blockIdPrefix}-${caseId}` });
 	return (
 		<div className="grid gap-4">
 			<SampleBlock {...block('accept')}>

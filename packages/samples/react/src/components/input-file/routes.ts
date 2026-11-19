@@ -6,7 +6,7 @@ import { InputFileOnInputOnChange } from './get-value';
 export const INPUT_FILE_ROUTES: Routes = {
 	'input-file': {
 		basic: InputFileBasic,
-		'get-value': InputFileOnInputOnChange,
 		'drag-and-drop': InputFileDragnDrop,
+		'get-value': InputFileOnInputOnChange,
 	},
 };
