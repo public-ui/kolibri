@@ -1,7 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { KolInputCheckboxTag, KolInputNumberTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
 import type { KoliBriTableHeaderCell } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
@@ -178,7 +177,7 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 
 	const renderColumn = (column: KoliBriTableHeaderCell, index: number, columns: KoliBriTableHeaderCell[]): JSX.Element => (
 		<div key={column.key} class="kol-table-settings__column">
-			<KolInputCheckboxTag
+			<kol-input-checkbox
 				_checked={column.visible !== false}
 				_label={
 					column.hidable
@@ -191,7 +190,7 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 				_on={{ onInput: (_, value: unknown) => handleVisibilityChange(column.key ?? '', value) }}
 			/>
 			<span class="kol-table-settings__column-label">{column.label}</span>
-			<KolInputNumberTag
+			<kol-input-number
 				_hideLabel
 				_value={parseColumnWidth(column.width)}
 				_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}

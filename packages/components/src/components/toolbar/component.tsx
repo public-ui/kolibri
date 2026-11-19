@@ -79,10 +79,12 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	 */
 	@Method()
 	public async focus(options?: KolFocusOptions): Promise<void> {
-		const element = this.getCurrentItemElement();
-		if (element) {
-			return delegateFocus(this.host!, () => setFocus(element, options));
-		}
+		return delegateFocus(this.host!, async () => {
+			const element = this.getCurrentItemElement();
+			if (element) {
+				await setFocus(element, options);
+			}
+		});
 	}
 
 	/**
@@ -90,10 +92,12 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		const element = this.getCurrentItemElement();
-		if (element) {
-			return delegateClick(this.host!, async () => setClick(element));
-		}
+		return delegateClick(this.host!, async () => {
+			const element = this.getCurrentItemElement();
+			if (element) {
+				await setClick(element);
+			}
+		});
 	}
 
 	public componentWillLoad(): void {
