@@ -1,0 +1,1 @@
+import"./index-C26IR7zL-B4SIlz-2.js";import{A as e,D as t,l as n}from"./props-from-config-DmUQWotd-BVXKA0gz.js";var r=n(`max`,100,t,e=>e>0),i=n(`unit`,`%`,e,e=>e.length>0);export{i as n,r as t};
