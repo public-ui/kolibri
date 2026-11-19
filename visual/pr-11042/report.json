@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11042,
-	"head": "f44ffa8af5655019f82d7c8c6b7b75b2b88d2bbc",
+	"head": "d9f1854c5eba6c297686ab194b02a34ba45513be",
 	"repository": "public-ui/kolibri",
-	"runId": 44499214869,
-	"generatedAt": "2026-11-19T10:22:55.383Z",
-	"digest": "sha256:c41063d8428ca2587518374dd2687545b68efc2a443da6e70afd42c4760916b9",
+	"runId": 44504772395,
+	"generatedAt": "2026-11-19T10:55:34.239Z",
+	"digest": "sha256:87528c622a3eda85066a8abb01bbb3abfa88f9c3d37bcb8f9cc0116c51a9861b",
 	"baseline": {
 		"sha": "a8cc83805312f8e4242dd21599035ac8b12be3c2",
 		"ref": "develop",
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7ec8cc04088bfa949c75331db637f26ff17ff35a5ccfbedff1b4411619187f3c",
+			"digest": "sha256:b70416524c4831232d26b2fad05d796e2df0c06f95f066d6ab325d1c29c7fd19",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2327,7 +2327,7 @@
 					"name": "scenarios-focus-elements-component-inputRadio-disabled",
 					"route": "scenarios/focus-elements?component=inputRadio&disabled",
 					"status": "added",
-					"hash": "sha256:e934438ce26a0ec54682df51db745f9c8f78f396ebe7fd4d28d20fc8acc5702d",
+					"hash": "sha256:ae7b9b20c3f769aff573e53a1cbacb9d48153d8c8cf0c6cfd074f2fd095492bd",
 					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-inputRadio-disabled.actual.png"
 				},
 				{
@@ -3129,7 +3129,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0a6ee15d4457eac99372bcc0458fd9e295671b83630e9a07c8d54be65be7b72b",
+			"digest": "sha256:bba761be660bef689e5b5286fc69b986b98f86cce2fa302ccf81f28a4b7cfa40",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5447,7 +5447,7 @@
 					"name": "scenarios-focus-elements-component-inputRadio-disabled",
 					"route": "scenarios/focus-elements?component=inputRadio&disabled",
 					"status": "added",
-					"hash": "sha256:40aaeb595efba43da13308d2dfd5b463def80875ce178cff0b3508ea7b251f72",
+					"hash": "sha256:2ae4e803dc5c7e06204bf66f62baffab3174e571ee5025405eb1d7478a632e5a",
 					"actual": "theme-bwst/scenarios-focus-elements-component-inputRadio-disabled.actual.png"
 				},
 				{
@@ -6269,7 +6269,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7ec8cc04088bfa949c75331db637f26ff17ff35a5ccfbedff1b4411619187f3c",
+			"digest": "sha256:b70416524c4831232d26b2fad05d796e2df0c06f95f066d6ab325d1c29c7fd19",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -8547,7 +8547,7 @@
 					"name": "scenarios-focus-elements-component-inputRadio-disabled",
 					"route": "scenarios/focus-elements?component=inputRadio&disabled",
 					"status": "added",
-					"hash": "sha256:e934438ce26a0ec54682df51db745f9c8f78f396ebe7fd4d28d20fc8acc5702d",
+					"hash": "sha256:ae7b9b20c3f769aff573e53a1cbacb9d48153d8c8cf0c6cfd074f2fd095492bd",
 					"actual": "theme-default/scenarios-focus-elements-component-inputRadio-disabled.actual.png"
 				},
 				{
@@ -9349,7 +9349,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:2dfdc206f2e27168e71624b74c88a74be3bb8c893ce88901298c689cf625ec98",
+			"digest": "sha256:242c5baa55a7f410822cbb4076eb5b0c1274b304f9cd4476aeac8c733ce9e40f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11627,7 +11627,7 @@
 					"name": "scenarios-focus-elements-component-inputRadio-disabled",
 					"route": "scenarios/focus-elements?component=inputRadio&disabled",
 					"status": "added",
-					"hash": "sha256:b2028f243517077a0add799b4af4b252cadcbbd88f5657d44bec9d9123101395",
+					"hash": "sha256:aadfcd3841ac5ab2fca555a3357b68e688e01eab18760f0a62626160c38f04d0",
 					"actual": "theme-desy/scenarios-focus-elements-component-inputRadio-disabled.actual.png"
 				},
 				{
@@ -12419,7 +12419,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:721de1d543c42d2b1bba5bcf7b3dba474bf4719d6ba5d7932562c3af59a9a05e",
+			"digest": "sha256:5ce5da0264840e0902430f1d5973b7129f40594cf5abd101cbeca585fb8c1258",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14682,7 +14682,7 @@
 					"name": "scenarios-focus-elements-component-inputRadio-disabled",
 					"route": "scenarios/focus-elements?component=inputRadio&disabled",
 					"status": "added",
-					"hash": "sha256:516de8dfc84435208d2c682b740340c3e82a38c293f7d54bc22dfa720c56f23d",
+					"hash": "sha256:3734dab43bd01adb75cba9c4e470b3921fdc015736d6f38f9b5343ce5bedc53f",
 					"actual": "theme-ecl/scenarios-focus-elements-component-inputRadio-disabled.actual.png"
 				},
 				{
@@ -15484,7 +15484,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8749da62c824e691af2843fed13adbb496bd2324f14da5536fcc43c757c11af0",
+			"digest": "sha256:5b7b2f52c866ed8ee39f8709442371a31e688840d490d8cdc3f334f4c665438b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17827,7 +17827,7 @@
 					"name": "scenarios-focus-elements-component-inputRadio-disabled",
 					"route": "scenarios/focus-elements?component=inputRadio&disabled",
 					"status": "added",
-					"hash": "sha256:82c680e55e941c1329d12b693ec6715919a64243cdadffea09da4d9a0b4d0af8",
+					"hash": "sha256:68ff0f07b5c351106d9a20921f15c2bb0792ac61452a67c899218c022d4e2a92",
 					"actual": "theme-kern/scenarios-focus-elements-component-inputRadio-disabled.actual.png"
 				},
 				{
@@ -18645,7 +18645,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:2447bf1d76ff7006dda9ff43cc4574dd43874aba5af291e39d9694e0e038f17d",
+			"digest": "sha256:0c385fd3020fdd73397baea53dc46de1c515e9da69d8e239eda16a5f97ac601f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -20758,7 +20758,7 @@
 					"name": "scenarios-focus-elements-component-inputRadio-disabled",
 					"route": "scenarios/focus-elements?component=inputRadio&disabled",
 					"status": "added",
-					"hash": "sha256:086148127ec25f8bcbe39b8a45da121f8a1ae0097a9e74f0844ded9527d0a299",
+					"hash": "sha256:42221a29372547ac63bc02e140902cf3b44d40350fd678c757ea283b64c23df2",
 					"actual": "unstyled/scenarios-focus-elements-component-inputRadio-disabled.actual.png"
 				},
 				{
