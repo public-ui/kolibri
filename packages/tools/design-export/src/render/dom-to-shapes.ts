@@ -18,7 +18,16 @@ export interface ShapeNode {
 	name: string;
 	/** Every `kol-` class of the element and of the wrappers folded into it (theming contract). */
 	classes: string[];
-	kind: 'box' | 'text';
+	/** `instance` shows the library component `component` (a base component, `spec/base-components.ts`). */
+	kind: 'box' | 'instance' | 'text' | 'vector';
+	component?: string;
+	/**
+	 * Paths of a `vector`, filled with `fill` (an icon, `spec/icons.ts`), or the complete SVG
+	 * markup with its own colors (an inline `<svg>` of a component).
+	 */
+	vector?: { viewBox: string; paths: string[]; markup?: string };
+	/** Functional component whose root this box is, when it has a BEM block of its own (`InputContainerFC`). */
+	base?: string;
 	x: number;
 	y: number;
 	width: number;
@@ -41,6 +50,11 @@ export interface ShapeNode {
 	/** CSS outline (focus ring), drawn outside the border box at `offset`; `radius` is the corner radius it follows. */
 	outline?: { color: string; offset: number; radius?: [number, number, number, number]; token?: string; width: number };
 	/** CSS `min-width`/`min-height` in px, e.g. the a11y minimum size of interactive elements. */
+	/** Out of the flow (`position: absolute`): the offsets from the padding box of the parent. */
+	absolute?: { bottom?: number; left?: number; right?: number; top?: number };
+	/** The size comes from the CSS (`width`, `height`, `aspect-ratio`), not from the content. */
+	fixedWidth?: true;
+	fixedHeight?: true;
 	minWidth?: number;
 	minHeight?: number;
 	/** First CSS box shadow. */
@@ -53,6 +67,7 @@ export interface ShapeNode {
 	fontFamily?: string;
 	lineHeight?: number;
 	textAlign?: string;
+	textDecoration?: 'line-through' | 'underline';
 	children: ShapeNode[];
 }
 

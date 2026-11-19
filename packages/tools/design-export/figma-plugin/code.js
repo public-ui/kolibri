@@ -140,10 +140,29 @@ function buildChildren(parent, node, variables, fontOf) {
 			shape.characters = child.characters || ' ';
 			shape.fontSize = child.fontSize || 16;
 			if (child.lineHeight) shape.lineHeight = { value: child.lineHeight, unit: 'PIXELS' };
+			if (child.textDecoration) shape.textDecoration = child.textDecoration === 'underline' ? 'UNDERLINE' : 'STRIKETHROUGH';
 			const fill = child.fill ? paint(child.fill, variables) : null;
 			if (fill) shape.fills = [fill];
 			shape.name = child.name;
 			shape.textAutoResize = 'WIDTH_AND_HEIGHT';
+			parent.appendChild(shape);
+		} else if (child.type === 'VECTOR') {
+			shape = figma.createNodeFromSvg(child.svg);
+			shape.name = child.name;
+			shape.fills = [];
+			const fill = child.fill ? paint(child.fill, variables) : null;
+			if (fill) for (const vector of shape.findAll((candidate) => candidate.type === 'VECTOR')) vector.fills = [fill];
+			parent.appendChild(shape);
+			shape.resize(Math.max(child.width, 0.01), Math.max(child.height, 0.01));
+		} else if (child.type === 'INSTANCE') {
+			// Base components come first in the payload, so the component exists when an instance needs it.
+			const main = library.get(child.component);
+			if (!main) {
+				log(`${child.name}: Basiskomponente ${child.component} fehlt.`);
+				continue;
+			}
+			shape = main.createInstance();
+			shape.name = child.name;
 			parent.appendChild(shape);
 		} else {
 			shape = figma.createFrame();
@@ -151,7 +170,8 @@ function buildChildren(parent, node, variables, fontOf) {
 			applyFrame(shape, child, variables);
 			buildChildren(shape, child, variables, fontOf);
 		}
-		if (parent.layoutMode === 'NONE') {
+		if (parent.layoutMode === 'NONE' || child.absolute) {
+			if (child.absolute && parent.layoutMode !== 'NONE') shape.layoutPositioning = 'ABSOLUTE';
 			shape.x = child.x;
 			shape.y = child.y;
 		} else if (child.type !== 'TEXT') {
@@ -189,6 +209,9 @@ async function libraryPage() {
 	return page;
 }
 
+/** Built components by key, for the instances of base components. */
+const library = new Map();
+
 async function run(payload) {
 	if (!payload || payload.schema !== 'kolibri-figma/1.0') throw new Error('Keine figma-import.json (Schema kolibri-figma/1.0).');
 	const variables = await syncVariables(payload.variables);
@@ -212,6 +235,7 @@ async function run(payload) {
 				created++;
 			}
 			buildComponent(component, entry, variables, fontOf);
+			library.set(entry.key, component);
 			components.push(component);
 		}
 		let target = node;

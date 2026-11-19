@@ -88,6 +88,68 @@ Das Plugin legt die Variablen-Sammlung mit den Modi Light und Dark an und baut j
 
 **6. Einhängen:** In beiden Werkzeugen ist die Datei eine Bibliothek. Designer verknüpfen sie als Shared Library und bauen ihre Wireframes aus Instanzen. Ein neuer Lauf aktualisiert die Komponenten an Ort und Stelle (Schlüssel `kolibri-key`), verknüpfte Instanzen bleiben erhalten.
 
+## Props mit `@design`: Komponenten ausführen statt lesen
+
+Für Komponenten, deren Optik an Props hängt, die keine Modifier sind, reicht der Dialekt nicht. Bei `kol-heading` steckt das Level im Tag (`h1` … `h6`, `strong` für Level 0). Bei `kol-input-text` erscheinen Meldung und Hinweis nur unter Bedingungen (`touched`, gesetzter Text). Zudem setzt sich `kol-input-text` aus mehreren Functional Components zusammen und hat keinen eigenen Block.
+
+Solche Komponenten tragen an ihren `@Prop`s das JSDoc-Tag `@design`:
+
+```ts
+/**
+ * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+ *
+ * @design variant
+ */
+@Prop() public _level?: HeadingLevel = 0;
+```
+
+| Tag                         | Wirkung                                                                      | Beispiel                                                                                                           |
+| --------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `@design variant`           | Variant-Property, Werte aus dem Prop-Typ in `custom-elements.json`           | `_level: 0 \| … \| 6` → `Level` = 0 … 6; `_disabled` → `Disabled` = false / true                                   |
+| `@design variant <l>=<w> …` | Variant-Property mit diesen Werten, für Props ohne aufzählbaren Typ          | `_color`: `black=#000 blue=#06539e red=#ae0000` → `Color` = black / blue / red; `_variant`: `default= small=small` |
+| `@design toggle <Text>`     | Boolean-Property; `true` setzt den Text                                      | `_secondaryHeadline` → `Secondary Headline`                                                                        |
+| `@design content <Text>`    | jede Variante zeigt den Text                                                 | `_hint` → `Hinweistext`                                                                                            |
+| `@design sample <Wert>`     | jede Variante setzt den Wert                                                 | `_touched` → `true`, damit Meldungen sichtbar sind                                                                 |
+| `@design state <Wert>`      | Wert der Variant-Property `State` neben `default`; setzt den Prop auf `true` | `_disabled`, `_readOnly`, `_required` → `State` = default / disabled / readonly / required                         |
+
+Eine Meldung (`_msg`, Typ mit `AlertProps`) wird zur Property `Message` mit `none` und den Werten von `_type` aus `kol-alert`. Props ohne Tag bleiben ungesetzt. An der Komponentenklasse füllt `@design slot <Text>` den Default-Slot, wie es Light-DOM-Inhalt im Browser tut (`kol-abbr`: `z. B.`).
+
+`State` hält die Zahl der Varianten klein: Penpot kennt nur Variant-Properties, jede Kombination ist eine eigene Komponente. Drei Schalter als eigene Properties ergäben 2 × 2 × 2 Kombinationen, als `State` sind es vier Werte. Hover und Focus gibt es nur bei `State=default`.
+
+Das Skript instanziiert je Variante die Klasse der Web Component aus dem Stencil-Collection-Output in Node, setzt die Props und ruft `componentWillLoad()` und `render()` auf, mit einem eigenen `h` statt `@stencil/core`, einem minimalen DOM (`happy-dom`) und ohne Browser. Normalisierte Props (`'#000'` → Farbpaar), berechnete Felder (Initialen von `kol-avatar`), Konstanten (`kol-version`), Inline-Styles, Tags, BEM-Klassen, Attribute und bedingte Elemente kommen so heraus, wie die Komponente sie rendert. Eine eingebettete Web Component (`kol-link` in `kol-quote`) rendert ihren Shadow-Baum mit ihren eigenen Regeln. Die Kaskade wertet danach auch `:has()` aus, daran hängen Fokusring und Hover-Rand der Eingabefelder.
+
+Heute tragen `kol-abbr`, `kol-alert` (20 Varianten), `kol-avatar`, `kol-badge` (6), `kol-button` (48), `kol-heading` (14), `kol-input-text` (36), `kol-link` (8), `kol-progress` (2), `kol-quote` (2), `kol-skip-nav`, `kol-spin` (3) und `kol-version` das Tag. Props ohne Tag behalten den Standardwert der Komponente. Eine Komponente ohne Tag bleibt auf dem Dialekt-Weg.
+
+Die Kaskade setzt dabei um, was diese Komponenten brauchen:
+
+| CSS                                                                 | im Export                                                                     |
+| ------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Inline-Style (`style="background-color: …"`)                        | gewinnt über alle normalen Deklarationen                                      |
+| `::before`/`::after` mit `content`                                  | Text (Anführungszeichen, `— `) oder bei leerem `content` eine Box (Spin-Ring) |
+| `position: absolute`, `inset`, `top`/`left`                         | Ebene außerhalb des Auto-Layouts (Penpot `absolute`, Figma `ABSOLUTE`)        |
+| `grid-template-areas`                                               | je Zeile ein Auto-Layout, mehrere Kinder in einem Bereich liegen übereinander |
+| inline `<svg>` (`rect`, `circle`)                                   | eine Vektor-Ebene mit den Farben aus dem Theme                                |
+| `cqw`/`cqh`, `aspect-ratio`, `%`-Größen und -Radien                 | gegen die Größe des Containers bzw. Elternelements aufgelöst                  |
+| `text-decoration`, unterstrichene Links                             | Textdekoration der Textebene                                                  |
+| `to-rem()`-Abstände (`calc(… / var(--kolibri-root-font-size, 16))`) | in Pixel aufgelöst, auch für `gap`                                            |
+
+Textbreiten rechnet das Skript mit den Zeichenbreiten von Verdana. Penpot setzt die Schrift des Themes, wenn sie als Team-Schrift hochgeladen ist; sonst meldet das Plugin sie als fehlend.
+
+### Icons
+
+Ein KoliBri-Icon (`kolicon-<name>`) wird eine Vektor-Ebene. Die Pfade stammen aus der SVG-Font, die `@public-ui/components` in `assets/kolicons/kolicons.svg` ausliefert, gespiegelt in SVG-Koordinaten. Die Füllfarbe ist die Textfarbe des Icons samt Token (`color.danger` im Fehlerfall). Penpot legt das Icon mit `createShapeFromSvg` an, Figma mit `createNodeFromSvg`; die Font muss im Design-Tool nicht installiert sein. Icons anderer Fonts (Codicons, Font Awesome) haben keine Pfade: die Box behält ihre Größe, der Bericht nennt das Icon.
+
+### Basiskomponenten aus den Functional Components
+
+Web Components setzen sich aus denselben Functional Components zusammen: `FormFieldFC` steckt in 13 Web Components, `InputContainerFC` in 11, `ButtonFC` in 9. Das Theme bildet das mit seinen Mixins je Block ab. Der Export tut es auch: Jede Functional Component mit eigenem BEM-Block innerhalb der Wurzel einer Web Component wird eine Basiskomponente (`SpanFC`, `InputFC`, `InputContainerFC`, `AlertFC`, `IconFC`). Die Web Component zeigt eine Instanz davon, verschachtelte Basiskomponenten werden zu Instanzen in der Basiskomponente.
+
+- Die Variant-Properties einer Basiskomponente sind die Achsen der Web Component, die sie verändern. Werte, die gleich aussehen, fallen zusammen: `InputContainerFC` folgt `Message` nur mit `none` und `error`, `State` nur mit `default` und `disabled`.
+- Jede Variante wird innerhalb der Web Component gerendert. Stile, die vom Elternblock abhängen (`.kol-form-field--error .kol-input-container`), gehören damit zur Variante.
+- Verglichen wird das Aussehen: BEM-Klassen, Position und Größe zählen nicht, die Größe setzt das Layout der Web Component.
+- Die Plugins bauen Basiskomponenten zuerst, geordnet nach Verschachtelung (`InputFC` vor `InputContainerFC`). Ein Wechsel der Variante tauscht die Komponente der Instanz (`swapComponent`), Overrides bleiben.
+
+Nutzt eine weitere Web Component dieselbe Functional Component mit anderen Achsen, bekommt ihr Set den Ebenenpfad als Zusatz, getrennt durch `›` (ein `/` beginnt in Penpot und Figma einen Gruppenpfad). Das Zusammenführen über mehrere Web Components ist der nächste Schritt.
+
 ## Was an der BEM-Registry zu ändern ist
 
 Der Lauf schreibt die vollständige Liste nach `dist-export/spec/bem-dialect.md`. Stand heute: 22 Modifier, in fünf Gruppen.
@@ -104,7 +166,7 @@ Umbenannte Klassen sind ein Theming-Breaking-Change: `release:theming`, alle The
 
 Zwei Punkte liegen außerhalb der Modifier:
 
-- **Zuordnung Tag → Wurzelblock.** 20 öffentliche Komponenten haben keine eigene Functional Component mit gleichnamigem Block (`kol-input-text`, `kol-select`, `kol-accordion`, …); sie setzen sich aus geteilten Blöcken zusammen. Die Registry braucht für sie einen Eintrag, welcher Block die Wurzel bildet.
+- **Zuordnung Tag → Wurzelblock.** 20 öffentliche Komponenten haben keine eigene Functional Component mit gleichnamigem Block (`kol-input-text`, `kol-select`, `kol-accordion`, …); sie setzen sich aus geteilten Blöcken zusammen. Mit `@design` an ihren Props rendert das Skript die Komponente selbst, ein Eintrag in der Registry entfällt. `kol-input-text` ist umgestellt, die übrigen 19 stehen aus.
 - **Spread-Props.** Wo ein Item seine Props per Spread erhält (`{...buttonProps}`), sieht das Skript die Werte nicht. Diese Stellen stehen ebenfalls im Bericht.
 
 ## Ablauf
@@ -116,13 +178,16 @@ pnpm --filter @public-ui/design-export start:spec
 
 Ausgabe in `dist-export/spec/`: `penpot-import.json`, `figma-import.json`, `kolibri-design-tokens.zip`, `bem-dialect.md` (Properties und nötige BEM-Änderungen), `spec-coverage.md`. Zwei Läufe ergeben dieselben Bytes (`pnpm check:determinism:spec`).
 
-- **Penpot:** Token-ZIP im Tokens-Panel importieren, Penpot-Plugin mit Export-URL `…/spec/penpot-import.json`.
+- **Penpot:** `pnpm start:spec:penpot` exportiert und startet den Server. Token-ZIP im Tokens-Panel importieren, Plugin `http://127.0.0.1:8818/penpot-plugin/manifest.json` installieren; es schlägt `…/spec/penpot-import.json` als Export-URL vor.
 - **Figma:** `figma-plugin/manifest.json` in Figma Desktop importieren, `figma-import.json` im Plugin wählen.
 
 ## Grenzen
 
 - Komponenten mit mehr als 96 Varianten bleiben vorerst außen vor, bis ihre Achsen kuratiert sind.
-- Grid-Layouts (z. B. `kol-alert`) haben im Figma-Auto-Layout kein Gegenstück; Penpot kann Grid.
-- Icons erscheinen als benannte Platzhalter, die Glyphen stehen nur im CSS der Icon-Schrift.
-- Textbreiten sind geschätzt; beide Werkzeuge messen beim Import selbst.
+- Grid-Layouts ohne `grid-template-areas` (z. B. `kol-alert`) haben im Auto-Layout kein Gegenstück.
+- Textbreiten sind aus Verdana-Metriken geschätzt und einzeilig; beide Werkzeuge messen beim Import selbst.
+- Animationen (Spin, Hover-Übergänge) und `text-decoration-thickness` haben kein Gegenstück.
+- Penpot kennt nur umlaufende Konturen: Ein Rahmen auf einzelnen Seiten (`border-bottom` an `kol-abbr`) wird je Seite eine eigene Ebene am Rand, durchgezogen statt gestrichelt. Figma setzt Rahmen je Seite direkt.
+- Penpot zeigt die Theme-Schrift Verdana nur, wenn sie als Team-Schrift hochgeladen ist; sonst meldet das Plugin sie und Penpot nutzt seine Standardschrift.
+- Inhalte (`@design content`) sind in Penpot normale Ebenen, die Designer auf der Instanz ausblenden. Boolean- und Text-Properties für Figma sind noch nicht erzeugt.
 - Das Figma-Plugin lief noch nicht in einer Figma-Instanz.

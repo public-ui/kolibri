@@ -28,7 +28,12 @@ const server = createServer(async (request, response) => {
 		}
 		const body = await readFile(filePath);
 		// Penpot fetches manifest and code from its own origin, the plugin iframe may run with an opaque origin.
-		response.writeHead(200, { 'access-control-allow-origin': '*', 'content-type': MIME_TYPES[extname(filePath)] ?? 'application/octet-stream' });
+		// `no-store`: a new export or plugin code takes effect on the next run, without a cached copy in between.
+		response.writeHead(200, {
+			'access-control-allow-origin': '*',
+			'cache-control': 'no-store',
+			'content-type': MIME_TYPES[extname(filePath)] ?? 'application/octet-stream',
+		});
 		response.end(body);
 	} catch {
 		response.writeHead(404, { 'access-control-allow-origin': '*' }).end('not found');
@@ -38,5 +43,6 @@ const server = createServer(async (request, response) => {
 server.listen(port, '127.0.0.1', () => {
 	console.log(`Design-Export-Server: http://127.0.0.1:${port}`);
 	console.log(`Plugin-Manifest:      http://127.0.0.1:${port}/penpot-plugin/manifest.json`);
-	console.log(`Import-Daten:         http://127.0.0.1:${port}/penpot/penpot-import.json`);
+	console.log(`Import-Daten:         http://127.0.0.1:${port}/spec/penpot-import.json (aus der Spezifikation)`);
+	console.log(`                      http://127.0.0.1:${port}/penpot/penpot-import.json (aus dem Browser)`);
 });

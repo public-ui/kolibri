@@ -25,6 +25,8 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
+	 *
+	 * @design content Überschrift
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -35,6 +37,8 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 *
+	 * @design variant
 	 */
 	@Prop() public _level?: HeadingLevel = 0;
 
@@ -45,6 +49,8 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 
 	/**
 	 * Defines the text of the secondary headline.
+	 *
+	 * @design toggle Unterzeile
 	 */
 	@Prop() public _secondaryHeadline?: SecondaryHeadlinePropType = undefined;
 

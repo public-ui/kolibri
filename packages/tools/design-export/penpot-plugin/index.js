@@ -30,8 +30,14 @@
 	const KEY = 'kolibri-key';
 	const SET = 'kolibri-set';
 	const CLASSES = 'kolibri-classes';
+	/** On an instance of a base component: the key of the component it shows. */
+	const INSTANCE = 'kolibri-instance';
+	/** On an icon: its path data, so a changed icon is drawn anew. */
+	const VECTOR = 'kolibri-vector';
 	const DEPRECATED = 'kolibri-deprecated';
 	const VERSION = 'kolibri-version';
+	/** Page that holds the main components of a new library. */
+	const LIBRARY_PAGE = 'KoliBri';
 
 	const ALIGN = {
 		baseline: 'start',
@@ -229,8 +235,8 @@
 	}
 
 	/**
-	 * The strokes of a box: the CSS border as an inner stroke and, where the focus ring has no ring
-	 * layer of its own (see `usesRingLayer`), the CSS outline as an outer stroke without the gap of
+	 * The strokes of a box: the CSS border as an inner stroke and, after a fallback from the ring
+	 * layer (see `usesRingLayer`), the CSS outline as an outer stroke without the gap of
 	 * `outline-offset`.
 	 */
 	function syncStrokes(ctx, shape, node, path, fresh, withOutline) {
@@ -239,9 +245,6 @@
 			desired.push({ alignment: 'outer', color: node.outline.color, label: 'Fokusring', token: node.outline.token, width: node.outline.width });
 		const borderWidth = node.strokeWidths ? Math.max(...node.strokeWidths) : 0;
 		if (node.stroke && borderWidth) desired.push({ alignment: 'inner', color: node.stroke, label: 'Rahmen', token: node.strokeToken, width: borderWidth });
-		if (fresh && node.strokeWidths && node.strokeWidths.some((side) => side !== borderWidth)) {
-			log(`${path}: Rahmen nur auf einzelnen Seiten (${node.strokeWidths.join('/')}), übernommen als umlaufend ${borderWidth}px.`, 'err');
-		}
 		if (fresh && desired.length > 1) log(`${path}: Fokusring und Rahmen auf einer Ebene, nur der Fokusring folgt dem Token.`, 'err');
 		syncStrokeList(ctx, shape, desired, path, fresh);
 	}
@@ -325,14 +328,54 @@
 	 * Penpot measures text in its own font and would shrink the box below it.
 	 */
 	function sizingOf(node) {
-		const horizontal = node.fillX ? 'fill' : node.shrink && !binds(node.minWidth, node.width) ? 'auto' : 'fix';
-		const vertical = node.fillY ? 'fill' : binds(node.minHeight, node.height) ? 'fix' : 'auto';
+		// A size set in CSS (`width: 100px`, `aspect-ratio`) stays fixed, also inside a stretching layout.
+		const horizontal = node.fixedWidth ? 'fix' : node.fillX ? 'fill' : node.shrink && !binds(node.minWidth, node.width) ? 'auto' : 'fix';
+		const vertical = node.fixedHeight ? 'fix' : node.fillY ? 'fill' : binds(node.minHeight, node.height) ? 'fix' : 'auto';
 		return { horizontal, vertical };
+	}
+
+	/**
+	 * Penpot knows only strokes around the whole shape. A border on single sides (`border-bottom`)
+	 * becomes one filled layer per side, out of the layout at the edge of the box.
+	 */
+	function splitSideBorders(node) {
+		for (const child of node.children || []) splitSideBorders(child);
+		if (!node.stroke || !node.strokeWidths) return;
+		const [top, right, bottom, left] = node.strokeWidths;
+		const max = Math.max(top, right, bottom, left);
+		if (max === 0 || node.strokeWidths.every((side) => side === max)) return;
+		const edge = (side, width, x, y, w, h, absolute) =>
+			width > 0
+				? [
+						{
+							name: `${node.name}::border-${side}`,
+							classes: [],
+							kind: 'box',
+							x,
+							y,
+							width: w,
+							height: h,
+							fill: node.stroke,
+							fillToken: node.strokeToken,
+							absolute,
+							children: [],
+						},
+					]
+				: [];
+		node.children = [
+			...(node.children || []),
+			...edge('top', top, node.x, node.y, node.width, top, { left: 0, right: 0, top: 0 }),
+			...edge('right', right, node.x + node.width - right, node.y, right, node.height, { bottom: 0, right: 0, top: 0 }),
+			...edge('bottom', bottom, node.x, node.y + node.height - bottom, node.width, bottom, { bottom: 0, left: 0, right: 0 }),
+			...edge('left', left, node.x, node.y, left, node.height, { bottom: 0, left: 0, top: 0 }),
+		];
+		delete node.stroke;
+		delete node.strokeToken;
 	}
 
 	/** Marks the CSS sizing context on every box of a tree: shrink-to-fit and stretched axes. */
 	function annotateSizing(node, parent) {
-		if (node.kind !== 'box') return;
+		if (node.kind === 'text' || node.kind === 'vector') return;
 		const parentLayout = parent ? parent.layout : undefined;
 		node.shrink = Boolean(node.inline || (parent && parent.hugs && parentLayout));
 		if (parentLayout && ['normal', 'stretch'].includes(parentLayout.alignItems)) {
@@ -346,7 +389,123 @@
 
 	// ---------------------------------------------------------------- layers
 
-	const kindOf = (shape) => (shape.type === 'text' ? 'text' : 'box');
+	const kindOf = (shape) => (getData(shape, INSTANCE) ? 'instance' : getData(shape, VECTOR) ? 'vector' : shape.type === 'text' ? 'text' : 'box');
+
+	const vectorData = (node) => node.vector.markup || node.vector.paths.join(' ');
+
+	/** An icon as a group of paths (`createShapeFromSvg`); the fill of each path follows the color token. */
+	function createVector(ctx, node, key, origin, parent) {
+		// Markup of an inline `<svg>` carries its own colors; the paths of an icon take the fill of the node.
+		const markup =
+			node.vector.markup ||
+			`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${node.vector.viewBox}" width="${node.width}" height="${node.height}">${node.vector.paths
+				.map((d) => `<path d="${d}"/>`)
+				.join('')}</svg>`;
+		const shape = penpot.createShapeFromSvg(markup);
+		if (!shape) {
+			log(`${key}: Icon nicht angelegt.`, 'err');
+			return null;
+		}
+		if (parent) parent.appendChild(shape);
+		trySet(ctx, shape, 'name', node.name);
+		shape.x = origin.x + node.x;
+		shape.y = origin.y + node.y;
+		if (Math.abs(shape.width - node.width) > 0.5 || Math.abs(shape.height - node.height) > 0.5) shape.resize(node.width, node.height);
+		setData(ctx, shape, KEY, key);
+		setData(ctx, shape, VECTOR, vectorData(node));
+		ctx.stats.icons += 1;
+		syncVectorFill(ctx, shape, node, key, true);
+		return shape;
+	}
+
+	function syncVectorFill(ctx, shape, node, path, fresh) {
+		if (node.vector.markup) return;
+		const paths = (shape.children || []).length > 0 ? shape.children : [shape];
+		paths.forEach((child, index) => syncFill(ctx, child, node.fill, node.fillToken, `${path}#${index}`, fresh, 'Icon-Farbe'));
+	}
+
+	/** A component of this plugin by key; the base components are built before the components that show them. */
+	/**
+	 * Every component of the file. The library lists one member per variant set; the other members
+	 * are reached through the set.
+	 */
+	function localComponents() {
+		const all = new Map();
+		for (const component of penpot.library.local.components || []) {
+			all.set(component.id, component);
+			let members = [];
+			try {
+				if (component.isVariant && component.isVariant() && component.variants) members = component.variants.variantComponents() || [];
+			} catch (error) {
+				members = [];
+			}
+			for (const member of members) all.set(member.id, member);
+		}
+		return [...all.values()];
+	}
+
+	function componentByKey(ctx, key) {
+		const find = () => localComponents().find((component) => getData(component, KEY) === key);
+		const found = find();
+		if (found || !ctx.apply) return found;
+		// Penpot may drop the key of a set member after combining; written again, the lookup holds.
+		retag(ctx);
+		return find();
+	}
+
+	/** The instance takes its size from the layout of its parent, as a box does. */
+	function syncInstanceSizing(ctx, shape, node, path) {
+		if (!ctx.apply) return;
+		const sizing = sizingOf(node);
+		ctx.sizing.push({ board: shape, horizontal: sizing.horizontal, path, vertical: sizing.vertical });
+	}
+
+	function createInstance(ctx, node, key, origin, parent) {
+		const component = componentByKey(ctx, node.component);
+		if (!component) {
+			log(`${key}: Basiskomponente ${node.component} fehlt, Instanz nicht angelegt.`, 'err');
+			return null;
+		}
+		const shape = component.instance();
+		if (parent) parent.appendChild(shape);
+		shape.x = origin.x + node.x;
+		shape.y = origin.y + node.y;
+		trySet(ctx, shape, 'name', node.name);
+		setData(ctx, shape, KEY, key);
+		setData(ctx, shape, INSTANCE, node.component);
+		ctx.stats.instances += 1;
+		syncInstanceSizing(ctx, shape, node, key);
+		return shape;
+	}
+
+	/** An existing instance: another variant of the base component is swapped in, overrides stay. */
+	function syncInstance(ctx, shape, node, key, path, origin, fixed) {
+		if (!fixed) {
+			const position = [round(origin.x + node.x), round(origin.y + node.y)];
+			prop(
+				ctx,
+				false,
+				path,
+				'Position',
+				() => round(shape.x) === position[0] && round(shape.y) === position[1],
+				() => {
+					shape.x = position[0];
+					shape.y = position[1];
+				},
+			);
+		}
+		setData(ctx, shape, KEY, key);
+		const current = getData(shape, INSTANCE);
+		if (current !== node.component) {
+			ctx.report.changed.push(`${path}: ${current} → ${node.component}`);
+			const component = ctx.apply ? componentByKey(ctx, node.component) : null;
+			if (component) {
+				shape.swapComponent(component);
+				setData(ctx, shape, INSTANCE, node.component);
+			}
+		}
+		syncInstanceSizing(ctx, shape, node, path);
+	}
 
 	/** Layer key per parent: the BEM name, numbered from the second layer of the same name on. */
 	function nextKey(name, counts) {
@@ -364,6 +523,25 @@
 			result.set(key, child);
 		}
 		return result;
+	}
+
+	/**
+	 * The font of the theme from the fonts Penpot knows (Google Fonts and the fonts uploaded to the
+	 * team). Without it, Penpot keeps its default font and the plugin names the missing one.
+	 */
+	function fontOf(ctx, family) {
+		if (!family) return null;
+		if (!ctx.fonts.has(family)) {
+			let font = null;
+			try {
+				font = penpot.fonts.findByName(family);
+			} catch (error) {
+				font = null;
+			}
+			ctx.fonts.set(family, font);
+			if (!font) log(`Schrift ${family} fehlt in Penpot: als Team-Schrift hochladen, bis dahin gilt die Standardschrift.`, 'err');
+		}
+		return ctx.fonts.get(family);
 	}
 
 	function syncText(ctx, text, node, path, fresh) {
@@ -385,7 +563,21 @@
 			() => String(text.fontSize) === fontSize,
 			() => trySet(ctx, text, 'fontSize', fontSize),
 		);
-		if (node.fontWeight) {
+		const font = fontOf(ctx, node.fontFamily);
+		if (font) {
+			const fontWeight = String(node.fontWeight || 400);
+			const variant =
+				(font.variants || []).find((candidate) => String(candidate.fontWeight) === fontWeight && (candidate.fontStyle || 'normal') === 'normal') ||
+				(font.variants || [])[0];
+			prop(
+				ctx,
+				fresh,
+				path,
+				`Schrift ${font.name} ${fontWeight}`,
+				() => text.fontId === font.fontId && (!variant || text.fontVariantId === variant.fontVariantId),
+				() => font.applyToText(text, variant),
+			);
+		} else if (node.fontWeight) {
 			const fontWeight = String(node.fontWeight);
 			// Penpot führt die Schriftvariante getrennt vom Gewicht; ohne sie fällt ein bearbeiteter Text auf „regular“ zurück.
 			const fontVariantId = fontWeight === '400' ? 'regular' : fontWeight;
@@ -412,6 +604,15 @@
 				() => trySet(ctx, text, 'lineHeight', lineHeight),
 			);
 		}
+		const textDecoration = node.textDecoration || 'none';
+		prop(
+			ctx,
+			fresh,
+			path,
+			`Textdekoration ${textDecoration}`,
+			() => (text.textDecoration || 'none') === textDecoration,
+			() => trySet(ctx, text, 'textDecoration', textDecoration),
+		);
 		if (node.fill) syncFill(ctx, text, node.fill, node.fillToken, path, fresh, 'Textfarbe');
 	}
 
@@ -464,8 +665,8 @@
 		}
 	}
 
-	function syncLayout(ctx, board, node, path, fresh, overrides = null) {
-		const desired = overrides ? { ...(layoutOf(node) || plainLayoutOf(node)), ...overrides } : layoutOf(node);
+	function syncLayout(ctx, board, node, path, fresh) {
+		const desired = layoutOf(node);
 		if (board.grid) {
 			if (!fresh) ctx.report.changed.push(`${path}: Grid-Layout entfernt`);
 			if (ctx.apply) board.grid.remove();
@@ -507,29 +708,18 @@
 
 	const RING = 'kolibri-ring';
 	/** Raised when the ring layout changes, so a library that fell back tries the ring layer again. */
-	const RING_REVISION = 'stroke:4';
+	const RING_REVISION = 'absolute:1';
 	const OUTLINE = '::outline';
 
 	/**
-	 * The focus ring keeps the gap of `outline-offset` only as a layer of its own: a box with an
-	 * outline and a single child box (the interactive element around its visible box) lays out the
-	 * child and the ring in a column. The ring fills the width with negative margins of the offset
-	 * and has the height of the box plus twice the offset; its vertical margins take that height out
-	 * of the flow again, so the ring overlaps the box instead of pushing it. It follows the label
-	 * without changing the size of the component. Where Penpot does not lay this out (see
-	 * `settleLayout`), the ring falls back to an outer stroke without the gap.
+	 * The focus ring keeps the gap of `outline-offset` only as a layer of its own: a board without
+	 * fill whose outer stroke is the outline. It sits absolutely one offset outside the box and is
+	 * pinned to all four edges (constraints `leftright`/`topbottom`), so it follows the box when its
+	 * content changes the size. Where Penpot does not place it (see `settleLayout`), the ring falls
+	 * back to an outer stroke of the box without the gap.
 	 */
 	function usesRingLayer(ctx, node) {
-		return node.kind === 'box' && node.outline !== undefined && node.children.length === 1 && node.children[0].kind === 'box' && !ctx.ringFallback;
-	}
-
-	const RING_LAYOUT = { alignItems: 'start', dir: 'column', justifyContent: 'start', rowGap: 0, wrap: 'nowrap' };
-
-	/** The flex layout of a box that has none in CSS, for the column that carries a ring. */
-	function plainLayoutOf(node) {
-		const [top, right, bottom, left] = node.padding || [0, 0, 0, 0];
-		const { horizontal, vertical } = sizingOf(node);
-		return { topPadding: top, rightPadding: right, bottomPadding: bottom, leftPadding: left, horizontalSizing: horizontal, verticalSizing: vertical };
+		return node.kind === 'box' && node.outline !== undefined && !ctx.ringFallback;
 	}
 
 	function syncRingLayer(ctx, board, node, path, existing, fresh) {
@@ -547,14 +737,10 @@
 			board.appendChild(ring);
 			ringFresh = true;
 		}
-		// Ein Fill-Kind ohne eigenes Layout zählt in Penpot mit seiner aktuellen Breite zum Hug der Box,
-		// eines mit Flex-Layout nur mit seiner Mindestbreite: so bleibt die Box so breit wie ihr Inhalt.
-		if (ctx.apply && !ring.flex) {
-			try {
-				ring.addFlexLayout();
-			} catch (error) {
-				log(`${ringPath}: Flex-Layout für den Ring nicht möglich (${error.message}).`, 'err');
-			}
+		if (ctx.apply) {
+			if (ring.flex) ring.flex.remove();
+			// Absolut, bevor Penpot das Layout rechnet: so zählt der Ring nie zum Hug der Box.
+			detachRing(ctx, ring);
 		}
 		const { color, offset, token, width } = node.outline;
 		syncStrokeList(ctx, ring, [{ alignment: 'outer', color, label: 'Fokusring', token, width }], ringPath, ringFresh);
@@ -568,11 +754,41 @@
 			() => applyRadius(ctx, ring, radius),
 		);
 		setData(ctx, ring, KEY, key);
-		if (ctx.apply) ctx.ringLayers.push({ board, fresh: ringFresh, node, offset, path, ring });
+		if (ctx.apply) ctx.ringLayers.push({ board, node, offset, path, ring });
 		return key;
 	}
 
-	/** Without the ring layer, the focus ring becomes an outer stroke of the box again, and the box gets its own flex layout back. */
+	/** Takes the ring out of the flex flow and pins it to the edges of the box. */
+	function detachRing(ctx, ring) {
+		if (ring.layoutChild) {
+			trySet(ctx, ring.layoutChild, 'absolute', true);
+			trySet(ctx, ring.layoutChild, 'zIndex', 1);
+		}
+		trySet(ctx, ring, 'constraintsHorizontal', 'leftright');
+		trySet(ctx, ring, 'constraintsVertical', 'topbottom');
+	}
+
+	/** One offset outside the box on every side. */
+	function placeRing(ctx, { board, offset, ring }) {
+		detachRing(ctx, ring);
+		ring.resize(Math.max(1, round(board.width + 2 * offset)), Math.max(1, round(board.height + 2 * offset)));
+		ring.x = board.x - offset;
+		ring.y = board.y - offset;
+	}
+
+	const near = (a, b) => Math.abs(a - b) <= 1;
+
+	/** The ring surrounds the box at the offset; this is what the design shows. */
+	function ringFits({ board, offset, ring }) {
+		return (
+			near(ring.x, board.x - offset) &&
+			near(ring.y, board.y - offset) &&
+			near(ring.width, board.width + 2 * offset) &&
+			near(ring.height, board.height + 2 * offset)
+		);
+	}
+
+	/** Without the ring layer, the focus ring becomes an outer stroke of the box again. */
 	function ringFallback(ctx, item, reason) {
 		if (!ctx.ringFallback) log(`Fokusring mit Abstand nicht möglich (${reason}): Ringe werden äußere Striche ohne Abstand.`, 'err');
 		ctx.ringFallback = true;
@@ -584,11 +800,12 @@
 		}
 		// Die Bibliothek merkt sich den Rückfall, damit spätere Läufe den Ring nicht erneut als Ebene versuchen.
 		setData(ctx, penpot.library.local, RING, RING_REVISION);
-		syncLayout(ctx, board, node, path, true);
 		syncStrokes(ctx, board, node, path, true, true);
 	}
 
 	function createShape(ctx, node, key, origin, parent) {
+		if (node.kind === 'instance') return createInstance(ctx, node, key, origin, parent);
+		if (node.kind === 'vector') return createVector(ctx, node, key, origin, parent);
 		const shape = node.kind === 'text' ? penpot.createText(node.characters || ' ') : penpot.createBoard();
 		if (!shape) {
 			log(`Text ${node.name} konnte nicht angelegt werden.`, 'err');
@@ -639,6 +856,8 @@
 				() => trySet(ctx, shape, 'name', node.name),
 			);
 		setData(ctx, shape, KEY, key);
+		// Out of the flow: positioned after Penpot has laid out the parent.
+		if (node.absolute && ctx.apply) ctx.absolutes.push({ shape, x: round(origin.x + node.x), y: round(origin.y + node.y) });
 		if (node.classes && node.classes.length > 0) setData(ctx, shape, CLASSES, node.classes.join(' '));
 		if (node.kind === 'text') {
 			syncText(ctx, shape, node, path, fresh);
@@ -647,7 +866,7 @@
 		const ringLayer = usesRingLayer(ctx, node);
 		syncBoxStyle(ctx, shape, node, path, fresh, ringLayer);
 		const existing = fresh ? new Map() : childrenByKey(shape);
-		const inLayout = ringLayer || layoutOf(node) !== null;
+		const inLayout = layoutOf(node) !== null;
 		const counts = new Map();
 		const seen = new Set();
 		for (const child of node.children || []) {
@@ -656,7 +875,16 @@
 			seen.add(childKey);
 			const current = existing.get(childKey);
 			if (current && kindOf(current) === child.kind) {
-				syncShape(ctx, current, child, childKey, childPath, origin, false, inLayout);
+				if (child.kind === 'instance') syncInstance(ctx, current, child, childKey, childPath, origin, inLayout);
+				else if (child.kind !== 'vector') syncShape(ctx, current, child, childKey, childPath, origin, false, inLayout);
+				else if (getData(current, VECTOR) === vectorData(child)) syncVectorFill(ctx, current, child, childPath, false);
+				else {
+					ctx.report.changed.push(`${childPath}: Icon neu gezeichnet`);
+					if (ctx.apply) {
+						current.remove();
+						createShape(ctx, child, childKey, origin, shape);
+					}
+				}
 				continue;
 			}
 			if (current) {
@@ -667,12 +895,8 @@
 			if (ctx.apply) createShape(ctx, child, childKey, origin, shape);
 		}
 		// Das Layout kommt nach den Kindern, damit Penpot neue Kinder nach ihrer Position anordnet.
-		if (ringLayer) {
-			syncLayout(ctx, shape, node, path, fresh, RING_LAYOUT);
-			seen.add(syncRingLayer(ctx, shape, node, path, existing, fresh));
-		} else {
-			syncLayout(ctx, shape, node, path, fresh);
-		}
+		syncLayout(ctx, shape, node, path, fresh);
+		if (ringLayer) seen.add(syncRingLayer(ctx, shape, node, path, existing, fresh));
 		for (const [childKey, child] of existing) {
 			// Nur Ebenen dieses Plugins verschwinden; von Hand ergänzte Ebenen bleiben unangetastet.
 			if (!seen.has(childKey) && getData(child, KEY)) {
@@ -682,82 +906,40 @@
 		}
 	}
 
-	const boxOf = ({ board, ring }) => (board.children || []).find((child) => child.name !== ring.name);
-
-	/**
-	 * Fill across, fixed height of box plus twice the offset, and vertical margins that take that height
-	 * out of the column again: as first child the ring starts one offset above the box, as second child
-	 * it starts one box height plus one offset back.
-	 */
-	function placeRing(ctx, { board, offset, ring }, first) {
-		const child = ring.layoutChild;
-		if (!child) return;
-		const boxHeight = round(board.height);
-		const ringHeight = boxHeight + 2 * offset;
-		ring.resize(Math.max(1, ring.width), ringHeight);
-		trySet(ctx, child, 'horizontalSizing', 'fill');
-		trySet(ctx, child, 'verticalSizing', 'fix');
-		trySet(ctx, child, 'leftMargin', -offset);
-		trySet(ctx, child, 'rightMargin', -offset);
-		trySet(ctx, child, 'topMargin', first ? -offset : -(boxHeight + offset));
-		trySet(ctx, child, 'bottomMargin', first ? -(ringHeight - offset) : -offset);
-	}
-
-	const near = (a, b) => Math.abs(a - b) <= 1;
-
-	/** The ring surrounds the visible box at the offset; this is what the design shows. */
-	function ringFits(item) {
-		const { offset, ring } = item;
-		const box = boxOf(item);
-		return (
-			box !== undefined &&
-			near(ring.x, box.x - offset) &&
-			near(ring.y, box.y - offset) &&
-			near(ring.width, box.width + 2 * offset) &&
-			near(ring.height, box.height + 2 * offset)
-		);
-	}
-
 	/**
 	 * Gives every box its sizing once more after Penpot has applied the layout: the plugin API emits
 	 * layout changes asynchronously, and Penpot writes default sizing of its own after `addFlexLayout`.
 	 */
 	async function settleLayout(ctx) {
-		if (ctx.sizing.length === 0 && ctx.ringLayers.length === 0) return;
+		if (ctx.sizing.length === 0 && ctx.ringLayers.length === 0 && ctx.absolutes.length === 0) return;
 		const sizing = ctx.sizing.splice(0);
 		const rings = ctx.ringLayers.splice(0);
+		const absolutes = ctx.absolutes.splice(0);
 		await layoutSettled();
-		for (const item of rings) placeRing(ctx, item, true);
-		await layoutSettled();
+		for (const { shape, x, y } of absolutes) {
+			if (shape.layoutChild) trySet(ctx, shape.layoutChild, 'absolute', true);
+			shape.x = x;
+			shape.y = y;
+		}
 		for (const { board, horizontal, path, vertical } of sizing) {
 			if (board.horizontalSizing === horizontal && board.verticalSizing === vertical) continue;
 			ctx.stats.resized += 1;
 			if (ctx.stats.resized === 1) log(`${path}: Penpot hatte die Größe auf ${board.horizontalSizing}/${board.verticalSizing} gesetzt, korrigiert.`);
-			// `fill` nimmt nur das Layout-Objekt an, das Board selbst kennt nur Hug und Fixed.
-			const target = board.flex || board;
-			trySet(ctx, target, 'horizontalSizing', horizontal);
-			trySet(ctx, target, 'verticalSizing', vertical);
+			// `fill` gilt im Layout des Elternelements (`layoutChild`); das Board und sein eigenes Layout kennen nur Hug und Fixed.
+			const targetOf = (value) => (value === 'fill' && board.layoutChild) || board.flex || board;
+			trySet(ctx, targetOf(horizontal), 'horizontalSizing', horizontal);
+			trySet(ctx, targetOf(vertical), 'verticalSizing', vertical);
 		}
 		await layoutSettled();
-		// Die Reihenfolge im Flex-Fluss ist nicht sicher bekannt: passt der Ring nicht, gilt er als zweites Kind.
-		const misplaced = rings.filter((item) => !ringFits(item));
-		for (const item of misplaced) placeRing(ctx, item, false);
-		if (misplaced.length > 0) await layoutSettled();
+		// Der Ring richtet sich nach der Box, deren Größe erst jetzt feststeht.
+		for (const item of rings) placeRing(ctx, item);
+		if (rings.length > 0) await layoutSettled();
 		for (const item of rings) {
-			const box = boxOf(item);
-			if (!ringFits(item) || !box || near(box.width, item.board.width)) continue;
-			ctx.stats.widened = Math.max(ctx.stats.widened, round(item.board.width - box.width));
-			ctx.stats.widenedCount += 1;
-		}
-		for (const item of misplaced) {
 			if (ringFits(item)) continue;
 			const { board, ring } = item;
-			const box = boxOf(item);
 			const geometry = (shape) => `${round(shape.x - board.x)}/${round(shape.y - board.y)} ${round(shape.width)}×${round(shape.height)}`;
-			ringFallback(ctx, item, `Ring ${geometry(ring)}, Box ${box ? geometry(box) : 'fehlt'}, Element ${round(board.width)}×${round(board.height)}`);
+			ringFallback(ctx, item, `Ring ${geometry(ring)}, Element ${round(board.width)}×${round(board.height)}`);
 		}
-		// Der Rückfall legt Flex-Layouts neu an; ihre Größen werden wie alle anderen nachgezogen.
-		if (ctx.sizing.length > 0) await settleLayout(ctx);
 		for (const { board, horizontal, path, vertical } of sizing) {
 			if (board.horizontalSizing !== horizontal || board.verticalSizing !== vertical) {
 				log(`${path}: Größe bleibt ${board.horizontalSizing}/${board.verticalSizing} statt ${horizontal}/${vertical}.`, 'err');
@@ -802,24 +984,63 @@
 
 	// ---------------------------------------------------------------- library
 
-	const signatureOf = (pairs) => pairs.map(([name, value]) => `${name}=${value}`).join(',');
+	// Penpot keeps the property order of a set; a property added later sits at its end.
+	const signatureOf = (pairs) =>
+		pairs
+			.map(([name, value]) => `${name}=${value}`)
+			.sort()
+			.join(',');
+
+	function variantPropsOf(component) {
+		try {
+			return (component.isVariant && component.isVariant() && component.variantProps) || null;
+		} catch (error) {
+			return null;
+		}
+	}
+
+	/**
+	 * The export entry a set member of another export takes over, e.g. a member of the browser
+	 * export (`Disabled`, `Hover`, `Focus`) in the set of the spec export (`Disabled`, `Message`, …):
+	 * its values match, every property it lacks has the value of the set's first entry.
+	 */
+	function adoptableEntry(component, entriesBySet) {
+		const properties = variantPropsOf(component);
+		const entries = entriesBySet.get(getData(component, SET) || component.name);
+		if (!properties || !entries) return undefined;
+		const defaults = new Map(entries[0].properties);
+		const candidates = entries.filter((entry) => {
+			const values = new Map(entry.properties);
+			const own = Object.entries(properties);
+			if (own.some(([name, value]) => values.get(name) !== value)) return false;
+			return entry.properties.every(([name, value]) => name in properties || defaults.get(name) === value);
+		});
+		return candidates.length === 1 ? candidates[0] : undefined;
+	}
 
 	/**
 	 * Components of this plugin by key. The key is plugin data on the component; Penpot drops plugin
 	 * data of components it combines into a variant set, so a set member without a key is recognized
-	 * by its variant properties, which are unique within the set. Components of an earlier import are
-	 * adopted: the light scheme becomes the one set, components of the dark scheme keep their key and
-	 * are marked deprecated, because the token theme `Scheme` replaces them.
+	 * by its variant properties, which are unique within the set. A set member whose key the export
+	 * no longer contains is adopted by an entry of the same set (`adoptableEntry`), so the set and
+	 * its instances stay. Components of an earlier import are adopted: the light scheme becomes the
+	 * one set, components of the dark scheme keep their key and are marked deprecated, because the
+	 * token theme `Scheme` replaces them.
 	 */
 	function managedComponents(ctx, payload) {
 		const bySignature = new Map();
+		const entriesBySet = new Map();
 		for (const entry of payload.components) {
 			if (!entry.set) continue;
 			const signature = signatureOf(entry.properties);
 			bySignature.set(signature, bySignature.has(signature) ? null : entry);
+			if (!entriesBySet.has(entry.set)) entriesBySet.set(entry.set, []);
+			entriesBySet.get(entry.set).push(entry);
 		}
+		const exported = new Set(payload.components.map((entry) => entry.id));
+		const orphans = [];
 		const result = new Map();
-		for (const component of penpot.library.local.components || []) {
+		for (const component of localComponents()) {
 			let key = getData(component, KEY);
 			if (!key) {
 				const legacy = getData(component, 'kolibri-scenario-id');
@@ -828,13 +1049,8 @@
 					key = legacy.includes('/') ? legacy : `${fullName.startsWith('dark/') ? 'dark' : 'light'}/${legacy}`;
 				}
 			}
-			if (!key && component.isVariant && component.isVariant()) {
-				let properties = null;
-				try {
-					properties = component.variantProps;
-				} catch (error) {
-					properties = null;
-				}
+			if (!key) {
+				const properties = variantPropsOf(component);
 				const entry = properties ? bySignature.get(signatureOf(Object.entries(properties))) : undefined;
 				const names = [component.name, ...normalizeName(component.path).split('/')];
 				if (entry && names.includes(entry.set)) {
@@ -843,7 +1059,20 @@
 				}
 			}
 			if (!key) continue;
-			result.set(key.startsWith('light/') ? key.slice('light/'.length) : key, component);
+			key = key.startsWith('light/') ? key.slice('light/'.length) : key;
+			if (exported.has(key)) result.set(key, component);
+			else orphans.push([key, component]);
+		}
+		// Erst nach allen passenden Schlüsseln, damit eine Übernahme keine vorhandene Komponente verdrängt.
+		for (const [key, component] of orphans) {
+			const entry = adoptableEntry(component, entriesBySet);
+			if (entry && !result.has(entry.id)) {
+				result.set(entry.id, component);
+				ctx.stats.adopted += 1;
+				ctx.report.changed.push(`${key} → ${entry.id}`);
+			} else {
+				result.set(key, component);
+			}
 		}
 		return result;
 	}
@@ -894,52 +1123,99 @@
 		syncShape(ctx, main, shapes, shapes.name, key, { x: main.x - shapes.x, y: main.y - shapes.y }, false, true, true);
 	}
 
-	/**
-	 * The variant properties of an existing set member: names in property order, values per member.
-	 * A value that drifted is set again; names that differ in number cannot be mapped by position,
-	 * the report then asks for a new set.
-	 */
-	function syncVariantProperties(ctx, component, entry, key) {
-		if (!entry.set || !(component.isVariant && component.isVariant())) return;
-		let current;
+	function propertyNamesOf(component) {
 		try {
-			current = component.variantProps || {};
+			return component.variants ? [...component.variants.properties] : Object.keys(variantPropsOf(component) || {});
 		} catch (error) {
-			return;
+			return [];
 		}
-		const names = Object.keys(current);
-		if (names.length === 0) return;
-		const wanted = entry.properties.map(([name]) => name);
-		if (names.length !== wanted.length) {
-			ctx.report.removedLayers.push(`${key}: Variant-Eigenschaften ${names.join(', ')} statt ${wanted.join(', ')}, Set bitte neu anlegen`);
-			return;
-		}
-		wanted.forEach((name, position) => {
-			if (names[position] === name || ctx.renamedProperties.has(`${entry.set}#${position}`)) return;
-			ctx.renamedProperties.add(`${entry.set}#${position}`);
-			ctx.report.changed.push(`${entry.set}: Eigenschaft ${names[position]} → ${name}`);
-			if (ctx.apply) component.variants.renameProperty(position, name);
-		});
-		entry.properties.forEach(([name, value], position) => {
-			const currentValue = current[names[position]];
-			if (currentValue === value) return;
-			ctx.report.changed.push(`${key}: ${name} ${currentValue} → ${value}`);
+	}
+
+	/** Sets the values of a set member by property name; Penpot addresses a property by its position. */
+	function setVariantValues(ctx, component, pairs, key) {
+		const names = propertyNamesOf(component);
+		const current = variantPropsOf(component) || {};
+		for (const [name, value] of pairs) {
+			const position = names.indexOf(name);
+			if (position < 0 || current[name] === value) continue;
+			if (key) ctx.report.changed.push(`${key}: ${name} ${current[name] ?? '–'} → ${value}`);
 			if (ctx.apply) component.setVariantProperty(position, value);
-		});
+		}
+	}
+
+	/**
+	 * The properties of a set, once per set: as many names as exported, but different ones, are
+	 * renamed by position; missing ones are added at the end; one the export no longer has is
+	 * reported, because removing it can make two members equal.
+	 */
+	async function syncSetProperties(ctx, component, entry) {
+		if (ctx.syncedSets.has(entry.set)) return;
+		ctx.syncedSets.add(entry.set);
+		const variants = component.variants;
+		if (!variants) return;
+		const names = [...variants.properties];
+		const wanted = entry.properties.map(([name]) => name);
+		if (names.length === wanted.length && wanted.some((name) => !names.includes(name))) {
+			wanted.forEach((name, position) => {
+				if (names[position] === name) return;
+				ctx.report.changed.push(`${entry.set}: Eigenschaft ${names[position]} → ${name}`);
+				if (ctx.apply) variants.renameProperty(position, name);
+			});
+			return;
+		}
+		for (const name of wanted.filter((candidate) => !names.includes(candidate))) {
+			ctx.report.changed.push(`${entry.set}: Eigenschaft ${name} ergänzt`);
+			if (!ctx.apply) continue;
+			const count = variants.properties.length;
+			variants.addProperty();
+			for (let attempt = 0; attempt < 30 && variants.properties.length === count; attempt += 1) await wait(100);
+			if (variants.properties.length === count) {
+				log(`${entry.set}: Eigenschaft ${name} nicht ergänzbar (Zeitüberschreitung).`, 'err');
+				return;
+			}
+			variants.renameProperty(variants.properties.length - 1, name);
+		}
+		const extra = names.filter((name) => !wanted.includes(name));
+		if (extra.length > 0) ctx.report.removedLayers.push(`${entry.set}: Eigenschaft ${extra.join(', ')} nicht mehr exportiert, bitte von Hand entfernen`);
+	}
+
+	async function syncVariantProperties(ctx, component, entry, key) {
+		if (!entry.set || !variantPropsOf(component)) return;
+		await syncSetProperties(ctx, component, entry);
+		setVariantValues(ctx, component, entry.properties, key);
+	}
+
+	/**
+	 * Penpot builds a component from the shapes in its page store; a shape the plugin just created
+	 * may not have arrived there yet, and `createComponent` then reports invalid shapes. It is retried
+	 * after the store has settled.
+	 */
+	async function createComponentWhenStored(root) {
+		for (let attempt = 1; ; attempt += 1) {
+			try {
+				return penpot.library.local.createComponent([root]);
+			} catch (error) {
+				if (attempt >= 5) throw error;
+				await wait(200 * attempt);
+				await layoutSettled();
+			}
+		}
 	}
 
 	async function buildComponent(ctx, shapes, key, name, set, x, y) {
+		await activate(ctx.libraryPage);
 		const root = createShape(ctx, shapes, shapes.name, { x: x - shapes.x, y: y - shapes.y }, null);
 		await settleLayout(ctx);
 		if (!root) return null;
 		try {
-			const component = penpot.library.local.createComponent([root]);
+			const component = await createComponentWhenStored(root);
 			component.name = name;
 			setData(ctx, component, KEY, key);
 			if (set) setData(ctx, component, SET, set);
 			ctx.stats.components += 1;
 			const main = component.mainInstance() || root;
 			ctx.built.set(main.id, { key, set });
+			ctx.built.set(component.id, { key, set });
 			return main;
 		} catch (error) {
 			log(`${key}: createComponent fehlgeschlagen (${error.message}), Board bleibt auf der Canvas.`, 'err');
@@ -967,7 +1243,7 @@
 				trySet(ctx, container, 'name', tag);
 				ctx.stats.sets += 1;
 				await layoutSettled();
-				retag(ctx);
+				await retagSettled(ctx, mains);
 				return;
 			}
 			await wait(100);
@@ -975,16 +1251,33 @@
 		log(`${tag}: Variant-Set angelegt, Eigenschaften aber nicht benannt (Zeitüberschreitung).`, 'err');
 	}
 
+	/**
+	 * Penpot replaces the members of a new set asynchronously; the instances of the next components
+	 * need their keys, so the plugin waits until every member is found by its key again.
+	 */
+	async function retagSettled(ctx, mains) {
+		const keys = mains.map((main) => (ctx.built.get(main.id) || {}).key).filter(Boolean);
+		for (let attempt = 0; attempt < 30; attempt += 1) {
+			retag(ctx);
+			const known = new Set(localComponents().map((component) => getData(component, KEY)));
+			if (keys.every((key) => known.has(key))) return;
+			await wait(100);
+			await layoutSettled();
+		}
+		log(`${keys[0]} …: Keys nach dem Zusammenfassen nicht wiedergefunden.`, 'err');
+	}
+
 	/** Writes the keys again that Penpot dropped while combining the components into a set. */
 	function retag(ctx) {
-		for (const component of penpot.library.local.components || []) {
+		for (const component of localComponents()) {
 			let main;
 			try {
 				main = component.mainInstance();
 			} catch (error) {
 				main = null;
 			}
-			const built = main ? ctx.built.get(main.id) : undefined;
+			// By component id first: combining may give a member a new main instance.
+			const built = ctx.built.get(component.id) || (main ? ctx.built.get(main.id) : undefined);
 			if (!built || getData(component, KEY) === built.key) continue;
 			setData(ctx, component, KEY, built.key);
 			if (built.set) setData(ctx, component, SET, built.set);
@@ -1001,7 +1294,8 @@
 			ctx.report.removedLayers.push(`${key}: nicht angelegt, Variante ergänzen schlug fehl`);
 			return;
 		}
-		const before = new Set((penpot.library.local.components || []).map((component) => component.id));
+		await activateMain(sibling);
+		const before = new Set(localComponents().map((component) => component.id));
 		try {
 			sibling.addVariant();
 		} catch (error) {
@@ -1011,7 +1305,7 @@
 		let added;
 		for (let attempt = 0; attempt < 30 && !added; attempt += 1) {
 			await wait(100);
-			added = (penpot.library.local.components || []).find((component) => !before.has(component.id));
+			added = localComponents().find((component) => !before.has(component.id));
 		}
 		if (!added) {
 			ctx.addVariantFailed = true;
@@ -1026,7 +1320,7 @@
 		ctx.report = newReport();
 		syncComponentTree(ctx, added, shapes, key);
 		ctx.report = report;
-		entry.properties.forEach(([, value], position) => added.setVariantProperty(position, value));
+		setVariantValues(ctx, added, entry.properties);
 		await settleLayout(ctx);
 		ctx.stats.components += 1;
 	}
@@ -1045,111 +1339,218 @@
 		return bottom === 0 ? 40 : bottom + 200;
 	}
 
+	/** The page that holds a shape. */
+	function pageOf(shape) {
+		for (const page of (penpot.currentFile && penpot.currentFile.pages) || []) {
+			try {
+				if (page.getShapeById(shape.id)) return page;
+			} catch (error) {
+				// Eine Seite ohne lesbaren Inhalt zählt nicht.
+			}
+		}
+		return null;
+	}
+
+	/** Penpot only accepts changes on the active page, so the page of a shape opens before it changes. */
+	async function activate(page) {
+		if (!page || (penpot.currentPage && penpot.currentPage.id === page.id)) return;
+		await penpot.openPage(page);
+		await layoutSettled();
+	}
+
+	async function activateMain(component) {
+		let main = null;
+		try {
+			main = component.mainInstance();
+		} catch (error) {
+			main = null;
+		}
+		if (main) await activate(pageOf(main));
+	}
+
+	/**
+	 * Opens the page of the library: the page holding most managed main instances, else the page
+	 * `KoliBri`, which a sync creates. New components land there.
+	 */
+	async function openLibraryPage(ctx, managed) {
+		const counts = new Map();
+		for (const component of managed.values()) {
+			let main = null;
+			try {
+				main = component.mainInstance();
+			} catch (error) {
+				main = null;
+			}
+			const page = main ? pageOf(main) : null;
+			if (page) counts.set(page.id, { page, count: ((counts.get(page.id) || {}).count || 0) + 1 });
+		}
+		let target = [...counts.values()].sort((a, b) => b.count - a.count).map((entry) => entry.page)[0];
+		if (counts.size > 1) log(`Die Bibliothek liegt auf ${counts.size} Seiten; neue Komponenten kommen auf „${target.name}“.`, 'err');
+		if (!target) target = ((penpot.currentFile && penpot.currentFile.pages) || []).find((page) => page.name === LIBRARY_PAGE);
+		if (!target && ctx.apply) {
+			target = penpot.createPage();
+			target.name = LIBRARY_PAGE;
+		}
+		ctx.libraryPage = target || null;
+		if (target) {
+			await activate(target);
+			log(`Bibliotheksseite: ${target.name}`);
+		}
+	}
+
+	/**
+	 * Groups in build order: base components that show no other component, then those that show
+	 * them (`InputContainerFC` shows `InputFC`), then the components of the export.
+	 */
+	function buildOrder(entries) {
+		const byId = new Map(entries.map((entry) => [entry.id, entry]));
+		const levels = new Map();
+		const instancesOf = (node) => (node.kind === 'instance' ? [node.component] : (node.children || []).flatMap(instancesOf));
+		const levelOf = (entry) => {
+			if (!levels.has(entry.id)) {
+				levels.set(entry.id, 0);
+				const used = entry.shapes
+					? instancesOf(entry.shapes)
+							.map((id) => byId.get(id))
+							.filter(Boolean)
+					: [];
+				levels.set(entry.id, used.length === 0 ? 0 : 1 + Math.max(...used.map(levelOf)));
+			}
+			return levels.get(entry.id);
+		};
+		// All members of a set build together, at the level of their deepest member.
+		const setLevels = new Map();
+		for (const entry of entries) {
+			if (entry.base && entry.set) setLevels.set(entry.set, Math.max(setLevels.get(entry.set) ?? 0, levelOf(entry)));
+		}
+		const groups = [];
+		for (const entry of entries) {
+			const level = entry.base ? (entry.set ? setLevels.get(entry.set) : levelOf(entry)) : Number.MAX_SAFE_INTEGER;
+			let group = groups.find((candidate) => candidate.level === level);
+			if (!group) {
+				group = { level, entries: [] };
+				groups.push(group);
+			}
+			group.entries.push(entry);
+		}
+		return groups.sort((first, second) => first.level - second.level).map((group) => group.entries);
+	}
+
 	async function syncLibrary(ctx, payload) {
 		const managed = managedComponents(ctx, payload);
-		for (const entry of payload.components) if (entry.shapes) annotateSizing(entry.shapes, null);
+		await openLibraryPage(ctx, managed);
+		for (const entry of payload.components) {
+			if (!entry.shapes) continue;
+			splitSideBorders(entry.shapes);
+			annotateSizing(entry.shapes, null);
+		}
 		const shapesOf = (entry) => entry.shapes;
 		const keyOf = (entry) => entry.id;
-		const sets = new Map();
-		const singles = [];
-		for (const entry of payload.components) {
-			if (!shapesOf(entry)) continue;
-			if (entry.set) {
-				if (!sets.has(entry.set)) sets.set(entry.set, []);
-				sets.get(entry.set).push(entry);
-			} else {
-				singles.push(entry);
-			}
-		}
-
 		let top = freeTop(managed);
 		const gutter = 24;
-		for (const [tag, entries] of sets) {
-			const existing = entries.filter((entry) => managed.has(keyOf(entry)));
-			const fresh = entries.filter((entry) => !managed.has(keyOf(entry)));
-			for (const entry of existing) {
-				syncComponentTree(ctx, managed.get(keyOf(entry)), shapesOf(entry), keyOf(entry));
-				syncVariantProperties(ctx, managed.get(keyOf(entry)), entry, keyOf(entry));
-				await settleLayout(ctx);
-			}
-			if (fresh.length === 0) continue;
-			for (const entry of fresh) ctx.report.addedComponents.push(`${keyOf(entry)} (${entry.properties.map((pair) => pair.join('=')).join(', ')})`);
-			if (!ctx.apply) continue;
-			const members = existing.filter((entry) => {
-				const component = managed.get(keyOf(entry));
-				return component.isVariant && component.isVariant();
-			});
-			if (members.length > 0) {
-				for (const entry of fresh) {
-					// Vorlage ist das Mitglied mit den meisten gleichen Werten, also der ähnlichsten Struktur.
-					const matches = (member) => member.properties.filter(([, value], position) => (entry.properties[position] || [])[1] === value).length;
-					const template = members.reduce((best, member) => (matches(member) > matches(best) ? member : best));
-					await addToSet(ctx, managed.get(keyOf(template)), entry, shapesOf(entry), keyOf(entry));
+		for (const group of buildOrder(payload.components)) {
+			const sets = new Map();
+			const singles = [];
+			for (const entry of group) {
+				if (!shapesOf(entry)) continue;
+				if (entry.set) {
+					if (!sets.has(entry.set)) sets.set(entry.set, []);
+					sets.get(entry.set).push(entry);
+				} else {
+					singles.push(entry);
 				}
-				continue;
 			}
-			// Neues Variant-Set: Spalten sind die Hover/Focus-Kombinationen, Zeilen die übrigen Eigenschaften.
-			const isState = ([property]) => property === 'Hover' || property === 'Focus';
-			const columnOf = (entry) =>
-				entry.properties
-					.filter(isState)
-					.map(([, value]) => value)
-					.join(' / ');
-			const rowOf = (entry) =>
-				entry.properties
-					.filter((pair) => !isState(pair))
-					.map(([, value]) => value)
-					.join(' / ');
-			const states = [...new Set(fresh.map(columnOf))];
-			const rows = [...new Set(fresh.map(rowOf))];
-			const cellWidth = Math.max(...fresh.map((entry) => shapesOf(entry).width)) + gutter;
-			const cellHeight = Math.max(...fresh.map((entry) => shapesOf(entry).height)) + gutter;
-			const mains = [];
-			for (const entry of fresh) {
-				const values = entry.properties.map(([, value]) => value);
-				const row = rows.indexOf(rowOf(entry));
-				const column = states.indexOf(columnOf(entry));
-				const main = await buildComponent(
-					ctx,
-					shapesOf(entry),
-					keyOf(entry),
-					[tag, ...values].join(' / '),
-					tag,
-					40 + column * cellWidth,
-					top + row * cellHeight,
-				);
-				if (main) mains.push(main);
-			}
-			if (mains.length > 1)
-				await combineSet(
-					ctx,
-					tag,
-					mains,
-					fresh[0].properties.map(([property]) => property),
-				);
-			top += rows.length * cellHeight + 80;
-		}
 
-		let column = 0;
-		let rowHeight = 0;
-		for (const entry of singles) {
-			const key = keyOf(entry);
-			if (managed.has(key)) {
-				syncComponentTree(ctx, managed.get(key), shapesOf(entry), key);
-				await settleLayout(ctx);
-				continue;
+			for (const [tag, entries] of sets) {
+				const existing = entries.filter((entry) => managed.has(keyOf(entry)));
+				const fresh = entries.filter((entry) => !managed.has(keyOf(entry)));
+				for (const entry of existing) {
+					await activateMain(managed.get(keyOf(entry)));
+					syncComponentTree(ctx, managed.get(keyOf(entry)), shapesOf(entry), keyOf(entry));
+					await syncVariantProperties(ctx, managed.get(keyOf(entry)), entry, keyOf(entry));
+					await settleLayout(ctx);
+				}
+				if (fresh.length === 0) continue;
+				for (const entry of fresh) ctx.report.addedComponents.push(`${keyOf(entry)} (${entry.properties.map((pair) => pair.join('=')).join(', ')})`);
+				if (!ctx.apply) continue;
+				const members = existing.filter((entry) => {
+					const component = managed.get(keyOf(entry));
+					return component.isVariant && component.isVariant();
+				});
+				if (members.length > 0) {
+					for (const entry of fresh) {
+						// Vorlage ist das Mitglied mit den meisten gleichen Werten, also der ähnlichsten Struktur.
+						const matches = (member) => member.properties.filter(([, value], position) => (entry.properties[position] || [])[1] === value).length;
+						const template = members.reduce((best, member) => (matches(member) > matches(best) ? member : best));
+						await addToSet(ctx, managed.get(keyOf(template)), entry, shapesOf(entry), keyOf(entry));
+					}
+					continue;
+				}
+				// Neues Variant-Set: Spalten sind die Hover/Focus-Kombinationen, Zeilen die übrigen Eigenschaften.
+				const isState = ([property]) => property === 'Hover' || property === 'Focus';
+				const columnOf = (entry) =>
+					entry.properties
+						.filter(isState)
+						.map(([, value]) => value)
+						.join(' / ');
+				const rowOf = (entry) =>
+					entry.properties
+						.filter((pair) => !isState(pair))
+						.map(([, value]) => value)
+						.join(' / ');
+				const states = [...new Set(fresh.map(columnOf))];
+				const rows = [...new Set(fresh.map(rowOf))];
+				const cellWidth = Math.max(...fresh.map((entry) => shapesOf(entry).width)) + gutter;
+				const cellHeight = Math.max(...fresh.map((entry) => shapesOf(entry).height)) + gutter;
+				const mains = [];
+				for (const entry of fresh) {
+					const values = entry.properties.map(([, value]) => value);
+					const row = rows.indexOf(rowOf(entry));
+					const column = states.indexOf(columnOf(entry));
+					const main = await buildComponent(
+						ctx,
+						shapesOf(entry),
+						keyOf(entry),
+						[tag, ...values].join(' / '),
+						tag,
+						40 + column * cellWidth,
+						top + row * cellHeight,
+					);
+					if (main) mains.push(main);
+				}
+				if (mains.length > 1)
+					await combineSet(
+						ctx,
+						tag,
+						mains,
+						fresh[0].properties.map(([property]) => property),
+					);
+				top += rows.length * cellHeight + 80;
 			}
-			ctx.report.addedComponents.push(key);
-			if (!ctx.apply) continue;
-			const shapes = shapesOf(entry);
-			if (column > 0 && 40 + (column + 1) * 320 > 2800) {
-				column = 0;
-				top += rowHeight + 40;
-				rowHeight = 0;
+
+			let column = 0;
+			let rowHeight = 0;
+			for (const entry of singles) {
+				const key = keyOf(entry);
+				if (managed.has(key)) {
+					await activateMain(managed.get(key));
+					syncComponentTree(ctx, managed.get(key), shapesOf(entry), key);
+					await settleLayout(ctx);
+					continue;
+				}
+				ctx.report.addedComponents.push(key);
+				if (!ctx.apply) continue;
+				const shapes = shapesOf(entry);
+				if (column > 0 && 40 + (column + 1) * 320 > 2800) {
+					column = 0;
+					top += rowHeight + 40;
+					rowHeight = 0;
+				}
+				rowHeight = Math.max(rowHeight, shapes.height);
+				await buildComponent(ctx, shapes, key, entry.id, null, 40 + column * 320, top);
+				column += 1;
 			}
-			rowHeight = Math.max(rowHeight, shapes.height);
-			await buildComponent(ctx, shapes, key, entry.id, null, 40 + column * 320, top);
-			column += 1;
+			if (column > 0) top += rowHeight + 80;
 		}
 
 		// Was der Export nicht mehr enthält, wird markiert, nicht gelöscht: Instanzen in anderen Dateien hängen daran.
@@ -1181,14 +1582,17 @@
 			apply: message.type === 'sync',
 			addVariantFailed: false,
 			built: new Map(),
+			libraryPage: null,
+			fonts: new Map(),
 			missingTokens: new Set(),
-			renamedProperties: new Set(),
 			ringFallback: getData(penpot.library.local, RING) === RING_REVISION,
 			ringLayers: [],
+			absolutes: [],
 			refused: new Set(),
 			report: newReport(),
 			sizing: [],
-			stats: { boards: 0, bound: 0, components: 0, layouts: 0, recognized: 0, resized: 0, sets: 0, texts: 0, widened: 0, widenedCount: 0 },
+			syncedSets: new Set(),
+			stats: { adopted: 0, boards: 0, bound: 0, components: 0, icons: 0, instances: 0, layouts: 0, recognized: 0, resized: 0, sets: 0, texts: 0 },
 			tokens: new Map(),
 			version,
 		};
@@ -1202,19 +1606,14 @@
 		await syncLibrary(ctx, payload);
 		ctx.report.missingTokens = [...ctx.missingTokens];
 		if (ctx.apply) setData(ctx, penpot.library.local, VERSION, version);
+		if (ctx.stats.adopted > 0) log(`${ctx.stats.adopted} Komponenten eines anderen Exports in ihr Set übernommen.`);
 		if (ctx.stats.recognized > 0) {
 			log(`${ctx.stats.recognized} Komponenten ohne Kennung über ihre Variant-Eigenschaften erkannt${ctx.apply ? ', Kennung neu gesetzt' : ''}.`);
-		}
-		if (ctx.stats.widenedCount > 0) {
-			// Bekannte Grenze: Penpot zählt den Ring beim Hug des Elements mit, die Darstellung stimmt.
-			log(
-				`Hinweis: ${ctx.stats.widenedCount} Elemente mit Fokusring sind ${ctx.stats.widened}px breiter als ihr sichtbarer Button (rechts), Ring und Button sitzen korrekt.`,
-			);
 		}
 		penpot.ui.sendMessage({ type: 'report', apply: ctx.apply, report: ctx.report });
 		if (ctx.apply) {
 			log(
-				`Fertig: ${ctx.stats.components} Komponenten neu (${ctx.stats.sets} Variant-Sets), ${ctx.report.changed.length} Änderungen, ${ctx.stats.bound} Token-Bindungen gesetzt, ${ctx.stats.resized} von Penpot zurückgesetzte Größen korrigiert.`,
+				`Fertig: ${ctx.stats.components} Komponenten neu (${ctx.stats.sets} Variant-Sets), ${ctx.stats.instances} Instanzen von Basiskomponenten, ${ctx.stats.icons} Icons, ${ctx.report.changed.length} Änderungen, ${ctx.stats.bound} Token-Bindungen gesetzt, ${ctx.stats.resized} von Penpot zurückgesetzte Größen korrigiert.`,
 				'ok',
 			);
 		}

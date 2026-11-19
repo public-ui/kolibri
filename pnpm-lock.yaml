@@ -1268,6 +1268,9 @@ importers:
       '@public-ui/theme-default':
         specifier: workspace:*
         version: link:../../themes/default
+      happy-dom:
+        specifier: 20.14.6
+        version: 20.14.6
       postcss:
         specifier: 8.5.31
         version: 8.5.31

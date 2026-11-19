@@ -3,11 +3,14 @@ import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { copyPenpotPlugin } from './copy-penpot-plugin.js';
 import type { DialectFinding } from './dialect/bem-dialect.js';
 import { renderDialect } from './dialect/dialect-report.js';
 import { extractFcTree, indexFunctionalComponents } from './dialect/extract-fc-tree.js';
 import { toSpec } from './dialect/to-spec.js';
 import { buildPenpotBundle } from './dtcg.js';
+import { evaluateWebComponent } from './evaluate/evaluate.js';
+import { readWebComponent } from './evaluate/read-design.js';
 import { extractApi } from './extract-api.js';
 import { extractBem } from './extract-bem.js';
 import { extractTokens, loadThemeStyles } from './extract-tokens.js';
@@ -16,6 +19,7 @@ import type { CssRule, UnsupportedRule } from './spec/cascade.js';
 import { checkSpecs } from './spec/check-spec.js';
 import { buildCoverage, renderCoverage } from './spec/coverage.js';
 import { loadComponentRules } from './spec/css-sources.js';
+import { loadIcons } from './spec/icons.js';
 import { combinations, transform } from './spec/transform.js';
 import type { BlockDesignSpec } from './spec/types.js';
 import { createZip } from './zip.js';
@@ -68,6 +72,14 @@ export async function runSpec(options: { out?: string } = {}): Promise<void> {
 	}
 	checkSpecs(specs, bems);
 
+	// Web components with `@design` tags at their props: the variants come from running their functional components.
+	const evaluated: BlockDesignSpec[] = [];
+	for (const api of [...apis].sort((a, b) => a.tag.localeCompare(b.tag))) {
+		const source = readWebComponent(componentsRoot, api.tag);
+		if (source) evaluated.push(await evaluateWebComponent(componentsRoot, source, apis));
+	}
+	const transformSpecs = [...specs.filter((spec) => !evaluated.some((entry) => entry.block === spec.block)), ...evaluated];
+
 	const rules = new Map<string, CssRule[]>();
 	const unsupported = new Map<string, UnsupportedRule[]>();
 	for (const bem of bems) {
@@ -75,10 +87,15 @@ export async function runSpec(options: { out?: string } = {}): Promise<void> {
 		rules.set(bem.block, (await loadComponentRules(componentsRoot, theme, bem.block, entries)).rules);
 		unsupported.set(bem.block, entries);
 	}
+	for (const spec of evaluated) {
+		if (!rules.has(spec.block)) rules.set(spec.block, (await loadComponentRules(componentsRoot, theme, spec.block, [])).rules);
+	}
 
 	const version = { components: await readVersion(componentsRoot), theme: await readVersion(themeRoot) };
-	const library = specs.filter((spec) => apis.some((api) => api.tag === spec.block) && combinations(spec).length <= MAX_VARIANTS).map((spec) => spec.block);
-	const result = transform({ library, rules, specs, themeName: theme.name, tokens, version });
+	const library = transformSpecs
+		.filter((spec) => apis.some((api) => api.tag === spec.block) && combinations(spec).length <= MAX_VARIANTS)
+		.map((spec) => spec.block);
+	const result = transform({ icons: loadIcons(componentsRoot), library, rules, specs: transformSpecs, themeName: theme.name, tokens, version });
 	const coverage = buildCoverage({
 		apis,
 		bems,
@@ -109,7 +126,7 @@ export async function runSpec(options: { out?: string } = {}): Promise<void> {
 	);
 
 	console.log(
-		`Spezifikationen aus BEM + Functional Components: ${specs.length}; Bibliothek: ${library.length} Komponenten; Dialekt-Abweichungen: ${findings.length}`,
+		`Spezifikationen aus BEM + Functional Components: ${specs.length}; ausgewertet über @design: ${evaluated.map((spec) => `${spec.block} (${combinations(spec).length} Varianten)`).join(', ') || '–'}; Bibliothek: ${library.length} Komponenten; Dialekt-Abweichungen: ${findings.length}`,
 	);
 	console.log(`Penpot: ${result.penpot.components.length} Varianten in ${Object.keys(result.penpot.sets).length} Sets → ${join(outDir, 'penpot-import.json')}`);
 	console.log(
@@ -121,6 +138,7 @@ export async function runSpec(options: { out?: string } = {}): Promise<void> {
 			`${block}: ${report.untokenizedColors.length} Farben ohne Token, ${report.unresolvedValues.length} nicht auflösbare Werte, eingebettete Blöcke ohne Baum: ${report.missingEmbeds.join(', ') || '–'}`,
 		);
 	}
+	await copyPenpotPlugin(dirname(outDir));
 	console.log(`Abdeckungsbericht: ${join(outDir, 'spec-coverage.md')}`);
 	console.log(`Dialekt-Bericht (nötige BEM-Änderungen): ${join(outDir, 'bem-dialect.md')}`);
 }

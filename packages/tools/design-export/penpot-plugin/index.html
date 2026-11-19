@@ -137,7 +137,7 @@
 			}
 
 			// Die Export-Daten liegen auf demselben Server wie das Plugin, ein Verzeichnis höher.
-			document.getElementById('ir-url').value = new URL('../penpot/penpot-import.json', location.href.split('#')[0]).href;
+			document.getElementById('ir-url').value = new URL('../spec/penpot-import.json', location.href.split('#')[0]).href;
 			document.getElementById('preview').addEventListener('click', () => guarded('preview'));
 			document.getElementById('sync').addEventListener('click', () => guarded('sync'));
 			document.getElementById('inspect').addEventListener('click', () => parent.postMessage({ type: 'inspect' }, '*'));

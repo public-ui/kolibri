@@ -35,6 +35,8 @@ export interface CssRule {
 	/** Index in `LAYER_ORDER`, `LAYER_ORDER.length` for unlayered rules. */
 	layer: number;
 	order: number;
+	/** The rule styles this pseudo-element of the matched element. */
+	pseudo?: 'after' | 'before';
 }
 
 export interface UnsupportedRule {
@@ -50,11 +52,13 @@ export interface CascadeNode {
 	/** The host element of the shadow root (`:host`). */
 	host?: boolean;
 	parent?: CascadeNode;
+	/** Child elements; `:has()` matches against them. */
+	children?: CascadeNode[];
 	/** Interaction states the node is in: `hover` also holds for the ancestors of the hovered node. */
 	states: Set<InteractionState | 'focus-within'>;
 }
 
-const SUPPORTED_PSEUDOS = new Set([':active', ':disabled', ':focus', ':focus-visible', ':focus-within', ':host', ':hover', ':is', ':not', ':where']);
+const SUPPORTED_PSEUDOS = new Set([':active', ':disabled', ':focus', ':focus-visible', ':focus-within', ':has', ':host', ':hover', ':is', ':not', ':where']);
 
 /**
  * Parses compiled CSS into flat rules with layer and specificity. Rules inside `@media` and
@@ -87,12 +91,24 @@ export function parseRules(css: string, unsupported: UnsupportedRule[], startOrd
 		if (declarations.length === 0) return;
 		selectorParser((root) => {
 			root.each((selector) => {
+				// A trailing `::before` or `::after` styles generated content of the element the rest matches.
+				const last = selector.nodes[selector.nodes.length - 1];
+				const pseudo = last?.type === 'pseudo' && /^::?(after|before)$/.test(last.value) ? (last.value.replace(/^::?/, '') as 'after' | 'before') : undefined;
+				if (pseudo) last.remove();
 				const reason = unsupportedReason(selector);
 				if (reason) {
 					unsupported.push({ selector: selector.toString().trim(), reason });
 					return;
 				}
-				rules.push({ selector, selectorText: selector.toString().trim(), specificity: specificity(selector), declarations, layer, order: order++ });
+				rules.push({
+					selector,
+					selectorText: selector.toString().trim(),
+					specificity: specificity(selector),
+					declarations,
+					layer,
+					order: order++,
+					...(pseudo ? { pseudo } : {}),
+				});
 			});
 		}).processSync(rule.selector);
 	});
@@ -216,13 +232,33 @@ function matchPseudo(part: selectorParser.Pseudo, node: CascadeNode): boolean {
 			return part.nodes.some((inner) => matches(inner, node));
 		case ':not':
 			return !part.nodes.some((inner) => matches(inner, node));
+		case ':has':
+			return part.nodes.some((inner) => hasRelative(inner, node));
 		default:
 			return false;
 	}
 }
 
+/**
+ * `:has(<relative selector>)`: a descendant matches; with a leading `>` only a child. The relative
+ * selector matches its subject against the whole tree, so its ancestors may lie above the anchor.
+ */
+function hasRelative(selector: selectorParser.Selector, node: CascadeNode): boolean {
+	const first = selector.nodes[0];
+	const childOnly = first?.type === 'combinator' && first.value.trim() === '>';
+	const relative =
+		childOnly || first?.type === 'combinator' ? selectorParser.selector({ nodes: selector.nodes.slice(1).map((part) => part.clone()), value: '' }) : selector;
+	const candidates = childOnly ? (node.children ?? []) : descendants(node);
+	return candidates.some((candidate) => matches(relative, candidate));
+}
+
+function descendants(node: CascadeNode): CascadeNode[] {
+	return (node.children ?? []).flatMap((child) => [child, ...descendants(child)]);
+}
+
 /** Properties inherited by default (CSS Inheritance), custom properties included. */
-const INHERITED = new Set(['color', 'font-family', 'font-size', 'font-weight', 'line-height', 'text-align', 'visibility']);
+/** Inherited properties; `text-decoration-line` stands in for the propagation of a decoration to the text inside. */
+const INHERITED = new Set(['color', 'font-family', 'font-size', 'font-weight', 'line-height', 'text-align', 'text-decoration-line', 'visibility']);
 
 export type ComputedStyle = Record<string, string>;
 
@@ -231,10 +267,10 @@ export type ComputedStyle = Record<string, string>;
  * `!important`, specificity and source order, expanded shorthands and inherited values from the
  * parent. `var()` references stay unresolved here; `resolveValue` follows them.
  */
-export function computeStyle(node: CascadeNode, rules: CssRule[], parent: ComputedStyle | undefined): ComputedStyle {
+export function computeStyle(node: CascadeNode, rules: CssRule[], parent: ComputedStyle | undefined, pseudo?: 'after' | 'before'): ComputedStyle {
 	const winners = new Map<string, { rank: number[]; value: string }>();
 	for (const rule of rules) {
-		if (!matches(rule.selector, node)) continue;
+		if (rule.pseudo !== pseudo || !matches(rule.selector, node)) continue;
 		for (const declaration of rule.declarations) {
 			for (const [property, value] of expandShorthand(declaration.property, declaration.value)) {
 				const layerRank = declaration.important ? LAYER_ORDER.length * 2 - rule.layer : rule.layer;
@@ -242,6 +278,15 @@ export function computeStyle(node: CascadeNode, rules: CssRule[], parent: Comput
 				const current = winners.get(property);
 				if (!current || compareRank(rank, current.rank) >= 0) winners.set(property, { rank, value });
 			}
+		}
+	}
+	// The style attribute wins over every normal declaration and loses against `!important`.
+	for (const declaration of (pseudo ? '' : (node.attributes.style ?? '')).split(';')) {
+		const separator = declaration.indexOf(':');
+		if (separator < 0) continue;
+		for (const [property, value] of expandShorthand(declaration.slice(0, separator).trim(), declaration.slice(separator + 1).trim())) {
+			const current = winners.get(property);
+			if (!current || current.rank[0] === 0) winners.set(property, { rank: [0, Number.MAX_SAFE_INTEGER], value });
 		}
 	}
 	const style: ComputedStyle = {};
@@ -309,8 +354,12 @@ function lineParts(parts: string[]): { color?: string; style?: string; width?: s
 	const style = parts.find((part) => BORDER_STYLES.has(part));
 	let width = parts.find((part) => LENGTH_PART.test(part));
 	let color = parts.find((part) => part !== style && part !== width && !part.startsWith('var('));
+	// A `var()` names its role when its custom property says so (`--border-width`, `--color-primary`).
 	const vars = parts.filter((part) => part.startsWith('var('));
-	if (width === undefined && color === undefined && vars.length >= 2) {
+	const named = (pattern: RegExp): string | undefined => vars.find((part) => pattern.test(/^var\(\s*(--[\w-]+)/.exec(part)?.[1] ?? ''));
+	if (vars.length === 1 && width === undefined && named(/width|size|thickness/)) width = vars[0];
+	else if (vars.length === 1 && color === undefined && named(/color/)) color = vars[0];
+	else if (width === undefined && color === undefined && vars.length >= 2) {
 		width = vars[0];
 		color = vars[vars.length - 1];
 	} else if (width === undefined && vars.length > 0 && color !== undefined) {
@@ -358,7 +407,17 @@ function expandShorthand(property: string, value: string): [string, string][] {
 			return [
 				...(width ? [['outline-width', width] as [string, string]] : []),
 				...(style ? [['outline-style', style] as [string, string]] : []),
-				...(color ? [['outline-color', color] as [string, string]] : []),
+				// The shorthand resets an omitted color to `currentcolor`.
+				['outline-color', color ?? 'currentcolor'] as [string, string],
+			];
+		}
+		case 'inset': {
+			const [top, right = top, bottom = top, left = right] = parts;
+			return [
+				['top', top],
+				['right', right],
+				['bottom', bottom],
+				['left', left],
 			];
 		}
 		case 'gap':
@@ -366,6 +425,10 @@ function expandShorthand(property: string, value: string): [string, string][] {
 				['row-gap', parts[0]],
 				['column-gap', parts[1] ?? parts[0]],
 			];
+		case 'text-decoration': {
+			const line = parts.filter((part) => /^(line-through|none|overline|underline)$/.test(part));
+			return line.length > 0 ? [['text-decoration-line', line.join(' ')]] : [];
+		}
 		case 'flex-flow':
 			return parts.map((part) => [/wrap/.test(part) ? 'flex-wrap' : 'flex-direction', part]);
 		case 'background':

@@ -23,12 +23,14 @@
 		"start": "node dist/cli.js",
 		"start:penpot": "node dist/cli.js && node scripts/penpot-serve.mjs",
 		"start:spec": "node dist/spec-cli.js",
+		"start:spec:penpot": "node dist/spec-cli.js && node scripts/penpot-serve.mjs",
 		"test:unit": "mocha dist-test/test/**/*.spec.js",
 		"unused": "knip"
 	},
 	"dependencies": {
 		"@public-ui/components": "workspace:*",
 		"@public-ui/theme-default": "workspace:*",
+		"happy-dom": "20.14.6",
 		"postcss": "8.5.31",
 		"postcss-selector-parser": "7.1.6",
 		"sass-embedded": "1.105.2"

@@ -13,9 +13,28 @@ export interface BlockDesignSpec {
 	/** Prop that a modifier mirrors, per block modifier of the registry. */
 	modifiers: Record<string, ModifierBinding>;
 	/** Content of a library instance: the props the samples render (label, icons, …). */
-	sample: Record<string, boolean | string>;
+	sample: Record<string, boolean | number | string | undefined>;
 	/** The element tree below the block root. */
 	tree: DesignNode;
+	/**
+	 * Renders the component for the props of one variant (`evaluate/evaluate.ts`). When present, it
+	 * replaces `tree` and `modifiers`: the functional components decide tags, classes and conditions.
+	 */
+	render?: (props: Record<string, boolean | number | string | undefined>) => RenderedNode;
+}
+
+/** One element as a functional component renders it. */
+export interface RenderedNode {
+	tag: string;
+	classes: string[];
+	attributes: Record<string, string>;
+	/** Text content directly inside the element. */
+	text?: string;
+	children: RenderedNode[];
+	/** Functional components whose root this element is, outermost first (`FormFieldFC`). */
+	fcs?: string[];
+	/** The shadow tree of an embedded web component (`kol-link`), styled by that component's rules. */
+	shadow?: RenderedNode;
 }
 
 /** A modifier that mirrors a prop: present when the prop has the value (or is truthy without `value`). */
@@ -40,6 +59,8 @@ export type DesignAxis =
 			 * axis that only switches a prop already bound in `modifiers` (`_disabled` → `disabled`).
 			 */
 			modifier?: string;
+			/** Values whose variants get no interaction state (`Hover`, `Focus`). */
+			inert?: (boolean | string)[];
 	  }
 	| {
 			kind: 'state';

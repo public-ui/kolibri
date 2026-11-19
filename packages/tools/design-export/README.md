@@ -76,7 +76,7 @@ Ergebnis im Zielordner:
 
 ## Sync per Plugin
 
-`pnpm start:penpot` exportiert und startet den Server für Plugin und Export-Daten. In Penpot den Plugin-Manager öffnen (`Strg/Cmd+Alt+P`) und `http://localhost:8818/penpot-plugin/manifest.json` installieren; das Manifest ändert sich zwischen Versionen nicht, neuer Plugin-Code lädt beim nächsten Öffnen.
+`pnpm start:spec:penpot` exportiert aus der Spezifikation und startet den Server für Plugin und Export-Daten; `pnpm start:penpot` tut dasselbe mit dem Export aus dem Browser. In Penpot den Plugin-Manager öffnen (`Strg/Cmd+Alt+P`) und `http://localhost:8818/penpot-plugin/manifest.json` installieren; das Manifest ändert sich zwischen Versionen nicht, neuer Plugin-Code lädt beim nächsten Öffnen.
 
 Das Plugin importiert nicht, es gleicht ab. Jeder Lauf bringt die Bibliothek der geöffneten Datei auf den Stand des Exports:
 
@@ -84,31 +84,37 @@ Das Plugin importiert nicht, es gleicht ab. Jeder Lauf bringt die Bibliothek der
 | ---------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
 | Komponente | Plugin-Daten `kolibri-key` = Szenario-ID                                                   | wird an Ort und Stelle aktualisiert, die ID bleibt; Instanzen in verknüpften Dateien bleiben verbunden |
 | Ebene      | BEM-Name je Elternebene (`#n` ab der zweiten gleichnamigen)                                | Eigenschaften werden aktualisiert, die ID bleibt; Overrides auf der Ebene bleiben erhalten             |
-| Variante   | Werte von `Variant` (`_variant`) und den Schaltern `Disabled`, `Hover`, `Focus`            | neue Werte kommen ins bestehende Variant-Set                                                           |
+| Variante   | Variant-Eigenschaften des Exports (`Variant`, `Message`, `Disabled`, `Hover`, `Focus` …)   | neue Werte und neue Eigenschaften kommen ins bestehende Variant-Set                                    |
 | Farbe      | Token aus dem Token-Bundle (`color.primary` …), erkannt über das Light/Dark-Paar der Ebene | Fläche, Rahmen, Text und Fokusring sind an den Token gebunden                                          |
 
 - **Light/Dark**: Es gibt ein Variant-Set je Komponente. Das Scheme schaltet die Theme-Gruppe `Scheme` im Tokens-Panel für die ganze Datei um; das Token-Bundle muss dafür in der Datei importiert sein, fehlende Tokens nennt der Bericht.
+- **Wechsel zwischen den Exporten**: Ein Set-Mitglied, dessen Schlüssel der Export nicht enthält, übernimmt den Eintrag desselben Sets mit gleichen Werten; fehlende Eigenschaften stehen dabei auf dem Wert des ersten Eintrags. So wird aus `kol-input-text.hover` des Browser-Exports `Hover=true, Message=none, …` des Spec-Exports, Set und Instanzen bleiben. Neue Eigenschaften hängt Penpot hinten an das Set an.
 - **Vorschau** führt denselben Abgleich ohne Schreiben aus und listet jede Änderung. Ein zweiter Lauf ohne neuen Export meldet null Änderungen.
 - Nichts verschwindet stillschweigend: Komponenten, die der Export nicht mehr enthält, bekommen `kolibri-deprecated` (und einzelne zusätzlich das Namenspräfix `deprecated /`). Entfernte Ebenen stehen im Bericht, weil Overrides auf ihnen verloren gehen; das passiert nur bei geändertem DOM oder geänderter BEM-Klasse, also bei einem Theming-Breaking-Change.
 - Von Hand ergänzte Ebenen ohne `kolibri-key` bleiben unangetastet. Hauptkomponenten pflegt nur das Plugin; Designer arbeiten in Dateien, die die Bibliothek als Shared Library verknüpfen, und übernehmen Updates über den Penpot-Dialog.
 - Die Version des Exports steht in den Plugin-Daten der Bibliothek (`kolibri-version`).
+- Die Bibliothek liegt auf einer Seite: auf der mit den meisten verwalteten Hauptkomponenten, in einer neuen Datei auf der Seite `KoliBri`. Penpot ändert nur die aktive Seite, das Plugin öffnet sie deshalb vor jeder Änderung.
+- Der Fokusring ist eine eigene Ebene `<box>::outline` ohne Füllung: absolut positioniert, um `outline-offset` außerhalb der Box, mit den Constraints links-rechts und oben-unten. Er wächst mit, wenn sich die Box auf der Instanz ändert. Gelingt die Platzierung nicht, wird er zum äußeren Strich der Box ohne Abstand; das Log nennt den Grund.
 
 ## Transformation aus der Spezifikation (ohne Browser)
 
 `pnpm start:spec` erzeugt die Design-Dateien deterministisch und ohne Playwright aus dem, was das Repository schon enthält: BEM-Registry (gelesen über den BEM-Dialekt), Functional Components, kompiliertes CSS und Theme-Tokens. Nichts wird von Hand gepflegt. Regeln, Beispiel und die nötigen Änderungen an der Registry stehen in [docs/design-export/BEM-DIALECT.md](../../../docs/design-export/BEM-DIALECT.md).
 
-| Baustein          | Datei                                                   | Aufgabe                                                                                                   |
-| ----------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| BEM-Dialekt       | `src/dialect/bem-dialect.ts`                            | Modifier → Variant-Properties (`has-closer` → Boolean `Closer`, `variant-card` → Enum `Variant`), Befunde |
-| Baum-Leser        | `src/dialect/extract-fc-tree.ts`                        | Ebenenbaum aus dem JSX der Functional Components: BEM-Elemente, Bedingungen, eingebettete Items, Slots    |
-| Spezifikation     | `src/dialect/to-spec.ts`                                | Dialekt + Baum → Eingabe der Transformation; offene Varianten aus dem Theme-CSS                           |
-| Statische Kaskade | `src/spec/cascade.ts`                                   | Layer, Spezifität, `!important`, Vererbung, Zustände; meldet nicht auswertbare Regeln statt zu raten      |
-| Transformation    | `src/spec/transform.ts`                                 | Varianten aus den Properties, Penpot-Payload (Format der gerenderten Pipeline) und Figma-Payload          |
-| Berichte          | `src/dialect/dialect-report.ts`, `src/spec/coverage.ts` | Properties und nötige BEM-Änderungen; Abdeckung des statischen Wegs je Block                              |
+| Baustein          | Datei                                                   | Aufgabe                                                                                                        |
+| ----------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| BEM-Dialekt       | `src/dialect/bem-dialect.ts`                            | Modifier → Variant-Properties (`has-closer` → Boolean `Closer`, `variant-card` → Enum `Variant`), Befunde      |
+| Baum-Leser        | `src/dialect/extract-fc-tree.ts`                        | Ebenenbaum aus dem JSX der Functional Components: BEM-Elemente, Bedingungen, eingebettete Items, Slots         |
+| Spezifikation     | `src/dialect/to-spec.ts`                                | Dialekt + Baum → Eingabe der Transformation; offene Varianten aus dem Theme-CSS                                |
+| Statische Kaskade | `src/spec/cascade.ts`                                   | Layer, Spezifität, `!important`, Vererbung, Zustände, `:has()`; meldet nicht auswertbare Regeln statt zu raten |
+| FC-Auswertung     | `src/evaluate/`                                         | Komponenten mit `@design` an ihren Props: die Komponentenklasse je Variante in Node instanziieren und rendern  |
+| Basiskomponenten  | `src/spec/base-components.ts`                           | Functional Components mit eigenem Block werden Basiskomponenten, die Web Component zeigt Instanzen davon       |
+| Icons             | `src/spec/icons.ts`                                     | KoliBri-Icons als Vektorpfade aus der ausgelieferten SVG-Font, gefüllt mit der Textfarbe und ihrem Token       |
+| Transformation    | `src/spec/transform.ts`                                 | Varianten aus den Properties, Penpot-Payload (Format der gerenderten Pipeline) und Figma-Payload               |
+| Berichte          | `src/dialect/dialect-report.ts`, `src/spec/coverage.ts` | Properties und nötige BEM-Änderungen; Abdeckung des statischen Wegs je Block                                   |
 
 Ergebnis in `dist-export/spec/`: `penpot-import.json`, `figma-import.json`, `kolibri-design-tokens.zip`, `bem-dialect.md`, `spec-coverage.md` und `spec-coverage.json`. `pnpm check:determinism:spec` exportiert zweimal und vergleicht die Bytes.
 
-- **Penpot:** Token-ZIP importieren, dann im Plugin (siehe [Sync per Plugin](#sync-per-plugin)) die Export-URL auf `…/spec/penpot-import.json` setzen.
+- **Penpot:** Token-ZIP importieren, dann das Plugin öffnen (siehe [Sync per Plugin](#sync-per-plugin)). Es schlägt `…/spec/penpot-import.json` als Export-URL vor; den Export aus dem Browser (`…/penpot/penpot-import.json`) trägt man von Hand ein.
 - **Figma:** In Figma Desktop `Plugins → Development → Import plugin from manifest…` mit `figma-plugin/manifest.json`, `figma-import.json` im Plugin-Fenster wählen. Das Plugin legt die Variablen-Sammlung `KoliBri <theme>` mit den Modi Light/Dark an und baut je Block ein Component Set auf der Seite `KoliBri`. Komponenten werden über die Plugin-Daten `kolibri-key` wiedergefunden und an Ort und Stelle neu aufgebaut, Instanzen bleiben verknüpft. Das Scheme schaltet ein Frame über seinen Variablenmodus um (Konzept #11379).
 
 ## Weg zu Figma

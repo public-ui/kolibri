@@ -13,6 +13,8 @@ export interface PenpotComponent {
 	tag: string;
 	/** The variant set this component belongs to; absent for a single component. */
 	set?: string;
+	/** A base component (`spec/base-components.ts`): built before the components that show instances of it. */
+	base?: true;
 	/** Variant property values in property order: `Variant`, `Disabled`, then the switches `Hover` and `Focus`. */
 	properties: [string, string][];
 	shapes: ShapeNode;

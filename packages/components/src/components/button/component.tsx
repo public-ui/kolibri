@@ -116,6 +116,8 @@ export class KolButton extends BaseButtonWebComponent implements ButtonProps, Bu
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 *
+	 * @design state disabled
 	 */
 	@Prop() public _disabled?: DisabledPropType = false;
 
@@ -137,6 +139,8 @@ export class KolButton extends BaseButtonWebComponent implements ButtonProps, Bu
 
 	/**
 	 * Defines the icon classnames.
+	 *
+	 * @design toggle kolicon-house
 	 */
 	@Prop() public _icons?: IconsPropType = undefined;
 
@@ -157,6 +161,8 @@ export class KolButton extends BaseButtonWebComponent implements ButtonProps, Bu
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
+	 *
+	 * @design content Button
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -250,6 +256,8 @@ export class KolButton extends BaseButtonWebComponent implements ButtonProps, Bu
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 *
+	 * @design variant primary=primary secondary=secondary tertiary=tertiary normal=normal danger=danger ghost=ghost
 	 */
 	@Prop() public _variant?: VariantClassNamePropType = undefined;
 

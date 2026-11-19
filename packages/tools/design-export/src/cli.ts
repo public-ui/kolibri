@@ -3,6 +3,7 @@ import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildIr } from './build-ir.js';
+import { copyPenpotPlugin } from './copy-penpot-plugin.js';
 import type { StyleAxes } from './derive-axes.js';
 import { deriveAxes, readVariantTypes } from './derive-axes.js';
 import { buildPenpotBundle } from './dtcg.js';
@@ -127,19 +128,6 @@ export async function run(options: CliOptions = {}): Promise<void> {
 	if (report.droppedUnset.length > 0) console.log(`Ungesetztes _variant wie ein Wert gerendert, entfallen: ${report.droppedUnset.join(', ')}`);
 	if (report.unregisteredLayers.length > 0) console.warn(`Ebenen ohne Eintrag in der BEM-Registry: ${report.unregisteredLayers.join(', ')}`);
 	await copyPenpotPlugin(outDir);
-}
-
-/** Copies the plugin sources next to the import data, so one server hosts both. */
-async function copyPenpotPlugin(outDir: string): Promise<void> {
-	const sourceDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'penpot-plugin');
-	const targetDir = join(outDir, 'penpot-plugin');
-	await mkdir(targetDir, { recursive: true });
-	for (const name of ['manifest.json', 'index.js', 'index.html']) {
-		const body = await readFile(join(sourceDir, name)).catch(() => null);
-		if (body) {
-			await writeFile(join(targetDir, name), body);
-		}
-	}
 }
 
 /** The harness ships next to the compiled code; during development the source copy is the fallback. */
