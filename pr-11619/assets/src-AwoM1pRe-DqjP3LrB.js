@@ -1,0 +1,1 @@
+import{A as e,l as t}from"./props-from-config-BOUcpF7e-DOn4psk2.js";var n=t(`src`,``,e);export{n as t};
