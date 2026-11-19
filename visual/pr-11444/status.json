@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "10 changed, 14 added – 0 of 24 approved, review pending",
-	"computedAt": "2026-11-19T07:14:01.461Z",
+	"description": "18 changed, 14 added – 0 of 32 approved, review pending",
+	"computedAt": "2026-11-19T08:39:01.960Z",
 	"pr": 11444,
-	"head": "3e61a016f84e7eb2da0a395a1f0d240993e91689",
-	"digest": "sha256:9041fb711c7058841d5cb73d12ce926e9012267576178199e8be01e40a38a71c",
+	"head": "c3688112aadf813949d2a35e38d09a6db21fd99b",
+	"digest": "sha256:a585a363b8565760704fb41fed2b7fd299fd6a8e3650dbf78f014d97e50ca4f8",
 	"counts": {
-		"changes": 24,
-		"open": 24,
+		"changes": 32,
+		"open": 32,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -64,11 +64,43 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-desy/card-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/card-basic--basic-320": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-desy/card-image--basic": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-desy/card-image--basic-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/card-linked--linked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/drawer-basic-align-left": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/drawer-basic-align-top": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/modal-basic-show-dialog-true": {
 			"state": "open",
 			"notes": []
 		},
