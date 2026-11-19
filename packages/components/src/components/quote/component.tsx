@@ -23,6 +23,8 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 
 	/**
 	 * Defines the target URI of the link.
+	 *
+	 * @design sample #
 	 */
 	@Prop()
 	public _href!: HrefPropType;
@@ -34,6 +36,8 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 *
+	 * @design content Quelle
 	 */
 	@Prop()
 	public _label?: LabelLangSegmentsPropType = undefined;
@@ -45,6 +49,8 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 
 	/**
 	 * Defines the text of the quote.
+	 *
+	 * @design content Ein Zitat aus der Quelle.
 	 */
 	@Prop()
 	public _quote!: QuotePropType;
@@ -56,6 +62,8 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 *
+	 * @design variant
 	 */
 	@Prop()
 	public _variant?: QuoteVariantType = 'inline';

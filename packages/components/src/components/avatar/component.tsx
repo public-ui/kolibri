@@ -72,6 +72,8 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 *
+	 * @design content Max Mustermann
 	 */
 	@Prop()
 	public _label!: LabelPropType;

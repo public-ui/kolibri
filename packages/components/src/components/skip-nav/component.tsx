@@ -37,6 +37,8 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 *
+	 * @design content Sprunglinks
 	 */
 	@Prop() public _label!: LabelPropType;
 
@@ -47,6 +49,8 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 
 	/**
 	 * Defines the list of links combined with their labels to render.
+	 *
+	 * @design sample [{"_label":"Zum Inhalt","_href":"#inhalt"},{"_label":"Zur Navigation","_href":"#navigation"}]
 	 */
 	@Prop() public _links!: Stringified<LinkProps[]>;
 

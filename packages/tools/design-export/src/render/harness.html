@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<title>KoliBri design-export harness</title>
+		<script type="importmap">
+			{
+				"imports": {
+					"@public-ui/components": "/packages/components/dist/index.js",
+					"@public-ui/components/loader": "/packages/components/loader/index.mjs",
+					"@public-ui/theme-default": "/packages/themes/default/dist/index.mjs"
+				}
+			}
+		</script>
+		<style>
+			/*
+			 * The harness mirrors the runtime rule that the application owns the scheme:
+			 * both frames exist side by side, one per scheme, instead of switching the page.
+			 */
+			body {
+				color-scheme: light dark;
+				margin: 0;
+				padding: 24px;
+			}
+			.stage {
+				display: flex;
+				flex-direction: column;
+				gap: 24px;
+			}
+			.frame {
+				padding: 16px;
+			}
+			.frame[data-scheme='light'] {
+				color-scheme: light;
+			}
+			.frame[data-scheme='dark'] {
+				color-scheme: dark;
+				background: #1e1e1e;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="stage">
+			<div class="frame" data-scheme="light" id="stage-light"></div>
+			<div class="frame" data-scheme="dark" id="stage-dark"></div>
+		</div>
+		<script type="module">
+			import { register } from '@public-ui/components';
+			import { defineCustomElements } from '@public-ui/components/loader';
+			import { DEFAULT } from '@public-ui/theme-default';
+
+			const scenarios = await (await fetch('/scenarios.json')).json();
+
+			await register(DEFAULT, defineCustomElements, { theme: { name: 'default', detect: 'fixed' } });
+
+			for (const scenario of scenarios) {
+				for (const frame of document.querySelectorAll('.frame')) {
+					const host = document.createElement(scenario.tag);
+					for (const [name, value] of Object.entries(scenario.props ?? {})) {
+						// Callbacks lassen sich nicht serialisieren; der Marker wird zur No-op-Funktion.
+						host[name] = value === '@function' ? () => undefined : value;
+					}
+					if (scenario.content !== undefined) {
+						host.textContent = scenario.content;
+					}
+					if (scenario.html !== undefined) {
+						host.innerHTML = scenario.html;
+					}
+					host.dataset.scenario = scenario.id;
+					frame.appendChild(host);
+				}
+			}
+			// Render-Erfolg je Szenario melden: keine Kinder im Shadow DOM heißt leer gerendert.
+			window.__renderReport = scenarios.map((scenario) => ({
+				id: scenario.id,
+				tag: scenario.tag,
+				rendered: document.querySelector(`[data-scenario='${scenario.id}']`)?.shadowRoot?.childElementCount > 0,
+			}));
+			await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+			window.__harnessReady = true;
+		</script>
+	</body>
+</html>

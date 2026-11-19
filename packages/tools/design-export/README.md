@@ -1,0 +1,140 @@
+# @public-ui/design-export
+
+Exportiert die KoliBri-Web-Components in Design-Tool-Dateien: eine werkzeugneutrale Zwischenrepräsentation (IR), ein Penpot-Token-Bundle (W3C DTCG) und eine SVG-Komponenten-Bibliothek. Umsetzung der Konzepte aus #11379 (Figma) und #11518 (Penpot) als lauffähige Pipeline, Phase 0/1 der dortigen Rollout-Pläne.
+
+## Richtung
+
+Code → Design-Tool, nie zurück. Die Design-Dateien sind Derivate des Codes wie generierte API-Dokumentation; Änderungswünsche an der Optik laufen über Issues und Code und erzeugen beim nächsten Lauf neue Dateien.
+
+## Pipeline
+
+```
+Web-Components ──┬─ custom-elements.json ──────── API (Props, Slots, Events)
+                 ├─ Theme dist (GLOBAL-CSS) ──── Tokens (--kolibri-*, light-dark-Paare)
+                 ├─ bem-registry.ts (BEM-Konstante) ── BEM-Struktur (Theming-Vertrag)
+                 └─ gerenderte Szenarien ──────── DOM-Baum + SVG je Scheme und Zustand
+                                        │
+                                        IR (Schema 1.0, versioniertes JSON)
+                                        │
+                    ┌───────────────────┴──────────────────┐
+              Penpot-Bundle                          Figma-Weg
+        (DTCG-Sets + $themes.json,           (Tokens-Studio-Plugin importiert
+         $metadata.json, ZIP; SVG-Import)     dasselbe Bundle; SVG-Import nativ)
+```
+
+- **Tokens** werden aus dem kompilierten `GLOBAL`-Layer des Themes gelesen (`DEFAULT(patch)` der Theme-Export-Funktion, kein DOM nötig). Jedes `light-dark()`-Paar landet in den Sets `light` und `dark` mit identischen Namen, schemaneutrale Tokens im Set `core`. `$themes.json` definiert die Gruppe `Scheme` mit Light/Dark — pro Gruppe ist genau eine Option aktiv, die Umschaltung erfolgt in der Datei (Penpot-Modell, siehe Konzept #11518, Abschnitt 6).
+- **SVG-Exporte** entstehen im echten Browser (Playwright): Szenarien mit Props und Slot-Content werden gerendert, Zustände sind echte Browser-Zustände (`hover`/`focus` auf dem interaktiven Element im Shadow DOM, mit Wartezeit auf die Hover-Transition), und ein Walker serialisiert das geflattete DOM in gruppierte SVG-Ebenen. Ebenennamen sind BEM-Klassen bzw. Tag-Namen (`id` und `data-name`), sodass der Theming-Vertrag im Ebenenbaum sichtbar bleibt.
+- Die **IR** bündelt alle drei Quellen plus Token-Referenzen (keine Farbwerte) und ist der Vertrag für weitere Ziel-Adapter.
+
+## Nutzung
+
+```bash
+pnpm --filter @public-ui/components... build   # erzeugt custom-elements.json und dist
+pnpm --filter @public-ui/theme-default build
+pnpm --filter @public-ui/design-export build
+
+# Export (Standard-Szenarien: alle Komponenten der Bibliothek, plus Button-Varianten und Zustände)
+pnpm --filter @public-ui/design-export start
+
+# Optionen
+node dist/cli.js --out <verzeichnis>          # Zielordner (Standard: dist-export/)
+node dist/cli.js --components kol-button      # Szenarien auf Tags filtern
+node dist/cli.js --no-render                  # nur Tokens und IR ohne Browser-Lauf
+```
+
+Ergebnis im Zielordner:
+
+| Datei                                          | Inhalt                                                 |
+| ---------------------------------------------- | ------------------------------------------------------ |
+| `ir.json`                                      | Zwischenrepräsentation, Schema 1.0, mit Quellversionen |
+| `penpot/core.json`, `light.json`, `dark.json`  | DTCG-Token-Sets                                        |
+| `penpot/$themes.json`, `penpot/$metadata.json` | Theme-Gruppe `Scheme` und Set-Reihenfolge              |
+| `penpot/kolibri-design-tokens.zip`             | komplettes Bundle für den Penpot-Import                |
+| `penpot/svg/*.svg`                             | Komponenten-Exporte je Szenario, Scheme und Zustand    |
+
+## Import in Penpot
+
+1. Tokens: Penpot öffnen → Werkzeuge → Tokens → Import → ZIP (`kolibri-design-tokens.zip`) oder Ordner. Die Theme-Gruppe `Scheme` erscheint mit Light/Dark.
+2. Komponenten: über das Plugin (siehe [Sync per Plugin](#sync-per-plugin)). Die SVG-Dateien bleiben Sichtprüf- und Gate-Artefakt.
+3. Aus Instanzen und Tokens größere Oberflächen orchestrieren; Optik kommt aus dem Token-Bundle, nicht aus Handarbeit.
+
+## Plugin-Daten deterministisch erzeugen
+
+`penpot-import.json` entsteht ohne Handarbeit aus drei Quellen; gleiche Quellen ergeben byte-identische Ausgabe.
+
+| Quelle                                                                          | liefert                                                                                                  |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Implementierung: `components.d.ts` (TypeScript-Checker), `custom-elements.json` | Werte eines geschlossenen `_variant`-Typs (z. B. Alert `card`/`msg`), ob `_disabled` existiert           |
+| Theme-CSS                                                                       | Werte eines offenen `_variant` (Klassenname): die gestylten Block-Modifier, z. B. `.kol-button--primary` |
+| BEM-Registry                                                                    | Zustands-Modifier, die keine Variante sind; Prüfung aller Ebenennamen                                    |
+| Rendering                                                                       | Hover/Focus für jede Komponente mit fokussierbarem Element; Geometrie, Farben, Layout                    |
+
+- Stilachsen sind `Variant` (`_variant`), `Disabled` (`_disabled`) sowie die Schalter `Hover` und `Focus`. Ein ungesetztes `_variant` entfällt, wenn es wie einer seiner Werte rendert (`kol-button` ohne Variante = `normal`).
+- Die Seeds in `scenarios.ts` legen nur Inhalt fest (Label, Optionen, geslottetes Markup), keine Varianten.
+- Determinismus: Geometrie auf Hundertstel gerundet, Animationen in allen Shadow Roots vor jeder Aufnahme eingefroren statt fester Wartezeiten, JSON mit sortierten Schlüsseln. `pnpm check:determinism` exportiert zweimal und vergleicht die Bytes (`-- --components kol-button` für einen schnellen Lauf).
+- Die CLI meldet Farben ohne Token, mehrdeutige Bindungen und Ebenennamen ohne Eintrag in der BEM-Registry.
+
+## Sync per Plugin
+
+`pnpm start:spec:penpot` exportiert aus der Spezifikation und startet den Server für Plugin und Export-Daten; `pnpm start:penpot` tut dasselbe mit dem Export aus dem Browser. In Penpot den Plugin-Manager öffnen (`Strg/Cmd+Alt+P`) und `http://localhost:8818/penpot-plugin/manifest.json` installieren; das Manifest ändert sich zwischen Versionen nicht, neuer Plugin-Code lädt beim nächsten Öffnen.
+
+Das Plugin importiert nicht, es gleicht ab. Jeder Lauf bringt die Bibliothek der geöffneten Datei auf den Stand des Exports:
+
+| Ebene      | Schlüssel                                                                                  | Verhalten                                                                                              |
+| ---------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| Komponente | Plugin-Daten `kolibri-key` = Szenario-ID                                                   | wird an Ort und Stelle aktualisiert, die ID bleibt; Instanzen in verknüpften Dateien bleiben verbunden |
+| Ebene      | BEM-Name je Elternebene (`#n` ab der zweiten gleichnamigen)                                | Eigenschaften werden aktualisiert, die ID bleibt; Overrides auf der Ebene bleiben erhalten             |
+| Variante   | Variant-Eigenschaften des Exports (`Variant`, `Message`, `Disabled`, `Hover`, `Focus` …)   | neue Werte und neue Eigenschaften kommen ins bestehende Variant-Set                                    |
+| Farbe      | Token aus dem Token-Bundle (`color.primary` …), erkannt über das Light/Dark-Paar der Ebene | Fläche, Rahmen, Text und Fokusring sind an den Token gebunden                                          |
+
+- **Light/Dark**: Es gibt ein Variant-Set je Komponente. Das Scheme schaltet die Theme-Gruppe `Scheme` im Tokens-Panel für die ganze Datei um; das Token-Bundle muss dafür in der Datei importiert sein, fehlende Tokens nennt der Bericht.
+- **Wechsel zwischen den Exporten**: Ein Set-Mitglied, dessen Schlüssel der Export nicht enthält, übernimmt den Eintrag desselben Sets mit gleichen Werten; fehlende Eigenschaften stehen dabei auf dem Wert des ersten Eintrags. So wird aus `kol-input-text.hover` des Browser-Exports `Hover=true, Message=none, …` des Spec-Exports, Set und Instanzen bleiben. Neue Eigenschaften hängt Penpot hinten an das Set an.
+- **Vorschau** führt denselben Abgleich ohne Schreiben aus und listet jede Änderung. Ein zweiter Lauf ohne neuen Export meldet null Änderungen.
+- Nichts verschwindet stillschweigend: Komponenten, die der Export nicht mehr enthält, bekommen `kolibri-deprecated` (und einzelne zusätzlich das Namenspräfix `deprecated /`). Entfernte Ebenen stehen im Bericht, weil Overrides auf ihnen verloren gehen; das passiert nur bei geändertem DOM oder geänderter BEM-Klasse, also bei einem Theming-Breaking-Change.
+- Von Hand ergänzte Ebenen ohne `kolibri-key` bleiben unangetastet. Hauptkomponenten pflegt nur das Plugin; Designer arbeiten in Dateien, die die Bibliothek als Shared Library verknüpfen, und übernehmen Updates über den Penpot-Dialog.
+- Die Version des Exports steht in den Plugin-Daten der Bibliothek (`kolibri-version`).
+- Die Bibliothek liegt auf einer Seite: auf der mit den meisten verwalteten Hauptkomponenten, in einer neuen Datei auf der Seite `KoliBri`. Penpot ändert nur die aktive Seite, das Plugin öffnet sie deshalb vor jeder Änderung.
+- Der Fokusring ist eine eigene Ebene `<box>::outline` ohne Füllung: absolut positioniert, um `outline-offset` außerhalb der Box, mit den Constraints links-rechts und oben-unten. Er wächst mit, wenn sich die Box auf der Instanz ändert. Gelingt die Platzierung nicht, wird er zum äußeren Strich der Box ohne Abstand; das Log nennt den Grund.
+
+## Transformation aus der Spezifikation (ohne Browser)
+
+`pnpm start:spec` erzeugt die Design-Dateien deterministisch und ohne Playwright aus dem, was das Repository schon enthält: BEM-Registry (gelesen über den BEM-Dialekt), Functional Components, kompiliertes CSS und Theme-Tokens. Nichts wird von Hand gepflegt. Regeln, Beispiel und die nötigen Änderungen an der Registry stehen in [docs/design-export/BEM-DIALECT.md](../../../docs/design-export/BEM-DIALECT.md).
+
+| Baustein          | Datei                                                   | Aufgabe                                                                                                        |
+| ----------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| BEM-Dialekt       | `src/dialect/bem-dialect.ts`                            | Modifier → Variant-Properties (`has-closer` → Boolean `Closer`, `variant-card` → Enum `Variant`), Befunde      |
+| Baum-Leser        | `src/dialect/extract-fc-tree.ts`                        | Ebenenbaum aus dem JSX der Functional Components: BEM-Elemente, Bedingungen, eingebettete Items, Slots         |
+| Spezifikation     | `src/dialect/to-spec.ts`                                | Dialekt + Baum → Eingabe der Transformation; offene Varianten aus dem Theme-CSS                                |
+| Statische Kaskade | `src/spec/cascade.ts`                                   | Layer, Spezifität, `!important`, Vererbung, Zustände, `:has()`; meldet nicht auswertbare Regeln statt zu raten |
+| FC-Auswertung     | `src/evaluate/`                                         | Komponenten mit `@design` an ihren Props: die Komponentenklasse je Variante in Node instanziieren und rendern  |
+| Basiskomponenten  | `src/spec/base-components.ts`                           | Functional Components mit eigenem Block werden Basiskomponenten, die Web Component zeigt Instanzen davon       |
+| Icons             | `src/spec/icons.ts`                                     | KoliBri-Icons als Vektorpfade aus der ausgelieferten SVG-Font, gefüllt mit der Textfarbe und ihrem Token       |
+| Transformation    | `src/spec/transform.ts`                                 | Varianten aus den Properties, Penpot-Payload (Format der gerenderten Pipeline) und Figma-Payload               |
+| Berichte          | `src/dialect/dialect-report.ts`, `src/spec/coverage.ts` | Properties und nötige BEM-Änderungen; Abdeckung des statischen Wegs je Block                                   |
+
+Ergebnis in `dist-export/spec/`: `penpot-import.json`, `figma-import.json`, `kolibri-design-tokens.zip`, `bem-dialect.md`, `spec-coverage.md` und `spec-coverage.json`. `pnpm check:determinism:spec` exportiert zweimal und vergleicht die Bytes.
+
+- **Penpot:** Token-ZIP importieren, dann das Plugin öffnen (siehe [Sync per Plugin](#sync-per-plugin)). Es schlägt `…/spec/penpot-import.json` als Export-URL vor; den Export aus dem Browser (`…/penpot/penpot-import.json`) trägt man von Hand ein.
+- **Figma:** In Figma Desktop `Plugins → Development → Import plugin from manifest…` mit `figma-plugin/manifest.json`, `figma-import.json` im Plugin-Fenster wählen. Das Plugin legt die Variablen-Sammlung `KoliBri <theme>` mit den Modi Light/Dark an und baut je Block ein Component Set auf der Seite `KoliBri`. Komponenten werden über die Plugin-Daten `kolibri-key` wiedergefunden und an Ort und Stelle neu aufgebaut, Instanzen bleiben verknüpft. Das Scheme schaltet ein Frame über seinen Variablenmodus um (Konzept #11379).
+
+## Weg zu Figma
+
+Dasselbe Token-Bundle importiert das Tokens-Studio-Plugin (gleiches Format), die SVG-Dateien importiert Figma nativ. Component Sets mit Variant-Properties erzeugt das Figma-Plugin aus `figma-import.json` der [Transformation aus der Spezifikation](#transformation-aus-der-spezifikation-ohne-browser).
+
+## Grenzen (Stand dieses Prototyps)
+
+- SVG ist ein statisches, ebenentreues Abbild: Flex/Grid-Layout wird nicht als Layout im Zielwerkzeug rekonstruiert, sondern über absolute Positionen abgebildet. Pseudo-Elemente und Font-Icons (Koli-Font-Glyphen als `<text>`, Font nicht eingebettet) sind nicht verlustfrei — die Toleranzliste der Konzepte gilt weiter.
+- Mehrseitige Borders mit unterschiedlichen Breiten kollabieren zu einem einheitlichen Stroke.
+- Nur das Default-Theme ist angebunden; weitere Themes folgen über denselben Adapter (Aufnahmekriterium: `kol-theme-global`-Tokens im erwarteten Format).
+- Zustände sind auf `default`, `hover`, `focus` beschränkt; `disabled` ist ein Prop und damit ein eigenes Szenario. Die Skip-Navigation wird nur im Fokus-Zustand exportiert (visually hidden by design).
+- Controller-Komponenten ohne sichtbaren geschlossenen Zustand (`kol-dialog`, `kol-drawer`, `kol-modal`) werden übersprungen und im Lauf gemeldet; sie haben erst nach dem Öffnen eine Optik.
+- Eingebettete Vektorgrafiken im Shadow DOM (zum Beispiel der Fortschrittsbalken) werden als SVG übernommen, nicht rekonstruiert. Native Form-Controls und Pseudo-Elemente (etwa der Radio-Kreis) sind nicht verlustfrei abbildbar.
+- `img`-Inhalte werden als Struktur, nicht als Bild serialisiert.
+
+## Entwicklung
+
+```bash
+pnpm --filter @public-ui/design-export test:unit   # mocha (Extraktion, DTCG, ZIP, IR, Kaskade, Transformation)
+```
+
+Tests laufen gegen die Workspace-Pakete (Theme-dist und Registry über `node_modules`-Symlinks); die Build-Skripte der Pakete müssen gelaufen sein.

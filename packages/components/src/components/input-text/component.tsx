@@ -148,6 +148,8 @@ export class KolInputText
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 *
+	 * @design state disabled
 	 */
 	@Prop() public _disabled?: DisabledPropType = false;
 
@@ -179,6 +181,8 @@ export class KolInputText
 
 	/**
 	 * Defines the hint text.
+	 *
+	 * @design content Hinweistext
 	 */
 	@Prop() public _hint?: HintPropType = '';
 
@@ -209,6 +213,8 @@ export class KolInputText
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
+	 *
+	 * @design content Vorname
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
@@ -229,6 +235,8 @@ export class KolInputText
 
 	/**
 	 * Defines the properties for a message rendered as Alert component.
+	 *
+	 * @design variant
 	 */
 	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
 
@@ -279,6 +287,8 @@ export class KolInputText
 
 	/**
 	 * Makes the input element read only.
+	 *
+	 * @design state readonly
 	 */
 	@Prop() public _readOnly?: ReadOnlyPropType = false;
 
@@ -289,6 +299,8 @@ export class KolInputText
 
 	/**
 	 * Makes the input element required.
+	 *
+	 * @design state required
 	 */
 	@Prop() public _required?: RequiredPropType = false;
 
@@ -360,6 +372,8 @@ export class KolInputText
 
 	/**
 	 * Shows if the input was touched by a user.
+	 *
+	 * @design sample true
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
 

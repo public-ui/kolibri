@@ -99,6 +99,8 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 
 	/**
 	 * Makes the element not focusable and ignore all events.
+	 *
+	 * @design state disabled
 	 */
 	@Prop() public _disabled?: DisabledPropType = false;
 
@@ -130,6 +132,8 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 
 	/**
 	 * Defines the target URI of the link.
+	 *
+	 * @design sample #
 	 */
 	@Prop() public _href!: HrefPropType;
 
@@ -160,6 +164,8 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
+	 *
+	 * @design content Link
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType = undefined;
 
@@ -210,6 +216,8 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 *
+	 * @design variant default= small=small
 	 */
 	@Prop() public _variant?: VariantClassNamePropType = undefined;
 

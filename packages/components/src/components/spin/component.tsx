@@ -20,6 +20,8 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	/**
 	 * Makes the element show up.
+	 *
+	 * @design sample true
 	 */
 	@Prop()
 	public _show?: ShowPropType = undefined;
@@ -42,6 +44,8 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 *
+	 * @design variant
 	 */
 	@Prop()
 	public _variant?: SpinVariantType = undefined;
