@@ -1,108 +1,132 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "1 changed, 21 added – 0 of 22 approved, review pending",
-	"computedAt": "2026-11-18T16:24:56.303Z",
+	"state": "success",
+	"description": "22 visual changes approved by ItzGerSte",
+	"computedAt": "2026-11-19T06:32:30.478Z",
 	"pr": 11619,
 	"head": "aeb88330e05b2bb4301682ff64e78b476698733f",
 	"digest": "sha256:2f8e06992b5dd8d0e8c59e163d2374a134063759d82f60b225bc3020520e4469",
 	"counts": {
 		"changes": 22,
-		"open": 22,
-		"approved": 0,
+		"open": 0,
+		"approved": 22,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"ItzGerSte"
+	],
 	"items": {
 		"test-tag-name-transformer/textarea-basic-noColumns--label-with-icon-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"test-tag-name-transformer/textarea-basic-noColumns--label-with-icon-left-and-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"test-tag-name-transformer/textarea-basic-noColumns--label-with-icon-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-bwst/textarea-basic-noColumns--label-with-icon-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-bwst/textarea-basic-noColumns--label-with-icon-left-and-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-bwst/textarea-basic-noColumns--label-with-icon-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-default/textarea-basic-noColumns--label-with-icon-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-default/textarea-basic-noColumns--label-with-icon-left-and-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-default/textarea-basic-noColumns--label-with-icon-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-desy/textarea-basic-noColumns--label-with-icon-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-desy/textarea-basic-noColumns--label-with-icon-left-and-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-desy/textarea-basic-noColumns--label-with-icon-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-ecl/textarea-basic-noColumns--hide-label-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-ecl/textarea-basic-noColumns--label-with-icon-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-ecl/textarea-basic-noColumns--label-with-icon-left-and-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-ecl/textarea-basic-noColumns--label-with-icon-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-kern/textarea-basic-noColumns--label-with-icon-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-kern/textarea-basic-noColumns--label-with-icon-left-and-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"theme-kern/textarea-basic-noColumns--label-with-icon-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"unstyled/textarea-basic-noColumns--label-with-icon-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"unstyled/textarea-basic-noColumns--label-with-icon-left-and-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		},
 		"unstyled/textarea-basic-noColumns--label-with-icon-right": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "ItzGerSte"
 		}
 	}
 }
