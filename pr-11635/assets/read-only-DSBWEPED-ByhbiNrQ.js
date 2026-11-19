@@ -1,0 +1,1 @@
+import{l as e,x as t}from"./props-from-config-BOUcpF7e-R2NLy2or.js";var n=e(`readOnly`,!1,t);export{n as t};
