@@ -72,6 +72,14 @@
 			}
 		}
 
+		/* After all variants: overrides their colors, including those they set on focus. The focus
+		   ring stays, in a color that contrasts with the disabled background. */
+		&--disabled,
+		&--disabled:focus-within {
+			@include disabled-button-colors;
+			--button-focus-outline-color: var(--ecl-color-dark);
+		}
+
 		&__text {
 			color: var(--button-text-color);
 			background-color: var(--button-background-color);
@@ -122,7 +130,7 @@
 	}
 }
 
-@mixin ghost-button($block-classname) {
+@mixin ghost-button($block-classname, $disabled-block: null) {
 	--button-background-color: transparent;
 	--button-border-color: transparent;
 	--button-border-width: 1px;
@@ -135,9 +143,32 @@
 		--button-focus-outline-width: 2px;
 	}
 
-	&:not(.#{$block-classname}--disabled):hover {
-		--button-background-color: var(--ecl-color-primary-20);
-		--button-border-color: var(--ecl-color-dark-80);
-		--button-text-color: var(--ecl-color-dark);
+	/* The ghost colors are usually applied after the `button()` mixin, so they repeat its disabled colors. */
+	@if $disabled-block {
+		.#{$disabled-block}:not(.#{$disabled-block}--disabled) &:hover {
+			--button-background-color: var(--ecl-color-primary-20);
+			--button-border-color: var(--ecl-color-dark-80);
+			--button-text-color: var(--ecl-color-dark);
+		}
+
+		.#{$disabled-block}--disabled & {
+			@include disabled-button-colors;
+		}
+	} @else {
+		&:not(.#{$block-classname}--disabled):hover {
+			--button-background-color: var(--ecl-color-primary-20);
+			--button-border-color: var(--ecl-color-dark-80);
+			--button-text-color: var(--ecl-color-dark);
+		}
+
+		&.#{$block-classname}--disabled {
+			@include disabled-button-colors;
+		}
 	}
+}
+
+@mixin disabled-button-colors {
+	--button-background-color: var(--ecl-color-disabled-background);
+	--button-border-color: var(--ecl-color-disabled-border);
+	--button-text-color: var(--ecl-color-disabled-text);
 }

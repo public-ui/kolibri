@@ -106,7 +106,7 @@
 		}
 
 		&--disabled {
-			#{$root}__heading,
+			.kol-accordion__heading,
 			.kol-icon {
 				color: var(--color-disabled-text);
 			}

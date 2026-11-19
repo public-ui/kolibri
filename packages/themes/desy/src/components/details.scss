@@ -63,7 +63,7 @@
 
 		&--disabled {
 			/* The link mixin's emphasis is not gated for the summary, which carries no modifier of its own. */
-			#{$root}__heading {
+			.kol-details__heading {
 				&,
 				&:is(:focus, :hover, :active) {
 					color: var(--color-disabled-text);
