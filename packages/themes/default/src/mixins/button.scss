@@ -127,11 +127,14 @@
 			}
 		}
 
-		&__interactive-element:is(:disabled, [aria-disabled='true']):hover &__text {
-			color: var(--text-color);
-			background-color: var(--text-background-color);
-			box-shadow: none;
-			border-color: var(--text-border-color);
+		&__interactive-element:is(:disabled, [aria-disabled='true']) {
+			pointer-events: none;
+			&:hover &__text {
+				color: var(--text-color);
+				background-color: var(--text-background-color);
+				box-shadow: none;
+				border-color: var(--text-border-color);
+			}
 		}
 	}
 
