@@ -6,7 +6,7 @@ import { HashRouter as Router } from 'react-router';
 import { bootstrap, getDefaultThemeName, KoliBriDevHelper } from '@public-ui/components';
 /* The toaster creates its container element imperatively, outside the react adapter render:
    its custom element must be defined up front. */
-import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/dist/components/kol-toast-container.js';
+import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/custom-elements/kol-toast-container.js';
 import { App, setCustomThemes } from '@public-ui/sample-react';
 
 import type { Generic } from 'adopted-style-sheets';

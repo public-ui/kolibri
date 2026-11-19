@@ -3,9 +3,9 @@
  * upgrade, render into an open shadow root and are visible to accessibility queries.
  */
 
-import { defineCustomElement as defineKolButton } from '@public-ui/components/dist/components/kol-button.js';
-import { defineCustomElement as defineKolDialog } from '@public-ui/components/dist/components/kol-dialog.js';
-import { defineCustomElement as defineKolInputText } from '@public-ui/components/dist/components/kol-input-text.js';
+import { defineCustomElement as defineKolButton } from '@public-ui/components/custom-elements/kol-button.js';
+import { defineCustomElement as defineKolDialog } from '@public-ui/components/custom-elements/kol-dialog.js';
+import { defineCustomElement as defineKolInputText } from '@public-ui/components/custom-elements/kol-input-text.js';
 import { KolButton } from '@public-ui/react-v19';
 import { render } from '@testing-library/react';
 import React from 'react';

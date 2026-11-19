@@ -409,7 +409,7 @@ Solid adapter is untested.
 `@public-ui/react` and `@public-ui/react-v19` are generated with the official
 [`@stencil/react-output-target`](https://www.npmjs.com/package/@stencil/react-output-target) instead
 of the `@public-ui/stencil-react-output-target` fork. Each React component defines its custom element
-from `@public-ui/components/dist/components` on its first render. The lazy loader is no longer part
+from `@public-ui/components/custom-elements` on its first render. The lazy loader is no longer part
 of a React application.
 
 ### Registration
@@ -440,7 +440,7 @@ The toaster creates its container element itself instead of rendering it through
 Define that element once before the first toast:
 
 ```ts
-import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/dist/components/kol-toast-container.js';
+import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/custom-elements/kol-toast-container.js';
 
 defineKolToastContainer();
 ```

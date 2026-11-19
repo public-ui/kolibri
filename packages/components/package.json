@@ -27,6 +27,8 @@
 			"require": "./dist/index.cjs.js"
 		},
 		"./assets/*": "./assets/*",
+		"./custom-elements": "./dist/components/index.js",
+		"./custom-elements/*": "./dist/components/*",
 		"./custom-elements.json": "./custom-elements.json",
 		"./dist/components": "./dist/components/index.js",
 		"./dist/components/*": "./dist/components/*",

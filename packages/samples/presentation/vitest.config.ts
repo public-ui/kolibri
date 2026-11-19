@@ -17,7 +17,6 @@ export default mergeConfig(
 		},
 		resolve: {
 			alias: {
-				'@public-ui/components': path.resolve(__dirname, '../../../packages/components'),
 				'@public-ui/theme-default': path.resolve(__dirname, '../../../packages/themes/default'),
 			},
 		},
