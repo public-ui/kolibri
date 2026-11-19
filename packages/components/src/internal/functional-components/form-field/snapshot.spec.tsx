@@ -25,11 +25,11 @@ describe('FormFieldFC', () => {
 		expect(page.root).toMatchSnapshot();
 	});
 
-	it('disables the fieldset of a disabled field', async () => {
+	it('marks a disabled fieldset through the modifier only', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<FormFieldFC id="field-nonce" label="Label" refTooltip={noop} component="fieldset" disabled />
 		));
-		expect(page.root?.hasAttribute('disabled')).toBe(true);
+		expect(page.root?.hasAttribute('disabled')).toBe(false);
 		expect(page.root?.className).toContain('kol-form-field--disabled');
 	});
 

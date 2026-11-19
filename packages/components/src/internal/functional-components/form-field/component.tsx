@@ -139,8 +139,9 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 				...(showMsg ? getMsgTypeModifiers(msg) : {}),
 			}}
 			class={clsx(variant && classNameFromVariant(variant, 'form-field'), classNames)}
-			// A disabled `fieldset` marks the whole group, legend included, as an inactive control (WCAG 1.4.3).
-			disabled={isFieldset && disabled ? true : undefined}
+			// The disabled state stays on the `--disabled` modifier and the `aria-disabled` of the controls:
+			// a natively disabled `fieldset` would hard-disable its controls and take them out of the tab
+			// order, while the legend is dimmed through the theme's `--disabled` styling.
 			aria-describedby={ariaDescribedBy}
 			{...other}
 		>
