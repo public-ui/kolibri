@@ -32,7 +32,7 @@ const beforePatchString = (component: Generic.Element.Component): void => {
 export const validateVariantClassName = (component: Generic.Element.Component, value?: VariantClassNamePropType, options: WatchOptions = {}): void => {
 	watchValidator(component, '_variant', isValidArrayOrString, SAFE_CLASS_NAME_ALLOWED, value, {
 		...options,
-		defaultValue: {},
+		defaultValue: [],
 		hooks: {
 			afterPatch: options.hooks?.afterPatch,
 			beforePatch: (nextValue, nextState, component, key) => {

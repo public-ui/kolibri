@@ -1,0 +1,36 @@
+import {
+	boundaryCountProp,
+	customClassProp,
+	labelProp,
+	pageProp,
+	pageSizeOptionsProp,
+	pageSizeProp,
+	paginationCallbacksProp,
+	paginationHasButtonsProp,
+	paginationMaxProp,
+	siblingCountProp,
+	tooltipAlignProp,
+} from '../../props';
+import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
+
+/**
+ * `page` and `pageSize` hold the clamped page and the page size resolved against the options, not the
+ * raw props. Without `_label` the requiredness warning fires and the translation `kol-pagination`
+ * names the navigation landmark, so the landmark keeps its accessible name.
+ */
+export const paginationPropsConfig = {
+	required: [labelProp, pageProp, paginationCallbacksProp, paginationMaxProp],
+	optional: [boundaryCountProp, customClassProp, pageSizeOptionsProp, pageSizeProp, paginationHasButtonsProp, siblingCountProp, tooltipAlignProp],
+} as const satisfies PropsConfigShape;
+
+export type PaginationApi = ApiFromConfig<
+	typeof paginationPropsConfig,
+	{
+		Callbacks: {
+			/** A page button or a navigation button was clicked; `page` is its target page. */
+			pageClick: (event: Event, page: number) => void;
+			/** The page size select changed. */
+			pageSizeChange: (event: Event, value: unknown) => void;
+		};
+	}
+>;

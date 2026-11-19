@@ -59,6 +59,13 @@
 			flex-wrap: wrap;
 		}
 
+		&__tablist {
+			display: var(--display);
+
+			gap: var(--button-group-gap);
+			flex-wrap: wrap;
+		}
+
 		.kol-button {
 			color: var(--color-subtle);
 			background-color: transparent;
@@ -120,13 +127,9 @@
 		&__panel {
 			height: 100%;
 		}
-
-		.kol-button-wc {
-			width: 100%;
-		}
 	}
 
-	@container tabs (width < 1000px) {
+	@container tabs (width < 400px) {
 		.kol-tabs {
 			--grid-template-columns: 1fr;
 			--grid-template-rows: max-content 1fr;

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="kol-avatar" data-name="kol-avatar" width="100" height="100" viewBox="0 0 100 100">
+  <g id="kol-avatar" data-name="kol-avatar"><rect x="0" y="0" width="100.0" height="100.0" fill="rgb(255, 255, 255)" stroke="none"/>
+    <g id="kol-avatar" data-name="kol-avatar"><rect x="0.0" y="0.0" width="100.0" height="100.0" rx="50" fill="rgb(211, 211, 211)" stroke="none"/>
+      <g id="kol-avatar__initials" data-name="kol-avatar__initials"><rect x="20.5" y="26.0" width="59.0" height="48.0" rx="50" fill="rgb(211, 211, 211)" stroke="none"/><text x="20.5" y="64.0" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="40px" font-weight="400" fill="rgb(63, 63, 63)" stroke="none" xml:space="preserve">EM</text></g></g></g>
+</svg>

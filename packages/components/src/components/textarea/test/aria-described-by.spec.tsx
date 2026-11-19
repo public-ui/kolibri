@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolTextarea } from '../shadow';
+import { KolTextarea } from '../component';
 
 describe('kol-textarea aria-describedby', () => {
 	it('keeps aria-describedby on the textarea element', async () => {

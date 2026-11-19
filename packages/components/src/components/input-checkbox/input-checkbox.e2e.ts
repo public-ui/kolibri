@@ -85,6 +85,44 @@ test.describe(COMPONENT_NAME, () => {
 
 	testInputMessage<HTMLKolInputCheckboxElement>(COMPONENT_NAME);
 
+	test.describe('Value', () => {
+		test('getValue() returns the value when checked and null when unchecked', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _value="yes" _checked></${COMPONENT_NAME}>`);
+			const component = page.locator(COMPONENT_NAME);
+			expect(await component.evaluate((element: HTMLKolInputCheckboxElement) => element.getValue())).toBe('yes');
+
+			await page.locator('input').click();
+			await page.waitForChanges();
+
+			expect(await component.evaluate((element: HTMLKolInputCheckboxElement) => element.getValue())).toBeNull();
+		});
+
+		test('reports null to onInput when unchecked, as table-settings expects', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _checked></${COMPONENT_NAME}>`);
+			const value = page.locator(COMPONENT_NAME).evaluate(
+				(element: HTMLKolInputCheckboxElement) =>
+					new Promise<unknown>((resolve) => {
+						element._on = { onInput: (_event: Event, value: unknown) => resolve(value) };
+					}),
+			);
+			await page.waitForChanges();
+
+			await page.locator('input').click();
+
+			expect(await value).toBeNull();
+		});
+
+		test('clears _indeterminate and checks the box on click', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _indeterminate></${COMPONENT_NAME}>`);
+			const component = page.locator(COMPONENT_NAME);
+
+			await page.locator('input').click();
+			await page.waitForChanges();
+
+			expect(await component.evaluate((element: HTMLKolInputCheckboxElement) => [element._checked, element._indeterminate])).toEqual([true, false]);
+		});
+	});
+
 	test(`should reflect the _checked property on the web component`, async ({ page }) => {
 		const getCheckedProperty = () => page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputCheckboxElement) => element._checked);
 		await page.setContent(`<kol-input-checkbox _label="Input"></kol-input-checkbox>`);

@@ -6,8 +6,6 @@
 	@include kol-icon-styles();
 
 	.kol-tree-item {
-		$root: &;
-
 		&__link {
 			.kol-link {
 				display: inline-flex;

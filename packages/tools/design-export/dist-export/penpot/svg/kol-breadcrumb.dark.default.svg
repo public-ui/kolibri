@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="kol-breadcrumb" data-name="kol-breadcrumb" width="180" height="44" viewBox="0 0 180 44">
+  <g id="kol-breadcrumb" data-name="kol-breadcrumb"><rect x="0" y="0" width="179.9" height="44.0" fill="rgb(20, 24, 26)" stroke="none"/>
+    <g id="kol-breadcrumb" data-name="kol-breadcrumb">
+      <g id="kol-breadcrumb__list" data-name="kol-breadcrumb__list">
+        <g id="kol-breadcrumb__list-element" data-name="kol-breadcrumb__list-element">
+          <g id="kol-breadcrumb__link" data-name="kol-breadcrumb__link">
+            <g id="kol-link" data-name="kol-link">
+              <g id="kol-link__interactive-element" data-name="kol-link__interactive-element">
+                <g id="kol-span" data-name="kol-span">
+                  <g id="kol-span__container" data-name="kol-span__container">
+                    <g id="kol-span__label" data-name="kol-span__label"><text x="2.0" y="27.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(134, 197, 234)" stroke="none" xml:space="preserve">Start</text></g></g></g></g></g></g></g>
+        <g id="kol-breadcrumb__list-element" data-name="kol-breadcrumb__list-element">
+          <g id="kol-breadcrumb__list-element-span" data-name="kol-breadcrumb__list-element-span"><text x="72.5" y="27.6" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(161, 172, 175)" stroke="none" xml:space="preserve">Einstellungen</text></g></g></g></g></g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="kol-tabs" data-name="kol-tabs" width="720" height="52" viewBox="0 0 720 52">
+  <g id="kol-tabs" data-name="kol-tabs"><rect x="0" y="0" width="720.0" height="52.0" fill="rgb(255, 255, 255)" stroke="none"/>
+    <g id="kol-tabs" data-name="kol-tabs">
+      <g id="kol-tabs__button-group" data-name="kol-tabs__button-group">
+        <g id="kol-tabs__tablist" data-name="kol-tabs__tablist">
+          <g id="kol-tabs__tab" data-name="kol-tabs__tab">
+            <g id="kol-button" data-name="kol-button">
+              <g id="kol-button__interactive-element" data-name="kol-button__interactive-element">
+                <g id="kol-span" data-name="kol-span">
+                  <g id="kol-span__container" data-name="kol-span__container"><rect x="3.0" y="11.0" width="38.0" height="22.0" rx="0" fill="none" stroke="rgb(0, 58, 92)" stroke-width="4"/>
+                    <g id="kol-span__label" data-name="kol-span__label"><text x="1.0" y="26.3" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="18px" font-weight="700" fill="rgb(0, 58, 92)" stroke="none" xml:space="preserve">Eins</text></g></g></g></g></g></g>
+          <g id="kol-tabs__tab" data-name="kol-tabs__tab">
+            <g id="kol-button" data-name="kol-button">
+              <g id="kol-button__interactive-element" data-name="kol-button__interactive-element">
+                <g id="kol-span" data-name="kol-span">
+                  <g id="kol-span__container" data-name="kol-span__container">
+                    <g id="kol-span__label" data-name="kol-span__label"><text x="76.0" y="26.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="18px" font-weight="700" fill="rgb(87, 97, 100)" stroke="none" xml:space="preserve">Zwei</text></g></g></g></g></g></g></g></g>
+      <g id="kol-tabs__content" data-name="kol-tabs__content">
+        <g id="div" data-name="div"></g></g></g></g>
+</svg>

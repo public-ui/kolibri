@@ -3,11 +3,13 @@ import { h } from '@stencil/core';
 
 import { getHeadlineTag } from '../../../functional-components/Heading/Heading';
 import { translate } from '../../../i18n';
+import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { FunctionalComponentProps } from '../generic-types';
+import { renderLabelWithLang } from '../span/component';
 import type { AlertApi } from './api';
 import { AlertIconFC } from './icon';
 
@@ -36,7 +38,10 @@ const UNSET_BUTTON_PROP = undefined as never;
  * All remaining HTML attributes (`id`, `role`, `aria-*`, `ref`, …) are forwarded onto the root
  * node — internal consumers (form, form-field-msg, toast-item) rely on that passthrough.
  */
-export const AlertFC: FC<FunctionalComponentProps<AlertApi>> = (props, children) => {
+/** The consumer's callbacks stay with the web component, which invokes them in its closer handler. */
+export type AlertFCProps = Omit<FunctionalComponentProps<AlertApi>, 'on'>;
+
+export const AlertFC: FC<AlertFCProps> = (props, children) => {
 	const {
 		alert,
 		class: classNames,
@@ -54,7 +59,7 @@ export const AlertFC: FC<FunctionalComponentProps<AlertApi>> = (props, children)
 	} = props;
 
 	const translateCloseAlert = translate('kol-close-alert');
-	const HeadlineTag = getHeadlineTag(level);
+	const HeadlineTag = getHeadlineTag(level ?? 0);
 
 	return (
 		<BemRootNodeFC
@@ -70,12 +75,12 @@ export const AlertFC: FC<FunctionalComponentProps<AlertApi>> = (props, children)
 		>
 			<AlertIconFC type={type} />
 
-			{label.length > 0 && (
+			{!!label?.length && (
 				<HeadlineTag
 					class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, alertBem('heading', { [`h${level}`]: true }), 'kol-headline--single')}
 					id={headingId}
 				>
-					{label}
+					{renderLabelWithLang(label)}
 				</HeadlineTag>
 			)}
 
@@ -83,7 +88,7 @@ export const AlertFC: FC<FunctionalComponentProps<AlertApi>> = (props, children)
 				<ButtonFC
 					accessKey=""
 					ariaControls=""
-					ariaDescription={label.trim()}
+					ariaDescription={trimLabel(label)}
 					ariaDescriptionId={closerAriaDescriptionId}
 					ariaExpanded={UNSET_BUTTON_PROP}
 					ariaHasPopup=""
@@ -111,13 +116,13 @@ export const AlertFC: FC<FunctionalComponentProps<AlertApi>> = (props, children)
 					role={UNSET_BUTTON_PROP}
 					shortKey=""
 					tabIndex={UNSET_BUTTON_PROP}
-					tooltipAlign="left"
+					tooltipAlign="top"
 					type="button"
 					variant={['normal']}
 				/>
 			)}
 
-			<div aria-describedby={label.length > 0 ? headingId : undefined} class={BEM_CLASS_ALERT__CONTENT}>
+			<div aria-describedby={label?.length ? headingId : undefined} class={BEM_CLASS_ALERT__CONTENT}>
 				{children}
 			</div>
 		</BemRootNodeFC>

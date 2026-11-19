@@ -71,6 +71,10 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: |
+          if [ -z "$SNYK_TOKEN" ]; then
+            echo "::warning::SNYK_TOKEN is not configured – skipping the scan. Add the secret to enable it."
+            exit 0
+          fi
           WORKDIR="$(mktemp -d)"
           cat > "$WORKDIR/package.json" <<EOF
           {
@@ -81,5 +85,7 @@ jobs:
           	}
           }
           EOF
-          npm --prefix "$WORKDIR" install --package-lock-only --ignore-scripts --no-audit --no-fund
-          snyk test --package-manager=npm --file="$WORKDIR/package.json" --project-name="kolibri-components-v${{ matrix.major }}"
+          # Snyk resolves the dependency tree from an installed node_modules,
+          # so a lockfile-only install is not enough.
+          cd "$WORKDIR" && npm install --ignore-scripts --no-audit --no-fund
+          snyk test --package-manager=npm --project-name="kolibri-components-v${{ matrix.major }}"

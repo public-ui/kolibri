@@ -1,0 +1,2000 @@
+{
+	"name": "@public-ui/theme-default",
+	"report": {
+		"bundledComponents": {
+			"brotli": 2219,
+			"gzip": 4279,
+			"raw": 47271
+		},
+		"candidates": [
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 20 sheets.",
+				"impactRaw": 168891,
+				"kind": "css-duplicate",
+				"subject": "40 rules × 20 sheets, e.g. `.kol-alert :host`"
+			},
+			{
+				"action": "Strip comments from the compiled CSS (Sass `style: compressed` or a CSS minifier).",
+				"impactRaw": 143593,
+				"kind": "css-comments",
+				"subject": "Comments in the CSS strings"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 17 sheets.",
+				"impactRaw": 142432,
+				"kind": "css-duplicate",
+				"subject": "41 rules × 17 sheets, e.g. `.kol-form-field`"
+			},
+			{
+				"action": "Keep `@public-ui/components` external in the theme bundle.",
+				"impactRaw": 47271,
+				"kind": "bundled-dependency",
+				"subject": "@public-ui/components code inside the theme"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 16 sheets.",
+				"impactRaw": 40485,
+				"kind": "css-duplicate",
+				"subject": "12 rules × 16 sheets, e.g. `.kol-input-container`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 5 sheets.",
+				"impactRaw": 27152,
+				"kind": "css-duplicate",
+				"subject": "28 rules × 5 sheets, e.g. `.kol-card :host`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 6 sheets.",
+				"impactRaw": 25355,
+				"kind": "css-duplicate",
+				"subject": "19 rules × 6 sheets, e.g. `.kol-button__interactive-element`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 3 sheets.",
+				"impactRaw": 15126,
+				"kind": "css-duplicate",
+				"subject": "31 rules × 3 sheets, e.g. `.kol-table-stateful__pagination`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 9 sheets.",
+				"impactRaw": 7392,
+				"kind": "css-duplicate",
+				"subject": "8 rules × 9 sheets, e.g. `.kol-input`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 6 sheets.",
+				"impactRaw": 4250,
+				"kind": "css-duplicate",
+				"subject": "4 rules × 6 sheets, e.g. `.kol-input-container:has(.kol-input-container__adornment--start:not(:empty)) .kol-input`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 3 sheets.",
+				"impactRaw": 1708,
+				"kind": "css-duplicate",
+				"subject": "6 rules × 3 sheets, e.g. `.kol-link`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 4 sheets.",
+				"impactRaw": 1047,
+				"kind": "css-duplicate",
+				"subject": "1 rules × 4 sheets, e.g. `.kol-card`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 3 sheets.",
+				"impactRaw": 984,
+				"kind": "css-duplicate",
+				"subject": "3 rules × 3 sheets, e.g. `.kol-dialog`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 7 sheets.",
+				"impactRaw": 516,
+				"kind": "css-duplicate",
+				"subject": "1 rules × 7 sheets, e.g. `.kol-button__interactive-element:focus`"
+			},
+			{
+				"action": "Emit `:host` once (GLOBAL or a shared sheet) instead of in 8 sheets.",
+				"impactRaw": 490,
+				"kind": "css-duplicate",
+				"subject": "1 rules × 8 sheets, e.g. `:host`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 7 sheets.",
+				"impactRaw": 444,
+				"kind": "css-duplicate",
+				"subject": "1 rules × 7 sheets, e.g. `.kol-close-button`"
+			},
+			{
+				"action": "Emit `.kol-*` once (GLOBAL or a shared sheet) instead of in 5 sheets.",
+				"impactRaw": 336,
+				"kind": "css-duplicate",
+				"subject": "1 rules × 5 sheets, e.g. `.kol-link__interactive-element:focus`"
+			}
+		],
+		"commentSizes": {
+			"brotli": 0,
+			"gzip": 50636,
+			"raw": 143593
+		},
+		"file": {
+			"brotli": 48188,
+			"gzip": 92901,
+			"raw": 1026295
+		},
+		"groups": [
+			{
+				"bytesPerSheet": 8889,
+				"example": ".kol-alert :host",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 40
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 168891,
+				"rules": 40,
+				"sheets": [
+					"KOL-ALERT",
+					"KOL-COMBOBOX",
+					"KOL-FORM",
+					"KOL-INPUT-CHECKBOX",
+					"KOL-INPUT-COLOR",
+					"KOL-INPUT-DATE",
+					"KOL-INPUT-EMAIL",
+					"KOL-INPUT-FILE",
+					"KOL-INPUT-NUMBER",
+					"KOL-INPUT-PASSWORD",
+					"KOL-INPUT-RADIO",
+					"KOL-INPUT-RANGE",
+					"KOL-INPUT-TEXT",
+					"KOL-PAGINATION",
+					"KOL-SELECT",
+					"KOL-SINGLE-SELECT",
+					"KOL-TABLE-STATEFUL",
+					"KOL-TABLE-STATELESS",
+					"KOL-TEXTAREA",
+					"KOL-TOAST-CONTAINER"
+				]
+			},
+			{
+				"bytesPerSheet": 8902,
+				"example": ".kol-form-field",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 41
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 142432,
+				"rules": 41,
+				"sheets": [
+					"KOL-COMBOBOX",
+					"KOL-INPUT-CHECKBOX",
+					"KOL-INPUT-COLOR",
+					"KOL-INPUT-DATE",
+					"KOL-INPUT-EMAIL",
+					"KOL-INPUT-FILE",
+					"KOL-INPUT-NUMBER",
+					"KOL-INPUT-PASSWORD",
+					"KOL-INPUT-RADIO",
+					"KOL-INPUT-RANGE",
+					"KOL-INPUT-TEXT",
+					"KOL-PAGINATION",
+					"KOL-SELECT",
+					"KOL-SINGLE-SELECT",
+					"KOL-TABLE-STATEFUL",
+					"KOL-TABLE-STATELESS",
+					"KOL-TEXTAREA"
+				]
+			},
+			{
+				"bytesPerSheet": 2699,
+				"example": ".kol-input-container",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 12
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 40485,
+				"rules": 12,
+				"sheets": [
+					"KOL-COMBOBOX",
+					"KOL-INPUT-CHECKBOX",
+					"KOL-INPUT-COLOR",
+					"KOL-INPUT-DATE",
+					"KOL-INPUT-EMAIL",
+					"KOL-INPUT-FILE",
+					"KOL-INPUT-NUMBER",
+					"KOL-INPUT-PASSWORD",
+					"KOL-INPUT-RANGE",
+					"KOL-INPUT-TEXT",
+					"KOL-PAGINATION",
+					"KOL-SELECT",
+					"KOL-SINGLE-SELECT",
+					"KOL-TABLE-STATEFUL",
+					"KOL-TABLE-STATELESS",
+					"KOL-TEXTAREA"
+				]
+			},
+			{
+				"bytesPerSheet": 6788,
+				"example": ".kol-card :host",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 28
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 27152,
+				"rules": 28,
+				"sheets": ["KOL-CARD", "KOL-DIALOG", "KOL-DRAWER", "KOL-TABLE-STATEFUL", "KOL-TABLE-STATELESS"]
+			},
+			{
+				"bytesPerSheet": 5071,
+				"example": ".kol-button__interactive-element",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 19
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 25355,
+				"rules": 19,
+				"sheets": ["KOL-BUTTON", "KOL-COMBOBOX", "KOL-INPUT-FILE", "KOL-POPOVER-BUTTON", "KOL-SINGLE-SELECT", "KOL-TOOLBAR"]
+			},
+			{
+				"bytesPerSheet": 7563,
+				"example": ".kol-table-stateful__pagination",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 31
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 15126,
+				"rules": 31,
+				"sheets": ["KOL-PAGINATION", "KOL-TABLE-STATEFUL", "KOL-TABLE-STATELESS"]
+			},
+			{
+				"bytesPerSheet": 924,
+				"example": ".kol-input",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 8
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 7392,
+				"rules": 8,
+				"sheets": [
+					"KOL-COMBOBOX",
+					"KOL-INPUT-DATE",
+					"KOL-INPUT-EMAIL",
+					"KOL-INPUT-FILE",
+					"KOL-INPUT-NUMBER",
+					"KOL-INPUT-PASSWORD",
+					"KOL-INPUT-TEXT",
+					"KOL-SINGLE-SELECT",
+					"KOL-TEXTAREA"
+				]
+			},
+			{
+				"bytesPerSheet": 850,
+				"example": ".kol-input-container:has(.kol-input-container__adornment--start:not(:empty)) .kol-input",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 4
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 4250,
+				"rules": 4,
+				"sheets": ["KOL-INPUT-DATE", "KOL-INPUT-EMAIL", "KOL-INPUT-NUMBER", "KOL-INPUT-PASSWORD", "KOL-INPUT-TEXT", "KOL-TEXTAREA"]
+			},
+			{
+				"bytesPerSheet": 854,
+				"example": ".kol-link",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 6
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 1708,
+				"rules": 6,
+				"sheets": ["KOL-BREADCRUMB", "KOL-FORM", "KOL-LINK"]
+			},
+			{
+				"bytesPerSheet": 349,
+				"example": ".kol-card",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 1
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 1047,
+				"rules": 1,
+				"sheets": ["KOL-CARD", "KOL-DIALOG", "KOL-TABLE-STATEFUL", "KOL-TABLE-STATELESS"]
+			},
+			{
+				"bytesPerSheet": 492,
+				"example": ".kol-dialog",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 3
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 984,
+				"rules": 3,
+				"sheets": ["KOL-DIALOG", "KOL-TABLE-STATEFUL", "KOL-TABLE-STATELESS"]
+			},
+			{
+				"bytesPerSheet": 86,
+				"example": ".kol-button__interactive-element:focus",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 1
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 516,
+				"rules": 1,
+				"sheets": ["KOL-BUTTON", "KOL-BUTTON-LINK", "KOL-COMBOBOX", "KOL-INPUT-FILE", "KOL-POPOVER-BUTTON", "KOL-SINGLE-SELECT", "KOL-TOOLBAR"]
+			},
+			{
+				"bytesPerSheet": 70,
+				"example": ":host",
+				"families": [
+					{
+						"family": ":host",
+						"rules": 1
+					}
+				],
+				"label": ":host",
+				"redundantBytes": 490,
+				"rules": 1,
+				"sheets": [
+					"KOL-BUTTON",
+					"KOL-COMBOBOX",
+					"KOL-INPUT-CHECKBOX",
+					"KOL-INPUT-FILE",
+					"KOL-LINK-BUTTON",
+					"KOL-POPOVER-BUTTON",
+					"KOL-SINGLE-SELECT",
+					"KOL-TOOLBAR"
+				]
+			},
+			{
+				"bytesPerSheet": 74,
+				"example": ".kol-close-button",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 1
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 444,
+				"rules": 1,
+				"sheets": ["KOL-BUTTON", "KOL-COMBOBOX", "KOL-INPUT-FILE", "KOL-LINK-BUTTON", "KOL-POPOVER-BUTTON", "KOL-SINGLE-SELECT", "KOL-TOOLBAR"]
+			},
+			{
+				"bytesPerSheet": 84,
+				"example": ".kol-link__interactive-element:focus",
+				"families": [
+					{
+						"family": ".kol-*",
+						"rules": 1
+					}
+				],
+				"label": ".kol-*",
+				"redundantBytes": 336,
+				"rules": 1,
+				"sheets": ["KOL-BREADCRUMB", "KOL-FORM", "KOL-LINK", "KOL-LINK-BUTTON", "KOL-TOOLBAR"]
+			}
+		],
+		"kind": "theme",
+		"literalBytes": 975602,
+		"metrics": {
+			"redundant": {
+				"field": "raw",
+				"label": "Redundant CSS (bytes)",
+				"rule": "percent",
+				"sizes": {
+					"brotli": 0,
+					"gzip": 0,
+					"raw": 436608
+				}
+			},
+			"sheets": {
+				"label": "All CSS strings",
+				"rule": "percent",
+				"sizes": {
+					"brotli": 117749,
+					"gzip": 143959,
+					"raw": 940696
+				}
+			},
+			"total": {
+				"label": "Total dist/index.mjs",
+				"rule": "percent",
+				"sizes": {
+					"brotli": 48188,
+					"gzip": 92901,
+					"raw": 1026295
+				}
+			},
+			"sheet:GLOBAL": {
+				"label": "GLOBAL",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 24814,
+					"gzip": 30193,
+					"raw": 191174
+				}
+			},
+			"sheet:KOL-TABLE-STATEFUL": {
+				"label": "KOL-TABLE-STATEFUL",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 6073,
+					"gzip": 8297,
+					"raw": 70602
+				}
+			},
+			"sheet:KOL-TABLE-STATELESS": {
+				"label": "KOL-TABLE-STATELESS",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 6075,
+					"gzip": 8283,
+					"raw": 70471
+				}
+			},
+			"sheet:KOL-INPUT-CHECKBOX": {
+				"label": "KOL-INPUT-CHECKBOX",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3959,
+					"gzip": 4817,
+					"raw": 51669
+				}
+			},
+			"sheet:KOL-SINGLE-SELECT": {
+				"label": "KOL-SINGLE-SELECT",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3533,
+					"gzip": 4182,
+					"raw": 34187
+				}
+			},
+			"sheet:KOL-COMBOBOX": {
+				"label": "KOL-COMBOBOX",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3533,
+					"gzip": 4182,
+					"raw": 34157
+				}
+			},
+			"sheet:KOL-INPUT-FILE": {
+				"label": "KOL-INPUT-FILE",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3516,
+					"gzip": 4151,
+					"raw": 33560
+				}
+			},
+			"sheet:KOL-PAGINATION": {
+				"label": "KOL-PAGINATION",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3803,
+					"gzip": 4507,
+					"raw": 32307
+				}
+			},
+			"sheet:KOL-INPUT-RADIO": {
+				"label": "KOL-INPUT-RADIO",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3169,
+					"gzip": 3801,
+					"raw": 31768
+				}
+			},
+			"sheet:KOL-SELECT": {
+				"label": "KOL-SELECT",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3585,
+					"gzip": 4256,
+					"raw": 29467
+				}
+			},
+			"sheet:KOL-TEXTAREA": {
+				"label": "KOL-TEXTAREA",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3250,
+					"gzip": 3849,
+					"raw": 26673
+				}
+			},
+			"sheet:KOL-INPUT-NUMBER": {
+				"label": "KOL-INPUT-NUMBER",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3260,
+					"gzip": 3862,
+					"raw": 26578
+				}
+			},
+			"sheet:KOL-INPUT-DATE": {
+				"label": "KOL-INPUT-DATE",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3212,
+					"gzip": 3812,
+					"raw": 26124
+				}
+			},
+			"sheet:KOL-INPUT-EMAIL": {
+				"label": "KOL-INPUT-EMAIL",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3180,
+					"gzip": 3776,
+					"raw": 25989
+				}
+			},
+			"sheet:KOL-INPUT-PASSWORD": {
+				"label": "KOL-INPUT-PASSWORD",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3180,
+					"gzip": 3776,
+					"raw": 25989
+				}
+			},
+			"sheet:KOL-INPUT-TEXT": {
+				"label": "KOL-INPUT-TEXT",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3180,
+					"gzip": 3776,
+					"raw": 25989
+				}
+			},
+			"sheet:KOL-INPUT-RANGE": {
+				"label": "KOL-INPUT-RANGE",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3182,
+					"gzip": 3771,
+					"raw": 25760
+				}
+			},
+			"sheet:KOL-INPUT-COLOR": {
+				"label": "KOL-INPUT-COLOR",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 3053,
+					"gzip": 3629,
+					"raw": 24553
+				}
+			},
+			"sheet:KOL-TOOLBAR": {
+				"label": "KOL-TOOLBAR",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 1610,
+					"gzip": 1952,
+					"raw": 14637
+				}
+			},
+			"sheet:KOL-FORM": {
+				"label": "KOL-FORM",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 2324,
+					"gzip": 2786,
+					"raw": 12879
+				}
+			},
+			"sheet:KOL-TOAST-CONTAINER": {
+				"label": "KOL-TOAST-CONTAINER",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 2199,
+					"gzip": 2636,
+					"raw": 11998
+				}
+			},
+			"sheet:KOL-DRAWER": {
+				"label": "KOL-DRAWER",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 2062,
+					"gzip": 2497,
+					"raw": 11759
+				}
+			},
+			"sheet:KOL-ALERT": {
+				"label": "KOL-ALERT",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 2156,
+					"gzip": 2598,
+					"raw": 11700
+				}
+			},
+			"sheet:KOL-DIALOG": {
+				"label": "KOL-DIALOG",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 2111,
+					"gzip": 2573,
+					"raw": 11005
+				}
+			},
+			"sheet:KOL-NAV": {
+				"label": "KOL-NAV",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 1691,
+					"gzip": 2034,
+					"raw": 10974
+				}
+			},
+			"sheet:KOL-CARD": {
+				"label": "KOL-CARD",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 1781,
+					"gzip": 2184,
+					"raw": 9755
+				}
+			},
+			"sheet:KOL-SPLIT-BUTTON": {
+				"label": "KOL-SPLIT-BUTTON",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 1446,
+					"gzip": 1773,
+					"raw": 9419
+				}
+			},
+			"sheet:KOL-POPOVER-BUTTON": {
+				"label": "KOL-POPOVER-BUTTON",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 1339,
+					"gzip": 1628,
+					"raw": 7502
+				}
+			},
+			"sheet:KOL-BUTTON": {
+				"label": "KOL-BUTTON",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 1254,
+					"gzip": 1537,
+					"raw": 6961
+				}
+			},
+			"sheet:KOL-LINK-BUTTON": {
+				"label": "KOL-LINK-BUTTON",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 1257,
+					"gzip": 1541,
+					"raw": 6835
+				}
+			},
+			"sheet:KOL-ACCORDION": {
+				"label": "KOL-ACCORDION",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 1168,
+					"gzip": 1455,
+					"raw": 3641
+				}
+			},
+			"sheet:KOL-TABS": {
+				"label": "KOL-TABS",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 838,
+					"gzip": 1016,
+					"raw": 3218
+				}
+			},
+			"sheet:KOL-VERSION": {
+				"label": "KOL-VERSION",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 703,
+					"gzip": 885,
+					"raw": 2390
+				}
+			},
+			"sheet:KOL-BADGE": {
+				"label": "KOL-BADGE",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 679,
+					"gzip": 859,
+					"raw": 2289
+				}
+			},
+			"sheet:KOL-BUTTON-LINK": {
+				"label": "KOL-BUTTON-LINK",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 541,
+					"gzip": 664,
+					"raw": 2022
+				}
+			},
+			"sheet:KOL-DETAILS": {
+				"label": "KOL-DETAILS",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 594,
+					"gzip": 764,
+					"raw": 1892
+				}
+			},
+			"sheet:KOL-TREE-ITEM": {
+				"label": "KOL-TREE-ITEM",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 570,
+					"gzip": 745,
+					"raw": 1879
+				}
+			},
+			"sheet:KOL-METER": {
+				"label": "KOL-METER",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 573,
+					"gzip": 716,
+					"raw": 1812
+				}
+			},
+			"sheet:KOL-BREADCRUMB": {
+				"label": "KOL-BREADCRUMB",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 536,
+					"gzip": 654,
+					"raw": 1691
+				}
+			},
+			"sheet:KOL-PROGRESS": {
+				"label": "KOL-PROGRESS",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 504,
+					"gzip": 642,
+					"raw": 1641
+				}
+			},
+			"sheet:KOL-LINK": {
+				"label": "KOL-LINK",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 480,
+					"gzip": 604,
+					"raw": 1405
+				}
+			},
+			"sheet:KOL-HEADING": {
+				"label": "KOL-HEADING",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 380,
+					"gzip": 491,
+					"raw": 1148
+				}
+			},
+			"sheet:KOL-SKIP-NAV": {
+				"label": "KOL-SKIP-NAV",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 423,
+					"gzip": 537,
+					"raw": 1113
+				}
+			},
+			"sheet:KOL-TREE": {
+				"label": "KOL-TREE",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 334,
+					"gzip": 439,
+					"raw": 785
+				}
+			},
+			"sheet:KOL-ABBR": {
+				"label": "KOL-ABBR",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 325,
+					"gzip": 420,
+					"raw": 681
+				}
+			},
+			"sheet:KOL-QUOTE": {
+				"label": "KOL-QUOTE",
+				"rule": "percent-or-bytes",
+				"sizes": {
+					"brotli": 314,
+					"gzip": 409,
+					"raw": 648
+				}
+			}
+		},
+		"modules": [
+			{
+				"group": "(unmapped)",
+				"kind": "other",
+				"module": "(unmapped)",
+				"sizes": {
+					"brotli": 45860,
+					"gzip": 88413,
+					"raw": 976713
+				}
+			},
+			{
+				"group": "@public-ui/components",
+				"kind": "dependency",
+				"module": "@public-ui/components/dist/esm/common-BdSzSIXg.js",
+				"sizes": {
+					"brotli": 1598,
+					"gzip": 3080,
+					"raw": 34029
+				}
+			},
+			{
+				"group": "@public-ui/components",
+				"kind": "dependency",
+				"module": "@public-ui/components/dist/esm/index.js",
+				"sizes": {
+					"brotli": 579,
+					"gzip": 1117,
+					"raw": 12339
+				}
+			},
+			{
+				"group": "src",
+				"kind": "own",
+				"module": "src/index.ts",
+				"sizes": {
+					"brotli": 77,
+					"gzip": 149,
+					"raw": 1644
+				}
+			},
+			{
+				"group": "@public-ui/components",
+				"kind": "dependency",
+				"module": "@public-ui/components/dist/esm/events-CRHxtwup.js",
+				"sizes": {
+					"brotli": 42,
+					"gzip": 82,
+					"raw": 903
+				}
+			},
+			{
+				"group": "variants",
+				"kind": "own",
+				"module": "src/variants/button.ts",
+				"sizes": {
+					"brotli": 18,
+					"gzip": 35,
+					"raw": 386
+				}
+			},
+			{
+				"group": "variants",
+				"kind": "own",
+				"module": "src/variants/input.ts",
+				"sizes": {
+					"brotli": 7,
+					"gzip": 13,
+					"raw": 142
+				}
+			},
+			{
+				"group": "variants",
+				"kind": "own",
+				"module": "src/variants/link.ts",
+				"sizes": {
+					"brotli": 7,
+					"gzip": 13,
+					"raw": 139
+				}
+			}
+		],
+		"redundantBytes": 436608,
+		"sets": {},
+		"sheetSizes": {
+			"brotli": 117749,
+			"gzip": 143959,
+			"raw": 940696
+		},
+		"sheets": [
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 3684,
+					"raw": 8588
+				},
+				"sizes": {
+					"brotli": 24814,
+					"gzip": 30193,
+					"raw": 191174
+				},
+				"tag": "GLOBAL"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 3681,
+					"raw": 11790
+				},
+				"sizes": {
+					"brotli": 6073,
+					"gzip": 8297,
+					"raw": 70602
+				},
+				"tag": "KOL-TABLE-STATEFUL"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 3682,
+					"raw": 11790
+				},
+				"sizes": {
+					"brotli": 6075,
+					"gzip": 8283,
+					"raw": 70471
+				},
+				"tag": "KOL-TABLE-STATELESS"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1480,
+					"raw": 6675
+				},
+				"sizes": {
+					"brotli": 3959,
+					"gzip": 4817,
+					"raw": 51669
+				},
+				"tag": "KOL-INPUT-CHECKBOX"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1422,
+					"raw": 5342
+				},
+				"sizes": {
+					"brotli": 3533,
+					"gzip": 4182,
+					"raw": 34187
+				},
+				"tag": "KOL-SINGLE-SELECT"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1424,
+					"raw": 5342
+				},
+				"sizes": {
+					"brotli": 3533,
+					"gzip": 4182,
+					"raw": 34157
+				},
+				"tag": "KOL-COMBOBOX"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1505,
+					"raw": 5540
+				},
+				"sizes": {
+					"brotli": 3516,
+					"gzip": 4151,
+					"raw": 33560
+				},
+				"tag": "KOL-INPUT-FILE"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1664,
+					"raw": 4902
+				},
+				"sizes": {
+					"brotli": 3803,
+					"gzip": 4507,
+					"raw": 32307
+				},
+				"tag": "KOL-PAGINATION"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1415,
+					"raw": 5342
+				},
+				"sizes": {
+					"brotli": 3169,
+					"gzip": 3801,
+					"raw": 31768
+				},
+				"tag": "KOL-INPUT-RADIO"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1652,
+					"raw": 4762
+				},
+				"sizes": {
+					"brotli": 3585,
+					"gzip": 4256,
+					"raw": 29467
+				},
+				"tag": "KOL-SELECT"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1403,
+					"raw": 4197
+				},
+				"sizes": {
+					"brotli": 3250,
+					"gzip": 3849,
+					"raw": 26673
+				},
+				"tag": "KOL-TEXTAREA"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1402,
+					"raw": 4197
+				},
+				"sizes": {
+					"brotli": 3260,
+					"gzip": 3862,
+					"raw": 26578
+				},
+				"tag": "KOL-INPUT-NUMBER"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1396,
+					"raw": 4197
+				},
+				"sizes": {
+					"brotli": 3212,
+					"gzip": 3812,
+					"raw": 26124
+				},
+				"tag": "KOL-INPUT-DATE"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1398,
+					"raw": 4197
+				},
+				"sizes": {
+					"brotli": 3180,
+					"gzip": 3776,
+					"raw": 25989
+				},
+				"tag": "KOL-INPUT-EMAIL"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1398,
+					"raw": 4197
+				},
+				"sizes": {
+					"brotli": 3180,
+					"gzip": 3776,
+					"raw": 25989
+				},
+				"tag": "KOL-INPUT-PASSWORD"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1398,
+					"raw": 4197
+				},
+				"sizes": {
+					"brotli": 3180,
+					"gzip": 3776,
+					"raw": 25989
+				},
+				"tag": "KOL-INPUT-TEXT"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1396,
+					"raw": 4197
+				},
+				"sizes": {
+					"brotli": 3182,
+					"gzip": 3771,
+					"raw": 25760
+				},
+				"tag": "KOL-INPUT-RANGE"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1396,
+					"raw": 4197
+				},
+				"sizes": {
+					"brotli": 3053,
+					"gzip": 3629,
+					"raw": 24553
+				},
+				"tag": "KOL-INPUT-COLOR"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 762,
+					"raw": 2787
+				},
+				"sizes": {
+					"brotli": 1610,
+					"gzip": 1952,
+					"raw": 14637
+				},
+				"tag": "KOL-TOOLBAR"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1301,
+					"raw": 2902
+				},
+				"sizes": {
+					"brotli": 2324,
+					"gzip": 2786,
+					"raw": 12879
+				},
+				"tag": "KOL-FORM"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1298,
+					"raw": 2902
+				},
+				"sizes": {
+					"brotli": 2199,
+					"gzip": 2636,
+					"raw": 11998
+				},
+				"tag": "KOL-TOAST-CONTAINER"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1248,
+					"raw": 2791
+				},
+				"sizes": {
+					"brotli": 2062,
+					"gzip": 2497,
+					"raw": 11759
+				},
+				"tag": "KOL-DRAWER"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1299,
+					"raw": 2902
+				},
+				"sizes": {
+					"brotli": 2156,
+					"gzip": 2598,
+					"raw": 11700
+				},
+				"tag": "KOL-ALERT"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1478,
+					"raw": 3364
+				},
+				"sizes": {
+					"brotli": 2111,
+					"gzip": 2573,
+					"raw": 11005
+				},
+				"tag": "KOL-DIALOG"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 844,
+					"raw": 1891
+				},
+				"sizes": {
+					"brotli": 1691,
+					"gzip": 2034,
+					"raw": 10974
+				},
+				"tag": "KOL-NAV"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 1168,
+					"raw": 2592
+				},
+				"sizes": {
+					"brotli": 1781,
+					"gzip": 2184,
+					"raw": 9755
+				},
+				"tag": "KOL-CARD"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 756,
+					"raw": 1642
+				},
+				"sizes": {
+					"brotli": 1446,
+					"gzip": 1773,
+					"raw": 9419
+				},
+				"tag": "KOL-SPLIT-BUTTON"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 736,
+					"raw": 1642
+				},
+				"sizes": {
+					"brotli": 1339,
+					"gzip": 1628,
+					"raw": 7502
+				},
+				"tag": "KOL-POPOVER-BUTTON"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 737,
+					"raw": 1642
+				},
+				"sizes": {
+					"brotli": 1254,
+					"gzip": 1537,
+					"raw": 6961
+				},
+				"tag": "KOL-BUTTON"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 743,
+					"raw": 1642
+				},
+				"sizes": {
+					"brotli": 1257,
+					"gzip": 1541,
+					"raw": 6835
+				},
+				"tag": "KOL-LINK-BUTTON"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 883,
+					"raw": 1956
+				},
+				"sizes": {
+					"brotli": 1168,
+					"gzip": 1455,
+					"raw": 3641
+				},
+				"tag": "KOL-ACCORDION"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 266,
+					"raw": 532
+				},
+				"sizes": {
+					"brotli": 838,
+					"gzip": 1016,
+					"raw": 3218
+				},
+				"tag": "KOL-TABS"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 494,
+					"raw": 1096
+				},
+				"sizes": {
+					"brotli": 703,
+					"gzip": 885,
+					"raw": 2390
+				},
+				"tag": "KOL-VERSION"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 468,
+					"raw": 995
+				},
+				"sizes": {
+					"brotli": 679,
+					"gzip": 859,
+					"raw": 2289
+				},
+				"tag": "KOL-BADGE"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 240,
+					"raw": 497
+				},
+				"sizes": {
+					"brotli": 541,
+					"gzip": 664,
+					"raw": 2022
+				},
+				"tag": "KOL-BUTTON-LINK"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 302,
+					"raw": 592
+				},
+				"sizes": {
+					"brotli": 594,
+					"gzip": 764,
+					"raw": 1892
+				},
+				"tag": "KOL-DETAILS"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 336,
+					"raw": 677
+				},
+				"sizes": {
+					"brotli": 570,
+					"gzip": 745,
+					"raw": 1879
+				},
+				"tag": "KOL-TREE-ITEM"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 389,
+					"raw": 745
+				},
+				"sizes": {
+					"brotli": 573,
+					"gzip": 716,
+					"raw": 1812
+				},
+				"tag": "KOL-METER"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 240,
+					"raw": 497
+				},
+				"sizes": {
+					"brotli": 536,
+					"gzip": 654,
+					"raw": 1691
+				},
+				"tag": "KOL-BREADCRUMB"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 345,
+					"raw": 676
+				},
+				"sizes": {
+					"brotli": 504,
+					"gzip": 642,
+					"raw": 1641
+				},
+				"tag": "KOL-PROGRESS"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 239,
+					"raw": 497
+				},
+				"sizes": {
+					"brotli": 480,
+					"gzip": 604,
+					"raw": 1405
+				},
+				"tag": "KOL-LINK"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 260,
+					"raw": 497
+				},
+				"sizes": {
+					"brotli": 380,
+					"gzip": 491,
+					"raw": 1148
+				},
+				"tag": "KOL-HEADING"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 241,
+					"raw": 497
+				},
+				"sizes": {
+					"brotli": 423,
+					"gzip": 537,
+					"raw": 1113
+				},
+				"tag": "KOL-SKIP-NAV"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 253,
+					"raw": 497
+				},
+				"sizes": {
+					"brotli": 334,
+					"gzip": 439,
+					"raw": 785
+				},
+				"tag": "KOL-TREE"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 254,
+					"raw": 497
+				},
+				"sizes": {
+					"brotli": 325,
+					"gzip": 420,
+					"raw": 681
+				},
+				"tag": "KOL-ABBR"
+			},
+			{
+				"commentSizes": {
+					"brotli": 0,
+					"gzip": 260,
+					"raw": 497
+				},
+				"sizes": {
+					"brotli": 314,
+					"gzip": 409,
+					"raw": 648
+				},
+				"tag": "KOL-QUOTE"
+			}
+		],
+		"sourceMaps": true
+	},
+	"result": {
+		"failures": [],
+		"improvements": [],
+		"passed": true,
+		"rows": [
+			{
+				"allowed": 445340,
+				"base": 436608,
+				"current": 436608,
+				"field": "raw",
+				"id": "redundant",
+				"label": "Redundant CSS (bytes)",
+				"status": "ok"
+			},
+			{
+				"allowed": 146838,
+				"base": 143959,
+				"current": 143959,
+				"field": "gzip",
+				"id": "sheets",
+				"label": "All CSS strings",
+				"status": "ok"
+			},
+			{
+				"allowed": 94759,
+				"base": 92901,
+				"current": 92901,
+				"field": "gzip",
+				"id": "total",
+				"label": "Total dist/index.mjs",
+				"status": "ok"
+			},
+			{
+				"allowed": 31217,
+				"base": 30193,
+				"current": 30193,
+				"field": "gzip",
+				"id": "sheet:GLOBAL",
+				"label": "GLOBAL",
+				"status": "ok"
+			},
+			{
+				"allowed": 9321,
+				"base": 8297,
+				"current": 8297,
+				"field": "gzip",
+				"id": "sheet:KOL-TABLE-STATEFUL",
+				"label": "KOL-TABLE-STATEFUL",
+				"status": "ok"
+			},
+			{
+				"allowed": 9307,
+				"base": 8283,
+				"current": 8283,
+				"field": "gzip",
+				"id": "sheet:KOL-TABLE-STATELESS",
+				"label": "KOL-TABLE-STATELESS",
+				"status": "ok"
+			},
+			{
+				"allowed": 5841,
+				"base": 4817,
+				"current": 4817,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-CHECKBOX",
+				"label": "KOL-INPUT-CHECKBOX",
+				"status": "ok"
+			},
+			{
+				"allowed": 5206,
+				"base": 4182,
+				"current": 4182,
+				"field": "gzip",
+				"id": "sheet:KOL-SINGLE-SELECT",
+				"label": "KOL-SINGLE-SELECT",
+				"status": "ok"
+			},
+			{
+				"allowed": 5206,
+				"base": 4182,
+				"current": 4182,
+				"field": "gzip",
+				"id": "sheet:KOL-COMBOBOX",
+				"label": "KOL-COMBOBOX",
+				"status": "ok"
+			},
+			{
+				"allowed": 5175,
+				"base": 4151,
+				"current": 4151,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-FILE",
+				"label": "KOL-INPUT-FILE",
+				"status": "ok"
+			},
+			{
+				"allowed": 5531,
+				"base": 4507,
+				"current": 4507,
+				"field": "gzip",
+				"id": "sheet:KOL-PAGINATION",
+				"label": "KOL-PAGINATION",
+				"status": "ok"
+			},
+			{
+				"allowed": 4825,
+				"base": 3801,
+				"current": 3801,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-RADIO",
+				"label": "KOL-INPUT-RADIO",
+				"status": "ok"
+			},
+			{
+				"allowed": 5280,
+				"base": 4256,
+				"current": 4256,
+				"field": "gzip",
+				"id": "sheet:KOL-SELECT",
+				"label": "KOL-SELECT",
+				"status": "ok"
+			},
+			{
+				"allowed": 4873,
+				"base": 3849,
+				"current": 3849,
+				"field": "gzip",
+				"id": "sheet:KOL-TEXTAREA",
+				"label": "KOL-TEXTAREA",
+				"status": "ok"
+			},
+			{
+				"allowed": 4886,
+				"base": 3862,
+				"current": 3862,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-NUMBER",
+				"label": "KOL-INPUT-NUMBER",
+				"status": "ok"
+			},
+			{
+				"allowed": 4836,
+				"base": 3812,
+				"current": 3812,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-DATE",
+				"label": "KOL-INPUT-DATE",
+				"status": "ok"
+			},
+			{
+				"allowed": 4800,
+				"base": 3776,
+				"current": 3776,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-EMAIL",
+				"label": "KOL-INPUT-EMAIL",
+				"status": "ok"
+			},
+			{
+				"allowed": 4800,
+				"base": 3776,
+				"current": 3776,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-PASSWORD",
+				"label": "KOL-INPUT-PASSWORD",
+				"status": "ok"
+			},
+			{
+				"allowed": 4800,
+				"base": 3776,
+				"current": 3776,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-TEXT",
+				"label": "KOL-INPUT-TEXT",
+				"status": "ok"
+			},
+			{
+				"allowed": 4795,
+				"base": 3771,
+				"current": 3771,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-RANGE",
+				"label": "KOL-INPUT-RANGE",
+				"status": "ok"
+			},
+			{
+				"allowed": 4653,
+				"base": 3629,
+				"current": 3629,
+				"field": "gzip",
+				"id": "sheet:KOL-INPUT-COLOR",
+				"label": "KOL-INPUT-COLOR",
+				"status": "ok"
+			},
+			{
+				"allowed": 2976,
+				"base": 1952,
+				"current": 1952,
+				"field": "gzip",
+				"id": "sheet:KOL-TOOLBAR",
+				"label": "KOL-TOOLBAR",
+				"status": "ok"
+			},
+			{
+				"allowed": 3810,
+				"base": 2786,
+				"current": 2786,
+				"field": "gzip",
+				"id": "sheet:KOL-FORM",
+				"label": "KOL-FORM",
+				"status": "ok"
+			},
+			{
+				"allowed": 3660,
+				"base": 2636,
+				"current": 2636,
+				"field": "gzip",
+				"id": "sheet:KOL-TOAST-CONTAINER",
+				"label": "KOL-TOAST-CONTAINER",
+				"status": "ok"
+			},
+			{
+				"allowed": 3521,
+				"base": 2497,
+				"current": 2497,
+				"field": "gzip",
+				"id": "sheet:KOL-DRAWER",
+				"label": "KOL-DRAWER",
+				"status": "ok"
+			},
+			{
+				"allowed": 3622,
+				"base": 2598,
+				"current": 2598,
+				"field": "gzip",
+				"id": "sheet:KOL-ALERT",
+				"label": "KOL-ALERT",
+				"status": "ok"
+			},
+			{
+				"allowed": 3597,
+				"base": 2573,
+				"current": 2573,
+				"field": "gzip",
+				"id": "sheet:KOL-DIALOG",
+				"label": "KOL-DIALOG",
+				"status": "ok"
+			},
+			{
+				"allowed": 3058,
+				"base": 2034,
+				"current": 2034,
+				"field": "gzip",
+				"id": "sheet:KOL-NAV",
+				"label": "KOL-NAV",
+				"status": "ok"
+			},
+			{
+				"allowed": 3208,
+				"base": 2184,
+				"current": 2184,
+				"field": "gzip",
+				"id": "sheet:KOL-CARD",
+				"label": "KOL-CARD",
+				"status": "ok"
+			},
+			{
+				"allowed": 2797,
+				"base": 1773,
+				"current": 1773,
+				"field": "gzip",
+				"id": "sheet:KOL-SPLIT-BUTTON",
+				"label": "KOL-SPLIT-BUTTON",
+				"status": "ok"
+			},
+			{
+				"allowed": 2652,
+				"base": 1628,
+				"current": 1628,
+				"field": "gzip",
+				"id": "sheet:KOL-POPOVER-BUTTON",
+				"label": "KOL-POPOVER-BUTTON",
+				"status": "ok"
+			},
+			{
+				"allowed": 2561,
+				"base": 1537,
+				"current": 1537,
+				"field": "gzip",
+				"id": "sheet:KOL-BUTTON",
+				"label": "KOL-BUTTON",
+				"status": "ok"
+			},
+			{
+				"allowed": 2565,
+				"base": 1541,
+				"current": 1541,
+				"field": "gzip",
+				"id": "sheet:KOL-LINK-BUTTON",
+				"label": "KOL-LINK-BUTTON",
+				"status": "ok"
+			},
+			{
+				"allowed": 2479,
+				"base": 1455,
+				"current": 1455,
+				"field": "gzip",
+				"id": "sheet:KOL-ACCORDION",
+				"label": "KOL-ACCORDION",
+				"status": "ok"
+			},
+			{
+				"allowed": 2040,
+				"base": 1016,
+				"current": 1016,
+				"field": "gzip",
+				"id": "sheet:KOL-TABS",
+				"label": "KOL-TABS",
+				"status": "ok"
+			},
+			{
+				"allowed": 1909,
+				"base": 885,
+				"current": 885,
+				"field": "gzip",
+				"id": "sheet:KOL-VERSION",
+				"label": "KOL-VERSION",
+				"status": "ok"
+			},
+			{
+				"allowed": 1883,
+				"base": 859,
+				"current": 859,
+				"field": "gzip",
+				"id": "sheet:KOL-BADGE",
+				"label": "KOL-BADGE",
+				"status": "ok"
+			},
+			{
+				"allowed": 1688,
+				"base": 664,
+				"current": 664,
+				"field": "gzip",
+				"id": "sheet:KOL-BUTTON-LINK",
+				"label": "KOL-BUTTON-LINK",
+				"status": "ok"
+			},
+			{
+				"allowed": 1788,
+				"base": 764,
+				"current": 764,
+				"field": "gzip",
+				"id": "sheet:KOL-DETAILS",
+				"label": "KOL-DETAILS",
+				"status": "ok"
+			},
+			{
+				"allowed": 1769,
+				"base": 745,
+				"current": 745,
+				"field": "gzip",
+				"id": "sheet:KOL-TREE-ITEM",
+				"label": "KOL-TREE-ITEM",
+				"status": "ok"
+			},
+			{
+				"allowed": 1740,
+				"base": 716,
+				"current": 716,
+				"field": "gzip",
+				"id": "sheet:KOL-METER",
+				"label": "KOL-METER",
+				"status": "ok"
+			},
+			{
+				"allowed": 1678,
+				"base": 654,
+				"current": 654,
+				"field": "gzip",
+				"id": "sheet:KOL-BREADCRUMB",
+				"label": "KOL-BREADCRUMB",
+				"status": "ok"
+			},
+			{
+				"allowed": 1666,
+				"base": 642,
+				"current": 642,
+				"field": "gzip",
+				"id": "sheet:KOL-PROGRESS",
+				"label": "KOL-PROGRESS",
+				"status": "ok"
+			},
+			{
+				"allowed": 1628,
+				"base": 604,
+				"current": 604,
+				"field": "gzip",
+				"id": "sheet:KOL-LINK",
+				"label": "KOL-LINK",
+				"status": "ok"
+			},
+			{
+				"allowed": 1515,
+				"base": 491,
+				"current": 491,
+				"field": "gzip",
+				"id": "sheet:KOL-HEADING",
+				"label": "KOL-HEADING",
+				"status": "ok"
+			},
+			{
+				"allowed": 1561,
+				"base": 537,
+				"current": 537,
+				"field": "gzip",
+				"id": "sheet:KOL-SKIP-NAV",
+				"label": "KOL-SKIP-NAV",
+				"status": "ok"
+			},
+			{
+				"allowed": 1463,
+				"base": 439,
+				"current": 439,
+				"field": "gzip",
+				"id": "sheet:KOL-TREE",
+				"label": "KOL-TREE",
+				"status": "ok"
+			},
+			{
+				"allowed": 1444,
+				"base": 420,
+				"current": 420,
+				"field": "gzip",
+				"id": "sheet:KOL-ABBR",
+				"label": "KOL-ABBR",
+				"status": "ok"
+			},
+			{
+				"allowed": 1433,
+				"base": 409,
+				"current": 409,
+				"field": "gzip",
+				"id": "sheet:KOL-QUOTE",
+				"label": "KOL-QUOTE",
+				"status": "ok"
+			}
+		],
+		"tolerance": {
+			"bytes": 1024,
+			"percent": 2
+		},
+		"warnings": []
+	}
+}

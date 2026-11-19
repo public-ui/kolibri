@@ -4,7 +4,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -26,23 +26,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input accesskey="V" aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -55,7 +56,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select _alert="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -74,23 +75,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -103,7 +105,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -122,23 +124,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-disabled="true" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-custom-suggestions-toggle--disabled kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -151,7 +154,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--hide-label kol-single-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="single-select-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -170,23 +173,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-label="Label" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
         <div class="kol-form-field__tooltip">
@@ -212,7 +216,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -231,23 +235,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-describedby="single-select-hint-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -263,7 +268,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -285,23 +290,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
@@ -317,7 +323,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -339,23 +345,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
         </div>
@@ -369,7 +376,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -389,23 +396,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
@@ -421,7 +429,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -432,11 +440,41 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
             </span>
           </span>
         </span>
-        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-          <div class="kol-popover-button__popover--styled">
-            Ich bin ein Hinweis.
+        <span>
+          <div class="kol-popover-button kol-popover-button--inline">
+            <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        Info
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <div class="kol-popover-button__popover--styled">
+                Ich bin ein Hinweis.
+              </div>
+            </div>
           </div>
-        </kol-popover-button-wc>
+        </span>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
@@ -445,23 +483,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -474,55 +513,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
-        <span class="kol-form-field__label-text kol-span">
-          <span class="kol-span__container">
-            <span class="kol-span__label">
-              Label
-            </span>
-            <span aria-hidden="true" class="kol-span__slot" hidden="">
-              <slot name="expert"></slot>
-            </span>
-          </span>
-        </span>
-      </label>
-      <div class="kol-form-field__input">
-        <div class="kol-input-container kol-input-container--error">
-          <div class="kol-input-container__container">
-            <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
-              <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
-            </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
-                <span>
-                  Frau
-                </span>
-              </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
-                <span>
-                  Herr
-                </span>
-              </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
-                <span>
-                  Divers
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
-</kol-single-select>
-`;
-
-exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
-<kol-single-select _touched="">
-  <template shadowrootmode="open">
-    <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -541,23 +532,82 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-describedby="single-select-msg-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
+          </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="single-select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-single-select _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-single-select">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--error">
+          <div class="kol-input-container__container">
+            <div class="kol-single-select__group">
+              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-describedby="single-select-msg-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
+            </div>
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
+                <span>
+                  Frau
+                </span>
+              </li>
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
+                <span>
+                  Herr
+                </span>
+              </li>
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
+                <span>
+                  Divers
+                </span>
+              </li>
+            </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -579,55 +629,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
-        <span class="kol-form-field__label-text kol-span">
-          <span class="kol-span__container">
-            <span class="kol-span__label">
-              Label
-            </span>
-            <span aria-hidden="true" class="kol-span__slot" hidden="">
-              <slot name="expert"></slot>
-            </span>
-          </span>
-        </span>
-      </label>
-      <div class="kol-form-field__input">
-        <div class="kol-input-container">
-          <div class="kol-input-container__container">
-            <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-describedby="single-select-msg-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
-              <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
-            </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
-                <span>
-                  Frau
-                </span>
-              </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
-                <span>
-                  Herr
-                </span>
-              </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
-                <span>
-                  Divers
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
-</kol-single-select>
-`;
-
-exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _readOnly=true 1`] = `
-<kol-single-select _readonly="">
-  <template shadowrootmode="open">
-    <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -646,23 +648,73 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _readOnly=true 1`] = `
+<kol-single-select _readonly="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-single-select">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-single-select__group">
+              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
+            </div>
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
+                <span>
+                  Frau
+                </span>
+              </li>
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
+                <span>
+                  Herr
+                </span>
+              </li>
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
+                <span>
+                  Divers
+                </span>
+              </li>
+            </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -675,7 +727,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -697,23 +749,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-keyshortcuts="S" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -726,7 +779,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -745,23 +798,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -774,7 +828,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -793,23 +847,24 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>
@@ -822,7 +877,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-single-select">
-      <label class="kol-form-field__label" htmlfor="single-select-nonce" id="single-select-label-nonce">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -841,23 +896,78 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
               </li>
             </ul>
+            <span class="visually-hidden" role="status"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-single-select>
+`;
+
+exports[`kol-single-select should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
+<kol-single-select>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-single-select">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-single-select__group">
+              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
+            </div>
+            <ul aria-labelledby="single-select-label-nonce" class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
+                <span>
+                  Frau
+                </span>
+              </li>
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
+                <span>
+                  Herr
+                </span>
+              </li>
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
+                <span>
+                  Divers
+                </span>
+              </li>
+            </ul>
+            <span class="visually-hidden" role="status"></span>
           </div>
         </div>
       </div>

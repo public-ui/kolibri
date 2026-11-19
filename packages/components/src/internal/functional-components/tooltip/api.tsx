@@ -1,8 +1,8 @@
-import { alignProp, badgeTextProp, idProp, labelProp } from '../../props';
+import { alignProp, badgeTextProp, idProp, labelLangSegmentsProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const tooltipPropsConfig = {
-	required: [labelProp],
+	required: [labelLangSegmentsProp],
 	optional: [alignProp, badgeTextProp, idProp],
 } as const satisfies PropsConfigShape;
 

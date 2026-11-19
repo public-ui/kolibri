@@ -1,6 +1,6 @@
 ---
 name: theme-redundancy-check
-description: Identifiziert redundante Styles in Theme-Paketen, die besser im Basis-Styling des Components-Pakets verortet werden sollten. Analysiert alle Themes außer `theme-unstyled`, konsolidiert Dopplungen und sichert Null-Visuelle-Deltas durch Tests. Trigger: "Theme-Redundanz-Check", "redundante Theme-Styles finden", "Styles konsolidieren", "Theme-Styles verschieben".
+description: 'Identifiziert redundante Styles in Theme-Paketen, die besser im Basis-Styling des Components-Pakets verortet werden sollten. Analysiert alle Themes außer `theme-unstyled`, konsolidiert Dopplungen und sichert Null-Visuelle-Deltas durch Tests. Trigger: "Theme-Redundanz-Check", "redundante Theme-Styles finden", "Styles konsolidieren", "Theme-Styles verschieben".'
 ---
 
 # Theme Redundancy Check

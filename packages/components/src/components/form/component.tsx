@@ -7,8 +7,7 @@ import { formPropsConfig } from '../../internal/functional-components/form/api';
 import { FormFC } from '../../internal/functional-components/form/component';
 import type { FormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
 import { createFormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
-import { FormErrorListFC } from '../../internal/functional-components/form/error-list';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { errorListProp, formCallbacksProp, requiredTextProp } from '../../internal/props';
 import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
@@ -44,23 +43,68 @@ const FOCUS_ERROR_LIST_DELAY = 250;
 export class KolForm extends BaseWebComponent<FormApi> implements FormProps, WebComponentInterface<FormApi> {
 	@Element() private readonly host?: HTMLKolFormElement;
 
+	@State() public errorLinkItems: FormErrorLinkItem[] = [];
+
 	/**
 	 * Ids of the error-list alert. Plain fields rather than `@State()`: both are created once per
 	 * instance and never change, so nothing would re-render on them.
 	 */
 	private readonly alertHeadingId = createUniqueId('alert-heading');
+
 	private readonly closerAriaDescriptionId = nonce();
 
-	// --- Lifecycle ---
+	protected readonly propsConfig: PropsConfigShape = formPropsConfig;
+
+	/**
+	 * A list of error objects that each describe an issue encountered in the form.
+	 * Each error object contains a message and a selector for identifying the form element related to the error.
+	 */
+	@Prop() public _errorList?: ErrorListPropType[] = undefined;
+
+	@Watch('_errorList')
+	public watchErrorList(value?: ErrorListPropType[]): void {
+		errorListProp.apply(value, (errorList) => {
+			this.setRenderProp('errorList', errorList);
+			this.errorLinkItems = errorList.map((error) => createFormErrorLinkItem(error, this.focusErrorTarget));
+		});
+	}
+
+	/**
+	 * Defines the callback functions for form events.
+	 */
+	@Prop() public _on?: KoliBriFormCallbacks = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriFormCallbacks): void {
+		formCallbacksProp.apply(value, (on) => this.setRenderProp('on', on));
+	}
+
+	/**
+	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
+	 */
+	@Prop() public _requiredText?: Stringified<boolean> = true;
+
+	@Watch('_requiredText')
+	public watchRequiredText(value?: Stringified<boolean>): void {
+		requiredTextProp.apply(value, (requiredText) => this.setRenderProp('requiredText', requiredText));
+	}
+
+	/**
+	 * Scrolls to the error list and focuses the first link.
+	 */
+	@Method()
+	public focusErrorList(options?: KolFocusOptions): Promise<void> {
+		setTimeout(() => {
+			this.errorLinkItems[0]?.focus(options ?? SCROLL_OPTIONS_FALLBACK);
+		}, FOCUS_ERROR_LIST_DELAY);
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(formPropsConfig);
 		this.watchErrorList(this._errorList);
 		this.watchOn(this._on);
 		this.watchRequiredText(this._requiredText);
 	}
-
-	// --- Event handling ---
 
 	/**
 	 * Bound to the form element's `submit`. Not every submit reaches it: a button inside the form
@@ -99,28 +143,12 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 		}
 	};
 
-	// --- Public methods ---
-
-	/**
-	 * Scrolls to the error list and focuses the first link.
-	 */
-	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async focusErrorList(options?: KolFocusOptions): Promise<void> {
-		setTimeout(() => {
-			this.errorLinkItems[0]?.focus(options ?? SCROLL_OPTIONS_FALLBACK);
-		}, FOCUS_ERROR_LIST_DELAY);
-	}
-
-	// --- Render ---
-
 	public render(): JSX.Element {
 		return (
 			<Host>
-				{this.errorLinkItems.length > 0 && (
-					<FormErrorListFC alertHeadingId={this.alertHeadingId} closerAriaDescriptionId={this.closerAriaDescriptionId} errorLinkItems={this.errorLinkItems} />
-				)}
 				<FormFC
+					alertHeadingId={this.alertHeadingId}
+					closerAriaDescriptionId={this.closerAriaDescriptionId}
 					errorList={this.getRenderProp('errorList')}
 					errorLinkItems={this.errorLinkItems}
 					handleReset={this.handleReset}
@@ -130,42 +158,5 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 				/>
 			</Host>
 		);
-	}
-
-	// --- @State ---
-
-	@State() public errorLinkItems: FormErrorLinkItem[] = [];
-
-	// --- Props + Watchers ---
-
-	/**
-	 * A list of error objects that each describe an issue encountered in the form.
-	 * Each error object contains a message and a selector for identifying the form element related to the error.
-	 */
-	@Prop() public _errorList?: ErrorListPropType[];
-	@Watch('_errorList')
-	public watchErrorList(value?: ErrorListPropType[]): void {
-		errorListProp.apply(value, (errorList) => {
-			this.setRenderProp('errorList', errorList);
-			this.errorLinkItems = errorList.map((error) => createFormErrorLinkItem(error, this.focusErrorTarget));
-		});
-	}
-
-	/**
-	 * Defines the callback functions for form events.
-	 */
-	@Prop() public _on?: KoliBriFormCallbacks;
-	@Watch('_on')
-	public watchOn(value?: KoliBriFormCallbacks): void {
-		formCallbacksProp.apply(value, (on) => this.setRenderProp('on', on));
-	}
-
-	/**
-	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
-	 */
-	@Prop() public _requiredText?: Stringified<boolean> = true;
-	@Watch('_requiredText')
-	public watchRequiredText(value?: Stringified<boolean>): void {
-		requiredTextProp.apply(value, (requiredText) => this.setRenderProp('requiredText', requiredText));
 	}
 }

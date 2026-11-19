@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { findOwnReview, getLogin, listComments, saveReview } from './github';
+import { findOwnReview, getLogin, listComments, listReviews, saveReview } from './github';
 import { ItemList } from './ItemList';
 import { emptyDraft, formatReviewComment, summarize } from './review-comment';
 import { draftState, ReviewPanel } from './ReviewPanel';
@@ -107,10 +107,10 @@ export function App() {
 			const user = await getLogin(token);
 			setLogin(user);
 			storeToken(token, remember);
-			const comments = await listComments(token, repository, pr);
-			const own = findOwnReview(comments, user);
+			const [comments, reviews] = await Promise.all([listComments(token, repository, pr), listReviews(token, repository, pr)]);
+			const own = findOwnReview(comments, reviews, user);
 			if (own) {
-				setOwnCommentId(own.comment.id);
+				setOwnCommentId(own.commentId);
 				setDraft(own.draft);
 				setSavedDraft(JSON.stringify(own.draft));
 			} else {
@@ -135,8 +135,8 @@ export function App() {
 			const body = formatReviewComment(draft, pageUrl, summarize(draft));
 			await saveReview(token, repository, pr, body, ownCommentId);
 			setSavedDraft(JSON.stringify(draft));
-			const comments = await listComments(token, repository, pr);
-			setOwnCommentId(findOwnReview(comments, login)?.comment.id ?? null);
+			const [comments, reviews] = await Promise.all([listComments(token, repository, pr), listReviews(token, repository, pr)]);
+			setOwnCommentId(findOwnReview(comments, reviews, login)?.commentId ?? null);
 		} catch (error) {
 			setAuthError(`Saving failed: ${(error as Error).message}`);
 		} finally {
@@ -388,7 +388,10 @@ export function App() {
 						<button type="submit" disabled={!token || !repository}>
 							Connect
 						</button>
-						<span className="hint">Without a token, copy the generated comment and post it on the pull request yourself. Only your newest comment counts.</span>
+						<span className="hint">
+							Without a token, copy the generated comment and post it on the pull request yourself – as a comment or as the text of a review. Only your newest
+							one counts.
+						</span>
 					</form>
 				)}
 			</footer>

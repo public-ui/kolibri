@@ -1,0 +1,810 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { translate } from '../../i18n';
+import type {
+	AccessKeyPropType,
+	AriaDetailsPropType,
+	DisabledPropType,
+	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
+	HasClearButtonPropType,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IconsHorizontalPropType,
+	InputTypeOnDefault,
+	KolFocusOptions,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	NamePropType,
+	Option,
+	OptionsPropType,
+	PlaceholderPropType,
+	RequiredPropType,
+	RowsPropType,
+	ShortKeyPropType,
+	SingleSelectProps,
+	StencilUnknown,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	TouchedPropType,
+	VariantClassNamePropType,
+} from '../../schema';
+import type { EventDetail } from '../../schema/interfaces/EventDetail';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import clsx from '../../utils/clsx';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { containsDeepActiveElement } from '../../utils/element-focus';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
+import { createEventWithTarget, KolEvent } from '../../utils/events';
+
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
+import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
+import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
+import { singleSelectPropsConfig } from '../../internal/functional-components/single-select/api';
+import {
+	BEM_CLASS_SINGLE_SELECT__DELETE,
+	SingleSelectNoResultsFC,
+	SingleSelectNoResultsStatusFC,
+	SingleSelectToggleFC,
+} from '../../internal/functional-components/single-select/component';
+import {
+	accessKeyProp,
+	hasClearButtonProp,
+	horizontalIconsProp,
+	placeholderProp,
+	requiredProp,
+	rowsProp,
+	shortKeyProp,
+	singleSelectOptionsProp,
+	variantProp,
+} from '../../internal/props';
+
+/**
+ * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
+ *
+ * @slot - The label of the input field.
+ */
+@Component({
+	tag: 'kol-single-select',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
+})
+export class KolSingleSelect
+	extends BaseListboxWebComponent<SingleSelectApi>
+	implements FocusableElement, SingleSelectProps, WebComponentInterface<SingleSelectApi>
+{
+	@Element() protected readonly host?: HTMLKolSingleSelectElement;
+
+	@State() public id = createUniqueId('single-select');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
+	/** Whether the focus is inside the field. */
+	@State() public inputHasFocus = false;
+
+	@State() public isOpen = false;
+
+	@State() public blockSuggestionMouseOver = false;
+
+	/** The options matching the text of the input. */
+	@State() public filteredOptions: Option<StencilUnknown>[] = [];
+
+	/** The text of the input: the label of the selected option or the text typed to filter the options. */
+	@State() public inputValue = '';
+
+	private readonly clearButton = createButtonItem(() => this.host);
+
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+
+	private readonly translateDeleteSelection = translate('kol-delete-selection');
+
+	private readonly translateNoResultsMessage = translate('kol-no-results-message');
+
+	protected readonly propsConfig: PropsConfigShape = singleSelectPropsConfig;
+
+	public constructor() {
+		super();
+		this.initFormAssociation('single-select', this._name);
+	}
+
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: AccessKeyPropType): void {
+		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		validateAccessAndShortKey(value, this._shortKey);
+	}
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Defines the placeholder for input field. To be shown when there's no value.
+	 */
+	@Prop() public _placeholder?: PlaceholderPropType = undefined;
+
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: PlaceholderPropType): void {
+		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
+	}
+
+	/**
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
+	 */
+	@Prop() public _disabled?: DisabledPropType = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: DisabledPropType): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop() public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 */
+	@Prop() public _hideLabel?: HideLabelPropType = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: HideLabelPropType): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: HintPropType = '';
+
+	@Watch('_hint')
+	public watchHint(value?: HintPropType): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the icon classnames (e.g. `icons="fa-solid fa-user"`).
+	 */
+	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsHorizontalPropType): void {
+		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType = undefined;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Defines the callback functions for input events.
+	 */
+	@Prop() public _on?: InputTypeOnDefault = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Options the user can choose from.
+	 */
+	@Prop() public _options!: OptionsPropType;
+
+	/** Shows all options again; an open listbox keeps the filter of the input, a closed one shows the label of the value. */
+	@Watch('_options')
+	public watchOptions(value?: OptionsPropType): void {
+		this.applyOptions(value);
+		this.filteredOptions = [...(this.getRenderProp('options') ?? [])];
+		if (this.isOpen) {
+			this.setFilteredOptionsByQuery(this.inputValue);
+		} else {
+			this.updateInputValue(this._value);
+		}
+	}
+
+	/**
+	 * Makes the input element required.
+	 */
+	@Prop() public _required?: RequiredPropType = false;
+
+	@Watch('_required')
+	public watchRequired(value?: RequiredPropType): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: TouchedPropType): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop({ mutable: true }) public _value: StencilUnknown = null;
+
+	@Watch('_value')
+	public watchValue(value: StencilUnknown): void {
+		this.updateInputValue(value);
+	}
+
+	/**
+	 * Shows the clear button if enabled.
+	 */
+	@Prop() public _hasClearButton?: HasClearButtonPropType = true;
+
+	@Watch('_hasClearButton')
+	public watchHasClearButton(value?: HasClearButtonPropType): void {
+		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
+	}
+
+	/**
+	 * Maximum number of visible rows of the element.
+	 */
+	@Prop() public _rows?: RowsPropType = undefined;
+
+	@Watch('_rows')
+	public watchRows(value?: RowsPropType): void {
+		rowsProp.apply(value, (v) => this.setRenderProp('rows', v));
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+	}
+
+	/**
+	 * Returns the current value.
+	 */
+	@Method()
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this._value);
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
+
+	public componentWillLoad(): void {
+		this.optionRefs = [];
+		this._touched = this._touched === true;
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchName(this._name);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTouched(this._touched);
+		this.watchAccessKey(this._accessKey);
+		this.watchMsg(this._msg);
+		this.watchDisabled(this._disabled);
+		this.watchHideMsg(this._hideMsg);
+		this.watchHideLabel(this._hideLabel);
+		this.watchHint(this._hint);
+		this.watchInfoPopover(this._infoPopover);
+		this.watchLabel(this._label);
+		this.watchShortKey(this._shortKey);
+		this.watchOn(this._on);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchVariant(this._variant);
+		this.watchIcons(this._icons);
+		this.applyOptions(this._options);
+		this.watchRequired(this._required);
+		this.watchPlaceholder(this._placeholder);
+		this.watchHasClearButton(this._hasClearButton);
+		this.watchRows(this._rows);
+
+		this.filteredOptions = this.getRenderProp('options');
+		this.updateInputValue(this._value);
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
+		this.clearButton.syncListeners();
+	}
+
+	public disconnectedCallback(): void {
+		this.clearButton.destroy();
+		this.destroyFormField();
+	}
+
+	@Listen('keydown')
+	public handleHostKeyDown(event: KeyboardEvent): void {
+		this.handleListboxKeyDown(event);
+	}
+
+	@Listen('mousemove')
+	public handleMouseEvent(): void {
+		this.handleListboxMouseMove();
+	}
+
+	/** Waits for the focus to settle, so a move between the elements of the field is no focus of the field. */
+	@Listen('focusin')
+	public handleFocusIn(event: FocusEvent): void {
+		setTimeout(() => {
+			if (containsDeepActiveElement(this.host) && !this.inputHasFocus) {
+				this.handleFocus(event);
+			}
+		});
+	}
+
+	/** Waits for the focus to settle, so a move between the elements of the field is no blur of the field. */
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent): void {
+		this.selectOptionByInputValue();
+		setTimeout(() => {
+			if (this.inputHasFocus && !containsDeepActiveElement(this.host)) {
+				this.handleBlur(event);
+				this.isOpen = false;
+			}
+		});
+	}
+
+	protected getOptionCount(): number {
+		return Array.isArray(this.filteredOptions) ? this.filteredOptions.length : 0;
+	}
+
+	/* Disabled options are included, so they stay reachable and are announced; `selectFocusedOption` refuses them. */
+	protected moveFocus(delta: number): void {
+		if (!this.filteredOptions) {
+			return;
+		}
+		this.moveFocusWrapping(delta);
+	}
+
+	protected focusFirstOption(): void {
+		this.moveFocus(this.focusedIndex * -1);
+	}
+
+	protected focusLastOption(): void {
+		this.moveFocus(this.filteredOptions ? this.filteredOptions.length - 1 - this.focusedIndex : 0);
+	}
+
+	/** Enter, NumpadEnter and Space: clear on the clear button, select the focused option, or open the listbox. */
+	protected handleConfirmKey(event: KeyboardEvent): void {
+		if (this.clearButtonFocused) {
+			this.clearSelection();
+			event.preventDefault();
+		} else if (this.isOpen) {
+			if (this.selectFocusedOption()) {
+				this.ctaRef.el?.focus();
+				this.handleListboxEvent(event, false);
+			}
+		} else {
+			this.toggleListbox(event);
+		}
+	}
+
+	/** Opens the listbox with the focus on the option whose label is the text of the input, or closes it. */
+	private readonly toggleListbox = (event: Event): void => {
+		event?.preventDefault();
+		if (this.getRenderProp('disabled') === true) {
+			return;
+		}
+		this.ctaRef.el?.focus();
+		if (this.isOpen) {
+			this.isOpen = false;
+		} else {
+			this.isOpen = true;
+			const selectedIndex = Array.isArray(this.filteredOptions) ? this.filteredOptions.findIndex((option) => option.label === this.inputValue) : -1;
+			this.focusOption(selectedIndex >= 0 ? selectedIndex : -1);
+		}
+	};
+
+	/** A disabled option is not selected; the keyboard and the mouse refuse it alike. */
+	private selectFocusedOption(): boolean {
+		if (Array.isArray(this.filteredOptions) && this.filteredOptions.length > 0 && this.focusedIndex >= 0) {
+			const option = this.filteredOptions[this.focusedIndex];
+			if (option?.disabled) {
+				return false;
+			}
+			this.selectOption(option);
+			return true;
+		}
+		return false;
+	}
+
+	/** Typeahead on the list: the first enabled option starting with the character. */
+	private focusOptionStartingWith(char: string): void {
+		const charLowerCase = char.toLowerCase();
+		const index =
+			Array.isArray(this.filteredOptions) &&
+			this.filteredOptions.findIndex((option) => (option.label as string).toLowerCase().startsWith(charLowerCase) && !option.disabled);
+
+		if (typeof index === 'number' && index >= 0) {
+			this.focusOption(index);
+		}
+	}
+
+	private setFilteredOptionsByQuery(query: string | undefined): void {
+		if (query === undefined) {
+			return;
+		}
+		const options = this.getRenderProp('options');
+
+		if (query.trim() === '') {
+			this.filteredOptions = [...options];
+		} else if (Array.isArray(options) && options.length > 0 && query.length > 0) {
+			this.filteredOptions = options.filter((option) => (option.label as string)?.toLowerCase()?.includes(query.toLowerCase()));
+		}
+	}
+
+	/** Shows the label of the option with the value, or an empty input without one. */
+	private updateInputValue(value?: StencilUnknown): void {
+		const matchedOption = this.getRenderProp('options')?.find((option) => option.value === value);
+		this.inputValue = matchedOption ? String(matchedOption.label) : '';
+	}
+
+	/** Selecting the selected option again only restores its label and the full list, without events. */
+	private selectOption(option: Option<StencilUnknown>): void {
+		if (option.value === this._value) {
+			this.inputValue = option.label as string;
+			this.filteredOptions = [...this.getRenderProp('options')];
+			return;
+		}
+
+		this._value = option.value;
+		this.inputValue = option.label as string;
+
+		const detail = { name: this.getRenderProp('name') ?? '', value: option.value };
+		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), option.value);
+		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), option.value);
+
+		this.filteredOptions = [...this.getRenderProp('options')];
+		this.formAssociation.setFormAssociatedValue(this._value);
+	}
+
+	/**
+	 * Sends `null` (#10841) as value of the `input` and `change` events and as form value, like
+	 * `selectOption` sends the option value, then opens the listbox.
+	 */
+	private clearSelection(): void {
+		if (this.getRenderProp('disabled') === true) {
+			return;
+		}
+
+		const emptyValue = null;
+		this.focusedIndex = -1;
+		this._value = emptyValue;
+		this.inputValue = '';
+		this.filteredOptions = [...this.getRenderProp('options')];
+
+		const detail = { name: this.getRenderProp('name'), value: emptyValue };
+		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), emptyValue);
+		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
+
+		this.ctaRef.el?.focus();
+		this.isOpen = true;
+	}
+
+	/**
+	 * Runs whenever the focus leaves an element of the field: a text equal to an option label
+	 * (case-insensitive) selects that option, otherwise a selected value restores the full list
+	 * (#10501, #10617).
+	 */
+	private selectOptionByInputValue(): void {
+		const options = this.getRenderProp('options');
+		const matchingOption = options?.find((option) => (option.label as string)?.toLowerCase() === this.inputValue?.toLowerCase());
+
+		if (matchingOption) {
+			this.selectOption(matchingOption);
+		} else if (this._value !== null && this._value !== undefined) {
+			this.filteredOptions = [...(options ?? [])];
+		}
+	}
+
+	/** Typing filters the options and opens the listbox; it sends no event and changes no value. */
+	private readonly handleSingleSelectInput = (event: Event): void => {
+		const value = (event.target as HTMLInputElement).value;
+		this.inputValue = value;
+		this.isOpen = true;
+		this.setFilteredOptionsByQuery(value);
+		this.focusedIndex = -1;
+	};
+
+	/** The native `change` is reported only while the listbox is closed, with the selected value. */
+	private readonly handleSingleSelectChange = (event: Event): void => {
+		if (!this.isOpen) {
+			this.handleChange(event, this._value);
+		}
+	};
+
+	private readonly handleSingleSelectClick = (event: MouseEvent): void => {
+		this.toggleListbox(event);
+		this.ctaRef.el?.focus();
+		this.handleClick(event);
+	};
+
+	/** The input reports the blur; `focusout` on the host decides whether the focus left the field. */
+	private readonly handleInputBlur = (event: FocusEvent): void => {
+		this.handleFocusLeave(event);
+	};
+
+	private readonly handleDropdownKeyDown = (event: KeyboardEvent): void => {
+		if (event.key.length === 1 && /[a-z0-9]/i.test(event.key)) {
+			event.preventDefault();
+			this.isOpen = true;
+			this.focusOptionStartingWith(event.key);
+		}
+	};
+
+	private readonly handleClearButtonClick = (): void => {
+		this.clearSelection();
+		this.ctaRef.el?.focus();
+		// Firefox sends no blur to the removed button.
+		this.clearButtonFocused = false;
+	};
+
+	private getInputProps(): InputFCProps {
+		const { ariaDescribedBy, hasError } = this.getAria();
+		const id = this.id;
+		const disabled = this.getRenderProp('disabled') === true;
+		const accessKey = this.getRenderProp('accessKey') || undefined;
+		const placeholder = this.getRenderProp('placeholder');
+		const shortKey = this.getRenderProp('shortKey') || undefined;
+		const hideLabel = this.getRenderProp('hideLabel');
+		const label = this.getRenderProp('label');
+
+		return {
+			id,
+			hideLabel,
+			label,
+			disabled,
+			name: this.getRenderProp('name') || undefined,
+			...(accessKey ? { accessKey } : {}),
+			value: this.inputValue,
+			required: this.getRenderProp('required'),
+			...(placeholder ? { placeholder } : {}),
+			touched: this.getRenderProp('touched'),
+			msg: this.getRenderProp('msg'),
+			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
+			'aria-activedescendant': this.getActiveDescendant(),
+			'aria-autocomplete': 'both',
+			'aria-controls': createRelatedUniqueId(id, 'listbox'),
+			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
+			'aria-expanded': this.isOpen ? 'true' : 'false',
+			'aria-label': hideLabel && typeof label === 'string' ? label : undefined,
+			'aria-labelledby': createRelatedUniqueId(id, 'label'),
+			autocapitalize: 'off',
+			autocorrect: 'off',
+			autocomplete: 'off',
+			class: 'kol-single-select__input',
+			ref: this.ctaRef,
+			role: 'combobox',
+			type: 'text',
+			onBlur: this.handleInputBlur,
+			onChange: this.handleSingleSelectChange,
+			onClick: this.handleSingleSelectClick,
+			onFocus: this.handleFocus,
+			onInput: this.handleSingleSelectInput,
+			onKeyDown: this.handleKeyDown,
+			ariaDescribedBy,
+			'aria-invalid': hasError ? 'true' : undefined,
+		} as InputFCProps;
+	}
+
+	private hasNoResults(): boolean {
+		return !Array.isArray(this.filteredOptions) || this.filteredOptions.length === 0;
+	}
+
+	private renderOptions(): JSX.Element | JSX.Element[] {
+		if (this.hasNoResults()) {
+			return [];
+		}
+
+		return this.filteredOptions.map((option, index) => (
+			<CustomSuggestionsOptionFC
+				id={this.getOptionId(index)}
+				index={index}
+				option={option.label}
+				searchTerm={this.inputValue}
+				ref={(el) => {
+					if (el) this.optionRefs[index] = el;
+				}}
+				selected={this._value === option.value}
+				disabled={option.disabled ? true : false}
+				onClick={(event: Event) => {
+					if (option.disabled) {
+						return;
+					}
+					event.preventDefault();
+					this.selectOption(option);
+					this.isOpen = false;
+					this.ctaRef.el?.focus();
+				}}
+				onMouseOver={() => {
+					if (!this.blockSuggestionMouseOver && !option.disabled) {
+						this.focusOption(index);
+					}
+				}}
+				onFocus={() => {
+					if (!option.disabled) {
+						this.focusOption(index);
+					}
+				}}
+			/>
+		));
+	}
+
+	private applyOptions(value?: OptionsPropType): void {
+		singleSelectOptionsProp.apply(value, (v) => this.setRenderProp('options', v));
+	}
+
+	public render(): JSX.Element {
+		const isDisabled = this.getRenderProp('disabled') === true;
+		const showNoResults = this.isOpen && !isDisabled && this.hasNoResults();
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
+
+		return (
+			<Host>
+				<FormFieldFC
+					{...this.getFormFieldProps({
+						class: clsx('kol-single-select', { 'kol-single-select--open': this.isOpen }),
+						accessKey: this.getRenderProp('accessKey') || undefined,
+						shortKey: this.getRenderProp('shortKey') || undefined,
+						required: this.getRenderProp('required'),
+						variant: this.getRenderProp('variant'),
+					})}
+				>
+					<InputContainerFC
+						disabled={isDisabled}
+						msg={this.getRenderProp('msg')}
+						touched={this.getRenderProp('touched')}
+						startAdornment={startAdornment}
+						endAdornment={endAdornment}
+					>
+						<ListboxGroupFC block="kol-single-select">
+							<InputFC {...this.getInputProps()} />
+							{this.inputValue && this.getRenderProp('hasClearButton') && (
+								<ButtonFC
+									{...this.clearButton.getFcProps(
+										{
+											_icons: 'kolicon-cross',
+											_label: this.translateDeleteSelection,
+											_hideLabel: true,
+											_variant: 'ghost',
+											_disabled: isDisabled,
+											_on: {
+												onClick: this.handleClearButtonClick,
+												onFocus: this.handleClearButtonFocus,
+												onBlur: this.handleClearButtonBlur,
+											},
+										},
+										{ class: BEM_CLASS_SINGLE_SELECT__DELETE, hidden: isDisabled },
+									)}
+								/>
+							)}
+							<SingleSelectToggleFC disabled={isDisabled} handleClick={this.toggleListbox} />
+						</ListboxGroupFC>
+						<CustomSuggestionsOptionsGroupFC
+							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
+							onKeyDown={this.handleDropdownKeyDown}
+							style={{ '--visible-options': `${this.getRenderProp('rows') ?? 5}` }}
+							hidden={!this.isOpen || isDisabled}
+							id={createRelatedUniqueId(this.id, 'listbox')}
+							aria-labelledby={createRelatedUniqueId(this.id, 'label')}
+						>
+							{this.renderOptions()}
+						</CustomSuggestionsOptionsGroupFC>
+						{showNoResults && <SingleSelectNoResultsFC message={this.translateNoResultsMessage} />}
+						<SingleSelectNoResultsStatusFC message={showNoResults ? this.translateNoResultsMessage : ''} />
+					</InputContainerFC>
+				</FormFieldFC>
+			</Host>
+		);
+	}
+}

@@ -1,10 +1,10 @@
-import type { HeadingLevel, PropDisabled, PropLabel, PropOpen } from '../props';
+import type { HeadingLevel, PropDisabled, PropLabelLangSegments, PropOpen } from '../props';
 
-export type RequiredProps = PropLabel;
+export type RequiredProps = PropLabelLangSegments;
 export type OptionalProps = {
 	level: HeadingLevel;
 } & PropDisabled &
 	PropOpen;
 
-export type RequiredStates = RequiredProps & PropLabel;
+export type RequiredStates = RequiredProps & PropLabelLangSegments;
 export type OptionalStates = OptionalProps;

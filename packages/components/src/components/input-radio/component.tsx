@@ -1,0 +1,533 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	AriaDetailsPropType,
+	ClickableElement,
+	DisabledPropType,
+	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	InputRadioProps,
+	InputTypeOnDefault,
+	KolFocusOptions,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	NamePropType,
+	RadioOption,
+	RadioOptionsPropType,
+	RequiredPropType,
+	SelectOption,
+	StencilUnknown,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	TouchedPropType,
+	VariantClassNamePropType,
+} from '../../schema';
+import type { OrientationPropType } from '../../schema/props/orientation';
+
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { FieldControlFC, isFieldControlLabelShownAsTooltip } from '../../internal/functional-components/form-field/field-control';
+import type { InputFCProps } from '../../internal/functional-components/form-field/input';
+import { fillKeyOptionMap, normalizeOptionValues } from '../../internal/functional-components/form-field/options';
+import { RadioFC } from '../../internal/functional-components/form-field/radio';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { InputRadioApi } from '../../internal/functional-components/input-radio/api';
+import { inputRadioPropsConfig } from '../../internal/functional-components/input-radio/api';
+import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
+import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, variantProp } from '../../internal/props';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { submitFormOnEnter } from '../form/controller';
+
+/**
+ * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Only a single value can be selected at a time. Selected radio elements are typically represented by a filled, visually highlighted circle.
+ *
+ * @slot - The label of the input field.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
+ */
+@Component({
+	tag: 'kol-input-radio',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
+})
+export class KolInputRadio
+	extends BaseFormFieldWebComponent<InputRadioApi>
+	implements ClickableElement, FocusableElement, InputRadioProps, WebComponentInterface<InputRadioApi>
+{
+	@Element() protected readonly host?: HTMLKolInputRadioElement;
+
+	@State() public id = createUniqueId('input-radio');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
+	@State() public inputHasFocus = false;
+
+	/** Input of the selected option, the target of the Enter submit. */
+	private inputRef?: HTMLInputElement;
+
+	private readonly inputRefs = new Map<number, HTMLInputElement>();
+
+	/** Option of each input value (`-<index>`), with `value ?? label` as value. */
+	private readonly keyOptionMap = new Map<string, RadioOption<StencilUnknown>>();
+
+	/** Label tooltip of each option while `_hideLabel` is set, keyed by the option ID. */
+	private readonly optionTooltips = new Map<string, TooltipBehavior>();
+
+	protected readonly propsConfig: PropsConfigShape = inputRadioPropsConfig;
+
+	public constructor() {
+		super();
+		this.initFormAssociation('radio', this._name);
+	}
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
+	 */
+	@Prop() public _disabled?: DisabledPropType = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: DisabledPropType): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop() public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 */
+	@Prop() public _hideLabel?: HideLabelPropType = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: HideLabelPropType): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: HintPropType = '';
+
+	@Watch('_hint')
+	public watchHint(value?: HintPropType): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType = undefined;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Defines the callback functions for input events.
+	 */
+	@Prop() public _on?: InputTypeOnDefault = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Options the user can choose from.
+	 */
+	@Prop() public _options?: RadioOptionsPropType = undefined;
+
+	/** The option map keeps its entries while the list is empty. */
+	@Watch('_options')
+	public watchOptions(value?: RadioOptionsPropType): void {
+		radioOptionsProp.apply(value, (v) => {
+			this.setRenderProp('options', v);
+			if (v.length > 0) {
+				this.keyOptionMap.clear();
+				fillKeyOptionMap(this.keyOptionMap, normalizeOptionValues(v) as SelectOption<StencilUnknown>[]);
+			}
+		});
+	}
+
+	/**
+	 * Defines whether the orientation of the component is horizontal or vertical.
+	 */
+	@Prop() public _orientation?: OrientationPropType = 'vertical';
+
+	@Watch('_orientation')
+	public watchOrientation(value?: OrientationPropType): void {
+		radioOrientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
+	}
+
+	/**
+	 * Makes the input element required.
+	 */
+	@Prop() public _required?: RequiredPropType = false;
+
+	@Watch('_required')
+	public watchRequired(value?: RequiredPropType): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: TouchedPropType): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
+	 */
+	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
+
+	/** `null` and `undefined` are kept as value instead of falling back to the default. */
+	@Watch('_value')
+	public watchValue(value: StencilUnknown): void {
+		if (value === null || value === undefined) {
+			this.setRenderProp('value', value as unknown as NonNullable<StencilUnknown>);
+		} else {
+			radioValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		}
+		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+	}
+
+	/**
+	 * Returns the current value.
+	 */
+	@Method()
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this._value);
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	public async focus(options?: KolFocusOptions) {
+		const input = this.getFocusableInput();
+		return delegateFocus(this.host!, () => setFocus(input, options));
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		return delegateClick(this.host!, async () => setClick(this.getFocusableInput()!));
+	}
+
+	public componentWillLoad(): void {
+		this._touched = this._touched === true;
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchName(this._name);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTouched(this._touched);
+		this.watchMsg(this._msg);
+		this.watchDisabled(this._disabled);
+		this.watchHideMsg(this._hideMsg);
+		this.watchHideLabel(this._hideLabel);
+		this.watchHint(this._hint);
+		this.watchInfoPopover(this._infoPopover);
+		this.watchLabel(this._label);
+		this.watchOn(this._on);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchVariant(this._variant);
+		this.watchRequired(this._required);
+		this.watchOrientation(this._orientation);
+		this.watchOptions(this._options);
+		this.watchValue(this._value);
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
+	}
+
+	public disconnectedCallback(): void {
+		this.destroyFormField();
+		this.optionTooltips.forEach((tooltipBehavior) => tooltipBehavior.destroy());
+		this.optionTooltips.clear();
+	}
+
+	private readonly setSelectedInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
+	};
+
+	private readonly setOptionInputRef = (index: number) => (ref?: HTMLInputElement) => {
+		if (ref) {
+			this.inputRefs.set(index, ref);
+		} else {
+			this.inputRefs.delete(index);
+		}
+	};
+
+	/** Whether `option` is the selected one; an option without `value` has its label as value. */
+	private isOptionSelected(option: RadioOption<StencilUnknown>): boolean {
+		return this.getRenderProp('value') === (option.value ?? option.label);
+	}
+
+	/**
+	 * The option that receives the focus: the selected one, even while disabled, otherwise the first
+	 * enabled option, otherwise the first option, so a fully disabled group keeps a tab stop.
+	 */
+	private getFocusableInput(): HTMLInputElement | undefined {
+		const options = this.getRenderProp('options');
+		const selectedIndex = options.findIndex((option) => this.isOptionSelected(option));
+
+		if (selectedIndex !== -1) {
+			const input = this.inputRefs.get(selectedIndex);
+			if (input) {
+				return input;
+			}
+		}
+
+		const firstEnabledIndex = options.findIndex((option) => !option.disabled);
+
+		if (firstEnabledIndex !== -1) {
+			return this.inputRefs.get(firstEnabledIndex);
+		}
+
+		return this.inputRefs.get(0);
+	}
+
+	private getOptionOfEvent(event: Event): RadioOption<StencilUnknown> | undefined {
+		return event.target instanceof HTMLInputElement ? this.keyOptionMap.get(event.target.value) : undefined;
+	}
+
+	private readonly handleRadioInput = (event: Event): void => {
+		const option = this.getOptionOfEvent(event);
+		if (option !== undefined) {
+			this.handleInput(event, option.value);
+		}
+	};
+
+	private readonly handleRadioChange = (event: Event): void => {
+		const option = this.getOptionOfEvent(event);
+		if (option !== undefined) {
+			this.handleChange(event, option.value);
+			this._value = option.value;
+		}
+	};
+
+	private readonly handleRadioKeyDown = (event: KeyboardEvent): void => {
+		this.handleKeyDown(event);
+
+		submitFormOnEnter(event, { form: this.host, ref: this.inputRef });
+	};
+
+	/**
+	 * Connects the label tooltip of an option, or tears it down while its label is visible. A
+	 * functional component has no lifecycle, so the field keeps one tooltip behavior per option.
+	 */
+	private getOptionTooltipRefs(id: string, label: string): { refInput: (el?: HTMLDivElement) => void; refTooltip: (el?: HTMLDivElement) => void } {
+		let tooltipBehavior = this.optionTooltips.get(id);
+
+		if (isFieldControlLabelShownAsTooltip({ hideLabel: this.getRenderProp('hideLabel'), label })) {
+			if (!tooltipBehavior) {
+				tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
+				tooltipBehavior.componentWillLoad({ label: '' });
+				this.optionTooltips.set(id, tooltipBehavior);
+			}
+			tooltipBehavior.watchAlign(this.getRenderProp('tooltipAlign'));
+			tooltipBehavior.watchBadgeText('');
+			tooltipBehavior.watchId(createRelatedUniqueId(id, 'label'));
+			tooltipBehavior.watchLabel(label);
+		} else if (tooltipBehavior) {
+			tooltipBehavior.destroy();
+			this.optionTooltips.delete(id);
+			tooltipBehavior = undefined;
+		}
+
+		const shownTooltipBehavior = tooltipBehavior;
+		return {
+			refInput: (el?: HTMLDivElement): void => {
+				if (shownTooltipBehavior && el) {
+					shownTooltipBehavior.initContext(el);
+					shownTooltipBehavior.syncListeners(undefined, el, true);
+				}
+			},
+			refTooltip: (el?: HTMLDivElement): void => {
+				shownTooltipBehavior?.setTooltipElementRef(el);
+			},
+		};
+	}
+
+	private isOptionDisabled(option: RadioOption<StencilUnknown>): boolean {
+		return Boolean(this.getRenderProp('disabled')) || Boolean(option.disabled);
+	}
+
+	private getInputProps(option: RadioOption<StencilUnknown>, id: string, index: number, selected: boolean): InputFCProps {
+		const { hasError } = this.getAria();
+		const hideLabel = this.getRenderProp('hideLabel');
+
+		return {
+			id,
+			hideLabel,
+			label: this.getRenderProp('label'),
+			value: `-${index}`,
+			disabled: this.isOptionDisabled(option),
+			name: this.getRenderProp('name') || this.id,
+			required: this.getRenderProp('required'),
+			touched: this.getRenderProp('touched'),
+			msg: this.getRenderProp('msg'),
+			ref: (ref?: HTMLInputElement) => {
+				this.setOptionInputRef(index)(ref);
+				if (selected) {
+					this.setSelectedInputRef(ref);
+				}
+			},
+			'aria-label': hideLabel && typeof option.label === 'string' ? option.label : undefined,
+			type: 'radio',
+			checked: selected,
+			onBlur: this.handleBlur,
+			onChange: this.handleRadioChange,
+			onFocus: this.handleFocus,
+			onInput: this.handleRadioInput,
+			onKeyDown: this.handleRadioKeyDown,
+			'aria-invalid': hasError ? 'true' : undefined,
+		};
+	}
+
+	private renderOption(option: RadioOption<StencilUnknown>, index: number): JSX.Element {
+		const customId = createRelatedUniqueId(this.id, String(index));
+		const selected = this.isOptionSelected(option);
+		const label = option.label as string;
+
+		return (
+			<FieldControlFC
+				key={customId}
+				id={customId}
+				label={label}
+				hint={option.hint}
+				hideLabel={this.getRenderProp('hideLabel')}
+				tooltipAlign={this.getRenderProp('tooltipAlign')}
+				disabled={this.isOptionDisabled(option)}
+				msg={this.getRenderProp('msg')}
+				touched={this.getRenderProp('touched')}
+				required={false}
+				labelProps={{ showBadge: false }}
+				{...this.getOptionTooltipRefs(customId, label)}
+			>
+				<RadioFC inputProps={this.getInputProps(option, customId, index, selected)} />
+			</FieldControlFC>
+		);
+	}
+
+	public render(): JSX.Element {
+		const { ariaDescribedBy } = this.getAria();
+
+		return (
+			<Host>
+				<FormFieldFC
+					{...this.getFormFieldProps({
+						class: 'kol-form-field--radio',
+						required: this.getRenderProp('required'),
+						variant: this.getRenderProp('variant'),
+						renderNoTooltip: true,
+					})}
+					component="fieldset"
+					orientation={this.getRenderProp('orientation')}
+					hideLabel={false}
+					ariaDescribedBy={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
+				>
+					{this.getRenderProp('options').map((option, index) => this.renderOption(option, index))}
+				</FormFieldFC>
+			</Host>
+		);
+	}
+}

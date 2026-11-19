@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="kol-tree-item" data-name="kol-tree-item" width="720" height="49" viewBox="0 0 720 49">
+  <g id="kol-tree-item" data-name="kol-tree-item"><rect x="0" y="0" width="720.0" height="49.0" fill="rgb(255, 255, 255)" stroke="none"/><text x="-40.0" y="4901.4" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">Unterpunkt</text>
+    <g id="kol-tree-item" data-name="kol-tree-item">
+      <g id="kol-tree-item__link" data-name="kol-tree-item__link">
+        <g id="kol-link" data-name="kol-link">
+          <g id="kol-link__interactive-element" data-name="kol-link__interactive-element">
+            <g id="kol-span" data-name="kol-span">
+              <g id="kol-span__container" data-name="kol-span__container">
+                <g id="kol-span__slot" data-name="kol-span__slot">
+                  <g id="kol-tree-item__link-inner" data-name="kol-tree-item__link-inner">
+                    <g id="kol-tree-item__text" data-name="kol-tree-item__text"><text x="77.0" y="28.6" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(32, 32, 32)" stroke="none" xml:space="preserve">Knoten</text></g></g></g></g></g></g></g></g></g></g>
+</svg>

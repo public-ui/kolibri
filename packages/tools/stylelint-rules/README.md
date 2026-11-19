@@ -2,7 +2,7 @@
 
 Custom Stylelint rules for enforcing SCSS architecture and accessibility standards in the KoliBri component library.
 
-[![license](https://img.shields.io/npm/l/@public-ui/stylelint-rules)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@public-ui/stylelint-rules)](https://github.com/public-ui/kolibri/blob/develop/LICENSE)
 [![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
@@ -144,4 +144,4 @@ The `kolibri/common-require-component-layer` rule is configurable and accepts a 
 pnpm test
 ```
 
-For the full monorepo contribution guide see [CONTRIBUTING.md](https://github.com/public-ui/kolibri/blob/main/CONTRIBUTING.md).
+For the full monorepo contribution guide see [CONTRIBUTING.md](https://github.com/public-ui/kolibri/blob/develop/CONTRIBUTING.md).

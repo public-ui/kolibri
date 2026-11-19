@@ -25,7 +25,7 @@
 			padding-right: 0;
 		}
 
-		&__delete .kol-button {
+		&__delete.kol-button {
 			min-width: to-rem(36);
 			min-height: to-rem(36);
 
@@ -40,7 +40,7 @@
 				background-color: var(--color-blue-100-06);
 			}
 
-			&__interactive-element:focus {
+			.kol-button__interactive-element:focus {
 				background: var(--color-dark-blue-100-06);
 				outline: var(--color-dark-blue-100) solid 2px;
 				outline-offset: 2px;

@@ -2,26 +2,28 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
 
+import { trimLabel } from '../../../schema';
+import { bem } from '../../../schema/bem-registry';
 import type { FunctionalComponentProps } from '../generic-types';
+import { renderLabelWithLang } from '../span/component';
 import type { MeterApi } from './api';
 
 type MeterState = 'optimum' | 'suboptimal' | 'critical';
 
+const meterBem = bem.forBlock('kol-meter');
+
+/** Classifies the value like the native `<meter>`, which takes (min + max) / 2 as the optimum when none is set. */
 function getMeterState(value: number, min: number, max: number, low: number | undefined, high: number | undefined, optimum: number | undefined): MeterState {
 	const effectiveLow = low ?? min;
 	const effectiveHigh = high ?? max;
-
-	if (optimum === undefined) {
-		const inMidRegion = value >= effectiveLow && value <= effectiveHigh;
-		return inMidRegion ? 'optimum' : 'suboptimal';
-	}
+	const effectiveOptimum = optimum ?? (min + max) / 2;
 
 	const inLowRegion = value < effectiveLow;
 	const inHighRegion = value > effectiveHigh;
 	const inMidRegion = !inLowRegion && !inHighRegion;
 
-	const optimumInLow = optimum < effectiveLow;
-	const optimumInHigh = optimum > effectiveHigh;
+	const optimumInLow = effectiveOptimum < effectiveLow;
+	const optimumInHigh = effectiveOptimum > effectiveHigh;
 
 	if (optimumInLow) {
 		if (inLowRegion) return 'optimum';
@@ -37,19 +39,30 @@ function getMeterState(value: number, min: number, max: number, low: number | un
 	}
 }
 
-type MeterFCProps = Omit<FunctionalComponentProps<MeterApi>, 'high' | 'low' | 'optimum'> & {
+/**
+ * The web component passes every prop of this FC explicitly: the boundaries stay `undefined` when
+ * the consumer does not set them (no state classification then), while `max`, `min` and `unit`
+ * always carry their config default.
+ */
+type MeterFCProps = Omit<FunctionalComponentProps<MeterApi>, 'high' | 'low' | 'max' | 'min' | 'optimum' | 'unit'> & {
 	high: number | undefined;
 	low: number | undefined;
+	max: number;
+	min: number;
 	optimum: number | undefined;
+	unit: string;
 };
 
 export const MeterFC: FC<MeterFCProps> = (props) => {
 	const { high, label, low, max, min, optimum, orientation, unit, value } = props;
 
+	/** A missing value renders as “no value”: the native meter keeps its default, the display stays empty. */
+	const hasValue = value !== undefined && value !== null;
 	const isVertical = orientation === 'vertical';
 	const isPercentage = unit === '%';
-	const displayValue = isPercentage ? Math.round(((value - min) / (max - min)) * 100) : value;
-	const state = getMeterState(value, min, max, low, high, optimum);
+	// A degenerate range (min === max) has no progress, so the percentage is defined as 0 instead of NaN.
+	const displayValue = !hasValue ? '' : isPercentage ? (max === min ? 0 : Math.round(((value - min) / (max - min)) * 100)) : value;
+	const state = getMeterState(hasValue ? value : min, min, max, low, high, optimum);
 
 	// State classification is only meaningful when low or high boundaries are defined
 	const hasStateClassification = low !== undefined || high !== undefined;
@@ -64,34 +77,45 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 		}
 	}
 
-	const staticValueText = isPercentage
-		? translate('kol-live-value', { placeholders: { value: String(displayValue), unit } })
-		: translate('kol-live-value-bounded', { placeholders: { value: String(displayValue), max: String(max), unit } });
+	const staticValueText = !hasValue
+		? ''
+		: isPercentage
+			? translate('kol-live-value', { placeholders: { value: String(displayValue), unit } })
+			: translate('kol-live-value-bounded', { placeholders: { value: String(displayValue), max: String(max), unit } });
 	const staticValueWithState = hasStateClassification ? `${staticValueText} – ${stateLabel}` : staticValueText;
 
 	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
 
 	return (
-		<div class={{ 'kol-meter': true, 'kol-meter--vertical': isVertical }}>
-			<div class="kol-meter__bar">
-				<div class="kol-meter__bar-label">
-					{label}
+		<div class={meterBem({ vertical: isVertical })}>
+			<div class={meterBem('bar')}>
+				<div class={meterBem('bar-label')}>
+					{renderLabelWithLang(label)}
 					{hasStateClassification && (
-						<span class={`kol-meter__bar-state kol-meter__bar-state--${state}`}>
+						<span class={meterBem('bar-state', { [state]: true })}>
 							{' – '}
 							{stateLabel}
 						</span>
 					)}
 				</div>
 
-				<div class="kol-meter__bar-track">
-					<meter aria-label={label} aria-valuetext={staticValueWithState} high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
+				<div class={meterBem('bar-track')}>
+					<meter
+						aria-label={trimLabel(label)}
+						aria-valuetext={staticValueWithState || undefined}
+						high={high}
+						low={low}
+						max={max}
+						min={min}
+						optimum={optimum}
+						value={hasValue ? value : undefined}
+					></meter>
 				</div>
-				<span class="kol-meter__value-unit">
-					<span class="kol-meter__value" style={{ 'min-width': charCount }}>
+				<span class={meterBem('value-unit')}>
+					<span class={meterBem('value')} style={{ 'min-width': charCount }}>
 						{displayValue}
 					</span>
-					<span class="kol-meter__unit">{unit}</span>
+					<span class={meterBem('unit')}>{unit}</span>
 				</span>
 			</div>
 		</div>

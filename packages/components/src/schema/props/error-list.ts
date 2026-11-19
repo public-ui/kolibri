@@ -15,12 +15,20 @@ export type PropErrorList = {
 };
 
 /* validator */
+const isErrorListEntry = (value: unknown): boolean => {
+	if (typeof value !== 'object' || value === null) {
+		return false;
+	}
+	const { message, selector } = value as Partial<ErrorListPropType>;
+	return typeof message === 'string' && (typeof selector === 'string' || typeof selector === 'function');
+};
+
 export const validateErrorList = (component: Generic.Element.Component, value?: ErrorListPropType[]): void => {
 	watchValidator(
 		component,
-		'errorList',
-		(value): boolean => Array.isArray(value) && value.find((v) => !(typeof v === 'string' || typeof v === 'function')) === undefined,
-		new Set(['string', 'function']),
+		'_errorList',
+		(value): boolean => Array.isArray(value) && value.every(isErrorListEntry),
+		new Set(['{ message: string, selector: string | function, options?: KolFocusOptions }[]']),
 		value,
 	);
 };

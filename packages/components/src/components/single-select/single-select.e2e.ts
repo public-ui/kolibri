@@ -1,6 +1,7 @@
-import { expect } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { getAriaDetailsRefIds } from '../../e2e/aria-details';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
@@ -16,6 +17,46 @@ const OPTIONS = [
 	{ label: 'East', value: 'E' },
 ];
 const OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OPTIONS)}'`;
+const KEYBOARD_OPTIONS = [
+	{ label: 'Alpha', value: 'a' },
+	{ label: 'Beta', value: 'b', disabled: true },
+	{ label: 'Gamma', value: 'g' },
+	{ label: 'Delta', value: 'd' },
+	{ label: 'Epsilon', value: 'e' },
+];
+
+type RecordingWindow = Window & { recorded: unknown[] };
+
+/** The text of the focused option, `input` while the input has the focus. */
+const getFocused = (page: Page) =>
+	page.locator(COMPONENT_NAME).evaluate((element: HTMLElement) => {
+		const active = element.shadowRoot?.activeElement;
+		return active?.tagName === 'LI' ? active.textContent : (active?.tagName.toLowerCase() ?? null);
+	});
+
+const isOpen = (page: Page) => page.locator('.kol-custom-suggestions-options-group--open').isVisible();
+
+const getOptionTexts = (page: Page) => page.locator('li.kol-custom-suggestions-option').allTextContents();
+
+/** Records the KoliBri `input` and `change` events and a form submit. */
+const recordEvents = (page: Page) =>
+	page.evaluate(() => {
+		const recording = window as unknown as RecordingWindow;
+		recording.recorded = [];
+		const element = document.querySelector('kol-single-select')!;
+		element.addEventListener('input', (event) => {
+			if (event instanceof CustomEvent) recording.recorded.push(['input', event.detail]);
+		});
+		element.addEventListener('change', (event) => {
+			if (event instanceof CustomEvent) recording.recorded.push(['change', event.detail]);
+		});
+		document.querySelector('form')?.addEventListener('submit', (event) => {
+			event.preventDefault();
+			recording.recorded.push(['submit']);
+		});
+	});
+
+const readEvents = (page: Page) => page.evaluate(() => (window as unknown as RecordingWindow).recorded.splice(0));
 const fillAction: FillAction = async (page) => {
 	const input = page.locator('input.kol-single-select__input');
 	await input.click();
@@ -90,7 +131,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 			await page.waitForTimeout(500);
 
-			const clearButton = page.getByTestId('single-select-delete');
+			const clearButton = page.locator('.kol-single-select__delete button');
 			await expect(clearButton).toHaveCount(1);
 			await clearButton.click({ force: true });
 
@@ -114,7 +155,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 			await expect(input).toHaveValue(TEST_LABEL);
 
-			const clearButton = page.getByTestId('single-select-delete');
+			const clearButton = page.locator('.kol-single-select__delete button');
 			await expect(clearButton).not.toBeVisible();
 		});
 
@@ -165,8 +206,26 @@ test.describe(COMPONENT_NAME, () => {
 			await setContentWithRetry(page, `<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.fill('Something');
-			const noResult = page.getByText('Keine Ergebnisse gefunden.');
+			const noResult = page.locator('.kol-single-select__no-results-message');
+			await expect(noResult).toHaveText('Keine Ergebnisse gefunden.');
 			await expect(noResult).toBeVisible();
+		});
+
+		test('announces the no results message outside of the listbox, which stays empty', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
+			await page.locator('input.kol-single-select__input').fill('Something');
+
+			await expect(page.getByRole('status')).toHaveText('Keine Ergebnisse gefunden.');
+			await expect(page.locator('[role="listbox"] [role="alert"]')).toHaveCount(0);
+			await expect(page.getByRole('listbox')).not.toContainText('Keine Ergebnisse gefunden.');
+			await expect(page.locator('.kol-single-select__no-results-message')).toBeVisible();
+		});
+
+		test('names the listbox by the label of the field', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-single-select _label="Direction" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await page.locator('input.kol-single-select__input').click();
+
+			await expect(page.getByRole('listbox')).toHaveAccessibleName('Direction');
 		});
 
 		test('should only trigger onChange when the value actually changes', async ({ page }) => {
@@ -206,15 +265,16 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	test.describe('_ariaDetails', () => {
-		test('accepts valid element reference', async ({ page }) => {
+		test('sets the element reference on the native input', async ({ page }) => {
 			await page.setContent(`
 				<kol-single-select _label="Select option" _aria-details="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
 				<div id="select-details">Choose one of these options carefully</div>
 			`);
 			await page.waitForChanges();
 
-			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
-			expect(value).toBe('select-details');
+			const host = page.locator(COMPONENT_NAME);
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('select-details');
+			expect(await getAriaDetailsRefIds(host)).toEqual(['select-details']);
 		});
 
 		test('updates when prop changes', async ({ page }) => {
@@ -234,6 +294,25 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('details-2');
+			expect(await getAriaDetailsRefIds(host)).toEqual(['details-2']);
+		});
+
+		test('releases the references when the prop empties', async ({ page }) => {
+			await page.setContent(`
+				<div id="select-details">Choose one of these options carefully</div>
+				<kol-single-select _label="Select option" _aria-details="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+			`);
+			await page.waitForChanges();
+			const host = page.locator(COMPONENT_NAME);
+			expect(await getAriaDetailsRefIds(host)).toEqual(['select-details']);
+
+			await host.evaluate((el: HTMLKolSingleSelectElement) => {
+				el._ariaDetails = '';
+			});
+			await page.waitForChanges();
+
+			expect(await getAriaDetailsRefIds(host)).toBeNull();
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el.shadowRoot?.querySelector('input')?.hasAttribute('aria-details'))).toBe(false);
 		});
 
 		test('handles missing ID gracefully', async ({ page }) => {
@@ -256,6 +335,29 @@ test.describe(COMPONENT_NAME, () => {
 
 			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
 			expect(value).toBe('id1 id2');
+		});
+
+		test('resolves a target that enters the tree after the first render', async ({ page }) => {
+			await page.setContent(
+				`<kol-single-select _label="Select option" _aria-details="late-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`,
+			);
+			await page.waitForChanges();
+			const host = page.locator(COMPONENT_NAME);
+			expect(await getAriaDetailsRefIds(host)).toBeNull();
+
+			await page.locator('body').evaluate((body: HTMLBodyElement) => {
+				const late = document.createElement('div');
+				late.id = 'late-details';
+				late.textContent = 'Late details';
+				body.append(late);
+			});
+			// The references re-resolve on the next render of the field.
+			await host.evaluate((el: HTMLKolSingleSelectElement) => {
+				el._label = 'Select an option';
+			});
+			await page.waitForChanges();
+
+			expect(await getAriaDetailsRefIds(host)).toEqual(['late-details']);
 		});
 	});
 
@@ -280,9 +382,9 @@ test.describe(COMPONENT_NAME, () => {
 				kolEvent('change', TEST_VALUE),
 				callback('change', TEST_VALUE),
 				nativeEvent('click'),
-				nativeEvent('blur'),
 				kolEvent('blur'),
 				callback('blur'),
+				nativeEvent('blur'),
 			],
 			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
 			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
@@ -292,5 +394,121 @@ test.describe(COMPONENT_NAME, () => {
 			experimentalFormData: [['field', TEST_VALUE]],
 			syncedValue: TEST_VALUE,
 		},
+	});
+
+	test.describe('Keyboard and mouse', () => {
+		test.beforeEach(async ({ page }) => {
+			await setContentWithRetry(
+				page,
+				`<form><kol-single-select _label="Input" _options='${JSON.stringify(KEYBOARD_OPTIONS)}'></kol-single-select><button id="after" type="button">After</button></form>`,
+			);
+			await recordEvents(page);
+			await page.locator('input.kol-single-select__input').focus();
+		});
+
+		test('moves through the enabled options with the arrow keys, Home, End, PageUp and PageDown', async ({ page }) => {
+			const steps: [string, string | null][] = [
+				['ArrowDown', 'Alpha'],
+				['ArrowDown', 'Gamma'],
+				['End', 'Epsilon'],
+				['ArrowDown', 'Alpha'],
+				['Home', 'Alpha'],
+				['PageDown', 'Alpha'],
+				['PageUp', 'Epsilon'],
+				['ArrowUp', 'Delta'],
+			];
+			for (const [key, focused] of steps) {
+				await page.keyboard.press(key);
+				await page.waitForChanges();
+				expect([key, await getFocused(page)]).toEqual([key, focused]);
+			}
+			expect(await isOpen(page)).toBe(true);
+		});
+
+		test('focuses the first option starting with a typed character', async ({ page }) => {
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('e');
+			await page.waitForChanges();
+			expect(await getFocused(page)).toBe('Epsilon');
+		});
+
+		test('selects with Space and Enter without submitting the form, and reopens with Enter', async ({ page }) => {
+			const component = page.locator(COMPONENT_NAME);
+			await page.keyboard.press('ArrowUp');
+			await page.keyboard.press('Space');
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([
+				['input', 'e'],
+				['change', 'e'],
+			]);
+			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('Epsilon');
+
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Enter');
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([
+				['input', 'a'],
+				['change', 'a'],
+			]);
+			expect([await isOpen(page), await getFocused(page)]).toEqual([false, 'input']);
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
+
+			await page.keyboard.press('Enter');
+			await page.waitForChanges();
+			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'Alpha']);
+			expect(await readEvents(page)).toEqual([]);
+		});
+
+		test('filters on typing without changing the value', async ({ page }) => {
+			const component = page.locator(COMPONENT_NAME);
+			await component.evaluate((element: HTMLKolSingleSelectElement) => {
+				element._value = 'a';
+			});
+			await page.waitForChanges();
+			await page.locator('input.kol-single-select__input').fill('gam');
+			await page.waitForChanges();
+			expect([await isOpen(page), await getOptionTexts(page)]).toEqual([true, ['Gamma']]);
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
+			expect(await readEvents(page)).toEqual([]);
+		});
+
+		test('selects the option whose label matches the typed text when the focus leaves', async ({ page }) => {
+			await page.locator('input.kol-single-select__input').fill('gamma');
+			await page.locator('#after').focus();
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([
+				['input', 'g'],
+				['change', 'g'],
+			]);
+			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('Gamma');
+		});
+
+		test('shows all options again when the focus leaves without a matching label', async ({ page }) => {
+			const component = page.locator(COMPONENT_NAME);
+			await component.evaluate((element: HTMLKolSingleSelectElement) => {
+				element._value = 'a';
+			});
+			await page.waitForChanges();
+			await page.locator('input.kol-single-select__input').fill('gam');
+			await page.locator('#after').focus();
+			await page.waitForChanges();
+			expect(await getOptionTexts(page)).toEqual(['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon']);
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
+		});
+
+		test('reports null when the selection is cleared', async ({ page }) => {
+			const component = page.locator(COMPONENT_NAME);
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Enter');
+			await readEvents(page);
+			await page.locator('.kol-single-select__delete button').click();
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([
+				['input', null],
+				['change', null],
+			]);
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBeNull();
+			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
+		});
 	});
 });

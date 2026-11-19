@@ -32,8 +32,8 @@ import { linkPropsConfig } from './api';
 export type ResolvedLinkProps = StrictFields<ResolvedProps<LinkApi>>;
 
 /**
- * An embedded link's configuration: the public `LinkProps` plus the internal props the
- * transitional `kol-link-wc` accepted from consumers rendering it inside their own shadow DOM.
+ * An embedded link's configuration: the public `LinkProps` plus the internal props that components
+ * embedding `LinkFC` may set.
  */
 export type EmbeddedLinkProps = LinkProps & {
 	_ariaExpanded?: boolean;

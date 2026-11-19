@@ -35,7 +35,7 @@ This was problematic because:
 ### Single Card
 
 ```html
-<kol-card-wc _label="Card Title"> Content goes here </kol-card-wc>
+<kol-card _label="Card Title"> Content goes here </kol-card>
 ```
 
 Renders as:
@@ -53,9 +53,9 @@ When displaying multiple cards, wrap them in a list to provide semantic grouping
 
 ```html
 <ul>
-	<li><kol-card-wc _label="Card 1">Content 1</kol-card-wc></li>
-	<li><kol-card-wc _label="Card 2">Content 2</kol-card-wc></li>
-	<li><kol-card-wc _label="Card 3">Content 3</kol-card-wc></li>
+	<li><kol-card _label="Card 1">Content 1</kol-card></li>
+	<li><kol-card _label="Card 2">Content 2</kol-card></li>
+	<li><kol-card _label="Card 3">Content 3</kol-card></li>
 </ul>
 ```
 

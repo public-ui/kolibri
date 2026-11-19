@@ -13,8 +13,6 @@
 	}
 
 	.kol-table {
-		$root: &;
-
 		display: block;
 		padding: 0.5em;
 
@@ -45,14 +43,14 @@
 
 			&--selection,
 			&--header {
-				@at-root #{$root}__head-row:first-child & {
+				.kol-table__head-row:first-child & {
 					border-color: var(--color-ice);
 					border-style: solid;
 					border-width: 0;
 					border-top-width: to-rem(2);
 				}
 
-				@at-root #{$root}__head-row:last-child & {
+				.kol-table__head-row:last-child & {
 					border-color: var(--color-ice);
 					border-style: solid;
 					border-width: 0;
@@ -132,7 +130,7 @@
 				}
 			}
 
-			@at-root #{$root}__selection--indeterminate & {
+			.kol-table__selection--indeterminate & {
 				background-color: var(--color-white);
 			}
 		}
@@ -140,7 +138,7 @@
 		&__selection-icon {
 			color: var(--color-white);
 
-			@at-root #{$root}__selection--indeterminate & {
+			.kol-table__selection--indeterminate & {
 				color: var(--color-blue);
 			}
 		}

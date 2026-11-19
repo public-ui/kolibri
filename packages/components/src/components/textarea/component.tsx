@@ -1,0 +1,647 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	AccessKeyPropType,
+	AdjustHeightPropType,
+	AriaDetailsPropType,
+	ClickableElement,
+	DisabledPropType,
+	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
+	HasCounterPropType,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IconsHorizontalPropType,
+	InputTypeOnDefault,
+	KolFocusOptions,
+	LabelWithExpertSlotPropType,
+	MaxLengthBehaviorPropType,
+	MaxLengthPropType,
+	MsgPropType,
+	NamePropType,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
+	RowsPropType,
+	ShortKeyPropType,
+	SpellCheckPropType,
+	Stringified,
+	StringValuePropType,
+	SyncValueBySelectorPropType,
+	TextareaProps,
+	TextareaResizePropType,
+	TooltipAlignPropType,
+	TouchedPropType,
+	VariantClassNamePropType,
+} from '../../schema';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { CounterBehavior } from '../../internal/functional-components/counter/behavior';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import { TextAreaFC, type TextAreaFCProps } from '../../internal/functional-components/form-field/textarea';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { TextareaApi } from '../../internal/functional-components/textarea/api';
+import { textareaPropsConfig } from '../../internal/functional-components/textarea/api';
+import {
+	accessKeyProp,
+	adjustHeightProp,
+	horizontalIconsProp,
+	placeholderProp,
+	readOnlyProp,
+	requiredProp,
+	resizeProp,
+	rowsProp,
+	shortKeyProp,
+	spellCheckProp,
+	stringValueProp,
+	variantProp,
+} from '../../internal/props';
+import clsx from '../../utils/clsx';
+import { createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+
+/**
+ * The **Textarea** component provides a larger input field for content. Unlike InputText, it also allows extensive content to be entered, including line breaks.
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
+ */
+@Component({
+	tag: 'kol-textarea',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
+})
+export class KolTextarea
+	extends BaseFormFieldWebComponent<TextareaApi>
+	implements ClickableElement, FocusableElement, TextareaProps, WebComponentInterface<TextareaApi>
+{
+	@Element() protected readonly host?: HTMLKolTextareaElement;
+
+	@State() public id = createUniqueId('textarea');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
+	@State() public inputHasFocus = false;
+
+	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
+
+	private readonly counter = new CounterBehavior(BaseWebComponent.stateLess);
+
+	private needsImmediateCounterUpdate = false;
+
+	/**
+	 * Whether the field has a value, rendered as the root class `kol-form-field--has-value`. It is a
+	 * plain field, not state: changing it does not re-render, the class follows with the next render (#11053).
+	 */
+	private hasValue = false;
+
+	/** The rows the consumer set; `_adjustHeight` never shrinks the textarea below them. */
+	private minRows?: number;
+
+	/** Set while the textarea writes its measured rows to `_rows`, so the watcher keeps `minRows`. */
+	private isWritingRows = false;
+
+	protected readonly propsConfig: PropsConfigShape = textareaPropsConfig;
+
+	public constructor() {
+		super();
+		this.initFormAssociation('textarea', this._name);
+	}
+
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: AccessKeyPropType): void {
+		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		validateAccessAndShortKey(value, this._shortKey);
+	}
+
+	/**
+	 * Adjusts the height of the element to its content.
+	 * @TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
+	 */
+	@Prop() public _adjustHeight?: AdjustHeightPropType = false;
+
+	@Watch('_adjustHeight')
+	public watchAdjustHeight(value?: AdjustHeightPropType): void {
+		adjustHeightProp.apply(value, (v) => this.setRenderProp('adjustHeight', v));
+	}
+
+	/**
+	 * References an external element by ID that provides accessible details for this textarea.
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
+	 */
+	@Prop() public _disabled?: DisabledPropType = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: DisabledPropType): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop() public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 */
+	@Prop() public _hideLabel?: HideLabelPropType = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: HideLabelPropType): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: HintPropType = '';
+
+	@Watch('_hint')
+	public watchHint(value?: HintPropType): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsHorizontalPropType): void {
+		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the maximum number of input characters.
+	 */
+	@Prop() public _maxLength?: MaxLengthPropType = undefined;
+
+	@Watch('_maxLength')
+	public watchMaxLength(value?: MaxLengthPropType): void {
+		this.counter.watchMaxLength(value);
+		this.counter.updateImmediate(this._value?.length ?? 0);
+	}
+
+	/**
+	 * Shows a character counter for the input element.
+	 */
+	@Prop() public _hasCounter?: HasCounterPropType = false;
+
+	@Watch('_hasCounter')
+	public watchHasCounter(value?: HasCounterPropType): void {
+		this.counter.watchHasCounter(value);
+		this.needsImmediateCounterUpdate = true;
+	}
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
+
+	@Watch('_maxLengthBehavior')
+	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.counter.watchMaxLengthBehavior(value);
+		this.needsImmediateCounterUpdate = true;
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType = undefined;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Defines the callback functions for input events.
+	 */
+	@Prop() public _on?: InputTypeOnDefault = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Defines the placeholder for input field. To be shown when there's no value.
+	 */
+	@Prop() public _placeholder?: PlaceholderPropType = undefined;
+
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: PlaceholderPropType): void {
+		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
+	}
+
+	/**
+	 * Makes the input element read only.
+	 */
+	@Prop() public _readOnly?: ReadOnlyPropType = false;
+
+	@Watch('_readOnly')
+	public watchReadOnly(value?: ReadOnlyPropType): void {
+		readOnlyProp.apply(value, (v) => this.setRenderProp('readOnly', v));
+	}
+
+	/**
+	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `vertical` (default) and `none`.
+	 */
+	@Prop() public _resize?: TextareaResizePropType = 'vertical';
+
+	@Watch('_resize')
+	public watchResize(value?: TextareaResizePropType): void {
+		resizeProp.apply(value, (v) => this.setRenderProp('resize', v));
+	}
+
+	/**
+	 * Makes the input element required.
+	 */
+	@Prop() public _required?: RequiredPropType = false;
+
+	@Watch('_required')
+	public watchRequired(value?: RequiredPropType): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Maximum number of visible rows of the element.
+	 */
+	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType = undefined;
+
+	@Watch('_rows')
+	public watchRows(value?: RowsPropType): void {
+		rowsProp.apply(value, (v) => {
+			this.setRenderProp('rows', v);
+			if (!this.isWritingRows) {
+				this.minRows = v;
+			}
+		});
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
+	/**
+	 * Defines whether the browser should check the spelling and grammar.
+	 */
+	@Prop() public _spellCheck?: SpellCheckPropType = undefined;
+
+	@Watch('_spellCheck')
+	public watchSpellCheck(value?: SpellCheckPropType): void {
+		spellCheckProp.apply(value, (v) => this.setRenderProp('spellCheck', v));
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: TouchedPropType): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _value?: StringValuePropType = undefined;
+
+	@Watch('_value')
+	public watchValue(value?: StringValuePropType): void {
+		this.applyValue(value);
+		this.counter.update(value?.length ?? 0);
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+	}
+
+	/**
+	 * Returns the current value.
+	 */
+	@Method()
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
+
+	public componentWillLoad(): void {
+		this.watchAriaDetails(this._ariaDetails);
+		this._touched = this._touched === true;
+		this.watchName(this._name);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTouched(this._touched);
+		this.watchAccessKey(this._accessKey);
+		this.watchAdjustHeight(this._adjustHeight);
+		this.watchMsg(this._msg);
+		this.watchDisabled(this._disabled);
+		this.watchHideMsg(this._hideMsg);
+		this.watchHideLabel(this._hideLabel);
+		this.watchHint(this._hint);
+		this.watchInfoPopover(this._infoPopover);
+		this.watchLabel(this._label);
+		this.watchShortKey(this._shortKey);
+		this.watchOn(this._on);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchVariant(this._variant);
+		this.watchIcons(this._icons);
+		this.watchHasCounter(this._hasCounter);
+		this.watchMaxLengthBehavior(this._maxLengthBehavior);
+		// Without a counter update: `componentDidLoad` fills the counter once its spans exist.
+		this.counter.watchMaxLength(this._maxLength);
+		this.watchPlaceholder(this._placeholder);
+		this.watchReadOnly(this._readOnly);
+		this.watchRequired(this._required);
+		this.watchResize(this._resize);
+		this.watchRows(this._rows);
+		this.watchSpellCheck(this._spellCheck);
+		this.applyValue(this._value);
+	}
+
+	public componentDidLoad(): void {
+		this.needsImmediateCounterUpdate = false;
+		if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
+			this.counter.updateImmediate(this._value?.length ?? 0);
+		}
+		// Runs after the first paint, so the height can be measured.
+		setTimeout(() => {
+			if (this._adjustHeight === true && this.ctaRef.el) {
+				this.writeRows(this.measureTextareaRows(this.ctaRef.el));
+			} else if (!this._rows) {
+				this.writeRows(1);
+			}
+		});
+	}
+
+	public componentDidUpdate(): void {
+		if (this.needsImmediateCounterUpdate) {
+			this.needsImmediateCounterUpdate = false;
+			if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
+				this.counter.updateImmediate(this._value?.length ?? 0);
+			}
+		}
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
+	}
+
+	public disconnectedCallback(): void {
+		this.destroyFormField();
+		this.counter.destroy();
+	}
+
+	private readonly handleTextareaInput = (event: Event): void => {
+		if (this.ctaRef.el instanceof HTMLTextAreaElement) {
+			this._value = this.ctaRef.el.value;
+			if (this.getRenderProp('adjustHeight')) {
+				this.writeRows(this.measureTextareaRows(this.ctaRef.el));
+			}
+			this.handleInput(event);
+		}
+	};
+
+	private readonly handleTextareaChange = (event: Event): void => {
+		this.handleChange(event);
+	};
+
+	private readonly handleTextareaFocus = (event: FocusEvent): void => {
+		this.handleFocus(event);
+		this.counter.retriggerAria(this._value?.length ?? 0);
+	};
+
+	private readonly handleTextareaKeyDown = (event: KeyboardEvent): void => {
+		this.handleKeyDown(event);
+		this.counter.handleKeyDown(event, this.ctaRef.el?.value.length ?? 0);
+	};
+
+	private writeRows(rows: number): void {
+		this.isWritingRows = true;
+		this._rows = rows;
+		this.isWritingRows = false;
+	}
+
+	/**
+	 * Measures the rows the content needs, so the textarea grows and shrinks with its content. The
+	 * result never falls below the rows the consumer set.
+	 *
+	 * @see https://stackoverflow.com/questions/17772260/textarea-auto-height
+	 */
+	private measureTextareaRows(el: HTMLTextAreaElement): number {
+		// Hides the scrollbar during the measurement; the padding is removed temporarily for a correct row height.
+		// Both inline values are restored afterwards, so the scrollbar of a resizable textarea stays available.
+		const { overflow, padding } = el.style;
+		el.style.overflow = 'hidden';
+		el.style.padding = '0';
+		const currentRows = el.rows;
+		const rowHeight = el.clientHeight / currentRows;
+		el.rows = 1;
+		const nextRows = Math.round(el.scrollHeight / rowHeight);
+		el.rows = currentRows;
+		el.style.overflow = overflow;
+		el.style.padding = padding;
+
+		const minRows = this.minRows;
+		return minRows && minRows > nextRows ? minRows : nextRows;
+	}
+
+	/**
+	 * Props of the native `<textarea>` in a fixed key order, which the hydrate snapshot pins.
+	 */
+	private getTextareaProps(): TextAreaFCProps {
+		const id = this.id;
+		const shortKey = this.getRenderProp('shortKey');
+		const maxLength = this.counter.getMaxLengthAttribute();
+		const characterLimitHintId = this.counter.getCharacterLimitHintId(id);
+		const { ariaDescribedBy, hasError } = this.getAria();
+
+		return {
+			id,
+			hideLabel: this.getRenderProp('hideLabel'),
+			label: this.getRenderProp('label'),
+			value: this.getRenderProp('value'),
+			accessKey: this.getRenderProp('accessKey') || undefined,
+			disabled: this.getRenderProp('disabled'),
+			// The name prop defaults to `''`; an unnamed field renders no `name` attribute.
+			name: this.getRenderProp('name') || undefined,
+			rows: this.getRenderProp('rows'),
+			readonly: this.getRenderProp('readOnly'),
+			required: this.getRenderProp('required'),
+			placeholder: this.getRenderProp('placeholder'),
+			spellcheck: this.getRenderProp('spellCheck'),
+			touched: this.getRenderProp('touched'),
+			msg: this.getRenderProp('msg'),
+			ref: this.ctaRef,
+			style: {
+				resize: this.getRenderProp('resize'),
+			},
+			onBlur: this.handleBlur,
+			onChange: this.handleTextareaChange,
+			onClick: this.handleClick,
+			onFocus: this.handleTextareaFocus,
+			onInput: this.handleTextareaInput,
+			onKeyDown: this.handleTextareaKeyDown,
+			ariaDescribedBy: characterLimitHintId ? [...ariaDescribedBy, characterLimitHintId] : ariaDescribedBy,
+			'aria-invalid': hasError ? 'true' : undefined,
+			...(maxLength !== undefined ? { maxLength } : {}),
+			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
+		};
+	}
+
+	/** Applies the value without a counter update; the watcher adds it. */
+	private applyValue(value?: string): void {
+		stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		this.hasValue = Boolean(this.getRenderProp('value'));
+		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
+	}
+
+	public render(): JSX.Element {
+		const disabled = this.getRenderProp('disabled');
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
+
+		return (
+			<Host>
+				<FormFieldFC
+					{...this.getFormFieldProps({
+						class: clsx('kol-form-field-textarea', {
+							'kol-form-field--has-value': this.hasValue,
+							'kol-form-field--has-counter': this.counter.hasSoftLimit() || this.counter.hasCounter(),
+						}),
+						accessKey: this.getRenderProp('accessKey') || undefined,
+						shortKey: this.getRenderProp('shortKey') || undefined,
+						variant: this.getRenderProp('variant'),
+						required: this.getRenderProp('required'),
+						readOnly: this.getRenderProp('readOnly'),
+						maxLength: this.counter.getRenderProp('maxLength'),
+						counter: this.counter.getCounterProps(),
+					})}
+				>
+					<InputContainerFC
+						disabled={disabled}
+						msg={this.getRenderProp('msg')}
+						touched={this.getRenderProp('touched')}
+						startAdornment={startAdornment}
+						endAdornment={endAdornment}
+					>
+						<TextAreaFC {...this.getTextareaProps()} />
+					</InputContainerFC>
+				</FormFieldFC>
+			</Host>
+		);
+	}
+}

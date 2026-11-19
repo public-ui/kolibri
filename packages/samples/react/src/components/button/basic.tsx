@@ -1,12 +1,19 @@
 import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useSearchParams } from 'react-router';
 import { useAlert } from '../../hooks/useAlert';
+import { fetchVariantData } from '../../shares/fetchVariantData';
+import { getTheme } from '../../shares/store';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonBasic: FC = () => {
 	const { dummyClickEventHandler } = useAlert();
+
+	const [searchParams] = useSearchParams();
+	const theme = searchParams.get('theme') ?? getTheme();
+	const data = useMemo(() => (theme ? fetchVariantData(theme, 'buttonVariants') : []), [theme]);
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -17,35 +24,45 @@ export const ButtonBasic: FC = () => {
 			<SampleDescription>
 				<p>
 					This story demonstrates the most important features of the KolButton component. It showcases the different button variants, icons, disabled state, and
-					hidden labels.
+					hidden labels. All available button variants for this theme are shown. You can import ButtonVariantsEnum from your theme to always use the right
+					variants.
 				</p>
 			</SampleDescription>
 
 			<div className="grid gap-8">
 				<SampleBlock id="variants" heading="Button Variants" fitContent>
-					<div className="flex flex-wrap gap-4">
-						<KolButton _icons="kolicon-house" _label="Primary" _variant="primary" onClick={dummyClickEventHandler} />
-						<KolButton _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" onClick={dummyClickEventHandler} />
-						<KolButton _icons="kolicon-cogwheel" _label="Tertiary" _variant="tertiary" onClick={dummyClickEventHandler} />
-						<KolButton _icons="kolicon-cogwheel" _label="Normal" _variant="normal" _on={dummyEventHandler} />
-						<KolButton _icons="kolicon-alert-warning" _label="Danger" _variant="danger" _on={dummyEventHandler} />
-						<KolButton _icons="kolicon-eye-closed" _label="Ghost" _variant="ghost" _on={dummyEventHandler} />
+					<div className="flex flex-wrap gap-4 items-center">
+						{!Array.isArray(data) || data.length === 0 ? (
+							<p>This theme has no variants for this component.</p>
+						) : (
+							data.map((element) => {
+								return <KolButton _icons="kolicon-house" _label={`${element}`} _variant={element} key={element} _on={dummyEventHandler} />;
+							})
+						)}
 					</div>
 				</SampleBlock>
 
 				<SampleBlock id="disabled" heading="Disabled State" fitContent>
-					<div className="flex flex-wrap gap-4">
-						<KolButton _disabled _icons="kolicon-house" _label="Primary" _variant="primary" _on={dummyEventHandler} />
-						<KolButton _disabled _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" _on={dummyEventHandler} />
-						<KolButton _disabled _icons="kolicon-alert-warning" _label="Danger" _variant="danger" _on={dummyEventHandler} />
+					<div className="flex flex-wrap gap-4 items-center">
+						{!Array.isArray(data) || data.length === 0 ? (
+							<p>This theme has no variants for this component.</p>
+						) : (
+							data.map((element) => {
+								return <KolButton _icons="kolicon-house" _label={`${element}`} _variant={element} key={element} _on={dummyEventHandler} _disabled />;
+							})
+						)}
 					</div>
 				</SampleBlock>
 
 				<SampleBlock id="hide-label" heading="Hidden Label (Icon Only)" fitContent>
-					<div className="flex flex-wrap gap-4">
-						<KolButton _hideLabel _icons="kolicon-house" _label="Primary" _variant="primary" _on={dummyEventHandler} />
-						<KolButton _hideLabel _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" _on={dummyEventHandler} />
-						<KolButton _hideLabel _icons="kolicon-alert-warning" _label="Danger" _variant="danger" _on={dummyEventHandler} />
+					<div className="flex flex-wrap gap-4 items-center">
+						{!Array.isArray(data) || data.length === 0 ? (
+							<p>This theme has no variants for this component.</p>
+						) : (
+							data.map((element) => {
+								return <KolButton _hideLabel _icons="kolicon-settings" _label={`${element}`} _variant={element} key={element} _on={dummyEventHandler} />;
+							})
+						)}
 					</div>
 				</SampleBlock>
 

@@ -13,13 +13,12 @@ import { ButtonPinToggle } from './pin-toggle';
 import { ButtonRowReverseTooltip } from './row-reverse-tooltip';
 import { ButtonShortKey } from './short-key';
 import { ButtonSpinner } from './spinner';
-import { ButtonVariants } from './variants';
+import { ButtonTooltipAlign } from './tooltip-align';
 import { ButtonWidth } from './width';
 
 export const BUTTON_ROUTES: Routes = {
 	button: {
 		basic: ButtonBasic,
-		variants: ButtonVariants,
 		disabled: ButtonDisabled,
 		'hide-label': ButtonHideLabel,
 		icons: ButtonIcons,
@@ -32,6 +31,7 @@ export const BUTTON_ROUTES: Routes = {
 		'short-key': ButtonShortKey,
 		'expert-slot': ButtonExpertSlot,
 		'row-reverse-tooltip': ButtonRowReverseTooltip,
+		'tooltip-align': ButtonTooltipAlign,
 		'focus-options': ButtonFocusOptions,
 		'fixed-grid': ButtonInFixedGrid,
 	},

@@ -21,7 +21,7 @@ export const ROUTES = new Map();
  *     content (skip-nav) and deliberate composition tests (scenarios/*, form/basic).
  *   - viewportSize:
  *     - width (Default: 800)
- *     - height (Default: 100)
+ *     - height (Default: 400)
  *   - waitForTimeout: number (Default: 15000)
  *
  * There is no per-route option for the reflow pass: blocks that should additionally be captured at
@@ -49,17 +49,13 @@ ROUTES.set('breadcrumb/basic', {
 });
 ROUTES.set('button-link/basic');
 ROUTES.set('button-link/icons');
-ROUTES.set('button/variants');
+ROUTES.set('button/basic');
 ROUTES.set('button/icons');
 ROUTES.set('button/short-key');
 ROUTES.set('card/basic');
 ROUTES.set('card/linked');
 ROUTES.set('card/headlines');
-ROUTES.set('combobox/basic?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
-});
+ROUTES.set('combobox/basic?noColumns');
 ROUTES.set('details/basic');
 ROUTES.set('dialog/basic?show-dialog=true', {
 	snapshot: {
@@ -150,9 +146,6 @@ ROUTES.set('image/basic', {
 	},
 });
 ROUTES.set('input-checkbox/basic?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -161,9 +154,6 @@ ROUTES.set('input-checkbox/basic?noColumns', {
 	},
 });
 ROUTES.set('input-checkbox/button?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -172,9 +162,6 @@ ROUTES.set('input-checkbox/button?noColumns', {
 	},
 });
 ROUTES.set('input-checkbox/switch?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -263,9 +250,6 @@ ROUTES.set('input-password/show-password?noColumns', {
 	},
 });
 ROUTES.set('input-radio/basic?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -346,22 +330,8 @@ ROUTES.set('input-text/access-short-key?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-text/hide-label?noColumns', {
-	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 0,
-		},
-	},
-});
-ROUTES.set('input-text/hide-msg?noColumns', {
-	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 0,
-		},
-	},
-});
+ROUTES.set('input-text/hide-label?noColumns');
+ROUTES.set('input-text/hide-msg?noColumns');
 ROUTES.set('input-text/text-formatter?noColumns', {
 	snapshot: {
 		skip: true,
@@ -394,9 +364,6 @@ ROUTES.set('input-text/background?noColumns', {
 	},
 });
 ROUTES.set('input-text/variant?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 1000,
@@ -536,9 +503,6 @@ ROUTES.set('table/state-columns', {
 	},
 });
 ROUTES.set('table/with-footer', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 800,
@@ -555,9 +519,6 @@ ROUTES.set('table/with-pagination', {
 	},
 });
 ROUTES.set('table/pagination-position', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 800,
@@ -675,11 +636,7 @@ ROUTES.set('table/stateless-async', {
 	},
 });
 ROUTES.set('tabs/basic');
-ROUTES.set('tabs/create-button', {
-	axe: {
-		skipFailures: true,
-	},
-});
+ROUTES.set('tabs/create-button');
 ROUTES.set('tabs/icons-only', {
 	snapshot: {
 		viewportSize: {
@@ -762,9 +719,6 @@ ROUTES.set('version/context', {
 	},
 });
 ROUTES.set('scenarios/accordion-components', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {
@@ -774,45 +728,24 @@ ROUTES.set('scenarios/accordion-components', {
 	},
 });
 ROUTES.set('scenarios/static-form', {
-	axe: {
-		skipFailures: true,
-	},
-	snapshot: {
-		forceFullPage: true,
-		skip: true,
-	},
-});
-ROUTES.set('scenarios/sample-form-with-validation', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		skip: true,
 	},
 });
 ROUTES.set('scenarios/disabled-interactive-scenario', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		skip: true,
 	},
 });
 ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 	},
 });
 
 ROUTES.set('scenarios/same-height-of-all-form-elements-with-label', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 	},
@@ -865,9 +798,6 @@ ROUTES.set('scenarios/focus-elements?component=card', {
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=combobox', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {
@@ -1127,4 +1057,8 @@ ROUTES.set('scenarios/focus-elements?component=tree', {
 	'toolbar',
 ].forEach((component) => {
 	ROUTES.set(`scenarios/focus-elements?component=${component}&disabled`, ROUTES.get(`scenarios/focus-elements?component=${component}`));
+});
+
+ROUTES.set('scenarios/label-lang', {
+	snapshot: {},
 });

@@ -10,8 +10,7 @@ Laufzeit nicht oder rendert beim ersten Durchlauf falsch:
 
 1. **Deklaration** — `@Prop() public _myProp?: string;`
 2. **Watcher** — `@Watch('_myProp')`, der die Prop-Factory inline anwendet
-3. **Anwendung beim Laden** — dieselbe Anwendung in `componentWillLoad()`, **nach**
-   `this.initRenderProps(propsConfig)`
+3. **Anwendung beim Laden** — dieselbe Anwendung in `componentWillLoad()`
 
 ```typescript
 @Prop() public _myProp?: string;
@@ -40,6 +39,8 @@ export class KolMyComponent extends BaseWebComponent<MyApi> implements MyProps, 
 	// Optional: Behavior komponieren (nur für echt wiederverwendbare Logik)
 	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
+	protected readonly propsConfig: PropsConfigShape = myPropsConfig;
+
 	@Prop() public _myProp?: string;
 
 	@State() public myState = '';
@@ -50,7 +51,6 @@ export class KolMyComponent extends BaseWebComponent<MyApi> implements MyProps, 
 	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(myPropsConfig);
 		this.watchMyProp(this._myProp);
 		this.tooltipBehavior.componentWillLoad({ label: this._label }); // nur mit Behavior
 	}
@@ -168,6 +168,5 @@ packages/components/src/
         └── index.ts                 <- Re-Exporte
 ```
 
-Bleibt eine transitionale `shadow: false`-Variante nötig, liegt sie als `wc.tsx` neben der
-`component.tsx` (Vorbilder: `button/wc.tsx`, `link/wc.tsx`) — siehe
-`ARC42.md#transitional-pattern-shadowfalse` und Fallstrick 8 in `pitfalls.md`.
+Eingebettete Komponenten rendert der WC über ihren FC und ein Item — siehe
+`ARC42.md#embedded-components-items` und Fallstrick 8 in `pitfalls.md`.

@@ -5,8 +5,8 @@ dagegen prüfen.
 
 ## 1. Unvollständiges Prop-Triangle
 
-Jeder `@Prop()` braucht Deklaration, `@Watch()` **und** die Anwendung in `componentWillLoad()`
-(nach `initRenderProps`). Fehlt der Watcher, aktualisiert sich die Prop zur Laufzeit nicht; fehlt
+Jeder `@Prop()` braucht Deklaration, `@Watch()` **und** die Anwendung in `componentWillLoad()`.
+Fehlt der Watcher, aktualisiert sich die Prop zur Laufzeit nicht; fehlt
 die Anwendung beim Laden, rendert der erste Durchlauf den Default statt des gesetzten Werts.
 
 ## 2. `class`-Attribut am `<Host>`
@@ -44,17 +44,16 @@ Keine redundanten `@param {string}` / `@returns {void}`-Annotationen. Die TypeSc
 Quelle der Wahrheit. JSDoc bleibt nur, wo Stencil-Werkzeuge es auslesen (`@Prop`, `@Event`,
 `@Method`) — dort ist der Text Teil der veröffentlichten Doku und wird unverändert übernommen. Allgemeine Regel: [Inline code documentation](../../../../AGENTS.md#inline-code-documentation).
 
-## 8. Transitionale `-wc`-Tags: Render-FCs sind der Standard, das Tag die begründete Ausnahme
+## 8. Eingebettete Komponenten: der FC ersetzt das Element, die Selektoren müssen mit
 
 Standard (Owner-Entscheid 2026-09-15): Eine migrierte Komponente rendert in ihrer Render-Funktion
-die neuen Render-FunctionalComponents — `ButtonFC` statt `KolButtonWcTag`, `LinkFC` statt
-`KolLinkWcTag`. Die Prop-Orchestrierung des ersetzten Tags (Prop-Factories, Tooltip-Behavior,
-Refs) wandert an den renderenden WC oder einen FC-eigenen Fabrik-Typ
-(Vorbild: `internal/functional-components/breadcrumb/link-item.ts`).
+die Render-FunctionalComponents (`ButtonFC`, `LinkFC`, …). Die Prop-Orchestrierung des ersetzten
+Elements (Prop-Factories, Tooltip-Behavior, Refs) liegt in einem Item
+(`ARC42.md#embedded-components-items`).
 
-Der Fallstrick ist also **nicht**, das Tag zu ersetzen — das ist das Ziel (SKILL.md § 6,
-„Transitionale `-wc`-Tags beim Konsumenten ablösen"). Der Fallstrick ist, es zu ersetzen, ohne die
-Selektoren mitzunehmen. Heute trägt der Wrapper die Consumer-Klasse als **Vorfahr** des Blocks:
+Der Fallstrick ist also **nicht**, das Element zu ersetzen — das ist das Ziel (SKILL.md § 6,
+„Eingebettete Komponenten über ihren FC rendern"). Der Fallstrick ist, es zu ersetzen, ohne die
+Selektoren mitzunehmen. Das Element trägt die Consumer-Klasse als **Vorfahr** des Blocks:
 
 ```html
 <kol-details-heading class="kol-details__heading-button"> <div class="kol-button">…</div></kol-details-heading>
@@ -68,11 +67,12 @@ stillschweigend nicht mehr, ohne Fehler, ohne roten Unit-Test. Nur der Pixel-Che
 
 Also: vor dem Ersetzen `packages/themes/*/src` und das Components-SCSS nach der Tag-Klasse greppen,
 die Treffer nach `zero-visual-delta-handoff/SKILL.md` § 6b sortieren und theme-lokal mitmigrieren,
-danach das Pixel-Gate je Theme. Lassen sich die Selektoren FC-gleich umschalten (Wrapper-Klasse am
-FC-Wurzelknoten, siehe Fallstrick zum `class`-Forwarding), wird das Tag ersetzt; nur wenn das nicht
-möglich ist — oder der FC eine Orchestrierung verlangt, die der migrierte WC nicht hat
-(Vorprüfung 1 in SKILL.md § 6) —, bleibt das `-wc`-Tag stehen. Dann ist das eine **im PR-Text
-benannte** Ausnahme, keine stille Auslassung.
+danach das Pixel-Gate je Theme. Lassen sich die Selektoren FC-gleich umschalten (Klasse am
+FC-Wurzelknoten, siehe Fallstrick zum `class`-Forwarding), werden sie zu Compound-Selektoren
+(`.kol-x__btn.kol-button`). Brauchen Theme-Mixins die Klasse als Vorfahr, bleibt ein `div` mit der
+Klasse an der Stelle des Elements (z. B. `.kol-nav__entry`, `.kol-table-settings`). Beides ist eine
+Änderung der DOM-Struktur bzw. der BEM-Klassen und damit ein _theming breaking change_: Label
+`release:theming`, alte und neue Klassen im PR-Text.
 
 Zusätzlich sicherstellen: Der FC reicht ein empfangenes `class`-Prop an seinen Wurzelknoten weiter
 (BemRootNodeFC-Contract), sonst gehen Consumer-Klassen stillschweigend verloren.
@@ -133,7 +133,7 @@ nicht weggelassen.
 `link-button` und `button-link` haben keine eigene Migrationsarbeit gebraucht, sobald ihr
 semantisches Vorbild (`link` bzw. `button`) migriert war — beide erben direkt dessen `Base*WebComponent`
 und rendern dessen FC. Vor dem Start einer Satelliten-Migration prüfen, ob `component.tsx` bereits
-`Base*WebComponent` erbt, `render*FC()` aufruft und in `_skeleton/public-api/<komponente>.spec.ts` gegen `component.tsx` gepinnt ist. Ist
+`Base*WebComponent` erbt, `render*FC()` aufruft und in `src/components/public-api/<komponente>.spec.ts` gegen `component.tsx` gepinnt ist. Ist
 das der Fall, gibt es keinen Code zu ändern — das Tracking-Issue ist lediglich nicht nachgeführt.
 
 ## 14. `KolEvent`-Typen heißen wie die nativen Events — nie auf dem Element dispatchen, das den Handler trägt

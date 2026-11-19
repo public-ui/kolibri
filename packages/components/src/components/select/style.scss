@@ -2,6 +2,6 @@
 @use '../@shared/button.mixin' as *;
 
 @layer kol-component {
-	@include kol-button-wc-box-styles('kol-button');
+	@include kol-embedded-button-box-styles('kol-button');
 	@include kol-select;
 }

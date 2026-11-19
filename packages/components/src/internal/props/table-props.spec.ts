@@ -33,6 +33,12 @@ describe('tableHeadersProp', () => {
 		expect(applied(tableHeadersProp, { horizontal: [[{ key: 'a', label: 'A' }]] })).toEqual({ horizontal: [[{ key: 'a', label: 'A' }]], vertical: [] });
 	});
 
+	it('ignores a direction that is no list of header rows', () => {
+		const callback = jest.fn();
+		tableHeadersProp.apply({ horizontal: [{ key: 'a', label: 'A' }] }, callback);
+		expect(callback).not.toHaveBeenCalled();
+	});
+
 	it('ignores headers with a non-numeric width', () => {
 		const callback = jest.fn();
 		tableHeadersProp.apply({ horizontal: [[{ key: 'a', label: 'A', width: '10px' }]] }, callback);

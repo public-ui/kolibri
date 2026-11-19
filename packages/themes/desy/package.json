@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-desy",
-	"version": "4.5.0-rc.3",
+	"version": "5.0.0-beta.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -66,30 +66,33 @@
 		"@rollup/plugin-commonjs": "29.0.3",
 		"@rollup/plugin-node-resolve": "16.0.3",
 		"@rollup/plugin-typescript": "12.3.0",
+		"@vscode/codicons": "0.0.46-24",
 		"autoprefixer": "10.6.1",
 		"cross-env": "10.1.0",
 		"eslint": "9.39.5",
 		"nodemon": "3.1.14",
-		"npm-run-all2": "9.0.3",
-		"postcss": "8.5.28",
-		"prettier": "3.9.9",
+		"npm-run-all2": "9.0.4",
+		"postcss": "8.5.31",
+		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"rollup": "4.63.5",
+		"rollup": "4.64.12",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass-embedded": "1.104.1",
-		"stylelint": "17.15.0",
+		"sass-embedded": "1.105.2",
+		"stylelint": "17.16.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "workspace:*"
+		"@public-ui/components": "workspace:*",
+		"@vscode/codicons": "0.0.46-24"
 	},
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs"
-		}
+		},
+		"./assets/*": "./assets/*"
 	},
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.mjs",

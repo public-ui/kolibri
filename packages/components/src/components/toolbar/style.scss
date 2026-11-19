@@ -10,7 +10,11 @@
 	.kol-toolbar {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
+		align-items: stretch;
+
+		&--orientation-horizontal &__item hr {
+			height: 100%;
+		}
 
 		&--orientation-vertical {
 			flex-direction: column;
@@ -19,6 +23,10 @@
 			.kol-span {
 				align-items: flex-start;
 			}
+		}
+
+		&__item hr {
+			margin: 0;
 		}
 
 		&:focus-within {

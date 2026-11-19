@@ -1,4 +1,4 @@
-import { isObject } from '../../../schema';
+import { isLabelSegment, isObject, type LabelLangSegmentsPropType, type NumberString } from '../../../schema';
 
 export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {
@@ -10,40 +10,105 @@ export function normalizeString(value?: unknown): string | never {
 	throw new TypeError(`Cannot convert ${typeof value} to string`);
 }
 
-export function normalizeInteger(value?: unknown): number | never {
-	if (typeof value === 'number') {
-		return Number.isInteger(value) ? value : Math.round(value);
-	}
+/**
+ * Normalizes a label with optional language segments: strings, numbers, booleans and bigints become
+ * strings, a well-formed segment list passes through, anything else throws. The empty string passes
+ * through untouched — whether it is valid is the concern of the validators (expert-slot sentinel).
+ */
+export function normalizeLabelSegments(value?: unknown): LabelLangSegmentsPropType | never {
 	if (typeof value === 'string') {
-		const parsed = parseInt(value, 10);
-		if (!isNaN(parsed)) {
-			return parsed;
-		}
-	}
-	throw new Error(`Invalid integer: ${value as string}`);
-}
-
-export function normalizeNumber(value?: unknown): number | never {
-	if (typeof value === 'number') {
 		return value;
 	}
-	if (typeof value === 'string') {
+	if (typeof value === 'number' || typeof value === 'boolean' || typeof value === 'bigint') {
+		return String(value);
+	}
+	if (Array.isArray(value) && value.every(isLabelSegment)) {
+		return value;
+	}
+	throw new TypeError(`Cannot convert ${typeof value} to a label`);
+}
+
+/**
+ * Normalizes a value to an integer: a number or a numeric string (parsed as a whole with `Number`,
+ * see `normalizeNumber`) is rounded with `Math.round`. `NaN`, the empty string and strings with
+ * trailing characters (`'4px'`) throw.
+ */
+export function normalizeInteger(value?: unknown): number | never {
+	let parsed: number;
+	try {
+		parsed = normalizeNumber(value);
+	} catch {
+		throw new Error(`Invalid integer: ${String(value)}`);
+	}
+	return Number.isInteger(parsed) ? parsed : Math.round(parsed);
+}
+
+/**
+ * Normalizes a value to a number: a number passes, a string is parsed as a whole with `Number`
+ * (surrounding whitespace is ignored). `NaN`, the empty string and whitespace-only strings throw.
+ */
+export function normalizeNumber(value?: unknown): number | never {
+	if (typeof value === 'number' && !isNaN(value)) {
+		return value;
+	}
+	if (typeof value === 'string' && value.trim() !== '') {
 		const parsed = Number(value);
 		if (!isNaN(parsed)) {
 			return parsed;
 		}
 	}
+	throw new Error(`Invalid number: ${String(value)}`);
+}
+
+/** Accepts only values of type `number` except `NaN`, like the legacy `watchNumber`; throws otherwise. */
+export function normalizeNumberType(value?: unknown): number | never {
+	if (typeof value === 'number' && !isNaN(value)) {
+		return value;
+	}
+	throw new Error(`Invalid number: ${String(value)}`);
+}
+
+const NUMBER_STRING_PATTERN = /^[-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?$/;
+
+/**
+ * Whether the value is a number string the number fields accept: a decimal number with an optional
+ * sign, decimal part and exponent, without surrounding whitespace, that converts to a finite number.
+ */
+export function isNumberString(value: unknown): value is NumberString {
+	return typeof value === 'string' && NUMBER_STRING_PATTERN.test(value) && Number.isFinite(Number(value));
+}
+
+/**
+ * Normalizes a numeric value of the number fields (`kol-input-number`, `kol-input-range`): a number
+ * passes, `NaN` becomes `undefined` (the value is cleared), a number string is parsed, anything
+ * else throws.
+ */
+export function normalizeInputNumber(value?: unknown): number | never {
+	if (typeof value === 'number') {
+		return (isNaN(value) ? undefined : value) as number;
+	}
+	if (isNumberString(value)) {
+		return parseFloat(value);
+	}
 	throw new Error(`Invalid number: ${value as string}`);
 }
 
+/**
+ * Normalizes a value to a boolean: a boolean passes, the strings `'true'` and `'false'` (in any
+ * letter case) map to their boolean. Every other value throws, the empty string included: Stencil
+ * already maps a present boolean attribute to `true` before a watcher receives it.
+ */
 export function normalizeBoolean(value?: unknown): boolean | never {
 	if (typeof value === 'boolean') {
 		return value;
 	}
 	if (typeof value === 'string') {
-		return value.toLowerCase() === 'true';
+		const lowerCase = value.toLowerCase();
+		if (lowerCase === 'true' || lowerCase === 'false') {
+			return lowerCase === 'true';
+		}
 	}
-	throw new Error(`Invalid boolean: ${value as string}`);
+	throw new Error(`Invalid boolean: ${String(value)}`);
 }
 
 /**

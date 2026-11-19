@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="kol-toolbar" data-name="kol-toolbar" width="235" height="44" viewBox="0 0 235 44">
+  <g id="kol-toolbar" data-name="kol-toolbar"><rect x="0" y="0" width="234.8" height="44.0" fill="rgb(20, 24, 26)" stroke="none"/>
+    <g id="kol-toolbar" data-name="kol-toolbar"><rect x="0.0" y="0.0" width="234.8" height="44.0" rx="5" fill="rgb(28, 32, 33)" stroke="none"/>
+      <g id="kol-toolbar__item" data-name="kol-toolbar__item">
+        <g id="kol-button" data-name="kol-button">
+          <g id="kol-button__interactive-element" data-name="kol-button__interactive-element">
+            <g id="kol-span" data-name="kol-span"><rect x="0.0" y="0.0" width="117.6" height="44.0" rx="5" fill="rgb(28, 32, 33)" stroke="none"/><rect x="0.5" y="0.5" width="116.6" height="43.0" rx="5" fill="none" stroke="rgb(233, 235, 236)" stroke-width="1"/>
+              <g id="kol-span__container" data-name="kol-span__container">
+                <g id="kol-span__label" data-name="kol-span__label"><text x="23.0" y="27.6" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="700" fill="rgb(233, 235, 236)" stroke="none" xml:space="preserve">Kopieren</text></g></g></g></g></g></g>
+      <g id="kol-toolbar__item" data-name="kol-toolbar__item">
+        <g id="kol-button" data-name="kol-button">
+          <g id="kol-button__interactive-element" data-name="kol-button__interactive-element">
+            <g id="kol-span" data-name="kol-span"><rect x="117.6" y="0.0" width="117.2" height="44.0" rx="0" fill="rgb(28, 32, 33)" stroke="none"/><rect x="118.1" y="0.5" width="116.2" height="43.0" rx="0" fill="none" stroke="rgb(233, 235, 236)" stroke-width="1"/>
+              <g id="kol-span__container" data-name="kol-span__container">
+                <g id="kol-span__label" data-name="kol-span__label"><text x="140.6" y="27.6" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="700" fill="rgb(233, 235, 236)" stroke="none" xml:space="preserve">Einfügen</text></g></g></g></g></g></g></g></g>
+</svg>

@@ -27,6 +27,7 @@ packages:
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
   - packages/unstyled
+
 allowBuilds:
   '@evilmartians/lefthook': true
   '@modelcontextprotocol/ext-apps': true

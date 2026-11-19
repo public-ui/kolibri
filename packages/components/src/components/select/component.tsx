@@ -1,13 +1,8 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import clsx from '../../utils/clsx';
-
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
-import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	AccessKeyPropType,
 	AriaDetailsPropType,
-	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
@@ -24,381 +19,351 @@ import type {
 	OptionsWithOptgroupPropType,
 	RequiredPropType,
 	RowsPropType,
-	SelectAPI,
-	SelectStates,
+	SelectProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
+	TabIndexPropType,
 	TooltipAlignPropType,
+	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { SelectApi } from '../../internal/functional-components/select/api';
+import { selectPropsConfig } from '../../internal/functional-components/select/api';
+import { BaseSelectWebComponent } from '../../internal/functional-components/select/base-web-component';
 import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
-import { SelectController } from './controller';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
- * @internal
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
-	tag: 'kol-select-wc',
-	shadow: false,
+	tag: 'kol-select',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
 })
-export class KolSelectWc implements ClickableElement, FocusableElement, SelectAPI {
-	@Element() private readonly host?: HTMLKolSelectWcElement;
+export class KolSelect extends BaseSelectWebComponent implements FocusableElement, SelectProps, WebComponentInterface<SelectApi> {
+	@Element() protected readonly host?: HTMLKolSelectElement;
+
+	@State() public id = createUniqueId('select');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
+	@State() public inputHasFocus = false;
+
 	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
 
-	/**
-	 * Returns the current value.
-	 */
-	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
-		if (this._multiple) {
-			return this.state._value;
-		} else {
-			return Array.isArray(this.state._value) && this.state._value.length > 0 ? this.state._value[0] : this.state._value;
-		}
+	protected readonly propsConfig: PropsConfigShape = selectPropsConfig;
+
+	public constructor() {
+		super();
+		this.initFormAssociation('select', this._name);
 	}
 
 	/**
-	 * Sets focus on the internal element.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Method()
-	@directFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
 
-	/**
-	 * Clicks the primary interactive element inside this component.
-	 */
-	@Method()
-	@directClick('ctaRef')
-	public async click(): Promise<void> {}
-
-	private getFormFieldProps(): FormFieldStateWrapperProps {
-		return {
-			state: this.state,
-			class: clsx('kol-form-field-select', {
-				'kol-form-field--has-value': this.state._hasValue,
-			}),
-			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.ctaRef.el?.focus(),
-			alert: this.showAsAlert(),
-			infoPopover: this._infoPopover,
-		};
+	@Watch('_accessKey')
+	public watchAccessKey(value?: AccessKeyPropType): void {
+		this.applyAccessKey(value);
 	}
-
-	private getSelectProps(): SelectStateWrapperProps {
-		return {
-			ref: this.ctaRef,
-			state: this.state,
-			...this.controller.onFacade,
-			onInput: this.onInput.bind(this),
-			onChange: this.onChange.bind(this),
-			onFocus: (event: FocusEvent) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event: FocusEvent) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-			},
-		};
-	}
-
-	public render(): JSX.Element {
-		return (
-			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<KolInputContainerFc state={this.state}>
-					<KolSelectStateWrapperFc {...this.getSelectProps()} />
-				</KolInputContainerFc>
-			</KolFormFieldStateWrapperFc>
-		);
-	}
-
-	private readonly controller: SelectController;
-
-	/**
-	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
-	 */
-	@Prop() public _accessKey?: string;
 
 	/**
 	 * References an external element by ID that provides accessible details for this select.
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
-	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		this.controller.validateAriaDetails(value);
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
 	}
 
 	/**
 	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _disabled?: boolean = false;
+	@Prop() public _disabled?: DisabledPropType = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: DisabledPropType): void {
+		this.applyDisabled(value);
+	}
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideMsg?: boolean = false;
+	@Prop() public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _hideLabel?: boolean = false;
+	@Prop() public _hideLabel?: HideLabelPropType = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: HideLabelPropType): void {
+		this.applyHideLabel(value);
+	}
 
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: string = '';
+	@Prop() public _hint?: HintPropType = '';
+
+	@Watch('_hint')
+	public watchHint(value?: HintPropType): void {
+		this.applyHint(value);
+	}
 
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType;
+	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsHorizontalPropType): void {
+		this.applyIcons(value);
+	}
 
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
 
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
 
 	/**
 	 * Makes the input accept multiple inputs.
-	 * @TODO: Change type back to `MultiplePropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _multiple?: boolean = false;
+	@Prop() public _multiple?: MultiplePropType = false;
+
+	@Watch('_multiple')
+	public watchMultiple(value?: MultiplePropType): void {
+		this.applyMultiple(value);
+	}
 
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType;
+	@Prop() public _name?: NamePropType = undefined;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault;
+	@Prop() public _on?: InputTypeOnDefault = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
 
 	/**
-	 * Options the user can choose from, also supporting Optgroup.
+	 * Options the user can choose from.
 	 */
 	@Prop() public _options!: OptionsWithOptgroupPropType;
 
+	@Watch('_options')
+	public watchOptions(value?: OptionsWithOptgroupPropType): void {
+		this.applyOptions(value);
+	}
+
 	/**
 	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop() public _required?: boolean = false;
+	@Prop() public _required?: RequiredPropType = false;
+
+	@Watch('_required')
+	public watchRequired(value?: RequiredPropType): void {
+		this.applyRequired(value);
+	}
 
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		this.applyShortKey(value);
+	}
 
 	/**
-	 * Defines how many rows of options should be visible at the same time.
+	 * Maximum number of visible rows of the element.
 	 */
-	@Prop() public _rows?: RowsPropType;
+	@Prop() public _rows?: RowsPropType = undefined;
+
+	@Watch('_rows')
+	public watchRows(value?: RowsPropType): void {
+		this.applyRows(value);
+	}
 
 	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop() public _tabIndex?: number;
+	@Prop() public _tabIndex?: TabIndexPropType = undefined;
+
+	@Watch('_tabIndex')
+	public watchTabIndex(value?: TabIndexPropType): void {
+		this.applyTabIndex(value);
+	}
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
-	/**
-	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
 
 	/**
-	 * Defines the value of the input.
+	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: TouchedPropType): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown> = undefined;
+
+	@Watch('_value')
+	public watchValue(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
+		this.applyValue(value);
+	}
 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
-
-	@State() public state: SelectStates = {
-		_hasValue: false,
-		_hideMsg: false,
-		_id: createUniqueId('select'),
-		_label: '', // ⚠ required
-		_multiple: false,
-		_options: [],
-		_value: [],
-	};
-
-	@State() private inputHasFocus = false;
-
-	public constructor() {
-		this.controller = new SelectController(this, 'select', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
-	}
-
-	@Watch('_accessKey')
-	public validateAccessKey(value?: string): void {
-		this.controller.validateAccessKey(value);
-	}
-
-	@Watch('_disabled')
-	public validateDisabled(value?: DisabledPropType): void {
-		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_hideMsg')
-	public validateHideMsg(value?: HideMsgPropType): void {
-		this.controller.validateHideMsg(value);
-	}
-
-	@Watch('_hideLabel')
-	public validateHideLabel(value?: HideLabelPropType): void {
-		this.controller.validateHideLabel(value);
-	}
-
-	@Watch('_hint')
-	public validateHint(value?: HintPropType): void {
-		this.controller.validateHint(value);
-	}
-
-	@Watch('_icons')
-	public validateIcons(value?: IconsHorizontalPropType): void {
-		this.controller.validateIcons(value);
-	}
-
-	@Watch('_label')
-	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		this.controller.validateLabel(value);
-	}
-
-	@Watch('_msg')
-	public validateMsg(value?: Stringified<MsgPropType>): void {
-		this.controller.validateMsg(value);
-	}
-
-	@Watch('_multiple')
-	public validateMultiple(value?: MultiplePropType): void {
-		this.controller.validateMultiple(value);
-	}
-
-	@Watch('_name')
-	public validateName(value?: string): void {
-		this.controller.validateName(value);
-	}
-
-	@Watch('_on')
-	public validateOn(value?: InputTypeOnDefault): void {
-		this.controller.validateOn(value);
-	}
-
-	@Watch('_options')
-	public validateOptions(value?: OptionsWithOptgroupPropType): void {
-		this.controller.validateOptions(value);
-	}
-
-	@Watch('_required')
-	public validateRequired(value?: RequiredPropType): void {
-		this.controller.validateRequired(value);
-	}
-
-	@Watch('_rows')
-	public validateRows(value?: RowsPropType): void {
-		this.controller.validateRows(value);
-	}
-
-	@Watch('_shortKey')
-	public validateShortKey(value?: ShortKeyPropType): void {
-		this.controller.validateShortKey(value);
-	}
-
-	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.controller.validateSyncValueBySelector(value);
-	}
-
-	@Watch('_tabIndex')
-	public validateTabIndex(value?: number): void {
-		this.controller.validateTabIndex(value);
-	}
-
-	@Watch('_touched')
-	public validateTouched(value?: boolean): void {
-		this.controller.validateTouched(value);
-	}
-
-	@Watch('_value')
-	public validateValue(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
-		this.controller.validateValue(value);
-	}
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
-	public validateVariant(value?: VariantClassNamePropType): void {
-		this.controller.validateVariant(value);
+	public watchVariant(value?: VariantClassNamePropType): void {
+		this.applyVariant(value);
+	}
+
+	/**
+	 * Returns the selected values.
+	 */
+	@Method()
+	public getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
+		return Promise.resolve(this.getModelValue());
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
-		this.validateAriaDetails(this._ariaDetails);
-
 		this._touched = this._touched === true;
-		this.controller.componentWillLoad();
-
-		this.state._hasValue = !!this.state._value;
-		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchName(this._name);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTouched(this._touched);
+		this.watchAccessKey(this._accessKey);
+		this.watchMsg(this._msg);
+		this.watchDisabled(this._disabled);
+		this.watchHideMsg(this._hideMsg);
+		this.watchHideLabel(this._hideLabel);
+		this.watchHint(this._hint);
+		this.watchInfoPopover(this._infoPopover);
+		this.watchLabel(this._label);
+		this.watchShortKey(this._shortKey);
+		this.watchOn(this._on);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchVariant(this._variant);
+		this.watchTabIndex(this._tabIndex);
+		this.watchIcons(this._icons);
+		this.watchOptions(this._options);
+		this.watchMultiple(this._multiple);
+		this.watchRequired(this._required);
+		this.watchRows(this._rows);
+		this.watchValue(this._value);
 	}
 
-	private onInput(event: Event): void {
-		const selectedValues = Array.from(this.ctaRef.el?.options || [])
-			.filter((option) => option.selected)
-			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
-
-		if (this._multiple) {
-			this._value = selectedValues;
-			this.controller.onFacade.onInput(event, true, selectedValues);
-		} else {
-			const singleValue: StencilUnknown = selectedValues.length > 0 ? selectedValues[0] : undefined;
-			this._value = singleValue;
-			this.controller.onFacade.onInput(event, true, singleValue);
-		}
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
-	private onChange(event: Event): void {
-		if (this._multiple) {
-			this.controller.onFacade.onChange(event, this._value as StencilUnknown[]);
-		} else {
-			this.controller.onFacade.onChange(event, this._value as StencilUnknown);
-		}
+	public disconnectedCallback(): void {
+		this.destroyFormField();
+	}
+
+	protected getAccessKeyProp(): string | undefined {
+		return this._accessKey;
+	}
+
+	protected getShortKeyProp(): ShortKeyPropType | undefined {
+		return this._shortKey;
+	}
+
+	/** The host keeps the class `kol-select`, which consumers of the element can select. */
+	public render(): JSX.Element {
+		return <Host class="kol-select">{this.renderSelectField()}</Host>;
 	}
 }

@@ -2,6 +2,10 @@
 
 @layer kol-theme-component {
 	.kol-progress {
+		&__bar {
+			column-gap: to-rem(4);
+		}
+
 		&__bar-background {
 			outline-width: 0;
 			fill: var(--color-mute);

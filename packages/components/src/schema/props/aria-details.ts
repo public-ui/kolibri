@@ -1,46 +1,14 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import type { HostInternals } from '../../utils/aria-labelledby';
-import { resolveTargets } from '../../utils/aria-labelledby';
-import { Log, watchValidator } from '../utils';
-
 /* types */
 /**
- * An IDREF (space-separated) identifying external element(s) that provide accessible details for this component.
- * Resolves the IDREF to element references and sets them via ElementInternals.ariaDetailsElements
+ * An IDREF list (space-separated) identifying external element(s) that provide accessible details for this component.
+ * Resolves the IDREFs to element references and pushes them to the native control's ariaDetailsElements
  * to cross the Shadow DOM boundary.
- * Desktop screen readers (NVDA + Chrome, JAWS + Chrome) follow the reference;
- * mobile screen readers (TalkBack, VoiceOver iOS) may have limited support.
+ * Screen reader support is heavily fragmented (see KNOWN_ISSUES.md): only Orca announces presence,
+ * content and end of the details region completely; VoiceOver, TalkBack and Narrator ignore the
+ * relation entirely.
  */
 export type AriaDetailsPropType = string;
 
 export type PropAriaDetails = {
 	ariaDetails: AriaDetailsPropType;
-};
-
-/* validator */
-export const validateAriaDetails = (
-	component: unknown,
-	host: HTMLElement | Element | undefined,
-	internals: HostInternals | undefined,
-	value?: AriaDetailsPropType,
-): HTMLElement[] => {
-	watchValidator(
-		component as Generic.Element.Component,
-		'_ariaDetails',
-		(value): boolean => typeof value === 'string' || typeof value === 'undefined',
-		new Set(['string']),
-		value,
-	);
-
-	const elements = resolveTargets(host, value);
-	if (internals) {
-		try {
-			internals.ariaDetailsElements = elements;
-		} catch {
-			// ariaDetailsElements is not supported in this environment — silently skip.
-		}
-		Log.debug(['WebComponent internals', internals]);
-	}
-	return elements;
 };

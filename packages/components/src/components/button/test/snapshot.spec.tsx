@@ -3,11 +3,10 @@ import type { InternalButtonProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolButton } from '../component';
-import { KolButtonWc } from '../wc';
 
 executeSnapshotTests<InternalButtonProps>(
 	KolButtonTag,
-	[KolButton, KolButtonWc],
+	[KolButton],
 	[
 		{ _label: 'Label' },
 
@@ -25,5 +24,7 @@ executeSnapshotTests<InternalButtonProps>(
 		{ _label: 'Label', _value: 'Hello' },
 
 		{ _label: 'Label', _ariaDescription: 'Aria Description' },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }], _hideLabel: true },
 	],
 );

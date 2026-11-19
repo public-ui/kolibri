@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="kol-alert" data-name="kol-alert" width="720" height="92" viewBox="0 0 720 92">
+  <g id="kol-alert" data-name="kol-alert"><rect x="0" y="0" width="720.0" height="92.0" fill="rgb(255, 255, 255)" stroke="none"/><text x="17.0" y="71.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">Speichern erfolgreich.</text>
+    <g id="kol-alert" data-name="kol-alert"><rect x="0.0" y="0.0" width="720.0" height="92.0" rx="5" fill="rgb(87, 97, 100)" stroke="none"/><rect x="0.5" y="0.5" width="719.0" height="91.0" rx="5" fill="none" stroke="rgb(87, 97, 100)" stroke-width="1"/>
+      <g id="span" data-name="span"><text x="1.0" y="16.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">Nachricht</text></g>
+      <g id="kol-headline" data-name="kol-headline"><text x="39.5" y="27.5" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="20px" font-weight="700" fill="rgb(255, 255, 255)" stroke="none" xml:space="preserve">Hinweis</text></g>
+      <g id="kol-alert__content" data-name="kol-alert__content"><rect x="1.0" y="40.0" width="718.0" height="51.0" rx="0" fill="rgb(255, 255, 255)" stroke="none"/></g></g></g>
+</svg>

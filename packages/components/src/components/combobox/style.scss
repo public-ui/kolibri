@@ -22,7 +22,8 @@
 	@include kol-icon-styles();
 
 	.kol-combobox {
-		&__delete {
+		/* Scoped to the group that holds the clear button: the info popover in the label renders a `.kol-button` as well. */
+		&__group {
 			@include kol-button-styles('kol-button');
 		}
 

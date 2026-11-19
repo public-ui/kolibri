@@ -21,6 +21,7 @@ export enum Callback {
 	onSelectionChange = 'onSelectionChange',
 	onChangePageSize = 'onChangePageSize',
 	onSort = 'onSort',
+	onSortChange = 'onSortChange',
 	onSubmit = 'onSubmit',
 	onToggle = 'onToggle',
 }

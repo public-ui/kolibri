@@ -1,7 +1,9 @@
 name: 01 - Publish
 
 env:
-  prefix: # 'v4-', when v5 is released
+  # Stays empty on develop. A release/<n> branch sets 'v<n>-' once major n+1 is released, so that it
+  # publishes to v<n>-latest and v<n>-next instead of moving latest and next.
+  prefix:
 
 on:
   workflow_dispatch:
@@ -10,6 +12,8 @@ on:
         type: choice
         description: What do you want to publish?
         options:
+          - 'beta-new-major: first beta of the next major (4.5.x -> 5.0.0-beta.0), tag beta'
+          - 'beta-next: next beta of the current pre-release (5.0.0-beta.0 -> 5.0.0-beta.1), tag beta'
           - 'rc-next: next RC of the current pre-release (4.5.0-rc.0 -> 4.5.0-rc.1), tag next'
           - 'rc-new-minor: first RC of the next minor (4.5.x -> 4.6.0-rc.0), tag next'
           - 'rc-new-patch: first RC of the next patch (4.5.0 -> 4.5.1-rc.0), tag next'
@@ -17,6 +21,7 @@ on:
           - 'stable-patch: next patch (4.5.0 -> 4.5.1), tag latest'
           - 'stable-minor: next minor (4.5.x -> 4.6.0), tag latest'
           - 'dev: snapshot of the current commit without git push, tag dev'
+          - 'republish-beta: publish the current version as is, tag beta'
           - 'republish-next: publish the current version as is, tag next'
           - 'republish-latest: publish the current version as is, tag latest'
       dry-run:
@@ -46,6 +51,7 @@ jobs:
         packages/adapters/preact
         packages/adapters/hydrate
         packages/adapters/react-hook-form-adapter
+        packages/tools/hydrate-server
         packages/tools/kolibri-cli
         packages/tools/mcp
         packages/themes/bwst
@@ -123,6 +129,8 @@ jobs:
           NO_PUSH="false"
 
           case "$RELEASE" in
+            beta-new-major) BUMP=premajor;   PREID=beta; TAG=beta ;;
+            beta-next)      BUMP=prerelease; PREID=beta; TAG=beta ;;
             rc-next)        BUMP=prerelease; PREID=rc; TAG=next ;;
             rc-new-minor)   BUMP=preminor;   PREID=rc; TAG=next ;;
             rc-new-patch)   BUMP=prepatch;   PREID=rc; TAG=next ;;
@@ -130,12 +138,19 @@ jobs:
             stable-patch)   BUMP=patch;      TAG=latest ;;
             stable-minor)   BUMP=minor;      TAG=latest ;;
             dev)            BUMP=prerelease; PREID="$GITHUB_SHA"; TAG=dev; NO_PUSH="true" ;;
+            republish-beta)   TAG=beta ;;
             republish-next)   TAG=next ;;
             republish-latest) TAG=latest ;;
             *) echo "::error::Unknown release option '$RELEASE'"; exit 1 ;;
           esac
 
           case "$RELEASE" in
+            beta-new-major)
+              [[ "$CURRENT" != *-* ]] || { echo "::error::beta-new-major would start a new major from the pre-release $CURRENT. Use beta-next."; exit 1; }
+              ;;
+            beta-next)
+              [[ "$CURRENT" == *-beta.* ]] || { echo "::error::beta-next requires a current beta version, but the repository is at $CURRENT. Use beta-new-major to start a new beta line."; exit 1; }
+              ;;
             rc-next)
               [[ "$CURRENT" == *-rc.* ]] || { echo "::error::rc-next requires a current RC version, but the repository is at $CURRENT. Use rc-new-minor or rc-new-patch to start a new RC line."; exit 1; }
               ;;
@@ -216,9 +231,11 @@ jobs:
           while read -r DIR; do
             [ -z "$DIR" ] && continue
             echo "Publishing package from ${DIR}"
+            # stdin is the package list: lifecycle scripts (e.g. npm-run-all2 in a prepare script)
+            # would otherwise consume the remaining lines and end the loop early.
             (
               cd "$DIR"
-              bash "${GITHUB_WORKSPACE}/scripts/safe-publish.sh" --access public --provenance --no-git-checks --tag "${{env.prefix}}${TAG}" "${EXTRA[@]}"
+              bash "${GITHUB_WORKSPACE}/scripts/safe-publish.sh" --access public --provenance --no-git-checks --tag "${{env.prefix}}${TAG}" "${EXTRA[@]}" < /dev/null
             )
           done <<< "$PACKAGE_DIRS"
 
@@ -229,26 +246,40 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "Verifying version: $VERSION"
-          FAILED=()
-          COUNT=0
 
+          PENDING=()
           while read -r DIR; do
             [ -z "$DIR" ] && continue
-            COUNT=$((COUNT + 1))
-            PKG=$(node -p "require('./${DIR}/package.json').name")
-            PUBLISHED=$(npm view "${PKG}@${VERSION}" version --registry https://registry.npmjs.org 2>/dev/null || true)
-            if [ "$PUBLISHED" = "$VERSION" ]; then
-              echo "✅ ${PKG}@${VERSION}"
-            else
-              echo "❌ ${PKG}@${VERSION} – NOT found on npm (got: '$PUBLISHED')"
-              FAILED+=("$PKG")
-            fi
+            PENDING+=("$(node -p "require('./${DIR}/package.json').name")")
           done <<< "$PACKAGE_DIRS"
+          COUNT=${#PENDING[@]}
 
-          if [ ${#FAILED[@]} -ne 0 ]; then
+          # The registry needs a few minutes until a freshly published version is visible everywhere.
+          # Only the packages not yet found are checked again; --prefer-online bypasses npm's local
+          # packument cache, which would otherwise keep answering with the stale state.
+          MAX_ATTEMPTS=20
+          DELAY=30
+          for ((ATTEMPT = 1; ATTEMPT <= MAX_ATTEMPTS; ATTEMPT++)); do
+            echo "Attempt ${ATTEMPT}/${MAX_ATTEMPTS}: checking ${#PENDING[@]} package(s)"
+            STILL_PENDING=()
+            for PKG in "${PENDING[@]}"; do
+              PUBLISHED=$(npm view "${PKG}@${VERSION}" version --prefer-online --registry https://registry.npmjs.org 2>/dev/null || true)
+              if [ "$PUBLISHED" = "$VERSION" ]; then
+                echo "✅ ${PKG}@${VERSION}"
+              else
+                echo "⏳ ${PKG}@${VERSION} – not visible yet (got: '$PUBLISHED')"
+                STILL_PENDING+=("$PKG")
+              fi
+            done
+            PENDING=("${STILL_PENDING[@]}")
+            [ ${#PENDING[@]} -eq 0 ] && break
+            [ "$ATTEMPT" -lt "$MAX_ATTEMPTS" ] && sleep "$DELAY"
+          done
+
+          if [ ${#PENDING[@]} -ne 0 ]; then
             echo ""
-            echo "❌ The following packages were NOT successfully published:"
-            printf '  - %s\n' "${FAILED[@]}"
+            echo "❌ The following packages are NOT visible on npm after $((MAX_ATTEMPTS * DELAY / 60)) minutes:"
+            printf '  - %s\n' "${PENDING[@]}"
             exit 1
           fi
 

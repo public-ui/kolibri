@@ -91,10 +91,17 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
   Prerequisites: repo setting **Allow auto-merge** enabled, green pipelines enforced via required
   status checks on `develop`, and the runner GitHub App listed in the branch-protection bypass
   (see [Enabling Renovate](#enabling-renovate)).
-- **`baseBranchPatterns`** — runs on `develop` **and** `release/3|2|1`; the maintenance branches are
-  **security-only** (all regular npm and GitHub Actions updates are disabled) so released majors stay
-  stable. Security PRs still automerge when non-major; major security updates require dashboard
-  approval.
+- **`rebaseWhen: conflicted`** — Renovate rebases a branch only when it conflicts with `develop`, not
+  whenever `develop` has moved on. The `Required checks` rules do not demand an up-to-date branch
+  (`strict_required_status_checks_policy: false`), and a rebase restarts the CI for about 40 minutes.
+  With `behind-base-branch`, every merge into `develop` (by people or by the runner itself, which
+  merges one pull request per run) pushed all other green dependency pull requests behind and into a new
+  rebase, so they rarely met a run in which they were both green and up to date.
+- **`baseBranchPatterns`** — runs on `develop` and on the LTS branch `release/4`, both with the same
+  rules. `release/3|2|1` are paused: their package rules stay in place and make them **security-only**
+  (all regular npm and GitHub Actions updates are disabled) as soon as they are added back to
+  `baseBranchPatterns`. Security PRs then automerge when non-major; major security updates require
+  dashboard approval.
 - **`lockFileMaintenance`** — weekly `pnpm-lock.yaml` refresh (replaces the manual
   `04 - Update pnpm Lock` workflow runs).
 - **`configMigration: true`** — Renovate keeps `renovate.json` itself up to date when built-in
@@ -180,13 +187,19 @@ To activate it:
      forever for a status that nothing will post. `codeql.yml` therefore has no `paths-ignore`, and
      `visual-review.yml` answers a skipped CI run with `success` (mode `docs-only`, see
      `scripts/visual-review/resolve-context.mjs`). Anything added to the list has to obey the same
-     rule. `check-results` is deliberately absent: a red pipeline stops Renovate, which refuses to
-     merge a red branch, but it does not stop a human.
+     rule. A red pipeline stops Renovate, which refuses to merge a red branch, but it does not stop
+     a human.
    - Every workflow behind a required check needs `synchronize` in its `pull_request` types.
      GitHub wants the check on the **current head commit**, so a workflow that only reacts to
      `opened`/`edited` leaves it unreported after any push and the merge is refused with
      `Required status check "…" is expected`. Renovate runs into this on every rebase; that is what
      `pr-title-validation.yml` was missing.
+   - A workflow behind a required check that filters `pull_request` by base branch also needs
+     `edited`. A stacked pull request opened against a feature branch never matches the filter, and
+     when GitHub retargets it to `develop` after the pull request below it is merged, it sends only
+     `edited`. Without it the check stays at `Expected — Waiting for status to be reported` until the
+     next push. `codeql.yml` therefore reacts to `edited` and runs only when the base changed; a
+     title or body edit gets a concurrency group of its own, so it cannot cancel a running analysis.
    - In the target patterns of a ruleset GitHub prefixes `refs/heads/` itself. Enter `release/**/*`,
      never `refs/heads/release/**/*`, otherwise the prefix doubles and the release branches silently
      lose their protection. `gh api repos/public-ui/kolibri/rules/branches/release/3` shows what is
@@ -299,10 +312,11 @@ fixierten Major-Version halten (`angular/v20|v21`, `react*`), sichere Updates au
 - **npm-check-updates** ist nur ein CLI ohne eigene Automatisierung (läuft heute im Workflow
   `auto-dependency-updater.yml`).
 
-Neu hinzugekommen: `automergeStrategy: merge` folgt der Merge-Commit-Konvention des Repos,
-und die `release/*`-Branches werden auf **Security-only** umgestellt — reguläre npm- und
-GitHub-Actions-Updates werden dort komplett deaktiviert, während Vulnerability-Alert-PRs
-weiterhin (bei Nicht-Major) automatisch mergen.
+`automergeStrategy: merge` folgt der Merge-Commit-Konvention des Repos. Renovate läuft auf `develop`
+und dem LTS-Branch `release/4` mit denselben Regeln. `release/1`–`release/3` sind pausiert; ihre
+Regeln stellen sie auf **Security-only**, sobald sie wieder in `baseBranchPatterns` stehen: reguläre
+npm- und GitHub-Actions-Updates sind dort komplett deaktiviert, Vulnerability-Alert-PRs mergen
+(bei Nicht-Major) automatisch.
 
 Die fertige [`renovate.json`](../renovate.json) liegt im Repo-Root (geprüft mit dem offiziellen
 `renovate-config-validator`), und der self-hosted Runner-Workflow

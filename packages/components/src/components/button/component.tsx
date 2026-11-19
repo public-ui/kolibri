@@ -5,17 +5,23 @@ import type { ButtonWebComponentInterface } from '../../internal/functional-comp
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaControlsPropType,
 	AriaDescriptionPropType,
+	AriaExpandedPropType,
+	AriaSelectedPropType,
 	ButtonCallbacksPropType,
 	ButtonProps,
 	ButtonTypePropType,
 	ClickableElement,
 	CustomClassPropType,
+	DisabledPropType,
 	FocusableElement,
+	HideLabelPropType,
 	IconsPropType,
 	InlinePropType,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
+	NamePropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
@@ -41,15 +47,247 @@ import { BaseButtonWebComponent } from './base';
 export class KolButton extends BaseButtonWebComponent implements ButtonProps, ButtonWebComponentInterface, ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonElement;
 
+	@State() public ariaDescriptionId: string = nonce();
+
 	public constructor() {
 		super();
 		this.initFormAssociation();
 	}
 
-	// --- Lifecycle ---
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: AccessKeyPropType): void {
+		this.applyAccessKey(value, this._shortKey);
+	}
+
+	/**
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 */
+	@Prop() public _ariaControls?: AriaControlsPropType = undefined;
+
+	@Watch('_ariaControls')
+	public watchAriaControls(value?: AriaControlsPropType): void {
+		this.applyAriaControls(value);
+	}
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: AriaDescriptionPropType = undefined;
+
+	@Watch('_ariaDescription')
+	public watchAriaDescription(value?: AriaDescriptionPropType): void {
+		this.applyAriaDescription(value);
+	}
+
+	/**
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 */
+	@Prop() public _ariaExpanded?: AriaExpandedPropType = undefined;
+
+	@Watch('_ariaExpanded')
+	public watchAriaExpanded(value?: AriaExpandedPropType): void {
+		this.applyAriaExpanded(value);
+	}
+
+	/**
+	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 */
+	@Prop() public _ariaSelected?: AriaSelectedPropType = undefined;
+
+	@Watch('_ariaSelected')
+	public watchAriaSelected(value?: AriaSelectedPropType): void {
+		this.applyAriaSelected(value);
+	}
+
+	/**
+	 * Defines the custom class attribute if _variant="custom" is set.
+	 */
+	@Prop() public _customClass?: CustomClassPropType = undefined;
+
+	@Watch('_customClass')
+	public watchCustomClass(value?: CustomClassPropType): void {
+		this.applyCustomClass(value);
+	}
+
+	/**
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
+	 */
+	@Prop() public _disabled?: DisabledPropType = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: DisabledPropType): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 */
+	@Prop() public _hideLabel?: HideLabelPropType = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: HideLabelPropType): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: IconsPropType = undefined;
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsPropType): void {
+		this.applyIcons(value);
+	}
+
+	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = false;
+
+	@Watch('_inline')
+	public watchInline(value?: InlinePropType): void {
+		this.applyInline(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType = undefined;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Defines the callback functions for button events.
+	 */
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown> = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
+	 */
+	@Prop() public _role?: AlternativeButtonLinkRolePropType = undefined;
+
+	@Watch('_role')
+	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
+		this.applyRole(value);
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		this.applyShortKey(value, this._accessKey);
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Defines either the type of the component or of the components interactive element.
+	 */
+	@Prop() public _type?: ButtonTypePropType = 'button';
+
+	@Watch('_type')
+	public watchType(value?: ButtonTypePropType): void {
+		this.applyType(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop() public _value?: StencilUnknown = undefined;
+
+	@Watch('_value')
+	public watchValue(value?: StencilUnknown): void {
+		this.applyValue(value);
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		this.applyVariant(value);
+	}
+
+	/**
+	 * Returns the current value.
+	 */
+	@Method()
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this._value);
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initButtonRenderProps();
+		this.unsetButtonTabIndex();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);
@@ -83,227 +321,7 @@ export class KolButton extends BaseButtonWebComponent implements ButtonProps, Bu
 		this.destroyTooltipBehavior();
 	}
 
-	// --- Public methods ---
-
-	/**
-	 * Returns the current value.
-	 */
-	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this._value;
-	}
-
-	/**
-	 * Sets focus on the internal element.
-	 */
-	@Method()
-	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
-
-	/**
-	 * Clicks the primary interactive element inside this component.
-	 */
-	@Method()
-	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
-
-	// --- Render ---
-
 	public render(): JSX.Element {
 		return <Host>{this.renderButtonFC()}</Host>;
-	}
-
-	// --- @State ---
-
-	@State() public ariaDescriptionId: string = nonce();
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
-	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
-	@Watch('_accessKey')
-	public watchAccessKey(value?: AccessKeyPropType): void {
-		this.applyAccessKey(value, this._shortKey);
-	}
-
-	/**
-	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-	 */
-	@Prop() public _ariaControls?: string;
-	@Watch('_ariaControls')
-	public watchAriaControls(value?: string): void {
-		this.applyAriaControls(value);
-	}
-
-	/**
-	 * Defines the value for the aria-description attribute.
-	 */
-	@Prop() public _ariaDescription?: AriaDescriptionPropType;
-	@Watch('_ariaDescription')
-	public watchAriaDescription(value?: AriaDescriptionPropType): void {
-		this.applyAriaDescription(value);
-	}
-
-	/**
-	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 */
-	@Prop() public _ariaExpanded?: boolean;
-	@Watch('_ariaExpanded')
-	public watchAriaExpanded(value?: boolean): void {
-		this.applyAriaExpanded(value);
-	}
-
-	/**
-	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-	 */
-	@Prop() public _ariaSelected?: boolean;
-	@Watch('_ariaSelected')
-	public watchAriaSelected(value?: boolean): void {
-		this.applyAriaSelected(value);
-	}
-
-	/**
-	 * Defines the custom class attribute if _variant="custom" is set.
-	 */
-	@Prop() public _customClass?: CustomClassPropType;
-	@Watch('_customClass')
-	public watchCustomClass(value?: CustomClassPropType): void {
-		this.applyCustomClass(value);
-	}
-
-	/**
-	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
-	 */
-	@Prop() public _disabled?: boolean = false;
-	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
-		this.applyDisabled(value);
-	}
-
-	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
-		this.applyHideLabel(value);
-	}
-
-	/**
-	 * Defines the icon classnames.
-	 */
-	@Prop() public _icons?: IconsPropType;
-	@Watch('_icons')
-	public watchIcons(value?: IconsPropType): void {
-		this.applyIcons(value);
-	}
-
-	/**
-	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
-	 */
-	@Prop() public _inline?: InlinePropType = false;
-	@Watch('_inline')
-	public watchInline(value?: InlinePropType): void {
-		this.applyInline(value);
-	}
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		this.applyLabel(value);
-	}
-
-	/**
-	 * Defines the technical name of an input field.
-	 */
-	@Prop() public _name?: string;
-	@Watch('_name')
-	public watchName(value?: string): void {
-		this.applyName(value);
-	}
-
-	/**
-	 * Defines the callback functions for button events.
-	 */
-	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
-	@Watch('_on')
-	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
-		this.applyOn(value);
-	}
-
-	/**
-	 * Defines the role of the components primary element.
-	 *
-	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
-	 */
-	@Prop() public _role?: AlternativeButtonLinkRolePropType;
-	@Watch('_role')
-	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
-		this.applyRole(value);
-	}
-
-	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
-	@Watch('_shortKey')
-	public watchShortKey(value?: ShortKeyPropType): void {
-		this.applyShortKey(value, this._accessKey);
-	}
-
-	/**
-	 * Selector for synchronizing the value with another input element.
-	 * @internal
-	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
-	@Watch('_syncValueBySelector')
-	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.applySyncValueBySelector(value);
-	}
-
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-	@Watch('_tooltipAlign')
-	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		this.applyTooltipAlign(value);
-	}
-
-	/**
-	 * Defines either the type of the component or of the components interactive element.
-	 */
-	@Prop() public _type?: ButtonTypePropType = 'button';
-	@Watch('_type')
-	public watchType(value?: ButtonTypePropType): void {
-		this.applyType(value);
-	}
-
-	/**
-	 * Defines the value of the element.
-	 */
-	@Prop() public _value?: StencilUnknown;
-	@Watch('_value')
-	public watchValue(value?: StencilUnknown): void {
-		this.applyValue(value);
-	}
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: VariantClassNamePropType;
-	@Watch('_variant')
-	public watchVariant(value?: VariantClassNamePropType): void {
-		this.applyVariant(value);
 	}
 }

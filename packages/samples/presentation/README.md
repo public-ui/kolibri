@@ -1,7 +1,7 @@
 # KoliBri – Presentation App
 
 [![npm](https://img.shields.io/npm/v/@public-ui/presentation)](https://www.npmjs.com/package/@public-ui/presentation)
-[![license](https://img.shields.io/npm/l/@public-ui/presentation)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@public-ui/presentation)](https://github.com/public-ui/kolibri/blob/develop/LICENSE)
 [![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
@@ -53,6 +53,16 @@ After a pull or a branch switch, rebuild the packages that changed – `pnpm bui
 directory rebuilds all of them, `pnpm -r build` in the repo root does the same for the whole
 workspace. Neither must run while a watcher is active: the components build starts with
 `pnpm clear` and deletes the output the watcher owns.
+
+## Component tests
+
+`src/test` holds Vitest component tests that operate the real KoliBri components with
+`@testing-library/user-event` in happy-dom. They are the executable examples of
+[How to simulate user input on KoliBri components in Vitest](../../../docs/HOWTO_COMPONENT_TESTS_VITEST.md).
+
+```bash
+pnpm test:unit
+```
 
 ## Injecting a different theme
 

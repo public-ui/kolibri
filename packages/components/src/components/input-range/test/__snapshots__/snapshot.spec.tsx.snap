@@ -1,10 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-input-range should render with _label="Label" _max=10 _min=1 _name="field" _value=5 1`] = `
+<kol-input-range _value="5">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" tabindex="-1" type="range" value="5">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" type="number" value="5">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _max=100000 _min=-50 _name="field" _value=10 1`] = `
+<kol-input-range _value="10">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(6ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="100000" min="-50" name="field-range" tabindex="-1" type="range" value="10">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="100000" min="-50" name="field-number" type="number" value="10">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _accessKey="V" 1`] = `
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -38,7 +100,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -69,7 +131,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -100,7 +162,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--hide-label kol-input-range range">
-      <label class="kol-form-field__label" hidden="" htmlfor="input-range-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -144,7 +206,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -178,7 +240,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -215,7 +277,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -250,7 +312,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -285,7 +347,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -296,11 +358,41 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
             </span>
           </span>
         </span>
-        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-          <div class="kol-popover-button__popover--styled">
-            Ich bin ein Hinweis.
+        <span>
+          <div class="kol-popover-button kol-popover-button--inline">
+            <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        Info
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <div class="kol-popover-button__popover--styled">
+                Ich bin ein Hinweis.
+              </div>
+            </div>
           </div>
-        </kol-popover-button-wc>
+        </span>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
@@ -321,7 +413,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -337,10 +429,19 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
-              <input aria-hidden="true" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
-              <input aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
+              <input aria-describedby="input-range-msg-nonce" aria-hidden="true" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+              <input aria-describedby="input-range-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
           </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-range-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -352,7 +453,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -392,7 +493,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -408,8 +509,8 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
-              <input aria-describedby="input-range-msg-nonce" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
-              <input aria-describedby="input-range-msg-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
           </div>
         </div>
@@ -423,7 +524,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -454,7 +555,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -488,7 +589,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -534,7 +635,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -577,7 +678,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -620,7 +721,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--hide-label kol-input-range range">
-      <label class="kol-form-field__label" hidden="" htmlfor="input-range-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -676,7 +777,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -722,7 +823,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -771,7 +872,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -818,7 +919,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -865,7 +966,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -876,11 +977,41 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
             </span>
           </span>
         </span>
-        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-          <div class="kol-popover-button__popover--styled">
-            Ich bin ein Hinweis.
+        <span>
+          <div class="kol-popover-button kol-popover-button--inline">
+            <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        Info
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <div class="kol-popover-button__popover--styled">
+                Ich bin ein Hinweis.
+              </div>
+            </div>
           </div>
-        </kol-popover-button-wc>
+        </span>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
@@ -913,7 +1044,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -929,8 +1060,8 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
-              <input aria-hidden="true" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
-              <input aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
+              <input aria-describedby="input-range-msg-nonce" aria-hidden="true" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+              <input aria-describedby="input-range-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
             <datalist id="input-range-list-nonce">
               <option value="1"></option>
@@ -947,6 +1078,15 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-range-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-input-range>
@@ -956,7 +1096,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1008,7 +1148,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1024,8 +1164,8 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
-              <input aria-describedby="input-range-msg-nonce" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
-              <input aria-describedby="input-range-msg-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
             <datalist id="input-range-list-nonce">
               <option value="1"></option>
@@ -1051,7 +1191,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1094,7 +1234,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1140,7 +1280,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1183,7 +1323,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1226,7 +1366,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1269,7 +1409,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1300,7 +1440,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1331,11 +1471,161 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _suggestions=[1,2] _value=1 1`] = `
+<kol-input-range _value="1">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="100" min="0" name="field-range" tabindex="-1" type="range" value="1">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="100" min="0" name="field-number" type="number" value="1">
+            </div>
+            <datalist id="input-range-list-nonce">
+              <option value="1"></option>
+              <option value="2"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label="Label" _name="field" _value="5" 1`] = `
+<kol-input-range _value="5">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="100" min="0" name="field-range" tabindex="-1" type="range" value="5">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="100" min="0" name="field-number" type="number" value="5">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
+              <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
+              <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
+            </div>
+            <datalist id="input-range-list-nonce">
+              <option value="1"></option>
+              <option value="2"></option>
+              <option value="3"></option>
+              <option value="4"></option>
+              <option value="5"></option>
+              <option value="6"></option>
+              <option value="7"></option>
+              <option value="8"></option>
+              <option value="9"></option>
+              <option value="10"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-range>
+`;
+
+exports[`kol-input-range should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 1`] = `
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-range range">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
             </span>
             <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>

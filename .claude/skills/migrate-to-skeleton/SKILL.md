@@ -1,11 +1,11 @@
 ---
 name: migrate-to-skeleton
-description: Migriert eine Legacy-KoliBri-Komponente auf die Skeleton-Blueprint-Architektur (WC-Orchestrator → optionale Behaviors + FC + Props-Pattern). Führt durch Gap-Analyse, Props-First, Layer-Refactor, Legacy-Rückbau und die Abnahme-Gates (Unit-Tests, öffentliche API-Parität, Pixel-Gate). Trigger: "Skeleton-Migration", "Komponente migrieren", "auf Skeleton umbauen", "migrate-to-skeleton", "BaseWebComponent", "Prop-Triangle", "propsConfig", "ApiFromConfig", "BemRootNodeFC", "Legacy-Komponente umbauen", "Controller auflösen", "Aspect-Klasse auflösen", "Dead-Schema-Abbau", "Skeleton-Blueprint", "migrate to skeleton".
+description: 'Migriert eine Legacy-KoliBri-Komponente auf die Skeleton-Blueprint-Architektur (WC-Orchestrator → optionale Behaviors + FC + Props-Pattern). Führt durch Gap-Analyse, Props-First, Layer-Refactor, Legacy-Rückbau und die Abnahme-Gates (Unit-Tests, öffentliche API-Parität, Pixel-Gate). Trigger: "Skeleton-Migration", "Komponente migrieren", "auf Skeleton umbauen", "migrate-to-skeleton", "BaseWebComponent", "Prop-Triangle", "propsConfig", "ApiFromConfig", "BemRootNodeFC", "Legacy-Komponente umbauen", "Controller auflösen", "Aspect-Klasse auflösen", "Dead-Schema-Abbau", "Skeleton-Blueprint", "migrate to skeleton".'
 ---
 
 # Migrate to Skeleton
 
-Baut eine Legacy-Komponente auf die Skeleton-Blueprint-Architektur um. Zielbild ist das **2-Schichten-Modell**: **WC (Orchestrator) → optionale Behaviors + FC**. Zwischen Custom Element und FC liegt **keine** Controller-/Aspect-Klasse mehr — der WC erbt von `BaseWebComponent<Api>` und hält die Logik inline (`initRenderProps`, `setRenderProp`, `getRenderProp`, `setState`/`getState`). Hat die Legacy-Komponente noch einen Controller oder Aspect, wird dessen Logik in den WC gezogen. Nur echt komponentenübergreifende Logik wird zu einem `Behavior` (erbt von `BaseBehavior`).
+Baut eine Legacy-Komponente auf die Skeleton-Blueprint-Architektur um. Zielbild ist das **2-Schichten-Modell**: **WC (Orchestrator) → optionale Behaviors + FC**. Zwischen Custom Element und FC liegt **keine** Controller-/Aspect-Klasse mehr — der WC erbt von `BaseWebComponent<Api>` und hält die Logik inline (`propsConfig`-Feld, aus dem die Basis die Render-Props beim ersten Zugriff säht, `setRenderProp`, `getRenderProp`, `setState`/`getState`). Hat die Legacy-Komponente noch einen Controller oder Aspect, wird dessen Logik in den WC gezogen. Nur echt komponentenübergreifende Logik wird zu einem `Behavior` (erbt von `BaseBehavior`).
 
 **Argument:** der Komponentenname ohne `kol-`-Präfix, z. B. `card`, `tooltip`, `alert`. Im Folgenden `<komponente>`.
 
@@ -19,13 +19,14 @@ Bei Widersprüchen gilt diese Reihenfolge:
    - `packages/components/src/internal/functional-components/base-web-component.ts`
    - `packages/components/src/internal/functional-components/base-behavior.ts`
    - `packages/components/src/internal/functional-components/generic-types.ts`
-   - `packages/components/src/components/_skeleton/web-components/skeleton/component.tsx`
+   - `packages/components/src/components/skeleton/component.tsx`
    - `packages/components/src/internal/functional-components/skeleton/api.tsx` und `.../skeleton/component.tsx`
-2. **`packages/components/src/components/_skeleton/ARC42.md`** — die maßgebliche Spezifikation (Architekturnarrativ, Typverträge, 15 Design Decisions).
+2. **`packages/components/docs/ARC42-SKELETON.md`** — die maßgebliche Spezifikation (Architekturnarrativ, Typverträge, 15 Design Decisions).
 3. **Migrierte Vorbilder** (Produktionsform, jeweils pixelgeprüft gegen ihren Vorgänger):
-   - `packages/components/src/components/button/component.tsx` + `internal/functional-components/button/` (inkl. transitionalem `button/wc.tsx`)
-   - `packages/components/src/components/link/component.tsx` + `internal/functional-components/link/` (inkl. `link/wc.tsx`) — enthält das vollständige Behavior-Lebenszyklus-Muster
+   - `packages/components/src/components/button/component.tsx` + `internal/functional-components/button/` (inkl. `button/item.ts` für eingebettete Buttons)
+   - `packages/components/src/components/link/component.tsx` + `internal/functional-components/link/` (inkl. `link/item.ts`) — enthält das vollständige Behavior-Lebenszyklus-Muster
    - `packages/components/src/components/input-color/component.tsx` + `internal/functional-components/form-field/` (`BaseFormFieldWebComponent`, `FormFieldFC`, `InputContainerFC`, `InputFC`, `FormAssociationBehavior`): Vorbild für Formularfelder. Plan und Fallstricke stehen in `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`.
+   - `packages/components/src/components/input-email/component.tsx` + `internal/functional-components/text-input/` (`BaseTextInputWebComponent`) und `internal/functional-components/counter/` (`CounterBehavior`): Vorbild für Textfelder mit Zeichenzähler.
    - Weitere bereits migrierte Komponenten als Kurzvorbilder: `abbr`, `avatar`, `heading`, `icon`, `image`, `meter`, `progress`, `quote`, `spin`
    - **„Styled-as"-Satelliten** (eine Komponente, die semantisch ihrem Vorbild entspricht und nur dessen Erscheinungsbild variiert): `link-button` (Link, als Button gestylt — erbt `BaseLinkWebComponent`, rendert `LinkFC`) und `button-link` (Button, als Link gestylt — erbt `BaseButtonWebComponent`, rendert `ButtonFC`). Beide brauchen keine eigene FC-Schicht — nur eigene Props/Defaults und ein Theme-Mixin, das den geteilten Block umstylt. Vor jeder Migration eines Satelliten prüfen, ob sein semantisches Vorbild das schon mitgebracht hat.
 
@@ -35,7 +36,7 @@ Weicht ARC42 vom Code ab, ist das ein Fehler in einem von beiden: Doku korrigier
 
 ## 2. Arbeitsverzeichnisse
 
-- `packages/components/src/components/_skeleton/` — **schreibgeschützte** Referenz.
+- `packages/components/src/components/skeleton/` und `packages/components/src/components/click-button/` — Referenzkomponenten des Blueprints.
 - `packages/components/src/components/<komponente>/` und `packages/components/src/internal/functional-components/<komponente>/` — Arbeitsbereich.
 - `packages/components/src/internal/props/` — gemeinsame Prop-Definitionen (54 vorhanden), wird erweitert.
 
@@ -61,7 +62,7 @@ Erst die Props, dann alles andere. Das Props-Inventar **ist** der öffentliche A
 3. Für neue Props je eine Datei `internal/props/<prop-name>.ts` anlegen (`SimpleProp` bzw. `Prop`, Normalisierung und Validierung über `createPropDefinition`) — Muster: `internal/props/level.ts`, Snippet in `reference/patterns.md`.
 4. Neue Props in `packages/components/src/internal/props/index.ts` exportieren.
 
-Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helper-layer`.
+Hintergrund: `packages/components/docs/ARC42-SKELETON.md#schema-helper-layer`.
 
 ## 5. Phase 3 — Refactor nach Schichten
 
@@ -74,7 +75,7 @@ Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helpe
 4. **Web Component** — `components/<komponente>/component.tsx`, der Orchestrator
    `@Component({ tag: 'kol-<komponente>', shadow: true })`, erbt `BaseWebComponent<Api>`, implementiert `WebComponentInterface<Api>` **und** das Schema-`*Props`-Interface (z. B. `implements LinkProps`), damit API-Drift den Build bricht. Aufbau, Prop-Triangle, Behavior-Lebenszyklus und Zustandszugriff: `reference/patterns.md`.
 5. **Öffentliche API-Parität sichern**
-   Der migrierte WC muss **exakt** dieselbe `@Prop`/`@Method`-Oberfläche bieten wie der Vorgänger — gleiche Member, gleiche Schema-Alias-Typen, gleiche Defaults, gleiche JSDoc (`custom-elements.json`, `docs-vscode` und die Adapter-IntelliSense werden daraus erzeugt). Oberfläche in `packages/components/src/components/_skeleton/public-api/<komponente>.spec.ts` festnageln (Helfer in `contract.ts`) und gegen den Vorgänger diffen. Existiert der Pin schon gegen `shadow.tsx`, zeigt die Migration ihn auf `component.tsx` und ergänzt `schemaInterface`; der Inhalt bleibt unverändert. Details: `ARC42.md#public-api-contract-migration-parity`.
+   Der migrierte WC muss **exakt** dieselbe `@Prop`/`@Method`-Oberfläche bieten wie der Vorgänger — gleiche Member, gleiche Schema-Alias-Typen, gleiche Defaults, gleiche JSDoc (`custom-elements.json`, `docs-vscode` und die Adapter-IntelliSense werden daraus erzeugt). Oberfläche in `packages/components/src/components/public-api/<komponente>.spec.ts` festnageln (Helfer in `contract.ts`) und gegen den Vorgänger diffen. Existiert der Pin schon gegen `shadow.tsx`, zeigt die Migration ihn auf `component.tsx` und ergänzt `schemaInterface`; der Inhalt bleibt unverändert. Details: `ARC42.md#public-api-contract-migration-parity`.
 6. **CSS/SCSS** — `packages/components/src/components/<komponente>/style.scss`
    Bestehende Basis-Styles behalten, Selektoren an die neue BEM-Struktur anpassen. `style.scss` bleibt Basis-Styling: nur Layout und Struktur, keine Farben (außer dem Schwarz-/Weiß-Kontrast-Fallback), **kein Dark-/Light-Color-Scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Farben und Color Schemes gehören in die Theme-Pakete (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
 7. **Tests** — ko-lokalisiert neben `component.tsx`
@@ -85,46 +86,38 @@ Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helpe
 - Verwaiste Dateien, obsolete Wrapper und alte Controller-/Aspect-Module löschen (ihre Logik liegt jetzt im WC oder im Behavior).
 - Ungenutzte Imports, Typen und auskommentierten Code entfernen.
 
-**Transitionale `-wc`-Tags beim Konsumenten ablösen.** Rendert die migrierte Komponente ein
-`kol-*-wc`-Element, dessen Ziel **bereits** auf Skeleton umgestellt ist (heute `kol-button-wc` →
-`ButtonFC`, `kol-link-wc` → `LinkFC`), dann ist der Umstieg auf den FC Teil dieser Migration und
-nicht optional. Genau dafür existiert der Wrapper — er ist Gerüst, kein Ziel
-(`ARC42.md#transitional-pattern-shadowfalse`). Jede Migration, die ihn stehen lässt, verlängert das
-~350-Zeilen-Duplikat zwischen `component.tsx` und `wc.tsx` und hält 17 (`kol-button-wc`) bzw. 8
-(`kol-link-wc`) Konsumenten am Leben. **Diesen Punkt aktiv prüfen — er wird sonst übersehen, weil
-der Wrapper funktioniert und nichts fehlschlägt.**
+**Eingebettete Komponenten über ihren FC rendern.** Rendert die migrierte Komponente eine andere
+Komponente in ihrem Shadow DOM (z. B. einen Button), rendert sie deren FC direkt; die Orchestrierung
+je eingebetteter Instanz liegt in einem Item (`ARC42.md#embedded-components-items`:
+`createButtonItem`, `createLinkItem`, `createPopoverButtonItem`, `createDialogItem`, für eine
+variable Anzahl `createItemPool`). Ein `shadow: false`-Element als Zwischenschicht gibt es nicht mehr.
 
-Zwei Vorprüfungen entscheiden, ob das ein Teil dieses PRs ist oder ein eigener:
+Vier Vorprüfungen:
 
-1. **Prop-Aufwand.** Der `-wc`-Wrapper ist ein Orchestrator: er normalisiert Props, komponiert
+1. **Prop-Aufwand.** Das eingebettete Element ist ein Orchestrator: es normalisiert Props, komponiert
    Behaviors und hält Event-Handler. Der FC bekommt davon nichts geschenkt — `ButtonFC` verlangt
    26 normalisierte Render-Props, 4 `handle*`-Callbacks, 2 Refs und ein `ariaDescriptionId`-State.
-   Prüfen: **Hat der migrierte WC diese Werte schon, oder müsste er die Orchestrierung des Wrappers
-   nachbauen?**
+   Prüfen: **Hat der migrierte WC diese Werte schon, oder braucht es ein Item?**
    - _Hat sie schon_ (feste, im WC bereits normalisierte Werte, keine Tooltip-/Form-Logik) → trivialer
      Tausch, gehört in diesen PR.
-   - _Müsste nachbauen_ (die Props sind ein opaker Pass-through wie `InternalButtonProps`, oder der
-     Wrapper bringt `TooltipBehavior`, `AssociatedInputController`, `dispatchDomEvent` mit) → **nicht**
-     inline duplizieren. Dann braucht es zuerst eine wiederverwendbare Orchestrierungs-Einheit
-     (Behavior oder geteilter Normalisierungs-Helfer); das ist ein eigener, architektonisch
-     relevanter Schritt und gehört dem Owner vorgelegt, nicht nebenbei erledigt.
-     Vorbilder für eine solche Einheit: `internal/functional-components/breadcrumb/link-item.ts`
-     (eine Fabrik je Listeneintrag) und `internal/functional-components/popover-button/item.ts`
-     (`createPopoverButtonItem` — Popover-Controller, Tooltip-Behavior, Refs und die fertigen
-     FC-Props; der offene Zustand bleibt als `@State()` beim einbettenden WC und wird über
-     `getOpen`/`setOpen` gereicht, damit ein Toggle neu rendert).
-2. **Default-Aufwand (die stille Falle).** Der `-wc`-Wrapper setzt Defaults als Stencil-`@Prop`-Feld
+   - _Braucht Orchestrierung_ (die Props sind ein opaker Pass-through wie `InternalButtonProps`, oder
+     das Element bringt `TooltipBehavior`, Formular-Zuordnung, `dispatchDomEvent` mit) → **nicht**
+     inline duplizieren, sondern das passende Item nutzen. Fehlt eines, ist das ein eigener,
+     architektonisch relevanter Schritt. Vorbild: `createPopoverButtonItem` — Tooltip-Behavior, Refs
+     und die fertigen FC-Props; der offene Zustand bleibt als `@State()` beim einbettenden WC und wird
+     über `getOpen`/`setOpen` gereicht, damit ein Toggle neu rendert.
+2. **Default-Aufwand (die stille Falle).** Das eingebettete Element setzt Defaults als Stencil-`@Prop`-Feld
    (`@Prop() public _inline?: InlinePropType = false;`). Die sind Teil dessen, was das Element
    rendert, stehen aber **nicht** in der Prop-Definition — und mehrere Definitionen teilen sich
    Button und Link, deren Konventionen auseinandergehen: `inlineProp` defaultet auf `true`,
    `tooltipAlignProp` auf `'right'`, beide Button-Elemente deklarieren `false` und `'top'`. Wer nur
    die Prop-Definitionen anwendet, bekommt still einen anderen Button (`--inline` statt
-   `--standalone`, Tooltip rechts statt oben). **Die `@Prop`-Defaults des Wrappers abgleichen und
+   `--standalone`, Tooltip rechts statt oben). **Die `@Prop`-Defaults des Elements abgleichen und
    im Resolver neu setzen** — für Button erledigt das `BUTTON_ELEMENT_DEFAULTS` in
    `internal/functional-components/button/resolve-props.ts`. Kein Unit-Test fängt das; gefunden hat
    es erst das Pixel-Gate.
-3. **Selektor-Aufwand.** Der Wrapper trägt heute die Consumer-Klasse als **Vorfahr** des Blocks:
-   `<kol-button-wc class="kol-x__btn"><div class="kol-button">`. Nach dem Tausch merged
+3. **Selektor-Aufwand.** Das eingebettete Element trägt die Consumer-Klasse als **Vorfahr** des
+   Blocks: `<kol-button class="kol-x__btn">` mit `<div class="kol-button">` darin. Nach dem Tausch merged
    `BemRootNodeFC` die Klasse auf denselben Knoten: `<div class="kol-button kol-x__btn">`. Jeder
    Selektor der Form `.kol-x__btn .kol-button` greift dann nicht mehr — still, ohne Fehler. Vorher
    greppen und mitmigrieren:
@@ -134,12 +127,15 @@ Zwei Vorprüfungen entscheiden, ob das ein Teil dieses PRs ist oder ein eigener:
    ```
 
    Die Regeln, nach denen die Treffer sortiert werden, stehen in
-   `zero-visual-delta-handoff/SKILL.md` § 6b; Theme-Fixes bleiben theme-lokal.
+   `zero-visual-delta-handoff/SKILL.md` § 6b; Theme-Fixes bleiben theme-lokal. Hing das Layout am
+   Element selbst (ein Inline-Element als Flex-Item, das seinen Inhalt in einer Zeilenbox hält),
+   ersetzt ein klassenloses `<span>` das Element (Vorbilder: Info-Popover im Label, Aktionsspalte der
+   Tabelle).
 
 4. **Abnahme.** Der Tausch ist ein DOM-Umbau, also gilt das Pixel-Gate unverändert (Phase 5). Ohne
    grünen Nachweis je Theme ist er nicht fertig.
 
-Fällt die Ablösung nach Vorprüfung 1 aus dem PR, wird sie **benannt**: im PR-Text und im
+Fällt der Umstieg nach Vorprüfung 1 aus dem PR, wird er **benannt**: im PR-Text und im
 Companion-Plan unter „Open work", mit dem Grund. Stillschweigend stehen lassen ist der Fehler,
 den diese Regel verhindern soll.
 
@@ -178,7 +174,7 @@ pnpm --filter @public-ui/components build
 - `shadow: true` für Web Components.
 - Kein `class`-Attribut am `<Host>`.
 - Externe Props mit Unterstrich (`_name`, `_label`).
-- **Render-Funktionen nutzen die Render-FunctionalComponents**: Rendert eine Komponente weitere Komponenten, geschieht das über die neuen FCs (`ButtonFC` statt `KolButtonWcTag`, `LinkFC` statt `KolLinkWcTag`) — wann immer möglich. Die Prop-Orchestrierung des ersetzten Tags (Prop-Factories, Behaviors, Refs) wandert an den renderenden WC oder einen FC-eigenen Fabrik-Typ (Vorbild: `internal/functional-components/breadcrumb/link-item.ts`). Nur wenn Theme-/Basis-Selektoren den Host-Knoten des `-wc`-Tags als Vorfahren brauchen und sich nicht FC-gleich schalten lassen, bleibt das Tag als begründete Ausnahme stehen (Fallstrick 8).
+- **Render-Funktionen nutzen die Render-FunctionalComponents**: Rendert eine Komponente weitere Komponenten in ihrem Shadow DOM, geschieht das über deren FCs (`ButtonFC`, `LinkFC`, …) und ein Item, das die Orchestrierung je Instanz hält (`ARC42.md#embedded-components-items`). Brauchen Theme-/Basis-Selektoren das ersetzte Element als Vorfahr, werden sie umgestellt oder ein `div` mit der Klasse bleibt an seiner Stelle (Fallstrick 8).
 - **PR-Label `release:engineering`**: Jeder Migrations-PR bekommt beim Anlegen das Label `release:engineering` — eine Skeleton-Migration ist eine interne/technische Änderung ohne API-Änderung und wird im Release-Changelog unter „Engineering“ gelistet. Fehlt das Label, landet der PR in der falschen Changelog-Rubrik.
 - **Keine Arbeitspläne einchecken**: Pläne sind lokale Arbeitsdokumente (ungetrackt, z. B. `.claude/plans/` im Arbeitsverzeichnis) und gehören nicht in Branch oder PR. Dauerhaft relevantes Wissen wird stattdessen in `reference/pitfalls.md` und diesem Skill destilliert.
 - **Kommentare folgen der Regel [Inline code documentation](../../../AGENTS.md#inline-code-documentation)**: so viel wie nötig, so wenig wie möglich; nur Ist-Zustand und Zukunft, nie die Entstehungsgeschichte oder den Diff; klar und widerspruchsfrei. Ein „der Vorgänger tat X“ wird zur Einschränkung umformuliert, die daraus heute folgt. Die öffentliche `@Prop`/`@Method`/`@Event`-JSDoc bleibt unverändert (Abschnitt 5).
@@ -186,21 +182,21 @@ pnpm --filter @public-ui/components build
 - Keine neuen Barrel-Dateien.
 - ARIA-Referenz-IDs (`aria-controls`, `aria-labelledby`, `aria-describedby`, `aria-owns`) müssen pro Instanz eindeutig sein — `createUniqueId('prefix')` bzw. `createRelatedUniqueId(baseId, 'suffix')` aus `utils/dev.utils` (ARC42 DD12).
 - Event-Handler als stabile Arrow-Properties, nie `.bind(this)` bei `addEventListener`/`removeEventListener` (`ARC42.md#event-handler-policy`).
+- Member-Reihenfolge der Komponentenklasse: statics, `@Element`, `@State`, Felder, constructor, jede `@Prop`, `@Event`, `@Method`, Lifecycle, `@Listen`, Helfer, `render`; ein `@Watch` steht direkt hinter der `@Prop` oder dem `@State`, den er beobachtet (`ARC42.md#member-order`, geprüft von `component-structure.spec.ts`).
 
 ## 9. Pre-Review-Checkliste
 
 - [ ] Gap-Analyse erstellt und als Migrationsplan verwendet
 - [ ] API nutzt `PropsConfigShape` + `ApiFromConfig`, nur benötigte Abschnitte deklariert
-- [ ] WC ist Orchestrator: erbt `BaseWebComponent<Api>`, keine Controller-/Aspect-Klasse, `this.initRenderProps(propsConfig)` einmalig in `componentWillLoad()`
+- [ ] WC ist Orchestrator: erbt `BaseWebComponent<Api>`, keine Controller-/Aspect-Klasse, deklariert `propsConfig` als Feld — die Basis säht die Render-Props daraus beim ersten Zugriff
 - [ ] Prop-Triangle für **jeden** `@Prop()` vollständig (Deklaration, `@Watch`, Anwendung beim Laden)
 - [ ] Watcher wenden die Prop-Factory inline an: `xxxProp.apply(value, (v) => this.setRenderProp('xxx', v))`
 - [ ] Behavior (falls vorhanden) erbt `BaseBehavior<Api>`, implementiert `BehaviorInterface<Api>`, wird über `this.stateAccess` oder begründet über `BaseWebComponent.stateLess` komponiert — inkl. `componentDidRender`-Sync und `disconnectedCallback`-Teardown
 - [ ] FC ist zustandslos und kapselt seinen Wurzelknoten in `BemRootNodeFC`
-- [ ] Die Render-Funktion nutzt durchgängig die Render-FunctionalComponents (`ButtonFC` statt `KolButtonWcTag`, …); ein beibehaltenes `-wc`-Tag ist als Ausnahme begründet (Fallstrick 8)
+- [ ] Die Render-Funktion nutzt durchgängig die Render-FunctionalComponents (`ButtonFC`, `LinkFC`, …) über Items (Fallstrick 8)
 - [ ] Kein Arbeitsplan eingecheckt; Kommentare folgen [Inline code documentation](../../../AGENTS.md#inline-code-documentation)
 - [ ] `<Host>` ohne redundantes `class`-Attribut
-- [ ] Öffentliche `@Prop`/`@Method`-Oberfläche identisch zum Vorgänger, in `_skeleton/public-api/<komponente>.spec.ts` festgenagelt, Schema-`*Props`-Interface implementiert
-- [ ] Transitionale `kol-*-wc`-Tags im gerenderten Markup geprüft: abgelöst, oder mit Begründung als offene Arbeit benannt
+- [ ] Öffentliche `@Prop`/`@Method`-Oberfläche identisch zum Vorgänger, in `src/components/public-api/<komponente>.spec.ts` festgenagelt, Schema-`*Props`-Interface implementiert
 - [ ] Kein toter Code, keine verwaisten Dateien; Dead-Schema-Abbau geprüft (inkl. Ausnahme für veröffentlichte Typen)
 - [ ] Tests ko-lokalisiert und aktualisiert
 - [ ] `pnpm format`, `pnpm lint`, `test:unit` erfolgreich
@@ -224,7 +220,7 @@ Zum Abschluss liefern:
 - `reference/patterns.md` — Prop-Triangle, WC-Orchestrator, `StateAccess`/`stateLess`, Behavior-Lebenszyklus, Prop-Definition, Ziel-Dateistruktur
 - `reference/pitfalls.md` — 16 Fallstricke, jeder schon einmal als Regression aufgetreten
 
-**Im Repo** (Anker in `packages/components/src/components/_skeleton/ARC42.md`):
+**Im Repo** (Anker in `packages/components/docs/ARC42-SKELETON.md`):
 
 | Thema                                | Anker                                                     |
 | ------------------------------------ | --------------------------------------------------------- |
@@ -238,7 +234,5 @@ Zum Abschluss liefern:
 | Event-Handler-Policy                 | `#event-handler-policy`                                   |
 | Zustandsverwaltung                   | `#wc-state-management`                                    |
 | Verzeichnislayout                    | `#blueprint-layout`                                       |
-| Transitionales `shadow: false`       | `#transitional-pattern-shadowfalse`                       |
+| Eingebettete Komponenten (Items)     | `#embedded-components-items`                              |
 | Design Decisions                     | `#9-design-decisions`                                     |
-
-Ergänzend: `packages/components/src/components/_skeleton/AGENTS.md` (Props-First-Begründung, API-Parität) und `packages/components/src/components/_skeleton/TODO_PROP_ENFORCEMENT.md` (offene Punkte der Prop-Durchsetzung).

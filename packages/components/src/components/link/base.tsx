@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
 import { linkPropsConfig } from '../../internal/functional-components/link/api';
 import { LinkFC } from '../../internal/functional-components/link/component';
@@ -32,11 +33,14 @@ import {
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaControlsPropType,
 	AriaCurrentValuePropType,
 	AriaDescriptionPropType,
 	AriaOwnsPropType,
 	CustomClassPropType,
+	DisabledPropType,
 	DownloadPropType,
+	HideLabelPropType,
 	HrefPropType,
 	InlinePropType,
 	KoliBriIconsProp,
@@ -45,6 +49,7 @@ import type {
 	LinkTargetPropType,
 	ShortKeyPropType,
 	Stringified,
+	TabIndexPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
@@ -56,7 +61,7 @@ import { onLocationChange } from './ariaCurrentService';
 
 /**
  * Shared orchestrator implementation for every custom element that renders `LinkFC`:
- * `kol-link`, the transitional `kol-link-wc` and `kol-link-button`.
+ * `kol-link` and `kol-link-button`.
  *
  * The class carries everything that does not need a Stencil decorator — the composed
  * `TooltipBehavior`, the `aria-current` location subscription, the anchor click handler, one
@@ -81,15 +86,17 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	protected readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
+	protected readonly propsConfig: PropsConfigShape = linkPropsConfig;
+
 	// --- Lifecycle helpers (called from the concrete element's lifecycle methods) ---
 
 	/**
-	 * Seeds the render props. Call first in `componentWillLoad`, before the prop watchers run.
+	 * Marks `tabIndex` as unset. Call first in `componentWillLoad`, before the prop watchers run.
 	 */
-	protected initLinkRenderProps(): void {
-		this.initRenderProps(linkPropsConfig);
+	protected unsetLinkTabIndex(): void {
 		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
-		// the attribute would trigger focus outlines that the predecessor did not draw.
+		// the attribute would trigger focus outlines that the predecessor did not draw. The first
+		// render-prop access seeds the store, so this unset runs against seeded defaults.
 		this.unsetRenderProp('tabIndex');
 	}
 
@@ -166,7 +173,7 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
 	}
 
-	protected applyAriaControls(value?: string): void {
+	protected applyAriaControls(value?: AriaControlsPropType): void {
 		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
 	}
 
@@ -190,7 +197,7 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
 	}
 
-	protected applyDisabled(value?: boolean): void {
+	protected applyDisabled(value?: DisabledPropType): void {
 		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
 	}
 
@@ -198,12 +205,12 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 		downloadProp.apply(value, (v) => this.setRenderProp('download', v));
 	}
 
-	protected applyHideLabel(value?: boolean): void {
+	protected applyHideLabel(value?: HideLabelPropType): void {
 		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
 	}
 
 	protected applyHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	protected applyIcons(value?: Stringified<KoliBriIconsProp>): void {
@@ -215,11 +222,15 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.setState('expertSlot', value === '');
-			this.tooltipBehavior.watchLabel(this.getTooltipLabel());
-		});
+		labelWithExpertSlotProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.setState('expertSlot', value === '');
+				this.tooltipBehavior.watchLabel(this.getTooltipLabel());
+			},
+			this.isRequired('label'),
+		);
 	}
 
 	protected applyOn(value?: LinkOnCallbacksPropType): void {
@@ -234,7 +245,7 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
 	}
 
-	protected applyTabIndex(value?: number): void {
+	protected applyTabIndex(value?: TabIndexPropType): void {
 		// The props config seeds `tabIndex` with its default `0`, but an unset tabindex must not
 		// render as `tabindex="0"`. Unsetting the prop has to restore that state, so the else branch
 		// is not optional: without it a reset would keep the previous number.

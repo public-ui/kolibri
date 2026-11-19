@@ -95,6 +95,7 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 					(data0 as unknown as DataRow).name.localeCompare((data1 as unknown as DataRow).name, 'de'),
 				sortDirection: 'ASC',
+				width: 250,
 			},
 			{
 				key: 'email',
@@ -103,6 +104,7 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 					(data0 as unknown as DataRow).email.localeCompare((data1 as unknown as DataRow).email, 'de'),
 				sortDirection: 'ASC',
+				width: 350,
 			},
 			{
 				key: 'status',

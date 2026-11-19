@@ -43,6 +43,8 @@ You can request new features by submitting an issue to our ticket system. If you
 - For major innovations, please create a ticket with the description of the new function.
 - For small innovations, you can offer and justify the implementation directly as a pull request.
 
+Also see our guides, recommendations and HowTos here [Docs](./docs)
+
 ### Git flow
 
 We work according to the Git flow: https://medium.com/android-news/gitflow-with-github-c675aa4f606a
@@ -125,6 +127,20 @@ We recommend using [Visual Studio Code](https://code.visualstudio.com/):
 
 All tests run via GitHub Actions when you open a pull request. Monitor them under the **Actions** tab.
 
+#### E2E tests (Playwright)
+
+The Playwright tests of the components live next to the components as `*.e2e.ts` files (e.g. `packages/components/src/components/badge/badge.e2e.ts`). Run a single file or test from `packages/components`; the arguments are passed on to `playwright test`:
+
+```bash
+cd packages/components
+
+pnpm test:e2e src/components/badge/badge.e2e.ts              # one file
+pnpm test:e2e src/components/badge/badge.e2e.ts -g "title"   # one test by (part of) its title
+pnpm test:e2e src/components/badge/badge.e2e.ts:42           # one test by line number
+```
+
+Useful flags: `--headed` (visible browser), `--ui` (Playwright UI mode), `--debug` (inspector). After a run, `pnpm exec playwright show-report` opens the HTML report.
+
 ### Develop new component
 
 Refer to [new component](docs/tutorials/NEW_COMPONENT.md) tutorial.
@@ -148,7 +164,7 @@ When you introduce visual modifications to components, themes or the React sampl
 
 1. The `visual-tests (<package>)` jobs report the differences. That is expected – there is nothing to regenerate or commit.
 2. The bot comment **📸 Visual Review** on the pull request links the review page (`https://public-ui.github.io/kolibri/visual/?pr=<number>`), where every changed, added and removed screenshot can be inspected side by side, with a slider, as onion skin or as diff.
-3. A reviewer with write access approves (or rejects) the screenshots there – directly with a fine-grained GitHub token, or by pasting the generated comment on the pull request. The commit status **Visual Review** turns green once everything is approved; approvals are bound to the screenshot content and survive later pushes that do not change the screenshot again.
+3. A reviewer with write access approves (or rejects) the screenshots there – directly with a fine-grained GitHub token, or by pasting the generated comment on the pull request, as a comment or as the text of a review. The commit status **Visual Review** turns green once everything is approved; approvals are bound to the screenshot content and survive later pushes that do not change the screenshot again.
 
 The full process is described in [docs/visual-review.md](docs/visual-review.md).
 

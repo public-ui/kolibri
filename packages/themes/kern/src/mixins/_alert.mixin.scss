@@ -3,8 +3,6 @@
 
 @mixin kol-alert {
 	.kol-alert {
-		$root: &;
-
 		position: relative;
 		flex-direction: column;
 		--alert-accent-color: var(--kern-color-form-input-border);
@@ -18,11 +16,11 @@
 			grid-template-areas:
 				'icon heading close'
 				'icon content close';
+		}
 
-			&:not(:has(#{$root}__heading)) {
-				grid-template-areas: 'icon content close';
-				grid-template-rows: min-content;
-			}
+		&--variant-msg:not(:has(&__heading)) {
+			grid-template-areas: 'icon content close';
+			grid-template-rows: min-content;
 		}
 
 		/* Type variants */
@@ -61,23 +59,23 @@
 				'icon heading close'
 				'content content content';
 			border: var(--kern-metric-border-width-default) solid var(--alert-msg-text-color);
+		}
 
-			#{$root}__closer {
-				margin-right: var(--kern-metric-space-default);
-			}
+		&--variant-card &__closer {
+			margin-right: var(--kern-metric-space-default);
+		}
 
-			#{$root}__content {
-				background: var(--kern-color-layout-background-default);
-				display: flex;
-				padding: var(--kern-metric-space-default) var(--kern-metric-space-large) var(--kern-metric-space-default) var(--kern-metric-space-large);
-				gap: var(--kern-metric-space-small);
-				flex-direction: column;
-			}
+		&--variant-card &__content {
+			background: var(--kern-color-layout-background-default);
+			display: flex;
+			padding: var(--kern-metric-space-default) var(--kern-metric-space-large) var(--kern-metric-space-default) var(--kern-metric-space-large);
+			gap: var(--kern-metric-space-small);
+			flex-direction: column;
+		}
 
-			#{$root}__icon {
-				color: var(--alert-msg-text-color);
-				margin-left: var(--kern-metric-space-default);
-			}
+		&--variant-card &__icon {
+			color: var(--alert-msg-text-color);
+			margin-left: var(--kern-metric-space-default);
 		}
 
 		&__closer {

@@ -32,19 +32,12 @@ export class KolToastContainer implements ToasterAPI {
 	/* Keep track of render functions, so we call each only once. */
 	private knownRenderFunctions = new Set<ToastRenderFunction>();
 
-	public componentWillLoad(): void {
-		Log.warn(
-			'kol-toast-container is deprecated and will be removed in the next major version. Use kol-alert for inline notifications or kol-dialog for interactive messages instead. See https://github.com/public-ui/kolibri/issues/8372',
-		);
-	}
-
 	// Stencil requires async function:
 	/**
 	 * Adds a toast to the queue.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async enqueue(toast: Toast) {
+	public enqueue(toast: Toast): Promise<() => void> {
 		const newToastState: ToastState = {
 			toast: {
 				...toast,
@@ -72,42 +65,16 @@ export class KolToastContainer implements ToasterAPI {
 			};
 		}, TRANSITION_TIMEOUT);
 
-		return () => {
+		return Promise.resolve(() => {
 			this.handleClose(newToastState);
-		};
-	}
-
-	private handleClose(toastState: ToastState) {
-		const current = this.state._toastStates.find((t) => t.id === toastState.id);
-		if (!current || current.status === 'removing') {
-			return;
-		}
-
-		this.state = {
-			...this.state,
-			_toastStates: this.state._toastStates.map((localToastState) =>
-				localToastState.id === toastState.id ? { ...localToastState, status: 'removing' } : localToastState,
-			),
-		};
-
-		setTimeout(() => {
-			this.state = {
-				...this.state,
-				_toastStates: this.state._toastStates.filter((localToastState) => localToastState.id !== toastState.id),
-			};
-			if (typeof toastState.toast.render === 'function') {
-				this.knownRenderFunctions.delete(toastState.toast.render);
-			}
-			toastState.toast.onClose?.();
-		}, TRANSITION_TIMEOUT);
+		});
 	}
 
 	/**
 	 * Closes all toasts.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async closeAll(immediate: boolean = false) {
+	public closeAll(immediate: boolean = false): Promise<void> {
 		if (immediate) {
 			this.state = {
 				...this.state,
@@ -138,6 +105,38 @@ export class KolToastContainer implements ToasterAPI {
 				});
 			}, TRANSITION_TIMEOUT);
 		}
+		return Promise.resolve();
+	}
+
+	public componentWillLoad(): void {
+		Log.warn(
+			'kol-toast-container is deprecated and will be removed in the next major version. Use kol-alert for inline notifications or kol-dialog for interactive messages instead. See https://github.com/public-ui/kolibri/issues/8372',
+		);
+	}
+
+	private handleClose(toastState: ToastState) {
+		const current = this.state._toastStates.find((t) => t.id === toastState.id);
+		if (!current || current.status === 'removing') {
+			return;
+		}
+
+		this.state = {
+			...this.state,
+			_toastStates: this.state._toastStates.map((localToastState) =>
+				localToastState.id === toastState.id ? { ...localToastState, status: 'removing' } : localToastState,
+			),
+		};
+
+		setTimeout(() => {
+			this.state = {
+				...this.state,
+				_toastStates: this.state._toastStates.filter((localToastState) => localToastState.id !== toastState.id),
+			};
+			if (typeof toastState.toast.render === 'function') {
+				this.knownRenderFunctions.delete(toastState.toast.render);
+			}
+			toastState.toast.onClose?.();
+		}, TRANSITION_TIMEOUT);
 	}
 
 	private handleToastRef(toastState: ToastState, element?: HTMLDivElement) {

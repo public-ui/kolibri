@@ -1,5 +1,4 @@
 import { KolFormTag } from '../../core/component-names';
-import type { FormProps } from '../../schema';
 import { devHint, getExperimentalMode, KoliBriDevHelper, Log, setEventTarget } from '../../schema';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
@@ -49,10 +48,12 @@ export const propagateResetEventToForm = (
 			setEventTarget(event, form);
 			form.dispatchEvent(event);
 		} else if (form.tagName === KolFormTag.toUpperCase()) {
-			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
-			const kolForm = form as FormProps;
-			if (typeof kolForm._on?.onReset === 'function') {
-				kolForm._on?.onReset(event);
+			// Dispatch on the inner form element, so the kol-form submit/reset handling runs exactly like for a
+			// native submit: it calls the `_on` callbacks and emits the DOM event (`reset`) on the host.
+			const innerForm = KoliBriDevHelper.querySelector<HTMLFormElement>('form', form);
+			if (innerForm) {
+				setEventTarget(event, innerForm);
+				innerForm.dispatchEvent(event);
 			}
 		}
 	}
@@ -62,8 +63,11 @@ export const propagateSubmitEventToForm = (
 	options: {
 		form?: HTMLElement | ParentNode | null;
 		ref?: HTMLElement;
+		/** Decides after the triggering event has been dispatched completely whether the form is submitted. */
+		shouldSubmit?: () => boolean;
 	} = {},
 ): void => {
+	const shouldSubmit = options.shouldSubmit ?? (() => true);
 	const form = searchFormElement(options.form);
 	if (form instanceof HTMLElement) {
 		const event = new SubmitEvent('submit', {
@@ -90,6 +94,9 @@ export const propagateSubmitEventToForm = (
 			}
 			// Use setTimeout to ensure onChange has been called first
 			setTimeout(() => {
+				if (!shouldSubmit()) {
+					return;
+				}
 				// See https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/requestSubmit
 				if (typeof (form as HTMLFormElement).requestSubmit === 'function') {
 					(form as HTMLFormElement).requestSubmit();
@@ -99,14 +106,47 @@ export const propagateSubmitEventToForm = (
 				}
 			});
 		} else if (form.tagName === KolFormTag.toUpperCase()) {
-			setEventTarget(event, KoliBriDevHelper.querySelector('form', form) as HTMLFormElement);
-			const kolForm = form as FormProps;
-			// Use setTimeout to ensure onChange has been called first
-			setTimeout(() => {
-				if (typeof kolForm._on?.onSubmit === 'function') {
-					kolForm._on?.onSubmit(event);
-				}
-			});
+			// Dispatch on the inner form element, so the kol-form submit handling runs exactly like for a
+			// native submit: it calls the `_on` callbacks and emits the DOM event (`submit`) on the host.
+			const innerForm = KoliBriDevHelper.querySelector<HTMLFormElement>('form', form);
+			if (innerForm) {
+				setEventTarget(event, innerForm);
+				// Use setTimeout to ensure onChange has been called first
+				setTimeout(() => {
+					if (shouldSubmit()) {
+						innerForm.dispatchEvent(event);
+					}
+				});
+			}
 		}
+	}
+};
+
+/** Whether a native picker of the input is open; `false` in a browser without the `:open` pseudo class. */
+const isPickerOpen = (ref?: HTMLElement): boolean => {
+	try {
+		return ref?.matches(':open') ?? false;
+	} catch {
+		return false;
+	}
+};
+
+/**
+ * Enter submits the surrounding form like the implicit submission of a native form: not while an IME
+ * composition is active, not when the default of the key event is prevented, and not when Enter opened a
+ * native picker of the input (e.g. the calendar of a date input).
+ */
+export const submitFormOnEnter = (
+	event: KeyboardEvent,
+	options: {
+		form?: HTMLElement | ParentNode | null;
+		ref?: HTMLElement;
+	},
+): void => {
+	if ((event.code === 'Enter' || event.code === 'NumpadEnter') && !event.isComposing) {
+		propagateSubmitEventToForm({
+			...options,
+			shouldSubmit: () => !event.defaultPrevented && !isPickerOpen(options.ref),
+		});
 	}
 };

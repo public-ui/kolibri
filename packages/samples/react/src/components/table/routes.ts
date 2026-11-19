@@ -35,6 +35,7 @@ import { TableStickyHeader } from './sticky-header';
 import { TableVariant } from './variant';
 import { TableWithFooter } from './with-footer';
 import { TableWithPagination } from './with-pagination';
+import { TableWithToolbar } from './with-toolbar';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
@@ -70,6 +71,7 @@ export const TABLE_ROUTES: Routes = {
 		'sticky-header': TableStickyHeader,
 		'with-footer': TableWithFooter,
 		'with-pagination': TableWithPagination,
+		'with-toolbar': TableWithToolbar,
 		big: TableBig,
 		'action-and-render': TableActionAndRenderColumns,
 		variant: TableVariant,

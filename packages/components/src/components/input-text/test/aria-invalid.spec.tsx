@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolInputText } from '../shadow';
+import { KolInputText } from '../component';
 
 describe('kol-input-text aria-invalid', () => {
 	it('sets aria-invalid="true" when msg type is error and field is touched', async () => {

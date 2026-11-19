@@ -7,6 +7,11 @@ import type { FunctionalComponentProps } from '../generic-types';
 import { PopoverFC } from '../popover/component';
 import type { PopoverButtonApi } from './api';
 
+export type PopoverButtonFCProps = FunctionalComponentProps<PopoverButtonApi> & {
+	/** Ref of the `.kol-popover-button` root. */
+	ref?: (element?: HTMLElement) => void;
+};
+
 /**
  * Renders the popover toggle button and the popover as siblings inside a single BEM root.
  *
@@ -14,10 +19,10 @@ import type { PopoverButtonApi } from './api';
  * button and style the popover via descendant selectors (`.kol-popover-button--inline
  * .kol-button …`), so the classes cannot merge onto the `kol-button` node itself.
  *
- * The popover's default slot distributes the light DOM of the surrounding web component, so
- * consumer content ends up inside the popover element exactly as in the predecessor.
+ * The children become the popover content. Without children, the popover's default slot
+ * distributes the light DOM of the surrounding web component.
  */
-export const PopoverButtonFC: FC<FunctionalComponentProps<PopoverButtonApi>> = (props) => {
+export const PopoverButtonFC: FC<PopoverButtonFCProps> = (props, children) => {
 	const {
 		accessKey,
 		ariaDescription,
@@ -40,6 +45,7 @@ export const PopoverButtonFC: FC<FunctionalComponentProps<PopoverButtonApi>> = (
 		popoverAlign,
 		popoverOpen,
 		popoverId,
+		ref,
 		refButton,
 		refPopover,
 		refTooltip,
@@ -55,6 +61,7 @@ export const PopoverButtonFC: FC<FunctionalComponentProps<PopoverButtonApi>> = (
 		<BemRootNodeFC
 			block="kol-popover-button"
 			class={props.class}
+			ref={ref}
 			modifiers={{
 				open: popoverOpen,
 				inline: inline === true,
@@ -90,7 +97,9 @@ export const PopoverButtonFC: FC<FunctionalComponentProps<PopoverButtonApi>> = (
 				type={type}
 				variant={variant}
 			/>
-			<PopoverFC align={popoverAlign} class="kol-popover-button__popover" id={popoverId} popoverRef={refPopover} />
+			<PopoverFC align={popoverAlign} class="kol-popover-button__popover" id={popoverId} popoverRef={refPopover}>
+				{children}
+			</PopoverFC>
 		</BemRootNodeFC>
 	);
 };

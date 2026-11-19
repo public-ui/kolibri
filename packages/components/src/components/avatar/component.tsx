@@ -4,9 +4,10 @@ import type { AvatarApi } from '../../internal/functional-components/avatar/api'
 import { avatarPropsConfig } from '../../internal/functional-components/avatar/api';
 import { AvatarFC } from '../../internal/functional-components/avatar/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { colorProp, labelProp, srcProp } from '../../internal/props';
-import type { ColorPair } from '../../schema';
+import type { ColorPair, LabelPropType, SrcPropType } from '../../schema';
+import { trimLabel } from '../../schema';
 
 /**
  * Formats a single name as an initial by taking the first character and converting it to uppercase.
@@ -28,8 +29,9 @@ const formatNameAsInitial = (name: string): string => {
  * @param value The input value to normalize as initials
  * @returns The normalized initials string
  */
-const normalizeInitials = (value: string): string => {
-	const names = value.trim().split(/\s+/); // split by any whitespace characters
+const normalizeInitials = (value: LabelPropType): string => {
+	const trimmedVal = trimLabel(value);
+	const names = trimmedVal.split(/\s+/); // split by any whitespace characters
 	const first = names[0];
 	const last = names[names.length - 1];
 
@@ -38,7 +40,7 @@ const normalizeInitials = (value: string): string => {
 		return `${formatNameAsInitial(first)}${formatNameAsInitial(last)}`;
 	}
 
-	return formatNameAsInitial(value);
+	return formatNameAsInitial(trimmedVal);
 };
 
 /**
@@ -52,11 +54,16 @@ const normalizeInitials = (value: string): string => {
 	},
 })
 export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebComponentInterface<AvatarApi> {
+	@State()
+	public initials: string = '';
+
+	protected readonly propsConfig: PropsConfigShape = avatarPropsConfig;
+
 	/**
 	 * Defines the backgroundColor and foregroundColor.
 	 */
 	@Prop()
-	public _color?: string | ColorPair;
+	public _color?: string | ColorPair = undefined;
 
 	@Watch('_color')
 	public watchColor(value?: string | ColorPair): void {
@@ -67,38 +74,41 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label!: string;
+	public _label!: LabelPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.setState('initials', normalizeInitials(v));
-		});
+	public watchLabel(value?: LabelPropType): void {
+		labelProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.setState('initials', normalizeInitials(v));
+			},
+			this.isRequired('label'),
+		);
 	}
 
 	/**
 	 * Sets the image `src` attribute to the given string.
 	 */
 	@Prop()
-	public _src?: string;
+	public _src?: SrcPropType = undefined;
 
 	@Watch('_src')
-	public watchSrc(value?: string): void {
+	public watchSrc(value?: SrcPropType): void {
 		srcProp.apply(value, (v) => this.setRenderProp('src', v));
 	}
 
-	@State()
-	public initials: string = '';
-
 	public componentWillLoad(): void {
-		this.initRenderProps(avatarPropsConfig);
-
 		colorProp.apply(this._color, (v) => this.setRenderProp('color', v));
-		labelProp.apply(this._label, (v) => {
-			this.setRenderProp('label', v);
-			this.setState('initials', normalizeInitials(v));
-		});
+		labelProp.apply(
+			this._label,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.setState('initials', normalizeInitials(v));
+			},
+			this.isRequired('label'),
+		);
 		srcProp.apply(this._src, (v) => this.setRenderProp('src', v));
 	}
 

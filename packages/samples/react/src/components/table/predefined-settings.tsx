@@ -26,7 +26,6 @@ export const PredefinedSettings: FC = () => {
 				}}
 				_data={DATA}
 				className="block"
-				style={{ maxWidth: '600px' }}
 			/>
 		</>
 	);

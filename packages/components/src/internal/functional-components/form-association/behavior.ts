@@ -1,9 +1,7 @@
 import { getOptions } from '../../../core/bootstrap';
 import type { StencilUnknown } from '../../../schema';
 import { devHint, devWarning, getExperimentalMode } from '../../../schema';
-import type { HostInternals } from '../../../utils/aria-labelledby';
-import { attachInternals, resolveTargets } from '../../../utils/aria-labelledby';
-import { ariaDetailsProp, nameProp } from '../../props';
+import { nameProp } from '../../props';
 import { BaseBehavior } from '../base-behavior';
 import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { FormAssociationApi, FormAssociationType } from './api';
@@ -15,8 +13,14 @@ type HTMLInputFileElement = HTMLInputElement & {
 	files: FileList;
 };
 
+const NODE_TYPE_ELEMENT = 1;
+const NODE_TYPE_DOCUMENT_FRAGMENT = 11;
+
+/**
+ * Hosts that get a hidden form element with `reflectInputValues`. `kol-button` is not one of them: a
+ * button contributes nothing to the form data.
+ */
 const ASSOCIATED_TAG_NAMES = new Set([
-	'KOL-BUTTON',
 	'KOL-COMBOBOX',
 	'KOL-INPUT-CHECKBOX',
 	'KOL-INPUT-COLOR',
@@ -34,7 +38,7 @@ const ASSOCIATED_TAG_NAMES = new Set([
 ]);
 
 /** Tells the developer that a form field without a name cannot take part in autocomplete and static submission. */
-export const hintMissingName = (): void => {
+const hintMissingName = (): void => {
 	devHint(
 		`A name on input fields or switches is not strictly required, but it might be relevant for the autocomplete function and for the static submission of the input field.`,
 	);
@@ -57,8 +61,7 @@ type FormAssociationOptions = {
  * With `register(…, { reflectInputValues: true })` it appends a hidden native element to the light
  * DOM of the host and mirrors the value into it; the element's `name` is only set in experimental
  * mode. Also in experimental mode, `syncValueBySelector` mirrors the value into a native control
- * outside the component. `ariaDetails` is resolved into `ElementInternals.ariaDetailsElements`,
- * because an IDREF cannot cross the shadow boundary.
+ * outside the component.
  *
  * Construct it in the constructor of the concrete element, after `super()`: `@Element()` is only
  * populated there, and the hidden element depends on the name known at that point.
@@ -69,7 +72,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 
 	/** The host whose light DOM holds the hidden form element. */
 	public readonly host?: Element;
-	public readonly internals?: HostInternals;
 	public readonly formAssociated?: FormAssociatedElement;
 	public syncToOwnInput?: FormAssociatedElement;
 
@@ -77,7 +79,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 		super(stateAccess, formAssociationPropsConfig);
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
-		this.internals = attachInternals(this.host);
 
 		if (getOptions()?.reflectInputValues && ASSOCIATED_TAG_NAMES.has(this.host?.tagName ?? '') && name) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
@@ -93,19 +94,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 	public componentWillLoad(props: ResolvedInputProps<FormAssociationApi>): void {
 		this.watchName(props.name);
 		this.watchSyncValueBySelector(props.syncValueBySelector);
-		this.watchAriaDetails(props.ariaDetails);
-	}
-
-	public watchAriaDetails(value?: string): void {
-		ariaDetailsProp.apply(value, (v) => this.setRenderProp('ariaDetails', v));
-		const elements = resolveTargets(this.host, value);
-		if (this.internals) {
-			try {
-				this.internals.ariaDetailsElements = elements;
-			} catch {
-				// ariaDetailsElements is not supported in this environment — silently skip.
-			}
-		}
 	}
 
 	public watchName(value?: string): void {
@@ -150,7 +138,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 
 	private createFormAssociatedElement(): FormAssociatedElement {
 		switch (this.type) {
-			case 'button':
 			case 'color':
 			case 'date':
 			case 'email':
@@ -182,14 +169,17 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 	/**
 	 * The associated elements must not reside within the ShadowRoot and must
 	 * reside as children in the host to be recognized by native forms.
+	 *
+	 * The walk checks `nodeType` instead of `instanceof`, because the server-side DOM (Stencil mock-doc)
+	 * has its own `Element` and `ShadowRoot` classes per window.
 	 */
 	private findHostWithShadowRoot(host?: Element): Element | undefined {
 		while (host?.shadowRoot === null && host !== document.body) {
-			const parent = host?.parentNode;
-			if (parent instanceof ShadowRoot) {
-				host = parent.host;
+			const parent: Node | null = host.parentNode;
+			if (parent?.nodeType === NODE_TYPE_DOCUMENT_FRAGMENT && 'host' in parent) {
+				host = (parent as ShadowRoot).host;
 			} else {
-				host = parent instanceof Element ? parent : undefined;
+				host = parent?.nodeType === NODE_TYPE_ELEMENT ? (parent as Element) : undefined;
 			}
 		}
 		return host;
@@ -224,26 +214,27 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 		}
 	}
 
+	/**
+	 * A `<select>` gets one selected option per value: an array gives its items, a single value one
+	 * option, `null` and `undefined` none. Any other element gets the string value, an array or object
+	 * as JSON.
+	 */
 	private syncValue(rawValue: StencilUnknown, strValue: string | null, associatedElement?: FormAssociatedElement): void {
 		if (associatedElement) {
 			switch (this.type) {
 				case 'file':
-					(associatedElement as HTMLInputFileElement).files = rawValue as FileList;
+					// A file input takes only a `FileList`; any other value clears the selection.
+					if (typeof FileList !== 'undefined' && rawValue instanceof FileList) {
+						(associatedElement as HTMLInputFileElement).files = rawValue;
+					} else {
+						(associatedElement as HTMLInputFileElement).value = '';
+					}
 					break;
 				case 'select':
-					(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
-						(associatedElement as HTMLSelectElement).removeChild(el);
-					});
-					if (Array.isArray(rawValue)) {
-						rawValue.forEach((rawValueItem) => {
-							const strValueItem = this.tryToStringifyValue(rawValueItem as string);
-							if (typeof strValueItem === 'string') {
-								const option = document.createElement('option');
-								option.setAttribute('value', strValueItem);
-								option.setAttribute('selected', '');
-								(associatedElement as HTMLSelectElement).appendChild(option);
-							}
-						});
+					if (associatedElement.tagName === 'SELECT') {
+						this.syncSelectOptions(rawValue, associatedElement as HTMLSelectElement);
+					} else {
+						this.syncValueAttribute(strValue, associatedElement);
 					}
 					break;
 				case 'radio':
@@ -254,14 +245,34 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 					}
 					break;
 				default:
-					if (typeof strValue === 'string') {
-						associatedElement.setAttribute('value', strValue);
-						associatedElement.value = strValue;
-					} else {
-						associatedElement.removeAttribute('value');
-						associatedElement.value = '';
-					}
+					this.syncValueAttribute(strValue, associatedElement);
 			}
+		}
+	}
+
+	private syncSelectOptions(rawValue: StencilUnknown, select: HTMLSelectElement): void {
+		select.querySelectorAll('option').forEach((el) => {
+			select.removeChild(el);
+		});
+		const values: unknown[] = Array.isArray(rawValue) ? rawValue : rawValue === null || rawValue === undefined ? [] : [rawValue];
+		values.forEach((value) => {
+			const strValueItem = this.tryToStringifyValue(value as StencilUnknown);
+			if (typeof strValueItem === 'string') {
+				const option = document.createElement('option');
+				option.setAttribute('value', strValueItem);
+				option.setAttribute('selected', '');
+				select.appendChild(option);
+			}
+		});
+	}
+
+	private syncValueAttribute(strValue: string | null, element: FormAssociatedElement): void {
+		if (typeof strValue === 'string') {
+			element.setAttribute('value', strValue);
+			element.value = strValue;
+		} else {
+			element.removeAttribute('value');
+			element.value = '';
 		}
 	}
 }

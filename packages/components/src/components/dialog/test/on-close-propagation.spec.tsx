@@ -1,21 +1,21 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolDialogWc } from '../wc';
+import { KolDialog } from '../component';
 
-describe('kol-dialog-wc onClose event propagation', () => {
+describe('kol-dialog onClose event propagation', () => {
 	it('does not call onClose when a child dispatches a bubbling close event', async () => {
 		const onClose = jest.fn();
 
 		const page = await newSpecPage({
-			components: [KolDialogWc],
-			template: () => <kol-dialog-wc _label="Test" _variant="blank" _on={{ onClose }} />,
+			components: [KolDialog],
+			template: () => <kol-dialog _label="Test" _variant="blank" _on={{ onClose }} />,
 		});
 		await page.waitForChanges();
 
 		// The child must be inside the <dialog> so the event actually bubbles through it,
 		// accurately simulating a KolAlert closer click inside an open dialog.
-		const dialog = page.root?.querySelector('dialog');
+		const dialog = page.root?.shadowRoot?.querySelector('dialog');
 		expect(dialog).not.toBeNull();
 		const child = document.createElement('div');
 		dialog!.appendChild(child);
@@ -28,13 +28,13 @@ describe('kol-dialog-wc onClose event propagation', () => {
 		const onClose = jest.fn();
 
 		const page = await newSpecPage({
-			components: [KolDialogWc],
-			template: () => <kol-dialog-wc _label="Test" _variant="blank" _on={{ onClose }} />,
+			components: [KolDialog],
+			template: () => <kol-dialog _label="Test" _variant="blank" _on={{ onClose }} />,
 		});
 		await page.waitForChanges();
 
 		// Assert dialog is present so a missing element causes an explicit failure.
-		const dialog = page.root?.querySelector('dialog');
+		const dialog = page.root?.shadowRoot?.querySelector('dialog');
 		expect(dialog).not.toBeNull();
 		dialog!.dispatchEvent(new Event('close', { bubbles: false }));
 

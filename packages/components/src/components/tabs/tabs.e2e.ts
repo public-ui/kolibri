@@ -118,6 +118,30 @@ test.describe('kol-tabs', () => {
 			await createButton.click();
 			await expect(eventPromise).resolves.toBeUndefined();
 		});
+
+		test('should render the create button next to the tablist, not inside it', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
+			const tablist = page.locator('kol-tabs [role="tablist"]');
+			await expect(tablist.locator('.kol-tabs__button-create')).toHaveCount(0);
+			await expect(tablist.getByRole('tab')).toHaveCount(TABS.length);
+			await expect(tablist.locator('button')).toHaveCount(TABS.length);
+			await expect(page.locator('kol-tabs .kol-tabs__button-group > .kol-tabs__button-create')).toHaveCount(1);
+		});
+
+		test('should reach the create button with the Tab key and not change the selection with arrow keys', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button>
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			await kolTabs.getByRole('tab', { name: 'First tab' }).focus();
+			await page.keyboard.press('Tab');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
+			await expect(createButton).toBeFocused();
+			await page.keyboard.press('ArrowRight');
+			await expect(kolTabs.getByRole('tab', { name: 'First tab' })).toHaveAttribute('aria-selected', 'true');
+			await expect(createButton).toBeFocused();
+		});
 	});
 
 	test('after click only 1 tab has selected class', async ({ page }) => {
@@ -221,6 +245,117 @@ test.describe('kol-tabs', () => {
 			expect(firstIds.length).toBe(2);
 			expect(secondIds.length).toBe(2);
 			expect(firstIds.some((id) => secondIds.includes(id))).toBe(false);
+		});
+	});
+
+	test.describe('Arrow Keys', () => {
+		test('ArrowRight focusses next Tab', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs, mit Hinweis">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			const firstTab = kolTabs.getByRole('tab', { name: 'First Tab' });
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+
+			await firstTab.focus();
+			await page.keyboard.press('ArrowRight');
+			await expect(secondTab).toBeFocused();
+		});
+
+		test('ArrowLeft focusses previous Tab', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs, mit Hinweis">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			const firstTab = kolTabs.getByRole('tab', { name: 'First Tab' });
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+
+			await firstTab.focus();
+			await page.keyboard.press('ArrowRight');
+			await expect(secondTab).toBeFocused();
+			await page.keyboard.press('ArrowLeft');
+			await expect(firstTab).toBeFocused();
+		});
+
+		test('ArrowRight on last tab focusses first tab', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs, mit Hinweis">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			const firstTab = kolTabs.getByRole('tab', { name: 'First Tab' });
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+
+			await firstTab.focus();
+			await page.keyboard.press('ArrowRight');
+			await expect(secondTab).toBeFocused();
+			await page.keyboard.press('ArrowRight');
+			await expect(firstTab).toBeFocused();
+		});
+
+		test('ArrowLeft on first tab focusses last tab', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs, mit Hinweis">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			const firstTab = kolTabs.getByRole('tab', { name: 'First Tab' });
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+
+			await firstTab.focus();
+			await page.keyboard.press('ArrowLeft');
+			await expect(secondTab).toBeFocused();
+		});
+	});
+
+	test.describe('Keyboard activation', () => {
+		const THREE_TABS = [{ _label: 'First tab' }, { _label: 'Second tab' }, { _label: 'Third tab' }];
+		const content = `<kol-tabs _behavior="select-manual" _tabs='${JSON.stringify(THREE_TABS)}' _label="Tabs">
+				<div>Contents of Tab 1</div>
+				<div>Contents of Tab 2</div>
+				<div>Contents of Tab 3</div>
+			</kol-tabs><button id="after">after</button>`;
+
+		for (const key of ['Enter', ' ']) {
+			test(`it calls onSelect exactly once when "${key}" activates the focused tab`, async ({ page }) => {
+				await page.setContent(content);
+				const kolTabs = page.locator('kol-tabs');
+				await kolTabs.evaluate((element: HTMLKolTabsElement) => {
+					const calls: number[] = [];
+					(window as unknown as { selectCalls: number[] }).selectCalls = calls;
+					element._on = {
+						onSelect: (_event: Event, tabIndex: number) => {
+							calls.push(tabIndex);
+						},
+					};
+				});
+				await page.waitForChanges();
+
+				await kolTabs.getByRole('tab', { name: 'First tab' }).focus();
+				await page.keyboard.press('ArrowRight');
+				await page.keyboard.press(key);
+				await expect(kolTabs.getByRole('tab', { name: 'Second tab' })).toHaveAttribute('aria-selected', 'true');
+				await page.waitForTimeout(100);
+
+				expect(await page.evaluate(() => (window as unknown as { selectCalls: number[] }).selectCalls)).toEqual([1]);
+			});
+		}
+
+		test('it resets the keyboard focus position when the focus leaves the tab list', async ({ page }) => {
+			await page.setContent(content);
+			const kolTabs = page.locator('kol-tabs');
+
+			await kolTabs.getByRole('tab', { name: 'First tab' }).focus();
+			await page.keyboard.press('ArrowRight');
+			await expect(kolTabs.getByRole('tab', { name: 'Second tab' })).toBeFocused();
+
+			await page.locator('#after').focus();
+			await kolTabs.getByRole('tab', { name: 'First tab' }).focus();
+			await page.keyboard.press('ArrowRight');
+
+			await expect(kolTabs.getByRole('tab', { name: 'Second tab' })).toBeFocused();
 		});
 	});
 });

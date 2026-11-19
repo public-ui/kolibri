@@ -2,7 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
-import { devHint } from '../../../schema';
+import { devHint, trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
@@ -11,18 +11,24 @@ import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
+import { resolveFcProps } from '../props-from-config';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
-import type { LinkApi } from './api';
+import { linkPropsConfig, type LinkApi } from './api';
 
 const linkBem = bem.forBlock('kol-link');
+
+export type LinkFCProps = FunctionalComponentProps<LinkApi> & {
+	/** Ref of the `.kol-link` root. */
+	ref?: (element?: HTMLElement) => void;
+};
 
 /**
  * Children replace the expert `<slot>`: a consumer that renders `LinkFC` inside its own shadow
  * root passes the expert content directly (e.g. the tree item's chevron and label), since a slot
  * there would only project that consumer's light DOM.
  */
-export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) => {
+export const LinkFC: FC<LinkFCProps> = (props, children) => {
 	const {
 		accessKey,
 		ariaControls,
@@ -42,6 +48,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 		inline,
 		label,
 		on,
+		ref,
 		refAnchor,
 		refTooltip,
 		role,
@@ -50,7 +57,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 		target,
 		variant,
 		expertSlot,
-	} = props;
+	} = resolveFcProps(linkPropsConfig, props);
 
 	const translateOpenLinkInTab = translate('kol-open-link-in-tab');
 
@@ -67,7 +74,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 		download: typeof download === 'string' ? download : undefined,
 	};
 
-	if (hideLabel === true && !label) {
+	if (hideLabel === true && trimLabel(label) === '') {
 		devHint(`[KolLink] An aria-label must be set when _hide-label is set.`);
 	}
 
@@ -76,6 +83,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 	return (
 		<BemRootNodeFC
 			block="kol-link"
+			ref={ref}
 			class={clsx(hostClass, {
 				[customClass]: variant.includes('custom') && customClass.length > 0,
 				[classNameFromVariant(variant, 'link')]: variant.length > 0,
@@ -88,10 +96,12 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 				standalone: inline === false,
 			}}
 		>
-			{/* eslint-disable-next-line jsx-a11y/click-events-have-key-events -- <a href> is natively keyboard-accessible (Enter triggers click); onKeyPress would cause a double-dispatch bug. */}
+			{/* An explicit `href` on the element tells jsx-a11y that the anchor is interactive; the
+			    value comes from `tagAttrs`, so the fallback stays identical. */}
 			<a
 				ref={refAnchor}
 				{...tagAttrs}
+				href={tagAttrs.href}
 				accessKey={accessKey || undefined}
 				aria-current={ariaCurrent || undefined}
 				aria-controls={ariaControls || undefined}
@@ -99,7 +109,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 				aria-disabled={disabled ? 'true' : undefined}
 				aria-expanded={ariaExpanded === '' ? undefined : ariaExpanded}
 				aria-owns={ariaOwns || undefined}
-				aria-label={hideLabel && typeof label === 'string' ? `${label}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined}
+				aria-label={hideLabel && trimLabel(label) !== '' ? `${trimLabel(label)}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined}
 				aria-keyshortcuts={shortKey || undefined}
 				class={linkBem('interactive-element')}
 				{...on}
@@ -118,7 +128,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 				<div class="kol-link__tooltip">
 					<TooltipFC
 						badgeText={accessKey || shortKey || ''}
-						label={typeof label === 'string' ? label : typeof href === 'string' ? href : ''}
+						label={trimLabel(label) !== '' ? label : typeof href === 'string' ? href : ''}
 						refFloating={refTooltip}
 					/>
 				</div>

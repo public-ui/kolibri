@@ -139,18 +139,14 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.locator(tooltip)).not.toBeVisible();
 		});
 
-		/*
-		 * Today's behavior, pinned unchanged: the field dispatches its own `keydown` CustomEvent on the host, which reaches
-		 * the document before the native Escape key and consumes the tooltip's one-time Escape listener (#11032).
-		 */
-		test('keeps the tooltip on Escape while the input has the focus', async ({ page }) => {
+		// The KoliBri `keydown` event of the field reaches the document before the native Escape; it must not use up the listener.
+		test('hides the tooltip on Escape while the input has the focus', async ({ page }) => {
 			await page.locator('input.kol-input').focus();
 			await expect(page.locator(tooltip)).toBeVisible();
 
 			await page.keyboard.press('Escape');
-			await page.waitForTimeout(500);
 
-			await expect(page.locator(tooltip)).toBeVisible();
+			await expect(page.locator(tooltip)).toBeHidden();
 		});
 	});
 
@@ -178,7 +174,8 @@ test.describe(COMPONENT_NAME, () => {
 			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
 			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
 			touchedAfterBlur: true,
-			initialValue: '#000000',
+			// Without a preset value the prop stays unset; the native initial value is read via getValue().
+			initialValue: undefined,
 			formData: [],
 			experimentalFormData: [['field', TEST_VALUE]],
 			syncedValue: TEST_VALUE,

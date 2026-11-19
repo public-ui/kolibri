@@ -10,7 +10,8 @@ type Arguments = {
 };
 export const alignFloatingElements = async ({ floatingElement, referenceElement, arrowElement, align = 'top' }: Arguments) => {
 	if (!isTestMode()) {
-		const middleware = [offset(arrowElement?.offsetHeight ?? 10), flip(), shift()];
+		// An arrow without height (e.g. the unstyled popover arrow) keeps the default distance, like a missing arrow.
+		const middleware = [offset(arrowElement?.offsetHeight || 10), flip(), shift()];
 		if (arrowElement) {
 			middleware.push(arrow({ element: arrowElement }));
 		}

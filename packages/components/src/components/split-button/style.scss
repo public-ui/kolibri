@@ -7,7 +7,7 @@
 
 @layer kol-component {
 	@include kol-icon-styles();
-	@include kol-button-wc-box-styles('kol-button');
+	@include kol-embedded-button-box-styles('kol-button');
 	@include kol-popover-button-styles;
 
 	.kol-split-button {

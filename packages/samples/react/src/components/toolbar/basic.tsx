@@ -28,6 +28,9 @@ export const ToolbarBasic: FC = () => {
 			},
 		},
 		{
+			type: 'hr',
+		},
+		{
 			type: 'link',
 			_href: '#/back-page',
 			_label: 'Simple Link 1',
@@ -36,6 +39,9 @@ export const ToolbarBasic: FC = () => {
 			type: 'link',
 			_href: '#/back-page',
 			_label: 'Simple Link 3',
+		},
+		{
+			type: 'hr',
 		},
 		{
 			type: 'button',

@@ -1,6 +1,6 @@
 /**
- * The reviewer comment – one pull-request comment per reviewer that carries the approvals as a
- * machine-readable block:
+ * The reviewer comment – one pull-request comment (or the text of a pull-request review) per
+ * reviewer that carries the approvals as a machine-readable block:
  *
  *   <!-- visual-review:v1
  *   {"approveAll":{"digest":"sha256:…"},
@@ -15,8 +15,9 @@
  * `approveAll.digest` approves the whole report whose digest matches – the way to approve hundreds of
  * changes (browser bump) without exceeding GitHub's comment size.
  *
- * A reviewer may edit the comment or post a new one – the status workflow counts only the newest
- * comment per reviewer (review-status.mjs).
+ * A reviewer may edit the comment or post a new one, as a comment or as the text of a review – the
+ * status workflow counts only the newest one per reviewer (review-status.mjs). A dismissed review
+ * does not count (update-review.mjs).
  *
  * The review page (packages/tools/visual-tests/review-ui) writes this format; the status workflow
  * reads it. Keep both in sync.

@@ -49,6 +49,13 @@
 			border-bottom: to-rem(1) solid var(--color-primary);
 		}
 
+		&__tablist {
+			display: var(--display);
+
+			gap: var(--button-group-gap);
+			flex-wrap: wrap;
+		}
+
 		.kol-button {
 			color: var(--color-subtle);
 			background-color: transparent;
@@ -157,10 +164,6 @@
 
 		&__panel {
 			height: 100%;
-		}
-
-		.kol-button-wc {
-			width: 100%;
 		}
 
 		*[tabindex][role='tabpanel']:focus {

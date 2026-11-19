@@ -1,6 +1,19 @@
-import { describe, expect, it } from '@jest/globals';
+import { afterAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
+import { Log } from '../../../schema/utils/dev.utils';
 import type { SimpleProp } from './factory';
 import { createDependentPropDefinition, createPropDefinition } from './factory';
+
+const toText = (message: unknown): string => (Array.isArray(message) ? message.join(' ') : String(message));
+const warn = jest.spyOn(Log, 'warn').mockImplementation(() => undefined);
+const warnings = (): string[] => warn.mock.calls.map(([message]) => toText(message));
+
+beforeEach(() => {
+	warn.mockClear();
+});
+
+afterAll(() => {
+	warn.mockRestore();
+});
 
 describe('createPropDefinition', () => {
 	describe('getDefaultValue', () => {
@@ -57,6 +70,21 @@ describe('createPropDefinition', () => {
 			expect(callback).toHaveBeenCalledWith('default');
 		});
 
+		it.each([undefined, null])('should pass every instance its own copy of an object default value for %p', (value) => {
+			type MyProp = SimpleProp<'myProp', { nested: string[] }>;
+			const def = createPropDefinition<MyProp>('myProp', { nested: [] }, (v) => v as { nested: string[] });
+
+			const callback = jest.fn<(normalized: { nested: string[] }) => void>();
+			def.apply(value, callback);
+			def.apply(value, callback);
+			const [[first], [second]] = callback.mock.calls;
+			first.nested.push('mutated');
+
+			expect(second).not.toBe(first);
+			expect(second).toEqual({ nested: [] });
+			expect(def.getDefaultValue()).toEqual({ nested: [] });
+		});
+
 		it('should normalize and apply a provided value', () => {
 			type MyProp = SimpleProp<'myProp', number>;
 			const def = createPropDefinition<MyProp>('myProp', 0, (v) => Number(v));
@@ -104,6 +132,30 @@ describe('createPropDefinition', () => {
 			def.apply('value', callback);
 
 			expect(callback).not.toHaveBeenCalled();
+		});
+
+		it('should warn that the property stays unset when a required prop without a default receives no value', () => {
+			type MyProp = SimpleProp<'myProp', string>;
+			const def = createPropDefinition<MyProp>('myProp', undefined, (v) => v as string);
+
+			const callback = jest.fn();
+			def.apply(undefined, callback, true);
+
+			expect(callback).toHaveBeenCalledWith(undefined);
+			expect(warnings()).toEqual([expect.stringContaining(`The required property '_myProp' did not receive a value. The property stays unset.`)]);
+		});
+
+		it('should warn that the default value is used when a required prop with a default receives no value', () => {
+			type MyProp = SimpleProp<'myPropWithDefault', string>;
+			const def = createPropDefinition<MyProp>('myPropWithDefault', 'default', (v) => v as string);
+
+			const callback = jest.fn();
+			def.apply(undefined, callback, true);
+
+			expect(callback).toHaveBeenCalledWith('default');
+			expect(warnings()).toEqual([
+				expect.stringContaining(`The required property '_myPropWithDefault' did not receive a value. The default value is used instead.`),
+			]);
 		});
 	});
 });
@@ -161,6 +213,21 @@ describe('createDependentPropDefinition', () => {
 			def.apply(null, callback, { dep: true });
 
 			expect(callback).toHaveBeenCalledWith('default');
+		});
+
+		it.each([undefined, null])('should pass every instance its own copy of an object default value for %p', (value) => {
+			type MyProp = SimpleProp<'myProp', { nested: string[] }>;
+			const def = createDependentPropDefinition<MyProp, { dep: boolean }>('myProp', { nested: [] }, (v) => v as { nested: string[] });
+
+			const callback = jest.fn<(normalized: { nested: string[] }) => void>();
+			def.apply(value, callback, { dep: true });
+			def.apply(value, callback, { dep: true });
+			const [[first], [second]] = callback.mock.calls;
+			first.nested.push('mutated');
+
+			expect(second).not.toBe(first);
+			expect(second).toEqual({ nested: [] });
+			expect(def.getDefaultValue()).toEqual({ nested: [] });
 		});
 
 		it('should normalize and apply a provided value with deps', () => {

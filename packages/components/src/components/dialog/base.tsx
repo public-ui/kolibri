@@ -9,9 +9,11 @@ import { CardFC } from '../../internal/functional-components/card/component';
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import { dialogPropsConfig } from '../../internal/functional-components/dialog/api';
 import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
+import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { dialogCallbacksProp, labelProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
-import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
+import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
+import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
+import { trimLabel } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -19,19 +21,12 @@ import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 
 /**
- * The card variant renders no link, so its anchor never exists: the card's own `_on` callbacks
- * describe that anchor, and its ref is never called.
- */
-const NOOP = (): void => {};
-
-/**
- * Orchestrator shared by `kol-dialog`, the deprecated `kol-modal` and the transitional
- * `kol-dialog-wc`. All three render the same `DialogFC`; the concrete element only declares the
- * Stencil members and delegates from its watchers, methods and lifecycle hooks.
+ * Orchestrator shared by `kol-dialog` and the deprecated `kol-modal`. Both render the same
+ * `DialogFC`; the concrete element only declares the Stencil members and delegates from its
+ * watchers, methods and lifecycle hooks.
  *
- * The card variant renders `CardFC` directly instead of the transitional `kol-card-wc`, so this
- * class also owns what that element used to orchestrate: the close button's resolved props, its
- * tooltip behavior and its ref.
+ * The card variant renders `CardFC` directly, so this class also owns the close button's resolved
+ * props, its tooltip behavior and its ref.
  */
 export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi> {
 	protected abstract readonly host?: HTMLElement;
@@ -45,11 +40,12 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 	/** Resolved once in `componentWillLoad`: the close button's configuration never changes. */
 	private cardCloseButtonProps!: ResolvedButtonProps;
 
+	protected readonly propsConfig: PropsConfigShape = dialogPropsConfig;
+
 	// --- Lifecycle ---
 
-	protected initDialogRenderProps(): void {
-		this.initRenderProps(dialogPropsConfig);
-
+	/** Resolves the card close button's props and hands them to its tooltip behavior. */
+	protected initCardCloseButton(): void {
 		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
 		this.cardCloseTooltipBehavior.componentWillLoad({
 			label: this.cardCloseButtonProps.label,
@@ -71,8 +67,8 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 
 	// --- Prop application ---
 
-	protected applyLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	protected applyLabel(value?: LabelLangSegmentsPropType): void {
+		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	protected applyLevel(value?: HeadingLevel): void {
@@ -87,7 +83,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 		variantDialogProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
-	protected applyWidth(value?: string): void {
+	protected applyWidth(value?: WidthPropType): void {
 		widthProp.apply(value, (v) => this.setRenderProp('width', v));
 	}
 
@@ -112,6 +108,11 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 			}
 		} else {
 			dialog?.show?.();
+		}
+
+		this.getRenderProp('on').onToggle?.(true);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.toggle);
 		}
 	}
 
@@ -142,8 +143,10 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 
 		unlockScroll(this);
 		this.getRenderProp('on').onClose?.();
+		this.getRenderProp('on').onToggle?.(false);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
+			dispatchDomEvent(this.host, KolEvent.toggle);
 		}
 	};
 
@@ -168,19 +171,13 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 		return {
 			ariaDescriptionId: this.getState('ariaDescriptionId'),
 			closeButtonProps: this.cardCloseButtonProps,
-			handleBlur: NOOP,
 			handleClose: this.handleCardClose,
-			handleFocus: NOOP,
 			hasCloser: true,
 			headingId: this.getState('headingId'),
-			href: '',
 			label: this.getRenderProp('label'),
 			level: this.getRenderProp('level'),
-			on: {},
 			refCloseButton: this.cardCloseButtonRef,
-			refCta: NOOP,
 			refTooltip: this.cardCloseTooltipBehavior.setTooltipElementRef,
-			target: '',
 		};
 	}
 
@@ -193,7 +190,7 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 				blockClass={dialogBlockClass(variant)}
 				handleCancel={this.handleCancel}
 				handleClose={this.handleClose}
-				label={this.getRenderProp('label')}
+				label={trimLabel(this.getRenderProp('label'))}
 				labelledBy={isCard ? this.getState('headingId') : undefined}
 				modal={this.getState('modal')}
 				refDialog={this.dialogRef}

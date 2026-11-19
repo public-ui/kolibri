@@ -1,4 +1,4 @@
-import { expect, type Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
 test.describe('kol-form', () => {
@@ -56,6 +56,42 @@ test.describe('kol-form', () => {
 				await expect(eventPromise).resolves.toBeUndefined();
 			});
 		});
+	});
+
+	test.describe('Button submit and reset', () => {
+		/** Resolves with the order in which the `_on` callback and the DOM event arrive on the kol-form host. */
+		const watchCallbackAndDomEvent = async (kolForm: Locator, callbackName: 'onSubmit' | 'onReset', eventName: 'submit' | 'reset'): Promise<string[]> =>
+			kolForm.evaluate(
+				(element: HTMLKolFormElement, { callbackName, eventName }: { callbackName: string; eventName: string }) =>
+					new Promise<string[]>((resolve) => {
+						const order: string[] = [];
+						element._on = {
+							[callbackName]: () => {
+								order.push('callback');
+							},
+						};
+						element.addEventListener(eventName, () => {
+							order.push('dom-event');
+							resolve(order);
+						});
+					}),
+				{ callbackName, eventName },
+			);
+
+		for (const [type, callbackName, eventName] of [
+			['submit', 'onSubmit', 'submit'],
+			['reset', 'onReset', 'reset'],
+		] as const) {
+			test(`should run callback and emit the ${eventName} event on the host when a kol-button of type ${type} inside the form is clicked`, async ({ page }) => {
+				await page.setContent(`<kol-form><kol-button _label="Button" _type="${type}"></kol-button></kol-form>`);
+				const kolForm = page.locator('kol-form');
+
+				const orderPromise = watchCallbackAndDomEvent(kolForm, callbackName, eventName);
+				await kolForm.locator('kol-button button').click();
+
+				await expect(orderPromise).resolves.toEqual(['callback', 'dom-event']);
+			});
+		}
 	});
 
 	test.describe('Error list', () => {

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="kol-meter" data-name="kol-meter" width="720" height="38" viewBox="0 0 720 38">
+  <g id="kol-meter" data-name="kol-meter"><rect x="0" y="0" width="720.0" height="38.0" fill="rgb(255, 255, 255)" stroke="none"/>
+    <g id="kol-meter" data-name="kol-meter">
+      <g id="kol-meter__bar" data-name="kol-meter__bar">
+        <g id="kol-meter__bar-label" data-name="kol-meter__bar-label"><text x="0.0" y="15.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">Speicher</text></g>
+        <g id="kol-meter__bar-track" data-name="kol-meter__bar-track"></g>
+        <g id="kol-meter__value-unit" data-name="kol-meter__value-unit">
+          <g id="kol-meter__value" data-name="kol-meter__value"><text x="682.4" y="34.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">75</text></g>
+          <g id="kol-meter__unit" data-name="kol-meter__unit"><text x="702.8" y="34.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">%</text></g></g></g></g></g>
+</svg>

@@ -1,3 +1,4 @@
+import type { TabIndexPropType } from '../../schema/props/tab-index';
 import { a11yHint } from '../../schema/utils/a11y.tipps';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
@@ -22,7 +23,7 @@ import { normalizeInteger } from './helpers/normalizers';
  * @see https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
  */
-export type TabIndexProp = SimpleProp<'tabIndex', number>;
+export type TabIndexProp = SimpleProp<'tabIndex', TabIndexPropType>;
 export const tabIndexProp = createPropDefinition<TabIndexProp>('tabIndex', 0, normalizeInteger, undefined, {
 	hints: (_propName, value) => {
 		if (typeof value === 'number' && value > 0) {

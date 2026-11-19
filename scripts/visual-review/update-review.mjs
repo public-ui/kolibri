@@ -4,8 +4,9 @@
  *   node scripts/visual-review/update-review.mjs --mode publish|status --pr <n> --head <sha> --report <report.json> --status-out <status.json> --page-url <url>
  *   node scripts/visual-review/update-review.mjs --mode pending|docs-only|no-visual|failed --pr <n> --head <sha> --page-url <url>
  *
- * publish/status: reads the reviewers' comments, checks their repository permission, computes the
- * status (review-status.mjs), writes status.json next to the report and upserts the summary comment.
+ * publish/status: reads the reviewers' comments and the texts of their reviews, checks their
+ * repository permission, computes the status (review-status.mjs), writes status.json next to the
+ * report and upserts the summary comment.
  */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -35,7 +36,7 @@ export async function updateReview({ api, repository, mode, pr, head, reportFile
 
 	const report = JSON.parse(fs.readFileSync(reportFile, 'utf8'));
 	const comments = await api.paginate(`repos/${repository}/issues/${pr}/comments`);
-	const reviews = await collectReviews(api, repository, comments);
+	const reviews = await collectReviews(api, repository, [...comments.map(commentSource), ...(await listPullReviews(api, repository, pr))]);
 	const result = computeStatus(report, reviews);
 
 	fs.mkdirSync(path.dirname(statusOut), { recursive: true });
@@ -47,14 +48,61 @@ export async function updateReview({ api, repository, mode, pr, head, reportFile
 	return result;
 }
 
-async function collectReviews(api, repository, comments) {
+/** A pull-request comment in the shape `collectReviews` reads. */
+function commentSource(comment) {
+	return { login: comment.user?.login, isBot: comment.user?.type === 'Bot', body: comment.body, updatedAt: comment.updated_at };
+}
+
+const REVIEWS_QUERY = `query ($owner: String!, $name: String!, $pr: Int!, $after: String) {
+	repository(owner: $owner, name: $name) {
+		pullRequest(number: $pr) {
+			reviews(first: 100, after: $after) {
+				pageInfo { hasNextPage endCursor }
+				nodes { author { __typename login } body state submittedAt lastEditedAt }
+			}
+		}
+	}
+}`;
+// A pending review is not submitted yet; dismissing a review withdraws it.
+const IGNORED_REVIEW_STATES = new Set(['DISMISSED', 'PENDING']);
+
+/**
+ * The submitted reviews of a pull request in the shape `collectReviews` reads. GraphQL instead of
+ * REST, because only GraphQL tells when the text of a review was edited – which decides whether it
+ * is the newest verdict of its author.
+ */
+export async function listPullReviews(api, repository, pr) {
+	const [owner, name] = repository.split('/');
+	const sources = [];
+	let after = null;
+	do {
+		const data = await api.graphql(REVIEWS_QUERY, { owner, name, pr, after });
+		const reviews = data.repository.pullRequest.reviews;
+		for (const review of reviews.nodes) {
+			if (IGNORED_REVIEW_STATES.has(review.state) || !review.author) continue;
+			sources.push({
+				login: review.author.login,
+				isBot: review.author.__typename === 'Bot',
+				body: review.body,
+				updatedAt: review.lastEditedAt ?? review.submittedAt,
+			});
+		}
+		after = reviews.pageInfo.hasNextPage ? reviews.pageInfo.endCursor : null;
+	} while (after);
+	return sources;
+}
+
+/**
+ * @param sources [{ login, isBot, body, updatedAt }] – pull-request comments and review texts alike
+ */
+export async function collectReviews(api, repository, sources) {
 	const roles = new Map();
 	const reviews = [];
-	for (const comment of comments) {
-		if (comment.user?.type === 'Bot') continue;
-		const data = parseReviewComment(comment.body);
+	for (const source of sources) {
+		if (source.isBot) continue;
+		const data = parseReviewComment(source.body);
 		if (!data) continue;
-		const login = comment.user.login;
+		const login = source.login;
 		if (!roles.has(login)) {
 			roles.set(
 				login,
@@ -64,7 +112,7 @@ async function collectReviews(api, repository, comments) {
 					.catch(() => 'none'),
 			);
 		}
-		reviews.push({ author: login, role: roles.get(login), data, updatedAt: comment.updated_at });
+		reviews.push({ author: login, role: roles.get(login), data, updatedAt: source.updatedAt });
 	}
 	return reviews;
 }

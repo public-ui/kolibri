@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { CI_IGNORED_PATHS, isIgnoredByCi, resolveContext } from '../../../../scripts/visual-review/resolve-context.mjs';
+import { CI_IGNORED_PATHS, isIgnoredByCi } from '../../../../scripts/ci-ignored-paths.mjs';
+import { resolveContext } from '../../../../scripts/visual-review/resolve-context.mjs';
 
 const REPO = 'public-ui/kolibri';
 
@@ -60,6 +61,7 @@ describe('resolveContext', () => {
 				{ name: 'visual-tests (theme-default)', conclusion: 'success' },
 				{ name: 'build-and-check', conclusion: 'success' },
 			],
+			'repos/public-ui/kolibri/actions/runs/7/artifacts': [{ name: 'visual-review-theme-default' }],
 		});
 		const context = await resolveContext({
 			eventName: 'workflow_run',
@@ -68,6 +70,21 @@ describe('resolveContext', () => {
 			repository: REPO,
 		});
 		assert.deepEqual(context, { mode: 'publish', pr: 42, head: 'head1', runId: 7, reason: 'CI run 7 completed' });
+	});
+
+	it('reports success when the visual jobs produced no report artifacts', async () => {
+		const api = fakeApi({
+			'repos/public-ui/kolibri/commits/head1/pulls': [OPEN_PULL],
+			'repos/public-ui/kolibri/actions/runs/7/jobs': [{ name: 'visual-tests (theme-default)', conclusion: 'success' }],
+			'repos/public-ui/kolibri/actions/runs/7/artifacts': [],
+		});
+		const context = await resolveContext({
+			eventName: 'workflow_run',
+			event: { workflow_run: { id: 7, event: 'pull_request', conclusion: 'success', head_sha: 'head1' } },
+			api,
+			repository: REPO,
+		});
+		assert.deepEqual(context, { mode: 'no-visual', pr: 42, head: 'head1', runId: 7, reason: 'visual tests produced no report' });
 	});
 
 	it('reports success when the visual jobs were skipped and skips runs without a pull request', async () => {
@@ -93,6 +110,7 @@ describe('resolveContext', () => {
 			'repos/public-ui/kolibri/commits/head1/pulls': [],
 			'repos/public-ui/kolibri/pulls?state=open&head=alice%3Afix%2Fx': [OPEN_PULL],
 			'repos/public-ui/kolibri/actions/runs/7/jobs': [{ name: 'visual-tests (theme-default)', conclusion: 'success' }],
+			'repos/public-ui/kolibri/actions/runs/7/artifacts': [{ name: 'visual-review-theme-default' }],
 		});
 		const run = {
 			id: 7,
@@ -126,6 +144,24 @@ describe('resolveContext', () => {
 		assert.equal((await resolveContext({ eventName: 'issue_comment', event: bot, api, repository: REPO })).mode, 'skip');
 		const issue = { ...human, issue: { number: 42 } };
 		assert.equal((await resolveContext({ eventName: 'issue_comment', event: issue, api, repository: REPO })).mode, 'skip');
+	});
+
+	it('recomputes the status when the trigger workflow relays a changed review text', async () => {
+		const api = fakeApi({ 'repos/public-ui/kolibri/commits/head1/pulls': [OPEN_PULL] });
+		const run = { id: 9, event: 'pull_request_review', conclusion: 'success', head_sha: 'head1' };
+		assert.deepEqual(await resolveContext({ eventName: 'workflow_run', event: { workflow_run: run }, api, repository: REPO }), {
+			mode: 'status',
+			pr: 42,
+			head: 'head1',
+			runId: null,
+			reason: 'review changed',
+		});
+
+		const withoutBlock = { workflow_run: { ...run, conclusion: 'skipped' } };
+		assert.equal((await resolveContext({ eventName: 'workflow_run', event: withoutBlock, api, repository: REPO })).mode, 'skip');
+
+		const closed = fakeApi({ 'repos/public-ui/kolibri/commits/head1/pulls': [{ ...OPEN_PULL, state: 'closed' }] });
+		assert.equal((await resolveContext({ eventName: 'workflow_run', event: { workflow_run: run }, api: closed, repository: REPO })).mode, 'skip');
 	});
 
 	it('marks a fresh push pending, unless only ignored files changed', async () => {

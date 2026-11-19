@@ -1,3 +1,4 @@
+import type { UnitPropType } from '../../schema/props/unit';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -25,5 +26,5 @@ import { normalizeString } from './helpers/normalizers';
  * @see https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html
  * @see https://www.w3.org/TR/wai-aria-1.2/#aria-valuetext
  */
-export type UnitProp = SimpleProp<'unit', string>;
+export type UnitProp = SimpleProp<'unit', UnitPropType>;
 export const unitProp = createPropDefinition<UnitProp>('unit', '%', normalizeString, (v) => v.length > 0);

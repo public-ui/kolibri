@@ -1,0 +1,618 @@
+import type { JSX, VNode } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	AccessKeyPropType,
+	AriaDetailsPropType,
+	AutoCompletePropType,
+	ClickableElement,
+	DisabledPropType,
+	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IconsHorizontalPropType,
+	InputDateProps,
+	InputDateTypePropType,
+	InputTypeOnDefault,
+	InternalButtonProps,
+	Iso8601,
+	KolFocusOptions,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	NamePropType,
+	NumberString,
+	ReadOnlyPropType,
+	RequiredPropType,
+	ShortKeyPropType,
+	Stringified,
+	SuggestionsPropType,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	TouchedPropType,
+	VariantClassNamePropType,
+} from '../../schema';
+import { deprecatedHint } from '../../schema';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import type { DateValueType } from '../../internal/functional-components/form-field/date-value';
+import { getDateValueType, remapDateValue } from '../../internal/functional-components/form-field/date-value';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { InputDateApi } from '../../internal/functional-components/input-date/api';
+import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
+import {
+	accessKeyProp,
+	autoCompleteProp,
+	horizontalIconsProp,
+	inputDateMaxProp,
+	inputDateMinProp,
+	inputDateTypeProp,
+	inputDateValueProp,
+	readOnlyProp,
+	requiredProp,
+	shortKeyProp,
+	smartButtonProp,
+	stepProp,
+	suggestionsProp,
+	variantProp,
+} from '../../internal/props';
+import type { InputDateDeps } from '../../internal/props/helpers/iso-date';
+import clsx from '../../utils/clsx';
+import { createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { submitFormOnEnter } from '../form/controller';
+
+/**
+ * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.
+ *
+ * @slot - The label of the input field.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
+ */
+@Component({
+	tag: 'kol-input-date',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
+})
+export class KolInputDate
+	extends BaseFormFieldWebComponent<InputDateApi>
+	implements ClickableElement, FocusableElement, InputDateProps, WebComponentInterface<InputDateApi>
+{
+	@Element() protected readonly host?: HTMLKolInputDateElement;
+
+	@State() public id = createUniqueId('input-date');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
+	@State() public inputHasFocus = false;
+
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+
+	/** Type in which `_value` was set; `getValue()` and the events return the value in this type. */
+	private valueType: DateValueType = null;
+
+	/**
+	 * Whether the field has a value, rendered as the root class `has-value`. It is a plain field, not
+	 * state: it follows the initial value and every `change`, and the class follows with the next
+	 * render (#11053).
+	 */
+	private hasValue = false;
+
+	protected readonly propsConfig: PropsConfigShape = inputDatePropsConfig;
+
+	public constructor() {
+		super();
+		this.initFormAssociation('date', this._name);
+	}
+
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: AccessKeyPropType): void {
+		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		validateAccessAndShortKey(value, this._shortKey);
+	}
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Defines whether the input can be auto-completed.
+	 */
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+
+	@Watch('_autoComplete')
+	public watchAutoComplete(value?: AutoCompletePropType): void {
+		autoCompleteProp.apply(value, (v) => this.setRenderProp('autoComplete', v));
+	}
+
+	/**
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
+	 */
+	@Prop() public _disabled?: DisabledPropType = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: DisabledPropType): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop() public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 */
+	@Prop() public _hideLabel?: HideLabelPropType = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: HideLabelPropType): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: HintPropType = '';
+
+	@Watch('_hint')
+	public watchHint(value?: HintPropType): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsHorizontalPropType): void {
+		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the maximum value of the element.
+	 */
+	@Prop() public _max?: Iso8601 | Date = undefined;
+
+	@Watch('_max')
+	public watchMax(value?: Iso8601 | Date): void {
+		inputDateMaxProp.apply(value, (v) => this.setRenderProp('max', v), this.dateDeps);
+	}
+
+	/**
+	 * Defines the smallest possible input value.
+	 */
+	@Prop() public _min?: Iso8601 | Date = undefined;
+
+	@Watch('_min')
+	public watchMin(value?: Iso8601 | Date): void {
+		inputDateMinProp.apply(value, (v) => this.setRenderProp('min', v), this.dateDeps);
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType = undefined;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Defines the callback functions for input events.
+	 */
+	@Prop() public _on?: InputTypeOnDefault = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Makes the input element read only.
+	 */
+	@Prop() public _readOnly?: ReadOnlyPropType = false;
+
+	@Watch('_readOnly')
+	public watchReadOnly(value?: ReadOnlyPropType): void {
+		readOnlyProp.apply(value, (v) => this.setRenderProp('readOnly', v));
+	}
+
+	/**
+	 * Makes the input element required.
+	 */
+	@Prop() public _required?: RequiredPropType = false;
+
+	@Watch('_required')
+	public watchRequired(value?: RequiredPropType): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
+	/**
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 */
+	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
+
+	@Watch('_smartButton')
+	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
+		if (value === undefined || value === null) {
+			this.unsetRenderProp('smartButton');
+		} else {
+			smartButtonProp.apply(value, (v) => this.setRenderProp('smartButton', v));
+		}
+	}
+
+	/**
+	 * Suggestions to provide for the input.
+	 */
+	@Prop() public _suggestions?: SuggestionsPropType = undefined;
+
+	@Watch('_suggestions')
+	public watchSuggestions(value?: SuggestionsPropType): void {
+		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines the step size for value changes.
+	 */
+	@Prop() public _step?: number | NumberString = undefined;
+
+	@Watch('_step')
+	public watchStep(value?: number | NumberString): void {
+		stepProp.apply(value, (v) => this.setRenderProp('step', v));
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: TouchedPropType): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines either the type of the component or of the components interactive element.
+	 */
+	@Prop() public _type: InputDateTypePropType = 'date';
+
+	@Watch('_type')
+	public watchType(value?: InputDateTypePropType): void {
+		inputDateTypeProp.apply(value, (v) => this.setRenderProp('type', v));
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null = undefined;
+
+	/** A value reset to `null` keeps the remembered type. */
+	@Watch('_value')
+	public watchValue(value?: Iso8601 | Date | null): void {
+		if (value instanceof Date) {
+			deprecatedHint('Date type will be removed in v3. Use `Iso8601` instead.');
+		}
+		inputDateValueProp.apply(value, (v) => this.setRenderProp('value', v), this.dateDeps);
+		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value') ?? null);
+		if (value !== undefined && value !== null) {
+			this.valueType = getDateValueType(value);
+		}
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+	}
+
+	/**
+	 * Returns the current value.
+	 */
+	@Method()
+	public getValue(): Promise<string | Date | undefined | null> {
+		return Promise.resolve(this.ctaRef.el && remapDateValue(this.ctaRef.el.value, this.valueType));
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
+
+	/**
+	 * Resets the component's value.
+	 */
+	@Method()
+	public reset(): Promise<void> {
+		// `_value` keeps its value; only the rendered and the form value are cleared.
+		this.setRenderProp('value', undefined as unknown as string);
+		// The class must follow the cleared field immediately, not at the next change event.
+		this.hasValue = false;
+		forceUpdate(this);
+		this.formAssociation.setFormAssociatedValue('');
+
+		// Setting the render value might not change the native element if the previous value is already an empty string,
+		// which can occur during an incomplete input. Directly setting the DOM property "forces" a reset of the native element.
+		if (this.ctaRef.el) {
+			this.ctaRef.el.value = '';
+		}
+		return Promise.resolve();
+	}
+
+	public componentWillLoad(): void {
+		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
+		this.unsetRenderProp('smartButton');
+
+		if (this._value !== undefined) {
+			this.valueType = getDateValueType(this._value);
+		}
+		this._touched = this._touched === true;
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchName(this._name);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTouched(this._touched);
+		this.watchAccessKey(this._accessKey);
+		this.watchMsg(this._msg);
+		this.watchDisabled(this._disabled);
+		this.watchHideMsg(this._hideMsg);
+		this.watchHideLabel(this._hideLabel);
+		this.watchHint(this._hint);
+		this.watchInfoPopover(this._infoPopover);
+		this.watchLabel(this._label);
+		this.watchShortKey(this._shortKey);
+		this.watchSmartButton(this._smartButton);
+		this.watchOn(this._on);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchVariant(this._variant);
+		this.watchIcons(this._icons);
+		this.watchAutoComplete(this._autoComplete);
+		this.watchMax(this._max);
+		this.watchMin(this._min);
+		this.watchSuggestions(this._suggestions);
+		this.watchReadOnly(this._readOnly);
+		this.watchRequired(this._required);
+		this.watchStep(this._step);
+		this.watchType(this._type);
+		this.watchValue(this._value);
+
+		this.hasValue = Boolean(this.getRenderProp('value'));
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
+	}
+
+	public disconnectedCallback(): void {
+		this.destroyFormField();
+	}
+
+	/** The date props are validated against the raw `_type` and `_step`, not their normalized values. */
+	private get dateDeps(): InputDateDeps {
+		return { type: this._type, step: this._step };
+	}
+
+	private readValue(event: Event): Date | Iso8601 | null {
+		return remapDateValue((event.target as HTMLInputElement).value, this.valueType);
+	}
+
+	/** Writes the value before the input event is dispatched, so the watcher has run when listeners read it. */
+	private readonly handleDateInput = (event: Event): void => {
+		const value = this.readValue(event);
+		this._value = value;
+		this.handleInput(event, value);
+	};
+
+	private readonly handleDateChange = (event: Event): void => {
+		const value = this.readValue(event);
+		this.handleChange(event, value);
+		this.hasValue = Boolean(value);
+	};
+
+	/** Writes the value back when it switches between empty and set, so a reset via `_value = null` works again. */
+	private readonly handleDateBlur = (event: FocusEvent): void => {
+		this.handleBlur(event);
+		const value = (event.target as HTMLInputElement).value;
+		if (Boolean(value) !== Boolean(this._value)) {
+			this._value = value as Iso8601;
+		}
+	};
+
+	/** Enter submits the surrounding `kol-form`, unless it opens the native calendar (see `submitFormOnEnter`); Space does not open it while read-only. */
+	private readonly handleDateKeyDown = (event: KeyboardEvent): void => {
+		this.handleKeyDown(event);
+		submitFormOnEnter(event, { form: this.host, ref: this.ctaRef.el });
+		if (this.getRenderProp('readOnly') && event.code === 'Space') {
+			event.preventDefault();
+		}
+	};
+
+	/**
+	 * Props of the native `<input>` in a fixed key order; optional props are only passed when set. The
+	 * rendered attributes keep their order and presence, which the hydrate snapshot pins. An unset step is
+	 * `null`, and a value or bound is `null` only when it is set to `null`: the first render then writes the
+	 * empty value.
+	 */
+	private getInputProps(): InputFCProps {
+		const id = this.id;
+		const accessKey = this.getRenderProp('accessKey');
+		const shortKey = this.getRenderProp('shortKey');
+		const suggestions = this.getRenderProp('suggestions');
+		const { ariaDescribedBy, hasError } = this.getAria();
+
+		return {
+			id,
+			hideLabel: this.getRenderProp('hideLabel'),
+			label: this.getRenderProp('label'),
+			disabled: this.getRenderProp('disabled'),
+			// The name prop defaults to `''`; an unnamed field renders no `name` attribute.
+			name: this.getRenderProp('name') || undefined,
+			...(accessKey ? { accessKey } : {}),
+			type: this.getRenderProp('type'),
+			value: this.getRenderProp('value') ?? (this._value === null ? null : undefined),
+			required: this.getRenderProp('required'),
+			autoComplete: this.getRenderProp('autoComplete'),
+			readonly: this.getRenderProp('readOnly'),
+			min: this.getRenderProp('min') ?? (this._min === null ? null : undefined),
+			max: this.getRenderProp('max') ?? (this._max === null ? null : undefined),
+			step: this.getRenderProp('step') ?? null,
+			touched: this.getRenderProp('touched'),
+			msg: this.getRenderProp('msg'),
+			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
+			...(suggestions.length > 0 ? { suggestions: (<SuggestionsFC id={id} suggestions={suggestions} />) as VNode } : {}),
+			ref: this.ctaRef,
+			onBlur: this.handleDateBlur,
+			onChange: this.handleDateChange,
+			onClick: this.handleClick,
+			onFocus: this.handleFocus,
+			onInput: this.handleDateInput,
+			onKeyDown: this.handleDateKeyDown,
+			ariaDescribedBy,
+			'aria-invalid': hasError ? 'true' : undefined,
+		};
+	}
+
+	public render(): JSX.Element {
+		const disabled = this.getRenderProp('disabled');
+		const { startAdornment, endAdornment } = getInputAdornments({
+			icons: this.getRenderProp('icons'),
+			smartButton: this.getSmartButtonFcProps(this.getRenderProp('smartButton') as InternalButtonProps | undefined, disabled),
+		});
+
+		return (
+			<Host>
+				<FormFieldFC
+					{...this.getFormFieldProps({
+						class: clsx('kol-input-date', this.getRenderProp('type'), {
+							'has-value': this.hasValue,
+						}),
+						accessKey: this.getRenderProp('accessKey') || undefined,
+						shortKey: this.getRenderProp('shortKey') || undefined,
+						variant: this.getRenderProp('variant'),
+						required: this.getRenderProp('required'),
+						readOnly: this.getRenderProp('readOnly'),
+					})}
+				>
+					<InputContainerFC
+						disabled={disabled}
+						msg={this.getRenderProp('msg')}
+						touched={this.getRenderProp('touched')}
+						startAdornment={startAdornment}
+						endAdornment={endAdornment}
+					>
+						<InputFC {...this.getInputProps()} />
+					</InputContainerFC>
+				</FormFieldFC>
+			</Host>
+		);
+	}
+}

@@ -2,13 +2,13 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TabsApi } from '../../internal/functional-components/tabs/api';
 import { tabsPropsConfig } from '../../internal/functional-components/tabs/api';
 import type { TabsButton, TabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { createTabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { TabsFC } from '../../internal/functional-components/tabs/component';
-import { alignProp, hasCreateButtonProp, labelWithExpertSlotProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../internal/props';
+import { alignProp, hasCreateButtonProp, labelProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../internal/props';
 import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
@@ -17,6 +17,7 @@ import type {
 	KolFocusOptions,
 	KoliBriTabsCallbacks,
 	LabelPropType,
+	SelectedPropType,
 	StencilUnknown,
 	Stringified,
 	TabBehaviorPropType,
@@ -47,8 +48,11 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	@Element() protected readonly host?: HTMLKolTabsElement;
 
 	private rootElement?: HTMLDivElement;
+
 	private tabPanelHost?: HTMLDivElement;
+
 	private readonly onCreateLabel = `${translate('kol-new')} …`;
+
 	private currentFocusIndex: number | undefined;
 
 	/** Points at the button of the selected tab; `focus()` and `click()` delegate to it. */
@@ -64,16 +68,128 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	/** One orchestrated button per tab, rebuilt whenever `_tabs` changes. */
 	private tabButtonItems: TabsButtonItem[] = [];
+
 	private readonly createButtonItem = createTabsButtonItem();
 
-	// --- Lifecycle ---
+	private readonly onClickSelect = (event: MouseEvent, index: number): void => {
+		this.selectNextTabEvent(event, index);
+	};
+
+	private readonly onMouseDown = (event: Event): void => {
+		event.preventDefault();
+	};
+
+	private readonly tabButtonCallbacks: ButtonCallbacksPropType<number> = {
+		onClick: this.onClickSelect,
+		onMouseDown: this.onMouseDown,
+	};
+
+	/**
+	 * Deliberately not `@State`: `createButton` and `tabButtons` are derived from props in
+	 * `componentWillRender` (`resolveButtons`), so a prop change already schedules the render that
+	 * refreshes them.
+	 */
+	public createButton!: TabsButton;
+
+	public tabButtons: TabsButton[] = [];
+
+	protected readonly propsConfig: PropsConfigShape = tabsPropsConfig;
+
+	/**
+	 * Defines the visual orientation of the component.
+	 */
+	@Prop() public _align?: AlignPropType = 'top';
+
+	@Watch('_align')
+	public watchAlign(value?: AlignPropType): void {
+		alignProp.apply(value, (v) => this.setRenderProp('align', v));
+	}
+
+	/**
+	 * Defines which behavior is active.
+	 */
+	@Prop() public _behavior?: TabBehaviorPropType = undefined;
+
+	@Watch('_behavior')
+	public watchBehavior(value?: TabBehaviorPropType): void {
+		tabBehaviorProp.apply(value, (v) => this.setRenderProp('behavior', v));
+	}
+
+	/**
+	 * Defines whether the element has a create button.
+	 */
+	@Prop() public _hasCreateButton?: HasCreateButtonPropType = false;
+
+	@Watch('_hasCreateButton')
+	public watchHasCreateButton(value?: HasCreateButtonPropType): void {
+		hasCreateButtonProp.apply(value, (v) => this.setRenderProp('hasCreateButton', v));
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+	}
+
+	/**
+	 * Defines the callback functions for tabs events.
+	 */
+	@Prop() public _on?: KoliBriTabsCallbacks = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriTabsCallbacks): void {
+		tabsCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+	}
+
+	/**
+	 * Defines which tab is active.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _selected?: SelectedPropType = 0;
+
+	@Watch('_selected')
+	public watchSelected(value?: SelectedPropType): void {
+		this.applySelected(value);
+	}
+
+	/**
+	 * Defines the tab captions.
+	 */
+	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
+
+	@Watch('_tabs')
+	public watchTabs(value?: Stringified<TabButtonProps[]>): void {
+		this.applyTabs(value);
+	}
+
+	/**
+	 * Sets focus on the current tab button.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
+
+	/**
+	 * Triggers a click on the currently selected tab.
+	 */
+	@Method()
+	@delegateClick('ctaRef')
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initRenderProps(tabsPropsConfig);
 		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
 		tabBehaviorProp.apply(this._behavior, (v) => this.setRenderProp('behavior', v));
 		hasCreateButtonProp.apply(this._hasCreateButton, (v) => this.setRenderProp('hasCreateButton', v));
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 		tabsCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
 		this.applySelected(this._selected);
 		this.applyTabs(this._tabs);
@@ -95,24 +211,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		this.createButtonItem.destroy();
 	}
 
-	// --- Public methods ---
-
-	/**
-	 * Sets focus on the current tab button.
-	 */
-	@Method()
-	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
-
-	/**
-	 * Triggers a click on the currently selected tab.
-	 */
-	@Method()
-	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
-
 	// --- Selection ---
 
 	/**
@@ -125,11 +223,12 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	private selectNextNotDisabledTab = (selected: number, tabs: TabButtonProps[], upOrDown = true, initialSelected?: number): number => {
 		if (selected > tabs.length - 1) {
-			selected = tabs.length - 1;
-		}
-		if (selected < 0) {
 			selected = 0;
 		}
+		if (selected < 0) {
+			selected = tabs.length - 1;
+		}
+
 		if (Array.isArray(tabs) && tabs[selected]) {
 			if (tabs[selected]._disabled) {
 				if (upOrDown === true) {
@@ -163,8 +262,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		}
 	}
 
-	// --- Event handling ---
-
 	private readonly handleKeyDown = (event: KeyboardEvent): void => {
 		switch (event.key as KeyboardKey) {
 			case KeyboardKey.ArrowRight:
@@ -172,10 +269,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 				break;
 			case KeyboardKey.ArrowLeft:
 				this.goToPreviousTab(event);
-				break;
-			case KeyboardKey.Space:
-			case KeyboardKey.Enter:
-				this.activateFocusedTab(event);
 				break;
 		}
 	};
@@ -210,16 +303,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		this.selectNextTabEvent(event, nextFocusIndex, this.getKeyboardTabChangeMode());
 	}
 
-	private activateFocusedTab(event: KeyboardEvent) {
-		if (typeof this.currentFocusIndex === 'number' && this.getRenderProp('tabs')[this.currentFocusIndex]?._disabled !== true) {
-			this.onSelect(event, this.currentFocusIndex);
-		}
-	}
-
-	private readonly onClickSelect = (event: MouseEvent, index: number): void => {
-		this.selectNextTabEvent(event, index);
-	};
-
 	private selectNextTabEvent(
 		event: KeyboardEvent | MouseEvent,
 		nextTabIndex: number,
@@ -238,15 +321,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 			this.onSelect(event, nextTabIndex);
 		}
 	}
-
-	private readonly onMouseDown = (event: Event): void => {
-		event.preventDefault();
-	};
-
-	private readonly tabButtonCallbacks: ButtonCallbacksPropType<number> = {
-		onClick: this.onClickSelect,
-		onMouseDown: this.onMouseDown,
-	};
 
 	private focusTabById(index: number): void {
 		if (this.rootElement /* SSR instanceof HTMLElement */) {
@@ -271,8 +345,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 			dispatchDomEvent(this.host, KolEvent.create);
 		}
 	};
-
-	// --- Tab panels ---
 
 	private readonly setRootRef = (element?: HTMLDivElement): void => {
 		this.rootElement = element;
@@ -323,11 +395,9 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		});
 	}
 
-	// --- Render ---
-
 	/**
-	 * Resolves the embedded buttons against the current selection. The props are the ones the
-	 * predecessor handed its `kol-button-wc` elements.
+	 * Resolves the embedded buttons against the current selection. The props below define the rendered
+	 * tab buttons; the tabs snapshots pin them.
 	 */
 	private resolveButtons(): void {
 		const selected = this.getRenderProp('selected');
@@ -367,6 +437,22 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		);
 	}
 
+	private applySelected(value?: SelectedPropType): void {
+		selectedProp.apply(value, (v) => {
+			this.setRenderProp('selected', v);
+			this.syncSelected();
+		});
+	}
+
+	private applyTabs(value?: Stringified<TabButtonProps[]>): void {
+		tabsProp.apply(value, (tabs) => {
+			this.setRenderProp('tabs', tabs);
+			this.tabButtonItems.forEach((item) => item.destroy());
+			this.tabButtonItems = tabs.map(() => createTabsButtonItem());
+			this.syncSelected();
+		});
+	}
+
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -387,95 +473,5 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 				/>
 			</Host>
 		);
-	}
-
-	// --- Resolved per render pass (see `resolveButtons`) ---
-
-	/**
-	 * Deliberately not `@State`: both are derived from props in `componentWillRender`, so a prop
-	 * change already schedules the render that refreshes them.
-	 */
-	public createButton!: TabsButton;
-	public tabButtons: TabsButton[] = [];
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the visual orientation of the component.
-	 */
-	@Prop() public _align?: AlignPropType = 'top';
-	@Watch('_align')
-	public watchAlign(value?: AlignPropType): void {
-		alignProp.apply(value, (v) => this.setRenderProp('align', v));
-	}
-
-	/**
-	 * Defines which behavior is active.
-	 */
-	@Prop() public _behavior?: TabBehaviorPropType;
-	@Watch('_behavior')
-	public watchBehavior(value?: TabBehaviorPropType): void {
-		tabBehaviorProp.apply(value, (v) => this.setRenderProp('behavior', v));
-	}
-
-	/**
-	 * Defines whether the element has a create button.
-	 */
-	@Prop() public _hasCreateButton?: HasCreateButtonPropType = false;
-	@Watch('_hasCreateButton')
-	public watchHasCreateButton(value?: HasCreateButtonPropType): void {
-		hasCreateButtonProp.apply(value, (v) => this.setRenderProp('hasCreateButton', v));
-	}
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
-	}
-
-	/**
-	 * Defines the callback functions for tabs events.
-	 */
-	@Prop() public _on?: KoliBriTabsCallbacks;
-	@Watch('_on')
-	public watchOn(value?: KoliBriTabsCallbacks): void {
-		tabsCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
-	}
-
-	/**
-	 * Defines which tab is active.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _selected?: number = 0;
-	@Watch('_selected')
-	public watchSelected(value?: number): void {
-		this.applySelected(value);
-	}
-
-	/**
-	 * Defines the tab captions.
-	 */
-	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
-	@Watch('_tabs')
-	public watchTabs(value?: Stringified<TabButtonProps[]>): void {
-		this.applyTabs(value);
-	}
-
-	private applySelected(value?: number): void {
-		selectedProp.apply(value, (v) => {
-			this.setRenderProp('selected', v);
-			this.syncSelected();
-		});
-	}
-
-	private applyTabs(value?: Stringified<TabButtonProps[]>): void {
-		tabsProp.apply(value, (tabs) => {
-			this.setRenderProp('tabs', tabs);
-			this.tabButtonItems.forEach((item) => item.destroy());
-			this.tabButtonItems = tabs.map(() => createTabsButtonItem());
-			this.syncSelected();
-		});
 	}
 }

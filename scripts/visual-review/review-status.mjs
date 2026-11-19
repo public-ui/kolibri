@@ -1,13 +1,13 @@
 /**
- * Turns a merged report plus the reviewers' comments into the state of the `Visual Review` commit
- * status and the `status.json` the review page shows. Pure – no I/O.
+ * Turns a merged report plus the reviewers' comments and review texts into the state of the
+ * `Visual Review` commit status and the `status.json` the review page shows. Pure – no I/O.
  *
  * Rules:
  * - any route error → failure (the comparison itself is broken, nothing to approve)
  * - an item is approved when a reviewer with write access approved its hash (or the whole report
  *   digest) and nobody rejected that hash; a rejection wins over an approval → failure
- * - only the newest comment of each reviewer counts: a reviewer who pastes a fresh comment instead
- *   of editing the old one replaces their earlier verdicts, they do not accumulate
+ * - only the newest comment or review text of each reviewer counts: a reviewer who pastes a fresh
+ *   one instead of editing the old one replaces their earlier verdicts, they do not accumulate
  * - success once every changed/added/removed item is approved; pending otherwise
  */
 export const NEEDS_APPROVAL = new Set(['changed', 'added', 'removed']);
@@ -99,7 +99,7 @@ export function computeStatus(report, reviews) {
 	};
 }
 
-/** One review per author – the most recently updated comment; on equal timestamps the later one. */
+/** One review per author – the most recently updated comment or review text; on equal timestamps the later one. */
 function latestPerAuthor(reviews) {
 	const latest = new Map();
 	for (const review of reviews) {

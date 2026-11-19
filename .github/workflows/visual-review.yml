@@ -8,12 +8,14 @@ name: Visual Review
 # field by field before anything is published (scripts/visual-review/merge-reports.mjs).
 #
 #   workflow_run          CI-Pipeline finished for a pull request → publish report, compute status
+#                         Visual Review Trigger finished → the text of a review changed, recompute
+#                         the status from the published report (visual-review-trigger.yml)
 #   issue_comment         a reviewer comment changed → recompute the status from the published report
 #   pull_request_target   a pull request was pushed → status "pending" (or "success" for docs-only)
 #   workflow_dispatch     recompute the status of one pull request by hand
 on:
   workflow_run:
-    workflows: ['CI-Pipeline']
+    workflows: ['CI-Pipeline', 'Visual Review Trigger']
     types: [completed]
     # CI-Pipeline also runs on push to these branches; without this filter every such push would
     # start this workflow too (it would end up skipped, but still show up as a run).
@@ -43,6 +45,8 @@ env:
 
 jobs:
   resolve:
+    # A review without a visual-review block ends the trigger workflow as "skipped": nothing to do.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.event != 'pull_request_review' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     outputs:
       mode: ${{ steps.context.outputs.mode }}

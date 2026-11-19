@@ -40,22 +40,13 @@
 		cursor: pointer;
 	}
 
-	.kol-span {
-		$spanRoot: &;
-
-		&__label {
-			@at-root #{$spanRoot} &--hide-label & {
-				display: none;
-			}
-		}
-	}
-
 	/*
 	 * A disabled element stays focusable (`aria-disabled`, never the native `disabled`), so it keeps
 	 * its focus indicator; only the cursor tells that it cannot be activated. The disabled state is
 	 * addressed through the BEM `--disabled` modifier of each block.
 	 */
 	.disabled label,
+	.disabled:focus-within label,
 	.kol-accordion--disabled .kol-accordion__heading,
 	.kol-button--disabled .kol-button__interactive-element,
 	.kol-custom-suggestions-option--disabled,

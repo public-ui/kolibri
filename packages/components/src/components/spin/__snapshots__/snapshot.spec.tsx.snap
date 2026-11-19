@@ -3,9 +3,11 @@
 exports[`kol-spin should render with _show=false 1`] = `
 <kol-spin>
   <template shadowrootmode="open">
-    <span aria-busy="false" class="visually-hidden" role="alert">
-      kol-action-done
-    </span>
+    <div class="kol-spin">
+      <span aria-busy="false" class="visually-hidden" role="alert">
+        kol-action-done
+      </span>
+    </div>
   </template>
 </kol-spin>
 `;
@@ -13,15 +15,17 @@ exports[`kol-spin should render with _show=false 1`] = `
 exports[`kol-spin should render with _show=true _label="Loading" 1`] = `
 <kol-spin>
   <template shadowrootmode="open">
-    <span class="kol-spin__spinner kol-spin__spinner--dot">
-      <span class="kol-spin__spinner--dot__element kol-spin__spinner--dot__element--1 kol-spin__spinner-element kol-spin__spinner-element--1"></span>
-      <span class="kol-spin__spinner--dot__element kol-spin__spinner--dot__element--2 kol-spin__spinner-element kol-spin__spinner-element--2"></span>
-      <span class="kol-spin__spinner--dot__element kol-spin__spinner--dot__element--3 kol-spin__spinner-element kol-spin__spinner-element--3"></span>
-      <span class="kol-spin__spinner--dot__element kol-spin__spinner--dot__element--4 kol-spin__spinner-element kol-spin__spinner-element--neutral"></span>
-    </span>
-    <span aria-busy="true" class="visually-hidden" role="alert">
-      Loading
-    </span>
+    <div class="kol-spin">
+      <span class="kol-spin__spinner kol-spin__spinner--dot">
+        <span class="kol-spin__spinner-element kol-spin__spinner-element--1"></span>
+        <span class="kol-spin__spinner-element kol-spin__spinner-element--2"></span>
+        <span class="kol-spin__spinner-element kol-spin__spinner-element--3"></span>
+        <span class="kol-spin__spinner-element kol-spin__spinner-element--neutral"></span>
+      </span>
+      <span aria-busy="true" class="visually-hidden" role="alert">
+        Loading
+      </span>
+    </div>
   </template>
 </kol-spin>
 `;
@@ -29,15 +33,17 @@ exports[`kol-spin should render with _show=true _label="Loading" 1`] = `
 exports[`kol-spin should render with _show=true 1`] = `
 <kol-spin>
   <template shadowrootmode="open">
-    <span class="kol-spin__spinner kol-spin__spinner--dot">
-      <span class="kol-spin__spinner--dot__element kol-spin__spinner--dot__element--1 kol-spin__spinner-element kol-spin__spinner-element--1"></span>
-      <span class="kol-spin__spinner--dot__element kol-spin__spinner--dot__element--2 kol-spin__spinner-element kol-spin__spinner-element--2"></span>
-      <span class="kol-spin__spinner--dot__element kol-spin__spinner--dot__element--3 kol-spin__spinner-element kol-spin__spinner-element--3"></span>
-      <span class="kol-spin__spinner--dot__element kol-spin__spinner--dot__element--4 kol-spin__spinner-element kol-spin__spinner-element--neutral"></span>
-    </span>
-    <span aria-busy="true" class="visually-hidden" role="alert">
-      kol-action-running
-    </span>
+    <div class="kol-spin">
+      <span class="kol-spin__spinner kol-spin__spinner--dot">
+        <span class="kol-spin__spinner-element kol-spin__spinner-element--1"></span>
+        <span class="kol-spin__spinner-element kol-spin__spinner-element--2"></span>
+        <span class="kol-spin__spinner-element kol-spin__spinner-element--3"></span>
+        <span class="kol-spin__spinner-element kol-spin__spinner-element--neutral"></span>
+      </span>
+      <span aria-busy="true" class="visually-hidden" role="alert">
+        kol-action-running
+      </span>
+    </div>
   </template>
 </kol-spin>
 `;

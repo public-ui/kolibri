@@ -7,7 +7,7 @@ import { ButtonFC } from '../button/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { LinkFC } from '../link/component';
 import type { ToolbarApi } from './api';
-import type { ToolbarButtonItem, ToolbarLinkItem } from './item';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
 
 const BEM_CLASS_TOOLBAR__ITEM = bem.forBlock('kol-toolbar')('item');
 
@@ -21,12 +21,20 @@ type ToolbarFCProps = Pick<FunctionalComponentProps<ToolbarApi>, 'currentIndex' 
  * link's inner elements (`.kol-toolbar__item:first-child .kol-button__text`), and a wrapper in
  * the place of the former custom element keeps the flex-item box tree unchanged.
  */
-const renderItem = (record: ToolbarButtonItem | ToolbarLinkItem, index: number, currentIndex: number, location: string) => {
-	const tabIndex = index === currentIndex ? 0 : -1;
+const renderItem = (record: ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem, index: number, currentIndex: number, location: string) => {
+	/* A disabled item stays focusable, so the roving tabindex reaches it; only the `<hr>` separator
+	   is no interactive element and never becomes a tab stop. */
+	const tabIndex = index === currentIndex && record.type !== 'hr' ? 0 : -1;
 
 	return (
 		<div class={BEM_CLASS_TOOLBAR__ITEM} key={index} ref={record.refWrapper}>
-			{record.type === 'link' ? <LinkFC {...record.getFcProps(tabIndex, location)} /> : <ButtonFC {...record.getFcProps(tabIndex)} />}
+			{record.type === 'link' ? (
+				<LinkFC {...record.getFcProps(tabIndex, location)} />
+			) : record.type === 'button' ? (
+				<ButtonFC {...record.getFcProps(tabIndex)} />
+			) : (
+				<hr />
+			)}
 		</div>
 	);
 };

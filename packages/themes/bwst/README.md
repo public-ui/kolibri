@@ -1,7 +1,7 @@
 # Public UI – BWSt Theme
 
 [![npm](https://img.shields.io/npm/v/@public-ui/theme-bwst)](https://www.npmjs.com/package/@public-ui/theme-bwst)
-[![license](https://img.shields.io/npm/l/@public-ui/theme-bwst)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@public-ui/theme-bwst)](https://github.com/public-ui/kolibri/blob/develop/LICENSE)
 [![downloads](https://img.shields.io/npm/dt/@public-ui/theme-bwst)](https://www.npmjs.com/package/@public-ui/theme-bwst)
 [![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)

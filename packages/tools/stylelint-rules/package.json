@@ -11,19 +11,19 @@
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint",
 		"lint:eslint": "eslint src",
-		"test": "mocha 'src/**/*.test.js'",
-		"test:unit": "mocha 'src/**/*.test.js'",
+		"test": "mocha \"src/**/*.test.js\"",
+		"test:unit": "mocha \"src/**/*.test.js\"",
 		"unused": "knip"
 	},
 	"devDependencies": {
 		"@public-ui/eslint-config": "workspace:*",
 		"eslint": "9.39.5",
-		"knip": "6.37.0",
+		"knip": "6.42.1",
 		"mocha": "11.8.0",
 		"postcss-scss": "4.0.9",
-		"prettier": "3.9.9",
+		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.15.0"
+		"stylelint": "17.16.0"
 	},
 	"peerDependencies": {
 		"stylelint": ">=17"

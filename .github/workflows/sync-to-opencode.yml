@@ -47,6 +47,7 @@ jobs:
           - release/1
           - release/2
           - release/3
+          - release/4
     steps:
       - uses: actions/checkout@v7
         with:

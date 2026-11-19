@@ -2,7 +2,7 @@ import { KolSingleSelectTag } from '../../../core/component-names';
 import type { SingleSelectProps } from '../../../schema';
 import { executeInputSnapshotTests } from '../../../utils/testing';
 
-import { KolSingleSelect } from '../shadow';
+import { KolSingleSelect } from '../component';
 
 const options = [
 	{

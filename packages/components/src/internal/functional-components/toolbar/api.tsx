@@ -1,18 +1,18 @@
 import type { KolFocusOptions } from '../../../schema';
-import { labelWithExpertSlotProp, orientationProp, toolbarItemsProp } from '../../props';
+import { labelProp, orientationProp, toolbarItemsProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
-import type { ToolbarButtonItem, ToolbarLinkItem } from './item';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
 
 /**
  * Props configuration for the toolbar component.
  *
  * Notes on prop choices:
- * - `labelWithExpertSlotProp`, not `labelProp`: the predecessor's `validateLabel` accepted any
- *   string; `labelProp` would reject one-character labels. The toolbar has no expert slot.
+ * - `labelProp`: the label is emitted only as the `aria-label` of the toolbar and is never
+ *   rendered, so language segments would have no effect — a plain string suffices.
  * - `orientationProp` defaults to `'horizontal'`, like the predecessor's `validateOrientation`.
  */
 export const toolbarPropsConfig = {
-	required: [labelWithExpertSlotProp, toolbarItemsProp],
+	required: [labelProp, toolbarItemsProp],
 	optional: [orientationProp],
 } as const satisfies PropsConfigShape;
 
@@ -32,7 +32,7 @@ export type ToolbarApi = ApiFromConfig<
 			 * Orchestration records for the items (everything `ButtonFC` or `LinkFC` needs, built by
 			 * `createToolbarItem`), rebuilt whenever `_items` changes.
 			 */
-			itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem>;
+			itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem>;
 			/**
 			 * The current location reported by the aria-current service, `''` until one is reported.
 			 * Drives the links' `aria-current`.

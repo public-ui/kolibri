@@ -46,7 +46,7 @@ Use the `condition && <Element />` pattern to render JSX elements only when a co
 
 Avoid using `hidden={condition}` unless the element should always be present in the DOM but visually hidden.
 
-For detailed guidance on event handler patterns and memory leak prevention, see [`src/components/_skeleton/ARC42.md`](../components/_skeleton/ARC42.md#event-handler-policy).
+For detailed guidance on event handler patterns and memory leak prevention, see [`docs/ARC42-SKELETON.md`](docs/ARC42-SKELETON.md#event-handler-policy).
 
 ### Language texts
 
@@ -79,20 +79,13 @@ consistent across components.
 
 #### `_ariaDetails` — Cross-Shadow-DOM Accessible Details
 
-All form field components expose `_ariaDetails?: string` (space-separated element IDs, per W3C ARIA spec). It uses the Accessible Object Model (AOM) to cross the Shadow DOM boundary without `aria-details` on the shadow root.
+All form field components expose `_ariaDetails?: string` (space-separated element IDs, per W3C ARIA spec). It uses element references (`ariaDetailsElements`) to cross the Shadow DOM boundary without an `aria-details` attribute on the native control.
 
 **How it works:**
 
-- `AssociatedInputController` (base class for all form field controllers) owns the canonical implementation in `validateAriaDetails(value?: string)`.
-- It calls `validateAriaDetails()` from `src/schema/props/aria-details.ts`, which resolves the IDs via `resolveTargets()` and assigns the result to `ElementInternals.ariaDetailsElements`.
-- `attachInternals()` is called exactly once in the `AssociatedInputController` constructor — never again in component lifecycle hooks.
-- Each component's `@Watch('_ariaDetails')` simply delegates: `this.controller.validateAriaDetails(value)`.
-- `componentWillLoad()` calls `this.validateAriaDetails(this._ariaDetails)` to initialize on first render.
-
-**Controller inheritance chain (all share `validateAriaDetails`):**  
-`InputCheckboxController → InputCheckboxRadioController → ... → InputIconController → InputController → ControlledInputController → AssociatedInputController`
-
-**Do not** add a `validateAriaDetails` override in any subcontroller — it would silently disable the implementation via method override.
+- `BaseFormFieldWebComponent` (`src/internal/functional-components/form-field/base-web-component.tsx`) owns the implementation. `applyAriaDetails(value)` stores the prop, and `syncAriaDetails()` resolves the IDs via `resolveTargets()` and assigns the result to `ariaDetailsElements` of the native control (`input`, `select` or `textarea`) in the shadow root.
+- Each field's `@Watch('_ariaDetails')` delegates to `applyAriaDetails(value)`; `componentWillLoad()` calls the watcher once to initialize.
+- Every render re-resolves the IDs, because the control and the referenced elements may enter the tree after the prop was set. Only changed references are written.
 
 #### Open vs Show
 
@@ -104,6 +97,6 @@ The `align` prop controls the orientation of the component itself. When aligning
 
 ### Architecture and Component Structure
 
-> **The [`src/components/_skeleton/ARC42.md`](src/components/_skeleton/ARC42.md) is the authoritative architectural specification.**
+> **The [`docs/ARC42-SKELETON.md`](docs/ARC42-SKELETON.md) is the authoritative architectural specification.**
 > All layer responsibilities, type contracts, coding patterns, implementation steps and design rationale are documented there.
 > Consult it before creating new components or refactoring existing ones.

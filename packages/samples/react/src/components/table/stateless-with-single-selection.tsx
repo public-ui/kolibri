@@ -79,9 +79,9 @@ export const TableStatelessWithSingleSelection: FC = () => {
 					_headers={{
 						horizontal: [
 							[
-								{ key: 'id', label: '#ID', textAlign: 'left' },
-								{ key: 'name', label: 'Name', textAlign: 'left' },
-								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
+								{ key: 'id', label: '#ID', textAlign: 'left', width: 100 },
+								{ key: 'name', label: 'Name', textAlign: 'left', width: 200 },
+								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton, width: 200 },
 							],
 						],
 					}}
@@ -89,7 +89,6 @@ export const TableStatelessWithSingleSelection: FC = () => {
 					_selection={selection}
 					_on={{ onSelectionChange: handleSelectionChangeCallback }}
 					className="block"
-					style={{ maxWidth: '600px' }}
 					ref={kolTableStatelessRef}
 				/>
 			</SampleBlock>

@@ -7,7 +7,7 @@ import type { ButtonApi } from '../../internal/functional-components/button/api'
 import { buttonPropsConfig } from '../../internal/functional-components/button/api';
 import { ButtonFC } from '../../internal/functional-components/button/component';
 import { FormAssociationBehavior } from '../../internal/functional-components/form-association/behavior';
-import type { FunctionalComponentProps } from '../../internal/functional-components/generic-types';
+import type { FunctionalComponentProps, PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import {
 	accessKeyProp,
@@ -35,17 +35,22 @@ import {
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
+	AriaControlsPropType,
 	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonTypePropType,
 	CustomClassPropType,
+	DisabledPropType,
+	HideLabelPropType,
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
+	NamePropType,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
+	TabIndexPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
@@ -58,7 +63,7 @@ import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/c
 
 /**
  * Shared orchestrator implementation for every custom element that renders `ButtonFC`:
- * `kol-button`, the transitional `kol-button-wc`, `kol-button-link` and `kol-split-button`.
+ * `kol-button`, `kol-button-link` and `kol-split-button`.
  *
  * The class carries everything that does not need a Stencil decorator — the composed
  * `TooltipBehavior`, the form-association adapter, the event handlers, one `apply*` method per
@@ -75,6 +80,8 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	protected abstract readonly host?: HTMLElement;
 
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+
+	protected readonly propsConfig: PropsConfigShape = buttonPropsConfig;
 
 	// --- Composed behaviors ---
 
@@ -105,17 +112,17 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	// --- Lifecycle helpers (called from the concrete element's lifecycle methods) ---
 
 	/**
-	 * Seeds the render props. Call first in `componentWillLoad`, before the prop watchers run.
+	 * Marks `tabIndex` as unset. Call first in `componentWillLoad`, before the prop watchers run.
 	 */
-	protected initButtonRenderProps(): void {
-		this.initRenderProps(buttonPropsConfig);
-		// Seed `tabIndex` as unset before any watcher runs: an unset tabindex must not render as
-		// `tabindex="0"` — buttons are natively tabbable and the attribute would pin them into the
-		// document tab order. `applyTabIndex` does the same for elements that expose `_tabIndex`,
-		// but a `shadow: false` element can abort mid-initialization under SSR (the form association
-		// finds no host with a shadow root, because `instanceof Element` fails in Stencil's mock DOM,
-		// then throws on `attachInternals(undefined)`, and Stencil swallows the error but renders
-		// anyway, #11034). Without this line the props config default `0` would survive such an abort.
+	protected unsetButtonTabIndex(): void {
+		// The first render-prop access seeds the store, so this unset runs against seeded defaults.
+		// An unset tabindex must not render as `tabindex="0"` — buttons are natively tabbable and
+		// the attribute would pin them into the document tab order. `applyTabIndex` does the same
+		// for elements that expose `_tabIndex`, but a `shadow: false` element can abort
+		// mid-initialization under SSR (the form association finds no host with a shadow root,
+		// because `instanceof Element` fails in Stencil's mock DOM, then throws on
+		// `attachInternals(undefined)`, and Stencil swallows the error but renders anyway, #11034).
+		// Without this line the props config default `0` would survive such an abort.
 		this.unsetRenderProp('tabIndex');
 	}
 
@@ -197,7 +204,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 		validateAccessAndShortKey(value, shortKey);
 	}
 
-	protected applyAriaControls(value?: string): void {
+	protected applyAriaControls(value?: AriaControlsPropType): void {
 		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
 	}
 
@@ -221,11 +228,11 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
 	}
 
-	protected applyDisabled(value?: boolean): void {
+	protected applyDisabled(value?: DisabledPropType): void {
 		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
 	}
 
-	protected applyHideLabel(value?: boolean): void {
+	protected applyHideLabel(value?: HideLabelPropType): void {
 		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
 	}
 
@@ -242,13 +249,17 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.tooltipBehavior.watchLabel(v);
-		});
+		labelWithExpertSlotProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('label', v);
+				this.tooltipBehavior.watchLabel(v);
+			},
+			this.isRequired('label'),
+		);
 	}
 
-	protected applyName(value?: string): void {
+	protected applyName(value?: NamePropType): void {
 		nameProp.apply(value, (v) => this.setRenderProp('name', v));
 		this.formAssociation.watchName(value);
 	}
@@ -270,7 +281,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 		this.formAssociation.watchSyncValueBySelector(value);
 	}
 
-	protected applyTabIndex(value?: number): void {
+	protected applyTabIndex(value?: TabIndexPropType): void {
 		// The props config seeds `tabIndex` with its default `0`, but an unset tabindex must not
 		// render as `tabindex="0"` — buttons are natively tabbable and the attribute would pin them
 		// into the document tab order. Unsetting the prop has to restore that state, so the else
@@ -283,7 +294,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	}
 
 	protected applyTooltipAlign(value?: TooltipAlignPropType): void {
-		tooltipAlignProp.apply(value, (v) => {
+		tooltipAlignProp.apply(value ?? 'top', (v) => {
 			this.setRenderProp('tooltipAlign', v);
 			this.tooltipBehavior.watchAlign(v);
 		});

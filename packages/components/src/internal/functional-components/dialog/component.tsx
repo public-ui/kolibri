@@ -36,8 +36,8 @@ export type DialogFCProps = Pick<FunctionalComponentProps<DialogApi>, 'class' | 
 };
 
 /**
- * The native `<dialog>` shell, shared by `kol-dialog`, the deprecated `kol-modal`, the transitional
- * `kol-dialog-wc` and `kol-drawer`.
+ * The native `<dialog>` shell, shared by `kol-dialog`, the deprecated `kol-modal`, `kol-drawer` and
+ * the settings menu of the table.
  *
  * It owns the element that provides `showModal()`, the top layer and the backdrop — and nothing
  * else. What the dialog contains is the consumer's composition, handed in as children: the dialog

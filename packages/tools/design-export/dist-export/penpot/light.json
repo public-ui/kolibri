@@ -1,0 +1,82 @@
+{
+	"color": {
+		"primary": {
+			"$type": "color",
+			"$value": "#003a5c"
+		},
+		"primary-variant": {
+			"$type": "color",
+			"$value": "#005a8f"
+		},
+		"secondary": {
+			"$type": "color",
+			"$value": "#ccebf7"
+		},
+		"danger": {
+			"$type": "color",
+			"$value": "#ad003a"
+		},
+		"warning": {
+			"$type": "color",
+			"$value": "#c44931"
+		},
+		"success": {
+			"$type": "color",
+			"$value": "#005c45"
+		},
+		"subtle": {
+			"$type": "color",
+			"$value": "#576164"
+		},
+		"surface": {
+			"$type": "color",
+			"$value": "#ffffff"
+		},
+		"light": {
+			"$type": "color",
+			"$value": "#ffffff"
+		},
+		"overlay": {
+			"$type": "color",
+			"$value": "#ffffff"
+		},
+		"text": {
+			"$type": "color",
+			"$value": "#202020"
+		},
+		"mute": {
+			"$type": "color",
+			"$value": "#f2f3f4"
+		},
+		"mute-variant": {
+			"$type": "color",
+			"$value": "#bec5c9"
+		},
+		"visited": {
+			"$type": "color",
+			"$value": "#551a8b"
+		},
+		"ink": {
+			"$type": "color",
+			"$value": "#000000"
+		},
+		"edge": {
+			"$type": "other",
+			"$value": "transparent"
+		},
+		"surface-current": {
+			"$type": "color",
+			"$value": "#ffffff"
+		}
+	},
+	"kol": {
+		"a11y-font-color": {
+			"$type": "color",
+			"$value": "#000000"
+		},
+		"a11y-background-color": {
+			"$type": "color",
+			"$value": "#ffffff"
+		}
+	}
+}

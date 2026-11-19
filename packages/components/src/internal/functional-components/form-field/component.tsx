@@ -2,7 +2,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { translate } from '../../../i18n';
 import type {
-	FormFieldLabelInfoPopoverProps,
+	LabelLangSegmentsPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
 	Stringified,
@@ -16,6 +16,7 @@ import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { TooltipFC } from '../tooltip/component';
 import { FormFieldHintFC } from './hint';
+import type { FormFieldInfoPopover } from './label';
 import { FormFieldLabelFC } from './label';
 import { FormFieldMsgFC } from './msg';
 
@@ -27,10 +28,12 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	disabled?: boolean;
 	msg?: Stringified<MsgPropType>;
 	hint?: string;
-	label: string;
+	label: LabelLangSegmentsPropType;
+	/** Space-separated IDs the root element references through `aria-describedby`. */
+	ariaDescribedBy?: string;
 	hideLabel?: boolean;
 	hideMsg?: boolean;
-	infoPopover?: FormFieldLabelInfoPopoverProps;
+	infoPopover?: FormFieldInfoPopover;
 	accessKey?: string;
 	shortKey?: string;
 	counter?: {
@@ -49,6 +52,10 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	showBadge?: boolean;
 	tooltipAlign?: TooltipAlignPropType;
 	variant?: VariantClassNamePropType;
+	/** `fieldset` groups the options of a radio group; its label is then a `legend` and `disabled` disables the `fieldset`. */
+	component?: 'div' | 'fieldset';
+	/** Arranges the options of a group among each other or side by side. */
+	orientation?: 'horizontal' | 'vertical';
 	/** Receives the `__input` wrapper, the reference element of the label tooltip. */
 	refInput?: (el?: HTMLDivElement) => void;
 	/** Receives the floating element of the label tooltip. */
@@ -105,6 +112,8 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 		showBadge,
 		tooltipAlign,
 		variant,
+		component = 'div',
+		orientation,
 		refInput,
 		refTooltip,
 		...other
@@ -114,9 +123,11 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const showTooltip = isLabelShownAsTooltip({ hideLabel, label, renderNoTooltip });
+	const isFieldset = component === 'fieldset';
 
 	return (
 		<BemRootNodeFC
+			component={component}
 			block="kol-form-field"
 			modifiers={{
 				disabled: Boolean(disabled),
@@ -128,11 +139,16 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 				...(showMsg ? getMsgTypeModifiers(msg) : {}),
 			}}
 			class={clsx(variant && classNameFromVariant(variant, 'form-field'), classNames)}
+			// A disabled `fieldset` marks the whole group, legend included, as an inactive control (WCAG 1.4.3).
+			disabled={isFieldset && disabled ? true : undefined}
 			aria-describedby={ariaDescribedBy}
 			{...other}
 		>
 			{!renderNoLabel && (
 				<FormFieldLabelFC
+					component={isFieldset ? 'legend' : 'label'}
+					// `FormFieldLabelFC` renders the `__label` element itself, so only the modifier is added here.
+					class={isFieldset ? 'kol-form-field__label--legend' : undefined}
 					id={id}
 					hasExpertSlot={hasExpertSlot}
 					hideLabel={hideLabel}
@@ -144,7 +160,13 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 					infoPopover={infoPopover}
 				/>
 			)}
-			<div class={formFieldBem('input')} ref={refInput}>
+			<div
+				class={formFieldBem('input', {
+					'orientation-horizontal': orientation === 'horizontal',
+					'orientation-vertical': orientation === 'vertical',
+				})}
+				ref={refInput}
+			>
 				{children}
 				{showTooltip && (
 					<div class={formFieldBem('tooltip')}>
@@ -154,11 +176,11 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 			</div>
 			{counter && !(counter.maxLengthBehavior === 'soft' && typeof counter.maxLength !== 'number') && (
 				<div class={formFieldBem('counter')}>
-					<span data-testid="input-counter" aria-hidden="true" class={formFieldBem('counter')} ref={counter.visualRef} />
-					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
+					<span aria-hidden="true" class={formFieldBem('counter')} ref={counter.visualRef} />
+					<span aria-live="polite" class="visually-hidden" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
 				</div>
 			)}
-			{showMsg && !hideMsg && <FormFieldMsgFC id={id} alert={alert} msg={msg} />}
+			{showMsg && <FormFieldMsgFC id={id} alert={alert} hideMsg={hideMsg} msg={msg} />}
 			{!renderNoHint && <FormFieldHintFC id={id} hint={hint} />}
 			{typeof maxLength === 'number' && !counter && (
 				// The hidden character limit hint is only rendered without a counter: the counter spans

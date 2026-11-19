@@ -1,3 +1,4 @@
+import type { OpenPropType } from '../../schema/props/open';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
@@ -19,5 +20,5 @@ import { normalizeBoolean } from './helpers/normalizers';
  * @see https://www.w3.org/TR/wai-aria-1.2/#aria-expanded
  * @see https://www.w3.org/TR/wai-aria-1.2/#aria-hidden
  */
-export type OpenProp = SimpleProp<'open', boolean>;
+export type OpenProp = SimpleProp<'open', OpenPropType>;
 export const openProp = createPropDefinition<OpenProp>('open', false, normalizeBoolean);

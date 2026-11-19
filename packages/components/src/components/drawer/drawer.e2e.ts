@@ -65,7 +65,7 @@ test.describe('kol-drawer', () => {
 
 	test.describe('close button', () => {
 		test(`should close and report it when the close button is clicked`, async ({ page }) => {
-			await page.setContent('<kol-drawer _label="Details" _has-closer _open><div data-testid="drawer-content">Drawer content</div></kol-drawer>');
+			await page.setContent('<kol-drawer _label="Details" _has-closer _open><div class="drawer-content">Drawer content</div></kol-drawer>');
 			const kolDrawer = page.locator('kol-drawer');
 
 			const callbackPromise = kolDrawer.evaluate((element: HTMLKolDrawerElement) => {
@@ -81,32 +81,32 @@ test.describe('kol-drawer', () => {
 			await kolDrawer.locator('.kol-card__close-button button').click();
 
 			await expect(callbackPromise).resolves.toBeUndefined();
-			await expect(page.getByTestId('drawer-content')).not.toBeVisible();
+			await expect(page.locator('.drawer-content')).not.toBeVisible();
 		});
 	});
 
 	test.describe('_open property', () => {
 		test(`should open initially when _open property is true`, async ({ page }) => {
-			await page.setContent('<kol-drawer _label="Details" _open><div data-testid="drawer-content">Drawer content</div></kol-drawer>');
-			await expect(page.getByTestId('drawer-content')).toBeVisible();
+			await page.setContent('<kol-drawer _label="Details" _open><div class="drawer-content">Drawer content</div></kol-drawer>');
+			await expect(page.locator('.drawer-content')).toBeVisible();
 		});
 
 		test(`should open when _open property becomes true`, async ({ page }) => {
-			await page.setContent('<kol-drawer _label="Details"><div data-testid="drawer-content">Drawer content</div></kol-drawer>');
+			await page.setContent('<kol-drawer _label="Details"><div class="drawer-content">Drawer content</div></kol-drawer>');
 			const kolDrawer = page.locator('kol-drawer');
 			await kolDrawer.evaluate((element: HTMLKolDrawerElement) => {
 				element._open = true;
 			});
-			await expect(page.getByTestId('drawer-content')).toBeVisible();
+			await expect(page.locator('.drawer-content')).toBeVisible();
 		});
 
 		test(`should close when _open property becomes false`, async ({ page }) => {
-			await page.setContent('<kol-drawer _label="Details" _open><div data-testid="drawer-content">Drawer content</div></kol-drawer>');
+			await page.setContent('<kol-drawer _label="Details" _open><div class="drawer-content">Drawer content</div></kol-drawer>');
 			const kolDrawer = page.locator('kol-drawer');
 			await kolDrawer.evaluate((element: HTMLKolDrawerElement) => {
 				element._open = false;
 			});
-			await expect(page.getByTestId('drawer-content')).not.toBeVisible();
+			await expect(page.locator('.drawer-content')).not.toBeVisible();
 		});
 	});
 
@@ -124,13 +124,11 @@ test.describe('kol-drawer', () => {
 		});
 
 		test('it does not lock the background scroll when opened non-modally', async ({ page }) => {
-			await page.setContent(
-				'<div style="height: 200vh;"><kol-drawer _label="Details"><div data-testid="drawer-content">Drawer content</div></kol-drawer></div>',
-			);
+			await page.setContent('<div style="height: 200vh;"><kol-drawer _label="Details"><div class="drawer-content">Drawer content</div></kol-drawer></div>');
 			const kolDrawer = page.locator('kol-drawer');
 
 			await kolDrawer.evaluate((element: HTMLKolDrawerElement) => element.show());
-			await expect(page.getByTestId('drawer-content')).toBeVisible();
+			await expect(page.locator('.drawer-content')).toBeVisible();
 			expect(await getDocumentOverflow(page)).toBe('visible');
 		});
 	});

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="kol-table-stateful" data-name="kol-table-stateful" width="720" height="181" viewBox="0 0 720 181">
+  <g id="kol-table-stateful" data-name="kol-table-stateful"><rect x="0" y="0" width="720.0" height="181.0" fill="rgb(255, 255, 255)" stroke="none"/>
+    <g id="kol-table" data-name="kol-table">
+      <g id="kol-table__scroll-container" data-name="kol-table__scroll-container">
+        <g id="kol-table__table" data-name="kol-table__table">
+          <g id="kol-table__focus-element" data-name="kol-table__focus-element"><text x="0.0" y="27.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">Aufgaben</text></g>
+          <g id="kol-table__head" data-name="kol-table__head">
+            <g id="kol-table__head-row" data-name="kol-table__head-row">
+              <g id="kol-table__cell" data-name="kol-table__cell"><rect x="0.0" y="54.0" width="192.0" height="37.0" rx="0" fill="rgb(0, 58, 92)" stroke="none"/><rect x="1.0" y="55.0" width="190.0" height="35.0" rx="0" fill="none" stroke="rgb(0, 58, 92)" stroke-width="2"/><text x="8.0" y="77.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(255, 255, 255)" stroke="none" xml:space="preserve">ID</text></g>
+              <g id="kol-table__cell" data-name="kol-table__cell"><rect x="192.0" y="54.0" width="528.0" height="37.0" rx="0" fill="rgb(0, 58, 92)" stroke="none"/><rect x="193.0" y="55.0" width="526.0" height="35.0" rx="0" fill="none" stroke="rgb(0, 58, 92)" stroke-width="2"/><text x="200.0" y="77.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(255, 255, 255)" stroke="none" xml:space="preserve">Aufgabe</text></g></g></g>
+          <g id="kol-table__body" data-name="kol-table__body">
+            <g id="kol-table__loader" data-name="kol-table__loader"></g>
+            <g id="kol-table__row" data-name="kol-table__row">
+              <g id="kol-table__cell" data-name="kol-table__cell"><rect x="1.0" y="92.0" width="190.0" height="43.0" rx="0" fill="none" stroke="rgb(0, 58, 92)" stroke-width="2"/><text x="8.0" y="122.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">T-01</text></g>
+              <g id="kol-table__cell" data-name="kol-table__cell"><rect x="193.0" y="92.0" width="526.0" height="43.0" rx="0" fill="none" stroke="rgb(0, 58, 92)" stroke-width="2"/><text x="200.0" y="122.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">Onboarding-Checkliste</text></g></g>
+            <g id="kol-table__row" data-name="kol-table__row">
+              <g id="kol-table__cell" data-name="kol-table__cell"><rect x="1.0" y="137.0" width="190.0" height="43.0" rx="0" fill="none" stroke="rgb(0, 58, 92)" stroke-width="2"/><text x="8.0" y="167.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">T-02</text></g>
+              <g id="kol-table__cell" data-name="kol-table__cell"><rect x="193.0" y="137.0" width="526.0" height="43.0" rx="0" fill="none" stroke="rgb(0, 58, 92)" stroke-width="2"/><text x="200.0" y="167.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(0, 0, 0)" stroke="none" xml:space="preserve">Barrierefreiheits-Audit</text></g></g></g></g></g></g></g>
+</svg>

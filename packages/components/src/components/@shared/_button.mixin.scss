@@ -7,7 +7,7 @@
  * `kol-button` renders `<div class="kol-button"><button class="kol-button__interactive-element">`,
  * `kol-link` renders `<div class="kol-link"><a class="kol-link__interactive-element">`.
  *
- * Overlaps with `kol-button-wc-box-styles` below: both target the block class itself and disagree
+ * Overlaps with `kol-embedded-button-box-styles` below: both target the block class itself and disagree
  * on `display` and `text-align`. A stylesheet that includes both therefore depends on order or
  * specificity — today that only happens where the caller nests one of them (e.g. `_alert.mixin`
  * nests this one under `.kol-alert`, which wins). Include only one per block unless the nesting
@@ -69,18 +69,17 @@
 }
 
 /*
- * Minimal box replication for trees that do not include `kol-button-styles` but render
- * `kol-button-wc` (transitional light-DOM output). Before the skeleton migration the button
- * element itself carried the `kol-button` class, so the `kol-global` reset
- * (`background`, `width`, `margin`, `padding`, `border`) and the a11y layer `min-height`/
- * `min-width` applied to it, on top of the UA `inline-block`. The wrapper div now carries the
- * class but receives none of that automatically, so this mixin replicates the exact outer box,
- * while the inner `kol-button__interactive-element` degrades to a plain block container to avoid
- * the inline-level baseline gap the UA `inline-block` would add below it.
+ * Minimal box replication for shadow trees that render `ButtonFC` without including
+ * `kol-button-styles`. The `kol-global` reset (`background`, `width`, `margin`, `padding`,
+ * `border`) and the a11y layer `min-height`/`min-width` apply to the native button, on top of the
+ * UA `inline-block`, but not to the `div` root that carries the `kol-button` class. This mixin
+ * replicates that outer box on the root, while the inner `kol-button__interactive-element` degrades
+ * to a plain block container to avoid the inline-level baseline gap the UA `inline-block` would add
+ * below it.
  *
  * Mutually exclusive with `kol-button-styles` above — see the collision note there.
  */
-@mixin kol-button-wc-box-styles($block-classname) {
+@mixin kol-embedded-button-box-styles($block-classname) {
 	.#{$block-classname} {
 		background-color: transparent;
 

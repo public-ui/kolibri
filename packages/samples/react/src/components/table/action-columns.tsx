@@ -15,7 +15,7 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 	horizontal: [
 		[
 			{ key: 'id', label: 'ID', width: 80 },
-			{ key: 'project', label: 'Project' },
+			{ key: 'project', label: 'Project', width: 200 },
 			{ key: 'owner', label: 'Owner', width: 140 },
 			{
 				type: 'action',

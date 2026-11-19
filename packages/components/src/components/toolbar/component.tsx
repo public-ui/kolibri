@@ -2,14 +2,14 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ToolbarApi } from '../../internal/functional-components/toolbar/api';
 import { toolbarPropsConfig } from '../../internal/functional-components/toolbar/api';
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
-import type { ToolbarButtonItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
 import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
-import { labelWithExpertSlotProp, orientationProp, toolbarItemsProp } from '../../internal/props';
-import type { ClickableElement, FocusableElement, KolFocusOptions, ToolbarItemsPropType, ToolbarProps } from '../../schema';
+import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
+import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType, ToolbarProps } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { delegateClick, setClick } from '../../utils/element-click';
@@ -29,35 +29,50 @@ const ARROW_KEYS: KeyboardKey[] = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, K
 export class KolToolbar extends BaseWebComponent<ToolbarApi> implements ClickableElement, FocusableElement, ToolbarProps, WebComponentInterface<ToolbarApi> {
 	@Element() protected readonly host?: HTMLKolToolbarElement;
 
+	@State() public currentIndex: number = 0;
+
+	@State() public itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem> = [];
+
+	@State() public location: string = '';
+
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
-	// --- Lifecycle ---
+	protected readonly propsConfig: PropsConfigShape = toolbarPropsConfig;
 
-	public componentWillLoad(): void {
-		this.initRenderProps(toolbarPropsConfig);
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
 
-		this.watchLabel(this._label);
-		this.watchItems(this._items);
-		this.watchOrientation(this._orientation);
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+	}
 
-		this.unsubscribeOnLocationChange = onLocationChange((location) => {
-			this.location = location;
+	/**
+	 * Defines the functional elements of toolbar to render (e.g. kol-link, kol-button).
+	 */
+	@Prop() public _items!: ToolbarItemsPropType;
+
+	@Watch('_items')
+	public watchItems(value?: ToolbarItemsPropType): void {
+		toolbarItemsProp.apply(value, (items) => {
+			this.setRenderProp('items', items);
+			this.itemRecords.forEach((record) => record.destroy());
+			this.itemRecords = items.map((item) => createToolbarItem(item, () => this.host));
+			this.setFirstFocusableItemIndex();
 		});
 	}
 
-	public componentDidRender(): void {
-		this.itemRecords.forEach((record) => record.syncListeners());
-	}
+	/**
+	 * Defines whether the orientation of the component is horizontal or vertical.
+	 */
+	@Prop() public _orientation?: OrientationPropType = undefined;
 
-	public disconnectedCallback(): void {
-		if (this.unsubscribeOnLocationChange) {
-			this.unsubscribeOnLocationChange();
-			this.unsubscribeOnLocationChange = undefined;
-		}
-		this.itemRecords.forEach((record) => record.destroy());
+	@Watch('_orientation')
+	public watchOrientation(value?: OrientationPropType): void {
+		orientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
 	}
-
-	// --- Public methods ---
 
 	/**
 	 * Sets focus on the currently active toolbar item.
@@ -82,20 +97,27 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 		}
 	}
 
-	// --- Roving tabindex ---
+	public componentWillLoad(): void {
+		this.watchLabel(this._label);
+		this.watchItems(this._items);
+		this.watchOrientation(this._orientation);
 
-	/**
-	 * Seeds the roving tabindex with the first enabled item. A toolbar whose items are all disabled
-	 * starts at the first item, so it keeps a tab stop.
-	 */
-	private setFirstItemIndex(): void {
-		this.currentIndex = Math.max(
-			0,
-			this.itemRecords.findIndex((record) => !record.disabled),
-		);
+		this.unsubscribeOnLocationChange = onLocationChange((location) => {
+			this.location = location;
+		});
 	}
 
-	// --- Listeners ---
+	public componentDidRender(): void {
+		this.itemRecords.forEach((record) => record.syncListeners());
+	}
+
+	public disconnectedCallback(): void {
+		if (this.unsubscribeOnLocationChange) {
+			this.unsubscribeOnLocationChange();
+			this.unsubscribeOnLocationChange = undefined;
+		}
+		this.itemRecords.forEach((record) => record.destroy());
+	}
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent): void {
@@ -105,10 +127,9 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 
 		if (this.itemRecords.length === 0) return;
 		const step = pressedKey === KeyboardKey.ArrowUp || pressedKey === KeyboardKey.ArrowLeft ? -1 : 1;
-		const itemCount = this.itemRecords.length;
-		const nextIndex = (((this.currentIndex + step) % itemCount) + itemCount) % itemCount;
+		const nextIndex = this.findNextFocusableItemIndex(this.currentIndex, step);
 
-		if (nextIndex === this.currentIndex) {
+		if (nextIndex === undefined || nextIndex === this.currentIndex) {
 			return;
 		}
 
@@ -117,14 +138,43 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	}
 
 	/**
-	 * Resets the roving tabindex to the first enabled item once focus leaves the toolbar.
+	 * Resets the roving tabindex to the first focusable item once focus leaves the toolbar.
 	 */
 	@Listen('focusout', { capture: true })
 	public handleFocusout(event: FocusEvent): void {
-		if (event.target === this.host) this.setFirstItemIndex();
+		if (event.target === this.host) this.setFirstFocusableItemIndex();
 	}
 
-	// --- Render ---
+	/**
+	 * Seeds the roving tabindex with the first focusable item. A disabled item stays focusable, so it
+	 * is a valid seed; only the `<hr>` separator cannot take focus. A toolbar without any focusable
+	 * item starts at the first item, so it keeps a tab stop.
+	 */
+	private setFirstFocusableItemIndex(): void {
+		this.currentIndex = Math.max(
+			0,
+			this.itemRecords.findIndex((record) => record.type !== 'hr'),
+		);
+	}
+
+	/**
+	 * Walks the items from `fromIndex` in `step` direction, wrapping around, and returns the first
+	 * focusable one. A disabled item stays focusable and is reached like an enabled one; only the
+	 * `<hr>` separator is skipped rather than blocking the walk: stopping at it would make every
+	 * item behind it unreachable by keyboard.
+	 *
+	 * @returns the index to move to, or `undefined` when no other item is focusable.
+	 */
+	private findNextFocusableItemIndex(fromIndex: number, step: -1 | 1): number | undefined {
+		const itemCount = this.itemRecords.length;
+		for (let offset = 1; offset <= itemCount; offset++) {
+			const candidate = (((fromIndex + step * offset) % itemCount) + itemCount) % itemCount;
+			if (this.itemRecords[candidate].type !== 'hr') {
+				return candidate;
+			}
+		}
+		return undefined;
+	}
 
 	public render(): JSX.Element {
 		return (
@@ -138,47 +188,5 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 				/>
 			</Host>
 		);
-	}
-
-	// --- States ---
-
-	@State() public currentIndex: number = 0;
-
-	@State() public itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem> = [];
-
-	@State() public location: string = '';
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: string;
-	@Watch('_label')
-	public watchLabel(value?: string): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
-	}
-
-	/**
-	 * Defines the functional elements of toolbar to render (e.g. kol-link, kol-button).
-	 */
-	@Prop() public _items!: ToolbarItemsPropType;
-	@Watch('_items')
-	public watchItems(value?: ToolbarItemsPropType): void {
-		toolbarItemsProp.apply(value, (items) => {
-			this.setRenderProp('items', items);
-			this.itemRecords.forEach((record) => record.destroy());
-			this.itemRecords = items.map((item) => createToolbarItem(item, () => this.host));
-			this.setFirstItemIndex();
-		});
-	}
-
-	/**
-	 * Defines whether the orientation of the component is horizontal or vertical.
-	 */
-	@Prop() public _orientation?: OrientationPropType;
-	@Watch('_orientation')
-	public watchOrientation(value?: OrientationPropType): void {
-		orientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
 	}
 }

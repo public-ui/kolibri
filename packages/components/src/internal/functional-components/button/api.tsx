@@ -30,8 +30,8 @@ import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../
  * `label` is the only required prop. All others are optional.
  *
  * Notes on prop choices:
- * - `labelWithExpertSlotProp` (not `labelProp`): no min/max length restriction, matching the
- *   predecessor's `validateLabelWithExpertSlot`. The empty string enables the expert slot.
+ * - `labelWithExpertSlotProp`: same validation as `labelProp` (at least 2 characters, numbers-only
+ *   labels exempt) and its label hints; the empty string additionally enables the expert slot.
  * - `spanIconsProp` (not `iconsProp`): icons are `KoliBriIconsProp` (a string or a per-direction
  *   object), not a plain icon class string.
  * - `linkRoleProp`: the button shares the `'tab' | 'treeitem'` role union with the link
@@ -114,11 +114,10 @@ export type ButtonApi = ApiFromConfig<
 /**
  * Web component interface for the public `kol-button`.
  *
- * `_ariaHasPopup`, `_id` and `_tabIndex` are internal props that only the transitional
- * `kol-button-wc` exposes — they are set by legacy consumers rendering that element inside their
- * own shadow DOM. They are part of `ButtonApi` because both elements share one functional
- * component, but they are not part of the public `kol-button` surface, so their watchers are
- * omitted here instead of being declared as no-ops.
+ * `_ariaHasPopup`, `_id` and `_tabIndex` are internal props: components that embed `ButtonFC`
+ * set them through `createButtonItem` or `resolveButtonProps`. They are part of `ButtonApi`, but
+ * not of the public `kol-button` surface, so their watchers are omitted here instead of being
+ * declared as no-ops.
  */
 export type ButtonWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchId' | 'watchTabIndex'>;
 

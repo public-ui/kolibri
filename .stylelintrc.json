@@ -8,6 +8,7 @@
 		"declaration-property-value-no-unknown": null,
 		"selector-class-pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:__(?:[a-z0-9]+(?:-[a-z0-9]+)*))?(?:--(?:[a-z0-9]+(?:-[a-z0-9]+)*))?$",
 
+		"kolibri/common-no-at-root": true,
 		"scss/load-no-partial-leading-underscore": true,
 
 		"comment-empty-line-before": null,

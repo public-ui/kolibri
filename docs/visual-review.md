@@ -14,13 +14,14 @@ pull request push ──► CI-Pipeline, job visual-tests (<package>)
                                   ▼
                        Visual Review workflow (base repository context)
                          publishes visual/pr-<n>/ on GitHub Pages
-                         reads the reviewers' comments
+                         reads the reviewers' comments and review texts
                          sets the commit status "Visual Review"
                                   │
                                   ▼
 reviewer ──► https://public-ui.github.io/kolibri/visual/?pr=<n>
                inspects baseline / actual / diff, approves or rejects, leaves notes
-               saves the review as a pull-request comment (directly with a token, or by pasting it)
+               saves the review as a pull-request comment (directly with a token, or by pasting it
+               as a comment or as the text of a pull-request review)
 ```
 
 ## What a contributor sees
@@ -47,9 +48,10 @@ Nothing has to be committed: the baseline is regenerated from `develop` after th
    - **with a token**: enter a fine-grained personal access token with _Pull requests: read and write_
      for `public-ui/kolibri` at the bottom of the page. The page posts (and later edits) one comment
      in your name. The token stays in this browser session unless you tick "remember".
-   - **without a token**: click _Copy comment for the pull request_ and paste it as a comment on the
-     pull request. To change your verdict later, edit that comment or post a new one – only your
-     newest comment counts.
+   - **without a token**: click _Copy comment for the pull request_ and paste it on the pull request –
+     as a comment or as the text of a review (_Comment_, _Approve_ or _Request changes_; inline
+     comments on the diff are not read). To change your verdict later, edit it or post a new one – only
+     your newest comment or review text counts. Dismissing a review withdraws its verdict.
 
 The comment carries a machine-readable block, for example:
 
@@ -70,19 +72,24 @@ drops out of what the commit status checks – nothing is left to approve. The r
 (marked `↺`, even with the `unchanged` filter off) so you can confirm it is fixed and clear the now-stale
 verdict from your draft; it otherwise keeps piling up unseen in your local review comment.
 
-Only comments of users with write access count. Bots are ignored. A rejection wins over an approval.
+Only comments and review texts of users with write access count. Bots are ignored, and so are pending
+and dismissed reviews. A rejection wins over an approval. The GitHub verdict of a review (_Approve_,
+_Request changes_) says nothing about the screenshots – only the block in its text does.
+
+The page connected with a token loads your newest verdict, whether you left it as a comment or in a
+review, and saves as a comment: a verdict from a review is superseded by a new comment, not rewritten.
 
 ## Where things live
 
-| What                             | Where                                                                                 |
-| -------------------------------- | ------------------------------------------------------------------------------------- |
-| Report per package (CI artifact) | `visual-review-<package>` – `report.json` + PNGs of changed items, 14 days            |
-| Baseline per base commit         | `visual-baseline-<package>` – snapshots + `meta.json`, 90 days                        |
-| Published review data            | `gh-pages`: `visual/pr-<n>/report.json`, `status.json`, `<package>/<name>.<kind>.png` |
-| Review page                      | `gh-pages`: `visual/` (built from `packages/tools/visual-tests/review-ui`)            |
-| Reporter                         | `packages/tools/visual-tests/src/visual-reporter.js`                                  |
-| Workflow scripts                 | `scripts/visual-review/` (see `scripts/README.md`)                                    |
-| Workflows                        | `visual-baseline.yml`, `visual-review.yml`, `visual-review-ui.yml`, job in `ci.yml`   |
+| What                             | Where                                                                                                            |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Report per package (CI artifact) | `visual-review-<package>` – `report.json` + PNGs of changed items, 14 days                                       |
+| Baseline per base commit         | `visual-baseline-<package>` – snapshots + `meta.json`, 90 days                                                   |
+| Published review data            | `gh-pages`: `visual/pr-<n>/report.json`, `status.json`, `<package>/<name>.<kind>.png`                            |
+| Review page                      | `gh-pages`: `visual/` (built from `packages/tools/visual-tests/review-ui`)                                       |
+| Reporter                         | `packages/tools/visual-tests/src/visual-reporter.js`                                                             |
+| Workflow scripts                 | `scripts/visual-review/` (see `scripts/README.md`)                                                               |
+| Workflows                        | `visual-baseline.yml`, `visual-review.yml`, `visual-review-trigger.yml`, `visual-review-ui.yml`, job in `ci.yml` |
 
 The folder `visual/pr-<n>/` is removed when the pull request closes (`pr-preview-cleanup.yml`). The same
 workflow can be started manually to clean up leftovers: `delete_closed` removes the deployments of all
@@ -91,6 +98,26 @@ pull requests that are already closed (together with folders that belong to no p
 published report is gone until the next CI run republishes it –, `delete_all` every deployment regardless
 of state, and `purge_history` squashes the whole `gh-pages` history into a single commit to reclaim clone
 size. The review page in `visual/` and the `.nojekyll` marker are never touched.
+
+## What recomputes the status
+
+| Event                                    | Effect                                                        |
+| ---------------------------------------- | ------------------------------------------------------------- |
+| Push to the pull request                 | `pending` (or `success` for docs-only changes)                |
+| CI-Pipeline of the pull request is done  | report published, status computed                             |
+| Comment created, edited or deleted       | status recomputed from the published report                   |
+| Review submitted, edited or dismissed    | status recomputed from the published report – through a relay |
+| Manual run of the Visual Review workflow | status of the given pull request recomputed                   |
+
+GitHub runs workflows for review events in the context of the pull request: the workflow file comes
+from its merge ref and a fork gets a read-only token. `visual-review-trigger.yml` therefore holds no
+permission and does nothing but finish; the Visual Review workflow listens for its completion and
+recomputes the status in the context of the base repository. Two consequences:
+
+- The relay only runs when the merge ref of the pull request contains `visual-review-trigger.yml` –
+  not for a pull request with merge conflicts, and not for a target branch that lacks the file. Such a
+  review is not lost: the next CI run, comment or manual run reads it as well.
+- A review without a `visual-review` block shows up as a skipped run of both workflows.
 
 ## Trust boundary
 

@@ -1,9 +1,9 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
+import type { KoliBriTableHeaders, KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
-const HEADERS: TableHeaderCellsPropType = {
+const HEADERS: KoliBriTableHeaders = {
 	horizontal: [[{ key: 'id', label: 'ID', sortDirection: 'ASC', width: 160 }]],
 };
 
@@ -248,21 +248,108 @@ test.describe('kol-table-stateless', () => {
 		await expect(table).toHaveAttribute('aria-labelledby', 'caption');
 		await expect(table.locator('caption')).toHaveText('Internal');
 	});
-});
 
-test.describe('kol-table-stateless with deprecated _header-cells prop', () => {
-	test.beforeEach(async ({ page }) => {
-		await page.setContent(`<kol-table-stateless
-					_label="Table Stateless"
-					_header-cells='${JSON.stringify(HEADERS)}'
-					_data='${JSON.stringify(DATA)}'
-				/>`);
+	test('releases the external label references when _ariaLabelledby is emptied or set to a missing ID', async ({ page }) => {
+		await page.locator('body').evaluate((body: HTMLBodyElement) => {
+			const external = document.createElement('span');
+			external.id = 'external-caption';
+			external.textContent = 'External Caption';
+			body.prepend(external);
+		});
+		const kolTableStateless = page.locator('kol-table-stateless');
+		const table = kolTableStateless.locator('table');
+		const setAriaLabelledby = (value: string) =>
+			kolTableStateless.evaluate((el: HTMLKolTableStatelessElement, nextValue: string) => {
+				(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = nextValue;
+			}, value);
+		const externalStillReferenced = () =>
+			table.evaluate((element) => {
+				const refs = (element as unknown as { ariaLabelledByElements?: (Element | null)[] | null }).ariaLabelledByElements;
+				return refs?.some((ref) => ref instanceof HTMLElement && ref.id === 'external-caption') ?? false;
+			});
+		await kolTableStateless.evaluate((el: HTMLKolTableStatelessElement) => {
+			el._label = 'Internal Fallback';
+		});
+		await setAriaLabelledby('external-caption');
 		await page.waitForChanges();
+		await expect(table).not.toHaveAttribute('aria-labelledby', 'caption');
+
+		// Explicit element references win over the aria-labelledby content attribute: pointing
+		// _ariaLabelledby at an ID without an element or emptying it must release them, so the
+		// caption fallback names the table again.
+		for (const value of ['does-not-exist', '']) {
+			await setAriaLabelledby(value);
+			await page.waitForChanges();
+			await expect(table).toHaveAttribute('aria-labelledby', 'caption');
+			await expect(table.locator('caption')).toHaveText('Internal Fallback');
+			expect(await externalStillReferenced()).toBe(false);
+		}
 	});
 
-	test('still renders headers and data via the deprecated _header-cells attribute', async ({ page }) => {
-		const kolTableStateless = page.locator('kol-table-stateless');
-		await expect(kolTableStateless.getByRole('button', { name: 'ID' })).toBeVisible();
-		await expect(kolTableStateless.getByText(DATA[0].id)).toBeVisible();
+	test.describe('Keyboard access to the scroll container', () => {
+		test('it keeps the caption out of the tab order when nothing overflows', async ({ page }) => {
+			await expect(page.locator('kol-table-stateless').locator('caption')).not.toHaveAttribute('tabindex');
+		});
+
+		const limitScrollContainerHeight = (element: HTMLKolTableStatelessElement) => {
+			const styleSheet = new CSSStyleSheet();
+			styleSheet.replaceSync('.kol-table__scroll-container { max-height: 60px; overflow: auto; }');
+			element.shadowRoot?.adoptedStyleSheets.push(styleSheet);
+		};
+
+		test('it makes the caption focusable when the table overflows only vertically', async ({ page }) => {
+			const kolTableStateless = page.locator('kol-table-stateless');
+			await kolTableStateless.evaluate(limitScrollContainerHeight);
+
+			const scrollContainer = kolTableStateless.locator('.kol-table__scroll-container');
+			await expect(kolTableStateless.locator('caption')).toHaveAttribute('tabindex', '0');
+			await expect(scrollContainer).toHaveAttribute('tabindex', '-1');
+			expect(await scrollContainer.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+		});
+
+		test('it makes the scroll container focusable when the table overflows only vertically and is labelled externally', async ({ page }) => {
+			await page.locator('body').evaluate((body: HTMLBodyElement) => {
+				const external = document.createElement('span');
+				external.id = 'external-caption';
+				external.textContent = 'External Caption';
+				body.prepend(external);
+			});
+			const kolTableStateless = page.locator('kol-table-stateless');
+			await kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				(element as unknown as { _ariaLabelledby: string })._ariaLabelledby = 'external-caption';
+			});
+			await kolTableStateless.evaluate(limitScrollContainerHeight);
+
+			await expect(kolTableStateless.locator('.kol-table__scroll-container')).toHaveAttribute('tabindex', '0');
+		});
+
+		test('it makes the caption focusable when the table overflows only horizontally', async ({ page }) => {
+			const kolTableStateless = page.locator('kol-table-stateless');
+			await kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				element.style.width = '100px';
+			});
+
+			const scrollContainer = kolTableStateless.locator('.kol-table__scroll-container');
+			await expect(kolTableStateless.locator('caption')).toHaveAttribute('tabindex', '0');
+			expect(await scrollContainer.evaluate((element) => element.scrollHeight <= element.clientHeight)).toBe(true);
+		});
+
+		test('it keeps the caption out of the tab order when the vertical overflow is clipped', async ({ page }) => {
+			const kolTableStateless = page.locator('kol-table-stateless');
+			const scrollContainer = kolTableStateless.locator('.kol-table__scroll-container');
+			await kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				const styleSheet = new CSSStyleSheet();
+				styleSheet.replaceSync('.kol-table__scroll-container { max-height: 60px; }');
+				element.shadowRoot?.adoptedStyleSheets.push(styleSheet);
+			});
+
+			// The measurement runs in a ResizeObserver callback; two frames let it and the re-render settle.
+			await expect.poll(() => scrollContainer.evaluate((element) => element.scrollHeight > element.clientHeight)).toBe(true);
+			await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+			await page.waitForChanges();
+
+			expect(await scrollContainer.evaluate((element) => getComputedStyle(element).overflowY)).toBe('hidden');
+			await expect(kolTableStateless.locator('caption')).not.toHaveAttribute('tabindex');
+		});
 	});
 });

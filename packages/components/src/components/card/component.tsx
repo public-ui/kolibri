@@ -7,11 +7,12 @@ import type {
 	CardProps,
 	ClickableElement,
 	FocusableElement,
+	HasCloserPropType,
 	HeadingLevel,
 	HrefPropType,
 	KolFocusOptions,
 	KoliBriCardEventCallbacks,
-	LabelPropType,
+	LabelLangSegmentsPropType,
 	LinkTargetPropType,
 } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
@@ -37,10 +38,92 @@ import { BaseCardWebComponent } from './base';
 export class KolCard extends BaseCardWebComponent implements CardProps, ClickableElement, FocusableElement, WebComponentInterface<CardApi> {
 	@Element() protected readonly host?: HTMLKolCardElement;
 
-	// --- Lifecycle ---
+	@State() public ariaDescriptionId: string = nonce();
+
+	@State() public headingId: string = createUniqueId('card-heading');
+
+	/**
+	 * Defines whether the element can be closed.
+	 */
+	@Prop() public _hasCloser?: HasCloserPropType = false;
+
+	@Watch('_hasCloser')
+	public watchHasCloser(value?: HasCloserPropType): void {
+		this.applyHasCloser(value);
+	}
+
+	/**
+	 * Defines the target URI of the link.
+	 */
+	@Prop() public _href?: HrefPropType = undefined;
+
+	@Watch('_href')
+	public watchHref(value?: HrefPropType): void {
+		this.applyHref(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelLangSegmentsPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelLangSegmentsPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 */
+	@Prop() public _level?: HeadingLevel = 0;
+
+	@Watch('_level')
+	public watchLevel(value?: HeadingLevel): void {
+		this.applyLevel(value);
+	}
+
+	/**
+	 * Defines the event callback functions for the component.
+	 */
+	@Prop() public _on?: KoliBriCardEventCallbacks = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriCardEventCallbacks): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Defines where to open the link.
+	 */
+	@Prop() public _target?: LinkTargetPropType = undefined;
+
+	@Watch('_target')
+	public watchTarget(value?: LinkTargetPropType): void {
+		this.applyTarget(value);
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	@delegateClick('ctaRef')
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
-		this.initCardRenderProps();
+		this.initCardCloseButton();
 
 		this.watchHasCloser(this._hasCloser);
 		this.watchHref(this._href);
@@ -58,94 +141,11 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 		this.destroyTooltipBehavior();
 	}
 
-	// --- Public methods ---
-
-	/**
-	 * Sets focus on the internal element.
-	 */
-	@Method()
-	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
-
-	/**
-	 * Clicks the primary interactive element inside this component.
-	 */
-	@Method()
-	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
-
-	// --- Render ---
-
 	protected renderSlot(): JSX.Element {
 		return <slot />;
 	}
 
 	public render(): JSX.Element {
 		return <Host>{this.renderCardFC()}</Host>;
-	}
-
-	// --- @State ---
-
-	@State() public ariaDescriptionId: string = nonce();
-
-	@State() public headingId: string = createUniqueId('card-heading');
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines whether the element can be closed.
-	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hasCloser?: boolean = false;
-	@Watch('_hasCloser')
-	public watchHasCloser(value?: boolean): void {
-		this.applyHasCloser(value);
-	}
-
-	/**
-	 * Sets the target URI of the link or citation source.
-	 */
-	@Prop() public _href?: HrefPropType;
-	@Watch('_href')
-	public watchHref(value?: HrefPropType): void {
-		this.applyHref(value);
-	}
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		this.applyLabel(value);
-	}
-
-	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
-	 */
-	@Prop() public _level?: HeadingLevel = 0;
-	@Watch('_level')
-	public watchLevel(value?: HeadingLevel): void {
-		this.applyLevel(value);
-	}
-
-	/**
-	 * Defines the event callback functions for the component.
-	 */
-	@Prop() public _on?: KoliBriCardEventCallbacks;
-	@Watch('_on')
-	public watchOn(value?: KoliBriCardEventCallbacks): void {
-		this.applyOn(value);
-	}
-
-	/**
-	 * Defines where to open the link.
-	 */
-	@Prop() public _target?: LinkTargetPropType;
-	@Watch('_target')
-	public watchTarget(value?: LinkTargetPropType): void {
-		this.applyTarget(value);
 	}
 }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="kol-form" data-name="kol-form" width="720" height="89" viewBox="0 0 720 89">
+  <g id="kol-form" data-name="kol-form"><rect x="0" y="0" width="720.0" height="89.0" fill="rgb(20, 24, 26)" stroke="none"/><text x="0.0" y="85.1" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(233, 235, 236)" stroke="none" xml:space="preserve">Formularfelder …</text>
+    <g id="kol-form" data-name="kol-form">
+      <g id="kol-form__form" data-name="kol-form__form">
+        <g id="kol-form__mandatory-fields-hint" data-name="kol-form__mandatory-fields-hint"><rect x="-1.0" y="17.0" width="718.0" height="36.0" rx="0" fill="none" stroke="rgb(233, 235, 236)" stroke-width="2"/><text x="8.0" y="40.6" font-family="Verdana, Arial, Calibri, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="rgb(233, 235, 236)" stroke="none" xml:space="preserve">Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben.</text></g></g></g></g>
+</svg>

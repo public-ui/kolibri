@@ -22,6 +22,49 @@ test.describe(COMPONENT_NAME, () => {
 		testValue: EXPECTED_VALUE,
 	});
 
+	test.describe('Initial value', () => {
+		// Without `_value` the field takes the middle of the range from the native range input.
+		for (const [attributes, expected] of [
+			['_min="0" _max="5"', 3],
+			['_min="0" _max="50"', 25],
+			['_min="-10" _max="10"', 0],
+			['_min="abc" _max="xyz"', 50],
+		] as const) {
+			test(`takes ${expected} for ${attributes}`, async ({ page }) => {
+				await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" ${attributes}></${COMPONENT_NAME}>`);
+				await page.waitForChanges();
+
+				expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRangeElement) => element._value)).toBe(expected);
+				await expect(page.locator('input[type=range]')).toHaveValue(String(expected));
+			});
+		}
+	});
+
+	test.describe('Input sync', () => {
+		test('shows the slider value in the number input while dragging', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _value="10"></${COMPONENT_NAME}>`);
+			await page.locator('input[type=range]').evaluate((element: HTMLInputElement) => {
+				element.value = '30';
+				element.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+			});
+			await page.waitForChanges();
+
+			await expect(page.locator('input[type=number]')).toHaveValue('30');
+			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRangeElement) => element._value)).toBe('30');
+		});
+
+		test('moves the slider while typing and keeps the typed text', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _value="10"></${COMPONENT_NAME}>`);
+			const numberInput = page.locator('input[type=number]');
+			await numberInput.fill('');
+			await numberInput.pressSequentially('7.0');
+			await page.waitForChanges();
+
+			await expect(page.locator('input[type=range]')).toHaveValue('7');
+			await expect(numberInput).toHaveValue('7.0');
+		});
+	});
+
 	test.describe('Callbacks and Events', () => {
 		test('should call onFocus callback and emit focus event when input receives focus', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input"></${COMPONENT_NAME}>`);
