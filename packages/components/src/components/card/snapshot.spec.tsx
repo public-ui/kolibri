@@ -38,5 +38,7 @@ executeSnapshotTests<CardProps>(
 		{ _label: 'Überschrift', _href: '#/blank_link', _target: '_blank', _level: 2 },
 
 		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
+
+		{ _label: 'Überschrift', _image: { uri: 'https://some-url.tld/images/awesome.jpg', alt: 'awesome alt text' } },
 	],
 );

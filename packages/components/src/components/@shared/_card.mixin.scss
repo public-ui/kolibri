@@ -16,9 +16,9 @@
 		overflow: visible;
 
 		grid-template-areas:
-			'header  close'
-			'content content';
-		grid-template-columns: 1fr min-content;
+			'header'
+			'content';
+		grid-template-columns: 1fr;
 		grid-template-rows: min-content 1fr;
 
 		&__header {
@@ -35,16 +35,47 @@
 			grid-area: close;
 		}
 
+		&__image {
+			max-width: 100%;
+			object-fit: cover;
+			grid-area: image;
+		}
+
+		&:has(&__close-button) {
+			grid-template-areas:
+				'header close'
+				'content content';
+			grid-template-columns: 1fr min-content;
+		}
+
+		&:has(&__image) {
+			grid-template-areas:
+				'image'
+				'header'
+				'content';
+			grid-template-rows: min-content min-content 1fr;
+		}
+
+		&:has(.kol-card__image ~ .kol-card__close-button) {
+			grid-template-areas:
+				'image close'
+				'header  close'
+				'content content';
+		}
+
 		&:has(&__link) {
 			position: relative;
 		}
 
-		&__link::after {
-			position: absolute;
-			inset: 0;
+		&__link {
+			grid-area: header;
+			&::after {
+				position: absolute;
+				inset: 0;
 
-			content: '';
-			cursor: pointer;
+				content: '';
+				cursor: pointer;
+			}
 		}
 	}
 }

@@ -56,6 +56,12 @@ const KOL_CARD_PUBLIC_API: PublicApiContract = {
 		required: false,
 		doc: 'Defines where to open the link.',
 	},
+	_image: {
+		kind: 'prop',
+		type: 'ImagePropType',
+		required: false,
+		doc: 'Sets the image URI for the card image.',
+	},
 };
 
 describePublicApiContract({ tag: 'kol-card', component: 'card', pinnedApi: KOL_CARD_PUBLIC_API, schemaInterface: 'CardProps' });
