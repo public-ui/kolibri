@@ -1,10 +1,10 @@
 {
 	"schema": 1,
 	"pr": 11605,
-	"head": "39f9c6c7d4628b4109416718a82ca4477b1be043",
+	"head": "f182b2914bbbef1f4c69b09aee74f206a1a86c2e",
 	"repository": "public-ui/kolibri",
-	"runId": 43895408417,
-	"generatedAt": "2026-11-16T16:02:51.539Z",
+	"runId": 44503465871,
+	"generatedAt": "2026-11-19T10:32:08.274Z",
 	"digest": "sha256:5bdfae12a535fd88adbceb8daa94bd9d87a12a0ea281494fd1d50aa20c2489da",
 	"baseline": {
 		"sha": "a8cc83805312f8e4242dd21599035ac8b12be3c2",
@@ -12,7 +12,7 @@
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
 		"fallback": "ancestor",
-		"distance": 9,
+		"distance": 14,
 		"imageMismatch": false,
 		"consistent": true
 	},
@@ -38,7 +38,7 @@
 					"createdAt": "2026-11-16T07:04:42.228Z",
 					"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
 					"fallback": "ancestor",
-					"distance": 9,
+					"distance": 14,
 					"imageMismatch": false
 				}
 			},
@@ -2721,7 +2721,7 @@
 					"createdAt": "2026-11-16T07:03:41.398Z",
 					"digest": "sha256:48bd85195b6a7dd0c64f9f143e4c5118c7f5d7f86558eff0d336f14b09af97db",
 					"fallback": "ancestor",
-					"distance": 9,
+					"distance": 14,
 					"imageMismatch": false
 				}
 			},
@@ -5404,7 +5404,7 @@
 					"createdAt": "2026-11-16T07:04:42.228Z",
 					"digest": "sha256:95e1eb6a3842d9cf482a16bc07e9dc16b1c65b25500f0399029013ce318ff186",
 					"fallback": "ancestor",
-					"distance": 9,
+					"distance": 14,
 					"imageMismatch": false
 				}
 			},
@@ -8087,7 +8087,7 @@
 					"createdAt": "2026-11-16T07:02:52.753Z",
 					"digest": "sha256:7e142d4b042a2fbabebf73d20e4b7d455415d6702be2f9a8eb43ec83e60cef0e",
 					"fallback": "ancestor",
-					"distance": 9,
+					"distance": 14,
 					"imageMismatch": false
 				}
 			},
@@ -10770,7 +10770,7 @@
 					"createdAt": "2026-11-16T07:02:19.884Z",
 					"digest": "sha256:527ce0a79edd72d63df83b0e9449b83dcd80e12a624acce57b722410850da306",
 					"fallback": "ancestor",
-					"distance": 9,
+					"distance": 14,
 					"imageMismatch": false
 				}
 			},
@@ -13453,7 +13453,7 @@
 					"createdAt": "2026-11-16T07:02:45.349Z",
 					"digest": "sha256:4160f0bc0e435a83b94bf43bd9e6a98ea3d8b14ca18d12bfe3c2ce837c279acc",
 					"fallback": "ancestor",
-					"distance": 9,
+					"distance": 14,
 					"imageMismatch": false
 				}
 			},
@@ -16142,7 +16142,7 @@
 					"createdAt": "2026-11-16T07:02:15.247Z",
 					"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
 					"fallback": "ancestor",
-					"distance": 9,
+					"distance": 14,
 					"imageMismatch": false
 				}
 			},
