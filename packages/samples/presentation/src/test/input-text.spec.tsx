@@ -58,8 +58,8 @@ describe('kol-input-text', () => {
 		render(<KolInputText _label="Name" _disabled />);
 
 		const input = await screen.findByShadowLabelText('Name');
-		expect(input).toHaveAttribute('aria-disabled', 'true');
-		expect(input).toHaveAttribute('readonly');
+		expect(input.getAttribute('aria-disabled')).toBe('true');
+		expect(input.hasAttribute('readonly')).toBe(true);
 	});
 
 	test('fireEvent sets a complete value with a single input event', async () => {

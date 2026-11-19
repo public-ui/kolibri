@@ -31,7 +31,7 @@ describe('kol-button click', () => {
 		render(<KolButton _label="Save" _disabled _on={{ onClick }} />);
 
 		const button = await screen.findByShadowRole('button', { name: 'Save' });
-		expect(button).toHaveAttribute('aria-disabled', 'true');
+		expect(button.getAttribute('aria-disabled')).toBe('true');
 		await user.click(button);
 
 		expect(onClick).not.toHaveBeenCalled();
