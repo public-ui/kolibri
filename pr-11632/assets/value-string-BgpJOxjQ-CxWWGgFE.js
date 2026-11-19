@@ -1,0 +1,1 @@
+import{A as e,l as t}from"./props-from-config-gFh0-PTg-DoFOyAtq.js";var n=t(`value`,void 0,e);export{n as t};
