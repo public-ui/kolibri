@@ -1,1 +1,0 @@
-import"./index-tjAj_Mi5-DT1TjK6R.js";import{s as e}from"./index-BTo24GCH.js";var t=new Map;function n(n){let r=t.get(n);return r||(r=e.forBlock(n),t.set(n,r)),r}export{n as t};
