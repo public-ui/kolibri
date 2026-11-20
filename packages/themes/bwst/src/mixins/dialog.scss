@@ -1,9 +1,7 @@
 @use './to-rem' as *;
 @use './kol-card' as *;
-@use './icon' as *;
 
 @mixin kol-dialog {
-	@include kol-icon-theme;
 	@include kol-card;
 
 	.kol-dialog,

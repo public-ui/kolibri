@@ -1,9 +1,7 @@
 @use './button' as *;
-@use './icon' as *;
 @use '../../mixins/to-rem' as *;
 
 @mixin popover-button {
-	@include icon;
 	@include button('kol-button');
 
 	.kol-popover-button {

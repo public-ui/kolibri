@@ -1,17 +1,19 @@
-let openTooltips = 0;
+import { getSharedState } from '../core/shared-state';
+
+const shared = getSharedState('tooltips', () => ({ open: 0 }));
 
 export const tooltipOpened = () => {
-	openTooltips++;
+	shared.open++;
 };
 
 export const tooltipClosed = () => {
-	openTooltips = Math.max(0, openTooltips - 1);
+	shared.open = Math.max(0, shared.open - 1);
 };
 
 export const handleCancelOverlay = (event: Event): void => {
-	if (openTooltips > 0) {
+	if (shared.open > 0) {
 		event.preventDefault();
 	}
 };
 
-export const isTooltipOpen = (): boolean => openTooltips > 0;
+export const isTooltipOpen = (): boolean => shared.open > 0;

@@ -1,9 +1,6 @@
 @use '../functions/to-rem' as *;
-@use '../mixins/icon' as *;
 
 @mixin kol-input-container {
-	@include icon;
-
 	.kol-input-container {
 		--a11y-min-size: #{to-rem(40)};
 		--border-color: var(--color-blue-100);

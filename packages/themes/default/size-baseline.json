@@ -1,0 +1,254 @@
+{
+	"metrics": {
+		"redundant": {
+			"brotli": 0,
+			"gzip": 0,
+			"raw": 436608
+		},
+		"sheet:GLOBAL": {
+			"brotli": 24407,
+			"gzip": 29681,
+			"raw": 188146
+		},
+		"sheet:KOL-ABBR": {
+			"brotli": 325,
+			"gzip": 420,
+			"raw": 681
+		},
+		"sheet:KOL-ACCORDION": {
+			"brotli": 1168,
+			"gzip": 1455,
+			"raw": 3641
+		},
+		"sheet:KOL-ALERT": {
+			"brotli": 2156,
+			"gzip": 2598,
+			"raw": 11700
+		},
+		"sheet:KOL-BADGE": {
+			"brotli": 679,
+			"gzip": 859,
+			"raw": 2289
+		},
+		"sheet:KOL-BREADCRUMB": {
+			"brotli": 536,
+			"gzip": 654,
+			"raw": 1691
+		},
+		"sheet:KOL-BUTTON": {
+			"brotli": 1254,
+			"gzip": 1537,
+			"raw": 6961
+		},
+		"sheet:KOL-BUTTON-LINK": {
+			"brotli": 541,
+			"gzip": 664,
+			"raw": 2022
+		},
+		"sheet:KOL-CARD": {
+			"brotli": 1781,
+			"gzip": 2184,
+			"raw": 9755
+		},
+		"sheet:KOL-COMBOBOX": {
+			"brotli": 3533,
+			"gzip": 4182,
+			"raw": 34157
+		},
+		"sheet:KOL-DETAILS": {
+			"brotli": 594,
+			"gzip": 764,
+			"raw": 1892
+		},
+		"sheet:KOL-DIALOG": {
+			"brotli": 2111,
+			"gzip": 2573,
+			"raw": 11005
+		},
+		"sheet:KOL-DRAWER": {
+			"brotli": 2062,
+			"gzip": 2497,
+			"raw": 11759
+		},
+		"sheet:KOL-FORM": {
+			"brotli": 2324,
+			"gzip": 2786,
+			"raw": 12879
+		},
+		"sheet:KOL-HEADING": {
+			"brotli": 380,
+			"gzip": 491,
+			"raw": 1148
+		},
+		"sheet:KOL-INPUT-CHECKBOX": {
+			"brotli": 3959,
+			"gzip": 4817,
+			"raw": 51669
+		},
+		"sheet:KOL-INPUT-COLOR": {
+			"brotli": 3053,
+			"gzip": 3629,
+			"raw": 24553
+		},
+		"sheet:KOL-INPUT-DATE": {
+			"brotli": 3212,
+			"gzip": 3812,
+			"raw": 26124
+		},
+		"sheet:KOL-INPUT-EMAIL": {
+			"brotli": 3180,
+			"gzip": 3776,
+			"raw": 25989
+		},
+		"sheet:KOL-INPUT-FILE": {
+			"brotli": 3516,
+			"gzip": 4151,
+			"raw": 33560
+		},
+		"sheet:KOL-INPUT-NUMBER": {
+			"brotli": 3260,
+			"gzip": 3862,
+			"raw": 26578
+		},
+		"sheet:KOL-INPUT-PASSWORD": {
+			"brotli": 3180,
+			"gzip": 3776,
+			"raw": 25989
+		},
+		"sheet:KOL-INPUT-RADIO": {
+			"brotli": 3169,
+			"gzip": 3801,
+			"raw": 31768
+		},
+		"sheet:KOL-INPUT-RANGE": {
+			"brotli": 3182,
+			"gzip": 3771,
+			"raw": 25760
+		},
+		"sheet:KOL-INPUT-TEXT": {
+			"brotli": 3180,
+			"gzip": 3776,
+			"raw": 25989
+		},
+		"sheet:KOL-LINK": {
+			"brotli": 480,
+			"gzip": 604,
+			"raw": 1405
+		},
+		"sheet:KOL-LINK-BUTTON": {
+			"brotli": 1257,
+			"gzip": 1541,
+			"raw": 6835
+		},
+		"sheet:KOL-METER": {
+			"brotli": 573,
+			"gzip": 716,
+			"raw": 1812
+		},
+		"sheet:KOL-NAV": {
+			"brotli": 1691,
+			"gzip": 2034,
+			"raw": 10974
+		},
+		"sheet:KOL-PAGINATION": {
+			"brotli": 3803,
+			"gzip": 4507,
+			"raw": 32307
+		},
+		"sheet:KOL-POPOVER-BUTTON": {
+			"brotli": 1339,
+			"gzip": 1628,
+			"raw": 7502
+		},
+		"sheet:KOL-PROGRESS": {
+			"brotli": 504,
+			"gzip": 642,
+			"raw": 1641
+		},
+		"sheet:KOL-QUOTE": {
+			"brotli": 314,
+			"gzip": 409,
+			"raw": 648
+		},
+		"sheet:KOL-SELECT": {
+			"brotli": 3585,
+			"gzip": 4256,
+			"raw": 29467
+		},
+		"sheet:KOL-SINGLE-SELECT": {
+			"brotli": 3533,
+			"gzip": 4182,
+			"raw": 34187
+		},
+		"sheet:KOL-SKIP-NAV": {
+			"brotli": 423,
+			"gzip": 537,
+			"raw": 1113
+		},
+		"sheet:KOL-SPLIT-BUTTON": {
+			"brotli": 1446,
+			"gzip": 1773,
+			"raw": 9419
+		},
+		"sheet:KOL-TABLE-STATEFUL": {
+			"brotli": 6073,
+			"gzip": 8297,
+			"raw": 70602
+		},
+		"sheet:KOL-TABLE-STATELESS": {
+			"brotli": 6075,
+			"gzip": 8283,
+			"raw": 70471
+		},
+		"sheet:KOL-TABS": {
+			"brotli": 838,
+			"gzip": 1016,
+			"raw": 3218
+		},
+		"sheet:KOL-TEXTAREA": {
+			"brotli": 3250,
+			"gzip": 3849,
+			"raw": 26673
+		},
+		"sheet:KOL-TOAST-CONTAINER": {
+			"brotli": 2199,
+			"gzip": 2636,
+			"raw": 11998
+		},
+		"sheet:KOL-TOOLBAR": {
+			"brotli": 1610,
+			"gzip": 1952,
+			"raw": 14637
+		},
+		"sheet:KOL-TREE": {
+			"brotli": 334,
+			"gzip": 439,
+			"raw": 785
+		},
+		"sheet:KOL-TREE-ITEM": {
+			"brotli": 570,
+			"gzip": 745,
+			"raw": 1879
+		},
+		"sheet:KOL-VERSION": {
+			"brotli": 703,
+			"gzip": 885,
+			"raw": 2390
+		},
+		"sheets": {
+			"brotli": 117342,
+			"gzip": 143447,
+			"raw": 937668
+		},
+		"total": {
+			"brotli": 47837,
+			"gzip": 92386,
+			"raw": 1023154
+		}
+	},
+	"sets": {},
+	"tolerance": {
+		"bytes": 1024,
+		"percent": 2
+	}
+}

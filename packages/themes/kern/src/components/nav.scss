@@ -1,9 +1,10 @@
 @use '~@public-ui/components/index' as *;
 @use '../mixins/link.mixin' as *;
+@use '../mixins/button.mixin' as *;
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
-	@include kol-link('kol-button', $anchor-scoped: false, $interactive-suffix: 'interactive-element');
+	@include kol-link('kol-button');
 
 	.kol-nav {
 		padding: var(--kern-metric-space-small);
@@ -28,10 +29,26 @@
 					background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 				}
 			}
+
+			&__interactive-element {
+				text-decoration-line: underline;
+				text-decoration-skip-ink: auto;
+				text-decoration-style: solid;
+				text-decoration-thickness: var(--kern-1);
+				text-underline-offset: var(--kern-metric-space-2x-small);
+				text-underline-position: from-font;
+
+				/* Icon entries stay without the underline, like the shared link mixin's
+				   `:has(.kol-icon)` suppression — the wrapper's `none` does not reach the
+				   explicit line set on the interactive element. */
+				&:has(.kol-icon) {
+					text-decoration-line: none;
+				}
+			}
 		}
 
 		&--is-compact {
-			--kol-nav-list-item-padding: 0 #{to-rem(10)};
+			--kol-nav-list-item-padding: #{to-rem(16)};
 		}
 
 		&__list {
@@ -52,7 +69,9 @@
 				&--active > .kol-nav__entry-wrapper {
 					.kol-button,
 					.kol-link {
-						font-weight: var(--kern-typography-font-weight-semi-bold);
+						&__interactive-element {
+							font-weight: var(--kern-typography-font-weight-semi-bold);
+						}
 					}
 				}
 			}
@@ -63,8 +82,10 @@
 		}
 
 		&__toggle-button {
-			.kol-button {
-				padding: 0 to-rem(10);
+			@include button('kol-button');
+			.kol-button__interactive-element {
+				@include ghostButton();
+				padding: 0;
 			}
 		}
 

@@ -1,5 +1,4 @@
 @use '../functions/to-rem' as *;
-@use '../mixins/icon' as *;
 
 /* Hover, focus and active emphasis of an enabled link. */
 @mixin kol-link-emphasis {
@@ -88,8 +87,6 @@
 }
 
 @mixin kol-link($block-classname, $anchor-scoped: true, $interactive-suffix: null) {
-	@include icon;
-
 	.#{$block-classname} {
 		font-size: to-rem(16);
 		font-weight: 400;

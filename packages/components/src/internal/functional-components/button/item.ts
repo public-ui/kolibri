@@ -17,7 +17,9 @@ import { resolveButtonProps } from './resolve-props';
  * Attributes the embedding component puts on the `.kol-button` root, e.g. its BEM element class,
  * `hidden` or listeners for the `KolEvent` DOM events of the button.
  */
-export type ButtonItemRootAttributes = Partial<Pick<JSXBase.HTMLAttributes<HTMLElement>, 'aria-current' | 'class' | 'hidden' | 'onBlur' | 'onFocus'>>;
+export type ButtonItemRootAttributes = Partial<
+	Pick<JSXBase.HTMLAttributes<HTMLElement>, 'aria-current' | 'aria-hidden' | 'class' | 'hidden' | 'onBlur' | 'onFocus'>
+>;
 
 /** Everything `ButtonFC` needs for one render pass, plus the ref of its root element. */
 export type ButtonItemFcProps = FunctionalComponentProps<ButtonApi> &

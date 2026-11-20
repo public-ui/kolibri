@@ -90,11 +90,12 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		const record = this.itemRecords[this.currentIndex];
-		const element = record && !record.disabled ? record.getElement() : undefined;
-		if (element) {
-			return delegateClick(this.host!, async () => setClick(element));
-		}
+		return delegateClick(this.host!, async () => {
+			const element = this.getCurrentItemElement();
+			if (element) {
+				await setClick(element);
+			}
+		});
 	}
 
 	public componentWillLoad(): void {
@@ -143,6 +144,15 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	@Listen('focusout', { capture: true })
 	public handleFocusout(event: FocusEvent): void {
 		if (event.target === this.host) this.setFirstFocusableItemIndex();
+	}
+
+	/**
+	 * Returns the element of the item the roving tabindex points at, `undefined` while that item is
+	 * disabled: focus reaches a disabled item, its activation is refused.
+	 */
+	private getCurrentItemElement(): HTMLAnchorElement | HTMLButtonElement | HTMLHRElement | undefined {
+		const record = this.itemRecords[this.currentIndex];
+		return record && !record.disabled ? record.getElement() : undefined;
 	}
 
 	/**

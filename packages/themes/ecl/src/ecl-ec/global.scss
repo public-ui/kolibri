@@ -1,3 +1,5 @@
+@use 'mixins/icon' as *;
+@use '../../assets/ecl-icons/style.css';
 @use '../mixins/to-rem' as *;
 
 @layer kol-theme-global {
@@ -169,4 +171,16 @@
 	.kol-textarea--disabled {
 		color: var(--ecl-color-disabled-text);
 	}
+
+	/*
+ * The icon rules ship once in this global sheet instead of in every component sheet. The
+ * adopter places this sheet in every shadow root as one shared `CSSStyleSheet`, so each root
+ * receives the rules either way, while the icon CSS — including the `ecl-icons` font face —
+ * exists once instead of per component. No component rule targets the icon classes, so the
+ * rules resolve identically from this lower layer.
+ *
+ * `kol-icon` has no entry in the theme's tag map, so it only ever receives this global sheet,
+ * which is exactly where its icon rules live.
+ */
+	@include icon;
 }

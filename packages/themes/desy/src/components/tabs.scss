@@ -1,9 +1,6 @@
 @use '../functions/to-rem' as *;
-@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	@include icon;
-
 	.kol-tabs {
 		font-family: var(--font-family);
 

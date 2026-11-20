@@ -364,3 +364,214 @@ columns, so a table without them renders no columns and logs a development warni
 ```tsx
 <KolTableStateless _label="Orders" _headers={headers} _data={data} />
 ```
+
+## Framework adapters are generated with the official Stencil output targets
+
+KoliBri 4 generated the React, Angular and Vue adapters through own forks of the Stencil output
+targets (`@public-ui/stencil-{react,angular,vue}-output-target`), because the official targets
+could not transform tag names. Stencil now provides the tag name transformation natively
+(`setTagTransformer`), so v5 generates all three adapters with the official targets and the forks
+are retired. The framework chapters below describe the per-framework changes; everything that
+changes for every application follows here.
+
+See `docs/OUTPUT_TARGETS_MIGRATION_CONCEPT.md` for the background and the decisions.
+
+### Tag name transformation
+
+The untyped `transformTagName` option of the lazy loader is removed:
+`defineCustomElements(window, { transformTagName })` has no effect anymore. Register the
+transformer with `bootstrap({ transformTagName })` or with `setTagNameTransformer` from your
+adapter — one registration is enough, the adapter and `bootstrap` share it. Register it before the
+first KoliBri element is defined or rendered; the registration limits the transformation to `kol-*`
+tags and warns when it arrives after components were defined.
+
+**Before (v4), option on the loader:**
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await register(DEFAULT, defineCustomElements);
+defineCustomElements(window, { transformTagName: (tagName) => `${tagName}-app` });
+```
+
+**After (v5), option on `register`/`bootstrap` (or `setTagNameTransformer` from the adapter):**
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await register(DEFAULT, defineCustomElements, { transformTagName: (tagName) => `${tagName}-app` });
+```
+
+A transformer passed to `register`/`bootstrap` keeps working — it now registers with the native
+Stencil runtime instead of rewriting the tag constants.
+
+### The `Kol*Tag` constants keep their `kol-*` value
+
+KoliBri 4 rewrote the exported `Kol*Tag` constants (for example `KolButtonTag`) when a transformer
+was registered, so the constants carried the transformed names. The constants keep their default
+value permanently now; the transformation runs inside the Stencil runtime. Code that addresses
+elements by a tag constant resolves the name through `transformTag`:
+
+**Before (v4):**
+
+```ts
+import { KolButtonTag } from '@public-ui/components';
+
+document.querySelector(KolButtonTag); // 'kol-button-app' after the registration
+```
+
+**After (v5):**
+
+```ts
+import { KolButtonTag, transformTag } from '@public-ui/components';
+
+document.querySelector(transformTag(KolButtonTag)); // 'kol-button-app'
+```
+
+### Adapter support
+
+React, Angular and Vue support the tag name transformation as before. Solid, Svelte and the hydrate
+package do not support it officially (see the concept document); `setTagNameTransformer` of the
+Solid adapter is untested.
+
+## React adapters register through the custom elements build
+
+`@public-ui/react` and `@public-ui/react-v19` are generated with the official
+[`@stencil/react-output-target`](https://www.npmjs.com/package/@stencil/react-output-target) instead
+of the `@public-ui/stencil-react-output-target` fork. Each React component defines its custom element
+from `@public-ui/components/custom-elements` on its first render. The lazy loader is no longer part
+of a React application.
+
+### Registration
+
+Remove the `defineCustomElements` loader from `bootstrap`. Elements the loader defines do not receive
+the props of the React components, so both registrations must not be mixed.
+
+**Before (v4):**
+
+```ts
+import { bootstrap } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await bootstrap(DEFAULT, defineCustomElements);
+```
+
+**After (v5):**
+
+```ts
+import { bootstrap } from '@public-ui/components';
+
+await bootstrap(DEFAULT, []);
+```
+
+### Toaster
+
+The toaster creates its container element itself instead of rendering it through a React component.
+Define that element once before the first toast:
+
+```ts
+import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/custom-elements/kol-toast-container.js';
+
+defineKolToastContainer();
+```
+
+### Tag name transformation
+
+The registration is the one described in the chapter above: `setTagNameTransformer` from the
+adapter or `transformTagName` with `bootstrap` — one registration covers the React components and
+the tags the root entry creates (the toast container of the `ToasterService`), because the adapter
+bridge and `bootstrap` share it. Register it before the first render and before
+`defineKolToastContainer`.
+
+```ts
+import { bootstrap } from '@public-ui/components';
+import { setTagNameTransformer } from '@public-ui/react-v19';
+
+const transformTagName = (tagName: string) => `${tagName}-app`;
+
+setTagNameTransformer(transformTagName);
+await bootstrap(DEFAULT, []);
+```
+
+### Supported React versions and types
+
+- `@public-ui/react` supports React 18 only (peer range `18.x`), because the Stencil React runtime
+  requires React 18 or 19. React 19 applications use `@public-ui/react-v19`.
+- The `StyleReactProps` type export of `@public-ui/react-v19` is removed. The props of the React
+  components accept `class` and CSS custom properties in `style`.
+
+## Angular adapters are generated with the official Stencil output target
+
+`@public-ui/angular-v20` and `@public-ui/angular-v21` are generated with the official
+[`@stencil/angular-output-target`](https://www.npmjs.com/package/@stencil/angular-output-target)
+instead of the `@public-ui/stencil-angular-output-target` fork. The components stay standalone
+components and the registration through the lazy loader (`register(DEFAULT, defineCustomElements)`)
+is unchanged.
+
+### Required inputs
+
+Props that a KoliBri component requires are required Angular inputs, for example `_label`. A template
+that omits one no longer compiles (`NG8008`). Bind every required input.
+
+**Before (v4):**
+
+```html
+<kol-button></kol-button>
+```
+
+**After (v5):**
+
+```html
+<kol-button _label="Save"></kol-button>
+```
+
+### Methods
+
+The component methods (`focus()`, `click()`, `getValue()`, …) are callable on the Angular component,
+for example through `@ViewChild`.
+
+### Tag name transformation
+
+The registration is the one described in the chapter above: `setTagNameTransformer` from the
+adapter or `transformTagName` with `register`/`bootstrap` — one registration is enough. Register it
+before `register`/`bootstrap` runs the loader and before the first component renders. Angular
+fixes the selector of a component at compile time, so under a transformer the KoliBri element
+with the transformed tag renders inside the `kol-*` host of the Angular component.
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await register(DEFAULT, defineCustomElements, { transformTagName: (tagName) => `${tagName}-app` });
+```
+
+## Vue adapter is generated with the official Stencil output target
+
+`@public-ui/vue` is generated with the official
+[`@stencil/vue-output-target`](https://www.npmjs.com/package/@stencil/vue-output-target) instead of
+the `@public-ui/stencil-vue-output-target` fork. The registration through the lazy loader is
+unchanged.
+
+### Vue 3.4.38 or newer
+
+`@public-ui/vue` requires Vue 3.4.38 or newer (peer range `^3.4.38`), the minimum of the Stencil
+Vue runtime. Applications on Vue 3.0 to 3.4 stay on `@public-ui/vue` of KoliBri 4 or upgrade Vue
+first.
+
+### Tag name transformation
+
+The components resolve their tag on every render through the Stencil runtime. The registration is
+the one described in the chapter above: `setTagNameTransformer` from the adapter or
+`transformTagName` with `register`/`bootstrap` — one registration is enough. Register it before
+`register`/`bootstrap` runs the loader.
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+import { setTagNameTransformer } from '@public-ui/vue';
+
+setTagNameTransformer((tagName) => `${tagName}-app`);
+await register(DEFAULT, defineCustomElements);
+```

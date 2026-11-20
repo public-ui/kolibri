@@ -1,27 +1,28 @@
+import { getSharedState } from '../../core/shared-state';
+
 type LocationChangeCallback = (location: string) => void;
 export type UnsubscribeFunction = () => void;
 
-let currentLocation: string | undefined;
-const subscribers: Array<LocationChangeCallback> = [];
+const shared = getSharedState('location', (): { current?: string; subscribers: LocationChangeCallback[] } => ({ subscribers: [] }));
 
 export const setCurrentLocation = (location: string) => {
-	currentLocation = location;
-	subscribers.forEach((subscriber) => {
+	shared.current = location;
+	shared.subscribers.forEach((subscriber) => {
 		subscriber(location);
 	});
 };
 
 export const onLocationChange = (callback: LocationChangeCallback, eager = true): UnsubscribeFunction => {
-	if (eager && typeof currentLocation === 'string') {
-		callback(currentLocation);
+	if (eager && typeof shared.current === 'string') {
+		callback(shared.current);
 	}
-	subscribers.push(callback);
+	shared.subscribers.push(callback);
 
 	// unsubscribe function
 	return () => {
-		const index = subscribers.indexOf(callback);
+		const index = shared.subscribers.indexOf(callback);
 		if (index >= 0) {
-			subscribers.splice(index, 1);
+			shared.subscribers.splice(index, 1);
 		}
 	};
 };

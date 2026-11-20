@@ -1,10 +1,7 @@
 @use '../@shared/input-core' as *;
 @use '../mixins/to-rem' as *;
-@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	@include kol-icon-theme;
-
 	.kol-input-range__input:focus-visible {
 		outline: var(--color-primary-variant) solid to-rem(2);
 	}

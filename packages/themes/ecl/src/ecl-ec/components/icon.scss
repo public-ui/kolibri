@@ -1,7 +1,0 @@
-@use '../mixins/icon' as *;
-
-@use '../../../assets/ecl-icons/style.css';
-
-@layer kol-theme-component {
-	@include icon();
-}

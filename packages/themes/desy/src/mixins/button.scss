@@ -1,10 +1,7 @@
 @use '../functions/to-rem' as *;
 @use './focus-outline' as *;
-@use '../mixins/icon' as *;
 
 @mixin button($block-classname) {
-	@include icon;
-
 	.#{$block-classname} {
 		--a11y-min-size: #{to-rem(36)};
 		--button-main-color: var(--color-blue-100);
