@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11610,
-	"head": "1820a586933fad7dbc042607b0d6a9e64360f1e2",
+	"head": "6f1fc48fa89746abbfe78d7f029ea6dd04ab6a2b",
 	"repository": "public-ui/kolibri",
-	"runId": 44711084525,
-	"generatedAt": "2026-11-20T09:47:04.958Z",
-	"digest": "sha256:5d29e09c3705e613f99f1b806e6ac109973a0fdc77bcca3c52700a9456e8e8e7",
+	"runId": 44722247623,
+	"generatedAt": "2026-11-20T11:06:57.121Z",
+	"digest": "sha256:cdf39369134ea7871c82d0323da70d34f1b8424ce0a1d08ff37bcf8f09edfaf9",
 	"baseline": {
 		"sha": "7796ba85db5efabe32434c7954f7fc61863c3684",
 		"ref": "release/4",
@@ -19,7 +19,7 @@
 	"summary": {
 		"unchanged": 3055,
 		"changed": 40,
-		"added": 0,
+		"added": 28,
 		"removed": 0,
 		"error": 0
 	},
@@ -45,11 +45,11 @@
 			"summary": {
 				"unchanged": 440,
 				"changed": 2,
-				"added": 0,
+				"added": 4,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:d3aaeb6394d201fe7b16f77e3bd2db030e6c3af2ceb0892696a9743c9d624e8d",
+			"digest": "sha256:66e7b6a6f7e580c5f7317fd5085dac4d68197df34cf0880ed330276e5187cb2b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1220,6 +1220,34 @@
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
 					"hash": "sha256:066fe34d3c521dd989903b237be3cc25d697de82a1c6f0664f3f2afbac9d12be"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:558a35c6bf410a32c96adb3156e2a394f8273bc6f15c59ecad9dd09f2d11ed0d",
+					"actual": "test-tag-name-transformer/input-file-with-file-noColumns--long-name.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:24d3bd0abdd594b5b6683b1f6d9a32f3c20b6467da804cd3a62a14108b816ea4",
+					"actual": "test-tag-name-transformer/input-file-with-file-noColumns--long-name-320.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:ae8c8dfa3d8ded11882abfc678e6553b8391a81e690521d760034d24391e9037",
+					"actual": "test-tag-name-transformer/input-file-with-file-noColumns--long-names-multiple.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:ee41146835e79d1942b34915182e60cdb48551f892b083e98d2d9d19b2865970",
+					"actual": "test-tag-name-transformer/input-file-with-file-noColumns--long-names-multiple-320.actual.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -2738,11 +2766,11 @@
 			"summary": {
 				"unchanged": 428,
 				"changed": 14,
-				"added": 0,
+				"added": 4,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:56ffce9e8a8bca1915cdc597a4aa85fc6467ad2d36d2d4637bf69476ee214b7c",
+			"digest": "sha256:9b576c873ff64aa954ee67bec775da064fe856a369d25f236a71a6a3c79bd257",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3963,6 +3991,34 @@
 					"expected": "theme-bwst/input-file-basic-noColumns--label-short-key.expected.png",
 					"actual": "theme-bwst/input-file-basic-noColumns--label-short-key.actual.png",
 					"diff": "theme-bwst/input-file-basic-noColumns--label-short-key.diff.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:9465221e3e61d70fca49c8c5fa42ed917870b796621303d5ecba3f2aff5db29d",
+					"actual": "theme-bwst/input-file-with-file-noColumns--long-name.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:62d83784e1bf849e516e1fc0c8c1fb0f45eccdd9c4d2f639adad48d4003713e8",
+					"actual": "theme-bwst/input-file-with-file-noColumns--long-name-320.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:ad991ff5b2cf2344727ec1a55d4ea2d2c87cd61e09a167355dc77637c24ac814",
+					"actual": "theme-bwst/input-file-with-file-noColumns--long-names-multiple.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:9555d2f9d1fdb9730bd30c374baaf792e3b2e5d579e2a7074190ec85a8abb546",
+					"actual": "theme-bwst/input-file-with-file-noColumns--long-names-multiple-320.actual.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -5511,11 +5567,11 @@
 			"summary": {
 				"unchanged": 440,
 				"changed": 2,
-				"added": 0,
+				"added": 4,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:d3aaeb6394d201fe7b16f77e3bd2db030e6c3af2ceb0892696a9743c9d624e8d",
+			"digest": "sha256:66e7b6a6f7e580c5f7317fd5085dac4d68197df34cf0880ed330276e5187cb2b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6686,6 +6742,34 @@
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
 					"hash": "sha256:066fe34d3c521dd989903b237be3cc25d697de82a1c6f0664f3f2afbac9d12be"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:558a35c6bf410a32c96adb3156e2a394f8273bc6f15c59ecad9dd09f2d11ed0d",
+					"actual": "theme-default/input-file-with-file-noColumns--long-name.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:24d3bd0abdd594b5b6683b1f6d9a32f3c20b6467da804cd3a62a14108b816ea4",
+					"actual": "theme-default/input-file-with-file-noColumns--long-name-320.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:ae8c8dfa3d8ded11882abfc678e6553b8391a81e690521d760034d24391e9037",
+					"actual": "theme-default/input-file-with-file-noColumns--long-names-multiple.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:ee41146835e79d1942b34915182e60cdb48551f892b083e98d2d9d19b2865970",
+					"actual": "theme-default/input-file-with-file-noColumns--long-names-multiple-320.actual.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -8204,11 +8288,11 @@
 			"summary": {
 				"unchanged": 440,
 				"changed": 2,
-				"added": 0,
+				"added": 4,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:c64301be226580ebaa4ab884d1a2a78b0a3cfdf2da22323ca9815c5d80ecc932",
+			"digest": "sha256:64f50c4ab1b07c32e28b5a5d95c489d723f35a75c5624817b9103c2d1879be59",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9379,6 +9463,34 @@
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
 					"hash": "sha256:136d7432fef1b12ac0ea4d894a831e0132a0ab00639e08afbce990d9ca05f906"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:7dffac80ad7f19bde339489b163673899b69964c19a86480a2a98f4dad53e773",
+					"actual": "theme-desy/input-file-with-file-noColumns--long-name.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:f5ac78fa783f5d3a719ce278d4aa5534650a246d99f5d9c1bfaf6fc9bb5a9ec9",
+					"actual": "theme-desy/input-file-with-file-noColumns--long-name-320.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:0e3d4b879750a17ffc12ea3d66cef05d86ad9e3d4047617988b38ed76b784cc4",
+					"actual": "theme-desy/input-file-with-file-noColumns--long-names-multiple.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:4fa2e2d56d02416258d35718333dff31e818939db324e27c3fbc17512a6e9d21",
+					"actual": "theme-desy/input-file-with-file-noColumns--long-names-multiple-320.actual.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -10917,11 +11029,11 @@
 			"summary": {
 				"unchanged": 440,
 				"changed": 2,
-				"added": 0,
+				"added": 4,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6648fe9a5d1b4171e0e3f70c3e3150611fb213c9c4dfef17b9b33b82ba4786ed",
+			"digest": "sha256:39b9085730aa9b3bdf01649b130a8f67c238a3ef7cbc3f01d06e0a6dea21aea5",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12092,6 +12204,34 @@
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
 					"hash": "sha256:f3803621000a1dc169127acc3bd2ac008dc7844445296e15b90fdd27dd8e4277"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:57a435777c057e851f4c1e995a3dd6af7ed7be189e3f48238889f6d44fb72f85",
+					"actual": "theme-ecl/input-file-with-file-noColumns--long-name.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:60b6e5d1a22c8f116a5515e8ac0e63f51fc991f5137cc8a441034f0b658da206",
+					"actual": "theme-ecl/input-file-with-file-noColumns--long-name-320.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:a4ba3c532b15b0b2d82785db3694f270b1c11696026e6b07d5f66c2919ef2ed7",
+					"actual": "theme-ecl/input-file-with-file-noColumns--long-names-multiple.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:da29ae31d1794c860c4a56fb3cd0e823a1fc3dce3ca2ce877ad5919eb42e392c",
+					"actual": "theme-ecl/input-file-with-file-noColumns--long-names-multiple-320.actual.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -13630,11 +13770,11 @@
 			"summary": {
 				"unchanged": 425,
 				"changed": 18,
-				"added": 0,
+				"added": 4,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:44166020bfdb027a6b8c87490f82e7097cb82b85fc51b8758191047d4d9822fc",
+			"digest": "sha256:8767ead65076e9f67df79b4b5bd23fbdf0e8c4b3270b0fd0630b4bc689cea6fa",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14860,6 +15000,34 @@
 					"expected": "theme-kern/input-file-basic-noColumns--label-short-key.expected.png",
 					"actual": "theme-kern/input-file-basic-noColumns--label-short-key.actual.png",
 					"diff": "theme-kern/input-file-basic-noColumns--label-short-key.diff.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:8d7eb1424a3f9b8a335ae85e2f3edee623321136669e125bb0ec2e7843139033",
+					"actual": "theme-kern/input-file-with-file-noColumns--long-name.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:29f37000b89db849ce71af848e26202ca0ed9c43e888034be16d64c7c4977d6d",
+					"actual": "theme-kern/input-file-with-file-noColumns--long-name-320.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:ac9b1df2f8e1e7ffa77772bb544389ba687d897f78ad02899919942fcd20db2e",
+					"actual": "theme-kern/input-file-with-file-noColumns--long-names-multiple.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:035afe08016685d1d6daf1bf2e58207ee2785abd72f41e4e4c6c85d018e0e707",
+					"actual": "theme-kern/input-file-with-file-noColumns--long-names-multiple-320.actual.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -16409,11 +16577,11 @@
 			"summary": {
 				"unchanged": 442,
 				"changed": 0,
-				"added": 0,
+				"added": 4,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a6461012c621c0ea1567a719c62f25c956e706666fed882a6d694187c2c99a4a",
+			"digest": "sha256:0965a7e5407c0a5b8461eaa822c94c2986d69ebc54e1facac2ab7a5938f62f21",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17584,6 +17752,34 @@
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
 					"hash": "sha256:92b8ce8162c4d4e0ff5f161b2dcc046a2e0454ace3008fb1fb17b25eea13f6e9"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:5cc7c2fbb0d7f649d40c1670c18977d8a3b2abd9a037776088e41e3936ae9ddf",
+					"actual": "unstyled/input-file-with-file-noColumns--long-name.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-name-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:b86a1e66031deb54b4825e133c07d80aa209747174b6e094808752b4946fbc36",
+					"actual": "unstyled/input-file-with-file-noColumns--long-name-320.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:de045727f27a15b696f09b87d93278eea41a6758b2e61a6f74a7c383bc915113",
+					"actual": "unstyled/input-file-with-file-noColumns--long-names-multiple.actual.png"
+				},
+				{
+					"name": "input-file-with-file-noColumns--long-names-multiple-320",
+					"route": "input-file/with-file?noColumns",
+					"status": "added",
+					"hash": "sha256:217ae4e8d743cd1ee45a65b194b5f7c6da71d49d887872149c5cca86eaf447f1",
+					"actual": "unstyled/input-file-with-file-noColumns--long-names-multiple-320.actual.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
