@@ -41,9 +41,12 @@
 		}
 
 		&__button {
-			/* The button root is an item of the centered `__container` row. `height: auto` keeps it at its
-			   own height instead of the `height: 100%` of the button styles, which would stretch it to the row. */
+			/* The button root is an item of the centered `__container` row. `height: auto` drops the
+			   `height: 100%` of the button styles so `align-self: stretch` applies and the button
+			   follows the row height: a long file name that wraps the row to multiple lines grows
+			   the button with it. */
 			height: auto;
+			align-self: stretch;
 		}
 
 		&__filename {
