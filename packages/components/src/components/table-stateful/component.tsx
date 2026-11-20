@@ -16,6 +16,7 @@ import {
 	hasHeadersInBothDirections,
 	headerKeysChanged,
 	initializeSortFromHeaders,
+	redeclaresActiveSort,
 	selectDisplayedData,
 	sortRows,
 } from '../../internal/functional-components/table-stateful/model';
@@ -250,6 +251,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 			const firstHeaders = !this.headers.horizontal?.length && !this.headers.vertical?.length;
 			if (firstHeaders || headerKeysChanged(this.headers, headers)) {
 				this.adjustedHeaderCells = undefined;
+				this.initializeSort(headers);
+				setTimeout(() => this.updateSortedData());
+			} else if (redeclaresActiveSort(headers, this.sortData)) {
+				/* A non-structural re-set that re-declares the direction of the active sort replaces it. */
 				this.initializeSort(headers);
 				setTimeout(() => this.updateSortedData());
 			}

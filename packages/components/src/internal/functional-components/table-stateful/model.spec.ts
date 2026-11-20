@@ -7,6 +7,7 @@ import {
 	getHeaderCellSortOrder,
 	getHeaderCellSortState,
 	getSelectedData,
+	hasDeclaredSort,
 	hasHeadersInBothDirections,
 	initializeSortFromHeaders,
 	mergeAdjustedHeaderCells,
@@ -213,5 +214,15 @@ describe('table-stateful model', () => {
 			expect(getSelectedData(undefined, ROWS, [1])).toBeNull();
 			expect(getSelectedData({ label: () => '', keyPropertyName: '' }, ROWS, [1])).toBeNull();
 		});
+	});
+});
+
+describe('hasDeclaredSort', () => {
+	it('returns true when a header cell declares a sort direction', () => {
+		expect(hasDeclaredSort({ horizontal: [[{ ...ID, sortDirection: 'ASC' }]], vertical: [] })).toBe(true);
+	});
+
+	it('returns false when no header cell declares a sort direction', () => {
+		expect(hasDeclaredSort({ horizontal: [[ID]], vertical: [] })).toBe(false);
 	});
 });

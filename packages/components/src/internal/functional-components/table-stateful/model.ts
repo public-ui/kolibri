@@ -199,6 +199,26 @@ export function headerKeysChanged(previous: KoliBriTableHeaders, next: KoliBriTa
 	return previousKeys.length !== nextKeys.length || previousKeys.some((key, index) => key !== nextKeys[index]);
 }
 
+/** Whether any header cell declares a sort direction. */
+export function hasDeclaredSort(headers: KoliBriTableHeaders): boolean {
+	return [headers.horizontal, headers.vertical].some((directions) => directions?.some((row) => row.some((cell) => cell.sortDirection !== undefined)));
+}
+
+/**
+ * Whether a non-structural re-set re-declares the direction of the currently sorted column — only
+ * then does the re-set replace that direction instead of leaving the active sort untouched. An
+ * empty active sort makes any declared sort active.
+ */
+export function redeclaresActiveSort(next: KoliBriTableHeaders, sortData: SortData[]): boolean {
+	const active = sortData.find((entry) => entry.direction);
+	if (!active) {
+		return hasDeclaredSort(next);
+	}
+	return [next.horizontal, next.vertical].some((directions) =>
+		directions?.some((row) => row.some((cell) => cell?.key === active.key && cell.sortDirection !== undefined)),
+	);
+}
+
 /**
  * Lays the header cells adjusted in the settings menu (order, visibility, width, …) over the horizontal
  * header cells of `_headers`, matched by `key`. The logic fields such as `compareFn` always come from
