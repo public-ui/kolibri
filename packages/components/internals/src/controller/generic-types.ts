@@ -15,7 +15,7 @@ export type KolibriHTMLAttributes = {
 	'aria-details'?: string;
 	'aria-expanded'?: boolean;
 	'aria-haspopup'?: boolean;
-	'aria-hidden'?: boolean;
+	'aria-hidden'?: boolean | 'true' | 'false';
 	'aria-invalid'?: boolean | string;
 	'aria-keyshortcuts'?: string;
 	'aria-label'?: string;

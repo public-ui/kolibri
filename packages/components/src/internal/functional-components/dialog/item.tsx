@@ -168,7 +168,6 @@ export const createDialogItem = (
 					labelledBy: isCard ? headingId : undefined,
 					modal,
 					refDialog: dialogRef,
-					variant,
 					width,
 				},
 				card:
