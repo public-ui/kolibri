@@ -24,7 +24,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateFocus } from '../../utils/element-interaction';
 import { BaseLinkWebComponent } from './base';
 
@@ -43,7 +43,7 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 
 	@State() public ariaCurrent: string = '';
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public expertSlot: boolean = false;
 

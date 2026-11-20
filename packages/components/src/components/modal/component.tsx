@@ -5,7 +5,7 @@ import type { DialogApi } from '../../internal/functional-components/dialog/api'
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { DialogProps, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from '../dialog/base';
 
 /**
@@ -28,7 +28,7 @@ import { BaseDialogWebComponent } from '../dialog/base';
 export class KolModal extends BaseDialogWebComponent implements DialogProps, Omit<WebComponentInterface<DialogApi>, '_level' | 'watchLevel'> {
 	@Element() protected readonly host?: HTMLKolModalElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public headingId: string = createUniqueId('dialog-heading');
 
