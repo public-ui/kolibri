@@ -1,16 +1,16 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { classNameFromVariant, trimLabel } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
+import { buttonPropsConfig, type ButtonApi } from '../../../../internals/src/controller/button/api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import { classNameFromVariant, trimLabel } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
 import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import { resolveFcProps } from '../props-from-config';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
-import { buttonPropsConfig, type ButtonApi } from './api';
 
 const buttonBem = bem.forBlock('kol-button');
 const BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT = buttonBem('interactive-element');

@@ -1,8 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import type { Generic } from 'adopted-style-sheets';
 
-import { createLegacyComponent, getInvalidValueWarnings, getLoggedMessages } from '../../utils/testing/legacy-component';
-import { Log, setExperimentalMode, setRuntimeMode } from './dev.utils';
+import { Log, setExperimentalMode, setRuntimeMode } from '../../../internals/src/schema/utils/dev.utils';
 import {
 	emptyStringByArrayHandler,
 	KoliBriDevHelper,
@@ -20,7 +19,8 @@ import {
 	watchNumber,
 	watchString,
 	watchValidator,
-} from './prop.validators';
+} from '../../../internals/src/schema/utils/prop.validators';
+import { createLegacyComponent, getInvalidValueWarnings, getLoggedMessages } from '../../utils/testing/legacy-component';
 
 type DebugSpy = jest.SpiedFunction<typeof Log.debug>;
 

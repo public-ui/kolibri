@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import type { MsgPropType, Stringified } from '../schema';
+import type { MsgPropType, Stringified } from '../../internals/src/schema/index';
 import { setContentWithRetry } from './utils/setContentWithRetry';
 
 const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType>; _touched?: boolean } & HTMLElement>(componentName: string) => {

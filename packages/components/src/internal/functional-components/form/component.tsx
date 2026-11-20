@@ -1,11 +1,11 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { translate } from '../../../i18n';
-import { bem } from '../../../schema/bem-registry';
+import type { FormApi } from '../../../../internals/src/controller/form/api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { translate } from '../../../../internals/src/i18n';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import type { FormApi } from './api';
 import type { FormErrorListFCProps } from './error-list';
 import { FormErrorListFC } from './error-list';
 

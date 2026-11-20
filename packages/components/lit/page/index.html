@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<title>KolButton — Stencil vs. Lit Parity Spike</title>
+		<style>
+			body {
+				font-family: Verdana, sans-serif;
+				margin: 1rem;
+				background: #fff;
+				color: #202020;
+			}
+			section {
+				margin-bottom: 2rem;
+			}
+			h2 {
+				font-size: 1rem;
+			}
+			.row {
+				display: flex;
+				gap: 1rem;
+				align-items: center;
+				flex-wrap: wrap;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>KolButton — Stencil vs. Lit</h1>
+		<section>
+			<h2>Stencil (dist build)</h2>
+			<div class="row">
+				<kol-button id="stencil-default" _label="Speichern"></kol-button>
+				<kol-button id="stencil-primary" _label="Primär" _variant="primary"></kol-button>
+				<kol-button id="stencil-disabled" _label="Deaktiviert" _disabled=""></kol-button>
+				<kol-button id="stencil-hidden" _label="Nur Symbol" _hide-label="" _icons="codicon codicon-home" _aria-description="Internes Symbol"></kol-button>
+			</div>
+		</section>
+		<section>
+			<h2>Lit (spike)</h2>
+			<div class="row">
+				<kol-button-lit id="lit-default" _label="Speichern"></kol-button-lit>
+				<kol-button-lit id="lit-primary" _label="Primär" _variant="primary"></kol-button-lit>
+				<kol-button-lit id="lit-disabled" _label="Deaktiviert" _disabled=""></kol-button-lit>
+				<kol-button-lit id="lit-hidden" _label="Nur Symbol" _hide-label="" _icons="codicon codicon-home" _aria-description="Internes Symbol"></kol-button-lit>
+			</div>
+		</section>
+		<section>
+			<h2>Reactivity (props set after hydration)</h2>
+			<div class="row">
+				<kol-button id="stencil-reactive" _label="Stencil"></kol-button>
+				<kol-button-lit id="lit-reactive" _label="Lit"></kol-button-lit>
+			</div>
+		</section>
+		<script type="module" src="./main.ts"></script>
+	</body>
+</html>

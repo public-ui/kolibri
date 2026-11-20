@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
-import { BaseWebComponent } from '../base-web-component';
+import { BaseWebComponent } from '../../../../internals/src/controller/base-web-component';
 import { CounterBehavior } from './behavior';
 
 type Spans = { visual: HTMLSpanElement; aria: HTMLSpanElement };

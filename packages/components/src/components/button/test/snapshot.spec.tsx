@@ -1,5 +1,5 @@
-import { KolButtonTag } from '../../../core/component-names';
-import type { InternalButtonProps } from '../../../schema';
+import { KolButtonTag } from '../../../../internals/src/core/component-names';
+import type { InternalButtonProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolButton } from '../component';

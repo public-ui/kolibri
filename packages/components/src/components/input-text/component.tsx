@@ -36,26 +36,23 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
+} from '../../../internals/src/schema/index';
 
-import { translate } from '../../i18n';
+import { createButtonItem } from '../../../internals/src/controller/button/item';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputTextApi } from '../../../internals/src/controller/input-text/api';
+import { inputTextPropsConfig } from '../../../internals/src/controller/input-text/api';
+import { translate } from '../../../internals/src/i18n';
+import { inputTextTypeProp, spellCheckProp, suggestionsProp } from '../../../internals/src/props/index';
+import clsx from '../../../internals/src/utils/clsx';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
+import { createEventWithTarget, KolEvent } from '../../../internals/src/utils/events';
 import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputTextApi } from '../../internal/functional-components/input-text/api';
-import { inputTextPropsConfig } from '../../internal/functional-components/input-text/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { inputTextTypeProp, spellCheckProp, suggestionsProp } from '../../internal/props';
-import { bem } from '../../schema/bem-registry';
-import clsx from '../../utils/clsx';
-import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { createEventWithTarget, KolEvent } from '../../utils/events';
-
-const textBem = bem.forBlock('kol-input-text');
 
 /**
  * The **Text** input type creates an input field for plain text, search terms, URLs, or phone numbers.
@@ -577,7 +574,7 @@ export class KolInputText
 						_on: { onClick: this.handleClearButtonClick },
 					},
 					{
-						class: clsx(textBem('clear-button'), 'kol-input-container__smart-button', {
+						class: clsx('kol-input-text__clear-button', 'kol-input-container__smart-button', {
 							'kol-input-text__clear-button--hidden': !canClear,
 						}),
 					},
@@ -592,7 +589,7 @@ export class KolInputText
 
 		return (
 			<Host>
-				<FormFieldFC {...this.getTextFormFieldProps(clsx(textBem(), type))}>
+				<FormFieldFC {...this.getTextFormFieldProps(`kol-input-text ${type}`)}>
 					<InputContainerFC
 						disabled={this.getRenderProp('disabled')}
 						msg={this.getRenderProp('msg')}

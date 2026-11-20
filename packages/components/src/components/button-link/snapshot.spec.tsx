@@ -1,5 +1,5 @@
-import { KolButtonLinkTag } from '../../core/component-names';
-import type { ButtonLinkProps } from '../../schema';
+import { KolButtonLinkTag } from '../../../internals/src/core/component-names';
+import type { ButtonLinkProps } from '../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolButtonLink } from './component';

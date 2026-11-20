@@ -1,13 +1,10 @@
+/* eslint-disable no-console */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
-import { translate } from '../../i18n';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { PaginationFC } from '../../internal/functional-components/pagination/component';
-import type { PaginationInput, PaginationItem } from '../../internal/functional-components/pagination/item';
-import { createPaginationItem } from '../../internal/functional-components/pagination/item';
-import type { TableStatefulApi } from '../../internal/functional-components/table-stateful/api';
-import type { SortData } from '../../internal/functional-components/table-stateful/model';
+import type { WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { TableStatefulApi } from '../../../internals/src/controller/table-stateful/api';
+import type { SortData } from '../../../internals/src/controller/table-stateful/model';
 import {
 	buildHeaderCells,
 	changeCellSort,
@@ -18,8 +15,9 @@ import {
 	initializeSortFromHeaders,
 	selectDisplayedData,
 	sortRows,
-} from '../../internal/functional-components/table-stateful/model';
-import type { TablePagination } from '../../internal/props';
+} from '../../../internals/src/controller/table-stateful/model';
+import { translate } from '../../../internals/src/i18n';
+import type { TablePagination } from '../../../internals/src/props/index';
 import {
 	allowMultiSortProp,
 	isTablePaginationShown,
@@ -29,7 +27,8 @@ import {
 	tablePaginationProp,
 	tableStatefulCallbacksProp,
 	tableStatefulHeadersProp,
-} from '../../internal/props';
+} from '../../../internals/src/props/index';
+import { Callback } from '../../../internals/src/schema/enums/index';
 import type {
 	AllowMultiSortPropType,
 	ChangeHeaderCellsEventPayload,
@@ -54,17 +53,14 @@ import type {
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import { devHint, trimLabel } from '../../schema';
-import { bem } from '../../schema/bem-registry';
-import { Callback } from '../../schema/enums';
-import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
+} from '../../../internals/src/schema/index';
+import { devHint, trimLabel } from '../../../internals/src/schema/index';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../../internals/src/schema/props/aria-labelledby';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
+import { PaginationFC } from '../../internal/functional-components/pagination/component';
+import type { PaginationInput, PaginationItem } from '../../internal/functional-components/pagination/item';
+import { createPaginationItem } from '../../internal/functional-components/pagination/item';
 import { BaseTableStatelessWebComponent } from '../table-stateless/base';
-
-// Only the pagination elements use the block: a shadow DOM node with the block class itself would activate theme rules written for the host.
-const tableStatefulBem = bem.forBlock('kol-table-stateful');
-const BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER = tableStatefulBem('pagination-wrapper');
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -552,8 +548,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		const item = this.paginationItems[position];
 		return (
 			item && (
-				<div class={tableStatefulBem('pagination', { [this.paginationPosition]: true })}>
-					<div class={BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER}>
+				<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.paginationPosition}`}>
+					<div class="kol-table-stateful__pagination-wrapper">
 						<PaginationFC {...item.getFcProps()} />
 					</div>
 				</div>

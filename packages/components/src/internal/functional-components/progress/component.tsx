@@ -1,15 +1,14 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
-import { translate } from '../../../i18n';
-import { trimLabel } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
+import { translate } from '../../../../internals/src/i18n';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import { trimLabel } from '../../../../internals/src/schema/index';
 
-import type { ProgressVariantType } from '../../props';
-import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import { resolveFcProps } from '../props-from-config';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { progressPropsConfig, type ProgressApi } from '../../../../internals/src/controller/progress/api';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import type { ProgressVariantType } from '../../../../internals/src/props/index';
 import { renderLabelWithLang } from '../span/component';
-import { progressPropsConfig, type ProgressApi } from './api';
 
 const FULL_CIRCLE = 342;
 
@@ -80,7 +79,7 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 		: translate('kol-live-value-bounded', { placeholders: { value: String(liveProgressValue), max: String(max), unit } });
 
 	return (
-		<BemRootNodeFC block="kol-progress">
+		<div class={progressBem()}>
 			<div aria-hidden="true" class={progressBem(variant === 'cycle' ? 'cycle' : 'bar')}>
 				{variant === 'bar' && label && <div class={progressBem('bar-label')}>{renderLabelWithLang(label)}</div>}
 				{createProgressSVG(variant, max, value)}
@@ -110,6 +109,6 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 			<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 				{liveValueText}
 			</span>
-		</BemRootNodeFC>
+		</div>
 	);
 };

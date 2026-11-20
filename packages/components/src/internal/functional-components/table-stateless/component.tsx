@@ -1,34 +1,12 @@
 import type { FunctionalComponent as FC, JSX } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
-import { translate } from '../../../i18n';
-import type {
-	ActionColumnHeaderCell,
-	AriaSort,
-	InternalButtonProps,
-	KoliBriTableCell,
-	KoliBriTableDataType,
-	KoliBriTableHeaderCell,
-	KoliBriTableRender,
-	StateColumnHeaderCell,
-	StateColumnPropType,
-} from '../../../schema';
-import { classNameFromVariant, trimLabel } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import { BemRootNodeFC } from '../bem-root-node/component';
-import { ButtonFC } from '../button/component';
-import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
-import type { FunctionalComponentProps, ResolvedFunctionalComponentProps } from '../generic-types';
-import { IconFC } from '../icon/component';
-import type { LinkFCProps } from '../link/component';
-import { LinkFC } from '../link/component';
-import type { EmbeddedLinkProps } from '../link/resolve-props';
-import { resolveFcProps } from '../props-from-config';
-import { renderLabelWithLang } from '../span/component';
-import { SpinFC } from '../spin/component';
-import { TooltipFC } from '../tooltip/component';
-import { tableStatelessPropsConfig, type TableStatelessApi } from './api';
-import type { FixedSide, PrimaryHeaders, SelectionModel, TableDataCell, TableDataRow } from './table-model';
+import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../../../../internals/src/controller/button/item';
+import type { FunctionalComponentProps, ResolvedFunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { EmbeddedLinkProps } from '../../../../internals/src/controller/link/resolve-props';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import { tableStatelessPropsConfig, type TableStatelessApi } from '../../../../internals/src/controller/table-stateless/api';
+import type { FixedSide, PrimaryHeaders, SelectionModel, TableDataCell, TableDataRow } from '../../../../internals/src/controller/table-stateless/table-model';
 import {
 	createDataField,
 	createSelectionModel,
@@ -42,7 +20,31 @@ import {
 	getSelectAllSelection,
 	getTableMinWidth,
 	getVisibleColSpan,
-} from './table-model';
+} from '../../../../internals/src/controller/table-stateless/table-model';
+import { KolBadgeTag } from '../../../../internals/src/core/component-names';
+import { translate } from '../../../../internals/src/i18n';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import type {
+	ActionColumnHeaderCell,
+	AriaSort,
+	InternalButtonProps,
+	KoliBriTableCell,
+	KoliBriTableDataType,
+	KoliBriTableHeaderCell,
+	KoliBriTableHeaderCellWithLogic,
+	KoliBriTableRender,
+	StateColumnHeaderCell,
+	StateColumnPropType,
+} from '../../../../internals/src/schema/index';
+import { classNameFromVariant, trimLabel } from '../../../../internals/src/schema/index';
+import { BemRootNodeFC } from '../bem-root-node/component';
+import { ButtonFC } from '../button/component';
+import { IconFC } from '../icon/component';
+import type { LinkFCProps } from '../link/component';
+import { LinkFC } from '../link/component';
+import { renderLabelWithLang } from '../span/component';
+import { SpinFC } from '../spin/component';
+import { TooltipFC } from '../tooltip/component';
 
 const tableBem = bem.forBlock('kol-table');
 const BEM_CLASS_TABLE__BODY = tableBem('body');
@@ -385,7 +387,7 @@ const renderStateItems = (stateColumn: StateColumnHeaderCell, rowData: KoliBriTa
 		<div class={BEM_CLASS_TABLE__CELL_STATES}>
 			{states.map((state, stateIndex) => {
 				if (state.type === 'badge') {
-					return <kol-badge key={`state-${key}-${stateIndex}`} {...state} />;
+					return <KolBadgeTag key={`state-${key}-${stateIndex}`} {...state} />;
 				}
 				return null;
 			})}
@@ -399,7 +401,7 @@ const renderStateItems = (stateColumn: StateColumnHeaderCell, rowData: KoliBriTa
  * custom `render` function fills it after rendering.
  */
 const renderTableCell = (context: RenderContext, cell: TableDataCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element => {
-	if (cell.visible === false) {
+	if ((cell as KoliBriTableHeaderCell).visible === false) {
 		return '';
 	}
 
@@ -409,7 +411,7 @@ const renderTableCell = (context: RenderContext, cell: TableDataCell, rowIndex: 
 		key = dataKey ? `${dataKey}-${context.primaryHeaders.horizontal ? colIndex : rowIndex}` : key;
 	}
 
-	if (cell.headerCell) {
+	if ((cell as KoliBriTableHeaderCellWithLogic).headerCell) {
 		return renderHeadingCell(context, cell, rowIndex, colIndex, isVertical);
 	}
 

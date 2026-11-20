@@ -1,13 +1,12 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
-import { BemRootNodeFC } from '../bem-root-node/component';
+import type { BadgeApi } from '../../../../internals/src/controller/badge/api';
+import type { ResolvedButtonProps } from '../../../../internals/src/controller/button/resolve-props';
+import type { FunctionalComponentProps, ResolvedProps, StrictFields } from '../../../../internals/src/controller/generic-types';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { ButtonFC } from '../button/component';
-import type { ResolvedButtonProps } from '../button/resolve-props';
-import type { FunctionalComponentProps, ResolvedProps, StrictFields } from '../generic-types';
 import { SpanFC } from '../span/component';
-import type { BadgeApi } from './api';
 
 const badgeBem = bem.forBlock('kol-badge');
 const BEM_CLASS_BADGE__LABEL = badgeBem('label');
@@ -38,6 +37,9 @@ type BadgeFCProps = Pick<FunctionalComponentProps<BadgeApi>, 'icons' | 'label'> 
 };
 
 /**
+ * Root from `bem.forBlock('kol-badge')`, not `BemRootNodeFC`: the badge needs an inline `style`
+ * for its colours, and `BemRootNodeFC` forwards only `class` (ARC42 § "BemRootNodeFC Pattern").
+ *
  * The trailing `<br />` makes NVDA's read mode treat each badge as one element. The smart button
  * stays before it in the DOM for tab order and is moved to the end visually by `order: 3`.
  * `kol-badge-styles()` excludes it from text selection so it does not add a blank line to copied
@@ -45,9 +47,8 @@ type BadgeFCProps = Pick<FunctionalComponentProps<BadgeApi>, 'icons' | 'label'> 
  */
 export const BadgeFC: FC<BadgeFCProps> = ({ color, icons, label, smartButton }) => {
 	return (
-		<BemRootNodeFC
-			block="kol-badge"
-			modifiers={{ 'has-smart-button': smartButton !== undefined }}
+		<div
+			class={badgeBem({ 'has-smart-button': smartButton !== undefined })}
 			style={{
 				backgroundColor: color.backgroundColor,
 				color: color.foregroundColor,
@@ -69,6 +70,6 @@ export const BadgeFC: FC<BadgeFCProps> = ({ color, icons, label, smartButton }) 
 			)}
 
 			<br />
-		</BemRootNodeFC>
+		</div>
 	);
 };

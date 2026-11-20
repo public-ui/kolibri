@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import type { KoliBriTableDataType, KoliBriTableHeaders } from '../../../schema';
+import type { KoliBriTableDataType, KoliBriTableHeaders } from '../../../../internals/src/schema/index';
 import { KolTableStateful } from '../component';
 
 type Row = { id: number; name: string; city: string };

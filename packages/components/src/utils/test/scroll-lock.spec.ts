@@ -1,4 +1,4 @@
-import { lockScroll, unlockScroll } from '../scroll-lock';
+import { lockScroll, unlockScroll } from '../../../internals/src/utils/scroll-lock';
 
 describe('scroll-lock', () => {
 	const docEl = document.documentElement;

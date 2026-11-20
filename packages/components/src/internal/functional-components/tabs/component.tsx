@@ -1,11 +1,11 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { TabsApi } from '../../../../internals/src/controller/tabs/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import type { TabsApi } from './api';
 
 const tabsBem = bem.forBlock('kol-tabs');
 const BEM_CLASS_TABS__BUTTON_CREATE = tabsBem('button-create');

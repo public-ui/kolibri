@@ -1,0 +1,36 @@
+{
+	"name": "@public-ui/internals",
+	"version": "5.0.0-beta.1",
+	"license": "EUPL-1.2",
+	"private": true,
+	"description": "Framework-free core of the KoliBri components: schema types, prop definitions and component orchestration, shared by every runtime implementation.",
+	"exports": {
+		"./*": {
+			"types": "./dist/*.d.ts",
+			"default": "./dist/*.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc",
+		"format": "prettier --check src",
+		"lint": "eslint src",
+		"prepare": "pnpm run build"
+	},
+	"dependencies": {
+		"@floating-ui/dom": "1.8.0",
+		"adopted-style-sheets": "1.2.0-rc.3",
+		"color-convert": "3.1.3",
+		"color-rgba": "2.4.0",
+		"markdown-it": "14.3.3",
+		"rgba-convert": "0.3.0",
+		"typed-bem": "1.0.2",
+		"wcag-contrast": "3.0.0"
+	},
+	"devDependencies": {
+		"@types/markdown-it": "14.2.0",
+		"@types/node": "26.4.0",
+		"@typescript-eslint/parser": "8.58.2",
+		"eslint": "9.39.5",
+		"typescript": "5.9.3"
+	}
+}

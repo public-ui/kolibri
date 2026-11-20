@@ -1,13 +1,13 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import type * as SchemaModule from '../../../schema';
+import type * as SchemaModule from '../../../../internals/src/schema/index';
 
-jest.mock('../../../schema', () => {
-	const actual: typeof SchemaModule = jest.requireActual('../../../schema');
+jest.mock('../../../../internals/src/schema', () => {
+	const actual: typeof SchemaModule = jest.requireActual('../../../../internals/src/schema');
 	return { ...actual, devHint: jest.fn() };
 });
 
-import * as Schema from '../../../schema';
+import * as Schema from '../../../../internals/src/schema/index';
 import { KolInputPassword } from '../component';
 
 describe('KolInputPassword _autoComplete devHint', () => {

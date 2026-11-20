@@ -27,20 +27,15 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 	TouchedPropType,
-} from '../../schema';
-import { bem } from '../../schema/bem-registry';
-import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import clsx from '../../utils/clsx';
+} from '../../../internals/src/schema/index';
+import type { InputCheckboxVariantPropType } from '../../../internals/src/schema/props/variant-input-checkbox';
+import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
+import clsx from '../../../internals/src/utils/clsx';
 
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { CheckboxFC } from '../../internal/functional-components/form-field/checkbox';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
-import type { InputFCProps } from '../../internal/functional-components/form-field/input';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputCheckboxApi } from '../../internal/functional-components/input-checkbox/api';
-import { inputCheckboxPropsConfig } from '../../internal/functional-components/input-checkbox/api';
+import { submitFormOnEnter } from '../../../internals/src/components/form/controller';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputCheckboxApi } from '../../../internals/src/controller/input-checkbox/api';
+import { inputCheckboxPropsConfig } from '../../../internals/src/controller/input-checkbox/api';
 import {
 	accessKeyProp,
 	checkboxValueProp,
@@ -51,12 +46,14 @@ import {
 	requiredProp,
 	shortKeyProp,
 	variantInputCheckboxProp,
-} from '../../internal/props';
-import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { submitFormOnEnter } from '../form/controller';
-
-const checkboxBem = bem.forBlock('kol-input-checkbox');
+} from '../../../internals/src/props/index';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { CheckboxFC } from '../../internal/functional-components/form-field/checkbox';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
+import type { InputFCProps } from '../../internal/functional-components/form-field/input';
 
 /**
  * The **Checkbox** input type generates a rectangular box that can be activated and deactivated by clicking. When activated, a colored checkmark is shown inside the box.
@@ -497,11 +494,11 @@ export class KolInputCheckbox
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: checkboxBem({
-							checked,
-							indeterminate,
-							[`variant-${variant}`]: true,
-							[`label-align-${this.getRenderProp('labelAlign')}`]: true,
+						class: clsx('kol-input-checkbox', {
+							'kol-input-checkbox--checked': checked,
+							'kol-input-checkbox--indeterminate': indeterminate,
+							[`kol-input-checkbox--variant-${variant}`]: true,
+							[`kol-input-checkbox--label-align-${this.getRenderProp('labelAlign')}`]: true,
 						}),
 						accessKey,
 						shortKey,
@@ -511,10 +508,10 @@ export class KolInputCheckbox
 					})}
 				>
 					<FieldControlFC
-						class={checkboxBem('field-control', {
-							checked,
-							indeterminate,
-							[`variant-${variant}`]: true,
+						class={clsx('kol-input-checkbox__field-control', {
+							'kol-input-checkbox__field-control--checked': checked,
+							'kol-input-checkbox__field-control--indeterminate': indeterminate,
+							[`kol-input-checkbox__field-control--variant-${variant}`]: true,
 						})}
 						id={this.id}
 						label={this.getRenderProp('label')}

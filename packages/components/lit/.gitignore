@@ -1,0 +1,4 @@
+dist-page/
+node_modules/
+shots/parity-result.json
+shots/*.png

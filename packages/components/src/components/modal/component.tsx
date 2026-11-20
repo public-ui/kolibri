@@ -1,11 +1,11 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { DialogApi } from '../../internal/functional-components/dialog/api';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
-import type { ModalVariantPropType } from '../../schema/props/variant/modal';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import type { DialogApi } from '../../../internals/src/controller/dialog/api';
+import type { WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { DialogProps, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../../internals/src/schema/index';
+import type { ModalVariantPropType } from '../../../internals/src/schema/props/variant/modal';
+import { createUniqueId, nonce } from '../../../internals/src/utils/dev.utils';
 import { BaseDialogWebComponent } from '../dialog/base';
 
 /**

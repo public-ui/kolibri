@@ -2,7 +2,7 @@ import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import type { E2EPage } from '@stencil/playwright';
 import { test } from '@stencil/playwright';
-import { Callback } from '../../schema/enums';
+import { Callback } from '../../../internals/src/schema/enums/index';
 
 test.describe('kol-pagination', () => {
 	test.beforeEach(async ({ page }) => {

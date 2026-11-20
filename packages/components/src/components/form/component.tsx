@@ -1,17 +1,17 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { FormApi } from '../../internal/functional-components/form/api';
-import { formPropsConfig } from '../../internal/functional-components/form/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { FormApi } from '../../../internals/src/controller/form/api';
+import { formPropsConfig } from '../../../internals/src/controller/form/api';
+import type { FormErrorLinkItem } from '../../../internals/src/controller/form/error-link-item';
+import { createFormErrorLinkItem } from '../../../internals/src/controller/form/error-link-item';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import { errorListProp, formCallbacksProp, requiredTextProp } from '../../../internals/src/props/index';
+import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../../internals/src/schema/index';
+import { createUniqueId, nonce } from '../../../internals/src/utils/dev.utils';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
 import { FormFC } from '../../internal/functional-components/form/component';
-import type { FormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
-import { createFormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { errorListProp, formCallbacksProp, requiredTextProp } from '../../internal/props';
-import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * Scroll options used when a caller does not pass any — the error list is reached by scrolling

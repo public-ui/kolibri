@@ -1,14 +1,13 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { getBlockBem } from '../../../../internals/src/controller/bem-root-node/block-bem';
+import type { CollapsibleApi, CollapsibleVariant } from '../../../../internals/src/controller/collapsible/api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import clsx from '../../../../internals/src/utils/clsx';
+import { preventFocus } from '../../../../internals/src/utils/element-interaction';
 import KolHeadingFc from '../../../functional-components/Heading/Heading';
-import clsx from '../../../utils/clsx';
-import { preventFocus } from '../../../utils/element-interaction';
-import { getBlockBem } from '../bem-root-node/block-bem';
-import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
 import { SpanFC } from '../span/component';
-import type { CollapsibleApi, CollapsibleVariant } from './api';
 
 /**
  * Renders a collapsible — `kol-accordion` and `kol-details` — on the native `<details>`/`<summary>`
@@ -33,13 +32,11 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 	const blockBem = getBlockBem(block);
 
 	return (
-		<BemRootNodeFC
-			component="details"
-			block={block}
-			modifiers={{
+		<details
+			class={blockBem({
 				disabled: disabled === true,
 				open: expanded === true,
-			}}
+			})}
 			open={detailsOpen === true}
 			style={{ '--collapsible-transition-duration': `${transitionMs}ms` }}
 		>
@@ -70,6 +67,6 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 					</div>
 				</div>
 			</div>
-		</BemRootNodeFC>
+		</details>
 	);
 };

@@ -146,9 +146,9 @@
 			"raw": 1812
 		},
 		"sheet:KOL-NAV": {
-			"brotli": 1691,
-			"gzip": 2034,
-			"raw": 10974
+			"brotli": 1696,
+			"gzip": 2038,
+			"raw": 11016
 		},
 		"sheet:KOL-PAGINATION": {
 			"brotli": 3803,
@@ -236,14 +236,14 @@
 			"raw": 2390
 		},
 		"sheets": {
-			"brotli": 117342,
-			"gzip": 143447,
-			"raw": 937668
+			"brotli": 117347,
+			"gzip": 143451,
+			"raw": 937710
 		},
 		"total": {
-			"brotli": 47837,
-			"gzip": 92386,
-			"raw": 1023154
+			"brotli": 49718,
+			"gzip": 96756,
+			"raw": 1041661
 		}
 	},
 	"sets": {},

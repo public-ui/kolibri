@@ -1,10 +1,10 @@
 import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import type { Iso8601 } from '../../../internals/src/schema/index';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
-import type { Iso8601 } from '../../schema';
 
 /**
  * Local calendar day of an ISO instant in the timezone of the page, as `YYYY-MM-DD`. The date

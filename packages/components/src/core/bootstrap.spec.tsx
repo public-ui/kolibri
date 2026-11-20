@@ -1,8 +1,8 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+import { KolButtonTag } from '../../internals/src/core/component-names';
 import { KolButton } from '../components/button/component';
 import { bootstrap } from './bootstrap';
-import { KolButtonTag } from './component-names';
 
 describe('bootstrap tag name transformation', () => {
 	it('registers the transformer with the stencil runtime, so internal compositions render under the transformed tag', async () => {

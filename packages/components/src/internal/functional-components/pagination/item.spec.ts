@@ -1,4 +1,4 @@
-import { Log } from '../../../schema/utils/dev.utils';
+import { Log } from '../../../../internals/src/schema/utils/dev.utils';
 import type { PaginationInput, PaginationItem } from './item';
 import { createPaginationItem } from './item';
 

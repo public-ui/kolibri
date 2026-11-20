@@ -1,5 +1,5 @@
-import { KolPaginationTag } from '../../../core/component-names';
-import type { PaginationProps } from '../../../schema';
+import { KolPaginationTag } from '../../../../internals/src/core/component-names';
+import type { PaginationProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolPagination } from '../component';

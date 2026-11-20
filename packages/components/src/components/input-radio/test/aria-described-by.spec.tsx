@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import type { RadioOption, StencilUnknown } from '../../../schema';
+import type { RadioOption, StencilUnknown } from '../../../../internals/src/schema/index';
 
 import { KolInputRadio } from '../component';
 

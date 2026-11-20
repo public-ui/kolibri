@@ -1,21 +1,20 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
-import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import type { IconApi } from './api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { IconApi } from '../../../../internals/src/controller/icon/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import clsx from '../../../../internals/src/utils/clsx';
 
 const iconBem = bem.forBlock('kol-icon');
+const BEM_CLASS_ICON = iconBem();
 const BEM_CLASS_ICON__ICON = iconBem('icon');
 
 export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ class: classNames, icons, label, ...htmlAttributes }) => {
 	// An unset or empty label marks the icon as decorative, see `LabelDecorativePropType`.
 	const hasAriaLabel = label?.length > 0;
 	return (
-		<BemRootNodeFC
-			component="i"
+		<i
 			{...htmlAttributes}
 			/**
 			 * Die Auszeichnung `aria-hidden` ist eigentlich nicht erforderlich, da die aktuellen
@@ -25,8 +24,7 @@ export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ class: className
 			 */
 			aria-hidden={hasAriaLabel ? undefined : 'true'}
 			aria-label={hasAriaLabel ? label : undefined}
-			block="kol-icon"
-			class={clsx(BEM_CLASS_ICON__ICON, icons, classNames)}
+			class={clsx(BEM_CLASS_ICON, BEM_CLASS_ICON__ICON, icons, classNames)}
 			role={hasAriaLabel ? 'img' : 'presentation'}
 		/>
 	);

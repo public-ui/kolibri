@@ -1,5 +1,5 @@
-import { KolSelectTag } from '../../../core/component-names';
-import type { SelectProps } from '../../../schema';
+import { KolSelectTag } from '../../../../internals/src/core/component-names';
+import type { SelectProps } from '../../../../internals/src/schema/index';
 import { executeInputSnapshotTests } from '../../../utils/testing';
 
 import { KolSelect } from '../component';
