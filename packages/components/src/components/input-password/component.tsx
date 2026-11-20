@@ -152,7 +152,7 @@ export class KolInputPassword
 	}
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 */
 	@Prop() public _disabled?: DisabledPropType = false;
 
@@ -473,7 +473,8 @@ export class KolInputPassword
 	};
 
 	private getVisibilityToggle(): JSX.Element | null {
-		if (!this.getRenderProp('visibilityToggle')) {
+		// A disabled field is a single tab stop, so its toggle is not rendered.
+		if (!this.getRenderProp('visibilityToggle') || this._disabled) {
 			return null;
 		}
 		return (
@@ -483,7 +484,6 @@ export class KolInputPassword
 						_label: this.passwordVisible ? this.translateHidePassword : this.translateShowPassword,
 						_icons: this.passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye',
 						_hideLabel: true,
-						_disabled: this._disabled,
 						_on: { onClick: this.handleVisibilityToggle },
 					},
 					{

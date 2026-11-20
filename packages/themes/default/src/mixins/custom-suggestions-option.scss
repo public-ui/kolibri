@@ -19,10 +19,15 @@
 			outline: 0;
 		}
 
-		&--disabled:focus,
-		&--disabled:focus * {
-			outline: 0;
+		&--disabled {
+			color: var(--color-disabled-text);
 			cursor: not-allowed;
+		}
+
+		/* A disabled option gets no highlight, but still shows focus. Inset, so the scrolling list does not clip the ring. */
+		&--disabled:focus {
+			outline: var(--color-primary-variant) solid to-rem(3);
+			outline-offset: to-rem(-3);
 		}
 	}
 }

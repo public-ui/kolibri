@@ -4,8 +4,12 @@
 @layer kol-theme-component {
 	.kol-details {
 		&__heading {
-			&:not([aria-disabled='true']):focus-within {
+			.kol-details:not(.kol-details--disabled) &:focus-within {
 				cursor: pointer;
+			}
+
+			.kol-details--disabled & {
+				color: var(--color-disabled-text);
 			}
 
 			.kol-span__label {

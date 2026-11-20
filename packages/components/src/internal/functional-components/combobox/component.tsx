@@ -23,18 +23,19 @@ export type ComboboxToggleFCProps = {
  * input. It keeps its accessible name, because pointer users of assistive technology (voice control,
  * touch screen readers) operate it by that name.
  */
-export const ComboboxToggleFC: FC<ComboboxToggleFCProps> = ({ disabled, expanded, handleClick, label, listboxId }) => (
-	<button
-		type="button"
-		tabIndex={-1}
-		class={BEM_CLASS_COMBOBOX_TOGGLE}
-		aria-controls={listboxId}
-		aria-expanded={expanded ? 'true' : 'false'}
-		aria-label={label}
-		onClick={handleClick}
-		disabled={disabled}
-		hidden={disabled}
-	>
-		<IconFC icons="kolicon-chevron-down" label="" />
-	</button>
-);
+export const ComboboxToggleFC: FC<ComboboxToggleFCProps> = ({ disabled, expanded, handleClick, label, listboxId }) =>
+	/* A disabled field is a single tab stop, so its toggle is not rendered at all. */
+	disabled ? null : (
+		<button
+			type="button"
+			tabIndex={-1}
+			class={BEM_CLASS_COMBOBOX_TOGGLE}
+			aria-controls={listboxId}
+			aria-expanded={expanded ? 'true' : 'false'}
+			aria-label={label}
+			onClick={handleClick}
+			aria-disabled={undefined}
+		>
+			<IconFC icons="kolicon-chevron-down" label="" />
+		</button>
+	);

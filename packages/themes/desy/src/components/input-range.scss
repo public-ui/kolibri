@@ -18,7 +18,13 @@
 		.kol-input-container {
 			border-width: 0;
 
-			&:not(:disabled):hover,
+			/* Declared before the focus rule, so a focused disabled slider still shows the focus track. */
+			&--disabled {
+				--track-border-color: var(--color-disabled-border);
+				--track-bg-color: var(--color-disabled-background);
+			}
+
+			&:not(.kol-input-container--disabled):hover,
 			&:focus-within {
 				--track-border-width: 2px;
 				--track-border-color: var(--color-dark-blue-100);
@@ -47,12 +53,8 @@
 				outline-offset: 2px;
 			}
 
-			&.kol-input--disabled {
-				border-color: var(--color-black-60);
-
-				&::-webkit-slider-thumb {
-					border-color: var(--color-black-60);
-				}
+			&.kol-input--disabled::-webkit-slider-thumb {
+				border-color: var(--color-disabled-border);
 			}
 		}
 	}

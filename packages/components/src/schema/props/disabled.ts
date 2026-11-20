@@ -1,12 +1,12 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { a11yHintDisabled, watchBoolean } from '../utils';
+import { watchBoolean } from '../utils';
 
 /* types */
 export type DisabledPropType = boolean;
 
 /**
- * Makes the element not focusable and ignore all events.
+ * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
  */
 export type PropDisabled = {
 	disabled: DisabledPropType;
@@ -14,13 +14,5 @@ export type PropDisabled = {
 
 /* validator */
 export const validateDisabled = (component: Generic.Element.Component, value?: DisabledPropType): void => {
-	watchBoolean(component, '_disabled', value, {
-		hooks: {
-			afterPatch: (value) => {
-				if (value === true) {
-					a11yHintDisabled();
-				}
-			},
-		},
-	});
+	watchBoolean(component, '_disabled', value);
 };

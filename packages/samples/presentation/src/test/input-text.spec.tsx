@@ -54,10 +54,12 @@ describe('kol-input-text', () => {
 		expect(await (document.querySelector('kol-input-text') as KolInputTextElement).getValue()).toBe('Grace');
 	});
 
-	test('disables the native input', async () => {
+	test('marks a disabled input unavailable and read-only', async () => {
 		render(<KolInputText _label="Name" _disabled />);
 
-		expect(await screen.findByShadowLabelText('Name')).toBeDisabled();
+		const input = await screen.findByShadowLabelText('Name');
+		expect(input.getAttribute('aria-disabled')).toBe('true');
+		expect(input.hasAttribute('readonly')).toBe(true);
 	});
 
 	test('fireEvent sets a complete value with a single input event', async () => {

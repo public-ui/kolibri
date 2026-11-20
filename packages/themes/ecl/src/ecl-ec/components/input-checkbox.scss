@@ -47,6 +47,10 @@
 		&--error {
 			--kol-checkbox-color: var(--ecl-color-error);
 		}
+
+		&--disabled {
+			--kol-checkbox-color: var(--ecl-color-disabled-text);
+		}
 	}
 
 	.kol-checkbox--variant-switch {
@@ -74,7 +78,7 @@
 		}
 
 		&:hover {
-			.kol-input:not(:disabled) {
+			.kol-input:not(.kol-input--disabled) {
 				outline: var(--ecl-color-primary-20) 8px solid;
 			}
 		}

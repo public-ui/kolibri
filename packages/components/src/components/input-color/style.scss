@@ -16,7 +16,7 @@
 	.kol-input {
 		cursor: pointer;
 
-		&:disabled {
+		&--disabled {
 			cursor: not-allowed;
 		}
 	}

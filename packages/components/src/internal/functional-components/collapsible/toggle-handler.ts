@@ -39,6 +39,7 @@ export function createCollapsibleToggleHandler({ getHost, getOn, isDisabled, isO
 		event.preventDefault();
 
 		if (isDisabled()) {
+			event.stopPropagation();
 			return;
 		}
 

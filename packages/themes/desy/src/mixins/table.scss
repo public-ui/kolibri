@@ -133,12 +133,12 @@
 			&--checkbox {
 				--kol-checkbox-main-color: var(--color-blue-100);
 				@include kol-input-checkbox;
-				@include checkbox-states;
+				@include checkbox-states('kol-table__selection-input--disabled');
 			}
 
 			&--radio {
 				--kol-radio-main-color: var(--color-blue-100);
-				@include kol-input-radio;
+				@include kol-input-radio('kol-table__selection-input--disabled');
 			}
 		}
 

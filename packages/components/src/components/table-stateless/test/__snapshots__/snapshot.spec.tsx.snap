@@ -254,7 +254,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                       </span>
                       <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1" _value="140"></kol-input-number>
                       <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone">
-                        <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
+                        <button aria-disabled="true" aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
                               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-up" role="presentation"></i>
@@ -393,7 +393,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                         </div>
                       </div>
                       <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone">
-                        <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
+                        <button aria-disabled="true" aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
                               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>

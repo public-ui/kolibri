@@ -30,10 +30,8 @@
 			outline-offset: -4px;
 		}
 
-		/* State predicates live on the interactive element: the wrapper never receives
-		   `:disabled`, so `:not(:disabled)` would always match and `:disabled` never would. */
-		.kol-button__interactive-element:not(:disabled):active &,
-		.kol-button__interactive-element:not(:disabled):hover & {
+		.kol-button:not(.kol-button--disabled) .kol-button__interactive-element:active &,
+		.kol-button:not(.kol-button--disabled) .kol-button__interactive-element:hover & {
 			background-color: #fc0;
 			box-shadow:
 				0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
@@ -53,8 +51,10 @@
 			text-decoration: underline;
 		}
 
-		.kol-button__interactive-element:disabled & {
-			opacity: 0.5;
+		.kol-button--disabled & {
+			color: var(--color-disabled-text);
+			background-color: var(--color-disabled-background);
+			border-color: var(--color-disabled-border);
 			cursor: not-allowed;
 		}
 	}

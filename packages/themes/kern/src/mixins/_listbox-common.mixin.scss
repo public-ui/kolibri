@@ -25,9 +25,12 @@
 
 			font-size: var(--kern-metric-dimension-default);
 
-			/* `:not(:disabled)` would always be true on the wrapper — ask the button inside it. */
-			&:not(:has(:disabled)):hover {
+			&:not(.kol-button--disabled):hover {
 				background: var(--kern-color-action-state-indicator-tint-hover-opacity);
+			}
+
+			&--disabled {
+				color: var(--kern-color-action-disabled-text);
 			}
 		}
 	}

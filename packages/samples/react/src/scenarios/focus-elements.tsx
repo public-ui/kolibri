@@ -37,39 +37,85 @@ import React, { forwardRef, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router';
 import { SampleDescription } from '../components/SampleDescription';
 
+type FocusElementProps = {
+	disabled?: boolean;
+};
+
+/**
+ * Elements with a disabled state. `?component=<name>&disabled` renders them disabled and focused, so
+ * the visual tests show the focus ring on the disabled look of every element.
+ */
+const DISABLED_ELEMENTS = new Set([
+	'accordion',
+	'badge',
+	'button',
+	'buttonLink',
+	'combobox',
+	'details',
+	'inputCheckbox',
+	'inputColor',
+	'inputDate',
+	'inputEmail',
+	'inputFile',
+	'inputFileMultiple',
+	'inputNumber',
+	'inputPassword',
+	'inputRadio',
+	'inputRange',
+	'inputText',
+	'link',
+	'linkButton',
+	'popoverButton',
+	'select',
+	'selectMultiple',
+	'singleSelect',
+	'splitButton',
+	'textarea',
+	'toolbar',
+]);
+
 const getFocusElements = () => {
 	// Blocklist: Components excluded from focus testing (breadcrumb, dialog, drawer, form, modal, nav, pagination)
 	// These components have special behaviors (navigation, modals, forms, pagination) that conflict with automated focus tests.
 	// Note: popover-based components (e.g. popoverButton, splitButton) are included since their primary button element is focusable.
-	const focusElements = new Map<string, ForwardRefRenderFunction<any, any>>();
-	focusElements.set('accordion', (_, ref) => <KolAccordion className="w-full" _label="Accordion here" ref={ref} />);
-	focusElements.set('badge', (_, ref) => (
+	const focusElements = new Map<string, ForwardRefRenderFunction<any, FocusElementProps>>();
+	focusElements.set('accordion', ({ disabled }, ref) => <KolAccordion _disabled={disabled} className="w-full" _label="Accordion here" ref={ref} />);
+	focusElements.set('badge', ({ disabled }, ref) => (
 		<KolBadge
 			className="w-full"
 			_label="Badge with button"
-			_smartButton={{ _label: 'Action', _icons: 'kolicon-house', _on: { onClick: () => {} } }}
+			_smartButton={{ _disabled: disabled, _label: 'Action', _icons: 'kolicon-house', _on: { onClick: () => {} } }}
 			ref={ref}
 		/>
 	));
-	focusElements.set('button', (_, ref) => <KolButton _label="Button here" ref={ref} />);
-	focusElements.set('buttonLink', (_, ref) => <KolButtonLink _label="ButtonLink here" ref={ref} />);
+	focusElements.set('button', ({ disabled }, ref) => <KolButton _disabled={disabled} _label="Button here" ref={ref} />);
+	focusElements.set('buttonLink', ({ disabled }, ref) => <KolButtonLink _disabled={disabled} _label="ButtonLink here" ref={ref} />);
 	focusElements.set('card', (_, ref) => <KolCard className="w-full" _label="Card with link here" _href="#" ref={ref} />);
-	focusElements.set('combobox', (_, ref) => <KolCombobox className="w-full" _label="KolCombobox here" _suggestions={[]} ref={ref} />);
-	focusElements.set('details', (_, ref) => (
-		<KolDetails className="w-full" _label="Details here" ref={ref}>
+	focusElements.set('combobox', ({ disabled }, ref) => (
+		<KolCombobox _disabled={disabled} className="w-full" _label="KolCombobox here" _suggestions={[]} ref={ref} />
+	));
+	focusElements.set('details', ({ disabled }, ref) => (
+		<KolDetails _disabled={disabled} className="w-full" _label="Details here" ref={ref}>
 			detailed details
 		</KolDetails>
 	));
-	focusElements.set('inputCheckbox', (_, ref) => <KolInputCheckbox className="w-full" _name="checkbox" _label="Checkbox" ref={ref} />);
-	focusElements.set('inputColor', (_, ref) => <KolInputColor className="w-full" _name="color" _label="Color" ref={ref} />);
-	focusElements.set('inputDate', (_, ref) => <KolInputDate className="w-full" _name="date" _label="Date" ref={ref} />);
-	focusElements.set('inputEmail', (_, ref) => <KolInputEmail className="w-full" _name="email" _label="Email" ref={ref} />);
-	focusElements.set('inputFile', (_, ref) => <KolInputFile className="w-full" _name="file" _label="File" ref={ref} />);
-	focusElements.set('inputFileMultiple', (_, ref) => <KolInputFile className="w-full" _name="file" _label="Files (multiple)" _multiple ref={ref} />);
-	focusElements.set('inputNumber', (_, ref) => <KolInputNumber className="w-full" _name="number" _label="Number" ref={ref} />);
-	focusElements.set('inputPassword', (_, ref) => <KolInputPassword className="w-full" _name="password" _label="Password" ref={ref} />);
-	focusElements.set('inputRadio', (_, ref) => (
+	focusElements.set('inputCheckbox', ({ disabled }, ref) => (
+		<KolInputCheckbox _disabled={disabled} className="w-full" _name="checkbox" _label="Checkbox" ref={ref} />
+	));
+	focusElements.set('inputColor', ({ disabled }, ref) => <KolInputColor _disabled={disabled} className="w-full" _name="color" _label="Color" ref={ref} />);
+	focusElements.set('inputDate', ({ disabled }, ref) => <KolInputDate _disabled={disabled} className="w-full" _name="date" _label="Date" ref={ref} />);
+	focusElements.set('inputEmail', ({ disabled }, ref) => <KolInputEmail _disabled={disabled} className="w-full" _name="email" _label="Email" ref={ref} />);
+	focusElements.set('inputFile', ({ disabled }, ref) => <KolInputFile _disabled={disabled} className="w-full" _name="file" _label="File" ref={ref} />);
+	focusElements.set('inputFileMultiple', ({ disabled }, ref) => (
+		<KolInputFile _disabled={disabled} className="w-full" _name="file" _label="Files (multiple)" _multiple ref={ref} />
+	));
+	focusElements.set('inputNumber', ({ disabled }, ref) => <KolInputNumber _disabled={disabled} className="w-full" _name="number" _label="Number" ref={ref} />);
+	focusElements.set('inputPassword', ({ disabled }, ref) => (
+		<KolInputPassword _disabled={disabled} className="w-full" _name="password" _label="Password" ref={ref} />
+	));
+	focusElements.set('inputRadio', ({ disabled }, ref) => (
 		<KolInputRadio
+			_disabled={disabled}
 			className="w-full"
 			_name="radio"
 			_label="Radio"
@@ -81,17 +127,18 @@ const getFocusElements = () => {
 			ref={ref}
 		/>
 	));
-	focusElements.set('inputRange', (_, ref) => <KolInputRange className="w-full" _name="range" _label="Range" ref={ref} />);
-	focusElements.set('inputText', (_, ref) => <KolInputText className="w-full" _name="text" _label="Text" ref={ref} />);
-	focusElements.set('link', (_, ref) => <KolLink className="w-full" _label="Link here" _href="#" ref={ref} />);
-	focusElements.set('linkButton', (_, ref) => (
+	focusElements.set('inputRange', ({ disabled }, ref) => <KolInputRange _disabled={disabled} className="w-full" _name="range" _label="Range" ref={ref} />);
+	focusElements.set('inputText', ({ disabled }, ref) => <KolInputText _disabled={disabled} className="w-full" _name="text" _label="Text" ref={ref} />);
+	focusElements.set('link', ({ disabled }, ref) => <KolLink _disabled={disabled} className="w-full" _label="Link here" _href="#" ref={ref} />);
+	focusElements.set('linkButton', ({ disabled }, ref) => (
 		<div>
-			<KolLinkButton _label="LinkButton here" _href="#" ref={ref} />
+			<KolLinkButton _disabled={disabled} _label="LinkButton here" _href="#" ref={ref} />
 		</div>
 	));
-	focusElements.set('popoverButton', (_, ref) => <KolPopoverButton _label="PopoverButton here" ref={ref} />);
-	focusElements.set('select', (_, ref) => (
+	focusElements.set('popoverButton', ({ disabled }, ref) => <KolPopoverButton _disabled={disabled} _label="PopoverButton here" ref={ref} />);
+	focusElements.set('select', ({ disabled }, ref) => (
 		<KolSelect
+			_disabled={disabled}
 			className="w-full"
 			_name="select"
 			_label="Select"
@@ -102,8 +149,9 @@ const getFocusElements = () => {
 			ref={ref}
 		/>
 	));
-	focusElements.set('selectMultiple', (_, ref) => (
+	focusElements.set('selectMultiple', ({ disabled }, ref) => (
 		<KolSelect
+			_disabled={disabled}
 			className="w-full"
 			_name="select"
 			_label="Select (multiple)"
@@ -116,8 +164,9 @@ const getFocusElements = () => {
 			ref={ref}
 		/>
 	));
-	focusElements.set('singleSelect', (_, ref) => (
+	focusElements.set('singleSelect', ({ disabled }, ref) => (
 		<KolSingleSelect
+			_disabled={disabled}
 			className="w-full"
 			_name="singleSelect"
 			_label="Single Select"
@@ -140,20 +189,22 @@ const getFocusElements = () => {
 			ref={ref}
 		/>
 	));
-	focusElements.set('splitButton', (_, ref) => <KolSplitButton _label="SplitButton here" ref={ref} />);
+	focusElements.set('splitButton', ({ disabled }, ref) => <KolSplitButton _disabled={disabled} _label="SplitButton here" ref={ref} />);
 	focusElements.set('tabs', (_, ref) => (
 		<KolTabs className="w-full" _label="Tabs here" _tabs={[{ _label: 'Tab 1' }, { _label: 'Tab 2' }, { _label: 'Tab 3' }]} ref={ref}>
 			Tab content
 		</KolTabs>
 	));
-	focusElements.set('textarea', (_, ref) => <KolTextarea className="w-full" _name="textarea" _label="Textarea" _rows={5} ref={ref} />);
-	focusElements.set('toolbar', (_, ref) => (
+	focusElements.set('textarea', ({ disabled }, ref) => (
+		<KolTextarea _disabled={disabled} className="w-full" _name="textarea" _label="Textarea" _rows={5} ref={ref} />
+	));
+	focusElements.set('toolbar', ({ disabled }, ref) => (
 		<KolToolbar
 			className="w-full"
 			_label="Toolbar here"
 			_items={[
-				{ type: 'button', _label: 'Action 1' },
-				{ type: 'button', _label: 'Action 2' },
+				{ type: 'button', _disabled: disabled, _label: 'Action 1' },
+				{ type: 'button', _disabled: disabled, _label: 'Action 2' },
 			]}
 			ref={ref}
 		/>
@@ -186,6 +237,7 @@ const Fallback = (props: FallbackProps) => {
 					This sample serves for automated tests of the focus state for input components. When loading one of the examples linked below, focus will be set on
 					the element initially. When testing manually, you may have to reload the page after opening an example.
 				</p>
+				<p>The disabled variants render the element disabled and focused: a disabled element stays focusable and shows its focus indicator.</p>
 			</SampleDescription>
 
 			{props.invalidComponent && (
@@ -199,6 +251,12 @@ const Fallback = (props: FallbackProps) => {
 				{componentNames.map((componentName) => (
 					<li key={componentName}>
 						<KolLink _label={componentName} _href={`#/scenarios/focus-elements?component=${componentName}`} />
+						{DISABLED_ELEMENTS.has(componentName) && (
+							<>
+								{' '}
+								<KolLink _label={`${componentName} (disabled)`} _href={`#/scenarios/focus-elements?component=${componentName}&disabled`} />
+							</>
+						)}
 					</li>
 				))}
 			</ul>
@@ -210,6 +268,7 @@ export const FocusElements: FC = () => {
 	const focusElements = useMemo(() => getFocusElements(), []);
 	const [searchParams] = useSearchParams();
 	const componentName = searchParams.get('component');
+	const disabled = searchParams.has('disabled') && componentName !== null && DISABLED_ELEMENTS.has(componentName);
 
 	const Component = componentName ? focusElements.get(componentName) : undefined;
 
@@ -223,7 +282,7 @@ export const FocusElements: FC = () => {
 				void instance.focus();
 			}
 		},
-		[componentName],
+		[componentName, disabled],
 	);
 
 	if (componentName) {
@@ -232,7 +291,7 @@ export const FocusElements: FC = () => {
 		}
 		return (
 			<div>
-				<Element ref={focusRef} />
+				<Element key={String(disabled)} disabled={disabled} ref={focusRef} />
 			</div>
 		);
 	} else {

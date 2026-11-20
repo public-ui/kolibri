@@ -109,6 +109,9 @@
 		--color-purple-5: #eee7fa;
 		--color-white: #fff;
 		--color-black: #000;
+		--color-disabled-background: var(--color-grey-5);
+		--color-disabled-border: var(--color-grey-40);
+		--color-disabled-text: var(--color-grey-80);
 		--font-family: Arial, sans-serif;
 		--font-size: #{to-rem(16)};
 		--font-weight-regular: 400;

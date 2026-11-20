@@ -73,6 +73,11 @@
 						text-decoration: underline;
 					}
 				}
+
+				&.kol-link--disabled,
+				&.kol-button--disabled {
+					color: var(--color-disabled-text);
+				}
 			}
 		}
 

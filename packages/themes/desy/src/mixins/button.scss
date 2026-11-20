@@ -29,7 +29,7 @@
 		}
 
 		&--primary {
-			@include primaryButton;
+			@include primaryButton($block-classname);
 		}
 
 		&--secondary {
@@ -40,13 +40,17 @@
 			@include tertiaryButton;
 		}
 
-		&:has(:disabled) {
-			opacity: 1;
-			--button-main-color: var(--color-black-60);
+		/* The disabled modifier sits next to the variants and wins by specificity. A disabled button
+		   stays focusable (`aria-disabled`), so it keeps the focus ring of the `:focus-within` rule
+		   below, while hover and active stay gated. */
+		&.#{$block-classname}--disabled {
+			--button-main-color: var(--color-disabled-text);
+			--text-background-color: var(--color-disabled-background);
+			--text-border-color: var(--color-disabled-border);
+			--text-color: var(--color-disabled-text);
 		}
 
-		&:not(:has(:disabled), .#{$block-classname}--disabled):hover,
-		&:focus-within {
+		&:not(.#{$block-classname}--disabled):is(:hover, :focus-within) {
 			.#{$block-classname}__text::before {
 				background-color: var(--button-hover-color);
 			}
@@ -130,14 +134,14 @@
 	}
 }
 
-@mixin primaryButton() {
+@mixin primaryButton($block-classname) {
 	--text-background-color: var(--button-main-color);
 	--text-border-color: var(--button-main-color);
 	--text-border-width: var(--border-width-m);
 	--text-color: var(--color-white-100);
 	--button-hover-color: var(--color-black-100-12);
 
-	&:active .kol-span::before {
+	&:not(.#{$block-classname}--disabled):active .kol-span::before {
 		background-color: var(--color-black-100-24);
 	}
 }

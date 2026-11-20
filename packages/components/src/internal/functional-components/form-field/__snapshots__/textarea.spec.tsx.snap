@@ -11,7 +11,7 @@ exports[`TextAreaFC renders native attributes 1`] = `
 `;
 
 exports[`TextAreaFC renders states and a touched error 1`] = `
-<div><textarea autocapitalize="off" autocorrect="off" class="kol-textarea kol-textarea--disabled kol-textarea--error kol-textarea--readonly kol-textarea--required kol-textarea--touched" disabled="" id="field-nonce" readonly="" required=""></textarea>
+<div><textarea aria-disabled="true" autocapitalize="off" autocorrect="off" class="kol-textarea kol-textarea--disabled kol-textarea--error kol-textarea--readonly kol-textarea--required kol-textarea--touched" id="field-nonce" readonly="" required=""></textarea>
 </div>
 `;
 

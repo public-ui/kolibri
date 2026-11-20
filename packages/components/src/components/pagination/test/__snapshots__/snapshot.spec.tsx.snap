@@ -26,7 +26,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
         <ul class="kol-pagination__navigation-list">
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
-              <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
@@ -53,7 +53,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
           </li>
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
-              <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
@@ -188,7 +188,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=0
         <ul class="kol-pagination__navigation-list">
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
-              <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
@@ -215,7 +215,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=0
           </li>
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
-              <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
@@ -486,7 +486,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
           </li>
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
-              <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <span aria-hidden="true" class="kol-span__slot" hidden="">
@@ -513,7 +513,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
           </li>
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
-              <button aria-label="kol-page-last" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <span aria-hidden="true" class="kol-span__slot" hidden="">
@@ -670,7 +670,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=2
           </li>
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
-              <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <span aria-hidden="true" class="kol-span__slot" hidden="">
@@ -697,7 +697,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=2
           </li>
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
-              <button aria-label="kol-page-last" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <span aria-hidden="true" class="kol-span__slot" hidden="">
@@ -1273,7 +1273,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
         <ul class="kol-pagination__navigation-list">
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
-              <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
@@ -1300,7 +1300,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
           </li>
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
-              <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
@@ -1492,7 +1492,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
         <ul class="kol-pagination__navigation-list">
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
-              <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
@@ -1519,7 +1519,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
           </li>
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
-              <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
@@ -1933,7 +1933,7 @@ exports[`kol-pagination should render with _on={} _max=2 _page=1 1`] = `
         <ul class="kol-pagination__navigation-list">
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
-              <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
@@ -1960,7 +1960,7 @@ exports[`kol-pagination should render with _on={} _max=2 _page=1 1`] = `
           </li>
           <li>
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
-              <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>

@@ -153,7 +153,7 @@ export class KolInputNumber
 	}
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 */
 	@Prop() public _disabled?: DisabledPropType = false;
 
@@ -550,7 +550,6 @@ export class KolInputNumber
 				tabIndex={-1}
 				class={`${STEP_BUTTON_CLASS} ${STEP_BUTTON_CLASS}-${direction} kol-input-container__smart-button`}
 				onClick={direction === 'up' ? this.handleStepUp : this.handleStepDown}
-				disabled={this._disabled || this._readOnly}
 			>
 				<IconFC icons={direction === 'up' ? 'kolicon-plus' : 'kolicon-minus'} label="" />
 			</button>

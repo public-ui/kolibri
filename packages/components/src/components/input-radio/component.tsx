@@ -102,7 +102,7 @@ export class KolInputRadio
 	}
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 */
 	@Prop() public _disabled?: DisabledPropType = false;
 
@@ -360,11 +360,13 @@ export class KolInputRadio
 		return this.getRenderProp('value') === (option.value ?? option.label);
 	}
 
-	/** The input of the selected option, otherwise of the first enabled option; the target of `focus()` and `click()`. */
+	/**
+	 * The option that receives the focus: the selected one, even while disabled, otherwise the first
+	 * enabled option, otherwise the first option, so a fully disabled group keeps a tab stop.
+	 */
 	private getFocusableInput(): HTMLInputElement | undefined {
 		const options = this.getRenderProp('options');
-		const isComponentDisabled = Boolean(this.getRenderProp('disabled'));
-		const selectedIndex = options.findIndex((option) => this.isOptionSelected(option) && !isComponentDisabled && !option.disabled);
+		const selectedIndex = options.findIndex((option) => this.isOptionSelected(option));
 
 		if (selectedIndex !== -1) {
 			const input = this.inputRefs.get(selectedIndex);
@@ -373,13 +375,13 @@ export class KolInputRadio
 			}
 		}
 
-		const firstEnabledIndex = options.findIndex((option) => !isComponentDisabled && !option.disabled);
+		const firstEnabledIndex = options.findIndex((option) => !option.disabled);
 
 		if (firstEnabledIndex !== -1) {
 			return this.inputRefs.get(firstEnabledIndex);
 		}
 
-		return undefined;
+		return this.inputRefs.get(0);
 	}
 
 	private getOptionOfEvent(event: Event): RadioOption<StencilUnknown> | undefined {

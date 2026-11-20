@@ -80,7 +80,7 @@
 			height: 1.5em;
 			border-width: 0;
 
-			&:hover {
+			&:not(.kol-input--disabled):hover {
 				outline-color: var(--kern-color-form-input-border, #171a2b);
 				outline-style: solid;
 				outline-width: var(--kern-metric-border-width-bold, 4px);
@@ -118,6 +118,15 @@
 
 		&.kol-checkbox--indeterminate .kol-icon {
 			transform: translate(1em, -50%);
+		}
+
+		&.kol-checkbox--disabled .kol-input {
+			background-color: var(--kern-color-action-disabled-background);
+			outline-color: var(--kern-color-action-disabled-border);
+
+			&:checked {
+				background-color: var(--kern-color-action-disabled-border);
+			}
 		}
 	}
 }

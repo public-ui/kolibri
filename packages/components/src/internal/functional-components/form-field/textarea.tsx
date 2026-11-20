@@ -2,6 +2,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
 import clsx from '../../../utils/clsx';
+import { blockInactive } from '../../../utils/element-interaction';
 import { getBlockBem } from '../bem-root-node/block-bem';
 import type { DefaultInputProps } from './default-input-props';
 import { getDefaultInputProps } from './default-input-props';
@@ -23,7 +24,8 @@ export type TextAreaFCProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<H
 export const TextAreaFC: FC<TextAreaFCProps> = (props) => {
 	const { class: classNames, msg, touched, readonly, disabled, required, ariaDescribedBy, hideLabel, label, ...other } = props;
 
-	const textareaProps: JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement> = {
+	// `aria-disabled` alone does not stop typing, so a disabled textarea is also `readonly`.
+	const textareaProps: JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement> & { 'aria-disabled'?: 'true' } = {
 		class: clsx(
 			getBlockBem('kol-textarea')({
 				disabled: Boolean(disabled),
@@ -35,10 +37,11 @@ export const TextAreaFC: FC<TextAreaFCProps> = (props) => {
 			classNames,
 		),
 		required: required,
-		disabled: disabled,
-		readonly: readonly,
+		readonly: Boolean(readonly) || Boolean(disabled),
 		...getDefaultInputProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
+		'aria-disabled': disabled ? 'true' : undefined,
+		onClick: disabled ? blockInactive : other.onClick,
 	};
 
 	return <textarea {...textareaProps} />;

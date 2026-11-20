@@ -48,4 +48,8 @@
 	.kol-input--error {
 		--kol-radio-color: var(--ecl-color-error);
 	}
+
+	.kol-input--disabled {
+		--kol-radio-color: var(--ecl-color-disabled-text);
+	}
 }

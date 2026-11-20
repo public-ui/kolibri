@@ -22,7 +22,9 @@ type ToolbarFCProps = Pick<FunctionalComponentProps<ToolbarApi>, 'currentIndex' 
  * the place of the former custom element keeps the flex-item box tree unchanged.
  */
 const renderItem = (record: ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem, index: number, currentIndex: number, location: string) => {
-	const tabIndex = index === currentIndex && !record.disabled ? 0 : -1;
+	/* A disabled item stays focusable, so the roving tabindex reaches it; only the `<hr>` separator
+	   is no interactive element and never becomes a tab stop. */
+	const tabIndex = index === currentIndex && record.type !== 'hr' ? 0 : -1;
 
 	return (
 		<div class={BEM_CLASS_TOOLBAR__ITEM} key={index} ref={record.refWrapper}>

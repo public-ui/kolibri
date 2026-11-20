@@ -21,8 +21,8 @@
 		}
 
 		&--disabled {
-			--border-color: var(--color-black-60);
-			background-color: var(--color-black-10);
+			--border-color: var(--color-disabled-border);
+			background-color: var(--color-disabled-background);
 		}
 
 		&:has(.kol-input--readonly) {
@@ -54,19 +54,19 @@
 				font-size: to-rem(24);
 				transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-				/* The root never receives `:disabled` or `:focus`, and the a11y min-size layer still pins
-				   the inner button to `--a11y-min-size` (40px on the container) — replicate the smaller
-				   smart-button box and the state styling on the interactive element. */
+				/* The root never receives `:focus`, and the a11y min-size layer still pins the inner button
+				   to `--a11y-min-size` (40px on the container) — replicate the smaller smart-button box and
+				   the state styling on the interactive element. */
 				.kol-button__interactive-element {
 					min-width: to-rem(38);
 					min-height: to-rem(40);
 				}
 
-				&:has(:disabled) {
+				&--disabled {
 					display: none;
 				}
 
-				.kol-button__interactive-element:not(:disabled):hover {
+				&:not(.kol-button--disabled) .kol-button__interactive-element:hover {
 					background: var(--color-dark-blue-100-06);
 				}
 

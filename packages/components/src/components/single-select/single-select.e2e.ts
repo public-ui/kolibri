@@ -406,10 +406,10 @@ test.describe(COMPONENT_NAME, () => {
 			await page.locator('input.kol-single-select__input').focus();
 		});
 
-		test('moves through the enabled options with the arrow keys, Home, End, PageUp and PageDown', async ({ page }) => {
+		test('moves through the options, disabled ones included, with the arrow keys, Home, End, PageUp and PageDown', async ({ page }) => {
 			const steps: [string, string | null][] = [
 				['ArrowDown', 'Alpha'],
-				['ArrowDown', 'Gamma'],
+				['ArrowDown', 'Beta'],
 				['End', 'Epsilon'],
 				['ArrowDown', 'Alpha'],
 				['Home', 'Alpha'],

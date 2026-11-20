@@ -25,19 +25,25 @@
 			}
 		}
 
-		&:hover:not(:disabled) {
+		&:hover:not(.kol-input--disabled, .kol-table__selection-input--disabled) {
 			--border-width: var(--kern-metric-border-width-bold);
 		}
 
-		&:focus:not(:disabled) {
+		&:focus {
 			outline: var(--kern-metric-border-width-bold) solid var(--kol-input-radio-color);
 			border: 0;
 			outline-offset: 0;
 		}
 	}
 
-	.#{$block-classname}--disabled[type='radio'] {
-		opacity: var(--kern-color-action-state-opacity-disabled);
+	/* Both the form input and the table selection input carry their own disabled modifier. */
+	:is(.kol-input--disabled, .kol-table__selection-input--disabled).#{$block-classname}[type='radio'] {
+		background: var(--kern-color-action-disabled-background);
+		border-color: var(--kern-color-action-disabled-border);
+
+		&:checked::before {
+			background-color: var(--kern-color-action-disabled-text);
+		}
 	}
 
 	.kol-input-radio {

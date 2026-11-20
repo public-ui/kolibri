@@ -22,7 +22,7 @@ describe('FieldControlFC', () => {
 	])('renders %s', async (_, props) => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<FieldControlFC id="id" label="Label" refTooltip={noop} {...props}>
-				<input />
+				<input aria-disabled={undefined} />
 			</FieldControlFC>
 		));
 		expect(page.root).toMatchSnapshot();
@@ -59,7 +59,7 @@ describe('FormFieldFC as fieldset', () => {
 	])('renders a legend and the %s orientation', async (_, orientation) => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<FormFieldFC component="fieldset" orientation={orientation} id="id" label="Label" refTooltip={noop}>
-				<input />
+				<input aria-disabled={undefined} />
 			</FormFieldFC>
 		));
 		expect(page.root).toMatchSnapshot();

@@ -281,9 +281,9 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
             <span class="kol-input-container__filename">
               kol-filename-text
             </span>
-            <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="input-file-nonce" name="field" type="file">
+            <input aria-disabled="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled" id="input-file-nonce" name="field" type="file">
             <div aria-hidden="true" class="kol-button kol-button--disabled kol-button--primary kol-button--standalone kol-input-container__button">
-              <button class="kol-button__interactive-element" disabled="" tabindex="-1" type="button">
+              <button aria-disabled="true" class="kol-button__interactive-element" tabindex="-1" type="button">
                 <span class="kol-button__text kol-span">
                   <span class="kol-span__container">
                     <span class="kol-span__label">

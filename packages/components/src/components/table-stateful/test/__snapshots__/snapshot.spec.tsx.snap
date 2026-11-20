@@ -965,7 +965,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
               </li>
               <li>
                 <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
-                  <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+                  <button aria-disabled="true" aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span kol-span--hide-label">
                       <span class="kol-span__container">
                         <span aria-hidden="true" class="kol-span__slot" hidden="">
@@ -992,7 +992,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
               </li>
               <li>
                 <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
-                  <button aria-label="kol-page-last" class="kol-button__interactive-element" disabled="" type="button">
+                  <button aria-disabled="true" aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span kol-span--hide-label">
                       <span class="kol-span__container">
                         <span aria-hidden="true" class="kol-span__slot" hidden="">
@@ -1286,7 +1286,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
               </li>
               <li>
                 <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
-                  <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+                  <button aria-disabled="true" aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span kol-span--hide-label">
                       <span class="kol-span__container">
                         <span aria-hidden="true" class="kol-span__slot" hidden="">
@@ -1313,7 +1313,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
               </li>
               <li>
                 <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
-                  <button aria-label="kol-page-last" class="kol-button__interactive-element" disabled="" type="button">
+                  <button aria-disabled="true" aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span kol-span--hide-label">
                       <span class="kol-span__container">
                         <span aria-hidden="true" class="kol-span__slot" hidden="">
@@ -1580,7 +1580,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
             <ul class="kol-pagination__navigation-list">
               <li>
                 <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
-                  <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+                  <button aria-disabled="true" aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span kol-span--hide-label">
                       <span class="kol-span__container">
                         <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
@@ -1607,7 +1607,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
               </li>
               <li>
                 <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
-                  <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+                  <button aria-disabled="true" aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span kol-span--hide-label">
                       <span class="kol-span__container">
                         <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
@@ -2683,7 +2683,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
             <ul class="kol-pagination__navigation-list">
               <li>
                 <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
-                  <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+                  <button aria-disabled="true" aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span kol-span--hide-label">
                       <span class="kol-span__container">
                         <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
@@ -2710,7 +2710,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
               </li>
               <li>
                 <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
-                  <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+                  <button aria-disabled="true" aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span kol-span--hide-label">
                       <span class="kol-span__container">
                         <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
@@ -3065,7 +3065,7 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
               </li>
               <li>
                 <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
-                  <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+                  <button aria-disabled="true" aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
                     <span class="kol-button__text kol-span kol-span--hide-label">
                       <span class="kol-span__container">
                         <span aria-hidden="true" class="kol-span__slot" hidden="">
@@ -3269,7 +3269,7 @@ exports[`kol-table-stateful should render with the props passed to the stateless
                       </span>
                       <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1"></kol-input-number>
                       <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone">
-                        <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
+                        <button aria-disabled="true" aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
                               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-up" role="presentation"></i>
@@ -3408,7 +3408,7 @@ exports[`kol-table-stateful should render with the props passed to the stateless
                         </div>
                       </div>
                       <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone">
-                        <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
+                        <button aria-disabled="true" aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
                               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>

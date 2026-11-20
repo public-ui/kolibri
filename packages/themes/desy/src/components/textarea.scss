@@ -15,12 +15,11 @@
 			color: var(--color-black-70);
 		}
 
-		&:disabled {
-			opacity: 1;
-			color: var(--color-black-60);
+		&--disabled {
+			color: var(--color-disabled-text);
 
 			&::placeholder {
-				color: var(--color-black-60);
+				color: var(--color-disabled-text);
 			}
 		}
 

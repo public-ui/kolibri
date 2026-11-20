@@ -77,7 +77,7 @@
 
 		&--disabled & {
 			&__label {
-				opacity: var(--action-state-opacity-disabled, 0.4);
+				color: var(--kern-color-action-disabled-text);
 			}
 		}
 

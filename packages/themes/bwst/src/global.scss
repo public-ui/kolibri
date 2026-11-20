@@ -24,6 +24,13 @@
 		--color-text: var(--kolibri-color-text, #202020);
 		--color-mute: var(--kolibri-color-mute, #f2f3f4);
 		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
+		/*
+		 * Disabled elements stay focusable, so they are marked by color instead of opacity: opacity
+		 * would also dim the focus ring. The text keeps at least 4.5:1 against the disabled background.
+		 */
+		--color-disabled-background: var(--kolibri-color-disabled-background, var(--color-mute));
+		--color-disabled-border: var(--kolibri-color-disabled-border, var(--color-mute-variant));
+		--color-disabled-text: var(--kolibri-color-disabled-text, var(--color-subtle));
 		--color-visited: var(
 			--kolibri-color-visited,
 			#551a8b
@@ -114,25 +121,15 @@
 		}
 	}
 
-	/* A disabled `fieldset` only groups its controls, which are dimmed themselves. */
-	.disabled label,
-	.disabled:focus-within label,
-	[aria-disabled='true'],
-	[aria-disabled='true']:focus,
-	[disabled]:where(:not(fieldset)),
-	[disabled]:where(:not(fieldset)):focus {
-		opacity: 0.5;
-	}
-
 	/*
- * The icon font rules ship once in this global sheet instead of in every component sheet. The
- * adopter places this sheet in every shadow root as one shared `CSSStyleSheet`, so each root
- * receives the rules either way, while the icon CSS exists once instead of per component. No
- * component rule targets the `.fa-*`/`.codicon-*` classes, so the rules resolve identically
- * from this lower layer.
- *
- * `kol-icon` has no entry in the theme's tag map, so — like `kol-spin` — it only ever receives
- * this global sheet, which is exactly where its font rules live.
- */
+	 * The icon font rules ship once in this global sheet instead of in every component sheet. The
+	 * adopter places this sheet in every shadow root as one shared `CSSStyleSheet`, so each root
+	 * receives the rules either way, while the icon CSS exists once instead of per component. No
+	 * component rule targets the `.fa-*`/`.codicon-*` classes, so the rules resolve identically
+	 * from this lower layer.
+	 *
+	 * `kol-icon` has no entry in the theme's tag map, so — like `kol-spin` — it only ever receives
+	 * this global sheet, which is exactly where its font rules live.
+	 */
 	@include kol-icon-theme;
 }
