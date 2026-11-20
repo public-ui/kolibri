@@ -5,24 +5,13 @@
 		background-color: white;
 		display: block;
 		position: absolute;
-		right: auto;
-		left: 0;
 		z-index: 2;
-		width: max-content;
-		min-width: 100%;
-		max-width: 90vw;
 		max-height: to-rem(250);
 		margin: 0;
 		padding: 0;
 		overflow-x: hidden;
 		overflow-y: auto;
 		list-style-type: none;
-
-		:dir(rtl) &,
-		[dir='rtl'] & {
-			right: 0;
-			left: auto;
-		}
 	}
 
 	//sobald die listbox offen ist, muss der z-index des containers höher sein als die container ungeöffneter selects
