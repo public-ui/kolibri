@@ -1,0 +1,1 @@
+import{l as e,x as t}from"./props-from-config-LBgEHmcL-Bbpscl9G.js";var n=e(`required`,!1,t);export{n as t};
