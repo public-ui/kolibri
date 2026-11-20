@@ -30,13 +30,13 @@
 		}
 
 		&--orientation-vertical {
-			gap: to-rem(4);
 			padding: to-rem(4) 0;
+			gap: to-rem(4);
 		}
 
 		&--orientation-horizontal {
-			gap: to-rem(16);
 			padding: 0;
+			gap: to-rem(16);
 		}
 	}
 }

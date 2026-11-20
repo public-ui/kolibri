@@ -28,6 +28,7 @@ Observe the following coding rules when making changes to this project.
 
 - Never use the title-Attribute to add tooltips. Always use the `KolTooltip` component.
 - JSDoc and comments follow the repo-wide rule [Inline code documentation](../../AGENTS.md#inline-code-documentation). The JSDoc of public `@Prop`, `@Method` and `@Event` members is published API documentation.
+- `forceUpdate` is reserved for the `requestRender` callbacks of items and behaviors (see the skeleton ARC42, _Embedded Components (Items)_): it renders again after a change of state the item or behavior owns. Data the component owns itself is a `@State` — no explicit render call.
 
 ### Styling boundary
 

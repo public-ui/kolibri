@@ -213,7 +213,7 @@ export function mergeAdjustedHeaderCells(headers: KoliBriTableHeaders, adjusted:
 		row.map((cell) => {
 			const original = cell?.key ? originalByKey.get(cell.key) : undefined;
 			if (!original) {
-				return cell as KoliBriTableHeaderCellWithLogic;
+				return cell;
 			}
 			const merged = { ...original };
 			if (cell.visible !== undefined) merged.visible = cell.visible;

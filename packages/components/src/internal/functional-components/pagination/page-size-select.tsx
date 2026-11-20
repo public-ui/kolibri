@@ -174,3 +174,18 @@ export class PageSizeSelect extends BaseSelectWebComponent {
 		}
 	}
 }
+
+let pageSizeSelectDefined = false;
+
+/**
+ * Creates a page size select. In the custom elements build the web component base classes extend
+ * `HTMLElement`, whose constructor only runs for a class in the custom element registry, so the class
+ * is registered once under an internal name before the first `new`. The element never enters the DOM.
+ */
+export const createPageSizeSelect = (getHost: () => HTMLElement | undefined, requestRender: () => void): PageSizeSelect => {
+	if (!pageSizeSelectDefined && typeof HTMLElement !== 'undefined' && PageSizeSelect.prototype instanceof HTMLElement) {
+		customElements.define(createUniqueId('kol-page-size-select'), PageSizeSelect as unknown as CustomElementConstructor);
+	}
+	pageSizeSelectDefined = true;
+	return new PageSizeSelect(getHost, requestRender);
+};

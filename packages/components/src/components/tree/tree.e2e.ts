@@ -390,4 +390,55 @@ test.describe('kol-tree - Interaction', () => {
 		await item1.locator('.kol-link__interactive-element').first().click();
 		expect(await detail).toBe('#item1');
 	});
+
+	test('Shift+Tab from the first item leaves the tree instead of trapping the focus', async ({ page }) => {
+		await page.setContent(`<button id="before">before</button>${NESTED_TREE}<button id="after">after</button>`);
+		await expect(page.locator('kol-tree')).toHaveClass(/hydrated/);
+		const firstLink = page.locator('kol-tree-item').first().locator('.kol-link__interactive-element').first();
+
+		await page.locator('#before').focus();
+		await page.keyboard.press('Tab');
+		await expect(firstLink).toBeFocused();
+
+		await page.keyboard.press('Shift+Tab');
+		await expect(page.locator('#before')).toBeFocused();
+
+		// The tree rejoins the tab order once the focus has left it.
+		await page.keyboard.press('Tab');
+		await expect(firstLink).toBeFocused();
+	});
+
+	test('the arrow keys work when the tree is placed inside a shadow root', async ({ page }) => {
+		await page.setContent('<div id="app"></div>');
+		await page.evaluate((tree) => {
+			const host = document.querySelector('#app')!;
+			host.attachShadow({ mode: 'open' }).innerHTML = tree;
+		}, NESTED_TREE);
+		const treeItems = page.locator('#app kol-tree-item');
+		await expect(page.locator('#app kol-tree')).toHaveClass(/hydrated/);
+
+		await treeItems.nth(0).locator('.kol-link__interactive-element').first().focus();
+		await page.keyboard.press('ArrowDown');
+		await expect(treeItems.nth(1).locator('.kol-link__interactive-element').first()).toBeFocused();
+	});
+
+	test('ArrowDown follows an item opened through the _open prop', async ({ page }) => {
+		await page.setContent(NESTED_TREE);
+		const treeItems = page.locator('kol-tree-item');
+		await expect(page.locator('kol-tree')).toHaveClass(/hydrated/);
+		const item2Link = treeItems.nth(1).locator('.kol-link__interactive-element').first();
+
+		// Fill the open-items cache while Item 2 is collapsed.
+		await treeItems.nth(0).locator('.kol-link__interactive-element').first().focus();
+		await page.keyboard.press('ArrowDown');
+		await expect(item2Link).toBeFocused();
+
+		await treeItems.nth(1).evaluate((element: HTMLKolTreeItemElement) => {
+			element._open = true;
+		});
+		await expect(item2Link).toHaveAttribute('aria-expanded', 'true');
+
+		await page.keyboard.press('ArrowDown');
+		await expect(treeItems.nth(2).locator('.kol-link__interactive-element').first()).toBeFocused();
+	});
 });

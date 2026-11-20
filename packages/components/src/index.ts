@@ -24,8 +24,10 @@ export type {
 } from '@public-ui/internals/schema/index';
 export { KolEvent } from '@public-ui/internals/utils/events';
 export { isTooltipOpen } from '@public-ui/internals/utils/tooltip-open-tracking';
+export { setTagTransformer, transformTag } from '@stencil/core';
 export { getDefaultThemeName } from 'adopted-style-sheets';
 export * from './components.d';
 export { ToasterService } from './components/toaster/toaster';
 export { bootstrap, isInitialized, register } from './core/bootstrap';
+export { getRegisteredTagNameTransformer, registerTagNameTransformer } from './core/tag-transformer';
 export * from './kolibri';

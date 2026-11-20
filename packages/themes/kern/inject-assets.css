@@ -1,5 +1,13 @@
+/*
+ * Font CSS for the visual tests and the theme preview. Fira Sans is a peer dependency; its files
+ * are served from `assets/peer-fonts/` (copied from node_modules by the visual test runner and by
+ * serve.sh, see BREAKING_CHANGES.v5.md).
+ */
 @import url('./assets/material-symbols-subset/style.css');
-@import url('./assets/fira-sans-v17-latin/style.css');
+@import url('./assets/peer-fonts/fira-sans/400.css');
+@import url('./assets/peer-fonts/fira-sans/500.css');
+@import url('./assets/peer-fonts/fira-sans/600.css');
+@import url('./assets/peer-fonts/fira-sans/700.css');
 
 body {
 	font-family: Fira Sans;

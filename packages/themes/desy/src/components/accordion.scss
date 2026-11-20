@@ -1,11 +1,8 @@
 @use '../functions/to-rem' as *;
 @use '../breakpoints' as *;
 @use '../mixins/focus-outline' as *;
-@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	@include icon;
-
 	.kol-accordion {
 		background: var(--color-white-100);
 		border-radius: 6px;

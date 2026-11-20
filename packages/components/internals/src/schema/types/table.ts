@@ -19,6 +19,10 @@ export type KoliBriTableCell = {
 	width?: number;
 };
 
+/**
+ * Fields every column type shares: label, layout, sort state and the settings of the settings menu.
+ * The column types are in `KoliBriTableHeaderCellWithLogic`.
+ */
 export type KoliBriTableHeaderCell = KoliBriTableCell & {
 	headerCell?: true;
 	hidable?: boolean;

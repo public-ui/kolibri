@@ -4,6 +4,16 @@
 **Umfang:** packages/components (Stencil-Build), packages/adapters/\*, Doku und Migration-Guide
 **Ziel:** Die vier eigenen Forks der Framework-Output-Targets werden durch die offiziellen Stencil-Pakete ersetzt. Das TagName-Replace-Feature (`transformTagName`) bleibt dabei als öffentliche Funktion erhalten und wird auf die native Stencil-API (`setTagTransformer`/`transformTag`) umgestellt.
 
+## Umsetzungsstand
+
+| Phase | Pull Request | Umsetzung                                                                                                                                                                                                                                                                                                                                                                            |
+| ----- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1     | #11586       | `bootstrap` registriert über `registerTagNameTransformer` (`core/tag-transformer.ts`): begrenzt auf `kol-*`, im Shared State hinterlegt, warnt bei Doppelt- und Spätregistrierung; die `Kol*Tag`-Konstanten tragen dauerhaft `kol-*`.                                                                                                                                                |
+| 2     | #11599       | React über `@stencil/react-output-target` und `dist-custom-elements`; der Codemod `scripts/react-codemod.mjs` löst den Tag beim ersten Render auf; den Zustand der Bundle-Kopien teilt `core/shared-state.ts`. Eine Registrierung (Adapter oder `bootstrap`) deckt beide Runtime-Kopien ab; die Spec `samples/presentation/src/test/tag-name-transformer.spec.tsx` pinnt beide Wege. |
+| 3     | #11604       | Angular über `@stencil/angular-output-target` mit `outputType: 'component'` (Lazy-Loader); der Codemod `scripts/angular-codemod.mjs` bringt die Vorlagen aus `scripts/angular-component-lib` auf (Runtime-Re-Hosting, Entscheidungspunkt 2).                                                                                                                                         |
+| 4     | #11605       | Vue über `@stencil/vue-output-target` mit `transformTag: true` (Lazy-Loader); der Codemod `scripts/vue-codemod.mjs` bindet die Proxies an das native `transformTag`. Version 0.15 erzeugt keine Plugin-Datei (Abschnitt 2.2); eine Unit-Spec in `@public-ui/vue` pinnt den Transformer-Pfad.                                                                                         |
+| 5     | #11606       | Solid und Svelte bleiben bei ihren Targets (Abschnitt 3.4); die Forks für Angular, React und Vue sind im Build nicht mehr eingebunden. Die Deprecation der Fork-Pakete auf npm, die Feature-Doku auf public-ui.github.io und der Release-Zug folgen mit Release 5.                                                                                                                   |
+
 ---
 
 ## 1. Ausgangslage
@@ -68,7 +78,7 @@ Der neue React-Generator bindet `defineCustomElement` pro Komponente aus dem `di
 Nach der Migration gibt es genau eine Instanz, die den Transformer kennt: die native Stencil-Runtime.
 
 - `bootstrap({ transformTagName })` **bleibt die öffentliche API** in `@public-ui/components`. Intern ruft sie statt `setCustomTagNames` die native `setTagTransformer` auf.
-- Jede Adapter-Package exportiert weiterhin `setTagNameTransformer(fn)` als Brücke. Sie delegiert an dieselbe native API, damit Adapter-Proxy und Core definitionsgemäß synchron sind.
+- Jede Adapter-Package exportiert weiterhin `setTagNameTransformer(fn)` als Brücke. Sie delegiert an `registerTagNameTransformer`, damit Adapter-Proxy und Core definitionsgemäß synchron sind; der `kol-*`-Guard steht dort genau einmal (#11607). Beim React-Adapter deckt eine Registrierung beide Runtime-Kopien ab (Root-Entry und `dist/components`).
 - `setCustomTagNames()` und die Mutation der `Kol*Tag`-Konstanten entfallen. Die Konstanten bleiben als Public API exportiert, tragen aber dauerhaft den Wert `kol-*`. Das interne Rendering funktioniert ohne Mutation, weil die Stencil-Runtime VNode-Namen selbst transformiert.
 - **Achtung Doppeltransformation:** Solange die Konstanten mutiert würden und die Runtime zusätzlich transformiert, entstünde `app-kol-button` zu `app-app-kol-button`. Die Mutation muss stillgelegt werden, sobald der native Pfad aktiviert wird.
 
@@ -114,9 +124,11 @@ Die Brücke im Core (`bootstrap.ts`) verkürzt sich im Wesentlichen auf:
 import { setTagTransformer } from '@stencil/core';
 
 if (koliBriOptions?.transformTagName) {
-	setTagTransformer(koliBriOptions.transformTagName);
+	setTagTransformer((tag: string) => (tag.startsWith('kol-') ? koliBriOptions.transformTagName(tag) : tag));
 }
 ```
+
+Die Begrenzung auf `kol-*` ist Pflicht: der native Transformer greift bei jedem String-Tag, das `h()` rendert, auch bei nativen HTML-Tags wie `div` oder `span`. Der öffentliche `transformTagName`-Option ist hingegen nur für Komponenten-Tags gedacht; ohne die Begrenzung würde ein naiver Transformer wie `(tag) => \`app-${tag}\`` die innere Struktur jeder Komponente zerstören.
 
 Da der Transformer vor dem ersten `define` gesetzt sein muss, prüft der Core die Reihenfolge und gibt im Zweifel die native Warnung plus einen KoliBri-Hinweis aus. Die Adapter-Brücken (`kolibri-src`-Schicht der Adapter-Packages) exportieren `setTagNameTransformer` weiter und rufen dieselbe native API.
 
@@ -129,15 +141,16 @@ Zwei Punkte lassen sich mit den offiziellen Targets nicht ohne Weiteres abbilden
 
 ### 3.4 Adapter im Einzelnen
 
-| Adapter                                   | Ziel                                                                                                       | Tag-Replacement                        |
-| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| React 18 (`@public-ui/react`)             | offizielles Target + Codemod (Renderzeit-Auflösung), Umstieg auf `dist-custom-elements`                    | vollständig, wie heute                 |
-| React 19 (`@public-ui/react-v19`)         | dito; perspektivisch Zusammenführung mit react, da die neue Runtime 18 und 19 abdeckt                      | vollständig                            |
-| Angular v20/v21                           | offizielles Target + eigene `angular-component-lib`-Vorlagen und Proxy-Codemod                             | vollständig, Runtime statt Postinstall |
-| Vue                                       | offizielles Target, `transformTag: true`, Lazy-Pfad über Loader-Plugin                                     | vollständig (offiziell)                |
-| Solid                                     | Fork vorerst weiter (kein offizielles Target); mittelfristig eigenes Target ins Repo holen oder upstreamen | vollständig (Fork)                     |
-| Svelte                                    | Community-Target ohne Tag-Replacement; Lücke dokumentieren, Upstream-Issue zu `svelte:element` prüfen      | **Lücke wie heute**                    |
-| Preact, Vaadin, react-standalone, hydrate | ohne Transformer wie heute weiter; hydrate bleibt Basis für späteres `@stencil/ssr`-Angebot                | unverändert                            |
+| Adapter                           | Ziel                                                                                                       | Tag-Replacement                        |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| React 18 (`@public-ui/react`)     | offizielles Target + Codemod (Renderzeit-Auflösung), Umstieg auf `dist-custom-elements`                    | vollständig, wie heute                 |
+| React 19 (`@public-ui/react-v19`) | dito; perspektivisch Zusammenführung mit react, da die neue Runtime 18 und 19 abdeckt                      | vollständig                            |
+| Angular v20/v21                   | offizielles Target + eigene `angular-component-lib`-Vorlagen und Proxy-Codemod                             | vollständig, Runtime statt Postinstall |
+| Vue                               | offizielles Target, `transformTag: true`, Lazy-Pfad über Loader-Plugin                                     | vollständig (offiziell)                |
+| Solid                             | Fork vorerst weiter (kein offizielles Target); mittelfristig eigenes Target ins Repo holen oder upstreamen | **offiziell nicht unterstützt**        |
+| Svelte                            | Community-Target ohne Tag-Replacement; Upstream-Issue zu `svelte:element` prüfen                           | **offiziell nicht unterstützt**        |
+| Preact, Vaadin, react-standalone  | ohne Transformer wie heute weiter                                                                          | unverändert                            |
+| hydrate                           | bleibt Basis für ein späteres `@stencil/ssr`-Angebot                                                       | **offiziell nicht unterstützt**        |
 
 ---
 
@@ -179,7 +192,7 @@ Jede Phase endet mit `pnpm format`, `pnpm lint`, `pnpm test` und einem grünen v
 
 - Fork-Pakete `@public-ui/stencil-{angular,react,vue}-output-target` als deprecated markieren (Readme-Hinweis auf die offiziellen Pakete), Solid-Fork behalten mit Kommentar im Config-File.
 - Doku auf public-ui.github.io: Feature-Seite TagName-Transform auf den neuen Pfad umstellen, `defineCustomElements({ transformTagName })` als entfernt kennzeichnen, Migration-Guide für die App-Umstellung.
-- Release-Koordination: Components und alle Adapter in einem Release-Zug ausliefern, da Generierung und Runtime zusammengehören. SemVer: Major für Adapter mit Verhaltensänderung (React-Registrierung), Minor beziehungsweise Patch, wo nur intern wechselt. Kein Komponenten-API-Bruch: `bootstrap({ transformTagName })`, `Kol*Tag`-Exports und `setTagNameTransformer` je Adapter bleiben unverändert.
+- Release-Koordination: Components und alle Adapter in einem Release-Zug ausliefern, da Generierung und Runtime zusammengehören. SemVer: Major für Adapter mit Verhaltensänderung (React-Registrierung), Minor beziehungsweise Patch, wo nur intern wechselt. Kein Komponenten-API-Bruch: `bootstrap({ transformTagName })`, `Kol*Tag`-Exports und `setTagNameTransformer` je Adapter bleiben unverändert. Die Loader-Option `defineCustomElements({ transformTagName })` entfällt als einzige Brechung dieser Flächen: der Loader gehört zur nativen Stencil-Runtime, ein erneutes Einhängen wäre ein zweiter Fork (Abschnitt 1), die Abweichung trägt `release:breaking-change` und den Migration-Abschnitt.
 
 ---
 
@@ -190,7 +203,7 @@ Jede Phase endet mit `pnpm format`, `pnpm lint`, `pnpm test` und einem grünen v
 - **Registrierungswechsel bei React:** Lazy-Loader hin zu per-Komponenten-Define ändert Ladeverhalten und Bundle-Zuschnitt. Getrennt messen (Bundle-Analyse, Performance-Sample) und gegebenenfalls in einem eigenen Schritt vor Phase 2 ausrollen.
 - **`@lit/react`-Semantik:** Props mit Unterstrich-Präfix, Event-Namen und Ref-Weitergabe gegen die goldenen Samples testen; das `className`-Merging der offiziellen Runtime ist neu.
 - **Doppeltransformation im Übergang:** Core-Mutation und native Transformation dürfen nie gleichzeitig aktiv sein; Phase 1 und 2 daher nacheinander und mit Tests absichern.
-- **Solid und Svelte bleiben Sonderfälle:** Kein offizielles Target beziehungsweise kein Tag-Replacement. Beides ist heute schon so, die Migration verschärft es nicht, muss es aber dokumentieren.
+- **Solid, Svelte und hydrate unterstützen die Tag-Namen-Transformation offiziell nicht.** Solid und Svelte haben kein offizielles Target; `setTagNameTransformer` des Solid-Adapters ist ungetestet.
 - **Upstream-Kopplung:** Die `transformTag`-Option der Targets ist relativ jung (Angular-Patch-Script, React-eager-Binding). Vor dem Abschluss von Phase 2 bis 4 die verwendeten Minor-Versionen pinnen und Änderungen im Monorepo verfolgen.
 
 ## 6. Entscheidungspunkte

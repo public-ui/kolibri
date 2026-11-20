@@ -1,10 +1,15 @@
+@use 'mixins/icon' as *;
 @use 'mixins/to-rem' as *;
 
 @layer kol-theme-global {
 	:host {
 		--border-radius: var(--kolibri-border-radius, #{to-rem(4)});
 		//--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
-		--font-family: var(--kolibri-font-family, 'Noto Sans Regular', Arial, helvetica, sans-serif);
+		/*
+		 * `Noto Sans` is a peer dependency (@fontsource/noto-sans). The application imports its
+		 * CSS at document level; without it the font family falls back to Arial.
+		 */
+		--font-family: var(--kolibri-font-family, 'Noto Sans', Arial, helvetica, sans-serif);
 		--font-size: var(--kolibri-font-size, #{to-rem(16)});
 		--spacing: var(--kolibri-spacing, #{to-rem(4)});
 		--border-width: var(--kolibri-border-width, 1px);
@@ -118,4 +123,16 @@
 	[disabled]:where(:not(fieldset)):focus {
 		opacity: 0.5;
 	}
+
+	/*
+ * The icon font rules ship once in this global sheet instead of in every component sheet. The
+ * adopter places this sheet in every shadow root as one shared `CSSStyleSheet`, so each root
+ * receives the rules either way, while the icon CSS exists once instead of per component. No
+ * component rule targets the `.fa-*`/`.codicon-*` classes, so the rules resolve identically
+ * from this lower layer.
+ *
+ * `kol-icon` has no entry in the theme's tag map, so — like `kol-spin` — it only ever receives
+ * this global sheet, which is exactly where its font rules live.
+ */
+	@include kol-icon-theme;
 }

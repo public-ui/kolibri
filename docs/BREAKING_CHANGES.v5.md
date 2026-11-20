@@ -71,7 +71,11 @@ import { KERN_V2 } from '@public-ui/theme-kern';
 ### Assets
 
 The meta package aggregated the assets (fonts, icons) of all themes into a single `assets` folder.
-Without it, copy the assets from each individual theme package you use.
+Without it, load the assets from each individual theme package you use. The icon fonts are
+importable through the packages' `./assets/*` exports — the bundler resolves the font files of the
+imported CSS on its own, so no copying into a public assets directory is needed. Note that the
+foreign icon fonts and fonts are peer dependencies now and are no longer part of these assets — see
+[Foreign icon fonts and fonts are peer dependencies now](#foreign-icon-fonts-and-fonts-are-peer-dependencies-now).
 
 **Before (v4):**
 
@@ -83,16 +87,136 @@ Without it, copy the assets from each individual theme package you use.
 }
 ```
 
-**After:**
+**After (v5):**
+
+```ts
+// main.ts / index.tsx
+import '@public-ui/components/assets/kolicons/style.css';
+import '@public-ui/theme-ecl/assets/ecl-icons/style.css'; // if you use the ECL theme
+```
+
+Only non-CSS assets such as the `kolibri.ico` favicon or the `inject-variants_*.json` data still
+need to be copied, and only if your application uses them:
 
 ```jsonc
 {
 	"scripts": {
-		"prebuild:theme-default": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" public/assets --dot",
-		"prebuild:theme-ecl": "cpy \"node_modules/@public-ui/theme-ecl/assets/**/*\" public/assets --dot",
+		"prebuild:theme-ecl": "cpy \"node_modules/@public-ui/theme-ecl/assets/{kolibri.ico,variants/**}\" public/assets --dot",
 	},
 }
 ```
+
+## Foreign icon fonts and fonts are peer dependencies now
+
+The theme packages no longer bundle third-party icon fonts and fonts in their `assets` folder. They
+are **peer dependencies** instead: installing `@public-ui/theme-*` pulls the font packages into your
+application automatically, and one CSS import per font at document level is the whole integration.
+No copying of font folders into a public assets directory is needed anymore — the bundler resolves
+the font files of the imported CSS on its own.
+
+KoliBri's own fonts keep shipping with their packages: the **KolIcons** font ships with
+`@public-ui/components`, and theme-specific icon fonts (`desy-icons` with `@public-ui/theme-desy`,
+`ecl-icons` with `@public-ui/theme-ecl`, `material-symbols-subset` with `@public-ui/theme-kern`)
+stay part of their theme. KoliBri publishes no icon font packages of its own on npm. Like the peer
+dependency fonts, they are loaded with one CSS import each through the packages' `./assets/*`
+exports — no copying of asset folders:
+
+```ts
+// main.ts / index.tsx
+import '@public-ui/components/assets/kolicons/style.css';
+import '@public-ui/theme-ecl/assets/ecl-icons/style.css';
+import '@public-ui/theme-desy/assets/desy-icons/style.css';
+import '@public-ui/theme-kern/assets/material-symbols-subset/style.css';
+```
+
+| Theme package              | New peer dependency                     | Replaces the bundled        |
+| -------------------------- | --------------------------------------- | --------------------------- |
+| `@public-ui/theme-default` | `@fortawesome/fontawesome-free` `6.7.2` | Font Awesome Free 6.1.1     |
+| `@public-ui/theme-default` | `@vscode/codicons` `0.0.46-24`          | Codicons                    |
+| `@public-ui/theme-bwst`    | `@fortawesome/fontawesome-free` `6.7.2` | (referenced, never shipped) |
+| `@public-ui/theme-bwst`    | `@fontsource/noto-sans` `5.3.0`         | Noto Sans                   |
+| `@public-ui/theme-desy`    | `@vscode/codicons` `0.0.46-24`          | Codicons                    |
+| `@public-ui/theme-kern`    | `@fontsource/fira-sans` `5.3.0`         | Fira Sans                   |
+
+### Package dependency
+
+Install the font packages your application actually uses (the peer dependency of the theme pulls
+them in automatically; an explicit dependency documents the intent and works with installers that do
+not auto-install peers):
+
+**Before (v4):** nothing to install — the fonts were checked into the theme package and had to be
+copied out of `node_modules/@public-ui/theme-default/assets/…` manually.
+
+**After (v5):**
+
+```jsonc
+{
+	"dependencies": {
+		"@public-ui/theme-default": "^5.0.0",
+		"@fortawesome/fontawesome-free": "6.7.2",
+		"@vscode/codicons": "0.0.46-24",
+	},
+}
+```
+
+### Integration
+
+Import the font CSS once in the application entry point. It declares the `@font-face` rules at
+document level, from where the shadow DOM of the components picks the fonts up. The glyph classes
+stay in the theme, so `_icons="fas fa-house"` and `_icons="codicon codicon-plus"` keep working
+unchanged:
+
+**Before (v4):**
+
+```jsonc
+{
+	"scripts": {
+		"prebuild": "cpy \"node_modules/@public-ui/theme-default/assets/fontawesome-free/**/*\" public/assets --dot && cpy \"node_modules/@public-ui/theme-default/assets/codicons/**/*\" public/assets --dot",
+	},
+}
+```
+
+```html
+<link rel="stylesheet" href="/assets/fontawesome-free/css/all.min.css" /> <link rel="stylesheet" href="/assets/codicons/codicon.css" />
+```
+
+**After (v5):**
+
+```ts
+// main.ts / index.tsx
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@vscode/codicons/dist/codicon.css';
+```
+
+The sample host app demonstrates the new integration in `packages/samples/presentation`.
+
+### Why peer dependencies
+
+- **Smaller packages and clean licensing.** Third-party font binaries (Font Awesome, Codicons,
+  Noto Sans, Fira Sans) no longer sit in KoliBri's git repository and npm packages; their licenses
+  are fulfilled by the upstream packages themselves.
+- **Upstream updates without binary commits.** Bumping a font is a package.json change instead of
+  re-committing font files by hand.
+- **The application owns the version.** Like the framework adapters, the fonts are the consuming
+  application's choice; a peer dependency states that contract instead of hiding it in an assets
+  folder.
+- **Simpler integration.** A CSS import replaces the manual copying of asset folders, and relative
+  or absolute font URLs (`../webfonts/…`, `/assets/codicons/…`) that depended on the deployment
+  layout disappear.
+
+### Notes
+
+- The glyph classes of the themes follow **Font Awesome 6**; the peer dependency is pinned to the
+  latest 6.x release. Font Awesome 7 renamed classes and is not covered by the theme glyph sets.
+- `@public-ui/theme-bwst` already referenced Font Awesome glyphs without shipping them — those icons
+  rendered with a fallback font. With the peer dependency the theme's Font Awesome icons resolve
+  for the first time.
+- The default font family of `@public-ui/theme-bwst` is now `Noto Sans` (as provided by
+  `@fontsource/noto-sans`); the previously bundled files registered themselves as `Noto Sans
+Regular`.
+- The `@font-face` rules must be declared at document level. Adopted style sheets inside a shadow
+  root do not register fonts, which is why the themes never carried a working declaration for these
+  fonts — the bundled `@font-face` blocks were dead weight that this change removes.
 
 ## Removal of legacy schema types of skeleton-migrated components
 
@@ -186,4 +310,236 @@ const headers: TableHeaderCells = { horizontal: [[{ key: 'name', label: 'Name' }
 import type { KoliBriTableHeaders } from '@public-ui/components';
 
 const headers: KoliBriTableHeaders = { horizontal: [[{ key: 'name', label: 'Name' }]] };
+```
+
+## Removal of the deprecated `_headerCells` property of `kol-table-stateless`, `_headers` is required
+
+The `_headerCells` property (attribute `_header-cells`) of `kol-table-stateless` is **removed**. Use
+`_headers`, which takes the same value. The `@public-ui/kolibri-cli` migration tool renames remaining
+usages in v4 projects and in projects on a v5 prerelease (`npx @public-ui/kolibri-cli migrate src`).
+
+`_headers` is **required**, as it is for `kol-table-stateful`. The header cells define the data
+columns, so a table without them renders no columns and logs a development warning.
+
+**Before (v4):**
+
+```tsx
+<KolTableStateless _label="Orders" _headerCells={headers} _data={data} />
+```
+
+**After (v5):**
+
+```tsx
+<KolTableStateless _label="Orders" _headers={headers} _data={data} />
+```
+
+## Framework adapters are generated with the official Stencil output targets
+
+KoliBri 4 generated the React, Angular and Vue adapters through own forks of the Stencil output
+targets (`@public-ui/stencil-{react,angular,vue}-output-target`), because the official targets
+could not transform tag names. Stencil now provides the tag name transformation natively
+(`setTagTransformer`), so v5 generates all three adapters with the official targets and the forks
+are retired. The framework chapters below describe the per-framework changes; everything that
+changes for every application follows here.
+
+See `docs/OUTPUT_TARGETS_MIGRATION_CONCEPT.md` for the background and the decisions.
+
+### Tag name transformation
+
+The untyped `transformTagName` option of the lazy loader is removed:
+`defineCustomElements(window, { transformTagName })` has no effect anymore. Register the
+transformer with `bootstrap({ transformTagName })` or with `setTagNameTransformer` from your
+adapter — one registration is enough, the adapter and `bootstrap` share it. Register it before the
+first KoliBri element is defined or rendered; the registration limits the transformation to `kol-*`
+tags and warns when it arrives after components were defined.
+
+**Before (v4), option on the loader:**
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await register(DEFAULT, defineCustomElements);
+defineCustomElements(window, { transformTagName: (tagName) => `${tagName}-app` });
+```
+
+**After (v5), option on `register`/`bootstrap` (or `setTagNameTransformer` from the adapter):**
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await register(DEFAULT, defineCustomElements, { transformTagName: (tagName) => `${tagName}-app` });
+```
+
+A transformer passed to `register`/`bootstrap` keeps working — it now registers with the native
+Stencil runtime instead of rewriting the tag constants.
+
+### The `Kol*Tag` constants keep their `kol-*` value
+
+KoliBri 4 rewrote the exported `Kol*Tag` constants (for example `KolButtonTag`) when a transformer
+was registered, so the constants carried the transformed names. The constants keep their default
+value permanently now; the transformation runs inside the Stencil runtime. Code that addresses
+elements by a tag constant resolves the name through `transformTag`:
+
+**Before (v4):**
+
+```ts
+import { KolButtonTag } from '@public-ui/components';
+
+document.querySelector(KolButtonTag); // 'kol-button-app' after the registration
+```
+
+**After (v5):**
+
+```ts
+import { KolButtonTag, transformTag } from '@public-ui/components';
+
+document.querySelector(transformTag(KolButtonTag)); // 'kol-button-app'
+```
+
+### Adapter support
+
+React, Angular and Vue support the tag name transformation as before. Solid, Svelte and the hydrate
+package do not support it officially (see the concept document); `setTagNameTransformer` of the
+Solid adapter is untested.
+
+## React adapters register through the custom elements build
+
+`@public-ui/react` and `@public-ui/react-v19` are generated with the official
+[`@stencil/react-output-target`](https://www.npmjs.com/package/@stencil/react-output-target) instead
+of the `@public-ui/stencil-react-output-target` fork. Each React component defines its custom element
+from `@public-ui/components/custom-elements` on its first render. The lazy loader is no longer part
+of a React application.
+
+### Registration
+
+Remove the `defineCustomElements` loader from `bootstrap`. Elements the loader defines do not receive
+the props of the React components, so both registrations must not be mixed.
+
+**Before (v4):**
+
+```ts
+import { bootstrap } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await bootstrap(DEFAULT, defineCustomElements);
+```
+
+**After (v5):**
+
+```ts
+import { bootstrap } from '@public-ui/components';
+
+await bootstrap(DEFAULT, []);
+```
+
+### Toaster
+
+The toaster creates its container element itself instead of rendering it through a React component.
+Define that element once before the first toast:
+
+```ts
+import { defineCustomElement as defineKolToastContainer } from '@public-ui/components/custom-elements/kol-toast-container.js';
+
+defineKolToastContainer();
+```
+
+### Tag name transformation
+
+The registration is the one described in the chapter above: `setTagNameTransformer` from the
+adapter or `transformTagName` with `bootstrap` — one registration covers the React components and
+the tags the root entry creates (the toast container of the `ToasterService`), because the adapter
+bridge and `bootstrap` share it. Register it before the first render and before
+`defineKolToastContainer`.
+
+```ts
+import { bootstrap } from '@public-ui/components';
+import { setTagNameTransformer } from '@public-ui/react-v19';
+
+const transformTagName = (tagName: string) => `${tagName}-app`;
+
+setTagNameTransformer(transformTagName);
+await bootstrap(DEFAULT, []);
+```
+
+### Supported React versions and types
+
+- `@public-ui/react` supports React 18 only (peer range `18.x`), because the Stencil React runtime
+  requires React 18 or 19. React 19 applications use `@public-ui/react-v19`.
+- The `StyleReactProps` type export of `@public-ui/react-v19` is removed. The props of the React
+  components accept `class` and CSS custom properties in `style`.
+
+## Angular adapters are generated with the official Stencil output target
+
+`@public-ui/angular-v20` and `@public-ui/angular-v21` are generated with the official
+[`@stencil/angular-output-target`](https://www.npmjs.com/package/@stencil/angular-output-target)
+instead of the `@public-ui/stencil-angular-output-target` fork. The components stay standalone
+components and the registration through the lazy loader (`register(DEFAULT, defineCustomElements)`)
+is unchanged.
+
+### Required inputs
+
+Props that a KoliBri component requires are required Angular inputs, for example `_label`. A template
+that omits one no longer compiles (`NG8008`). Bind every required input.
+
+**Before (v4):**
+
+```html
+<kol-button></kol-button>
+```
+
+**After (v5):**
+
+```html
+<kol-button _label="Save"></kol-button>
+```
+
+### Methods
+
+The component methods (`focus()`, `click()`, `getValue()`, …) are callable on the Angular component,
+for example through `@ViewChild`.
+
+### Tag name transformation
+
+The registration is the one described in the chapter above: `setTagNameTransformer` from the
+adapter or `transformTagName` with `register`/`bootstrap` — one registration is enough. Register it
+before `register`/`bootstrap` runs the loader and before the first component renders. Angular
+fixes the selector of a component at compile time, so under a transformer the KoliBri element
+with the transformed tag renders inside the `kol-*` host of the Angular component.
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+
+await register(DEFAULT, defineCustomElements, { transformTagName: (tagName) => `${tagName}-app` });
+```
+
+## Vue adapter is generated with the official Stencil output target
+
+`@public-ui/vue` is generated with the official
+[`@stencil/vue-output-target`](https://www.npmjs.com/package/@stencil/vue-output-target) instead of
+the `@public-ui/stencil-vue-output-target` fork. The registration through the lazy loader is
+unchanged.
+
+### Vue 3.4.38 or newer
+
+`@public-ui/vue` requires Vue 3.4.38 or newer (peer range `^3.4.38`), the minimum of the Stencil
+Vue runtime. Applications on Vue 3.0 to 3.4 stay on `@public-ui/vue` of KoliBri 4 or upgrade Vue
+first.
+
+### Tag name transformation
+
+The components resolve their tag on every render through the Stencil runtime. The registration is
+the one described in the chapter above: `setTagNameTransformer` from the adapter or
+`transformTagName` with `register`/`bootstrap` — one registration is enough. Register it before
+`register`/`bootstrap` runs the loader.
+
+```ts
+import { register } from '@public-ui/components';
+import { defineCustomElements } from '@public-ui/components/loader';
+import { setTagNameTransformer } from '@public-ui/vue';
+
+setTagNameTransformer((tagName) => `${tagName}-app`);
+await register(DEFAULT, defineCustomElements);
 ```

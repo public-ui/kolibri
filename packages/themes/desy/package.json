@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-desy",
-	"version": "5.0.0-beta.1",
+	"version": "5.0.0-beta.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -66,6 +66,7 @@
 		"@rollup/plugin-commonjs": "29.0.3",
 		"@rollup/plugin-node-resolve": "16.0.3",
 		"@rollup/plugin-typescript": "12.3.0",
+		"@vscode/codicons": "0.0.46-24",
 		"autoprefixer": "10.6.1",
 		"cross-env": "10.1.0",
 		"eslint": "9.39.5",
@@ -82,14 +83,16 @@
 		"unbuild": "3.6.1"
 	},
 	"peerDependencies": {
-		"@public-ui/components": "workspace:*"
+		"@public-ui/components": "workspace:*",
+		"@vscode/codicons": "0.0.46-24"
 	},
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs"
-		}
+		},
+		"./assets/*": "./assets/*"
 	},
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.mjs",

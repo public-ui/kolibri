@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Method, Prop, transformTag, Watch } from '@stencil/core';
 
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
@@ -12,7 +12,8 @@ import { delegateFocus } from '../../../internals/src/utils/element-focus';
 import { TreeFC } from '../../internal/functional-components/tree/component';
 import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
 
-const isTreeItem = (element?: Element | null): element is HTMLKolTreeItemElement => element?.tagName === KolTreeItemTag.toUpperCase();
+const isTreeItem = (element?: EventTarget | null): element is HTMLKolTreeItemElement =>
+	(element as Element | null | undefined)?.tagName === transformTag(KolTreeItemTag).toUpperCase();
 
 /**
  * @slot - Children as TreeItem Components
@@ -88,8 +89,17 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	@Listen('keydown')
 	public async handleKeyDown(event: KeyboardEvent): Promise<void> {
+		if (event.key === 'Tab' && event.shiftKey && event.target !== this.host) {
+			/* The host precedes the items in the tab order. Shift+Tab from an item skips it, otherwise
+			   the focus delegation of `handleFocusIn` would send the focus straight back into the tree.
+			   `handleFocusOut` restores the tab stop once the focus has left the tree. */
+			this.host?.setAttribute('tabindex', '-1');
+			return;
+		}
+
+		/* Read from the event path: inside the shadow root of an application, `document.activeElement` is that application's host. */
+		const currentTreeItem = event.composedPath().find(isTreeItem);
 		const openItems = await this.getOpenTreeItemElements();
-		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
 		const hasModifierKeyPressed = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
 
 		if (!openItems || !currentTreeItem) {
@@ -167,7 +177,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 				break;
 			}
 			case '*': {
-				const siblings = currentTreeItem.parentElement?.querySelectorAll(KolTreeItemTag);
+				const siblings = currentTreeItem.parentElement?.querySelectorAll<HTMLKolTreeItemElement>(transformTag(KolTreeItemTag));
 				siblings?.forEach((element) => {
 					void element.expand();
 				});
@@ -178,8 +188,8 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	@Listen('focusin')
 	public handleFocusIn(event: FocusEvent): void {
-		// Only delegate if no tree item is already focused
-		if (event.target === this.host && !document.activeElement?.closest(KolTreeItemTag)) {
+		// Only delegate when the host itself receives the focus from outside the tree. Focus coming back from a tree item stays on the host.
+		if (event.target === this.host && !this.isWithinTree(event.relatedTarget)) {
 			// Defer to next frame to ensure tree is fully ready
 			requestAnimationFrame(() => {
 				void this.focus();
@@ -189,10 +199,17 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	@Listen('focusout')
 	public handleFocusOut(event: FocusEvent): void {
-		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
+		if (!this.isWithinTree(event.relatedTarget)) {
+			this.host?.setAttribute('tabindex', '0');
+		}
+		if (event.relatedTarget && !(event.relatedTarget as Element).closest(transformTag(KolTreeTag))) {
 			/* Tree lost focus */
 			this.ensureActiveItemVisibility();
 		}
+	}
+
+	private isWithinTree(node: EventTarget | null): boolean {
+		return node instanceof Node && node !== this.host && (this.host?.contains(node) ?? false);
 	}
 
 	/** Called by a tree item of this tree whenever it expands or collapses. */
@@ -242,7 +259,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 	 */
 	private getTreeItemElements(): HTMLKolTreeItemElement[] {
 		return this.getTopLevelTreeItems().reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
-			const children = currentValue.querySelectorAll(KolTreeItemTag);
+			const children = currentValue.querySelectorAll<HTMLKolTreeItemElement>(transformTag(KolTreeItemTag));
 
 			return [...accumulator, currentValue, ...children];
 		}, []);
@@ -285,7 +302,7 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 				if (rootNode._active) {
 					return rootNode;
 				}
-				const childMatch = rootNode.querySelector<HTMLKolTreeItemElement>(`${KolTreeItemTag}[_active="true"]`);
+				const childMatch = rootNode.querySelector<HTMLKolTreeItemElement>(`${transformTag(KolTreeItemTag)}[_active="true"]`);
 				if (childMatch?._active) {
 					return childMatch;
 				}

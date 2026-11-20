@@ -10,11 +10,11 @@ import type { FixedSide, PrimaryHeaders, SelectionModel, TableDataCell, TableDat
 import {
 	createDataField,
 	createSelectionModel,
-	getColumnHeaderForType,
 	getFixedOffsets,
 	getFixedSide,
 	getNumberOfCols,
 	getOffsetString,
+	getPrimaryHeaderCell,
 	getPrimaryHeaders,
 	getSelectableRows,
 	getSelectAllSelection,
@@ -416,9 +416,10 @@ const renderTableCell = (context: RenderContext, cell: TableDataCell, rowIndex: 
 	}
 
 	const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === context.translateNoEntries;
-	const actionColumn = getColumnHeaderForType(context.headers, context.primaryHeaders, colIndex, 'action') as ActionColumnHeaderCell | undefined;
+	const columnHeader = getPrimaryHeaderCell(context.headers, context.primaryHeaders, colIndex);
+	const actionColumn = columnHeader?.type === 'action' ? columnHeader : undefined;
 	const isActionColumn = Boolean(actionColumn && cell.data);
-	const stateColumn = getColumnHeaderForType(context.headers, context.primaryHeaders, colIndex, 'state') as StateColumnHeaderCell | undefined;
+	const stateColumn = columnHeader?.type === 'state' ? columnHeader : undefined;
 	const isStateColumn = Boolean(stateColumn && cell.data);
 	const fixed = getFixedSideOf(context, colIndex);
 	const { left, right } = getOffsets(context, fixed, cell.colIndex);

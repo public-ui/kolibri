@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 import locale_de from '../locales/de';
 import locale_en from '../locales/en';
+import { getSharedState } from './shared-state';
 
 export type ResourcePrefix = 'Kol';
 export type ComponentKeys = keyof typeof locale_de;
@@ -101,20 +102,20 @@ class I18nService {
 	}
 }
 
-let i18n: I18nService;
+const shared = getSharedState('i18n', (): { instance?: I18nService } => ({}));
 
-export const getI18nInstance = () => {
-	return i18n;
-};
+export const getI18nInstance = (): I18nService | undefined => shared.instance;
 
 export const initializeI18n = (
 	lng: Generic.I18n.Locale.ISO_639_1,
-	translations:
+	translations?:
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>
 		| Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>[]
-		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>> = TRANSLATIONS,
+		| Set<Generic.I18n.RegisterPatch<Generic.I18n.Locale.ISO_639_1, string, string>>,
 ) => {
-	i18n = new I18nService(lng);
+	const i18n = new I18nService(lng);
+	i18n.addTranslations(TRANSLATIONS);
 	i18n.addTranslations(translations);
+	shared.instance = i18n;
 	return i18n;
 };
