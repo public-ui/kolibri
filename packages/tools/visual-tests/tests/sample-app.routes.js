@@ -209,6 +209,14 @@ ROUTES.set('input-file/basic?noColumns', {
 		},
 	},
 });
+ROUTES.set('input-file/with-file?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+	},
+});
 ROUTES.set('input-number/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
