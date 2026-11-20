@@ -4,6 +4,7 @@ import { h } from '@stencil/core';
 import KolHeadingFc from '../../../functional-components/Heading/Heading';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { ResolvedButtonProps } from '../button/resolve-props';
 import type { FunctionalComponentProps } from '../generic-types';
@@ -16,6 +17,7 @@ const BEM_CLASS_CARD__CLOSE_BUTTON = cardBem('close-button');
 const BEM_CLASS_CARD__CONTENT = cardBem('content');
 const BEM_CLASS_CARD__HEADER = cardBem('header');
 const BEM_CLASS_CARD__LINK = cardBem('link');
+const BEM_CLASS_CLOSE_BUTTON = bem.forBlock('kol-close-button')();
 
 /**
  * The close button reports only its click. `ButtonFC` requires a handler per callback, and the
@@ -45,9 +47,6 @@ export type CardFCProps = Omit<FunctionalComponentProps<CardApi>, 'handleBlur' |
 };
 
 /**
- * Root from `bem.forBlock('kol-card')`, not `BemRootNodeFC`: the card's root is the semantic
- * `<article>` that carries `aria-labelledby`, and `BemRootNodeFC` always renders a `<div>`.
- *
  * The content area renders `children`, not a `<slot />` of its own: Stencil derives its light-DOM
  * slot relocation from the JSX in the element file, so the `<slot />` has to be written there.
  *
@@ -79,7 +78,7 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 	} = resolveFcProps(cardPropsConfig, props);
 
 	return (
-		<article aria-labelledby={headingId} class={clsx(cardBem(), hostClass)}>
+		<BemRootNodeFC component="article" aria-labelledby={headingId} block="kol-card" class={hostClass}>
 			{href.length > 0 ? (
 				<a class={BEM_CLASS_CARD__LINK} href={href} target={target || undefined} onBlur={handleBlur} onFocus={handleFocus} ref={refCta}>
 					<CardHeadingFC headingId={headingId} label={label} level={level} />
@@ -89,7 +88,7 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 			)}
 			<div class={BEM_CLASS_CARD__CONTENT}>{children}</div>
 			{hasCloser && (
-				<div class={clsx(BEM_CLASS_CARD__CLOSE_BUTTON, 'kol-close-button')}>
+				<div class={clsx(BEM_CLASS_CARD__CLOSE_BUTTON, BEM_CLASS_CLOSE_BUTTON)}>
 					<ButtonFC
 						{...closeButtonProps}
 						ariaDescriptionId={ariaDescriptionId}
@@ -102,6 +101,6 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 					/>
 				</div>
 			)}
-		</article>
+		</BemRootNodeFC>
 	);
 };

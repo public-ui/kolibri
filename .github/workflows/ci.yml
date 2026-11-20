@@ -31,6 +31,10 @@ concurrency:
 jobs:
   build-and-check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Writes the size gate comment of the pull request.
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -54,6 +58,37 @@ jobs:
         run: pnpm -r lint
       - name: Unit Tests
         run: pnpm -r test:unit
+      # Compares the artifact sizes of the components and theme-default with their committed
+      # baselines (size-baseline.json); see docs/SIZE_GATE.md. The treemap and the restructuring
+      # candidates come from the manually started workflow size-analysis.yml.
+      - name: Size gate
+        id: size-gate
+        run: pnpm -r size
+      # Keeps at most one size gate comment on the pull request. It is created only for a failure or a
+      # notable change and updated on every later run. Pull requests from forks get a read-only token;
+      # for them the step only warns and the job summary carries the report.
+      - name: Size gate comment
+        if: ${{ !cancelled() && github.event_name == 'pull_request' }}
+        uses: actions/github-script@v9
+        env:
+          SIZE_GATE_OUTCOME: ${{ steps.size-gate.outcome }}
+        with:
+          script: |
+            const workspace = process.env.GITHUB_WORKSPACE;
+            const { renderPrComment, upsertPrComment } = await import(`${workspace}/packages/tools/size-gate/src/pr-comment.mjs`);
+            const repoUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}`;
+            const { body, notable } = renderPrComment({
+              outcome: process.env.SIZE_GATE_OUTCOME || 'skipped',
+              packageDirs: [`${workspace}/packages/components`, `${workspace}/packages/themes/default`],
+              runUrl: `${repoUrl}/actions/runs/${context.runId}`,
+              sha: context.payload.pull_request.head.sha,
+            });
+            try {
+              const result = await upsertPrComment({ body, context, create: notable, github });
+              core.info(`Size gate comment ${result.action} (${result.id}).`);
+            } catch (error) {
+              core.warning(`Could not write the size gate comment: ${error.message}`);
+            }
 
   e2e-tests:
     runs-on: ubuntu-latest

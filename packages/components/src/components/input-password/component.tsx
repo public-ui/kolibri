@@ -36,6 +36,7 @@ import type {
 	VisibilityTogglePropType,
 } from '../../schema';
 import { devHint } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 
 import { translate } from '../../i18n';
 import { ButtonFC } from '../../internal/functional-components/button/component';
@@ -48,8 +49,11 @@ import type { InputPasswordApi } from '../../internal/functional-components/inpu
 import { inputPasswordPropsConfig } from '../../internal/functional-components/input-password/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
 import { visibilityToggleProp } from '../../internal/props';
+import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+
+const passwordBem = bem.forBlock('kol-input-password');
 
 /**
  * The **Password** input type creates an input field for passwords. The input is masked with dot symbols.
@@ -483,7 +487,7 @@ export class KolInputPassword
 						_on: { onClick: this.handleVisibilityToggle },
 					},
 					{
-						class: 'kol-input-password__password-toggle-button kol-input-container__smart-button',
+						class: clsx(passwordBem('password-toggle-button'), 'kol-input-container__smart-button'),
 					},
 				)}
 			/>
@@ -495,7 +499,7 @@ export class KolInputPassword
 
 		return (
 			<Host>
-				<FormFieldFC {...this.getTextFormFieldProps('kol-input-password password')}>
+				<FormFieldFC {...this.getTextFormFieldProps(clsx(passwordBem(), 'password'))}>
 					<InputContainerFC
 						disabled={this.getRenderProp('disabled')}
 						msg={this.getRenderProp('msg')}
