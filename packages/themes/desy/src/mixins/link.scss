@@ -1,5 +1,4 @@
 @use '../functions/to-rem' as *;
-@use '../mixins/icon' as *;
 
 /*
  * Interactive link styles. With $anchor-scoped (default) they attach to the inner
@@ -79,8 +78,6 @@
 }
 
 @mixin kol-link($block-classname, $anchor-scoped: true, $interactive-suffix: null) {
-	@include icon;
-
 	.#{$block-classname} {
 		font-size: to-rem(16);
 		font-weight: 400;

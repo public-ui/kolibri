@@ -646,7 +646,7 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 			type: 'text',
 			role: 'combobox',
 			'aria-activedescendant': this.getActiveDescendant(),
-			'aria-autocomplete': 'both',
+			'aria-autocomplete': 'list',
 			'aria-controls': createRelatedUniqueId(id, 'listbox'),
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
 			'aria-expanded': this.isOpen ? 'true' : 'false',
@@ -772,6 +772,7 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 							onKeyDown={this.handleDropdownKeyDown}
 							hidden={!this.isOpen || isDisabled}
 							id={createRelatedUniqueId(this.id, 'listbox')}
+							aria-labelledby={createRelatedUniqueId(this.id, 'label')}
 						>
 							{this.renderOptions()}
 						</CustomSuggestionsOptionsGroupFC>

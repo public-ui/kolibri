@@ -29,14 +29,14 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	_label: {
 		kind: 'prop',
 		type: 'LabelPropType',
-		required: false,
+		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},
 	_max: {
 		kind: 'prop',
 		type: 'MaxPropType',
 		required: true,
-		doc: 'Defines the maximum value of the element.',
+		doc: 'Defines the maximum value of the element. An unset value warns without a rescuing fallback: nothing paginates without the number of entries, and 0 stays the honest empty state (ARC42, "Requiredness semantics per prop").',
 	},
 	_on: {
 		kind: 'prop',

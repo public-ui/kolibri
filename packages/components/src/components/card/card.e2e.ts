@@ -33,4 +33,19 @@ test.describe('kol-card', () => {
 			await expect(eventPromise).resolves.toBeTruthy();
 		});
 	});
+
+	test.describe('Link', () => {
+		test('should close instead of following the link when the close button is clicked', async ({ page }) => {
+			await page.setContent('<kol-card _label="Card" _has-closer _href="#target" />');
+			const eventPromise = page.locator('kol-card').evaluate(async (element: HTMLKolCardElement) => {
+				return new Promise((resolve) => {
+					element.addEventListener('close', resolve);
+				});
+			});
+			await page.waitForChanges();
+			await page.locator('.kol-card__close-button button').click();
+			await expect(eventPromise).resolves.toBeTruthy();
+			expect(new URL(page.url()).hash).toBe('');
+		});
+	});
 });

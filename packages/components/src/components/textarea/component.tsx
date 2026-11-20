@@ -540,6 +540,8 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 	 */
 	private measureTextareaRows(el: HTMLTextAreaElement): number {
 		// Hides the scrollbar during the measurement; the padding is removed temporarily for a correct row height.
+		// Both inline values are restored afterwards, so the scrollbar of a resizable textarea stays available.
+		const { overflow, padding } = el.style;
 		el.style.overflow = 'hidden';
 		el.style.padding = '0';
 		const currentRows = el.rows;
@@ -547,7 +549,8 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 		el.rows = 1;
 		const nextRows = Math.round(el.scrollHeight / rowHeight);
 		el.rows = currentRows;
-		el.style.padding = '';
+		el.style.overflow = overflow;
+		el.style.padding = padding;
 
 		const minRows = this.minRows;
 		return minRows && minRows > nextRows ? minRows : nextRows;

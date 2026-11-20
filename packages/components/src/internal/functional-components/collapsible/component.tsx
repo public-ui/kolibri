@@ -5,6 +5,7 @@ import KolHeadingFc from '../../../functional-components/Heading/Heading';
 import clsx from '../../../utils/clsx';
 import { preventFocus } from '../../../utils/element-interaction';
 import { getBlockBem } from '../bem-root-node/block-bem';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { SpanFC } from '../span/component';
 import type { CollapsibleApi, CollapsibleVariant } from './api';
@@ -32,11 +33,13 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 	const blockBem = getBlockBem(block);
 
 	return (
-		<details
-			class={blockBem({
+		<BemRootNodeFC
+			component="details"
+			block={block}
+			modifiers={{
 				disabled: disabled === true,
 				open: expanded === true,
-			})}
+			}}
 			open={detailsOpen === true}
 			style={{ '--collapsible-transition-duration': `${transitionMs}ms` }}
 		>
@@ -67,6 +70,6 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 					</div>
 				</div>
 			</div>
-		</details>
+		</BemRootNodeFC>
 	);
 };

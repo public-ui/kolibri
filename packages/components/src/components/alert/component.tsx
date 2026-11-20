@@ -41,6 +41,13 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	@State() public closerAriaDescriptionId: string = createUniqueId('closer-description');
 
+	/**
+	 * Whether the alert behavior (the `role="alert"` live region) is active. It mirrors the applied
+	 * `_alert` value, so the removal after the timeout renders through the state change without an
+	 * explicit render call.
+	 */
+	@State() public showAlert = false;
+
 	private alertTimeout?: ReturnType<typeof setTimeout>;
 
 	private readonly translateCloseAlert = translate('kol-close-alert');
@@ -60,7 +67,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 	@Watch('_alert')
 	public watchAlert(value?: AlertPropType): void {
 		alertProp.apply(value, (v) => {
-			this.setRenderProp('alert', v);
+			this.showAlert = v;
 			this.syncAlertEffects(v);
 		});
 	}
@@ -163,10 +170,10 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 	};
 
 	/**
-	 * Keeps the live-region side effects in sync with the alert render prop: while `role="alert"`
+	 * Keeps the live-region side effects in sync with the active alert state: while `role="alert"`
 	 * is active, the device vibrates once (coarse pointers with a prior user gesture only) and a
 	 * timeout removes the role after 10 seconds so a recurring value change is announced again.
-	 * It runs when the alert render prop is applied (load, `_alert` watcher, timeout) and on
+	 * It runs when the alert state is applied (load, `_alert` watcher, timeout) and on
 	 * disconnect, not on every render.
 	 *
 	 * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
@@ -198,7 +205,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 		return (
 			<Host>
 				<AlertFC
-					alert={this.getRenderProp('alert')}
+					alert={this.showAlert}
 					handleCloserClick={this.handleCloserClick}
 					closerAriaDescriptionId={this.closerAriaDescriptionId}
 					hasCloser={this.getRenderProp('hasCloser')}

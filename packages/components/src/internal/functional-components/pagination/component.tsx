@@ -4,7 +4,6 @@ import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
 import { trimLabel, type InternalButtonProps } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
-import { nonce } from '../../../utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
@@ -85,7 +84,7 @@ export const PaginationContentFC: FC<PaginationFCProps> = (props) => {
 		const pageText = NUMBER_FORMATTER.format(item);
 		const ariaDescription = `${translate('kol-page')} ${pageText}`;
 		return (
-			<li key={nonce()}>
+			<li key={`page-${item}`}>
 				{selected ? (
 					<ButtonFC
 						{...getButtonFcProps(
@@ -126,9 +125,9 @@ export const PaginationContentFC: FC<PaginationFCProps> = (props) => {
 			<ul class={paginationBem('navigation-list')}>
 				{hasButtons.first && navigationButton('first', leftDoubleArrowIcon, translate('kol-page-first'), page <= 1)}
 				{hasButtons.previous && navigationButton('previous', leftSingleArrowIcon, translate('kol-page-back'), page <= 1)}
-				{getPageItems(page, count, boundaryCount, siblingCount).map((item) =>
+				{getPageItems(page, count, boundaryCount, siblingCount).map((item, index) =>
 					item === null ? null : item === 'separator' ? (
-						<li key={nonce()}>
+						<li key={index + 1 < page ? 'separator-left' : 'separator-right'}>
 							<span class={paginationBem('separator')} aria-hidden="true"></span>
 						</li>
 					) : (

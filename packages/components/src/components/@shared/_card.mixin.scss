@@ -32,6 +32,10 @@
 		}
 
 		&__close-button {
+			/* Lifts the closer above the stretched link area of `&__link::after`. */
+			position: relative;
+			z-index: 1;
+
 			grid-area: close;
 		}
 

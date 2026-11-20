@@ -62,11 +62,11 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType = undefined;
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		this.item.applyLabel(value);
+		this.item.applyLabel(value, this.isRequired('label'));
 	}
 
 	/**
@@ -140,13 +140,14 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	}
 
 	/**
-	 * Defines the maximum value of the element.
+	 * Defines the maximum value of the element. An unset value warns without a rescuing fallback: nothing paginates without the
+	 * number of entries, and 0 stays the honest empty state (ARC42, "Requiredness semantics per prop").
 	 */
 	@Prop() public _max!: MaxPropType;
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {
-		this.item.applyMax(value);
+		this.item.applyMax(value, this.isRequired('max'));
 	}
 
 	public componentWillLoad(): void {
@@ -161,19 +162,24 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 			},
 			store,
 		});
-		this.item.load({
-			boundaryCount: this._boundaryCount,
-			customClass: this._customClass,
-			hasButtons: this._hasButtons,
-			label: this._label,
-			max: this._max,
-			on: this._on,
-			page: this._page,
-			pageSize: this._pageSize,
-			pageSizeOptions: this._pageSizeOptions,
-			siblingCount: this._siblingCount,
-			tooltipAlign: this._tooltipAlign,
-		});
+		this.item.load(
+			{
+				boundaryCount: this._boundaryCount,
+				customClass: this._customClass,
+				hasButtons: this._hasButtons,
+				label: this._label,
+				max: this._max,
+				on: this._on,
+				page: this._page,
+				pageSize: this._pageSize,
+				pageSizeOptions: this._pageSizeOptions,
+				siblingCount: this._siblingCount,
+				tooltipAlign: this._tooltipAlign,
+			},
+			// Of the required slot `_label` and `_max` warn about an unset value; `_page` and `_on` are
+			// a type contract (see ARC42, "Requiredness semantics per prop").
+			{ label: this.isRequired('label'), max: this.isRequired('max') },
+		);
 	}
 
 	public componentDidRender(): void {

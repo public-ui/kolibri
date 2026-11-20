@@ -32,6 +32,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { deprecatedHint } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
@@ -66,6 +67,8 @@ import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';
+
+const dateBem = bem.forBlock('kol-input-date');
 
 /**
  * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.
@@ -587,7 +590,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-date', this.getRenderProp('type'), {
+						class: clsx(dateBem(), this.getRenderProp('type'), {
 							'has-value': this.hasValue,
 						}),
 						accessKey: this.getRenderProp('accessKey') || undefined,
