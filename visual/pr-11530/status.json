@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "133 changed – 0 of 133 approved, review pending",
-	"computedAt": "2026-11-20T14:20:26.725Z",
+	"description": "40 changed – 0 of 40 approved, review pending",
+	"computedAt": "2026-11-20T14:37:23.975Z",
 	"pr": 11530,
-	"head": "68204e04df892664e4a224ea3eae3778a20f05e9",
-	"digest": "sha256:64ce5b9c3b936e77ae4373f85424a3abd899164e150b0e15b1c56fe000662d2c",
+	"head": "b05ae842317a3a8518d5796d296586f223c60011",
+	"digest": "sha256:5e6dc82fa006d763aba9328ad2fbccc30236d4cc05d48275cac837b741a62363",
 	"counts": {
-		"changes": 133,
-		"open": 133,
+		"changes": 40,
+		"open": 40,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -36,163 +36,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-error": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-indet-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-indeterminate": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-long-label": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-unchecked": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-error": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-indet-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-indeterminate": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-long-label": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-unchecked": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--hide-label-error": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-black-bg": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-default": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-info": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-success": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-warning": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-multiple": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-file-basic-noColumns--label-short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-text-variant-noColumns--variant-left": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-focus-elements-component-inputCheckbox": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-focus-elements-component-inputFile": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple": {
-			"state": "open",
-			"notes": []
-		},
 		"test-tag-name-transformer/scenarios-label-lang--label-lang-alert": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-label-lang--label-lang-checkbox": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-same-height-of-all-form-elements-with-label": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-same-height-of-all-interactive-elements": {
 			"state": "open",
 			"notes": []
 		},
@@ -292,59 +136,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-bwst/input-file-basic-noColumns--hide-label-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-black-bg": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-msg-default": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-msg-info": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-msg-success": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-msg-warning": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-multiple": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-file-basic-noColumns--label-short-key": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-bwst/scenarios-focus-elements-component-inputCheckbox": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/scenarios-focus-elements-component-inputFile": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/scenarios-focus-elements-component-inputFileMultiple": {
 			"state": "open",
 			"notes": []
 		},
@@ -353,14 +145,6 @@
 			"notes": []
 		},
 		"theme-bwst/scenarios-label-lang--label-lang-checkbox": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/scenarios-same-height-of-all-form-elements-with-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/scenarios-same-height-of-all-interactive-elements": {
 			"state": "open",
 			"notes": []
 		},
@@ -384,163 +168,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-default/input-checkbox-basic-noColumns--left-access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--left-checked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--left-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--left-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--left-indet-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--left-indeterminate": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--left-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--left-long-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--left-short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--left-unchecked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-checked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-indet-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-indeterminate": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-long-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-unchecked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--hide-label-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-black-bg": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-msg-default": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-msg-info": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-msg-success": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-msg-warning": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-multiple": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-file-basic-noColumns--label-short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-text-variant-noColumns--variant-left": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-focus-elements-component-inputCheckbox": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-focus-elements-component-inputFile": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-focus-elements-component-inputFileMultiple": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-default/scenarios-label-lang--label-lang-alert": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-label-lang--label-lang-checkbox": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-same-height-of-all-form-elements-with-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-same-height-of-all-interactive-elements": {
 			"state": "open",
 			"notes": []
 		},
