@@ -107,7 +107,7 @@ const extractPublicApi = (source: string): ApiMember[] => {
 const toContract = (members: ApiMember[]): PublicApiContract => Object.fromEntries(members.map(({ name, ...contract }) => [name, contract]));
 
 /** The `ApiFromConfig` extra groups of a `*Api` type — the part of the API the props config cannot express. */
-export type ApiGroup = 'Callbacks' | 'Emitters' | 'Listeners' | 'Methods' | 'Refs';
+type ApiGroup = 'Callbacks' | 'Emitters' | 'Listeners' | 'Methods' | 'Refs';
 
 export type ApiTypeContract = Partial<Record<ApiGroup, Record<string, { type: string; doc: string }>>>;
 
