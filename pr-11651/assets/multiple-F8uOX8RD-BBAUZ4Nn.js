@@ -1,1 +1,0 @@
-import{l as e,x as t}from"./props-from-config-LBgEHmcL-CoTvly84.js";var n=e(`multiple`,!1,t);export{n as t};
