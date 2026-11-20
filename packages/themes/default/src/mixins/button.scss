@@ -128,8 +128,7 @@
 		}
 
 		&__interactive-element:is(:disabled, [aria-disabled='true']) {
-			pointer-events: none;
-			&:hover &__text {
+			&:hover .#{$block-classname}__text {
 				color: var(--text-color);
 				background-color: var(--text-background-color);
 				box-shadow: none;
