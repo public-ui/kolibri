@@ -127,7 +127,7 @@
 			}
 		}
 
-		&__interactive-element:is(:disabled, [aria-disabled='true']):hover &__text {
+		&__interactive-element:is(:disabled, [aria-disabled='true']):hover .#{$block-classname}__text {
 			color: var(--text-color);
 			background-color: var(--text-background-color);
 			box-shadow: none;
