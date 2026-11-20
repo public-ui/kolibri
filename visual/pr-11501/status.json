@@ -2,14 +2,14 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "1 of 10 visual changes rejected",
-	"computedAt": "2026-11-20T15:54:36.099Z",
+	"computedAt": "2026-11-20T16:03:50.146Z",
 	"pr": 11501,
 	"head": "975bb91cf917c86a1c8c736ac2a38fbc0d319e99",
 	"digest": "sha256:a913648beeb75a03fa2ce809e9ec127ecdfb5e6d95d75811fada8a7ffefabf86",
 	"counts": {
 		"changes": 10,
-		"open": 8,
-		"approved": 1,
+		"open": 0,
+		"approved": 9,
 		"rejected": 1,
 		"routeErrors": 0,
 		"errorItems": 0
@@ -30,8 +30,9 @@
 			"by": "laske185"
 		},
 		"theme-ecl/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/drawer-basic-align-left-closer-true": {
 			"state": "approved",
@@ -44,32 +45,39 @@
 			"by": "laske185"
 		},
 		"theme-ecl/modal-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/popover-button-basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-linkButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-popoverButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-splitButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
