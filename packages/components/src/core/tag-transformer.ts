@@ -14,4 +14,4 @@ export const registerTagNameTransformer = (transformer: TagNameTransformer): Tag
 	return guarded;
 };
 
-export { getRegisteredTagNameTransformer, transformTag } from '../../internals/src/core/tag-transformer';
+export { getRegisteredTagNameTransformer } from '../../internals/src/core/tag-transformer';
