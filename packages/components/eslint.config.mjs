@@ -23,6 +23,8 @@ delete stencilRecommendedRules['react/jsx-no-bind'];
 
 const jsxA11yRecommendedRules = jsxA11yPlugin.flatConfigs?.recommended?.rules ?? {};
 
+const isDev = globalThis.process?.env?.NODE_ENV === 'development';
+
 export default [
 	// Global ignores (replaces .eslintignore)
 	{
@@ -143,7 +145,7 @@ export default [
 			 * Keep `implements` / `extends` heritage clauses sorted alphabetically.
 			 */
 			'perfectionist/sort-heritage-clauses': ['error', { type: 'alphabetical', order: 'asc' }],
-			'no-console': 'error',
+			'no-console': isDev ? 'warn' : 'error',
 			'no-mixed-spaces-and-tabs': 'off',
 		},
 	},
