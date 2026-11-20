@@ -2,6 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { bem } from '../../../schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { resolveFcProps } from '../props-from-config';
 import { quotePropsConfig, type QuoteApi } from './api';
@@ -15,9 +16,8 @@ const BEM_CLASS_QUOTE__QUOTE = quoteBem('quote');
 export const QuoteFC: FC<FunctionalComponentProps<QuoteApi>> = (props) => {
 	const { href, label, quote, variant } = resolveFcProps(quotePropsConfig, props);
 	const hasExpertSlot = quote === '';
-	const BEM_CLASS_ROOT = quoteBem({ [variant]: true });
 	return (
-		<figure class={BEM_CLASS_ROOT}>
+		<BemRootNodeFC component="figure" block="kol-quote" modifiers={{ [variant]: true }}>
 			{variant === 'block' ? (
 				<blockquote class={BEM_CLASS_QUOTE__BLOCKQUOTE} cite={href}>
 					{quote}
@@ -40,6 +40,6 @@ export const QuoteFC: FC<FunctionalComponentProps<QuoteApi>> = (props) => {
 					</cite>
 				</figcaption>
 			)}
-		</figure>
+		</BemRootNodeFC>
 	);
 };

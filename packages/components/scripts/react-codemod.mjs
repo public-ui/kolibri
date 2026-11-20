@@ -24,14 +24,8 @@ for (const file of proxies.map((proxy) => join(scriptDir, proxy))) {
 			"import type { StencilReactComponent } from '@stencil/react-output-target/runtime';",
 			"import type { StencilReactComponent } from '../kolibri-src/create-component';",
 		)
-		.replace(
-			"import { createComponent } from '@stencil/react-output-target/runtime';",
-			"import { createComponent } from '../kolibri-src/create-component';",
-		)
-		.replace(
-			"import { transformTag } from './tag-transformer.js';",
-			"import { transformTag } from '../kolibri-src/tag-transformer';",
-		);
+		.replace("import { createComponent } from '@stencil/react-output-target/runtime';", "import { createComponent } from '../kolibri-src/create-component';")
+		.replace("import { transformTag } from './tag-transformer.js';", "import { transformTag } from '../kolibri-src/tag-transformer';");
 	if (rewritten === source) {
 		throw new Error(`react-codemod: no generated import found in ${file}`);
 	}

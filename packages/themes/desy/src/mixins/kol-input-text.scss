@@ -1,9 +1,6 @@
 @use '../functions/to-rem' as *;
-@use '../mixins/icon' as *;
 
 @mixin kol-input-text {
-	@include icon;
-
 	.kol-input {
 		background-color: transparent;
 		height: to-rem(36);

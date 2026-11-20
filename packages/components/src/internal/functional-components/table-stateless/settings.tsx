@@ -14,6 +14,12 @@ import { createDialogItem, DialogItemFC } from '../dialog/item';
 import { createItemPool } from '../item-pool';
 
 const BEM_CLASS_TABLE__SETTINGS = bem.forBlock('kol-table')('settings');
+const tableSettingsBem = bem.forBlock('kol-table-settings');
+const BEM_CLASS_TABLE_SETTINGS = tableSettingsBem();
+const BEM_CLASS_TABLE_SETTINGS__ACTIONS = tableSettingsBem('actions');
+const BEM_CLASS_TABLE_SETTINGS__COLUMNS = tableSettingsBem('columns');
+const BEM_CLASS_TABLE_SETTINGS__CONTENT = tableSettingsBem('content');
+const BEM_CLASS_TABLE_SETTINGS__ERROR_MESSAGE = tableSettingsBem('error-message');
 
 /**
  * The settings menu of the table: the toggle button and the dialog that hides, resizes and moves
@@ -243,7 +249,7 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 			return (
 				<div class={BEM_CLASS_TABLE__SETTINGS} ref={refRoot}>
 					{/* `.kol-table-settings` stays an ancestor of `.kol-button`: the themes style the toggle as `.kol-table-settings .kol-button`. */}
-					<div class="kol-table-settings">
+					<div class={BEM_CLASS_TABLE_SETTINGS}>
 						<ButtonFC
 							{...buttons.get('toggle').getFcProps({
 								_icons: 'kolicon-settings',
@@ -254,9 +260,9 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 						/>
 					</div>
 					<DialogItemFC {...dialog.getFcProps({ label: translateTableSettings, variant: 'card', width: 'fit-content' })}>
-						<div class="kol-table-settings__content">
+						<div class={BEM_CLASS_TABLE_SETTINGS__CONTENT}>
 							{errorMessage && (
-								<div class="kol-table-settings__error-message">
+								<div class={BEM_CLASS_TABLE_SETTINGS__ERROR_MESSAGE}>
 									<AlertFC
 										alert={false}
 										closerAriaDescriptionId={alertCloserAriaDescriptionId}
@@ -273,8 +279,8 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 								</div>
 							)}
 							<form onSubmit={handleSubmit}>
-								<div class="kol-table-settings__columns">{columns.map((column, index) => renderColumn(column, index, columns))}</div>
-								<div class="kol-table-settings__actions">
+								<div class={BEM_CLASS_TABLE_SETTINGS__COLUMNS}>{columns.map((column, index) => renderColumn(column, index, columns))}</div>
+								<div class={BEM_CLASS_TABLE_SETTINGS__ACTIONS}>
 									<ButtonFC
 										{...buttons.get('cancel').getFcProps({
 											_label: translateTableSettingsCancel,

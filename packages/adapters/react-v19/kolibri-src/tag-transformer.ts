@@ -1,5 +1,5 @@
 import { registerTagNameTransformer } from '@public-ui/components';
-import { setTagTransformer as clientSetTagTransformer, transformTag, getTagTransformer } from '../src/tag-transformer';
+import { setTagTransformer as clientSetTagTransformer, getTagTransformer, transformTag } from '../src/tag-transformer';
 
 /**
  * Bridge over the generated tag transformer: the registration covers both runtime copies of the
@@ -12,4 +12,4 @@ export const setTagNameTransformer = (transformer: (tagName: string) => string):
 	clientSetTagTransformer(registerTagNameTransformer(transformer));
 };
 
-export { transformTag, getTagTransformer };
+export { getTagTransformer, transformTag };

@@ -3,6 +3,7 @@ import { Fragment, h } from '@stencil/core';
 
 import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import { LinkFC } from '../link/component';
@@ -11,7 +12,6 @@ import type { BreadcrumbApi } from './api';
 import type { BreadcrumbLinkItem } from './link-item';
 
 const breadcrumbBem = bem.forBlock('kol-breadcrumb');
-const BEM_CLASS_BREADCRUMB = breadcrumbBem();
 const BEM_CLASS_BREADCRUMB__ICON = breadcrumbBem('icon');
 const BEM_CLASS_BREADCRUMB__LINK = breadcrumbBem('link');
 const BEM_CLASS_BREADCRUMB__LIST = breadcrumbBem('list');
@@ -67,7 +67,7 @@ export const BreadcrumbFC: FC<FunctionalComponentProps<BreadcrumbApi>> = ({ labe
 	const lastIndex = linkItems.length - 1;
 
 	return (
-		<nav class={BEM_CLASS_BREADCRUMB} aria-label={label}>
+		<BemRootNodeFC component="nav" block="kol-breadcrumb" aria-label={label}>
 			<ul class={BEM_CLASS_BREADCRUMB__LIST}>
 				{linkItems.length === 0 && (
 					<li>
@@ -76,6 +76,6 @@ export const BreadcrumbFC: FC<FunctionalComponentProps<BreadcrumbApi>> = ({ labe
 				)}
 				{linkItems.map((item, index) => renderLink(item, index, lastIndex, showCurrentPage))}
 			</ul>
-		</nav>
+		</BemRootNodeFC>
 	);
 };
