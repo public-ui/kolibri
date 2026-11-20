@@ -1,24 +1,32 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "100 changed – 0 of 100 approved, review pending",
-	"computedAt": "2026-11-19T11:27:40.595Z",
+	"state": "failure",
+	"description": "1 of 100 visual changes rejected",
+	"computedAt": "2026-11-20T07:47:13.156Z",
 	"pr": 11632,
 	"head": "827456f61811cf99fa4c273448ec89e3aace4db3",
 	"digest": "sha256:503208b674b0907928f60a7a1c37119f6209a3b866bbe98b4cdc6530908e03a7",
 	"counts": {
 		"changes": 100,
-		"open": 100,
+		"open": 99,
 		"approved": 0,
-		"rejected": 0,
+		"rejected": 1,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"laske185"
+	],
 	"items": {
 		"test-tag-name-transformer/nav-basic--navigation-submenu": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [
+				{
+					"by": "laske185",
+					"text": "Alle Nav, egal welches Theme, haben jetzt mehr Platz zwischen letzem Menüeintrag und dem Aufklapp-Button."
+				}
+			],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/nav-basic--navigation-submenu-2": {
 			"state": "open",
