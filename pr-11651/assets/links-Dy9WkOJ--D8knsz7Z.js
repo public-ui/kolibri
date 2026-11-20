@@ -1,1 +1,0 @@
-import{et as e}from"./index-8-BSSKQL-l0ym2Buc.js";import{b as t,l as n}from"./props-from-config-LBgEHmcL-r6H5pU9E.js";function r(r){return n(`links`,[],e=>t(e),e=>e.every(e=>typeof e==`object`&&!!e&&(typeof e._href==`string`||typeof e._label==`string`)),{hints:(t,n)=>e(r,n.length)})}export{r as t};
