@@ -4,6 +4,7 @@ import { translate } from '../../../i18n';
 
 import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { renderLabelWithLang } from '../span/component';
 import type { MeterApi } from './api';
@@ -12,21 +13,18 @@ type MeterState = 'optimum' | 'suboptimal' | 'critical';
 
 const meterBem = bem.forBlock('kol-meter');
 
+/** Classifies the value like the native `<meter>`, which takes (min + max) / 2 as the optimum when none is set. */
 function getMeterState(value: number, min: number, max: number, low: number | undefined, high: number | undefined, optimum: number | undefined): MeterState {
 	const effectiveLow = low ?? min;
 	const effectiveHigh = high ?? max;
-
-	if (optimum === undefined) {
-		const inMidRegion = value >= effectiveLow && value <= effectiveHigh;
-		return inMidRegion ? 'optimum' : 'suboptimal';
-	}
+	const effectiveOptimum = optimum ?? (min + max) / 2;
 
 	const inLowRegion = value < effectiveLow;
 	const inHighRegion = value > effectiveHigh;
 	const inMidRegion = !inLowRegion && !inHighRegion;
 
-	const optimumInLow = optimum < effectiveLow;
-	const optimumInHigh = optimum > effectiveHigh;
+	const optimumInLow = effectiveOptimum < effectiveLow;
+	const optimumInHigh = effectiveOptimum > effectiveHigh;
 
 	if (optimumInLow) {
 		if (inLowRegion) return 'optimum';
@@ -90,7 +88,7 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
 
 	return (
-		<div class={meterBem({ vertical: isVertical })}>
+		<BemRootNodeFC block="kol-meter" modifiers={{ vertical: isVertical }}>
 			<div class={meterBem('bar')}>
 				<div class={meterBem('bar-label')}>
 					{renderLabelWithLang(label)}
@@ -121,6 +119,6 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 					<span class={meterBem('unit')}>{unit}</span>
 				</span>
 			</div>
-		</div>
+		</BemRootNodeFC>
 	);
 };

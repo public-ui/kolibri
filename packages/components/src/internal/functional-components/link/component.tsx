@@ -124,10 +124,10 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				)}
 			</a>
 			{hideLabel === true && !expertSlot && (
-				<div class="kol-link__tooltip">
+				<div class={linkBem('tooltip')}>
 					<TooltipFC
 						badgeText={accessKey || shortKey || ''}
-						label={typeof label === 'string' ? label : typeof href === 'string' ? href : ''}
+						label={trimLabel(label) !== '' ? label : typeof href === 'string' ? href : ''}
 						refFloating={refTooltip}
 					/>
 				</div>

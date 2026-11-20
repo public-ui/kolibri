@@ -1,9 +1,7 @@
 @use '../functions/to-rem' as *;
-@use './icon' as *;
 @use './button' as *;
 
 @mixin alert {
-	@include icon;
 	@include button('kol-alert__closer');
 
 	.kol-alert {

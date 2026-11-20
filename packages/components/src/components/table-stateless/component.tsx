@@ -19,7 +19,6 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
-import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { BaseTableStatelessWebComponent } from './base';
 
 @Component({
@@ -42,13 +41,12 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 
 	@State() public stickyColsDisabled: boolean = false;
 
-	private internals?: HostInternals;
-
 	/**
 	 * References an external element by ID that serves as the accessible label for this table.
-	 * Uses ElementInternals.ariaLabelledByElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.
+	 * The component resolves the IDs and sets them as element references (`ariaLabelledByElements`)
+	 * on the native `<table>` inside the shadow root, because IDREF attributes cannot cross that
+	 * boundary. Desktop screen readers (NVDA, JAWS with Chrome/Firefox) follow the references;
+	 * VoiceOver and TalkBack do not — use `_label` instead.
 	 */
 	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType = undefined;
 
@@ -180,7 +178,6 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 		this.watchSelection(this._selection);
 		this.watchVariant(this._variant);
 
-		this.internals = attachInternals(this.host);
 		// Early resolution: if the external element is already in the DOM (common when the
 		// label element is rendered before this component), the first render already uses
 		// it, so the AT sees the correct name from the start.
@@ -215,7 +212,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	}
 
 	private resolveExternalLabel(value?: AriaLabelledbyPropType): void {
-		this.externalLabelElements = validateAriaLabelledby(this, this.host, this.internals, value);
+		this.externalLabelElements = validateAriaLabelledby(this, this.host, value);
 		this.syncTableLabel(this.externalLabelElements);
 	}
 

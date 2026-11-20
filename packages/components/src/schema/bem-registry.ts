@@ -333,6 +333,9 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-close-button': {
+		modifiers: null;
+	};
 	'kol-span': {
 		elements: {
 			container: {
@@ -359,6 +362,9 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 			text: {
+				modifiers: null;
+			};
+			tooltip: {
 				modifiers: null;
 			};
 		};
@@ -508,6 +514,47 @@ export type KoliBriComponentsBemSchema = {
 			| 'warning'
 		>;
 	};
+	'kol-input-checkbox': {
+		elements: {
+			'field-control': {
+				modifiers: Set<'checked' | 'indeterminate' | 'variant-button' | 'variant-default' | 'variant-switch'>;
+			};
+		};
+		modifiers: Set<'checked' | 'indeterminate' | 'label-align-left' | 'label-align-right' | 'variant-button' | 'variant-default' | 'variant-switch'>;
+	};
+	'kol-input-color': {
+		elements: {
+			input: {
+				modifiers: Set<'color'>;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-input-date': {
+		modifiers: null;
+	};
+	'kol-input-email': {
+		modifiers: null;
+	};
+	'kol-input-file': {
+		modifiers: null;
+	};
+	'kol-input-number': {
+		elements: {
+			'step-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-input-password': {
+		elements: {
+			'password-toggle-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-input-radio': {
 		elements: {
 			input: {
@@ -596,6 +643,14 @@ export type KoliBriComponentsBemSchema = {
 			};
 			'inputs-wrapper': {
 				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-input-text': {
+		elements: {
+			'clear-button': {
+				modifiers: Set<'hidden'>;
 			};
 		};
 		modifiers: null;
@@ -723,6 +778,40 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: Set<'foot' | 'head'>;
 			};
 			table: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-table-settings': {
+		elements: {
+			actions: {
+				modifiers: null;
+			};
+			column: {
+				modifiers: null;
+			};
+			'column-label': {
+				modifiers: null;
+			};
+			columns: {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			'error-message': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-table-stateful': {
+		elements: {
+			pagination: {
+				modifiers: Set<'both' | 'bottom' | 'top'>;
+			};
+			'pagination-wrapper': {
 				modifiers: null;
 			};
 		};
@@ -1046,6 +1135,9 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
+	'kol-close-button': {
+		modifiers: null,
+	},
 	'kol-span': {
 		elements: {
 			container: { modifiers: null },
@@ -1060,6 +1152,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			'interactive-element': { modifiers: null },
 			icon: { modifiers: null },
 			text: { modifiers: null },
+			tooltip: { modifiers: null },
 		},
 		modifiers: new Set(['disabled', 'external-link', 'hide-label', 'inline', 'standalone']),
 	},
@@ -1159,6 +1252,39 @@ const BEM: KoliBriComponentsBemSchema = {
 			'warning',
 		]),
 	},
+	'kol-input-checkbox': {
+		elements: {
+			'field-control': { modifiers: new Set(['checked', 'indeterminate', 'variant-button', 'variant-default', 'variant-switch']) },
+		},
+		modifiers: new Set(['checked', 'indeterminate', 'label-align-left', 'label-align-right', 'variant-button', 'variant-default', 'variant-switch']),
+	},
+	'kol-input-color': {
+		elements: {
+			input: { modifiers: new Set(['color']) },
+		},
+		modifiers: null,
+	},
+	'kol-input-date': {
+		modifiers: null,
+	},
+	'kol-input-email': {
+		modifiers: null,
+	},
+	'kol-input-file': {
+		modifiers: null,
+	},
+	'kol-input-number': {
+		elements: {
+			'step-button': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-input-password': {
+		elements: {
+			'password-toggle-button': { modifiers: null },
+		},
+		modifiers: null,
+	},
 	'kol-input-radio': {
 		elements: {
 			input: { modifiers: null },
@@ -1214,6 +1340,12 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			input: { modifiers: new Set(['number', 'range']) },
 			'inputs-wrapper': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-input-text': {
+		elements: {
+			'clear-button': { modifiers: new Set(['hidden']) },
 		},
 		modifiers: null,
 	},
@@ -1278,6 +1410,24 @@ const BEM: KoliBriComponentsBemSchema = {
 			spacer: { modifiers: new Set(['foot', 'head']) },
 			'spacer-line': { modifiers: new Set(['foot', 'head']) },
 			table: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-table-settings': {
+		elements: {
+			actions: { modifiers: null },
+			column: { modifiers: null },
+			'column-label': { modifiers: null },
+			columns: { modifiers: null },
+			content: { modifiers: null },
+			'error-message': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-table-stateful': {
+		elements: {
+			pagination: { modifiers: new Set(['both', 'bottom', 'top']) },
+			'pagination-wrapper': { modifiers: null },
 		},
 		modifiers: null,
 	},

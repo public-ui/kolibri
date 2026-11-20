@@ -1,4 +1,4 @@
-import { isValidLabelSegments, isValidLabelString, type LabelWithExpertSlotPropType } from '../../../schema/props/label';
+import { isValidLabelSegments, isValidLabelString, type LabelDecorativePropType, type LabelWithExpertSlotPropType } from '../../../schema/props/label';
 
 /**
  * Shared validators for prop definitions.
@@ -36,3 +36,6 @@ export { isValidLabelSegments };
  * the expert slot — and, like `isValidLabelSegments`, language segments.
  */
 export const isValidLabelWithExpertSlot = (value: LabelWithExpertSlotPropType): boolean => value === '' || isValidLabelSegments(value);
+
+/** The label of an icon additionally accepts the empty string, which marks the icon as decorative. */
+export const isValidLabelDecorative = (value: LabelDecorativePropType): boolean => value === '' || isValidLabel(value);
