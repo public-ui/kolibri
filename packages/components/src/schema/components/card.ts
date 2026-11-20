@@ -1,7 +1,6 @@
-import type { Generic } from 'adopted-style-sheets';
-
 import type { HeadingLevel, PropHasCloser, PropHref, PropLabelLangSegments, PropLinkTarget } from '../props';
 import type { EventCallback } from '../types';
+import type { Members } from '../types/members';
 
 export type KoliBriCardEventCallbacks = {
 	onClose?: EventCallback<Event>;
@@ -17,4 +16,4 @@ type OptionalProps = {
 	PropHref &
 	PropLinkTarget;
 
-export type CardProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type CardProps = Members<RequiredProps, OptionalProps>;

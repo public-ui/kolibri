@@ -24,7 +24,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	NamePropType,
 	ShortKeyPropType,
-	SplitButtonProps,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
@@ -33,7 +32,7 @@ import type {
 
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BaseButtonWebComponent } from '../button/base';
 
@@ -50,10 +49,10 @@ import { BaseButtonWebComponent } from '../button/base';
 	},
 	shadow: true,
 })
-export class KolSplitButton extends BaseButtonWebComponent implements ClickableElement, FocusableElement, SplitButtonProps, SplitButtonWebComponentInterface {
+export class KolSplitButton extends BaseButtonWebComponent implements ClickableElement, FocusableElement, SplitButtonWebComponentInterface {
 	@Element() protected readonly host?: HTMLKolSplitButtonElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	/** Whether the dropdown popover is open. Derived from the popover's native `toggle` event. */
 	@State() public dropdownOpen = false;

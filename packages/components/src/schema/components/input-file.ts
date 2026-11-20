@@ -21,6 +21,7 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
+import type { Members } from '../types/members';
 import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelWithExpertSlot;
@@ -62,7 +63,7 @@ type OptionalStates = {
 	PropTouched &
 	PropVariantClassName;
 
-export type InputFileProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputFileStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type InputFileProps = Members<RequiredProps, OptionalProps>;
+export type InputFileStates = Members<RequiredStates, OptionalStates>;
 export type InputFileWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type InputFileAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

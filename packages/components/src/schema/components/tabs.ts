@@ -4,6 +4,7 @@ import type { Callback } from '../enums';
 import type { PropAlign, PropDisabled, PropHideLabel, PropLabel, PropLabelLangSegments, PropTabBehavior, PropTooltipAlign } from '../props';
 import type { PropHasCreateButton } from '../props/has-create-button';
 import type { EventCallback, EventValueOrEventCallback, KoliBriIconsProp, Stringified } from '../types';
+import type { Members } from '../types/members';
 
 export type KoliBriTabsCallbacks = {
 	onCreate?: EventCallback<Event>;
@@ -21,7 +22,7 @@ type OptionalTabButtonProps = {
 } & PropDisabled &
 	PropHideLabel &
 	PropTooltipAlign;
-export type TabButtonProps = Generic.Element.Members<RequiredTabButtonProps, OptionalTabButtonProps>;
+export type TabButtonProps = Members<RequiredTabButtonProps, OptionalTabButtonProps>;
 
 type RequiredProps = {
 	tabs: Stringified<TabButtonProps[]>;
@@ -43,6 +44,6 @@ type OptionalStates = {
 } & PropTabBehavior &
 	PropHasCreateButton;
 
-export type TabsProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type TabsStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type TabsProps = Members<RequiredProps, OptionalProps>;
+export type TabsStates = Members<RequiredStates, OptionalStates>;
 export type TabsAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

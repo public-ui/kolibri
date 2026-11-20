@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type { Callback } from '../enums';
 import type { PropErrorList } from '../props';
 import type { EventCallback } from '../types';
+import type { Members } from '../types/members';
 
 export type KoliBriFormCallbacks = {
 	[Callback.onSubmit]?: EventCallback<Event>;
@@ -18,6 +19,6 @@ type OptionalProps = {
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
 
-export type FormProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type FormStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type FormProps = Members<RequiredProps, OptionalProps>;
+export type FormStates = Members<RequiredStates, OptionalStates>;
 export type FormAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

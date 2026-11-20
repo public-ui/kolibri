@@ -68,12 +68,13 @@ Hintergrund: `packages/components/docs/ARC42-SKELETON.md#schema-helper-layer`.
 
 1. **API** — `internal/functional-components/<komponente>/api.tsx`
    `propsConfig` mit `required`/`optional` (`PropsConfigShape`), API-Typ über `ApiFromConfig`. Nur benötigte Abschnitte deklarieren (`Callbacks`, `Emitters`, `Listeners`, `Methods`, `Refs`, `States`) — ARC42 Design Decision 11.
+   Die Props-Config und der `*Api`-Typ definieren die API der Komponente vollständig — Callbacks, Refs und States eingeschlossen; jede Änderung an einem Member dort ist eine API-Änderung mit Begründung im PR, kein Migrations-Nebeneffekt.
 2. **Functional Component** — `internal/functional-components/<komponente>/component.tsx`
    Zustandsloser Renderer mit `FunctionalComponentProps<Api>`, einziger Wurzelknoten in `BemRootNodeFC` (typisierte `block`/`modifiers`, gemergte `class`). Keine Seiteneffekte, keine Zustandsmutation.
 3. **Behavior** — `internal/functional-components/<komponente>/behavior.ts`, **nur wenn nötig**
    Erst anlegen, wenn die Logik tatsächlich über mehrere Komponenten geteilt wird (Vorbild: `internal/functional-components/tooltip/behavior.ts`). Die meisten Komponenten brauchen **keins**. Controller-/Aspect-Logik wandert zuerst in den WC; ein Behavior wird nur für wiederverwendbare Anteile extrahiert.
 4. **Web Component** — `components/<komponente>/component.tsx`, der Orchestrator
-   `@Component({ tag: 'kol-<komponente>', shadow: true })`, erbt `BaseWebComponent<Api>`, implementiert `WebComponentInterface<Api>` **und** das Schema-`*Props`-Interface (z. B. `implements LinkProps`), damit API-Drift den Build bricht. Aufbau, Prop-Triangle, Behavior-Lebenszyklus und Zustandszugriff: `reference/patterns.md`.
+   `@Component({ tag: 'kol-<komponente>', shadow: true })`, erbt `BaseWebComponent<Api>` und implementiert nur `WebComponentInterface<Api>` — kein zusätzliches `implements <Name>Props` aus `src/schema`: die Schema-Alias-Typen laufen über die Prop-Definitionen, und der Public-API-Pin hält die Member fest. Aufbau, Prop-Triangle, Behavior-Lebenszyklus und Zustandszugriff: `reference/patterns.md`.
 5. **Öffentliche API-Parität sichern**
    Der migrierte WC muss **exakt** dieselbe `@Prop`/`@Method`-Oberfläche bieten wie der Vorgänger — gleiche Member, gleiche Schema-Alias-Typen, gleiche Defaults, gleiche JSDoc (`custom-elements.json`, `docs-vscode` und die Adapter-IntelliSense werden daraus erzeugt). Oberfläche in `packages/components/src/components/public-api/<komponente>.spec.ts` festnageln (Helfer in `contract.ts`) und gegen den Vorgänger diffen. Existiert der Pin schon gegen `shadow.tsx`, zeigt die Migration ihn auf `component.tsx` und ergänzt `schemaInterface`; der Inhalt bleibt unverändert. Details: `ARC42.md#public-api-contract-migration-parity`.
 6. **CSS/SCSS** — `packages/components/src/components/<komponente>/style.scss`

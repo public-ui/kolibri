@@ -10,6 +10,7 @@ import type {
 } from '../props';
 import type { PropHasSettingsMenu } from '../props/has-settings-menu';
 import type { KoliBriTableDataType, KoliBriTableSelection, Stringified } from '../types';
+import type { Members } from '../types/members';
 import type { KoliBriTableHeaders } from './table';
 
 type RequiredProps = PropLabelLangSegments & PropTableData;
@@ -38,6 +39,6 @@ type OptionalStates = {
 	PropVariantClassName &
 	PropTableCallbacks;
 
-export type TableStatelessProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type TableStatelessStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type TableStatelessProps = Members<RequiredProps, OptionalProps>;
+export type TableStatelessStates = Members<RequiredStates, OptionalStates>;
 export type TableStatelessAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

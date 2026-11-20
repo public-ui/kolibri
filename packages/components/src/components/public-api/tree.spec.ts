@@ -22,4 +22,4 @@ const KOL_TREE_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-tree', component: 'tree', pinnedApi: KOL_TREE_PUBLIC_API, schemaInterface: 'TreeProps' });
+describePublicApiContract({ tag: 'kol-tree', component: 'tree', pinnedApi: KOL_TREE_PUBLIC_API });

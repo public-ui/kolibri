@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type { Callback } from '../enums';
 import type { PropCustomClass, PropLabel, PropMax, PropTooltipAlign } from '../props';
 import type { EventValueOrEventCallback, Option, Stringified } from '../types';
+import type { Members } from '../types/members';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Callback.onClick]?: EventValueOrEventCallback<Event, number>;
@@ -62,6 +63,6 @@ type RequiredStates = {
 
 type OptionalStates = PropCustomClass & PropTooltipAlign;
 
-export type PaginationProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type PaginationStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type PaginationProps = Members<RequiredProps, OptionalProps>;
+export type PaginationStates = Members<RequiredStates, OptionalStates>;
 export type PaginationAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

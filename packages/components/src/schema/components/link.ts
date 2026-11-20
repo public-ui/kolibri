@@ -1,4 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
 import type {
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
@@ -17,6 +16,7 @@ import type {
 	PropShortKey,
 	PropTooltipAlign,
 } from '../props';
+import type { Members } from '../types/members';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -42,4 +42,4 @@ export type OptionalProps = {
 	PropShortKey &
 	PropTooltipAlign;
 
-export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type LinkProps = Members<RequiredProps, OptionalProps>;

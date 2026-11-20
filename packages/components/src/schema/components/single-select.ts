@@ -22,6 +22,7 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
+import type { Members } from '../types/members';
 
 type RequiredProps = PropLabelWithExpertSlot & PropOptions;
 type OptionalProps = {
@@ -67,7 +68,7 @@ type OptionalStates = {
 	PropTouched &
 	PropVariantClassName;
 
-export type SingleSelectProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type SingleSelectStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type SingleSelectProps = Members<RequiredProps, OptionalProps>;
+export type SingleSelectStates = Members<RequiredStates, OptionalStates>;
 export type SingleSelectWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type SingleSelectAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

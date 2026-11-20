@@ -2,6 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { PropLabel } from '../props';
 import type { Stringified } from '../types';
+import type { Members } from '../types/members';
 import type { LinkProps } from './link';
 
 /**
@@ -20,6 +21,6 @@ type RequiredStates = {
 } & PropLabel;
 type OptionalStates = OptionalProps;
 
-export type BreadcrumbProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type BreadcrumbStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type BreadcrumbProps = Members<RequiredProps, OptionalProps>;
+export type BreadcrumbStates = Members<RequiredStates, OptionalStates>;
 export type BreadcrumbAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

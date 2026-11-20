@@ -38,4 +38,4 @@ const KOL_TOOLBAR_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-toolbar', component: 'toolbar', pinnedApi: KOL_TOOLBAR_PUBLIC_API, schemaInterface: 'ToolbarProps' });
+describePublicApiContract({ tag: 'kol-toolbar', component: 'toolbar', pinnedApi: KOL_TOOLBAR_PUBLIC_API });

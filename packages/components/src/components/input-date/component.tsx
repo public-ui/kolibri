@@ -12,7 +12,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputDateProps,
 	InputDateTypePropType,
 	InputTypeOnDefault,
 	InternalButtonProps,
@@ -84,10 +83,7 @@ const dateBem = bem.forBlock('kol-input-date');
 	},
 	shadow: true,
 })
-export class KolInputDate
-	extends BaseFormFieldWebComponent<InputDateApi>
-	implements ClickableElement, FocusableElement, InputDateProps, WebComponentInterface<InputDateApi>
-{
+export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputDateApi> {
 	@Element() protected readonly host?: HTMLKolInputDateElement;
 
 	@State() public id = createUniqueId('input-date');

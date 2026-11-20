@@ -19,6 +19,7 @@ import type {
 } from '../props';
 import type { PropOrientation } from '../props/orientation';
 import type { InputTypeOnDefault, RadioOption, StencilUnknown, Stringified } from '../types';
+import type { Members } from '../types/members';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -57,7 +58,7 @@ type OptionalStates = {
 	PropTouched &
 	PropVariantClassName;
 
-export type InputRadioProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type InputRadioStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type InputRadioProps = Members<RequiredProps, OptionalProps>;
+export type InputRadioStates = Members<RequiredStates, OptionalStates>;
 export type InputRadioWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type InputRadioAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -26,6 +26,7 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
+import type { Members } from '../types/members';
 
 export const cssResizeOptions = ['vertical', 'none'] as const;
 export type CSSResize = (typeof cssResizeOptions)[number];
@@ -89,7 +90,7 @@ type OptionalStates = {
 	PropTouched &
 	PropVariantClassName;
 
-export type TextareaProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type TextareaStates = Generic.Element.Members<RequiredStates, OptionalStates>;
+export type TextareaProps = Members<RequiredProps, OptionalProps>;
+export type TextareaStates = Members<RequiredStates, OptionalStates>;
 export type TextareaWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
 export type TextareaAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
