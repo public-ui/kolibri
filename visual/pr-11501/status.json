@@ -2,14 +2,14 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "1 of 10 visual changes rejected",
-	"computedAt": "2026-11-20T15:42:00.695Z",
+	"computedAt": "2026-11-20T15:54:36.099Z",
 	"pr": 11501,
-	"head": "09a070817adb4c83fab777d43fd706024e15c5e3",
-	"digest": "sha256:ad6cbe7d40b4e346971f6cd4348a1d976b96c059c0bcb62d6a0a2226b3c365c8",
+	"head": "975bb91cf917c86a1c8c736ac2a38fbc0d319e99",
+	"digest": "sha256:a913648beeb75a03fa2ce809e9ec127ecdfb5e6d95d75811fada8a7ffefabf86",
 	"counts": {
 		"changes": 10,
-		"open": 0,
-		"approved": 9,
+		"open": 8,
+		"approved": 1,
 		"rejected": 1,
 		"routeErrors": 0,
 		"errorItems": 0
@@ -30,9 +30,8 @@
 			"by": "laske185"
 		},
 		"theme-ecl/dialog-basic-show-dialog-true": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/drawer-basic-align-left-closer-true": {
 			"state": "approved",
@@ -45,39 +44,32 @@
 			"by": "laske185"
 		},
 		"theme-ecl/modal-basic-show-dialog-true": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/popover-button-basic": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/scenarios-focus-elements-component-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/scenarios-focus-elements-component-linkButton": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/scenarios-focus-elements-component-popoverButton": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/scenarios-focus-elements-component-splitButton": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/scenarios-focus-elements-component-toolbar": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		}
 	}
 }
