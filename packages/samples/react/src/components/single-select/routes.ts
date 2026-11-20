@@ -2,6 +2,7 @@ import type { Routes } from '../../shares/types';
 import { SingleSelectBasic } from './basic';
 import { SingleSelectOnInputOnChange } from './get-value';
 import { SingleSelectLazyLoaded } from './lazy-loaded';
+import { SingleSelectOpenListbox } from './open-listbox';
 import { SingleSelectOptionValues } from './option-values';
 
 export const SINGLE_SELECT_ROUTES: Routes = {
@@ -9,6 +10,7 @@ export const SINGLE_SELECT_ROUTES: Routes = {
 		basic: SingleSelectBasic,
 		'get-value': SingleSelectOnInputOnChange,
 		'lazy-loaded': SingleSelectLazyLoaded,
+		'open-listbox': SingleSelectOpenListbox,
 		'option-values': SingleSelectOptionValues,
 	},
 };
