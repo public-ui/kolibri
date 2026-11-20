@@ -1,0 +1,1 @@
+import{A as e,l as t}from"./props-from-config-LBgEHmcL-CoTvly84.js";var n=t(`src`,``,e);export{n as t};

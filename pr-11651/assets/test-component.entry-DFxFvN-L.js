@@ -1,0 +1,1 @@
+import{c as e}from"./index-8-BSSKQL-DawvX1Fy.js";var t=class{constructor(n){new.target===t&&e(this,n)}};export{t as test_component};
