@@ -243,12 +243,13 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_headers')
 	public watchHeaders(value?: Stringified<KoliBriTableHeaders>): void {
 		tableStatefulHeadersProp.apply(value, (headers) => {
-			// Adjusted header cells fit only the same columns. A new object with the same keys (common with
-			// inline headers in React) keeps them.
-			if (headerKeysChanged(this.headers, headers)) {
+			// Adjusted header cells and the current sort fit only the same columns. A new object with the same
+			// keys (common with inline headers in React) keeps both; resetSort() re-reads the declared sort.
+			// The first headers always apply: keyless header cells would be read as unchanged by their keys.
+			const firstHeaders = !this.headers.horizontal?.length && !this.headers.vertical?.length;
+			if (firstHeaders || headerKeysChanged(this.headers, headers)) {
 				this.adjustedHeaderCells = undefined;
-			}
-			if (this.initializeSort(headers)) {
+				this.initializeSort(headers);
 				setTimeout(() => this.updateSortedData());
 			}
 			if (hasHeadersInBothDirections(headers)) {
@@ -437,13 +438,12 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.moveCheckboxFocus(event);
 	}
 
-	private initializeSort(headers: KoliBriTableHeaders): boolean {
-		const { sortData, hasSortedCells, missingKey } = initializeSortFromHeaders(headers, this.allowMultiSort);
+	private initializeSort(headers: KoliBriTableHeaders): void {
+		const { sortData, missingKey } = initializeSortFromHeaders(headers, this.allowMultiSort);
 		if (missingKey) {
 			devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
 		}
 		this.sortData = sortData;
-		return hasSortedCells;
 	}
 
 	private readonly updateSortedData = (): void => {
