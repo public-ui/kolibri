@@ -74,6 +74,8 @@
 			min-height: to-rem(36);
 			align-items: stretch;
 
+			white-space: nowrap;
+
 			/* Box (min-size, padding, the divider border), the bold weight and centring belong to
 			   the interactive element: on the wrapper the a11y min-size layer still pins the inner
 			   button to 40px and grows the input-container row by 4px, Firefox pins
@@ -104,11 +106,9 @@
 
 		&__container {
 			display: flex;
-			overflow: hidden;
 			flex-direction: row-reverse;
 			align-items: center;
 
-			white-space: nowrap;
 			transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
 		}
 
