@@ -1,180 +1,222 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "40 changed – 0 of 40 approved, review pending",
-	"computedAt": "2026-11-20T14:37:23.975Z",
+	"state": "success",
+	"description": "40 visual changes approved by deleonio",
+	"computedAt": "2026-11-20T15:45:04.415Z",
 	"pr": 11530,
 	"head": "b05ae842317a3a8518d5796d296586f223c60011",
 	"digest": "sha256:5e6dc82fa006d763aba9328ad2fbccc30236d4cc05d48275cac837b741a62363",
 	"counts": {
 		"changes": 40,
-		"open": 40,
-		"approved": 0,
+		"open": 0,
+		"approved": 40,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"deleonio"
+	],
 	"items": {
 		"test-tag-name-transformer/alert-basic--default": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/alert-basic--error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/alert-basic--info": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/alert-basic--success": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/alert-basic--warning": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/scenarios-label-lang--label-lang-alert": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/alert-basic--default": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/alert-basic--error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/alert-basic--info": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/alert-basic--success": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/alert-basic--warning": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--left-access-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--left-checked": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--left-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--left-indeterminate": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--left-info-popover": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--left-long-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--left-short-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--left-unchecked": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-access-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-checked": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-checked-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-indet-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-indeterminate": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-info-popover": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-long-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-short-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-checkbox-basic-noColumns--right-unchecked": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/scenarios-focus-elements-component-inputCheckbox": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/scenarios-label-lang--label-lang-alert": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/scenarios-label-lang--label-lang-checkbox": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/alert-basic--default": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/alert-basic--error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/alert-basic--info": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/alert-basic--success": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/alert-basic--warning": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/scenarios-label-lang--label-lang-alert": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/table-sticky-cols--sticky-cols": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
