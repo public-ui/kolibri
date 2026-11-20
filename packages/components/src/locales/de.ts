@@ -1,6 +1,6 @@
 export default {
 	'action-done': 'Aktion abgeschlossen',
-	'action-running': 'Aktion wird ausgeführt...',
+	'action-running': 'Aktion wird ausgeführt',
 	'avatar-alt': 'Avatar von {{name}}',
 	'character-counter-current': '{{current}} Zeichen',
 	'character-counter-current-of-max': '{{current}}/{{max}} Zeichen',
@@ -18,7 +18,7 @@ export default {
 	error: 'Fehler',
 	'error-list': 'Fehlerliste',
 	'error-list-message': 'Bitte korrigieren Sie folgende Fehler:',
-	'filename-text': 'Datei auswählen oder hier ablegen...',
+	'filename-text': 'Datei auswählen oder hier ablegen',
 	'form-description': 'Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben.',
 	'hide-password': 'Passwort verbergen',
 	info: 'Hinweis',
