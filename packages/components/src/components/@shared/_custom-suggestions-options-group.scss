@@ -17,6 +17,12 @@
 		overflow-x: hidden;
 		overflow-y: auto;
 		list-style-type: none;
+
+		:dir(rtl) &,
+		[dir='rtl'] & {
+			right: 0;
+			left: auto;
+		}
 	}
 
 	//sobald die listbox offen ist, muss der z-index des containers höher sein als die container ungeöffneter selects
