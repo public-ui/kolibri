@@ -1,0 +1,1 @@
+import"./index-TJYJ5Dj4-BKEYCwSx.js";import{O as e,c as t}from"./bem-registry-CtjlaSKN-I2FveutQ.js";var n=t(`id`,``,e);export{n as t};
