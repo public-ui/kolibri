@@ -1,6 +1,6 @@
 import type { ErrorListPropType, KolFocusOptions } from '../../../schema';
 import { setEventTarget } from '../../../schema';
-import { nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { hrefProp, labelWithExpertSlotProp, linkCallbacksProp } from '../../props';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { LinkApi } from '../link/api';
@@ -51,7 +51,7 @@ export const createFormErrorLinkItem = (error: ErrorListPropType, handleSelector
 	);
 
 	renderProps.ariaCurrent = '';
-	renderProps.ariaDescriptionId = nonce();
+	renderProps.ariaDescriptionId = createUniqueId('aria-description');
 	renderProps.expertSlot = error.message === '';
 
 	renderProps.handleAnchorClick = (event: Event): void => {
