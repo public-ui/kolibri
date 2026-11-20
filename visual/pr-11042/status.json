@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "279 changed, 182 added – 0 of 461 approved, review pending",
-	"computedAt": "2026-11-19T10:55:35.229Z",
+	"description": "286 changed, 182 added – 0 of 468 approved, review pending",
+	"computedAt": "2026-11-20T14:36:47.789Z",
 	"pr": 11042,
-	"head": "d9f1854c5eba6c297686ab194b02a34ba45513be",
-	"digest": "sha256:87528c622a3eda85066a8abb01bbb3abfa88f9c3d37bcb8f9cc0116c51a9861b",
+	"head": "575c4c182944fed285bfaa7f9ec0e1478988d29e",
+	"digest": "sha256:6a07a10db58430734cd6ff536f0211b2434a49bb7782c37e402af951b111c64c",
 	"counts": {
-		"changes": 461,
-		"open": 461,
+		"changes": 468,
+		"open": 468,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -249,6 +249,10 @@
 			"notes": []
 		},
 		"test-tag-name-transformer/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-toolbar": {
 			"state": "open",
 			"notes": []
 		},
@@ -560,6 +564,10 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-bwst/scenarios-focus-elements-component-toolbar": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-bwst/scenarios-focus-elements-component-toolbar-disabled": {
 			"state": "open",
 			"notes": []
@@ -833,6 +841,10 @@
 			"notes": []
 		},
 		"theme-default/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-toolbar": {
 			"state": "open",
 			"notes": []
 		},
@@ -1112,6 +1124,10 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-desy/scenarios-focus-elements-component-toolbar": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-desy/scenarios-focus-elements-component-toolbar-disabled": {
 			"state": "open",
 			"notes": []
@@ -1365,6 +1381,10 @@
 			"notes": []
 		},
 		"theme-ecl/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-toolbar": {
 			"state": "open",
 			"notes": []
 		},
@@ -1696,6 +1716,10 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-kern/scenarios-focus-elements-component-toolbar": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-kern/scenarios-focus-elements-component-toolbar-disabled": {
 			"state": "open",
 			"notes": []
@@ -1845,6 +1869,10 @@
 			"notes": []
 		},
 		"unstyled/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-toolbar": {
 			"state": "open",
 			"notes": []
 		},
