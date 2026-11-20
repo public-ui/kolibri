@@ -225,3 +225,23 @@ test.describe('kol-pagination behavior', () => {
 		expect(await page.locator('kol-pagination select').inputValue()).toBe('-0');
 	});
 });
+
+test.describe('kol-pagination focus', () => {
+	test('keeps the focus on the activated page button when the page changes', async ({ page }) => {
+		await page.setContent('<kol-pagination _label="Pagination" _max="100" _page="5"></kol-pagination>');
+		const pagination = page.locator('kol-pagination');
+		await pagination.evaluate((element: HTMLKolPaginationElement) => {
+			element.addEventListener('changepage', (event) => {
+				element._page = (event as CustomEvent<number>).detail;
+			});
+		});
+		await page.waitForChanges();
+
+		const button = pagination.getByRole('button', { name: '6', exact: true });
+		await button.focus();
+		await page.keyboard.press('Enter');
+		await expect(pagination.locator('.kol-pagination__button--selected .kol-span__label')).toHaveText('6');
+
+		await expect(pagination.getByRole('button', { name: '6', exact: true })).toBeFocused();
+	});
+});

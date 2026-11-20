@@ -525,7 +525,7 @@ exports[`tabs pins the members of the *Api type (callbacks, methods, refs, emitt
       "type": "() => void",
     },
     "keyDown": {
-      "doc": "Keydown handler of the tab list: arrow keys move between tabs, Enter and Space activate.",
+      "doc": "Keydown handler of the tab list: arrow keys move between tabs. Enter and Space activate through the native button click.",
       "type": "(event: KeyboardEvent) => void",
     },
   },

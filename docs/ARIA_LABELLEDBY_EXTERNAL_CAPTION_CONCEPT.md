@@ -20,12 +20,11 @@ resolveTargets(host, value)
         │
         ▼
 table.ariaLabelledByElements = [<h2>]       ← ARIAMixin direkt auf <table>
-internals.ariaLabelledByElements = [<h2>]   ← zusätzlich auf dem Wrapper selbst
 ```
 
 Die aufgelösten Elemente werden als `externalLabelElements`-Prop an die interne WC-Implementierung weitergereicht, die sie per Ref-Callback auf das native `<table>`-Element setzt.
 
-Ist das externe Element beim ersten Render noch nicht im DOM (z. B. späte Headline), wird einmalig mit 50 ms Verzögerung nachgeladen.
+Ist das externe Element beim ersten Render noch nicht im DOM (z. B. späte Headline), lösen die Komponenten erneut auf: die Tabellen beim Mount und den ersten Rendern, die Form-Felder bei jedem Render (`componentDidRender`) — unveränderte Referenzen werden nicht erneut geschrieben.
 
 ## Mehrere IDs
 
@@ -47,16 +46,7 @@ Die `<caption>` wird immer gerendert — sie ist das Fokus-Element der Tabelle (
 | Element gefunden           | `aria-hidden="true"` | —                               | `[externes Element]`     |
 | Element **nicht** gefunden | sichtbar             | `"caption"`                     | —                        |
 
-## `attachInternals` — noch relevant?
-
-`attachInternals()` wird weiterhin auf den Shadow-Wrapper-Komponenten (`kol-table-stateless`, `kol-table-stateful`) aufgerufen. Es ist dort nicht Teil des Labeling-Mechanismus auf `<table>`, sondern dient:
-
-- **Zugänglicher Name des Wrappers selbst**: `internals.ariaLabelledByElements` gibt dem Custom-Element-Host (`<kol-table-stateless>`) einen eigenen zugänglichen Namen — nützlich für AT, die den Host inspizieren, und für Accessibility-Tree-Debugging.
-- **Vorbereitung für weitere ARIA-Properties**: `ElementInternals` ist der richtige Ort, um role, ariaRequired, ariaInvalid etc. auf einem Shadow-Host zu setzen, sobald KoliBri weitere solcher Props bekommt (→ nächster Abschnitt).
-
-Beide Tabellen rendern das `<table>` direkt in ihrem eigenen Shadow-Root; `attachInternals` gehört deshalb nur an ihren Host, die ARIAMixin-Zuweisung liegt direkt auf `<table>`.
-
-### Wichtige Warnung zu Host-Rollen
+## Wichtige Warnung zu Host-Rollen
 
 Das Setzen einer Rolle auf dem Custom-Element-Host (z. B. `internals.role = 'table'`) kann Screenreader blockieren.
 In einigen Screenreader-/Browser-Kombinationen wird der innere Inhalt der Web Component dann nicht mehr korrekt aufgelöst und vorgelesen.
@@ -74,6 +64,7 @@ Dasselbe Muster funktioniert für alle ARIA-Relationship-Properties, die in `ARI
 | ----------------------- | ----------------------------- | -------------------------------------------------------- |
 | `aria-labelledby`       | `ariaLabelledByElements`      | Externe Überschrift als Tabellen-Label                   |
 | `aria-describedby`      | `ariaDescribedByElements`     | Hilfetexte oder Fehlermeldungen außerhalb des Shadow DOM |
+| `aria-details`          | `ariaDetailsElements`         | Detailbereich außerhalb des Shadow DOM (Form-Felder)     |
 | `aria-controls`         | `ariaControlsElements`        | Tabpanel, Disclosure oder Popup in anderem Tree          |
 | `aria-owns`             | `ariaOwnsElements`            | Logische Elternschaft über Shadow-Grenzen                |
 | `aria-errormessage`     | `ariaErrorMessageElements`    | Fehlermeldung außerhalb des Formularfeldes               |
@@ -83,10 +74,13 @@ Für jede dieser Properties gilt das gleiche Rezept:
 
 1. Prop akzeptiert einen ID-String (space-separated wo sinnvoll).
 2. `resolveTargets(host, value)` löst IDs im Tree-Scope des Wrappers auf.
-3. `element.ariaXxxElements = resolvedElements` direkt auf dem Ziel-HTML-Element setzen (ARIAMixin, keine IDREFs nötig).
-4. Auf dem Shadow-Host zusätzlich `internals.ariaXxxElements` setzen (via `attachInternals`).
+3. `element.ariaXxxElements = resolvedElements` direkt auf dem nativen inneren Element setzen (ARIAMixin, keine IDREFs nötig).
 
 Die einzige Besonderheit: `ariaActiveDescendantElement` ist singular (ein Element, kein Array), alle anderen sind Arrays.
+
+## Kein `ElementInternals`
+
+`ElementInternals`-Zuweisungen (`attachInternals()`) sind bewusst entfernt: Keine KoliBri-Komponente ist form-associated (`formAssociated`), daher wirft `attachInternals()` eine `NotSupportedError` und die Schicht war nie wirksam — sie ist immer `undefined` geblieben. Der einzige Mechanismus für External-ARIA-Referenzen ist die ARIAMixin-Zuweisung auf dem nativen inneren Element.
 
 ## Nutzung
 
@@ -105,7 +99,7 @@ Die einzige Besonderheit: `ariaActiveDescendantElement` ist singular (ein Elemen
 | Screen Reader | Browser                   | Funktioniert |
 | ------------- | ------------------------- | ------------ |
 | NVDA, JAWS    | Chrome, Firefox (Desktop) | ✅           |
-| VoiceOver     | Safari, Chrome (macOS)    | ✅           |
+| VoiceOver     | Safari, Chrome (macOS)    | ❌           |
 | TalkBack      | Chrome (Android)          | ❌           |
 
-TalkBack folgt `ariaLabelledByElements` nicht — Chrome übergibt Element-Referenzen nicht ans Android Accessibility Framework. Für TalkBack-Unterstützung: `_label` verwenden.
+TalkBack folgt `ariaLabelledByElements` nicht — Chrome übergibt Element-Referenzen nicht ans Android Accessibility Framework. VoiceOver auf macOS meldet die Referenzen ebenfalls nicht (plattformseitige Lücke, Details und Nachweise in KNOWN_ISSUES.md). Für Screenreader, die die Referenzen nicht folgen: `_label` verwenden.

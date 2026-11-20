@@ -32,6 +32,7 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
@@ -67,7 +68,8 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';
 
-const STEP_BUTTON_CLASS = 'kol-input-number__step-button';
+const numberBem = bem.forBlock('kol-input-number');
+const STEP_BUTTON_CLASS = numberBem('step-button');
 
 /** Focus moving between the input and a step button is no focus change of the field. */
 const isStepButton = (target: EventTarget | null): boolean => (target as HTMLElement | null)?.classList?.contains(STEP_BUTTON_CLASS) === true;
@@ -614,7 +616,7 @@ export class KolInputNumber
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-number', 'number', {
+						class: clsx(numberBem(), 'number', {
 							'has-value': this.hasValue,
 						}),
 						accessKey: this.getRenderProp('accessKey') || undefined,
