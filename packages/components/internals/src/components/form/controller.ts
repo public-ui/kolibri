@@ -1,5 +1,5 @@
-import { transformTag } from '@stencil/core';
 import { KolFormTag } from '../../core/component-names';
+import { transformTag } from '../../core/tag-transformer';
 import { devHint, getExperimentalMode, KoliBriDevHelper, Log, setEventTarget } from '../../schema';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {

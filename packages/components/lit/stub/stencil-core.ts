@@ -25,3 +25,5 @@ export const Method = noopDecorator();
 export const Event = noopDecorator();
 export const Listen = noopDecorator();
 export const Host = Fragment;
+
+export { transformTag } from '../../internals/src/core/tag-transformer';
