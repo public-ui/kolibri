@@ -1,1 +1,0 @@
-import"./index-TJYJ5Dj4-BKEYCwSx.js";import{O as e,c as t}from"./bem-registry-CtjlaSKN-BTZwYpZ-.js";var n=t(`value`,void 0,e);export{n as t};

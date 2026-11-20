@@ -1,1 +1,0 @@
-import"./index-TJYJ5Dj4-BKEYCwSx.js";import{c as e,y as t}from"./bem-registry-CtjlaSKN-BTZwYpZ-.js";var n=e(`spellCheck`,void 0,t);export{n as t};
