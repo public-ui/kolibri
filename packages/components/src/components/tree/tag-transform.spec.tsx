@@ -1,8 +1,8 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
+import { KolTreeItemTag, KolTreeTag } from '../../../internals/src/core/component-names';
 import { bootstrap } from '../../core/bootstrap';
-import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
 import { KolTreeItem } from '../tree-item/component';
 import { KolTree } from './component';
 

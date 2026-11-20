@@ -1,6 +1,6 @@
 import { setTagTransformer } from '@stencil/core';
+import * as KolTags from '../../internals/src/core/component-names';
 import { Log } from '../../internals/src/schema/index';
-import * as KolTags from './component-names';
 import { getSharedState } from './shared-state';
 
 type TagNameTransformer = (tagName: string) => string;

@@ -1,3 +1,4 @@
+import { transformTag } from '@stencil/core';
 import { KolToastContainerTag } from '../../../internals/src/core/component-names';
 import type { Toast, ToasterOptions } from '../../../internals/src/schema/index';
 import { Log } from '../../../internals/src/schema/index';
@@ -15,7 +16,7 @@ export class ToasterService {
 		private readonly document: Document,
 		private readonly options?: ToasterOptions,
 	) {
-		this.toastContainerElement = this.document.createElement(KolToastContainerTag);
+		this.toastContainerElement = this.document.createElement(transformTag(KolToastContainerTag)) as HTMLKolToastContainerElement;
 		this.document.body.prepend(this.toastContainerElement);
 		if (this.options?.defaultVariant) {
 			Log.info(`ToasterService: Default variant is deprecated. Use 'card' variant for all toasts instead.`);

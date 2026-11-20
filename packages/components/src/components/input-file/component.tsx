@@ -529,8 +529,9 @@ export class KolInputFile
 						<InputFC {...this.getInputProps()} />
 						<ButtonFC
 							{...this.browseButton.getFcProps(
-								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled },
-								{ class: BEM_CLASS_INPUT_CONTAINER__BUTTON },
+								/* The transparent file input covers the button and is the only tab stop; it opens the file dialog on click, Enter and Space. */
+								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled, _tabIndex: -1 },
+								{ class: BEM_CLASS_INPUT_CONTAINER__BUTTON, 'aria-hidden': 'true' },
 							)}
 						/>
 					</InputContainerFC>
