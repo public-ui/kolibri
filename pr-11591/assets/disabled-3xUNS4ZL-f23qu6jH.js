@@ -1,1 +1,0 @@
-import"./index-TJYJ5Dj4-BKEYCwSx.js";import{c as e,y as t}from"./bem-registry-CtjlaSKN-FenG-jsH.js";var n=e(`disabled`,!1,t);export{n as t};
