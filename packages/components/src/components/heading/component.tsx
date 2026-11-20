@@ -31,8 +31,6 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
 		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-
-		console.log(value); // just to test es-lint rule
 	}
 
 	/**
