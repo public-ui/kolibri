@@ -1,19 +1,76 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "No visual changes",
-	"computedAt": "2026-11-14T15:36:43.741Z",
+	"state": "pending",
+	"description": "14 changed – 0 of 14 approved, review pending",
+	"computedAt": "2026-11-20T17:23:54.775Z",
 	"pr": 11591,
-	"head": "145f1e8993dfce51bd3d142448f903383834d40e",
-	"digest": "sha256:5bdfae12a535fd88adbceb8daa94bd9d87a12a0ea281494fd1d50aa20c2489da",
+	"head": "2ffe44597f4964666e2ad1c8e7401921244d4a7b",
+	"digest": "sha256:e69d59785ece224e7bb2f279c8f8d03d7bfc1d61fb35e6f7e1e0eb7ea2dfc473",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 14,
+		"open": 14,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/quote-block--block": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/quote-block--block": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/quote-block--block": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/quote-block--block": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/quote-block--block": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/quote-block--block": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/quote-block--block": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
