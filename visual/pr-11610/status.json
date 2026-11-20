@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "13 changed – 0 of 13 approved, review pending",
-	"computedAt": "2026-11-15T10:15:24.696Z",
+	"description": "40 changed – 0 of 40 approved, review pending",
+	"computedAt": "2026-11-20T09:47:05.689Z",
 	"pr": 11610,
-	"head": "f15529c39fae2ea6053fa31b78d7522bc654a805",
-	"digest": "sha256:7a74bb068805afe39513ed42ccde6e346ec3b9c137670c736969e088b2846e8f",
+	"head": "1820a586933fad7dbc042607b0d6a9e64360f1e2",
+	"digest": "sha256:5d29e09c3705e613f99f1b806e6ac109973a0fdc77bcca3c52700a9456e8e8e7",
 	"counts": {
-		"changes": 13,
-		"open": 13,
+		"changes": 40,
+		"open": 40,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -24,11 +24,59 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-bwst/input-file-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-msg-default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-msg-info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-msg-success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-msg-warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-multiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-bwst/scenarios-focus-elements-component-inputFile": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-bwst/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-same-height-of-all-form-elements-with-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-same-height-of-all-interactive-elements": {
 			"state": "open",
 			"notes": []
 		},
@@ -53,6 +101,66 @@
 			"notes": []
 		},
 		"theme-ecl/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-msg-default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-msg-info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-msg-success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-msg-warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-multiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputFile": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputFileMultiple": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-same-height-of-all-form-elements-with-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-same-height-of-all-interactive-elements": {
 			"state": "open",
 			"notes": []
 		},
