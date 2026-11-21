@@ -120,22 +120,27 @@ test.describe(COMPONENT_NAME, () => {
 			expect(value).toBe('W');
 		});
 
-		test('should reset the selection to the first option when clear button is clicked', async ({ page }) => {
+		test('keeps the selection and clears a typed filter when clear button is clicked', async ({ page }) => {
 			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
+			const clearButton = page.locator('.kol-single-select__delete button');
 			await input.click();
 
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 
 			await expect(input).toHaveValue(TEST_LABEL);
 			await page.waitForChanges();
-			await page.waitForTimeout(500);
+			// The input shows the label of the selected option, so there is no filter to clear.
+			await expect(clearButton).toHaveCount(0);
 
-			const clearButton = page.locator('.kol-single-select__delete button');
+			await input.fill('So');
 			await expect(clearButton).toHaveCount(1);
+			await page.waitForTimeout(500);
 			await clearButton.click({ force: true });
 
-			await expect(input).toHaveValue('North');
+			await expect(input).toHaveValue(TEST_LABEL);
+			const value = await page.locator('kol-single-select').evaluate((element) => (element as HTMLKolSingleSelectElement)._value);
+			expect(value).toBe(TEST_VALUE);
 		});
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
@@ -496,25 +501,41 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
 		});
 
-		test('resets to the first enabled option when the clear button is clicked', async ({ page }) => {
+		test('keeps the selection and clears a typed filter when the clear button is clicked', async ({ page }) => {
 			const component = page.locator(COMPONENT_NAME);
+			const clearButton = page.locator('.kol-single-select__delete button');
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
-			await readEvents(page);
-			await page.locator('.kol-single-select__delete button').click();
 			await page.waitForChanges();
-			expect(await readEvents(page)).toEqual([
-				['input', 'a'],
-				['change', 'a'],
-			]);
-			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
-			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
+			await readEvents(page);
+			// The input shows the label of the selected option, so there is no filter to clear.
+			await expect(clearButton).toHaveCount(0);
 
-			await page.locator('.kol-single-select__delete button').click();
+			await page.locator('input.kol-single-select__input').fill('gam');
+			await page.waitForChanges();
+			await expect(clearButton).toHaveCount(1);
+			await clearButton.click();
 			await page.waitForChanges();
 			expect(await readEvents(page)).toEqual([]);
-			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('g');
+			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('Gamma');
+			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
+			await expect(clearButton).toHaveCount(0);
+		});
+
+		test('clears the typed text without a selection when the clear button is clicked', async ({ page }) => {
+			const component = page.locator(COMPONENT_NAME);
+			const clearButton = page.locator('.kol-single-select__delete button');
+			await page.locator('input.kol-single-select__input').fill('gam');
+			await page.waitForChanges();
+			await expect(clearButton).toHaveCount(1);
+			await clearButton.click();
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([]);
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBeNull();
+			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('');
+			expect(await isOpen(page)).toBe(true);
 		});
 	});
 });

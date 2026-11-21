@@ -544,11 +544,11 @@ setTagNameTransformer((tagName) => `${tagName}-app`);
 await register(DEFAULT, defineCustomElements);
 ```
 
-## Single-select reset selects the first enabled option instead of clearing
+## Single-select clear button clears the filter instead of the selection
 
-The clear button of `kol-single-select` (X) resets the selection to the first enabled option
-instead of removing it, like `kol-select` shows the first enabled option without a value. The
-`input` and `change` events and the form value carry the value of that option, where they reported
-`null` before. Code that reads the value after the reset needs to handle the option value. Without
-an enabled option the reset still reports `null`. The accessible name of the button changed from
-"Auswahl entfernen" (delete selection) to "Auswahl zurücksetzen" (reset selection).
+The clear button of `kol-single-select` (X) no longer removes the selection: it clears a typed
+filter, restores the label of the selected option and lists all options again. The value, the
+`input` and `change` events and the form value stay untouched, where they reported `null` before —
+a clear sends no event. The button shows only while the input text differs from the label of the
+selected option, and its accessible name changed from "Auswahl entfernen" (delete selection) to
+"Filter löschen" (clear filter).

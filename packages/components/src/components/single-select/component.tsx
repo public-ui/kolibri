@@ -72,9 +72,9 @@ import {
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
  *
- * Like `kol-input-radio` and `kol-select`, the field holds a single choice. The reset button
- * restores the first enabled option, like `kol-select` shows it without a value; without a value
- * the field starts empty.
+ * Like `kol-input-radio` and `kol-select`, the field holds a single choice. The clear button
+ * clears a typed filter: the selection stays and all options show again. Without a value the
+ * field starts empty.
  *
  * @slot - The label of the input field.
  */
@@ -113,7 +113,7 @@ export class KolSingleSelect
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
-	private readonly translateResetSelection = translate('kol-reset-selection');
+	private readonly translateClearFilter = translate('kol-clear-filter');
 
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 
@@ -477,10 +477,10 @@ export class KolSingleSelect
 		this.moveFocus(this.filteredOptions ? this.filteredOptions.length - 1 - this.focusedIndex : 0, -1);
 	}
 
-	/** Enter, NumpadEnter and Space: reset on the clear button, select the focused option, or open the listbox. */
+	/** Enter, NumpadEnter and Space: clear the filter on the clear button, select the focused option, or open the listbox. */
 	protected handleConfirmKey(event: KeyboardEvent): void {
 		if (this.clearButtonFocused) {
-			this.resetSelection();
+			this.clearFilter();
 			event.preventDefault();
 		} else if (this.isOpen) {
 			if (this.selectFocusedOption()) {
@@ -572,32 +572,27 @@ export class KolSingleSelect
 	}
 
 	/**
-	 * Resets the selection to the first enabled option, like `kol-select` shows it without a value
-	 * (#11654): `selectOption` sends its value over `input` and `change` and as form value, then the
-	 * listbox opens. Without an enabled option the selection is removed as `null`.
+	 * Clears a typed filter: the input shows the label of the selected option again, all options are
+	 * listed, and the value stays untouched — a clear sends no event. The listbox opens.
 	 */
-	private resetSelection(): void {
+	private clearFilter(): void {
 		if (this.getRenderProp('disabled') === true) {
 			return;
 		}
 
 		this.focusedIndex = -1;
-		const firstEnabledOption = this.getRenderProp('options')?.find((option) => option.disabled !== true);
-		if (firstEnabledOption) {
-			this.selectOption(firstEnabledOption);
-		} else {
-			const emptyValue = null;
-			this._value = emptyValue;
-			this.inputValue = '';
-			this.filteredOptions = [...this.getRenderProp('options')];
-
-			const detail = { name: this.getRenderProp('name'), value: emptyValue };
-			this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), emptyValue);
-			this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
-		}
+		this.updateInputValue(this._value);
+		this.filteredOptions = [...this.getRenderProp('options')];
 
 		this.ctaRef.el?.focus();
 		this.isOpen = true;
+	}
+
+	/** Whether the input text differs from the label of the selected option, so the input holds a filter. */
+	private hasFilter(): boolean {
+		const selectedOption = this.getRenderProp('options')?.find((option) => option.value === this._value);
+		const selectedLabel = selectedOption ? String(selectedOption.label) : '';
+		return this.inputValue !== '' && this.inputValue !== selectedLabel;
 	}
 
 	/**
@@ -652,7 +647,7 @@ export class KolSingleSelect
 	};
 
 	private readonly handleClearButtonClick = (): void => {
-		this.resetSelection();
+		this.clearFilter();
 		this.ctaRef.el?.focus();
 		// Firefox sends no blur to the removed button.
 		this.clearButtonFocused = false;
@@ -778,12 +773,12 @@ export class KolSingleSelect
 					>
 						<ListboxGroupFC block="kol-single-select">
 							<InputFC {...this.getInputProps()} />
-							{this.inputValue && this.getRenderProp('hasClearButton') && (
+							{this.hasFilter() && this.getRenderProp('hasClearButton') && (
 								<ButtonFC
 									{...this.clearButton.getFcProps(
 										{
 											_icons: 'kolicon-cross',
-											_label: this.translateResetSelection,
+											_label: this.translateClearFilter,
 											_hideLabel: true,
 											_variant: 'ghost',
 											_disabled: isDisabled,
