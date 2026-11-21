@@ -1,19 +1,160 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "No visual changes",
-	"computedAt": "2026-11-21T10:47:37.624Z",
+	"state": "pending",
+	"description": "35 changed – 0 of 35 approved, review pending",
+	"computedAt": "2026-11-21T11:46:12.183Z",
 	"pr": 11655,
-	"head": "2cc93da0281ecd0387b63c57d1f61bc3ed4f05d1",
-	"digest": "sha256:4430f3a29eef17b428be1c69360e2698a2c1ddef9a78617e9829e8e51288158f",
+	"head": "0c0668c2d428c0cbf3616242a76a4c64fe65cfe9",
+	"digest": "sha256:30b82bd45ed62bf93b194fb96b47d496f8da36572d363c793cc48ec6d8d6406c",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 35,
+		"open": 35,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/single-select-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/single-select-basic-noColumns--label-boolean-values": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/single-select-basic-noColumns--label-disabled-options": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/single-select-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/single-select-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/single-select-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/single-select-basic-noColumns--label-boolean-values": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/single-select-basic-noColumns--label-disabled-options": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/single-select-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/single-select-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/single-select-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/single-select-basic-noColumns--label-boolean-values": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/single-select-basic-noColumns--label-disabled-options": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/single-select-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/single-select-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/single-select-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/single-select-basic-noColumns--label-boolean-values": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/single-select-basic-noColumns--label-disabled-options": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/single-select-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/single-select-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/single-select-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/single-select-basic-noColumns--label-boolean-values": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/single-select-basic-noColumns--label-disabled-options": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/single-select-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/single-select-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/single-select-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/single-select-basic-noColumns--label-boolean-values": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/single-select-basic-noColumns--label-disabled-options": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/single-select-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/single-select-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/single-select-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/single-select-basic-noColumns--label-boolean-values": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/single-select-basic-noColumns--label-disabled-options": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/single-select-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/single-select-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }

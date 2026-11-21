@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11655,
-	"head": "2cc93da0281ecd0387b63c57d1f61bc3ed4f05d1",
+	"head": "0c0668c2d428c0cbf3616242a76a4c64fe65cfe9",
 	"repository": "public-ui/kolibri",
-	"runId": 44894968761,
-	"generatedAt": "2026-11-21T10:47:37.017Z",
-	"digest": "sha256:4430f3a29eef17b428be1c69360e2698a2c1ddef9a78617e9829e8e51288158f",
+	"runId": 44899299660,
+	"generatedAt": "2026-11-21T11:46:11.494Z",
+	"digest": "sha256:30b82bd45ed62bf93b194fb96b47d496f8da36572d363c793cc48ec6d8d6406c",
 	"baseline": {
 		"sha": "6203437db1dfd01a0e8c97ee9dbf50352292c1a9",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3095,
-		"changed": 0,
+		"unchanged": 3060,
+		"changed": 35,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 437,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0ee6f812ab97a4625d82ac90b4ad955962fb1090aedb6d4ada4e784ceca6c970",
+			"digest": "sha256:2b388e12c934c116d1c3c9d68ffcc16c5188ac2e96fa82fda3f74ef4d69e4ceb",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2351,15 +2351,25 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-access-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:011c119654c989a6428eccb84e5bb63a6fbcc818fa289a69bd0dca08dc1ff199"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:f6155402254fa44d065ef9acc0ba8904e5053dacc84b005aab5dae35eddf753b",
+					"diffPixels": 24,
+					"diffRatio": 0.000712,
+					"expected": "test-tag-name-transformer/single-select-basic-noColumns--label-access-key.expected.png",
+					"actual": "test-tag-name-transformer/single-select-basic-noColumns--label-access-key.actual.png",
+					"diff": "test-tag-name-transformer/single-select-basic-noColumns--label-access-key.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-boolean-values",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:5a8c6da4eece26a9e3405c87ede48c28e97a3c325944186efbada35f7fc4ef61"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:e554aa1a84fadfaa281cb2cdc5c832f891ba127dce74bd25b24b743328646e1e",
+					"diffPixels": 24,
+					"diffRatio": 0.000733,
+					"expected": "test-tag-name-transformer/single-select-basic-noColumns--label-boolean-values.expected.png",
+					"actual": "test-tag-name-transformer/single-select-basic-noColumns--label-boolean-values.actual.png",
+					"diff": "test-tag-name-transformer/single-select-basic-noColumns--label-boolean-values.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled",
@@ -2369,9 +2379,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled-options",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:a9246a6ee3c345df7e74e9e33840757a32f9537a57f9c0ff83836a7ad34857c9"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:2621e2eb97fafb394a19e31ee15c595703661e78d7647e75b18ebf657b72b67b",
+					"diffPixels": 24,
+					"diffRatio": 0.000557,
+					"expected": "test-tag-name-transformer/single-select-basic-noColumns--label-disabled-options.expected.png",
+					"actual": "test-tag-name-transformer/single-select-basic-noColumns--label-disabled-options.actual.png",
+					"diff": "test-tag-name-transformer/single-select-basic-noColumns--label-disabled-options.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-error",
@@ -2381,9 +2396,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-hint",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:4752ebb7bc0b9ce98da5ac409905da1d4f102e654c10eed41c357e78ecc705e8"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:8fb45530bc9191dfe99a528bac2182b1b739a125827f9902b7036636a0c0022a",
+					"diffPixels": 24,
+					"diffRatio": 0.000564,
+					"expected": "test-tag-name-transformer/single-select-basic-noColumns--label-hint.expected.png",
+					"actual": "test-tag-name-transformer/single-select-basic-noColumns--label-hint.actual.png",
+					"diff": "test-tag-name-transformer/single-select-basic-noColumns--label-hint.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-long-labels",
@@ -2399,9 +2419,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-short-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:72a48a10b28f747ad7c47fed768e1d3be50e7fd94abc50ad63316148266752ee"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:fe1f27b7e694651b8a3d0355594d9eefbfa495fc9bc761912df456859b5daf7c",
+					"diffPixels": 24,
+					"diffRatio": 0.000712,
+					"expected": "test-tag-name-transformer/single-select-basic-noColumns--label-short-key.expected.png",
+					"actual": "test-tag-name-transformer/single-select-basic-noColumns--label-short-key.actual.png",
+					"diff": "test-tag-name-transformer/single-select-basic-noColumns--label-short-key.diff.png"
 				},
 				{
 					"name": "skip-nav-basic",
@@ -2726,13 +2751,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 437,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:17b7ef821f47a066d818c41ce9c14169e9b52a71e96e04a890c3dd16ce7bb1d9",
+			"digest": "sha256:85236e42093dbbbe1a6dcda024128ad46dec2f5d07e11c6d02e5891e86a01571",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5034,15 +5059,45 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-access-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:7e010074fac69934f245cefa9ab228ce84cb0dcdc28058594e11ba9a53cfd764"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:3ebc7d32552bc106aad8e5999c70337ee3bafda457733d0f497b040107437ef1",
+					"diffPixels": 1278,
+					"diffRatio": 0.037927,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							72
+						],
+						"actual": [
+							468,
+							70
+						]
+					},
+					"expected": "theme-bwst/single-select-basic-noColumns--label-access-key.expected.png",
+					"actual": "theme-bwst/single-select-basic-noColumns--label-access-key.actual.png",
+					"diff": "theme-bwst/single-select-basic-noColumns--label-access-key.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-boolean-values",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:32f73619d020a24fb840251bfe49b3fc2fa956b3c0ed7f13e31864a7039ac2c0"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:e132a8cb5dca177156c626017b258b54a2c1d4a0b3f9d082a17b72b37e3f0a56",
+					"diffPixels": 1146,
+					"diffRatio": 0.03401,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							72
+						],
+						"actual": [
+							468,
+							70
+						]
+					},
+					"expected": "theme-bwst/single-select-basic-noColumns--label-boolean-values.expected.png",
+					"actual": "theme-bwst/single-select-basic-noColumns--label-boolean-values.actual.png",
+					"diff": "theme-bwst/single-select-basic-noColumns--label-boolean-values.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled",
@@ -5052,9 +5107,24 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled-options",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:641f2b9fda8f043f393d94f4556710a2727c3945e4127e0fa7257398153e0ec8"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:32d7a0035e553eea19280ea5d99bc999153c5180fc7cca8ca78d83908cd457b6",
+					"diffPixels": 1310,
+					"diffRatio": 0.029158,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							96
+						],
+						"actual": [
+							468,
+							94
+						]
+					},
+					"expected": "theme-bwst/single-select-basic-noColumns--label-disabled-options.expected.png",
+					"actual": "theme-bwst/single-select-basic-noColumns--label-disabled-options.actual.png",
+					"diff": "theme-bwst/single-select-basic-noColumns--label-disabled-options.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-error",
@@ -5064,9 +5134,24 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-hint",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:01ed8a0318e51bf549c2c0320c2a4d12fb0ee3ffd1b6a5ba6bc6e69d0754c0af"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:4bfafa58aa2ffa435b16cdfdbe1fbefdc25d2df78a00c17a933914fe232ec15b",
+					"diffPixels": 1460,
+					"diffRatio": 0.032839,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							95
+						],
+						"actual": [
+							468,
+							93
+						]
+					},
+					"expected": "theme-bwst/single-select-basic-noColumns--label-hint.expected.png",
+					"actual": "theme-bwst/single-select-basic-noColumns--label-hint.actual.png",
+					"diff": "theme-bwst/single-select-basic-noColumns--label-hint.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-long-labels",
@@ -5082,9 +5167,24 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-short-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:f6c9f3013c5baab0bb1cd1a2c88bdb8ba9e3effee15d5b60b81512f50e5b503b"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:9045182c3ac1cbfa65bcc979b2ecb8142be656af231dc78be275a210ef23696a",
+					"diffPixels": 1278,
+					"diffRatio": 0.037927,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							72
+						],
+						"actual": [
+							468,
+							70
+						]
+					},
+					"expected": "theme-bwst/single-select-basic-noColumns--label-short-key.expected.png",
+					"actual": "theme-bwst/single-select-basic-noColumns--label-short-key.actual.png",
+					"diff": "theme-bwst/single-select-basic-noColumns--label-short-key.diff.png"
 				},
 				{
 					"name": "skip-nav-basic",
@@ -5409,13 +5509,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 437,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0ee6f812ab97a4625d82ac90b4ad955962fb1090aedb6d4ada4e784ceca6c970",
+			"digest": "sha256:2b388e12c934c116d1c3c9d68ffcc16c5188ac2e96fa82fda3f74ef4d69e4ceb",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7717,15 +7817,25 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-access-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:011c119654c989a6428eccb84e5bb63a6fbcc818fa289a69bd0dca08dc1ff199"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:f6155402254fa44d065ef9acc0ba8904e5053dacc84b005aab5dae35eddf753b",
+					"diffPixels": 24,
+					"diffRatio": 0.000712,
+					"expected": "theme-default/single-select-basic-noColumns--label-access-key.expected.png",
+					"actual": "theme-default/single-select-basic-noColumns--label-access-key.actual.png",
+					"diff": "theme-default/single-select-basic-noColumns--label-access-key.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-boolean-values",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:5a8c6da4eece26a9e3405c87ede48c28e97a3c325944186efbada35f7fc4ef61"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:e554aa1a84fadfaa281cb2cdc5c832f891ba127dce74bd25b24b743328646e1e",
+					"diffPixels": 24,
+					"diffRatio": 0.000733,
+					"expected": "theme-default/single-select-basic-noColumns--label-boolean-values.expected.png",
+					"actual": "theme-default/single-select-basic-noColumns--label-boolean-values.actual.png",
+					"diff": "theme-default/single-select-basic-noColumns--label-boolean-values.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled",
@@ -7735,9 +7845,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled-options",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:a9246a6ee3c345df7e74e9e33840757a32f9537a57f9c0ff83836a7ad34857c9"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:2621e2eb97fafb394a19e31ee15c595703661e78d7647e75b18ebf657b72b67b",
+					"diffPixels": 24,
+					"diffRatio": 0.000557,
+					"expected": "theme-default/single-select-basic-noColumns--label-disabled-options.expected.png",
+					"actual": "theme-default/single-select-basic-noColumns--label-disabled-options.actual.png",
+					"diff": "theme-default/single-select-basic-noColumns--label-disabled-options.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-error",
@@ -7747,9 +7862,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-hint",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:4752ebb7bc0b9ce98da5ac409905da1d4f102e654c10eed41c357e78ecc705e8"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:8fb45530bc9191dfe99a528bac2182b1b739a125827f9902b7036636a0c0022a",
+					"diffPixels": 24,
+					"diffRatio": 0.000564,
+					"expected": "theme-default/single-select-basic-noColumns--label-hint.expected.png",
+					"actual": "theme-default/single-select-basic-noColumns--label-hint.actual.png",
+					"diff": "theme-default/single-select-basic-noColumns--label-hint.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-long-labels",
@@ -7765,9 +7885,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-short-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:72a48a10b28f747ad7c47fed768e1d3be50e7fd94abc50ad63316148266752ee"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:fe1f27b7e694651b8a3d0355594d9eefbfa495fc9bc761912df456859b5daf7c",
+					"diffPixels": 24,
+					"diffRatio": 0.000712,
+					"expected": "theme-default/single-select-basic-noColumns--label-short-key.expected.png",
+					"actual": "theme-default/single-select-basic-noColumns--label-short-key.actual.png",
+					"diff": "theme-default/single-select-basic-noColumns--label-short-key.diff.png"
 				},
 				{
 					"name": "skip-nav-basic",
@@ -8092,13 +8217,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 437,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:707d4287475fbb4c2e29919ff5d07de4d512d64165d39be8ea4a35336b63e9a8",
+			"digest": "sha256:467952fc80a8abdeec557f9bcb0e947849ff71fdde93aa30d45b13f8390d66cb",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10400,15 +10525,25 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-access-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:c4cd2c738abe7ddd378fdf29cdf14a70ae28fe373e26efb5645d453c40b78ec0"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:56db9f39e0cbb3217fe3d0ecb74ccaaf6dc44a74fcaf70c73c0318ee82c2f44d",
+					"diffPixels": 14,
+					"diffRatio": 0.000475,
+					"expected": "theme-desy/single-select-basic-noColumns--label-access-key.expected.png",
+					"actual": "theme-desy/single-select-basic-noColumns--label-access-key.actual.png",
+					"diff": "theme-desy/single-select-basic-noColumns--label-access-key.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-boolean-values",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:6c022bf6469233fb7de91c29458cf90fcea6acec5852a1d3c9fe298acb29973b"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:0e7fe79cfa78490e9bbf77959eed19fa6aa681ed8a94be7d02becd6e65e9cfba",
+					"diffPixels": 14,
+					"diffRatio": 0.000475,
+					"expected": "theme-desy/single-select-basic-noColumns--label-boolean-values.expected.png",
+					"actual": "theme-desy/single-select-basic-noColumns--label-boolean-values.actual.png",
+					"diff": "theme-desy/single-select-basic-noColumns--label-boolean-values.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled",
@@ -10418,9 +10553,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled-options",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:2132a9008a1bb426b8c45e58fd18b6e5ee397a5314df1451181f3c280146b095"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:2720c7a0c32b56adf682be41b9576b0413b7846b2c4a721954c41cd964149874",
+					"diffPixels": 14,
+					"diffRatio": 0.000352,
+					"expected": "theme-desy/single-select-basic-noColumns--label-disabled-options.expected.png",
+					"actual": "theme-desy/single-select-basic-noColumns--label-disabled-options.actual.png",
+					"diff": "theme-desy/single-select-basic-noColumns--label-disabled-options.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-error",
@@ -10430,9 +10570,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-hint",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:b45933b31a2795f91e567a5631e95831d972c2602e2bf6b36eb3dd9fc4ac9bc3"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:0b275c638ac3803395e7dbf5cdacc9007b8868927b693dcb0432155ac9867a47",
+					"diffPixels": 14,
+					"diffRatio": 0.000352,
+					"expected": "theme-desy/single-select-basic-noColumns--label-hint.expected.png",
+					"actual": "theme-desy/single-select-basic-noColumns--label-hint.actual.png",
+					"diff": "theme-desy/single-select-basic-noColumns--label-hint.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-long-labels",
@@ -10448,9 +10593,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-short-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:bec81ed6aae429e2934a7fc729a5207fe80a4d7c5ee5f3329ff642a0f4e0d75b"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:63e909af6afd8a7af74f709b698310c68a51c4c2a12cd3a54ed3dcc1e74fb533",
+					"diffPixels": 14,
+					"diffRatio": 0.000475,
+					"expected": "theme-desy/single-select-basic-noColumns--label-short-key.expected.png",
+					"actual": "theme-desy/single-select-basic-noColumns--label-short-key.actual.png",
+					"diff": "theme-desy/single-select-basic-noColumns--label-short-key.diff.png"
 				},
 				{
 					"name": "skip-nav-basic",
@@ -10775,13 +10925,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 437,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ce51b44d1c4bc825a212d89d9e9dce5d5a92bd1084fc4eb8947d3ab854a293c7",
+			"digest": "sha256:ea4c32ab4412166fece88d31526572767ee15f1746bbfd622ce864e9c704e6fb",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13083,15 +13233,25 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-access-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:39eb8283edddb2d286e18d9643f744f2f6e5d1c1b9f8d75c4c277fa9aee31c73"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:0a9d6f7e0d13e36e553a154a0893aae47e1eb50f011040f205d8e51885d7360f",
+					"diffPixels": 18,
+					"diffRatio": 0.000487,
+					"expected": "theme-ecl/single-select-basic-noColumns--label-access-key.expected.png",
+					"actual": "theme-ecl/single-select-basic-noColumns--label-access-key.actual.png",
+					"diff": "theme-ecl/single-select-basic-noColumns--label-access-key.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-boolean-values",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:7e881e402649e5b77dcc55118bf9332ce97bcc216cfad39851833cf8d11b2a0c"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:07d4252a8e5f57d6edddede8b1eb9f888c146b2135500cd0631eb38ec22ae94b",
+					"diffPixels": 18,
+					"diffRatio": 0.000487,
+					"expected": "theme-ecl/single-select-basic-noColumns--label-boolean-values.expected.png",
+					"actual": "theme-ecl/single-select-basic-noColumns--label-boolean-values.actual.png",
+					"diff": "theme-ecl/single-select-basic-noColumns--label-boolean-values.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled",
@@ -13101,9 +13261,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled-options",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:358dca5418432eed47530024c05bca6e9cd441f98715af18426642f99793d1e3"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:27de38099983b08e686237a1318d17f9aff250a885f554e18c7c70298668637a",
+					"diffPixels": 18,
+					"diffRatio": 0.000397,
+					"expected": "theme-ecl/single-select-basic-noColumns--label-disabled-options.expected.png",
+					"actual": "theme-ecl/single-select-basic-noColumns--label-disabled-options.actual.png",
+					"diff": "theme-ecl/single-select-basic-noColumns--label-disabled-options.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-error",
@@ -13113,9 +13278,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-hint",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:2c36f08d92f5cd08a828e2431047ebb156c5fb99b1a6d17b67d0821a0fbe0fd6"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:81e6db44cf20e5a94ea347bc44cfe55bfa4d532bbdb096a3459f3e262c83ad1f",
+					"diffPixels": 18,
+					"diffRatio": 0.000401,
+					"expected": "theme-ecl/single-select-basic-noColumns--label-hint.expected.png",
+					"actual": "theme-ecl/single-select-basic-noColumns--label-hint.actual.png",
+					"diff": "theme-ecl/single-select-basic-noColumns--label-hint.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-long-labels",
@@ -13131,9 +13301,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-short-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:b7ef5200acc55156a0825b6b83f1c333c73d2ca7639a27bf7e05b7fd2073d050"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:b6acad4e262e4decfeec5311006914a8d4eb07f9f939422d0fa91a9c5da18c91",
+					"diffPixels": 18,
+					"diffRatio": 0.000487,
+					"expected": "theme-ecl/single-select-basic-noColumns--label-short-key.expected.png",
+					"actual": "theme-ecl/single-select-basic-noColumns--label-short-key.actual.png",
+					"diff": "theme-ecl/single-select-basic-noColumns--label-short-key.diff.png"
 				},
 				{
 					"name": "skip-nav-basic",
@@ -13458,13 +13633,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 443,
-				"changed": 0,
+				"unchanged": 438,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:850d93387ab408edcdddca6db70a6bd2f56f127fc08a688636529bfbb1701d98",
+			"digest": "sha256:969d154b4f3c3c4fd9245ff7fdfc9172ece27c29ecf47eed4406fb13b09dad95",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15766,15 +15941,25 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-access-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:37680eb79b832bff2ff81910dd61b06df1f95eff67c5a81e819d069816bf730c"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:3bd3bbb377170d1e4f4a69595cec44d0fbd6af8b27df896380b47e0327221222",
+					"diffPixels": 23,
+					"diffRatio": 0.00054,
+					"expected": "theme-kern/single-select-basic-noColumns--label-access-key.expected.png",
+					"actual": "theme-kern/single-select-basic-noColumns--label-access-key.actual.png",
+					"diff": "theme-kern/single-select-basic-noColumns--label-access-key.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-boolean-values",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:1d9e7b1d2f0af39c3a7c23fcb6688fa4a59a4925afd81b92faafe358b26cede5"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:852ae81ce09d3c0c684e1c12e4d99b723be0a18c1bbb4c1abb51ae43f52577da",
+					"diffPixels": 23,
+					"diffRatio": 0.00054,
+					"expected": "theme-kern/single-select-basic-noColumns--label-boolean-values.expected.png",
+					"actual": "theme-kern/single-select-basic-noColumns--label-boolean-values.actual.png",
+					"diff": "theme-kern/single-select-basic-noColumns--label-boolean-values.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled",
@@ -15784,9 +15969,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled-options",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:1280bf0fca2d1810fd030f6aff2fdbfda32a83625b09385519b959f953cc88e9"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:1de7f22e61d4dbb547e23e089016f57fdd47834d01171fdbbaca4fb516b7c547",
+					"diffPixels": 23,
+					"diffRatio": 0.000375,
+					"expected": "theme-kern/single-select-basic-noColumns--label-disabled-options.expected.png",
+					"actual": "theme-kern/single-select-basic-noColumns--label-disabled-options.actual.png",
+					"diff": "theme-kern/single-select-basic-noColumns--label-disabled-options.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-error",
@@ -15796,9 +15986,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-hint",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:cce7fc81e3a5977203b86f4517559053c2a653375322e9e9469ff32ad61acc81"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:0a76b0d43a63510cc8aa393ed4c7ae913bd90e2829715b15d087cf95f5f0bea3",
+					"diffPixels": 23,
+					"diffRatio": 0.000378,
+					"expected": "theme-kern/single-select-basic-noColumns--label-hint.expected.png",
+					"actual": "theme-kern/single-select-basic-noColumns--label-hint.actual.png",
+					"diff": "theme-kern/single-select-basic-noColumns--label-hint.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-long-labels",
@@ -15814,9 +16009,14 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-short-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:94372a771823584744fd4f23152394faae1c832b0ae296c6fe87b6a0da3cd155"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:bfe6de779364b5c911d23d80a6db3ba948c22ea8094e6ed30288fc79faa227ae",
+					"diffPixels": 23,
+					"diffRatio": 0.00054,
+					"expected": "theme-kern/single-select-basic-noColumns--label-short-key.expected.png",
+					"actual": "theme-kern/single-select-basic-noColumns--label-short-key.actual.png",
+					"diff": "theme-kern/single-select-basic-noColumns--label-short-key.diff.png"
 				},
 				{
 					"name": "skip-nav-basic",
@@ -16147,13 +16347,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 0,
+				"unchanged": 437,
+				"changed": 5,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
+			"digest": "sha256:3d01eb323b0eb148b3dbe8b9e3820fe72df50342ca6b2e38bc3fe61ac89b9aed",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -18455,15 +18655,45 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-access-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:6dadec766157e460781c92c2a93ad5a5ad323ef04cbdba0f68aa688370c2f1f5"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:143d71d3643b697a06d9feef9ed6bb9dec08e61a526b189b41539452f5e81918",
+					"diffPixels": 38,
+					"diffRatio": 0.000593,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							137
+						],
+						"actual": [
+							468,
+							93
+						]
+					},
+					"expected": "unstyled/single-select-basic-noColumns--label-access-key.expected.png",
+					"actual": "unstyled/single-select-basic-noColumns--label-access-key.actual.png",
+					"diff": "unstyled/single-select-basic-noColumns--label-access-key.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-boolean-values",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:70dc26364f8442c7d6c4b4f50f46f4b7c9152533ba9d00ca84bb3a88b9c5d718"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:bbd55ff7aaf7fbcd2a5bc0ab363762282d932ad45746ec8752a439e2970893bf",
+					"diffPixels": 38,
+					"diffRatio": 0.000593,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							137
+						],
+						"actual": [
+							468,
+							93
+						]
+					},
+					"expected": "unstyled/single-select-basic-noColumns--label-boolean-values.expected.png",
+					"actual": "unstyled/single-select-basic-noColumns--label-boolean-values.actual.png",
+					"diff": "unstyled/single-select-basic-noColumns--label-boolean-values.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled",
@@ -18473,9 +18703,24 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled-options",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:ca7fd6ee4ea9b5f1f5eea64270ee4e92dc90f46e7ea378d4b2c418af7606e534"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:cf7350e98d768db5cb97262b9e139bf9a6f2778d4f84dbb882b7bcc0d0b8f388",
+					"diffPixels": 293,
+					"diffRatio": 0.003962,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							158
+						],
+						"actual": [
+							468,
+							114
+						]
+					},
+					"expected": "unstyled/single-select-basic-noColumns--label-disabled-options.expected.png",
+					"actual": "unstyled/single-select-basic-noColumns--label-disabled-options.actual.png",
+					"diff": "unstyled/single-select-basic-noColumns--label-disabled-options.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-error",
@@ -18485,9 +18730,24 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-hint",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:472e18649d2d5216c3b53ae5bdd09e8977f7f8ae155016224745ab6143a25b8a"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:c387e7c3c0de86d5d15c4524f957f76ab7a741e4a08d4e93fb54fc4285e8b47e",
+					"diffPixels": 291,
+					"diffRatio": 0.003935,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							158
+						],
+						"actual": [
+							468,
+							114
+						]
+					},
+					"expected": "unstyled/single-select-basic-noColumns--label-hint.expected.png",
+					"actual": "unstyled/single-select-basic-noColumns--label-hint.actual.png",
+					"diff": "unstyled/single-select-basic-noColumns--label-hint.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-long-labels",
@@ -18503,9 +18763,24 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-short-key",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:6c61848a62126bca0e6d9471860ccd2d79ddf4f291849534e39f0d6a17a497b2"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:a0b503fb04a177949c0398533507016bf5c01eb71329a350b0c2de37dae17758",
+					"diffPixels": 38,
+					"diffRatio": 0.000593,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							137
+						],
+						"actual": [
+							468,
+							93
+						]
+					},
+					"expected": "unstyled/single-select-basic-noColumns--label-short-key.expected.png",
+					"actual": "unstyled/single-select-basic-noColumns--label-short-key.actual.png",
+					"diff": "unstyled/single-select-basic-noColumns--label-short-key.diff.png"
 				},
 				{
 					"name": "skip-nav-basic",
