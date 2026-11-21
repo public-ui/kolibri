@@ -1,0 +1,1 @@
+import"./index-Bsx5X6jK-B4SIlz-2.js";import{l as e,x as t}from"./props-from-config-DVxNB2Lx-Dy8EF-z_.js";var n=e(`disabled`,!1,t);export{n as t};
