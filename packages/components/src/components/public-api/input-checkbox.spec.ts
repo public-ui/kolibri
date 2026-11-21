@@ -166,7 +166,7 @@ const KOL_INPUT_CHECKBOX_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'InputCheckboxVariantPropType',
 		required: false,
-		doc: 'Defines which variant should be used for presentation.',
+		doc: 'Defines which variant should be used for presentation. @deprecated The variants are dedicated components now: use kol-input-switch for `switch` and kol-input-toggle-button for `button`.',
 		default: "'default'",
 	},
 };
