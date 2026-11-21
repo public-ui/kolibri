@@ -21,7 +21,9 @@ import inputNumberCss from './components/input-number.scss';
 import inputPasswordCss from './components/input-password.scss';
 import inputRadioCss from './components/input-radio.scss';
 import inputRangeCss from './components/input-range.scss';
+import inputSwitchCss from './components/input-switch.scss';
 import inputTextCss from './components/input-text.scss';
+import inputToggleButtonCss from './components/input-toggle-button.scss';
 import linkButtonCss from './components/link-button.scss';
 import linkCss from './components/link.scss';
 import navCss from './components/nav.scss';
@@ -71,7 +73,9 @@ export const ECL_EC = KoliBri.createTheme(
 		'KOL-INPUT-PASSWORD': inputPasswordCss,
 		'KOL-INPUT-RADIO': inputRadioCss,
 		'KOL-INPUT-RANGE': inputRangeCss,
+		'KOL-INPUT-SWITCH': inputSwitchCss,
 		'KOL-INPUT-TEXT': inputTextCss,
+		'KOL-INPUT-TOGGLE-BUTTON': inputToggleButtonCss,
 		'KOL-LINK': linkCss,
 		'KOL-LINK-BUTTON': linkButtonCss,
 		'KOL-DIALOG': dialogCss,

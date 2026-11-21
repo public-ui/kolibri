@@ -1,0 +1,96 @@
+@use '../../mixins/to-rem' as *;
+@use '../mixins/alert' as *;
+@use '../mixins/checkbox' as *;
+@use '../mixins/popover-button' as *;
+
+// Theme styles of the checkbox family: `kol-input-checkbox`, `kol-input-switch` and
+// `kol-input-toggle-button` render the same `kol-input-checkbox` DOM and classes as their
+// theming contract, so every member adopts this mixin into its own shadow root.
+// Line comments keep the emitted CSS free of the mixin documentation.
+@mixin kol-input-checkbox-theme {
+	@include alert;
+
+	.kol-form-field {
+		--kol-checkbox-color: var(--ecl-color-primary);
+
+		&__input {
+			order: 2;
+		}
+
+		&__hint {
+			order: 1;
+
+			font-size: to-rem(14);
+		}
+
+		&__msg {
+			order: 3;
+		}
+	}
+
+	.kol-input-checkbox__field-control--variant-default {
+		@include checkbox('kol-checkbox');
+	}
+
+	.kol-field-control {
+		&__label {
+			@include popover-button;
+
+			display: flex;
+			gap: to-rem(4);
+		}
+
+		&--label-align-left &__label {
+			padding-right: to-rem(8);
+		}
+
+		&--label-align-right &__label {
+			padding-left: to-rem(8);
+		}
+
+		&--error {
+			--kol-checkbox-color: var(--ecl-color-error);
+		}
+	}
+
+	.kol-checkbox--variant-switch {
+		.kol-input {
+			border-color: var(--kol-checkbox-color);
+			border-radius: 16px;
+
+			&::before {
+				background-color: var(--ecl-color-white);
+				border-radius: 50%;
+			}
+		}
+
+		.kol-icon {
+			color: var(--kol-checkbox-color);
+		}
+
+		&.kol-checkbox--checked {
+			.kol-input::before {
+				background-color: var(--kol-checkbox-color);
+			}
+			.kol-icon {
+				color: var(--ecl-color-white);
+			}
+		}
+
+		&:hover {
+			.kol-input:not(:disabled) {
+				outline: var(--ecl-color-primary-20) 8px solid;
+			}
+		}
+	}
+
+	.kol-input-checkbox--variant-button {
+		gap: var(--spacing-xs) 0;
+
+		&:focus-within {
+			outline-color: var(--ecl-color-primary-130);
+			outline-style: solid;
+			outline-width: 2px;
+		}
+	}
+}
