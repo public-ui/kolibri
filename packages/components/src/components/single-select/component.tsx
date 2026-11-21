@@ -72,6 +72,10 @@ import {
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
  *
+ * Like `kol-input-radio` and `kol-select`, exactly one option is selected at a time. The reset
+ * button restores the first enabled option, like `kol-select` shows it without a value; without a
+ * value the field starts empty.
+ *
  * @slot - The label of the input field.
  */
 @Component({
@@ -109,7 +113,7 @@ export class KolSingleSelect
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
-	private readonly translateDeleteSelection = translate('kol-delete-selection');
+	private readonly translateResetSelection = translate('kol-reset-selection');
 
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 
@@ -473,10 +477,10 @@ export class KolSingleSelect
 		this.moveFocus(this.filteredOptions ? this.filteredOptions.length - 1 - this.focusedIndex : 0, -1);
 	}
 
-	/** Enter, NumpadEnter and Space: clear on the clear button, select the focused option, or open the listbox. */
+	/** Enter, NumpadEnter and Space: reset on the clear button, select the focused option, or open the listbox. */
 	protected handleConfirmKey(event: KeyboardEvent): void {
 		if (this.clearButtonFocused) {
-			this.clearSelection();
+			this.resetSelection();
 			event.preventDefault();
 		} else if (this.isOpen) {
 			if (this.selectFocusedOption()) {
@@ -568,23 +572,29 @@ export class KolSingleSelect
 	}
 
 	/**
-	 * Sends `null` (#10841) as value of the `input` and `change` events and as form value, like
-	 * `selectOption` sends the option value, then opens the listbox.
+	 * Resets the selection to the first enabled option, like `kol-select` shows it without a value
+	 * (#11654): `selectOption` sends its value over `input` and `change` and as form value, then the
+	 * listbox opens. Without an enabled option the selection is removed as `null`.
 	 */
-	private clearSelection(): void {
+	private resetSelection(): void {
 		if (this.getRenderProp('disabled') === true) {
 			return;
 		}
 
-		const emptyValue = null;
 		this.focusedIndex = -1;
-		this._value = emptyValue;
-		this.inputValue = '';
-		this.filteredOptions = [...this.getRenderProp('options')];
+		const firstEnabledOption = this.getRenderProp('options')?.find((option) => option.disabled !== true);
+		if (firstEnabledOption) {
+			this.selectOption(firstEnabledOption);
+		} else {
+			const emptyValue = null;
+			this._value = emptyValue;
+			this.inputValue = '';
+			this.filteredOptions = [...this.getRenderProp('options')];
 
-		const detail = { name: this.getRenderProp('name'), value: emptyValue };
-		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), emptyValue);
-		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
+			const detail = { name: this.getRenderProp('name'), value: emptyValue };
+			this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), emptyValue);
+			this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
+		}
 
 		this.ctaRef.el?.focus();
 		this.isOpen = true;
@@ -642,7 +652,7 @@ export class KolSingleSelect
 	};
 
 	private readonly handleClearButtonClick = (): void => {
-		this.clearSelection();
+		this.resetSelection();
 		this.ctaRef.el?.focus();
 		// Firefox sends no blur to the removed button.
 		this.clearButtonFocused = false;
@@ -773,7 +783,7 @@ export class KolSingleSelect
 									{...this.clearButton.getFcProps(
 										{
 											_icons: 'kolicon-cross',
-											_label: this.translateDeleteSelection,
+											_label: this.translateResetSelection,
 											_hideLabel: true,
 											_variant: 'ghost',
 											_disabled: isDisabled,

@@ -543,3 +543,12 @@ import { setTagNameTransformer } from '@public-ui/vue';
 setTagNameTransformer((tagName) => `${tagName}-app`);
 await register(DEFAULT, defineCustomElements);
 ```
+
+## Single-select reset selects the first enabled option instead of clearing
+
+The clear button of `kol-single-select` (X) resets the selection to the first enabled option
+instead of removing it, like `kol-select` shows the first enabled option without a value. The
+`input` and `change` events and the form value carry the value of that option, where they reported
+`null` before. Code that reads the value after the reset needs to handle the option value. Without
+an enabled option the reset still reports `null`. The accessible name of the button changed from
+"Auswahl entfernen" (delete selection) to "Auswahl zurücksetzen" (reset selection).

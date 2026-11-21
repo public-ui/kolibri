@@ -45,6 +45,7 @@ export default {
 	'pagination-position-top': 'oben',
 	progress: 'Fortschritt',
 	readonly: 'schreibgeschützt',
+	'reset-selection': 'Auswahl zurücksetzen',
 	'show-password': 'Passwort einblenden',
 	'show-suggestions': 'Vorschläge anzeigen',
 	sort: 'sortieren',

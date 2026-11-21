@@ -120,7 +120,7 @@ test.describe(COMPONENT_NAME, () => {
 			expect(value).toBe('W');
 		});
 
-		test('should clear the selection when clear button is clicked', async ({ page }) => {
+		test('should reset the selection to the first option when clear button is clicked', async ({ page }) => {
 			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -135,7 +135,7 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(clearButton).toHaveCount(1);
 			await clearButton.click({ force: true });
 
-			await expect(input).toHaveValue('');
+			await expect(input).toHaveValue('North');
 		});
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
@@ -496,19 +496,25 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
 		});
 
-		test('reports null when the selection is cleared', async ({ page }) => {
+		test('resets to the first enabled option when the clear button is clicked', async ({ page }) => {
 			const component = page.locator(COMPONENT_NAME);
+			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 			await readEvents(page);
 			await page.locator('.kol-single-select__delete button').click();
 			await page.waitForChanges();
 			expect(await readEvents(page)).toEqual([
-				['input', null],
-				['change', null],
+				['input', 'a'],
+				['change', 'a'],
 			]);
-			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBeNull();
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
 			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
+
+			await page.locator('.kol-single-select__delete button').click();
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([]);
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
 		});
 	});
 });
