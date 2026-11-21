@@ -1,0 +1,1 @@
+import"./index-C4vaaCn9-PgsXsqM3.js";var e=(e,t)=>{var n;let r=(n=globalThis).KoliBriGlobals??(n.KoliBriGlobals={});return r[e]??(r[e]=t()),r[e]};export{e as t};

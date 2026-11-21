@@ -1,1 +1,0 @@
-import"./index-BiG8jeUf--8dwXYub.js";import{A as e,l as t}from"./props-from-config-CW8XD6dO--ZkAtJcW.js";var n=t(`placeholder`,void 0,e);export{n as t};
