@@ -72,9 +72,9 @@ import {
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
  *
- * Like `kol-input-radio` and `kol-select`, exactly one option is selected at a time. The reset
- * button restores the first enabled option, like `kol-select` shows it without a value; without a
- * value the field starts empty.
+ * Like `kol-input-radio` and `kol-select`, the field holds a single choice. The reset button
+ * restores the first enabled option, like `kol-select` shows it without a value; without a value
+ * the field starts empty.
  *
  * @slot - The label of the input field.
  */

@@ -38,10 +38,10 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
- * The **Select** component creates a dropdown list from which exactly one predefined option can be selected (several with `_multiple`).
+ * The **Select** component creates a dropdown list from which a predefined option can be selected (several with `_multiple`).
  *
- * In single mode, exactly one option is selected at a time, like `kol-input-radio` and
- * `kol-single-select`. Without a value, the first enabled option is selected.
+ * Like `kol-input-radio` and `kol-single-select`, exactly one option is selected at a time in
+ * single mode. Without a value, the first enabled option is selected.
  *
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
