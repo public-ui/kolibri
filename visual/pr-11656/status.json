@@ -1,0 +1,468 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "112 added – 0 of 112 approved, review pending",
+	"computedAt": "2026-11-21T14:55:07.345Z",
+	"pr": 11656,
+	"head": "0f4a8fff7cebcd05a3b72b2a14f5b4a8a87efa41",
+	"digest": "sha256:a9c2350b49c45a90f9f573e7ed99ec05fab3fca9d2456a4eb5165951c6e782a8",
+	"counts": {
+		"changes": 112,
+		"open": 112,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/input-switch-basic-noColumns--switch-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-switch-basic-noColumns--switch-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-switch-basic-noColumns--switch-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-switch-basic-noColumns--switch-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-switch-basic-noColumns--switch-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-switch-basic-noColumns--switch-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-switch-basic-noColumns--switch-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-switch-basic-noColumns--switch-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-pressed": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-unpressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-switch-basic-noColumns--switch-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-switch-basic-noColumns--switch-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-switch-basic-noColumns--switch-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-switch-basic-noColumns--switch-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-switch-basic-noColumns--switch-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-switch-basic-noColumns--switch-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-switch-basic-noColumns--switch-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-switch-basic-noColumns--switch-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-toggle-button-basic-noColumns--toggle-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-toggle-button-basic-noColumns--toggle-button-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-toggle-button-basic-noColumns--toggle-button-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-toggle-button-basic-noColumns--toggle-button-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-toggle-button-basic-noColumns--toggle-button-pressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-toggle-button-basic-noColumns--toggle-button-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-toggle-button-basic-noColumns--toggle-button-unpressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-switch-basic-noColumns--switch-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-switch-basic-noColumns--switch-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-switch-basic-noColumns--switch-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-switch-basic-noColumns--switch-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-switch-basic-noColumns--switch-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-switch-basic-noColumns--switch-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-switch-basic-noColumns--switch-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-switch-basic-noColumns--switch-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-toggle-button-basic-noColumns--toggle-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-toggle-button-basic-noColumns--toggle-button-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-toggle-button-basic-noColumns--toggle-button-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-toggle-button-basic-noColumns--toggle-button-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-toggle-button-basic-noColumns--toggle-button-pressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-toggle-button-basic-noColumns--toggle-button-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-toggle-button-basic-noColumns--toggle-button-unpressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-switch-basic-noColumns--switch-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-switch-basic-noColumns--switch-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-switch-basic-noColumns--switch-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-switch-basic-noColumns--switch-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-switch-basic-noColumns--switch-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-switch-basic-noColumns--switch-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-switch-basic-noColumns--switch-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-switch-basic-noColumns--switch-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-toggle-button-basic-noColumns--toggle-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-toggle-button-basic-noColumns--toggle-button-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-toggle-button-basic-noColumns--toggle-button-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-toggle-button-basic-noColumns--toggle-button-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-toggle-button-basic-noColumns--toggle-button-pressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-toggle-button-basic-noColumns--toggle-button-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-toggle-button-basic-noColumns--toggle-button-unpressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-switch-basic-noColumns--switch-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-switch-basic-noColumns--switch-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-switch-basic-noColumns--switch-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-switch-basic-noColumns--switch-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-switch-basic-noColumns--switch-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-switch-basic-noColumns--switch-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-switch-basic-noColumns--switch-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-switch-basic-noColumns--switch-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-toggle-button-basic-noColumns--toggle-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-toggle-button-basic-noColumns--toggle-button-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-toggle-button-basic-noColumns--toggle-button-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-toggle-button-basic-noColumns--toggle-button-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-toggle-button-basic-noColumns--toggle-button-pressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-toggle-button-basic-noColumns--toggle-button-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-toggle-button-basic-noColumns--toggle-button-unpressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-switch-basic-noColumns--switch-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-switch-basic-noColumns--switch-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-switch-basic-noColumns--switch-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-switch-basic-noColumns--switch-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-switch-basic-noColumns--switch-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-switch-basic-noColumns--switch-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-switch-basic-noColumns--switch-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-switch-basic-noColumns--switch-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-toggle-button-basic-noColumns--toggle-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-toggle-button-basic-noColumns--toggle-button-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-toggle-button-basic-noColumns--toggle-button-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-toggle-button-basic-noColumns--toggle-button-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-toggle-button-basic-noColumns--toggle-button-pressed": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-toggle-button-basic-noColumns--toggle-button-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-toggle-button-basic-noColumns--toggle-button-unpressed": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-switch-basic-noColumns--switch-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-switch-basic-noColumns--switch-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-switch-basic-noColumns--switch-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-switch-basic-noColumns--switch-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-switch-basic-noColumns--switch-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-switch-basic-noColumns--switch-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-switch-basic-noColumns--switch-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-switch-basic-noColumns--switch-unchecked": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-toggle-button-basic-noColumns--toggle-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-toggle-button-basic-noColumns--toggle-button-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-toggle-button-basic-noColumns--toggle-button-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-toggle-button-basic-noColumns--toggle-button-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-toggle-button-basic-noColumns--toggle-button-pressed": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-toggle-button-basic-noColumns--toggle-button-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-toggle-button-basic-noColumns--toggle-button-unpressed": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
