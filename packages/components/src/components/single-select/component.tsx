@@ -72,6 +72,10 @@ import {
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
  *
+ * Like `kol-input-radio` and `kol-select`, the field holds a single choice. The clear button
+ * clears a typed filter: the selection stays and all options show again. Without a value the
+ * field starts empty.
+ *
  * @slot - The label of the input field.
  */
 @Component({
@@ -109,7 +113,7 @@ export class KolSingleSelect
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
-	private readonly translateDeleteSelection = translate('kol-delete-selection');
+	private readonly translateClearFilter = translate('kol-clear-filter');
 
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 
@@ -473,10 +477,10 @@ export class KolSingleSelect
 		this.moveFocus(this.filteredOptions ? this.filteredOptions.length - 1 - this.focusedIndex : 0, -1);
 	}
 
-	/** Enter, NumpadEnter and Space: clear on the clear button, select the focused option, or open the listbox. */
+	/** Enter, NumpadEnter and Space: clear the filter on the clear button, select the focused option, or open the listbox. */
 	protected handleConfirmKey(event: KeyboardEvent): void {
 		if (this.clearButtonFocused) {
-			this.clearSelection();
+			this.clearFilter();
 			event.preventDefault();
 		} else if (this.isOpen) {
 			if (this.selectFocusedOption()) {
@@ -568,26 +572,27 @@ export class KolSingleSelect
 	}
 
 	/**
-	 * Sends `null` (#10841) as value of the `input` and `change` events and as form value, like
-	 * `selectOption` sends the option value, then opens the listbox.
+	 * Clears a typed filter: the input shows the label of the selected option again, all options are
+	 * listed, and the value stays untouched — a clear sends no event. The listbox opens.
 	 */
-	private clearSelection(): void {
+	private clearFilter(): void {
 		if (this.getRenderProp('disabled') === true) {
 			return;
 		}
 
-		const emptyValue = null;
 		this.focusedIndex = -1;
-		this._value = emptyValue;
-		this.inputValue = '';
+		this.updateInputValue(this._value);
 		this.filteredOptions = [...this.getRenderProp('options')];
-
-		const detail = { name: this.getRenderProp('name'), value: emptyValue };
-		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), emptyValue);
-		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
 
 		this.ctaRef.el?.focus();
 		this.isOpen = true;
+	}
+
+	/** Whether the input text differs from the label of the selected option, so the input holds a filter. */
+	private hasFilter(): boolean {
+		const selectedOption = this.getRenderProp('options')?.find((option) => option.value === this._value);
+		const selectedLabel = selectedOption ? String(selectedOption.label) : '';
+		return this.inputValue !== '' && this.inputValue !== selectedLabel;
 	}
 
 	/**
@@ -642,7 +647,7 @@ export class KolSingleSelect
 	};
 
 	private readonly handleClearButtonClick = (): void => {
-		this.clearSelection();
+		this.clearFilter();
 		this.ctaRef.el?.focus();
 		// Firefox sends no blur to the removed button.
 		this.clearButtonFocused = false;
@@ -768,12 +773,12 @@ export class KolSingleSelect
 					>
 						<ListboxGroupFC block="kol-single-select">
 							<InputFC {...this.getInputProps()} />
-							{this.inputValue && this.getRenderProp('hasClearButton') && (
+							{this.hasFilter() && this.getRenderProp('hasClearButton') && (
 								<ButtonFC
 									{...this.clearButton.getFcProps(
 										{
 											_icons: 'kolicon-cross',
-											_label: this.translateDeleteSelection,
+											_label: this.translateClearFilter,
 											_hideLabel: true,
 											_variant: 'ghost',
 											_disabled: isDisabled,

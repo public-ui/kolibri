@@ -46,7 +46,11 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { submitFormOnEnter } from '../form/controller';
 
 /**
- * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Only a single value can be selected at a time. Selected radio elements are typically represented by a filled, visually highlighted circle.
+ * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Selected radio elements are typically represented by a filled, visually highlighted circle.
+ *
+ * Like `kol-select` and `kol-single-select`, exactly one option is selected at a time. The group
+ * starts without a selection, though: no option is preselected, so the field can report no choice
+ * at all.
  *
  * @slot - The label of the input field.
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot

@@ -543,3 +543,12 @@ import { setTagNameTransformer } from '@public-ui/vue';
 setTagNameTransformer((tagName) => `${tagName}-app`);
 await register(DEFAULT, defineCustomElements);
 ```
+
+## Single-select clear button clears the filter instead of the selection
+
+The clear button of `kol-single-select` (X) no longer removes the selection: it clears a typed
+filter, restores the label of the selected option and lists all options again. The value, the
+`input` and `change` events and the form value stay untouched, where they reported `null` before —
+a clear sends no event. The button shows only while the input text differs from the label of the
+selected option, and its accessible name changed from "Auswahl entfernen" (delete selection) to
+"Filter löschen" (clear filter).

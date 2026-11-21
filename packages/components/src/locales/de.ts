@@ -9,6 +9,7 @@ export default {
 	'character-limit-exceeded': 'Es sind {{over}} Zeichen zu viel.',
 	'character-limit-hint': 'Es können bis zu {{limit}} Zeichen eingegeben werden.',
 	'character-limit-remaining': 'Es sind noch {{remaining}} Zeichen verfügbar.',
+	'clear-filter': 'Filter löschen',
 	'clear-search': 'Suche löschen',
 	close: 'Schließen',
 	'close-alert': 'Benachrichtigung schließen',
