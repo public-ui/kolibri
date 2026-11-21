@@ -281,6 +281,14 @@ ROUTES.set('input-range/basic?noColumns', {
 		},
 	},
 });
+ROUTES.set('input-switch/basic?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+	},
+});
 ROUTES.set('input-text/basic?noColumns');
 ROUTES.set('input-text/message-types?noColumns', {
 	snapshot: {
@@ -373,6 +381,14 @@ ROUTES.set('input-text/variant?noColumns', {
 });
 ROUTES.set('input-text/clear-button?noColumns', {
 	snapshot: {},
+});
+ROUTES.set('input-toggle-button/basic?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+	},
 });
 ROUTES.set('kolibri/basic', {
 	snapshot: {

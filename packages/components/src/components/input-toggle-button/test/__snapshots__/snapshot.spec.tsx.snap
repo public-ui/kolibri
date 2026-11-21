@@ -1,0 +1,2145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-input-toggle-button should render with _checked=true _disabled=true _label="Label" _name="field" 1`] = `
+<kol-input-toggle-button _checked="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--disabled kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--disabled kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled visually-hidden" disabled="" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _checked=true _icons={"checked":"codicon codicon-check"} _label="Label" _name="field" 1`] = `
+<kol-input-toggle-button _checked="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="codicon codicon-check kol-checkbox__icon kol-icon kol-icon__icon" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _checked=true _label="Label" _name="field" _value="yes" 1`] = `
+<kol-input-toggle-button _checked="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="yes">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _checked=true _label="Label" _name="field" _value={"id":1} 1`] = `
+<kol-input-toggle-button _checked="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="[object Object]">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _hideLabel=true _label="Label" _labelAlign="left" _name="field" 1`] = `
+<kol-input-toggle-button>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--hide-label kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--hide-label kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-toggle-button-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input aria-label="Label" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-toggle-button-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Label
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _accessKey="V" 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _alert=true 1`] = `
+<kol-input-toggle-button _alert="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _disabled=true 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--disabled kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--disabled kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--disabled visually-hidden" disabled="" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _hideLabel=true 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--hide-label kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--hide-label kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input aria-label="Label" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-toggle-button-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Label
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-toggle-button-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _hint="Hint" 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input aria-describedby="input-toggle-button-hint-nonce" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <span class="kol-form-field__hint" id="input-toggle-button-hint-nonce">
+        Hint
+      </span>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
+              </div>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext" _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input aria-describedby="input-toggle-button-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-toggle-button-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext" _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input aria-describedby="input-toggle-button-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="input-toggle-button-msg-nonce" role="alert">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _readOnly=true 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext" _readonly="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _shortKey="S" 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _touched=true 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext" _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--touched kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--touched kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--touched visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _variant="custom" 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext" _variant="custom">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _accessKey="V" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input accesskey="V" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _alert=true 1`] = `
+<kol-input-toggle-button _alert="" _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _disabled=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--disabled kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--disabled kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled visually-hidden" disabled="" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _hideLabel=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--hide-label kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--hide-label kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-label="Label" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-toggle-button-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Label
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-toggle-button-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _hint="Hint" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-describedby="input-toggle-button-hint-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <span class="kol-form-field__hint" id="input-toggle-button-hint-nonce">
+        Hint
+      </span>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
+              </div>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _accessKey="V" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  V
+                </kbd>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input accesskey="V" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _alert=true 1`] = `
+<kol-input-toggle-button _alert="" _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _disabled=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--disabled kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--disabled kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--disabled kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--disabled visually-hidden" disabled="" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _hideLabel=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--hide-label kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--hide-label kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" for="input-toggle-button-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-label="Label" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-toggle-button-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Label
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _hint="Hint" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-describedby="input-toggle-button-hint-nonce" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+      <span class="kol-form-field__hint" id="input-toggle-button-hint-nonce">
+        Hint
+      </span>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
+              </div>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--error kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-describedby="input-toggle-button-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-toggle-button-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--error kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-describedby="input-toggle-button-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="input-toggle-button-msg-nonce" role="alert">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _readOnly=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _readonly="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _shortKey="S" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _touched=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--touched kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--touched kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--touched visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" _variant="custom" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _variant="custom">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-describedby="input-toggle-button-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-toggle-button-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--error kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-describedby="input-toggle-button-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--error kol-input--touched visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="input-toggle-button-msg-nonce" role="alert">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _readOnly=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _readonly="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _shortKey="S" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span kol-span--has-badge">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+                <kbd aria-hidden="true" class="badge-text-hint">
+                  S
+                </kbd>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _touched=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _touched="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--touched kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-field-control--touched kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--touched kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input kol-input--touched visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _variant="custom" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext" _variant="custom">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" _name="field" _required=true 1`] = `
+<kol-input-toggle-button>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--required kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-field-control--required kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--required kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--required visually-hidden" id="input-toggle-button-nonce" name="field" required="" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label="Label" 1`] = `
+<kol-input-toggle-button>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false 1`] = `
+<kol-input-toggle-button _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  <span lang="en">
+                    partly english
+                  </span>
+                  <span>
+                    Label
+                  </span>
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true _labelAlign="left" 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  <span lang="en">
+                    partly english
+                  </span>
+                  <span>
+                    Label
+                  </span>
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
+
+exports[`kol-input-toggle-button should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=true 1`] = `
+<kol-input-toggle-button _checked="" _placeholder="Hier steht ein Platzhaltertext">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-button">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-button">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-button">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input visually-hidden" id="input-toggle-button-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" for="input-toggle-button-nonce" id="input-toggle-button-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  <span lang="en">
+                    partly english
+                  </span>
+                  <span>
+                    Label
+                  </span>
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-toggle-button>
+`;
