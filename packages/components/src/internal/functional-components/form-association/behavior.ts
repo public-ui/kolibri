@@ -20,7 +20,11 @@ const NODE_TYPE_DOCUMENT_FRAGMENT = 11;
  * Hosts that get a hidden form element with `reflectInputValues`. `kol-button` is not one of them: a
  * button contributes nothing to the form data.
  */
-const ASSOCIATED_TAG_NAMES = new Set([
+/**
+ * Every `kol-input-*` component reflects its value into a hidden form element. The list is pinned
+ * by a spec so a newly added input component cannot silently miss it.
+ */
+export const ASSOCIATED_TAG_NAMES = new Set([
 	'KOL-COMBOBOX',
 	'KOL-INPUT-CHECKBOX',
 	'KOL-INPUT-COLOR',
