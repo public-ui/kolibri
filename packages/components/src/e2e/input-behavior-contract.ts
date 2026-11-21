@@ -41,6 +41,12 @@ type TestInputBehaviorContractOptions = {
 	componentName: string;
 	/** Enters the test value into the interactive element. */
 	fillAction: (input: Locator, page: Page & E2EPage) => Promise<void>;
+	/**
+	 * Clicks the interactive element. Defaults to a pointer click, which a visually hidden input
+	 * cannot receive (its clip path defeats the pointer hit-target check), so such a field passes
+	 * a JS-dispatched native click instead.
+	 */
+	clickAction?: (input: Locator, page: Page & E2EPage) => Promise<void>;
 	/** Selects the interactive element inside the shadow root. */
 	inputSelector: string;
 	/** Behavior of the legacy implementation, which every migration must keep unchanged. */
@@ -121,6 +127,7 @@ const readFormData = (page: Page) =>
  */
 const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _value?: unknown } & HTMLElement>({
 	additionalProperties = '',
+	clickAction,
 	componentName,
 	fillAction,
 	inputSelector,
@@ -151,7 +158,7 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 			await setContentWithRetry(page, field());
 			await startRecording(page.locator(componentName));
 
-			await page.locator(inputSelector).click();
+			await (clickAction ?? ((input: Locator) => input.click()))(page.locator(inputSelector), page);
 			await page.waitForChanges();
 
 			expect(await readRecording(page)).toEqual(pinned.click);

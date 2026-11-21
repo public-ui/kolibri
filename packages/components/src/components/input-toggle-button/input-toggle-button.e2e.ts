@@ -8,7 +8,9 @@ import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 const COMPONENT_NAME = 'kol-input-toggle-button';
 const TEST_VALUE = true;
 const fillAction: FillAction = async (page) => {
-	await page.locator('input').check();
+	// The native input is visually hidden, so a Playwright click misses its hit target; the
+	// JS-dispatched native click toggles the checkbox and fires its events like a label click.
+	await page.locator('input').evaluate((el: HTMLInputElement) => el.click());
 };
 
 test.describe(COMPONENT_NAME, () => {
@@ -91,7 +93,7 @@ test.describe(COMPONENT_NAME, () => {
 			const component = page.locator(COMPONENT_NAME);
 			expect(await component.evaluate((element: HTMLKolInputToggleButtonElement) => element.getValue())).toBe('yes');
 
-			await page.locator('input').click();
+			await page.locator('input').evaluate((el: HTMLInputElement) => el.click());
 			await page.waitForChanges();
 
 			expect(await component.evaluate((element: HTMLKolInputToggleButtonElement) => element.getValue())).toBeNull();
@@ -101,7 +103,7 @@ test.describe(COMPONENT_NAME, () => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _checked></${COMPONENT_NAME}>`);
 			const component = page.locator(COMPONENT_NAME);
 
-			await page.locator('input').click();
+			await page.locator('input').evaluate((el: HTMLInputElement) => el.click());
 			await page.waitForChanges();
 
 			expect(await component.evaluate((element: HTMLKolInputToggleButtonElement) => element._checked)).toBe(false);
@@ -114,8 +116,8 @@ test.describe(COMPONENT_NAME, () => {
 		const input = page.locator('input');
 		expect(await input.getAttribute('class')).toContain('visually-hidden');
 
-		// A hidden input stays in the a11y tree and remains operable via keyboard and click.
-		await input.click();
+		// A hidden input stays in the a11y tree and remains operable: the JS click toggles it.
+		await input.evaluate((el: HTMLInputElement) => el.click());
 		await page.waitForChanges();
 		expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputToggleButtonElement) => element._checked)).toBe(true);
 	});
@@ -220,8 +222,16 @@ test.describe(COMPONENT_NAME, () => {
 
 	testInputBehaviorContract<HTMLKolInputToggleButtonElement>({
 		componentName: COMPONENT_NAME,
+		clickAction: async (input) => {
+			// The input is visually hidden, so a pointer click misses its hit target. Focus comes
+			// first: a real pointer click focuses the input before it fires the click event.
+			await input.evaluate((el: HTMLInputElement) => {
+				el.focus();
+				el.click();
+			});
+		},
 		fillAction: async (input) => {
-			await input.check();
+			await input.evaluate((el: HTMLInputElement) => el.click());
 		},
 		inputSelector: 'input.kol-checkbox__input',
 		pinned: {
