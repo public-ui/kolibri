@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11656,
-	"head": "0f4a8fff7cebcd05a3b72b2a14f5b4a8a87efa41",
+	"head": "61ef1151be7c339d0e913c6ac7be06511cc968c5",
 	"repository": "public-ui/kolibri",
-	"runId": 44913629335,
-	"generatedAt": "2026-11-21T14:55:06.512Z",
-	"digest": "sha256:a9c2350b49c45a90f9f573e7ed99ec05fab3fca9d2456a4eb5165951c6e782a8",
+	"runId": 44928853794,
+	"generatedAt": "2026-11-21T17:43:41.847Z",
+	"digest": "sha256:11759dda3703af4001aa91739fc484b62b063520dda1b42c8a82cd0c1dcbfaa2",
 	"baseline": {
 		"sha": "7796ba85db5efabe32434c7954f7fc61863c3684",
 		"ref": "release/4",
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:c1c5ed876f8b3d20d140fb534164e56349ccf8f81abbb715b3dee9a1310910d8",
+			"digest": "sha256:b79395964f608088372992f34fbe96b43ac90211dc2846fb13daeddccb69a9da",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1519,56 +1519,56 @@
 					"name": "input-switch-basic-noColumns--switch-checked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:752ba050ea2c593d502e1de170f8e9454fcc1fb20086be73a6874fb983d58e06",
+					"hash": "sha256:cddb1b9daea0236d6dbb726ae6ec386b6cd5c8d6f57e60e5c25559321879ef19",
 					"actual": "test-tag-name-transformer/input-switch-basic-noColumns--switch-checked.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-checked-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:eb3a803dfedc2d70d8bb7f8896b8d2878252b4e53905eda0edb2d181ed2b46e3",
+					"hash": "sha256:5a63ece8b7288d462d80698da276be391ee92a97ceda4277e422ed49b9f90042",
 					"actual": "test-tag-name-transformer/input-switch-basic-noColumns--switch-checked-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:13f0ec4493345360ec3bf2e05e6dd7ae51a1c0e6647595a98a0fbf0d1a76b540",
+					"hash": "sha256:e160b475618559bc2ff36d162f9d2d8fa976edc595d336be376ecaba28451f3b",
 					"actual": "test-tag-name-transformer/input-switch-basic-noColumns--switch-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-error",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:4fff408ac230f4329f6d5ca618f06b81c394879b9d088101105ee1c53c0f9ded",
+					"hash": "sha256:b6f57fa785f702d1223835121d821f229d0b6b6f0744d7d1cc060d3eb7c07de6",
 					"actual": "test-tag-name-transformer/input-switch-basic-noColumns--switch-error.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-info-popover",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:6009972c8ea69216744da2bd48da92f64c53f248435d3d494523aea46333c799",
+					"hash": "sha256:05059b0811980cfd27c26d0badad658b5b412dec47649cfccd8a6df1b684bbe7",
 					"actual": "test-tag-name-transformer/input-switch-basic-noColumns--switch-info-popover.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-long-label",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:290b882d3dce8a4790f5c3cd92b0d1f3f371520a2982bd96535a2b9a2fe3dce4",
+					"hash": "sha256:ac77e7ef96675cb7fd4c9a10bdc73c3c5396b1d42af78103f32ec376da909ea2",
 					"actual": "test-tag-name-transformer/input-switch-basic-noColumns--switch-long-label.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-short-key",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:9b6c95c60873326fad344f40af512e84fb8b5a4192336f2a9abdbd16bc353f22",
+					"hash": "sha256:ea23d31c177015daeceb0ed12d0e9c54e3db7a24e58284c3b71e6c9a26cbdd5e",
 					"actual": "test-tag-name-transformer/input-switch-basic-noColumns--switch-short-key.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-unchecked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:7a2c88ad401d286fabe74e58337e451843f570030d23f2cd2e9d2bf9bc152554",
+					"hash": "sha256:6efc1d5a94abe19e228f72333cf398d2ff84f59c7ceb157264447e6d86ba5303",
 					"actual": "test-tag-name-transformer/input-switch-basic-noColumns--switch-unchecked.actual.png"
 				},
 				{
@@ -1851,56 +1851,56 @@
 					"name": "input-toggle-button-basic-noColumns--toggle-button-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:f50c2ac7a9f570245095cf766148859408663c19a2e36b359db92332b707adbc",
+					"hash": "sha256:f80dabd042770ad1d42d91eb9677e850bb27c679f93b2af5fe842bebcf5e87f1",
 					"actual": "test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-error",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:5401f182eedc57373ed2a8d448de5442c394637c8c1b52bea8392fef8350cc9e",
+					"hash": "sha256:d503584e67190bb8f0a541440b593d10dd1424f7d0127379442ec94161efd5ea",
 					"actual": "test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-error.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-info-popover",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:30256b194fdbb560a32292c5b855b391db5885bc99f0f4be0e9c689e5e800064",
+					"hash": "sha256:352d2156d6c353eded22b95a86623c2a6ff6233e44c48f2c76060e6313e0d3e6",
 					"actual": "test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-info-popover.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-long-label",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:047f70a777301b6ac46f8c83bfc78c8845a5cbeeaecd898c38030298b068c2aa",
+					"hash": "sha256:f7dd335efccc276ad0c2319a178220fd6ae97ff73f6c9d9671432089e1f36a50",
 					"actual": "test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-long-label.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:cc92de870e3a57f55adfc95268116512ced5cef6ecc7f2ab1ce0e49f6bceec83",
+					"hash": "sha256:eec4a3d78ba6a6791b18d67f50ad964682ce8821fb782d68017b33647e15ad26",
 					"actual": "test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-pressed.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:e93951737e88aa858edef2f48a4b5ff3143c69e97f92f4f329633f73963c9222",
+					"hash": "sha256:453680dc1d713805bcba9caead6a3798e6b7ee6165e2084bdc508ff82f8d7d56",
 					"actual": "test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-short-key",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:63d27850bf576910539b0da6be100fe59a124c5df12680899a95e970f0df071f",
+					"hash": "sha256:94ce7a6cb5dde2a3395de3798bce89e8dc3faed8cd3642ce63e7ab9573439799",
 					"actual": "test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-short-key.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-unpressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:e147258ebda4c466d58481ea2667c9e8eb988f716c699422fdcc986941512c42",
+					"hash": "sha256:f401fa6b1d581115d78a9a75f3a8ab05ce0826f96a5aca654a2b2959219bf64c",
 					"actual": "test-tag-name-transformer/input-toggle-button-basic-noColumns--toggle-button-unpressed.actual.png"
 				},
 				{
@@ -2844,7 +2844,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:23e9aaa5d9d96e8b33f7264e2912fa7eae296865f8ef01d2e2874da2a5a2b1a5",
+			"digest": "sha256:a66fbb23abbc74ed7cf1e8afd091363be4565426221f61c7ecc8176a283cdd5b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4314,56 +4314,56 @@
 					"name": "input-switch-basic-noColumns--switch-checked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:6b83f5c990c3c397e753a86a173c9771f3923bdb4d9371f69e25e29598e992c3",
+					"hash": "sha256:c03b34230c3c4150ef99e8ec1865b5b06c51d01c3e3cd9c2b2d50032d7098d58",
 					"actual": "theme-bwst/input-switch-basic-noColumns--switch-checked.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-checked-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:e88e39c38390dae666595038cf134ea4b8e2eeb7daf80341f9a683e8b74d326f",
+					"hash": "sha256:9e4922942f2336ab35ed3237fcc1a166f890e9a0d6656cda3613d7405ff4668b",
 					"actual": "theme-bwst/input-switch-basic-noColumns--switch-checked-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:124d1db33b791325bd58358b642824eafccf5d2978001ef45bb3c055fb81aeca",
+					"hash": "sha256:a9657d60684f7ab614ae31ac9a3ef5731167e4cd9b77f279fced83262d7e8848",
 					"actual": "theme-bwst/input-switch-basic-noColumns--switch-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-error",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:42f1a1db15892076711b1f3c63803d962691542ae8327ddfe837818e13656ce2",
+					"hash": "sha256:3e1a443901d578171ce53eea2347b7d00001607964c1898785c68f122080f3cc",
 					"actual": "theme-bwst/input-switch-basic-noColumns--switch-error.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-info-popover",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:a1d97dbd63225667c4b12f6e348bdf142bbee434de621dddf2954b133a12d24a",
+					"hash": "sha256:7043a0a15a7915291aac19f0809deb9f4af372cb713244f50787ef2533ca133a",
 					"actual": "theme-bwst/input-switch-basic-noColumns--switch-info-popover.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-long-label",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:4be091652b804ca1adc32de341ecc1eae107740546f40902070d38089c2e623c",
+					"hash": "sha256:14f4e5e3eadfe2bf650e5467da169c649130dc7b3dd0194bd02e6884113396cf",
 					"actual": "theme-bwst/input-switch-basic-noColumns--switch-long-label.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-short-key",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:94a75daa90dcbcea0be27d66410da19604a40c282de033c25c96732300800751",
+					"hash": "sha256:15c747dedeeba9326867483a79b972520caf664616355b69c8299b9733980814",
 					"actual": "theme-bwst/input-switch-basic-noColumns--switch-short-key.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-unchecked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:eeb7e2980051c56c34a7de24ef190ed2a1d706073989abeb3480f6bc1d072d2c",
+					"hash": "sha256:87ddd065e34b96fad44c08a1435fe045d349c246e0fc69ea877091114f5538f2",
 					"actual": "theme-bwst/input-switch-basic-noColumns--switch-unchecked.actual.png"
 				},
 				{
@@ -4646,56 +4646,56 @@
 					"name": "input-toggle-button-basic-noColumns--toggle-button-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:bc88c427ad7ee2e09bf09080a5073c64fd100a84a71771505cf7c1f68ef44b07",
+					"hash": "sha256:ae105e1f7781d94e4d927866b35afe480d59cc0a813201c1ddcde4a2179286b0",
 					"actual": "theme-bwst/input-toggle-button-basic-noColumns--toggle-button-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-error",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:8fec639a32836089f2a634cfa85282094b2ec1373c8ce447002dcbdd56f573ba",
+					"hash": "sha256:391d24be18852dc5d55eda20660c80b5f39de308bf344e770b926e6c7a2e4497",
 					"actual": "theme-bwst/input-toggle-button-basic-noColumns--toggle-button-error.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-info-popover",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:ad098dc79c11dbe34637df692cfb2cdc037a91d2c662a892c7ffe8c63adb5396",
+					"hash": "sha256:aab97d60b2a38ec8b01de634eb8981907dfd72cb62ca94eac7a94a151e673609",
 					"actual": "theme-bwst/input-toggle-button-basic-noColumns--toggle-button-info-popover.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-long-label",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:e537b7364db141fccc0ec6e80a0a11798ca34d0c2a42d8a31518ed5787897b60",
+					"hash": "sha256:a0e5756e203cc75195511bf24dfe9857fde84ffd0580093be952c7361e2646a8",
 					"actual": "theme-bwst/input-toggle-button-basic-noColumns--toggle-button-long-label.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:ead49b7d56c0efe256190496aeac96546509a502c05d44b63f132c29d4517923",
+					"hash": "sha256:fa850fd9d41a0327b5ba55f28ff5c152d991db15335b8419c550cafaea9f1548",
 					"actual": "theme-bwst/input-toggle-button-basic-noColumns--toggle-button-pressed.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:4d26a57642c1416febd648917c904784182593ccaf1629e6384f8fda36c2fa9a",
+					"hash": "sha256:2b038a54c9bb1c017eec84099d082d5b508728cf2a547ac31f05d0fd8a038282",
 					"actual": "theme-bwst/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-short-key",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:3bb7719df6faa9ef0831e65f8d1b4c0fcb857aaca24589cb424ab6d7077c3a46",
+					"hash": "sha256:9c1fbcbbab2e729791b599b167efcb5fd473b3a46a5586c5e68326ced6b5d2b9",
 					"actual": "theme-bwst/input-toggle-button-basic-noColumns--toggle-button-short-key.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-unpressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:2c01c7ace78a9eca7df70a81ffbd07e51fa9f859d021d3b5a32065c0e1a291f7",
+					"hash": "sha256:d3734c0b1bfafccec42ae411e9c30a35aa670a756d85574a5d09be71ef8cd75a",
 					"actual": "theme-bwst/input-toggle-button-basic-noColumns--toggle-button-unpressed.actual.png"
 				},
 				{
@@ -5639,7 +5639,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:c1c5ed876f8b3d20d140fb534164e56349ccf8f81abbb715b3dee9a1310910d8",
+			"digest": "sha256:b79395964f608088372992f34fbe96b43ac90211dc2846fb13daeddccb69a9da",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7109,56 +7109,56 @@
 					"name": "input-switch-basic-noColumns--switch-checked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:752ba050ea2c593d502e1de170f8e9454fcc1fb20086be73a6874fb983d58e06",
+					"hash": "sha256:cddb1b9daea0236d6dbb726ae6ec386b6cd5c8d6f57e60e5c25559321879ef19",
 					"actual": "theme-default/input-switch-basic-noColumns--switch-checked.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-checked-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:eb3a803dfedc2d70d8bb7f8896b8d2878252b4e53905eda0edb2d181ed2b46e3",
+					"hash": "sha256:5a63ece8b7288d462d80698da276be391ee92a97ceda4277e422ed49b9f90042",
 					"actual": "theme-default/input-switch-basic-noColumns--switch-checked-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:13f0ec4493345360ec3bf2e05e6dd7ae51a1c0e6647595a98a0fbf0d1a76b540",
+					"hash": "sha256:e160b475618559bc2ff36d162f9d2d8fa976edc595d336be376ecaba28451f3b",
 					"actual": "theme-default/input-switch-basic-noColumns--switch-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-error",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:4fff408ac230f4329f6d5ca618f06b81c394879b9d088101105ee1c53c0f9ded",
+					"hash": "sha256:b6f57fa785f702d1223835121d821f229d0b6b6f0744d7d1cc060d3eb7c07de6",
 					"actual": "theme-default/input-switch-basic-noColumns--switch-error.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-info-popover",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:6009972c8ea69216744da2bd48da92f64c53f248435d3d494523aea46333c799",
+					"hash": "sha256:05059b0811980cfd27c26d0badad658b5b412dec47649cfccd8a6df1b684bbe7",
 					"actual": "theme-default/input-switch-basic-noColumns--switch-info-popover.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-long-label",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:290b882d3dce8a4790f5c3cd92b0d1f3f371520a2982bd96535a2b9a2fe3dce4",
+					"hash": "sha256:ac77e7ef96675cb7fd4c9a10bdc73c3c5396b1d42af78103f32ec376da909ea2",
 					"actual": "theme-default/input-switch-basic-noColumns--switch-long-label.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-short-key",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:9b6c95c60873326fad344f40af512e84fb8b5a4192336f2a9abdbd16bc353f22",
+					"hash": "sha256:ea23d31c177015daeceb0ed12d0e9c54e3db7a24e58284c3b71e6c9a26cbdd5e",
 					"actual": "theme-default/input-switch-basic-noColumns--switch-short-key.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-unchecked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:7a2c88ad401d286fabe74e58337e451843f570030d23f2cd2e9d2bf9bc152554",
+					"hash": "sha256:6efc1d5a94abe19e228f72333cf398d2ff84f59c7ceb157264447e6d86ba5303",
 					"actual": "theme-default/input-switch-basic-noColumns--switch-unchecked.actual.png"
 				},
 				{
@@ -7441,56 +7441,56 @@
 					"name": "input-toggle-button-basic-noColumns--toggle-button-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:f50c2ac7a9f570245095cf766148859408663c19a2e36b359db92332b707adbc",
+					"hash": "sha256:f80dabd042770ad1d42d91eb9677e850bb27c679f93b2af5fe842bebcf5e87f1",
 					"actual": "theme-default/input-toggle-button-basic-noColumns--toggle-button-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-error",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:5401f182eedc57373ed2a8d448de5442c394637c8c1b52bea8392fef8350cc9e",
+					"hash": "sha256:d503584e67190bb8f0a541440b593d10dd1424f7d0127379442ec94161efd5ea",
 					"actual": "theme-default/input-toggle-button-basic-noColumns--toggle-button-error.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-info-popover",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:30256b194fdbb560a32292c5b855b391db5885bc99f0f4be0e9c689e5e800064",
+					"hash": "sha256:352d2156d6c353eded22b95a86623c2a6ff6233e44c48f2c76060e6313e0d3e6",
 					"actual": "theme-default/input-toggle-button-basic-noColumns--toggle-button-info-popover.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-long-label",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:047f70a777301b6ac46f8c83bfc78c8845a5cbeeaecd898c38030298b068c2aa",
+					"hash": "sha256:f7dd335efccc276ad0c2319a178220fd6ae97ff73f6c9d9671432089e1f36a50",
 					"actual": "theme-default/input-toggle-button-basic-noColumns--toggle-button-long-label.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:cc92de870e3a57f55adfc95268116512ced5cef6ecc7f2ab1ce0e49f6bceec83",
+					"hash": "sha256:eec4a3d78ba6a6791b18d67f50ad964682ce8821fb782d68017b33647e15ad26",
 					"actual": "theme-default/input-toggle-button-basic-noColumns--toggle-button-pressed.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:e93951737e88aa858edef2f48a4b5ff3143c69e97f92f4f329633f73963c9222",
+					"hash": "sha256:453680dc1d713805bcba9caead6a3798e6b7ee6165e2084bdc508ff82f8d7d56",
 					"actual": "theme-default/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-short-key",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:63d27850bf576910539b0da6be100fe59a124c5df12680899a95e970f0df071f",
+					"hash": "sha256:94ce7a6cb5dde2a3395de3798bce89e8dc3faed8cd3642ce63e7ab9573439799",
 					"actual": "theme-default/input-toggle-button-basic-noColumns--toggle-button-short-key.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-unpressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:e147258ebda4c466d58481ea2667c9e8eb988f716c699422fdcc986941512c42",
+					"hash": "sha256:f401fa6b1d581115d78a9a75f3a8ab05ce0826f96a5aca654a2b2959219bf64c",
 					"actual": "theme-default/input-toggle-button-basic-noColumns--toggle-button-unpressed.actual.png"
 				},
 				{
@@ -8434,7 +8434,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a64af7341ab5abc5a397bb0790a09013164a6af2bd2f9299f97eddb6c064c8b8",
+			"digest": "sha256:17a2212482f01465d24f87f91d4345a48d35b51e2bdff2273a6833decce5050a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9904,56 +9904,56 @@
 					"name": "input-switch-basic-noColumns--switch-checked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:464bd375988e7b3fb2e642f6dab5ab9b9d04de5b14ef7b594bb37c571a939334",
+					"hash": "sha256:99e0e54563e1f859a99a0993b91bb657e5bfc45f839799e7e02f21a91ebecd41",
 					"actual": "theme-desy/input-switch-basic-noColumns--switch-checked.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-checked-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:fac8d6d19e4e35d2c9d8cdd56e50db5befd183d58fa9a8687003d9c93c7c8119",
+					"hash": "sha256:39e110ab83b15775f42bfb4323ab910bde39c8b322ba242fc2b06efa0af24de6",
 					"actual": "theme-desy/input-switch-basic-noColumns--switch-checked-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:ee9fdfa9107243e210070a602125c2205d3af91f15e181bbbbe19f63f21657b6",
+					"hash": "sha256:c9324f579e6475e2ed8d351e9349ca0ab5210ca70725e105c56d5f8ae039a7d6",
 					"actual": "theme-desy/input-switch-basic-noColumns--switch-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-error",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:f5de3e0ed00113488fd8837bc2966852e968dc8c2312d539c847a21a0f195072",
+					"hash": "sha256:1ebf79e4bcf9640052000c08cecf4230dae1a916e15bbf592a49f37af42e4c1c",
 					"actual": "theme-desy/input-switch-basic-noColumns--switch-error.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-info-popover",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:99b2749765776fed31612fe63e8057e136424469837376deb9d082e20dfd01eb",
+					"hash": "sha256:c09511740d824d670770453360bb508d220f0bf41290d676fe3e5fb43d7b6229",
 					"actual": "theme-desy/input-switch-basic-noColumns--switch-info-popover.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-long-label",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:9ac5be2077b37d7df60d90df6c0ffd673d2740cf08c12dec90b0d22f522e4085",
+					"hash": "sha256:22927751bd94b423b3c34a0a7fba7ca61962add1831d23749769cbcab0c4fec7",
 					"actual": "theme-desy/input-switch-basic-noColumns--switch-long-label.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-short-key",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:f9a6f879c5cdef67c4b7459c2af5bded6ef7c58c5aad933e757a4efb9da377d1",
+					"hash": "sha256:42eef968480f679d052d84bef3e6b62950fa41229b6b980babd860a0bbee67bf",
 					"actual": "theme-desy/input-switch-basic-noColumns--switch-short-key.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-unchecked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:9ecbe4e83965d498095c06e54b781261f40210023f96e8e0e570c46a8068d068",
+					"hash": "sha256:9468076712d47be9759ca95e46555d9d9bd680dc236c692fdf2256847a1dbed6",
 					"actual": "theme-desy/input-switch-basic-noColumns--switch-unchecked.actual.png"
 				},
 				{
@@ -10236,56 +10236,56 @@
 					"name": "input-toggle-button-basic-noColumns--toggle-button-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:ff7add388441be62e9156ff07503b8dc67a8204c8c5b8f3839c1269f9135f413",
+					"hash": "sha256:400c61049e00c22a5236ce267629b8193aa507777e39ddf89ee9c71a18c8e1fb",
 					"actual": "theme-desy/input-toggle-button-basic-noColumns--toggle-button-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-error",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:62c61b26b50c3b780c84673bb9291a5bc914d99684b488160688a2691a2306d5",
+					"hash": "sha256:82d6e7be945cb911454f32f6b71a5863ccffc59312bef78d078b2eaa766b9e0a",
 					"actual": "theme-desy/input-toggle-button-basic-noColumns--toggle-button-error.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-info-popover",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:a27483ec254a6b971e274f3265bb6945a514e7ac5f86ca0bb4c4640ad037e5b3",
+					"hash": "sha256:cc0fcf83c64bcffc1895b241895fec4d3cd330aa54615edd93ab3d2405f28378",
 					"actual": "theme-desy/input-toggle-button-basic-noColumns--toggle-button-info-popover.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-long-label",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:bc5724640807b0903d54c57bc270f5ddabd23ffd71a20528977695527f6de84f",
+					"hash": "sha256:1602e598640a64a6ec3ea1c27ee5e9f369b50312327b7cd0357f291e058ec5f1",
 					"actual": "theme-desy/input-toggle-button-basic-noColumns--toggle-button-long-label.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:6a8d14bca1675aad054653a66b20e12913a5931201a6c82acf097ecd2d6d6ec7",
+					"hash": "sha256:77a46f8e46844a122aac3e49a86a01638b9e8242db3cbda1887545370f6030ee",
 					"actual": "theme-desy/input-toggle-button-basic-noColumns--toggle-button-pressed.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:8a47430f50b4028fac0397d59619605a11af1af00ea911c21f3963171b929e79",
+					"hash": "sha256:7b7d29cc2dfc1cf4d6771a3a5aacd6a2951128d707fe9accbcbc4cc2bfcce84a",
 					"actual": "theme-desy/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-short-key",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:83558be79b6579e9fc031ca00c70deadd8b164da9275131522808b042b2e8bb0",
+					"hash": "sha256:bbee022fb835c8ad17cd6698b44c4be396d356d14ab68989be62ca778f0f8e72",
 					"actual": "theme-desy/input-toggle-button-basic-noColumns--toggle-button-short-key.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-unpressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:0aa73836c016e563d4f2cd3fdf5dcafe51ec123729c1d33f5af970a268b41636",
+					"hash": "sha256:b6ed80ad7b32095b0c2980e3e109b6403f34bcc41ff46e84af7b05394687abc0",
 					"actual": "theme-desy/input-toggle-button-basic-noColumns--toggle-button-unpressed.actual.png"
 				},
 				{
@@ -11229,7 +11229,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:036c89fa2d76bfde7fddf81c6ff2a10a8f84714fa4938792c8fc34ae4c071d07",
+			"digest": "sha256:075b2029b5a5d27c73495d7b65b4c92472f926124f8cae186ca15d17e7bc4994",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12699,56 +12699,56 @@
 					"name": "input-switch-basic-noColumns--switch-checked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:3a7e2490f437a2ad6a209b3e2f17fadf456e8434dd28b7f1398d3e9f1dafd7ca",
+					"hash": "sha256:6a4a12d6d34837b24659767f4891187f64ddd3f5da2db3daf74091630bcab79f",
 					"actual": "theme-ecl/input-switch-basic-noColumns--switch-checked.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-checked-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:b9776b41fe0efb8ce4cc37ae0892c8608b896d932c8e3da213922ad7da4645ad",
+					"hash": "sha256:5a825d067cf7f7e794c98f9813cb5fdd545a0ee46adf28ca1e65ebefa5c39e34",
 					"actual": "theme-ecl/input-switch-basic-noColumns--switch-checked-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:8f21c128c64f443fcfe60e4ac5ff100440b29bcafec70a4a605a7c8bed488ba2",
+					"hash": "sha256:72705379b1467865bf352dfeeee86d68e6f89f2475cc93fbca205367d5911fb8",
 					"actual": "theme-ecl/input-switch-basic-noColumns--switch-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-error",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:fee3182701b0099fbc9bd2f462d322b30f13fdac2adfec1aa9c21565dc3dced9",
+					"hash": "sha256:e8d0f918baf9d573b9faf93968c894f4a42df4224d343840d5373a0a1d44e390",
 					"actual": "theme-ecl/input-switch-basic-noColumns--switch-error.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-info-popover",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:94a78dfb5d1cceda474eb115b45d71321cc978e8d9ceba26d8a89f7e2f7f0b2d",
+					"hash": "sha256:0642357f03680a22a5769de17a74d5113a8bae4910f96e207d7d6eee8a060529",
 					"actual": "theme-ecl/input-switch-basic-noColumns--switch-info-popover.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-long-label",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:33177c5d4c5338086ed02783867f35ec1c92f7912e145f01cd9547ddb3e60f4b",
+					"hash": "sha256:326edd504802410687d52685eeca88f068430f974fa003293c7b8049cc6d27c1",
 					"actual": "theme-ecl/input-switch-basic-noColumns--switch-long-label.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-short-key",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:d649c71a039e4c822ffe73ecf94ded1ebca0fde20eb06ce986d4af08fcd24f1a",
+					"hash": "sha256:d1c350a31dab0edf1802554368bda5e2c3a931f4dffae661ac01495897fcab02",
 					"actual": "theme-ecl/input-switch-basic-noColumns--switch-short-key.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-unchecked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:5b9636f065d8e83cc6f25ed373f1de650c4f02442258a2fb05bd97e3473deae5",
+					"hash": "sha256:2ecf4359396196bb999a1de34fd92748e45798b79d172a400a9b5dd20f7b19d6",
 					"actual": "theme-ecl/input-switch-basic-noColumns--switch-unchecked.actual.png"
 				},
 				{
@@ -13031,56 +13031,56 @@
 					"name": "input-toggle-button-basic-noColumns--toggle-button-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:00cbc840b702bd4bf055f1b1c2a2e67882fb2801b661c7fb113d583373cbcf4f",
+					"hash": "sha256:d396396198cfe39ab6b8cb8f8af5c29c3125eb29a94b69d48d998d6e81a8a8d5",
 					"actual": "theme-ecl/input-toggle-button-basic-noColumns--toggle-button-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-error",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:8d5c0b14627e17af4c8aa93af5ab7a742dd2f1cdcc4f4eac15741051b701824f",
+					"hash": "sha256:60c4b82a625d888aef85499e47df0b9ee25d06e32ecc4e0c432d76b0395bf746",
 					"actual": "theme-ecl/input-toggle-button-basic-noColumns--toggle-button-error.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-info-popover",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:2f0068e67196620504c897a0d8affbc50f8d8bc88800ec4b4ec517449b447645",
+					"hash": "sha256:9aa44827b9a8b8d8fca75ca47ae76cf5c939e221ef732366eea34a6b58b05abf",
 					"actual": "theme-ecl/input-toggle-button-basic-noColumns--toggle-button-info-popover.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-long-label",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:979283ec1990d2a7f97e70230b5d8567cf5e39e45f33b469edbb7ab770a28ec2",
+					"hash": "sha256:9426503f497624ae623de0e5acff559d4e0f28d5e93ee3ebe18388d3a562b0c1",
 					"actual": "theme-ecl/input-toggle-button-basic-noColumns--toggle-button-long-label.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:c95c1161bb7680c32fec3ba369a606895e56ca0b92c28f4753f8c16436aaaef7",
+					"hash": "sha256:2e1cfad7d31979eac1feb62ecc192f344e31f722a6792525470c828e86559e87",
 					"actual": "theme-ecl/input-toggle-button-basic-noColumns--toggle-button-pressed.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:18590c49383e7548e478e57a6d6e63c8b61f76690330081a41aad1d1074e89f4",
+					"hash": "sha256:981cc73122791a3871c05387a966d2ef8686415e989a00422bd20c0aff2feff8",
 					"actual": "theme-ecl/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-short-key",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:3ffb2809b8defb747b135da7ea7942037d8021d67da625a9fa072e0c8658034f",
+					"hash": "sha256:6a548f066e5f98e33044cb46a7a32a8755e80647d939691924bbf1515c1b230e",
 					"actual": "theme-ecl/input-toggle-button-basic-noColumns--toggle-button-short-key.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-unpressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:b4cd43dae254bde294dc64572c5ab3738afa7704d288d1c10b19f0a6c035fd69",
+					"hash": "sha256:72a709e6d59adabc2e6df4a97281270b101e8b477ea6e0b8ab70b1e70faa20f2",
 					"actual": "theme-ecl/input-toggle-button-basic-noColumns--toggle-button-unpressed.actual.png"
 				},
 				{
@@ -14024,7 +14024,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:95d042fcae04b7315ee798712d19efdb66d9e40337a58033b377853ab2c03d2d",
+			"digest": "sha256:f6195dc6b9cdddb825b41edf8c9ab9454ce1d2ba23aa1697cc82074498d8c51d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15494,56 +15494,56 @@
 					"name": "input-switch-basic-noColumns--switch-checked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:f2131f88b64e50db64e6a74c66c21d4887a93599b513fd5cc30cbfe5f621c713",
+					"hash": "sha256:fe51ed3752aacc15a4075abd045b8751bfac6265c8cbc716e21b6fcebb59090e",
 					"actual": "theme-kern/input-switch-basic-noColumns--switch-checked.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-checked-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:79b1a6aff048412010af646083465a20106369994b1c9f21ad34edba48fdd709",
+					"hash": "sha256:8307c9d128647a3b6b61d96d4e47ee71e895eac0fc627aa5aa50541351ad82fa",
 					"actual": "theme-kern/input-switch-basic-noColumns--switch-checked-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-disabled",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:1d010cf0612eecdedad6f1b5a202d8f9414a4a09b04cb2a44ee5172e19adf815",
+					"hash": "sha256:bbf0c394d1ad9fd07254b884ef75632f02ee2f7e14b30d3a46b1694d404aa83b",
 					"actual": "theme-kern/input-switch-basic-noColumns--switch-disabled.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-error",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:22a52852b16c212b5a495aec9fcfb2f0d6f7c1a86b9f7300efb43ea5f448cdd9",
+					"hash": "sha256:b48ffb6d37f02f2a377156bba53c0250aea3ada599ff027a8645a75b45d2f008",
 					"actual": "theme-kern/input-switch-basic-noColumns--switch-error.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-info-popover",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:aa88a99f8d1459fcc96778a851230b0ddb7750499ce98237f7f4471a8a7d407f",
+					"hash": "sha256:566f72e53f18d3628eb0c6f187c6bc2490bc0adfd839133296ea22f8e1ebdb46",
 					"actual": "theme-kern/input-switch-basic-noColumns--switch-info-popover.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-long-label",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:017b569a11a8e9c5bc67aac52f98ac3ca3cbccf323e26cfdaf6275d5408938f3",
+					"hash": "sha256:00d7882bbb9c3cd4f92dfed2f8c6b90f9fe82180cfc0afe2c369340e5f21fcf3",
 					"actual": "theme-kern/input-switch-basic-noColumns--switch-long-label.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-short-key",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:dd123116ff53b3e1415a36f05afd3d490bba020ef3ca0a974e8244b5f57dddee",
+					"hash": "sha256:23e864eed1f55ce87f0d16c2c8aa372be47be5c974682a014c4a15ae9eaf989c",
 					"actual": "theme-kern/input-switch-basic-noColumns--switch-short-key.actual.png"
 				},
 				{
 					"name": "input-switch-basic-noColumns--switch-unchecked",
 					"route": "input-switch/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:f96cbf005920da39d0422b12f0220aaa5160878e8d983392cd2f4b018ba6e71f",
+					"hash": "sha256:e77da4f692a2c29332ddb4f5db4f173f8edb17e3cd223f2977992318ebea5e5e",
 					"actual": "theme-kern/input-switch-basic-noColumns--switch-unchecked.actual.png"
 				},
 				{
@@ -15826,56 +15826,56 @@
 					"name": "input-toggle-button-basic-noColumns--toggle-button-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:6e2d4144c6361ef90f57e413cabe3b53f8c1554b28a81ef17922a50d1d1d405b",
+					"hash": "sha256:0a9c614eced73555b4111181d5dd5a7d523f0c1579a4922c16038aee079baa07",
 					"actual": "theme-kern/input-toggle-button-basic-noColumns--toggle-button-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-error",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:907b302f065adae64e3424f38ac452e073a4ea050fbb8fbbdb63ac8b35cb7381",
+					"hash": "sha256:aea34cee541f36e5960a20a5e68eea83faa1f61e0b1fa98acf8f746cf709dfcc",
 					"actual": "theme-kern/input-toggle-button-basic-noColumns--toggle-button-error.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-info-popover",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:467e579823440d388f542391ce62035aacfae3fc5118791846fb39012e45d6e6",
+					"hash": "sha256:daffb9236eb389ab6bc0b13b142933c0547f3446b456a725faf1b507a37d1fb9",
 					"actual": "theme-kern/input-toggle-button-basic-noColumns--toggle-button-info-popover.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-long-label",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:9fb9da5097d5640466aa98d2fa37699e7dcf2045c3089ce9314de14189c07c1c",
+					"hash": "sha256:eecb29d5794aa7c8cae8bbc969fabb026d36dd3dce15707bd5bd6c2caa10046a",
 					"actual": "theme-kern/input-toggle-button-basic-noColumns--toggle-button-long-label.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:a5601663df74f5e6fb4e66fd012abe825cde7b935fae087cbb8aeab28f485a04",
+					"hash": "sha256:9e0e35b9261320b7e44ce2de2b2c0f0815b9a8180a76e34e1ba61c436d4cc23b",
 					"actual": "theme-kern/input-toggle-button-basic-noColumns--toggle-button-pressed.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-pressed-disabled",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:ae66e963fa31b9376950ca102eca866245dc80c89434180d5a641c2696ab5c55",
+					"hash": "sha256:f39ad5b64229a44d4a5813b170ba5bf552f440b654d1d8c8d952b23b9dfc5f4c",
 					"actual": "theme-kern/input-toggle-button-basic-noColumns--toggle-button-pressed-disabled.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-short-key",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:a83830bc559d1173f3d2f82e976e8881f1ab0b36ebf32f7a44c3e16eebf5eae3",
+					"hash": "sha256:dc90c73a1f2503b6c20e5ecb67236394ed693f507118453db0cc50822e3c4844",
 					"actual": "theme-kern/input-toggle-button-basic-noColumns--toggle-button-short-key.actual.png"
 				},
 				{
 					"name": "input-toggle-button-basic-noColumns--toggle-button-unpressed",
 					"route": "input-toggle-button/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:ccaf03005ad04a8fd2c455254d2a87a2ee6c398d45121af979178d7c83249611",
+					"hash": "sha256:643d735c8c905eea228e8957968aa2565851ef28d68d9be38a914d6220afbecb",
 					"actual": "theme-kern/input-toggle-button-basic-noColumns--toggle-button-unpressed.actual.png"
 				},
 				{
