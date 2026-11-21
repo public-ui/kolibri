@@ -1,0 +1,1 @@
+import{D as e,l as t}from"./props-from-config-D-8EnIN3-Ba4p4A5o.js";var n=t(`rows`,void 0,e,e=>e>=1);export{n as t};
