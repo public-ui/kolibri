@@ -1,0 +1,19 @@
+{
+	"schema": 1,
+	"state": "success",
+	"description": "No visual changes",
+	"computedAt": "2026-11-22T05:52:27.712Z",
+	"pr": 11663,
+	"head": "736da6ba36ed423820ad6966e02a697db7ca04d8",
+	"digest": "sha256:dff787e65fe9335d6ea94a66ab7c743b469747576d7afc7e77425fdcaf9ab399",
+	"counts": {
+		"changes": 0,
+		"open": 0,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {}
+}
