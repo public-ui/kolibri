@@ -55,8 +55,9 @@ describe('deriveAxes', () => {
 		);
 
 		const schema = await readFile(join(process.cwd(), '..', '..', 'components', 'src', 'schema', 'props', 'button-variant.ts'), 'utf-8');
-		const options = /buttonVariantPropTypeOptions = \[([^\]]+)\]/.exec(schema)?.[1] ?? '';
-		const styled = [...options.matchAll(/'([^']+)'/g)].map((match) => match[1]).filter((value) => value !== 'custom');
+		const union = /export type ButtonVariantPropType = ([^;]+);/.exec(schema)?.[1];
+		assert.ok(union, 'the schema lists the button variants as a union of string literals');
+		const styled = [...union.matchAll(/'([^']+)'/g)].map((match) => match[1]).filter((value) => value !== 'custom');
 		assert.deepEqual(axes.variants, ['none', ...styled.sort()]);
 		assert.equal(axes.disabled, true);
 		assert.deepEqual(types['kol-alert'], { kind: 'closed', values: ['card', 'msg'] });

@@ -8,6 +8,8 @@ import type { DesignAnnotation, WebComponentSource } from './read-design.js';
 import type { VChild, VNode } from './stencil-shim.js';
 import { normalize } from './stencil-shim.js';
 
+/** Every component names its message prop this way; a message is rendered as an alert. */
+const MESSAGE_PROP = '_msg';
 /** Value of a message axis without a message. */
 const NO_MESSAGE = 'none';
 const MESSAGE_TEXT = 'Meldungstext';
@@ -129,7 +131,7 @@ function axisOf(
 		const values = new Map(annotation.values);
 		return { axis: { kind: 'prop', name, prop, values: [...values.keys()] }, toFc: (value) => values.get(String(value)) ?? value };
 	}
-	if (/\bAlertProps\b/.test(type)) {
+	if (prop === MESSAGE_PROP) {
 		// A message is an alert: its axis takes the alert types, `none` renders no message.
 		const alertTypes = literalValues(
 			attributeType(
