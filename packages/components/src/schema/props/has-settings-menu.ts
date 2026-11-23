@@ -1,7 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { watchBoolean } from '../utils';
-
 /* types */
 export type HasSettingsMenuPropType = boolean;
 
@@ -10,9 +6,4 @@ export type HasSettingsMenuPropType = boolean;
  */
 export type PropHasSettingsMenu = {
 	hasSettingsMenu: HasSettingsMenuPropType;
-};
-
-/* validator */
-export const validateHasSettingsMenu = (component: Generic.Element.Component, value?: HasSettingsMenuPropType): void => {
-	watchBoolean(component, '_hasSettingsMenu', value);
 };

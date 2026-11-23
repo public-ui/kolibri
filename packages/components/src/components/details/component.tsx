@@ -13,7 +13,6 @@ import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelPro
 import type {
 	ClickableElement,
 	CollapsibleCallbacksPropType,
-	DetailsProps,
 	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
@@ -42,10 +41,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolDetails
-	extends BaseWebComponent<CollapsibleApi>
-	implements ClickableElement, DetailsProps, FocusableElement, WebComponentInterface<CollapsibleApi>
-{
+export class KolDetails extends BaseWebComponent<CollapsibleApi> implements ClickableElement, FocusableElement, WebComponentInterface<CollapsibleApi> {
 	@Element() protected readonly host?: HTMLKolDetailsElement;
 
 	private readonly detailsId = createUniqueId('details');
@@ -142,16 +138,20 @@ export class KolDetails
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Triggers a click on the heading toggle button.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.transitionMs = getFeatureFlag('collapsibleTransitionMs', this.host) ?? DEFAULT_COLLAPSIBLE_TRANSITION_MS;

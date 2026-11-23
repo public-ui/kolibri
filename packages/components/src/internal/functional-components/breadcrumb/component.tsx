@@ -3,6 +3,7 @@ import { Fragment, h } from '@stencil/core';
 
 import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import { LinkFC } from '../link/component';
@@ -11,7 +12,6 @@ import type { BreadcrumbApi } from './api';
 import type { BreadcrumbLinkItem } from './link-item';
 
 const breadcrumbBem = bem.forBlock('kol-breadcrumb');
-const BEM_CLASS_BREADCRUMB = breadcrumbBem();
 const BEM_CLASS_BREADCRUMB__ICON = breadcrumbBem('icon');
 const BEM_CLASS_BREADCRUMB__LINK = breadcrumbBem('link');
 const BEM_CLASS_BREADCRUMB__LIST = breadcrumbBem('list');
@@ -20,8 +20,8 @@ const BEM_CLASS_BREADCRUMB__LIST_ELEMENT_SPAN = breadcrumbBem('list-element-span
 const BEM_CLASS_BREADCRUMB__SEPARATOR = breadcrumbBem('separator');
 
 /**
- * Historic literal from the predecessor's empty-state icon. Deliberately not a BEM element
- * class (single underscore) — kept byte-identical so descendant selectors keep matching.
+ * Class of the empty-state icon. Deliberately not a BEM element class (single underscore): the
+ * literal stays unchanged so existing descendant selectors keep matching.
  */
 const CLASS_BREADCRUMB_EMPTY_STATE_ICON = 'kol-breadcrumb_icon';
 
@@ -67,7 +67,7 @@ export const BreadcrumbFC: FC<FunctionalComponentProps<BreadcrumbApi>> = ({ labe
 	const lastIndex = linkItems.length - 1;
 
 	return (
-		<nav class={BEM_CLASS_BREADCRUMB} aria-label={label}>
+		<BemRootNodeFC component="nav" block="kol-breadcrumb" aria-label={label}>
 			<ul class={BEM_CLASS_BREADCRUMB__LIST}>
 				{linkItems.length === 0 && (
 					<li>
@@ -76,6 +76,6 @@ export const BreadcrumbFC: FC<FunctionalComponentProps<BreadcrumbApi>> = ({ labe
 				)}
 				{linkItems.map((item, index) => renderLink(item, index, lastIndex, showCurrentPage))}
 			</ul>
-		</nav>
+		</BemRootNodeFC>
 	);
 };

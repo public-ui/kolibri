@@ -1,8 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { LinkApi } from '../../internal/functional-components/link/api';
 import type {
 	AccessKeyPropType,
 	AriaControlsPropType,
@@ -15,11 +13,9 @@ import type {
 	HideLabelPropType,
 	HrefPropType,
 	InlinePropType,
-	KolFocusOptions,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
-	LinkProps,
 	LinkTargetPropType,
 	ShortKeyPropType,
 	Stringified,
@@ -27,7 +23,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateFocus } from '../../utils/element-interaction';
 import { BaseLinkWebComponent } from './base';
 
@@ -41,12 +37,12 @@ import { BaseLinkWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolLink extends BaseLinkWebComponent implements FocusableElement, LinkProps, WebComponentInterface<LinkApi> {
+export class KolLink extends BaseLinkWebComponent implements FocusableElement {
 	@Element() protected readonly host?: HTMLKolLinkElement;
 
 	@State() public ariaCurrent: string = '';
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public expertSlot: boolean = false;
 
@@ -226,9 +222,11 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: FocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.unsetLinkTabIndex();

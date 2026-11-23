@@ -11,6 +11,7 @@ import { hrefProp } from './href';
 import { iconsProp } from './icons';
 import { idProp } from './id';
 import { labelProp } from './label';
+import { labelDecorativeProp } from './label-decorative';
 import { labelWithExpertSlotProp } from './label-with-expert-slot';
 import { linkTargetProp } from './link-target';
 import { nameProp } from './name';
@@ -108,7 +109,7 @@ describe.each(STRING_PROPS)('$name', ({ definition, defaultValue }) => {
 describe('hrefProp', () => {
 	it('applies the default "" for undefined and warns about the missing required value (config slot)', () => {
 		expect(applied(hrefProp, undefined, true)).toEqual(['']);
-		expect(warnings()).toEqual([expect.stringContaining(`The required property '_href' did not receive a value.`)]);
+		expect(warnings()).toEqual([expect.stringContaining(`The required property '_href' did not receive a value. The default value is used instead.`)]);
 	});
 
 	it('applies the default "" for null', () => {
@@ -138,7 +139,7 @@ describe('hrefProp', () => {
 describe('labelProp', () => {
 	it('applies the "not set" default undefined and warns about the missing required value (config slot)', () => {
 		expect(applied(labelProp, undefined, true)).toEqual([undefined]);
-		expect(warnings()).toEqual([expect.stringContaining(`The required property '_label' did not receive a value.`)]);
+		expect(warnings()).toEqual([expect.stringContaining(`The required property '_label' did not receive a value. The property stays unset.`)]);
 	});
 
 	it('applies the "not set" default undefined for null', () => {
@@ -179,6 +180,29 @@ describe('labelProp', () => {
 	it.each<unknown>(['Label', '12', 'd'.repeat(80)])('emits no hint for %p', (value) => {
 		applied(labelProp, value);
 		expect(hints()).toEqual([]);
+	});
+});
+
+/**
+ * `labelDecorativeProp` validates like `labelProp`; its empty string additionally marks an icon as
+ * decorative.
+ */
+describe('labelDecorativeProp', () => {
+	it('applies the "not set" default undefined', () => {
+		expect(applied(labelDecorativeProp, undefined)).toEqual([undefined]);
+	});
+
+	it.each<[unknown, string]>([
+		['', ''],
+		['Icon label', 'Icon label'],
+	])('accepts %p as %p', (value, expected) => {
+		expect(applied(labelDecorativeProp, value)).toEqual([expected]);
+		expect(warnings()).toEqual([]);
+	});
+
+	it('ignores a one-character label with a developer warning', () => {
+		expect(applied(labelDecorativeProp, 'b')).toEqual([]);
+		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid. The value is ignored.`)]);
 	});
 });
 

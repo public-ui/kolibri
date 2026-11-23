@@ -39,7 +39,7 @@ Die Functional Component einer Komponente rendert das primaere HTML5-Element dir
 
 ### Eingebettete Komponenten
 
-Rendert eine Komponente eine andere Komponente in ihrem Shadow DOM (z. B. die Buttons von `kol-pagination`), dann rendert sie deren Functional Component ueber ein Item (`createButtonItem`, `createLinkItem`, …, siehe [ARC42 – Embedded Components (Items)](../packages/components/src/components/_skeleton/ARC42.md#embedded-components-items)). Ein eingebetteter Button ist kein eigenes Element und hat keine eigene `click()`-Methode; das `click()` der einbettenden Komponente zielt auf deren eigenes primaeres Element.
+Rendert eine Komponente eine andere Komponente in ihrem Shadow DOM (z. B. die Buttons von `kol-pagination`), dann rendert sie deren Functional Component ueber ein Item (`createButtonItem`, `createLinkItem`, …, siehe [ARC42 – Embedded Components (Items)](../packages/components/docs/ARC42-SKELETON.md#embedded-components-items)). Ein eingebetteter Button ist kein eigenes Element und hat keine eigene `click()`-Methode; das `click()` der einbettenden Komponente zielt auf deren eigenes primaeres Element.
 
 ## Kernideen
 
@@ -142,7 +142,7 @@ Das primaere Element haelt ein `CtaRef` aus `createCtaRef()`, die Methode entste
 
 ```typescript
 @Component({ tag: 'kol-button', shadow: true })
-export class KolButton extends BaseButtonWebComponent implements ButtonProps, ClickableElement {
+export class KolButton extends BaseButtonWebComponent implements ClickableElement {
 	@Element() protected readonly host?: HTMLKolButtonElement;
 
 	// In der Basisklasse: protected readonly ctaRef = createCtaRef<HTMLButtonElement>();

@@ -4,10 +4,8 @@ import { variantProp } from '../variant';
 import { isSafeClassName } from './validators';
 
 /**
- * Pins the SAFE_CLASS_NAME_RE semantics — see the rationale comment in validators.ts.
- * The unified regex is deliberately MORE LENIENT than the legacy variant-only regex
- * (minimum length 1 instead of 4) and STRICTER than the legacy custom-class validation
- * (which accepted any string). Both directions are part of the contract.
+ * Pins the class-name rule of validators.ts: a single safe class name of 1–61 characters,
+ * shared by `_customClass` and `_variant`.
  */
 describe('isSafeClassName', () => {
 	it.each(['a', 'ab', 'abc', 'custom', 'theme-link', 'kol-link__anchor', 'A1'])('accepts "%s" (relaxed minimum: 1–3 char names are valid)', (value) => {
@@ -23,22 +21,22 @@ describe('isSafeClassName', () => {
 	});
 });
 
-describe('customClassProp validation (stricter than develop: single safe class name only)', () => {
-	it('accepts short single class names that were valid on develop (the reason for the relaxed minimum)', () => {
+describe('customClassProp validation (single safe class name only)', () => {
+	it('accepts short single class names', () => {
 		const callback = jest.fn();
 		customClassProp.apply('abc', callback);
 		expect(callback).toHaveBeenCalledWith('abc');
 	});
 
-	it('rejects multi-class values like "foo bar" that develop accepted — documented behavior change', () => {
+	it('rejects multi-class values like "foo bar"', () => {
 		const callback = jest.fn();
 		customClassProp.apply('foo bar', callback);
 		expect(callback).not.toHaveBeenCalled();
 	});
 });
 
-describe('variantProp validation (widened: 1–3 char variant names are now valid)', () => {
-	it('accepts a 1–3 character variant name that the legacy variant-only regex rejected', () => {
+describe('variantProp validation (1–3 char variant names are valid)', () => {
+	it('accepts a 1–3 character variant name', () => {
 		const callback = jest.fn();
 		variantProp.apply(['abc'], callback);
 		expect(callback).toHaveBeenCalledWith(['abc']);

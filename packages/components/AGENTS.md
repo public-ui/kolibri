@@ -17,7 +17,7 @@ Always run a build before linting so the generated component typings exist for t
   - `style.scss` – SCSS styles for the component.
   - `*.e2e.ts` – Playwright end-to-end tests.
   - `test/` – Jest snapshot tests.
-- `src/schema` – TypeScript schema describing the API of every component. For each component there is a file in `src/schema/components`. Shared enums, props and types are in the neighbouring folders.
+- `src/schema` – shared enums, prop types and value types. `src/schema/components` holds only the types of prop values (e.g. `ButtonProps`, `LinkProps`); the API of a component is its `*Api` type in `src/internal/functional-components/<name>/api.tsx`.
 - other folders like `src/assets`, `src/locales` and `src/utils` contain shared assets, translations and helpers.
 
 ## Coding Rules
@@ -28,6 +28,7 @@ Observe the following coding rules when making changes to this project.
 
 - Never use the title-Attribute to add tooltips. Always use the `KolTooltip` component.
 - JSDoc and comments follow the repo-wide rule [Inline code documentation](../../AGENTS.md#inline-code-documentation). The JSDoc of public `@Prop`, `@Method` and `@Event` members is published API documentation.
+- `forceUpdate` is reserved for the `requestRender` callbacks of items and behaviors (see the skeleton ARC42, _Embedded Components (Items)_): it renders again after a change of state the item or behavior owns. Data the component owns itself is a `@State` — no explicit render call.
 
 ### Styling boundary
 
@@ -45,7 +46,7 @@ Use the `condition && <Element />` pattern to render JSX elements only when a co
 
 Avoid using `hidden={condition}` unless the element should always be present in the DOM but visually hidden.
 
-For detailed guidance on event handler patterns and memory leak prevention, see [`src/components/_skeleton/ARC42.md`](../components/_skeleton/ARC42.md#event-handler-policy).
+For detailed guidance on event handler patterns and memory leak prevention, see [`docs/ARC42-SKELETON.md`](docs/ARC42-SKELETON.md#event-handler-policy).
 
 ### Language texts
 
@@ -78,14 +79,13 @@ consistent across components.
 
 #### `_ariaDetails` — Cross-Shadow-DOM Accessible Details
 
-All form field components expose `_ariaDetails?: string` (space-separated element IDs, per W3C ARIA spec). It uses the Accessible Object Model (AOM) to cross the Shadow DOM boundary without `aria-details` on the shadow root.
+All form field components expose `_ariaDetails?: string` (space-separated element IDs, per W3C ARIA spec). It uses element references (`ariaDetailsElements`) to cross the Shadow DOM boundary without an `aria-details` attribute on the native control.
 
 **How it works:**
 
-- `FormAssociationBehavior` (`src/internal/functional-components/form-association/behavior.ts`) owns the implementation in `watchAriaDetails(value?: string)`. It resolves the IDs via `resolveTargets()` and assigns the result to `ElementInternals.ariaDetailsElements`.
-- `attachInternals()` is called exactly once, in the `FormAssociationBehavior` constructor — never again in component lifecycle hooks.
-- Each field's `@Watch('_ariaDetails')` delegates to `applyAriaDetails(value)` of `BaseFormFieldWebComponent`, which applies the prop and calls `watchAriaDetails`.
-- `componentWillLoad()` calls the watcher once to initialize on first render.
+- `BaseFormFieldWebComponent` (`src/internal/functional-components/form-field/base-web-component.tsx`) owns the implementation. `applyAriaDetails(value)` stores the prop, and `syncAriaDetails()` resolves the IDs via `resolveTargets()` and assigns the result to `ariaDetailsElements` of the native control (`input`, `select` or `textarea`) in the shadow root.
+- Each field's `@Watch('_ariaDetails')` delegates to `applyAriaDetails(value)`; `componentWillLoad()` calls the watcher once to initialize.
+- Every render re-resolves the IDs, because the control and the referenced elements may enter the tree after the prop was set. Only changed references are written.
 
 #### Open vs Show
 
@@ -97,6 +97,6 @@ The `align` prop controls the orientation of the component itself. When aligning
 
 ### Architecture and Component Structure
 
-> **The [`src/components/_skeleton/ARC42.md`](src/components/_skeleton/ARC42.md) is the authoritative architectural specification.**
+> **The [`docs/ARC42-SKELETON.md`](docs/ARC42-SKELETON.md) is the authoritative architectural specification.**
 > All layer responsibilities, type contracts, coding patterns, implementation steps and design rationale are documented there.
 > Consult it before creating new components or refactoring existing ones.

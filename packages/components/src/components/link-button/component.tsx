@@ -2,8 +2,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
 
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { LinkApi } from '../../internal/functional-components/link/api';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -19,9 +17,7 @@ import type {
 	HrefPropType,
 	IconsPropType,
 	InlinePropType,
-	KolFocusOptions,
 	LabelWithExpertSlotPropType,
-	LinkButtonProps,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
 	ShortKeyPropType,
@@ -29,7 +25,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BaseLinkWebComponent } from '../link/base';
 
@@ -45,12 +41,12 @@ import { BaseLinkWebComponent } from '../link/base';
 	},
 	shadow: true,
 })
-export class KolLinkButton extends BaseLinkWebComponent implements ClickableElement, FocusableElement, LinkButtonProps, WebComponentInterface<LinkApi> {
+export class KolLinkButton extends BaseLinkWebComponent implements ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolLinkButtonElement;
 
 	@State() public ariaCurrent: string = '';
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public expertSlot: boolean = false;
 
@@ -243,16 +239,20 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: FocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.unsetLinkTabIndex();

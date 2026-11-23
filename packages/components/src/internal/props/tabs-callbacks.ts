@@ -7,7 +7,7 @@ export type TabsCallbacksProp = SimpleProp<'on', KoliBriTabsCallbacks>;
 
 /**
  * Callbacks of `kol-tabs`. Only `onCreate` and `onSelect` are kept, and only when they are
- * functions — the predecessor copied exactly these two into its state.
+ * functions.
  */
 export const tabsCallbacksProp = createPropDefinition<TabsCallbacksProp>('on', {}, (value) => {
 	const callbacks = normalizeCallbacksObject<KoliBriTabsCallbacks>(value);

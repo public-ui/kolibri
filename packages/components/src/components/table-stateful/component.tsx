@@ -55,11 +55,15 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { devHint, trimLabel } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import { Callback } from '../../schema/enums';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
-import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { BaseTableStatelessWebComponent } from '../table-stateless/base';
+
+// Only the pagination elements use the block: a shadow DOM node with the block class itself would activate theme rules written for the host.
+const tableStatefulBem = bem.forBlock('kol-table-stateful');
+const BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER = tableStatefulBem('pagination-wrapper');
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -99,8 +103,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@State() public sortedData: KoliBriTableDataType[] = [];
 
 	@State() public stickyColsDisabled: boolean = false;
-
-	private internals?: HostInternals;
 
 	/** All rows of `_data`; the displayed page is sliced from the sorted rows. */
 	private data: KoliBriTableDataType[] = [];
@@ -173,9 +175,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	/**
 	 * References an external element by ID that serves as the accessible label for this table.
-	 * Uses ElementInternals.ariaLabelledByElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.
+	 * The component resolves the IDs and sets them as element references (`ariaLabelledByElements`)
+	 * on the native `<table>` inside the shadow root, because IDREF attributes cannot cross that
+	 * boundary. Desktop screen readers (NVDA, JAWS with Chrome/Firefox) follow the references;
+	 * VoiceOver and TalkBack do not — use `_label` instead.
 	 */
 	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType = undefined;
 
@@ -240,12 +243,13 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_headers')
 	public watchHeaders(value?: Stringified<KoliBriTableHeaders>): void {
 		tableStatefulHeadersProp.apply(value, (headers) => {
-			// Adjusted header cells fit only the same columns. A new object with the same keys (common with
-			// inline headers in React) keeps them.
-			if (headerKeysChanged(this.headers, headers)) {
+			// Adjusted header cells and the current sort fit only the same columns. A new object with the same
+			// keys (common with inline headers in React) keeps both; resetSort() re-reads the declared sort.
+			// The first headers always apply: keyless header cells would be read as unchanged by their keys.
+			const firstHeaders = !this.headers.horizontal?.length && !this.headers.vertical?.length;
+			if (firstHeaders || headerKeysChanged(this.headers, headers)) {
 				this.adjustedHeaderCells = undefined;
-			}
-			if (this.initializeSort(headers)) {
+				this.initializeSort(headers);
 				setTimeout(() => this.updateSortedData());
 			}
 			if (hasHeadersInBothDirections(headers)) {
@@ -349,24 +353,22 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	 * Returns the selected rows.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getSelection(): Promise<KoliBriTableDataType[] | null> {
-		return this.getSelectedData((this.getRenderProp('selection') || undefined)?.selectedKeys || []);
+	public getSelection(): Promise<KoliBriTableDataType[] | null> {
+		return Promise.resolve(this.getSelectedData((this.getRenderProp('selection') || undefined)?.selectedKeys || []));
 	}
 
 	/**
 	 * Resets the sort state to the default values defined in the `_headers` prop.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async resetSort(): Promise<void> {
+	public resetSort(): Promise<void> {
 		this.initializeSort(this.headers);
 		this.updateSortedData();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {
 		this.applyOn(this.statelessOn);
-		this.internals = attachInternals(this.host);
 		// Early resolution: if the external element is already in the DOM, the first render already uses
 		// it, so the AT sees the correct name from the start.
 		this.resolveExternalLabel(this._ariaLabelledby);
@@ -436,13 +438,12 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.moveCheckboxFocus(event);
 	}
 
-	private initializeSort(headers: KoliBriTableHeaders): boolean {
-		const { sortData, hasSortedCells, missingKey } = initializeSortFromHeaders(headers, this.allowMultiSort);
+	private initializeSort(headers: KoliBriTableHeaders): void {
+		const { sortData, missingKey } = initializeSortFromHeaders(headers, this.allowMultiSort);
 		if (missingKey) {
 			devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
 		}
 		this.sortData = sortData;
-		return hasSortedCells;
 	}
 
 	private readonly updateSortedData = (): void => {
@@ -524,7 +525,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	private resolveExternalLabel(value?: AriaLabelledbyPropType): void {
-		this.externalLabelElements = validateAriaLabelledby(this, this.host, this.internals, value);
+		this.externalLabelElements = validateAriaLabelledby(this, this.host, value);
 		this.syncTableLabel(this.externalLabelElements);
 	}
 
@@ -532,8 +533,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		const item = this.paginationItems[position];
 		return (
 			item && (
-				<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.paginationPosition}`}>
-					<div class="kol-table-stateful__pagination-wrapper">
+				<div class={tableStatefulBem('pagination', { [this.paginationPosition]: true })}>
+					<div class={BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER}>
 						<PaginationFC {...item.getFcProps()} />
 					</div>
 				</div>
@@ -543,6 +544,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	public render(): JSX.Element {
 		return (
+			// The host keeps the class `kol-table-stateful`, which consumers of the element can select —
+			// documented exception to the no-Host-class convention, same as kol-select.
 			<Host class="kol-table-stateful">
 				{this.renderPagination('top')}
 				{this.renderTableStatelessFC()}

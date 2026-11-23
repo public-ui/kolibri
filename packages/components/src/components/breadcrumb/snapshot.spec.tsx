@@ -1,10 +1,9 @@
 import { KolBreadcrumbTag } from '../../core/component-names';
-import type { BreadcrumbProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolBreadcrumb } from './component';
 
-executeSnapshotTests<BreadcrumbProps>(
+executeSnapshotTests(
 	KolBreadcrumbTag,
 	[KolBreadcrumb],
 	[

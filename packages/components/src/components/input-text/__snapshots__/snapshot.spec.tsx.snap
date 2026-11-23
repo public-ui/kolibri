@@ -1,0 +1,967 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-input-text should render with _label="Label" _name="field" _hasCounter=true _maxLength=10 _maxLengthBehavior="soft" _value="Value" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--has-counter kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+      <div class="kol-form-field__counter">
+        <span aria-hidden="true" class="kol-form-field__counter">
+          kol-character-limit-remaining
+        </span>
+        <span aria-live="polite" class="visually-hidden" id="input-text-counter-nonce">
+          kol-character-limit-remaining
+        </span>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _hasCounter=true _maxLength=10 _value="Value" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--has-counter kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" maxlength="10" name="field" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+      <div class="kol-form-field__counter">
+        <span aria-hidden="true" class="kol-form-field__counter">
+          kol-character-counter-current-of-max
+        </span>
+        <span aria-live="polite" class="visually-hidden" id="input-text-counter-nonce">
+          kol-character-counter-current-of-max-aria
+        </span>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _hasCounter=true _value="Value" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--has-counter kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+      <div class="kol-form-field__counter">
+        <span aria-hidden="true" class="kol-form-field__counter">
+          kol-character-counter-current
+        </span>
+        <span aria-live="polite" class="visually-hidden" id="input-text-counter-nonce">
+          kol-character-counter-current
+        </span>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _maxLength=10 _maxLengthBehavior="soft" _value="Value" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--has-counter kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-describedby="input-text-character-limit-hint-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+      <span class="visually-hidden" id="input-text-character-limit-hint-nonce">
+        kol-character-limit-hint
+      </span>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _maxLength=10 _value="Value" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-describedby="input-text-character-limit-hint-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" maxlength="10" name="field" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+      <span class="visually-hidden" id="input-text-character-limit-hint-nonce">
+        kol-character-limit-hint
+      </span>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _pattern="[a-z]+" _required=true 1`] = `
+<kol-input-text>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--required kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--required" id="input-text-nonce" name="field" pattern="[a-z]+" required="" type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _accessKey="V" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              V
+            </kbd>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _alert=true 1`] = `
+<kol-input-text _alert="" _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _disabled=true 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--disabled kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--disabled">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _hideLabel=true 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--hide-label kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" hidden="">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-label="Label" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+        <div class="kol-form-field__tooltip">
+          <div class="kol-tooltip__floating">
+            <div class="kol-tooltip__arrow"></div>
+            <span class="kol-span kol-tooltip__content" id="input-text-label-nonce">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _hint="Hint" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-describedby="input-text-hint-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+      <span class="kol-form-field__hint" id="input-text-hint-nonce">
+        Hint
+      </span>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start">
+            <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
+          </div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start">
+            <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
+          </div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <span>
+          <div class="kol-popover-button kol-popover-button--inline">
+            <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        Info
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <div class="kol-popover-button__popover--styled">
+                Ich bin ein Hinweis.
+              </div>
+            </div>
+          </div>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-input-text _touched="" _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--error">
+          <div class="kol-input-container__container">
+            <input aria-describedby="input-text-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-text-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-input-text _touched="" _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--error">
+          <div class="kol-input-container__container">
+            <input aria-describedby="input-text-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="input-text-msg-nonce" role="alert">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _readOnly=true 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--read-only kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <span aria-hidden="true" class="kol-form-field__label__read-only">
+          (kol-readonly)
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--readonly" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _shortKey="S" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              S
+            </kbd>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button">
+              <button aria-label="einblenden" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        einblenden
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _touched=true 1`] = `
+<kol-input-text _touched="" _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--touched kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" _variant="custom" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--custom kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _type="search" _value="Value" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text search">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" type="search" value="Value">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button kol-input-text__clear-button">
+              <button aria-label="kol-clear-search" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-clear-search
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label="Label" _name="field" _type="search" 1`] = `
+<kol-input-text>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-text search">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" type="search">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button kol-input-text__clear-button kol-input-text__clear-button--hidden">
+              <button aria-label="kol-clear-search" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-clear-search
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;
+
+exports[`kol-input-text should render with _label=[{"text":"partly english","lang":"en"},{"text":" Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _spellCheck=true _value="Value" 1`] = `
+<kol-input-text _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-text text">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-text>
+`;

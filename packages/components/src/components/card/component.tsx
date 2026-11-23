@@ -4,7 +4,6 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import type { CardApi } from '../../internal/functional-components/card/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type {
-	CardProps,
 	ClickableElement,
 	FocusableElement,
 	HasCloserPropType,
@@ -15,7 +14,7 @@ import type {
 	LabelLangSegmentsPropType,
 	LinkTargetPropType,
 } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BaseCardWebComponent } from './base';
 
@@ -35,10 +34,10 @@ import { BaseCardWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolCard extends BaseCardWebComponent implements CardProps, ClickableElement, FocusableElement, WebComponentInterface<CardApi> {
+export class KolCard extends BaseCardWebComponent implements ClickableElement, FocusableElement, WebComponentInterface<CardApi> {
 	@Element() protected readonly host?: HTMLKolCardElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public headingId: string = createUniqueId('card-heading');
 
@@ -107,16 +106,20 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.initCardCloseButton();

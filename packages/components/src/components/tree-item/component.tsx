@@ -8,7 +8,7 @@ import type { TreeItemApi } from '../../internal/functional-components/tree-item
 import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
 import { activeProp, ariaCurrentValueProp, hrefProp, labelLangSegmentsProp, openProp } from '../../internal/props';
-import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType, TreeItemProps } from '../../schema';
+import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -26,7 +26,7 @@ import { invalidateOpenItemsCache } from '../tree/open-items-cache';
 	},
 	shadow: true,
 })
-export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeItemProps, WebComponentInterface<TreeItemApi> {
+export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebComponentInterface<TreeItemApi> {
 	@Element() protected readonly host?: HTMLKolTreeItemElement;
 
 	@State() public ariaCurrent: string = '';
@@ -72,7 +72,10 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
-		openProp.apply(value, (v) => (this.open = v));
+		openProp.apply(value, (v) => {
+			this.open = v;
+			invalidateOpenItemsCache(this.getTree());
+		});
 	}
 
 	/**
@@ -90,35 +93,36 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	 */
 	@Method()
 	@directFocus('anchorRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Expands the tree item.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async expand(): Promise<void> {
+	public expand(): Promise<void> {
 		this.setOpen(true);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Collapses the tree item.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async collapse(): Promise<void> {
+	public collapse(): Promise<void> {
 		this.setOpen(false);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Returns whether the tree item is expanded.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async isOpen(): Promise<boolean> {
-		return this.open;
+	public isOpen(): Promise<boolean> {
+		return Promise.resolve(this.open);
 	}
 
 	public componentWillLoad(): void {

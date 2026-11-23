@@ -252,7 +252,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			// Click the step up button
-			const stepUpButton = page.locator('[data-testid="kol-input-number-step-up"]');
+			const stepUpButton = page.locator('.kol-input-number__step-button-up');
 			await stepUpButton.click();
 			await page.waitForChanges();
 
@@ -282,7 +282,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			// Click the step down button
-			const stepDownButton = page.locator('[data-testid="kol-input-number-step-down"]');
+			const stepDownButton = page.locator('.kol-input-number__step-button-down');
 			await stepDownButton.click();
 			await page.waitForChanges();
 
@@ -312,7 +312,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			// Click the step up button
-			const stepUpButton = page.locator('[data-testid="kol-input-number-step-up"]');
+			const stepUpButton = page.locator('.kol-input-number__step-button-up');
 			await stepUpButton.click();
 			await page.waitForChanges();
 
@@ -338,7 +338,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			// Click the step up button
-			const stepUpButton = page.locator('[data-testid="kol-input-number-step-up"]');
+			const stepUpButton = page.locator('.kol-input-number__step-button-up');
 			await stepUpButton.click();
 			await page.waitForChanges();
 
@@ -379,7 +379,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			// Click the step up button
-			const stepUpButton = page.locator('[data-testid="kol-input-number-step-up"]');
+			const stepUpButton = page.locator('.kol-input-number__step-button-up');
 			await stepUpButton.click();
 			await page.waitForChanges();
 

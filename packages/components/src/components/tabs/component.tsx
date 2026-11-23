@@ -22,7 +22,6 @@ import type {
 	Stringified,
 	TabBehaviorPropType,
 	TabButtonProps,
-	TabsProps,
 } from '../../schema';
 import { devHint, koliBriQuerySelector } from '../../schema';
 
@@ -44,7 +43,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, TabsProps, WebComponentInterface<TabsApi> {
+export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, WebComponentInterface<TabsApi> {
 	@Element() protected readonly host?: HTMLKolTabsElement;
 
 	private rootElement?: HTMLDivElement;
@@ -170,16 +169,20 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Triggers a click on the currently selected tab.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
@@ -266,10 +269,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 			case KeyboardKey.ArrowLeft:
 				this.goToPreviousTab(event);
 				break;
-			case KeyboardKey.Space:
-			case KeyboardKey.Enter:
-				this.activateFocusedTab(event);
-				break;
 		}
 	};
 
@@ -301,12 +300,6 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	private goToPreviousTab(event: KeyboardEvent) {
 		const nextFocusIndex = this.prevPossibleTabIndex(this.getRenderProp('tabs'), this.getCurrentFocusIndex());
 		this.selectNextTabEvent(event, nextFocusIndex, this.getKeyboardTabChangeMode());
-	}
-
-	private activateFocusedTab(event: KeyboardEvent) {
-		if (typeof this.currentFocusIndex === 'number') {
-			this.onSelect(event, this.currentFocusIndex);
-		}
 	}
 
 	private selectNextTabEvent(

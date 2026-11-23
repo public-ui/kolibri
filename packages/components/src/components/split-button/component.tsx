@@ -24,7 +24,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	NamePropType,
 	ShortKeyPropType,
-	SplitButtonProps,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
@@ -33,7 +32,7 @@ import type {
 
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BaseButtonWebComponent } from '../button/base';
 
@@ -50,10 +49,10 @@ import { BaseButtonWebComponent } from '../button/base';
 	},
 	shadow: true,
 })
-export class KolSplitButton extends BaseButtonWebComponent implements ClickableElement, FocusableElement, SplitButtonProps, SplitButtonWebComponentInterface {
+export class KolSplitButton extends BaseButtonWebComponent implements ClickableElement, FocusableElement, SplitButtonWebComponentInterface {
 	@Element() protected readonly host?: HTMLKolSplitButtonElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	/** Whether the dropdown popover is open. Derived from the popover's native `toggle` event. */
 	@State() public dropdownOpen = false;
@@ -274,9 +273,8 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this._value;
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this._value);
 	}
 
 	/**
@@ -284,24 +282,28 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Closes the dropdown.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async closePopup() {
+	public closePopup(): Promise<void> {
 		this.dropdownItem.hide();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

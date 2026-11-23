@@ -3,9 +3,9 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
+import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from './base';
 
 /**
@@ -18,10 +18,10 @@ import { BaseDialogWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolDialog extends BaseDialogWebComponent implements DialogProps, WebComponentInterface<DialogApi> {
+export class KolDialog extends BaseDialogWebComponent implements WebComponentInterface<DialogApi> {
 	@Element() protected readonly host?: HTMLKolDialogElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public headingId: string = createUniqueId('dialog-heading');
 
@@ -98,18 +98,18 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	 * Opens the dialog. Pass true to open as a modal dialog.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async show(modal: boolean = false): Promise<void> {
+	public show(modal: boolean = false): Promise<void> {
 		this.showDialog(modal);
+		return Promise.resolve();
 	}
 
 	/**
 	 * Closes the dialog.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async close(): Promise<void> {
+	public close(): Promise<void> {
 		this.closeDialog();
+		return Promise.resolve();
 	}
 
 	/**
@@ -119,6 +119,7 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	@Method()
 	public async closeModal(): Promise<void> {
 		await this.close();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

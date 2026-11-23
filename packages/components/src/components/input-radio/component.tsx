@@ -9,7 +9,6 @@ import type {
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
-	InputRadioProps,
 	InputTypeOnDefault,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
@@ -60,7 +59,7 @@ import { submitFormOnEnter } from '../form/controller';
 })
 export class KolInputRadio
 	extends BaseFormFieldWebComponent<InputRadioApi>
-	implements ClickableElement, FocusableElement, InputRadioProps, WebComponentInterface<InputRadioApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputRadioApi>
 {
 	@Element() protected readonly host?: HTMLKolInputRadioElement;
 
@@ -291,9 +290,8 @@ export class KolInputRadio
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this._value;
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this._value);
 	}
 
 	/**

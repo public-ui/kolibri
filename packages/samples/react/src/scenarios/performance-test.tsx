@@ -1,9 +1,9 @@
-import { KolButton, KolInputCheckbox, KolInputNumber, KolInputText, KolSkeleton } from '@public-ui/react-v19';
+import { KolButton, KolInputCheckbox, KolInputNumber, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useState } from 'react';
 import { SampleDescription } from '../components/SampleDescription';
 
-type ComponentType = 'text' | 'number' | 'checkbox' | 'skeleton';
+type ComponentType = 'text' | 'number' | 'checkbox';
 
 export const PerformanceTest: FC = () => {
 	const [count, setCount] = useState<number>(100);
@@ -25,8 +25,6 @@ export const PerformanceTest: FC = () => {
 				return <KolInputNumber key={idx} _label={`NumberInput #${idx}`} />;
 			case 'checkbox':
 				return <KolInputCheckbox key={idx} _label={`Checkbox #${idx}`} />;
-			case 'skeleton':
-				return <KolSkeleton key={idx} _name={`skeleton-${idx}`} />;
 			default:
 				return null;
 		}
@@ -78,7 +76,6 @@ export const PerformanceTest: FC = () => {
 					<KolButton _label="Render TextInputs" _variant="primary" onClick={() => handleComponentRender('text')} />
 					<KolButton _label="Render NumberInputs" _variant="primary" onClick={() => handleComponentRender('number')} />
 					<KolButton _label="Render Checkboxes" _variant="primary" onClick={() => handleComponentRender('checkbox')} />
-					<KolButton _label="Render Skeletons" _variant="primary" onClick={() => handleComponentRender('skeleton')} />
 					<KolButton _label="Clear" _variant="secondary" onClick={handleClear} />
 				</div>
 			</div>

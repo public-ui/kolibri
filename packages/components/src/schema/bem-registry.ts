@@ -333,29 +333,7 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
-	'kol-skeleton': {
-		elements: {
-			container: {
-				modifiers: null;
-			};
-			name: {
-				modifiers: null;
-			};
-			counter: {
-				modifiers: null;
-			};
-			actions: {
-				modifiers: null;
-			};
-		};
-		modifiers: Set<'has-name' | 'is-hidden'>;
-	};
-	'kol-click-button': {
-		elements: {
-			label: {
-				modifiers: null;
-			};
-		};
+	'kol-close-button': {
 		modifiers: null;
 	};
 	'kol-span': {
@@ -384,6 +362,9 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 			text: {
+				modifiers: null;
+			};
+			tooltip: {
 				modifiers: null;
 			};
 		};
@@ -533,6 +514,47 @@ export type KoliBriComponentsBemSchema = {
 			| 'warning'
 		>;
 	};
+	'kol-input-checkbox': {
+		elements: {
+			'field-control': {
+				modifiers: Set<'checked' | 'indeterminate' | 'variant-button' | 'variant-default' | 'variant-switch'>;
+			};
+		};
+		modifiers: Set<'checked' | 'indeterminate' | 'label-align-left' | 'label-align-right' | 'variant-button' | 'variant-default' | 'variant-switch'>;
+	};
+	'kol-input-color': {
+		elements: {
+			input: {
+				modifiers: Set<'color'>;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-input-date': {
+		modifiers: null;
+	};
+	'kol-input-email': {
+		modifiers: null;
+	};
+	'kol-input-file': {
+		modifiers: null;
+	};
+	'kol-input-number': {
+		elements: {
+			'step-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-input-password': {
+		elements: {
+			'password-toggle-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-input-radio': {
 		elements: {
 			input: {
@@ -621,6 +643,14 @@ export type KoliBriComponentsBemSchema = {
 			};
 			'inputs-wrapper': {
 				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-input-text': {
+		elements: {
+			'clear-button': {
+				modifiers: Set<'hidden'>;
 			};
 		};
 		modifiers: null;
@@ -753,6 +783,40 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-table-settings': {
+		elements: {
+			actions: {
+				modifiers: null;
+			};
+			column: {
+				modifiers: null;
+			};
+			'column-label': {
+				modifiers: null;
+			};
+			columns: {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			'error-message': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-table-stateful': {
+		elements: {
+			pagination: {
+				modifiers: Set<'both' | 'bottom' | 'top'>;
+			};
+			'pagination-wrapper': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-tabs': {
 		elements: {
 			'button-create': {
@@ -813,6 +877,81 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 			'toggle-button-placeholder': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-image': {
+		modifiers: null;
+	};
+	'kol-popover': {
+		elements: {
+			arrow: {
+				modifiers: Set<'top' | 'right' | 'bottom' | 'left'>;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-progress': {
+		elements: {
+			bar: {
+				modifiers: null;
+			};
+			'bar-background': {
+				modifiers: null;
+			};
+			'bar-border': {
+				modifiers: null;
+			};
+			'bar-label': {
+				modifiers: null;
+			};
+			'bar-progress': {
+				modifiers: null;
+			};
+			'bar-unit': {
+				modifiers: null;
+			};
+			'bar-value': {
+				modifiers: null;
+			};
+			cycle: {
+				modifiers: null;
+			};
+			'cycle-background': {
+				modifiers: null;
+			};
+			'cycle-border': {
+				modifiers: null;
+			};
+			'cycle-label': {
+				modifiers: null;
+			};
+			'cycle-progress': {
+				modifiers: null;
+			};
+			'cycle-text': {
+				modifiers: null;
+			};
+			'cycle-value': {
+				modifiers: null;
+			};
+			'cycle-whitespace': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-tooltip': {
+		elements: {
+			arrow: {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			floating: {
 				modifiers: null;
 			};
 		};
@@ -996,19 +1135,7 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
-	'kol-skeleton': {
-		elements: {
-			actions: { modifiers: null },
-			container: { modifiers: null },
-			counter: { modifiers: null },
-			name: { modifiers: null },
-		},
-		modifiers: new Set(['has-name', 'is-hidden']),
-	},
-	'kol-click-button': {
-		elements: {
-			label: { modifiers: null },
-		},
+	'kol-close-button': {
 		modifiers: null,
 	},
 	'kol-span': {
@@ -1025,6 +1152,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			'interactive-element': { modifiers: null },
 			icon: { modifiers: null },
 			text: { modifiers: null },
+			tooltip: { modifiers: null },
 		},
 		modifiers: new Set(['disabled', 'external-link', 'hide-label', 'inline', 'standalone']),
 	},
@@ -1124,6 +1252,39 @@ const BEM: KoliBriComponentsBemSchema = {
 			'warning',
 		]),
 	},
+	'kol-input-checkbox': {
+		elements: {
+			'field-control': { modifiers: new Set(['checked', 'indeterminate', 'variant-button', 'variant-default', 'variant-switch']) },
+		},
+		modifiers: new Set(['checked', 'indeterminate', 'label-align-left', 'label-align-right', 'variant-button', 'variant-default', 'variant-switch']),
+	},
+	'kol-input-color': {
+		elements: {
+			input: { modifiers: new Set(['color']) },
+		},
+		modifiers: null,
+	},
+	'kol-input-date': {
+		modifiers: null,
+	},
+	'kol-input-email': {
+		modifiers: null,
+	},
+	'kol-input-file': {
+		modifiers: null,
+	},
+	'kol-input-number': {
+		elements: {
+			'step-button': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-input-password': {
+		elements: {
+			'password-toggle-button': { modifiers: null },
+		},
+		modifiers: null,
+	},
 	'kol-input-radio': {
 		elements: {
 			input: { modifiers: null },
@@ -1179,6 +1340,12 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			input: { modifiers: new Set(['number', 'range']) },
 			'inputs-wrapper': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-input-text': {
+		elements: {
+			'clear-button': { modifiers: new Set(['hidden']) },
 		},
 		modifiers: null,
 	},
@@ -1246,6 +1413,24 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
+	'kol-table-settings': {
+		elements: {
+			actions: { modifiers: null },
+			column: { modifiers: null },
+			'column-label': { modifiers: null },
+			columns: { modifiers: null },
+			content: { modifiers: null },
+			'error-message': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-table-stateful': {
+		elements: {
+			pagination: { modifiers: new Set(['both', 'bottom', 'top']) },
+			'pagination-wrapper': { modifiers: null },
+		},
+		modifiers: null,
+	},
 	'kol-tabs': {
 		elements: {
 			'button-create': { modifiers: null },
@@ -1280,6 +1465,45 @@ const BEM: KoliBriComponentsBemSchema = {
 			'toggle-button': { modifiers: null },
 			'toggle-button-icon': { modifiers: null },
 			'toggle-button-placeholder': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-image': {
+		modifiers: null,
+	},
+	'kol-popover': {
+		elements: {
+			arrow: {
+				modifiers: new Set(['top', 'right', 'bottom', 'left']),
+			},
+		},
+		modifiers: null,
+	},
+	'kol-progress': {
+		elements: {
+			bar: { modifiers: null },
+			'bar-background': { modifiers: null },
+			'bar-border': { modifiers: null },
+			'bar-label': { modifiers: null },
+			'bar-progress': { modifiers: null },
+			'bar-unit': { modifiers: null },
+			'bar-value': { modifiers: null },
+			cycle: { modifiers: null },
+			'cycle-background': { modifiers: null },
+			'cycle-border': { modifiers: null },
+			'cycle-label': { modifiers: null },
+			'cycle-progress': { modifiers: null },
+			'cycle-text': { modifiers: null },
+			'cycle-value': { modifiers: null },
+			'cycle-whitespace': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-tooltip': {
+		elements: {
+			arrow: { modifiers: null },
+			content: { modifiers: null },
+			floating: { modifiers: null },
 		},
 		modifiers: null,
 	},

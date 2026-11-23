@@ -37,16 +37,8 @@ export default function (program: Command): void {
 				for (const component of components) {
 					const componentKey = `kol-${component}` as keyof typeof BEM;
 
-					// Filter out skeleton and click-button
-					if (component === 'skeleton' || component === 'click-button') {
-						console.warn(`⚠️  Component '${component}' is not available for generation.`);
-						continue;
-					}
-
 					if (!BEM[componentKey]) {
-						const availableComponents = Object.keys(BEM)
-							.filter((key) => !key.includes('skeleton') && !key.includes('click-button'))
-							.join(', ');
+						const availableComponents = Object.keys(BEM).join(', ');
 						console.warn(`⚠️  Component '${component}' not found in BEM registry. Available: ${availableComponents}`);
 						continue;
 					}

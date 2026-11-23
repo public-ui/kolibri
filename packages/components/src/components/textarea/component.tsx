@@ -29,7 +29,6 @@ import type {
 	Stringified,
 	StringValuePropType,
 	SyncValueBySelectorPropType,
-	TextareaProps,
 	TextareaResizePropType,
 	TooltipAlignPropType,
 	TouchedPropType,
@@ -77,10 +76,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolTextarea
-	extends BaseFormFieldWebComponent<TextareaApi>
-	implements ClickableElement, FocusableElement, TextareaProps, WebComponentInterface<TextareaApi>
-{
+export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implements ClickableElement, FocusableElement, WebComponentInterface<TextareaApi> {
 	@Element() protected readonly host?: HTMLKolTextareaElement;
 
 	@State() public id = createUniqueId('textarea');
@@ -416,9 +412,8 @@ export class KolTextarea
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.ctaRef.el?.value;
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
 	}
 
 	/**
@@ -426,16 +421,20 @@ export class KolTextarea
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.watchAriaDetails(this._ariaDetails);
@@ -541,6 +540,8 @@ export class KolTextarea
 	 */
 	private measureTextareaRows(el: HTMLTextAreaElement): number {
 		// Hides the scrollbar during the measurement; the padding is removed temporarily for a correct row height.
+		// Both inline values are restored afterwards, so the scrollbar of a resizable textarea stays available.
+		const { overflow, padding } = el.style;
 		el.style.overflow = 'hidden';
 		el.style.padding = '0';
 		const currentRows = el.rows;
@@ -548,7 +549,8 @@ export class KolTextarea
 		el.rows = 1;
 		const nextRows = Math.round(el.scrollHeight / rowHeight);
 		el.rows = currentRows;
-		el.style.padding = '';
+		el.style.overflow = overflow;
+		el.style.padding = padding;
 
 		const minRows = this.minRows;
 		return minRows && minRows > nextRows ? minRows : nextRows;

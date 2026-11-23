@@ -1,8 +1,5 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import type { Stringified } from '../types';
-import type { ColorContrast, WatchOptions } from '../utils';
-import { a11yHint, createContrastColorPair, Log, watchValidator } from '../utils';
+import type { ColorContrast } from '../utils';
+import { a11yHint, createContrastColorPair, Log } from '../utils';
 
 /**
  * Defines the backgroundColor and foregroundColor.
@@ -53,21 +50,6 @@ function typeOfColor(value?: unknown): { type: typeOfColorType; valid: boolean; 
 function isValidColorPair(value: ColorPair): boolean {
 	return !!(typeof value === 'object' && value && typeof value.backgroundColor === 'string' && typeof value.foregroundColor === 'string');
 }
-
-function validatorFunction(value?: Stringified<PropColor>): boolean {
-	const valueType = typeOfColor(value);
-	switch (valueType.type) {
-		case null:
-			return false;
-		case 'string':
-		case 'ColorPair':
-			return valueType.valid;
-	}
-}
-
-export const validateColor = (component: Generic.Element.Component, value?: Stringified<PropColor>, options?: WatchOptions): void => {
-	watchValidator(component, '_color', validatorFunction, new Set(['rgb in hex', 'ColorPair']), value, options);
-};
 
 export const handleColorChange = (value: unknown): ColorPair => {
 	let colorContrast: ColorContrast<string>;

@@ -1,7 +1,7 @@
 import type { AlignPropType, BreadcrumbLinkProps, LinkOnCallbacksPropType } from '../../../schema';
 import { setEventTarget } from '../../../schema';
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
-import { nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import {
@@ -73,8 +73,7 @@ export const createBreadcrumbLinkItem = (link: BreadcrumbLinkProps, getHost: () 
 	apply(hideLabelProp, link._hideLabel);
 	apply(hrefProp, link._href);
 	apply(spanIconsProp, link._icons);
-	// The predecessor rendered `<kol-link-wc _inline={false} {...link}>`: the entry's own
-	// `_inline` overrode the forced `false`, anything else fell back to `false`.
+	// Breadcrumb links are not inline by default; an entry's own `_inline` wins.
 	apply(inlineProp, link._inline ?? false);
 	apply(labelWithExpertSlotProp, link._label);
 	apply(linkCallbacksProp, link._on);
@@ -102,7 +101,7 @@ export const createBreadcrumbLinkItem = (link: BreadcrumbLinkProps, getHost: () 
 	});
 
 	renderProps.ariaCurrent = '';
-	renderProps.ariaDescriptionId = nonce();
+	renderProps.ariaDescriptionId = createUniqueId('aria-description');
 	renderProps.expertSlot = link._label === '';
 
 	const getResolvedHref = (): string => (typeof renderProps.href === 'string' ? renderProps.href : '');

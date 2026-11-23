@@ -13,7 +13,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputEmailProps,
 	InputTypeOnDefault,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -45,8 +44,12 @@ import type { InputEmailApi } from '../../internal/functional-components/input-e
 import { inputEmailPropsConfig } from '../../internal/functional-components/input-email/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
 import { multipleProp, suggestionsProp } from '../../internal/props';
+import { bem } from '../../schema/bem-registry';
+import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+
+const emailBem = bem.forBlock('kol-input-email');
 
 /**
  * The **Email** input type creates an input field for email addresses. It supports built-in format validation, multiple addresses via the `_multiple` property, and auto-complete suggestions.
@@ -63,7 +66,7 @@ import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 })
 export class KolInputEmail
 	extends BaseTextInputWebComponent<InputEmailApi>
-	implements ClickableElement, FocusableElement, InputEmailProps, WebComponentInterface<InputEmailApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputEmailApi>
 {
 	@Element() protected readonly host?: HTMLKolInputEmailElement;
 
@@ -379,9 +382,8 @@ export class KolInputEmail
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<string | undefined> {
-		return this.ctaRef.el?.value;
+	public getValue(): Promise<string | undefined> {
+		return Promise.resolve(this.ctaRef.el?.value);
 	}
 
 	/**
@@ -389,16 +391,20 @@ export class KolInputEmail
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.unsetRenderProp('smartButton');
@@ -456,7 +462,7 @@ export class KolInputEmail
 
 		return (
 			<Host>
-				<FormFieldFC {...this.getTextFormFieldProps('kol-input-email email')}>
+				<FormFieldFC {...this.getTextFormFieldProps(clsx(emailBem(), 'email'))}>
 					<InputContainerFC
 						disabled={this.getRenderProp('disabled')}
 						msg={this.getRenderProp('msg')}

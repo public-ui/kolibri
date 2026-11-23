@@ -33,7 +33,7 @@ Controller-/Aspect-Klasse:
 
 ```typescript
 @Component({ tag: 'kol-my-component', styleUrls: { default: './style.scss' }, shadow: true })
-export class KolMyComponent extends BaseWebComponent<MyApi> implements MyProps, WebComponentInterface<MyApi> {
+export class KolMyComponent extends BaseWebComponent<MyApi> implements WebComponentInterface<MyApi> {
 	@Element() protected readonly host?: HTMLKolMyComponentElement;
 
 	// Optional: Behavior komponieren (nur für echt wiederverwendbare Logik)

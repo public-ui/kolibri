@@ -1,9 +1,6 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/icon' as *;
 
 @mixin button($block-classname) {
-	@include icon();
-
 	.#{$block-classname} {
 		--button-main-color: var(--ecl-color-primary);
 		--button-hover-background-color: var(--ecl-color-primary-50);

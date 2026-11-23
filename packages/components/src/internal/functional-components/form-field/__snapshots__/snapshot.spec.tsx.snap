@@ -37,8 +37,8 @@ exports[`FormFieldFC renders a counter 1`] = `
     <input type="text">
   </div>
   <div class="kol-form-field__counter">
-    <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter"></span>
-    <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="field-counter-nonce"></span>
+    <span aria-hidden="true" class="kol-form-field__counter"></span>
+    <span aria-live="polite" class="visually-hidden" id="field-counter-nonce"></span>
   </div>
 </div>
 `;
