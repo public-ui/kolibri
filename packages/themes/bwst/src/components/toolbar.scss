@@ -1,7 +1,10 @@
 @use '../mixins/button' as *;
+@use '../mixins/focus-outline' as *;
 @use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
 
 @layer kol-theme-component {
+	@include kol-icon-theme;
 	@include kol-button('kol-button');
 	@include kol-button('kol-link');
 
@@ -17,15 +20,12 @@
 					border-right: 0;
 				}
 
-				&:first-child {
+				&:first-child .kol-span {
 					--kol-toolbar-item-border-radius: var(--border-radius) 0 0 var(--border-radius);
 				}
 
-				&:last-child {
-					--kol-toolbar-item-border-radius: 0 var(--border-radius) var(--border-radius) 0;
-				}
-
 				&:last-child .kol-span {
+					--kol-toolbar-item-border-radius: 0 var(--border-radius) var(--border-radius) 0;
 					border-right: var(--border-width) solid var(--text-border-color);
 				}
 			}
@@ -37,15 +37,12 @@
 					border-bottom: 0;
 				}
 
-				&:first-child {
+				&:first-child .kol-span {
 					--kol-toolbar-item-border-radius: var(--border-radius) var(--border-radius) 0 0;
 				}
 
-				&:last-child {
-					--kol-toolbar-item-border-radius: 0 0 var(--border-radius) var(--border-radius);
-				}
-
 				&:last-child .kol-span {
+					--kol-toolbar-item-border-radius: 0 0 var(--border-radius) var(--border-radius);
 					border-bottom: var(--border-width) solid var(--text-border-color);
 				}
 			}
@@ -53,6 +50,29 @@
 
 		.kol-toolbar__item .kol-span {
 			border-radius: var(--kol-toolbar-item-border-radius);
+		}
+
+		/* The text box carries the group's corners, square between the buttons, while the focus ring keeps
+		   the round button corners. The class carrier around the interactive element draws the ring: it is
+		   a plain element with the button's box, so it survives Firefox's page color override like the ring
+		   of the shared button styles. */
+		.kol-toolbar__item .kol-button:has(> .kol-button__interactive-element:focus-visible),
+		.kol-toolbar__item .kol-link:has(> .kol-link__interactive-element:focus-visible) {
+			@include focus-outline;
+			position: relative;
+		}
+
+		/* Under Firefox's page color override the native button gets the browser's own focus ring on top of
+		   whatever the author outlines, and its corners follow the button. The focused interactive element
+		   takes the ring's radius, so both rings coincide and the author ring covers the other. */
+		.kol-toolbar__item .kol-button__interactive-element:focus-visible,
+		.kol-toolbar__item .kol-link__interactive-element:focus-visible {
+			border-radius: var(--border-radius);
+		}
+
+		.kol-toolbar__item .kol-button__interactive-element:focus-visible .kol-button__text,
+		.kol-toolbar__item .kol-link__interactive-element:focus-visible .kol-link__text {
+			outline: none;
 		}
 
 		hr {

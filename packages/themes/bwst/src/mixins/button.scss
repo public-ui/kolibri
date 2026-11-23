@@ -127,8 +127,6 @@
 
 			.#{$block-classname}__text {
 				@include focus-outline;
-				// The toolbar gives its items per-corner radii (square between the buttons); the ring follows them.
-				border-radius: var(--kol-toolbar-item-border-radius, var(--border-radius));
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 		}
