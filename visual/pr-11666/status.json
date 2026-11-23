@@ -1,0 +1,48 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "7 changed – 0 of 7 approved, review pending",
+	"computedAt": "2026-11-23T07:28:11.873Z",
+	"pr": 11666,
+	"head": "05c9faae4ca67dbe3860af4ff9ff92ab5d6a4ae8",
+	"digest": "sha256:2733f0c20e8d75ee7deaa900bea2eaa8b90666d2c6f344a74b29b8a9a3d99066",
+	"counts": {
+		"changes": 7,
+		"open": 7,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/popover-button-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/popover-button-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/popover-button-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/popover-button-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/popover-button-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/popover-button-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/popover-button-basic": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
