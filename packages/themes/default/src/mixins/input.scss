@@ -56,14 +56,25 @@
 		&__smart-button {
 			position: relative;
 			z-index: 2;
-			.kol-button__interactive-element:focus {
-				// Firefox repaints native form controls under user color overrides and drops author outlines, so the ring lives on the plain text box.
-				outline: none;
 
-				.kol-button__text {
-					@include focus-outline;
-					position: relative; // make sure focus outline is visible and not covered by adjacent element
-				}
+			/* An icon-only button has a text box as tall as the icon only. The class carrier, which has the
+			   button's box, draws the ring: a plain element, so it survives Firefox's page color override. */
+			&:has(> .kol-button__interactive-element:focus)::after {
+				@include focus-outline;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+
+				content: '';
+				pointer-events: none;
+			}
+
+			.kol-button__interactive-element:focus {
+				outline: none;
+				// The radius shapes the ring Firefox itself draws on the native button under a page color override.
+				border-radius: var(--border-radius);
 			}
 		}
 
