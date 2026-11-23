@@ -1,7 +1,22 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-const propsToLabel = (props: Record<string, unknown>) => {
+import type { JSX as StencilJSX } from '@stencil/core';
+
+import type { JSX } from '../../components.d';
+
+/**
+ * Tag name of a KoliBri element.
+ */
+export type ElementTag = keyof JSX.IntrinsicElements;
+
+/**
+ * The props of a KoliBri element, derived from its tag name: its `@Prop` declarations plus the HTML attributes of the host.
+ * Every prop is optional, so a variant can leave out a required prop on purpose.
+ */
+export type ElementProps<Tag extends ElementTag> = Partial<StencilJSX.IntrinsicElements[Tag]>;
+
+const propsToLabel = (props: object) => {
 	return Object.entries(props)
 		.map(([key, value]) => `${key}=${JSON.stringify(value)}`)
 		.join(' ');
@@ -17,18 +32,19 @@ const propsToLabel = (props: Record<string, unknown>) => {
  * reported in #11449, that sequence never reaches the pre-load watchers and therefore pins a
  * weaker window.
  *
- * @param {string} ComponentName Name of the component to test in kebab-case.
+ * @param ComponentName Tag name of the component to test; it types the prop variants.
  * @param {Array} components Array of Web Components to render during the test. Typically, the tested component and its WC counterpart.
  * @param propVariants Array of prop variants to test. Each prop variant is an object with the props to pass to the component.
  */
-export const executeSnapshotTests = <Props extends Record<string, unknown>>(ComponentName: string, components: unknown[], propVariants: Props[]) => {
+export const executeSnapshotTests = <Tag extends ElementTag>(ComponentName: Tag, components: unknown[], propVariants: ElementProps<Tag>[]) => {
+	const TagName: string = ComponentName;
 	describe(ComponentName, () => {
-		const testTable: [string, Props][] = propVariants.map((props) => [propsToLabel(props), props]);
+		const testTable: [string, ElementProps<Tag>][] = propVariants.map((props) => [propsToLabel(props), props]);
 
 		it.each(testTable)('should render with %s', async (_, props) => {
 			const page = await newSpecPage({
 				components,
-				template: () => <ComponentName {...props} />,
+				template: () => <TagName {...props} />,
 			});
 			await page.waitForChanges();
 

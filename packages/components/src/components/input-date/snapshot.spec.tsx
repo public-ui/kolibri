@@ -1,15 +1,14 @@
 import { KolInputDateTag } from '../../core/component-names';
-import type { InputDateProps } from '../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
 
 import { KolInputDate } from './component';
 
-executeInputSnapshotTests<InputDateProps>(KolInputDateTag, [KolInputDate], {
+executeInputSnapshotTests(KolInputDateTag, [KolInputDate], {
 	_value: '2025-01-01',
 	// _suggestions: [ ]
 });
 
-executeSnapshotTests<InputDateProps>(
+executeSnapshotTests(
 	KolInputDateTag,
 	[KolInputDate],
 	[
