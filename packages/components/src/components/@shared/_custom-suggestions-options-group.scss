@@ -5,7 +5,6 @@
 		background-color: white;
 		display: block;
 		position: absolute;
-		z-index: 2;
 		max-height: to-rem(250);
 		margin: 0;
 		padding: 0;
@@ -16,6 +15,6 @@
 
 	//sobald die listbox offen ist, muss der z-index des containers höher sein als die container ungeöffneter selects
 	.kol-input-container:has(.kol-custom-suggestions-options-group--open) {
-		z-index: 10;
+		z-index: 5;
 	}
 }

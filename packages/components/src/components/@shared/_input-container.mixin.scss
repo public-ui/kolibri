@@ -17,6 +17,7 @@
 
 		&__container {
 			position: relative;
+			// input container are a click area above input adornments and create a higher staking area above text for there tooltips
 			z-index: 1;
 		}
 

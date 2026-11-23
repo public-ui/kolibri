@@ -56,18 +56,21 @@
 
 				&--1 {
 					left: to-rem(var(--kol-spin-border-width));
+					// dot 1 behind dot 2
 					z-index: 0;
 					animation: 1s infinite spin1;
 				}
 
 				&--2 {
 					left: to-rem(var(--kol-spin-border-width));
+					// dot 2 above dot 1
 					z-index: 1;
 					animation: 1s infinite spin2;
 				}
 
 				&--3 {
 					left: to-rem(calc(var(--kol-spin-size, 13) + var(--kol-spin-border-width)));
+					// dot 3 above dot 4
 					z-index: 1;
 					animation: 1s infinite spin2;
 				}
@@ -75,6 +78,7 @@
 				&--neutral {
 					opacity: 0.6;
 					left: to-rem(calc((var(--kol-spin-size, 13) * 2) + var(--kol-spin-border-width)));
+					// dot 4 behind dot 3
 					z-index: 0;
 					animation: 1s infinite spin3;
 				}

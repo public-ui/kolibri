@@ -96,9 +96,10 @@
 			visibility: visible;
 		}
 
+		// if a collapsible has a child with an overlay (eg select) it has to lift it above all other non focused collapsibles/inputs
 		&--open:focus-within {
 			position: relative;
-			z-index: 9;
+			z-index: 4;
 		}
 	}
 }

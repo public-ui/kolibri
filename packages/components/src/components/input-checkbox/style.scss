@@ -58,7 +58,6 @@
 			display: none;
 			position: absolute;
 			inset: auto;
-			z-index: 1;
 			pointer-events: none;
 		}
 
@@ -114,6 +113,8 @@
 			position: absolute;
 			top: 50%;
 			left: to-rem(4);
+
+			// switch icon above background
 			z-index: 1;
 			width: 1.2em;
 			height: 1.2em;

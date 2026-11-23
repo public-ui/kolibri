@@ -18,6 +18,7 @@
 		.kol-link {
 			position: absolute;
 			left: to-rem(-99999);
+			// skip nav is everything else
 			z-index: 1010;
 
 			line-height: 1;
