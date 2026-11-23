@@ -1,10 +1,5 @@
-import type { Generic } from 'adopted-style-sheets';
-
 import type { Optgroup, Option, RadioOption, StencilUnknown } from '../types';
 import type { Stringified } from '../types/common';
-import type { WatchOptions } from '../utils';
-import { watchJsonArrayString } from '../utils';
-import { validateInputSelectOptions } from '../validators';
 
 /* types */
 
@@ -28,25 +23,4 @@ export type PropRadioOptions = {
  */
 export type PropOptionsWithOptgroup = {
 	options: OptionsWithOptgroupPropType;
-};
-
-/* validators */
-
-export const validateOptions = (component: Generic.Element.Component, value: OptionsPropType | undefined, options: WatchOptions = {}): void => {
-	watchJsonArrayString(
-		component,
-		'_options',
-		(item: Option<StencilUnknown>) => typeof item === 'object' && item !== null && typeof item.label === 'string' && item.label.length > 0,
-		value,
-		undefined,
-		options,
-	);
-};
-
-export const validateOptionsWithOptgroup = (
-	component: Generic.Element.Component,
-	value: OptionsWithOptgroupPropType | undefined,
-	options: WatchOptions = {},
-) => {
-	watchJsonArrayString(component, '_options', validateInputSelectOptions, value, undefined, options);
 };

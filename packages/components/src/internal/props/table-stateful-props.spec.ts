@@ -7,7 +7,7 @@ import { tableStatefulCallbacksProp } from './table-stateful-callbacks';
 import { tableStatefulHeadersProp } from './table-stateful-headers';
 
 /**
- * Pins the props of `kol-table-stateful` against the legacy validators they replace (#9599).
+ * Pins the props of `kol-table-stateful` (#9599).
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;

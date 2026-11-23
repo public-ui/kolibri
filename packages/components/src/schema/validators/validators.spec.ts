@@ -1,11 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 
-import { createLegacyComponent, getInvalidValueWarnings, getLoggedMessages } from '../../utils/testing/legacy-component';
-import type { AlignPropType } from '../props/align';
+import { getLoggedMessages } from '../../utils/testing/logged-messages';
 import type { Optgroup, Option, SelectOption } from '../types/input/types';
 import { Log } from '../utils/dev.utils';
 import { validateAccessAndShortKey } from './access-and-short-key';
-import { validateAlignment } from './alignment';
 import { isObject, isString, isStyle, STATE_CHANGE_EVENT } from './common';
 import { validateInputSelectOptions } from './options';
 
@@ -33,29 +31,6 @@ describe('schema validators', () => {
 
 		it('throws when both keys are set', () => {
 			expect(() => validateAccessAndShortKey('a', 's')).toThrow('AccessKey and ShortKey are used. Only one is allowed.');
-		});
-	});
-
-	describe('validateAlignment', () => {
-		it.each([['bottom'], ['left'], ['right'], ['top']])('stores "%s"', (value) => {
-			const component = createLegacyComponent();
-			validateAlignment(component, '_align', value as AlignPropType);
-			expect(component.state._align).toBe(value);
-		});
-
-		it('stores the default "top" for undefined', () => {
-			const component = createLegacyComponent({ _align: 'left' });
-			validateAlignment(component, '_align', undefined);
-			expect(component.state._align).toBe('top');
-		});
-
-		it('keeps the state and warns for an unknown value', () => {
-			const component = createLegacyComponent({ _alignInvalid: 'left' });
-			validateAlignment(component, '_alignInvalid', 'center' as AlignPropType);
-			expect(component.state._alignInvalid).toBe('left');
-			expect(getInvalidValueWarnings(debugSpy.mock.calls, '_alignInvalid')).toEqual([
-				expect.stringContaining('Allowed values are: left, right, top, bottom, '),
-			]);
 		});
 	});
 
