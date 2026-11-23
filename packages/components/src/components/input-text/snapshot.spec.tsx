@@ -1,9 +1,10 @@
 import { KolInputTextTag } from '../../core/component-names';
+import type { InputTextProps } from '../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
 
 import { KolInputText } from './component';
 
-executeInputSnapshotTests(
+executeInputSnapshotTests<InputTextProps>(
 	KolInputTextTag,
 	[KolInputText],
 	{
@@ -13,7 +14,7 @@ executeInputSnapshotTests(
 	{ hasSmartButton: true },
 );
 
-executeSnapshotTests(
+executeSnapshotTests<InputTextProps>(
 	KolInputTextTag,
 	[KolInputText],
 	[

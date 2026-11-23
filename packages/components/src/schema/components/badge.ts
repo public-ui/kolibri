@@ -1,6 +1,8 @@
-import type { ComponentPropsOptional, ComponentPropsRequired } from '../../internal/functional-components/generic-types';
-import type { PropColor, PropLabelLangSegments } from '../props';
+import type { Generic } from 'adopted-style-sheets';
+
+import type { ColorPair, PropColor, PropLabelLangSegments } from '../props';
 import type { KoliBriIconsProp, Stringified } from '../types';
+import type { Members } from '../types/members';
 import type { InternalButtonProps } from './button';
 
 type RequiredProps = PropLabelLangSegments;
@@ -10,4 +12,21 @@ type OptionalProps = {
 	smartButton: Stringified<InternalButtonProps>;
 };
 
-export type BadgeProps = ComponentPropsRequired<RequiredProps> & ComponentPropsOptional<OptionalProps>;
+type RequiredStates = {
+	color: ColorPair;
+};
+type OptionalStates = {
+	icons: KoliBriIconsProp;
+	smartButton: InternalButtonProps;
+};
+
+type RequiredWatchers = RequiredStates;
+type OptionalWatchers = OptionalStates;
+
+export type BadgeProps = Members<RequiredProps, OptionalProps>;
+export type BadgeStates = Members<RequiredStates, OptionalStates>;
+export type BadgeAPI = Generic.Element.Component &
+	Members<RequiredProps, OptionalProps> &
+	Generic.Element.Watchers<RequiredWatchers, OptionalWatchers> & {
+		readonly state: Members<RequiredStates, OptionalStates>;
+	};

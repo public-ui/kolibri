@@ -1,0 +1,74 @@
+import type { Generic } from 'adopted-style-sheets';
+
+import type {
+	MsgPropType,
+	PropAccessKey,
+	PropAriaDetails,
+	PropDisabled,
+	PropHideLabel,
+	PropHideMsg,
+	PropHint,
+	PropHorizontalIcons,
+	PropId,
+	PropLabelWithExpertSlot,
+	PropMsg,
+	PropName,
+	PropOptions,
+	PropRequired,
+	PropRows,
+	PropShortKey,
+	PropSyncValueBySelector,
+	PropTouched,
+	PropVariantClassName,
+} from '../props';
+import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
+import type { Members } from '../types/members';
+
+type RequiredProps = PropLabelWithExpertSlot & PropOptions;
+type OptionalProps = {
+	msg: Stringified<MsgPropType>;
+	on: InputTypeOnDefault;
+	placeholder: string;
+	value: StencilUnknown;
+	hasClearButton: boolean;
+} & PropAccessKey &
+	PropAriaDetails &
+	PropDisabled &
+	PropHideMsg &
+	PropHideLabel &
+	PropHint &
+	PropHorizontalIcons &
+	PropName &
+	PropRequired &
+	PropRows &
+	PropSyncValueBySelector &
+	PropShortKey &
+	PropTouched &
+	PropVariantClassName;
+
+type RequiredStates = {
+	options: Option<StencilUnknown>[];
+} & PropId &
+	PropHideMsg &
+	PropLabelWithExpertSlot;
+type OptionalStates = {
+	on: InputTypeOnDefault;
+	placeholder: string;
+	hasClearButton: boolean;
+} & PropAccessKey &
+	PropDisabled &
+	PropHideLabel &
+	KoliBriHIcons &
+	PropHint &
+	PropName &
+	PropRequired &
+	PropRows &
+	PropMsg &
+	PropShortKey &
+	PropTouched &
+	PropVariantClassName;
+
+export type SingleSelectProps = Members<RequiredProps, OptionalProps>;
+export type SingleSelectStates = Members<RequiredStates, OptionalStates>;
+export type SingleSelectWatches = Generic.Element.Watchers<RequiredProps, OptionalProps>;
+export type SingleSelectAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

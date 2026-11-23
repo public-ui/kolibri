@@ -1,9 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { KolNavTag } from '../../core/component-names';
-import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
+import type { NavProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
 import { KolNav } from './component';
 
-const baseObj: ElementProps<typeof KolNavTag> = {
+const baseObj: NavProps = {
 	_label: 'Nav Label',
 	_links: [
 		{
@@ -36,7 +37,7 @@ const baseObj: ElementProps<typeof KolNavTag> = {
 	],
 };
 
-executeSnapshotTests(
+executeSnapshotTests<NavProps>(
 	KolNavTag,
 	[KolNav],
 	[
@@ -66,7 +67,7 @@ executeSnapshotTests(
 				{ _label: 'Collapsed section', _children: [{ _label: 'Hidden child', _href: '#hidden' }] },
 			],
 		},
-		{ _label: 'Nav with an invalid entry', _links: [{ _icons: 'kolicon-home' }] as unknown as ElementProps<typeof KolNavTag>['_links'] },
+		{ _label: 'Nav with an invalid entry', _links: [{ _icons: 'kolicon-home' }] as unknown as NavProps['_links'] },
 	],
 );
 

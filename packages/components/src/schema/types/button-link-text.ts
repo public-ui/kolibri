@@ -1,5 +1,5 @@
-import type { ComponentPropsOptional, ComponentPropsRequired } from '../../internal/functional-components/generic-types';
 import type { PropButtonCallbacks, PropHideLabel, PropHref, PropIcons, PropLabelLangSegments, PropLinkTarget } from '../props';
+import type { Members } from './members';
 import type { StencilUnknown } from './unknown';
 
 /**
@@ -21,6 +21,10 @@ type OptionalButtonOrLinkOrTextProps = PropHideLabel & {
 type OptionalButtonProps = OptionalButtonOrLinkOrTextProps & {
 	disabled: boolean;
 };
+// type ButtonProps = Members<RequiredButtonProps, OptionalButtonProps>;
+// type LinkProps = Members<RequiredLinkProps, OptionalButtonOrLinkOrTextProps>;
+// type TextProps = Members<RequiredTextProps, OptionalButtonOrLinkOrTextProps>;
+// type ButtonOrLinkOrTextProps = ButtonProps | LinkProps | TextProps;
 
 type OptionalButtonOrLinkOrTextWithChildrenProps = OptionalButtonOrLinkOrTextProps & {
 	children: ButtonOrLinkOrTextWithChildrenProps[];
@@ -28,7 +32,7 @@ type OptionalButtonOrLinkOrTextWithChildrenProps = OptionalButtonOrLinkOrTextPro
 type OptionalButtonWithChildrenProps = OptionalButtonProps & {
 	children: ButtonOrLinkOrTextWithChildrenProps[];
 };
-export type ButtonWithChildrenProps = ComponentPropsRequired<RequiredButtonProps> & ComponentPropsOptional<OptionalButtonWithChildrenProps>;
-export type LinkWithChildrenProps = ComponentPropsRequired<RequiredLinkProps> & ComponentPropsOptional<OptionalButtonOrLinkOrTextWithChildrenProps>;
-type TextWithChildrenProps = ComponentPropsRequired<RequiredTextProps> & ComponentPropsOptional<OptionalButtonOrLinkOrTextWithChildrenProps>;
+export type ButtonWithChildrenProps = Members<RequiredButtonProps, OptionalButtonWithChildrenProps>;
+export type LinkWithChildrenProps = Members<RequiredLinkProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
+type TextWithChildrenProps = Members<RequiredTextProps, OptionalButtonOrLinkOrTextWithChildrenProps>;
 export type ButtonOrLinkOrTextWithChildrenProps = ButtonWithChildrenProps | LinkWithChildrenProps | TextWithChildrenProps;

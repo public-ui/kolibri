@@ -22,7 +22,7 @@ function buildByType(_type: AlertType) {
 	return nextArray;
 }
 
-executeSnapshotTests(
+executeSnapshotTests<AlertProps>(
 	KolAlertTag,
 	[KolAlert],
 	[

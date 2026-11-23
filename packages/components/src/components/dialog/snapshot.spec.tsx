@@ -1,10 +1,11 @@
 import { KolDialogTag, KolModalTag } from '../../core/component-names';
-import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
+import type { DialogProps, ModalProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolModal } from '../modal/component';
 import { KolDialog } from './component';
 
-const cases: ElementProps<typeof KolDialogTag>[] = [
+const cases: DialogProps[] = [
 	{
 		_label: 'Blank Dialog',
 		_variant: 'blank',
@@ -23,5 +24,5 @@ const cases: ElementProps<typeof KolDialogTag>[] = [
 	},
 ];
 
-executeSnapshotTests(KolDialogTag, [KolDialog], cases);
-executeSnapshotTests(KolModalTag, [KolModal], cases);
+executeSnapshotTests<DialogProps>(KolDialogTag, [KolDialog], cases);
+executeSnapshotTests<ModalProps>(KolModalTag, [KolModal], cases);

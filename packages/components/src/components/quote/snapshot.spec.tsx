@@ -1,8 +1,16 @@
 import { KolQuoteTag } from '../../core/component-names';
+import type { LabelLangSegmentsPropType } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolQuote } from './component';
 
-executeSnapshotTests(
+type QuoteSnapshotProps = {
+	_href: string;
+	_label?: LabelLangSegmentsPropType;
+	_quote: string;
+	_variant?: string;
+};
+
+executeSnapshotTests<QuoteSnapshotProps>(
 	KolQuoteTag,
 	[KolQuote],
 	[

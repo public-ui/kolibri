@@ -213,11 +213,8 @@ schema-alias types of the props (`HrefPropType`, `LabelWithExpertSlotPropType`,
 `AlternativeButtonLinkRolePropType`, …) are held by the prop definitions — their external types
 travel in the phantom keys of the prop definitions into the `Props` of the `*Api` type and from
 there into the `@Prop` declarations (see _Explicit Schema Types per Prop_ and _API Definition with
-`PropsConfigShape` and `ApiFromConfig`_). `src/schema/components` holds no type that describes a
-component (no `<Name>Props`, `<Name>States`, `<Name>API` or `<Name>Watches`), only the types of prop
-values such as `ButtonProps` for the entries of `_items`; they map their keys with the same
-`ComponentPropsRequired`/`ComponentPropsOptional` as `WebComponentInterface<Api>`. Snapshot specs type
-their prop variants through the tag name (`ElementProps<typeof Kol<Name>Tag>`). The public-api contract tests pin every
+`PropsConfigShape` and `ApiFromConfig`_). An additional `implements <Name>Props` from
+`src/schema/components` is therefore not used. The public-api contract tests pin every
 `@Prop`/`@Method` member with its type as written, so a type drift shows up in the pin. Legacy
 state-shape requirements of `*API` types (e.g. `InternalLinkAPI`'s `state` member) are replaced by
 the render-prop store.

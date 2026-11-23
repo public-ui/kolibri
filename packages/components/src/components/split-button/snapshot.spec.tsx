@@ -1,9 +1,10 @@
 import { KolSplitButtonTag } from '../../core/component-names';
-import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
+import type { SplitButtonProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolSplitButton } from './component';
 
-executeSnapshotTests(
+executeSnapshotTests<SplitButtonProps>(
 	KolSplitButtonTag,
 	[KolSplitButton],
 	[
@@ -18,7 +19,7 @@ executeSnapshotTests(
 				({
 					_label: 'Label',
 					_variant,
-				}) as ElementProps<typeof KolSplitButtonTag>,
+				}) as SplitButtonProps,
 		),
 		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 	],

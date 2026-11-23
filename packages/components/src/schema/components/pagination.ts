@@ -1,6 +1,9 @@
+import type { Generic } from 'adopted-style-sheets';
+
 import type { Callback } from '../enums';
 import type { PropCustomClass, PropLabel, PropMax, PropTooltipAlign } from '../props';
-import type { EventValueOrEventCallback, Stringified } from '../types';
+import type { EventValueOrEventCallback, Option, Stringified } from '../types';
+import type { Members } from '../types/members';
 
 export type KoliBriPaginationButtonCallbacks = {
 	[Callback.onClick]?: EventValueOrEventCallback<Event, number>;
@@ -46,3 +49,20 @@ type OptionalProps = {
 	PropTooltipAlign;
 
 export type KoliBriPaginationProps = RequiredProps & OptionalProps;
+
+type RequiredStates = {
+	boundaryCount: number;
+	hasButtons: PaginationHasButton;
+	page: number;
+	pageSize: number;
+	pageSizeOptions: Option<number>[];
+	on: KoliBriPaginationButtonCallbacks;
+	siblingCount: number;
+} & PropLabel &
+	PropMax;
+
+type OptionalStates = PropCustomClass & PropTooltipAlign;
+
+export type PaginationProps = Members<RequiredProps, OptionalProps>;
+export type PaginationStates = Members<RequiredStates, OptionalStates>;
+export type PaginationAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

@@ -1,4 +1,3 @@
-import type { ComponentPropsOptional, ComponentPropsRequired } from '../../internal/functional-components/generic-types';
 import type {
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
@@ -17,6 +16,7 @@ import type {
 	PropShortKey,
 	PropTooltipAlign,
 } from '../props';
+import type { Members } from '../types/members';
 
 /**
  * https://twitter.com/housecor/status/1541037184622403584?t=HoUiOAZEcXFeuDl-VWAEZg
@@ -42,4 +42,4 @@ export type OptionalProps = {
 	PropShortKey &
 	PropTooltipAlign;
 
-export type LinkProps = ComponentPropsRequired<RequiredProps> & ComponentPropsOptional<OptionalProps>;
+export type LinkProps = Members<RequiredProps, OptionalProps>;

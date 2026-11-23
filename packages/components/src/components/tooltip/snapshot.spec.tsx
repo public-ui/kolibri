@@ -3,7 +3,7 @@ import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolTooltipWc } from './component';
 
-executeSnapshotTests(
+executeSnapshotTests<Partial<Pick<KolTooltipWc, '_align' | '_id' | '_label'>>>(
 	KolTooltipWcTag,
 	[KolTooltipWc],
 	[

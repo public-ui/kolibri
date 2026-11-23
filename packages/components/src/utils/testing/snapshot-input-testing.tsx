@@ -1,10 +1,9 @@
-import type { ElementProps, ElementTag } from './snapshot-testing';
 import { executeSnapshotTests } from './snapshot-testing';
 
-export function executeInputSnapshotTests<Tag extends ElementTag>(
-	ComponentName: Tag,
+export function executeInputSnapshotTests<Props extends Record<string, unknown>>(
+	ComponentName: string,
 	components: unknown[],
-	extendedProps?: ElementProps<Tag>,
+	extendedProps?: Partial<Props>,
 	options: { hasSmartButton?: boolean } = {},
 ) {
 	const baseObj: unknown = {
@@ -12,10 +11,8 @@ export function executeInputSnapshotTests<Tag extends ElementTag>(
 		_name: 'field',
 		_placeholder: 'Hier steht ein Platzhaltertext',
 
-		...extendedProps,
+		...(extendedProps || ({} as Props)),
 	};
-
-	type Props = ElementProps<Tag>;
 
 	const propVariants: Props[] = [
 		{ ...(baseObj as Props) },
@@ -81,5 +78,5 @@ export function executeInputSnapshotTests<Tag extends ElementTag>(
 		{ ...(baseObj as Props), _variant: 'custom' },
 	);
 
-	executeSnapshotTests(ComponentName, components, propVariants);
+	executeSnapshotTests<Props>(ComponentName, components, propVariants);
 }

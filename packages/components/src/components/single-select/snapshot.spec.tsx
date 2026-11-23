@@ -1,4 +1,5 @@
 import { KolSingleSelectTag } from '../../core/component-names';
+import type { SingleSelectProps } from '../../schema';
 import { executeInputSnapshotTests } from '../../utils/testing';
 
 import { KolSingleSelect } from './component';
@@ -19,6 +20,6 @@ const options = [
 	},
 ];
 
-executeInputSnapshotTests(KolSingleSelectTag, [KolSingleSelect], {
+executeInputSnapshotTests<SingleSelectProps>(KolSingleSelectTag, [KolSingleSelect], {
 	_options: options,
 });

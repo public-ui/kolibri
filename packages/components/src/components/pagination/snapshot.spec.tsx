@@ -1,9 +1,10 @@
 import { KolPaginationTag } from '../../core/component-names';
-import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
+import type { PaginationProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolPagination } from './component';
 
-executeSnapshotTests(
+executeSnapshotTests<PaginationProps>(
 	KolPaginationTag,
 	[KolPagination],
 	[
@@ -37,7 +38,7 @@ executeSnapshotTests(
 		{
 			// Without the label attribute the translation `kol-pagination` names the landmark; the cast
 			// renders the attribute-less usage a plain HTML consumer has, which the required TS type forbids.
-			...({ _on: {}, _max: 2, _page: 1 } as ElementProps<typeof KolPaginationTag>),
+			...({ _on: {}, _max: 2, _page: 1 } as PaginationProps),
 		},
 	],
 );

@@ -1,5 +1,17 @@
-import type { ComponentPropsOptional, ComponentPropsRequired } from '../../internal/functional-components/generic-types';
-import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell } from '../types';
+import type { Generic } from 'adopted-style-sheets';
+
+import type {
+	PropAriaLabelledby,
+	PropHasSettingsMenu,
+	PropLabelLangSegments,
+	PropTableData,
+	PropTableDataFoot,
+	PropTableSelection,
+	StatefulPropTableCallbacks,
+} from '../props';
+import type { PropPaginationPosition } from '../props/pagination-position';
+import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
+import type { Members } from '../types/members';
 import type { BadgeProps } from './badge';
 import type { InternalButtonProps } from './button';
 import type { LinkProps } from './link';
@@ -57,7 +69,50 @@ export type KoliBriTableHeaders = {
 	vertical?: KoliBriTableHeaderCellWithLogic[][];
 };
 
-export type KoliBriTablePaginationProps = ComponentPropsRequired<{
-	page: number;
-}> &
-	ComponentPropsOptional<KoliBriPaginationProps>;
+export type KoliBriTablePaginationProps = Members<
+	{
+		page: number;
+	},
+	KoliBriPaginationProps
+>;
+type KoliBriTablePaginationStates = Members<
+	{
+		page: number;
+		max: number;
+	},
+	KoliBriPaginationProps
+>;
+
+type RequiredProps = {
+	headers: Stringified<KoliBriTableHeaders>;
+} & PropLabelLangSegments &
+	PropTableData;
+type OptionalProps = {
+	allowMultiSort: boolean;
+	fixedCols: [number, number];
+	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
+} & PropAriaLabelledby &
+	PropTableDataFoot &
+	PropPaginationPosition &
+	PropTableSelection &
+	StatefulPropTableCallbacks &
+	PropHasSettingsMenu;
+
+type RequiredStates = {
+	allowMultiSort: boolean;
+	fixedCols: [number, number];
+	data: KoliBriTableDataType[];
+	dataFoot: KoliBriTableDataType[];
+	headers: KoliBriTableHeaders;
+	pagination: KoliBriTablePaginationStates;
+	sortedData: KoliBriTableDataType[];
+} & PropLabelLangSegments &
+	PropPaginationPosition;
+type OptionalStates = {
+	sortDirection: KoliBriSortDirection;
+	selection: KoliBriTableSelection;
+} & StatefulPropTableCallbacks &
+	PropHasSettingsMenu;
+
+export type TableStates = Members<RequiredStates, OptionalStates>;
+export type TableAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

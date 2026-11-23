@@ -1,48 +1,49 @@
 import { KolInputCheckboxTag } from '../../core/component-names';
+import type { InputCheckboxProps } from '../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
 
 import { KolInputCheckbox } from './component';
 
-executeInputSnapshotTests(KolInputCheckboxTag, [KolInputCheckbox], {
+executeInputSnapshotTests<InputCheckboxProps>(KolInputCheckboxTag, [KolInputCheckbox], {
 	_checked: false,
 	_labelAlign: 'left',
 });
 
-executeInputSnapshotTests(KolInputCheckboxTag, [KolInputCheckbox], {
+executeInputSnapshotTests<InputCheckboxProps>(KolInputCheckboxTag, [KolInputCheckbox], {
 	_checked: true,
 	_labelAlign: 'left',
 });
 
-executeInputSnapshotTests(KolInputCheckboxTag, [KolInputCheckbox], {
+executeInputSnapshotTests<InputCheckboxProps>(KolInputCheckboxTag, [KolInputCheckbox], {
 	_checked: true,
 	_labelAlign: 'right',
 });
 
-executeInputSnapshotTests(KolInputCheckboxTag, [KolInputCheckbox], {
+executeInputSnapshotTests<InputCheckboxProps>(KolInputCheckboxTag, [KolInputCheckbox], {
 	_checked: false,
 	_variant: 'switch',
 });
 
-executeInputSnapshotTests(KolInputCheckboxTag, [KolInputCheckbox], {
+executeInputSnapshotTests<InputCheckboxProps>(KolInputCheckboxTag, [KolInputCheckbox], {
 	_checked: true,
 	_variant: 'switch',
 });
 
-executeInputSnapshotTests(KolInputCheckboxTag, [KolInputCheckbox], {
+executeInputSnapshotTests<InputCheckboxProps>(KolInputCheckboxTag, [KolInputCheckbox], {
 	_checked: false,
 	_variant: 'button',
 });
 
-executeInputSnapshotTests(KolInputCheckboxTag, [KolInputCheckbox], {
+executeInputSnapshotTests<InputCheckboxProps>(KolInputCheckboxTag, [KolInputCheckbox], {
 	_checked: true,
 	_variant: 'button',
 });
 
-executeInputSnapshotTests(KolInputCheckboxTag, [KolInputCheckbox], {
+executeInputSnapshotTests<InputCheckboxProps>(KolInputCheckboxTag, [KolInputCheckbox], {
 	_indeterminate: true,
 });
 
-executeSnapshotTests(
+executeSnapshotTests<InputCheckboxProps>(
 	KolInputCheckboxTag,
 	[KolInputCheckbox],
 	[

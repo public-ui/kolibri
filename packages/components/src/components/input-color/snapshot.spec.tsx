@@ -1,9 +1,10 @@
 import { KolInputColorTag } from '../../core/component-names';
+import type { InputColorProps } from '../../schema';
 import { executeInputSnapshotTests } from '../../utils/testing';
 
 import { KolInputColor } from './component';
 
-executeInputSnapshotTests(
+executeInputSnapshotTests<InputColorProps>(
 	KolInputColorTag,
 	[KolInputColor],
 	{
@@ -12,7 +13,7 @@ executeInputSnapshotTests(
 	{ hasSmartButton: true },
 );
 
-executeInputSnapshotTests(
+executeInputSnapshotTests<InputColorProps>(
 	KolInputColorTag,
 	[KolInputColor],
 	{

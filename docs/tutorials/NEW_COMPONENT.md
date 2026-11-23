@@ -182,10 +182,12 @@ import { KolMyComponent } from './component';
 
 const TAG = 'kol-my-component';
 
-executeSnapshotTests(TAG, [KolMyComponent], [{ _name: 'Test' }, { _name: '' }]);
-```
+type Props = {
+	_name: string;
+};
 
-Der Tag-Name typisiert die Prop-Varianten: Sie werden gegen die `@Prop`-Deklarationen des Elements geprüft (`ElementProps<typeof TAG>`), ein eigener Props-Typ entfällt.
+executeSnapshotTests<Props>(TAG, [KolMyComponent], [{ _name: 'Test' }, { _name: '' }]);
+```
 
 **Interaction-Test** (`interaction.e2e.ts`):
 

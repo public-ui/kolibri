@@ -1,9 +1,10 @@
 import { KolInputNumberTag } from '../../core/component-names';
+import type { InputNumberProps } from '../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
 
 import { KolInputNumber } from './component';
 
-executeInputSnapshotTests(
+executeInputSnapshotTests<InputNumberProps>(
 	KolInputNumberTag,
 	[KolInputNumber],
 	{
@@ -12,7 +13,7 @@ executeInputSnapshotTests(
 	{ hasSmartButton: true },
 );
 
-executeInputSnapshotTests(
+executeInputSnapshotTests<InputNumberProps>(
 	KolInputNumberTag,
 	[KolInputNumber],
 	{
@@ -22,7 +23,7 @@ executeInputSnapshotTests(
 	{ hasSmartButton: true },
 );
 
-executeSnapshotTests(
+executeSnapshotTests<InputNumberProps>(
 	KolInputNumberTag,
 	[KolInputNumber],
 	[

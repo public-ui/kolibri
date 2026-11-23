@@ -17,7 +17,7 @@ Always run a build before linting so the generated component typings exist for t
   - `style.scss` – SCSS styles for the component.
   - `*.e2e.ts` – Playwright end-to-end tests.
   - `test/` – Jest snapshot tests.
-- `src/schema` – shared enums, prop types and value types. `src/schema/components` holds only the types of prop values (e.g. `ButtonProps`, `LinkProps`); the API of a component is its `*Api` type in `src/internal/functional-components/<name>/api.tsx`.
+- `src/schema` – TypeScript schema describing the API of every component. For each component there is a file in `src/schema/components`. Shared enums, props and types are in the neighbouring folders.
 - other folders like `src/assets`, `src/locales` and `src/utils` contain shared assets, translations and helpers.
 
 ## Coding Rules

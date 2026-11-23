@@ -1,9 +1,10 @@
 import { KolInputPasswordTag } from '../../core/component-names';
+import type { InputPasswordProps } from '../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
 
 import { KolInputPassword } from './component';
 
-executeInputSnapshotTests(
+executeInputSnapshotTests<InputPasswordProps>(
 	KolInputPasswordTag,
 	[KolInputPassword],
 	{
@@ -12,7 +13,7 @@ executeInputSnapshotTests(
 	{ hasSmartButton: true },
 );
 
-executeSnapshotTests(
+executeSnapshotTests<InputPasswordProps>(
 	KolInputPasswordTag,
 	[KolInputPassword],
 	[

@@ -1,11 +1,12 @@
 import { KolLinkButtonTag } from '../../core/component-names';
+import type { LinkButtonProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolLinkButton } from './component';
 
 const baseObj = { _href: 'https://example.com', _icons: 'codicon codicon-home', _label: 'Label', _target: 'self' };
 
-executeSnapshotTests(
+executeSnapshotTests<LinkButtonProps>(
 	KolLinkButtonTag,
 	[KolLinkButton],
 	[

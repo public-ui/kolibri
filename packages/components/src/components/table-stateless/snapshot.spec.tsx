@@ -1,10 +1,10 @@
 import { KolTableStatelessTag } from '../../core/component-names';
-import type { KoliBriTableHeaders } from '../../schema';
-import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
+import type { TableStatelessProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolTableStateless } from './component';
 
-const propVariants: ElementProps<typeof KolTableStatelessTag>[] = [
+const propVariants: TableStatelessProps[] = [
 	{
 		_label: 'Table with horizontal and vertical headers',
 		_hasSettingsMenu: true,
@@ -185,7 +185,6 @@ const propVariants: ElementProps<typeof KolTableStatelessTag>[] = [
 	},
 	{
 		_label: 'Table with action column',
-		// The `_headers` type of kol-table-stateless declares no action or state columns, although it renders them.
 		_headers: {
 			horizontal: [
 				[
@@ -217,7 +216,7 @@ const propVariants: ElementProps<typeof KolTableStatelessTag>[] = [
 					},
 				],
 			],
-		} as KoliBriTableHeaders,
+		},
 		_data: [
 			{ header1: 'Cell 1.1', header2: 'Cell 1.2' },
 			{ header1: 'Cell 2.1', header2: 'Cell 2.2' },
@@ -239,7 +238,7 @@ const propVariants: ElementProps<typeof KolTableStatelessTag>[] = [
 					},
 				],
 			],
-		} as KoliBriTableHeaders,
+		},
 		_data: [
 			{
 				header1: 'Cell 1.1',
@@ -279,4 +278,4 @@ const propVariants: ElementProps<typeof KolTableStatelessTag>[] = [
 	},
 ];
 
-executeSnapshotTests(KolTableStatelessTag, [KolTableStateless], propVariants);
+executeSnapshotTests<TableStatelessProps>(KolTableStatelessTag, [KolTableStateless], propVariants);
