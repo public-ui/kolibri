@@ -31,6 +31,10 @@ describe('deriveAxes', () => {
 		assert.deepEqual(cssModifiers('kol-button', '.kol-button--primary .kol-button--secondary.x .kol-button--primary__text'), ['primary', 'secondary']);
 	});
 
+	it('matches a block with regular expression metacharacters only as itself', () => {
+		assert.deepEqual(cssModifiers('a.b', '.aXb--one .a.b--two'), ['two']);
+	});
+
 	it('derives the variants of kol-button from the theme exactly as the schema lists them', async () => {
 		const require = createRequire(import.meta.url);
 		const componentsRoot = join(process.cwd(), 'node_modules', '@public-ui', 'components');

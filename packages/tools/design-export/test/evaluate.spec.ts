@@ -2,7 +2,7 @@ import { describe, it } from 'mocha';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
-import { evaluateWebComponent } from '../src/evaluate/evaluate.js';
+import { evaluateWebComponent, htmlText } from '../src/evaluate/evaluate.js';
 import { readWebComponent } from '../src/evaluate/read-design.js';
 import { extractApi } from '../src/extract-api.js';
 import type { ShapeNode } from '../src/render/dom-to-shapes.js';
@@ -282,5 +282,16 @@ describe('icons', () => {
 		assert.equal(vector.kind, 'vector');
 		assert.equal(vector.fill, '#ad003a');
 		assert.equal(vector.width, 16);
+	});
+});
+
+describe('htmlText', () => {
+	it('keeps the text and drops complete, also nested tags', () => {
+		assert.equal(htmlText('Partly <em>a <strong>bold</strong> word</em> and <br>plain'), 'Partly a bold word and plain');
+	});
+
+	it('drops a tag that is not closed up to the end, so no tag survives in the text', () => {
+		assert.equal(htmlText('Before <script'), 'Before ');
+		assert.equal(htmlText('Before <img src="x" onerror="alert(1)"'), 'Before ');
 	});
 });

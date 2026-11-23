@@ -156,6 +156,23 @@ function attributeType(api: ComponentApi | undefined, prop: string): string {
 	return api?.attributeTypes?.[kebab] ?? api?.attributeTypes?.[prop] ?? '';
 }
 
+/**
+ * The text of an HTML fragment without its tags. A `<` without a closing `>` starts a tag that runs to
+ * the end of the fragment, as in HTML, so no tag survives in the text.
+ */
+export function htmlText(html: string): string {
+	const parts: string[] = [];
+	let textStart = 0;
+	for (let tagStart = html.indexOf('<'); tagStart !== -1; tagStart = html.indexOf('<', textStart)) {
+		parts.push(html.slice(textStart, tagStart));
+		const tagEnd = html.indexOf('>', tagStart);
+		if (tagEnd === -1) return parts.join('');
+		textStart = tagEnd + 1;
+	}
+	parts.push(html.slice(textStart));
+	return parts.join('');
+}
+
 function toRendered(node: VNode, slot: string | undefined, shadowOf: (tag: string, attrs: Record<string, unknown>) => RenderedNode | undefined): RenderedNode {
 	if (node.tag === 'slot' && slot !== undefined && node.attrs.name === undefined) return { tag: 'span', classes: [], attributes: {}, text: slot, children: [] };
 	const classes = classList(node.attrs.class ?? node.attrs.className);
@@ -167,7 +184,7 @@ function toRendered(node: VNode, slot: string | undefined, shadowOf: (tag: strin
 		else if (typeof value === 'string' || typeof value === 'number') attributes[name] = String(value);
 	}
 	// `innerHTML` (rendered markdown) counts with its text content.
-	const html = typeof node.attrs.innerHTML === 'string' ? node.attrs.innerHTML.replace(/<[^>]*>/g, '') : '';
+	const html = typeof node.attrs.innerHTML === 'string' ? htmlText(node.attrs.innerHTML) : '';
 	const text =
 		html +
 		node.children

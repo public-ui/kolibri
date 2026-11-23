@@ -69,11 +69,15 @@ function tagOf(interfaceName: string): string {
 	return interfaceName.replace(/[A-Z]/g, (letter, index: number) => `${index === 0 ? '' : '-'}${letter.toLowerCase()}`);
 }
 
+/** Escapes the metacharacters of a regular expression, so the value matches literally. */
+function escapeRegExp(value: string): string {
+	return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 /** Block modifiers the theme styles in its component CSS (`.kol-button--primary`), without element modifiers. */
 export function cssModifiers(block: string, css: string | undefined): string[] {
 	if (!css) return [];
-	const escaped = block.replace(/[-]/g, '\\-');
-	const modifiers = [...css.matchAll(new RegExp(`\\.${escaped}--([a-z][a-z0-9-]*)(?![\\w-])`, 'g'))].map((match) => match[1]);
+	const modifiers = [...css.matchAll(new RegExp(`\\.${escapeRegExp(block)}--([a-z][a-z0-9-]*)(?![\\w-])`, 'g'))].map((match) => match[1]);
 	return [...new Set(modifiers)].sort();
 }
 
