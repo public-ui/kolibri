@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11655,
-	"head": "bf6ec2820b99523a8065d632b9d49cc1b0ff0d4c",
+	"head": "4b38b2d21f68708df14788dfdffbe81dba6b0ade",
 	"repository": "public-ui/kolibri",
-	"runId": 44929216395,
-	"generatedAt": "2026-11-21T17:31:38.172Z",
-	"digest": "sha256:4430f3a29eef17b428be1c69360e2698a2c1ddef9a78617e9829e8e51288158f",
+	"runId": 45246251574,
+	"generatedAt": "2026-11-23T19:26:01.070Z",
+	"digest": "sha256:b88f4eef7757d21c2e351bcd450a373d30d174cddd8f0c10624a235a4d0ffe14",
 	"baseline": {
-		"sha": "6203437db1dfd01a0e8c97ee9dbf50352292c1a9",
+		"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6203437db1dfd01a0e8c97ee9dbf50352292c1a9",
+					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 					"ref": "develop",
-					"runId": 44730058698,
+					"runId": 45147817997,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-20T11:51:32.633Z",
-					"digest": "sha256:0ee6f812ab97a4625d82ac90b4ad955962fb1090aedb6d4ada4e784ceca6c970",
+					"createdAt": "2026-11-23T09:38:34.326Z",
+					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0ee6f812ab97a4625d82ac90b4ad955962fb1090aedb6d4ada4e784ceca6c970",
+			"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1159,67 +1159,67 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:4f10c3176d762579c0bf4872e0dda810073b1f5ab687eef228ebaf86e37d2050"
+					"hash": "sha256:34e7a97016155bbfdb1b998382d113a7abc207830e3583990ae57f5bab3d9479"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5dcf3b5d98221c5b5206768227185d8c0808f300568f38753042f8516368ec7e"
+					"hash": "sha256:8a2ab6dc9344cfed9bf32982c5d5f3eecf8678406dde732088d32a520d94ef17"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:be17ef227c4b647065e15457841e7161b6d1aee987cfcf44d5e77560317b8ce9"
+					"hash": "sha256:011a7af9873bddcfc3b8a99d7937ee0b98042dec94a24258401a2b6a5ac7b87e"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5574bb25f3e821af965e32078a03fc5bb5d07a351faf4311ed710fa21aedce00"
+					"hash": "sha256:fbef029276220e9464ce16dc64a30c15ed676fd2f352d50851e08c7e790c0e66"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5923d80b8161b187a5568cb838a95b5b066251d45f4b3848afa1775c7be26dcf"
+					"hash": "sha256:4b6303bddd0ad72450b65aab1e254737e81ed47faa6a036912e3cfb4fa5c0656"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:242d11ae155ed2f612f2624796f87afde5aee5dba93ecfb4eab13bb26b21c438"
+					"hash": "sha256:70a86ea86db91b32449df50ade52259846de7cd7bd57a4e89bb581f7c69ddad0"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5c4470f6d5983f5f39c6578953bbcf75fa08936c9d6a7caeda438c2f2759d1cd"
+					"hash": "sha256:46a0fd286ea1f759597476d923ee83835709f7894da7d471e5055d9dbce95b88"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:47eb73191260462a4228e93e4030b3c954f025dec957a12f7c088d43ff437762"
+					"hash": "sha256:8c1a289feb06e79a13fac4220fa240f0bfe5fd047e0dd8e7c5f3c891fb7309ce"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:86be77f189649c4f4ae56abb84385610942a92fd48b9dc6d3852f335c0436287"
+					"hash": "sha256:d594ba9f12114e791b8a3de48a5890b95852e913860a8857ce3eb93ee9adea19"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:b67a802c5fe9489fc3ab08f745e9cbbb918cf1b7574bb13570802ff7e2db219d"
+					"hash": "sha256:3f88c78b18dafb5a8c054664e94af37964a5f5f94b352d0d2f1e0b59ff84c6ed"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:1ec236279f39179aea6f8e081f791fb9612d00bf071285890bc066c18d6130c6"
+					"hash": "sha256:066fe34d3c521dd989903b237be3cc25d697de82a1c6f0664f3f2afbac9d12be"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -1789,7 +1789,7 @@
 					"name": "input-text-variant-noColumns--variant-left",
 					"route": "input-text-variant-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:105045d130a68461f3610dedd001440dceec8f2f29667d5cfad677c6d22dbe61"
+					"hash": "sha256:3c4df931384d90821fa945b5e2d6220291379d01268a6992a02e5cd9a987849e"
 				},
 				{
 					"name": "link-basic--basic",
@@ -2275,13 +2275,13 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
-					"hash": "sha256:a6c29bd9e9e8f934fcf31015e0c428ccd54334ec4751eeab7fbb2d615c4cd3c9"
+					"hash": "sha256:66d314a8d9cbf2981a5edbdce4de124badd1d85845992d6e866738139a36fada"
 				},
 				{
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios-same-height-of-all-interactive-elements",
 					"status": "unchanged",
-					"hash": "sha256:af3a470a46b792736786cf921363946d0caf06adb858a15bf5634afc4a7c5ea3"
+					"hash": "sha256:1f08eab8ced0f8a095c82042a1833a7cecb7e42459a18cb3f875837167d7a59d"
 				},
 				{
 					"name": "select-basic-noColumns--hide-label-error",
@@ -2713,13 +2713,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6203437db1dfd01a0e8c97ee9dbf50352292c1a9",
+					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 					"ref": "develop",
-					"runId": 44730058698,
+					"runId": 45147817997,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-20T11:50:48.549Z",
-					"digest": "sha256:17b7ef821f47a066d818c41ce9c14169e9b52a71e96e04a890c3dd16ce7bb1d9",
+					"createdAt": "2026-11-23T09:38:40.033Z",
+					"digest": "sha256:07ed78c905a09f6466f4423ea60fe32978ad9a036bfff987abbaf10d200cfc7f",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2732,7 +2732,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:17b7ef821f47a066d818c41ce9c14169e9b52a71e96e04a890c3dd16ce7bb1d9",
+			"digest": "sha256:07ed78c905a09f6466f4423ea60fe32978ad9a036bfff987abbaf10d200cfc7f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3842,67 +3842,67 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:cb785431382b78a83d1b18bdb450359669b51910cccd721f0fa80ad6a1c7e720"
+					"hash": "sha256:6f9da39f48cf3b28ded0ad38d9ae3dcef56a914ed5b27d49c14bb173f6666827"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:1517399ca978fb7c365f9ef5130a4604a6911f453989471d9067599ed8e0061c"
+					"hash": "sha256:8f9db460f4ca08020e70c27cf7120685ba0875ffbc18f21b2f566a9fbaa3570e"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:9bb653a84d2766360c42c5198fc5cc4a0b6df1bd360f06db1ef19ec3761bb457"
+					"hash": "sha256:79da2f036876daa73c7c20f75056392ebbe6173b0fb8acaded76a2cc00607995"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:9f8af8483f2c81fe84f0ca542655329b487da8d2c5ad7bb46ddfc294120665a6"
+					"hash": "sha256:5355bcbd6cb2959552a6c0012a56bb5582cd129a203e919d00cdd3bc96d26554"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:cf421ef201b078d4d3d3ae2096e1a0f907c13029df6ce5ac47fe5a29e34d5594"
+					"hash": "sha256:2b8297793d5dc1a19d38e84edd638480db52a3477f91136b60fa3284d91b7852"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c329ceecdc3db108d52f140a816ec9d91aacbfffcfa4e29dc4729f5b372a51b5"
+					"hash": "sha256:e7aa7f82ee8aea4b359e5a2c18910581f009c39966b74b5f2dfbe0b9527ea5de"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:7f794e896f1d6013b97487c52f58b5aea8bc3c441c3d747faaf16ed759b0e112"
+					"hash": "sha256:48fc517607e55582b2a0ba2170054cc8405738e46c66c5f9f63396b0e2976b6d"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:038e17210cf2d23e3e26b85e883f9460d7f708f1898a3a7c913b05df5b14d3c6"
+					"hash": "sha256:5f29410cc7c0d07a51c53328f342866037b76f286931f7b094c140c6bdd6e753"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:3a60036e7a26409d67efa713049627fd07f6421bc35e2fdb7497d4dfca5eb820"
+					"hash": "sha256:db90f4ec911ee4e492f41bea086afd0cf633ed16676854586001982e9893c885"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:78f4f094f9bc3f102c00d3a8f7f91509c161d3f41e25c784be84c4cb5ca88bcc"
+					"hash": "sha256:0bc67a0ecf789bbeef1ccad3840c0748c252c0c9f308f84a25d82a2706bec5e8"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:eb8109f88ceaffca6ef1190522ac5a109e77b02982011b8d7e5e5d2f9813fa77"
+					"hash": "sha256:3a3ab1f1e67301c5ce389c932556cee7960a048330c40ec0e6a746ee9e2df11f"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -4958,13 +4958,13 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
-					"hash": "sha256:b34b6740fe8ed38d42c9e9208a93e6ad43b4504c20f51338083b5d9c9a0231a3"
+					"hash": "sha256:330829cdefe3ebe0b7dbaf66788068408753831b4f5ebfc2a962560f24f8f603"
 				},
 				{
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios-same-height-of-all-interactive-elements",
 					"status": "unchanged",
-					"hash": "sha256:d7cd9bd87b721db3591e3495ee24af4826defe91d52830426e670c06ae5d2012"
+					"hash": "sha256:bf76b2f5a201e01609c1bb2cf3c0c8e6284131c54e2646e6fa0ab21dbc57f41b"
 				},
 				{
 					"name": "select-basic-noColumns--hide-label-error",
@@ -5396,13 +5396,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6203437db1dfd01a0e8c97ee9dbf50352292c1a9",
+					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 					"ref": "develop",
-					"runId": 44730058698,
+					"runId": 45147817997,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-20T11:51:32.633Z",
-					"digest": "sha256:0ee6f812ab97a4625d82ac90b4ad955962fb1090aedb6d4ada4e784ceca6c970",
+					"createdAt": "2026-11-23T09:38:34.326Z",
+					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5415,7 +5415,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0ee6f812ab97a4625d82ac90b4ad955962fb1090aedb6d4ada4e784ceca6c970",
+			"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6525,67 +6525,67 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:4f10c3176d762579c0bf4872e0dda810073b1f5ab687eef228ebaf86e37d2050"
+					"hash": "sha256:34e7a97016155bbfdb1b998382d113a7abc207830e3583990ae57f5bab3d9479"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5dcf3b5d98221c5b5206768227185d8c0808f300568f38753042f8516368ec7e"
+					"hash": "sha256:8a2ab6dc9344cfed9bf32982c5d5f3eecf8678406dde732088d32a520d94ef17"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:be17ef227c4b647065e15457841e7161b6d1aee987cfcf44d5e77560317b8ce9"
+					"hash": "sha256:011a7af9873bddcfc3b8a99d7937ee0b98042dec94a24258401a2b6a5ac7b87e"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5574bb25f3e821af965e32078a03fc5bb5d07a351faf4311ed710fa21aedce00"
+					"hash": "sha256:fbef029276220e9464ce16dc64a30c15ed676fd2f352d50851e08c7e790c0e66"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5923d80b8161b187a5568cb838a95b5b066251d45f4b3848afa1775c7be26dcf"
+					"hash": "sha256:4b6303bddd0ad72450b65aab1e254737e81ed47faa6a036912e3cfb4fa5c0656"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:242d11ae155ed2f612f2624796f87afde5aee5dba93ecfb4eab13bb26b21c438"
+					"hash": "sha256:70a86ea86db91b32449df50ade52259846de7cd7bd57a4e89bb581f7c69ddad0"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5c4470f6d5983f5f39c6578953bbcf75fa08936c9d6a7caeda438c2f2759d1cd"
+					"hash": "sha256:46a0fd286ea1f759597476d923ee83835709f7894da7d471e5055d9dbce95b88"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:47eb73191260462a4228e93e4030b3c954f025dec957a12f7c088d43ff437762"
+					"hash": "sha256:8c1a289feb06e79a13fac4220fa240f0bfe5fd047e0dd8e7c5f3c891fb7309ce"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:86be77f189649c4f4ae56abb84385610942a92fd48b9dc6d3852f335c0436287"
+					"hash": "sha256:d594ba9f12114e791b8a3de48a5890b95852e913860a8857ce3eb93ee9adea19"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:b67a802c5fe9489fc3ab08f745e9cbbb918cf1b7574bb13570802ff7e2db219d"
+					"hash": "sha256:3f88c78b18dafb5a8c054664e94af37964a5f5f94b352d0d2f1e0b59ff84c6ed"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:1ec236279f39179aea6f8e081f791fb9612d00bf071285890bc066c18d6130c6"
+					"hash": "sha256:066fe34d3c521dd989903b237be3cc25d697de82a1c6f0664f3f2afbac9d12be"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -7155,7 +7155,7 @@
 					"name": "input-text-variant-noColumns--variant-left",
 					"route": "input-text-variant-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:105045d130a68461f3610dedd001440dceec8f2f29667d5cfad677c6d22dbe61"
+					"hash": "sha256:3c4df931384d90821fa945b5e2d6220291379d01268a6992a02e5cd9a987849e"
 				},
 				{
 					"name": "link-basic--basic",
@@ -7641,13 +7641,13 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
-					"hash": "sha256:a6c29bd9e9e8f934fcf31015e0c428ccd54334ec4751eeab7fbb2d615c4cd3c9"
+					"hash": "sha256:66d314a8d9cbf2981a5edbdce4de124badd1d85845992d6e866738139a36fada"
 				},
 				{
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios-same-height-of-all-interactive-elements",
 					"status": "unchanged",
-					"hash": "sha256:af3a470a46b792736786cf921363946d0caf06adb858a15bf5634afc4a7c5ea3"
+					"hash": "sha256:1f08eab8ced0f8a095c82042a1833a7cecb7e42459a18cb3f875837167d7a59d"
 				},
 				{
 					"name": "select-basic-noColumns--hide-label-error",
@@ -8079,13 +8079,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6203437db1dfd01a0e8c97ee9dbf50352292c1a9",
+					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 					"ref": "develop",
-					"runId": 44730058698,
+					"runId": 45147817997,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-20T11:50:52.887Z",
-					"digest": "sha256:707d4287475fbb4c2e29919ff5d07de4d512d64165d39be8ea4a35336b63e9a8",
+					"createdAt": "2026-11-23T09:37:10.116Z",
+					"digest": "sha256:66b08ccb4537a7e9b61478c3940e9fc00395814383c95ee669a64a4e719868e4",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -8098,7 +8098,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:707d4287475fbb4c2e29919ff5d07de4d512d64165d39be8ea4a35336b63e9a8",
+			"digest": "sha256:66b08ccb4537a7e9b61478c3940e9fc00395814383c95ee669a64a4e719868e4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9208,67 +9208,67 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:57d42a817221c1fa8a9fb6b5d1cea1644017d85c98fade06eec0c73e3dd1c12d"
+					"hash": "sha256:842d5aa77f3ae0ed6d496a8be59497b263348ba4105d22a19a0d174231fb6c92"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:369c8b7bd57903a8f4942eaebb392becb1d49cf01d41eced0573b76643eaba98"
+					"hash": "sha256:a876055b7c6469c07c6c2527316631a82ad39c9604aa5d66ffbf9f269a36ee78"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6321e7ae6516ee9d0bc94a421e0033cc6bb5b5a3132a4d721af30f49e26c662c"
+					"hash": "sha256:af0f1f7bc757dc76ece6366460e046a48310803c504284ca7c2027f4329b7fda"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:7f208165710a340bf55dbe9544ca302dacbcda24543a7a4d51f9ab493a076b05"
+					"hash": "sha256:048189c444b63f8a22eedf0d1acb6e8431d23e8bcbc0b5052171a3736e68f9e5"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5aeb6c9b67b716289c8df77f4cb9bfc042aba66e59495f368e8b0996c5f6cef9"
+					"hash": "sha256:2df42f7bdea3d0697310c82c75611321dc4c7e6d0811eca017b41c7d9c7e3da4"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c97cfc8a8a830e135c1d5675999c9d5bdbc531a0f4c08ae13a48769f204a02cd"
+					"hash": "sha256:b3c85dbf4518e593e1215b1e7972656be13fb82c2625f88d57fac64ee17616fd"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:1ec2287a903c38132f3c6bced77041722b07918e3624c8673e77a10d1d1bc125"
+					"hash": "sha256:fb4c0e7998c251cb8b048a11173016fb36a3ed13d5d57d274f27679e627c2277"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:1a1a8c7b73c46a12fb5caa338827d8078ea01f19c1263304b08e8b05d94de739"
+					"hash": "sha256:db1f9dfc98b473812478d6c709b2754354b70148cf9215c786aa30c392af70ac"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:b2a2d7b006da0a36aa9870f85b7a754edab84c5e2c205427cfcd16129ce5c3b8"
+					"hash": "sha256:5424a2e28ac4d6c0fefc51eebdb44ce60f3f65bda273278d8955223fd7e9eb9d"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6e91ebfcb5fcbd4637711136eab0600723c47818cf7f9c0e07ed55a6ebcf5d3d"
+					"hash": "sha256:2bb82107de6c259184accba1c74443da06b0411dc1a794de960c062fd2b56799"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:f9b55022d06b615408614ea6a9e80ee7c536b83d85d67e95fad1271c36e06ac4"
+					"hash": "sha256:136d7432fef1b12ac0ea4d894a831e0132a0ab00639e08afbce990d9ca05f906"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -10324,13 +10324,13 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
-					"hash": "sha256:85e21e76fc2a43bb7bdf0421206b65660b68c0ffe95546640c86cd322fcbbbe7"
+					"hash": "sha256:dcc15280b339d1954585249c31b2700cff7a3fcec450acae56052ca43dd85ffc"
 				},
 				{
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios-same-height-of-all-interactive-elements",
 					"status": "unchanged",
-					"hash": "sha256:408d5f4af90bfc17b427b0d388f3fd90fe958e356c23ee0afdc5939ba10627d4"
+					"hash": "sha256:1c61be8dd19e48f59b38899f6e5d3a128d5e5a90a734a498b7fb91775c0b0906"
 				},
 				{
 					"name": "select-basic-noColumns--hide-label-error",
@@ -10762,13 +10762,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6203437db1dfd01a0e8c97ee9dbf50352292c1a9",
+					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 					"ref": "develop",
-					"runId": 44730058698,
+					"runId": 45147817997,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-20T11:51:18.125Z",
-					"digest": "sha256:ce51b44d1c4bc825a212d89d9e9dce5d5a92bd1084fc4eb8947d3ab854a293c7",
+					"createdAt": "2026-11-23T09:37:21.261Z",
+					"digest": "sha256:52179ed1092595a872b3836d122f12fa43f163f4c4f15344c14977a6e1e51011",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10781,7 +10781,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ce51b44d1c4bc825a212d89d9e9dce5d5a92bd1084fc4eb8947d3ab854a293c7",
+			"digest": "sha256:52179ed1092595a872b3836d122f12fa43f163f4c4f15344c14977a6e1e51011",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11891,67 +11891,67 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:a5d2bb9a95d875b1ea921d0ac850b5aabe33836e67a6ab01cb8062db46c91591"
+					"hash": "sha256:ebba03a12f25e26bd751cd07ea96c72b5df7f10d7f5538d2a46df01b3b26361f"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:936b3112180e041d6d62de55859b255d444e89e42ce8e879ad53eb76b61ed7e6"
+					"hash": "sha256:23a6c6bec483ba41de61fad7475abcfb7e2f0e9732b2911bbb89d1bb50acedd2"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:b89ec0af71a79878562f94b9274c3f2fe7e51b1ee675c8e23c34a309a5b2087f"
+					"hash": "sha256:2bd53933bae3061ef206674b949e94c829c76bf5d1dd65b3078d7d06564cfe38"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:4fbdc1573dd90ea17c6f8dd690610271900abd6314d30d82365fb82ea6bd91fe"
+					"hash": "sha256:933edb939b9a9be9ac5e4f0d893e970bd030440322810a8263c65e93437c7531"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:410cbec6eb5dc3c3d6de6c9b23a2d05e36f6be23f4ad991d095c77104a5f6260"
+					"hash": "sha256:eb9b7cadccf1e05722deae3ec1aa183d383e6b6c839de9ee20aa6b814d4ff105"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:162f62cc9aecbf709bacfd1df618c70a6ffe88e2c75e0f2b7c35a1aba6c5be94"
+					"hash": "sha256:5373a8d077aed176bd54d095c1726a35f0e1f1bd73d8b7e5e6e6e7d7d827d47c"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5c5d4e00200698056314307b2525e75744190ec7c02e96a656e162943c0de4f4"
+					"hash": "sha256:3499f7e838e36c6ed0bbac2545bf6ffc30e20dbc9e7d8393067b2a2424cc6816"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:65bb331b345306c647ab8c06dfa6f84230b72b799b709964c5f75189e64e8070"
+					"hash": "sha256:76dbe1dec965788619b563d7c0a31f11fea7ba15b108dfe359cc99c810a4a4fe"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c7c69bcbce48622db201817810cb4a2199c1a680eff8c953e35b32957f5b870d"
+					"hash": "sha256:11c652c95412f4668fe3b79863e4c41296ae63f789a975f380b52bab47fcf8a7"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6c5a26304636607638f6039d66758a61abee783bb87bbfd4ae9d8edee30d87b3"
+					"hash": "sha256:9405465716fe9fa01419625b0afccb9c0da3b1c8d74740cb0da1353a59b71f9a"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:e33b24be57b59e8ef40d4c4cdc4a259fb61228af5d3bfb3d676d6ecb6b1116cd"
+					"hash": "sha256:f3803621000a1dc169127acc3bd2ac008dc7844445296e15b90fdd27dd8e4277"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -13007,13 +13007,13 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
-					"hash": "sha256:d44c4f29e92899c18a699304fd54fd92717965d1132a7c50e76a91f4bb440da8"
+					"hash": "sha256:20b45793e55d7db6533e53a144f70ae4779b559dd57212c2fb8fb5728502f4e3"
 				},
 				{
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios-same-height-of-all-interactive-elements",
 					"status": "unchanged",
-					"hash": "sha256:1f63fb370e0c0e095f2487a706b356152f236e81f5d92d554a7084ba5de34a8b"
+					"hash": "sha256:c98d0665f57cd3cdec85bfef15ca7f90aaccb9cffbfd8bdb371fb15a9a2ada64"
 				},
 				{
 					"name": "select-basic-noColumns--hide-label-error",
@@ -13445,12 +13445,12 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "6203437db1dfd01a0e8c97ee9dbf50352292c1a9",
+					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 					"ref": "develop",
-					"runId": 44730058698,
+					"runId": 45147817997,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-20T11:51:35.185Z",
+					"createdAt": "2026-11-23T09:38:15.256Z",
 					"digest": "sha256:850d93387ab408edcdddca6db70a6bd2f56f127fc08a688636529bfbb1701d98",
 					"fallback": null,
 					"distance": 0,
@@ -16134,13 +16134,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "6203437db1dfd01a0e8c97ee9dbf50352292c1a9",
+					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 					"ref": "develop",
-					"runId": 44730058698,
+					"runId": 45147817997,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-20T11:51:16.399Z",
-					"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
+					"createdAt": "2026-11-23T09:38:24.030Z",
+					"digest": "sha256:a6461012c621c0ea1567a719c62f25c956e706666fed882a6d694187c2c99a4a",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -16153,7 +16153,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:35f2a2b1529429f3d21fd119758323fdb6baa31c528d19a5ae82fe24ce1e50bd",
+			"digest": "sha256:a6461012c621c0ea1567a719c62f25c956e706666fed882a6d694187c2c99a4a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17263,67 +17263,67 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:b9b56a188325bbffee69c0e59c1511a4a64fe3dba20f9aff36ed73d8728ada3f"
+					"hash": "sha256:6641273455f398351ec6dbf7b928b326c0a22ff17f665cc9f2e06111da45a572"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6789cbaa2f22b58812b9988ad0d0ff3518051adb2628b5d0f1f715f716c5dc73"
+					"hash": "sha256:d99ab43fa430ef61d31cc89846e0e5fbf077e9b02bf06bd91118fd262ea243c4"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6567339f7a1db82910529c0f83c0be7575462875fa1b6bf2425ea0d06521955b"
+					"hash": "sha256:321d15fa54770e9b20aef286dd607e513386a23baaa2e1963e53f6724a86c2b5"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:429798c76dc91612a0f65ba1dff86202c5c51ea864a5836263d91ca44f0a6de2"
+					"hash": "sha256:a817c2e9a78ee2ee2283b749daa3d6a20d44858cc0cfbf21c74595806004643a"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:7a9e0036e1bd593d2f3e2a30d1c9a280bfa74fd27b9f82b71fc7228662251881"
+					"hash": "sha256:d8022ab6489873e10656c2dcec0fe6d751ecab40690fdcc32a2da96e25774613"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:ffe255a67d782950aa1954be58815bc00143b3ca96edb659c373823d11a65b45"
+					"hash": "sha256:c9b06776387eb61ad0768b0acabcd508a24a1fec13cb1730fcef8623a99ccc6e"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6ab03364e7d8846b7603efd20de27350588ce6565c05fee14021c3affe2dadf6"
+					"hash": "sha256:2c1e76580e56e2db26caa1815b8c65af2288620f918c6dfeece97e3f223d48cc"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:2816e6132f5a1581f01f0b929742edecc0751e66802ef81b09cb4d4c67106a97"
+					"hash": "sha256:c8c3f6c5352f929b596a2e080ec5e3328672ee7e1573b40177773513d736bb4b"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:8fb1106e28883101c67890bc21f3871912ed8f1e1882d9c46e7bc9a049b801ed"
+					"hash": "sha256:f71703682b1a0604e4b0c89d0a2b5f76c52782c348389fabddc7f9239d3225a2"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5261f92fd4c95ba438cbd46b4661fd434e650c67c252d57805c5077b607efb7b"
+					"hash": "sha256:82ac3df6d6ed3c20bcc671b9f2890f21f6efeb88b2f5e47a1e24418405c7b431"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:29bad2bf7d5c88f4a06c1050cb1be565463ef94d01907c18ae802b3112c55632"
+					"hash": "sha256:92b8ce8162c4d4e0ff5f161b2dcc046a2e0454ace3008fb1fb17b25eea13f6e9"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -18133,13 +18133,13 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios-focus-elements-component-inputFile",
 					"status": "unchanged",
-					"hash": "sha256:0952b2c3e6588c5f6db7de8b6863fa397fe72131afdecadc957d7ab6c65873f4"
+					"hash": "sha256:d5d6c45bf8df9a9e74e5db50a345ce2eac998242ca33f977b84f01974f02b086"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios-focus-elements-component-inputFileMultiple",
 					"status": "unchanged",
-					"hash": "sha256:3a1789bfdb9083568942a68308c4047f2c28e06e414d4c9778f7a7006f22ba22"
+					"hash": "sha256:e8191695c5ce513e8ac117c31fcc13f3c3776600d0b720d768e35d58a8593991"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputNumber",
@@ -18379,13 +18379,13 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
-					"hash": "sha256:4e516ee011e002c448a661b90f07d480d8acefc9b21a01a40cc2d615a33bcb19"
+					"hash": "sha256:0a142c919d7d5054dd5470e9cf15299ed5fef8f1ea4f6fc2b5b2e9046019907f"
 				},
 				{
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios-same-height-of-all-interactive-elements",
 					"status": "unchanged",
-					"hash": "sha256:d2628c48e1fd1f52703429c413a0f4d02cb1038b58d3a98eec124feffea6f02d"
+					"hash": "sha256:b38e65cf33921b8a190cc1c7a6ee8f664528622888f83d7d0520446f87d04c06"
 				},
 				{
 					"name": "select-basic-noColumns--hide-label-error",
