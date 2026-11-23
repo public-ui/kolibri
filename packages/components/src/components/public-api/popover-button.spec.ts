@@ -93,7 +93,7 @@ const KOL_POPOVER_BUTTON_PUBLIC_API: PublicApiContract = {
 		type: 'PopoverAlignPropType',
 		required: false,
 		doc: 'Defines where to show the Popover preferably: top, right, bottom or left.',
-		default: "'bottom'",
+		default: "'right'",
 	},
 	_shortKey: {
 		kind: 'prop',
