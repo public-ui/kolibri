@@ -28,6 +28,7 @@
 		&__head {
 			position: sticky;
 			top: 0;
+			// table head is above everything else in the table
 			z-index: 10;
 		}
 

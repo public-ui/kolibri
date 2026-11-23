@@ -54,8 +54,6 @@
 		}
 
 		&__smart-button {
-			position: relative;
-			z-index: 2;
 			.kol-button__interactive-element:focus {
 				@include focus-outline;
 			}

@@ -18,11 +18,6 @@
 		gap: 0;
 		grid-template-columns: 1fr;
 
-		&__smart-button {
-			position: relative;
-			z-index: 2;
-		}
-
 		&__adornment {
 			position: absolute;
 
@@ -57,11 +52,6 @@
 
 		&:has(&__adornment--end &__icon + &__smart-button) .kol-input {
 			padding-right: to-rem(76);
-		}
-
-		&__container {
-			position: relative;
-			z-index: 1;
 		}
 	}
 }

@@ -30,5 +30,11 @@
 				place-items: center;
 			}
 		}
+
+		&__smart-button {
+			position: relative;
+			// smart buttons are above their __container
+			z-index: 2;
+		}
 	}
 }

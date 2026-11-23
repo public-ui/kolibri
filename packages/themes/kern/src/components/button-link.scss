@@ -21,6 +21,7 @@
 			outline-color: transparent;
 			border-radius: var(--kern-metric-border-radius-small, 0.125rem);
 			position: relative;
+			// box shadow above content
 			z-index: 1;
 		}
 
