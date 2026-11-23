@@ -151,7 +151,7 @@ const STRICT_ENUM_PROPS: ReadonlyArray<{ name: string; definition: EnumPropDefin
 	{ name: 'alignProp', definition: alignProp, defaultValue: 'top', options: alignPropTypeOptions },
 	{ name: 'loadingProp', definition: loadingProp, defaultValue: 'lazy', options: ['eager', 'lazy'] },
 	{ name: 'orientationProp', definition: orientationProp, defaultValue: 'horizontal', options: orientationOptions },
-	{ name: 'popoverAlignProp', definition: popoverAlignProp, defaultValue: 'bottom', options: alignPropTypeOptions },
+	{ name: 'popoverAlignProp', definition: popoverAlignProp, defaultValue: 'right', options: alignPropTypeOptions },
 	{ name: 'tabBehaviorProp', definition: tabBehaviorProp, defaultValue: 'select-automatic', options: ['select-automatic', 'select-manual'] },
 	{ name: 'tooltipAlignProp', definition: tooltipAlignProp, defaultValue: 'right', options: alignPropTypeOptions },
 	{ name: 'variantDialogProp', definition: variantDialogProp, defaultValue: 'blank', options: ['blank', 'card'] },
