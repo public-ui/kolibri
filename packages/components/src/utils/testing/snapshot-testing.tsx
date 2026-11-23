@@ -1,20 +1,17 @@
+import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import type { JSX as StencilJSX } from '@stencil/core';
-
-import type { JSX } from '../../components.d';
-
 /**
- * Tag name of a KoliBri element.
+ * Tag name of a KoliBri element. The generated `components.d.ts` registers every element in `JSX.IntrinsicElements`.
  */
-export type ElementTag = keyof JSX.IntrinsicElements;
+export type ElementTag = Extract<keyof JSX.IntrinsicElements, `kol-${string}`>;
 
 /**
  * The props of a KoliBri element, derived from its tag name: its `@Prop` declarations plus the HTML attributes of the host.
  * Every prop is optional, so a variant can leave out a required prop on purpose.
  */
-export type ElementProps<Tag extends ElementTag> = Partial<StencilJSX.IntrinsicElements[Tag]>;
+export type ElementProps<Tag extends ElementTag> = Partial<JSX.IntrinsicElements[Tag]>;
 
 const propsToLabel = (props: object) => {
 	return Object.entries(props)
