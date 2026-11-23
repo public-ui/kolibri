@@ -12,6 +12,8 @@
 		&__interactive-element:focus {
 			// Firefox repaints native form controls under user color overrides and drops author outlines, so the ring lives on the plain text box.
 			outline: none;
+			// The radius shapes the ring Firefox itself draws on the native button under a page color override.
+			border-radius: 2px;
 
 			.#{$block-classname}__text {
 				outline: var(--ecl-color-primary) solid 2px;

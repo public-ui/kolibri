@@ -62,14 +62,6 @@
 			position: relative;
 		}
 
-		/* Under Firefox's page color override the native button gets the browser's own focus ring on top of
-		   whatever the author outlines, and its corners follow the button. The focused interactive element
-		   takes the ring's radius, so both rings coincide and the author ring covers the other. */
-		.kol-toolbar__item .kol-button__interactive-element:focus-visible,
-		.kol-toolbar__item .kol-link__interactive-element:focus-visible {
-			border-radius: var(--border-radius);
-		}
-
 		.kol-toolbar__item .kol-button__interactive-element:focus-visible .kol-button__text,
 		.kol-toolbar__item .kol-link__interactive-element:focus-visible .kol-link__text {
 			outline: none;
