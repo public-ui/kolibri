@@ -2,10 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-input-radio` (18 props, 3 methods),
- * extracted from the legacy `shadow.tsx` ahead of its skeleton migration (G0 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`). The migration points the pin to `component.tsx`
- * and adds the schema interface check; the pinned contract stays unchanged.
+ * Pinned public API of `kol-input-radio` (18 props, 3 methods) (G0 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 const KOL_INPUT_RADIO_PUBLIC_API: PublicApiContract = {
 	click: {

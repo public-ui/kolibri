@@ -61,7 +61,7 @@ export type ToolbarHRItem = ToolbarItemBase & {
  *
  * The toolbar's own defaults — `_inline: false` and the theme's `buttonVariantDefault` — apply
  * only where the entry leaves the prop unset, and an entry's own `_tabIndex` wins over the roving
- * tabindex, exactly like the predecessor's `{...defaults} {...item}` spread.
+ * tabindex.
  */
 export const createToolbarItem = (
 	item: ToolbarItemPropType,

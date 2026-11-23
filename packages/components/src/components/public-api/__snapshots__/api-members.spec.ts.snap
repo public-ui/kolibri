@@ -446,7 +446,7 @@ exports[`split-button pins the members of the *Api type (callbacks, methods, ref
 {
   "Refs": {
     "dropdown": {
-      "doc": "The box around the dropdown. It carries the consumer class the predecessor put on its \`kol-popover-button-wc\` element, and is the element the popover button's synthetic \`KolEvent\` DOM events are dispatched on.",
+      "doc": "The box around the dropdown. It carries the consumer class of the popover button and is the element the popover button's synthetic \`KolEvent\` DOM events are dispatched on.",
       "type": "HTMLDivElement",
     },
   },
