@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-kolibri` (2 props, 0 methods), extracted from the legacy `shadow.tsx`
- * before its skeleton migration.
+ * Pinned public API of `kol-kolibri` (2 props, 0 methods).
  */
 const KOL_KOLIBRI_PUBLIC_API: PublicApiContract = {
 	_color: {

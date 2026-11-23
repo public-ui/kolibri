@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-toolbar`: 3 props plus `focus()` and `click()` — identical to the
- * predecessor `shadow.tsx` on the develop branch.
+ * Pinned public API of `kol-toolbar` (3 props plus `focus()` and `click()`).
  */
 const KOL_TOOLBAR_PUBLIC_API: PublicApiContract = {
 	focus: {

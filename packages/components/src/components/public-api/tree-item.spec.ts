@@ -2,9 +2,8 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-tree-item` — byte-identical to the predecessor `shadow.tsx` on the
- * develop branch (4 props + focus, expand, collapse, isOpen), including the `OpenPropType`
- * alias on `_active`.
+ * Pinned public API of `kol-tree-item` (4 props plus `focus()`, `expand()`, `collapse()` and
+ * `isOpen()`), including the `OpenPropType` alias on `_active`.
  */
 const KOL_TREE_ITEM_PUBLIC_API: PublicApiContract = {
 	focus: {

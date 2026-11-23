@@ -20,8 +20,8 @@ const BEM_CLASS_BREADCRUMB__LIST_ELEMENT_SPAN = breadcrumbBem('list-element-span
 const BEM_CLASS_BREADCRUMB__SEPARATOR = breadcrumbBem('separator');
 
 /**
- * Historic literal from the predecessor's empty-state icon. Deliberately not a BEM element
- * class (single underscore) — kept byte-identical so descendant selectors keep matching.
+ * Class of the empty-state icon. Deliberately not a BEM element class (single underscore): the
+ * literal stays unchanged so existing descendant selectors keep matching.
  */
 const CLASS_BREADCRUMB_EMPTY_STATE_ICON = 'kol-breadcrumb_icon';
 

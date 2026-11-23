@@ -2,10 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-tabs` — same props, types and defaults as the predecessor `shadow.tsx`
- * on the develop branch (7 props + focus and click). The one deviation is the `_on` JSDoc, which
- * the predecessor carried in German; it was translated on reviewer request, which changes only the
- * generated documentation, not the API surface.
+ * Pinned public API of `kol-tabs` (7 props plus `focus()` and `click()`).
  */
 const KOL_TABS_PUBLIC_API: PublicApiContract = {
 	focus: {

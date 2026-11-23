@@ -12,18 +12,14 @@ type ResolvedLinkProps = FunctionalComponentProps<LinkApi>;
 /**
  * One orchestrated error-list entry: the raw error plus everything `LinkFC` needs to render it.
  *
- * The predecessor handed these three props to a `kol-link-wc` element (`_href=""`,
- * `_label={error.message}`, `_on={{ onClick }}`) and let the wrapper apply the full link prop
- * surface; this factory is that application, minus the wrapper.
+ * The entry is a link with an empty `_href`, the error message as `_label` and an `onClick` that
+ * focuses the form control; this factory applies the full link prop surface to these three props.
  *
- * Two pieces of the wrapper's orchestration are deliberately absent:
+ * Two pieces of the link orchestration are deliberately absent:
  * - **Tooltip behavior.** `LinkFC` renders a tooltip only for a hidden label, and an error-list
- *   link always shows its message. Without a tooltip element the wrapper's listeners had nothing
- *   to open, so `refTooltip` is a no-op here.
- * - **`KolEvent.click`.** The wrapper dispatched it on its own host element, inside the form's
- *   shadow root, where no consumer could listen. That host is gone; dispatching on the form host
- *   instead would surface an error-list link as a click of the form — a new event, not a
- *   preserved one.
+ *   link always shows its message, so `refTooltip` is a no-op here.
+ * - **`KolEvent.click`.** The entry dispatches no DOM event: dispatching on the form host would
+ *   surface an error-list link as a click of the form.
  */
 export type FormErrorLinkItem = {
 	/** Fully resolved props for `LinkFC`. */
@@ -40,7 +36,7 @@ export const createFormErrorLinkItem = (error: ErrorListPropType, handleSelector
 	// tabbable and the attribute would pin them into the document tab order.
 	renderProps.tabIndex = undefined as unknown as ResolvedLinkProps['tabIndex'];
 
-	// The predecessor set an empty href: the entry never navigates, it focuses a form control.
+	// The empty href keeps the entry from navigating: it focuses a form control.
 	hrefProp.apply('', (href) => (renderProps.href = href));
 	labelWithExpertSlotProp.apply(error.message, (label) => (renderProps.label = label));
 	linkCallbacksProp.apply(
