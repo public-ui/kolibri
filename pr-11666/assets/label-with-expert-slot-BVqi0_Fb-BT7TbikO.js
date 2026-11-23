@@ -1,1 +1,0 @@
-import{E as e,l as t}from"./props-from-config-LBgEHmcL-KoWGmdOt.js";import{i as n}from"./validators-ByUMEUYD-xr27kD-j.js";import{t as r}from"./label-hints-BUADjqKF-Cc89UhPD.js";var i=t(`label`,``,e,n,{hints:r});export{i as t};
