@@ -13,8 +13,8 @@
 		list-style-type: none;
 	}
 
-	//sobald die listbox offen ist, muss der z-index des containers höher sein als die container ungeöffneter selects
+	//sobald die listbox offen ist, muss der z-index des containers höher sein als die container ungeöffneter selects, tables, ...
 	.kol-input-container:has(.kol-custom-suggestions-options-group--open) {
-		z-index: 5;
+		z-index: 10;
 	}
 }

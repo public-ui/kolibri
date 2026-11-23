@@ -95,5 +95,10 @@
 
 			visibility: visible;
 		}
+
+		&--open:focus-within {
+			position: relative;
+			z-index: 10;
+		}
 	}
 }

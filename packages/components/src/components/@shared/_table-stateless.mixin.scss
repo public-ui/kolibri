@@ -113,7 +113,7 @@
 				position: sticky !important;
 				left: 0;
 				// sticky cols must lay over components in cols (inputs, selects, ...)
-				z-index: 8;
+				z-index: 7;
 				width: var(--kol-table-selection-col-width, auto);
 				min-width: var(--a11y-min-size);
 				min-height: var(--a11y-min-size);
@@ -133,7 +133,7 @@
 				background-color: white;
 				position: sticky !important;
 				// sticky cols must lay over components in cols (inputs, ...)
-				z-index: 8;
+				z-index: 7;
 			}
 
 			&--sticky-left:nth-last-child(1 of .kol-table__cell--sticky-left) {
@@ -259,7 +259,7 @@
 			bottom: 0;
 			left: 0;
 			//loader in table above everything else that can be in a table
-			z-index: 9;
+			z-index: 8;
 			align-items: center;
 			justify-content: center;
 		}
