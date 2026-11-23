@@ -1,16 +1,16 @@
 {
 	"schema": 1,
-	"state": "failure",
-	"description": "1 of 10 visual changes rejected",
-	"computedAt": "2026-11-23T19:55:40.771Z",
+	"state": "success",
+	"description": "9 visual changes approved by deleonio, laske185",
+	"computedAt": "2026-11-23T20:35:14.338Z",
 	"pr": 11501,
-	"head": "975bb91cf917c86a1c8c736ac2a38fbc0d319e99",
-	"digest": "sha256:a913648beeb75a03fa2ce809e9ec127ecdfb5e6d95d75811fada8a7ffefabf86",
+	"head": "ca5f2bf74c1ce4840bfc9362e4a37187042eb39a",
+	"digest": "sha256:4bb4715a1bacd07dff405ae74133a95d33d3e13801744accfaf67e51954d515c",
 	"counts": {
-		"changes": 10,
+		"changes": 9,
 		"open": 0,
 		"approved": 9,
-		"rejected": 1,
+		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
@@ -19,16 +19,6 @@
 		"laske185"
 	],
 	"items": {
-		"theme-bwst/scenarios-focus-elements-component-toolbar": {
-			"state": "rejected",
-			"notes": [
-				{
-					"by": "laske185",
-					"text": "Zwischen den Buttons sollen die Ecken eckig bleiben."
-				}
-			],
-			"by": "laske185"
-		},
 		"theme-ecl/dialog-basic-show-dialog-true": {
 			"state": "approved",
 			"notes": [],
