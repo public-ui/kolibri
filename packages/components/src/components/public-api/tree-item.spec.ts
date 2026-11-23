@@ -57,4 +57,4 @@ const KOL_TREE_ITEM_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-tree-item', component: 'tree-item', pinnedApi: KOL_TREE_ITEM_PUBLIC_API, schemaInterface: 'TreeItemProps' });
+describePublicApiContract({ tag: 'kol-tree-item', component: 'tree-item', pinnedApi: KOL_TREE_ITEM_PUBLIC_API });

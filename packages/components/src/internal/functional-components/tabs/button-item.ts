@@ -1,6 +1,6 @@
 import type { AlignPropType, InternalButtonProps, StencilUnknown } from '../../../schema';
 import { setEventTarget } from '../../../schema';
-import { nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { BaseWebComponent } from '../base-web-component';
 import type { ButtonApi } from '../button/api';
@@ -55,7 +55,7 @@ export type TabsButtonItem = {
 
 export const createTabsButtonItem = (): TabsButtonItem => {
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
-	const ariaDescriptionId = nonce();
+	const ariaDescriptionId = createUniqueId('aria-description');
 	let resolved: ResolvedButtonProps | undefined;
 	let value: StencilUnknown;
 	let boxElement: HTMLDivElement | undefined;
