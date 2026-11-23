@@ -1,1 +1,0 @@
-import{c as e}from"./index-8-BSSKQL-CytPBhHG.js";var t=class{constructor(n){new.target===t&&e(this,n)}};export{t as test_component};
