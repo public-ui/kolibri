@@ -152,7 +152,7 @@ export class KolPopoverButton
 	/**
 	 * Defines where to show the Popover preferably: top, right, bottom or left.
 	 */
-	@Prop() public _popoverAlign?: PopoverAlignPropType = 'bottom';
+	@Prop() public _popoverAlign?: PopoverAlignPropType = 'right';
 
 	@Watch('_popoverAlign')
 	public watchPopoverAlign(value?: PopoverAlignPropType): void {
