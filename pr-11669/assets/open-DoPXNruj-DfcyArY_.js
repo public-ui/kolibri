@@ -1,0 +1,1 @@
+import{l as e,x as t}from"./props-from-config-LBgEHmcL-D-TI2rn6.js";var n=e(`open`,!1,t);export{n as t};
