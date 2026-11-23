@@ -1,14 +1,11 @@
-import type { Generic } from 'adopted-style-sheets';
-
+import type { ComponentPropsOptional } from '../../internal/functional-components/generic-types';
 import type { HeadingLevel, PropAlert, PropAlertType, PropAlertVariant, PropHasCloser, PropLabelLangSegments } from '../props';
 import type { EventCallback } from '../types';
-import type { Members } from '../types/members';
 
 export type KoliBriAlertEventCallbacks = {
 	onClose?: EventCallback<Event>;
 };
 
-type RequiredAlertProps = NonNullable<unknown>;
 type OptionalAlertProps = {
 	level: HeadingLevel;
 	on: KoliBriAlertEventCallbacks;
@@ -18,11 +15,4 @@ type OptionalAlertProps = {
 	PropAlertType &
 	PropAlertVariant;
 
-type RequiredAlertStates = RequiredAlertProps;
-type OptionalAlertStates = OptionalAlertProps;
-
-export type InternalAlertProps = RequiredAlertProps & OptionalAlertProps;
-
-export type AlertProps = Members<RequiredAlertProps, OptionalAlertProps>;
-export type AlertStates = Members<RequiredAlertStates, OptionalAlertStates>;
-export type AlertAPI = Generic.Element.ComponentApi<RequiredAlertProps, OptionalAlertProps, RequiredAlertStates, OptionalAlertStates>;
+export type AlertProps = ComponentPropsOptional<OptionalAlertProps>;

@@ -1,3 +1,4 @@
+import type { ComponentPropsOptional, ComponentPropsRequired } from '../../internal/functional-components/generic-types';
 import type {
 	AriaExpandedPropType,
 	PropAccessKey,
@@ -21,7 +22,6 @@ import type {
 	PropVariantClassName,
 } from '../props';
 import type { StencilUnknown } from '../types';
-import type { Members } from '../types/members';
 
 export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
@@ -47,5 +47,5 @@ export type OptionalButtonProps = {
 	PropSyncValueBySelector &
 	PropTooltipAlign;
 
-export type ButtonProps = Members<RequiredButtonProps, OptionalButtonProps>;
-export type InternalButtonProps = Members<RequiredButtonProps, OptionalButtonProps>;
+export type ButtonProps = ComponentPropsRequired<RequiredButtonProps> & ComponentPropsOptional<OptionalButtonProps>;
+export type InternalButtonProps = ComponentPropsRequired<RequiredButtonProps> & ComponentPropsOptional<OptionalButtonProps>;

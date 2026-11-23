@@ -1,9 +1,8 @@
 import { KolCardTag } from '../../core/component-names';
-import type { CardProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolCard } from './component';
 
-executeSnapshotTests<CardProps>(
+executeSnapshotTests(
 	KolCardTag,
 	[KolCard],
 	[

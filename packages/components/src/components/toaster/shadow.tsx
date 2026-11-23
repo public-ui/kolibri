@@ -6,7 +6,7 @@ import { createUniqueId } from '../../utils/dev.utils';
 
 import { KolButtonTag } from '../../core/component-names';
 import { KolToastItemFc } from '../../functional-components';
-import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../schema';
+import type { Toast, ToastRenderFunction, ToastState } from '../../schema';
 import { Log } from '../../schema';
 
 const TRANSITION_TIMEOUT = 300;
@@ -22,8 +22,8 @@ const TRANSITION_TIMEOUT = 300;
 	},
 	shadow: true,
 })
-export class KolToastContainer implements ToasterAPI {
-	@State() public state: ToasterStates = {
+export class KolToastContainer {
+	@State() public state: { _toastStates: ToastState[] } = {
 		_toastStates: [],
 	};
 

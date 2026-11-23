@@ -1,12 +1,11 @@
 import { KolAccordionTag } from '../../core/component-names';
-import type { AccordionProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolAccordion } from './component';
 
 const baseObject = { _label: 'Überschrift' };
 
-executeSnapshotTests<AccordionProps>(
+executeSnapshotTests(
 	KolAccordionTag,
 	[KolAccordion],
 	[

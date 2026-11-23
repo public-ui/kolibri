@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { Members } from '../types/members';
+import type { ComponentPropsRequired } from '../../internal/functional-components/generic-types';
 import type { WatchStringOptions } from '../utils';
 import { watchString } from '../utils';
 
@@ -14,7 +14,7 @@ export type PropHref = {
 	href: HrefPropType;
 };
 
-export type HrefProp = Members<PropHref, unknown>;
+export type HrefProp = ComponentPropsRequired<PropHref>;
 
 /* validator */
 export const validateHref = (component: Generic.Element.Component, value?: HrefPropType, options: WatchStringOptions = {}): void => {
