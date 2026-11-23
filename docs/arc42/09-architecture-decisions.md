@@ -448,38 +448,34 @@ Use SASS variables exclusively for internal calculations and styling in the base
 - No variables at all: Poor maintainability, code duplication
 - Component-specific CSS variables only: Still crosses Shadow DOM boundary
 
-### ADR-017: Skeleton Component Architecture Pattern
+### ADR-017: CSS: Z-Index Structuring
 
 **Status:** Accepted
 
 **Context:**
-Components in KoliBri follow different architectural patterns (legacy Schema-based vs. modern Skeleton). As components are modernized through skeleton migration, a clear pattern needs to be established to ensure consistency and maintainability across the codebase.
+z-index is used to structure the layers in on which components are in the z-axis. With them nodes can lay below or above other nodes. Using them incorectly can lead to many different problems whenever components have overlays, such as tooltips, sticky parts, buttons over other click areas and so on.
 
 **Decision:**
-All new and refactored components adopt the **Skeleton Architecture Pattern**:
+To sturcture our components and help teams understand how to use z-index in there app together with ou components, we reserve some z-index layers.
 
-1. **Web Component** (`src/components/[name]/component.tsx`): Stencil component with lifecycle, property decorators, and event emission
-2. **Controller** (`src/internal/functional-components/[name]/controller.ts`): Pure logic layer, extends `BaseController<Api>`
-3. **Functional Component** (`src/internal/functional-components/[name]/component.tsx`): Stateless render function (`FC<FunctionalComponentProps<Api>>`)
-4. **API Definition** (`src/internal/functional-components/[name]/api.tsx`): Type-safe prop/event/callback contracts via `PropsConfigShape` and `ApiFromConfig`
-
-This provides:
-
-- Clear separation of concerns (presentation vs. logic)
-- Type-safe component boundaries
-- Reusable controller logic
-- Testable units at each layer
+- every occurence of a z-index needs a description why it is and what it should be above or below
+- z-index 1 - 10 are the low layer and reserved only for normal KoliBri components such as:
+  - inputs container structure: container is above its adornments but below its smart button
+  - collapsible input container with open suggestions gets z-index above other collapsibles
+  - kol-spin arranges its dots
+  - sticky table columns and rows get z-index above posible content in tables
+- z-index 1001 - 1010 are the high layer and reserved for special KoliBri components such as:
+  - skip nav > highest z-index (1010)
+  - tooltips > second highest z-index (1007 & 1008)
+  - toast > 1001
+- themes use as little z-index as possible
 
 **Consequences:**
 
-- ✅ Consistent architecture across all components
-- ✅ Type safety at compile time via `WebComponentInterface<Api>`
-- ✅ Predictable structure for new contributors
-- ✅ Easier testing (controllers independent of Stencil)
-- ✅ Clear contract enforcement (`PropsConfigShape` prevents missing validators/watchers)
-- ❌ Migration effort for legacy components
-- ❌ More boilerplate than legacy patterns
-- ❌ Larger codebase footprint per component
+- ✅ only use z-index layers 1 - 10 and 1000 - 1010 for components and themes
+- ✅ Teams can better predict what z-index layers they can use
+- ❌ Teams have to use z-index above 10 and below 1000
+- ❌ Teams have to check their z-indexes
 
 ### ADR-018: Color Schemes (Dark/Light) Live in Themes, Not in Base Styling
 
@@ -511,46 +507,6 @@ Details: [Base Styling vs. Theming Concept](../BASE_STYLING_VS_THEMING_CONCEPT.m
 - Color scheme in the base styling: Couples all themes to one base palette, breaks the layout-only rule
 - Color scheme as a component prop: Moves a design decision into the component API
 - Global CSS custom properties switched by the host page: Not encapsulated, conflicts with ADR-009
-
-**Related Practice: Dead Schema Detection**
-
-When migrating components to Skeleton architecture, legacy Schemas in `packages/components/src/schema/components/*.ts` become obsolete. These must be identified and removed to prevent stale type definitions:
-
-```bash
-# After skeleton migration, check if old schema is still imported:
-grep -r "from '../../schema/components/COMPONENT_NAME'" packages/components/src --include="*.ts*"
-
-# If 0 results → schema is dead → remove from:
-# 1. packages/components/src/schema/components/COMPONENT_NAME.ts (delete file)
-# 2. packages/components/src/schema/index.ts (remove re-export)
-```
-
-Removing dead schemas prevents:
-
-- Type definition duplication
-- Accidental usage of outdated APIs
-- Confusion between legacy and modern prop patterns
-- Unnecessary compilation overhead
-
-**Alternatives Considered:**
-
-- Flat legacy pattern: Less structure, harder to test and maintain
-- Schema-only definitions: No separation of presentation and logic
-- Incremental patterns: Inconsistency across codebase
-- No forced migration: Maintenance burden, inconsistent DX
-
-**Migration Checklist:**
-
-- [ ] New API definition created with `PropsConfigShape` + `ApiFromConfig`
-- [ ] Controller extends `BaseController<Api>` and implements `componentWillLoad()`
-- [ ] Functional component is stateless and receives all state via props
-- [ ] Web component creates controller and manages Stencil lifecycle
-- [ ] Prop triangle complete (field + `@Prop()` + `@Watch()` + `componentWillLoad()` init)
-- [ ] Old schema file identified and dependency check run
-- [ ] Dead schema file deleted if no dependencies remain
-- [ ] Schema re-export removed from `schema/index.ts`
-- [ ] Tests updated to use new API
-- [ ] Migration documented in `MIGRATION.md` if consumer-facing
 
 ---
 
