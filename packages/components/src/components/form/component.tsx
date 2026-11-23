@@ -10,7 +10,7 @@ import { createFormErrorLinkItem } from '../../internal/functional-components/fo
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { errorListProp, formCallbacksProp, requiredTextProp } from '../../internal/props';
 import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -51,7 +51,7 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	 */
 	private readonly alertHeadingId = createUniqueId('alert-heading');
 
-	private readonly closerAriaDescriptionId = nonce();
+	private readonly closerAriaDescriptionId = createUniqueId('closer-description');
 
 	protected readonly propsConfig: PropsConfigShape = formPropsConfig;
 

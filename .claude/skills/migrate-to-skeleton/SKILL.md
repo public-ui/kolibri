@@ -68,6 +68,7 @@ Hintergrund: `packages/components/docs/ARC42-SKELETON.md#schema-helper-layer`.
 
 1. **API** — `internal/functional-components/<komponente>/api.tsx`
    `propsConfig` mit `required`/`optional` (`PropsConfigShape`), API-Typ über `ApiFromConfig`. Nur benötigte Abschnitte deklarieren (`Callbacks`, `Emitters`, `Listeners`, `Methods`, `Refs`, `States`) — ARC42 Design Decision 11.
+   Die Props-Config und der `*Api`-Typ definieren die API der Komponente vollständig — Callbacks, Refs und States eingeschlossen; jede Änderung an einem Member dort ist eine API-Änderung mit Begründung im PR, kein Migrations-Nebeneffekt.
 2. **Functional Component** — `internal/functional-components/<komponente>/component.tsx`
    Zustandsloser Renderer mit `FunctionalComponentProps<Api>`, einziger Wurzelknoten in `BemRootNodeFC` (typisierte `block`/`modifiers`, gemergte `class`). Keine Seiteneffekte, keine Zustandsmutation.
 3. **Behavior** — `internal/functional-components/<komponente>/behavior.ts`, **nur wenn nötig**
