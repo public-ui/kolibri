@@ -20,7 +20,7 @@ export type PopoverFCProps = FunctionalComponentProps<PopoverApi> &
 const popoverBem = bem.forBlock('kol-popover');
 
 export const PopoverFC: FC<PopoverFCProps> = (props, children) => {
-	const { align = 'bottom', popoverRef, arrowRef, class: classNames, ...rest } = props;
+	const { align = 'right', popoverRef, arrowRef, class: classNames, ...rest } = props;
 
 	return (
 		<div {...rest} class={clsx(popoverBem(), classNames)} ref={popoverRef} popover="auto">
