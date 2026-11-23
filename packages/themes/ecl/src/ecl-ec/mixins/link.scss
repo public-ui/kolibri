@@ -32,6 +32,8 @@
 				&:focus {
 					// Firefox repaints native links under user color overrides and drops author outlines, so the ring lives on the plain text box.
 					outline: none;
+					// The radius shapes the ring Firefox itself draws on the native link under a page color override.
+					border-radius: 1px;
 
 					.#{$block-classname}__text {
 						@include link-focus;
@@ -48,6 +50,8 @@
 			&__interactive-element:focus {
 				// Firefox repaints native links under user color overrides and drops author outlines, so the ring lives on the plain text box.
 				outline: none;
+				// The radius shapes the ring Firefox itself draws on the native link under a page color override.
+				border-radius: 1px;
 
 				.#{$block-classname}__text {
 					@include link-focus;
