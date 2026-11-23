@@ -1,5 +1,4 @@
 import type { DialogVariantPropType, PropDialogVariant } from './dialog';
-export { validateDialogVariant as validateModalVariant } from './dialog';
 
 /**
  * @deprecated Use `DialogVariantPropType` instead.

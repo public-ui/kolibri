@@ -6,7 +6,7 @@ import { createUniqueId } from '../../utils/dev.utils';
 
 import { KolButtonTag } from '../../core/component-names';
 import { KolToastItemFc } from '../../functional-components';
-import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../schema';
+import type { Toast, ToastRenderFunction, ToastState } from '../../schema';
 import { Log } from '../../schema';
 
 const TRANSITION_TIMEOUT = 300;
@@ -22,8 +22,8 @@ const TRANSITION_TIMEOUT = 300;
 	},
 	shadow: true,
 })
-export class KolToastContainer implements ToasterAPI {
-	@State() public state: ToasterStates = {
+export class KolToastContainer {
+	@State() public state: { _toastStates: ToastState[] } = {
 		_toastStates: [],
 	};
 
@@ -37,8 +37,7 @@ export class KolToastContainer implements ToasterAPI {
 	 * Adds a toast to the queue.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async enqueue(toast: Toast) {
+	public enqueue(toast: Toast): Promise<() => void> {
 		const newToastState: ToastState = {
 			toast: {
 				...toast,
@@ -66,17 +65,16 @@ export class KolToastContainer implements ToasterAPI {
 			};
 		}, TRANSITION_TIMEOUT);
 
-		return () => {
+		return Promise.resolve(() => {
 			this.handleClose(newToastState);
-		};
+		});
 	}
 
 	/**
 	 * Closes all toasts.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async closeAll(immediate: boolean = false) {
+	public closeAll(immediate: boolean = false): Promise<void> {
 		if (immediate) {
 			this.state = {
 				...this.state,
@@ -107,6 +105,7 @@ export class KolToastContainer implements ToasterAPI {
 				});
 			}, TRANSITION_TIMEOUT);
 		}
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

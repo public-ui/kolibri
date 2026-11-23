@@ -1,6 +1,5 @@
 @use '../../mixins/to-rem' as *;
 @use './alert' as *;
-@use './icon' as *;
 @use './pagination' as *;
 @use './table-settings' as *;
 @use './button' as *;
@@ -9,7 +8,6 @@
 
 @mixin table {
 	@include alert;
-	@include icon;
 	@include pagination;
 	@include table-settings;
 

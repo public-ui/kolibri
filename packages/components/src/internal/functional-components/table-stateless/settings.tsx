@@ -5,7 +5,7 @@ import { KolInputCheckboxTag, KolInputNumberTag } from '../../../core/component-
 import { translate } from '../../../i18n';
 import type { KoliBriTableHeaderCell } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
-import { createUniqueId, nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { AlertFC } from '../alert/component';
 import { ButtonFC } from '../button/component';
@@ -15,6 +15,14 @@ import { createDialogItem, DialogItemFC } from '../dialog/item';
 import { createItemPool } from '../item-pool';
 
 const BEM_CLASS_TABLE__SETTINGS = bem.forBlock('kol-table')('settings');
+const tableSettingsBem = bem.forBlock('kol-table-settings');
+const BEM_CLASS_TABLE_SETTINGS = tableSettingsBem();
+const BEM_CLASS_TABLE_SETTINGS__ACTIONS = tableSettingsBem('actions');
+const BEM_CLASS_TABLE_SETTINGS__COLUMN = tableSettingsBem('column');
+const BEM_CLASS_TABLE_SETTINGS__COLUMN_LABEL = tableSettingsBem('column-label');
+const BEM_CLASS_TABLE_SETTINGS__COLUMNS = tableSettingsBem('columns');
+const BEM_CLASS_TABLE_SETTINGS__CONTENT = tableSettingsBem('content');
+const BEM_CLASS_TABLE_SETTINGS__ERROR_MESSAGE = tableSettingsBem('error-message');
 
 /**
  * The settings menu of the table: the toggle button and the dialog that hides, resizes and moves
@@ -72,7 +80,7 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 	);
 	const dialog = createDialogItem(getHost, requestRender, () => rootElement);
 	const alertHeadingId = createUniqueId('alert-heading');
-	const alertCloserAriaDescriptionId = nonce();
+	const alertCloserAriaDescriptionId = createUniqueId('closer-description');
 
 	let receivedHeaderCells: KoliBriTableHeaderCell[][] | undefined;
 	let headerCells: KoliBriTableHeaderCell[][] = [];
@@ -177,7 +185,7 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 	};
 
 	const renderColumn = (column: KoliBriTableHeaderCell, index: number, columns: KoliBriTableHeaderCell[]): JSX.Element => (
-		<div key={column.key} class="kol-table-settings__column">
+		<div key={column.key} class={BEM_CLASS_TABLE_SETTINGS__COLUMN}>
 			<KolInputCheckboxTag
 				_checked={column.visible !== false}
 				_label={
@@ -190,7 +198,7 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 				_disabled={column.hidable === false}
 				_on={{ onInput: (_, value: unknown) => handleVisibilityChange(column.key ?? '', value) }}
 			/>
-			<span class="kol-table-settings__column-label">{column.label}</span>
+			<span class={BEM_CLASS_TABLE_SETTINGS__COLUMN_LABEL}>{column.label}</span>
 			<KolInputNumberTag
 				_hideLabel
 				_value={parseColumnWidth(column.width)}
@@ -200,36 +208,30 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 				_on={{ onInput: (_, value: unknown) => handleWidthChange(column.key ?? '', value) }}
 			/>
 			<ButtonFC
-				{...buttons.get(`move-up-${column.key}`).getFcProps(
-					{
-						_icons: 'kolicon-chevron-up',
-						_label:
-							column.sortable === false || index === 0
-								? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
-								: translate('kol-table-settings-move-up', { placeholders: { column: column.label } }),
-						_hideLabel: true,
-						_variant: 'ghost',
-						_on: { onClick: () => moveColumn(column.key ?? '', 'up') },
-						_disabled: column.sortable === false || index === 0,
-					},
-					{ 'data-testid': 'table-settings-move-up' },
-				)}
+				{...buttons.get(`move-up-${column.key}`).getFcProps({
+					_icons: 'kolicon-chevron-up',
+					_label:
+						column.sortable === false || index === 0
+							? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
+							: translate('kol-table-settings-move-up', { placeholders: { column: column.label } }),
+					_hideLabel: true,
+					_variant: 'ghost',
+					_on: { onClick: () => moveColumn(column.key ?? '', 'up') },
+					_disabled: column.sortable === false || index === 0,
+				})}
 			/>
 			<ButtonFC
-				{...buttons.get(`move-down-${column.key}`).getFcProps(
-					{
-						_icons: 'kolicon-chevron-down',
-						_label:
-							column.sortable === false || index === columns.length - 1
-								? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
-								: translate('kol-table-settings-move-down', { placeholders: { column: column.label } }),
-						_hideLabel: true,
-						_variant: 'ghost',
-						_on: { onClick: () => moveColumn(column.key ?? '', 'down') },
-						_disabled: column.sortable === false || index === columns.length - 1,
-					},
-					{ 'data-testid': 'table-settings-move-down' },
-				)}
+				{...buttons.get(`move-down-${column.key}`).getFcProps({
+					_icons: 'kolicon-chevron-down',
+					_label:
+						column.sortable === false || index === columns.length - 1
+							? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
+							: translate('kol-table-settings-move-down', { placeholders: { column: column.label } }),
+					_hideLabel: true,
+					_variant: 'ghost',
+					_on: { onClick: () => moveColumn(column.key ?? '', 'down') },
+					_disabled: column.sortable === false || index === columns.length - 1,
+				})}
 			/>
 		</div>
 	);
@@ -250,7 +252,7 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 			return (
 				<div class={BEM_CLASS_TABLE__SETTINGS} ref={refRoot}>
 					{/* `.kol-table-settings` stays an ancestor of `.kol-button`: the themes style the toggle as `.kol-table-settings .kol-button`. */}
-					<div class="kol-table-settings">
+					<div class={BEM_CLASS_TABLE_SETTINGS}>
 						<ButtonFC
 							{...buttons.get('toggle').getFcProps({
 								_icons: 'kolicon-settings',
@@ -261,9 +263,9 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 						/>
 					</div>
 					<DialogItemFC {...dialog.getFcProps({ label: translateTableSettings, variant: 'card', width: 'fit-content' })}>
-						<div class="kol-table-settings__content">
+						<div class={BEM_CLASS_TABLE_SETTINGS__CONTENT}>
 							{errorMessage && (
-								<div class="kol-table-settings__error-message">
+								<div class={BEM_CLASS_TABLE_SETTINGS__ERROR_MESSAGE}>
 									<AlertFC
 										alert={false}
 										closerAriaDescriptionId={alertCloserAriaDescriptionId}
@@ -280,23 +282,16 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 								</div>
 							)}
 							<form onSubmit={handleSubmit}>
-								<div class="kol-table-settings__columns">{columns.map((column, index) => renderColumn(column, index, columns))}</div>
-								<div class="kol-table-settings__actions">
+								<div class={BEM_CLASS_TABLE_SETTINGS__COLUMNS}>{columns.map((column, index) => renderColumn(column, index, columns))}</div>
+								<div class={BEM_CLASS_TABLE_SETTINGS__ACTIONS}>
 									<ButtonFC
-										{...buttons.get('cancel').getFcProps(
-											{
-												_label: translateTableSettingsCancel,
-												_variant: 'secondary',
-												_on: { onClick: () => handleCancel() },
-											},
-											{ 'data-testid': 'table-settings-cancel' },
-										)}
+										{...buttons.get('cancel').getFcProps({
+											_label: translateTableSettingsCancel,
+											_variant: 'secondary',
+											_on: { onClick: () => handleCancel() },
+										})}
 									/>
-									<ButtonFC
-										{...buttons
-											.get('apply')
-											.getFcProps({ _label: translateTableSettingsApply, _variant: 'primary', _type: 'submit' }, { 'data-testid': 'table-settings-apply' })}
-									/>
+									<ButtonFC {...buttons.get('apply').getFcProps({ _label: translateTableSettingsApply, _variant: 'primary', _type: 'submit' })} />
 								</div>
 							</form>
 						</div>

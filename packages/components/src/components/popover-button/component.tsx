@@ -17,7 +17,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	NamePropType,
 	PopoverAlignPropType,
-	PopoverButtonProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
@@ -25,7 +24,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BasePopoverButtonWebComponent } from './base';
 
@@ -43,13 +42,10 @@ import { BasePopoverButtonWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolPopoverButton
-	extends BasePopoverButtonWebComponent
-	implements ClickableElement, FocusableElement, PopoverButtonProps, PopoverButtonWebComponentInterface
-{
+export class KolPopoverButton extends BasePopoverButtonWebComponent implements ClickableElement, FocusableElement, PopoverButtonWebComponentInterface {
 	@Element() protected readonly host?: HTMLKolPopoverButtonElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public popoverOpen = false;
 
@@ -234,18 +230,18 @@ export class KolPopoverButton
 	 * Hides the popover programmatically.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async hidePopover() {
+	public hidePopover(): Promise<void> {
 		this.closePopover();
+		return Promise.resolve();
 	}
 
 	/**
 	 * Shows the popover programmatically.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async showPopover() {
+	public showPopover(): Promise<void> {
 		this.openPopover();
+		return Promise.resolve();
 	}
 
 	/**
@@ -253,16 +249,20 @@ export class KolPopoverButton
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.initPopoverToggle();

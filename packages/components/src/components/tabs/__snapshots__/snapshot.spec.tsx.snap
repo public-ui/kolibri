@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-tabs should render with _label="Text" _selected=1 _tabs=[{"_icons":"codicon codicon-pie-chart","_label":"Erster Tab"},{"_icons":"codicon codicon-calendar","_label":"Zweiter Tab"},{"_disabled":true,"_icons":"codicon codicon-briefcase","_label":"Deaktivierter Tab"},{"_icons":"codicon codicon-pie-chart","_label":[{"text":"partly english","lang":"en"},{"text":" Label"}]},{"_icons":"codicon codicon-telescope","_label":"Letzter Tab"}] 1`] = `
+<kol-tabs _selected="1">
+  <template shadowrootmode="open">
+    <div class="kol-tabs kol-tabs--align-top">
+      <div class="kol-tabs__button-group">
+        <div aria-label="Text" class="kol-tabs__tablist" role="tablist" tabindex="-1">
+          <div class="kol-tabs__tab">
+            <div class="kol-button kol-button--normal kol-button--standalone">
+              <button aria-controls="tabs-nonce-panel-0" aria-selected="false" class="kol-button__interactive-element" id="tabs-nonce-tab-0" role="tab" tabindex="-1" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="codicon codicon-pie-chart kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                    <span class="kol-span__label">
+                      Erster Tab
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="kol-tabs__tab">
+            <div class="kol-button kol-button--custom kol-button--standalone selected">
+              <button aria-controls="tabs-nonce-panel-1" aria-selected="true" class="kol-button__interactive-element" id="tabs-nonce-tab-1" role="tab" tabindex="0" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="codicon codicon-calendar kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                    <span class="kol-span__label">
+                      Zweiter Tab
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="kol-tabs__tab">
+            <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
+              <button aria-controls="tabs-nonce-panel-2" aria-selected="false" class="kol-button__interactive-element" disabled="" id="tabs-nonce-tab-2" role="tab" tabindex="-1" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="codicon codicon-briefcase kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                    <span class="kol-span__label">
+                      Deaktivierter Tab
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="kol-tabs__tab">
+            <div class="kol-button kol-button--normal kol-button--standalone">
+              <button aria-controls="tabs-nonce-panel-3" aria-selected="false" class="kol-button__interactive-element" id="tabs-nonce-tab-3" role="tab" tabindex="-1" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="codicon codicon-pie-chart kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                    <span class="kol-span__label">
+                      <span lang="en">
+                        partly english
+                      </span>
+                      <span>
+                        Label
+                      </span>
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="kol-tabs__tab">
+            <div class="kol-button kol-button--normal kol-button--standalone">
+              <button aria-controls="tabs-nonce-panel-4" aria-selected="false" class="kol-button__interactive-element" id="tabs-nonce-tab-4" role="tab" tabindex="-1" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="codicon codicon-telescope kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                    <span class="kol-span__label">
+                      Letzter Tab
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="kol-tabs__content">
+        <div aria-labelledby="tabs-nonce-tab-0" hidden="" id="tabs-nonce-panel-0" role="tabpanel">
+          <slot name="tabpanel-slot-0"></slot>
+        </div>
+        <div aria-labelledby="tabs-nonce-tab-1" id="tabs-nonce-panel-1" role="tabpanel">
+          <slot name="tabpanel-slot-1"></slot>
+        </div>
+        <div aria-labelledby="tabs-nonce-tab-2" hidden="" id="tabs-nonce-panel-2" role="tabpanel">
+          <slot name="tabpanel-slot-2"></slot>
+        </div>
+        <div aria-labelledby="tabs-nonce-tab-3" hidden="" id="tabs-nonce-panel-3" role="tabpanel">
+          <slot name="tabpanel-slot-3"></slot>
+        </div>
+        <div aria-labelledby="tabs-nonce-tab-4" hidden="" id="tabs-nonce-panel-4" role="tabpanel">
+          <slot name="tabpanel-slot-4"></slot>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-tabs>
+`;

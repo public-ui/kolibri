@@ -1,7 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { watchBoolean } from '../utils';
-
 export type HasCompactButtonPropType = boolean;
 
 /**
@@ -9,9 +5,4 @@ export type HasCompactButtonPropType = boolean;
  */
 export type PropHasCompactButton = {
 	hasCompactButton: HasCompactButtonPropType;
-};
-
-/* validator */
-export const validateHasCompactButton = (component: Generic.Element.Component, value?: HasCompactButtonPropType): void => {
-	watchBoolean(component, '_hasCompactButton', value);
 };

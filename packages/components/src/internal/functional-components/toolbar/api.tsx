@@ -9,7 +9,7 @@ import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
  * Notes on prop choices:
  * - `labelProp`: the label is emitted only as the `aria-label` of the toolbar and is never
  *   rendered, so language segments would have no effect — a plain string suffices.
- * - `orientationProp` defaults to `'horizontal'`, like the predecessor's `validateOrientation`.
+ * - `orientationProp` defaults to `'horizontal'`.
  */
 export const toolbarPropsConfig = {
 	required: [labelProp, toolbarItemsProp],

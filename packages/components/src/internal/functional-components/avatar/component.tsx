@@ -4,21 +4,22 @@ import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
 import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { resolveFcProps } from '../props-from-config';
 import { avatarPropsConfig, type AvatarApi } from './api';
 
-const BEM_BLOCK_AVATAR = 'kol-avatar';
-const BEM_CLASS_AVATAR__IMAGE = bem(BEM_BLOCK_AVATAR, 'image');
-const BEM_CLASS_AVATAR__INITIALS = bem(BEM_BLOCK_AVATAR, 'initials');
+const avatarBem = bem.forBlock('kol-avatar');
+const BEM_CLASS_AVATAR__IMAGE = avatarBem('image');
+const BEM_CLASS_AVATAR__INITIALS = avatarBem('initials');
 
 export const AvatarFC: FC<FunctionalComponentProps<AvatarApi>> = (props) => {
 	const { color, initials, label, src } = resolveFcProps(avatarPropsConfig, props);
 
 	return (
-		<div
+		<BemRootNodeFC
 			aria-label={translate('kol-avatar-alt', { placeholders: { name: trimLabel(label) } })}
-			class="kol-avatar"
+			block="kol-avatar"
 			role="img"
 			style={{
 				backgroundColor: color.backgroundColor,
@@ -32,6 +33,6 @@ export const AvatarFC: FC<FunctionalComponentProps<AvatarApi>> = (props) => {
 					{initials}
 				</span>
 			)}
-		</div>
+		</BemRootNodeFC>
 	);
 };

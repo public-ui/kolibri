@@ -9,8 +9,8 @@ import type { FormErrorLinkItem } from '../../internal/functional-components/for
 import { createFormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { errorListProp, formCallbacksProp, requiredTextProp } from '../../internal/props';
-import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import type { ErrorListPropType, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
+import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -40,7 +40,7 @@ const FOCUS_ERROR_LIST_DELAY = 250;
 	},
 	shadow: true,
 })
-export class KolForm extends BaseWebComponent<FormApi> implements FormProps, WebComponentInterface<FormApi> {
+export class KolForm extends BaseWebComponent<FormApi> implements WebComponentInterface<FormApi> {
 	@Element() private readonly host?: HTMLKolFormElement;
 
 	@State() public errorLinkItems: FormErrorLinkItem[] = [];
@@ -51,7 +51,7 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	 */
 	private readonly alertHeadingId = createUniqueId('alert-heading');
 
-	private readonly closerAriaDescriptionId = nonce();
+	private readonly closerAriaDescriptionId = createUniqueId('closer-description');
 
 	protected readonly propsConfig: PropsConfigShape = formPropsConfig;
 
@@ -93,11 +93,11 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	 * Scrolls to the error list and focuses the first link.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async focusErrorList(options?: KolFocusOptions): Promise<void> {
+	public focusErrorList(options?: KolFocusOptions): Promise<void> {
 		setTimeout(() => {
 			this.errorLinkItems[0]?.focus(options ?? SCROLL_OPTIONS_FALLBACK);
 		}, FOCUS_ERROR_LIST_DELAY);
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

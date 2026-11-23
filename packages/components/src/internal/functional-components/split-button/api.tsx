@@ -18,9 +18,8 @@ export type SplitButtonApi = ApiFromConfig<
 	{
 		Refs: {
 			/**
-			 * The box around the dropdown. It carries the consumer class the predecessor put on its
-			 * `kol-popover-button-wc` element, and is the element the popover button's synthetic
-			 * `KolEvent` DOM events are dispatched on.
+			 * The box around the dropdown. It carries the consumer class of the popover button and is
+			 * the element the popover button's synthetic `KolEvent` DOM events are dispatched on.
 			 */
 			dropdown: HTMLDivElement;
 		};

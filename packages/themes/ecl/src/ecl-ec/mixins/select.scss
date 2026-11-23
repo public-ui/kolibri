@@ -1,10 +1,8 @@
 @use '../../mixins/to-rem' as *;
-@use './icon' as *;
 @use './input-text' as *;
 
 @mixin select {
 	@include input-text;
-	@include icon;
 
 	.kol-select {
 		border: none;

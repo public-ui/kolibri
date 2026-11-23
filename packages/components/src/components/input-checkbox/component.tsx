@@ -13,7 +13,6 @@ import type {
 	HintPropType,
 	IndeterminatePropType,
 	InputCheckboxIconsProp,
-	InputCheckboxProps,
 	InputTypeOnDefault,
 	KolFocusOptions,
 	LabelAlignPropType,
@@ -28,6 +27,7 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
@@ -55,6 +55,8 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';
 
+const checkboxBem = bem.forBlock('kol-input-checkbox');
+
 /**
  * The **Checkbox** input type generates a rectangular box that can be activated and deactivated by clicking. When activated, a colored checkmark is shown inside the box.
  *
@@ -70,7 +72,7 @@ import { submitFormOnEnter } from '../form/controller';
 })
 export class KolInputCheckbox
 	extends BaseFormFieldWebComponent<InputCheckboxApi>
-	implements ClickableElement, FocusableElement, InputCheckboxProps, WebComponentInterface<InputCheckboxApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputCheckboxApi>
 {
 	@Element() protected readonly host?: HTMLKolInputCheckboxElement;
 
@@ -331,9 +333,8 @@ export class KolInputCheckbox
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this.getModelValue();
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this.getModelValue());
 	}
 
 	/**
@@ -341,16 +342,20 @@ export class KolInputCheckbox
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
+	public async click(): Promise<void> {
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
@@ -491,11 +496,11 @@ export class KolInputCheckbox
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-checkbox', {
-							'kol-input-checkbox--checked': checked,
-							'kol-input-checkbox--indeterminate': indeterminate,
-							[`kol-input-checkbox--variant-${variant}`]: true,
-							[`kol-input-checkbox--label-align-${this.getRenderProp('labelAlign')}`]: true,
+						class: checkboxBem({
+							checked,
+							indeterminate,
+							[`variant-${variant}`]: true,
+							[`label-align-${this.getRenderProp('labelAlign')}`]: true,
 						}),
 						accessKey,
 						shortKey,
@@ -505,10 +510,10 @@ export class KolInputCheckbox
 					})}
 				>
 					<FieldControlFC
-						class={clsx('kol-input-checkbox__field-control', {
-							'kol-input-checkbox__field-control--checked': checked,
-							'kol-input-checkbox__field-control--indeterminate': indeterminate,
-							[`kol-input-checkbox__field-control--variant-${variant}`]: true,
+						class={checkboxBem('field-control', {
+							checked,
+							indeterminate,
+							[`variant-${variant}`]: true,
 						})}
 						id={this.id}
 						label={this.getRenderProp('label')}

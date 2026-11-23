@@ -11,16 +11,8 @@ import { DrawerFC } from '../../internal/functional-components/drawer/component'
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
-import type {
-	AlignPropType,
-	DrawerProps,
-	HasCloserPropType,
-	HeadingLevel,
-	KoliBriModalEventCallbacks,
-	LabelLangSegmentsPropType,
-	OpenPropType,
-} from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import type { AlignPropType, HasCloserPropType, HeadingLevel, KoliBriModalEventCallbacks, LabelLangSegmentsPropType, OpenPropType } from '../../schema';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
@@ -36,10 +28,10 @@ import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 	},
 	shadow: true,
 })
-export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProps, WebComponentInterface<DrawerApi> {
+export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebComponentInterface<DrawerApi> {
 	@Element() private readonly host?: HTMLKolDrawerElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	/** Named `expanded` because the deprecated `open()` method occupies the member name `open`. */
 	@State() public expanded: boolean = false;
@@ -132,9 +124,9 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	 * Opens the drawer. Pass true to open as a modal drawer.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async show(modal: boolean = false): Promise<void> {
+	public show(modal: boolean = false): Promise<void> {
 		this.showDrawer(modal);
+		return Promise.resolve();
 	}
 
 	/**
@@ -158,9 +150,9 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	 * Closes the drawer.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async close(): Promise<void> {
+	public close(): Promise<void> {
 		this.closeDrawer();
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

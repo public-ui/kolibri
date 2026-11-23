@@ -19,7 +19,6 @@ import type {
 	OptionsWithOptgroupPropType,
 	RequiredPropType,
 	RowsPropType,
-	SelectProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
@@ -47,7 +46,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	},
 	shadow: true,
 })
-export class KolSelect extends BaseSelectWebComponent implements FocusableElement, SelectProps, WebComponentInterface<SelectApi> {
+export class KolSelect extends BaseSelectWebComponent implements FocusableElement, WebComponentInterface<SelectApi> {
 	@Element() protected readonly host?: HTMLKolSelectElement;
 
 	@State() public id = createUniqueId('select');
@@ -304,9 +303,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 * Returns the selected values.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
-		return this.getModelValue();
+	public getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
+		return Promise.resolve(this.getModelValue());
 	}
 
 	/**
@@ -314,9 +312,11 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		// The focus decorator owns the implementation and forwards `options` to `setFocus`; this body only declares the public signature.
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
