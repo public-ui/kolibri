@@ -1,0 +1,104 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "21 changed – 0 of 21 approved, review pending",
+	"computedAt": "2026-11-23T14:45:24.634Z",
+	"pr": 11667,
+	"head": "0b8dad48971a8a3fffefb3c466c3b7d7bd9294ab",
+	"digest": "sha256:41e821f905377c5cd00350d7f4a9b77e460806f23fbb160837e8cd415b45d3a0",
+	"counts": {
+		"changes": 21,
+		"open": 21,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--left-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--left-indeterminate": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--left-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--right-checked": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--right-indeterminate": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--right-long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
