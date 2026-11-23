@@ -7,7 +7,7 @@ exports[`SelectFC does render an optgroup without options 1`] = `
 `;
 
 exports[`SelectFC forwards disabled to optgroups and options when select is disabled 1`] = `
-<select autocapitalize="off" autocorrect="off" class="kol-select kol-select--disabled" disabled="" id="test">
+<select aria-disabled="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--disabled" id="test">
   <optgroup class="kol-select__optgroup kol-select__optgroup--disabled" disabled="" label="Group 1">
     <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0-0">
       Option 1
@@ -81,7 +81,7 @@ exports[`SelectFC renders a touched error 1`] = `
 `;
 
 exports[`SelectFC renders disabled and required 1`] = `
-<select autocapitalize="off" autocorrect="off" class="kol-select kol-select--disabled kol-select--required" disabled="" id="id" required="">
+<select aria-disabled="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--disabled kol-select--required" id="id" required="">
   <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
     Eins
   </option>

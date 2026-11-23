@@ -22,12 +22,11 @@
 
 		/*
 		 * Forced colors drop author colors, so the only way a disabled control still reads as
-		 * disabled is the `GrayText` system color. `kol-button` had it; the controls whose disabled
-		 * state is `aria-disabled` (anchor, summary) and the native form controls did not.
+		 * disabled is the `GrayText` system color.
 		 */
-		.kol-link__interactive-element[aria-disabled='true'],
-		.kol-accordion__heading[aria-disabled='true'],
-		.kol-details__heading[aria-disabled='true'] {
+		.kol-link--disabled .kol-link__interactive-element,
+		.kol-accordion--disabled .kol-accordion__heading,
+		.kol-details--disabled .kol-details__heading {
 			color: GrayText;
 
 			.kol-icon,
@@ -36,9 +35,9 @@
 			}
 		}
 
-		input:disabled,
-		select:disabled,
-		textarea:disabled {
+		.kol-input--disabled,
+		.kol-select--disabled,
+		.kol-textarea--disabled {
 			color: GrayText;
 			border-color: GrayText;
 		}

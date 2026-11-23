@@ -29,10 +29,10 @@
 			border-radius: var(--border-radius);
 			margin: to-rem(1) 0;
 
-			&:active:not(:disabled),
-			&:checked:not(:disabled),
-			&:focus:not(:disabled),
-			&:hover:not(:disabled) {
+			&:active:not(.kol-select__option--disabled),
+			&:checked:not(.kol-select__option--disabled),
+			&:focus:not(.kol-select__option--disabled),
+			&:hover:not(.kol-select__option--disabled) {
 				color: var(--color-light);
 				background-color: var(--color-primary-variant);
 			}
@@ -57,7 +57,7 @@
 	// The surface above would otherwise sit as a lighter patch inside the muted box of a disabled field.
 	.kol-input-container--disabled .kol-select,
 	.kol-input-container--disabled .kol-select__option {
-		background-color: light-dark(transparent, var(--color-mute));
+		background-color: light-dark(transparent, var(--color-disabled-background));
 	}
 
 	.kol-input-container:has(.kol-select[multiple][size='1']),

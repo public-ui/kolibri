@@ -44,7 +44,8 @@
 				border: 1px solid black;
 			}
 
-			&:not(:disabled).kol-input-range__input--range::-webkit-slider-thumb {
+			/* The cursor gates the thumb only for enabled sliders; a disabled one stays focusable and keeps its focus indicator. */
+			&:not(.kol-input--disabled).kol-input-range__input--range::-webkit-slider-thumb {
 				cursor: pointer;
 			}
 
@@ -60,7 +61,7 @@
 				}
 			}
 
-			&:not(:disabled).kol-input-range__input--range::-moz-range-thumb {
+			&:not(.kol-input--disabled).kol-input-range__input--range::-moz-range-thumb {
 				cursor: pointer;
 			}
 

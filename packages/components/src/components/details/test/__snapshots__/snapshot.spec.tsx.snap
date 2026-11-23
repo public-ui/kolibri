@@ -62,7 +62,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
 <kol-details>
   <template shadowrootmode="open">
     <details class="kol-details kol-details--disabled" style="--collapsible-transition-duration: 300ms;">
-      <summary aria-controls="details-control-nonce" aria-disabled="true" class="kol-details__heading" id="details-heading-nonce" tabindex="-1">
+      <summary aria-controls="details-control-nonce" aria-disabled="true" class="kol-details__heading" id="details-heading-nonce">
         <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
@@ -91,7 +91,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
 <kol-details _open="">
   <template shadowrootmode="open">
     <details class="kol-details kol-details--disabled kol-details--open" open="" style="--collapsible-transition-duration: 300ms;">
-      <summary aria-controls="details-control-nonce" aria-disabled="true" class="kol-details__heading" id="details-heading-nonce" tabindex="-1">
+      <summary aria-controls="details-control-nonce" aria-disabled="true" class="kol-details__heading" id="details-heading-nonce">
         <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">

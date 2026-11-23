@@ -74,10 +74,11 @@
 			padding-left: 0.125em;
 		}
 
-		/* The hint keeps its full contrast: unlike the label it is not part of the inactive control and
-		   can explain why the field is disabled. */
-		&--disabled &__label {
-			opacity: 0.5;
+		&--disabled & {
+			&__label,
+			&__hint {
+				color: var(--color-disabled-text);
+			}
 		}
 
 		&--left {

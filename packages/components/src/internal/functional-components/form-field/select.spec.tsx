@@ -38,7 +38,8 @@ describe('SelectFC', () => {
 		];
 		const page = await renderFunctionalComponentToSpecPage(() => <SelectFC disabled={true} id="test" label="Label" options={optgroupOptions} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.hasAttribute('disabled')).toBe(true);
+		expect(page.root?.getAttribute('aria-disabled')).toBe('true');
+		expect(page.root?.hasAttribute('disabled')).toBe(false);
 		expect(page.root?.querySelectorAll('optgroup')[0].hasAttribute('disabled')).toBe(true);
 		expect(page.root?.querySelectorAll('optgroup')[0].classList.contains('kol-select__optgroup--disabled')).toBe(true);
 		expect(page.root?.querySelectorAll('option')[0].hasAttribute('disabled')).toBe(true);
@@ -61,7 +62,7 @@ describe('SelectFC', () => {
 describe('SelectOptionListFC', () => {
 	it('renders nothing without options', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
-			<select>
+			<select aria-disabled={undefined}>
 				<SelectOptionListFC options={[]} />
 			</select>
 		));
@@ -76,7 +77,7 @@ describe('SelectOptionListFC', () => {
 			},
 		];
 		const page = await renderFunctionalComponentToSpecPage(() => (
-			<select>
+			<select aria-disabled={undefined}>
 				<SelectOptionListFC options={emptyGroupOptions} />
 			</select>
 		));
@@ -86,7 +87,7 @@ describe('SelectOptionListFC', () => {
 
 	it('disables the optgroups and prefixes the keys', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
-			<select>
+			<select aria-disabled={undefined}>
 				<SelectOptionListFC options={options} preKey="-9" disabled />
 			</select>
 		));
@@ -102,7 +103,7 @@ describe('SelectOptionListFC', () => {
 			},
 		];
 		const page = await renderFunctionalComponentToSpecPage(() => (
-			<select>
+			<select aria-disabled={undefined}>
 				<SelectOptionListFC options={disabledGroupOptions} />
 			</select>
 		));
@@ -122,7 +123,7 @@ describe('SelectOptionListFC', () => {
 			},
 		];
 		const page = await renderFunctionalComponentToSpecPage(() => (
-			<select>
+			<select aria-disabled={undefined}>
 				<SelectOptionListFC options={disabledGroupOptions} />
 			</select>
 		));
@@ -136,7 +137,7 @@ describe('SelectOptionListFC', () => {
 	it('renders option with disabled: false inside a disabled list as disabled', async () => {
 		const disabledListOptions = [{ disabled: false, label: 'Option 1', value: '1' }];
 		const page = await renderFunctionalComponentToSpecPage(() => (
-			<select>
+			<select aria-disabled={undefined}>
 				<SelectOptionListFC disabled={true} options={disabledListOptions} />
 			</select>
 		));
@@ -156,7 +157,7 @@ describe('SelectOptionListFC', () => {
 			},
 		];
 		const page = await renderFunctionalComponentToSpecPage(() => (
-			<select>
+			<select aria-disabled={undefined}>
 				<SelectOptionListFC options={mixedOptions} />
 			</select>
 		));

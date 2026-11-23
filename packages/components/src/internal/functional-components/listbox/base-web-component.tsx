@@ -67,29 +67,6 @@ export abstract class BaseListboxWebComponent<Api extends FormFieldBaseApi> exte
 		this.focusOption(index);
 	}
 
-	/**
-	 * Moves the focus, wraps around at both ends and skips disabled options in the direction of
-	 * `searchStep`. Without an enabled option the focus stays.
-	 */
-	protected moveFocusSkippingDisabled(delta: number, searchStep: number, isDisabled: (index: number) => boolean): void {
-		const count = this.getOptionCount();
-		let index = this.focusedIndex + delta;
-
-		for (let iteration = 0; iteration < count; iteration++) {
-			if (index >= count) {
-				index = 0;
-			}
-			if (index < 0) {
-				index = count - 1;
-			}
-			if (!isDisabled(index)) {
-				this.focusOption(index);
-				return;
-			}
-			index += searchStep;
-		}
-	}
-
 	/** Prevents the default action, sets the open state (closing focuses the input) and runs `callback`. */
 	protected handleListboxEvent(event: KeyboardEvent, isOpen?: boolean, callback?: () => void): void {
 		event.preventDefault();

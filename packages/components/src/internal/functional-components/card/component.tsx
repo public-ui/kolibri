@@ -80,7 +80,15 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 	return (
 		<BemRootNodeFC component="article" aria-labelledby={headingId} block="kol-card" class={hostClass}>
 			{href.length > 0 ? (
-				<a class={BEM_CLASS_CARD__LINK} href={href} target={target || undefined} onBlur={handleBlur} onFocus={handleFocus} ref={refCta}>
+				<a
+					aria-disabled={undefined}
+					class={BEM_CLASS_CARD__LINK}
+					href={href}
+					target={target || undefined}
+					onBlur={handleBlur}
+					onFocus={handleFocus}
+					ref={refCta}
+				>
 					<CardHeadingFC headingId={headingId} label={label} level={level} />
 				</a>
 			) : (

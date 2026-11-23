@@ -4,7 +4,7 @@
 	.kol-accordion {
 		border-top: var(--ecl-color-neutral) solid 1px;
 
-		&:not(.kol-accordion--disabled):focus-visible {
+		&:focus-visible {
 			outline: 2px solid var(--ecl-color-primary);
 			outline-offset: -2px;
 		}
@@ -19,8 +19,13 @@
 			   keep the old height on its own. */
 			line-height: normal;
 
-			&:not([aria-disabled='true']):hover {
+			.kol-accordion:not(.kol-accordion--disabled) &:hover {
 				background-color: var(--ecl-color-neutral-60);
+			}
+
+			.kol-accordion--disabled & {
+				color: var(--ecl-color-disabled-text);
+				background-color: var(--ecl-color-disabled-background);
 			}
 
 			&:focus {

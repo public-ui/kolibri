@@ -15,6 +15,8 @@ import type {
 } from '../../../schema';
 import { classNameFromVariant, trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
+import { blockInactive } from '../../../utils/element-interaction';
+import { handleRadioGroupArrowKey } from '../../../utils/radio-group-keyboard';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
@@ -122,9 +124,10 @@ const renderSelectionCell = (context: RenderContext, row: TableDataRow, rowIndex
 	const props = {
 		name: 'selection',
 		checked: selected,
-		disabled,
 		id: String(keyProperty),
+		['aria-disabled']: disabled ? 'true' : undefined,
 		['aria-label']: label,
+		onClick: disabled ? blockInactive : undefined,
 	};
 	return (
 		<td key={`tbody-${rowIndex}-selection`} class={tableBem('cell', { selection: true })}>
@@ -133,7 +136,7 @@ const renderSelectionCell = (context: RenderContext, row: TableDataRow, rowIndex
 					<label class={tableBem('selection-label', { disabled })}>
 						<IconFC class={BEM_CLASS_TABLE__SELECTION_ICON} icons={`kolicon ${selected ? 'kolicon-check' : ''}`} label="" />
 						<input
-							class={tableBem('selection-input', { checkbox: true })}
+							class={tableBem('selection-input', { checkbox: true, disabled })}
 							{...props}
 							type="checkbox"
 							onInput={(event: Event) => {
@@ -145,13 +148,17 @@ const renderSelectionCell = (context: RenderContext, row: TableDataRow, rowIndex
 						/>
 					</label>
 				) : (
-					<label class={tableBem('selection-label')}>
+					<label class={tableBem('selection-label', { disabled })}>
 						<input
-							class={tableBem('selection-input', { radio: true })}
+							class={tableBem('selection-input', { disabled, radio: true })}
 							{...props}
 							type="radio"
 							onInput={(event: Event) => {
 								handleSelectionChange(event, [keyProperty]);
+							}}
+							onKeyDown={(event: KeyboardEvent) => {
+								const table = (event.currentTarget as HTMLElement).closest('table');
+								handleRadioGroupArrowKey(event, Array.from(table?.querySelectorAll<HTMLInputElement>('input[type="radio"][name="selection"]') ?? []));
 							}}
 						/>
 					</label>
@@ -202,6 +209,7 @@ const renderHeadingSelectionCell = (context: RenderContext): JSX.Element => {
 				<label class={tableBem('selection-label')}>
 					<IconFC class={BEM_CLASS_TABLE__SELECTION_ICON} icons={`kolicon ${indeterminate ? 'kolicon-minus' : isChecked ? 'kolicon-check' : ''}`} label="" />
 					<input
+						aria-disabled={undefined}
 						class={tableBem('selection-input', { checkbox: true })}
 						name="selection"
 						checked={isChecked && !indeterminate}

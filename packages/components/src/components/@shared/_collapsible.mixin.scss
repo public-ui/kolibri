@@ -19,7 +19,7 @@
 			/* The `not-allowed` reset for disabled controls lives in `kol-global`, which loses to
 			   `kol-component` whatever the specificity (see `_layer-order.scss`). The pointer has to
 			   exclude the disabled summary itself, or it wins and a dead control looks clickable. */
-			&:not([aria-disabled='true']) {
+			.#{$block-classname}:not(.#{$block-classname}--disabled) & {
 				cursor: pointer;
 			}
 

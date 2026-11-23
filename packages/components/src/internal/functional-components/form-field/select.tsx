@@ -3,11 +3,24 @@ import type { JSXBase } from '@stencil/core/internal';
 import type { MsgPropType, SelectOption, StencilUnknown, Stringified, W3CInputValue } from '../../../schema';
 import { getMsgType, isMsgDefinedAndInputTouched } from '../../../schema';
 import clsx from '../../../utils/clsx';
+import { blockInactive } from '../../../utils/element-interaction';
 import { getBlockBem } from '../bem-root-node/block-bem';
 import type { DefaultInputProps } from './default-input-props';
 import { getDefaultInputProps } from './default-input-props';
 
 const selectBem = getBlockBem('kol-select');
+
+const PASS_THROUGH_KEYS = new Set(['Alt', 'Control', 'Escape', 'Meta', 'Shift', 'Tab']);
+
+/**
+ * Keeps a disabled select from opening its picker by keyboard. Its options are natively disabled,
+ * so no key can change the value; Tab and modifiers still move the focus.
+ */
+const blockPickerKeys = (event: KeyboardEvent): void => {
+	if (!PASS_THROUGH_KEYS.has(event.key)) {
+		event.preventDefault();
+	}
+};
 
 type SelectAttributes = JSXBase.SelectHTMLAttributes<HTMLSelectElement>;
 
@@ -135,7 +148,7 @@ export const SelectFC: FC<SelectFCProps> = (props) => {
 		...other
 	} = props;
 
-	const selectProps: SelectAttributes = {
+	const selectProps: SelectAttributes & { 'aria-disabled'?: 'true' } = {
 		class: clsx(
 			selectBem({
 				disabled: Boolean(disabled),
@@ -146,9 +159,12 @@ export const SelectFC: FC<SelectFCProps> = (props) => {
 			classNames,
 		),
 		required: required,
-		disabled: disabled,
 		...getDefaultInputProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
+		'aria-disabled': disabled ? 'true' : undefined,
+		onClick: disabled ? blockInactive : other.onClick,
+		onKeyDown: disabled ? blockPickerKeys : other.onKeyDown,
+		onMouseDown: disabled ? blockInactive : other.onMouseDown,
 	};
 
 	return (

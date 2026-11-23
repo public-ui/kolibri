@@ -48,7 +48,11 @@ export const DisabledInteractiveElements: FC = () => {
 				<p>This example shows how deactivated interactive elements are displayed.</p>
 				<ul>
 					<li>Deactivated interactive elements pose a particular challenge for accessibility.</li>
-					<li>It must not be possible to focus on deactivated interactive elements, otherwise the tab paths will be unnecessarily extended.</li>
+					<li>
+						Deactivated interactive elements stay focusable and in the tab order. They are marked with aria-disabled, so screen readers announce them as
+						unavailable, but they ignore clicks, keys and input.
+					</li>
+					<li>The focus indicator stays visible on deactivated interactive elements, and their tooltip is reachable by keyboard.</li>
 					<li>Deactivated interactive elements should be labelled clearly and legibly.</li>
 					<li>
 						Deactivated interactive elements have a tooltip for sighted people and aria labelling for the screen readers reading mode if they are represented by

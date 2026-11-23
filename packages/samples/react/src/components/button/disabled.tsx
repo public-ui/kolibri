@@ -15,7 +15,7 @@ export const ButtonDisabled: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This story demonstrates the disabled state of buttons. Disabled buttons are not clickable and appear visually dimmed.</p>
+				<p>This story demonstrates the disabled state of buttons. Disabled buttons stay focusable and show their tooltip, but they cannot be activated.</p>
 			</SampleDescription>
 
 			<div className="grid gap-8">

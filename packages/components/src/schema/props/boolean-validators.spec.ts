@@ -101,17 +101,16 @@ describe('legacy boolean prop validators', () => {
 		jest.restoreAllMocks();
 	});
 
-	// `a11yHint` logs a message only once per module instance, so this test runs before the table below sets `_disabled` to true.
 	describe('validateDisabled', () => {
 		const disabledHints = (): string[] => getLoggedMessages(debugSpy.mock.calls).filter((message) => message.startsWith('"Disabled" limits accessibility'));
 
-		it('gives the a11y hint after the state is patched to true', () => {
+		it('patches the state to true and logs no a11y hint anymore', () => {
 			const component = createLegacyComponent();
 			validateDisabled(component, false);
 			expect(disabledHints()).toEqual([]);
 			validateDisabled(component, true);
 			expect(component.state._disabled).toBe(true);
-			expect(disabledHints()).toHaveLength(1);
+			expect(disabledHints()).toEqual([]);
 		});
 	});
 

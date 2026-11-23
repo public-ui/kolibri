@@ -197,7 +197,7 @@
 				appearance: none;
 				cursor: pointer;
 
-				&:disabled {
+				&--disabled {
 					cursor: not-allowed;
 				}
 

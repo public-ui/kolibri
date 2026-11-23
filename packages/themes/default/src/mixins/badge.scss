@@ -24,11 +24,11 @@
 				padding: to-rem(3.2);
 				border-bottom-right-radius: var(--border-radius);
 				border-top-right-radius: var(--border-radius);
+			}
 
-				&:not([disabled], [aria-disabled='true']):hover {
-					color: var(--color-light);
-					background-color: var(--color-primary-variant);
-				}
+			&:not(.kol-button--disabled) .kol-button__interactive-element:hover {
+				color: var(--color-light);
+				background-color: var(--color-primary-variant);
 			}
 
 			.kol-button__text {

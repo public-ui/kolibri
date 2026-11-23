@@ -213,15 +213,16 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		this.createButtonItem.destroy();
 	}
 
-	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
-		const nextOffset = offset + step;
-		return this.selectNextNotDisabledTab(nextOffset, tabs, true);
-	};
+	// --- Selection ---
 
-	private prevPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
-		const nextOffset = offset - step;
-		return this.selectNextNotDisabledTab(nextOffset, tabs, false);
-	};
+	/**
+	 * Arrow keys move through all tabs, disabled ones included, so a disabled tab stays reachable and
+	 * its tooltip readable; both ends wrap around. Selecting a disabled tab is refused in
+	 * `selectNextTabEvent`.
+	 */
+	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number): number => (offset + 1) % tabs.length;
+
+	private prevPossibleTabIndex = (tabs: TabButtonProps[], offset: number): number => (offset - 1 + tabs.length) % tabs.length;
 
 	private selectNextNotDisabledTab = (selected: number, tabs: TabButtonProps[], upOrDown = true, initialSelected?: number): number => {
 		if (selected > tabs.length - 1) {
@@ -314,7 +315,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 		this.focusTabById(nextTabIndex);
 
-		if (changeMode === 'activateCompletely') {
+		if (changeMode === 'activateCompletely' && this.getRenderProp('tabs')[nextTabIndex]?._disabled !== true) {
 			this._selected = nextTabIndex;
 
 			const tab = this.getRenderProp('tabs')[nextTabIndex];

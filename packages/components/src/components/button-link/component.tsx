@@ -112,7 +112,7 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkP
 	}
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 */
 	@Prop() public _disabled?: DisabledPropType = false;
 

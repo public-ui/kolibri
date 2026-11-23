@@ -5,6 +5,7 @@
 		"kolibri/component-allowed-layer-names": true,
 		"kolibri/theme-allowed-layer-names": true,
 		"kolibri/common-no-layer-in-reuse-files": true,
+		"kolibri/common-disabled-bem-modifier": true,
 		"kolibri/common-require-component-layer": [
 			true,
 			{

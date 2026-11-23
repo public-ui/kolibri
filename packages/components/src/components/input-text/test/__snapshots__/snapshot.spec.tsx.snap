@@ -276,7 +276,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+            <input aria-disabled="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" spellcheck="" type="text" value="Value">
           </div>
         </div>
       </div>
@@ -901,7 +901,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _type="s
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button kol-input-text__clear-button kol-input-text__clear-button--hidden">
-              <button aria-label="kol-clear-search" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-disabled="true" aria-label="kol-clear-search" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>

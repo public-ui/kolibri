@@ -154,7 +154,7 @@ export class KolSingleSelect
 	}
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 */
 	@Prop() public _disabled?: DisabledPropType = false;
 
@@ -458,11 +458,12 @@ export class KolSingleSelect
 		return Array.isArray(this.filteredOptions) ? this.filteredOptions.length : 0;
 	}
 
-	protected moveFocus(delta: number, searchStep = 1): void {
+	/* Disabled options are included, so they stay reachable and are announced; `selectFocusedOption` refuses them. */
+	protected moveFocus(delta: number): void {
 		if (!this.filteredOptions) {
 			return;
 		}
-		this.moveFocusSkippingDisabled(delta, searchStep, (index) => Boolean(this.filteredOptions[index].disabled));
+		this.moveFocusWrapping(delta);
 	}
 
 	protected focusFirstOption(): void {
@@ -470,7 +471,7 @@ export class KolSingleSelect
 	}
 
 	protected focusLastOption(): void {
-		this.moveFocus(this.filteredOptions ? this.filteredOptions.length - 1 - this.focusedIndex : 0, -1);
+		this.moveFocus(this.filteredOptions ? this.filteredOptions.length - 1 - this.focusedIndex : 0);
 	}
 
 	/** Enter, NumpadEnter and Space: clear on the clear button, select the focused option, or open the listbox. */

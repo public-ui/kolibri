@@ -391,7 +391,7 @@ exports[`kol-nav should render with _label="Nav with an active grandchild, butto
                 <div class="kol-nav__entry-wrapper">
                   <div class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
                     <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
-                      <button class="kol-button__interactive-element" disabled="" type="button">
+                      <button aria-disabled="true" class="kol-button__interactive-element" type="button">
                         <span class="kol-button__text kol-span">
                           <span class="kol-span__container">
                             <span class="kol-span__label">

@@ -20,8 +20,7 @@
 			}
 
 			.kol-form-field--disabled & {
-				opacity: 1;
-				color: var(--color-black-60);
+				color: var(--color-disabled-text);
 			}
 
 			&__read-only {

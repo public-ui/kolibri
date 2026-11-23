@@ -118,21 +118,30 @@ test.describe('kol-details', () => {
 			await expect(page.locator('.kol-details__content')).toHaveAttribute('aria-hidden', 'true');
 		});
 
-		test('should not take focus when the title is clicked', async ({ page }) => {
+		test('should take focus when the title is clicked', async ({ page }) => {
 			await page.locator('summary').click({ force: true });
 
 			await expect
 				.poll(() => page.locator('kol-details').evaluate((element: HTMLKolDetailsElement) => element.shadowRoot?.activeElement?.localName ?? null))
-				.toBeNull();
+				.toBe('summary');
 		});
 
-		test('should not take focus when the focus() method is called', async ({ page }) => {
+		test('should not open when Enter or Space is pressed', async ({ page }) => {
+			await page.locator('summary').focus();
+			await page.keyboard.press('Enter');
+			await page.keyboard.press('Space');
+			await page.waitForChanges();
+
+			await expect(page.locator('.kol-details__content')).toHaveAttribute('aria-hidden', 'true');
+		});
+
+		test('should take focus when the focus() method is called', async ({ page }) => {
 			const kolDetails = page.locator('kol-details');
 
 			await kolDetails.evaluate(async (element: HTMLKolDetailsElement) => await element.focus());
 			await page.waitForChanges();
 
-			await expect.poll(() => kolDetails.evaluate((element: HTMLKolDetailsElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBeNull();
+			await expect.poll(() => kolDetails.evaluate((element: HTMLKolDetailsElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBe('summary');
 		});
 
 		test('should not offer a pointer cursor', async ({ page }) => {
@@ -199,7 +208,7 @@ test.describe('kol-details', () => {
 	test.describe('tab order', () => {
 		/* Own `setContent` call: the stencil fixture serves the page from a single route and a second
 		   call inside a test would not reload it. */
-		test('should skip a disabled details', async ({ page }) => {
+		test('should include a disabled details', async ({ page }) => {
 			await page.setContent(
 				'<button id="before">before</button><kol-details _label="Details" _disabled>Expandable content</kol-details><button id="after">after</button>',
 			);
@@ -207,7 +216,7 @@ test.describe('kol-details', () => {
 
 			await page.keyboard.press('Tab');
 
-			await expect(page.locator('#after')).toBeFocused();
+			await expect(page.locator('summary')).toBeFocused();
 		});
 
 		test('should include an enabled details', async ({ page }) => {

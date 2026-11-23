@@ -54,7 +54,7 @@ const KOL_INPUT_FILE_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'DisabledPropType',
 		required: false,
-		doc: 'Makes the element not focusable and ignore all events.',
+		doc: 'Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.',
 		default: 'false',
 	},
 	_hideLabel: {

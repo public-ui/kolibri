@@ -83,7 +83,7 @@
 				}
 			}
 
-			&:disabled {
+			&.kol-input--disabled {
 				cursor: not-allowed;
 			}
 		}

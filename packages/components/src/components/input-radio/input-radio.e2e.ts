@@ -148,7 +148,7 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await focusedIndex(page)).toBe(2);
 		});
 
-		test('skips a disabled option', async ({ page }) => {
+		test('reaches a disabled option without selecting it', async ({ page }) => {
 			const options = `_options='${JSON.stringify([
 				{ label: 'A', value: 'a' },
 				{ disabled: true, label: 'B', value: 'b' },
@@ -160,7 +160,8 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.waitForChanges();
 
-			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element._value)).toBe('c');
+			expect(await focusedIndex(page)).toBe(1);
+			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element._value)).toBe('a');
 		});
 	});
 

@@ -28,7 +28,7 @@
 			}
 
 			.kol-span__label {
-				.kol-button__interactive-element:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+				.kol-button:not(.kol-button--disabled) .kol-button__interactive-element:is(:focus, :hover) & {
 					text-decoration-thickness: 0.25em;
 				}
 			}

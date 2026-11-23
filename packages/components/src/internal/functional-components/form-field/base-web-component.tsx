@@ -308,14 +308,14 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	 * e.g. the smart button, is no blur of the field. `handleBlur` also resets `inputHasFocus`.
 	 */
 	protected handleFocusLeave(event: FocusEvent): void {
-		if (this._disabled) {
-			return;
-		}
 		const host = this.eventHost;
 		const root = host?.shadowRoot || host;
 		const isFocusInside = root?.contains(event.relatedTarget as Node) || host === event.relatedTarget;
 		if (this.focusEventSent && !isFocusInside) {
-			this._touched = true;
+			// A disabled field is focusable but cannot be edited, so leaving it does not touch it.
+			if (this._disabled !== true) {
+				this._touched = true;
+			}
 			this.emit(KolEvent.blur);
 			this._on?.onBlur?.(event);
 			this.focusEventSent = false;

@@ -19,17 +19,17 @@ describe('FormFieldFC', () => {
 	])('renders %s', async (_, props) => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<FormFieldFC id="field-nonce" label="Label" refTooltip={noop} {...props}>
-				<input type="text" />
+				<input aria-disabled={undefined} type="text" />
 			</FormFieldFC>
 		));
 		expect(page.root).toMatchSnapshot();
 	});
 
-	it('disables the fieldset of a disabled field', async () => {
+	it('marks a disabled fieldset through the modifier only', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<FormFieldFC id="field-nonce" label="Label" refTooltip={noop} component="fieldset" disabled />
 		));
-		expect(page.root?.hasAttribute('disabled')).toBe(true);
+		expect(page.root?.hasAttribute('disabled')).toBe(false);
 		expect(page.root?.className).toContain('kol-form-field--disabled');
 	});
 
@@ -42,7 +42,7 @@ describe('FormFieldFC', () => {
 	it('suppresses the alert role on a hidden message even with _alert: true', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<FormFieldFC id="field-nonce" label="Label" refTooltip={noop} msg={{ _type: 'error', _description: 'Error', _alert: true }} touched hideMsg alert>
-				<input type="text" />
+				<input aria-disabled={undefined} type="text" />
 			</FormFieldFC>
 		));
 		const msgEl = page.root?.querySelector('.kol-form-field__msg');
