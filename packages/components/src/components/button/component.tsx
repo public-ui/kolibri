@@ -10,7 +10,6 @@ import type {
 	AriaExpandedPropType,
 	AriaSelectedPropType,
 	ButtonCallbacksPropType,
-	ButtonProps,
 	ButtonTypePropType,
 	ClickableElement,
 	CustomClassPropType,
@@ -44,7 +43,7 @@ import { BaseButtonWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolButton extends BaseButtonWebComponent implements ButtonProps, ButtonWebComponentInterface, ClickableElement, FocusableElement {
+export class KolButton extends BaseButtonWebComponent implements ButtonWebComponentInterface, ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonElement;
 
 	@State() public ariaDescriptionId: string = createUniqueId('aria-description');

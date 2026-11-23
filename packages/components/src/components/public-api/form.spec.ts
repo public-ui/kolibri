@@ -35,4 +35,4 @@ const KOL_FORM_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-form', component: 'form', pinnedApi: KOL_FORM_PUBLIC_API, schemaInterface: 'FormProps' });
+describePublicApiContract({ tag: 'kol-form', component: 'form', pinnedApi: KOL_FORM_PUBLIC_API });

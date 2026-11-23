@@ -11,15 +11,7 @@ import { DrawerFC } from '../../internal/functional-components/drawer/component'
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alignProp, drawerCallbacksProp, hasCloserProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
-import type {
-	AlignPropType,
-	DrawerProps,
-	HasCloserPropType,
-	HeadingLevel,
-	KoliBriModalEventCallbacks,
-	LabelLangSegmentsPropType,
-	OpenPropType,
-} from '../../schema';
+import type { AlignPropType, HasCloserPropType, HeadingLevel, KoliBriModalEventCallbacks, LabelLangSegmentsPropType, OpenPropType } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -36,7 +28,7 @@ import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 	},
 	shadow: true,
 })
-export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProps, WebComponentInterface<DrawerApi> {
+export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebComponentInterface<DrawerApi> {
 	@Element() private readonly host?: HTMLKolDrawerElement;
 
 	@State() public ariaDescriptionId: string = createUniqueId('aria-description');

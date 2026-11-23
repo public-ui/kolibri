@@ -159,7 +159,8 @@ Weitere Regeln:
 ### Weitere Prüfpunkte
 
 - **Öffentliche API:** Props, Events, Methoden, Slots, Typen. Props aus `internal/props` werden
-  wiederverwendet (z. B. `disabledProp`). Öffentliche Member haben JSDoc.
+  wiederverwendet (z. B. `disabledProp`). Öffentliche Member haben JSDoc. Die WC
+  implementiert nur `WebComponentInterface<Api>`, kein zusätzliches `implements <Name>Props` aus `src/schema`.
 - **Barrierefreiheit:** Semantik, ARIA, Fokus, Tastaturbedienung, Mindestgröße interaktiver Elemente,
   `forced-colors`.
 - **Member-Reihenfolge** der Klasse laut ARC42: statics, `@Element`, `@State`, Felder, Konstruktor,
