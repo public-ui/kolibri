@@ -1,16 +1,16 @@
 {
 	"schema": 1,
-	"state": "failure",
-	"description": "1 of 1 visual changes rejected",
-	"computedAt": "2026-11-23T21:25:32.074Z",
+	"state": "success",
+	"description": "No visual changes",
+	"computedAt": "2026-11-23T21:32:59.100Z",
 	"pr": 11511,
-	"head": "3c0e943dc07c60a4c4ee5fcd475bf0f94527f6ab",
-	"digest": "sha256:600900cfc7d78bce5f4acdfc0901f54d0deefa284372311a4f71cfca0774b3de",
+	"head": "40400b9927bdd8b3e4451cffcbd0421350250589",
+	"digest": "sha256:dff787e65fe9335d6ea94a66ab7c743b469747576d7afc7e77425fdcaf9ab399",
 	"counts": {
-		"changes": 1,
+		"changes": 0,
 		"open": 0,
 		"approved": 0,
-		"rejected": 1,
+		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
@@ -18,11 +18,5 @@
 		"laske185",
 		"deleonio"
 	],
-	"items": {
-		"theme-ecl/scenarios-focus-elements-component-tabs": {
-			"state": "rejected",
-			"notes": [],
-			"by": "laske185"
-		}
-	}
+	"items": {}
 }
