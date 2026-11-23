@@ -25,7 +25,9 @@ import { INPUT_NUMBER_ROUTES } from '../components/input-number/routes';
 import { INPUT_PASSWORD_ROUTES } from '../components/input-password/routes';
 import { INPUT_RADIO_ROUTES } from '../components/input-radio/routes';
 import { INPUT_RANGE_ROUTES } from '../components/input-range/routes';
+import { INPUT_SWITCH_ROUTES } from '../components/input-switch/routes';
 import { INPUT_TEXT_ROUTES } from '../components/input-text/routes';
+import { INPUT_TOGGLE_BUTTON_ROUTES } from '../components/input-toggle-button/routes';
 import { KOLIBRI_ROUTES } from '../components/kolibri/routes';
 import { LINK_BUTTON_ROUTES } from '../components/link-button/routes';
 import { LINK_ROUTES } from '../components/link/routes';
@@ -79,7 +81,9 @@ export const ROUTES: Routes = {
 	...INPUT_PASSWORD_ROUTES,
 	...INPUT_RADIO_ROUTES,
 	...INPUT_RANGE_ROUTES,
+	...INPUT_SWITCH_ROUTES,
 	...INPUT_TEXT_ROUTES,
+	...INPUT_TOGGLE_BUTTON_ROUTES,
 	...KOLIBRI_ROUTES,
 	...LINK_BUTTON_ROUTES,
 	...LINK_ROUTES,

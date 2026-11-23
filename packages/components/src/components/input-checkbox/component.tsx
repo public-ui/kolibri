@@ -28,6 +28,7 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 } from '../../schema';
+import { deprecatedHint } from '../../schema';
 import { bem } from '../../schema/bem-registry';
 import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
@@ -322,12 +323,18 @@ export class KolInputCheckbox
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 * @deprecated The variants are dedicated components now: use kol-input-switch for `switch` and kol-input-toggle-button for `button`.
 	 */
 	@Prop() public _variant?: InputCheckboxVariantPropType = 'default';
 
 	@Watch('_variant')
 	public watchVariant(value?: InputCheckboxVariantPropType): void {
 		variantInputCheckboxProp.apply(value, (v) => this.setRenderProp('variant', v));
+		if (value === 'switch') {
+			deprecatedHint('The _variant="switch" is deprecated. Use the kol-input-switch component instead.');
+		} else if (value === 'button') {
+			deprecatedHint('The _variant="button" is deprecated. Use the kol-input-toggle-button component instead.');
+		}
 	}
 
 	/**

@@ -1,8 +1,9 @@
 import { describe, expect, it } from '@jest/globals';
 import type { StencilUnknown } from '../../../schema';
+import { TagEnum } from '../../../schema/tag-names';
 import { BaseWebComponent } from '../base-web-component';
 import type { FormAssociationType } from './api';
-import { FormAssociationBehavior } from './behavior';
+import { ASSOCIATED_TAG_NAMES, FormAssociationBehavior } from './behavior';
 
 /**
  * Pins how `setFormAssociatedValue` mirrors a value into a native target (#11015). The target is set
@@ -87,5 +88,23 @@ describe('FormAssociationBehavior.setFormAssociatedValue', () => {
 
 	it('writes the string value into an <input> for a text field', () => {
 		expect(syncInto('text', document.createElement('input'), 'abc').value).toBe('abc');
+	});
+
+	describe('ASSOCIATED_TAG_NAMES', () => {
+		/**
+		 * A missing entry silences the value reflection of that component (no `data-form-associated`
+		 * element), which only the behavior contract of the component itself would catch. This pin
+		 * derives the expectation from the tag registry instead.
+		 */
+		const toTagName = (tag: string): string => `KOL-${tag.toUpperCase()}`;
+
+		it.each(Object.keys(TagEnum).filter((tag) => tag.startsWith('input-')))('reflects the value of %s', (tag) => {
+			expect(ASSOCIATED_TAG_NAMES.has(toTagName(tag))).toBe(true);
+		});
+
+		it.each([...ASSOCIATED_TAG_NAMES])('%s is a known tag', (tagName) => {
+			expect(tagName).toMatch(/^KOL-[A-Z-]+$/);
+			expect(Object.keys(TagEnum)).toContain(tagName.replace(/^KOL-/, '').toLowerCase());
+		});
 	});
 });
