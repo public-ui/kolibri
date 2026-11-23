@@ -22,7 +22,6 @@ import type {
 	Stringified,
 	TabBehaviorPropType,
 	TabButtonProps,
-	TabsProps,
 } from '../../schema';
 import { devHint, koliBriQuerySelector } from '../../schema';
 
@@ -44,7 +43,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, TabsProps, WebComponentInterface<TabsApi> {
+export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, WebComponentInterface<TabsApi> {
 	@Element() protected readonly host?: HTMLKolTabsElement;
 
 	private rootElement?: HTMLDivElement;

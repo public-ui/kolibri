@@ -84,5 +84,4 @@ describePublicApiContract({
 	tag: 'kol-table-stateless',
 	component: 'table-stateless',
 	pinnedApi: KOL_TABLE_STATELESS_PUBLIC_API,
-	schemaInterface: 'TableStatelessProps',
 });

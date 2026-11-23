@@ -9,7 +9,6 @@ import type {
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
-	InputRadioProps,
 	InputTypeOnDefault,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
@@ -60,7 +59,7 @@ import { submitFormOnEnter } from '../form/controller';
 })
 export class KolInputRadio
 	extends BaseFormFieldWebComponent<InputRadioApi>
-	implements ClickableElement, FocusableElement, InputRadioProps, WebComponentInterface<InputRadioApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputRadioApi>
 {
 	@Element() protected readonly host?: HTMLKolInputRadioElement;
 

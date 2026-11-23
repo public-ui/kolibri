@@ -1,12 +1,12 @@
 import { KolDrawerTag } from '../../core/component-names';
-import type { AlignPropType, DrawerProps } from '../../schema';
-import { executeSnapshotTests } from '../../utils/testing';
+import type { AlignPropType } from '../../schema';
+import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
 
 import { KolDrawer } from './component';
 
 const aligns: AlignPropType[] = ['top', 'right', 'bottom', 'left'];
 
-const testCases: DrawerProps[] = [
+const testCases: ElementProps<typeof KolDrawerTag>[] = [
 	...aligns.map((align) => ({
 		_label: 'Label',
 		_open: true,
@@ -19,4 +19,4 @@ const testCases: DrawerProps[] = [
 	{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
 ];
 
-executeSnapshotTests<DrawerProps>(KolDrawerTag, [KolDrawer], testCases);
+executeSnapshotTests(KolDrawerTag, [KolDrawer], testCases);

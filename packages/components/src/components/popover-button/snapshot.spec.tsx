@@ -1,10 +1,9 @@
 import { KolPopoverButtonTag } from '../../core/component-names';
-import type { PopoverButtonProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolPopoverButton } from './component';
 
-executeSnapshotTests<PopoverButtonProps>(
+executeSnapshotTests(
 	KolPopoverButtonTag,
 	[KolPopoverButton],
 	[

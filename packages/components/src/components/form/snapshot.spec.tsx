@@ -1,10 +1,9 @@
 import { KolFormTag } from '../../core/component-names';
-import type { FormProps } from '../../schema';
-import { executeSnapshotTests } from '../../utils/testing';
+import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
 
 import { KolForm } from './component';
 
-executeSnapshotTests<FormProps>(
+executeSnapshotTests(
 	KolFormTag,
 	[KolForm],
 	[
@@ -16,6 +15,6 @@ executeSnapshotTests<FormProps>(
 				{ message: 'Das Feld Name ist ein Pflichtfeld.', selector: '#name' },
 				{ message: 'Die E-Mail-Adresse ist ungültig.', selector: '#email' },
 			],
-		} as FormProps,
+		} as ElementProps<typeof KolFormTag>,
 	],
 );

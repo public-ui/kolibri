@@ -80,4 +80,4 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-pagination', component: 'pagination', pinnedApi: KOL_PAGINATION_PUBLIC_API, schemaInterface: 'PaginationProps' });
+describePublicApiContract({ tag: 'kol-pagination', component: 'pagination', pinnedApi: KOL_PAGINATION_PUBLIC_API });

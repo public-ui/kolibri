@@ -1,5 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
+import type { ComponentPropsRequired } from '../../internal/functional-components/generic-types';
 import type { WatchStringOptions } from '../utils';
 import { watchValidator } from '../utils';
 import { a11yHint, uiUxHint } from '../utils/a11y.tipps';
@@ -123,8 +124,8 @@ export type PropLabelWithExpertSlot = {
 	label: LabelWithExpertSlotPropType;
 };
 
-export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
-export type LabelLangSegmentsProp = Generic.Element.Members<PropLabelLangSegments, unknown>;
+export type LabelProp = ComponentPropsRequired<PropLabel>;
+export type LabelLangSegmentsProp = ComponentPropsRequired<PropLabelLangSegments>;
 
 export function isLabelSegment(value: unknown): value is LabelSegment {
 	if (typeof value !== 'object' || value === null) {
