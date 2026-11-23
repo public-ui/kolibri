@@ -60,4 +60,4 @@ const KOL_DETAILS_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-details', component: 'details', pinnedApi: KOL_DETAILS_PUBLIC_API, schemaInterface: 'DetailsProps' });
+describePublicApiContract({ tag: 'kol-details', component: 'details', pinnedApi: KOL_DETAILS_PUBLIC_API });

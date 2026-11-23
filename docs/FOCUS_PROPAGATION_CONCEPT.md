@@ -146,7 +146,7 @@ Das Ziel-Element hält ein `CtaRef` aus `createCtaRef()`; die öffentliche Metho
 
 ```typescript
 @Component({ tag: 'kol-button', shadow: true })
-export class KolButton extends BaseButtonWebComponent implements ButtonProps, FocusableElement {
+export class KolButton extends BaseButtonWebComponent implements FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonElement;
 
 	// In der Basisklasse: protected readonly ctaRef = createCtaRef<HTMLButtonElement>();

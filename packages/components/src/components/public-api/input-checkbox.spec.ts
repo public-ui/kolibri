@@ -172,5 +172,4 @@ describePublicApiContract({
 	tag: 'kol-input-checkbox',
 	component: 'input-checkbox',
 	pinnedApi: KOL_INPUT_CHECKBOX_PUBLIC_API,
-	schemaInterface: 'InputCheckboxProps',
 });

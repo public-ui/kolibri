@@ -165,4 +165,4 @@ const KOL_COMBOBOX_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-combobox', component: 'combobox', pinnedApi: KOL_COMBOBOX_PUBLIC_API, schemaInterface: 'ComboboxProps' });
+describePublicApiContract({ tag: 'kol-combobox', component: 'combobox', pinnedApi: KOL_COMBOBOX_PUBLIC_API });

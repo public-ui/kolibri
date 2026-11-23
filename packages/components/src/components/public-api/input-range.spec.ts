@@ -172,4 +172,4 @@ const KOL_INPUT_RANGE_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-range', component: 'input-range', pinnedApi: KOL_INPUT_RANGE_PUBLIC_API, schemaInterface: 'InputRangeProps' });
+describePublicApiContract({ tag: 'kol-input-range', component: 'input-range', pinnedApi: KOL_INPUT_RANGE_PUBLIC_API });

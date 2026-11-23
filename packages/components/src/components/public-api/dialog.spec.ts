@@ -70,4 +70,4 @@ const KOL_DIALOG_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-dialog', component: 'dialog', pinnedApi: KOL_DIALOG_PUBLIC_API, schemaInterface: 'DialogProps' });
+describePublicApiContract({ tag: 'kol-dialog', component: 'dialog', pinnedApi: KOL_DIALOG_PUBLIC_API });

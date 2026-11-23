@@ -1,12 +1,11 @@
 import { KolInputFileTag } from '../../core/component-names';
-import type { InputFileProps } from '../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
 
 import { KolInputFile } from './component';
 
-executeInputSnapshotTests<InputFileProps>(KolInputFileTag, [KolInputFile], undefined, { hasSmartButton: true });
+executeInputSnapshotTests(KolInputFileTag, [KolInputFile], undefined, { hasSmartButton: true });
 
-executeSnapshotTests<InputFileProps>(
+executeSnapshotTests(
 	KolInputFileTag,
 	[KolInputFile],
 	[

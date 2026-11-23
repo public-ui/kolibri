@@ -1,5 +1,4 @@
 import { KolInputRadioTag } from '../../core/component-names';
-import type { InputRadioProps } from '../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
 
 import { KolInputRadio } from './component';
@@ -20,12 +19,12 @@ const options = [
 	},
 ];
 
-executeInputSnapshotTests<InputRadioProps>(KolInputRadioTag, [KolInputRadio], {
+executeInputSnapshotTests(KolInputRadioTag, [KolInputRadio], {
 	_value: 'Value',
 	_options: options,
 });
 
-executeInputSnapshotTests<InputRadioProps>(KolInputRadioTag, [KolInputRadio], {
+executeInputSnapshotTests(KolInputRadioTag, [KolInputRadio], {
 	_value: 'Value',
 	_options: options,
 	_orientation: 'horizontal',
@@ -33,7 +32,7 @@ executeInputSnapshotTests<InputRadioProps>(KolInputRadioTag, [KolInputRadio], {
 
 const objectValue = { id: 1 };
 
-executeSnapshotTests<InputRadioProps>(
+executeSnapshotTests(
 	KolInputRadioTag,
 	[KolInputRadio],
 	[

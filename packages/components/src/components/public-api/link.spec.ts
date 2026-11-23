@@ -120,4 +120,4 @@ const KOL_LINK_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-link', component: 'link', pinnedApi: KOL_LINK_PUBLIC_API, schemaInterface: 'LinkProps' });
+describePublicApiContract({ tag: 'kol-link', component: 'link', pinnedApi: KOL_LINK_PUBLIC_API });

@@ -64,4 +64,4 @@ const KOL_MODAL_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-modal', component: 'modal', pinnedApi: KOL_MODAL_PUBLIC_API, schemaInterface: 'DialogProps' });
+describePublicApiContract({ tag: 'kol-modal', component: 'modal', pinnedApi: KOL_MODAL_PUBLIC_API });

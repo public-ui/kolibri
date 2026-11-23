@@ -211,4 +211,4 @@ const KOL_INPUT_EMAIL_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-email', component: 'input-email', pinnedApi: KOL_INPUT_EMAIL_PUBLIC_API, schemaInterface: 'InputEmailProps' });
+describePublicApiContract({ tag: 'kol-input-email', component: 'input-email', pinnedApi: KOL_INPUT_EMAIL_PUBLIC_API });

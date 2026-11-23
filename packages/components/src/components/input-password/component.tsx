@@ -13,7 +13,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputPasswordProps,
 	InputTypeOnDefault,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -70,7 +69,7 @@ const passwordBem = bem.forBlock('kol-input-password');
 })
 export class KolInputPassword
 	extends BaseTextInputWebComponent<InputPasswordApi>
-	implements ClickableElement, FocusableElement, InputPasswordProps, WebComponentInterface<InputPasswordApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputPasswordApi>
 {
 	@Element() protected readonly host?: HTMLKolInputPasswordElement;
 

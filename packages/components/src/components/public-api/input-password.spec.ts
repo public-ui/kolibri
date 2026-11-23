@@ -209,5 +209,4 @@ describePublicApiContract({
 	tag: 'kol-input-password',
 	component: 'input-password',
 	pinnedApi: KOL_INPUT_PASSWORD_PUBLIC_API,
-	schemaInterface: 'InputPasswordProps',
 });
