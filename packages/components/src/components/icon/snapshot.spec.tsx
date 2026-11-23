@@ -3,7 +3,7 @@ import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolIcon } from './component';
 
-executeSnapshotTests<Pick<KolIcon, '_icons' | '_label'>>(
+executeSnapshotTests(
 	KolIconTag,
 	[KolIcon],
 	[

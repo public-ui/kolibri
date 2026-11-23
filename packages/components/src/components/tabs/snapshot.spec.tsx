@@ -1,10 +1,9 @@
 import { KolTabsTag } from '../../core/component-names';
-import type { TabsProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolTabs } from './component';
 
-executeSnapshotTests<TabsProps>(
+executeSnapshotTests(
 	KolTabsTag,
 	[KolTabs],
 	[

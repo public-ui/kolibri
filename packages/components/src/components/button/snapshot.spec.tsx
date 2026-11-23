@@ -4,7 +4,7 @@ import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolButton } from './component';
 
-executeSnapshotTests<InternalButtonProps>(
+executeSnapshotTests(
 	KolButtonTag,
 	[KolButton],
 	[

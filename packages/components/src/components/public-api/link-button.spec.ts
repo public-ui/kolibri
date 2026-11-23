@@ -134,4 +134,4 @@ const KOL_LINK_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-link-button', component: 'link-button', pinnedApi: KOL_LINK_BUTTON_PUBLIC_API, schemaInterface: 'LinkButtonProps' });
+describePublicApiContract({ tag: 'kol-link-button', component: 'link-button', pinnedApi: KOL_LINK_BUTTON_PUBLIC_API });

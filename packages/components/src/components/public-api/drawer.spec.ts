@@ -70,4 +70,4 @@ const KOL_DRAWER_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-drawer', component: 'drawer', pinnedApi: KOL_DRAWER_PUBLIC_API, schemaInterface: 'DrawerProps' });
+describePublicApiContract({ tag: 'kol-drawer', component: 'drawer', pinnedApi: KOL_DRAWER_PUBLIC_API });

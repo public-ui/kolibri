@@ -1,10 +1,9 @@
 import { KolInputEmailTag } from '../../core/component-names';
-import type { InputEmailProps } from '../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
 
 import { KolInputEmail } from './component';
 
-executeInputSnapshotTests<InputEmailProps>(
+executeInputSnapshotTests(
 	KolInputEmailTag,
 	[KolInputEmail],
 	{
@@ -13,7 +12,7 @@ executeInputSnapshotTests<InputEmailProps>(
 	{ hasSmartButton: true },
 );
 
-executeInputSnapshotTests<InputEmailProps>(
+executeInputSnapshotTests(
 	KolInputEmailTag,
 	[KolInputEmail],
 	{
@@ -23,8 +22,7 @@ executeInputSnapshotTests<InputEmailProps>(
 	{ hasSmartButton: true },
 );
 
-// `_hasCounter` is a prop of the element, but `InputEmailProps` does not declare it.
-executeSnapshotTests<InputEmailProps & { _hasCounter?: boolean }>(
+executeSnapshotTests(
 	KolInputEmailTag,
 	[KolInputEmail],
 	[

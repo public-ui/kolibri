@@ -1,5 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
 import type { AlertTypePropType, LabelPropType } from '../props';
 
 type ToastStatus = 'adding' | 'removing' | 'settled';
@@ -42,18 +40,3 @@ export type ToasterOptions = {
 	 */
 	defaultVariant: 'card';
 };
-
-type RequiredProps = NonNullable<unknown>;
-type OptionalProps = NonNullable<unknown>;
-
-type RequiredStates = RequiredProps & {
-	toastStates: ToastState[];
-};
-type OptionalStates = OptionalProps;
-
-/** @deprecated Will be removed in the next major version. See https://github.com/public-ui/kolibri/issues/8372 */
-export type ToasterProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-/** @deprecated Will be removed in the next major version. See https://github.com/public-ui/kolibri/issues/8372 */
-export type ToasterStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-/** @deprecated Will be removed in the next major version. See https://github.com/public-ui/kolibri/issues/8372 */
-export type ToasterAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

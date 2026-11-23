@@ -17,7 +17,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	NamePropType,
 	PopoverAlignPropType,
-	PopoverButtonProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
@@ -43,10 +42,7 @@ import { BasePopoverButtonWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolPopoverButton
-	extends BasePopoverButtonWebComponent
-	implements ClickableElement, FocusableElement, PopoverButtonProps, PopoverButtonWebComponentInterface
-{
+export class KolPopoverButton extends BasePopoverButtonWebComponent implements ClickableElement, FocusableElement, PopoverButtonWebComponentInterface {
 	@Element() protected readonly host?: HTMLKolPopoverButtonElement;
 
 	@State() public ariaDescriptionId: string = createUniqueId('aria-description');

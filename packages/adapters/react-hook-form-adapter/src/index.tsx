@@ -1,3 +1,4 @@
+import type { Components } from '@public-ui/components';
 import {
 	KolCombobox,
 	KolInputCheckbox,
@@ -17,41 +18,62 @@ import {
 import React, { RefAttributes } from 'react';
 import { Control, Controller } from 'react-hook-form';
 
-// Import API types from components - these are used in generated .d.ts files
-import type {
-	ComboboxAPI,
-	InputCheckboxAPI,
-	InputColorAPI,
-	InputDateAPI,
-	InputEmailAPI,
-	InputFileAPI,
-	InputNumberAPI,
-	InputPasswordAPI,
-	InputRadioAPI,
-	InputRangeAPI,
-	InputTextAPI,
-	SelectAPI,
-	SingleSelectAPI,
-	TextareaAPI,
-} from '@public-ui/components/dist/types/schema/index';
-
-// Export API types for convenience
-export type {
-	ComboboxAPI,
-	InputCheckboxAPI,
-	InputColorAPI,
-	InputDateAPI,
-	InputEmailAPI,
-	InputFileAPI,
-	InputNumberAPI,
-	InputPasswordAPI,
-	InputRadioAPI,
-	InputRangeAPI,
-	InputTextAPI,
-	SelectAPI,
-	SingleSelectAPI,
-	TextareaAPI,
-};
+/**
+ * @deprecated Use `Components.KolCombobox` of `@public-ui/components` instead.
+ */
+export type ComboboxAPI = Components.KolCombobox;
+/**
+ * @deprecated Use `Components.KolInputCheckbox` of `@public-ui/components` instead.
+ */
+export type InputCheckboxAPI = Components.KolInputCheckbox;
+/**
+ * @deprecated Use `Components.KolInputColor` of `@public-ui/components` instead.
+ */
+export type InputColorAPI = Components.KolInputColor;
+/**
+ * @deprecated Use `Components.KolInputDate` of `@public-ui/components` instead.
+ */
+export type InputDateAPI = Components.KolInputDate;
+/**
+ * @deprecated Use `Components.KolInputEmail` of `@public-ui/components` instead.
+ */
+export type InputEmailAPI = Components.KolInputEmail;
+/**
+ * @deprecated Use `Components.KolInputFile` of `@public-ui/components` instead.
+ */
+export type InputFileAPI = Components.KolInputFile;
+/**
+ * @deprecated Use `Components.KolInputNumber` of `@public-ui/components` instead.
+ */
+export type InputNumberAPI = Components.KolInputNumber;
+/**
+ * @deprecated Use `Components.KolInputPassword` of `@public-ui/components` instead.
+ */
+export type InputPasswordAPI = Components.KolInputPassword;
+/**
+ * @deprecated Use `Components.KolInputRadio` of `@public-ui/components` instead.
+ */
+export type InputRadioAPI = Components.KolInputRadio;
+/**
+ * @deprecated Use `Components.KolInputRange` of `@public-ui/components` instead.
+ */
+export type InputRangeAPI = Components.KolInputRange;
+/**
+ * @deprecated Use `Components.KolInputText` of `@public-ui/components` instead.
+ */
+export type InputTextAPI = Components.KolInputText;
+/**
+ * @deprecated Use `Components.KolSelect` of `@public-ui/components` instead.
+ */
+export type SelectAPI = Components.KolSelect;
+/**
+ * @deprecated Use `Components.KolSingleSelect` of `@public-ui/components` instead.
+ */
+export type SingleSelectAPI = Components.KolSingleSelect;
+/**
+ * @deprecated Use `Components.KolTextarea` of `@public-ui/components` instead.
+ */
+export type TextareaAPI = Components.KolTextarea;
 
 type KolEventHandlers = {
 	onInput?: (event: any, value: any) => void;

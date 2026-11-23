@@ -1,4 +1,4 @@
-import type { Generic } from 'adopted-style-sheets';
+import type { ComponentPropsRequired } from '../../internal/functional-components/generic-types';
 
 /**
  * This is a regular expression that matches all readable characters.
@@ -119,8 +119,8 @@ export type PropLabelWithExpertSlot = {
 	label: LabelWithExpertSlotPropType;
 };
 
-export type LabelProp = Generic.Element.Members<PropLabel, unknown>;
-export type LabelLangSegmentsProp = Generic.Element.Members<PropLabelLangSegments, unknown>;
+export type LabelProp = ComponentPropsRequired<PropLabel>;
+export type LabelLangSegmentsProp = ComponentPropsRequired<PropLabelLangSegments>;
 
 export function isLabelSegment(value: unknown): value is LabelSegment {
 	if (typeof value !== 'object' || value === null) {

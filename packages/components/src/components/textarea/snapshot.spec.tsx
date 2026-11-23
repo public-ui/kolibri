@@ -1,16 +1,15 @@
 import { KolTextareaTag } from '../../core/component-names';
-import type { TextareaProps } from '../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
 
 import { KolTextarea } from './component';
 
-executeInputSnapshotTests<TextareaProps>(KolTextareaTag, [KolTextarea], {
+executeInputSnapshotTests(KolTextareaTag, [KolTextarea], {
 	_rows: 5,
 	_spellCheck: true,
 	_value: 'Value',
 });
 
-executeSnapshotTests<TextareaProps>(
+executeSnapshotTests(
 	KolTextareaTag,
 	[KolTextarea],
 	[
