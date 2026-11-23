@@ -7,7 +7,7 @@ import type { VersionApi } from '../../internal/functional-components/version/ap
 import { versionPropsConfig } from '../../internal/functional-components/version/api';
 import { VersionFC } from '../../internal/functional-components/version/component';
 import { labelProp } from '../../internal/props';
-import type { ColorPair, KoliBriIconsProp, LabelPropType, VersionProps } from '../../schema';
+import type { ColorPair, KoliBriIconsProp, LabelPropType } from '../../schema';
 import { createContrastColorPair } from '../../schema';
 
 /**
@@ -35,7 +35,7 @@ const VERSION_ICON = { left: { icon: 'kolicon-version', label: translate('kol-ve
 	},
 	shadow: true,
 })
-export class KolVersion extends BaseWebComponent<VersionApi> implements VersionProps, WebComponentInterface<VersionApi> {
+export class KolVersion extends BaseWebComponent<VersionApi> implements WebComponentInterface<VersionApi> {
 	protected readonly propsConfig: PropsConfigShape = versionPropsConfig;
 
 	/**

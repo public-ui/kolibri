@@ -4,9 +4,13 @@ KoliBri tracks the artifact size of `@public-ui/components` and `@public-ui/them
 parts, both run by the workspace tool [`@public-ui/size-gate`](../packages/tools/size-gate/README.md)
 (`kolibri-size-gate`):
 
-- **Size gate (every pull request).** The CI job `build-and-check` compares the sizes with the
-  committed `size-baseline.json` of each package and fails when an artifact grows beyond the
-  tolerance. It needs no source maps.
+- **Size gate (every pull request).** The CI job `build-and-check` compares the sizes of the pull
+  request with the baseline of its base branch. No baseline is committed: the workflow
+  _Size Baseline_ computes it live on every push to `develop`, `main` and `release/*` and publishes
+  it as the artifact `size-baseline` (90 days retention); the pull-request run picks the artifact of
+  its base commit (`scripts/size-baseline/select-baseline.mjs`) and installs it before comparing.
+  The comparison is informational: it never fails a build and never blocks a merge. It needs no
+  source maps.
 - **Size analysis (manual start).** The workflow _Size Analysis_ builds with source maps and renders
   a treemap of where the bytes come from, the hotspots, duplicated modules, CSS repeated across sheets
   and the restructuring candidates. Start it with Actions → _Size Analysis_ → _Run workflow_ on the
@@ -23,6 +27,17 @@ pnpm --filter "@public-ui/theme-default..." build
 ```bash
 pnpm size
 ```
+
+Without an installed baseline the report shows the sizes without comparison. To compare against a
+base branch, install its baseline first (requires `gh auth login`):
+
+```bash
+pnpm size:pull --branch release/4
+```
+
+`pnpm size:update` instead writes the sizes of a local build as `size-baseline.json` (gitignored),
+which is how the _Size Baseline_ workflow produces the artifact and how two local builds can be
+compared.
 
 Size analysis, after a build with source maps:
 
@@ -50,11 +65,11 @@ either way. Each package writes `size-report/` with `report.md`, `report.json` a
 
 The size gate keeps at most one comment on a pull request, marked with `<!-- size-gate -->`:
 
-- It is created only when the gate fails or a metric changes notably: a failed or new metric, or a
-  change of at least 1 KB (gzip, raw for `redundant`). It lists at most five such metrics per
+- It is created only when a metric changes notably: a metric beyond the tolerance or a new metric, or
+  a change of at least 1 KB (gzip, raw for `redundant`). It lists at most five such metrics per
   package; the job summary of the CI run lists all of them.
 - Once it exists, every later run updates it. Without a notable change it shrinks to one line, so it
-  never shows a stale status. If the gate did not run because an earlier step failed, it says so.
+  never shows a stale status. If the size step did not run because an earlier step failed, it says so.
 - Pull requests from forks get a read-only token; for them no comment is written and the job summary
   carries the report.
 
@@ -83,20 +98,23 @@ in its chunk, because compression works across module borders.
 | `redundant`   | Raw bytes of CSS that at least three sheets carry as identical copies (same rule, same declarations, same `@layer`/`@media` context), counted for every copy after the first. Rules that occur in the same set of sheets form one group, typically the output of one Sass mixin. |
 | `total`       | The bundle `dist/index.mjs`.                                                                                                                                                                                                                                                     |
 
-## Gate rules
+## Report rules
 
-| Rule                                                               | Result  |
-| ------------------------------------------------------------------ | ------- |
-| `core`, `entry:*`, `sheet:*` grow by more than max(2 %, 1 KB gzip) | fail    |
-| `total`, `sheets`, `redundant` grow by more than 2 %               | fail    |
-| A new component or sheet appears                                   | warning |
-| A metric shrinks by more than its tolerance                        | notice  |
+The comparison marks deviations; it never fails anything.
 
-The tolerance lives in `size-baseline.json` (`tolerance.percent`, `tolerance.bytes`) of each package.
-A new hotspot or a newly duplicated module fails the gate through the growth of `core` or `entry:*`;
-the analysis names it as such (`hotspots` and `duplicates` in the baseline, compared for information).
+| Rule                                                               | Report              |
+| ------------------------------------------------------------------ | ------------------- |
+| `core`, `entry:*`, `sheet:*` grow by more than max(2 %, 1 KB gzip) | ❌ beyond tolerance |
+| `total`, `sheets`, `redundant` grow by more than 2 %               | ❌ beyond tolerance |
+| A new component or sheet appears                                   | warning             |
+| A metric shrinks by more than its tolerance                        | improvement         |
 
-## When the gate fails
+The tolerance travels with the baseline (`tolerance.percent`, `tolerance.bytes`); without a baseline
+file the report falls back to the same default and lists every metric as new. A new hotspot or a newly
+duplicated module shows up through the growth of `core` or `entry:*`; the analysis names it as such
+(`hotspots` and `duplicates`, compared for information).
+
+## When a metric grows
 
 1. Run the _Size Analysis_ on the branch (or `pnpm size:analyze` locally), open `treemap.html` from
    the artifact `size-analysis` and zoom into the metric that grew. The table below the map lists the
@@ -104,8 +122,8 @@ the analysis names it as such (`hotspots` and `duplicates` in the baseline, comp
 2. Reduce the growth where it is unintended: import a dependency where it is needed instead of in a
    shared module, load rarely used code with a dynamic `import()`, move CSS that many sheets repeat
    into the `GLOBAL` sheet of the theme.
-3. If the growth is intended, run `pnpm size:update`, commit the changed `size-baseline.json` and
-   state the reason in the pull request. A smaller baseline can be committed at any time.
+3. The report never blocks the merge. If the growth is intended, state the reason in the pull
+   request – nothing else to do; the next baseline of the base branch picks the sizes up.
 
 ## Restructuring candidates
 
@@ -120,12 +138,3 @@ savings.
 | `css-duplicate`      | Raw bytes of a group of CSS rules repeated across sheets.              |
 | `css-comments`       | Raw bytes of comments compiled into the CSS strings.                   |
 | `bundled-dependency` | Raw bytes of `@public-ui/components` code bundled into the theme.      |
-
-The first baseline (4.6.0-rc.3) lists, among others:
-
-- `markdown-it` with `entities`, `linkify-it`, `mdurl`, `uc.micro` and `punycode.js` in the core:
-  about 93 KB gzip on every page, although only `kol-badge` renders Markdown
-  (`packages/components/src/utils/markdown.ts`).
-- The icon font CSS of `@include kol-icon-theme` in 40 sheets of `theme-default` (8.8 MB raw) and a
-  second copy scoped to `.kol-form-field__label` in 17 sheets (4.7 MB raw), see
-  [#11623](https://github.com/public-ui/kolibri/issues/11623).

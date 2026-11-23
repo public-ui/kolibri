@@ -1,0 +1,48 @@
+name: Size Baseline
+
+# Publishes the size baseline of every base branch as an artifact. The pull-request run in ci.yml
+# downloads the artifact of its base commit and compares its own artifact sizes with it, so no
+# size-baseline.json has to live in git. The gate is informational: it never fails a build and
+# never blocks a merge – see docs/SIZE_GATE.md. Every push gets its own run on purpose – no
+# concurrency group – because a cancelled run would leave a base commit without baseline.
+on:
+  push:
+    branches:
+      - 'develop'
+      - 'main'
+      - 'release/*'
+  schedule:
+    # Monthly refresh so the artifacts (90 days retention) of a quiet branch never expire.
+    - cron: '17 3 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/pnpm-setup
+      - name: Build
+        run: pnpm --filter "@public-ui/theme-default..." build
+      - name: Measure sizes
+        # `size:update` writes the fresh sizes of this commit as size-baseline.json; no source maps
+        # are needed, because the baseline stores plain per-chunk sizes.
+        run: pnpm --filter @public-ui/components --filter @public-ui/theme-default size:update
+      - name: Stage baseline
+        run: |
+          mkdir size-baseline
+          cp packages/components/size-baseline.json size-baseline/components.json
+          cp packages/themes/default/size-baseline.json size-baseline/theme-default.json
+      - name: Upload baseline artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: size-baseline
+          path: size-baseline/
+          if-no-files-found: error
+          retention-days: 90

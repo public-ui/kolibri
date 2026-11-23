@@ -13,7 +13,6 @@ import type {
 	HintPropType,
 	IndeterminatePropType,
 	InputCheckboxIconsProp,
-	InputCheckboxProps,
 	InputTypeOnDefault,
 	KolFocusOptions,
 	LabelAlignPropType,
@@ -73,7 +72,7 @@ const checkboxBem = bem.forBlock('kol-input-checkbox');
 })
 export class KolInputCheckbox
 	extends BaseFormFieldWebComponent<InputCheckboxApi>
-	implements ClickableElement, FocusableElement, InputCheckboxProps, WebComponentInterface<InputCheckboxApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputCheckboxApi>
 {
 	@Element() protected readonly host?: HTMLKolInputCheckboxElement;
 

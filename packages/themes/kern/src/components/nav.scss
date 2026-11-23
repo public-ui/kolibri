@@ -20,6 +20,8 @@
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
 			padding: 0;
+			padding-right: var(--kol-nav-list-item-padding);
+			padding-left: to-rem(var(--kol-nav-item-padding-left));
 			align-items: center;
 
 			@include kol-enabled-wrapper {
@@ -29,12 +31,19 @@
 			}
 
 			&__interactive-element {
-				min-height: var(--a11y-min-size);
-				padding-right: var(--kol-nav-list-item-padding);
-				padding-left: to-rem(var(--kol-nav-item-padding-left));
-				align-items: center;
+				text-decoration-line: underline;
+				text-decoration-skip-ink: auto;
+				text-decoration-style: solid;
+				text-decoration-thickness: var(--kern-1);
+				text-underline-offset: var(--kern-metric-space-2x-small);
+				text-underline-position: from-font;
 
-				text-decoration: none;
+				/* Icon entries stay without the underline, like the shared link mixin's
+				   `:has(.kol-icon)` suppression — the wrapper's `none` does not reach the
+				   explicit line set on the interactive element. */
+				&:has(.kol-icon) {
+					text-decoration-line: none;
+				}
 			}
 		}
 
@@ -70,10 +79,6 @@
 			&--nested {
 				margin-top: var(--kern-metric-space-small);
 			}
-		}
-
-		&__navigation {
-			margin-bottom: var(--kern-metric-space-small);
 		}
 
 		&__toggle-button {

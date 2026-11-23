@@ -1,8 +1,6 @@
-import type { Generic } from 'adopted-style-sheets';
 import type { AlertProps } from '../components';
 import type { Stringified } from '../types';
-import { objectObjectHandler, parseJson, watchValidator } from '../utils';
-import { isObject, isString } from '../validators';
+import { parseJson } from '../utils';
 
 /* types */
 export type MsgPropType = Omit<AlertProps, '_level' | '_on' | '_label' | '_hasCloser' | '_variant'> & { _description: string };
@@ -12,37 +10,6 @@ export type MsgPropType = Omit<AlertProps, '_level' | '_on' | '_label' | '_hasCl
  */
 export type PropMsg = {
 	msg: Stringified<MsgPropType>;
-};
-
-/* validator */
-export const validateMsg = (component: Generic.Element.Component, value?: Stringified<MsgPropType>): void => {
-	objectObjectHandler(value, () => {
-		try {
-			value = parseJson<MsgPropType>(value);
-		} catch {
-			// value keeps original value
-		}
-		watchValidator<Stringified<MsgPropType>>(
-			component,
-			`_msg`,
-			(value) => {
-				if (value === undefined) {
-					return true;
-				}
-				if (typeof value === 'string' && value.length > 0) {
-					return true;
-				}
-				if (isObject(value) && value !== null) {
-					const desc = (value as { _description?: unknown })._description;
-					return isString(desc, 1);
-				}
-
-				return false;
-			},
-			new Set(['MsgPropType', 'string']),
-			value as Stringified<MsgPropType>,
-		);
-	});
 };
 
 export function isMsgDefinedAndInputTouched(msg?: Stringified<MsgPropType>, touched?: boolean): boolean {

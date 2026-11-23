@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-dialog`: 5 props plus the five open/close methods — identical to the
- * predecessor `shadow.tsx` on the develop branch.
+ * Pinned public API of `kol-dialog` (5 props plus the five open/close methods).
  */
 const KOL_DIALOG_PUBLIC_API: PublicApiContract = {
 	openModal: {
@@ -71,4 +70,4 @@ const KOL_DIALOG_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-dialog', component: 'dialog', pinnedApi: KOL_DIALOG_PUBLIC_API, schemaInterface: 'DialogProps' });
+describePublicApiContract({ tag: 'kol-dialog', component: 'dialog', pinnedApi: KOL_DIALOG_PUBLIC_API });

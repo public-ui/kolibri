@@ -1,9 +1,8 @@
 import { KolSkipNavTag } from '../../core/component-names';
-import type { SkipNavProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolSkipNav } from './component';
 
-executeSnapshotTests<SkipNavProps>(
+executeSnapshotTests(
 	KolSkipNavTag,
 	[KolSkipNav],
 	[

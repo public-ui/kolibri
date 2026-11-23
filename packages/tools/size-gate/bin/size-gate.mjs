@@ -34,11 +34,12 @@ const USAGE = `Usage: kolibri-size-gate <components|theme> [--mode gate|analysis
 
   components  measures dist/esm of @public-ui/components
   theme       measures dist/index.mjs of a theme package
-  --mode      gate (default): compares the sizes with the baseline and exits with 1 on growth beyond the tolerance
-              analysis: adds the treemap, hotspots, duplicates and restructuring candidates and never fails;
+  --mode      gate (default): compares the sizes with the baseline and reports the deviations; it is
+              informational and never fails
+              analysis: adds the treemap, hotspots, duplicates and restructuring candidates;
               components need a build with KOLIBRI_SOURCE_MAP=true for the attribution to modules
   --maps      directory of the source maps (components: source-maps/esm, falls back to the chunk directory)
-  --update    writes the current sizes as the new baseline`;
+  --update    writes the current sizes as a baseline for comparison`;
 
 async function writeBaseline(path, baseline) {
 	const json = `${JSON.stringify(baseline, null, '\t')}\n`;
@@ -86,8 +87,9 @@ async function main() {
 
 	const result = evaluate(report, baseline, { mode: values.mode });
 	if (baseline === null) {
-		result.passed = false;
-		result.failures.unshift(`No baseline at \`${values.baseline}\`. Run \`pnpm size:update\` and commit it.`);
+		result.warnings.unshift(
+			`No baseline at \`${values.baseline}\` – the sizes are reported without comparison. \`pnpm size:pull\` installs the baseline of the target branch.`,
+		);
 	}
 
 	const markdown = renderMarkdown({ mode: values.mode, name, report, result });
@@ -105,9 +107,8 @@ async function main() {
 	console.log(markdown);
 	if (analysis) {
 		console.log(`Treemap: ${join(out, 'treemap.html')}`);
-		return 0;
 	}
-	return result.passed ? 0 : 1;
+	return 0;
 }
 
 process.exitCode = await main();

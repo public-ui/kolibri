@@ -60,7 +60,7 @@ export function normalizeNumber(value?: unknown): number | never {
 	throw new Error(`Invalid number: ${String(value)}`);
 }
 
-/** Accepts only values of type `number` except `NaN`, like the legacy `watchNumber`; throws otherwise. */
+/** Accepts only values of type `number` except `NaN`; throws otherwise. */
 export function normalizeNumberType(value?: unknown): number | never {
 	if (typeof value === 'number' && !isNaN(value)) {
 		return value;

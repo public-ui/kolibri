@@ -11,7 +11,6 @@ import type { PropsConfigShape, WebComponentInterface } from '../../internal/fun
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../internal/props';
 import type {
-	BadgeProps,
 	FocusableElement,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -21,7 +20,7 @@ import type {
 	Stringified,
 } from '../../schema';
 import { featureHint, objectObjectHandler, setEventTarget } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -40,12 +39,12 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	},
 	shadow: true,
 })
-export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, FocusableElement, WebComponentInterface<BadgeApi> {
+export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableElement, WebComponentInterface<BadgeApi> {
 	@Element() protected readonly host?: HTMLKolBadgeElement;
 
 	@State() public labelId: string = createUniqueId('badge-label');
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 

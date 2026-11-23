@@ -10,7 +10,6 @@ import type { PropsConfigShape, WebComponentInterface } from '../../internal/fun
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../internal/props';
 import type {
-	AlertProps,
 	AlertPropType,
 	AlertTypePropType,
 	AlertVariantPropType,
@@ -19,7 +18,7 @@ import type {
 	KoliBriAlertEventCallbacks,
 	LabelLangSegmentsPropType,
 } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -35,12 +34,12 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, WebComponentInterface<AlertApi> {
+export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponentInterface<AlertApi> {
 	@Element() protected readonly host?: HTMLKolAlertElement;
 
 	@State() public headingId: string = createUniqueId('alert-heading');
 
-	@State() public closerAriaDescriptionId: string = nonce();
+	@State() public closerAriaDescriptionId: string = createUniqueId('closer-description');
 
 	/**
 	 * Whether the alert behavior (the `role="alert"` live region) is active. It mirrors the applied

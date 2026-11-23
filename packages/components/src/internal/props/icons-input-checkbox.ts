@@ -13,7 +13,7 @@ const isIconClass = (value: unknown): boolean => typeof value === 'string' && va
  * Icon classes of the three checkbox states. A value sets at least one of them; the field merges it
  * into the icons it already has, so the other states keep their icons.
  *
- * Only an object is accepted: a JSON string is rejected, like the legacy validator did.
+ * Only an object is accepted: a JSON string is rejected.
  */
 export type IconsInputCheckboxProp = Prop<'icons', InputCheckboxIconsPropType, Partial<InputCheckboxIconsState>>;
 export const iconsInputCheckboxProp = createPropDefinition<IconsInputCheckboxProp>(
