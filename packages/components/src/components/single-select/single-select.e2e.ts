@@ -543,5 +543,27 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('');
 			expect(await isOpen(page)).toBe(true);
 		});
+
+		for (const key of ['Enter', 'Space']) {
+			test(`clears the filter and opens the listbox with ${key} on the focused clear button`, async ({ page }) => {
+				const component = page.locator(COMPONENT_NAME);
+				await page.keyboard.press('ArrowDown');
+				await page.keyboard.press('ArrowDown');
+				await page.keyboard.press('Enter');
+				await page.waitForChanges();
+				await readEvents(page);
+
+				await page.keyboard.press('Tab');
+				await page.waitForChanges();
+				expect(await getFocused(page)).toBe('button');
+
+				await page.keyboard.press(key);
+				await page.waitForChanges();
+				expect(await readEvents(page)).toEqual([]);
+				expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('g');
+				expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('');
+				expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
+			});
+		}
 	});
 });

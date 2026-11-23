@@ -594,17 +594,20 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Clears the text of the input, lists all options and opens the listbox. The value stays
 	 * untouched: a clear sends no event, even when the input showed the label of the selected option.
+	 *
+	 * The focus moves to the input before the text is cleared: the clear button disappears with the
+	 * text, and a render that removes the focused button makes the browser blur it in the middle of
+	 * the patch, which leaves the listbox closed.
 	 */
 	private clearFilter(): void {
 		if (this.getRenderProp('disabled') === true) {
 			return;
 		}
 
+		this.ctaRef.el?.focus();
 		this.focusedIndex = -1;
 		this.inputValue = '';
 		this.filteredOptions = [...this.getRenderProp('options')];
-
-		this.ctaRef.el?.focus();
 		this.isOpen = true;
 	}
 
