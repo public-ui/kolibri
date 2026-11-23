@@ -55,4 +55,4 @@ const KOL_ALERT_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-alert', component: 'alert', pinnedApi: KOL_ALERT_PUBLIC_API, schemaInterface: 'AlertProps' });
+describePublicApiContract({ tag: 'kol-alert', component: 'alert', pinnedApi: KOL_ALERT_PUBLIC_API });

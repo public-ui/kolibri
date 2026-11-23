@@ -10,11 +10,11 @@ const root = mkdtempSync(join(tmpdir(), 'size-gate-comment-'));
 after(() => rmSync(root, { force: true, recursive: true }));
 
 let counter = 0;
-function packageDir(name, rows, passed = true) {
+function packageDir(name, rows, withinTolerance = true) {
 	const dir = join(root, `p${counter++}`);
 	mkdirSync(join(dir, 'size-report'), { recursive: true });
 	if (rows) {
-		writeFileSync(join(dir, 'size-report', 'report.json'), JSON.stringify({ name, result: { passed, rows } }));
+		writeFileSync(join(dir, 'size-report', 'report.json'), JSON.stringify({ name, result: { rows, withinTolerance } }));
 	}
 	return dir;
 }
@@ -37,7 +37,7 @@ test('says in one line that nothing notable changed', () => {
 
 test('lists only notable metrics, at most five per package', () => {
 	const rows = [
-		row('core', 100_000, 105_000, 'fail'),
+		row('core', 100_000, 105_000, 'exceeded'),
 		row('entry:new', null, 3_000, 'new'),
 		row('total', 500_000, 502_000),
 		row('entry:x', 4_000, 4_100),
@@ -45,12 +45,12 @@ test('lists only notable metrics, at most five per package', () => {
 	];
 	const { body, notable } = renderPrComment({
 		...options,
-		outcome: 'failure',
+		outcome: 'success',
 		packageDirs: [packageDir('@public-ui/components', rows, false), packageDir('@public-ui/theme-default', [row('total', 1, 1)])],
 	});
 
 	assert.equal(notable, true);
-	assert.match(body, /Size gate failed/);
+	assert.match(body, /informational comparison with the baseline/);
 	assert.match(body, /\*\*`@public-ui\/components`\*\* ❌/);
 	assert.match(body, /- `core`: 97\.7 KB → 102\.5 KB \(\+4\.9 KB, \+5\.0 %\) ❌/);
 	assert.match(body, /- `entry:new`: new, 2\.9 KB 🆕/);
@@ -107,7 +107,7 @@ test('creates a comment only when asked to', async () => {
 	assert.deepEqual(await upsertPrComment({ body: 'new', context, create: true, github: created.github }), { action: 'created', id: 99 });
 });
 
-const result = { failures: [], improvements: [], passed: true, rows: [], tolerance: { bytes: 1024, percent: 2 }, warnings: [] };
+const result = { exceeded: [], improvements: [], rows: [], tolerance: { bytes: 1024, percent: 2 }, warnings: [], withinTolerance: true };
 const candidateReport = { candidates: [{ action: 'a\\|b', impactGzip: 1, kind: 'k', subject: '.x[a|b]' }], sourceMaps: true };
 
 test('escapes backslashes and pipes in table cells of the analysis', () => {

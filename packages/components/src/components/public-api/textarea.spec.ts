@@ -208,4 +208,4 @@ const KOL_TEXTAREA_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-textarea', component: 'textarea', pinnedApi: KOL_TEXTAREA_PUBLIC_API, schemaInterface: 'TextareaProps' });
+describePublicApiContract({ tag: 'kol-textarea', component: 'textarea', pinnedApi: KOL_TEXTAREA_PUBLIC_API });

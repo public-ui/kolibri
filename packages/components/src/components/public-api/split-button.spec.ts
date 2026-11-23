@@ -152,4 +152,4 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-split-button', component: 'split-button', pinnedApi: KOL_SPLIT_BUTTON_PUBLIC_API, schemaInterface: 'SplitButtonProps' });
+describePublicApiContract({ tag: 'kol-split-button', component: 'split-button', pinnedApi: KOL_SPLIT_BUTTON_PUBLIC_API });

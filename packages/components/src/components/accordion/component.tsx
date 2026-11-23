@@ -11,7 +11,6 @@ import { createCollapsibleToggleHandler } from '../../internal/functional-compon
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
 import type {
-	AccordionProps,
 	ClickableElement,
 	CollapsibleCallbacksPropType,
 	DisabledPropType,
@@ -38,10 +37,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolAccordion
-	extends BaseWebComponent<CollapsibleApi>
-	implements AccordionProps, ClickableElement, FocusableElement, WebComponentInterface<CollapsibleApi>
-{
+export class KolAccordion extends BaseWebComponent<CollapsibleApi> implements ClickableElement, FocusableElement, WebComponentInterface<CollapsibleApi> {
 	@Element() protected readonly host?: HTMLKolAccordionElement;
 
 	private readonly accordionId = createUniqueId('accordion');

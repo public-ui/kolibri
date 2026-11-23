@@ -12,18 +12,19 @@ export function allowedValue(baselineValue, rule, tolerance) {
 }
 
 /**
- * Compares a report with its baseline.
+ * Compares a report with its baseline. The comparison is informational: it classifies each metric
+ * for the report and the pull-request comment, but never fails a build or blocks a merge.
  *
- * - A metric above its allowed value fails, a new metric warns.
- * - A metric below its baseline by more than the tolerance is reported, so the baseline can be lowered.
+ * - A metric above its allowed value is marked as exceeded, a new metric warns.
+ * - A metric below its baseline by more than the tolerance is reported as an improvement.
  * - The sets (`hotspots`, `duplicates`) are compared in `analysis` mode only, for information: a new
- *   or resolved key is a warning or an improvement and never fails. A new heavy dependency fails the
- *   gate through the growth of `core` or `entry:*`.
+ *   or resolved key is a warning or an improvement. A new heavy dependency shows up through the
+ *   growth of `core` or `entry:*`.
  */
 export function evaluate(report, baseline, { mode = 'gate' } = {}) {
 	const tolerance = { ...DEFAULT_TOLERANCE, ...baseline?.tolerance };
 	const rows = [];
-	const failures = [];
+	const exceeded = [];
 	const warnings = [];
 	const improvements = [];
 
@@ -37,10 +38,10 @@ export function evaluate(report, baseline, { mode = 'gate' } = {}) {
 			continue;
 		}
 		const allowed = allowedValue(base, metric.rule, tolerance);
-		const status = current > allowed ? 'fail' : current < base - (allowed - base) ? 'improved' : 'ok';
+		const status = current > allowed ? 'exceeded' : current < base - (allowed - base) ? 'improved' : 'ok';
 		rows.push({ allowed, base, current, field, id, label: metric.label, status });
-		if (status === 'fail') {
-			failures.push(`\`${id}\` grew from ${formatBytes(base)} to ${formatBytes(current)} ${field} (allowed ${formatBytes(allowed)}).`);
+		if (status === 'exceeded') {
+			exceeded.push(`\`${id}\` grew from ${formatBytes(base)} to ${formatBytes(current)} ${field} (tolerance allows ${formatBytes(allowed)}).`);
 		} else if (status === 'improved') {
 			improvements.push(`\`${id}\` shrank from ${formatBytes(base)} to ${formatBytes(current)} ${field}.`);
 		}
@@ -64,7 +65,7 @@ export function evaluate(report, baseline, { mode = 'gate' } = {}) {
 		}
 	}
 
-	return { failures, improvements, passed: failures.length === 0, rows, tolerance, warnings };
+	return { exceeded, improvements, rows, tolerance, warnings, withinTolerance: exceeded.length === 0 };
 }
 
 /**

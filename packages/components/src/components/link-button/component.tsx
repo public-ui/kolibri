@@ -18,7 +18,6 @@ import type {
 	IconsPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
-	LinkButtonProps,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
 	ShortKeyPropType,
@@ -42,7 +41,7 @@ import { BaseLinkWebComponent } from '../link/base';
 	},
 	shadow: true,
 })
-export class KolLinkButton extends BaseLinkWebComponent implements ClickableElement, FocusableElement, LinkButtonProps {
+export class KolLinkButton extends BaseLinkWebComponent implements ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolLinkButtonElement;
 
 	@State() public ariaCurrent: string = '';
