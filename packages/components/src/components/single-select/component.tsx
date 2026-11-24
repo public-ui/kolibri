@@ -35,7 +35,7 @@ import { validateAccessAndShortKey } from '../../schema/validators/access-and-sh
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { containsDeepActiveElement } from '../../utils/element-focus';
-import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
+import { createCtaRef, delegateFocus, preventFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 
 import { ButtonFC } from '../../internal/functional-components/button/component';
@@ -71,6 +71,12 @@ import {
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
  *
+ * Like `kol-input-radio` and `kol-select`, the field holds a single choice. The clear button
+ * empties the input text: the selection stays and all options show again. The typed text is only
+ * a filter while the field holds the focus; on leave, the input shows the label of the selected
+ * option again. The selection reports `input`; `change` follows when the focus leaves the field.
+ * Without a value the field starts empty.
+ *
  * @slot - The label of the input field.
  */
 @Component({
@@ -103,9 +109,12 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 	private readonly clearButton = createButtonItem(() => this.host);
 
+	/** Whether the value changed since the last `change`; the change is reported when the focus leaves the field. */
+	private pendingChange = false;
+
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
-	private readonly translateDeleteSelection = translate('kol-delete-selection');
+	private readonly translateClearFilter = translate('kol-clear-filter');
 
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 
@@ -438,14 +447,20 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 		});
 	}
 
-	/** Waits for the focus to settle, so a move between the elements of the field is no blur of the field. */
+	/**
+	 * Waits for the focus to settle, so a move between the elements of the field is no blur of the
+	 * field. On leaving, the input shows the label of the selected option again: the typed text is
+	 * only a filter while the field holds the focus.
+	 */
 	@Listen('focusout')
 	public handleFocusOut(event: FocusEvent): void {
 		this.selectOptionByInputValue();
 		setTimeout(() => {
 			if (this.inputHasFocus && !containsDeepActiveElement(this.host)) {
+				this.reportPendingChange();
 				this.handleBlur(event);
 				this.isOpen = false;
+				this.updateInputValue(this._value);
 			}
 		});
 	}
@@ -469,10 +484,10 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 		this.moveFocus(this.filteredOptions ? this.filteredOptions.length - 1 - this.focusedIndex : 0, -1);
 	}
 
-	/** Enter, NumpadEnter and Space: clear on the clear button, select the focused option, or open the listbox. */
+	/** Enter, NumpadEnter and Space: clear the filter on the clear button, select the focused option, or open the listbox. */
 	protected handleConfirmKey(event: KeyboardEvent): void {
 		if (this.clearButtonFocused) {
-			this.clearSelection();
+			this.clearFilter();
 			event.preventDefault();
 		} else if (this.isOpen) {
 			if (this.selectFocusedOption()) {
@@ -557,32 +572,42 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 		const detail = { name: this.getRenderProp('name') ?? '', value: option.value };
 		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), option.value);
-		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), option.value);
 
 		this.filteredOptions = [...this.getRenderProp('options')];
 		this.formAssociation.setFormAssociatedValue(this._value);
+		this.pendingChange = true;
 	}
 
 	/**
-	 * Sends `null` (#10841) as value of the `input` and `change` events and as form value, like
-	 * `selectOption` sends the option value, then opens the listbox.
+	 * Reports the pending `change` when the focus leaves the field: the selection reports `input`
+	 * immediately, the `change` follows on leave — like the native input reports a change on commit.
 	 */
-	private clearSelection(): void {
+	private reportPendingChange(): void {
+		if (!this.pendingChange) {
+			return;
+		}
+		this.pendingChange = false;
+		const detail = { name: this.getRenderProp('name') ?? '', value: this._value };
+		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), this._value);
+	}
+
+	/**
+	 * Clears the text of the input, lists all options and opens the listbox. The value stays
+	 * untouched: a clear sends no event, even when the input showed the label of the selected option.
+	 *
+	 * The focus moves to the input before the text is cleared: the clear button disappears with the
+	 * text, and a render that removes the focused button makes the browser blur it in the middle of
+	 * the patch, which leaves the listbox closed.
+	 */
+	private clearFilter(): void {
 		if (this.getRenderProp('disabled') === true) {
 			return;
 		}
 
-		const emptyValue = null;
+		this.ctaRef.el?.focus();
 		this.focusedIndex = -1;
-		this._value = emptyValue;
 		this.inputValue = '';
 		this.filteredOptions = [...this.getRenderProp('options')];
-
-		const detail = { name: this.getRenderProp('name'), value: emptyValue };
-		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), emptyValue);
-		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
-
-		this.ctaRef.el?.focus();
 		this.isOpen = true;
 	}
 
@@ -611,13 +636,6 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 		this.focusedIndex = -1;
 	};
 
-	/** The native `change` is reported only while the listbox is closed, with the selected value. */
-	private readonly handleSingleSelectChange = (event: Event): void => {
-		if (!this.isOpen) {
-			this.handleChange(event, this._value);
-		}
-	};
-
 	private readonly handleSingleSelectClick = (event: MouseEvent): void => {
 		this.toggleListbox(event);
 		this.ctaRef.el?.focus();
@@ -638,7 +656,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	};
 
 	private readonly handleClearButtonClick = (): void => {
-		this.clearSelection();
+		this.clearFilter();
 		this.ctaRef.el?.focus();
 		// Firefox sends no blur to the removed button.
 		this.clearButtonFocused = false;
@@ -682,7 +700,6 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 			role: 'combobox',
 			type: 'text',
 			onBlur: this.handleInputBlur,
-			onChange: this.handleSingleSelectChange,
 			onClick: this.handleSingleSelectClick,
 			onFocus: this.handleFocus,
 			onInput: this.handleSingleSelectInput,
@@ -769,7 +786,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 									{...this.clearButton.getFcProps(
 										{
 											_icons: 'kolicon-cross',
-											_label: this.translateDeleteSelection,
+											_label: this.translateClearFilter,
 											_hideLabel: true,
 											_variant: 'ghost',
 											_disabled: isDisabled,
@@ -777,6 +794,9 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 												onClick: this.handleClearButtonClick,
 												onFocus: this.handleClearButtonFocus,
 												onBlur: this.handleClearButtonBlur,
+												// The click keeps the focus on the input: the button disappears while the input
+												// holds the focus, and a focus move to the removed button breaks the patch.
+												onMouseDown: preventFocus,
 											},
 										},
 										{ class: BEM_CLASS_SINGLE_SELECT__DELETE, hidden: isDisabled },

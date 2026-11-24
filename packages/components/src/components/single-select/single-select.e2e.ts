@@ -120,9 +120,10 @@ test.describe(COMPONENT_NAME, () => {
 			expect(value).toBe('W');
 		});
 
-		test('should clear the selection when clear button is clicked', async ({ page }) => {
+		test('keeps the selection and clears the input text when clear button is clicked', async ({ page }) => {
 			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
+			const clearButton = page.locator('.kol-single-select__delete button');
 			await input.click();
 
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
@@ -131,11 +132,12 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 			await page.waitForTimeout(500);
 
-			const clearButton = page.locator('.kol-single-select__delete button');
 			await expect(clearButton).toHaveCount(1);
-			await clearButton.click({ force: true });
+			await clearButton.click();
 
 			await expect(input).toHaveValue('');
+			const value = await page.locator('kol-single-select').evaluate((element) => (element as HTMLKolSingleSelectElement)._value);
+			expect(value).toBe(TEST_VALUE);
 		});
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
@@ -253,14 +255,14 @@ test.describe(COMPONENT_NAME, () => {
 				});
 			};
 
-			// 1) Select value -> onChange should fire (counter = 1)
+			// 1) Select value -> the change follows when the focus leaves the field (counter = 1)
 			await input.click();
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
-			expect(await getChangeCount()).toBe(1);
+			expect(await getChangeCount()).toBe(0);
 
-			// 2) Click on free space -> onChange must NOT fire (counter stays 1)
+			// 2) Click on free space -> the focus leaves the field and the pending change is reported
 			await page.click('html', { position: { x: 0, y: 0 } });
-			expect(await getChangeCount()).toBe(1);
+			await expect.poll(getChangeCount).toBe(1);
 		});
 	});
 
@@ -379,12 +381,12 @@ test.describe(COMPONENT_NAME, () => {
 				nativeEvent('click'),
 				kolEvent('input', TEST_VALUE),
 				callback('input', TEST_VALUE),
-				kolEvent('change', TEST_VALUE),
-				callback('change', TEST_VALUE),
 				nativeEvent('click'),
 				kolEvent('blur'),
 				callback('blur'),
 				nativeEvent('blur'),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
 			],
 			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
 			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
@@ -437,19 +439,13 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowUp');
 			await page.keyboard.press('Space');
 			await page.waitForChanges();
-			expect(await readEvents(page)).toEqual([
-				['input', 'e'],
-				['change', 'e'],
-			]);
+			expect(await readEvents(page)).toEqual([['input', 'e']]);
 			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('Epsilon');
 
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 			await page.waitForChanges();
-			expect(await readEvents(page)).toEqual([
-				['input', 'a'],
-				['change', 'a'],
-			]);
+			expect(await readEvents(page)).toEqual([['input', 'a']]);
 			expect([await isOpen(page), await getFocused(page)]).toEqual([false, 'input']);
 			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
 
@@ -457,6 +453,11 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'Alpha']);
 			expect(await readEvents(page)).toEqual([]);
+
+			// The change is reported once, with the final value, when the focus leaves the field.
+			await page.locator('#after').focus();
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([['change', 'a']]);
 		});
 
 		test('filters on typing without changing the value', async ({ page }) => {
@@ -483,7 +484,7 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('Gamma');
 		});
 
-		test('shows all options again when the focus leaves without a matching label', async ({ page }) => {
+		test('shows the selected label again when the focus leaves without a matching label', async ({ page }) => {
 			const component = page.locator(COMPONENT_NAME);
 			await component.evaluate((element: HTMLKolSingleSelectElement) => {
 				element._value = 'a';
@@ -494,21 +495,99 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 			expect(await getOptionTexts(page)).toEqual(['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon']);
 			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
+			// The typed text was only a filter; the input shows the selected value again.
+			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('Alpha');
+			expect(await readEvents(page)).toEqual([]);
 		});
 
-		test('reports null when the selection is cleared', async ({ page }) => {
+		test('empties the input on leave when nothing is selected', async ({ page }) => {
 			const component = page.locator(COMPONENT_NAME);
+			await page.locator('input.kol-single-select__input').fill('xyz');
+			await page.locator('#after').focus();
+			await page.waitForChanges();
+			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('');
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBeNull();
+			expect(await readEvents(page)).toEqual([]);
+		});
+
+		test('keeps the selection and clears the input text when the clear button is clicked', async ({ page }) => {
+			const component = page.locator(COMPONENT_NAME);
+			const clearButton = page.locator('.kol-single-select__delete button');
+			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
-			await readEvents(page);
-			await page.locator('.kol-single-select__delete button').click();
 			await page.waitForChanges();
-			expect(await readEvents(page)).toEqual([
-				['input', null],
-				['change', null],
-			]);
-			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBeNull();
+			await readEvents(page);
+			// The label of the selected option is text as well, so the clear button is visible.
+			await expect(clearButton).toHaveCount(1);
+
+			await clearButton.click();
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([]);
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('g');
+			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('');
 			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
+			await expect(clearButton).toHaveCount(0);
+		});
+
+		test('clears the typed text without a selection when the clear button is clicked', async ({ page }) => {
+			const component = page.locator(COMPONENT_NAME);
+			const clearButton = page.locator('.kol-single-select__delete button');
+			await page.locator('input.kol-single-select__input').fill('gam');
+			await page.waitForChanges();
+			await expect(clearButton).toHaveCount(1);
+			await clearButton.click();
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([]);
+			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBeNull();
+			expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('');
+			expect(await isOpen(page)).toBe(true);
+		});
+
+		for (const key of ['Enter', 'Space']) {
+			test(`clears the filter and opens the listbox with ${key} on the focused clear button`, async ({ page }) => {
+				const component = page.locator(COMPONENT_NAME);
+				await page.keyboard.press('ArrowDown');
+				await page.keyboard.press('ArrowDown');
+				await page.keyboard.press('Enter');
+				await page.waitForChanges();
+				await readEvents(page);
+
+				await page.keyboard.press('Tab');
+				await page.waitForChanges();
+				expect(await getFocused(page)).toBe('button');
+
+				await page.keyboard.press(key);
+				await page.waitForChanges();
+				expect(await readEvents(page)).toEqual([]);
+				expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('g');
+				expect(await page.locator('input.kol-single-select__input').inputValue()).toBe('');
+				expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
+			});
+		}
+
+		test('leaves the field on Tab while the listbox is open and shows all options when reopened', async ({ page }) => {
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Enter');
+			await page.waitForChanges();
+			await readEvents(page);
+
+			// Clear drücken, dann tippen, ohne dass der Text ein Label matcht
+			await page.locator('input.kol-single-select__input').type('d');
+			await page.waitForChanges();
+			await page.keyboard.press('Tab');
+			await page.waitForChanges();
+			expect(await isOpen(page)).toBe(false);
+			// Das Verlassen meldet das ausstehende change
+			expect(await readEvents(page)).toEqual([['change', 'a']]);
+
+			// Das Feld wieder öffnen: die Liste zeigt alle Optionen wieder an
+			await page.locator('input.kol-single-select__input').click();
+			await page.keyboard.press('ArrowDown');
+			await page.waitForChanges();
+			expect(await isOpen(page)).toBe(true);
+			expect(await getOptionTexts(page)).toEqual(['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon']);
+			expect(await readEvents(page)).toEqual([]);
 		});
 	});
 });
