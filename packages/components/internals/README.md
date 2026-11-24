@@ -12,7 +12,7 @@ Das framework-freie Kernpaket der KoliBri-Komponenten: Schema-Typen, Prop-Defini
 | `src/props/`                                | Prop-Definitionen (normalize/validate/default/apply) als Single Source of Truth der Prop-Verarbeitung                             |
 | `src/controller/`                           | Controller-Schicht: Render-Prop-Store (`base-web-component`), Behaviors, Items, Props-Configs und API-Typen je Komponentenfamilie |
 | `src/components/`                           | Komponentennaher Support, der von Shells und Controller gemeinsam genutzt wird (Form-Controller, ariaCurrentService)              |
-| `src/core/`                                 | Tag-Namen-Registry, i18n-Kern, Register-Options-Registry                                                                          |
+| `src/core/`                                 | Tag-Namen, Tag-Transformer-Registry, i18n-Kern, Register-Options-Registry, Versions-Registry, Shared State der Bundle-Kopien      |
 | `src/utils/`                                | Agnostische Helfer (Events, Fokus, Klick-Delegation, Farben, clsx, …)                                                             |
 | `src/enums/`, `src/i18n.ts`, `src/locales/` | Bund-Enums und Übersetzungen                                                                                                      |
 
@@ -25,7 +25,7 @@ Die Runtime-Pakete binden die Quellen als TypeScript ein:
 - `packages/components` (Stencil): relative Importe `../internals/src/…`
 - `packages/components/lit` (experimentell): Paketspezifizierer `@public-ui/internals/…`
 
-Ein Build ist nur für den externen Typkonsum nötig (`pnpm --filter @public-ui/internals build`); die `dist/` wird vom React-Hook-Form-Adapter und dem Typ-Emit referenziert.
+Ein Build ist nötig, damit der Entry des Stencil-Pakets den Paketspezifizierer `@public-ui/internals/…` zur Laufzeit auflöst (`exports` zeigt auf `dist/`); für Typen und für Lit werden die Quellen eingebunden. Der Typ-Emit des Stencil-Pakets bettet die internals-Typen ein — Konsumenten brauchen dafür kein `dist/`.
 
 ```bash
 pnpm install          # Workspace-Setup

@@ -56,7 +56,8 @@ internals/src/
 │                  Props-Configs, API-Typen               Framework; Instanz-
 │                                                         zustand nur als Render-Props)
 ├── components/    Form-Controller, ariaCurrentService   (komponentennaher Support)
-├── core/          Tag-Registry, i18n-Kern, Options-Registry
+├── core/          Tag-Namen, Tag-Transformer,             (Shared State als einziger
+│                  i18n, Options, Version, Shared State     paketweiter Zustand)
 ├── utils/         Events, Fokus, Klick, Farben, …
 └── enums/, i18n, locales
 ```
@@ -64,8 +65,10 @@ internals/src/
 Die Laufzeitpakete konsumieren die Quellen direkt — Stencil per relativem Quellpfad
 (`../internals/src/…`), weil der Stencil-Transpiler die `extends`-Kette der Komponentenklassen
 nur aus Quellen im eigenen Programm auflösen kann; Lit über den Paketspezifizierer
-`@public-ui/internals/…`. Der `tsc`-Emit (`dist/`) dient externen Typkonsumenten
-(React-Hook-Form-Adapter, Typ-Referenzen des Stencil-Emits über `typesVersions`).
+`@public-ui/internals/…`, den ihre Vite-Konfiguration und die `paths` der tsconfig auf die Quellen
+zeigen. Der `tsc`-Emit (`dist/`) löst den Spezifizierer zur Laufzeit, wo der Entry des
+Stencil-Pakets ihn re-exportiert. Der Typ-Emit des Stencil-Pakets bettet die internals-Typen ein
+(`scripts/rewrite-emit-internals-paths.mjs`), daher müssen Konsumenten das Paket nicht auflösen.
 
 ## Review-Guardrails
 
@@ -99,5 +102,7 @@ Internals, nie umgekehrt).
   hier die Abwesenheit von Framework-Zustand und Rendering, nicht die Abwesenheit jeder
   Instanzvariablen.
 - `components/form/controller.ts` (Form-Submit/Reset-Propagierung) adressiert das Formular über
-  die Tag-Konstanten aus `core/component-names` — direkte Tag-Vergleiche, keine
-  Framework-Funktionen; Tag-Transformer-Logik gehört in die Runtime-Pakete.
+  die Tag-Konstanten aus `core/component-names` und `transformTag` aus `core/tag-transformer` —
+  direkte Tag-Vergleiche, keine Framework-Funktionen. Die Registry und der `kol-`-Guard des
+  Tag-Transformers liegen in `core/tag-transformer`; nur die native Registrierung beim Stencil
+  (`setTagTransformer`) gehört in die Stencil-Runtime.
