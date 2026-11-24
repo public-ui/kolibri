@@ -300,6 +300,23 @@ describe('Web component base class member order', () => {
 	});
 });
 
+describe('Interaction test files', () => {
+	/** ARC42 § 9, decision 14: `<component>.e2e.ts`, further files `<component>.<topic>.e2e.ts`. */
+	const misnamed = fs
+		.readdirSync(__dirname, { withFileTypes: true })
+		.filter((entry) => entry.isDirectory())
+		.flatMap((entry) =>
+			fs
+				.readdirSync(path.join(__dirname, entry.name))
+				.filter((name) => name.endsWith('.e2e.ts') && name !== `${entry.name}.e2e.ts` && !new RegExp(`^${entry.name}\\.[a-z0-9-]+\\.e2e\\.ts$`).test(name))
+				.map((name) => `${entry.name}/${name}`),
+		);
+
+	it('are named after their component folder', () => {
+		expect(misnamed).toEqual([]);
+	});
+});
+
 describe('Property initialization order', () => {
 	it('reads no property in an initializer before it is declared', () => {
 		const problems = SOURCES.flatMap(({ file, source }) =>

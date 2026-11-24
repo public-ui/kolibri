@@ -30,7 +30,7 @@ src/
 │   └── <component>/                   # Web component folder — one folder per component
 │       ├── component.tsx              # Orchestrator: props, watchers, lifecycle, render
 │       ├── snapshot.spec.tsx          # Snapshot test (Jest) — co-located
-│       └── <component>.e2e.ts         # Interaction test (Playwright)
+│       └── <component>.e2e.ts         # Interaction test (Playwright); further files <component>.<topic>.e2e.ts
 └── internal/                          # Shared internals
     ├── functional-components/
     │   ├── <component>/               # Component-specific logic
@@ -858,7 +858,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Alternative_: add `data-testid` and use `getByTestId()`.
     - _Reason_: BEM class names are already present, stable, and semantically tied to the component. Using them keeps production markup clean of test-only concerns.
 14. **Test co-location — all tests live next to the component**
-    - _Pattern_: all test files sit directly alongside `component.tsx` — snapshot tests (`snapshot.spec.tsx`, Jest) and interaction tests (`interaction.e2e.ts`, Playwright). File names are uniform across components.
+    - _Pattern_: all test files sit directly alongside `component.tsx` — snapshot tests (`snapshot.spec.tsx`, Jest) and interaction tests (`<component>.e2e.ts`, further files `<component>.<topic>.e2e.ts`, Playwright). File names are uniform across components; `component-structure.spec.ts` pins the names of the interaction tests.
     - _Alternative_: group tests into a dedicated `test/` subdirectory.
     - _Reason_: co-located tests are easier to discover and keep related files visible side-by-side.
 15. **Public API parity during migration — the FC face is not the public face**
