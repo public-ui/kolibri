@@ -9,6 +9,7 @@ export enum KeyEnum {
 	'character-limit-exceeded',
 	'character-limit-hint',
 	'character-limit-remaining',
+	'clear-filter',
 	'clear-search',
 	close,
 	'close-alert',
