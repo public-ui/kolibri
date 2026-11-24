@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "13 changed, 7 added – 0 of 20 approved, review pending",
-	"computedAt": "2026-10-21T07:07:35.815Z",
+	"description": "15 changed, 7 added – 0 of 22 approved, review pending",
+	"computedAt": "2026-11-24T09:41:24.778Z",
 	"pr": 11316,
-	"head": "fafe566a399b6ec243c555d971860f29612ec950",
-	"digest": "sha256:e7c7466f35d116f85c41ec8c74d80b9291ed92ab37be346f30b28ed95a15c313",
+	"head": "87ed1b29added6a951c92187a27593e8e1d73bda",
+	"digest": "sha256:85fb704731dae4e78e9148ede769e5557d2fcbac6e5c61f3caf5bf2b26db76bc",
 	"counts": {
-		"changes": 20,
-		"open": 20,
+		"changes": 22,
+		"open": 22,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -25,6 +25,10 @@
 			"notes": []
 		},
 		"theme-bwst/scenarios-focus-elements-component-tabs": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-label-lang--label-lang-tabs": {
 			"state": "open",
 			"notes": []
 		},
@@ -61,6 +65,10 @@
 			"notes": []
 		},
 		"theme-ecl/scenarios-focus-elements-component-tabs": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-label-lang--label-lang-tabs": {
 			"state": "open",
 			"notes": []
 		},
