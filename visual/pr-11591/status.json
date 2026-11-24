@@ -1,76 +1,19 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "14 changed – 0 of 14 approved, review pending",
-	"computedAt": "2026-11-20T17:52:16.973Z",
+	"state": "success",
+	"description": "No visual changes",
+	"computedAt": "2026-11-24T13:48:12.024Z",
 	"pr": 11591,
-	"head": "1d43948d5c0fe7a208273e97a587b594e93765c3",
-	"digest": "sha256:e69d59785ece224e7bb2f279c8f8d03d7bfc1d61fb35e6f7e1e0eb7ea2dfc473",
+	"head": "1fc6924ee5e6f4e0b1c896e24a0bd6cab70ba47f",
+	"digest": "sha256:b88f4eef7757d21c2e351bcd450a373d30d174cddd8f0c10624a235a4d0ffe14",
 	"counts": {
-		"changes": 14,
-		"open": 14,
+		"changes": 0,
+		"open": 0,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {
-		"test-tag-name-transformer/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/quote-block--block": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
-		}
-	}
+	"items": {}
 }
