@@ -2,9 +2,9 @@
 	"schema": 1,
 	"state": "success",
 	"description": "12 visual changes approved by BF150",
-	"computedAt": "2026-11-24T08:11:01.032Z",
+	"computedAt": "2026-11-24T08:55:29.485Z",
 	"pr": 11667,
-	"head": "df9e8ce4756bb0cc612e28009b7e3fbe26a755de",
+	"head": "4afdcd821d9a325d919ef8545ab37e8f8d42db80",
 	"digest": "sha256:1563ad1cc576abc2affee78f5035eb9132b4cfea39c978a50e2a228bfeb331fb",
 	"counts": {
 		"changes": 12,
