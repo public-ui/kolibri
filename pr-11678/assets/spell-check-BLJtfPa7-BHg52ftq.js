@@ -1,0 +1,1 @@
+import{l as e,x as t}from"./props-from-config-DYN2VEHV-ZOr1TWMG.js";var n=e(`spellCheck`,void 0,t);export{n as t};
