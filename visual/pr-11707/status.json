@@ -1,14 +1,14 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "40 changed – 19 of 40 approved, review pending",
-	"computedAt": "2026-11-24T23:07:36.985Z",
+	"state": "success",
+	"description": "19 visual changes approved by deleonio",
+	"computedAt": "2026-11-24T23:33:58.055Z",
 	"pr": 11707,
-	"head": "26747d0207a683d63157905675366224ab70be8b",
-	"digest": "sha256:d6f46ed7c09bde0e47b127a08567b50667695ff2c42d48b7bfac34fe87d4f1cf",
+	"head": "a7cfd4ab93e687d867bf708ee21e3cdff50475d8",
+	"digest": "sha256:610d6ba4ab10103bb3bdb6a54fd01471978c4277abbd5cf172e5d455a3a02e55",
 	"counts": {
-		"changes": 40,
-		"open": 21,
+		"changes": 19,
+		"open": 0,
 		"approved": 19,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -73,94 +73,10 @@
 			"notes": [],
 			"by": "deleonio"
 		},
-		"theme-bwst/input-checkbox-basic-noColumns--left-access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--left-checked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--left-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--left-indeterminate": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--left-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--left-long-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--left-short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--left-unchecked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-checked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-indet-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-indeterminate": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-long-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/input-checkbox-basic-noColumns--right-unchecked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/scenarios-focus-elements-component-inputCheckbox": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-bwst/scenarios-label-lang--label-lang-alert": {
 			"state": "approved",
 			"notes": [],
 			"by": "deleonio"
-		},
-		"theme-bwst/scenarios-label-lang--label-lang-checkbox": {
-			"state": "open",
-			"notes": []
 		},
 		"theme-default/alert-basic--default": {
 			"state": "approved",

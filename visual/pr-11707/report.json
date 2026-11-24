@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11707,
-	"head": "26747d0207a683d63157905675366224ab70be8b",
+	"head": "a7cfd4ab93e687d867bf708ee21e3cdff50475d8",
 	"repository": "public-ui/kolibri",
-	"runId": 45504477973,
-	"generatedAt": "2026-11-24T23:07:35.971Z",
-	"digest": "sha256:d6f46ed7c09bde0e47b127a08567b50667695ff2c42d48b7bfac34fe87d4f1cf",
+	"runId": 45508434455,
+	"generatedAt": "2026-11-24T23:33:57.145Z",
+	"digest": "sha256:610d6ba4ab10103bb3bdb6a54fd01471978c4277abbd5cf172e5d455a3a02e55",
 	"baseline": {
 		"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3055,
-		"changed": 40,
+		"unchanged": 3076,
+		"changed": 19,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -2816,13 +2816,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 415,
-				"changed": 27,
+				"unchanged": 436,
+				"changed": 6,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:52279e7f80372311b6b03a5136f5d4a8778fae54a6d8f726494f99cdc983b2da",
+			"digest": "sha256:998af1338c11082b9712cd42bb58e36f20f22b413d51bcc7c3c8f004839129bd",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3267,25 +3267,15 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-access-key",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:a9b1f64a8a8aaf7f0c99bb548d8bbca5ebd6a4d03adb4dae9f04924cb277ed45",
-					"diffPixels": 277,
-					"diffRatio": 0.013452,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-access-key.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-access-key.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-access-key.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:2d8f4911490477a03f09197c559c3dc9cf76145ee070268d592ea628c2304b76"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:a9756c26551491ed95aaef7dece5d25349ddccce793fbdbb78f9bb1e9d3a33c1",
-					"diffPixels": 824,
-					"diffRatio": 0.040016,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-checked.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-checked.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-checked.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:968f8b1f86d4d22cf5533bb78a528a6a3ff1eeccb8da0cfcedb1abcf3b935e37"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked-disabled",
@@ -3301,14 +3291,9 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-error",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:0cc65fa1e950c3f9135988061e105144547e161e9cd1cffdeebadc2b2e49af5e",
-					"diffPixels": 277,
-					"diffRatio": 0.006504,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-error.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-error.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-error.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:23c39528b60b70b2b76fcd7a64e00635eda1d6123416dcae9ca3d7cccba8c80b"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-hide-error",
@@ -3324,113 +3309,63 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-indeterminate",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:cbc4773e435c719426175d6788132d5e1db4d6bc277a9747e8976128c603fd49",
-					"diffPixels": 864,
-					"diffRatio": 0.041958,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-indeterminate.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-indeterminate.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-indeterminate.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:36ac32d47444a2f54aafd0e1980e5e6f60fbbf1cca427bab235e2cfeb013fe0f"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-info-popover",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:ae3f035257a64d48cdbd0113cca06c0c9b59fe514921cf176487b15172cf8a33",
-					"diffPixels": 277,
-					"diffRatio": 0.013452,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-info-popover.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-info-popover.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-info-popover.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:3dc46f06ba0db31211e26257fad4d091174a4a59901c339101faccc74cac9040"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-long-label",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:542346b548bd94e1fa06a5603f172300b2658b4b02642b3aa3fbf0b5fec27106",
-					"diffPixels": 4179,
-					"diffRatio": 0.101471,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-long-label.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-long-label.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-long-label.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:8e72d68bb5eac8e6e30e7b254273a4093ba1e4be100a01ce69e03809b8d04808"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-short-key",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:6e3847074eda24b4152f01f7da012efffd40cb7fcc6c304e70dcdbce6b6b8557",
-					"diffPixels": 277,
-					"diffRatio": 0.013452,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-short-key.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-short-key.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-short-key.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:9252504afe68797218daa98aa737aa713887fe13f3ad91c55a422f0187205641"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-unchecked",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:fd7d45b692aa6407465baa2b93abea2cde75ed3b9350ca0ead63d7e79e8f85a4",
-					"diffPixels": 277,
-					"diffRatio": 0.013452,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--left-unchecked.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--left-unchecked.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--left-unchecked.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b6aa679a010180faffb30b4bba8b6db5af395ebcd5e694093efde21f1d2e9c12"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-access-key",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:e4fbcade52695393e94ecfebb27bfebdeec488301cdb3a9428cd228cbb38c634",
-					"diffPixels": 988,
-					"diffRatio": 0.04798,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-access-key.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-access-key.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-access-key.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:994a4787ea7dcdbf6911f0180de2075d08b0a491ec910caaf0ae83407e81fb85"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:eea99fc8f97cc94abaac42f309a1072c7f3c09d3bcf667e07812daf3d840fa65",
-					"diffPixels": 838,
-					"diffRatio": 0.040695,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-checked.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-checked.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-checked.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:ce4045a7fa66f3f3ec03737da529656188c6dadfe87bbccb52c05a51e23cd59c"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:b2e12cac4ab5e27b73fe6a71162ef37c1be2a122b7e21fd5d1cbedf31ca169cc",
-					"diffPixels": 486,
-					"diffRatio": 0.023601,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-checked-disabled.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-checked-disabled.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-checked-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:e35a765a09eda3cbdcda6d167baba91ca4bc39444c352cd588b2839694426589"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:a76c02a387cda51b520b51ff70dc6bab2950568e32c595e941c87f79808c7eb9",
-					"diffPixels": 218,
-					"diffRatio": 0.00685,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-disabled.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-disabled.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:0526eec4ca663e933bdd12da035c2c11807bf233e90b2f3609534e42a0e2b797"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-error",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:d100f9836cdf2918eb248b26692c9dddbfc366a21a3a87f848e6ff9bac70c8d7",
-					"diffPixels": 332,
-					"diffRatio": 0.007796,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-error.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-error.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-error.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:eb94bdbf90d8f75b4224bfcb3df8c4287ceab5f5ace49eecfe8863b938c75936"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-hide-error",
@@ -3440,69 +3375,39 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-indet-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:ab2d1d92a2375adb054018123e18714352e34ff7ffc56726646c85cb468636a4",
-					"diffPixels": 560,
-					"diffRatio": 0.027195,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-indet-disabled.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-indet-disabled.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-indet-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:acc30365ac08848f2a80e1326a75e9e5a72d9edea5680853a7585342ca11a719"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-indeterminate",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:bca9a7c0f8b92a1a346c14bbcd98aa8bc23f2c8a480a3fe9963c20c4363054da",
-					"diffPixels": 352,
-					"diffRatio": 0.017094,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-indeterminate.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-indeterminate.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-indeterminate.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:111fa07200107ce388df9dea4b2188333e847b36f062270f882e68e475522494"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-info-popover",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:36c2b402ad7ec87c40c681e934f3d095c7c8299d50d532146e1ae1afcd0afe41",
-					"diffPixels": 431,
-					"diffRatio": 0.02093,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-info-popover.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-info-popover.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-info-popover.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:c76960f1b97b6fd14b1594c3331ce2ea0c8c76ee73e64e02051df8b9478f4e71"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-long-label",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:94d1176a76d7f2841badd786440c73f1685adc50cfd36a85f1d383cbd17baa8d",
-					"diffPixels": 4739,
-					"diffRatio": 0.115069,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-long-label.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-long-label.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-long-label.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:67cb4a781b58f1e0dcf6814f3a27270aaccd0c440cc64e67240103b75ca86f67"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-short-key",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:21b62a4a28a77269ebd1bfc03b4eab87fa662137b623c4dae3659194e64c82f9",
-					"diffPixels": 1013,
-					"diffRatio": 0.049194,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-short-key.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-short-key.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-short-key.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:6a57a993e00068f2ab5e4d5a04ad1df457d99f558e42f84387b1023dd46cfb66"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-unchecked",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:fe0e0f821abc418c354d6984d0e456910cf874b471e65a6cf7929ae3a73831fc",
-					"diffPixels": 390,
-					"diffRatio": 0.018939,
-					"expected": "theme-bwst/input-checkbox-basic-noColumns--right-unchecked.expected.png",
-					"actual": "theme-bwst/input-checkbox-basic-noColumns--right-unchecked.actual.png",
-					"diff": "theme-bwst/input-checkbox-basic-noColumns--right-unchecked.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:1c93cc20da1eebc41f07fd7313c418ded1852fab8e4a978f908080ae04223633"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-access-key",
@@ -4946,14 +4851,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputCheckbox",
-					"route": "scenarios/focus-elements?component=inputCheckbox",
-					"status": "changed",
-					"hash": "sha256:7ff244e6c50ade7a880566ca394f1c9ff744ec5fdf62122844e861e1270d5ece",
-					"diffPixels": 259,
-					"diffRatio": 0.01136,
-					"expected": "theme-bwst/scenarios-focus-elements-component-inputCheckbox.expected.png",
-					"actual": "theme-bwst/scenarios-focus-elements-component-inputCheckbox.actual.png",
-					"diff": "theme-bwst/scenarios-focus-elements-component-inputCheckbox.diff.png"
+					"route": "scenarios-focus-elements-component-inputCheckbox",
+					"status": "unchanged",
+					"hash": "sha256:8b44d1441cddf640827b7bb7fb20d00c9555bd84686f6f01ddc5708a5c1748af"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputColor",
@@ -5146,14 +5046,9 @@
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-checkbox",
-					"route": "scenarios/label-lang",
-					"status": "changed",
-					"hash": "sha256:ca8a98174f9a90567b4db48ed607885c1593def136499195c44b2a05ace74c2e",
-					"diffPixels": 740,
-					"diffRatio": 0.021899,
-					"expected": "theme-bwst/scenarios-label-lang--label-lang-checkbox.expected.png",
-					"actual": "theme-bwst/scenarios-label-lang--label-lang-checkbox.actual.png",
-					"diff": "theme-bwst/scenarios-label-lang--label-lang-checkbox.diff.png"
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:9717ca15de88ff540719126f2a74e346e99eefd66d774396f805258d51362264"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-details",
