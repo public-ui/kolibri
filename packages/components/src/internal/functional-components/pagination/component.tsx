@@ -11,7 +11,7 @@ import type { FunctionalComponentProps } from '../generic-types';
 import { resolveFcProps } from '../props-from-config';
 import { paginationPropsConfig, type PaginationApi } from './api';
 import { getPageCount, getPageItems, getVisibleRange } from './model';
-import type { PageSizeSelectInput } from './page-size-select';
+import type { PageSizeSelectInput } from './select-item';
 
 const paginationBem = bem.forBlock('kol-pagination');
 

@@ -400,3 +400,46 @@ describe('Interaction test files', () => {
 		expect(misnamed).toEqual([]);
 	});
 });
+
+describe('Item files', () => {
+	/**
+	 * ARC42 § Embedded Components (Items): an item that several components share is `<fc>/item.ts(x)`
+	 * and imported from outside its own component; an item that only one embedding component needs is
+	 * `<component>/<what it renders>-item.ts(x)` with the factory `create<Component><What>Item`.
+	 */
+	const FC_DIR = path.join(SRC, 'internal', 'functional-components');
+	const sourceFiles = (dir: string): string[] =>
+		fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+			const full = path.join(dir, entry.name);
+			if (entry.isDirectory()) return sourceFiles(full);
+			return /\.tsx?$/.test(entry.name) && !/\.(spec|e2e)\.tsx?$/.test(entry.name) && !entry.name.endsWith('.d.ts') ? [full] : [];
+		});
+	const allFiles = sourceFiles(SRC).map((file) => ({ file, text: fs.readFileSync(file, 'utf8') }));
+	const pascal = (kebab: string): string => kebab.replace(/(^|-)([a-z0-9])/g, (_match, _dash: string, char: string) => char.toUpperCase());
+	const problems = allFiles
+		.filter(({ file, text }) => file.startsWith(FC_DIR) && /export (const|function) create\w+Item\b|^export class \w+/m.test(text))
+		.flatMap(({ file, text }) => {
+			const folder = path.basename(path.dirname(file));
+			const name = path.basename(file).replace(/\.tsx?$/, '');
+			const relative = path.relative(SRC, file);
+			if (name === 'item') {
+				const ownDirs = [path.join(SRC, 'components', folder), path.join(FC_DIR, folder)];
+				const importer = allFiles.find(
+					({ file: other, text: otherText }) =>
+						!ownDirs.some((dir) => other.startsWith(dir + path.sep)) && new RegExp(`['"][^'"]*/${folder}/item['"]`).test(otherText),
+				);
+				return importer ? [] : [`${relative} is used by its own component only; name it <what it renders>-item`];
+			}
+			if (name.endsWith('-item')) {
+				const factory = `create${pascal(folder)}${pascal(name.slice(0, -'-item'.length))}Item`;
+				return !/export (const|function) create\w+Item\b/.test(text) || text.includes(`export const ${factory}`) || text.includes(`export function ${factory}`)
+					? []
+					: [`${relative} names its factory other than ${factory}`];
+			}
+			return /export (const|function) create\w+Item\b/.test(text) ? [`${relative} has an item factory but is no item file`] : [];
+		});
+
+	it('are named after what they render and who uses them', () => {
+		expect(problems).toEqual([]);
+	});
+});

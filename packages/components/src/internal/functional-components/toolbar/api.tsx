@@ -1,7 +1,7 @@
 import type { KolFocusOptions } from '../../../schema';
 import { labelProp, orientationProp, toolbarItemsProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
-import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './entry-item';
 
 /**
  * Props configuration for the toolbar component.
@@ -30,7 +30,7 @@ export type ToolbarApi = ApiFromConfig<
 			currentIndex: number;
 			/**
 			 * Orchestration records for the items (everything `ButtonFC` or `LinkFC` needs, built by
-			 * `createToolbarItem`), rebuilt whenever `_items` changes.
+			 * `createToolbarEntryItem`), rebuilt whenever `_items` changes.
 			 */
 			itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem>;
 			/**
