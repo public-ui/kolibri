@@ -417,7 +417,7 @@ describe('Item files', () => {
 	const allFiles = sourceFiles(SRC).map((file) => ({ file, text: fs.readFileSync(file, 'utf8') }));
 	const pascal = (kebab: string): string => kebab.replace(/(^|-)([a-z0-9])/g, (_match, _dash: string, char: string) => char.toUpperCase());
 	const problems = allFiles
-		.filter(({ file, text }) => file.startsWith(FC_DIR) && /export (const|function) create\w+Item\b|^export class \w+/m.test(text))
+		.filter(({ file, text }) => file.startsWith(FC_DIR) && /export (const|function) create\w+Item\b/.test(text))
 		.flatMap(({ file, text }) => {
 			const folder = path.basename(path.dirname(file));
 			const name = path.basename(file).replace(/\.tsx?$/, '');
@@ -432,11 +432,11 @@ describe('Item files', () => {
 			}
 			if (name.endsWith('-item')) {
 				const factory = `create${pascal(folder)}${pascal(name.slice(0, -'-item'.length))}Item`;
-				return !/export (const|function) create\w+Item\b/.test(text) || text.includes(`export const ${factory}`) || text.includes(`export function ${factory}`)
+				return text.includes(`export const ${factory}`) || text.includes(`export function ${factory}`)
 					? []
 					: [`${relative} names its factory other than ${factory}`];
 			}
-			return /export (const|function) create\w+Item\b/.test(text) ? [`${relative} has an item factory but is no item file`] : [];
+			return [`${relative} has an item factory but is no item file`];
 		});
 
 	it('are named after what they render and who uses them', () => {
