@@ -47,11 +47,14 @@ import { BaseButtonWebComponent } from '../button/base';
 	shadow: true,
 })
 export class KolPopoverButton extends BaseButtonWebComponent implements ClickableElement, FocusableElement, PopoverButtonWebComponentInterface {
-	@Element() protected readonly host?: HTMLKolPopoverButtonElement;
+	@Element()
+	protected readonly host?: HTMLKolPopoverButtonElement;
 
-	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
+	@State()
+	public ariaDescriptionId: string = createUniqueId('aria-description');
 
-	@State() public popoverOpen = false;
+	@State()
+	public popoverOpen = false;
 
 	/**
 	 * Stateless: the shared button base is typed over `ButtonApi`, so its state access does not fit
@@ -75,7 +78,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -85,7 +89,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: AriaDescriptionPropType = undefined;
+	@Prop()
+	public _ariaDescription?: AriaDescriptionPropType = undefined;
 
 	@Watch('_ariaDescription')
 	public watchAriaDescription(value?: AriaDescriptionPropType): void {
@@ -95,7 +100,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: CustomClassPropType = undefined;
+	@Prop()
+	public _customClass?: CustomClassPropType = undefined;
 
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
@@ -105,7 +111,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -116,7 +123,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -126,7 +134,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsPropType = undefined;
+	@Prop()
+	public _icons?: IconsPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsPropType): void {
@@ -136,7 +145,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: InlinePropType = false;
+	@Prop()
+	public _inline?: InlinePropType = false;
 
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {
@@ -146,7 +156,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -156,7 +167,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -166,7 +178,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines where to show the Popover preferably: top, right, bottom or left.
 	 */
-	@Prop() public _popoverAlign?: PopoverAlignPropType = 'bottom';
+	@Prop()
+	public _popoverAlign?: PopoverAlignPropType = 'bottom';
 
 	@Watch('_popoverAlign')
 	public watchPopoverAlign(value?: PopoverAlignPropType): void {
@@ -176,7 +189,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -187,7 +201,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -197,7 +212,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop() public _tabIndex?: TabIndexPropType = undefined;
+	@Prop()
+	public _tabIndex?: TabIndexPropType = undefined;
 
 	@Watch('_tabIndex')
 	public watchTabIndex(value?: TabIndexPropType): void {
@@ -207,7 +223,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -217,7 +234,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: ButtonTypePropType = 'button';
+	@Prop()
+	public _type?: ButtonTypePropType = 'button';
 
 	@Watch('_type')
 	public watchType(value?: ButtonTypePropType): void {
@@ -227,7 +245,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop() public _value?: StencilUnknown = undefined;
+	@Prop()
+	public _value?: StencilUnknown = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StencilUnknown): void {
@@ -237,7 +256,8 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

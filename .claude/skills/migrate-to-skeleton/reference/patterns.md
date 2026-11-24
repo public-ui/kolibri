@@ -13,7 +13,8 @@ Laufzeit nicht oder rendert beim ersten Durchlauf falsch:
 3. **Anwendung beim Laden** — dieselbe Anwendung in `componentWillLoad()`
 
 ```typescript
-@Prop() public _myProp?: string;
+@Prop()
+public _myProp?: string;
 
 @Watch('_myProp')
 public watchMyProp(value?: string): void {
@@ -34,16 +35,19 @@ Controller-/Aspect-Klasse:
 ```typescript
 @Component({ tag: 'kol-my-component', styleUrls: { default: './style.scss' }, shadow: true })
 export class KolMyComponent extends BaseWebComponent<MyApi> implements WebComponentInterface<MyApi> {
-	@Element() protected readonly host?: HTMLKolMyComponentElement;
+	@Element()
+	protected readonly host?: HTMLKolMyComponentElement;
 
 	// Optional: Behavior komponieren (nur für echt wiederverwendbare Logik)
 	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
 	protected readonly propsConfig: PropsConfigShape = myPropsConfig;
 
-	@Prop() public _myProp?: string;
+	@Prop()
+	public _myProp?: string;
 
-	@State() public myState = '';
+	@State()
+	public myState = '';
 
 	@Watch('_myProp')
 	public watchMyProp(value?: string): void {

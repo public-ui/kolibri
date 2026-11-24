@@ -29,16 +29,21 @@ import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 	shadow: true,
 })
 export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebComponentInterface<DrawerApi> {
-	@Element() private readonly host?: HTMLKolDrawerElement;
+	@Element()
+	private readonly host?: HTMLKolDrawerElement;
 
-	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
+	@State()
+	public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	/** Named `expanded` because the deprecated `open()` method occupies the member name `open`. */
-	@State() public expanded: boolean = false;
+	@State()
+	public expanded: boolean = false;
 
-	@State() public headingId: string = createUniqueId('drawer-heading');
+	@State()
+	public headingId: string = createUniqueId('drawer-heading');
 
-	@State() public modal: boolean = true;
+	@State()
+	public modal: boolean = true;
 
 	private readonly dialogRef = createCtaRef<HTMLDialogElement>();
 
@@ -57,7 +62,8 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 	/**
 	 * Defines the visual orientation of the component.
 	 */
-	@Prop() public _align?: AlignPropType = undefined;
+	@Prop()
+	public _align?: AlignPropType = undefined;
 
 	@Watch('_align')
 	public watchAlign(value?: AlignPropType): void {
@@ -67,7 +73,8 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 	/**
 	 * Defines whether the element can be closed.
 	 */
-	@Prop() public _hasCloser?: HasCloserPropType = false;
+	@Prop()
+	public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: HasCloserPropType): void {
@@ -77,7 +84,8 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelLangSegmentsPropType;
+	@Prop()
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -87,7 +95,8 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 0;
+	@Prop()
+	public _level?: HeadingLevel = 0;
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
@@ -97,7 +106,8 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 	/**
 	 * Specifies the EventCallback function to be called when the drawer is closing.
 	 */
-	@Prop() public _on?: KoliBriModalEventCallbacks = undefined;
+	@Prop()
+	public _on?: KoliBriModalEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriModalEventCallbacks): void {
@@ -107,7 +117,8 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType = undefined;
+	@Prop()
+	public _open?: OpenPropType = undefined;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {

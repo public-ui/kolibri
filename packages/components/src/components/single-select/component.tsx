@@ -81,25 +81,33 @@ import { createEventWithTarget, KolEvent } from '../../utils/events';
 	shadow: true,
 })
 export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> implements FocusableElement, WebComponentInterface<SingleSelectApi> {
-	@Element() protected readonly host?: HTMLKolSingleSelectElement;
+	@Element()
+	protected readonly host?: HTMLKolSingleSelectElement;
 
-	@State() public id = createUniqueId('single-select');
+	@State()
+	public id = createUniqueId('single-select');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
 	/** Whether the focus is inside the field. */
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
-	@State() public isOpen = false;
+	@State()
+	public isOpen = false;
 
-	@State() public blockSuggestionMouseOver = false;
+	@State()
+	public blockSuggestionMouseOver = false;
 
 	/** The options matching the text of the input. */
-	@State() public filteredOptions: Option<StencilUnknown>[] = [];
+	@State()
+	public filteredOptions: Option<StencilUnknown>[] = [];
 
 	/** The text of the input: the label of the selected option or the text typed to filter the options. */
-	@State() public inputValue = '';
+	@State()
+	public inputValue = '';
 
 	private readonly clearButton = createButtonItem(() => this.host);
 
@@ -119,7 +127,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -132,7 +141,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -142,7 +152,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: PlaceholderPropType = undefined;
+	@Prop()
+	public _placeholder?: PlaceholderPropType = undefined;
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
@@ -152,7 +163,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -162,7 +174,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -173,7 +186,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -183,7 +197,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -193,7 +208,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the icon classnames (e.g. `icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -203,7 +219,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -213,7 +230,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -223,7 +241,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -233,7 +252,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -243,7 +263,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -253,7 +274,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Options the user can choose from.
 	 */
-	@Prop() public _options!: OptionsPropType;
+	@Prop()
+	public _options!: OptionsPropType;
 
 	/** Shows all options again; an open listbox keeps the filter of the input, a closed one shows the label of the value. */
 	@Watch('_options')
@@ -270,7 +292,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -280,7 +303,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -292,7 +316,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -302,7 +327,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -312,7 +338,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -322,7 +349,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true }) public _value: StencilUnknown = null;
+	@Prop({ mutable: true })
+	public _value: StencilUnknown = null;
 
 	@Watch('_value')
 	public watchValue(value: StencilUnknown): void {
@@ -332,7 +360,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Shows the clear button if enabled.
 	 */
-	@Prop() public _hasClearButton?: HasClearButtonPropType = true;
+	@Prop()
+	public _hasClearButton?: HasClearButtonPropType = true;
 
 	@Watch('_hasClearButton')
 	public watchHasClearButton(value?: HasClearButtonPropType): void {
@@ -342,7 +371,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Maximum number of visible rows of the element.
 	 */
-	@Prop() public _rows?: RowsPropType = undefined;
+	@Prop()
+	public _rows?: RowsPropType = undefined;
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
@@ -352,7 +382,8 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

@@ -47,6 +47,10 @@ export default typescriptConfig({
 
 ## Custom rules
 
+### `kolibri/decorator-on-own-line`
+
+Enforces that every decorator of a class or class member stands on a line of its own, above the code it decorates. Prettier keeps either placement, so this rule makes it uniform; `eslint --fix` breaks the line. See `rules/decorator-on-own-line.js`.
+
 ### `kolibri/require-barrel-import`
 
 Enforces that configured directories are imported through their barrel file (`index.ts`) instead of deep imports into individual modules. See `rules/require-barrel-import.js` for details.

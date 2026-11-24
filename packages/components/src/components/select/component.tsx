@@ -47,14 +47,18 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	shadow: true,
 })
 export class KolSelect extends BaseSelectWebComponent implements FocusableElement, WebComponentInterface<SelectApi> {
-	@Element() protected readonly host?: HTMLKolSelectElement;
+	@Element()
+	protected readonly host?: HTMLKolSelectElement;
 
-	@State() public id = createUniqueId('select');
+	@State()
+	public id = createUniqueId('select');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
 
@@ -68,7 +72,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -80,7 +85,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -90,7 +96,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -100,7 +107,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -111,7 +119,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -121,7 +130,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -131,7 +141,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -141,7 +152,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -151,7 +163,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -161,7 +174,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -171,7 +185,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Makes the input accept multiple inputs.
 	 */
-	@Prop() public _multiple?: MultiplePropType = false;
+	@Prop()
+	public _multiple?: MultiplePropType = false;
 
 	@Watch('_multiple')
 	public watchMultiple(value?: MultiplePropType): void {
@@ -181,7 +196,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -191,7 +207,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -201,7 +218,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Options the user can choose from.
 	 */
-	@Prop() public _options!: OptionsWithOptgroupPropType;
+	@Prop()
+	public _options!: OptionsWithOptgroupPropType;
 
 	@Watch('_options')
 	public watchOptions(value?: OptionsWithOptgroupPropType): void {
@@ -211,7 +229,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -221,7 +240,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -231,7 +251,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Maximum number of visible rows of the element.
 	 */
-	@Prop() public _rows?: RowsPropType = undefined;
+	@Prop()
+	public _rows?: RowsPropType = undefined;
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
@@ -242,7 +263,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -252,7 +274,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
-	@Prop() public _tabIndex?: TabIndexPropType = undefined;
+	@Prop()
+	public _tabIndex?: TabIndexPropType = undefined;
 
 	@Watch('_tabIndex')
 	public watchTabIndex(value?: TabIndexPropType): void {
@@ -262,7 +285,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -272,7 +296,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -282,7 +307,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown> = undefined;
+	@Prop({ mutable: true, reflect: true })
+	public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown> = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
@@ -292,7 +318,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

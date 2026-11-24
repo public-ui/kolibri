@@ -84,21 +84,26 @@ const dateBem = bem.forBlock('kol-input-date');
 	shadow: true,
 })
 export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputDateApi> {
-	@Element() protected readonly host?: HTMLKolInputDateElement;
+	@Element()
+	protected readonly host?: HTMLKolInputDateElement;
 
-	@State() public id = createUniqueId('input-date');
+	@State()
+	public id = createUniqueId('input-date');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
 	/**
 	 * Whether the field has a value, rendered as the root class `has-value`. It follows the initial
 	 * value and every `change`, and as state the class follows every change and `reset()` directly
 	 * (#11053).
 	 */
-	@State() public hasValue = false;
+	@State()
+	public hasValue = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -115,7 +120,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -128,7 +134,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -138,7 +145,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+	@Prop()
+	public _autoComplete?: AutoCompletePropType = 'off';
 
 	@Watch('_autoComplete')
 	public watchAutoComplete(value?: AutoCompletePropType): void {
@@ -148,7 +156,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -158,7 +167,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -169,7 +179,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -179,7 +190,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -189,7 +201,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -199,7 +212,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -209,7 +223,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -219,7 +234,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the maximum value of the element.
 	 */
-	@Prop() public _max?: Iso8601 | Date = undefined;
+	@Prop()
+	public _max?: Iso8601 | Date = undefined;
 
 	@Watch('_max')
 	public watchMax(value?: Iso8601 | Date): void {
@@ -229,7 +245,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the smallest possible input value.
 	 */
-	@Prop() public _min?: Iso8601 | Date = undefined;
+	@Prop()
+	public _min?: Iso8601 | Date = undefined;
 
 	@Watch('_min')
 	public watchMin(value?: Iso8601 | Date): void {
@@ -239,7 +256,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -249,7 +267,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -259,7 +278,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -269,7 +289,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType = false;
+	@Prop()
+	public _readOnly?: ReadOnlyPropType = false;
 
 	@Watch('_readOnly')
 	public watchReadOnly(value?: ReadOnlyPropType): void {
@@ -279,7 +300,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -289,7 +311,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -300,7 +323,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
@@ -314,7 +338,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _suggestions?: SuggestionsPropType = undefined;
+	@Prop()
+	public _suggestions?: SuggestionsPropType = undefined;
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
@@ -325,7 +350,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -335,7 +361,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the step size for value changes.
 	 */
-	@Prop() public _step?: number | NumberString = undefined;
+	@Prop()
+	public _step?: number | NumberString = undefined;
 
 	@Watch('_step')
 	public watchStep(value?: number | NumberString): void {
@@ -345,7 +372,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -355,7 +383,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -365,7 +394,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type: InputDateTypePropType = 'date';
+	@Prop()
+	public _type: InputDateTypePropType = 'date';
 
 	@Watch('_type')
 	public watchType(value?: InputDateTypePropType): void {
@@ -375,7 +405,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null = undefined;
+	@Prop({ mutable: true, reflect: true })
+	public _value?: Iso8601 | Date | null = undefined;
 
 	/** A value reset to `null` keeps the remembered type. */
 	@Watch('_value')
@@ -393,7 +424,8 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

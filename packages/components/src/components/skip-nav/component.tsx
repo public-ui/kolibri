@@ -27,9 +27,11 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 	shadow: true,
 })
 export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements FocusableElement, WebComponentInterface<SkipNavApi> {
-	@Element() protected readonly host?: HTMLKolSkipNavElement;
+	@Element()
+	protected readonly host?: HTMLKolSkipNavElement;
 
-	@State() public linkItems: SkipNavLinkItem[] = [];
+	@State()
+	public linkItems: SkipNavLinkItem[] = [];
 
 	/** Anchor of the first skip link, used as the delegation target for `focus()`. */
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
@@ -39,7 +41,8 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -49,7 +52,8 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 	/**
 	 * Defines the list of links combined with their labels to render.
 	 */
-	@Prop() public _links!: Stringified<LinkProps[]>;
+	@Prop()
+	public _links!: Stringified<LinkProps[]>;
 
 	@Watch('_links')
 	public watchLinks(value?: Stringified<LinkProps[]>): void {

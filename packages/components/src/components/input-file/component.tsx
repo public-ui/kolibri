@@ -63,23 +63,30 @@ const fileBem = bem.forBlock('kol-input-file');
 	shadow: true,
 })
 export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputFileApi> {
-	@Element() protected readonly host?: HTMLKolInputFileElement;
+	@Element()
+	protected readonly host?: HTMLKolInputFileElement;
 
-	@State() public id = createUniqueId('input-file');
+	@State()
+	public id = createUniqueId('input-file');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
 	private readonly translateFilenameText = translate('kol-filename-text');
 
-	@State() private filename: string = this.translateFilenameText;
+	@State()
+	private filename: string = this.translateFilenameText;
 
 	/** Set by a selection in the file dialog and cleared by `reset()`; a drop does not set it (#10865). */
-	@State() private hasFileSelected = false;
+	@State()
+	private hasFileSelected = false;
 
-	@State() private isDragover = false;
+	@State()
+	private isDragover = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -97,7 +104,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines which file formats are accepted.
 	 */
-	@Prop() public _accept?: AcceptPropType = undefined;
+	@Prop()
+	public _accept?: AcceptPropType = undefined;
 
 	@Watch('_accept')
 	public watchAccept(value?: AcceptPropType): void {
@@ -107,7 +115,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -120,7 +129,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -130,7 +140,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -140,7 +151,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -151,7 +163,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -161,7 +174,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -171,7 +185,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -181,7 +196,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -191,7 +207,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -201,7 +218,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -211,7 +229,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Makes the input accept multiple inputs.
 	 */
-	@Prop() public _multiple?: MultiplePropType = false;
+	@Prop()
+	public _multiple?: MultiplePropType = false;
 
 	@Watch('_multiple')
 	public watchMultiple(value?: MultiplePropType): void {
@@ -221,7 +240,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -231,7 +251,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -241,7 +262,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -251,7 +273,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -262,7 +285,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
@@ -277,7 +301,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -287,7 +312,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -297,7 +323,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -307,7 +334,8 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
