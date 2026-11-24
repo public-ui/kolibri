@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "21 changed – 0 of 21 approved, review pending",
-	"computedAt": "2026-11-23T14:45:24.634Z",
+	"description": "12 changed – 0 of 12 approved, review pending",
+	"computedAt": "2026-11-24T07:47:02.083Z",
 	"pr": 11667,
-	"head": "0b8dad48971a8a3fffefb3c466c3b7d7bd9294ab",
-	"digest": "sha256:41e821f905377c5cd00350d7f4a9b77e460806f23fbb160837e8cd415b45d3a0",
+	"head": "df9e8ce4756bb0cc612e28009b7e3fbe26a755de",
+	"digest": "sha256:1563ad1cc576abc2affee78f5035eb9132b4cfea39c978a50e2a228bfeb331fb",
 	"counts": {
-		"changes": 21,
-		"open": 21,
+		"changes": 12,
+		"open": 12,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -16,14 +16,6 @@
 	},
 	"reviewers": [],
 	"items": {
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
 		"test-tag-name-transformer/table-sticky-cols--sticky-cols": {
 			"state": "open",
 			"notes": []
@@ -32,15 +24,23 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-default/input-checkbox-basic-noColumns--left-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/input-checkbox-basic-noColumns--right-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-default/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateful-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateful-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateless-with-single-selection--single-selection": {
 			"state": "open",
 			"notes": []
 		},
@@ -48,43 +48,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-ecl/input-checkbox-basic-noColumns--left-checked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--left-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--left-indet-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--left-indeterminate": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--left-long-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--right-checked": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--right-checked-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--right-indet-disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--right-indeterminate": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--right-long-label": {
+		"theme-desy/table-sticky-header--sticky-header": {
 			"state": "open",
 			"notes": []
 		},

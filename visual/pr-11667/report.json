@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11667,
-	"head": "0b8dad48971a8a3fffefb3c466c3b7d7bd9294ab",
+	"head": "df9e8ce4756bb0cc612e28009b7e3fbe26a755de",
 	"repository": "public-ui/kolibri",
-	"runId": 45192409952,
-	"generatedAt": "2026-11-23T14:45:23.816Z",
-	"digest": "sha256:41e821f905377c5cd00350d7f4a9b77e460806f23fbb160837e8cd415b45d3a0",
+	"runId": 45348250566,
+	"generatedAt": "2026-11-24T07:47:01.141Z",
+	"digest": "sha256:1563ad1cc576abc2affee78f5035eb9132b4cfea39c978a50e2a228bfeb331fb",
 	"baseline": {
-		"sha": "00dbb7fc8f323d496342343ff8aa34eb07b13672",
+		"sha": "91bfb9f0a3f9f606e5cc459d12a67c69661449b5",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3074,
-		"changed": 21,
+		"unchanged": 3083,
+		"changed": 12,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "00dbb7fc8f323d496342343ff8aa34eb07b13672",
+					"sha": "91bfb9f0a3f9f606e5cc459d12a67c69661449b5",
 					"ref": "release/4",
-					"runId": 45187507570,
+					"runId": 45337949205,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T13:54:13.717Z",
+					"createdAt": "2026-11-24T06:13:17.935Z",
 					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
 					"fallback": null,
 					"distance": 0,
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 439,
-				"changed": 3,
+				"unchanged": 441,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:eaa3f309d0b3a8b7da62bb91e1830ddce2caf02aecf9e4837a32e846e37c6f9d",
+			"digest": "sha256:c744e00763c28bd46dec185e808860ad890809cf7b1b0f8e9a51cdeb74f0c9bb",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -431,14 +431,9 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:7625dca0a1fb366f97e29d76194888826efe277242024f3de4bdda88fb3d737e",
-					"diffPixels": 11,
-					"diffRatio": 0.000534,
-					"expected": "test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked-disabled.expected.png",
-					"actual": "test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked-disabled.actual.png",
-					"diff": "test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:4587eeab05ef645d353e3c8e312f865a63cfb6955aae64af0313048699a12179"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-disabled",
@@ -508,14 +503,9 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:7c50d8fc1008ac6bf3577627653d3cc96d14462a526bf2f514f904153c2b754c",
-					"diffPixels": 11,
-					"diffRatio": 0.000534,
-					"expected": "test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked-disabled.expected.png",
-					"actual": "test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked-disabled.actual.png",
-					"diff": "test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:8c58bea711a27442104ca410d7fbd6aad8b495264590659f74201d049b2c6571"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-disabled",
@@ -2728,12 +2718,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "00dbb7fc8f323d496342343ff8aa34eb07b13672",
+					"sha": "91bfb9f0a3f9f606e5cc459d12a67c69661449b5",
 					"ref": "release/4",
-					"runId": 45187507570,
+					"runId": 45337949205,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T13:53:29.749Z",
+					"createdAt": "2026-11-24T06:14:25.802Z",
 					"digest": "sha256:1c69a4eb361453cdcb46155056d69931521105258617774e33716e676b9c43e9",
 					"fallback": null,
 					"distance": 0,
@@ -5416,12 +5406,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "00dbb7fc8f323d496342343ff8aa34eb07b13672",
+					"sha": "91bfb9f0a3f9f606e5cc459d12a67c69661449b5",
 					"ref": "release/4",
-					"runId": 45187507570,
+					"runId": 45337949205,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T13:54:13.717Z",
+					"createdAt": "2026-11-24T06:13:17.935Z",
 					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
 					"fallback": null,
 					"distance": 0,
@@ -5429,13 +5419,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 439,
-				"changed": 3,
+				"unchanged": 441,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:eaa3f309d0b3a8b7da62bb91e1830ddce2caf02aecf9e4837a32e846e37c6f9d",
+			"digest": "sha256:c744e00763c28bd46dec185e808860ad890809cf7b1b0f8e9a51cdeb74f0c9bb",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5817,14 +5807,9 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:7625dca0a1fb366f97e29d76194888826efe277242024f3de4bdda88fb3d737e",
-					"diffPixels": 11,
-					"diffRatio": 0.000534,
-					"expected": "theme-default/input-checkbox-basic-noColumns--left-checked-disabled.expected.png",
-					"actual": "theme-default/input-checkbox-basic-noColumns--left-checked-disabled.actual.png",
-					"diff": "theme-default/input-checkbox-basic-noColumns--left-checked-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:4587eeab05ef645d353e3c8e312f865a63cfb6955aae64af0313048699a12179"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-disabled",
@@ -5894,14 +5879,9 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:7c50d8fc1008ac6bf3577627653d3cc96d14462a526bf2f514f904153c2b754c",
-					"diffPixels": 11,
-					"diffRatio": 0.000534,
-					"expected": "theme-default/input-checkbox-basic-noColumns--right-checked-disabled.expected.png",
-					"actual": "theme-default/input-checkbox-basic-noColumns--right-checked-disabled.actual.png",
-					"diff": "theme-default/input-checkbox-basic-noColumns--right-checked-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:8c58bea711a27442104ca410d7fbd6aad8b495264590659f74201d049b2c6571"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-disabled",
@@ -8114,12 +8094,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "00dbb7fc8f323d496342343ff8aa34eb07b13672",
+					"sha": "91bfb9f0a3f9f606e5cc459d12a67c69661449b5",
 					"ref": "release/4",
-					"runId": 45187507570,
+					"runId": 45337949205,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T13:54:44.950Z",
+					"createdAt": "2026-11-24T06:16:07.465Z",
 					"digest": "sha256:66b08ccb4537a7e9b61478c3940e9fc00395814383c95ee669a64a4e719868e4",
 					"fallback": null,
 					"distance": 0,
@@ -8127,13 +8107,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 441,
-				"changed": 1,
+				"unchanged": 436,
+				"changed": 6,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6e5d8bf0b45196ea6aa62412713fe6ea0d0a2a790c9471ff7bab81fa05a09e39",
+			"digest": "sha256:344de2a766d4f59a0421ef1af64cb263670b990018ce582eb2d92ea770444268",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10573,44 +10553,79 @@
 				},
 				{
 					"name": "table-stateful-with-selection--selection",
-					"route": "table-stateful-with-selection",
-					"status": "unchanged",
-					"hash": "sha256:d2be0bf171073d4dc9f39590457ce4148308292cebdb732a6a56d73449a87c9b"
+					"route": "table/stateful-with-selection",
+					"status": "changed",
+					"hash": "sha256:92a17e25be4a98b3195003f74355992b8968e4320268a691685f674590080648",
+					"diffPixels": 6282,
+					"diffRatio": 0.018218,
+					"expected": "theme-desy/table-stateful-with-selection--selection.expected.png",
+					"actual": "theme-desy/table-stateful-with-selection--selection.actual.png",
+					"diff": "theme-desy/table-stateful-with-selection--selection.diff.png"
 				},
 				{
 					"name": "table-stateful-with-single-selection--single-selection",
-					"route": "table-stateful-with-single-selection",
-					"status": "unchanged",
-					"hash": "sha256:583d4193fe743ab6b04fa210bed70684197233a318ae1e094db20be7219524b1"
+					"route": "table/stateful-with-single-selection",
+					"status": "changed",
+					"hash": "sha256:cd6a93669eea802f8f55dafd2c27445799ab9b23ab98baa8d598f910190140a8",
+					"diffPixels": 6917,
+					"diffRatio": 0.021192,
+					"expected": "theme-desy/table-stateful-with-single-selection--single-selection.expected.png",
+					"actual": "theme-desy/table-stateful-with-single-selection--single-selection.actual.png",
+					"diff": "theme-desy/table-stateful-with-single-selection--single-selection.diff.png"
 				},
 				{
 					"name": "table-stateless-with-selection--selection",
-					"route": "table-stateless-with-selection",
-					"status": "unchanged",
-					"hash": "sha256:52c91e26483a551477c3a6ec755f4b764287d16b906b9931cc6b549ca64203c3"
+					"route": "table/stateless-with-selection",
+					"status": "changed",
+					"hash": "sha256:5f52f54fb3b8488fdb77b4a6487f8e3f461a8b4edc113474e4451f2f66e0d652",
+					"diffPixels": 6697,
+					"diffRatio": 0.019421,
+					"expected": "theme-desy/table-stateless-with-selection--selection.expected.png",
+					"actual": "theme-desy/table-stateless-with-selection--selection.actual.png",
+					"diff": "theme-desy/table-stateless-with-selection--selection.diff.png"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
-					"route": "table-stateless-with-single-selection",
-					"status": "unchanged",
-					"hash": "sha256:286590589449d4b96e132f334d23bb9501a2b70e24607bc746a228b957a5b652"
+					"route": "table/stateless-with-single-selection",
+					"status": "changed",
+					"hash": "sha256:3578651abe7669ab4f3dcd95a4d36ac8bd6ea2a0d7659344f437a71e3c06e95a",
+					"diffPixels": 3648,
+					"diffRatio": 0.013649,
+					"expected": "theme-desy/table-stateless-with-single-selection--single-selection.expected.png",
+					"actual": "theme-desy/table-stateless-with-single-selection--single-selection.actual.png",
+					"diff": "theme-desy/table-stateless-with-single-selection--single-selection.diff.png"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
 					"route": "table/sticky-cols",
 					"status": "changed",
-					"hash": "sha256:d444eb39ffd2f54309142d85741690b40be1e99b0c4fbf734d9b3f519db51f84",
-					"diffPixels": 129926,
-					"diffRatio": 0.008649,
+					"hash": "sha256:14556a3793325371dd92cebe064eb7b106c1b59a17ee4039773201f83d88fc03",
+					"diffPixels": 265076,
+					"diffRatio": 0.017647,
 					"expected": "theme-desy/table-sticky-cols--sticky-cols.expected.png",
 					"actual": "theme-desy/table-sticky-cols--sticky-cols.actual.png",
 					"diff": "theme-desy/table-sticky-cols--sticky-cols.diff.png"
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
-					"route": "table-sticky-header",
-					"status": "unchanged",
-					"hash": "sha256:d63912bd2f9db51d94c614bfd75953cddc8c52ed351a3dd7354c23e9ba4a14ae"
+					"route": "table/sticky-header",
+					"status": "changed",
+					"hash": "sha256:37dd60255ef96408fb30bd0bd071c595f6312bd9760dcbc6a89b17475e4476e7",
+					"diffPixels": 36754,
+					"diffRatio": 0.001856,
+					"sizeMismatch": {
+						"expected": [
+							1268,
+							15518
+						],
+						"actual": [
+							1268,
+							15614
+						]
+					},
+					"expected": "theme-desy/table-sticky-header--sticky-header.expected.png",
+					"actual": "theme-desy/table-sticky-header--sticky-header.actual.png",
+					"diff": "theme-desy/table-sticky-header--sticky-header.diff.png"
 				},
 				{
 					"name": "table-variant--variant-no",
@@ -10802,12 +10817,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "00dbb7fc8f323d496342343ff8aa34eb07b13672",
+					"sha": "91bfb9f0a3f9f606e5cc459d12a67c69661449b5",
 					"ref": "release/4",
-					"runId": 45187507570,
+					"runId": 45337949205,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T13:54:55.432Z",
+					"createdAt": "2026-11-24T06:15:12.959Z",
 					"digest": "sha256:52179ed1092595a872b3836d122f12fa43f163f4c4f15344c14977a6e1e51011",
 					"fallback": null,
 					"distance": 0,
@@ -10815,13 +10830,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 431,
-				"changed": 11,
+				"unchanged": 441,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:51a82c429384f44822cdf3af4b1e14c6e41852f7a5a8f712d918cdeaed721bdd",
+			"digest": "sha256:3f89ada2813d3eced0026dc3e31e65dae7f380f58bdb0db6d834d5611fc40096",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11197,25 +11212,15 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:f465f9ae3888d006ae6fe1b06f6909a0ad87b586078ea6565be867780bf8c4c9",
-					"diffPixels": 6,
-					"diffRatio": 0.000291,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--left-checked.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--left-checked.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--left-checked.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:86c513a7ba1ee356c20499c266324d0fe9b8cda5215906da13b5e3c1cf94e145"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:c2465b50c60a8412b4fef1bfff09142a4337029afb947035d149fa3a64b83da4",
-					"diffPixels": 6,
-					"diffRatio": 0.000291,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--left-checked-disabled.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--left-checked-disabled.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--left-checked-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:3b038dd44459df4f5485bd4b262fe88ec1eae7737c9fc65612d99fba5da304c8"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-disabled",
@@ -11237,25 +11242,15 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-indet-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:f1d6deec94fc7dfae282a12037af9fd2e209abbdf060bf702abeba47765e7e56",
-					"diffPixels": 12,
-					"diffRatio": 0.000583,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--left-indet-disabled.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--left-indet-disabled.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--left-indet-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:e28a151cd626f2a45e17b0e86547c72d4039d4de4d322e5116bdb7e378888fff"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-indeterminate",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:f8d792889fb0c33f54386002efcb89ef311625c778b858bd5fc8708ddc71cd3d",
-					"diffPixels": 12,
-					"diffRatio": 0.000583,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--left-indeterminate.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--left-indeterminate.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--left-indeterminate.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:2b0870d913861484133e2b97224595944362253683424acd2223340bd89c9d13"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-info-popover",
@@ -11265,14 +11260,9 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-long-label",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:5aed1e6784e2560c8aca39a19ada72ef8de5bbe116e8f90fdafb9c304a8ce807",
-					"diffPixels": 6,
-					"diffRatio": 0.000134,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--left-long-label.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--left-long-label.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--left-long-label.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:d41f4fcc70a82061b0f2203627cc83b1d78bfa519965dda20effe662e254d2f2"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-short-key",
@@ -11294,25 +11284,15 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:fc8f6cc167166ad17d44e0a018bba4ca499f286336c28853acbab032ec27814e",
-					"diffPixels": 6,
-					"diffRatio": 0.000291,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--right-checked.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--right-checked.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--right-checked.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b146b49a74b8791e2e71a50bed681a855749d93e35b10a7ae72d7ec6e80b96c6"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:22bc886797d7e2ce0eabe7554e67eac2955489363dc151e11e27433e438ef8c8",
-					"diffPixels": 6,
-					"diffRatio": 0.000291,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--right-checked-disabled.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--right-checked-disabled.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--right-checked-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b766b2e6fc1e6d4e1d3619488acd2622d4bb49033630174f75cc89a431b06d2d"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-disabled",
@@ -11334,25 +11314,15 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-indet-disabled",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:9b293d95b2ba2865f4b9b5d72c48282a032fb293404910b7334e8dcd4a0413ec",
-					"diffPixels": 12,
-					"diffRatio": 0.000583,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--right-indet-disabled.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--right-indet-disabled.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--right-indet-disabled.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:49b62d938b6a79e38a432ed9a7f3a052835483bb9f11371b8a3ee9286701ef26"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-indeterminate",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:641a1742f2e8b1effb02bba12c3b9723c53271a389dc1174e4f00aa99ff72386",
-					"diffPixels": 12,
-					"diffRatio": 0.000583,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--right-indeterminate.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--right-indeterminate.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--right-indeterminate.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:0fd6b32e1db33eb0ef6e59e40b5b68ee0bd99df8b910f5f8b0529b2d2da85e0f"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-info-popover",
@@ -11362,14 +11332,9 @@
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-long-label",
-					"route": "input-checkbox/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:8f91e1322b88d34b3b83df71d8ebfde9e7ed71dac9ba0ba9d8c0f0a7ab7d06ff",
-					"diffPixels": 6,
-					"diffRatio": 0.000134,
-					"expected": "theme-ecl/input-checkbox-basic-noColumns--right-long-label.expected.png",
-					"actual": "theme-ecl/input-checkbox-basic-noColumns--right-long-label.actual.png",
-					"diff": "theme-ecl/input-checkbox-basic-noColumns--right-long-label.diff.png"
+					"route": "input-checkbox-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:a77c32e0bb4a4ae5646027c11836e912256e824141b219e2879c8d964c6c5ce3"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-short-key",
@@ -13540,12 +13505,12 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "00dbb7fc8f323d496342343ff8aa34eb07b13672",
+					"sha": "91bfb9f0a3f9f606e5cc459d12a67c69661449b5",
 					"ref": "release/4",
-					"runId": 45187507570,
+					"runId": 45337949205,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T13:53:48.861Z",
+					"createdAt": "2026-11-24T06:16:25.865Z",
 					"digest": "sha256:850d93387ab408edcdddca6db70a6bd2f56f127fc08a688636529bfbb1701d98",
 					"fallback": null,
 					"distance": 0,
@@ -16234,12 +16199,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "00dbb7fc8f323d496342343ff8aa34eb07b13672",
+					"sha": "91bfb9f0a3f9f606e5cc459d12a67c69661449b5",
 					"ref": "release/4",
-					"runId": 45187507570,
+					"runId": 45337949205,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T13:54:04.331Z",
+					"createdAt": "2026-11-24T06:14:26.207Z",
 					"digest": "sha256:a6461012c621c0ea1567a719c62f25c956e706666fed882a6d694187c2c99a4a",
 					"fallback": null,
 					"distance": 0,
