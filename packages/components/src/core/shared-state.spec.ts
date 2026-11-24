@@ -1,6 +1,7 @@
 import type * as AdoptedStyleSheetsModule from 'adopted-style-sheets';
 import type * as AriaCurrentServiceModule from '../../internals/src/components/link/ariaCurrentService';
 import type * as I18nModule from '../../internals/src/core/i18n';
+import type * as RegisterOptionsModule from '../../internals/src/core/options';
 import type * as TooltipTrackingModule from '../../internals/src/utils/tooltip-open-tracking';
 import type * as BootstrapModule from './bootstrap';
 import type * as ThemeStoreModule from './theme-store';
@@ -9,6 +10,7 @@ type AdoptedStyleSheets = typeof AdoptedStyleSheetsModule;
 type AriaCurrentService = typeof AriaCurrentServiceModule;
 type Bootstrap = typeof BootstrapModule;
 type I18n = typeof I18nModule;
+type RegisterOptions = typeof RegisterOptionsModule;
 type ThemeStore = typeof ThemeStoreModule;
 type TooltipTracking = typeof TooltipTrackingModule;
 
@@ -47,11 +49,11 @@ describe('state shared across bundle copies', () => {
 
 	it('resolves the bootstrap options in every copy', async () => {
 		const rootEntry = loadCopy(() => jest.requireActual<Bootstrap>('./bootstrap'));
-		const customElements = loadCopy(() => jest.requireActual<Bootstrap>('./bootstrap'));
+		const customElements = loadCopy(() => jest.requireActual<RegisterOptions>('../../internals/src/core/options'));
 
 		await rootEntry.bootstrap([], [], { reflectInputValues: true });
 
-		expect(customElements.getOptions()?.reflectInputValues).toBe(true);
+		expect(customElements.getRegisterOptions()?.reflectInputValues).toBe(true);
 	});
 
 	it('translates with the instance the last initialization created in any copy', () => {

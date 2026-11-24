@@ -1,7 +1,5 @@
 import { setTagTransformer } from '@stencil/core';
-import { guardTagNameTransformer } from '../../internals/src/core/tag-transformer';
-
-type TagNameTransformer = (tagName: string) => string;
+import { guardTagNameTransformer, type TagNameTransformer } from '../../internals/src/core/tag-transformer';
 
 /*
  * Registers the kol-guarded transformer with the native Stencil runtime; the shared-state registry

@@ -4,7 +4,6 @@ import { initializeI18n } from '../../internals/src/core/i18n';
 import { setRegisterOptions } from '../../internals/src/core/options';
 import type { Mode } from '../../internals/src/schema/index';
 import { Log, setRuntimeMode } from '../../internals/src/schema/index';
-import { getSharedState } from './shared-state';
 import { registerTagNameTransformer } from './tag-transformer';
 import { shareThemeStore } from './theme-store';
 
@@ -23,8 +22,6 @@ type KoliBriOptions = RegisterOptions & {
 	 */
 	reflectInputValues?: boolean;
 };
-
-const shared = getSharedState('bootstrap', (): { options?: KoliBriOptions } => ({}));
 
 let initialized = false;
 
@@ -48,7 +45,6 @@ export const bootstrap = async (
 	const coreRegisterReturnValue = await coreRegister(themes, loaders, koliBriOptions);
 	initialized = true;
 	setRegisterOptions(koliBriOptions);
-	shared.options = koliBriOptions;
 
 	// Only log development message when actually in development mode
 	Log.info('Development mode active - Enhanced debugging features available');
@@ -58,4 +54,3 @@ export const bootstrap = async (
 
 export const register = bootstrap;
 export const isInitialized = () => initialized;
-export const getOptions = (): KoliBriOptions | undefined => shared.options;

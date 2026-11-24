@@ -2,7 +2,8 @@ import { Log } from '../schema/index';
 import * as KolTags from './component-names';
 import { getSharedState } from './shared-state';
 
-type TagNameTransformer = (tagName: string) => string;
+/** Maps a KoliBri tag name to the tag the application addresses the component by. */
+export type TagNameTransformer = (tagName: string) => string;
 
 /*
  * The runtime is bundled per output target, so a registration in one copy does not reach the

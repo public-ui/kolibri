@@ -32,7 +32,9 @@ import { STATE_CHANGE_EVENT } from '../../../../internals/src/schema/index';
 import { dispatchDomEvent, KolEvent } from '../../../../internals/src/utils/events';
 import { addNavLabel, removeNavLabel } from '../../../../internals/src/utils/unique-nav-labels';
 import type { PaginationFCProps } from './component';
-import { createPageSizeSelect, PageSizeSelect } from './page-size-select';
+import type { PageSizeSelect } from './page-size-select';
+import { createPageSizeSelect } from './page-size-select';
+
 /** The render props of the pagination, as the item keeps them: config defaults applied. */
 export type PaginationRenderProps = ResolvedFunctionalComponentProps<PaginationApi>;
 

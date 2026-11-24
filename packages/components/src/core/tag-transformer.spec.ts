@@ -1,5 +1,5 @@
+import { getSharedState } from '../../internals/src/core/shared-state';
 import { Log } from '../../internals/src/schema/index';
-import { getSharedState } from './shared-state';
 import { getRegisteredTagNameTransformer, registerTagNameTransformer } from './tag-transformer';
 
 describe('registerTagNameTransformer', () => {
