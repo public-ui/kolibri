@@ -1,0 +1,1 @@
+import"./index-DBEsXAMm-BKEYCwSx.js";import{j as e,u as t}from"./component-DejDqzye-BuJjUEFW.js";var n=t(`id`,``,e);export{n as t};

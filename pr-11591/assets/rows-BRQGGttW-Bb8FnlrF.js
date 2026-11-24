@@ -1,0 +1,1 @@
+import"./index-DBEsXAMm-BKEYCwSx.js";import{O as e,u as t}from"./component-DejDqzye-BuJjUEFW.js";var n=t(`rows`,void 0,e,e=>e>=1);export{n as t};
