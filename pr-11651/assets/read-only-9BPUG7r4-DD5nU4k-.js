@@ -1,1 +1,0 @@
-import{l as e,x as t}from"./props-from-config-LBgEHmcL-DPSg-zk7.js";var n=e(`readOnly`,!1,t);export{n as t};
