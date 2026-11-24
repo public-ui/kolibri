@@ -64,7 +64,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	}
 
 	/**
-	 * Sets the image URI for the card image.
+	 * Sets the image URI and alt text for the card image.
 	 */
 	@Prop() public _image?: ImagePropType = undefined;
 
