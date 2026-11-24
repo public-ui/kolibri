@@ -1,6 +1,5 @@
 import type { JSXBase } from '@stencil/core/internal';
 
-import { onLocationChange, type UnsubscribeFunction } from '../../../components/link/ariaCurrentService';
 import type { AlignPropType } from '../../../schema';
 import { setEventTarget } from '../../../schema';
 import { createUniqueId } from '../../../utils/dev.utils';
@@ -8,6 +7,7 @@ import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { BaseWebComponent } from '../base-web-component';
 import { TooltipBehavior } from '../tooltip/behavior';
+import { onLocationChange, type UnsubscribeFunction } from './aria-current-service';
 import type { LinkFCProps } from './component';
 import type { EmbeddedLinkProps, ResolvedLinkProps } from './resolve-props';
 import { resolveLinkProps } from './resolve-props';

@@ -43,6 +43,7 @@ import { getDateValueType, remapDateValue } from '../../internal/functional-comp
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
+import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputDateApi } from '../../internal/functional-components/input-date/api';
 import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
@@ -66,7 +67,6 @@ import type { InputDateDeps } from '../../internal/props/helpers/iso-date';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { submitFormOnEnter } from '../form/controller';
 
 const dateBem = bem.forBlock('kol-input-date');
 

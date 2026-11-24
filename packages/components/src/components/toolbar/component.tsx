@@ -3,6 +3,8 @@ import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from 
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { UnsubscribeFunction } from '../../internal/functional-components/link/aria-current-service';
+import { onLocationChange } from '../../internal/functional-components/link/aria-current-service';
 import type { ToolbarApi } from '../../internal/functional-components/toolbar/api';
 import { toolbarPropsConfig } from '../../internal/functional-components/toolbar/api';
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
@@ -14,8 +16,6 @@ import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
-import type { UnsubscribeFunction } from '../link/ariaCurrentService';
-import { onLocationChange } from '../link/ariaCurrentService';
 
 const ARROW_KEYS: KeyboardKey[] = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, KeyboardKey.ArrowRight, KeyboardKey.ArrowLeft];
 

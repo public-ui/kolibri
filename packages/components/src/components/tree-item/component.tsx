@@ -4,17 +4,17 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { KolTreeTag } from '../../core/component-names';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { UnsubscribeFunction } from '../../internal/functional-components/link/aria-current-service';
+import { onLocationChange } from '../../internal/functional-components/link/aria-current-service';
 import type { TreeItemApi } from '../../internal/functional-components/tree-item/api';
 import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
+import { invalidateOpenItemsCache } from '../../internal/functional-components/tree/open-items-cache';
 import { activeProp, ariaCurrentValueProp, hrefProp, labelLangSegmentsProp, openProp } from '../../internal/props';
 import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { UnsubscribeFunction } from '../link/ariaCurrentService';
-import { onLocationChange } from '../link/ariaCurrentService';
-import { invalidateOpenItemsCache } from '../tree/open-items-cache';
 
 /**
  * @slot - Further Children as TreeItem Components

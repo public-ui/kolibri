@@ -7,6 +7,7 @@ import type { ButtonApi } from '../../internal/functional-components/button/api'
 import { buttonPropsConfig } from '../../internal/functional-components/button/api';
 import { ButtonFC } from '../../internal/functional-components/button/component';
 import { FormAssociationBehavior } from '../../internal/functional-components/form-association/behavior';
+import { propagateResetEventToForm, propagateSubmitEventToForm } from '../../internal/functional-components/form/controller';
 import type { FunctionalComponentProps, PropsConfigShape } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import {
@@ -59,7 +60,6 @@ import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 
 /**
  * Shared orchestrator implementation for every custom element that renders `ButtonFC`:

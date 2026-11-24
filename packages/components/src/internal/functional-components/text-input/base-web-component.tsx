@@ -1,6 +1,5 @@
 import { h } from '@stencil/core';
 import type { VNode } from '@stencil/core/internal';
-import { submitFormOnEnter } from '../../../components/form/controller';
 import type {
 	AccessKeyPropType,
 	AutoCompletePropType,
@@ -35,6 +34,7 @@ import { BaseFormFieldWebComponent } from '../form-field/base-web-component';
 import type { FormFieldFCProps } from '../form-field/component';
 import type { InputFCProps } from '../form-field/input';
 import { SuggestionsFC } from '../form-field/suggestions';
+import { submitFormOnEnter } from '../form/controller';
 import type { TextInputBaseApi } from './api';
 
 type TextInputFieldProps = {

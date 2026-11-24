@@ -34,6 +34,7 @@ import { FieldControlFC, isFieldControlLabelShownAsTooltip } from '../../interna
 import type { InputFCProps } from '../../internal/functional-components/form-field/input';
 import { fillKeyOptionMap, normalizeOptionValues } from '../../internal/functional-components/form-field/options';
 import { RadioFC } from '../../internal/functional-components/form-field/radio';
+import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputRadioApi } from '../../internal/functional-components/input-radio/api';
 import { inputRadioPropsConfig } from '../../internal/functional-components/input-radio/api';
@@ -42,7 +43,6 @@ import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, v
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
-import { submitFormOnEnter } from '../form/controller';
 
 /**
  * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Only a single value can be selected at a time. Selected radio elements are typically represented by a filled, visually highlighted circle.

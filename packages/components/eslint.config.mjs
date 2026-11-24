@@ -158,17 +158,9 @@ export default [
 		},
 	},
 
-	// The demo components (click-button, skeleton) log their interactions by design; the e2e observes the log.
-	{
-		files: ['src/components/{click-button,skeleton}/**/*.{ts,tsx}'],
-		rules: {
-			'no-console': 'off',
-		},
-	},
-
 	// Skeleton blueprint import rules
 	{
-		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
+		files: ['src/components/**/*.{ts,tsx}', 'src/internal/**/*.{ts,tsx}'],
 		plugins: {
 			boundaries: boundariesPlugin,
 		},
@@ -183,12 +175,6 @@ export default [
 				 * Most specific pattern first: the plugin types a file with its first
 				 * matching element, so the specific entries must precede the generic ones.
 				 */
-				{ type: 'skeleton-web-components', pattern: ['src/components/click-button', 'src/components/skeleton'], mode: 'folder' },
-				{
-					type: 'skeleton-functional-components',
-					pattern: ['src/internal/functional-components/click-button', 'src/internal/functional-components/skeleton'],
-					mode: 'folder',
-				},
 				{ type: 'focus-decorator-utils', pattern: ['src/utils/element-interaction.ts', 'src/utils/element-focus.ts'], mode: 'file' },
 				{ type: 'testing-utils', pattern: 'src/utils/testing', mode: 'folder' },
 				{ type: 'web-components', pattern: 'src/components', mode: 'folder' },
@@ -206,7 +192,8 @@ export default [
 		rules: {
 			/**
 			 * Skeleton blueprint layers may only import files from their explicitly
-			 * allowed target directories.
+			 * allowed target directories. The shared internals never depend on the
+			 * web components that use them.
 			 */
 			'boundaries/dependencies': [
 				'error',
@@ -220,8 +207,6 @@ export default [
 								to: {
 									type: [
 										'web-components',
-										'skeleton-web-components',
-										'skeleton-functional-components',
 										'internal-functional-components',
 										'internal-props',
 										'focus-decorator-utils',
@@ -237,25 +222,22 @@ export default [
 							},
 						},
 						{
-							from: { type: 'skeleton-web-components' },
+							from: { type: ['internal-functional-components', 'internal-props'] },
 							allow: {
 								to: {
 									type: [
-										'skeleton-web-components',
-										'skeleton-functional-components',
 										'internal-functional-components',
 										'internal-props',
 										'focus-decorator-utils',
 										'schema',
 										'testing-utils',
+										'core',
+										'i18n',
+										'utils',
+										'e2e-helpers',
+										'legacy-functional-components',
 									],
 								},
-							},
-						},
-						{
-							from: { type: 'skeleton-functional-components' },
-							allow: {
-								to: { type: ['skeleton-functional-components', 'internal-functional-components', 'internal-props', 'schema', 'focus-decorator-utils'] },
 							},
 						},
 					],

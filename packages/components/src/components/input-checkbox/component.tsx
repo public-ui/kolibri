@@ -37,6 +37,7 @@ import { CheckboxFC } from '../../internal/functional-components/form-field/chec
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
 import type { InputFCProps } from '../../internal/functional-components/form-field/input';
+import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputCheckboxApi } from '../../internal/functional-components/input-checkbox/api';
 import { inputCheckboxPropsConfig } from '../../internal/functional-components/input-checkbox/api';
@@ -53,7 +54,6 @@ import {
 } from '../../internal/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { submitFormOnEnter } from '../form/controller';
 
 const checkboxBem = bem.forBlock('kol-input-checkbox');
 

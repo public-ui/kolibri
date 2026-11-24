@@ -1,5 +1,5 @@
-import { KolFormTag } from '../../core/component-names';
-import { devHint, getExperimentalMode, KoliBriDevHelper, Log, setEventTarget } from '../../schema';
+import { KolFormTag } from '../../../core/component-names';
+import { devHint, getExperimentalMode, KoliBriDevHelper, Log, setEventTarget } from '../../../schema';
 
 const searchFormElement = (el?: HTMLElement | ParentNode | null): HTMLElement | ParentNode | null | undefined => {
 	if (getExperimentalMode()) {

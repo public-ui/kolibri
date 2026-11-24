@@ -1,6 +1,5 @@
 import { getFeatureFlag } from 'adopted-style-sheets';
 
-import { propagateResetEventToForm, propagateSubmitEventToForm } from '../../../components/form/controller';
 import type { ToolbarItemPropType } from '../../../schema';
 import { setEventTarget } from '../../../schema';
 import { createUniqueId } from '../../../utils/dev.utils';
@@ -9,6 +8,7 @@ import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { BaseWebComponent } from '../base-web-component';
 import type { ButtonApi } from '../button/api';
 import { resolveButtonProps } from '../button/resolve-props';
+import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { LinkApi } from '../link/api';
 import type { EmbeddedLinkProps } from '../link/resolve-props';

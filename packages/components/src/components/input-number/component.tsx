@@ -42,6 +42,7 @@ import { InputContainerFC } from '../../internal/functional-components/form-fiel
 import type { NumberValueType } from '../../internal/functional-components/form-field/number-value';
 import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
+import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { InputNumberApi } from '../../internal/functional-components/input-number/api';
@@ -65,7 +66,6 @@ import {
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { submitFormOnEnter } from '../form/controller';
 
 const numberBem = bem.forBlock('kol-input-number');
 const STEP_BUTTON_CLASS = numberBem('step-button');
