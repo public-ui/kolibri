@@ -63,6 +63,17 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 	}
 
 	/**
+	 * Defines the target URI of the link.
+	 */
+	@Prop()
+	public _href!: HrefPropType;
+
+	@Watch('_href')
+	public watchHref(value?: HrefPropType): void {
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+	}
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
@@ -85,17 +96,6 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 			this.open = v;
 			invalidateOpenItemsCache(this.getTree());
 		});
-	}
-
-	/**
-	 * Defines the target URI of the link.
-	 */
-	@Prop()
-	public _href!: HrefPropType;
-
-	@Watch('_href')
-	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	/**

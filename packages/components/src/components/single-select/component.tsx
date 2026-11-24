@@ -150,17 +150,6 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	}
 
 	/**
-	 * Defines the placeholder for input field. To be shown when there's no value.
-	 */
-	@Prop()
-	public _placeholder?: PlaceholderPropType = undefined;
-
-	@Watch('_placeholder')
-	public watchPlaceholder(value?: PlaceholderPropType): void {
-		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
-	}
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop()
@@ -172,14 +161,14 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * Shows the clear button if enabled.
 	 */
 	@Prop()
-	public _hideMsg?: HideMsgPropType = false;
+	public _hasClearButton?: HasClearButtonPropType = true;
 
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
+	@Watch('_hasClearButton')
+	public watchHasClearButton(value?: HasClearButtonPropType): void {
+		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
 	}
 
 	/**
@@ -192,6 +181,17 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
 	}
 
 	/**
@@ -290,6 +290,17 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	}
 
 	/**
+	 * Defines the placeholder for input field. To be shown when there's no value.
+	 */
+	@Prop()
+	public _placeholder?: PlaceholderPropType = undefined;
+
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: PlaceholderPropType): void {
+		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
+	}
+
+	/**
 	 * Makes the input element required.
 	 */
 	@Prop()
@@ -298,6 +309,17 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
 		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Maximum number of visible rows of the element.
+	 */
+	@Prop()
+	public _rows?: RowsPropType = undefined;
+
+	@Watch('_rows')
+	public watchRows(value?: RowsPropType): void {
+		rowsProp.apply(value, (v) => this.setRenderProp('rows', v));
 	}
 
 	/**
@@ -358,28 +380,6 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	}
 
 	/**
-	 * Shows the clear button if enabled.
-	 */
-	@Prop()
-	public _hasClearButton?: HasClearButtonPropType = true;
-
-	@Watch('_hasClearButton')
-	public watchHasClearButton(value?: HasClearButtonPropType): void {
-		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
-	}
-
-	/**
-	 * Maximum number of visible rows of the element.
-	 */
-	@Prop()
-	public _rows?: RowsPropType = undefined;
-
-	@Watch('_rows')
-	public watchRows(value?: RowsPropType): void {
-		rowsProp.apply(value, (v) => this.setRenderProp('rows', v));
-	}
-
-	/**
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop()
@@ -412,27 +412,27 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	public componentWillLoad(): void {
 		this.optionRefs = [];
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
-		this.watchShortKey(this._shortKey);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
 		this.watchOn(this._on);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
 		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
 		this.applyOptions(this._options);
-		this.watchRequired(this._required);
-		this.watchPlaceholder(this._placeholder);
 		this.watchHasClearButton(this._hasClearButton);
+		this.watchPlaceholder(this._placeholder);
+		this.watchRequired(this._required);
 		this.watchRows(this._rows);
 
 		this.filteredOptions = this.getRenderProp('options');

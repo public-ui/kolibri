@@ -164,14 +164,15 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * Shows a character counter for the input element.
 	 */
 	@Prop()
-	public _hideMsg?: HideMsgPropType = false;
+	public _hasCounter?: HasCounterPropType = false;
 
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
+	@Watch('_hasCounter')
+	public watchHasCounter(value?: HasCounterPropType): void {
+		this.counter.watchHasCounter(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	/**
@@ -184,6 +185,17 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
 	}
 
 	/**
@@ -240,18 +252,6 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 	public watchMaxLength(value?: MaxLengthPropType): void {
 		this.counter.watchMaxLength(value);
 		this.counter.updateImmediate(this._value?.length ?? 0);
-	}
-
-	/**
-	 * Shows a character counter for the input element.
-	 */
-	@Prop()
-	public _hasCounter?: HasCounterPropType = false;
-
-	@Watch('_hasCounter')
-	public watchHasCounter(value?: HasCounterPropType): void {
-		this.counter.watchHasCounter(value);
-		this.needsImmediateCounterUpdate = true;
 	}
 
 	/**
@@ -322,6 +322,17 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 	}
 
 	/**
+	 * Makes the input element required.
+	 */
+	@Prop()
+	public _required?: RequiredPropType = false;
+
+	@Watch('_required')
+	public watchRequired(value?: RequiredPropType): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
 	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
 	 * In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `vertical` (default) and `none`.
 	 */
@@ -331,17 +342,6 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 	@Watch('_resize')
 	public watchResize(value?: TextareaResizePropType): void {
 		resizeProp.apply(value, (v) => this.setRenderProp('resize', v));
-	}
-
-	/**
-	 * Makes the input element required.
-	 */
-	@Prop()
-	public _required?: RequiredPropType = false;
-
-	@Watch('_required')
-	public watchRequired(value?: RequiredPropType): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
 	}
 
 	/**
@@ -471,25 +471,25 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 	public componentWillLoad(): void {
 		this.watchAriaDetails(this._ariaDetails);
 		this._touched = this._touched === true;
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
 		this.watchAdjustHeight(this._adjustHeight);
-		this.watchMsg(this._msg);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
+		this.watchHasCounter(this._hasCounter);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
-		this.watchShortKey(this._shortKey);
-		this.watchOn(this._on);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchHasCounter(this._hasCounter);
 		this.watchMaxLengthBehavior(this._maxLengthBehavior);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
+		this.watchOn(this._on);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
+		this.watchVariant(this._variant);
 		// Without a counter update: `componentDidLoad` fills the counter once its spans exist.
 		this.counter.watchMaxLength(this._maxLength);
 		this.watchPlaceholder(this._placeholder);

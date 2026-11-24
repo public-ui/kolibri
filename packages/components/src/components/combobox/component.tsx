@@ -145,17 +145,6 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	}
 
 	/**
-	 * Defines the placeholder for input field. To be shown when there's no value.
-	 */
-	@Prop()
-	public _placeholder?: PlaceholderPropType = undefined;
-
-	@Watch('_placeholder')
-	public watchPlaceholder(value?: PlaceholderPropType): void {
-		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
-	}
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop()
@@ -167,14 +156,14 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * Shows the clear button if enabled.
 	 */
 	@Prop()
-	public _hideMsg?: HideMsgPropType = false;
+	public _hasClearButton?: HasClearButtonPropType = true;
 
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
+	@Watch('_hasClearButton')
+	public watchHasClearButton(value?: HasClearButtonPropType): void {
+		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
 	}
 
 	/**
@@ -187,6 +176,17 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
 	}
 
 	/**
@@ -267,29 +267,14 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	}
 
 	/**
-	 * Shows the clear button if enabled.
+	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop()
-	public _hasClearButton?: HasClearButtonPropType = true;
+	public _placeholder?: PlaceholderPropType = undefined;
 
-	@Watch('_hasClearButton')
-	public watchHasClearButton(value?: HasClearButtonPropType): void {
-		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
-	}
-
-	/**
-	 * Suggestions to provide for the input.
-	 */
-	@Prop()
-	public _suggestions!: SuggestionsPropType;
-
-	/** Parses the raw prop into the render prop, then filters the parsed suggestions by the `_value` prop. */
-	@Watch('_suggestions')
-	public watchSuggestions(value?: SuggestionsPropType): void {
-		this.applySuggestions(value);
-		// An empty query derives the full list from the parsed render prop, so a `_value` that is not set
-		// yet still shows the suggestions instead of leaving the raw JSON string in place.
-		this.setFilteredSuggestionsByQuery(this._value ?? '');
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: PlaceholderPropType): void {
+		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
 	}
 
 	/**
@@ -313,6 +298,21 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	public watchShortKey(value?: ShortKeyPropType): void {
 		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
 		validateAccessAndShortKey(this._accessKey, value);
+	}
+
+	/**
+	 * Suggestions to provide for the input.
+	 */
+	@Prop()
+	public _suggestions!: SuggestionsPropType;
+
+	/** Parses the raw prop into the render prop, then filters the parsed suggestions by the `_value` prop. */
+	@Watch('_suggestions')
+	public watchSuggestions(value?: SuggestionsPropType): void {
+		this.applySuggestions(value);
+		// An empty query derives the full list from the parsed render prop, so a `_value` that is not set
+		// yet still shows the suggestions instead of leaving the raw JSON string in place.
+		this.setFilteredSuggestionsByQuery(this._value ?? '');
 	}
 
 	/**
@@ -406,26 +406,26 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 
 		this.optionRefs = [];
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
+		this.watchHasClearButton(this._hasClearButton);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
-		this.watchShortKey(this._shortKey);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
 		this.watchOn(this._on);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchHasClearButton(this._hasClearButton);
 		this.watchPlaceholder(this._placeholder);
 		this.watchRequired(this._required);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
+		this.watchVariant(this._variant);
 		this.applySuggestions(this._suggestions);
 		this.applyValue(this._value);
 

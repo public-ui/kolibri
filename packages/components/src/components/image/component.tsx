@@ -50,6 +50,17 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	}
 
 	/**
+	 * Defines callbacks for image load events (`onError`, `onLoad`).
+	 */
+	@Prop()
+	public _on?: KoliBriImageEventCallbacks = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriImageEventCallbacks): void {
+		imageCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+	}
+
+	/**
 	 * Defines the image sizes for different screen resolutions, supporting _srcset.
 	 */
 	@Prop()
@@ -80,17 +91,6 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	@Watch('_srcset')
 	public watchSrcset(value?: SrcsetPropType): void {
 		srcsetProp.apply(value, (v) => this.setRenderProp('srcset', v));
-	}
-
-	/**
-	 * Defines callbacks for image load events (`onError`, `onLoad`).
-	 */
-	@Prop()
-	public _on?: KoliBriImageEventCallbacks = undefined;
-
-	@Watch('_on')
-	public watchOn(value?: KoliBriImageEventCallbacks): void {
-		imageCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
 	}
 
 	public componentWillLoad(): void {

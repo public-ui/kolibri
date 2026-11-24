@@ -106,17 +106,6 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
-	 * Defines whether the input can be auto-completed.
-	 */
-	@Prop()
-	public _autoComplete?: AutoCompletePropType = 'off';
-
-	@Watch('_autoComplete')
-	public watchAutoComplete(value?: AutoCompletePropType): void {
-		this.applyAutoComplete(value);
-	}
-
-	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
@@ -130,25 +119,14 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
-	 * Shows a character counter for the input element.
+	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop()
-	public _hasCounter?: HasCounterPropType = false;
+	public _autoComplete?: AutoCompletePropType = 'off';
 
-	@Watch('_hasCounter')
-	public watchHasCounter(value?: HasCounterPropType): void {
-		this.applyHasCounter(value);
-	}
-
-	/**
-	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
-	 */
-	@Prop()
-	public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
-
-	@Watch('_maxLengthBehavior')
-	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
-		this.applyMaxLengthBehavior(value);
+	@Watch('_autoComplete')
+	public watchAutoComplete(value?: AutoCompletePropType): void {
+		this.applyAutoComplete(value);
 	}
 
 	/**
@@ -163,14 +141,14 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * Shows a character counter for the input element.
 	 */
 	@Prop()
-	public _hideMsg?: HideMsgPropType = false;
+	public _hasCounter?: HasCounterPropType = false;
 
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
+	@Watch('_hasCounter')
+	public watchHasCounter(value?: HasCounterPropType): void {
+		this.applyHasCounter(value);
 	}
 
 	/**
@@ -183,6 +161,17 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
 	}
 
 	/**
@@ -238,6 +227,17 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	@Watch('_maxLength')
 	public watchMaxLength(value?: MaxLengthPropType): void {
 		this.applyMaxLength(value);
+	}
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop()
+	public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
+
+	@Watch('_maxLengthBehavior')
+	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.applyMaxLengthBehavior(value);
 	}
 
 	/**
@@ -329,6 +329,17 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 */
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
+
+	@Watch('_smartButton')
+	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
+		this.applySmartButton(value);
+	}
+
+	/**
 	 * Defines whether the browser should check the spelling and grammar.
 	 */
 	@Prop()
@@ -348,17 +359,6 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
 		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
-	}
-
-	/**
-	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
-	 */
-	@Prop()
-	public _smartButton?: Stringified<InternalButtonProps> = undefined;
-
-	@Watch('_smartButton')
-	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
-		this.applySmartButton(value);
 	}
 
 	/**
@@ -515,34 +515,34 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	public componentWillLoad(): void {
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
+		this.watchHasCounter(this._hasCounter);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
+		this.watchMaxLengthBehavior(this._maxLengthBehavior);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
+		this.watchOn(this._on);
 		this.watchShortKey(this._shortKey);
 		this.watchSmartButton(this._smartButton);
-		this.watchOn(this._on);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
 		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchAutoComplete(this._autoComplete);
-		this.watchHasCounter(this._hasCounter);
-		this.watchMaxLengthBehavior(this._maxLengthBehavior);
 		this.initMaxLength(this._maxLength);
 		this.watchPattern(this._pattern);
 		this.watchPlaceholder(this._placeholder);
 		this.watchReadOnly(this._readOnly);
 		this.watchRequired(this._required);
-		this.watchSuggestions(this._suggestions);
 		this.watchSpellCheck(this._spellCheck);
+		this.watchSuggestions(this._suggestions);
 		this.watchType(this._type);
 		this.initValue(this._value);
 		this.initHasValue();

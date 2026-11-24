@@ -165,17 +165,6 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 */
-	@Prop()
-	public _hideMsg?: HideMsgPropType = false;
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
-	}
-
-	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
@@ -185,6 +174,17 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
 	}
 
 	/**
@@ -336,6 +336,17 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	}
 
 	/**
+	 * Defines the step size for value changes.
+	 */
+	@Prop()
+	public _step?: number | NumberString = undefined;
+
+	@Watch('_step')
+	public watchStep(value?: number | NumberString): void {
+		stepProp.apply(value, (v) => this.setRenderProp('step', v));
+	}
+
+	/**
 	 * Suggestions to provide for the input.
 	 */
 	@Prop()
@@ -356,17 +367,6 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
 		this.applySyncValueBySelector(value);
-	}
-
-	/**
-	 * Defines the step size for value changes.
-	 */
-	@Prop()
-	public _step?: number | NumberString = undefined;
-
-	@Watch('_step')
-	public watchStep(value?: number | NumberString): void {
-		stepProp.apply(value, (v) => this.setRenderProp('step', v));
 	}
 
 	/**
@@ -487,33 +487,33 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 			this.valueType = getDateValueType(this._value);
 		}
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
-		this.watchShortKey(this._shortKey);
-		this.watchSmartButton(this._smartButton);
-		this.watchOn(this._on);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchAutoComplete(this._autoComplete);
 		this.watchMax(this._max);
 		this.watchMin(this._min);
-		this.watchSuggestions(this._suggestions);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
+		this.watchOn(this._on);
 		this.watchReadOnly(this._readOnly);
 		this.watchRequired(this._required);
+		this.watchShortKey(this._shortKey);
+		this.watchSmartButton(this._smartButton);
 		this.watchStep(this._step);
+		this.watchSuggestions(this._suggestions);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchType(this._type);
 		this.watchValue(this._value);
+		this.watchVariant(this._variant);
 
 		this.hasValue = Boolean(this.getRenderProp('value'));
 	}

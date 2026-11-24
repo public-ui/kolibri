@@ -145,9 +145,9 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 
 	public componentWillLoad(): void {
 		this.watchCollapsible(this._collapsible);
-		this.watchHideLabel(this._hideLabel);
 		this.watchHasCompactButton(this._hasCompactButton);
 		this.watchHasIconsWhenExpanded(this._hasIconsWhenExpanded);
+		this.watchHideLabel(this._hideLabel);
 		this.applyLabel(this._label, true);
 		this.watchLinks(this._links);
 	}

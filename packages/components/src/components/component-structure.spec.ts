@@ -400,3 +400,82 @@ describe('Interaction test files', () => {
 		expect(misnamed).toEqual([]);
 	});
 });
+
+describe('Prop order along the chain', () => {
+	/**
+	 * The props stand in alphabetical order of their name in the props config, as `@Prop` members and
+	 * in the watcher calls of `componentWillLoad`. A comment or a blank line in `componentWillLoad`
+	 * separates calls whose order matters; each run between them is sorted on its own.
+	 */
+	const compare = (a: string, b: string): number => a.localeCompare(b, 'en', { sensitivity: 'base' });
+	const unsorted = (names: string[]): string[] => names.filter((name, index) => index > 0 && compare(names[index - 1], name) > 0);
+	/** `kol-tooltip-wc` is deprecated and stays unchanged. */
+	const components = SOURCES.filter(({ file, text }) => text.includes('@Component(') && !file.endsWith(path.join('tooltip', 'component.tsx')));
+
+	it.each(components.map(({ file, source }) => [path.relative(SRC, file), source]))('%s declares its @Prop members in alphabetical order', (_name, source) => {
+		const problems = classesOf(source)
+			.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
+			.flatMap((cls) =>
+				unsorted(cls.members.filter((member) => decoratorNames(member).includes('Prop')).map((member) => memberName(member).replace(/^_/, ''))),
+			);
+		expect(problems).toEqual([]);
+	});
+
+	it.each(components.map(({ file, source }) => [path.relative(SRC, file), source]))(
+		'%s calls the watchers in componentWillLoad in alphabetical order',
+		(_name, source) => {
+			const problems = classesOf(source)
+				.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
+				.flatMap((cls) => {
+					const componentWillLoad = cls.members.find(
+						(member): member is ts.MethodDeclaration => ts.isMethodDeclaration(member) && memberName(member) === 'componentWillLoad',
+					);
+					const runs: string[][] = [[]];
+					componentWillLoad?.body?.statements.forEach((statement) => {
+						const call = ts.isExpressionStatement(statement) ? statement.expression : undefined;
+						const argument = call && ts.isCallExpression(call) ? call.arguments[0] : undefined;
+						const isWatcherCall =
+							call !== undefined &&
+							ts.isCallExpression(call) &&
+							ts.isPropertyAccessExpression(call.expression) &&
+							call.expression.expression.kind === ts.SyntaxKind.ThisKeyword &&
+							call.expression.name.text.startsWith('watch') &&
+							argument !== undefined &&
+							ts.isPropertyAccessExpression(argument) &&
+							argument.expression.kind === ts.SyntaxKind.ThisKeyword;
+						const separated = /\/\/|\/\*|\n\s*\n/.test(source.text.slice(statement.getFullStart(), statement.getStart()));
+						if (!isWatcherCall || separated) runs.push([]);
+						if (isWatcherCall) runs[runs.length - 1].push(argument.name.text.replace(/^_/, ''));
+					});
+					return runs.flatMap(unsorted);
+				});
+			expect(problems).toEqual([]);
+		},
+	);
+
+	it('lists the prop definitions of every props config in alphabetical order', () => {
+		const problems = fs
+			.readdirSync(path.join(SRC, 'internal', 'functional-components'), { withFileTypes: true })
+			.filter((entry) => entry.isDirectory())
+			.map((entry) => path.join(SRC, 'internal', 'functional-components', entry.name, 'api.tsx'))
+			.filter((file) => fs.existsSync(file))
+			.flatMap((file) => {
+				const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+				const found: string[] = [];
+				const visit = (node: ts.Node): void => {
+					if (
+						ts.isPropertyAssignment(node) &&
+						['optional', 'required'].includes(node.name.getText()) &&
+						ts.isArrayLiteralExpression(node.initializer) &&
+						node.initializer.elements.every(ts.isIdentifier)
+					) {
+						unsorted(node.initializer.elements.map((element) => element.getText())).forEach((name) => found.push(`${path.relative(SRC, file)}: ${name}`));
+					}
+					ts.forEachChild(node, visit);
+				};
+				visit(source);
+				return found;
+			});
+		expect(problems).toEqual([]);
+	});
+});
