@@ -6,6 +6,7 @@ import type { FunctionalComponentProps } from '../../../../internals/src/control
 import type { MeterApi } from '../../../../internals/src/controller/meter/api';
 import { bem } from '../../../../internals/src/schema/bem-registry';
 import { trimLabel } from '../../../../internals/src/schema/index';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import { renderLabelWithLang } from '../span/component';
 
 type MeterState = 'optimum' | 'suboptimal' | 'critical';
@@ -87,7 +88,7 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
 
 	return (
-		<div class={meterBem({ vertical: isVertical })}>
+		<BemRootNodeFC block="kol-meter" modifiers={{ vertical: isVertical }}>
 			<div class={meterBem('bar')}>
 				<div class={meterBem('bar-label')}>
 					{renderLabelWithLang(label)}
@@ -118,6 +119,6 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 					<span class={meterBem('unit')}>{unit}</span>
 				</span>
 			</div>
-		</div>
+		</BemRootNodeFC>
 	);
 };

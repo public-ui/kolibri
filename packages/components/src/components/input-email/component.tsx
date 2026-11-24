@@ -41,12 +41,16 @@ import type { PropsConfigShape, WebComponentInterface } from '../../../internals
 import type { InputEmailApi } from '../../../internals/src/controller/input-email/api';
 import { inputEmailPropsConfig } from '../../../internals/src/controller/input-email/api';
 import { multipleProp, suggestionsProp } from '../../../internals/src/props/index';
+import { bem } from '../../../internals/src/schema/bem-registry';
+import clsx from '../../../internals/src/utils/clsx';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
+
+const emailBem = bem.forBlock('kol-input-email');
 
 /**
  * The **Email** input type creates an input field for email addresses. It supports built-in format validation, multiple addresses via the `_multiple` property, and auto-complete suggestions.
@@ -459,7 +463,7 @@ export class KolInputEmail
 
 		return (
 			<Host>
-				<FormFieldFC {...this.getTextFormFieldProps('kol-input-email email')}>
+				<FormFieldFC {...this.getTextFormFieldProps(clsx(emailBem(), 'email'))}>
 					<InputContainerFC
 						disabled={this.getRenderProp('disabled')}
 						msg={this.getRenderProp('msg')}

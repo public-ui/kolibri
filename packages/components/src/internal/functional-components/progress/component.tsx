@@ -8,6 +8,7 @@ import type { FunctionalComponentProps } from '../../../../internals/src/control
 import { progressPropsConfig, type ProgressApi } from '../../../../internals/src/controller/progress/api';
 import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
 import type { ProgressVariantType } from '../../../../internals/src/props/index';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import { renderLabelWithLang } from '../span/component';
 
 const FULL_CIRCLE = 342;
@@ -79,7 +80,7 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 		: translate('kol-live-value-bounded', { placeholders: { value: String(liveProgressValue), max: String(max), unit } });
 
 	return (
-		<div class={progressBem()}>
+		<BemRootNodeFC block="kol-progress">
 			<div aria-hidden="true" class={progressBem(variant === 'cycle' ? 'cycle' : 'bar')}>
 				{variant === 'bar' && label && <div class={progressBem('bar-label')}>{renderLabelWithLang(label)}</div>}
 				{createProgressSVG(variant, max, value)}
@@ -109,6 +110,6 @@ export const ProgressFC: FC<FunctionalComponentProps<ProgressApi>> = (props) => 
 			<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 				{liveValueText}
 			</span>
-		</div>
+		</BemRootNodeFC>
 	);
 };

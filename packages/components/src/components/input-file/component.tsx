@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { bem } from '../../../internals/src/schema/bem-registry';
 import type {
 	AcceptPropType,
 	AccessKeyPropType,
@@ -46,6 +47,7 @@ import {
 	smartButtonProp,
 	variantProp,
 } from '../../../internals/src/props/index';
+import clsx from '../../../internals/src/utils/clsx';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { ButtonFC } from '../../internal/functional-components/button/component';
@@ -55,6 +57,8 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
+
+const fileBem = bem.forBlock('kol-input-file');
 
 /**
  * The **File** input type creates an input field for file uploads. One or multiple files can be selected and submitted with a form.
@@ -507,7 +511,7 @@ export class KolInputFile
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: 'kol-input-file file',
+						class: clsx(fileBem(), 'file'),
 						accessKey: this.getRenderProp('accessKey') || undefined,
 						shortKey: this.getRenderProp('shortKey') || undefined,
 						variant: this.getRenderProp('variant'),
@@ -527,9 +531,9 @@ export class KolInputFile
 					>
 						<InputFileNameFC filename={this.filename} hasFile={this.hasFileSelected} />
 						<InputFC {...this.getInputProps()} />
+						{/* The transparent file input covers the button and is the only tab stop; it opens the file dialog on click, Enter and Space. */}
 						<ButtonFC
 							{...this.browseButton.getFcProps(
-								/* The transparent file input covers the button and is the only tab stop; it opens the file dialog on click, Enter and Space. */
 								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled, _tabIndex: -1 },
 								{ class: BEM_CLASS_INPUT_CONTAINER__BUTTON, 'aria-hidden': 'true' },
 							)}

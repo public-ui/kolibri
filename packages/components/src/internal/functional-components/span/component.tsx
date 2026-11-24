@@ -9,6 +9,7 @@ import type { IconOrIconClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriIconsP
 import { showExpertSlot } from '../../../../internals/src/schema/index';
 import clsx from '../../../../internals/src/utils/clsx';
 import { md } from '../../../../internals/src/utils/markdown';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import { IconFC } from '../icon/component';
 
 const spanBem = bem.forBlock('kol-span');
@@ -131,15 +132,15 @@ export const SpanFC: FC<
 	const hideExpertSlot = !showExpertSlot(label);
 
 	return (
-		<span
+		<BemRootNodeFC
+			component="span"
 			{...htmlAttributes}
-			class={clsx(
-				spanBem({
-					'has-badge': !!badgeText,
-					'hide-label': !!hideLabel,
-				}),
-				classNames,
-			)}
+			block="kol-span"
+			modifiers={{
+				'has-badge': !!badgeText,
+				'hide-label': !!hideLabel,
+			}}
+			class={classNames}
 		>
 			{renderIcon(top, 'top')}
 			<span class={spanBem('container')}>
@@ -156,6 +157,6 @@ export const SpanFC: FC<
 				{renderIcon(right, 'right')}
 			</span>
 			{renderIcon(bottom, 'bottom')}
-		</span>
+		</BemRootNodeFC>
 	);
 };

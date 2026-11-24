@@ -1,5 +1,6 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { bem } from '../../../internals/src/schema/bem-registry';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -43,6 +44,7 @@ import type { InputPasswordApi } from '../../../internals/src/controller/input-p
 import { inputPasswordPropsConfig } from '../../../internals/src/controller/input-password/api';
 import { translate } from '../../../internals/src/i18n';
 import { visibilityToggleProp } from '../../../internals/src/props/index';
+import clsx from '../../../internals/src/utils/clsx';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { ButtonFC } from '../../internal/functional-components/button/component';
@@ -50,6 +52,8 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
+
+const passwordBem = bem.forBlock('kol-input-password');
 
 /**
  * The **Password** input type creates an input field for passwords. The input is masked with dot symbols.
@@ -483,7 +487,7 @@ export class KolInputPassword
 						_on: { onClick: this.handleVisibilityToggle },
 					},
 					{
-						class: 'kol-input-password__password-toggle-button kol-input-container__smart-button',
+						class: clsx(passwordBem('password-toggle-button'), 'kol-input-container__smart-button'),
 					},
 				)}
 			/>
@@ -495,7 +499,7 @@ export class KolInputPassword
 
 		return (
 			<Host>
-				<FormFieldFC {...this.getTextFormFieldProps('kol-input-password password')}>
+				<FormFieldFC {...this.getTextFormFieldProps(clsx(passwordBem(), 'password'))}>
 					<InputContainerFC
 						disabled={this.getRenderProp('disabled')}
 						msg={this.getRenderProp('msg')}

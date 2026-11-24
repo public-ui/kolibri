@@ -44,6 +44,7 @@ import type { InputTextApi } from '../../../internals/src/controller/input-text/
 import { inputTextPropsConfig } from '../../../internals/src/controller/input-text/api';
 import { translate } from '../../../internals/src/i18n';
 import { inputTextTypeProp, spellCheckProp, suggestionsProp } from '../../../internals/src/props/index';
+import { bem } from '../../../internals/src/schema/bem-registry';
 import clsx from '../../../internals/src/utils/clsx';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
@@ -53,6 +54,8 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
+
+const textBem = bem.forBlock('kol-input-text');
 
 /**
  * The **Text** input type creates an input field for plain text, search terms, URLs, or phone numbers.
@@ -574,7 +577,7 @@ export class KolInputText
 						_on: { onClick: this.handleClearButtonClick },
 					},
 					{
-						class: clsx('kol-input-text__clear-button', 'kol-input-container__smart-button', {
+						class: clsx(textBem('clear-button'), 'kol-input-container__smart-button', {
 							'kol-input-text__clear-button--hidden': !canClear,
 						}),
 					},
@@ -589,7 +592,7 @@ export class KolInputText
 
 		return (
 			<Host>
-				<FormFieldFC {...this.getTextFormFieldProps(`kol-input-text ${type}`)}>
+				<FormFieldFC {...this.getTextFormFieldProps(clsx(textBem(), type))}>
 					<InputContainerFC
 						disabled={this.getRenderProp('disabled')}
 						msg={this.getRenderProp('msg')}

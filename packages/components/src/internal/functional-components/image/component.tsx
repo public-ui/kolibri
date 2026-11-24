@@ -2,7 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import type { LoadingType } from '../../../../internals/src/props/index';
-import { bem } from '../../../../internals/src/schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 
 type ImageFCProps = {
 	alt: string;
@@ -14,15 +14,13 @@ type ImageFCProps = {
 	handleLoad: (event: Event) => void;
 };
 
-const imageBem = bem.forBlock('kol-image');
-const BEM_CLASS_IMAGE = imageBem();
-
 export const ImageFC: FC<ImageFCProps> = (props) => {
 	const { alt, loading, sizes, src, srcset, handleError, handleLoad } = props;
 
 	return (
-		<img
-			class={BEM_CLASS_IMAGE}
+		<BemRootNodeFC
+			component="img"
+			block="kol-image"
 			alt={alt}
 			loading={loading}
 			sizes={sizes || undefined}

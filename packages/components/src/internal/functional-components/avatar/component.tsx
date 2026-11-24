@@ -7,9 +7,9 @@ import { resolveFcProps } from '../../../../internals/src/controller/props-from-
 import { translate } from '../../../../internals/src/i18n';
 import { bem } from '../../../../internals/src/schema/bem-registry';
 import { trimLabel } from '../../../../internals/src/schema/index';
+import { BemRootNodeFC } from '../bem-root-node/component';
 
 const avatarBem = bem.forBlock('kol-avatar');
-const BEM_CLASS_AVATAR = avatarBem();
 const BEM_CLASS_AVATAR__IMAGE = avatarBem('image');
 const BEM_CLASS_AVATAR__INITIALS = avatarBem('initials');
 
@@ -17,9 +17,9 @@ export const AvatarFC: FC<FunctionalComponentProps<AvatarApi>> = (props) => {
 	const { color, initials, label, src } = resolveFcProps(avatarPropsConfig, props);
 
 	return (
-		<div
+		<BemRootNodeFC
 			aria-label={translate('kol-avatar-alt', { placeholders: { name: trimLabel(label) } })}
-			class={BEM_CLASS_AVATAR}
+			block="kol-avatar"
 			role="img"
 			style={{
 				backgroundColor: color.backgroundColor,
@@ -33,6 +33,6 @@ export const AvatarFC: FC<FunctionalComponentProps<AvatarApi>> = (props) => {
 					{initials}
 				</span>
 			)}
-		</div>
+		</BemRootNodeFC>
 	);
 };

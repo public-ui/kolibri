@@ -18,7 +18,7 @@ import { lockScroll, unlockScroll } from '../../../internals/src/utils/scroll-lo
 import { handleCancelOverlay } from '../../../internals/src/utils/tooltip-open-tracking';
 import type { CardFCProps } from '../../internal/functional-components/card/component';
 import { CardFC } from '../../internal/functional-components/card/component';
-import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
+import { DialogFC } from '../../internal/functional-components/dialog/component';
 
 /**
  * Orchestrator shared by `kol-dialog` and the deprecated `kol-modal`. Both render the same
@@ -187,13 +187,13 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 
 		return (
 			<DialogFC
-				blockClass={dialogBlockClass(variant)}
 				handleCancel={this.handleCancel}
 				handleClose={this.handleClose}
 				label={trimLabel(this.getRenderProp('label'))}
 				labelledBy={isCard ? this.getState('headingId') : undefined}
 				modal={this.getState('modal')}
 				refDialog={this.dialogRef}
+				variant={variant}
 				width={this.getRenderProp('width')}
 			>
 				{isCard ? <CardFC {...this.buildCardProps()}>{this.renderSlot()}</CardFC> : this.renderSlot()}

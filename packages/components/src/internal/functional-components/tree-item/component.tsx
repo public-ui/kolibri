@@ -7,12 +7,12 @@ import { linkPropsConfig } from '../../../../internals/src/controller/link/api';
 import { buildDefaultPropsFromConfig } from '../../../../internals/src/controller/props-from-config';
 import type { TreeItemApi } from '../../../../internals/src/controller/tree-item/api';
 import { bem } from '../../../../internals/src/schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import { IconFC } from '../icon/component';
 import { LinkFC } from '../link/component';
 import { renderLabelWithLang } from '../span/component';
 
 const treeItemBem = bem.forBlock('kol-tree-item');
-const BEM_CLASS_TREE_ITEM = treeItemBem();
 const BEM_CLASS_TREE_ITEM__CHILDREN = treeItemBem('children');
 const BEM_CLASS_TREE_ITEM__LINK_INNER = treeItemBem('link-inner');
 const BEM_CLASS_TREE_ITEM__TEXT = treeItemBem('text');
@@ -55,7 +55,7 @@ export const TreeItemFC: FC<FunctionalComponentProps<TreeItemApi>> = ({
 	open,
 	refAnchor,
 }) => (
-	<li class={BEM_CLASS_TREE_ITEM} role="none" style={{ '--level': `${level}` }}>
+	<BemRootNodeFC component="li" block="kol-tree-item" role="none" style={{ '--level': `${level}` }}>
 		<span class={treeItemBem('link', { active, 'first-level': level === 0 })}>
 			<LinkFC
 				{...LINK_DEFAULTS}
@@ -92,5 +92,5 @@ export const TreeItemFC: FC<FunctionalComponentProps<TreeItemApi>> = ({
 		<ul class={BEM_CLASS_TREE_ITEM__CHILDREN} hidden={!hasChildren || !open} role="group" id={groupId}>
 			<slot onSlotchange={handleSlotchange} />
 		</ul>
-	</li>
+	</BemRootNodeFC>
 );

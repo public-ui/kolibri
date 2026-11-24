@@ -4,7 +4,6 @@ import { Component, h, Host, Method, State } from '@stencil/core';
 import { translate } from '../../../internals/src/i18n';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 
-import { KolButtonTag } from '../../../internals/src/core/component-names';
 import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../../internals/src/schema/index';
 import { Log } from '../../../internals/src/schema/index';
 import { KolToastItemFc } from '../../functional-components';
@@ -150,7 +149,7 @@ export class KolToastContainer implements ToasterAPI {
 		return (
 			<Host class="kol-toast-container">
 				{this.state._toastStates.length > 1 && (
-					<KolButtonTag
+					<kol-button
 						_label={this.translateToastCloseAll}
 						class="kol-toast-container__button-close-all"
 						_on={{
@@ -158,7 +157,7 @@ export class KolToastContainer implements ToasterAPI {
 								void this.closeAll();
 							},
 						}}
-					></KolButtonTag>
+					></kol-button>
 				)}
 				{this.state._toastStates.map((toastState) => (
 					<KolToastItemFc

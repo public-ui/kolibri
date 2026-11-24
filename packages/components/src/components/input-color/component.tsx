@@ -1,5 +1,6 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { bem } from '../../../internals/src/schema/bem-registry';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -51,6 +52,8 @@ import { FormFieldFC } from '../../internal/functional-components/form-field/com
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
+
+const colorBem = bem.forBlock('kol-input-color');
 
 /**
  * The **Color** input type creates a selection field for defining any color. The color can be entered in hexadecimal, RGB, or HSL notation. It is possible to select a color via a picker or by entering exact color values.
@@ -402,7 +405,7 @@ export class KolInputColor
 			msg: this.getRenderProp('msg'),
 			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
 			suggestions: suggestions.length > 0 ? ((<SuggestionsFC id={id} suggestions={suggestions} />) as VNode) : undefined,
-			class: 'kol-input-color__input kol-input-color__input--color',
+			class: colorBem('input', { color: true }),
 			onBlur: this.handleBlur,
 			onChange: this.handleChange,
 			onClick: this.handleClick,
@@ -427,7 +430,7 @@ export class KolInputColor
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: 'kol-input-color',
+						class: colorBem(),
 						accessKey: this.getRenderProp('accessKey') || undefined,
 						shortKey: this.getRenderProp('shortKey') || undefined,
 						variant: this.getRenderProp('variant'),

@@ -4,21 +4,21 @@ import { h } from '@stencil/core';
 import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
 import type { TreeApi } from '../../../../internals/src/controller/tree/api';
 import { bem } from '../../../../internals/src/schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 
 const treeBem = bem.forBlock('kol-tree');
-const BEM_CLASS_TREE = treeBem();
 const BEM_CLASS_TREE__TREEVIEW_NAVIGATION = treeBem('treeview-navigation');
 
 /**
  * Renders the tree landmark with the `role="tree"` list the slotted `kol-tree-item` elements belong to.
  *
- * The `<nav>` carries the block class itself (as `BreadcrumbFC` does): base and theme styles
+ * The `<nav>` is the root and carries the block class (as in `BreadcrumbFC`): base and theme styles
  * address it directly, e.g. with `.kol-tree:focus-within`.
  */
 export const TreeFC: FC<FunctionalComponentProps<TreeApi>> = ({ handleSlotchange, label }) => (
-	<nav class={BEM_CLASS_TREE} aria-label={label}>
+	<BemRootNodeFC component="nav" block="kol-tree" aria-label={label}>
 		<ul class={BEM_CLASS_TREE__TREEVIEW_NAVIGATION} role="tree" aria-label={label}>
 			<slot onSlotchange={handleSlotchange} />
 		</ul>
-	</nav>
+	</BemRootNodeFC>
 );

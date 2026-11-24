@@ -4,8 +4,8 @@ import { h } from '@stencil/core';
 import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
 import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
 import { quotePropsConfig, type QuoteApi } from '../../../../internals/src/controller/quote/api';
-import { KolLinkTag } from '../../../../internals/src/core/component-names';
 import { bem } from '../../../../internals/src/schema/bem-registry';
+import { BemRootNodeFC } from '../bem-root-node/component';
 
 const quoteBem = bem.forBlock('kol-quote');
 const BEM_CLASS_QUOTE__BLOCKQUOTE = quoteBem('blockquote');
@@ -16,9 +16,8 @@ const BEM_CLASS_QUOTE__QUOTE = quoteBem('quote');
 export const QuoteFC: FC<FunctionalComponentProps<QuoteApi>> = (props) => {
 	const { href, label, quote, variant } = resolveFcProps(quotePropsConfig, props);
 	const hasExpertSlot = quote === '';
-	const BEM_CLASS_ROOT = quoteBem({ [variant]: true });
 	return (
-		<figure class={BEM_CLASS_ROOT}>
+		<BemRootNodeFC component="figure" block="kol-quote" modifiers={{ [variant]: true }}>
 			{variant === 'block' ? (
 				<blockquote class={BEM_CLASS_QUOTE__BLOCKQUOTE} cite={href}>
 					{quote}
@@ -37,10 +36,10 @@ export const QuoteFC: FC<FunctionalComponentProps<QuoteApi>> = (props) => {
 			{!!label && (
 				<figcaption class={BEM_CLASS_QUOTE__FIGCAPTION}>
 					<cite class={BEM_CLASS_QUOTE__CITE}>
-						<KolLinkTag _href={href} _label={label} _target="_blank" />
+						<kol-link _href={href} _label={label} _target="_blank" />
 					</cite>
 				</figcaption>
 			)}
-		</figure>
+		</BemRootNodeFC>
 	);
 };

@@ -21,7 +21,6 @@ import {
 	getTableMinWidth,
 	getVisibleColSpan,
 } from '../../../../internals/src/controller/table-stateless/table-model';
-import { KolBadgeTag } from '../../../../internals/src/core/component-names';
 import { translate } from '../../../../internals/src/i18n';
 import { bem } from '../../../../internals/src/schema/bem-registry';
 import type {
@@ -31,7 +30,6 @@ import type {
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
-	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableRender,
 	StateColumnHeaderCell,
 	StateColumnPropType,
@@ -387,7 +385,7 @@ const renderStateItems = (stateColumn: StateColumnHeaderCell, rowData: KoliBriTa
 		<div class={BEM_CLASS_TABLE__CELL_STATES}>
 			{states.map((state, stateIndex) => {
 				if (state.type === 'badge') {
-					return <KolBadgeTag key={`state-${key}-${stateIndex}`} {...state} />;
+					return <kol-badge key={`state-${key}-${stateIndex}`} {...state} />;
 				}
 				return null;
 			})}
@@ -401,7 +399,7 @@ const renderStateItems = (stateColumn: StateColumnHeaderCell, rowData: KoliBriTa
  * custom `render` function fills it after rendering.
  */
 const renderTableCell = (context: RenderContext, cell: TableDataCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element => {
-	if ((cell as KoliBriTableHeaderCell).visible === false) {
+	if (cell.visible === false) {
 		return '';
 	}
 
@@ -411,7 +409,7 @@ const renderTableCell = (context: RenderContext, cell: TableDataCell, rowIndex: 
 		key = dataKey ? `${dataKey}-${context.primaryHeaders.horizontal ? colIndex : rowIndex}` : key;
 	}
 
-	if ((cell as KoliBriTableHeaderCellWithLogic).headerCell) {
+	if (cell.headerCell) {
 		return renderHeadingCell(context, cell, rowIndex, colIndex, isVertical);
 	}
 

@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { bem } from '../../../internals/src/schema/bem-registry';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -54,6 +55,8 @@ import { CheckboxFC } from '../../internal/functional-components/form-field/chec
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
 import type { InputFCProps } from '../../internal/functional-components/form-field/input';
+
+const checkboxBem = bem.forBlock('kol-input-checkbox');
 
 /**
  * The **Checkbox** input type generates a rectangular box that can be activated and deactivated by clicking. When activated, a colored checkmark is shown inside the box.
@@ -494,11 +497,11 @@ export class KolInputCheckbox
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-checkbox', {
-							'kol-input-checkbox--checked': checked,
-							'kol-input-checkbox--indeterminate': indeterminate,
-							[`kol-input-checkbox--variant-${variant}`]: true,
-							[`kol-input-checkbox--label-align-${this.getRenderProp('labelAlign')}`]: true,
+						class: checkboxBem({
+							checked,
+							indeterminate,
+							[`variant-${variant}`]: true,
+							[`label-align-${this.getRenderProp('labelAlign')}`]: true,
 						}),
 						accessKey,
 						shortKey,
@@ -508,10 +511,10 @@ export class KolInputCheckbox
 					})}
 				>
 					<FieldControlFC
-						class={clsx('kol-input-checkbox__field-control', {
-							'kol-input-checkbox__field-control--checked': checked,
-							'kol-input-checkbox__field-control--indeterminate': indeterminate,
-							[`kol-input-checkbox__field-control--variant-${variant}`]: true,
+						class={checkboxBem('field-control', {
+							checked,
+							indeterminate,
+							[`variant-${variant}`]: true,
 						})}
 						id={this.id}
 						label={this.getRenderProp('label')}
