@@ -46,18 +46,18 @@ const HOVERABLE = ['button', 'a[href]', 'input', 'select', 'textarea'].map((sele
 const STATE_TIMEOUT = 3000;
 
 const MIME_TYPES: Record<string, string> = {
-	'.html': 'text/html; charset=utf-8',
-	'.js': 'text/javascript',
-	'.mjs': 'text/javascript',
 	'.css': 'text/css',
-	'.json': 'application/json',
-	'.woff2': 'font/woff2',
-	'.svg': 'image/svg+xml',
-	'.png': 'image/png',
-	'.jpg': 'image/jpeg',
-	'.jpeg': 'image/jpeg',
 	'.gif': 'image/gif',
+	'.html': 'text/html; charset=utf-8',
+	'.jpeg': 'image/jpeg',
+	'.jpg': 'image/jpeg',
+	'.js': 'text/javascript',
+	'.json': 'application/json',
+	'.mjs': 'text/javascript',
+	'.png': 'image/png',
+	'.svg': 'image/svg+xml',
 	'.webp': 'image/webp',
+	'.woff2': 'font/woff2',
 };
 
 /**

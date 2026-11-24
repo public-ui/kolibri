@@ -1,7 +1,7 @@
 import { describe, it } from 'mocha';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
-import { writeFile } from 'node:fs/promises';
+import { rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
@@ -20,20 +20,20 @@ describe('createZip', () => {
 		assert.ok(zip.length > 22 + 30);
 	});
 
-	it('lists all entries when unzipped', async () => {
+	it('lists all entries when unzipped', async function () {
 		const entries = { 'b.txt': 'zwei', '$themes.json': '{"name":"Light"}' };
 		const zipPath = join(tmpdir(), `design-export-${Date.now()}.zip`);
 		await writeFile(zipPath, createZip(entries));
-		const listing = await promisify(execFile)('unzip', ['-l', zipPath]).catch((error: NodeJS.ErrnoException) => {
-			if (error.code === 'ENOENT') {
-				return null; // unzip fehlt in dieser Umgebung (z. B. Windows), Signaturtests decken das Format weiter ab
-			}
-			throw error;
-		});
-		if (listing === null) {
-			return;
+		try {
+			const listing = await promisify(execFile)('unzip', ['-l', zipPath]).catch((error: NodeJS.ErrnoException) => {
+				// Fehlt unzip, steht der Test als ausstehend statt ohne Prüfung als bestanden; die Signaturtests decken das Format weiter ab.
+				if (error.code === 'ENOENT') this.skip();
+				throw error;
+			});
+			assert.ok(listing.stdout.includes('b.txt'));
+			assert.ok(listing.stdout.includes('$themes.json'));
+		} finally {
+			await rm(zipPath, { force: true });
 		}
-		assert.ok(listing.stdout.includes('b.txt'));
-		assert.ok(listing.stdout.includes('$themes.json'));
 	});
 });
