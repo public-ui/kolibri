@@ -8,8 +8,8 @@ import { onLocationChange } from '../../internal/functional-components/link/aria
 import type { ToolbarApi } from '../../internal/functional-components/toolbar/api';
 import { toolbarPropsConfig } from '../../internal/functional-components/toolbar/api';
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
-import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
-import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/entry-item';
+import { createToolbarEntryItem } from '../../internal/functional-components/toolbar/entry-item';
 import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
 import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
@@ -65,7 +65,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 		toolbarItemsProp.apply(value, (items) => {
 			this.setRenderProp('items', items);
 			this.itemRecords.forEach((record) => record.destroy());
-			this.itemRecords = items.map((item) => createToolbarItem(item, () => this.host));
+			this.itemRecords = items.map((item) => createToolbarEntryItem(item, () => this.host));
 			this.setFirstEnabledItemIndex();
 		});
 	}

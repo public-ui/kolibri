@@ -367,8 +367,9 @@ When a component renders another component inside its own shadow DOM — the clo
 | `createLinkItem` (`link/item.ts`)                    | `LinkFC`                         |
 | `createPopoverButtonItem` (`popover-button/item.ts`) | `PopoverButtonFC`                |
 | `createDialogItem` (`dialog/item.tsx`)               | `DialogFC` with a card           |
-| `PageSizeSelect` (`pagination/page-size-select.tsx`) | the select field of `kol-select` |
+| `PageSizeSelect` (`pagination/select-item.tsx`)      | the select field of `kol-select` |
 
+- An item that several components share lives as `item.ts(x)` in the folder of the FC it renders (`create<FC>Item`, the table above). An item that only one embedding component needs lives in that component's folder as `<what it renders>-item.ts(x)` (`create<Component><What>Item`: `breadcrumb/link-item.ts`, `tabs/button-item.ts`, `toolbar/entry-item.ts`, `pagination/select-item.tsx`). `component-structure.spec.ts` checks the file names.
 - `getFcProps(…)` returns the fully resolved FC props; call it once per render.
 - `syncListeners()` runs from `componentDidRender`, `destroy()` from `disconnectedCallback`.
 - A variable number of embedded instances (one action button per table row) goes through `createItemPool` (`item-pool.ts`): each render pass takes its items by key, and `endRender()` syncs them and destroys the ones the pass no longer used.
