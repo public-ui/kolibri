@@ -1,0 +1,1 @@
+import"./index-DBEsXAMm-BKEYCwSx.js";import{_ as e,v as t}from"./props-from-config-BRFZ4nHp-WL5PmEC1.js";var n=/^[a-zA-Z][a-zA-Z0-9_-]{0,60}$/,r=e=>typeof e==`string`&&n.test(e),i=t,a=t=>t===``||e(t),o=e=>e===``||i(e);export{a as i,i as n,o as r,r as t};

@@ -1,0 +1,1 @@
+import"./index-DBEsXAMm-BKEYCwSx.js";import{t as e}from"./shared-state-wjorUNaw-CQ5Fc56u.js";var t=e(`location`,()=>({subscribers:[]})),n=(e,n=!0)=>(n&&typeof t.current==`string`&&e(t.current),t.subscribers.push(e),()=>{let n=t.subscribers.indexOf(e);n>=0&&t.subscribers.splice(n,1)});export{n as t};

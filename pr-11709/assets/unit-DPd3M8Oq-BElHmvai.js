@@ -1,0 +1,1 @@
+import"./index-DBEsXAMm-BKEYCwSx.js";import{O as e,j as t,u as n}from"./props-from-config-BRFZ4nHp-WL5PmEC1.js";var r=n(`max`,100,e,e=>e>0),i=n(`unit`,`%`,t,e=>e.length>0);export{i as n,r as t};

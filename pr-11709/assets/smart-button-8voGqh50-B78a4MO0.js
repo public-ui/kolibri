@@ -1,0 +1,1 @@
+import{M as e}from"./index-DBEsXAMm-BKEYCwSx.js";import{u as t}from"./props-from-config-BRFZ4nHp-WL5PmEC1.js";function n(t){let n=typeof t==`string`?e(t):t;if(typeof n==`object`&&n)return n;throw Error(`Invalid smart button: ${typeof t}`)}var r=t(`smartButton`,{_label:``},n);export{r as t};
