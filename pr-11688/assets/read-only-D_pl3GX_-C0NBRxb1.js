@@ -1,1 +1,0 @@
-import{b as e,l as t}from"./props-from-config-DnjeRYva-DwckD4rl.js";var n=t(`readOnly`,!1,e);export{n as t};

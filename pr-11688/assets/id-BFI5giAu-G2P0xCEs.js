@@ -1,1 +1,0 @@
-import{k as e,l as t}from"./props-from-config-DnjeRYva-DwckD4rl.js";var n=t(`id`,``,e);export{n as t};
