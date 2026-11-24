@@ -1,15 +1,15 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "49 changed – 27 of 49 approved, review pending",
-	"computedAt": "2026-11-24T22:19:00.735Z",
+	"description": "49 changed – 28 of 49 approved, review pending",
+	"computedAt": "2026-11-24T22:29:11.433Z",
 	"pr": 11707,
 	"head": "4a30a6c1ae2fa7e0cd058c22c01f7eaf59a28e2c",
 	"digest": "sha256:61be8a04e5c2182102d1e94abc1d90e4f87aee8e3ebb9e69681c4108db5ccc37",
 	"counts": {
 		"changes": 49,
-		"open": 22,
-		"approved": 27,
+		"open": 21,
+		"approved": 28,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
@@ -154,8 +154,9 @@
 			"notes": []
 		},
 		"theme-bwst/scenarios-label-lang--label-lang-alert": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/scenarios-label-lang--label-lang-checkbox": {
 			"state": "open",
