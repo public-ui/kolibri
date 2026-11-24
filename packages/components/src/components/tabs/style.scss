@@ -39,13 +39,6 @@
 			--button-group-order: 0;
 		}
 
-		&--sticky &__button-group {
-			position: sticky;
-			top: 0;
-			height: min-content;
-			align-items: start;
-		}
-
 		&__button-group {
 			display: flex;
 			order: var(--button-group-order);
