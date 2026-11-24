@@ -405,7 +405,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 		this.watchRows(this._rows);
 
 		this.filteredOptions = this.getRenderProp('options');
-		this.updateInputValue(this._value);
+		this.watchValue(this._value);
 	}
 
 	public componentDidRender(): void {

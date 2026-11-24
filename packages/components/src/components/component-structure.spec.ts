@@ -304,24 +304,56 @@ describe('Web component base class member order', () => {
  * `componentWillLoad` applies a prop through its watcher (`this.watchLabel(this._label)`), so the first
  * value and every later change run the same code. It never applies a prop definition itself
  * (`labelProp.apply(this._label, …)`). Where the watcher reacts to a change beyond applying the value, the
- * component calls the `apply…` method the watcher delegates to.
+ * component calls the `apply…` method the watcher delegates to; a watcher that only hands the value on to
+ * that method is called itself.
  */
-const directPropApplies = (cls: ts.ClassDeclaration): string[] => {
-	const componentWillLoad = cls.members.find(
-		(member): member is ts.MethodDeclaration => ts.isMethodDeclaration(member) && memberName(member) === 'componentWillLoad',
-	);
+const bypassedWatchers = (cls: ts.ClassDeclaration): string[] => {
+	const methods = cls.members.filter((member): member is ts.MethodDeclaration => ts.isMethodDeclaration(member));
+	const componentWillLoad = methods.find((method) => memberName(method) === 'componentWillLoad');
+	/** The watcher of a prop and, if its body only hands the value on to one own method, that method. */
+	const watcherOf = (prop: string): { name: string; delegate?: string } | undefined => {
+		const watcher = methods.find((method) =>
+			(ts.getDecorators(method) ?? []).some(
+				(decorator) =>
+					ts.isCallExpression(decorator.expression) &&
+					decorator.expression.expression.getText() === 'Watch' &&
+					(decorator.expression.arguments[0] as ts.StringLiteral | undefined)?.text === prop,
+			),
+		);
+		if (!watcher) return undefined;
+		const [statement, ...rest] = watcher.body?.statements ?? [];
+		const parameter = watcher.parameters[0]?.name.getText();
+		const call = statement && ts.isExpressionStatement(statement) ? statement.expression : undefined;
+		const delegates =
+			rest.length === 0 &&
+			call !== undefined &&
+			ts.isCallExpression(call) &&
+			ts.isPropertyAccessExpression(call.expression) &&
+			call.expression.expression.kind === ts.SyntaxKind.ThisKeyword &&
+			call.arguments.length === 1 &&
+			call.arguments[0].getText() === parameter;
+		return { name: memberName(watcher), delegate: delegates ? call.expression.name.text : undefined };
+	};
 	const problems: string[] = [];
 	const visit = (node: ts.Node): void => {
+		const firstArgument = ts.isCallExpression(node) ? node.arguments[0] : undefined;
 		if (
 			ts.isCallExpression(node) &&
 			ts.isPropertyAccessExpression(node.expression) &&
-			node.expression.name.text === 'apply' &&
-			/Prop$/.test(node.expression.expression.getText()) &&
-			node.arguments[0] !== undefined &&
-			ts.isPropertyAccessExpression(node.arguments[0]) &&
-			node.arguments[0].expression.kind === ts.SyntaxKind.ThisKeyword
+			firstArgument !== undefined &&
+			ts.isPropertyAccessExpression(firstArgument) &&
+			firstArgument.expression.kind === ts.SyntaxKind.ThisKeyword
 		) {
-			problems.push(`componentWillLoad applies ${node.arguments[0].name.text} with ${node.expression.expression.getText()} instead of calling its watcher`);
+			const prop = firstArgument.name.text;
+			const callee = node.expression;
+			if (callee.name.text === 'apply' && /Prop$/.test(callee.expression.getText())) {
+				problems.push(`componentWillLoad applies ${prop} with ${callee.expression.getText()} instead of calling its watcher`);
+			} else if (callee.expression.kind === ts.SyntaxKind.ThisKeyword && node.arguments.length === 1) {
+				const watcher = watcherOf(prop);
+				if (watcher?.delegate === callee.name.text) {
+					problems.push(`componentWillLoad calls ${callee.name.text} for ${prop}, which ${watcher.name} only hands on to; call ${watcher.name}`);
+				}
+			}
 		}
 		ts.forEachChild(node, visit);
 	};
@@ -335,7 +367,7 @@ describe('Stencil component initialization', () => {
 		(_name, source) => {
 			const problems = classesOf(source)
 				.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
-				.flatMap(directPropApplies);
+				.flatMap(bypassedWatchers);
 			expect(problems).toEqual([]);
 		},
 	);

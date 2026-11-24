@@ -68,7 +68,7 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 
 	public componentWillLoad(): void {
 		this.applyLabel(this._label, true);
-		this.applyLinks(this._links);
+		this.watchLinks(this._links);
 	}
 
 	public componentDidRender(): void {
