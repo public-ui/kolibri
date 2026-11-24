@@ -30,12 +30,12 @@ import type {
 	VariantClassNamePropType,
 } from '../../../internals/src/schema/index';
 
+import { BaseSelectWebComponent } from '../../../fc/src/select/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { SelectApi } from '../../../internals/src/controller/select/api';
 import { selectPropsConfig } from '../../../internals/src/controller/select/api';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../../internals/src/utils/element-interaction';
-import { BaseSelectWebComponent } from '../../internal/functional-components/select/base-web-component';
 
 /**
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot

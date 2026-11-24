@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
 
+import { CollapsibleFC } from '../../../fc/src/collapsible/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { CollapsibleApi } from '../../../internals/src/controller/collapsible/api';
 import { collapsiblePropsConfig } from '../../../internals/src/controller/collapsible/api';
@@ -22,7 +23,6 @@ import type {
 } from '../../../internals/src/schema/index';
 import { createRelatedUniqueId, createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
-import { CollapsibleFC } from '../../internal/functional-components/collapsible/component';
 
 /**
  * The **Details** component allows additional information to be initially shown with a short introductory text,

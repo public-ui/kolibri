@@ -39,6 +39,20 @@ import { containsDeepActiveElement } from '../../../internals/src/utils/element-
 import { createCtaRef, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../../internals/src/utils/events';
 
+import { ButtonFC } from '../../../fc/src/button/component';
+import { getInputAdornments } from '../../../fc/src/form-field/adornments';
+import { FormFieldFC } from '../../../fc/src/form-field/component';
+import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../../fc/src/form-field/custom-suggestions';
+import { InputFC, type InputFCProps } from '../../../fc/src/form-field/input';
+import { InputContainerFC } from '../../../fc/src/form-field/input-container';
+import { BaseListboxWebComponent } from '../../../fc/src/listbox/base-web-component';
+import { ListboxGroupFC } from '../../../fc/src/listbox/group';
+import {
+	BEM_CLASS_SINGLE_SELECT__DELETE,
+	SingleSelectNoResultsFC,
+	SingleSelectNoResultsStatusFC,
+	SingleSelectToggleFC,
+} from '../../../fc/src/single-select/component';
 import { createButtonItem } from '../../../internals/src/controller/button/item';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { SingleSelectApi } from '../../../internals/src/controller/single-select/api';
@@ -54,20 +68,6 @@ import {
 	singleSelectOptionsProp,
 	variantProp,
 } from '../../../internals/src/props/index';
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
-import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
-import {
-	BEM_CLASS_SINGLE_SELECT__DELETE,
-	SingleSelectNoResultsFC,
-	SingleSelectNoResultsStatusFC,
-	SingleSelectToggleFC,
-} from '../../internal/functional-components/single-select/component';
 
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.

@@ -1,6 +1,11 @@
 import type { JSX } from '@stencil/core';
 import { forceUpdate, h } from '@stencil/core';
 
+import type { LinkFCProps } from '../../../fc/src/link/component';
+import type { LinkItem } from '../../../fc/src/link/item';
+import { createLinkItem } from '../../../fc/src/link/item';
+import { TABLE_CAPTION_ID, TableStatelessFC } from '../../../fc/src/table-stateless/component';
+import { createTableSettings } from '../../../fc/src/table-stateless/settings';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../../../internals/src/controller/button/item';
 import { createButtonItem } from '../../../internals/src/controller/button/item';
@@ -45,11 +50,6 @@ import type {
 import { Log } from '../../../internals/src/schema/index';
 import { nonce } from '../../../internals/src/utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
-import type { LinkFCProps } from '../../internal/functional-components/link/component';
-import type { LinkItem } from '../../internal/functional-components/link/item';
-import { createLinkItem } from '../../internal/functional-components/link/item';
-import { TABLE_CAPTION_ID, TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
-import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 
 const RESIZE_DEBOUNCE_DELAY = 150;
 

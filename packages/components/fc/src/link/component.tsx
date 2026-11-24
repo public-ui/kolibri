@@ -1,0 +1,138 @@
+import type { FunctionalComponent as FC } from '@stencil/core';
+import { h } from '@stencil/core';
+
+import type { FunctionalComponentProps } from '../../../internals/src/controller/generic-types';
+import { linkPropsConfig, type LinkApi } from '../../../internals/src/controller/link/api';
+import { resolveFcProps } from '../../../internals/src/controller/props-from-config';
+import { translate } from '../../../internals/src/i18n';
+import { bem } from '../../../internals/src/schema/bem-registry';
+import { devHint, trimLabel } from '../../../internals/src/schema/index';
+import { classNameFromVariant } from '../../../internals/src/schema/props/variant-class-name';
+import clsx from '../../../internals/src/utils/clsx';
+import { preventFocus } from '../../../internals/src/utils/element-interaction';
+import { AriaDescriptionSpanFC } from '../aria-description-span/component';
+import { BemRootNodeFC } from '../bem-root-node/component';
+import { IconFC } from '../icon/component';
+import { SpanFC } from '../span/component';
+import { TooltipFC } from '../tooltip/component';
+
+const linkBem = bem.forBlock('kol-link');
+
+export type LinkFCProps = FunctionalComponentProps<LinkApi> & {
+	/** Ref of the `.kol-link` root. */
+	ref?: (element?: HTMLElement) => void;
+};
+
+/**
+ * Children replace the expert `<slot>`: a consumer that renders `LinkFC` inside its own shadow
+ * root passes the expert content directly (e.g. the tree item's chevron and label), since a slot
+ * there would only project that consumer's light DOM.
+ */
+export const LinkFC: FC<LinkFCProps> = (props, children) => {
+	const {
+		accessKey,
+		ariaControls,
+		ariaCurrent,
+		ariaDescription,
+		ariaDescriptionId,
+		ariaExpanded,
+		ariaOwns,
+		class: hostClass,
+		customClass,
+		disabled,
+		download,
+		handleAnchorClick,
+		hideLabel,
+		href,
+		icons,
+		inline,
+		label,
+		on,
+		ref,
+		refAnchor,
+		refTooltip,
+		role,
+		shortKey,
+		tabIndex,
+		target,
+		variant,
+		expertSlot,
+	} = resolveFcProps(linkPropsConfig, props);
+
+	const translateOpenLinkInTab = translate('kol-open-link-in-tab');
+
+	const isExternal = typeof target === 'string' && target.length > 0 && target !== '_self';
+
+	const tagAttrs = {
+		href: typeof href === 'string' && href.length > 0 ? href : 'javascript:void(0);',
+		target: typeof target === 'string' && target.length > 0 ? target : undefined,
+		rel: isExternal ? 'noopener' : undefined,
+		// `download` is a presence attribute: an explicitly empty string means "download without a
+		// suggested filename" and must render as `download=""`, unlike an unset download.
+		download: typeof download === 'string' ? download : undefined,
+	};
+
+	if (hideLabel === true && trimLabel(label) === '') {
+		devHint(`[KolLink] An aria-label must be set when _hide-label is set.`);
+	}
+
+	const trimmedAriaDescription = ariaDescription?.trim();
+	const roleValue = role || undefined;
+	return (
+		<BemRootNodeFC
+			block="kol-link"
+			ref={ref}
+			class={clsx(hostClass, {
+				[customClass]: variant.includes('custom') && customClass.length > 0,
+				[classNameFromVariant(variant, 'link')]: variant.length > 0,
+			})}
+			modifiers={{
+				disabled: disabled === true,
+				'external-link': isExternal,
+				'hide-label': hideLabel === true,
+				inline: inline === true,
+				standalone: inline === false,
+			}}
+		>
+			{/* An explicit `href` on the element tells jsx-a11y that the anchor is interactive; the
+			    value comes from `tagAttrs`, so the fallback stays identical. */}
+			<a
+				ref={refAnchor}
+				{...tagAttrs}
+				href={tagAttrs.href}
+				accessKey={accessKey || undefined}
+				aria-current={ariaCurrent || undefined}
+				aria-controls={ariaControls || undefined}
+				aria-describedby={trimmedAriaDescription ? ariaDescriptionId : undefined}
+				aria-disabled={disabled ? 'true' : undefined}
+				aria-expanded={ariaExpanded === '' ? undefined : ariaExpanded}
+				aria-owns={ariaOwns || undefined}
+				aria-label={hideLabel && trimLabel(label) !== '' ? `${trimLabel(label)}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined}
+				aria-keyshortcuts={shortKey || undefined}
+				class={linkBem('interactive-element')}
+				{...on}
+				onClick={handleAnchorClick}
+				onMouseDown={disabled ? preventFocus : undefined}
+				role={roleValue}
+				tabIndex={disabled ? -1 : tabIndex}
+			>
+				<SpanFC class="kol-link__text" badgeText={accessKey || shortKey} icons={icons} hideLabel={hideLabel} label={expertSlot ? '' : label || href}>
+					{children.length > 0 ? children : <slot name="expert" slot="expert"></slot>}
+				</SpanFC>
+				{isExternal && (
+					<IconFC class="kol-link__icon" label={hideLabel ? '' : translateOpenLinkInTab} icons={'kolicon-link-external'} aria-hidden={hideLabel} />
+				)}
+			</a>
+			{hideLabel === true && !expertSlot && (
+				<div class={linkBem('tooltip')}>
+					<TooltipFC
+						badgeText={accessKey || shortKey || ''}
+						label={trimLabel(label) !== '' ? label : typeof href === 'string' ? href : ''}
+						refFloating={refTooltip}
+					/>
+				</div>
+			)}
+			{trimmedAriaDescription && <AriaDescriptionSpanFC description={trimmedAriaDescription} descriptionId={ariaDescriptionId} />}
+		</BemRootNodeFC>
+	);
+};

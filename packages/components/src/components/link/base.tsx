@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { LinkFC } from '../../../fc/src/link/component';
 import type { UnsubscribeFunction } from '../../../internals/src/components/link/ariaCurrentService';
 import { onLocationChange } from '../../../internals/src/components/link/ariaCurrentService';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
@@ -57,7 +58,6 @@ import type {
 import { setEventTarget } from '../../../internals/src/schema/index';
 import { createCtaRef } from '../../../internals/src/utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
-import { LinkFC } from '../../internal/functional-components/link/component';
 
 /**
  * Shared orchestrator implementation for every custom element that renders `LinkFC`:

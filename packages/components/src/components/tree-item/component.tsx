@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, transformTag, Watch } from '@stencil/core';
 
+import { TreeItemFC } from '../../../fc/src/tree-item/component';
 import type { UnsubscribeFunction } from '../../../internals/src/components/link/ariaCurrentService';
 import { onLocationChange } from '../../../internals/src/components/link/ariaCurrentService';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
@@ -13,7 +14,6 @@ import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenProp
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef, directFocus } from '../../../internals/src/utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
-import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
 import { invalidateOpenItemsCache } from '../tree/open-items-cache';
 
 /**

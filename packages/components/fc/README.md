@@ -15,7 +15,7 @@ Die Stencil-Funktionskomponenten der KoliBri-Komponenten: der Render-Layer (`h()
 
 ## Inhalt
 
-`src/` führt je Komponente einen Ordner (`button/`, `form-field/`, `table-stateless/`, …) mit der Render-Funktionskomponente (`component.tsx`), ihren Items/Behaviors und Specs. Dazu die FC-gekoppelte Orchestrierung, die bewusst nicht ins internals-Paket gehört (`link/item.ts`, `pagination/item.ts`, `popover-button/item.ts`, `counter/behavior.ts`, die `base-web-component.tsx`-Basisklassen), sowie die öffentlichen Funktionskomponenten `Heading/` und `ToastItem/`.
+`src/` führt je Komponente einen Ordner (`button/`, `form-field/`, `table-stateless/`, …) mit der Render-Funktionskomponente (`component.tsx`), ihren Items/Behaviors und Specs. Dazu die FC-gekoppelte Orchestrierung, die bewusst nicht ins internals-Paket gehört (`link/item.ts`, `pagination/item.ts`, `popover-button/item.ts`, `counter/behavior.ts`, die `base-web-component.tsx`-Basisklassen), sowie die öffentlichen Funktionskomponenten unter `app/` (`app/Heading/`, `app/ToastItem/`, Export über `app/index.ts`).
 
 ## Grenzen
 

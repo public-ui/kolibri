@@ -1,0 +1,434 @@
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { ButtonItemFcProps } from '../../../internals/src/controller/button/item';
+import { createButtonItem } from '../../../internals/src/controller/button/item';
+import type { FormAssociationType } from '../../../internals/src/controller/form-association/api';
+import { FormAssociationBehavior } from '../../../internals/src/controller/form-association/behavior';
+import type { FormFieldBaseApi } from '../../../internals/src/controller/form-field/api';
+import { getFormFieldAria } from '../../../internals/src/controller/form-field/aria';
+import { TooltipBehavior } from '../../../internals/src/controller/tooltip/behavior';
+import {
+	ariaDetailsProp,
+	disabledProp,
+	hideLabelProp,
+	hideMsgProp,
+	hintProp,
+	infoPopoverProp,
+	inputCallbacksProp,
+	labelWithExpertSlotProp,
+	msgProp,
+	nameProp,
+	tooltipAlignProp,
+	touchedProp,
+} from '../../../internals/src/props/index';
+import type {
+	FormFieldLabelInfoPopoverProps,
+	InputTypeOnDefault,
+	InternalButtonProps,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	StencilUnknown,
+	Stringified,
+	TooltipAlignPropType,
+} from '../../../internals/src/schema/index';
+import { buildBadgeTextString, trimLabel } from '../../../internals/src/schema/index';
+import { resolveTargets } from '../../../internals/src/utils/aria-labelledby';
+import { createRelatedUniqueId } from '../../../internals/src/utils/dev.utils';
+import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
+import { createPopoverButtonItem } from '../popover-button/item';
+import { type FormFieldFCProps, isLabelShownAsTooltip } from './component';
+import type { FormFieldInfoPopover } from './label';
+
+type FormFieldExtras = Pick<FormFieldFCProps, 'counter' | 'maxLength' | 'readOnly' | 'renderNoLabel' | 'renderNoTooltip' | 'required'> & {
+	/** Class of the field, e.g. `kol-input-color`, added to the `kol-form-field` root. */
+	class: string;
+	accessKey?: string;
+	shortKey?: string;
+	variant?: string[];
+};
+
+/**
+ * Shared orchestrator implementation of the form fields: it applies the props every field has,
+ * owns the form association and the label tooltip, and handles the events of the native control.
+ *
+ * The concrete element keeps what Stencil has to see in the component class itself (DD16):
+ * `@Component`, `@Element`, `@State`, `@Method`, every `@Prop` with its `@Watch`, whose body calls
+ * the matching `apply*` method, and the lifecycle methods.
+ */
+export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> extends BaseWebComponent<Api> {
+	/** The custom element; declared with `@Element()` by the concrete class. */
+	protected abstract readonly host?: HTMLElement;
+
+	/** Read at event time, like the native `disabled` state. */
+	public abstract _disabled?: boolean;
+	/** Read at event time, so a callback replaced after the last render is still called. */
+	public abstract _on?: InputTypeOnDefault;
+	/** Set to `true` once the focus leaves the field. */
+	public abstract _touched?: boolean;
+
+	protected formAssociation!: FormAssociationBehavior;
+
+	/** The native control (`input`, `select` or `textarea`) that carries the ARIA relations of the field. */
+	private ariaDetailsTarget?: HTMLElement;
+	/** The element references last pushed to the target, so unchanged renders skip the DOM write. */
+	private pushedDetailsElements?: HTMLElement[];
+
+	private readonly tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
+
+	private readonly smartButton = createButtonItem(() => this.host);
+
+	/**
+	 * The concrete element owns `infoPopoverOpen` as a `@State()` field, so toggling the popover
+	 * re-renders the field; the base API does not carry it, so access goes through a cast.
+	 */
+	private readonly infoPopover = createPopoverButtonItem({
+		getFlagHost: () => this.host,
+		getOpen: () => (this as unknown as { infoPopoverOpen?: boolean }).infoPopoverOpen === true,
+		setOpen: (open) => {
+			(this as unknown as { infoPopoverOpen: boolean }).infoPopoverOpen = open;
+		},
+	});
+
+	/**
+	 * Whether the focus event of the current visit has been sent. It is reset only when the focus
+	 * leaves the host of an enabled field; `inputHasFocus` is reset on every blur.
+	 */
+	private focusEventSent = false;
+
+	/**
+	 * `ResolvedProps<Api>` cannot be resolved for a generic `Api`, so `setRenderProp('label', …)` does
+	 * not type-check here. The base props exist in every field API (`Api extends FormFieldBaseApi`),
+	 * so this view on the same instance is typed with the base API instead.
+	 */
+	private get shared(): BaseFormFieldWebComponent<FormFieldBaseApi> {
+		return this as unknown as BaseFormFieldWebComponent<FormFieldBaseApi>;
+	}
+
+	/**
+	 * Creates the form association. Must be called from the concrete element's constructor (after
+	 * `super()`): Stencil populates `@Element()` there, and the hidden form element depends on the
+	 * name known at that point.
+	 */
+	protected initFormAssociation(type: FormAssociationType, name?: string): void {
+		this.formAssociation = new FormAssociationBehavior(BaseWebComponent.stateLess, { host: this.host, type, name });
+	}
+
+	/** Call from `componentDidRender`. */
+	protected syncFormField(): void {
+		this.smartButton.syncListeners();
+		this.infoPopover.syncListeners();
+		this.syncAriaDetails();
+	}
+
+	/** Call from `disconnectedCallback`. */
+	protected destroyFormField(): void {
+		this.tooltipBehavior.destroy();
+		this.smartButton.destroy();
+		this.infoPopover.destroy();
+	}
+
+	public connectedCallback(): void {
+		/* A reattached element does not re-render, so the listeners destroyed in
+		   `disconnectedCallback` have to be re-attached here. Before the first render the refs are
+		   unset and the syncs no-op. */
+		this.syncFormField();
+		if (this.tooltipAnchor && this.isTooltipShown()) {
+			this.tooltipBehavior.initContext(this.tooltipAnchor);
+			this.tooltipBehavior.syncListeners(undefined, this.tooltipAnchor, true);
+		}
+	}
+
+	/**
+	 * The info popover of the label, `undefined` without `_infoPopover`. Its toggle button is a ghost
+	 * button by default; it always hides its label and renders inline.
+	 */
+	protected getInfoPopover(): FormFieldInfoPopover | undefined {
+		const infoPopover = this.shared.getRenderProp('infoPopover');
+		if (!infoPopover) {
+			return undefined;
+		}
+		const { _content, ...popoverButton } = infoPopover;
+		return {
+			popoverButton: this.infoPopover.getFcProps({ _variant: 'ghost', ...popoverButton, _hideLabel: true, _inline: true }),
+			content: _content,
+		};
+	}
+
+	/**
+	 * `ButtonFC` props of the `_smartButton`, `undefined` without one. The smart button hides its
+	 * label and takes the disabled state of the field; its own `_hideLabel` and `_disabled` win.
+	 */
+	protected getSmartButtonFcProps(smartButton: InternalButtonProps | undefined, disabled?: boolean): ButtonItemFcProps | undefined {
+		if (typeof smartButton !== 'object' || smartButton === null) {
+			return undefined;
+		}
+		return this.smartButton.getFcProps({ _hideLabel: true, _disabled: disabled, ...smartButton }, { class: 'kol-input-container__smart-button' });
+	}
+
+	// --- Prop application (the concrete element's watchers delegate here) ---
+
+	protected applyAriaDetails(value?: string): void {
+		ariaDetailsProp.apply(value, (v) => this.shared.setRenderProp('ariaDetails', v));
+		this.syncAriaDetails();
+	}
+
+	/**
+	 * Pushes the elements referenced by `_ariaDetails` onto the native control via
+	 * `ariaDetailsElements`: plain `aria-details` IDREFs cannot cross the shadow boundary, and the
+	 * control — not the host — is the element assistive technology operates. The control may mount
+	 * after the prop was set and the referenced element may enter the tree after the first
+	 * resolution, so every render re-resolves and writes only changes.
+	 */
+	private syncAriaDetails(): void {
+		const target = this.host?.shadowRoot?.querySelector<HTMLElement>('input, select, textarea');
+		if (!target || !('ariaDetailsElements' in target)) {
+			return;
+		}
+		const elements = resolveTargets(this.host, this.shared.getRenderProp('ariaDetails'));
+		const pushed = this.pushedDetailsElements;
+		const changed =
+			target !== this.ariaDetailsTarget ||
+			(pushed?.length ?? 0) !== elements.length ||
+			(pushed?.some((element, index) => element !== elements[index]) ?? false);
+		if (!changed) {
+			return;
+		}
+		this.ariaDetailsTarget = target;
+		this.pushedDetailsElements = elements;
+		target.ariaDetailsElements = elements.length ? elements : null;
+	}
+
+	protected applyDisabled(value?: boolean): void {
+		disabledProp.apply(value, (v) => this.shared.setRenderProp('disabled', v));
+	}
+
+	protected applyHideLabel(value?: boolean): void {
+		hideLabelProp.apply(value, (v) => this.shared.setRenderProp('hideLabel', v));
+	}
+
+	protected applyHideMsg(value?: boolean): void {
+		hideMsgProp.apply(value, (v) => this.shared.setRenderProp('hideMsg', v));
+	}
+
+	protected applyHint(value?: string): void {
+		hintProp.apply(value, (v) => this.shared.setRenderProp('hint', v));
+	}
+
+	protected applyInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		infoPopoverProp.apply(value, (v) => this.shared.setRenderProp('infoPopover', v));
+	}
+
+	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
+		labelWithExpertSlotProp.apply(value, (v) => this.shared.setRenderProp('label', v), this.isRequired('label'));
+	}
+
+	protected applyMsg(value?: Stringified<MsgPropType>): void {
+		msgProp.apply(value, (v) => this.shared.setRenderProp('msg', v));
+	}
+
+	protected applyName(value?: string): void {
+		nameProp.apply(value, (v) => this.shared.setRenderProp('name', v));
+		this.formAssociation.watchName(value);
+	}
+
+	protected applyOn(value?: InputTypeOnDefault): void {
+		inputCallbacksProp.apply(value, (v) => this.shared.setRenderProp('on', v));
+	}
+
+	protected applySyncValueBySelector(value?: string): void {
+		this.formAssociation.watchSyncValueBySelector(value);
+	}
+
+	/** Form fields show the tooltip on top by default; the shared prop defaults to `'right'`. */
+	protected applyTooltipAlign(value?: TooltipAlignPropType): void {
+		tooltipAlignProp.apply(value ?? 'top', (v) => this.shared.setRenderProp('tooltipAlign', v));
+	}
+
+	protected applyTouched(value?: boolean): void {
+		touchedProp.apply(value, (v) => this.shared.setRenderProp('touched', v));
+	}
+
+	// --- Event handling of the native control ---
+
+	/**
+	 * The element that receives the KoliBri events and frames the focus of the field: the nearest host
+	 * with a shadow root, as resolved by the form association. It is the field itself, unless the field
+	 * renders into the shadow root of another component (`PageSizeSelect` in `kol-pagination`).
+	 */
+	private get eventHost(): Element | undefined {
+		return this.formAssociation?.host ?? this.host;
+	}
+
+	private emit(type: KolEvent, value?: unknown): void {
+		if (this.eventHost) {
+			dispatchDomEvent(this.eventHost as HTMLElement, type, value);
+		}
+	}
+
+	/** Dispatches the KoliBri event before the `_on` callback is called. */
+	protected readonly handleChange = (event: Event, value?: unknown): void => {
+		event.stopPropagation();
+		if (typeof value === 'undefined') {
+			value = (event.target as HTMLInputElement).value;
+		}
+		this.emit(KolEvent.change, value);
+		this._on?.onChange?.(event, value);
+	};
+
+	protected readonly handleInput = (event: Event, value?: unknown): void => {
+		event.stopPropagation();
+		if (typeof value === 'undefined') {
+			value = (event.target as HTMLInputElement).value;
+		}
+		this.emit(KolEvent.input, value);
+		this.formAssociation.setFormAssociatedValue(value as StencilUnknown);
+		this._on?.onInput?.(event, value);
+	};
+
+	protected readonly handleClick = (event: Event): void => {
+		this.emit(KolEvent.click);
+		this._on?.onClick?.(event);
+	};
+
+	protected readonly handleFocus = (event: FocusEvent): void => {
+		if (!this.focusEventSent) {
+			this.emit(KolEvent.focus);
+			this._on?.onFocus?.(event);
+			this.focusEventSent = true;
+		}
+		this.shared.setState('inputHasFocus', true);
+	};
+
+	protected readonly handleBlur = (event: FocusEvent): void => {
+		this.handleFocusLeave(event);
+		this.shared.setState('inputHasFocus', false);
+	};
+
+	/**
+	 * Sends the blur when the focus leaves the field; focus moving to another element inside the field,
+	 * e.g. the smart button, is no blur of the field. `handleBlur` also resets `inputHasFocus`.
+	 */
+	protected handleFocusLeave(event: FocusEvent): void {
+		if (this._disabled) {
+			return;
+		}
+		const host = this.eventHost;
+		const root = host?.shadowRoot || host;
+		const isFocusInside = root?.contains(event.relatedTarget as Node) || host === event.relatedTarget;
+		if (this.focusEventSent && !isFocusInside) {
+			this._touched = true;
+			this.emit(KolEvent.blur);
+			this._on?.onBlur?.(event);
+			this.focusEventSent = false;
+		}
+	}
+
+	protected readonly handleKeyDown = (event: KeyboardEvent): void => {
+		this.emit(KolEvent.keydown);
+		this._on?.onKeyDown?.(event);
+	};
+
+	// --- Render ---
+
+	/** `aria-invalid` and `aria-describedby` of the native control. */
+	protected getAria(): ReturnType<typeof getFormFieldAria> {
+		const shared = this.shared;
+		return getFormFieldAria({
+			id: shared.getState('id'),
+			msg: shared.getRenderProp('msg'),
+			hint: shared.getRenderProp('hint'),
+			touched: shared.getRenderProp('touched'),
+		});
+	}
+
+	/** A touched message is announced as alert only while the control does not have the focus. */
+	private showAsAlert(): boolean {
+		return Boolean(this.shared.getRenderProp('touched')) && !this.shared.getState('inputHasFocus');
+	}
+
+	/** The element the label tooltip hangs on; kept for the listener re-sync on reconnect. */
+	private tooltipAnchor?: HTMLDivElement;
+
+	private readonly setInputRef = (el?: HTMLDivElement): void => {
+		this.tooltipAnchor = el;
+		if (el && this.isTooltipShown()) {
+			this.tooltipBehavior.initContext(el);
+			this.tooltipBehavior.syncListeners(undefined, el, true);
+		}
+	};
+
+	private readonly setTooltipRef = (el?: HTMLDivElement): void => {
+		this.tooltipBehavior.setTooltipElementRef(el);
+	};
+
+	private isTooltipShown(): boolean {
+		const shared = this.shared;
+		return isLabelShownAsTooltip({ hideLabel: shared.getRenderProp('hideLabel'), label: trimLabel(shared.getRenderProp('label')) });
+	}
+
+	/**
+	 * Refs of the label tooltip for a field that renders it in its `FieldControlFC` instead of the
+	 * form field shell, together with `renderNoTooltip` for `getFormFieldProps`.
+	 */
+	protected getLabelTooltipRefs(): { refInput: (el?: HTMLDivElement) => void; refTooltip: (el?: HTMLDivElement) => void } {
+		return { refInput: this.setInputRef, refTooltip: this.setTooltipRef };
+	}
+
+	/**
+	 * Props of the form field shell around the native control. Call once per render: it also hands
+	 * label, alignment and badge to the label tooltip, or tears it down while the label is visible.
+	 * With `renderNoTooltip` the shell does not connect the tooltip; see `getLabelTooltipRefs`.
+	 */
+	protected getFormFieldProps({
+		class: classNames,
+		accessKey,
+		shortKey,
+		variant,
+		counter,
+		maxLength,
+		readOnly,
+		renderNoLabel,
+		renderNoTooltip,
+		required,
+	}: FormFieldExtras): FormFieldFCProps {
+		const shared = this.shared;
+		const id = shared.getState('id');
+		const label = shared.getRenderProp('label');
+		const tooltipAlign = shared.getRenderProp('tooltipAlign');
+
+		if (this.isTooltipShown()) {
+			this.tooltipBehavior.watchAlign(tooltipAlign);
+			this.tooltipBehavior.watchBadgeText(buildBadgeTextString(accessKey, shortKey) || '');
+			this.tooltipBehavior.watchId(createRelatedUniqueId(id, 'label'));
+			this.tooltipBehavior.watchLabel(label);
+		} else {
+			this.tooltipBehavior.destroy();
+		}
+
+		return {
+			id,
+			disabled: shared.getRenderProp('disabled'),
+			msg: shared.getRenderProp('msg'),
+			hint: shared.getRenderProp('hint'),
+			label,
+			hideLabel: shared.getRenderProp('hideLabel'),
+			hideMsg: shared.getRenderProp('hideMsg'),
+			touched: shared.getRenderProp('touched'),
+			showBadge: Boolean(accessKey) || Boolean(shortKey),
+			required,
+			readOnly,
+			accessKey,
+			shortKey,
+			maxLength,
+			counter,
+			variant,
+			class: classNames,
+			tooltipAlign,
+			alert: this.showAsAlert(),
+			infoPopover: this.getInfoPopover(),
+			renderNoLabel,
+			renderNoTooltip,
+			refInput: renderNoTooltip ? undefined : this.setInputRef,
+			refTooltip: this.setTooltipRef,
+		};
+	}
+}

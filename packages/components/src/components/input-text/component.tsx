@@ -38,6 +38,11 @@ import type {
 	VariantClassNamePropType,
 } from '../../../internals/src/schema/index';
 
+import { ButtonFC } from '../../../fc/src/button/component';
+import { FormFieldFC } from '../../../fc/src/form-field/component';
+import { InputFC } from '../../../fc/src/form-field/input';
+import { InputContainerFC } from '../../../fc/src/form-field/input-container';
+import { BaseTextInputWebComponent } from '../../../fc/src/text-input/base-web-component';
 import { createButtonItem } from '../../../internals/src/controller/button/item';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { InputTextApi } from '../../../internals/src/controller/input-text/api';
@@ -49,11 +54,6 @@ import clsx from '../../../internals/src/utils/clsx';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../../internals/src/utils/events';
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
 
 const textBem = bem.forBlock('kol-input-text');
 

@@ -1,12 +1,12 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { IconFC } from '../../../fc/src/icon/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { IconApi } from '../../../internals/src/controller/icon/api';
 import { iconPropsConfig } from '../../../internals/src/controller/icon/api';
 import { iconsProp, labelDecorativeProp } from '../../../internals/src/props/index';
 import type { LabelPropType } from '../../../internals/src/schema/index';
-import { IconFC } from '../../internal/functional-components/icon/component';
 
 /**
  * The **Icon** component allows icons from included icon fonts to be displayed at any position.

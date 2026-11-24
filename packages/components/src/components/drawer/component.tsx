@@ -1,6 +1,8 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
+import type { CardFCProps } from '../../../fc/src/card/component';
+import { DrawerFC } from '../../../fc/src/drawer/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { ResolvedButtonProps } from '../../../internals/src/controller/button/resolve-props';
 import { resolveCardCloseButtonProps } from '../../../internals/src/controller/card/close-button';
@@ -23,8 +25,6 @@ import { createCtaRef } from '../../../internals/src/utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
 import { lockScroll, unlockScroll } from '../../../internals/src/utils/scroll-lock';
 import { handleCancelOverlay } from '../../../internals/src/utils/tooltip-open-tracking';
-import type { CardFCProps } from '../../internal/functional-components/card/component';
-import { DrawerFC } from '../../internal/functional-components/drawer/component';
 
 /**
  * @slot - The Content of drawer.

@@ -1,6 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
 
+import type { LinkFCProps } from '../../../fc/src/link/component';
+import type { LinkItem } from '../../../fc/src/link/item';
+import { createLinkItem } from '../../../fc/src/link/item';
+import { NavFC } from '../../../fc/src/nav/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { ButtonItem, ButtonItemFcProps } from '../../../internals/src/controller/button/item';
 import { createButtonItem } from '../../../internals/src/controller/button/item';
@@ -26,10 +30,6 @@ import type {
 import { a11yHintLabelingLandmarks, devHint } from '../../../internals/src/schema/index';
 import { createRelatedUniqueId, createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../../internals/src/utils/unique-nav-labels';
-import type { LinkFCProps } from '../../internal/functional-components/link/component';
-import type { LinkItem } from '../../internal/functional-components/link/item';
-import { createLinkItem } from '../../internal/functional-components/link/item';
-import { NavFC } from '../../internal/functional-components/nav/component';
 
 /**
  * The **Nav** component renders a group of related links or navigation elements that perform an action or display content when clicked.

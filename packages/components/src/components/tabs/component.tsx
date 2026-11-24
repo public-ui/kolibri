@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
 
+import { TabsFC } from '../../../fc/src/tabs/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { TabsApi } from '../../../internals/src/controller/tabs/api';
@@ -24,7 +25,6 @@ import type {
 	TabsProps,
 } from '../../../internals/src/schema/index';
 import { devHint, koliBriQuerySelector } from '../../../internals/src/schema/index';
-import { TabsFC } from '../../internal/functional-components/tabs/component';
 
 import { translate } from '../../../internals/src/i18n';
 import { KeyboardKey } from '../../../internals/src/schema/enums/index';

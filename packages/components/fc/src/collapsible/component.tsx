@@ -1,0 +1,75 @@
+import type { FunctionalComponent as FC } from '@stencil/core';
+import { h } from '@stencil/core';
+
+import { getBlockBem } from '../../../internals/src/controller/bem-root-node/block-bem';
+import type { CollapsibleApi, CollapsibleVariant } from '../../../internals/src/controller/collapsible/api';
+import type { FunctionalComponentProps } from '../../../internals/src/controller/generic-types';
+import clsx from '../../../internals/src/utils/clsx';
+import { preventFocus } from '../../../internals/src/utils/element-interaction';
+import KolHeadingFc from '../app/Heading/Heading';
+import { BemRootNodeFC } from '../bem-root-node/component';
+import { SpanFC } from '../span/component';
+
+/**
+ * Renders a collapsible — `kol-accordion` and `kol-details` — on the native `<details>`/`<summary>`
+ * elements.
+ *
+ * `<summary>` is the disclosure control: one tab stop, keyboard handling and the expanded state
+ * come from the user agent. It has to be the first child of `<details>`, so the heading sits inside
+ * the control; label and icon render through `SpanFC`.
+ *
+ * `level` is forwarded as `level ?? 0` because `KolHeadingFc` falls back to level 1 on `undefined`,
+ * while the collapsible's own `_level` default is 0 — the bold `<strong>` rendering.
+ *
+ * `open` on `<details>` and the `--open` modifier are driven separately: the attribute has to be set
+ * before the modifier flips so the grid transition has a from-state, and it has to outlive the
+ * modifier on close so the collapse is visible. The web component owns that sequencing; the FC only
+ * renders what it is told.
+ */
+export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & CollapsibleVariant> = (
+	{ block, contentClass, controlId, detailsOpen, disabled, expanded, handleToggle, headingId, icons, label, level, refHeadingButton, transitionMs },
+	children,
+) => {
+	const blockBem = getBlockBem(block);
+
+	return (
+		<BemRootNodeFC
+			component="details"
+			block={block}
+			modifiers={{
+				disabled: disabled === true,
+				open: expanded === true,
+			}}
+			open={detailsOpen === true}
+			style={{ '--collapsible-transition-duration': `${transitionMs}ms` }}
+		>
+			<summary
+				aria-controls={controlId}
+				aria-disabled={disabled === true ? 'true' : undefined}
+				class={blockBem('heading')}
+				id={headingId}
+				onClick={handleToggle}
+				onMouseDown={disabled === true ? preventFocus : undefined}
+				ref={refHeadingButton}
+				tabIndex={disabled === true ? -1 : undefined}
+			>
+				<KolHeadingFc level={level ?? 0}>
+					<SpanFC icons={icons} label={label} />
+				</KolHeadingFc>
+			</summary>
+			<div class={blockBem('wrapper')}>
+				<div class={blockBem('wrapper-animation')}>
+					<div
+						aria-hidden={expanded === false ? 'true' : undefined}
+						aria-labelledby={headingId}
+						class={clsx(blockBem('content'), contentClass)}
+						id={controlId}
+						role="region"
+					>
+						{children}
+					</div>
+				</div>
+			</div>
+		</BemRootNodeFC>
+	);
+};

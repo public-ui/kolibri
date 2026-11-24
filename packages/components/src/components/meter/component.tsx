@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { MeterFC } from '../../../fc/src/meter/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { MeterApi } from '../../../internals/src/controller/meter/api';
@@ -26,7 +27,6 @@ import type {
 	OptimumPropType,
 	UnitPropType,
 } from '../../../internals/src/schema/index';
-import { MeterFC } from '../../internal/functional-components/meter/component';
 
 @Component({
 	tag: 'kol-meter',

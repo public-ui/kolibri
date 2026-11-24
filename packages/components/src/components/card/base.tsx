@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { CardFC } from '../../../fc/src/card/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { ResolvedButtonProps } from '../../../internals/src/controller/button/resolve-props';
 import type { CardApi } from '../../../internals/src/controller/card/api';
@@ -19,7 +20,6 @@ import type {
 } from '../../../internals/src/schema/index';
 import { createCtaRef } from '../../../internals/src/utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
-import { CardFC } from '../../internal/functional-components/card/component';
 
 /**
  * Orchestrator of `kol-card` (ARC42 § 9, decision 16). The element only declares the Stencil members

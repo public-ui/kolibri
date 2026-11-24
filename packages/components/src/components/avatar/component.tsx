@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { AvatarFC } from '../../../fc/src/avatar/component';
 import type { AvatarApi } from '../../../internals/src/controller/avatar/api';
 import { avatarPropsConfig } from '../../../internals/src/controller/avatar/api';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
@@ -7,7 +8,6 @@ import type { PropsConfigShape, WebComponentInterface } from '../../../internals
 import { colorProp, labelProp, srcProp } from '../../../internals/src/props/index';
 import type { ColorPair, LabelPropType, SrcPropType } from '../../../internals/src/schema/index';
 import { trimLabel } from '../../../internals/src/schema/index';
-import { AvatarFC } from '../../internal/functional-components/avatar/component';
 
 /**
  * Formats a single name as an initial by taking the first character and converting it to uppercase.

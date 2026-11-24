@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { SkipNavFC } from '../../../fc/src/skip-nav/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { SkipNavApi } from '../../../internals/src/controller/skip-nav/api';
@@ -11,7 +12,6 @@ import type { FocusableElement, KolFocusOptions, LabelPropType, LinkProps, SkipN
 import { a11yHintLabelingLandmarks } from '../../../internals/src/schema/index';
 import { createCtaRef, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { addNavLabel, removeNavLabel } from '../../../internals/src/utils/unique-nav-labels';
-import { SkipNavFC } from '../../internal/functional-components/skip-nav/component';
 
 /**
  * The **SkipNav** component renders a hidden navigation that allows keyboard and assistive

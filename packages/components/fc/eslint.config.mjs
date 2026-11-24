@@ -30,7 +30,25 @@ export default [
 				{
 					patterns: [
 						{
-							group: ['@public-ui/components', '@public-ui/components/*', '**/src/components/**', '**/src/core/**', '**/src/global/**'],
+							// The shell layers of the components package, at every relative depth an fc source
+							// file can sit at. Concretely spelled out so the internals' own `src/components` and
+							// `src/core` folders (framework-free sources) do not match.
+							group: [
+								'../src/components/**',
+								'../src/core/**',
+								'../src/global/**',
+								'../../src/components/**',
+								'../../src/core/**',
+								'../../src/global/**',
+								'../../../src/components/**',
+								'../../../src/core/**',
+								'../../../src/global/**',
+								'../../../../src/components/**',
+								'../../../../src/core/**',
+								'../../../../src/global/**',
+								'@public-ui/components',
+								'@public-ui/components/*',
+							],
 							message:
 								'Gegenrichtung verboten: Die Shells rendern die Funktionskomponenten, nie umgekehrt. Shell-Code gehört in packages/components. Siehe README.md.',
 						},

@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
+import { BreadcrumbFC } from '../../../fc/src/breadcrumb/component';
 import type { UnsubscribeFunction } from '../../../internals/src/components/link/ariaCurrentService';
 import { onLocationChange } from '../../../internals/src/components/link/ariaCurrentService';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
@@ -13,7 +14,6 @@ import { breadcrumbLinksProp, labelProp } from '../../../internals/src/props/ind
 import type { BreadcrumbLinkProps, BreadcrumbProps, LabelPropType, Stringified } from '../../../internals/src/schema/index';
 import { a11yHintLabelingLandmarks } from '../../../internals/src/schema/index';
 import { addNavLabel, removeNavLabel } from '../../../internals/src/utils/unique-nav-labels';
-import { BreadcrumbFC } from '../../internal/functional-components/breadcrumb/component';
 
 /**
  * The **Breadcrumb** component can be used to display the path to the current position of a web page within a hierarchical structure.

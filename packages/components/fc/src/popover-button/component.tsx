@@ -1,0 +1,105 @@
+import type { FunctionalComponent as FC } from '@stencil/core';
+import { h } from '@stencil/core';
+
+import type { FunctionalComponentProps } from '../../../internals/src/controller/generic-types';
+import type { PopoverButtonApi } from '../../../internals/src/controller/popover-button/api';
+import { BemRootNodeFC } from '../bem-root-node/component';
+import { ButtonFC } from '../button/component';
+import { PopoverFC } from '../popover/component';
+
+export type PopoverButtonFCProps = FunctionalComponentProps<PopoverButtonApi> & {
+	/** Ref of the `.kol-popover-button` root. */
+	ref?: (element?: HTMLElement) => void;
+};
+
+/**
+ * Renders the popover toggle button and the popover as siblings inside a single BEM root.
+ *
+ * The root must stay an **ancestor** of the button: base and theme styles size the embedded
+ * button and style the popover via descendant selectors (`.kol-popover-button--inline
+ * .kol-button …`), so the classes cannot merge onto the `kol-button` node itself.
+ *
+ * The children become the popover content. Without children, the popover's default slot
+ * distributes the light DOM of the surrounding web component.
+ */
+export const PopoverButtonFC: FC<PopoverButtonFCProps> = (props, children) => {
+	const {
+		accessKey,
+		ariaDescription,
+		ariaDescriptionId,
+		ariaHasPopup,
+		ariaSelected,
+		customClass,
+		disabled,
+		handleBlur,
+		handleClick,
+		handleFocus,
+		handleMouseDown,
+		hideLabel,
+		icons,
+		id,
+		inline,
+		label,
+		name,
+		on,
+		popoverAlign,
+		popoverOpen,
+		popoverId,
+		ref,
+		refButton,
+		refPopover,
+		refTooltip,
+		role,
+		shortKey,
+		tabIndex,
+		tooltipAlign,
+		type,
+		variant,
+	} = props;
+
+	return (
+		<BemRootNodeFC
+			block="kol-popover-button"
+			class={props.class}
+			ref={ref}
+			modifiers={{
+				open: popoverOpen,
+				inline: inline === true,
+			}}
+		>
+			<ButtonFC
+				accessKey={accessKey}
+				ariaControls={popoverId}
+				ariaDescription={ariaDescription}
+				ariaDescriptionId={ariaDescriptionId}
+				ariaExpanded={popoverOpen ? 'true' : 'false'}
+				ariaHasPopup={ariaHasPopup}
+				ariaSelected={ariaSelected}
+				customClass={customClass}
+				disabled={disabled}
+				handleBlur={handleBlur}
+				handleClick={handleClick}
+				handleFocus={handleFocus}
+				handleMouseDown={handleMouseDown}
+				hideLabel={hideLabel}
+				icons={icons}
+				id={id}
+				inline={inline}
+				label={label}
+				name={name}
+				on={on}
+				refButton={refButton}
+				refTooltip={refTooltip}
+				role={role}
+				shortKey={shortKey}
+				tabIndex={tabIndex}
+				tooltipAlign={tooltipAlign}
+				type={type}
+				variant={variant}
+			/>
+			<PopoverFC align={popoverAlign} class="kol-popover-button__popover" id={popoverId} popoverRef={refPopover}>
+				{children}
+			</PopoverFC>
+		</BemRootNodeFC>
+	);
+};

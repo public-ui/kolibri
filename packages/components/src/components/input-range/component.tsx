@@ -29,6 +29,13 @@ import type {
 } from '../../../internals/src/schema/index';
 import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
 
+import { getInputAdornments } from '../../../fc/src/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../../fc/src/form-field/base-web-component';
+import { FormFieldFC } from '../../../fc/src/form-field/component';
+import { InputFC, type InputFCProps } from '../../../fc/src/form-field/input';
+import { InputContainerFC } from '../../../fc/src/form-field/input-container';
+import { SuggestionsFC } from '../../../fc/src/form-field/suggestions';
+import { BEM_CLASS_INPUT_RANGE__INPUT_NUMBER, BEM_CLASS_INPUT_RANGE__INPUT_RANGE, InputRangeInputsFC } from '../../../fc/src/input-range/component';
 import { submitFormOnEnter } from '../../../internals/src/components/form/controller';
 import { clampRangeValue, getNumberValueType, remapNumberValue } from '../../../internals/src/controller/form-field/number-value';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
@@ -48,17 +55,6 @@ import {
 } from '../../../internals/src/props/index';
 import { createRelatedUniqueId, createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import {
-	BEM_CLASS_INPUT_RANGE__INPUT_NUMBER,
-	BEM_CLASS_INPUT_RANGE__INPUT_RANGE,
-	InputRangeInputsFC,
-} from '../../internal/functional-components/input-range/component';
 
 /**
  * The **Range** input type creates a slider control for selecting a numeric value within a defined range. Use the `_min`, `_max`, and `_step` properties to configure the range and step size.

@@ -28,6 +28,11 @@ import type {
 } from '../../../internals/src/schema/index';
 import type { OrientationPropType } from '../../../internals/src/schema/props/orientation';
 
+import { BaseFormFieldWebComponent } from '../../../fc/src/form-field/base-web-component';
+import { FormFieldFC } from '../../../fc/src/form-field/component';
+import { FieldControlFC, isFieldControlLabelShownAsTooltip } from '../../../fc/src/form-field/field-control';
+import type { InputFCProps } from '../../../fc/src/form-field/input';
+import { RadioFC } from '../../../fc/src/form-field/radio';
 import { submitFormOnEnter } from '../../../internals/src/components/form/controller';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import { fillKeyOptionMap, normalizeOptionValues } from '../../../internals/src/controller/form-field/options';
@@ -39,11 +44,6 @@ import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, v
 import { createRelatedUniqueId, createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { delegateClick, setClick } from '../../../internals/src/utils/element-click';
 import { delegateFocus, setFocus } from '../../../internals/src/utils/element-focus';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { FieldControlFC, isFieldControlLabelShownAsTooltip } from '../../internal/functional-components/form-field/field-control';
-import type { InputFCProps } from '../../internal/functional-components/form-field/input';
-import { RadioFC } from '../../internal/functional-components/form-field/radio';
 
 /**
  * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Only a single value can be selected at a time. Selected radio elements are typically represented by a filled, visually highlighted circle.

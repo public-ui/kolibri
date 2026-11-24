@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 
+import { KolibriFC } from '../../../fc/src/kolibri/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { KolibriApi } from '../../../internals/src/controller/kolibri/api';
@@ -8,7 +9,6 @@ import { kolibriPropsConfig } from '../../../internals/src/controller/kolibri/ap
 import { translate } from '../../../internals/src/i18n';
 import { kolibriColorProp, labeledProp } from '../../../internals/src/props/index';
 import type { KolibriProps, LabeledPropType, PropColor, Stringified } from '../../../internals/src/schema/index';
-import { KolibriFC } from '../../internal/functional-components/kolibri/component';
 
 @Component({
 	tag: 'kol-kolibri',
