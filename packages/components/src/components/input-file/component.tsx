@@ -1,5 +1,20 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { getFileNames } from '../../internal/functional-components/form-field/file-value';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { InputFileApi } from '../../internal/functional-components/input-file/api';
+import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
+import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
+import { acceptProp, accessKeyProp, horizontalIconsProp, multipleProp, requiredProp, shortKeyProp, smartButtonProp, variantProp } from '../../internal/props';
 import type {
 	AcceptPropType,
 	AccessKeyPropType,
@@ -29,21 +44,6 @@ import type {
 } from '../../schema';
 import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-
-import { translate } from '../../i18n';
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { getFileNames } from '../../internal/functional-components/form-field/file-value';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputFileApi } from '../../internal/functional-components/input-file/api';
-import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
-import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
-import { acceptProp, accessKeyProp, horizontalIconsProp, multipleProp, requiredProp, shortKeyProp, smartButtonProp, variantProp } from '../../internal/props';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';

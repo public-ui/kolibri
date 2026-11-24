@@ -1,6 +1,5 @@
 import { KolTextareaTag } from '../../core/component-names';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
-
 import { KolTextarea } from './component';
 
 executeInputSnapshotTests(KolTextareaTag, [KolTextarea], {

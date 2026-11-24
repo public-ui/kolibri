@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { ariaDetailsProp } from './aria-details';
 import { autoCompleteProp } from './auto-complete';
 import { hideMsgProp } from './hide-msg';

@@ -1,5 +1,6 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+
 import { translate } from '../../../i18n';
 import type {
 	LabelLangSegmentsPropType,

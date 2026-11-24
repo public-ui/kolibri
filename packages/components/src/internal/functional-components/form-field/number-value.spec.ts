@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+
 import type { NumberValueType } from './number-value';
 import { clampRangeValue, getNumberValueType, parseInputNumberValue, remapNumberValue } from './number-value';
 

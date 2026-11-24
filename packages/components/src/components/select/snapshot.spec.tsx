@@ -1,6 +1,5 @@
 import { KolSelectTag } from '../../core/component-names';
 import { executeInputSnapshotTests } from '../../utils/testing';
-
 import { KolSelect } from './component';
 
 const COMPONENTS = [KolSelect];

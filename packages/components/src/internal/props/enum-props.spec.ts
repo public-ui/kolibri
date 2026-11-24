@@ -1,4 +1,5 @@
 import { afterAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
+
 import { alertTypeOptions, alertVariantOptions, alignPropTypeOptions } from '../../schema';
 import { Log } from '../../schema/utils/dev.utils';
 import { alertTypeProp } from './alert-type';

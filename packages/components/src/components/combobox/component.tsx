@@ -1,6 +1,31 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+
 import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import type { ComboboxApi } from '../../internal/functional-components/combobox/api';
+import { comboboxPropsConfig } from '../../internal/functional-components/combobox/api';
+import { BEM_CLASS_COMBOBOX__DELETE, ComboboxToggleFC } from '../../internal/functional-components/combobox/component';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
+import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
+import {
+	accessKeyProp,
+	hasClearButtonProp,
+	horizontalIconsProp,
+	placeholderProp,
+	requiredProp,
+	shortKeyProp,
+	stringValueProp,
+	suggestionsProp,
+	variantProp,
+} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -37,31 +62,6 @@ import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { containsDeepActiveElement } from '../../utils/element-focus';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
-
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import type { ComboboxApi } from '../../internal/functional-components/combobox/api';
-import { comboboxPropsConfig } from '../../internal/functional-components/combobox/api';
-import { BEM_CLASS_COMBOBOX__DELETE, ComboboxToggleFC } from '../../internal/functional-components/combobox/component';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
-import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
-import {
-	accessKeyProp,
-	hasClearButtonProp,
-	horizontalIconsProp,
-	placeholderProp,
-	requiredProp,
-	shortKeyProp,
-	stringValueProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
 
 /**
  * @slot - The label of the input field.

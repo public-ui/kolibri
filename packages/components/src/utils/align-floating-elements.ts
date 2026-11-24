@@ -1,7 +1,7 @@
 import { arrow, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { isTestMode } from '../schema';
 
 import type { AlignPropType } from '../schema';
+import { isTestMode } from '../schema';
 type Arguments = {
 	floatingElement: HTMLElement;
 	referenceElement: Element;

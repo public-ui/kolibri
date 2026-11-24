@@ -1,5 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 import { h } from '@stencil/core';
+
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
 import { SelectFC, SelectOptionFC, SelectOptionListFC } from './select';
 

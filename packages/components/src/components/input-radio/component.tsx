@@ -1,5 +1,19 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { FieldControlFC, isFieldControlLabelShownAsTooltip } from '../../internal/functional-components/form-field/field-control';
+import type { InputFCProps } from '../../internal/functional-components/form-field/input';
+import { fillKeyOptionMap, normalizeOptionValues } from '../../internal/functional-components/form-field/options';
+import { RadioFC } from '../../internal/functional-components/form-field/radio';
+import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { InputRadioApi } from '../../internal/functional-components/input-radio/api';
+import { inputRadioPropsConfig } from '../../internal/functional-components/input-radio/api';
+import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
+import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, variantProp } from '../../internal/props';
 import type {
 	AriaDetailsPropType,
 	ClickableElement,
@@ -26,20 +40,6 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import type { OrientationPropType } from '../../schema/props';
-
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { FieldControlFC, isFieldControlLabelShownAsTooltip } from '../../internal/functional-components/form-field/field-control';
-import type { InputFCProps } from '../../internal/functional-components/form-field/input';
-import { fillKeyOptionMap, normalizeOptionValues } from '../../internal/functional-components/form-field/options';
-import { RadioFC } from '../../internal/functional-components/form-field/radio';
-import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputRadioApi } from '../../internal/functional-components/input-radio/api';
-import { inputRadioPropsConfig } from '../../internal/functional-components/input-radio/api';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, variantProp } from '../../internal/props';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';

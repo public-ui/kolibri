@@ -1,5 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 import { newSpecPage } from '@stencil/core/testing';
+
 import type { KolProgress } from './component';
 import { KolProgress as KolProgressComponent } from './component';
 

@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { customClassProp } from '../custom-class';
 import { variantProp } from '../variant';
 import { isSafeClassName } from './validators';

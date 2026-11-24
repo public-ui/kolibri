@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { kolibriColorProp } from './kolibri-color';
 import { labeledProp } from './labeled';
 

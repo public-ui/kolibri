@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+
 import type { Option, StencilUnknown } from '../../schema';
 import { KolSingleSelect } from './component';
 

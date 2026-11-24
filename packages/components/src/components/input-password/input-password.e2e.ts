@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+
 import { testInputCharacterLimit, testInputValueReflection } from '../../e2e';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
