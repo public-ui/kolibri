@@ -1,0 +1,1 @@
+import{A as e,l as t}from"./props-from-config-DYN2VEHV-DUnUI9vY.js";var n=t(`target`,``,e);export{n as t};

@@ -1,1 +1,0 @@
-import{h as e}from"./index-BfA6ihh9-CqOCb2k0.js";import{N as t}from"./props-from-config-CC6_hoBd-BqUyr3Sj.js";var n=new Set;function r(r){let i=t(r);n.has(i)?e.warn(`There already is a nav element with the label "${i}"`):n.add(i)}function i(e){let r=t(e);n.delete(r)}export{i as n,r as t};
