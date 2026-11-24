@@ -37,14 +37,14 @@ Stencil-Komponentenschicht und gehören deshalb nicht hierher.
 
 ## Ausschlusskriterien (gehört in die Runtime-Pakete)
 
-| Gehört nicht hierher                                                                                                                                                                                                                                   | Richtiger Ort                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- |
-| Render-Funktionalkomponenten (`component.tsx` mit `h()`)                                                                                                                                                                                               | `packages/components/src/internal/functional-components/` |
-| Stencil-Shells (`@Component`-Klassen)                                                                                                                                                                                                                  | `packages/components/src/components/`                     |
-| FC-gekoppelte Orchestrierung (Items/Controller, die FC-Props-Typen oder FCs importieren): `link/item.ts`, `pagination/item.ts`, `popover-button/item.ts`, `counter/behavior.ts`, `form-field/base-web-component.tsx`, `listbox/base-web-component.tsx` | `packages/components/src/internal/functional-components/` |
-| Styles, Themes, `a11y.scss`, `@shared`-Mixins                                                                                                                                                                                                          | `packages/components/src/components/` bzw. Theme-Pakete   |
-| Stencil-generierte Typen (`components.d.ts`, `custom-elements.json`)                                                                                                                                                                                   | Build-Ausgabe des Stencil-Pakets                          |
-| Lit-Shells und lit-html-Renderfunktionen                                                                                                                                                                                                               | `packages/components/lit/src/`                            |
+| Gehört nicht hierher                                                                                                                                                                                                                                   | Richtiger Ort                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| Render-Funktionalkomponenten (`component.tsx` mit `h()`)                                                                                                                                                                                               | `packages/components/fc/src/`                           |
+| Stencil-Shells (`@Component`-Klassen)                                                                                                                                                                                                                  | `packages/components/src/components/`                   |
+| FC-gekoppelte Orchestrierung (Items/Controller, die FC-Props-Typen oder FCs importieren): `link/item.ts`, `pagination/item.ts`, `popover-button/item.ts`, `counter/behavior.ts`, `form-field/base-web-component.tsx`, `listbox/base-web-component.tsx` | `packages/components/fc/src/`                           |
+| Styles, Themes, `a11y.scss`, `@shared`-Mixins                                                                                                                                                                                                          | `packages/components/src/components/` bzw. Theme-Pakete |
+| Stencil-generierte Typen (`components.d.ts`, `custom-elements.json`)                                                                                                                                                                                   | Build-Ausgabe des Stencil-Pakets                        |
+| Lit-Shells und lit-html-Renderfunktionen                                                                                                                                                                                                               | `packages/components/lit/src/`                          |
 
 ## Schichtabbild
 
@@ -64,11 +64,13 @@ internals/src/
 
 Die Laufzeitpakete konsumieren die Quellen direkt — Stencil per relativem Quellpfad
 (`../internals/src/…`), weil der Stencil-Transpiler die `extends`-Kette der Komponentenklassen
-nur aus Quellen im eigenen Programm auflösen kann; Lit über den Paketspezifizierer
-`@public-ui/internals/…`, den ihre Vite-Konfiguration und die `paths` der tsconfig auf die Quellen
-zeigen. Der `tsc`-Emit (`dist/`) löst den Spezifizierer zur Laufzeit, wo der Entry des
-Stencil-Pakets ihn re-exportiert. Der Typ-Emit des Stencil-Pakets bettet die internals-Typen ein
-(`scripts/rewrite-emit-internals-paths.mjs`), daher müssen Konsumenten das Paket nicht auflösen.
+nur aus Quellen im eigenen Programm auflösen kann; die Funktionskomponenten des Pakets
+`packages/components/fc` ebenso (`../../../internals/src/…`); Lit über den Paketspezifizierer
+`@public-ui/internals/…`, den seine Vite-Konfiguration und die `paths` der tsconfig auf die
+Quellen zeigen. Der `tsc`-Emit (`dist/`) löst den Spezifizierer zur Laufzeit, wo der Entry des
+Stencil-Pakets ihn re-exportiert. Der Typ-Emit des Stencil-Pakets bettet die internals- und
+fc-Typen ein (`scripts/rewrite-emit-internals-paths.mjs`), daher müssen Konsumenten diese Pakete
+nicht auflösen.
 
 ## Review-Guardrails
 

@@ -7,9 +7,9 @@ The skeleton architecture describes how KoliBri web components are built in a hi
 The architecture is organized into **two layers** plus an optional reusable unit of logic:
 
 - **Web Component (WC)** — the orchestrator. It owns the Stencil lifecycle (`@Prop`/`@State`/`@Watch`/`@Method`), normalizes incoming props, manages reactive state, composes optional Behaviors, and feeds fully resolved render props to the Functional Component.
-- **[Behaviors](../src/internal/functional-components/base-behavior.ts)** — optional, composable logic modules (e.g. `TooltipBehavior`). A WC may compose zero or more Behaviors. They manage their own render props but receive state access from their host WC.
+- **[Behaviors](../../internals/src/controller/base-behavior.ts)** — optional, composable logic modules (e.g. `TooltipBehavior`). A WC may compose zero or more Behaviors. They manage their own render props but receive state access from their host WC.
 - **Functional Component (FC)** — a pure, stateless renderer. It renders solely from the props handed to it and never mutates state.
-- **[Schema helpers](../src/internal/props/)** — house prop types, normalization and validation helpers shared across layers.
+- **[Schema helpers](../../internals/src/props/)** — house prop types, normalization and validation helpers shared across layers.
 
 Primary goals:
 

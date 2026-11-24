@@ -459,9 +459,9 @@ Components in KoliBri follow different architectural patterns (legacy Schema-bas
 All new and refactored components adopt the **Skeleton Architecture Pattern**:
 
 1. **Web Component** (`src/components/[name]/component.tsx`): Stencil component with lifecycle, property decorators, and event emission
-2. **Controller** (`src/internal/functional-components/[name]/controller.ts`): Pure logic layer, extends `BaseController<Api>`
-3. **Functional Component** (`src/internal/functional-components/[name]/component.tsx`): Stateless render function (`FC<FunctionalComponentProps<Api>>`)
-4. **API Definition** (`src/internal/functional-components/[name]/api.tsx`): Type-safe prop/event/callback contracts via `PropsConfigShape` and `ApiFromConfig`
+2. **Controller** (`internals/src/controller/[name]/`): Pure logic layer, extends `BaseController<Api>`
+3. **Functional Component** (`fc/src/[name]/component.tsx`): Stateless render function (`FC<FunctionalComponentProps<Api>>`)
+4. **API Definition** (`internals/src/controller/[name]/api.tsx`): Type-safe prop/event/callback contracts via `PropsConfigShape` and `ApiFromConfig`
 
 This provides:
 
