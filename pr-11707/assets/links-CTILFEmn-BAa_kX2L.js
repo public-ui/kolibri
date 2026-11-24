@@ -1,1 +1,0 @@
-import{W as e}from"./index-Ci5LpX2R-CQEGtdBi.js";import{l as t,y as n}from"./props-from-config-BRbDGwAy-_aCmSaxy.js";function r(r){return t(`links`,[],e=>n(e),e=>e.every(e=>typeof e==`object`&&!!e&&(typeof e._href==`string`||typeof e._label==`string`)),{hints:(t,n)=>e(r,n.length)})}export{r as t};
