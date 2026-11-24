@@ -19,11 +19,17 @@ const BOLD = [
 const regular = new Map([...CHARACTERS].map((character, index) => [character, REGULAR[index]]));
 const bold = new Map([...CHARACTERS].map((character, index) => [character, BOLD[index]]));
 
-/** Width of a single-line text in Verdana; an unknown character counts as an `n`. */
+/** Characters without an advance in the browser, whatever the font; the basis styles set a zero-width space in front of a button label. */
+const ZERO_WIDTH = /[\u00AD\u200B-\u200D\u2060\uFEFF]/;
+
+/**
+ * Width of a single-line text in Verdana; an unknown character counts as an `n`, a character
+ * without an advance as nothing.
+ */
 export function verdanaWidth(text: string, fontSize: number, weight: number): number {
 	const widths = weight >= 600 ? bold : regular;
 	const fallback = widths.get('n') ?? 600;
 	let total = 0;
-	for (const character of text) total += widths.get(character) ?? fallback;
+	for (const character of text) total += ZERO_WIDTH.test(character) ? 0 : (widths.get(character) ?? fallback);
 	return (total * fontSize) / 1000;
 }
