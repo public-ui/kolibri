@@ -75,7 +75,6 @@ export const ECL_EC = KoliBri.createTheme(
 		'KOL-LINK': linkCss,
 		'KOL-LINK-BUTTON': linkButtonCss,
 		'KOL-DIALOG': dialogCss,
-		'KOL-MODAL': dialogCss,
 		'KOL-NAV': navCss,
 		'KOL-PAGINATION': paginationCss,
 		'KOL-POPOVER-BUTTON': popoverButtonCss,
