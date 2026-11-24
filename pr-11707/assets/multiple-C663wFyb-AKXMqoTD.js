@@ -1,0 +1,1 @@
+import"./index-Ci5LpX2R-CQEGtdBi.js";import{b as e,l as t}from"./props-from-config-BRbDGwAy-Dptonuvq.js";var n=t(`multiple`,!1,e);export{n as t};
