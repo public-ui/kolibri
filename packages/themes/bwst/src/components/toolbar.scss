@@ -1,4 +1,5 @@
 @use '../mixins/button' as *;
+@use '../mixins/focus-outline' as *;
 @use '../mixins/to-rem' as *;
 
 @layer kol-theme-component {
@@ -47,6 +48,21 @@
 
 		.kol-toolbar__item .kol-span {
 			border-radius: var(--kol-toolbar-item-border-radius);
+		}
+
+		/* The text box carries the group's corners, square between the buttons, while the focus ring keeps
+		   the round button corners. The class carrier around the interactive element draws the ring: it is
+		   a plain element with the button's box, so it survives Firefox's page color override like the ring
+		   of the shared button styles. */
+		.kol-toolbar__item .kol-button:has(> .kol-button__interactive-element:focus-visible),
+		.kol-toolbar__item .kol-link:has(> .kol-link__interactive-element:focus-visible) {
+			@include focus-outline;
+			position: relative;
+		}
+
+		.kol-toolbar__item .kol-button__interactive-element:focus-visible .kol-button__text,
+		.kol-toolbar__item .kol-link__interactive-element:focus-visible .kol-link__text {
+			outline: none;
 		}
 
 		hr {

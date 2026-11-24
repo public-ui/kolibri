@@ -1,4 +1,5 @@
 import { h, type JSX } from '@stencil/core';
+
 import type {
 	IconsHorizontalPropType,
 	MultiplePropType,

@@ -1,8 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import type { WatchBooleanOptions } from '../utils';
-import { watchBoolean } from '../utils';
-
 export type InlinePropType = boolean;
 
 /**
@@ -10,8 +5,4 @@ export type InlinePropType = boolean;
  */
 export type PropInline = {
 	inline: InlinePropType;
-};
-
-export const validateInline = (component: Generic.Element.Component, value?: InlinePropType, options: WatchBooleanOptions = {}): void => {
-	watchBoolean(component, '_inline', value, options);
 };

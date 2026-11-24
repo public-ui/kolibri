@@ -92,15 +92,41 @@ jobs:
       - name: Unit Tests
         if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm -r test:unit
-      # Compares the artifact sizes of the components and theme-default with their committed
-      # baselines (size-baseline.json); see docs/SIZE_GATE.md. The treemap and the restructuring
-      # candidates come from the manually started workflow size-analysis.yml.
+      # Pull-request runs compare their artifact sizes with the baseline that the "Size Baseline"
+      # workflow computed for the base commit; push runs report their sizes without comparison.
+      # Every step keeps going on error, so the size comparison can never block the merge.
+      - name: Select size baseline
+        id: size-baseline
+        if: ${{ github.event_name == 'pull_request' }}
+        continue-on-error: true
+        run: node scripts/size-baseline/select-baseline.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download size baseline
+        if: ${{ steps.size-baseline.outputs.artifact_id != '' }}
+        continue-on-error: true
+        uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ steps.size-baseline.outputs.artifact_id }}
+          run-id: ${{ steps.size-baseline.outputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: size-baseline-download
+      - name: Install size baseline
+        if: ${{ steps.size-baseline.outputs.artifact_id != '' }}
+        continue-on-error: true
+        run: |
+          cp size-baseline-download/components.json packages/components/size-baseline.json
+          cp size-baseline-download/theme-default.json packages/themes/default/size-baseline.json
+      # Informational comparison of the artifact sizes of the components and theme-default with the
+      # baseline of the target branch (installed above on pull requests; on push runs without
+      # comparison); see docs/SIZE_GATE.md. The treemap and the restructuring candidates come from
+      # the manually started workflow size-analysis.yml.
       - name: Size gate
         id: size-gate
         if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm -r size
-      # Keeps at most one size gate comment on the pull request. It is created only for a failure or a
-      # notable change and updated on every later run. Pull requests from forks get a read-only token;
+      # Keeps at most one size report comment on the pull request. It is created only for a notable
+      # change and updated on every later run. Pull requests from forks get a read-only token;
       # for them the step only warns and the job summary carries the report.
       - name: Size gate comment
         if: ${{ !cancelled() && needs.changed-files.outputs.docs-only != 'true' && github.event_name == 'pull_request' }}

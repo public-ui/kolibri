@@ -28,7 +28,8 @@ export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentIn
 	 * DEPRECATED!
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelLangSegmentsPropType = undefined;
+	@Prop()
+	public _label?: LabelLangSegmentsPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {

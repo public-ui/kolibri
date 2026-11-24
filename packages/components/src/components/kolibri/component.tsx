@@ -8,7 +8,7 @@ import type { KolibriApi } from '../../internal/functional-components/kolibri/ap
 import { kolibriPropsConfig } from '../../internal/functional-components/kolibri/api';
 import { KolibriFC } from '../../internal/functional-components/kolibri/component';
 import { kolibriColorProp, labeledProp } from '../../internal/props';
-import type { KolibriProps, LabeledPropType, PropColor, Stringified } from '../../schema';
+import type { LabeledPropType, PropColor, Stringified } from '../../schema';
 
 @Component({
 	tag: 'kol-kolibri',
@@ -17,7 +17,7 @@ import type { KolibriProps, LabeledPropType, PropColor, Stringified } from '../.
 	},
 	shadow: true,
 })
-export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriProps, WebComponentInterface<KolibriApi> {
+export class KolKolibri extends BaseWebComponent<KolibriApi> implements WebComponentInterface<KolibriApi> {
 	private readonly translateKolibriLogo = translate('kol-kolibri-logo');
 
 	protected readonly propsConfig: PropsConfigShape = kolibriPropsConfig;
@@ -25,7 +25,8 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriP
 	/**
 	 * Defines the color of the logo and label.
 	 */
-	@Prop() public _color?: Stringified<PropColor> = '#003c78';
+	@Prop()
+	public _color?: Stringified<PropColor> = '#003c78';
 
 	@Watch('_color')
 	public watchColor(value?: Stringified<PropColor>): void {
@@ -35,7 +36,8 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriP
 	/**
 	 * Defines whether the component has a label.
 	 */
-	@Prop() public _labeled?: LabeledPropType = true;
+	@Prop()
+	public _labeled?: LabeledPropType = true;
 
 	@Watch('_labeled')
 	public watchLabeled(value?: LabeledPropType): void {

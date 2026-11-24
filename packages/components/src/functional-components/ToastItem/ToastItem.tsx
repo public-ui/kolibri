@@ -1,8 +1,8 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+
 import { AlertFC } from '../../internal/functional-components/alert/component';
 import { type Toast } from '../../schema';
-
 import clsx from '../../utils/clsx';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 

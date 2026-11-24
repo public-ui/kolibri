@@ -1,10 +1,10 @@
+import type { Generic } from 'adopted-style-sheets';
+
+import type { KoliBriTableHeaders } from '../components/table';
 import type { Callback } from '../enums';
+import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableSelectionKeys } from '../types';
 import type { EventValueOrEventCallback } from '../types/callbacks';
 import { watchValidator } from '../utils';
-
-import type { Generic } from 'adopted-style-sheets';
-import type { KoliBriTableHeaders } from '../components/table';
-import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableSelectionKeys } from '../types';
 
 /* types */
 export type SortEventPayload = {

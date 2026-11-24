@@ -1,6 +1,7 @@
 import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { type E2EPage, test } from '@stencil/playwright';
+
 import { testInputValueReflection } from '../../e2e';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
@@ -102,8 +103,7 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	/*
-	 * Pins the tooltip that replaces the visible label with _hideLabel, ahead of the form field skeleton migration,
-	 * which moves the tooltip from a pool shared by all form fields to one behavior per field.
+	 * Pins the tooltip that replaces the visible label with _hideLabel.
 	 */
 	test.describe('Tooltip with _hideLabel', () => {
 		const tooltip = '.kol-form-field__tooltip .kol-tooltip__floating';

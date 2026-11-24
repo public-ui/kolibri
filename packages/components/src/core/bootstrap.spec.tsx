@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+
 import { KolButton } from '../components/button/component';
 import { bootstrap } from './bootstrap';
 import { KolButtonTag } from './component-names';

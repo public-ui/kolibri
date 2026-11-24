@@ -182,14 +182,12 @@ import { KolMyComponent } from './component';
 
 const TAG = 'kol-my-component';
 
-type Props = {
-	_name: string;
-};
-
-executeSnapshotTests<Props>(TAG, [KolMyComponent], [{ _name: 'Test' }, { _name: '' }]);
+executeSnapshotTests(TAG, [KolMyComponent], [{ _name: 'Test' }, { _name: '' }]);
 ```
 
-**Interaction-Test** (`interaction.e2e.ts`):
+Der Tag-Name typisiert die Prop-Varianten: Sie werden gegen die `@Prop`-Deklarationen des Elements geprüft (`ElementProps<typeof TAG>`), ein eigener Props-Typ entfällt.
+
+**Interaction-Test** (`<component>.e2e.ts`):
 
 ```typescript
 import { expect } from '@playwright/test';

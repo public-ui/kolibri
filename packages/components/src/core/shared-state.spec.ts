@@ -1,5 +1,6 @@
 import type * as AdoptedStyleSheetsModule from 'adopted-style-sheets';
-import type * as AriaCurrentServiceModule from '../components/link/ariaCurrentService';
+
+import type * as AriaCurrentServiceModule from '../internal/functional-components/link/aria-current-service';
 import type * as TooltipTrackingModule from '../utils/tooltip-open-tracking';
 import type * as BootstrapModule from './bootstrap';
 import type * as I18nModule from './i18n';
@@ -23,8 +24,8 @@ const loadCopy = <T>(load: () => T): T => {
 
 describe('state shared across bundle copies', () => {
 	it('notifies the location subscribers of every copy', () => {
-		const rootEntry = loadCopy(() => jest.requireActual<AriaCurrentService>('../components/link/ariaCurrentService'));
-		const customElements = loadCopy(() => jest.requireActual<AriaCurrentService>('../components/link/ariaCurrentService'));
+		const rootEntry = loadCopy(() => jest.requireActual<AriaCurrentService>('../internal/functional-components/link/aria-current-service'));
+		const customElements = loadCopy(() => jest.requireActual<AriaCurrentService>('../internal/functional-components/link/aria-current-service'));
 		const subscriber = jest.fn();
 
 		const unsubscribe = customElements.onLocationChange(subscriber, false);

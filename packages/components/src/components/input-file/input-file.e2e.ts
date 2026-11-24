@@ -1,7 +1,7 @@
-import { Buffer } from 'buffer';
-
 import { expect, type Page } from '@playwright/test';
 import { type E2EPage, test } from '@stencil/playwright';
+import { Buffer } from 'buffer';
+
 import {
 	callback,
 	EXPERIMENTAL_MODE_HEAD,
@@ -259,7 +259,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		/* A drop sets the filename but not the `--has-file` modifier, and emits `change` before `input` — unlike a
-		   selection in the native dialog (#10865). The tests pin that state through the skeleton migration. */
+		   selection in the native dialog (#10865). The tests pin that state. */
 		test('shows the name of a dropped file without marking it as selected', async ({ page }) => {
 			await page.setContent('<kol-input-file _label="File"></kol-input-file>');
 

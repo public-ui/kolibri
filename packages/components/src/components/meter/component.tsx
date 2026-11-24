@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { MeterApi } from '../../internal/functional-components/meter/api';
@@ -169,19 +170,13 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	public componentWillLoad(): void {
 		this.watchHigh(this._high);
-		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.watchLabel(this._label);
 		this.watchLow(this._low);
-		maxProp.apply(this._max, (v) => {
-			this.setRenderProp('max', v);
-			this.watchValue(this.getRawProp('value'));
-		});
-		minProp.apply(this._min, (v) => {
-			this.setRenderProp('min', v);
-			this.watchValue(this.getRawProp('value'));
-		});
+		this.watchMax(this._max);
+		this.watchMin(this._min);
 		this.watchOptimum(this._optimum);
-		orientationProp.apply(this._orientation, (v) => this.setRenderProp('orientation', v));
-		unitProp.apply(this._unit, (v) => this.setRenderProp('unit', v));
+		this.watchOrientation(this._orientation);
+		this.watchUnit(this._unit);
 		this.watchValue(this._value);
 	}
 

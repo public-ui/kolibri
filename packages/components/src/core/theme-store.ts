@@ -1,4 +1,5 @@
 import { STORE } from 'adopted-style-sheets';
+
 import { getSharedState } from './shared-state';
 
 /**

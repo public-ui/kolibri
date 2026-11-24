@@ -7,7 +7,7 @@ import { ButtonFC } from '../button/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { LinkFC } from '../link/component';
 import type { ToolbarApi } from './api';
-import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './entry-item';
 
 const BEM_CLASS_TOOLBAR__ITEM = bem.forBlock('kol-toolbar')('item');
 

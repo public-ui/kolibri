@@ -3,7 +3,8 @@ name: Size Analysis
 # Analyses the artifact size of @public-ui/components and @public-ui/theme-default on demand:
 # treemap, hotspots, duplicated modules, CSS repeated across sheets and restructuring candidates.
 # Started manually only (Actions → Size Analysis → Run workflow, choose the branch). The size gate of
-# every pull request runs in ci.yml; see docs/SIZE_GATE.md.
+# every pull request runs in ci.yml with the baseline from the Size Baseline workflow; see
+# docs/SIZE_GATE.md.
 
 on:
   workflow_dispatch:

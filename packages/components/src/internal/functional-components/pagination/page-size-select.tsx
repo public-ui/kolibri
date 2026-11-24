@@ -1,4 +1,5 @@
 import type { JSX } from '@stencil/core';
+
 import type { InputTypeOnDefault, Option, ShortKeyPropType, StencilUnknown, Stringified } from '../../../schema';
 import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
@@ -98,16 +99,6 @@ export class PageSizeSelect extends BaseSelectWebComponent {
 		return undefined;
 	}
 
-	/** Call once per render of the embedding element. */
-	public render(input: PageSizeSelectInput): JSX.Element {
-		if (this.loaded) {
-			this.update(input);
-		} else {
-			this.load(input);
-		}
-		return this.renderSelectField();
-	}
-
 	/** Call from `componentDidRender` of the embedding element. */
 	public sync(): void {
 		this.syncFormField();
@@ -172,6 +163,16 @@ export class PageSizeSelect extends BaseSelectWebComponent {
 			this.value = input.value;
 			this.applyValue(input.value);
 		}
+	}
+
+	/** Call once per render of the embedding element. */
+	public render(input: PageSizeSelectInput): JSX.Element {
+		if (this.loaded) {
+			this.update(input);
+		} else {
+			this.load(input);
+		}
+		return this.renderSelectField();
 	}
 }
 

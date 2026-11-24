@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { inputMaxProp } from './input-max';
 import { inputMinProp } from './input-min';
 import { stepProp } from './step';

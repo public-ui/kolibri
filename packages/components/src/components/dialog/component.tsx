@@ -3,9 +3,9 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
-import type { ModalVariantPropType } from '../../schema/props/variant/modal';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
+import type { ModalVariantPropType } from '../../schema/props';
+import { createUniqueId } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from './base';
 
 /**
@@ -18,19 +18,24 @@ import { BaseDialogWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolDialog extends BaseDialogWebComponent implements DialogProps, WebComponentInterface<DialogApi> {
-	@Element() protected readonly host?: HTMLKolDialogElement;
+export class KolDialog extends BaseDialogWebComponent implements WebComponentInterface<DialogApi> {
+	@Element()
+	protected readonly host?: HTMLKolDialogElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State()
+	public ariaDescriptionId: string = createUniqueId('aria-description');
 
-	@State() public headingId: string = createUniqueId('dialog-heading');
+	@State()
+	public headingId: string = createUniqueId('dialog-heading');
 
-	@State() public modal: boolean = true;
+	@State()
+	public modal: boolean = true;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelLangSegmentsPropType;
+	@Prop()
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -40,7 +45,8 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 0;
+	@Prop()
+	public _level?: HeadingLevel = 0;
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
@@ -50,7 +56,8 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	/**
 	 * Defines the modal callback functions.
 	 */
-	@Prop() public _on?: KoliBriDialogEventCallbacks = undefined;
+	@Prop()
+	public _on?: KoliBriDialogEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriDialogEventCallbacks): void {
@@ -60,7 +67,8 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	/**
 	 * Defines the variant of the modal.
 	 */
-	@Prop() public _variant?: ModalVariantPropType = 'blank';
+	@Prop()
+	public _variant?: ModalVariantPropType = 'blank';
 
 	@Watch('_variant')
 	public watchVariant(value?: ModalVariantPropType): void {
@@ -70,7 +78,8 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	/**
 	 * Defines the width of the modal. (max-width: 100%)
 	 */
-	@Prop() public _width?: WidthPropType = '100%';
+	@Prop()
+	public _width?: WidthPropType = '100%';
 
 	@Watch('_width')
 	public watchWidth(value?: WidthPropType): void {

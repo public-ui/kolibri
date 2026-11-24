@@ -2,6 +2,7 @@ import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import type { E2EPage } from '@stencil/playwright';
 import { test } from '@stencil/playwright';
+
 import { Callback } from '../../schema/enums';
 
 test.describe('kol-pagination', () => {
@@ -93,7 +94,7 @@ test.describe('kol-pagination', () => {
 });
 
 /*
- * Pins the event and callback protocol ahead of the skeleton migration (#9590): which callbacks and
+ * Pins the event and callback protocol (#9590): which callbacks and
  * DOM events fire, in which order, with which value, and how often a clamped page is reported.
  */
 test.describe('kol-pagination behavior', () => {

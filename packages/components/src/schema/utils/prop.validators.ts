@@ -3,10 +3,9 @@ import { getCssStyle, patchTheme, patchThemeTag } from 'adopted-style-sheets';
 import rgba from 'rgba-convert';
 import { hex, score } from 'wcag-contrast';
 
-import { getDocument, getExperimentalMode, isValidationEnabled, Log } from './dev.utils';
-
 import type { Stringified } from '../types/common';
 import { devHint } from './a11y.tipps';
+import { getDocument, getExperimentalMode, isValidationEnabled, Log } from './dev.utils';
 // https://regex101.com/r/lSYLO9/1
 /**
  * Bei Stencil kann es vorkommen, dass bei der Übergabe eines komplexer Objekte

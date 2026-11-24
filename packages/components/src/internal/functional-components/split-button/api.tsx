@@ -1,6 +1,5 @@
-import type { ApiFromConfig, FunctionalComponentProps, PropsConfigShape } from '../generic-types';
-
 import type { ButtonApi } from '../button/api';
+import type { ApiFromConfig, FunctionalComponentProps, PropsConfigShape } from '../generic-types';
 import type { PopoverButtonApi } from '../popover-button/api';
 
 /**
@@ -18,9 +17,8 @@ export type SplitButtonApi = ApiFromConfig<
 	{
 		Refs: {
 			/**
-			 * The box around the dropdown. It carries the consumer class the predecessor put on its
-			 * `kol-popover-button-wc` element, and is the element the popover button's synthetic
-			 * `KolEvent` DOM events are dispatched on.
+			 * The box around the dropdown. It carries the consumer class of the popover button and is
+			 * the element the popover button's synthetic `KolEvent` DOM events are dispatched on.
 			 */
 			dropdown: HTMLDivElement;
 		};

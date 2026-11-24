@@ -8,8 +8,7 @@ const BUTTON_TYPE_OPTIONS: readonly ButtonTypePropType[] = ['button', 'reset', '
 /**
  * Type prop for the interactive element of button-like components.
  *
- * Defaults to `'button'` so a button inside a form never submits it accidentally — the same
- * default the predecessor validator enforced.
+ * Defaults to `'button'` so a button inside a form never submits it accidentally.
  */
 export type ButtonTypeProp = SimpleProp<'type', ButtonTypePropType>;
 

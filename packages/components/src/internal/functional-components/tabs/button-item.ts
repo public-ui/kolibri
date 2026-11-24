@@ -1,6 +1,6 @@
 import type { AlignPropType, InternalButtonProps, StencilUnknown } from '../../../schema';
 import { setEventTarget } from '../../../schema';
-import { nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { BaseWebComponent } from '../base-web-component';
 import type { ButtonApi } from '../button/api';
@@ -16,9 +16,9 @@ import { TooltipBehavior } from '../tooltip/behavior';
 export type TabsButton = {
 	buttonProps: FunctionalComponentProps<ButtonApi>;
 	/**
-	 * The box stands where the predecessor's `kol-button-wc` element stood. It is the flex item of
-	 * the tab list — the `.kol-button` block inside claims `width: 100%` and would take a whole row
-	 * of its own otherwise — and the target of the `KolEvent` DOM events.
+	 * The box around the button. It is the flex item of the tab list — the `.kol-button` block
+	 * inside claims `width: 100%` and would take a whole row of its own otherwise — and the target
+	 * of the `KolEvent` DOM events.
 	 */
 	refBox: (element?: HTMLDivElement) => void;
 };
@@ -27,11 +27,10 @@ export type TabsButton = {
  * One orchestrated button of `kol-tabs` — a tab or the create button.
  *
  * `ButtonFC` is stateless, but a tab button is not: its tooltip behavior, its event handlers and
- * its element refs have to live somewhere. The predecessor rendered a `kol-button-wc` per button,
- * which owned exactly that; this item is that orchestration, minus the wrapper element. It is a
- * plain object with closures, like `popover-button/item.ts`, so `kol-tabs` composes one per button.
+ * its element refs have to live somewhere. This item holds that orchestration. It is a plain
+ * object with closures, like `popover-button/item.ts`, so `kol-tabs` composes one per button.
  *
- * Two pieces of the wrapper are deliberately absent:
+ * Two pieces of the button orchestration are deliberately absent:
  * - **Form association.** Tab buttons are `type="button"` without `_name`, so there is no form
  *   field to write the value into.
  * - **Submit/reset propagation.** Same reason: neither type is ever set.
@@ -41,7 +40,7 @@ export type TabsButtonItem = {
 	 * Resolves the button props for the current render pass. Call once per render: the selected tab
 	 * changes the tab index, the variant and `aria-selected` of every tab.
 	 *
-	 * @param props - The button configuration, in the shape the predecessor handed `kol-button-wc`.
+	 * @param props - The button configuration, in the shape of the `kol-button` props.
 	 * @param flagHost - Element the theme-scoped `buttonVariantDefault` feature flag is resolved against.
 	 */
 	getButton(props: InternalButtonProps, flagHost?: HTMLElement): TabsButton;
@@ -55,7 +54,7 @@ export type TabsButtonItem = {
 
 export const createTabsButtonItem = (): TabsButtonItem => {
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
-	const ariaDescriptionId = nonce();
+	const ariaDescriptionId = createUniqueId('aria-description');
 	let resolved: ResolvedButtonProps | undefined;
 	let value: StencilUnknown;
 	let boxElement: HTMLDivElement | undefined;

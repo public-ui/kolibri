@@ -7,7 +7,7 @@ import type { HeadingApi } from '../../internal/functional-components/heading/ap
 import { headingPropsConfig } from '../../internal/functional-components/heading/api';
 import { HeadingFC } from '../../internal/functional-components/heading/component';
 import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../internal/props';
-import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType, SecondaryHeadlinePropType } from '../../schema';
+import type { HeadingLevel, LabelWithExpertSlotPropType, SecondaryHeadlinePropType } from '../../schema';
 
 /**
  *
@@ -20,13 +20,14 @@ import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType, Secondary
 	},
 	shadow: true,
 })
-export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingProps, WebComponentInterface<HeadingApi> {
+export class KolHeading extends BaseWebComponent<HeadingApi> implements WebComponentInterface<HeadingApi> {
 	protected readonly propsConfig: PropsConfigShape = headingPropsConfig;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -36,7 +37,8 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 0;
+	@Prop()
+	public _level?: HeadingLevel = 0;
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
@@ -46,7 +48,8 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	/**
 	 * Defines the text of the secondary headline.
 	 */
-	@Prop() public _secondaryHeadline?: SecondaryHeadlinePropType = undefined;
+	@Prop()
+	public _secondaryHeadline?: SecondaryHeadlinePropType = undefined;
 
 	@Watch('_secondaryHeadline')
 	public watchSecondaryHeadline(value?: SecondaryHeadlinePropType): void {
@@ -54,9 +57,9 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	}
 
 	public componentWillLoad(): void {
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		levelProp.apply(this._level, (v) => this.setRenderProp('level', v));
-		secondaryHeadlineProp.apply(this._secondaryHeadline, (v) => this.setRenderProp('secondaryHeadline', v));
+		this.watchLabel(this._label);
+		this.watchLevel(this._level);
+		this.watchSecondaryHeadline(this._secondaryHeadline);
 	}
 
 	public render(): JSX.Element {

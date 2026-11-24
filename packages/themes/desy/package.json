@@ -86,6 +86,11 @@
 		"@public-ui/components": "workspace:*",
 		"@vscode/codicons": "0.0.46-24"
 	},
+	"peerDependenciesMeta": {
+		"@vscode/codicons": {
+			"optional": true
+		}
+	},
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",

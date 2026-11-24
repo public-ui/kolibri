@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { adjustHeightProp } from './adjust-height';
 import { hasCounterProp } from './has-counter';
 import { inputTextTypeProp } from './input-text-type';
@@ -13,8 +14,8 @@ import { spellCheckProp } from './spell-check';
 import { visibilityToggleProp } from './visibility-toggle';
 
 /**
- * Pins the props of the text fields against the legacy validators in `schema/props/*` they replace
- * (G2.1 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`): same defaults, same accepted values.
+ * Pins the defaults and the accepted values of the text field props (G2.1 of
+ * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 type PropDefinition = {
 	readonly propName: string;

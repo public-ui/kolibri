@@ -13,7 +13,6 @@ import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelPro
 import type {
 	ClickableElement,
 	CollapsibleCallbacksPropType,
-	DetailsProps,
 	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
@@ -42,23 +41,26 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolDetails
-	extends BaseWebComponent<CollapsibleApi>
-	implements ClickableElement, DetailsProps, FocusableElement, WebComponentInterface<CollapsibleApi>
-{
-	@Element() protected readonly host?: HTMLKolDetailsElement;
+export class KolDetails extends BaseWebComponent<CollapsibleApi> implements ClickableElement, FocusableElement, WebComponentInterface<CollapsibleApi> {
+	@Element()
+	protected readonly host?: HTMLKolDetailsElement;
 
 	private readonly detailsId = createUniqueId('details');
 
-	@State() public controlId: string = createRelatedUniqueId(this.detailsId, 'control');
+	@State()
+	public controlId: string = createRelatedUniqueId(this.detailsId, 'control');
 
-	@State() public detailsOpen: boolean = false;
+	@State()
+	public detailsOpen: boolean = false;
 
-	@State() public expanded: boolean = false;
+	@State()
+	public expanded: boolean = false;
 
-	@State() public headingId: string = createRelatedUniqueId(this.detailsId, 'heading');
+	@State()
+	public headingId: string = createRelatedUniqueId(this.detailsId, 'heading');
 
-	@State() public transitionMs: number = DEFAULT_COLLAPSIBLE_TRANSITION_MS;
+	@State()
+	public transitionMs: number = DEFAULT_COLLAPSIBLE_TRANSITION_MS;
 
 	/* A disabled `<summary>` stays technically focusable, unlike the `<button disabled>` it replaced.
 	   Emptying the ref keeps the public `focus()` and `click()` methods from reaching it. */
@@ -85,7 +87,8 @@ export class KolDetails
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -95,7 +98,8 @@ export class KolDetails
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelLangSegmentsPropType;
+	@Prop()
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -105,7 +109,8 @@ export class KolDetails
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 0;
+	@Prop()
+	public _level?: HeadingLevel = 0;
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
@@ -115,7 +120,8 @@ export class KolDetails
 	/**
 	 * Defines the callback functions for the collapsible.
 	 */
-	@Prop() public _on?: CollapsibleCallbacksPropType<boolean> = undefined;
+	@Prop()
+	public _on?: CollapsibleCallbacksPropType<boolean> = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {
@@ -125,7 +131,8 @@ export class KolDetails
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _open?: OpenPropType = false;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {

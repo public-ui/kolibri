@@ -6,12 +6,10 @@ import { describePublicApiContract } from './contract';
  * `mutable`/`reflect` decorators so the reflected attribute is already updated when the delayed
  * `onClick`/`onToggle` callbacks read it.
  *
- * Consciously changed against the predecessor when `kol-accordion` and `kol-details` were
- * consolidated onto one collapsible layer (owner-approved, noted in the PR):
+ * `kol-accordion` and `kol-details` share one collapsible layer:
  * - `_on` is typed `CollapsibleCallbacksPropType<boolean>`, the shared contract of both
- *   collapsibles. Against `DetailsCallbacksPropType` it adds the optional `onClick` member —
- *   additive, so objects that only set `onToggle` stay assignable. The old name survives as a
- *   `@deprecated` alias in `schema/props/details-callbacks.ts`.
+ *   collapsibles. `DetailsCallbacksPropType` is a `@deprecated` alias in
+ *   `schema/props/details-callbacks.ts`; objects that only set `onToggle` stay assignable.
  * - `_on` and `click()` carry the wording shared with `kol-accordion`.
  */
 const KOL_DETAILS_PUBLIC_API: PublicApiContract = {
@@ -62,4 +60,4 @@ const KOL_DETAILS_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-details', component: 'details', pinnedApi: KOL_DETAILS_PUBLIC_API, schemaInterface: 'DetailsProps' });
+describePublicApiContract({ tag: 'kol-details', component: 'details', pinnedApi: KOL_DETAILS_PUBLIC_API });

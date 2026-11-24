@@ -1,8 +1,9 @@
 import { describe, expect, it } from '@jest/globals';
+
 import { getDateValueType, remapDateValue } from './date-value';
 
 /**
- * Pins the value handling of the legacy `kol-input-date` (G3b.1 of
+ * Pins the value handling of `kol-input-date` (G3b.1 of
  * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 describe('getDateValueType', () => {

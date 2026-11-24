@@ -1,4 +1,5 @@
 import { transformTag } from '@stencil/core';
+
 import { isInitialized } from '../../core/bootstrap';
 import { KolToastContainerTag } from '../../core/component-names';
 import type { Toast, ToasterOptions } from '../../schema';

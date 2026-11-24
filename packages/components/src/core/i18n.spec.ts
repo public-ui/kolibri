@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+
 import locale_de from '../locales/de';
 import locale_en from '../locales/en';
 import { initializeI18n } from './i18n';
