@@ -193,7 +193,7 @@ A declaration on any element applies to that element's whole subtree, nested sha
 
 An application that already manages `color-scheme` itself does not need the file at all.
 
-One limitation: `kol-spin`'s cycle variant animates its arc through `@keyframes` color stops in the base layer of `@public-ui/components`. A theme cannot override an animation's own color stops, so that arc stays dark in dark mode. Its static ring and the dot variant do follow the scheme.
+`kol-spin`'s cycle variant animates its arc through `@keyframes` color stops in the base layer of `@public-ui/components`. A theme cannot override an animation's own color stops, so the stops read the tokens `--kol-theme-spin-color` (the arc) and `--kol-theme-spin-color-start` (the first stop). This theme sets both per color scheme, so the arc, its static ring and the dot variant follow the scheme.
 
 The presentation app (`packages/samples/presentation`) is a live example: its Sidebar carries a Color scheme select with the states Auto, Light and Dark.
 

@@ -81,9 +81,24 @@
 
 		.kol-input {
 			border-radius: var(--border-radius);
+
+			/* The box keeps its place; the click area sits as a 44px square centered over it, so the
+			   region is symmetric around the checkbox whether or not a label adds width. */
+			position: relative;
 			width: calc(6 * to-rem(4));
 			min-width: calc(6 * to-rem(4));
 			height: calc(6 * to-rem(4));
+
+			&::after {
+				transform: translate(-50%, -50%);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: var(--a11y-min-size);
+				height: var(--a11y-min-size);
+
+				content: '';
+			}
 		}
 
 		.kol-icon {
