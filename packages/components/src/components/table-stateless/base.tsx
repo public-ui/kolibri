@@ -14,7 +14,7 @@ import type { TableStatelessApi } from '../../internal/functional-components/tab
 import { tableStatelessPropsConfig } from '../../internal/functional-components/table-stateless/api';
 import { TABLE_CAPTION_ID, TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
 import type { SelectionTooltipItem, SelectionTooltipRefs } from '../../internal/functional-components/table-stateless/selection-tooltip-item';
-import { createSelectionTooltipItem } from '../../internal/functional-components/table-stateless/selection-tooltip-item';
+import { createTableStatelessSelectionTooltipItem } from '../../internal/functional-components/table-stateless/selection-tooltip-item';
 import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-components/table-stateless/table-model';
 import type { TableHeaders } from '../../internal/props';
@@ -119,7 +119,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 
 	/** The tooltips of the selection inputs, one item per key the table FC renders. */
 	private readonly selectionTooltipItems = createItemPool<SelectionTooltipItem>(
-		() => createSelectionTooltipItem(),
+		() => createTableStatelessSelectionTooltipItem(),
 		(item) => item.syncListeners(),
 		(item) => item.destroy(),
 	);
