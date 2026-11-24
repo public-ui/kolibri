@@ -22,7 +22,8 @@ const TRANSITION_TIMEOUT = 300;
 	shadow: true,
 })
 export class KolToastContainer {
-	@State() public state: { _toastStates: ToastState[] } = {
+	@State()
+	public state: { _toastStates: ToastState[] } = {
 		_toastStates: [],
 	};
 

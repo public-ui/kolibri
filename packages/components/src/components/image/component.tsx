@@ -22,7 +22,8 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	shadow: true,
 })
 export class KolImage extends BaseWebComponent<ImageApi> implements WebComponentInterface<ImageApi> {
-	@Element() private readonly host?: HTMLKolImageElement;
+	@Element()
+	private readonly host?: HTMLKolImageElement;
 
 	protected readonly propsConfig: PropsConfigShape = imagePropsConfig;
 

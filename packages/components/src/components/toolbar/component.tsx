@@ -27,13 +27,17 @@ const ARROW_KEYS: KeyboardKey[] = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, K
 	shadow: true,
 })
 export class KolToolbar extends BaseWebComponent<ToolbarApi> implements ClickableElement, FocusableElement, WebComponentInterface<ToolbarApi> {
-	@Element() protected readonly host?: HTMLKolToolbarElement;
+	@Element()
+	protected readonly host?: HTMLKolToolbarElement;
 
-	@State() public currentIndex: number = 0;
+	@State()
+	public currentIndex: number = 0;
 
-	@State() public itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem> = [];
+	@State()
+	public itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem> = [];
 
-	@State() public location: string = '';
+	@State()
+	public location: string = '';
 
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
@@ -42,7 +46,8 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -52,7 +57,8 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	/**
 	 * Defines the functional elements of toolbar to render (e.g. kol-link, kol-button).
 	 */
-	@Prop() public _items!: ToolbarItemsPropType;
+	@Prop()
+	public _items!: ToolbarItemsPropType;
 
 	@Watch('_items')
 	public watchItems(value?: ToolbarItemsPropType): void {
@@ -67,7 +73,8 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	/**
 	 * Defines whether the orientation of the component is horizontal or vertical.
 	 */
-	@Prop() public _orientation?: OrientationPropType = undefined;
+	@Prop()
+	public _orientation?: OrientationPropType = undefined;
 
 	@Watch('_orientation')
 	public watchOrientation(value?: OrientationPropType): void {

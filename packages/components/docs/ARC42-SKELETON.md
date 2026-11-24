@@ -126,7 +126,8 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 
 	protected readonly propsConfig: PropsConfigShape = linkPropsConfig;
 
-	@Prop() public _href!: string;
+	@Prop()
+	public _href!: string;
 
 	@Watch('_href')
 	public watchHref(value?: string): void {
@@ -171,6 +172,8 @@ Every Stencil component class lists its members in the same order:
 10. `@Listen`
 11. helpers and handlers: the other methods, accessors and arrow-function fields, whatever their visibility
 12. `render`
+
+Every decorator stands on a line of its own, above the class or member it decorates. The ESLint rule `kolibri/decorator-on-own-line` enforces this, and `eslint --fix` applies it.
 
 Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components and of the classes that implement them without being one: `BaseWebComponent` and every class without `@Component` that extends it (the bases of design decision 16, the form field bases, the page size select item). For every class under `src` it also checks that no initializer reads an own property declared after it, directly (`this.x`), through own getters it reads (`this.derived`) or through own methods and arrow-function properties it calls (`this.compute()`), also nested through the called bodies. Every other path is not traced, e.g. a callee that receives `this` (`new Behavior(this)`), a synchronously run callback (an IIFE, `[1].map(() => this.later)`), `call`/`apply`/`bind` and element access (`this['x']`); keep such reads behind the property they read.
 
@@ -420,7 +423,8 @@ export type DisabledProp = SimpleProp<'disabled', DisabledPropType>;
 export const disabledProp = createPropDefinition<DisabledProp>('disabled', false, normalizeBoolean);
 
 // components/button/component.tsx — @Prop, watcher and apply carry the schema type
-@Prop() public _disabled?: DisabledPropType = false;
+@Prop()
+public _disabled?: DisabledPropType = false;
 
 @Watch('_disabled')
 public watchDisabled(value?: DisabledPropType): void {
@@ -671,7 +675,8 @@ const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);
 
 ```tsx
 // Web Component (src/components/<component>/component.tsx)
-@Prop() public _name!: NamePropType;
+@Prop()
+public _name!: NamePropType;
 
 @Watch('_name')
 public watchName(value?: NamePropType): void {

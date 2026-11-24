@@ -27,9 +27,11 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 	shadow: true,
 })
 export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements WebComponentInterface<BreadcrumbApi> {
-	@Element() protected readonly host?: HTMLKolBreadcrumbElement;
+	@Element()
+	protected readonly host?: HTMLKolBreadcrumbElement;
 
-	@State() public linkItems: BreadcrumbLinkItem[] = [];
+	@State()
+	public linkItems: BreadcrumbLinkItem[] = [];
 
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
@@ -44,7 +46,8 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements We
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -54,7 +57,8 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements We
 	/**
 	 * Defines the list of links combined with their labels to render.
 	 */
-	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
+	@Prop()
+	public _links!: Stringified<BreadcrumbLinkProps[]>;
 
 	@Watch('_links')
 	public watchLinks(value?: Stringified<BreadcrumbLinkProps[]>): void {

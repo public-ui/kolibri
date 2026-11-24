@@ -28,17 +28,23 @@ import { BaseTableStatelessWebComponent } from './base';
 	shadow: true,
 })
 export class KolTableStateless extends BaseTableStatelessWebComponent implements WebComponentInterface<TableStatelessApi> {
-	@Element() protected readonly host?: HTMLKolTableStatelessElement;
+	@Element()
+	protected readonly host?: HTMLKolTableStatelessElement;
 
-	@State() public externalLabelElements: HTMLElement[] = [];
+	@State()
+	public externalLabelElements: HTMLElement[] = [];
 
-	@State() public hasScrollbar: boolean = false;
+	@State()
+	public hasScrollbar: boolean = false;
 
-	@State() public rowKeys: Map<KoliBriTableDataType, string> = new Map();
+	@State()
+	public rowKeys: Map<KoliBriTableDataType, string> = new Map();
 
-	@State() public settingsChangedCounter: number = 0;
+	@State()
+	public settingsChangedCounter: number = 0;
 
-	@State() public stickyColsDisabled: boolean = false;
+	@State()
+	public stickyColsDisabled: boolean = false;
 
 	/**
 	 * References an external element by ID that serves as the accessible label for this table.
@@ -47,7 +53,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	 * boundary. Desktop screen readers (NVDA, JAWS with Chrome/Firefox) follow the references;
 	 * VoiceOver and TalkBack do not — use `_label` instead.
 	 */
-	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType = undefined;
+	@Prop()
+	public _ariaLabelledby?: AriaLabelledbyPropType = undefined;
 
 	@Watch('_ariaLabelledby')
 	public watchAriaLabelledby(value?: AriaLabelledbyPropType): void {
@@ -57,7 +64,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the primary table data.
 	 */
-	@Prop() public _data!: TableDataPropType;
+	@Prop()
+	public _data!: TableDataPropType;
 
 	@Watch('_data')
 	public watchData(value?: TableDataPropType): void {
@@ -67,7 +75,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the data for the table footer.
 	 */
-	@Prop() public _dataFoot?: TableDataFootPropType = undefined;
+	@Prop()
+	public _dataFoot?: TableDataFootPropType = undefined;
 
 	@Watch('_dataFoot')
 	public watchDataFoot(value?: TableDataFootPropType): void {
@@ -77,7 +86,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the fixed number of columns from start and end of the table
 	 */
-	@Prop() public _fixedCols?: FixedColsPropType = undefined;
+	@Prop()
+	public _fixedCols?: FixedColsPropType = undefined;
 
 	@Watch('_fixedCols')
 	public watchFixedCols(value?: FixedColsPropType): void {
@@ -87,7 +97,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headers?: TableHeaderCellsPropType = undefined;
+	@Prop()
+	public _headers?: TableHeaderCellsPropType = undefined;
 
 	@Watch('_headers')
 	public watchHeaders(value?: TableHeaderCellsPropType): void {
@@ -98,7 +109,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	 * @deprecated Will be removed in the future. Use _headers instead.
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headerCells?: TableHeaderCellsPropType = undefined;
+	@Prop()
+	public _headerCells?: TableHeaderCellsPropType = undefined;
 
 	@Watch('_headerCells')
 	public watchHeaderCells(value?: TableHeaderCellsPropType): void {
@@ -108,7 +120,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelLangSegmentsPropType;
+	@Prop()
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -118,7 +131,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Wether the table shows a loading spinner (default: false).
 	 */
-	@Prop() public _loading?: TableLoadingPropType = undefined;
+	@Prop()
+	public _loading?: TableLoadingPropType = undefined;
 
 	@Watch('_loading')
 	public watchLoading(value?: TableLoadingPropType): void {
@@ -128,7 +142,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines the callback functions for table events.
 	 */
-	@Prop() public _on?: TableCallbacksPropType = undefined;
+	@Prop()
+	public _on?: TableCallbacksPropType = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: TableCallbacksPropType): void {
@@ -138,7 +153,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines how rows can be selected and the current selection.
 	 */
-	@Prop() public _selection?: TableSelectionPropType = undefined;
+	@Prop()
+	public _selection?: TableSelectionPropType = undefined;
 
 	@Watch('_selection')
 	public watchSelection(value?: TableSelectionPropType): void {
@@ -148,7 +164,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Enables the settings menu if true (default: false).
 	 */
-	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
+	@Prop()
+	public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
 
 	@Watch('_hasSettingsMenu')
 	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
@@ -158,7 +175,8 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
