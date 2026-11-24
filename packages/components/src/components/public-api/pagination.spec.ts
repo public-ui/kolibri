@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-pagination` (11 props, 0 methods), extracted from the legacy `shadow.tsx`
- * before its skeleton migration (#9590); the pin checks `component.tsx` against `PaginationProps`.
+ * Pinned public API of `kol-pagination` (11 props, 0 methods), #9590.
  */
 const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	_boundaryCount: {

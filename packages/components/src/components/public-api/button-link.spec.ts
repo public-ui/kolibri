@@ -2,10 +2,8 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-button-link` — byte-identical to the predecessor `shadow.tsx` on the
- * develop branch (19 props + getValue/focus/click), except `_on`'s JSDoc, translated from German
- * to English to match every other prop's documentation (doc-only, no behavior change). `_role`
- * stays declared but, as before, is not forwarded to the inner element.
+ * Pinned public API of `kol-button-link` (19 props plus `getValue()`, `focus()` and `click()`). `_role`
+ * stays declared but is not forwarded to the inner element.
  */
 const KOL_BUTTON_LINK_PUBLIC_API: PublicApiContract = {
 	getValue: {

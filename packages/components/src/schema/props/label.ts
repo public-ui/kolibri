@@ -1,9 +1,4 @@
-import type { Generic } from 'adopted-style-sheets';
-
 import type { ComponentPropsRequired } from '../../internal/functional-components/generic-types';
-import type { WatchStringOptions } from '../utils';
-import { watchValidator } from '../utils';
-import { a11yHint, uiUxHint } from '../utils/a11y.tipps';
 
 /**
  * This is a regular expression that matches all readable characters.
@@ -174,58 +169,3 @@ export function isValidLabelSegments(value: unknown): boolean {
 	}
 	return false;
 }
-
-function getValidationOptions(options: WatchStringOptions): WatchStringOptions {
-	return {
-		...options,
-		hooks: {
-			afterPatch: (value, state, component, key) => {
-				if (typeof options.hooks?.afterPatch === 'function') {
-					options.hooks?.afterPatch(value, state, component, key);
-				}
-				const text = typeof value === 'string' ? value : Array.isArray(value) ? trimLabel(value) : undefined;
-				if (typeof text === 'string' && text !== '' && hasEnoughReadableChars(text, 3) === false && containsOnlyNumbers(text) === false) {
-					a11yHint(`The heading or label ("${text}") is inaccessible. A label should consist of at least three readable characters.`);
-				}
-				if (typeof text === 'string' && text.length > 80) {
-					uiUxHint(`A heading or label should not be longer than 80 characters.`);
-				}
-				if (Array.isArray(value) && !value.every(isLabelSegment)) {
-					uiUxHint(`Label segments have to be { text: string, lang?: string }`);
-				}
-			},
-			beforePatch: options.hooks?.beforePatch,
-		},
-	};
-}
-
-const LABEL_VALUES = new Set(['string']);
-const LABEL_SEGMENT_VALUES = new Set(['string', 'LabelSegment[]']);
-/**
- * This validator validates the label of a component without an expert slot: the empty string is
- * invalid — it is the expert-slot sentinel of `LabelWithExpertSlotPropType` only.
- */
-export const validateLabel = (component: Generic.Element.Component, value?: LabelPropType, options: WatchStringOptions = {}): void => {
-	watchValidator(component, '_label', (value) => typeof value === 'string' && isValidLabelString(value), LABEL_VALUES, value, getValidationOptions(options));
-};
-
-/**
- * This validator validates the label of a component that renders its label and supports language
- * segments: the empty string is invalid (the expert-slot sentinel belongs to
- * `validateLabelWithExpertSlot`), a segment list must be well-formed with a valid joined text.
- */
-export const validateLabelLangSegments = (component: Generic.Element.Component, value?: LabelLangSegmentsPropType, options: WatchStringOptions = {}): void => {
-	watchValidator(component, '_label', (value) => isValidLabelSegments(value), LABEL_SEGMENT_VALUES, value, getValidationOptions(options));
-};
-
-/**
- * This validator validates the label of a component with an expert slot: the empty string enables
- * the expert slot, everything else follows `validateLabelLangSegments`.
- */
-export const validateLabelWithExpertSlot = (
-	component: Generic.Element.Component,
-	value?: LabelWithExpertSlotPropType,
-	options: WatchStringOptions = {},
-): void => {
-	watchValidator(component, '_label', (value) => value === '' || isValidLabelSegments(value), LABEL_SEGMENT_VALUES, value, getValidationOptions(options));
-};

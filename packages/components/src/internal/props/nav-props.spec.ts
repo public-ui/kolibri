@@ -5,7 +5,7 @@ import { hasIconsWhenExpandedProp } from './has-icons-when-expanded';
 import { navLinksProp } from './nav-links';
 
 /**
- * Pins the props of `kol-nav` against the legacy validators they replace (#11152).
+ * Pins the props of `kol-nav` (#11152).
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;

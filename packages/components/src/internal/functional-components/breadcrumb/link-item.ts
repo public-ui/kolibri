@@ -73,8 +73,7 @@ export const createBreadcrumbLinkItem = (link: BreadcrumbLinkProps, getHost: () 
 	apply(hideLabelProp, link._hideLabel);
 	apply(hrefProp, link._href);
 	apply(spanIconsProp, link._icons);
-	// The predecessor rendered `<kol-link-wc _inline={false} {...link}>`: the entry's own
-	// `_inline` overrode the forced `false`, anything else fell back to `false`.
+	// Breadcrumb links are not inline by default; an entry's own `_inline` wins.
 	apply(inlineProp, link._inline ?? false);
 	apply(labelWithExpertSlotProp, link._label);
 	apply(linkCallbacksProp, link._on);

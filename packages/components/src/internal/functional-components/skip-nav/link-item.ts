@@ -73,8 +73,7 @@ export const createSkipNavLinkItem = (link: LinkProps, getHost: () => HTMLElemen
 	apply(hideLabelProp, link._hideLabel);
 	apply(hrefProp, link._href);
 	apply(spanIconsProp, link._icons);
-	// The predecessor rendered `<kol-link-wc>`, whose `_inline` @Prop defaults to `true` — keep that
-	// default explicit so the links stay inline (no standalone a11y min-size).
+	// Skip-nav links are inline by default (no standalone a11y min-size); an entry's own `_inline` wins.
 	apply(inlineProp, link._inline ?? true);
 	apply(labelWithExpertSlotProp, link._label);
 	apply(linkCallbacksProp, link._on);

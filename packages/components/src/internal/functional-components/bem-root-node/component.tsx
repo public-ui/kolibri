@@ -111,8 +111,7 @@ const renderBemRootNode = (props: BemRootNodeImplementationProps, children: FCCh
  * - Calls `bem.forBlock(block)(modifiers)` internally to generate the class string.
  * - Merges the result with the optional `class` prop.
  * - Forwards all remaining HTML attributes (`id`, `role`, `aria-*`, `ref`, …) onto the root
- *   node — legacy functional components spread these onto their root, and internal
- *   consumers (form, form-field-msg, toast-item) rely on that passthrough.
+ *   node; internal consumers (form, form-field-msg, toast-item) rely on that passthrough.
  *
  * Usage:
  * ```tsx

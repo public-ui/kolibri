@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-alert` — byte-identical to the predecessor on the develop branch
- * (7 props, no methods).
+ * Pinned public API of `kol-alert` (7 props, no methods).
  */
 const KOL_ALERT_PUBLIC_API: PublicApiContract = {
 	_alert: {

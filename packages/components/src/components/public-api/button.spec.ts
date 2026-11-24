@@ -2,10 +2,9 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-button` — byte-identical to the predecessor on the develop branch
- * (20 props plus `getValue()`, `focus()` and `click()`). The `buttonVariantDefault` feature-flag
- * fallback for `_variant` is applied in the `kol-button` watcher, so the declared `@Prop` keeps its
- * predecessor shape (no default literal).
+ * Pinned public API of `kol-button` (20 props plus `getValue()`, `focus()` and `click()`). The
+ * `buttonVariantDefault` feature-flag fallback for `_variant` is applied in the `kol-button` watcher,
+ * so the declared `@Prop` has no default literal.
  */
 const KOL_BUTTON_PUBLIC_API: PublicApiContract = {
 	getValue: {

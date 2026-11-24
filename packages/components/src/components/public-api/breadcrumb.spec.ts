@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-breadcrumb` — byte-identical to the predecessor on the develop branch
- * (2 required props, no methods).
+ * Pinned public API of `kol-breadcrumb` (2 required props, no methods).
  */
 const KOL_BREADCRUMB_PUBLIC_API: PublicApiContract = {
 	_label: {
