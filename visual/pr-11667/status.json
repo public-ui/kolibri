@@ -1,68 +1,82 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "12 changed – 0 of 12 approved, review pending",
-	"computedAt": "2026-11-24T07:47:02.083Z",
+	"state": "success",
+	"description": "12 visual changes approved by BF150",
+	"computedAt": "2026-11-24T08:11:01.032Z",
 	"pr": 11667,
 	"head": "df9e8ce4756bb0cc612e28009b7e3fbe26a755de",
 	"digest": "sha256:1563ad1cc576abc2affee78f5035eb9132b4cfea39c978a50e2a228bfeb331fb",
 	"counts": {
 		"changes": 12,
-		"open": 12,
-		"approved": 0,
+		"open": 0,
+		"approved": 12,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"BF150"
+	],
 	"items": {
 		"test-tag-name-transformer/table-sticky-cols--sticky-cols": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/table-sticky-cols--sticky-cols": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/table-sticky-cols--sticky-cols": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/table-stateful-with-selection--selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/table-stateful-with-single-selection--single-selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/table-stateless-with-selection--selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/table-stateless-with-single-selection--single-selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/table-sticky-cols--sticky-cols": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/table-sticky-header--sticky-header": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/table-sticky-cols--sticky-cols": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/table-sticky-cols--sticky-cols": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/table-sticky-cols--sticky-cols": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		}
 	}
 }
