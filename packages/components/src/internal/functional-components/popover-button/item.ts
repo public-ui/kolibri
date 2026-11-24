@@ -30,7 +30,7 @@ import type { PopoverButtonFCProps } from './component';
  *
  * It exists because `PopoverButtonFC` is stateless while the popover is not — the toggle
  * behavior, the open state, the tooltip behavior and three element refs have to live somewhere.
- * `BasePopoverButtonWebComponent` owns exactly that for the `kol-popover-button` elements, but a
+ * `KolPopoverButton` owns exactly that for its own button, but a
  * component that embeds the popover button *next to* its own button (`kol-split-button`) needs a
  * second, independent set of them and cannot inherit it. The item is a plain object with closures,
  * like `breadcrumb/link-item.ts`, so the embedding component composes it instead of inheriting it.

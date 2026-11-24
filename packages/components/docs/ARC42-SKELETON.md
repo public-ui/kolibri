@@ -117,7 +117,7 @@ Responsibilities of the WC:
 
 A WC has **exactly one orchestrator (itself)** plus zero or more Behaviors. A WC may compose Behaviors, never other WCs.
 
-When several custom elements are tag variants of **one** FC (`kol-button`, `kol-button-link` and `kol-split-button` all render `ButtonFC`; `kol-link` and `kol-link-button` all render `LinkFC`), the orchestrator implementation is shared through an abstract base class next to the element (`components/button/base.tsx` → `BaseButtonWebComponent`, `components/link/base.tsx` → `BaseLinkWebComponent`). The base extends `BaseWebComponent<Api>`, carries no Stencil decorator and holds the composed Behaviors, the event handlers, one `apply<Prop>()` method per prop and the FC render call. The concrete element keeps everything Stencil has to see in the component class: `@Component`, `@Element`, `@State`, `@Method`, every `@Prop` with a one-line `@Watch` that calls the matching `apply<Prop>()`, and the lifecycle methods, which delegate to the base (see design decision 16).
+When several custom elements are tag variants of **one** FC (`kol-button`, `kol-button-link` and `kol-split-button` all render `ButtonFC`; `kol-link` and `kol-link-button` all render `LinkFC`), the orchestrator implementation is shared through an abstract base class next to the element (`components/button/base.tsx` → `BaseButtonWebComponent`, `components/link/base.tsx` → `BaseLinkWebComponent`). The base extends `BaseWebComponent<Api>`, carries no Stencil decorator and holds the composed Behaviors, the event handlers, one `apply<Prop>()` method per prop and the FC render call. The concrete element keeps everything Stencil has to see in the component class: `@Component`, `@Element`, `@State`, `@Method`, every `@Prop` with a one-line `@Watch` that calls the matching `apply<Prop>()`, and the lifecycle methods, which delegate to the base (see design decision 16). A base exists only for at least two elements; a single element keeps its orchestrator in `component.tsx` (`component-structure.spec.ts` checks this).
 
 ```tsx
 // WC — the orchestrator (KolLink, reference implementation)
@@ -641,7 +641,7 @@ Because callbacks are already arrow properties, both render patterns are valid:
 
 #### ⚠️ Never use `.bind(this)` with `addEventListener`/`removeEventListener`
 
-Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match. Use an arrow property, or a ref callback that removes the old listener before adding the new one (see `src/components/popover-button/base.tsx`, `handleToggle` + `componentDidRender`/`disconnectedCallback`).
+Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match. Use an arrow property, or a ref callback that removes the old listener before adding the new one (see `src/components/popover-button/component.tsx`, `handleToggle` + `componentDidRender`/`disconnectedCallback`).
 
 ### Implementation Flow
 
