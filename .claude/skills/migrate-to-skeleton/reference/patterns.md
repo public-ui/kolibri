@@ -33,7 +33,7 @@ Controller-/Aspect-Klasse:
 
 ```typescript
 @Component({ tag: 'kol-my-component', styleUrls: { default: './style.scss' }, shadow: true })
-export class KolMyComponent extends BaseWebComponent<MyApi> implements MyProps, WebComponentInterface<MyApi> {
+export class KolMyComponent extends BaseWebComponent<MyApi> implements WebComponentInterface<MyApi> {
 	@Element() protected readonly host?: HTMLKolMyComponentElement;
 
 	// Optional: Behavior komponieren (nur für echt wiederverwendbare Logik)
@@ -156,7 +156,7 @@ packages/components/src/
 │       ├── style.scss
 │       ├── snapshot.spec.tsx        <- Jest-Snapshots (ko-lokalisiert!)
 │       ├── __snapshots__/
-│       └── interaction.e2e.ts       <- Playwright, optional
+│       └── <component>.e2e.ts       <- Playwright, optional
 └── internal/
     ├── functional-components/
     │   └── <komponente>/

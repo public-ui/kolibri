@@ -1,7 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { watchBoolean } from '../utils';
-
 /* types */
 export type HasCreateButtonPropType = boolean;
 
@@ -10,9 +6,4 @@ export type HasCreateButtonPropType = boolean;
  */
 export type PropHasCreateButton = {
 	hasCreateButton: HasCreateButtonPropType;
-};
-
-/* validator */
-export const validateHasCreateButton = (component: Generic.Element.Component, value?: HasCreateButtonPropType): void => {
-	watchBoolean(component, '_hasCreateButton', value);
 };

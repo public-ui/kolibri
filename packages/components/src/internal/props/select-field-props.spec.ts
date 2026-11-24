@@ -3,8 +3,7 @@ import { optionsWithOptgroupProp } from './options-with-optgroup';
 import { selectValueProp } from './select-value';
 
 /**
- * Pins the props of `kol-select` against the legacy validators `validateOptionsWithOptgroup` and the
- * value handling of the select controller they replace (G5.1 of
+ * Pins the props of `kol-select`: the options with optgroups and the value handling (G5.1 of
  * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 type PropDefinition = {

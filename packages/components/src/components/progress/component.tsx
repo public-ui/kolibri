@@ -100,15 +100,11 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	}
 
 	public componentWillLoad(): void {
-		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		maxProp.apply(this._max, (v) => {
-			this.setRenderProp('max', v);
-			this.watchValue(this.getRawProp('value'));
-		});
-		unitProp.apply(this._unit, (v) => this.setRenderProp('unit', v));
+		this.watchLabel(this._label);
+		this.watchMax(this._max);
+		this.watchUnit(this._unit);
 		this.watchValue(this._value);
-		variantProgressProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
-
+		this.watchVariant(this._variant);
 		this.setState('liveValue', this.getRenderProp('value'));
 	}
 

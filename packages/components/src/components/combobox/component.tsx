@@ -5,7 +5,6 @@ import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
 	ClickableElement,
-	ComboboxProps,
 	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
@@ -74,10 +73,7 @@ import {
 	},
 	shadow: true,
 })
-export class KolCombobox
-	extends BaseListboxWebComponent<ComboboxApi>
-	implements ClickableElement, ComboboxProps, FocusableElement, WebComponentInterface<ComboboxApi>
-{
+export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements ClickableElement, FocusableElement, WebComponentInterface<ComboboxApi> {
 	@Element() protected readonly host?: HTMLKolComboboxElement;
 
 	@State() public id = createUniqueId('combobox');

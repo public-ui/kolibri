@@ -8,9 +8,8 @@ import { isSafeClassName } from './helpers/validators';
  * External type: `string | string[]` — a space-separated string of variant names or an array.
  * Internal type: `string[]` — always normalized to an array. An empty array means "no variant".
  *
- * This mirrors the legacy `validateVariantClassName` → `beforePatchString` pipeline, which split
- * strings by spaces into arrays before storing them in state. The `classNameFromVariant` renderer
- * only processes arrays, so normalizing here ensures the variant classes are always applied.
+ * A string is split by spaces into an array. The `classNameFromVariant` renderer only processes
+ * arrays, so normalizing here ensures the variant classes are always applied.
  */
 export type VariantProp = Prop<'variant', string | string[], string[]>;
 
@@ -18,7 +17,7 @@ export type VariantProp = Prop<'variant', string | string[], string[]>;
  * Normalizes the variant value to an array of variant tokens.
  *
  * - Arrays are passed through as-is.
- * - Strings are split by spaces into tokens (matches `beforePatchString`).
+ * - Strings are split by spaces into tokens.
  * - The factory's `apply` handles undefined/null before this is reached.
  */
 function normalizeVariant(value: unknown): string[] {

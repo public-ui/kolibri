@@ -1,5 +1,4 @@
 @use '../../mixins/to-rem' as *;
-@use './icon' as *;
 
 @mixin checkbox($block-classname) {
 	.#{$block-classname} {
@@ -20,7 +19,6 @@
 
 		.#{$block-classname}__icon,
 		.#{$block-classname}-icon {
-			@include icon;
 			color: var(--ecl-color-white);
 		}
 

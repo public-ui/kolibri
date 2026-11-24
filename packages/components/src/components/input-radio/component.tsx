@@ -9,7 +9,6 @@ import type {
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
-	InputRadioProps,
 	InputTypeOnDefault,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
@@ -26,7 +25,7 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import type { OrientationPropType } from '../../schema/props/orientation';
+import type { OrientationPropType } from '../../schema/props';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
@@ -35,6 +34,7 @@ import { FieldControlFC, isFieldControlLabelShownAsTooltip } from '../../interna
 import type { InputFCProps } from '../../internal/functional-components/form-field/input';
 import { fillKeyOptionMap, normalizeOptionValues } from '../../internal/functional-components/form-field/options';
 import { RadioFC } from '../../internal/functional-components/form-field/radio';
+import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputRadioApi } from '../../internal/functional-components/input-radio/api';
 import { inputRadioPropsConfig } from '../../internal/functional-components/input-radio/api';
@@ -43,7 +43,6 @@ import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, v
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
-import { submitFormOnEnter } from '../form/controller';
 
 /**
  * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Only a single value can be selected at a time. Selected radio elements are typically represented by a filled, visually highlighted circle.
@@ -60,7 +59,7 @@ import { submitFormOnEnter } from '../form/controller';
 })
 export class KolInputRadio
 	extends BaseFormFieldWebComponent<InputRadioApi>
-	implements ClickableElement, FocusableElement, InputRadioProps, WebComponentInterface<InputRadioApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputRadioApi>
 {
 	@Element() protected readonly host?: HTMLKolInputRadioElement;
 

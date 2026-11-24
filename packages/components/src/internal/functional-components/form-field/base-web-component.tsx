@@ -94,6 +94,20 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	 */
 	private focusEventSent = false;
 
+	/** The element the label tooltip hangs on; kept for the listener re-sync on reconnect. */
+	private tooltipAnchor?: HTMLDivElement;
+
+	public connectedCallback(): void {
+		/* A reattached element does not re-render, so the listeners destroyed in
+		   `disconnectedCallback` have to be re-attached here. Before the first render the refs are
+		   unset and the syncs no-op. */
+		this.syncFormField();
+		if (this.tooltipAnchor && this.isTooltipShown()) {
+			this.tooltipBehavior.initContext(this.tooltipAnchor);
+			this.tooltipBehavior.syncListeners(undefined, this.tooltipAnchor, true);
+		}
+	}
+
 	/**
 	 * `ResolvedProps<Api>` cannot be resolved for a generic `Api`, so `setRenderProp('label', …)` does
 	 * not type-check here. The base props exist in every field API (`Api extends FormFieldBaseApi`),
@@ -124,17 +138,6 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		this.tooltipBehavior.destroy();
 		this.smartButton.destroy();
 		this.infoPopover.destroy();
-	}
-
-	public connectedCallback(): void {
-		/* A reattached element does not re-render, so the listeners destroyed in
-		   `disconnectedCallback` have to be re-attached here. Before the first render the refs are
-		   unset and the syncs no-op. */
-		this.syncFormField();
-		if (this.tooltipAnchor && this.isTooltipShown()) {
-			this.tooltipBehavior.initContext(this.tooltipAnchor);
-			this.tooltipBehavior.syncListeners(undefined, this.tooltipAnchor, true);
-		}
 	}
 
 	/**
@@ -344,9 +347,6 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	private showAsAlert(): boolean {
 		return Boolean(this.shared.getRenderProp('touched')) && !this.shared.getState('inputHasFocus');
 	}
-
-	/** The element the label tooltip hangs on; kept for the listener re-sync on reconnect. */
-	private tooltipAnchor?: HTMLDivElement;
 
 	private readonly setInputRef = (el?: HTMLDivElement): void => {
 		this.tooltipAnchor = el;

@@ -166,7 +166,7 @@ Drei Stellen, die beim Tausch `kol-*-wc` → FC still brechen (belegt durch die 
 
 Und: Eine `@Method`, die nur ein internes `-wc`-Element trug (`invalidateOpenItemsCache()`), wird beim
 Rückbau **nicht** auf das öffentliche Element verschoben — das wäre neue öffentliche API. Ein
-Modul-Register (Vorbild `tree/open-items-cache.ts`, Muster wie `link/ariaCurrentService.ts`) hält
+Modul-Register (Vorbild `internal/functional-components/tree/open-items-cache.ts`, Muster wie `internal/functional-components/link/aria-current-service.ts`) hält
 den Aufruf intern.
 
 ## 16. Ein „neutraler" Prop-Default ersetzt kein `undefined`, ohne dass es belegt ist

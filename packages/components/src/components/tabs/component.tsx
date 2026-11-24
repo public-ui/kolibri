@@ -22,13 +22,12 @@ import type {
 	Stringified,
 	TabBehaviorPropType,
 	TabButtonProps,
-	TabsProps,
 } from '../../schema';
 import { devHint, koliBriQuerySelector } from '../../schema';
 
 import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
-import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
+import type { HasCreateButtonPropType } from '../../schema/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -44,7 +43,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, TabsProps, WebComponentInterface<TabsApi> {
+export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, WebComponentInterface<TabsApi> {
 	@Element() protected readonly host?: HTMLKolTabsElement;
 
 	private rootElement?: HTMLDivElement;
@@ -186,13 +185,13 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	public componentWillLoad(): void {
-		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
-		tabBehaviorProp.apply(this._behavior, (v) => this.setRenderProp('behavior', v));
-		hasCreateButtonProp.apply(this._hasCreateButton, (v) => this.setRenderProp('hasCreateButton', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		tabsCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
-		this.applySelected(this._selected);
-		this.applyTabs(this._tabs);
+		this.watchAlign(this._align);
+		this.watchBehavior(this._behavior);
+		this.watchHasCreateButton(this._hasCreateButton);
+		this.watchLabel(this._label);
+		this.watchOn(this._on);
+		this.watchSelected(this._selected);
+		this.watchTabs(this._tabs);
 	}
 
 	public componentWillRender(): void {

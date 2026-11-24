@@ -51,6 +51,33 @@
 			border: 1px solid ButtonBorder;
 		}
 
+		/*
+		 * Forced colors drop the author colors of the meter pseudo elements, so the bar would lose its
+		 * fill. System colors are kept and set track and fill apart; the state itself is spelled out
+		 * in the label (`kol-meter__bar-state`).
+		 */
+		.kol-meter {
+			meter {
+				background-color: Canvas;
+				border-color: CanvasText;
+			}
+
+			meter::-webkit-meter-bar {
+				background-color: Canvas;
+				border-color: CanvasText;
+			}
+
+			meter::-webkit-meter-optimum-value,
+			meter::-webkit-meter-suboptimum-value,
+			meter::-webkit-meter-even-less-good-value {
+				background-color: CanvasText;
+			}
+
+			meter::-moz-meter-bar {
+				background-color: CanvasText;
+			}
+		}
+
 		.kol-pagination {
 			&__button--selected {
 				.kol-button {

@@ -43,7 +43,7 @@ export const DrawerFC: FC<DrawerFCProps> = (props, children) => {
 	return (
 		<BemRootNodeFC block="kol-drawer">
 			<DialogFC
-				blockClass={BEM_CLASS_DRAWER__DIALOG}
+				elementClass={BEM_CLASS_DRAWER__DIALOG}
 				handleCancel={handleCancel}
 				handleClose={handleClose}
 				label={label}

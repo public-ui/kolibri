@@ -2,8 +2,8 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { trimLabel, type HeadingLevel, type KoliBriDialogEventCallbacks, type LabelLangSegmentsPropType } from '../../../schema';
-import type { ModalVariantPropType } from '../../../schema/props/variant/modal';
-import { createUniqueId, nonce } from '../../../utils/dev.utils';
+import type { ModalVariantPropType } from '../../../schema/props';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { lockScroll, unlockScroll } from '../../../utils/scroll-lock';
@@ -16,7 +16,7 @@ import type { CardFCProps } from '../card/component';
 import { CardFC } from '../card/component';
 import { TooltipBehavior } from '../tooltip/behavior';
 import type { DialogFCProps } from './component';
-import { dialogBlockClass, DialogFC } from './component';
+import { DialogFC } from './component';
 
 /** The configuration of an embedded dialog: the public props of the dialog elements. */
 export type DialogItemProps = {
@@ -76,7 +76,7 @@ export const createDialogItem = (
 	const dialogRef = createCtaRef<HTMLDialogElement>();
 	const cardCloseButtonRef = createCtaRef<HTMLButtonElement>();
 	const cardCloseTooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
-	const ariaDescriptionId = nonce();
+	const ariaDescriptionId = createUniqueId('aria-description');
 	const headingId = createUniqueId('dialog-heading');
 	/* The scroll lock is counted per owner; the item is the owner of its dialog's lock. */
 	const scrollLockOwner = {};
@@ -161,13 +161,13 @@ export const createDialogItem = (
 
 			return {
 				dialog: {
-					blockClass: dialogBlockClass(variant),
 					handleCancel,
 					handleClose,
 					label: trimLabel(label),
 					labelledBy: isCard ? headingId : undefined,
 					modal,
 					refDialog: dialogRef,
+					variant,
 					width,
 				},
 				card:

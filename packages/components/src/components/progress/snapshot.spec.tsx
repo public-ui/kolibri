@@ -2,7 +2,7 @@ import { KolProgressTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolProgress } from './component';
 
-executeSnapshotTests<Partial<Pick<KolProgress, '_label' | '_max' | '_unit' | '_value' | '_variant'>>>(
+executeSnapshotTests(
 	KolProgressTag,
 	[KolProgress],
 	[

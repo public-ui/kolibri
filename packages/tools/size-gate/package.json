@@ -1,0 +1,45 @@
+{
+	"name": "@public-ui/size-gate",
+	"version": "4.6.0-rc.3",
+	"private": true,
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"engines": {
+		"pnpm": "^10"
+	},
+	"type": "module",
+	"description": "Tracks the artifact size of the KoliBri components and themes, renders a treemap and gates size regressions against a committed baseline.",
+	"bin": {
+		"kolibri-size-gate": "bin/size-gate.mjs"
+	},
+	"scripts": {
+		"format": "prettier --check bin src test",
+		"lint": "pnpm lint:eslint",
+		"lint:eslint": "eslint bin src test",
+		"test:unit": "node --test test/*.test.mjs",
+		"unused": "knip"
+	},
+	"dependencies": {
+		"postcss": "8.5.31",
+		"prettier": "3.9.10",
+		"source-map": "0.7.6"
+	},
+	"devDependencies": {
+		"@public-ui/eslint-config": "workspace:*",
+		"eslint": "9.39.5",
+		"knip": "6.42.1",
+		"prettier-plugin-organize-imports": "4.3.0"
+	}
+}

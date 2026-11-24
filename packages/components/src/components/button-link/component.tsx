@@ -10,7 +10,6 @@ import type {
 	AriaExpandedPropType,
 	AriaSelectedPropType,
 	ButtonCallbacksPropType,
-	ButtonLinkProps,
 	ButtonTypePropType,
 	ClickableElement,
 	DisabledPropType,
@@ -27,7 +26,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BaseButtonWebComponent } from '../button/base';
 
@@ -51,10 +50,10 @@ import { BaseButtonWebComponent } from '../button/base';
 	},
 	shadow: true,
 })
-export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkProps, ButtonLinkWebComponentInterface, ClickableElement, FocusableElement {
+export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkWebComponentInterface, ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonLinkElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	public constructor() {
 		super();

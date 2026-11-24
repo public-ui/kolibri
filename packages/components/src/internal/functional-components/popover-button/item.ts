@@ -1,7 +1,7 @@
 import { getFeatureFlag } from 'adopted-style-sheets';
 
 import type { AlignPropType, IconsPropType, InternalButtonProps, LabelWithExpertSlotPropType, PopoverButtonProps } from '../../../schema';
-import { createUniqueId, nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import {
@@ -132,7 +132,7 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 		props.variant = v;
 	});
 
-	props.ariaDescriptionId = nonce();
+	props.ariaDescriptionId = createUniqueId('aria-description');
 	props.popoverId = createUniqueId('popover');
 
 	const dispatch = (event: KolEvent): void => {

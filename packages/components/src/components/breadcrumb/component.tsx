@@ -8,12 +8,12 @@ import { BreadcrumbFC } from '../../internal/functional-components/breadcrumb/co
 import type { BreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import { createBreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { UnsubscribeFunction } from '../../internal/functional-components/link/aria-current-service';
+import { onLocationChange } from '../../internal/functional-components/link/aria-current-service';
 import { breadcrumbLinksProp, labelProp } from '../../internal/props';
-import type { BreadcrumbLinkProps, BreadcrumbProps, LabelPropType, Stringified } from '../../schema';
+import type { BreadcrumbLinkProps, LabelPropType, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks } from '../../schema';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import type { UnsubscribeFunction } from '../link/ariaCurrentService';
-import { onLocationChange } from '../link/ariaCurrentService';
 
 /**
  * The **Breadcrumb** component can be used to display the path to the current position of a web page within a hierarchical structure.
@@ -25,7 +25,7 @@ import { onLocationChange } from '../link/ariaCurrentService';
 	},
 	shadow: true,
 })
-export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements BreadcrumbProps, WebComponentInterface<BreadcrumbApi> {
+export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements WebComponentInterface<BreadcrumbApi> {
 	@Element() protected readonly host?: HTMLKolBreadcrumbElement;
 
 	@State() public linkItems: BreadcrumbLinkItem[] = [];
@@ -62,7 +62,7 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 
 	public componentWillLoad(): void {
 		this.applyLabel(this._label, true);
-		this.applyLinks(this._links);
+		this.watchLinks(this._links);
 
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.linkItems = this.linkItems.map((item) => {

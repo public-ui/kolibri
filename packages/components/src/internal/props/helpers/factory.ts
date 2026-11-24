@@ -1,5 +1,5 @@
 import { cloneDeep, isObject } from 'lodash-es';
-import { devWarning } from '../../../schema';
+import { devWarning } from '../../../schema/utils/a11y.tipps';
 import { normalizeCallbacksObject } from './normalizers';
 
 function safeStringify(value: unknown): string {
@@ -12,8 +12,7 @@ function safeStringify(value: unknown): string {
 
 /**
  * Logs a visible developer warning for an invalid property value. Invalid values are
- * ignored (the render prop keeps its previous or default value), matching the behavior
- * of the legacy `watchValidator` based validation — but visibly instead of silently.
+ * ignored: the render prop keeps its previous or default value.
  */
 function warnInvalidValue(propName: string, value: unknown, cause?: unknown): void {
 	const reason = cause instanceof Error ? ` (${cause.message})` : '';

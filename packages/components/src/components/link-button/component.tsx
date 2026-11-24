@@ -18,7 +18,6 @@ import type {
 	IconsPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
-	LinkButtonProps,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
 	ShortKeyPropType,
@@ -26,7 +25,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BaseLinkWebComponent } from '../link/base';
 
@@ -42,12 +41,12 @@ import { BaseLinkWebComponent } from '../link/base';
 	},
 	shadow: true,
 })
-export class KolLinkButton extends BaseLinkWebComponent implements ClickableElement, FocusableElement, LinkButtonProps {
+export class KolLinkButton extends BaseLinkWebComponent implements ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolLinkButtonElement;
 
 	@State() public ariaCurrent: string = '';
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public expertSlot: boolean = false;
 

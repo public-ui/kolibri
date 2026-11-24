@@ -66,10 +66,10 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	}
 
 	public componentWillLoad(): void {
-		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v), this.isRequired('href'));
-		labelLangSegmentsProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		quoteProp.apply(this._quote, (v) => this.setRenderProp('quote', v));
-		variantQuoteProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
+		this.watchHref(this._href);
+		this.watchLabel(this._label);
+		this.watchQuote(this._quote);
+		this.watchVariant(this._variant);
 	}
 
 	public render(): JSX.Element {

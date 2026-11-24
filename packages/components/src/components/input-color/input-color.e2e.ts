@@ -102,8 +102,7 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	/*
-	 * Pins the tooltip that replaces the visible label with _hideLabel, ahead of the form field skeleton migration,
-	 * which moves the tooltip from a pool shared by all form fields to one behavior per field.
+	 * Pins the tooltip that replaces the visible label with _hideLabel.
 	 */
 	test.describe('Tooltip with _hideLabel', () => {
 		const tooltip = '.kol-form-field__tooltip .kol-tooltip__floating';

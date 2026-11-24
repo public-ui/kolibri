@@ -15,10 +15,9 @@ import type {
 	TableHeaderCellsPropType,
 	TableLoadingPropType,
 	TableSelectionPropType,
-	TableStatelessProps,
 	VariantClassNamePropType,
 } from '../../schema';
-import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props';
 import { BaseTableStatelessWebComponent } from './base';
 
 @Component({
@@ -28,7 +27,7 @@ import { BaseTableStatelessWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolTableStateless extends BaseTableStatelessWebComponent implements TableStatelessProps, WebComponentInterface<TableStatelessApi> {
+export class KolTableStateless extends BaseTableStatelessWebComponent implements WebComponentInterface<TableStatelessApi> {
 	@Element() protected readonly host?: HTMLKolTableStatelessElement;
 
 	@State() public externalLabelElements: HTMLElement[] = [];
@@ -181,7 +180,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 		// Early resolution: if the external element is already in the DOM (common when the
 		// label element is rendered before this component), the first render already uses
 		// it, so the AT sees the correct name from the start.
-		this.resolveExternalLabel(this._ariaLabelledby);
+		this.watchAriaLabelledby(this._ariaLabelledby);
 	}
 
 	public componentDidLoad(): void {

@@ -17,7 +17,7 @@ Always run a build before linting so the generated component typings exist for t
   - `style.scss` – SCSS styles for the component.
   - `*.e2e.ts` – Playwright end-to-end tests.
   - `test/` – Jest snapshot tests.
-- `src/schema` – TypeScript schema describing the API of every component. For each component there is a file in `src/schema/components`. Shared enums, props and types are in the neighbouring folders.
+- `src/schema` – shared enums, prop types and value types. `src/schema/components` holds only the types of prop values (e.g. `ButtonProps`, `LinkProps`); the API of a component is its `*Api` type in `src/internal/functional-components/<name>/api.tsx`.
 - other folders like `src/assets`, `src/locales` and `src/utils` contain shared assets, translations and helpers.
 
 ## Coding Rules
@@ -28,6 +28,7 @@ Observe the following coding rules when making changes to this project.
 
 - Never use the title-Attribute to add tooltips. Always use the `KolTooltip` component.
 - JSDoc and comments follow the repo-wide rule [Inline code documentation](../../AGENTS.md#inline-code-documentation). The JSDoc of public `@Prop`, `@Method` and `@Event` members is published API documentation.
+- `forceUpdate` is reserved for the `requestRender` callbacks of items and behaviors (see the skeleton ARC42, _Embedded Components (Items)_): it renders again after a change of state the item or behavior owns. Data the component owns itself is a `@State` — no explicit render call.
 
 ### Styling boundary
 

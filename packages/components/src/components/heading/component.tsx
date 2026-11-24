@@ -7,7 +7,7 @@ import type { HeadingApi } from '../../internal/functional-components/heading/ap
 import { headingPropsConfig } from '../../internal/functional-components/heading/api';
 import { HeadingFC } from '../../internal/functional-components/heading/component';
 import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../internal/props';
-import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType, SecondaryHeadlinePropType } from '../../schema';
+import type { HeadingLevel, LabelWithExpertSlotPropType, SecondaryHeadlinePropType } from '../../schema';
 
 /**
  *
@@ -20,7 +20,7 @@ import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType, Secondary
 	},
 	shadow: true,
 })
-export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingProps, WebComponentInterface<HeadingApi> {
+export class KolHeading extends BaseWebComponent<HeadingApi> implements WebComponentInterface<HeadingApi> {
 	protected readonly propsConfig: PropsConfigShape = headingPropsConfig;
 
 	/**
@@ -54,9 +54,9 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingP
 	}
 
 	public componentWillLoad(): void {
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		levelProp.apply(this._level, (v) => this.setRenderProp('level', v));
-		secondaryHeadlineProp.apply(this._secondaryHeadline, (v) => this.setRenderProp('secondaryHeadline', v));
+		this.watchLabel(this._label);
+		this.watchLevel(this._level);
+		this.watchSecondaryHeadline(this._secondaryHeadline);
 	}
 
 	public render(): JSX.Element {

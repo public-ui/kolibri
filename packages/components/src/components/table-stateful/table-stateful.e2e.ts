@@ -137,6 +137,44 @@ test.describe('kol-table-stateful', () => {
 		}
 	});
 
+	test.describe('sort persistence (#11645)', () => {
+		test('keeps the manual sort when the headers are re-set with the same columns', async ({ page }) => {
+			await page.setContent(`<kol-table-stateful
+					_label="Table Stateful"
+					_data='${JSON.stringify(SORTABLE_DATA)}'
+				/>`);
+
+			// Set headers with a compareFn via evaluate (functions cannot be serialized to JSON)
+			const setHeaders = () =>
+				page.locator('kol-table-stateful').evaluate((element: HTMLKolTableStatefulElement) => {
+					const headers: KoliBriTableHeaders = {
+						horizontal: [[{ key: 'id', label: 'ID', compareFn: (a, b) => String(a.id).localeCompare(String(b.id)) }]],
+					};
+					element._headers = headers as unknown as string;
+				});
+			await setHeaders();
+			await page.waitForChanges();
+
+			// Sort descending by clicking the visible header sort button (ASC -> DESC)
+			const idSortButton = page.locator('kol-table-stateful').getByRole('button', { name: 'ID' });
+			await idSortButton.click();
+			await idSortButton.click();
+			await page.waitForChanges();
+			await expect(getFirstBodyCell(page)).toHaveText('3');
+
+			// Re-set the same headers as a new object: the manual sort must survive it
+			await setHeaders();
+			// The header cells are derived on every render, so force one to see the survived sort state.
+			await page.locator('kol-table-stateful').evaluate((element: HTMLKolTableStatefulElement) => {
+				element._data = [{ id: '3' }, { id: '1' }, { id: '2' }];
+			});
+			await page.waitForChanges();
+
+			await expect(page.locator('kol-table-stateful').locator('th[aria-sort="descending"]')).toHaveCount(1);
+			await expect(getFirstBodyCell(page)).toHaveText('3');
+		});
+	});
+
 	test.describe('resetSort()', () => {
 		test('resets manual sort back to the default sort defined in headers', async ({ page }) => {
 			await page.setContent(`<kol-table-stateful

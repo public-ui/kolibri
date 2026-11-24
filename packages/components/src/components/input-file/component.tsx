@@ -12,7 +12,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputFileProps,
 	InputTypeOnDefault,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -63,10 +62,7 @@ const fileBem = bem.forBlock('kol-input-file');
 	},
 	shadow: true,
 })
-export class KolInputFile
-	extends BaseFormFieldWebComponent<InputFileApi>
-	implements ClickableElement, FocusableElement, InputFileProps, WebComponentInterface<InputFileApi>
-{
+export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputFileApi> {
 	@Element() protected readonly host?: HTMLKolInputFileElement;
 
 	@State() public id = createUniqueId('input-file');
@@ -522,10 +518,11 @@ export class KolInputFile
 					>
 						<InputFileNameFC filename={this.filename} hasFile={this.hasFileSelected} />
 						<InputFC {...this.getInputProps()} />
+						{/* The transparent file input covers the button and is the only tab stop; it opens the file dialog on click, Enter and Space. */}
 						<ButtonFC
 							{...this.browseButton.getFcProps(
-								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled },
-								{ class: BEM_CLASS_INPUT_CONTAINER__BUTTON },
+								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled, _tabIndex: -1 },
+								{ class: BEM_CLASS_INPUT_CONTAINER__BUTTON, 'aria-hidden': 'true' },
 							)}
 						/>
 					</InputContainerFC>
