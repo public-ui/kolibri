@@ -1,5 +1,5 @@
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
-import type { CtaRef } from '../../../utils/element-interaction';
+import { focusNextTabbableAfter, type CtaRef } from '../../../utils/element-interaction';
 import type { FormFieldBaseApi } from '../form-field/api';
 import { BaseFormFieldWebComponent } from '../form-field/base-web-component';
 
@@ -119,8 +119,13 @@ export abstract class BaseListboxWebComponent<Api extends FormFieldBaseApi> exte
 			}
 			case 'Tab':
 				if (this.isOpen) {
+					event.preventDefault();
 					this.isOpen = false;
-					this.ctaRef.el?.focus();
+					if (this.host) {
+						focusNextTabbableAfter(this.host);
+					} else {
+						this.ctaRef.el?.focus();
+					}
 				}
 				break;
 			case 'Esc':

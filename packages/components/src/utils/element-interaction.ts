@@ -39,6 +39,24 @@ export function createCtaRef<T extends HTMLElement = HTMLElement>(isInactive?: (
  */
 export const preventFocus = (event: MouseEvent): void => event.preventDefault();
 
+const TABBABLE_SELECTOR =
+	'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])';
+
+/**
+ * Moves the focus to the first tabbable element that follows the host in the document order and
+ * does not belong to the host.
+ *
+ * The browser's Tab key cannot do this for an element inside the shadow root: its walk enters the
+ * shadow tree, so it lands on the next focusable control of the field instead of leaving the field.
+ * Field keyboard handlers that leave the field on Tab call this after closing their overlay.
+ */
+export function focusNextTabbableAfter(host: HTMLElement): void {
+	const next = Array.from(document.querySelectorAll<HTMLElement>(TABBABLE_SELECTOR))
+		.filter((element) => element !== host && element.getRootNode() !== host.shadowRoot)
+		.find((element) => host.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_FOLLOWING);
+	next?.focus();
+}
+
 type MethodDecorator_ = (_target: object, _key: string, descriptor: PropertyDescriptor) => PropertyDescriptor;
 
 function makeMethodDecorator(fn: (this_: Record<string, unknown>) => Promise<void>): MethodDecorator_ {

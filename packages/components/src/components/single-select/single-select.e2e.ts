@@ -565,5 +565,29 @@ test.describe(COMPONENT_NAME, () => {
 				expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
 			});
 		}
+
+		test('leaves the field on Tab while the listbox is open and shows all options when reopened', async ({ page }) => {
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Enter');
+			await page.waitForChanges();
+			await readEvents(page);
+
+			// Clear drücken, dann tippen, ohne dass der Text ein Label matcht
+			await page.locator('input.kol-single-select__input').type('d');
+			await page.waitForChanges();
+			await page.keyboard.press('Tab');
+			await page.waitForChanges();
+			expect(await isOpen(page)).toBe(false);
+			// Das Verlassen meldet das ausstehende change
+			expect(await readEvents(page)).toEqual([['change', 'a']]);
+
+			// Das Feld wieder öffnen: die Liste zeigt alle Optionen wieder an
+			await page.locator('input.kol-single-select__input').click();
+			await page.keyboard.press('ArrowDown');
+			await page.waitForChanges();
+			expect(await isOpen(page)).toBe(true);
+			expect(await getOptionTexts(page)).toEqual(['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon']);
+			expect(await readEvents(page)).toEqual([]);
+		});
 	});
 });
