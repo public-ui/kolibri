@@ -1,182 +1,183 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "32 visual changes approved by BF150",
-	"computedAt": "2026-11-23T20:00:55.326Z",
+	"state": "failure",
+	"description": "18 of 32 visual changes rejected",
+	"computedAt": "2026-11-24T03:30:53.985Z",
 	"pr": 11444,
 	"head": "c3688112aadf813949d2a35e38d09a6db21fd99b",
 	"digest": "sha256:a585a363b8565760704fb41fed2b7fd299fd6a8e3650dbf78f014d97e50ca4f8",
 	"counts": {
 		"changes": 32,
 		"open": 0,
-		"approved": 32,
-		"rejected": 0,
+		"approved": 14,
+		"rejected": 18,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [
-		"BF150"
+		"BF150",
+		"deleonio"
 	],
 	"items": {
 		"test-tag-name-transformer/card-basic--basic": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/card-basic--basic-320": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/card-image--basic": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/card-image--basic-320": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/card-linked--linked": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-bwst/card-image--basic": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-bwst/card-image--basic-320": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-default/card-basic--basic": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-default/card-basic--basic-320": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-default/card-image--basic": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-default/card-image--basic-320": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-default/card-linked--linked": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/card-basic--basic": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/card-basic--basic-320": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/card-image--basic": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/card-image--basic-320": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/card-linked--linked": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/dialog-basic-show-dialog-true": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/drawer-basic-align-left": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/drawer-basic-align-left-closer-true": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/drawer-basic-align-top": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-desy/modal-basic-show-dialog-true": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-ecl/card-basic--basic-320": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-ecl/card-image--basic": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-ecl/card-image--basic-320": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-kern/card-basic--basic": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-kern/card-basic--basic-320": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-kern/card-image--basic": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-kern/card-image--basic-320": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"theme-kern/card-linked--linked": {
-			"state": "approved",
+			"state": "rejected",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"unstyled/card-image--basic": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		},
 		"unstyled/card-image--basic-320": {
 			"state": "approved",
 			"notes": [],
-			"by": "BF150"
+			"by": "deleonio"
 		}
 	}
 }
