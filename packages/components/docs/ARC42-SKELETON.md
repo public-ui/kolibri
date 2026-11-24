@@ -278,7 +278,7 @@ A Behavior is a reusable unit of logic that lives **inside** a WC. It extends `B
 - Exposes watcher entry points and lifecycle hooks (`componentWillLoad`) that the WC delegates to.
 - Must never instantiate other Behaviors directly — only the WC composes them.
 
-Rule of thumb: a Behavior exists only when the same logic is genuinely shared across multiple components. Four Behaviors exist: `TooltipBehavior` (the tooltip of buttons, links, form fields and items), `CounterBehavior` (the character counter of the text fields and `kol-textarea`), `FormAssociationBehavior` (the form association of buttons and form fields) and `PopoverBehavior` (`kol-popover-button` and the popover button item of `kol-split-button`).
+Rule of thumb: a Behavior exists only when the same logic is genuinely shared across multiple components. Four Behaviors exist: `TooltipBehavior` (the tooltip of buttons, links, form fields and items), `CounterBehavior` (the character counter of the text fields and `kol-textarea`), `FormAssociationBehavior` (the form association of buttons and form fields) and `PopoverBehavior` (`kol-popover-button` and the popover button item, which `kol-split-button` and the info popover of the form fields use).
 
 ```tsx
 // Inside a WC
