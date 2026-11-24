@@ -17,12 +17,14 @@ const NOTICE_BYTES = 1024;
  */
 const MAX_ROWS = 5;
 
-const STATUS = { fail: '❌', improved: '✅', new: '🆕', ok: '➖' };
+const STATUS = { exceeded: '❌', improved: '✅', new: '🆕', ok: '➖' };
 
 function notableRows(result) {
 	return result.rows
-		.filter((row) => row.status === 'fail' || row.status === 'new' || Math.abs(row.current - (row.base ?? row.current)) >= NOTICE_BYTES)
-		.sort((a, b) => Number(b.status === 'fail') - Number(a.status === 'fail') || Math.abs(b.current - (b.base ?? 0)) - Math.abs(a.current - (a.base ?? 0)));
+		.filter((row) => row.status === 'exceeded' || row.status === 'new' || Math.abs(row.current - (row.base ?? row.current)) >= NOTICE_BYTES)
+		.sort(
+			(a, b) => Number(b.status === 'exceeded') - Number(a.status === 'exceeded') || Math.abs(b.current - (b.base ?? 0)) - Math.abs(a.current - (a.base ?? 0)),
+		);
 }
 
 function rowLine(row) {
@@ -48,35 +50,35 @@ function readResults(packageDirs) {
 
 /**
  * Builds the body of the size gate comment from the `size-report/report.json` of each package directory.
- * `outcome` is the outcome of the CI step `Size gate` (`success`, `failure`, `cancelled`, `skipped`).
+ * `outcome` is the outcome of the CI step `Size gate`. The gate is informational and never fails, so
+ * only `success` carries a report; any other outcome means an earlier CI step failed.
  *
- * The comment lists only failed metrics, new metrics and changes of at least `NOTICE_BYTES`.
- * `notable` is false when there is nothing to list: then the gate passed without a relevant change,
- * and an existing comment shrinks to one line while no new comment is created.
+ * The comment lists only metrics beyond the tolerance, new metrics and changes of at least
+ * `NOTICE_BYTES`. `notable` is false when there is nothing to list: then no new comment is created
+ * while an existing comment shrinks to one line.
  */
 export function renderPrComment({ outcome, packageDirs, runUrl, sha }) {
 	const footer = `<sub>Commit \`${String(sha).slice(0, 10)}\` · [job summary with all metrics](${runUrl})</sub>`;
-	if (outcome !== 'success' && outcome !== 'failure') {
-		return { body: [MARKER, `⚠️ **Size gate did not run**, because an earlier CI step failed.`, footer].join('\n\n'), notable: false };
+	if (outcome !== 'success') {
+		return { body: [MARKER, `⚠️ **Size report did not run**, because an earlier CI step failed.`, footer].join('\n\n'), notable: false };
 	}
 
 	const sections = readResults(packageDirs)
-		.map(({ name, result }) => ({ name, passed: result.passed, rows: notableRows(result) }))
-		.filter((section) => !section.passed || section.rows.length > 0)
-		.map(({ name, passed, rows }) => {
+		.map(({ name, result }) => ({ name, rows: notableRows(result), withinTolerance: result.withinTolerance }))
+		.filter((section) => !section.withinTolerance || section.rows.length > 0)
+		.map(({ name, rows, withinTolerance }) => {
 			const more = rows.length > MAX_ROWS ? [`- … ${rows.length - MAX_ROWS} more in the job summary`] : [];
-			return [`**\`${name}\`** ${passed ? '✅' : '❌'}`, ...rows.slice(0, MAX_ROWS).map(rowLine), ...more].join('\n');
+			return [`**\`${name}\`** ${withinTolerance ? '✅' : '❌'}`, ...rows.slice(0, MAX_ROWS).map(rowLine), ...more].join('\n');
 		});
 
-	if (outcome === 'success' && sections.length === 0) {
-		return { body: [MARKER, '✅ **Size gate:** all artifacts are within their baseline, no notable change.', footer].join('\n\n'), notable: false };
+	if (sections.length === 0) {
+		return { body: [MARKER, '✅ **Size report:** all artifacts are within their baseline, no notable change.', footer].join('\n\n'), notable: false };
 	}
 
-	const headline =
-		outcome === 'failure'
-			? '❌ **Size gate failed.** Reduce the growth, or accept it with `pnpm size:update` and give the reason in the pull request.'
-			: '📦 **Size gate passed** with notable changes.';
-	return { body: [MARKER, headline, ...sections, footer].join('\n\n'), notable: true };
+	return {
+		body: [MARKER, '📦 **Size report** – informational comparison with the baseline of the target branch.', ...sections, footer].join('\n\n'),
+		notable: true,
+	};
 }
 
 /**

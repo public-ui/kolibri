@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-card`: 6 props plus `focus()` and `click()` — identical to the
- * predecessor `shadow.tsx` on the develop branch.
+ * Pinned public API of `kol-card` (6 props plus `focus()` and `click()`).
  */
 const KOL_CARD_PUBLIC_API: PublicApiContract = {
 	focus: {
@@ -58,4 +57,4 @@ const KOL_CARD_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-card', component: 'card', pinnedApi: KOL_CARD_PUBLIC_API, schemaInterface: 'CardProps' });
+describePublicApiContract({ tag: 'kol-card', component: 'card', pinnedApi: KOL_CARD_PUBLIC_API });

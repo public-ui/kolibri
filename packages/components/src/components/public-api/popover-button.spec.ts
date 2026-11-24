@@ -2,9 +2,8 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-popover-button` — identical surface to the predecessor (17 props plus
- * showPopover(), hidePopover(), focus() and click()). The wrapper-forwarding wording of the two
- * popover method docs was adapted to the skeleton orchestrator; the surface itself is unchanged.
+ * Pinned public API of `kol-popover-button` (17 props plus `showPopover()`, `hidePopover()`,
+ * `focus()` and `click()`).
  */
 const KOL_POPOVER_BUTTON_PUBLIC_API: PublicApiContract = {
 	hidePopover: {
@@ -145,5 +144,4 @@ describePublicApiContract({
 	tag: 'kol-popover-button',
 	component: 'popover-button',
 	pinnedApi: KOL_POPOVER_BUTTON_PUBLIC_API,
-	schemaInterface: 'PopoverButtonProps',
 });

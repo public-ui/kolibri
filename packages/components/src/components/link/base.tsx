@@ -94,8 +94,8 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	 * Marks `tabIndex` as unset. Call first in `componentWillLoad`, before the prop watchers run.
 	 */
 	protected unsetLinkTabIndex(): void {
-		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
-		// the attribute would trigger focus outlines that the predecessor did not draw. The first
+		// An unset tabindex must not render as `tabindex="0"`: links are natively tabbable and the
+		// attribute would trigger additional focus outlines. The first
 		// render-prop access seeds the store, so this unset runs against seeded defaults.
 		this.unsetRenderProp('tabIndex');
 	}

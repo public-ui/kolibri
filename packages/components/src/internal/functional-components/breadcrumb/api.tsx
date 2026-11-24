@@ -30,8 +30,8 @@ export type BreadcrumbApi = ApiFromConfig<
 			 * Whether the last link renders as the current page (`aria-current="page"` span).
 			 * Derived on every render pass in the web component from the `breadcrumbCurrentPage`
 			 * feature flag (host-scoped lookup) — `false` when the flag is `'hide'`, `true`
-			 * otherwise. Not a Stencil-reactive field by design: like the predecessor, flag
-			 * changes only take effect on the next render.
+			 * otherwise. Not a Stencil-reactive field by design: flag changes only take effect on
+			 * the next render.
 			 */
 			showCurrentPage: boolean;
 		};

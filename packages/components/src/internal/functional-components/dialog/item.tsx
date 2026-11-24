@@ -3,7 +3,7 @@ import { h } from '@stencil/core';
 
 import { trimLabel, type HeadingLevel, type KoliBriDialogEventCallbacks, type LabelLangSegmentsPropType } from '../../../schema';
 import type { ModalVariantPropType } from '../../../schema/props/variant/modal';
-import { createUniqueId, nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { lockScroll, unlockScroll } from '../../../utils/scroll-lock';
@@ -76,7 +76,7 @@ export const createDialogItem = (
 	const dialogRef = createCtaRef<HTMLDialogElement>();
 	const cardCloseButtonRef = createCtaRef<HTMLButtonElement>();
 	const cardCloseTooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
-	const ariaDescriptionId = nonce();
+	const ariaDescriptionId = createUniqueId('aria-description');
 	const headingId = createUniqueId('dialog-heading');
 	/* The scroll lock is counted per owner; the item is the owner of its dialog's lock. */
 	const scrollLockOwner = {};
