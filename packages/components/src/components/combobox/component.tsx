@@ -74,25 +74,32 @@ import {
 	shadow: true,
 })
 export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements ClickableElement, FocusableElement, WebComponentInterface<ComboboxApi> {
-	@Element() protected readonly host?: HTMLKolComboboxElement;
+	@Element()
+	protected readonly host?: HTMLKolComboboxElement;
 
-	@State() public id = createUniqueId('combobox');
+	@State()
+	public id = createUniqueId('combobox');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
 	/** Whether the focus is inside the field; only `focusin` and `focusout` change it. */
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
-	@State() public isOpen = false;
+	@State()
+	public isOpen = false;
 
-	@State() public blockSuggestionMouseOver = false;
+	@State()
+	public blockSuggestionMouseOver = false;
 
 	/**
 	 * The suggestions matching the input, derived from the parsed `suggestions` render prop — never
 	 * from the raw prop, which can be a JSON string when set as an attribute.
 	 */
-	@State() public filteredSuggestions?: SuggestionsPropType;
+	@State()
+	public filteredSuggestions?: SuggestionsPropType;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -115,7 +122,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -128,7 +136,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -138,7 +147,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: PlaceholderPropType = undefined;
+	@Prop()
+	public _placeholder?: PlaceholderPropType = undefined;
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
@@ -148,7 +158,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -158,7 +169,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -169,7 +181,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -179,7 +192,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -189,7 +203,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -199,7 +214,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -209,7 +225,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -219,7 +236,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -229,7 +247,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -239,7 +258,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -249,7 +269,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Shows the clear button if enabled.
 	 */
-	@Prop() public _hasClearButton?: HasClearButtonPropType = true;
+	@Prop()
+	public _hasClearButton?: HasClearButtonPropType = true;
 
 	@Watch('_hasClearButton')
 	public watchHasClearButton(value?: HasClearButtonPropType): void {
@@ -259,7 +280,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _suggestions!: SuggestionsPropType;
+	@Prop()
+	public _suggestions!: SuggestionsPropType;
 
 	/** Parses the raw prop into the render prop, then filters the parsed suggestions by the `_value` prop. */
 	@Watch('_suggestions')
@@ -273,7 +295,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -283,7 +306,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -295,7 +319,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -305,7 +330,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -315,7 +341,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -325,7 +352,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: StringValuePropType = undefined;
+	@Prop({ mutable: true, reflect: true })
+	public _value?: StringValuePropType = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StringValuePropType): void {
@@ -336,7 +364,8 @@ export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

@@ -54,14 +54,16 @@ const normalizeInitials = (value: LabelPropType): string => {
 	},
 })
 export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebComponentInterface<AvatarApi> {
-	@State() public initials: string = '';
+	@State()
+	public initials: string = '';
 
 	protected readonly propsConfig: PropsConfigShape = avatarPropsConfig;
 
 	/**
 	 * Defines the backgroundColor and foregroundColor.
 	 */
-	@Prop() public _color?: string | ColorPair = undefined;
+	@Prop()
+	public _color?: string | ColorPair = undefined;
 
 	@Watch('_color')
 	public watchColor(value?: string | ColorPair): void {
@@ -71,7 +73,8 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -88,7 +91,8 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	/**
 	 * Sets the image `src` attribute to the given string.
 	 */
-	@Prop() public _src?: SrcPropType = undefined;
+	@Prop()
+	public _src?: SrcPropType = undefined;
 
 	@Watch('_src')
 	public watchSrc(value?: SrcPropType): void {

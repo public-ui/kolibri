@@ -25,7 +25,8 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements WebCompo
 	/**
 	 * Defines the color of the logo and label.
 	 */
-	@Prop() public _color?: Stringified<PropColor> = '#003c78';
+	@Prop()
+	public _color?: Stringified<PropColor> = '#003c78';
 
 	@Watch('_color')
 	public watchColor(value?: Stringified<PropColor>): void {
@@ -35,7 +36,8 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements WebCompo
 	/**
 	 * Defines whether the component has a label.
 	 */
-	@Prop() public _labeled?: LabeledPropType = true;
+	@Prop()
+	public _labeled?: LabeledPropType = true;
 
 	@Watch('_labeled')
 	public watchLabeled(value?: LabeledPropType): void {

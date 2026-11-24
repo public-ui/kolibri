@@ -35,16 +35,20 @@ import { BaseCardWebComponent } from './base';
 	shadow: true,
 })
 export class KolCard extends BaseCardWebComponent implements ClickableElement, FocusableElement, WebComponentInterface<CardApi> {
-	@Element() protected readonly host?: HTMLKolCardElement;
+	@Element()
+	protected readonly host?: HTMLKolCardElement;
 
-	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
+	@State()
+	public ariaDescriptionId: string = createUniqueId('aria-description');
 
-	@State() public headingId: string = createUniqueId('card-heading');
+	@State()
+	public headingId: string = createUniqueId('card-heading');
 
 	/**
 	 * Defines whether the element can be closed.
 	 */
-	@Prop() public _hasCloser?: HasCloserPropType = false;
+	@Prop()
+	public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: HasCloserPropType): void {
@@ -54,7 +58,8 @@ export class KolCard extends BaseCardWebComponent implements ClickableElement, F
 	/**
 	 * Defines the target URI of the link.
 	 */
-	@Prop() public _href?: HrefPropType = undefined;
+	@Prop()
+	public _href?: HrefPropType = undefined;
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
@@ -64,7 +69,8 @@ export class KolCard extends BaseCardWebComponent implements ClickableElement, F
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelLangSegmentsPropType;
+	@Prop()
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -74,7 +80,8 @@ export class KolCard extends BaseCardWebComponent implements ClickableElement, F
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 0;
+	@Prop()
+	public _level?: HeadingLevel = 0;
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
@@ -84,7 +91,8 @@ export class KolCard extends BaseCardWebComponent implements ClickableElement, F
 	/**
 	 * Defines the event callback functions for the component.
 	 */
-	@Prop() public _on?: KoliBriCardEventCallbacks = undefined;
+	@Prop()
+	public _on?: KoliBriCardEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriCardEventCallbacks): void {
@@ -94,7 +102,8 @@ export class KolCard extends BaseCardWebComponent implements ClickableElement, F
 	/**
 	 * Defines where to open the link.
 	 */
-	@Prop() public _target?: LinkTargetPropType = undefined;
+	@Prop()
+	public _target?: LinkTargetPropType = undefined;
 
 	@Watch('_target')
 	public watchTarget(value?: LinkTargetPropType): void {

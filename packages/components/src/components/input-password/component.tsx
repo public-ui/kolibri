@@ -71,16 +71,21 @@ export class KolInputPassword
 	extends BaseTextInputWebComponent<InputPasswordApi>
 	implements ClickableElement, FocusableElement, WebComponentInterface<InputPasswordApi>
 {
-	@Element() protected readonly host?: HTMLKolInputPasswordElement;
+	@Element()
+	protected readonly host?: HTMLKolInputPasswordElement;
 
-	@State() public id = createUniqueId('input-password');
+	@State()
+	public id = createUniqueId('input-password');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
-	@State() public passwordVisible = false;
+	@State()
+	public passwordVisible = false;
 
 	private readonly visibilityToggle = createButtonItem(() => this.host);
 
@@ -98,7 +103,8 @@ export class KolInputPassword
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -110,7 +116,8 @@ export class KolInputPassword
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -120,7 +127,8 @@ export class KolInputPassword
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+	@Prop()
+	public _autoComplete?: AutoCompletePropType = 'off';
 
 	@Watch('_autoComplete')
 	public watchAutoComplete(value?: AutoCompletePropType): void {
@@ -133,7 +141,8 @@ export class KolInputPassword
 	/**
 	 * Shows a character counter for the input element.
 	 */
-	@Prop() public _hasCounter?: HasCounterPropType = false;
+	@Prop()
+	public _hasCounter?: HasCounterPropType = false;
 
 	@Watch('_hasCounter')
 	public watchHasCounter(value?: HasCounterPropType): void {
@@ -143,7 +152,8 @@ export class KolInputPassword
 	/**
 	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
 	 */
-	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
+	@Prop()
+	public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
 
 	@Watch('_maxLengthBehavior')
 	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
@@ -153,7 +163,8 @@ export class KolInputPassword
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -163,7 +174,8 @@ export class KolInputPassword
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -174,7 +186,8 @@ export class KolInputPassword
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -184,7 +197,8 @@ export class KolInputPassword
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -194,7 +208,8 @@ export class KolInputPassword
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -204,7 +219,8 @@ export class KolInputPassword
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -214,7 +230,8 @@ export class KolInputPassword
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -224,7 +241,8 @@ export class KolInputPassword
 	/**
 	 * Defines the maximum number of input characters.
 	 */
-	@Prop() public _maxLength?: MaxLengthPropType = undefined;
+	@Prop()
+	public _maxLength?: MaxLengthPropType = undefined;
 
 	@Watch('_maxLength')
 	public watchMaxLength(value?: MaxLengthPropType): void {
@@ -234,7 +252,8 @@ export class KolInputPassword
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -244,7 +263,8 @@ export class KolInputPassword
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -254,7 +274,8 @@ export class KolInputPassword
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -264,7 +285,8 @@ export class KolInputPassword
 	/**
 	 * Defines a validation pattern for the input field.
 	 */
-	@Prop() public _pattern?: PatternPropType = undefined;
+	@Prop()
+	public _pattern?: PatternPropType = undefined;
 
 	@Watch('_pattern')
 	public watchPattern(value?: PatternPropType): void {
@@ -274,7 +296,8 @@ export class KolInputPassword
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: PlaceholderPropType = undefined;
+	@Prop()
+	public _placeholder?: PlaceholderPropType = undefined;
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
@@ -284,7 +307,8 @@ export class KolInputPassword
 	/**
 	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType = false;
+	@Prop()
+	public _readOnly?: ReadOnlyPropType = false;
 
 	@Watch('_readOnly')
 	public watchReadOnly(value?: ReadOnlyPropType): void {
@@ -294,7 +318,8 @@ export class KolInputPassword
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -304,7 +329,8 @@ export class KolInputPassword
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -314,7 +340,8 @@ export class KolInputPassword
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
@@ -325,7 +352,8 @@ export class KolInputPassword
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -335,7 +363,8 @@ export class KolInputPassword
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -345,7 +374,8 @@ export class KolInputPassword
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -355,7 +385,8 @@ export class KolInputPassword
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true }) public _value?: StringValuePropType = undefined;
+	@Prop({ mutable: true })
+	public _value?: StringValuePropType = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StringValuePropType): void {
@@ -365,7 +396,8 @@ export class KolInputPassword
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -375,7 +407,8 @@ export class KolInputPassword
 	/**
 	 * Activates the show password button
 	 */
-	@Prop() public _visibilityToggle?: VisibilityTogglePropType = false;
+	@Prop()
+	public _visibilityToggle?: VisibilityTogglePropType = false;
 
 	@Watch('_visibilityToggle')
 	public watchVisibilityToggle(value?: VisibilityTogglePropType): void {

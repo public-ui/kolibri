@@ -74,14 +74,18 @@ export class KolInputCheckbox
 	extends BaseFormFieldWebComponent<InputCheckboxApi>
 	implements ClickableElement, FocusableElement, WebComponentInterface<InputCheckboxApi>
 {
-	@Element() protected readonly host?: HTMLKolInputCheckboxElement;
+	@Element()
+	protected readonly host?: HTMLKolInputCheckboxElement;
 
-	@State() public id = createUniqueId('input-checkbox');
+	@State()
+	public id = createUniqueId('input-checkbox');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -95,7 +99,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -106,7 +111,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines whether the checkbox is checked or not. Can be read and written.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _checked?: CheckedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _checked?: CheckedPropType = false;
 
 	@Watch('_checked')
 	public watchChecked(value?: CheckedPropType): void {
@@ -117,7 +123,8 @@ export class KolInputCheckbox
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
 
 	@Watch('_hideMsg')
 	public watchHideMsg(value?: HideMsgPropType): void {
@@ -127,7 +134,8 @@ export class KolInputCheckbox
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -138,7 +146,8 @@ export class KolInputCheckbox
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -148,7 +157,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -158,7 +168,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: Stringified<InputCheckboxIconsProp> = undefined;
+	@Prop()
+	public _icons?: Stringified<InputCheckboxIconsProp> = undefined;
 
 	/** Merges the given icons into the current ones, so the other states keep their icons. */
 	@Watch('_icons')
@@ -169,7 +180,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -179,7 +191,8 @@ export class KolInputCheckbox
 	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _indeterminate?: IndeterminatePropType = undefined;
+	@Prop({ mutable: true, reflect: true })
+	public _indeterminate?: IndeterminatePropType = undefined;
 
 	@Watch('_indeterminate')
 	public watchIndeterminate(value?: IndeterminatePropType): void {
@@ -189,7 +202,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -199,7 +213,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines which alignment should be used for presentation.
 	 */
-	@Prop() public _labelAlign?: LabelAlignPropType = 'right';
+	@Prop()
+	public _labelAlign?: LabelAlignPropType = 'right';
 
 	@Watch('_labelAlign')
 	public watchLabelAlign(value?: LabelAlignPropType): void {
@@ -209,7 +224,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -219,7 +235,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -229,7 +246,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -239,7 +257,8 @@ export class KolInputCheckbox
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -251,7 +270,8 @@ export class KolInputCheckbox
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -261,7 +281,8 @@ export class KolInputCheckbox
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -273,7 +294,8 @@ export class KolInputCheckbox
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -283,7 +305,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -293,7 +316,8 @@ export class KolInputCheckbox
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -303,7 +327,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop() public _value: StencilUnknown = true;
+	@Prop()
+	public _value: StencilUnknown = true;
 
 	/**
 	 * `null` and `undefined` are kept as value instead of falling back to the default `true`: the
@@ -322,7 +347,8 @@ export class KolInputCheckbox
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: InputCheckboxVariantPropType = 'default';
+	@Prop()
+	public _variant?: InputCheckboxVariantPropType = 'default';
 
 	@Watch('_variant')
 	public watchVariant(value?: InputCheckboxVariantPropType): void {

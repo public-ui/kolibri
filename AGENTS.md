@@ -506,7 +506,7 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Document a prop variant's meaning once, at its type definition in `src/schema/props`. Component JSDocs and public-api pins reference the type instead of restating the meaning in their own words, so the texts cannot drift apart.
 - The expert-slot sentinel of a label is the empty string `''`, never `false`: only `LabelWithExpertSlotPropType` accepts it, `labelProp` and `labelLangSegmentsProp` reject it.
 - Optional `@Prop`s carry an explicit `= undefined` initializer as the documented "no default" contract and required `@Prop`s carry none (enforced by the ESLint rules `kolibri/prop-optional-requires-initializer` and `kolibri/prop-required-no-initializer`).
-- A field decorator (`@Element`, `@Prop`, `@State`) stands on the line of its member, a method decorator (`@Listen`, `@Method`, `@Watch`) on a line of its own (pinned by `component-structure.spec.ts`).
+- Every decorator stands on a line of its own, above the class or member it decorates (enforced by the ESLint rule `kolibri/decorator-on-own-line`; `eslint --fix` applies it).
 - Do not place constant declarations before import statements; imports must always be at the very top of the file.
 - **Scripts must be platform-independent**: All scripts in the `scripts/` folder must work on Windows, macOS, and Linux without requiring external tools or platform-specific dependencies. Use Node.js built-in modules instead of external command-line tools like `rg`, `grep`, `find`, etc.
 - Inline code documentation follows [Inline code documentation](#inline-code-documentation).

@@ -21,7 +21,8 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	/**
 	 * Makes the element show up.
 	 */
-	@Prop() public _show?: ShowPropType = undefined;
+	@Prop()
+	public _show?: ShowPropType = undefined;
 
 	@Watch('_show')
 	public watchShow(value?: ShowPropType): void {
@@ -31,7 +32,8 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelPropType = undefined;
+	@Prop()
+	public _label?: LabelPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -41,7 +43,8 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: SpinVariantType = undefined;
+	@Prop()
+	public _variant?: SpinVariantType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: SpinVariantType): void {

@@ -30,10 +30,12 @@ import type {
 	shadow: true,
 })
 export class KolPagination extends BaseWebComponent<PaginationApi> implements WebComponentInterface<PaginationApi> {
-	@Element() private readonly host?: HTMLKolPaginationElement;
+	@Element()
+	private readonly host?: HTMLKolPaginationElement;
 
 	/** Renders the element again after a page size was chosen in the select; it does not write `_pageSize`. */
-	@State() private renderCount = 0;
+	@State()
+	private renderCount = 0;
 
 	private item!: PaginationItem;
 
@@ -42,7 +44,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines the amount of pages to show next to the outer arrow buttons.
 	 */
-	@Prop() public _boundaryCount?: BoundaryCountPropType = 1;
+	@Prop()
+	public _boundaryCount?: BoundaryCountPropType = 1;
 
 	@Watch('_boundaryCount')
 	public watchBoundaryCount(value?: BoundaryCountPropType): void {
@@ -52,7 +55,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: CustomClassPropType = undefined;
+	@Prop()
+	public _customClass?: CustomClassPropType = undefined;
 
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
@@ -62,7 +66,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -72,7 +77,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines which navigation buttons to render (first, last, next, previous buttons).
 	 */
-	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
+	@Prop()
+	public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
 
 	@Watch('_hasButtons')
 	public watchHasButtons(value?: boolean | Stringified<PaginationHasButton>): void {
@@ -82,7 +88,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines the current page.
 	 */
-	@Prop() public _page!: PagePropType;
+	@Prop()
+	public _page!: PagePropType;
 
 	@Watch('_page')
 	public watchPage(value?: PagePropType): void {
@@ -92,7 +99,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines the amount of entries to show per page.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
+	@Prop({ mutable: true, reflect: false })
+	public _pageSize = 1;
 
 	@Watch('_pageSize')
 	public watchPageSize(value?: PageSizePropType): void {
@@ -102,7 +110,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines the options for the page-size-select.
 	 */
-	@Prop() public _pageSizeOptions: Stringified<number[]> = [];
+	@Prop()
+	public _pageSizeOptions: Stringified<number[]> = [];
 
 	@Watch('_pageSizeOptions')
 	public watchPageSizeOptions(value?: Stringified<number[]>): void {
@@ -112,7 +121,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Gibt an, auf welche Callback-Events reagiert werden.
 	 */
-	@Prop() public _on!: KoliBriPaginationButtonCallbacks;
+	@Prop()
+	public _on!: KoliBriPaginationButtonCallbacks;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriPaginationButtonCallbacks): void {
@@ -122,7 +132,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines the amount of pages to show next to the current page.
 	 */
-	@Prop() public _siblingCount?: SiblingCountPropType = 1;
+	@Prop()
+	public _siblingCount?: SiblingCountPropType = 1;
 
 	@Watch('_siblingCount')
 	public watchSiblingCount(value?: SiblingCountPropType): void {
@@ -132,7 +143,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -143,7 +155,8 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	 * Defines the maximum value of the element. An unset value warns without a rescuing fallback: nothing paginates without the
 	 * number of entries, and 0 stays the honest empty state (ARC42, "Requiredness semantics per prop").
 	 */
-	@Prop() public _max!: MaxPropType;
+	@Prop()
+	public _max!: MaxPropType;
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {

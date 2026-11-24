@@ -21,14 +21,16 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	shadow: true,
 })
 export class KolImage extends BaseWebComponent<ImageApi> implements WebComponentInterface<ImageApi> {
-	@Element() private readonly host?: HTMLKolImageElement;
+	@Element()
+	private readonly host?: HTMLKolImageElement;
 
 	protected readonly propsConfig: PropsConfigShape = imagePropsConfig;
 
 	/**
 	 * Sets the alternative text of the image.
 	 */
-	@Prop() public _alt!: AltPropType;
+	@Prop()
+	public _alt!: AltPropType;
 
 	@Watch('_alt')
 	public watchAlt(value?: AltPropType): void {
@@ -38,7 +40,8 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	/**
 	 * Defines the loading mode for the image.
 	 */
-	@Prop() public _loading?: LoadingType = undefined;
+	@Prop()
+	public _loading?: LoadingType = undefined;
 
 	@Watch('_loading')
 	public watchLoading(value?: LoadingType): void {
@@ -48,7 +51,8 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	/**
 	 * Defines the image sizes for different screen resolutions, supporting _srcset.
 	 */
-	@Prop() public _sizes?: SizesPropType = undefined;
+	@Prop()
+	public _sizes?: SizesPropType = undefined;
 
 	@Watch('_sizes')
 	public watchSizes(value?: SizesPropType): void {
@@ -58,7 +62,8 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	/**
 	 * Sets the image `src` attribute to the given string.
 	 */
-	@Prop() public _src!: SrcPropType;
+	@Prop()
+	public _src!: SrcPropType;
 
 	@Watch('_src')
 	public watchSrc(value?: SrcPropType): void {
@@ -68,7 +73,8 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	/**
 	 * Sets a list of source URLs with widths of the images.
 	 */
-	@Prop() public _srcset?: SrcsetPropType = undefined;
+	@Prop()
+	public _srcset?: SrcsetPropType = undefined;
 
 	@Watch('_srcset')
 	public watchSrcset(value?: SrcsetPropType): void {
@@ -78,7 +84,8 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	/**
 	 * Defines callbacks for image load events (`onError`, `onLoad`).
 	 */
-	@Prop() public _on?: KoliBriImageEventCallbacks = undefined;
+	@Prop()
+	public _on?: KoliBriImageEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriImageEventCallbacks): void {

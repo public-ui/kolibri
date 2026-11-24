@@ -15,19 +15,22 @@ import { TooltipFC } from '../../internal/functional-components/tooltip/componen
 	shadow: false,
 })
 export class KolTooltipWc {
-	@Element() private readonly host?: HTMLKolTooltipWcElement;
+	@Element()
+	private readonly host?: HTMLKolTooltipWcElement;
 
 	private readonly tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 
 	/**
 	 * Defines the elements badge text.
 	 */
-	@Prop() public _badgeText?: BadgeTextPropType = undefined;
+	@Prop()
+	public _badgeText?: BadgeTextPropType = undefined;
 
 	/**
 	 * Defines the alignment of the tooltip, popover or tabs in relation to the element.
 	 */
-	@Prop() public _align?: AlignPropType = 'top';
+	@Prop()
+	public _align?: AlignPropType = 'top';
 
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
@@ -39,7 +42,8 @@ export class KolTooltipWc {
 	 * @deprecated Will be removed in next major release. The ID is now generated internally and cannot be set via props.
 	 * @internal
 	 */
-	@Prop() public _id?: IdPropType = undefined;
+	@Prop()
+	public _id?: IdPropType = undefined;
 
 	@Watch('_id')
 	public validateId(value?: IdPropType): void {
@@ -49,7 +53,8 @@ export class KolTooltipWc {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {

@@ -41,9 +41,11 @@ const FOCUS_ERROR_LIST_DELAY = 250;
 	shadow: true,
 })
 export class KolForm extends BaseWebComponent<FormApi> implements WebComponentInterface<FormApi> {
-	@Element() private readonly host?: HTMLKolFormElement;
+	@Element()
+	private readonly host?: HTMLKolFormElement;
 
-	@State() public errorLinkItems: FormErrorLinkItem[] = [];
+	@State()
+	public errorLinkItems: FormErrorLinkItem[] = [];
 
 	/**
 	 * Ids of the error-list alert. Plain fields rather than `@State()`: both are created once per
@@ -59,7 +61,8 @@ export class KolForm extends BaseWebComponent<FormApi> implements WebComponentIn
 	 * A list of error objects that each describe an issue encountered in the form.
 	 * Each error object contains a message and a selector for identifying the form element related to the error.
 	 */
-	@Prop() public _errorList?: ErrorListPropType[] = undefined;
+	@Prop()
+	public _errorList?: ErrorListPropType[] = undefined;
 
 	@Watch('_errorList')
 	public watchErrorList(value?: ErrorListPropType[]): void {
@@ -72,7 +75,8 @@ export class KolForm extends BaseWebComponent<FormApi> implements WebComponentIn
 	/**
 	 * Defines the callback functions for form events.
 	 */
-	@Prop() public _on?: KoliBriFormCallbacks = undefined;
+	@Prop()
+	public _on?: KoliBriFormCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriFormCallbacks): void {
@@ -82,7 +86,8 @@ export class KolForm extends BaseWebComponent<FormApi> implements WebComponentIn
 	/**
 	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
 	 */
-	@Prop() public _requiredText?: Stringified<boolean> = true;
+	@Prop()
+	public _requiredText?: Stringified<boolean> = true;
 
 	@Watch('_requiredText')
 	public watchRequiredText(value?: Stringified<boolean>): void {
