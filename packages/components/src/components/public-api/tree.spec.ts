@@ -3,7 +3,7 @@ import { describePublicApiContract } from './contract';
 
 /**
  * Pinned public API of `kol-tree` (1 required prop plus `focus()`). The cache reset the tree items
- * call lives in `tree/open-items-cache.ts`, not on the element.
+ * call lives in `internal/functional-components/tree/open-items-cache.ts`, not on the element.
  */
 const KOL_TREE_PUBLIC_API: PublicApiContract = {
 	focus: {

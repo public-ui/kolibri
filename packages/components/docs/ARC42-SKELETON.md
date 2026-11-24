@@ -57,6 +57,8 @@ src/
 
 This modular layout is the backbone for the architectural patterns described in the following chapters.
 
+The dependencies point inwards: `src/components/` imports from `src/internal/`, never the other way round. A helper that more than one component uses (e.g. `internal/functional-components/form/controller.ts`, `internal/functional-components/link/aria-current-service.ts`) lives under `src/internal/`, next to the functional component of the component it belongs to. The `boundaries/dependencies` rule in `eslint.config.mjs` enforces this direction.
+
 ## 2. Architecture Constraints
 
 - **Stencil** is used for authoring web components with **shadow: true** only (Shadow DOM enabled for style isolation).

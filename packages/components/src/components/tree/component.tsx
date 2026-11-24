@@ -7,10 +7,10 @@ import type { PropsConfigShape, WebComponentInterface } from '../../internal/fun
 import type { TreeApi } from '../../internal/functional-components/tree/api';
 import { treePropsConfig } from '../../internal/functional-components/tree/api';
 import { TreeFC } from '../../internal/functional-components/tree/component';
+import { registerOpenItemsCache, unregisterOpenItemsCache } from '../../internal/functional-components/tree/open-items-cache';
 import { labelProp } from '../../internal/props';
 import type { FocusableElement, KolFocusOptions, LabelPropType } from '../../schema';
 import { delegateFocus } from '../../utils/element-focus';
-import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
 
 const isTreeItem = (element?: EventTarget | null): element is HTMLKolTreeItemElement =>
 	(element as Element | null | undefined)?.tagName === KolTreeItemTag.toUpperCase();
