@@ -2,10 +2,10 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "18 of 32 visual changes rejected",
-	"computedAt": "2026-11-24T03:30:53.985Z",
+	"computedAt": "2026-11-24T08:58:38.944Z",
 	"pr": 11444,
-	"head": "c3688112aadf813949d2a35e38d09a6db21fd99b",
-	"digest": "sha256:a585a363b8565760704fb41fed2b7fd299fd6a8e3650dbf78f014d97e50ca4f8",
+	"head": "6441d6d0d42c8fa8aeee0419cbb65fdfd61824d1",
+	"digest": "sha256:bb9a8c6b1977a3b6eb91f26039a91176bd96ddb5c3d371ef91e5f18841994770",
 	"counts": {
 		"changes": 32,
 		"open": 0,
