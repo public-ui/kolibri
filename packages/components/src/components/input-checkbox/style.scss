@@ -58,6 +58,8 @@
 			display: none;
 			position: absolute;
 			inset: auto;
+			// check icon above background
+			z-index: 1;
 			pointer-events: none;
 		}
 
