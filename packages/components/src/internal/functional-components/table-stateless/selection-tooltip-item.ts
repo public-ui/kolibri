@@ -16,7 +16,7 @@ export type SelectionTooltipItem = {
 	destroy(): void;
 };
 
-export const createSelectionTooltipItem = (): SelectionTooltipItem => {
+export const createTableStatelessSelectionTooltipItem = (): SelectionTooltipItem => {
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 	let inputElement: HTMLInputElement | undefined;
 
