@@ -109,6 +109,19 @@ export class KolInputCheckbox
 	}
 
 	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 *
+	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
+	 */
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
 	 * Defines whether the checkbox is checked or not. Can be read and written.
 	 */
 	@Prop({ mutable: true, reflect: true })
@@ -118,17 +131,6 @@ export class KolInputCheckbox
 	public watchChecked(value?: CheckedPropType): void {
 		checkedProp.apply(value, (v) => this.setRenderProp('checked', v));
 		this.syncFormAssociatedValue();
-	}
-
-	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 */
-	@Prop()
-	public _hideMsg?: HideMsgPropType = false;
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
 	}
 
 	/**
@@ -155,6 +157,17 @@ export class KolInputCheckbox
 	}
 
 	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
 	 * Defines the hint text.
 	 */
 	@Prop()
@@ -178,17 +191,6 @@ export class KolInputCheckbox
 	}
 
 	/**
-	 * Defines the informational popover after the label.
-	 */
-	@Prop()
-	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
-
-	@Watch('_infoPopover')
-	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
-		this.applyInfoPopover(value);
-	}
-
-	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
 	 */
 	@Prop({ mutable: true, reflect: true })
@@ -197,6 +199,17 @@ export class KolInputCheckbox
 	@Watch('_indeterminate')
 	public watchIndeterminate(value?: IndeterminatePropType): void {
 		indeterminateProp.apply(value, (v) => this.setRenderProp('indeterminate', v));
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
 	}
 
 	/**
@@ -263,19 +276,6 @@ export class KolInputCheckbox
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
 		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
-	}
-
-	/**
-	 * References an external element by ID that provides accessible details for this input.
-	 *
-	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
-	 */
-	@Prop()
-	public _ariaDetails?: AriaDetailsPropType = undefined;
-
-	@Watch('_ariaDetails')
-	public watchAriaDetails(value?: AriaDetailsPropType): void {
-		this.applyAriaDetails(value);
 	}
 
 	/**
@@ -385,28 +385,28 @@ export class KolInputCheckbox
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
-		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
-		this.watchHideLabel(this._hideLabel);
-		this.watchHint(this._hint);
-		this.watchInfoPopover(this._infoPopover);
-		this.watchLabel(this._label);
-		this.watchShortKey(this._shortKey);
-		this.watchOn(this._on);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchRequired(this._required);
+		this.watchAriaDetails(this._ariaDetails);
 		this.watchChecked(this._checked);
+		this.watchDisabled(this._disabled);
+		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
+		this.watchHint(this._hint);
 		this.watchIcons(this._icons);
 		this.watchIndeterminate(this._indeterminate);
+		this.watchInfoPopover(this._infoPopover);
+		this.watchLabel(this._label);
+		this.watchLabelAlign(this._labelAlign);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
+		this.watchOn(this._on);
+		this.watchRequired(this._required);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchValue(this._value);
 		this.watchVariant(this._variant);
-		this.watchLabelAlign(this._labelAlign);
 	}
 
 	public componentDidRender(): void {

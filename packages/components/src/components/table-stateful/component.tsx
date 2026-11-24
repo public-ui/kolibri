@@ -178,6 +178,19 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	};
 
 	/**
+	 * Defines whether to allow multi sort.
+	 */
+	@Prop()
+	public _allowMultiSort?: AllowMultiSortPropType = undefined;
+
+	@Watch('_allowMultiSort')
+	public watchAllowMultiSort(value?: AllowMultiSortPropType): void {
+		allowMultiSortProp.apply(value, (v) => {
+			this.allowMultiSort = v;
+		});
+	}
+
+	/**
 	 * References an external element by ID that serves as the accessible label for this table.
 	 * The component resolves the IDs and sets them as element references (`ariaLabelledByElements`)
 	 * on the native `<table>` inside the shadow root, because IDREF attributes cannot cross that
@@ -190,19 +203,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_ariaLabelledby')
 	public watchAriaLabelledby(value?: AriaLabelledbyPropType): void {
 		this.resolveExternalLabel(value);
-	}
-
-	/**
-	 * Defines whether to allow multi sort.
-	 */
-	@Prop()
-	public _allowMultiSort?: AllowMultiSortPropType = undefined;
-
-	@Watch('_allowMultiSort')
-	public watchAllowMultiSort(value?: AllowMultiSortPropType): void {
-		allowMultiSortProp.apply(value, (v) => {
-			this.allowMultiSort = v;
-		});
 	}
 
 	/**
@@ -242,6 +242,17 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_fixedCols')
 	public watchFixedCols(value?: FixedColsPropType): void {
 		this.applyFixedCols(value);
+	}
+
+	/**
+	 * Enables the settings menu if true (default: false).
+	 */
+	@Prop()
+	public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
+
+	@Watch('_hasSettingsMenu')
+	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
+		this.applyHasSettingsMenu(value);
 	}
 
 	/**
@@ -295,6 +306,19 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	/**
+	 * Defines the callback functions for table events.
+	 */
+	@Prop()
+	public _on?: TableStatefulCallbacksPropType = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: TableStatefulCallbacksPropType): void {
+		tableStatefulCallbacksProp.apply(value, (v) => {
+			this.statefulOn = v;
+		});
+	}
+
+	/**
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop()
@@ -330,30 +354,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_selection')
 	public watchSelection(value?: TableSelectionPropType): void {
 		this.applySelection(value);
-	}
-
-	/**
-	 * Defines the callback functions for table events.
-	 */
-	@Prop()
-	public _on?: TableStatefulCallbacksPropType = undefined;
-
-	@Watch('_on')
-	public watchOn(value?: TableStatefulCallbacksPropType): void {
-		tableStatefulCallbacksProp.apply(value, (v) => {
-			this.statefulOn = v;
-		});
-	}
-
-	/**
-	 * Enables the settings menu if true (default: false).
-	 */
-	@Prop()
-	public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
-
-	@Watch('_hasSettingsMenu')
-	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
-		this.applyHasSettingsMenu(value);
 	}
 
 	/**
@@ -395,6 +395,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.watchData(this._data);
 		this.watchDataFoot(this._dataFoot);
 		this.watchFixedCols(this._fixedCols);
+		this.watchHasSettingsMenu(this._hasSettingsMenu);
 		this.watchHeaders(this._headers);
 		this.watchLabel(this._label);
 		this.watchLoading(this._loading);
@@ -402,7 +403,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.watchPagination(this._pagination);
 		this.watchPaginationPosition(this._paginationPosition);
 		this.watchSelection(this._selection);
-		this.watchHasSettingsMenu(this._hasSettingsMenu);
 		this.watchVariant(this._variant);
 	}
 

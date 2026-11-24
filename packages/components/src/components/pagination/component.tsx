@@ -64,6 +64,17 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	}
 
 	/**
+	 * Defines which navigation buttons to render (first, last, next, previous buttons).
+	 */
+	@Prop()
+	public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
+
+	@Watch('_hasButtons')
+	public watchHasButtons(value?: boolean | Stringified<PaginationHasButton>): void {
+		this.item.applyHasButtons(value);
+	}
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
@@ -75,14 +86,26 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	}
 
 	/**
-	 * Defines which navigation buttons to render (first, last, next, previous buttons).
+	 * Defines the maximum value of the element. An unset value warns without a rescuing fallback: nothing paginates without the
+	 * number of entries, and 0 stays the honest empty state (ARC42, "Requiredness semantics per prop").
 	 */
 	@Prop()
-	public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
+	public _max!: MaxPropType;
 
-	@Watch('_hasButtons')
-	public watchHasButtons(value?: boolean | Stringified<PaginationHasButton>): void {
-		this.item.applyHasButtons(value);
+	@Watch('_max')
+	public watchMax(value?: MaxPropType): void {
+		this.item.applyMax(value, this.isRequired('max'));
+	}
+
+	/**
+	 * Gibt an, auf welche Callback-Events reagiert werden.
+	 */
+	@Prop()
+	public _on!: KoliBriPaginationButtonCallbacks;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriPaginationButtonCallbacks): void {
+		this.item.applyOn(value);
 	}
 
 	/**
@@ -119,17 +142,6 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	}
 
 	/**
-	 * Gibt an, auf welche Callback-Events reagiert werden.
-	 */
-	@Prop()
-	public _on!: KoliBriPaginationButtonCallbacks;
-
-	@Watch('_on')
-	public watchOn(value?: KoliBriPaginationButtonCallbacks): void {
-		this.item.applyOn(value);
-	}
-
-	/**
 	 * Defines the amount of pages to show next to the current page.
 	 */
 	@Prop()
@@ -149,18 +161,6 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements We
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
 		this.item.applyTooltipAlign(value);
-	}
-
-	/**
-	 * Defines the maximum value of the element. An unset value warns without a rescuing fallback: nothing paginates without the
-	 * number of entries, and 0 stays the honest empty state (ARC42, "Requiredness semantics per prop").
-	 */
-	@Prop()
-	public _max!: MaxPropType;
-
-	@Watch('_max')
-	public watchMax(value?: MaxPropType): void {
-		this.item.applyMax(value, this.isRequired('max'));
 	}
 
 	public componentWillLoad(): void {

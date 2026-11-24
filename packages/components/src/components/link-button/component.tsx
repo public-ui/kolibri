@@ -66,17 +66,6 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	}
 
 	/**
-	 * Defines the value for the aria-current attribute.
-	 */
-	@Prop()
-	public _ariaCurrentValue?: AriaCurrentValuePropType = undefined;
-
-	@Watch('_ariaCurrentValue')
-	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
-		this.applyAriaCurrentValue(value);
-	}
-
-	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop()
@@ -85,6 +74,17 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 	@Watch('_ariaControls')
 	public watchAriaControls(value?: AriaControlsPropType): void {
 		this.applyAriaControls(value);
+	}
+
+	/**
+	 * Defines the value for the aria-current attribute.
+	 */
+	@Prop()
+	public _ariaCurrentValue?: AriaCurrentValuePropType = undefined;
+
+	@Watch('_ariaCurrentValue')
+	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
+		this.applyAriaCurrentValue(value);
 	}
 
 	/**
@@ -280,8 +280,8 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 		this.unsetLinkTabIndex();
 
 		this.watchAccessKey(this._accessKey);
-		this.watchAriaCurrentValue(this._ariaCurrentValue);
 		this.watchAriaControls(this._ariaControls);
+		this.watchAriaCurrentValue(this._ariaCurrentValue);
 		this.watchAriaDescription(this._ariaDescription);
 		this.watchCustomClass(this._customClass);
 		this.watchDisabled(this._disabled);

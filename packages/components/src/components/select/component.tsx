@@ -105,17 +105,6 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 */
-	@Prop()
-	public _hideMsg?: HideMsgPropType = false;
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
-	}
-
-	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
@@ -125,6 +114,17 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
 	}
 
 	/**
@@ -238,17 +238,6 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	}
 
 	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop()
-	public _shortKey?: ShortKeyPropType = undefined;
-
-	@Watch('_shortKey')
-	public watchShortKey(value?: ShortKeyPropType): void {
-		this.applyShortKey(value);
-	}
-
-	/**
 	 * Maximum number of visible rows of the element.
 	 */
 	@Prop()
@@ -257,6 +246,17 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
 		this.applyRows(value);
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		this.applyShortKey(value);
 	}
 
 	/**
@@ -347,29 +347,29 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
-		this.watchShortKey(this._shortKey);
-		this.watchOn(this._on);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchVariant(this._variant);
-		this.watchTabIndex(this._tabIndex);
-		this.watchIcons(this._icons);
-		this.watchOptions(this._options);
+		this.watchMsg(this._msg);
 		this.watchMultiple(this._multiple);
+		this.watchName(this._name);
+		this.watchOn(this._on);
+		this.watchOptions(this._options);
 		this.watchRequired(this._required);
 		this.watchRows(this._rows);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTabIndex(this._tabIndex);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchValue(this._value);
+		this.watchVariant(this._variant);
 	}
 
 	public componentDidRender(): void {

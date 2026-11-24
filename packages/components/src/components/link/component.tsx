@@ -62,17 +62,6 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement {
 	}
 
 	/**
-	 * Defines the value for the aria-current attribute.
-	 */
-	@Prop()
-	public _ariaCurrentValue?: AriaCurrentValuePropType = undefined;
-
-	@Watch('_ariaCurrentValue')
-	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
-		this.applyAriaCurrentValue(value);
-	}
-
-	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop()
@@ -81,6 +70,17 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement {
 	@Watch('_ariaControls')
 	public watchAriaControls(value?: AriaControlsPropType): void {
 		this.applyAriaControls(value);
+	}
+
+	/**
+	 * Defines the value for the aria-current attribute.
+	 */
+	@Prop()
+	public _ariaCurrentValue?: AriaCurrentValuePropType = undefined;
+
+	@Watch('_ariaCurrentValue')
+	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
+		this.applyAriaCurrentValue(value);
 	}
 
 	/**

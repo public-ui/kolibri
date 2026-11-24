@@ -149,17 +149,6 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 */
-	@Prop()
-	public _hideMsg?: HideMsgPropType = false;
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
-	}
-
-	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
@@ -169,6 +158,17 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
 	}
 
 	/**
@@ -390,26 +390,26 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 		this.unsetRenderProp('smartButton');
 
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccept(this._accept);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
 		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
+		this.watchMsg(this._msg);
 		this.watchMultiple(this._multiple);
+		this.watchName(this._name);
 		this.watchOn(this._on);
 		this.watchRequired(this._required);
 		this.watchShortKey(this._shortKey);
 		this.watchSmartButton(this._smartButton);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
 		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchVariant(this._variant);
 	}
 

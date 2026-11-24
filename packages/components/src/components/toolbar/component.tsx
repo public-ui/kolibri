@@ -44,17 +44,6 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	protected readonly propsConfig: PropsConfigShape = toolbarPropsConfig;
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop()
-	public _label!: LabelPropType;
-
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-	}
-
-	/**
 	 * Defines the functional elements of toolbar to render (e.g. kol-link, kol-button).
 	 */
 	@Prop()
@@ -68,6 +57,17 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 			this.itemRecords = items.map((item) => createToolbarEntryItem(item, () => this.host));
 			this.setFirstEnabledItemIndex();
 		});
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop()
+	public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
 	}
 
 	/**
@@ -104,8 +104,8 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	}
 
 	public componentWillLoad(): void {
-		this.watchLabel(this._label);
 		this.watchItems(this._items);
+		this.watchLabel(this._label);
 		this.watchOrientation(this._orientation);
 
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {

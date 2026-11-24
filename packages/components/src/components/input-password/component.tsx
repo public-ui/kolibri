@@ -139,28 +139,6 @@ export class KolInputPassword
 	}
 
 	/**
-	 * Shows a character counter for the input element.
-	 */
-	@Prop()
-	public _hasCounter?: HasCounterPropType = false;
-
-	@Watch('_hasCounter')
-	public watchHasCounter(value?: HasCounterPropType): void {
-		this.applyHasCounter(value);
-	}
-
-	/**
-	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
-	 */
-	@Prop()
-	public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
-
-	@Watch('_maxLengthBehavior')
-	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
-		this.applyMaxLengthBehavior(value);
-	}
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop()
@@ -172,14 +150,14 @@ export class KolInputPassword
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * Shows a character counter for the input element.
 	 */
 	@Prop()
-	public _hideMsg?: HideMsgPropType = false;
+	public _hasCounter?: HasCounterPropType = false;
 
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
+	@Watch('_hasCounter')
+	public watchHasCounter(value?: HasCounterPropType): void {
+		this.applyHasCounter(value);
 	}
 
 	/**
@@ -192,6 +170,17 @@ export class KolInputPassword
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
 		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
 	}
 
 	/**
@@ -247,6 +236,17 @@ export class KolInputPassword
 	@Watch('_maxLength')
 	public watchMaxLength(value?: MaxLengthPropType): void {
 		this.applyMaxLength(value);
+	}
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop()
+	public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
+
+	@Watch('_maxLengthBehavior')
+	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.applyMaxLengthBehavior(value);
 	}
 
 	/**
@@ -450,27 +450,27 @@ export class KolInputPassword
 	public componentWillLoad(): void {
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
+		this.watchHasCounter(this._hasCounter);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
+		this.watchMaxLengthBehavior(this._maxLengthBehavior);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
+		this.watchOn(this._on);
 		this.watchShortKey(this._shortKey);
 		this.watchSmartButton(this._smartButton);
-		this.watchOn(this._on);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
 		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchAutoComplete(this._autoComplete);
-		this.watchHasCounter(this._hasCounter);
-		this.watchMaxLengthBehavior(this._maxLengthBehavior);
 		this.initMaxLength(this._maxLength);
 		this.watchPattern(this._pattern);
 		this.watchPlaceholder(this._placeholder);

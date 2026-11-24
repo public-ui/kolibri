@@ -95,14 +95,14 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	}
 
 	/**
-	 * Defines the horizontal and vertical table headers.
+	 * Enables the settings menu if true (default: false).
 	 */
 	@Prop()
-	public _headers?: TableHeaderCellsPropType = undefined;
+	public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
 
-	@Watch('_headers')
-	public watchHeaders(value?: TableHeaderCellsPropType): void {
-		this.applyHeaders(value ? value : this._headerCells);
+	@Watch('_hasSettingsMenu')
+	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
+		this.applyHasSettingsMenu(value);
 	}
 
 	/**
@@ -115,6 +115,17 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	@Watch('_headerCells')
 	public watchHeaderCells(value?: TableHeaderCellsPropType): void {
 		this.applyHeaders(this._headers ? this._headers : value);
+	}
+
+	/**
+	 * Defines the horizontal and vertical table headers.
+	 */
+	@Prop()
+	public _headers?: TableHeaderCellsPropType = undefined;
+
+	@Watch('_headers')
+	public watchHeaders(value?: TableHeaderCellsPropType): void {
+		this.applyHeaders(value ? value : this._headerCells);
 	}
 
 	/**
@@ -159,17 +170,6 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	@Watch('_selection')
 	public watchSelection(value?: TableSelectionPropType): void {
 		this.applySelection(value);
-	}
-
-	/**
-	 * Enables the settings menu if true (default: false).
-	 */
-	@Prop()
-	public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
-
-	@Watch('_hasSettingsMenu')
-	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
-		this.applyHasSettingsMenu(value);
 	}
 
 	/**
