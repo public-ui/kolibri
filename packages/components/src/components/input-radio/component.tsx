@@ -25,7 +25,7 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import type { OrientationPropType } from '../../schema/props/orientation';
+import type { OrientationPropType } from '../../schema/props';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';

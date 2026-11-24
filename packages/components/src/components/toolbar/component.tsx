@@ -13,7 +13,7 @@ import { createToolbarItem } from '../../internal/functional-components/toolbar/
 import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
 import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
-import type { OrientationPropType } from '../../schema/props/orientation';
+import type { OrientationPropType } from '../../schema/props';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 

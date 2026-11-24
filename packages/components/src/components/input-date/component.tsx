@@ -12,6 +12,7 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
+	InputDateDeps,
 	InputDateTypePropType,
 	InputTypeOnDefault,
 	InternalButtonProps,
@@ -63,7 +64,6 @@ import {
 	suggestionsProp,
 	variantProp,
 } from '../../internal/props';
-import type { InputDateDeps } from '../../internal/props/helpers/iso-date';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';

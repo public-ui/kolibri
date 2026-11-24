@@ -2,7 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { bem } from '../../../schema/bem-registry';
-import type { ModalVariantPropType } from '../../../schema/props/variant/modal';
+import type { ModalVariantPropType } from '../../../schema/props';
 import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';

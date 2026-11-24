@@ -56,7 +56,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { setEventTarget } from '../../schema';
-import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
+import type { AriaHasPopupPropType } from '../../schema/props';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
