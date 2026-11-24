@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
+
 import { getDocument } from '../../../schema';
 import { BaseWebComponent } from '../base-web-component';
 import { TooltipBehavior } from './behavior';

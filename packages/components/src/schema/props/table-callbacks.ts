@@ -1,7 +1,6 @@
 import type { Callback } from '../enums';
-import type { EventValueOrEventCallback } from '../types/callbacks';
-
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableSelectionKeys } from '../types';
+import type { EventValueOrEventCallback } from '../types/callbacks';
 import type { TableHeaderCells } from './table-header-cells';
 
 /* types */

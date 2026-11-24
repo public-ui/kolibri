@@ -1,6 +1,5 @@
-import type { ApiFromConfig, FunctionalComponentProps, PropsConfigShape } from '../generic-types';
-
 import type { ButtonApi } from '../button/api';
+import type { ApiFromConfig, FunctionalComponentProps, PropsConfigShape } from '../generic-types';
 import type { PopoverButtonApi } from '../popover-button/api';
 
 /**

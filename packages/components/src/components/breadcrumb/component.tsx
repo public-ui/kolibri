@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
+
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { BreadcrumbApi } from '../../internal/functional-components/breadcrumb/api';
 import { breadcrumbPropsConfig } from '../../internal/functional-components/breadcrumb/api';
@@ -66,7 +67,7 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements We
 
 	public componentWillLoad(): void {
 		this.applyLabel(this._label, true);
-		this.applyLinks(this._links);
+		this.watchLinks(this._links);
 
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.linkItems = this.linkItems.map((item) => {

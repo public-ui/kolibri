@@ -1,6 +1,5 @@
 import { KolTreeItemTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolTreeItem } from './component';
 
 executeSnapshotTests(

@@ -1,6 +1,5 @@
 import { KolTooltipWcTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolTooltipWc } from './component';
 
 executeSnapshotTests(

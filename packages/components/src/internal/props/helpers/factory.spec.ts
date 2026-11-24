@@ -1,4 +1,5 @@
 import { afterAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
+
 import { Log } from '../../../schema/utils/dev.utils';
 import type { SimpleProp } from './factory';
 import { createDependentPropDefinition, createPropDefinition } from './factory';

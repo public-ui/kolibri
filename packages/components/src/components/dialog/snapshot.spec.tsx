@@ -1,6 +1,5 @@
 import { KolDialogTag, KolModalTag } from '../../core/component-names';
 import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
-
 import { KolModal } from '../modal/component';
 import { KolDialog } from './component';
 

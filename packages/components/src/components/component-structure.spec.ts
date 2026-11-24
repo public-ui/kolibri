@@ -300,6 +300,79 @@ describe('Web component base class member order', () => {
 	});
 });
 
+/**
+ * `componentWillLoad` applies a prop through its watcher (`this.watchLabel(this._label)`), so the first
+ * value and every later change run the same code. It never applies a prop definition itself
+ * (`labelProp.apply(this._label, …)`). Where the watcher reacts to a change beyond applying the value, the
+ * component calls the `apply…` method the watcher delegates to; a watcher that only hands the value on to
+ * that method is called itself.
+ */
+const bypassedWatchers = (cls: ts.ClassDeclaration): string[] => {
+	const methods = cls.members.filter((member): member is ts.MethodDeclaration => ts.isMethodDeclaration(member));
+	const componentWillLoad = methods.find((method) => memberName(method) === 'componentWillLoad');
+	/** The watcher of a prop and, if its body only hands the value on to one own method, that method. */
+	const watcherOf = (prop: string): { name: string; delegate?: string } | undefined => {
+		const watcher = methods.find((method) =>
+			(ts.getDecorators(method) ?? []).some(
+				(decorator) =>
+					ts.isCallExpression(decorator.expression) &&
+					decorator.expression.expression.getText() === 'Watch' &&
+					(decorator.expression.arguments[0] as ts.StringLiteral | undefined)?.text === prop,
+			),
+		);
+		if (!watcher) return undefined;
+		const [statement, ...rest] = watcher.body?.statements ?? [];
+		const parameter = watcher.parameters[0]?.name.getText();
+		const call = statement && ts.isExpressionStatement(statement) ? statement.expression : undefined;
+		const delegates =
+			rest.length === 0 &&
+			call !== undefined &&
+			ts.isCallExpression(call) &&
+			ts.isPropertyAccessExpression(call.expression) &&
+			call.expression.expression.kind === ts.SyntaxKind.ThisKeyword &&
+			call.arguments.length === 1 &&
+			call.arguments[0].getText() === parameter;
+		return { name: memberName(watcher), delegate: delegates ? call.expression.name.text : undefined };
+	};
+	const problems: string[] = [];
+	const visit = (node: ts.Node): void => {
+		const firstArgument = ts.isCallExpression(node) ? node.arguments[0] : undefined;
+		if (
+			ts.isCallExpression(node) &&
+			ts.isPropertyAccessExpression(node.expression) &&
+			firstArgument !== undefined &&
+			ts.isPropertyAccessExpression(firstArgument) &&
+			firstArgument.expression.kind === ts.SyntaxKind.ThisKeyword
+		) {
+			const prop = firstArgument.name.text;
+			const callee = node.expression;
+			if (callee.name.text === 'apply' && /Prop$/.test(callee.expression.getText())) {
+				problems.push(`componentWillLoad applies ${prop} with ${callee.expression.getText()} instead of calling its watcher`);
+			} else if (callee.expression.kind === ts.SyntaxKind.ThisKeyword && node.arguments.length === 1) {
+				const watcher = watcherOf(prop);
+				if (watcher?.delegate === callee.name.text) {
+					problems.push(`componentWillLoad calls ${callee.name.text} for ${prop}, which ${watcher.name} only hands on to; call ${watcher.name}`);
+				}
+			}
+		}
+		ts.forEachChild(node, visit);
+	};
+	if (componentWillLoad?.body) visit(componentWillLoad.body);
+	return problems;
+};
+
+describe('Stencil component initialization', () => {
+	it.each(SOURCES.filter(({ text }) => text.includes('@Component(')).map(({ file, source }) => [path.relative(SRC, file), source]))(
+		'%s applies its props in componentWillLoad through the watchers',
+		(_name, source) => {
+			const problems = classesOf(source)
+				.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
+				.flatMap(bypassedWatchers);
+			expect(problems).toEqual([]);
+		},
+	);
+});
+
 describe('Property initialization order', () => {
 	it('reads no property in an initializer before it is declared', () => {
 		const problems = SOURCES.flatMap(({ file, source }) =>
@@ -308,5 +381,22 @@ describe('Property initialization order', () => {
 				.map((problem) => `${path.relative(SRC, file)}: ${problem}`),
 		);
 		expect(problems).toEqual([]);
+	});
+});
+
+describe('Interaction test files', () => {
+	/** ARC42 § 9, decision 14: `<component>.e2e.ts`, further files `<component>.<topic>.e2e.ts`. */
+	const misnamed = fs
+		.readdirSync(__dirname, { withFileTypes: true })
+		.filter((entry) => entry.isDirectory())
+		.flatMap((entry) =>
+			fs
+				.readdirSync(path.join(__dirname, entry.name))
+				.filter((name) => name.endsWith('.e2e.ts') && name !== `${entry.name}.e2e.ts` && !new RegExp(`^${entry.name}\\.[a-z0-9-]+\\.e2e\\.ts$`).test(name))
+				.map((name) => `${entry.name}/${name}`),
+		);
+
+	it('are named after their component folder', () => {
+		expect(misnamed).toEqual([]);
 	});
 });

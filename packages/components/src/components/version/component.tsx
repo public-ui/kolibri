@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
@@ -50,7 +51,7 @@ export class KolVersion extends BaseWebComponent<VersionApi> implements WebCompo
 	}
 
 	public componentWillLoad(): void {
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.watchLabel(this._label);
 	}
 
 	public render(): JSX.Element {

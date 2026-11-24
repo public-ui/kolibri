@@ -57,9 +57,9 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements WebCompo
 	}
 
 	public componentWillLoad(): void {
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		levelProp.apply(this._level, (v) => this.setRenderProp('level', v));
-		secondaryHeadlineProp.apply(this._secondaryHeadline, (v) => this.setRenderProp('secondaryHeadline', v));
+		this.watchLabel(this._label);
+		this.watchLevel(this._level);
+		this.watchSecondaryHeadline(this._secondaryHeadline);
 	}
 
 	public render(): JSX.Element {

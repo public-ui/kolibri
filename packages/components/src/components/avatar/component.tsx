@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+
 import type { AvatarApi } from '../../internal/functional-components/avatar/api';
 import { avatarPropsConfig } from '../../internal/functional-components/avatar/api';
 import { AvatarFC } from '../../internal/functional-components/avatar/component';
@@ -100,16 +101,9 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	}
 
 	public componentWillLoad(): void {
-		colorProp.apply(this._color, (v) => this.setRenderProp('color', v));
-		labelProp.apply(
-			this._label,
-			(v) => {
-				this.setRenderProp('label', v);
-				this.setState('initials', normalizeInitials(v));
-			},
-			this.isRequired('label'),
-		);
-		srcProp.apply(this._src, (v) => this.setRenderProp('src', v));
+		this.watchColor(this._color);
+		this.watchLabel(this._label);
+		this.watchSrc(this._src);
 	}
 
 	public render(): JSX.Element {

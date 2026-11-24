@@ -1,6 +1,5 @@
 import { KolIconTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolIcon } from './component';
 
 executeSnapshotTests(

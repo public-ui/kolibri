@@ -1,5 +1,34 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import type { DateValueType } from '../../internal/functional-components/form-field/date-value';
+import { getDateValueType, remapDateValue } from '../../internal/functional-components/form-field/date-value';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
+import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { InputDateApi } from '../../internal/functional-components/input-date/api';
+import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
+import {
+	accessKeyProp,
+	autoCompleteProp,
+	horizontalIconsProp,
+	inputDateMaxProp,
+	inputDateMinProp,
+	inputDateTypeProp,
+	inputDateValueProp,
+	readOnlyProp,
+	requiredProp,
+	shortKeyProp,
+	smartButtonProp,
+	stepProp,
+	suggestionsProp,
+	variantProp,
+} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -35,35 +64,6 @@ import type {
 import { deprecatedHint } from '../../schema';
 import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import type { DateValueType } from '../../internal/functional-components/form-field/date-value';
-import { getDateValueType, remapDateValue } from '../../internal/functional-components/form-field/date-value';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputDateApi } from '../../internal/functional-components/input-date/api';
-import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
-import {
-	accessKeyProp,
-	autoCompleteProp,
-	horizontalIconsProp,
-	inputDateMaxProp,
-	inputDateMinProp,
-	inputDateTypeProp,
-	inputDateValueProp,
-	readOnlyProp,
-	requiredProp,
-	shortKeyProp,
-	smartButtonProp,
-	stepProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';

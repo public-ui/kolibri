@@ -1,32 +1,5 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import type {
-	AccessKeyPropType,
-	AriaDetailsPropType,
-	AutoCompletePropType,
-	ClickableElement,
-	DisabledPropType,
-	FocusableElement,
-	FormFieldLabelInfoPopoverProps,
-	HideLabelPropType,
-	HideMsgPropType,
-	HintPropType,
-	IconsHorizontalPropType,
-	InputTypeOnDefault,
-	KolFocusOptions,
-	LabelWithExpertSlotPropType,
-	MsgPropType,
-	NamePropType,
-	NumberString,
-	ShortKeyPropType,
-	Stringified,
-	SuggestionsPropType,
-	SyncValueBySelectorPropType,
-	TooltipAlignPropType,
-	TouchedPropType,
-	VariantClassNamePropType,
-} from '../../schema';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
@@ -56,6 +29,33 @@ import {
 	suggestionsProp,
 	variantProp,
 } from '../../internal/props';
+import type {
+	AccessKeyPropType,
+	AriaDetailsPropType,
+	AutoCompletePropType,
+	ClickableElement,
+	DisabledPropType,
+	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IconsHorizontalPropType,
+	InputTypeOnDefault,
+	KolFocusOptions,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	NamePropType,
+	NumberString,
+	ShortKeyPropType,
+	Stringified,
+	SuggestionsPropType,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	TouchedPropType,
+	VariantClassNamePropType,
+} from '../../schema';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 

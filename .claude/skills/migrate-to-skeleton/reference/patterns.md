@@ -160,7 +160,7 @@ packages/components/src/
 │       ├── style.scss
 │       ├── snapshot.spec.tsx        <- Jest-Snapshots (ko-lokalisiert!)
 │       ├── __snapshots__/
-│       └── interaction.e2e.ts       <- Playwright, optional
+│       └── <component>.e2e.ts       <- Playwright, optional
 └── internal/
     ├── functional-components/
     │   └── <komponente>/

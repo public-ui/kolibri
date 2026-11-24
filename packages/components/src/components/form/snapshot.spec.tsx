@@ -1,6 +1,5 @@
 import { KolFormTag } from '../../core/component-names';
 import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
-
 import { KolForm } from './component';
 
 executeSnapshotTests(

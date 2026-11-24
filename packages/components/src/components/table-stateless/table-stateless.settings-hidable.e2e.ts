@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+
 import type { TableHeaderCellsPropType } from '../../schema';
 
 const DATA = [

@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+
 import { resolveTargets } from './aria-labelledby';
 
 describe('resolveTargets', () => {

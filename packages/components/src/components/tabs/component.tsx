@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
 
+import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TabsApi } from '../../internal/functional-components/tabs/api';
@@ -24,8 +25,6 @@ import type {
 	TabButtonProps,
 } from '../../schema';
 import { devHint, koliBriQuerySelector } from '../../schema';
-
-import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props';
 import { createUniqueId } from '../../utils/dev.utils';
@@ -193,13 +192,13 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	public componentWillLoad(): void {
-		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
-		tabBehaviorProp.apply(this._behavior, (v) => this.setRenderProp('behavior', v));
-		hasCreateButtonProp.apply(this._hasCreateButton, (v) => this.setRenderProp('hasCreateButton', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		tabsCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
-		this.applySelected(this._selected);
-		this.applyTabs(this._tabs);
+		this.watchAlign(this._align);
+		this.watchBehavior(this._behavior);
+		this.watchHasCreateButton(this._hasCreateButton);
+		this.watchLabel(this._label);
+		this.watchOn(this._on);
+		this.watchSelected(this._selected);
+		this.watchTabs(this._tabs);
 	}
 
 	public componentWillRender(): void {

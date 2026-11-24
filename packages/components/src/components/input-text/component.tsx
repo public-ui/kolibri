@@ -1,5 +1,17 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputFC } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { InputTextApi } from '../../internal/functional-components/input-text/api';
+import { inputTextPropsConfig } from '../../internal/functional-components/input-text/api';
+import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
+import { inputTextTypeProp, spellCheckProp, suggestionsProp } from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -36,18 +48,6 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-
-import { translate } from '../../i18n';
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputTextApi } from '../../internal/functional-components/input-text/api';
-import { inputTextPropsConfig } from '../../internal/functional-components/input-text/api';
-import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { inputTextTypeProp, spellCheckProp, suggestionsProp } from '../../internal/props';
 import { bem } from '../../schema/bem-registry';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';

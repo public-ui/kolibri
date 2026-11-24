@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+
 import { assertSelectValueMatchesMultiplicity, normalizeSelectValue } from './select-value';
 
 const options = [

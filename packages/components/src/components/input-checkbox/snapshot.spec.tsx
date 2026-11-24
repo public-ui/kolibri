@@ -1,6 +1,5 @@
 import { KolInputCheckboxTag } from '../../core/component-names';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
-
 import { KolInputCheckbox } from './component';
 
 executeInputSnapshotTests(KolInputCheckboxTag, [KolInputCheckbox], {

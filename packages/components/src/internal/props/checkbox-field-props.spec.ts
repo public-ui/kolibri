@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { checkboxValueProp } from './checkbox-value';
 import { checkedProp } from './checked';
 import { iconsInputCheckboxProp } from './icons-input-checkbox';

@@ -1,5 +1,17 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputFC } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { InputPasswordApi } from '../../internal/functional-components/input-password/api';
+import { inputPasswordPropsConfig } from '../../internal/functional-components/input-password/api';
+import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
+import { visibilityToggleProp } from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -36,18 +48,6 @@ import type {
 } from '../../schema';
 import { devHint } from '../../schema';
 import { bem } from '../../schema/bem-registry';
-
-import { translate } from '../../i18n';
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputPasswordApi } from '../../internal/functional-components/input-password/api';
-import { inputPasswordPropsConfig } from '../../internal/functional-components/input-password/api';
-import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { visibilityToggleProp } from '../../internal/props';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';

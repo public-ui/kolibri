@@ -389,7 +389,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.applyOn(this.statelessOn);
 		// Early resolution: if the external element is already in the DOM, the first render already uses
 		// it, so the AT sees the correct name from the start.
-		this.resolveExternalLabel(this._ariaLabelledby);
+		this.watchAriaLabelledby(this._ariaLabelledby);
 
 		this.watchAllowMultiSort(this._allowMultiSort);
 		this.watchData(this._data);

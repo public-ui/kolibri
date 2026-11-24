@@ -1,6 +1,5 @@
 import { KolTabsTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolTabs } from './component';
 
 executeSnapshotTests(

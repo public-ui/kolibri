@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { boundaryCountProp } from './boundary-count';
 import { normalizeNumberType } from './helpers/normalizers';
 import { pageProp } from './page';

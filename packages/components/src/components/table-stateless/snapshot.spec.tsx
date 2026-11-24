@@ -1,7 +1,6 @@
 import { KolTableStatelessTag } from '../../core/component-names';
 import type { KoliBriTableHeaders } from '../../schema';
 import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
-
 import { KolTableStateless } from './component';
 
 const propVariants: ElementProps<typeof KolTableStatelessTag>[] = [

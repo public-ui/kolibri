@@ -1,6 +1,5 @@
 import { KolInputColorTag } from '../../core/component-names';
 import { executeInputSnapshotTests } from '../../utils/testing';
-
 import { KolInputColor } from './component';
 
 executeInputSnapshotTests(

@@ -1,6 +1,36 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
+
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import type { NumberValueType } from '../../internal/functional-components/form-field/number-value';
+import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
+import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
+import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import { IconFC } from '../../internal/functional-components/icon/component';
+import type { InputNumberApi } from '../../internal/functional-components/input-number/api';
+import { inputNumberPropsConfig } from '../../internal/functional-components/input-number/api';
+import {
+	accessKeyProp,
+	autoCompleteProp,
+	horizontalIconsProp,
+	inputMaxProp,
+	inputMinProp,
+	inputNumberValueProp,
+	placeholderProp,
+	readOnlyProp,
+	requiredProp,
+	shortKeyProp,
+	smartButtonProp,
+	stepProp,
+	suggestionsProp,
+	variantProp,
+} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -33,36 +63,6 @@ import type {
 } from '../../schema';
 import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { NumberValueType } from '../../internal/functional-components/form-field/number-value';
-import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
-import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { IconFC } from '../../internal/functional-components/icon/component';
-import type { InputNumberApi } from '../../internal/functional-components/input-number/api';
-import { inputNumberPropsConfig } from '../../internal/functional-components/input-number/api';
-import {
-	accessKeyProp,
-	autoCompleteProp,
-	horizontalIconsProp,
-	inputMaxProp,
-	inputMinProp,
-	inputNumberValueProp,
-	placeholderProp,
-	readOnlyProp,
-	requiredProp,
-	shortKeyProp,
-	smartButtonProp,
-	stepProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';

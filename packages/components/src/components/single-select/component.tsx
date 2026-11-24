@@ -1,6 +1,36 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+
 import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
+import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
+import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
+import { singleSelectPropsConfig } from '../../internal/functional-components/single-select/api';
+import {
+	BEM_CLASS_SINGLE_SELECT__DELETE,
+	SingleSelectNoResultsFC,
+	SingleSelectNoResultsStatusFC,
+	SingleSelectToggleFC,
+} from '../../internal/functional-components/single-select/component';
+import {
+	accessKeyProp,
+	hasClearButtonProp,
+	horizontalIconsProp,
+	placeholderProp,
+	requiredProp,
+	rowsProp,
+	shortKeyProp,
+	singleSelectOptionsProp,
+	variantProp,
+} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -37,36 +67,6 @@ import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { containsDeepActiveElement } from '../../utils/element-focus';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
-
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
-import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
-import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
-import { singleSelectPropsConfig } from '../../internal/functional-components/single-select/api';
-import {
-	BEM_CLASS_SINGLE_SELECT__DELETE,
-	SingleSelectNoResultsFC,
-	SingleSelectNoResultsStatusFC,
-	SingleSelectToggleFC,
-} from '../../internal/functional-components/single-select/component';
-import {
-	accessKeyProp,
-	hasClearButtonProp,
-	horizontalIconsProp,
-	placeholderProp,
-	requiredProp,
-	rowsProp,
-	shortKeyProp,
-	singleSelectOptionsProp,
-	variantProp,
-} from '../../internal/props';
 
 /**
  * The **SingleSelect** component creates a dropdown list from which exactly one predefined option can be selected.
@@ -436,7 +436,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 		this.watchRows(this._rows);
 
 		this.filteredOptions = this.getRenderProp('options');
-		this.updateInputValue(this._value);
+		this.watchValue(this._value);
 	}
 
 	public componentDidRender(): void {
