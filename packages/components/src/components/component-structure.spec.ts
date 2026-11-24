@@ -300,6 +300,17 @@ describe('Web component base class member order', () => {
 	});
 });
 
+describe('Property initialization order', () => {
+	it('reads no property in an initializer before it is declared', () => {
+		const problems = SOURCES.flatMap(({ file, source }) =>
+			classesOf(source)
+				.flatMap(initializationProblems)
+				.map((problem) => `${path.relative(SRC, file)}: ${problem}`),
+		);
+		expect(problems).toEqual([]);
+	});
+});
+
 describe('Interaction test files', () => {
 	/** ARC42 § 9, decision 14: `<component>.e2e.ts`, further files `<component>.<topic>.e2e.ts`. */
 	const misnamed = fs
@@ -314,16 +325,5 @@ describe('Interaction test files', () => {
 
 	it('are named after their component folder', () => {
 		expect(misnamed).toEqual([]);
-	});
-});
-
-describe('Property initialization order', () => {
-	it('reads no property in an initializer before it is declared', () => {
-		const problems = SOURCES.flatMap(({ file, source }) =>
-			classesOf(source)
-				.flatMap(initializationProblems)
-				.map((problem) => `${path.relative(SRC, file)}: ${problem}`),
-		);
-		expect(problems).toEqual([]);
 	});
 });
