@@ -1,5 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { SelectApi } from '../../internal/functional-components/select/api';
+import { selectPropsConfig } from '../../internal/functional-components/select/api';
+import { BaseSelectWebComponent } from '../../internal/functional-components/select/base-web-component';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -28,11 +33,6 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { SelectApi } from '../../internal/functional-components/select/api';
-import { selectPropsConfig } from '../../internal/functional-components/select/api';
-import { BaseSelectWebComponent } from '../../internal/functional-components/select/base-web-component';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 

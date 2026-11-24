@@ -1,5 +1,26 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { CheckboxFC } from '../../internal/functional-components/form-field/checkbox';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
+import type { InputFCProps } from '../../internal/functional-components/form-field/input';
+import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { InputCheckboxApi } from '../../internal/functional-components/input-checkbox/api';
+import { inputCheckboxPropsConfig } from '../../internal/functional-components/input-checkbox/api';
+import {
+	accessKeyProp,
+	checkboxValueProp,
+	checkedProp,
+	iconsInputCheckboxProp,
+	indeterminateProp,
+	labelAlignProp,
+	requiredProp,
+	shortKeyProp,
+	variantInputCheckboxProp,
+} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -31,27 +52,6 @@ import { bem } from '../../schema/bem-registry';
 import type { InputCheckboxVariantPropType } from '../../schema/props';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
-
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { CheckboxFC } from '../../internal/functional-components/form-field/checkbox';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
-import type { InputFCProps } from '../../internal/functional-components/form-field/input';
-import { submitFormOnEnter } from '../../internal/functional-components/form/controller';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputCheckboxApi } from '../../internal/functional-components/input-checkbox/api';
-import { inputCheckboxPropsConfig } from '../../internal/functional-components/input-checkbox/api';
-import {
-	accessKeyProp,
-	checkboxValueProp,
-	checkedProp,
-	iconsInputCheckboxProp,
-	indeterminateProp,
-	labelAlignProp,
-	requiredProp,
-	shortKeyProp,
-	variantInputCheckboxProp,
-} from '../../internal/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 

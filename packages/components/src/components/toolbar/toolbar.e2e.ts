@@ -1,5 +1,6 @@
 import { expect, type Locator } from '@playwright/test';
 import { test } from '@stencil/playwright';
+
 import type { ToolbarItemsPropType } from '../../schema';
 
 const COMPONENT_NAME = 'kol-toolbar';

@@ -1,5 +1,6 @@
 import { h, type FunctionalComponent as FC, type VNode } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+
 import type { LabelAlignPropType, LabelLangSegmentsPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../../schema';
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';

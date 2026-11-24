@@ -1,5 +1,30 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { CounterBehavior } from '../../internal/functional-components/counter/behavior';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import { TextAreaFC, type TextAreaFCProps } from '../../internal/functional-components/form-field/textarea';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { TextareaApi } from '../../internal/functional-components/textarea/api';
+import { textareaPropsConfig } from '../../internal/functional-components/textarea/api';
+import {
+	accessKeyProp,
+	adjustHeightProp,
+	horizontalIconsProp,
+	placeholderProp,
+	readOnlyProp,
+	requiredProp,
+	resizeProp,
+	rowsProp,
+	shortKeyProp,
+	spellCheckProp,
+	stringValueProp,
+	variantProp,
+} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
@@ -35,31 +60,6 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { CounterBehavior } from '../../internal/functional-components/counter/behavior';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { TextAreaFC, type TextAreaFCProps } from '../../internal/functional-components/form-field/textarea';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { TextareaApi } from '../../internal/functional-components/textarea/api';
-import { textareaPropsConfig } from '../../internal/functional-components/textarea/api';
-import {
-	accessKeyProp,
-	adjustHeightProp,
-	horizontalIconsProp,
-	placeholderProp,
-	readOnlyProp,
-	requiredProp,
-	resizeProp,
-	rowsProp,
-	shortKeyProp,
-	spellCheckProp,
-	stringValueProp,
-	variantProp,
-} from '../../internal/props';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';

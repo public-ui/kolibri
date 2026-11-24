@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+
 import type { MsgPropType, Stringified } from '../schema';
 import { setContentWithRetry } from './utils/setContentWithRetry';
 

@@ -1,10 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
-import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType } from '../../schema';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType } from '../../schema';
 
 /**
  * @deprecated The tooltip element is deprecated. It is kept only for DESYBRI; do not use it in new code.

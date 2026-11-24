@@ -1,6 +1,5 @@
 import { KolInputEmailTag } from '../../core/component-names';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
-
 import { KolInputEmail } from './component';
 
 executeInputSnapshotTests(

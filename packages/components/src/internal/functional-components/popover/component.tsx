@@ -1,8 +1,8 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
-import { bem } from '../../../schema/bem-registry';
-
 import type { JSXBase } from '@stencil/core/internal';
+
+import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { PopoverApi } from './api';

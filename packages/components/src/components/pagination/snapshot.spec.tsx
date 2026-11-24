@@ -1,6 +1,5 @@
 import { KolPaginationTag } from '../../core/component-names';
 import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
-
 import { KolPagination } from './component';
 
 executeSnapshotTests(

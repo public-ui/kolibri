@@ -1,6 +1,5 @@
 import { KolInputTextTag } from '../../core/component-names';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
-
 import { KolInputText } from './component';
 
 executeInputSnapshotTests(

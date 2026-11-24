@@ -1,6 +1,5 @@
 import { KolInputFileTag } from '../../core/component-names';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
-
 import { KolInputFile } from './component';
 
 executeInputSnapshotTests(KolInputFileTag, [KolInputFile], undefined, { hasSmartButton: true });

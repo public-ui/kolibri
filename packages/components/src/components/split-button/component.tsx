@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
+import { translate } from '../../i18n';
 import type { SplitButtonWebComponentInterface } from '../../internal/functional-components/button/api';
 import type { PopoverButtonItem } from '../../internal/functional-components/popover-button/item';
 import { createPopoverButtonItem } from '../../internal/functional-components/popover-button/item';
@@ -29,8 +30,6 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-
-import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';

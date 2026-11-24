@@ -2,7 +2,6 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
 import type { RadioOption, StencilUnknown } from '../../schema';
-
 import { KolInputRadio } from './component';
 
 const options: RadioOption<StencilUnknown>[] = [

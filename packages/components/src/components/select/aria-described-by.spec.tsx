@@ -2,7 +2,6 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
 import type { SelectOption } from '../../schema';
-
 import { KolSelect } from './component';
 
 describe('kol-select aria-describedby', () => {
