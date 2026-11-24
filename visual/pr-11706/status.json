@@ -1,0 +1,48 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "7 changed – 0 of 7 approved, review pending",
+	"computedAt": "2026-11-24T14:00:05.695Z",
+	"pr": 11706,
+	"head": "e89eacbf77ff8b21a17bb27a76eaadff1935700f",
+	"digest": "sha256:6c219b4bf480d1ba81018d70aeb72b8911856388a4accbdce5f734f2a3281fed",
+	"counts": {
+		"changes": 7,
+		"open": 7,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/abbr-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-basic--basic": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
