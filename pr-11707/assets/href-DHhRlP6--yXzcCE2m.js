@@ -1,0 +1,1 @@
+import"./index-Ci5LpX2R-CQEGtdBi.js";import{k as e,l as t}from"./props-from-config-BRbDGwAy-CH7u-TWi.js";var n=t(`href`,``,e,e=>typeof e==`string`);export{n as t};
