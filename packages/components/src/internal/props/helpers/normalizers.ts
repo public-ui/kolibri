@@ -1,4 +1,6 @@
-import { isLabelSegment, isObject, type LabelLangSegmentsPropType, type NumberString } from '../../../schema';
+import { isLabelSegment, type LabelLangSegmentsPropType } from '../../../schema/props/label';
+import type { NumberString } from '../../../schema/types/input/numberString';
+import { isObject } from '../../../schema/validators/common';
 
 export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {

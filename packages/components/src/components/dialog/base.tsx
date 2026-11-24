@@ -14,7 +14,7 @@ import { TooltipBehavior } from '../../internal/functional-components/tooltip/be
 import { dialogCallbacksProp, labelLangSegmentsProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
 import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
 import { trimLabel } from '../../schema';
-import type { ModalVariantPropType } from '../../schema/props/variant/modal';
+import type { ModalVariantPropType } from '../../schema/props';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { lockScroll, unlockScroll } from '../../utils/scroll-lock';

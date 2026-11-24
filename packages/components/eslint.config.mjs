@@ -264,9 +264,10 @@ export default [
 		},
 	},
 
-	// Barrel import rule – keep the existing non-Skeleton scope separate from the Skeleton boundary rules.
+	// Barrel import rule: the web components and the shared internals import props only through the two
+	// prop barrels. The prop definitions in internal/props bind their schema type module by module.
 	{
-		files: ['src/internals/**/*.{ts,tsx}', 'src/components/avatar/*.tsx'],
+		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/**/*.{ts,tsx}'],
 		plugins: {
 			kolibri: kolibriPlugin,
 		},
@@ -277,7 +278,7 @@ export default [
 			'kolibri/require-barrel-import': [
 				'error',
 				{
-					directories: ['schema/props'],
+					directories: ['internal/props', 'schema/props'],
 				},
 			],
 		},

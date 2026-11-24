@@ -46,6 +46,8 @@ export * from './has-create-button';
 export * from './has-icons-when-expanded';
 export * from './has-settings-menu';
 export * from './helpers/factory';
+export type { InputDateDeps } from './helpers/iso-date';
+export { isNumberString } from './helpers/normalizers';
 export * from './hide-label';
 export * from './hide-msg';
 export * from './high';

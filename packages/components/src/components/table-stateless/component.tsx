@@ -17,7 +17,7 @@ import type {
 	TableSelectionPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props';
 import { BaseTableStatelessWebComponent } from './base';
 
 @Component({

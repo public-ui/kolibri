@@ -28,7 +28,7 @@ import type {
 	TouchedPropType,
 } from '../../schema';
 import { bem } from '../../schema/bem-registry';
-import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
+import type { InputCheckboxVariantPropType } from '../../schema/props';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 

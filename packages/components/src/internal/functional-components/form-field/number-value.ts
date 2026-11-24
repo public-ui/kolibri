@@ -1,5 +1,5 @@
 import type { NumberString } from '../../../schema';
-import { isNumberString } from '../../props/helpers/normalizers';
+import { isNumberString } from '../../props';
 
 /**
  * Type in which a number field received its value. The field returns its value in that type, e.g. a

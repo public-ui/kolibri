@@ -27,7 +27,7 @@ import { devHint, koliBriQuerySelector } from '../../schema';
 
 import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
-import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
+import type { HasCreateButtonPropType } from '../../schema/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';

@@ -57,7 +57,7 @@ import type {
 import { devHint, trimLabel } from '../../schema';
 import { bem } from '../../schema/bem-registry';
 import { Callback } from '../../schema/enums';
-import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { BaseTableStatelessWebComponent } from '../table-stateless/base';
 

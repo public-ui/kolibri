@@ -9,7 +9,7 @@ import type {
 	KoliBriTableSelectionKey,
 	StateColumnHeaderCell,
 } from '../../../schema';
-import type { TableHeaders } from '../../props/table-headers';
+import type { TableHeaders } from '../../props';
 
 /**
  * Pure helpers that derive the rendered table from its render props. They are shared by the

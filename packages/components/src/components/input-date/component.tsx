@@ -46,6 +46,7 @@ import { SuggestionsFC } from '../../internal/functional-components/form-field/s
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputDateApi } from '../../internal/functional-components/input-date/api';
 import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
+import type { InputDateDeps } from '../../internal/props';
 import {
 	accessKeyProp,
 	autoCompleteProp,
@@ -62,7 +63,6 @@ import {
 	suggestionsProp,
 	variantProp,
 } from '../../internal/props';
-import type { InputDateDeps } from '../../internal/props/helpers/iso-date';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';

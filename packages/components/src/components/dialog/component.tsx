@@ -4,7 +4,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelLangSegmentsPropType, WidthPropType } from '../../schema';
-import type { ModalVariantPropType } from '../../schema/props/variant/modal';
+import type { ModalVariantPropType } from '../../schema/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from './base';
 
