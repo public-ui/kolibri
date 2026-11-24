@@ -24,6 +24,19 @@ function throwNoStateAccess(): never {
  * Stateless behaviors receive {@link BaseWebComponent.stateLess}.
  */
 export abstract class BaseWebComponent<Api extends ComponentApi> {
+	/**
+	 * Frozen sentinel for behaviors that do not need component state.
+	 * Both `setState` and `getState` throw if called, catching accidental
+	 * state access at runtime.
+	 *
+	 * Pass this to a behavior constructor in web components whose
+	 * behavior only uses render props (no `@State` fields).
+	 */
+	public static readonly stateLess: StateAccess<never> = Object.freeze({
+		setState: throwNoStateAccess,
+		getState: throwNoStateAccess,
+	});
+
 	/** Stores unprocessed property values as received from the @Prop. */
 	private readonly rawProps: Partial<Record<string, unknown>> = {};
 
@@ -57,19 +70,6 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 		setState: this.setState,
 		getState: this.getState,
 	};
-
-	/**
-	 * Frozen sentinel for behaviors that do not need component state.
-	 * Both `setState` and `getState` throw if called, catching accidental
-	 * state access at runtime.
-	 *
-	 * Pass this to a behavior constructor in web components whose
-	 * behavior only uses render props (no `@State` fields).
-	 */
-	public static readonly stateLess: StateAccess<never> = Object.freeze({
-		setState: throwNoStateAccess,
-		getState: throwNoStateAccess,
-	});
 
 	/**
 	 * Seeds the render-prop store from the props config: every prop with its configured default and
