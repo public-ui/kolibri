@@ -361,46 +361,6 @@ const bypassedWatchers = (cls: ts.ClassDeclaration): string[] => {
 	return problems;
 };
 
-describe('Stencil component initialization', () => {
-	it.each(SOURCES.filter(({ text }) => text.includes('@Component(')).map(({ file, source }) => [path.relative(SRC, file), source]))(
-		'%s applies its props in componentWillLoad through the watchers',
-		(_name, source) => {
-			const problems = classesOf(source)
-				.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
-				.flatMap(bypassedWatchers);
-			expect(problems).toEqual([]);
-		},
-	);
-});
-
-describe('Property initialization order', () => {
-	it('reads no property in an initializer before it is declared', () => {
-		const problems = SOURCES.flatMap(({ file, source }) =>
-			classesOf(source)
-				.flatMap(initializationProblems)
-				.map((problem) => `${path.relative(SRC, file)}: ${problem}`),
-		);
-		expect(problems).toEqual([]);
-	});
-});
-
-describe('Interaction test files', () => {
-	/** ARC42 § 9, decision 14: `<component>.e2e.ts`, further files `<component>.<topic>.e2e.ts`. */
-	const misnamed = fs
-		.readdirSync(__dirname, { withFileTypes: true })
-		.filter((entry) => entry.isDirectory())
-		.flatMap((entry) =>
-			fs
-				.readdirSync(path.join(__dirname, entry.name))
-				.filter((name) => name.endsWith('.e2e.ts') && name !== `${entry.name}.e2e.ts` && !new RegExp(`^${entry.name}\\.[a-z0-9-]+\\.e2e\\.ts$`).test(name))
-				.map((name) => `${entry.name}/${name}`),
-		);
-
-	it('are named after their component folder', () => {
-		expect(misnamed).toEqual([]);
-	});
-});
-
 describe('Prop order along the chain', () => {
 	/**
 	 * The props stand in alphabetical order of their name in the props config, as `@Prop` members and
@@ -477,5 +437,45 @@ describe('Prop order along the chain', () => {
 				return found;
 			});
 		expect(problems).toEqual([]);
+	});
+});
+
+describe('Stencil component initialization', () => {
+	it.each(SOURCES.filter(({ text }) => text.includes('@Component(')).map(({ file, source }) => [path.relative(SRC, file), source]))(
+		'%s applies its props in componentWillLoad through the watchers',
+		(_name, source) => {
+			const problems = classesOf(source)
+				.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
+				.flatMap(bypassedWatchers);
+			expect(problems).toEqual([]);
+		},
+	);
+});
+
+describe('Property initialization order', () => {
+	it('reads no property in an initializer before it is declared', () => {
+		const problems = SOURCES.flatMap(({ file, source }) =>
+			classesOf(source)
+				.flatMap(initializationProblems)
+				.map((problem) => `${path.relative(SRC, file)}: ${problem}`),
+		);
+		expect(problems).toEqual([]);
+	});
+});
+
+describe('Interaction test files', () => {
+	/** ARC42 § 9, decision 14: `<component>.e2e.ts`, further files `<component>.<topic>.e2e.ts`. */
+	const misnamed = fs
+		.readdirSync(__dirname, { withFileTypes: true })
+		.filter((entry) => entry.isDirectory())
+		.flatMap((entry) =>
+			fs
+				.readdirSync(path.join(__dirname, entry.name))
+				.filter((name) => name.endsWith('.e2e.ts') && name !== `${entry.name}.e2e.ts` && !new RegExp(`^${entry.name}\\.[a-z0-9-]+\\.e2e\\.ts$`).test(name))
+				.map((name) => `${entry.name}/${name}`),
+		);
+
+	it('are named after their component folder', () => {
+		expect(misnamed).toEqual([]);
 	});
 });
