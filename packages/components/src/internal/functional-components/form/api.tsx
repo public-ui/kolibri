@@ -9,8 +9,8 @@ import type { FormErrorLinkItem } from './error-link-item';
  * All three props are optional. Notes on prop choices:
  * - `requiredTextProp` normalizes to `boolean | string`: `true` renders the translated
  *   mandatory-fields hint, a non-empty string replaces it, everything else renders no hint.
- * - `errorListProp` validates the entries against `ErrorListPropType`; the predecessor's
- *   validator could never pass and its result never reached the renderer (see the prop file).
+ * - `errorListProp` validates the entries against `ErrorListPropType` and ignores a malformed list
+ *   (see the prop file).
  * - `formCallbacksProp` carries `onReset`/`onSubmit`. They are not rendered — the web component
  *   invokes them from its own handlers, which also dispatch the `KolEvent` DOM events.
  */

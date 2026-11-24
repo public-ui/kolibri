@@ -1,4 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
+
 import type {
 	PropAriaLabelledby,
 	PropLabelLangSegments,

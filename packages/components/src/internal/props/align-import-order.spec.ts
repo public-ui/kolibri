@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { alignPropTypeOptions } from '../../schema/props/align';
 import { alignProp } from './align';
 import { popoverAlignProp } from './popover-align';

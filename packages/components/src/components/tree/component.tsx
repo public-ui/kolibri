@@ -7,10 +7,10 @@ import type { PropsConfigShape, WebComponentInterface } from '../../internal/fun
 import type { TreeApi } from '../../internal/functional-components/tree/api';
 import { treePropsConfig } from '../../internal/functional-components/tree/api';
 import { TreeFC } from '../../internal/functional-components/tree/component';
+import { registerOpenItemsCache, unregisterOpenItemsCache } from '../../internal/functional-components/tree/open-items-cache';
 import { labelProp } from '../../internal/props';
-import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../schema';
+import type { FocusableElement, KolFocusOptions, LabelPropType } from '../../schema';
 import { delegateFocus } from '../../utils/element-focus';
-import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
 
 const isTreeItem = (element?: EventTarget | null): element is HTMLKolTreeItemElement =>
 	(element as Element | null | undefined)?.tagName === transformTag(KolTreeItemTag).toUpperCase();
@@ -25,8 +25,9 @@ const isTreeItem = (element?: EventTarget | null): element is HTMLKolTreeItemEle
 	},
 	shadow: true,
 })
-export class KolTree extends BaseWebComponent<TreeApi> implements FocusableElement, TreeProps, WebComponentInterface<TreeApi> {
-	@Element() protected readonly host?: HTMLKolTreeElement;
+export class KolTree extends BaseWebComponent<TreeApi> implements FocusableElement, WebComponentInterface<TreeApi> {
+	@Element()
+	protected readonly host?: HTMLKolTreeElement;
 
 	private observer?: MutationObserver;
 
@@ -43,7 +44,8 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -324,6 +326,8 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	public render(): JSX.Element {
 		return (
+			// The host is the tab stop of the tree and hands the focus on to the active item (`handleFocusIn`):
+			// documented exception to the bare `<Host>`.
 			<Host tabindex="0">
 				<TreeFC handleSlotchange={this.handleSlotchange} label={this.getRenderProp('label')} />
 			</Host>

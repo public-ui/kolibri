@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+
 import type { StencilUnknown } from '../../../schema';
 import { BaseWebComponent } from '../base-web-component';
 import type { FormAssociationType } from './api';

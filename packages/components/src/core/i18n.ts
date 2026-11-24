@@ -1,4 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
+
 import locale_de from '../locales/de';
 import locale_en from '../locales/en';
 import { getSharedState } from './shared-state';

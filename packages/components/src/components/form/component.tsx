@@ -9,8 +9,8 @@ import type { FormErrorLinkItem } from '../../internal/functional-components/for
 import { createFormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { errorListProp, formCallbacksProp, requiredTextProp } from '../../internal/props';
-import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import type { ErrorListPropType, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
+import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -40,10 +40,12 @@ const FOCUS_ERROR_LIST_DELAY = 250;
 	},
 	shadow: true,
 })
-export class KolForm extends BaseWebComponent<FormApi> implements FormProps, WebComponentInterface<FormApi> {
-	@Element() private readonly host?: HTMLKolFormElement;
+export class KolForm extends BaseWebComponent<FormApi> implements WebComponentInterface<FormApi> {
+	@Element()
+	private readonly host?: HTMLKolFormElement;
 
-	@State() public errorLinkItems: FormErrorLinkItem[] = [];
+	@State()
+	public errorLinkItems: FormErrorLinkItem[] = [];
 
 	/**
 	 * Ids of the error-list alert. Plain fields rather than `@State()`: both are created once per
@@ -51,7 +53,7 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	 */
 	private readonly alertHeadingId = createUniqueId('alert-heading');
 
-	private readonly closerAriaDescriptionId = nonce();
+	private readonly closerAriaDescriptionId = createUniqueId('closer-description');
 
 	protected readonly propsConfig: PropsConfigShape = formPropsConfig;
 
@@ -59,7 +61,8 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	 * A list of error objects that each describe an issue encountered in the form.
 	 * Each error object contains a message and a selector for identifying the form element related to the error.
 	 */
-	@Prop() public _errorList?: ErrorListPropType[] = undefined;
+	@Prop()
+	public _errorList?: ErrorListPropType[] = undefined;
 
 	@Watch('_errorList')
 	public watchErrorList(value?: ErrorListPropType[]): void {
@@ -72,7 +75,8 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	/**
 	 * Defines the callback functions for form events.
 	 */
-	@Prop() public _on?: KoliBriFormCallbacks = undefined;
+	@Prop()
+	public _on?: KoliBriFormCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriFormCallbacks): void {
@@ -82,7 +86,8 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	/**
 	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
 	 */
-	@Prop() public _requiredText?: Stringified<boolean> = true;
+	@Prop()
+	public _requiredText?: Stringified<boolean> = true;
 
 	@Watch('_requiredText')
 	public watchRequiredText(value?: Stringified<boolean>): void {

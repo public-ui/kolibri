@@ -1,7 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { watchValidator } from '../utils';
-
 export const inputDateTypeOptions = ['date', 'datetime-local', 'month', 'time', 'week'] as const;
 export type InputDateTypePropType = (typeof inputDateTypeOptions)[number];
 
@@ -12,10 +8,8 @@ export type PropTypeInputDate = {
 	type: InputDateTypePropType;
 };
 
-const isInputDateTypePropType = (value: unknown): value is InputDateTypePropType => {
-	return typeof value === 'string' && inputDateTypeOptions.includes(value as InputDateTypePropType);
-};
-
-export const validateTypeInputDate = (component: Generic.Element.Component, value?: InputDateTypePropType): void => {
-	watchValidator(component, '_type', isInputDateTypePropType, new Set(inputDateTypeOptions), value);
+/** Props of the date input the date props depend on: the raw `_type` and `_step` of the element. */
+export type InputDateDeps = {
+	type?: InputDateTypePropType | string;
+	step?: number | string;
 };

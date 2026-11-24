@@ -88,6 +88,14 @@
 		"@fortawesome/fontawesome-free": "6.7.2",
 		"@public-ui/components": "workspace:*"
 	},
+	"peerDependenciesMeta": {
+		"@fortawesome/fontawesome-free": {
+			"optional": true
+		},
+		"@fontsource/noto-sans": {
+			"optional": true
+		}
+	},
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",

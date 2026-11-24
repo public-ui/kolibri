@@ -2,9 +2,8 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-link-button` — byte-identical to the predecessor `shadow.tsx` on the
- * develop branch (18 props + focus/click). `_role` stays declared but, as before, is not forwarded
- * to the inner element.
+ * Pinned public API of `kol-link-button` (18 props plus `focus()` and `click()`). `_role` stays
+ * declared but is not forwarded to the inner element.
  */
 const KOL_LINK_BUTTON_PUBLIC_API: PublicApiContract = {
 	focus: {
@@ -134,4 +133,4 @@ const KOL_LINK_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-link-button', component: 'link-button', pinnedApi: KOL_LINK_BUTTON_PUBLIC_API, schemaInterface: 'LinkButtonProps' });
+describePublicApiContract({ tag: 'kol-link-button', component: 'link-button', pinnedApi: KOL_LINK_BUTTON_PUBLIC_API });

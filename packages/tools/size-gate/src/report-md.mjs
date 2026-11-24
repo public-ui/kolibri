@@ -4,7 +4,7 @@ import { formatBytes } from './sizes.mjs';
  * Escapes text for a Markdown table cell: backslashes first, so the escape of `|` cannot be undone.
  */
 const cell = (text) => String(text).replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/\n/g, ' ');
-const STATUS = { fail: '❌', improved: '✅', new: '🆕', ok: '➖' };
+const STATUS = { exceeded: '❌', improved: '✅', new: '🆕', ok: '➖' };
 const ALWAYS = new Set(['core', 'redundant', 'sheets', 'total']);
 const MAX_ROWS = 25;
 const MAX_CANDIDATES = 10;
@@ -24,13 +24,16 @@ function list(title, items) {
 
 /**
  * Renders the result of one package as Markdown for the console and the GitHub step summary.
- * `gate` mode shows the comparison with the baseline; `analysis` mode adds the restructuring candidates.
+ * `gate` mode shows the informational comparison with the baseline; `analysis` mode adds the
+ * restructuring candidates.
  */
 export function renderMarkdown({ mode = 'gate', name, report, result }) {
 	const analysis = mode === 'analysis';
-	const head = analysis ? `## 🔎 Size analysis \`${name}\`\n\n` : `## 📦 Size gate \`${name}\`: ${result.passed ? '✅ passed' : '❌ failed'}\n\n`;
-	const tolerance = `Tolerance: +${result.tolerance.percent} % or +${formatBytes(result.tolerance.bytes)} per component, +${result.tolerance.percent} % for totals. Sizes are gzip unless the row says otherwise.\n\n`;
-	const failures = result.failures.length === 0 ? '' : `### Failures\n\n${result.failures.map((failure) => `- ${failure}`).join('\n')}\n\n`;
+	const head = analysis
+		? `## 🔎 Size analysis \`${name}\`\n\n`
+		: `## 📦 Size report \`${name}\`: ${result.withinTolerance ? '✅ within tolerance' : '❌ beyond tolerance'}\n\n`;
+	const tolerance = `Tolerance: +${result.tolerance.percent} % or +${formatBytes(result.tolerance.bytes)} per component, +${result.tolerance.percent} % for totals. Sizes are gzip unless the row says otherwise. The comparison is informational and never blocks a merge.\n\n`;
+	const exceeded = result.exceeded.length === 0 ? '' : `### Beyond tolerance\n\n${result.exceeded.map((message) => `- ${message}`).join('\n')}\n\n`;
 
 	const rows = result.rows
 		.filter((row) => ALWAYS.has(row.id) || row.status !== 'ok' || row.base !== row.current)
@@ -73,12 +76,12 @@ export function renderMarkdown({ mode = 'gate', name, report, result }) {
 		head +
 		maps +
 		tolerance +
-		failures +
+		exceeded +
 		table +
 		unchanged +
 		candidateTable +
 		list('Warnings', result.warnings) +
-		list('Improvements – run `pnpm size:update` to lower the baseline', result.improvements) +
+		list('Improvements', result.improvements) +
 		footer
 	);
 }

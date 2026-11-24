@@ -1,5 +1,6 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+
 import { getMsgType, isMsgDefinedAndInputTouched } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';

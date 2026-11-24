@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
 import type { VNode } from '@stencil/core/internal';
+
 import { submitFormOnEnter } from '../../../components/form/controller';
 import type {
 	AccessKeyPropType,
@@ -243,9 +244,8 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 	}
 
 	/**
-	 * Props of the native `<input>`. The keys follow the order of the legacy state wrapper, and props
-	 * the legacy state only held once set are only passed when set: the rendered attributes keep their
-	 * order in the hydrate snapshot.
+	 * Props of the native `<input>`. The key order and the props passed only when set are fixed:
+	 * they determine the order of the rendered attributes in the hydrate snapshot.
 	 */
 	protected getTextInputProps({ type, spellcheck, multiple, suggestions }: TextInputFieldProps, overrides: Partial<InputFCProps> = {}): InputFCProps {
 		const shared = this.textShared;

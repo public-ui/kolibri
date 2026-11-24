@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-nav` (6 props, 0 methods), extracted from the legacy `shadow.tsx` before its
- * skeleton migration (#11152).
+ * Pinned public API of `kol-nav` (6 props, 0 methods), #11152.
  */
 const KOL_NAV_PUBLIC_API: PublicApiContract = {
 	_collapsible: {
@@ -48,4 +47,4 @@ const KOL_NAV_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-nav', component: 'nav', pinnedApi: KOL_NAV_PUBLIC_API, schemaInterface: 'NavProps' });
+describePublicApiContract({ tag: 'kol-nav', component: 'nav', pinnedApi: KOL_NAV_PUBLIC_API });

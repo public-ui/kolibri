@@ -1,4 +1,4 @@
-import type { Generic } from 'adopted-style-sheets';
+import type { ComponentPropsOptional, ComponentPropsRequired } from '../../internal/functional-components/generic-types';
 import type {
 	PropAccessKey,
 	PropAlternativeButtonLinkRole,
@@ -42,4 +42,4 @@ export type OptionalProps = {
 	PropShortKey &
 	PropTooltipAlign;
 
-export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
+export type LinkProps = ComponentPropsRequired<RequiredProps> & ComponentPropsOptional<OptionalProps>;

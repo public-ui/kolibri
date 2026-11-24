@@ -1,7 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { validateAlignment } from '../validators';
-
 import type { AlignPropType } from './align';
 
 /* types */
@@ -12,9 +8,4 @@ export type PopoverAlignPropType = AlignPropType;
  */
 export type PropPopoverAlign = {
 	popoverAlign: PopoverAlignPropType;
-};
-
-/* validator */
-export const validatePopoverAlign = (component: Generic.Element.Component, value?: PopoverAlignPropType): void => {
-	validateAlignment(component, '_popoverAlign', value);
 };

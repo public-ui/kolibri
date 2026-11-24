@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
+
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ImageApi } from '../../internal/functional-components/image/api';
@@ -21,7 +22,8 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	shadow: true,
 })
 export class KolImage extends BaseWebComponent<ImageApi> implements WebComponentInterface<ImageApi> {
-	@Element() private readonly host?: HTMLKolImageElement;
+	@Element()
+	private readonly host?: HTMLKolImageElement;
 
 	protected readonly propsConfig: PropsConfigShape = imagePropsConfig;
 
@@ -45,6 +47,17 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	@Watch('_loading')
 	public watchLoading(value?: LoadingType): void {
 		loadingProp.apply(value, (v) => this.setRenderProp('loading', v));
+	}
+
+	/**
+	 * Defines callbacks for image load events (`onError`, `onLoad`).
+	 */
+	@Prop()
+	public _on?: KoliBriImageEventCallbacks = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriImageEventCallbacks): void {
+		imageCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
 	}
 
 	/**
@@ -80,24 +93,13 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 		srcsetProp.apply(value, (v) => this.setRenderProp('srcset', v));
 	}
 
-	/**
-	 * Defines callbacks for image load events (`onError`, `onLoad`).
-	 */
-	@Prop()
-	public _on?: KoliBriImageEventCallbacks = undefined;
-
-	@Watch('_on')
-	public watchOn(value?: KoliBriImageEventCallbacks): void {
-		imageCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
-	}
-
 	public componentWillLoad(): void {
-		altProp.apply(this._alt, (v) => this.setRenderProp('alt', v));
-		loadingProp.apply(this._loading, (v) => this.setRenderProp('loading', v));
-		imageCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
-		sizesProp.apply(this._sizes, (v) => this.setRenderProp('sizes', v));
-		srcProp.apply(this._src, (v) => this.setRenderProp('src', v));
-		srcsetProp.apply(this._srcset, (v) => this.setRenderProp('srcset', v));
+		this.watchAlt(this._alt);
+		this.watchLoading(this._loading);
+		this.watchOn(this._on);
+		this.watchSizes(this._sizes);
+		this.watchSrc(this._src);
+		this.watchSrcset(this._srcset);
 	}
 
 	private readonly handleError = (event: Event): void => {

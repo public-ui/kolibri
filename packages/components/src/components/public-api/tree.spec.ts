@@ -2,10 +2,8 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-tree` — byte-identical to the predecessor `shadow.tsx` on the develop
- * branch (1 required prop + focus). The cache reset the tree items call lives in
- * `tree/open-items-cache.ts`, not on the element: the predecessor's `invalidateOpenItemsCache()`
- * method sat on the internal `kol-tree-wc`, which is gone.
+ * Pinned public API of `kol-tree` (1 required prop plus `focus()`). The cache reset the tree items
+ * call lives in `internal/functional-components/tree/open-items-cache.ts`, not on the element.
  */
 const KOL_TREE_PUBLIC_API: PublicApiContract = {
 	focus: {
@@ -22,4 +20,4 @@ const KOL_TREE_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-tree', component: 'tree', pinnedApi: KOL_TREE_PUBLIC_API, schemaInterface: 'TreeProps' });
+describePublicApiContract({ tag: 'kol-tree', component: 'tree', pinnedApi: KOL_TREE_PUBLIC_API });

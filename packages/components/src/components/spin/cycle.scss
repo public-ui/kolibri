@@ -7,10 +7,17 @@
 		}
 	}
 
+	/*
+	 * The colour stops of the arc are only reachable through these tokens, since the values of an
+	 * animation win over every normal declaration:
+	 * - `--kol-spin-color`: set by the consumer, wins over the theme tokens.
+	 * - `--kol-theme-spin-color`: set by a theme for the arc.
+	 * - `--kol-theme-spin-color-start`: set by a theme for the first stop, which the arc fades in from.
+	 */
 	@keyframes growingCircle {
 		0% {
 			opacity: 0.5;
-			border-color: white;
+			border-color: var(--kol-spin-color, var(--kol-theme-spin-color-start, white));
 			clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
 		}
 

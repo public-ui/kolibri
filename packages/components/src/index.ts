@@ -1,11 +1,11 @@
 export { setTagTransformer, transformTag } from '@stencil/core';
 export { getDefaultThemeName } from 'adopted-style-sheets';
 export * from './components.d';
-export { setCurrentLocation } from './components/link/ariaCurrentService';
 export { ToasterService } from './components/toaster/toaster';
 export { bootstrap, isInitialized, register } from './core/bootstrap';
 export { getRegisteredTagNameTransformer, registerTagNameTransformer } from './core/tag-transformer';
 export * from './enums/bund';
+export { setCurrentLocation } from './internal/functional-components/link/aria-current-service';
 export * from './kolibri';
 export { KoliBri, KoliBriDevHelper } from './schema';
 export type {
