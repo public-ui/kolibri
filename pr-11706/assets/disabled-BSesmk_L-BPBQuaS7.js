@@ -1,1 +1,0 @@
-import{b as e,l as t}from"./props-from-config-CNOz81rp-CGWVR_ma.js";var n=t(`disabled`,!1,e);export{n as t};
