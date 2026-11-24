@@ -1,15 +1,15 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "49 changed – 28 of 49 approved, review pending",
-	"computedAt": "2026-11-24T22:29:11.433Z",
+	"description": "40 changed – 19 of 40 approved, review pending",
+	"computedAt": "2026-11-24T23:07:36.985Z",
 	"pr": 11707,
-	"head": "4a30a6c1ae2fa7e0cd058c22c01f7eaf59a28e2c",
-	"digest": "sha256:61be8a04e5c2182102d1e94abc1d90e4f87aee8e3ebb9e69681c4108db5ccc37",
+	"head": "26747d0207a683d63157905675366224ab70be8b",
+	"digest": "sha256:d6f46ed7c09bde0e47b127a08567b50667695ff2c42d48b7bfac34fe87d4f1cf",
 	"counts": {
-		"changes": 49,
+		"changes": 40,
 		"open": 21,
-		"approved": 28,
+		"approved": 19,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
@@ -188,51 +188,6 @@
 			"by": "deleonio"
 		},
 		"theme-default/scenarios-label-lang--label-lang-alert": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-ecl/dialog-basic-show-dialog-true": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-ecl/drawer-basic-align-left-closer-true": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-ecl/modal-basic-show-dialog-true": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-ecl/popover-button-basic": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-ecl/scenarios-focus-elements-component-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-ecl/scenarios-focus-elements-component-linkButton": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-ecl/scenarios-focus-elements-component-popoverButton": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-ecl/scenarios-focus-elements-component-splitButton": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-ecl/scenarios-focus-elements-component-toolbar": {
 			"state": "approved",
 			"notes": [],
 			"by": "deleonio"

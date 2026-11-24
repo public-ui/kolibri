@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11707,
-	"head": "4a30a6c1ae2fa7e0cd058c22c01f7eaf59a28e2c",
+	"head": "26747d0207a683d63157905675366224ab70be8b",
 	"repository": "public-ui/kolibri",
-	"runId": 45467959319,
-	"generatedAt": "2026-11-24T19:31:18.351Z",
-	"digest": "sha256:61be8a04e5c2182102d1e94abc1d90e4f87aee8e3ebb9e69681c4108db5ccc37",
+	"runId": 45504477973,
+	"generatedAt": "2026-11-24T23:07:35.971Z",
+	"digest": "sha256:d6f46ed7c09bde0e47b127a08567b50667695ff2c42d48b7bfac34fe87d4f1cf",
 	"baseline": {
 		"sha": "0d034749d69d083937ac13b9abb344b252d29504",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3046,
-		"changed": 49,
+		"unchanged": 3055,
+		"changed": 40,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -11150,13 +11150,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 433,
-				"changed": 9,
+				"unchanged": 442,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8ed80ceb0f7884f683f5f6906f9a1171976a3c889098365aab6dc7ab2168c15c",
+			"digest": "sha256:52179ed1092595a872b3836d122f12fa43f163f4c4f15344c14977a6e1e51011",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11478,14 +11478,9 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:56721705f3cb04757b944713056bb19e8eabea9cffcc9a56b4df8fe5cf85f43f",
-					"diffPixels": 22,
-					"diffRatio": 0.000019,
-					"expected": "theme-ecl/dialog-basic-show-dialog-true.expected.png",
-					"actual": "theme-ecl/dialog-basic-show-dialog-true.actual.png",
-					"diff": "theme-ecl/dialog-basic-show-dialog-true.diff.png"
+					"route": "dialog-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:ebabbc02b7cb128e986a507c7e6e2ac18a18d2a642eb5434315149bae25a477e"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -11495,14 +11490,9 @@
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
-					"route": "drawer/basic?align=left&closer=true",
-					"status": "changed",
-					"hash": "sha256:4dd5e0dd8c2ed02a73809b42fc63a976acc04f3eff13b33efb5d0c282438ff83",
-					"diffPixels": 6,
-					"diffRatio": 0.000025,
-					"expected": "theme-ecl/drawer-basic-align-left-closer-true.expected.png",
-					"actual": "theme-ecl/drawer-basic-align-left-closer-true.actual.png",
-					"diff": "theme-ecl/drawer-basic-align-left-closer-true.diff.png"
+					"route": "drawer-basic-align-left-closer-true",
+					"status": "unchanged",
+					"hash": "sha256:71b0ce522787d0bace1dc4a5ca751e865e7a9c0d27ac474d587a609e260ca641"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -12982,14 +12972,9 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:6fb8d9587e116be8aeb4358225b702cd38195b1c44d135ce822c3ece64dbc90f",
-					"diffPixels": 22,
-					"diffRatio": 0.000019,
-					"expected": "theme-ecl/modal-basic-show-dialog-true.expected.png",
-					"actual": "theme-ecl/modal-basic-show-dialog-true.actual.png",
-					"diff": "theme-ecl/modal-basic-show-dialog-true.diff.png"
+					"route": "modal-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:b87d85c64c9119d1c212d17a615d147e7863e60ca89fdb7f07131e3d41395a33"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -13035,14 +13020,9 @@
 				},
 				{
 					"name": "popover-button-basic",
-					"route": "popover-button/basic",
-					"status": "changed",
-					"hash": "sha256:4e7941a799fd2df63933c16b3df69407a3924eebf81231dd96cf918124704f08",
-					"diffPixels": 30,
-					"diffRatio": 0.000682,
-					"expected": "theme-ecl/popover-button-basic.expected.png",
-					"actual": "theme-ecl/popover-button-basic.actual.png",
-					"diff": "theme-ecl/popover-button-basic.diff.png"
+					"route": "popover-button-basic",
+					"status": "unchanged",
+					"hash": "sha256:132a5d5fe692377941b39a81b9c6de6f123d4f8b53407d9077f24416c1b17ae0"
 				},
 				{
 					"name": "popover-button-inline--inline",
@@ -13100,14 +13080,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
-					"route": "scenarios/focus-elements?component=button",
-					"status": "changed",
-					"hash": "sha256:cf239d922fa228b29cedc423d8af7f145dfb630154b1921ca013cc78b0987aa5",
-					"diffPixels": 22,
-					"diffRatio": 0.000952,
-					"expected": "theme-ecl/scenarios-focus-elements-component-button.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-button.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-button.diff.png"
+					"route": "scenarios-focus-elements-component-button",
+					"status": "unchanged",
+					"hash": "sha256:6411362ba8ae6a556562c540eb733fcbe80c31954d11002d625fe7bac934003e"
 				},
 				{
 					"name": "scenarios-focus-elements-component-buttonLink",
@@ -13207,25 +13182,15 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-linkButton",
-					"route": "scenarios/focus-elements?component=linkButton",
-					"status": "changed",
-					"hash": "sha256:444440fa40c6be8795858b67d9c4215ad2d0637d4a2f5311e3fa7e2a0c87a56c",
-					"diffPixels": 22,
-					"diffRatio": 0.000965,
-					"expected": "theme-ecl/scenarios-focus-elements-component-linkButton.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-linkButton.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-linkButton.diff.png"
+					"route": "scenarios-focus-elements-component-linkButton",
+					"status": "unchanged",
+					"hash": "sha256:156b92bfbdc212bbe9a4e04a7cd7b7c3f6b20443062078d2e2b42b6a9ad4c79e"
 				},
 				{
 					"name": "scenarios-focus-elements-component-popoverButton",
-					"route": "scenarios/focus-elements?component=popoverButton",
-					"status": "changed",
-					"hash": "sha256:3caa1f9b36c6ee4d3f9e92845f939e0449c9196f4c14be8aca55f5024e847480",
-					"diffPixels": 22,
-					"diffRatio": 0.000952,
-					"expected": "theme-ecl/scenarios-focus-elements-component-popoverButton.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-popoverButton.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-popoverButton.diff.png"
+					"route": "scenarios-focus-elements-component-popoverButton",
+					"status": "unchanged",
+					"hash": "sha256:9093d0656ac71bc2945de7df12b35219a093cc6bae0466acde1c0c99656cbc38"
 				},
 				{
 					"name": "scenarios-focus-elements-component-select",
@@ -13253,14 +13218,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-splitButton",
-					"route": "scenarios/focus-elements?component=splitButton",
-					"status": "changed",
-					"hash": "sha256:3b760df52e6e5124bed94a0cfb927c0a6987b6316901cbc87207d2ad473ca35d",
-					"diffPixels": 19,
-					"diffRatio": 0.000833,
-					"expected": "theme-ecl/scenarios-focus-elements-component-splitButton.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-splitButton.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-splitButton.diff.png"
+					"route": "scenarios-focus-elements-component-splitButton",
+					"status": "unchanged",
+					"hash": "sha256:ba4109aa8eac02de20feb71a656004f9cf890dccc99f5de821b70f4809163817"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tabs",
@@ -13276,14 +13236,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-toolbar",
-					"route": "scenarios/focus-elements?component=toolbar",
-					"status": "changed",
-					"hash": "sha256:520fa144df296af73d32d4b66d6fdf2c58ee5f59d0d70a23a099b9a404592add",
-					"diffPixels": 249,
-					"diffRatio": 0.010779,
-					"expected": "theme-ecl/scenarios-focus-elements-component-toolbar.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-toolbar.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-toolbar.diff.png"
+					"route": "scenarios-focus-elements-component-toolbar",
+					"status": "unchanged",
+					"hash": "sha256:aa5c369baae4d6dc5c98ed2633f3ba98ef57d8c2380f8e7f7d50b8a9e695134b"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
