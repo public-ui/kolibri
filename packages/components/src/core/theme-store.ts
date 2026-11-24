@@ -1,5 +1,5 @@
 import { STORE } from 'adopted-style-sheets';
-import { getSharedState } from './shared-state';
+import { getSharedState } from '../../internals/src/core/shared-state';
 
 /**
  * Points the theme store of this bundle copy at the shared one (see `getSharedState`), so the themes

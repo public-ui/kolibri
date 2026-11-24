@@ -1,13 +1,13 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
-import type { AvatarApi } from '../../internal/functional-components/avatar/api';
-import { avatarPropsConfig } from '../../internal/functional-components/avatar/api';
+import type { AvatarApi } from '../../../internals/src/controller/avatar/api';
+import { avatarPropsConfig } from '../../../internals/src/controller/avatar/api';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import { colorProp, labelProp, srcProp } from '../../../internals/src/props/index';
+import type { ColorPair, LabelPropType, SrcPropType } from '../../../internals/src/schema/index';
+import { trimLabel } from '../../../internals/src/schema/index';
 import { AvatarFC } from '../../internal/functional-components/avatar/component';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { colorProp, labelProp, srcProp } from '../../internal/props';
-import type { ColorPair, LabelPropType, SrcPropType } from '../../schema';
-import { trimLabel } from '../../schema';
 
 /**
  * Formats a single name as an initial by taking the first character and converting it to uppercase.

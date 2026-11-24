@@ -1,12 +1,12 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Method, State } from '@stencil/core';
 
-import { translate } from '../../i18n';
-import { createUniqueId } from '../../utils/dev.utils';
+import { translate } from '../../../internals/src/i18n';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 
+import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../../internals/src/schema/index';
+import { Log } from '../../../internals/src/schema/index';
 import { KolToastItemFc } from '../../functional-components';
-import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../schema';
-import { Log } from '../../schema';
 
 const TRANSITION_TIMEOUT = 300;
 

@@ -35,20 +35,20 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
+} from '../../../internals/src/schema/index';
 
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputEmailApi } from '../../../internals/src/controller/input-email/api';
+import { inputEmailPropsConfig } from '../../../internals/src/controller/input-email/api';
+import { multipleProp, suggestionsProp } from '../../../internals/src/props/index';
+import { bem } from '../../../internals/src/schema/bem-registry';
+import clsx from '../../../internals/src/utils/clsx';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputEmailApi } from '../../internal/functional-components/input-email/api';
-import { inputEmailPropsConfig } from '../../internal/functional-components/input-email/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { multipleProp, suggestionsProp } from '../../internal/props';
-import { bem } from '../../schema/bem-registry';
-import clsx from '../../utils/clsx';
-import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 
 const emailBem = bem.forBlock('kol-input-email');
 

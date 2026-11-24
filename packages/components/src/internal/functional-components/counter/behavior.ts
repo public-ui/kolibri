@@ -1,12 +1,12 @@
-import type { MaxLengthBehaviorPropType } from '../../../schema';
-import { createRelatedUniqueId } from '../../../utils/dev.utils';
-import { hasCounterProp, maxLengthBehaviorProp, maxLengthProp } from '../../props';
-import { BaseBehavior } from '../base-behavior';
+import { BaseBehavior } from '../../../../internals/src/controller/base-behavior';
+import type { CounterApi } from '../../../../internals/src/controller/counter/api';
+import { counterPropsConfig } from '../../../../internals/src/controller/counter/api';
+import { getCounterAriaText, getCounterMaxText, getCounterVisualText } from '../../../../internals/src/controller/counter/texts';
+import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../../../../internals/src/controller/generic-types';
+import { hasCounterProp, maxLengthBehaviorProp, maxLengthProp } from '../../../../internals/src/props/index';
+import type { MaxLengthBehaviorPropType } from '../../../../internals/src/schema/index';
+import { createRelatedUniqueId } from '../../../../internals/src/utils/dev.utils';
 import type { FormFieldFCProps } from '../form-field/component';
-import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';
-import type { CounterApi } from './api';
-import { counterPropsConfig } from './api';
-import { getCounterAriaText, getCounterMaxText, getCounterVisualText } from './texts';
 
 /** A printable single character without Ctrl, Meta or Alt, i.e. a key press that inserts a character. */
 const isCharacterInputKey = (event: KeyboardEvent): boolean => event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;

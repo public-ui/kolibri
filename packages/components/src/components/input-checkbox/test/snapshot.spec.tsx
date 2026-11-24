@@ -1,5 +1,5 @@
-import { KolInputCheckboxTag } from '../../../core/component-names';
-import type { InputCheckboxProps } from '../../../schema';
+import { KolInputCheckboxTag } from '../../../../internals/src/core/component-names';
+import type { InputCheckboxProps } from '../../../../internals/src/schema/index';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
 import { KolInputCheckbox } from '../component';

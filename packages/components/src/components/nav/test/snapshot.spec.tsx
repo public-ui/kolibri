@@ -1,6 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { KolNavTag } from '../../../core/component-names';
-import type { NavProps } from '../../../schema';
+import { KolNavTag } from '../../../../internals/src/core/component-names';
+import type { NavProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 import { KolNav } from '../component';
 

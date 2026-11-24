@@ -1,13 +1,13 @@
-import type * as SchemaModule from '../../../schema';
+import type * as SchemaModule from '../../../../internals/src/schema/index';
 
-jest.mock('../../../schema', () => {
-	const actual: typeof SchemaModule = jest.requireActual('../../../schema');
+jest.mock('../../../../internals/src/schema', () => {
+	const actual: typeof SchemaModule = jest.requireActual('../../../../internals/src/schema');
 	return { ...actual, devHint: jest.fn() };
 });
 
-import type { KoliBriTableHeaders } from '../../../schema';
-import * as Schema from '../../../schema';
-import { setRuntimeMode } from '../../../schema/utils/dev.utils';
+import type { KoliBriTableHeaders } from '../../../../internals/src/schema/index';
+import * as Schema from '../../../../internals/src/schema/index';
+import { setRuntimeMode } from '../../../../internals/src/schema/utils/dev.utils';
 import { KolTableStateful } from '../component';
 
 describe('KolTableStateful.watchHeaders', () => {

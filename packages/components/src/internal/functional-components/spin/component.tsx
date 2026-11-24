@@ -1,13 +1,13 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
-import { translate } from '../../../i18n';
-import { bem } from '../../../schema/bem-registry';
-import type { SpinVariantType } from '../../props';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { resolveFcProps } from '../../../../internals/src/controller/props-from-config';
+import { spinPropsConfig, type SpinApi } from '../../../../internals/src/controller/spin/api';
+import { translate } from '../../../../internals/src/i18n';
+import type { SpinVariantType } from '../../../../internals/src/props/index';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import { resolveFcProps } from '../props-from-config';
-import { spinPropsConfig, type SpinApi } from './api';
 
 const spinBem = bem.forBlock('kol-spin');
 const BEM_CLASS_SPIN__LOADER = spinBem('loader');

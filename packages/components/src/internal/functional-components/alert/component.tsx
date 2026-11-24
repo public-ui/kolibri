@@ -1,16 +1,16 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import type { AlertApi } from '../../../../internals/src/controller/alert/api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { translate } from '../../../../internals/src/i18n';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import { trimLabel } from '../../../../internals/src/schema/index';
+import clsx from '../../../../internals/src/utils/clsx';
 import { getHeadlineTag } from '../../../functional-components/Heading/Heading';
-import { translate } from '../../../i18n';
-import { trimLabel } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
-import type { FunctionalComponentProps } from '../generic-types';
 import { renderLabelWithLang } from '../span/component';
-import type { AlertApi } from './api';
 import { AlertIconFC } from './icon';
 
 const alertBem = bem.forBlock('kol-alert');

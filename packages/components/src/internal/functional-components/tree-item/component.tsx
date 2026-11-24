@@ -1,16 +1,16 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { bem } from '../../../schema/bem-registry';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { LinkApi } from '../../../../internals/src/controller/link/api';
+import { linkPropsConfig } from '../../../../internals/src/controller/link/api';
+import { buildDefaultPropsFromConfig } from '../../../../internals/src/controller/props-from-config';
+import type { TreeItemApi } from '../../../../internals/src/controller/tree-item/api';
+import { bem } from '../../../../internals/src/schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
-import type { LinkApi } from '../link/api';
-import { linkPropsConfig } from '../link/api';
 import { LinkFC } from '../link/component';
-import { buildDefaultPropsFromConfig } from '../props-from-config';
 import { renderLabelWithLang } from '../span/component';
-import type { TreeItemApi } from './api';
 
 const treeItemBem = bem.forBlock('kol-tree-item');
 const BEM_CLASS_TREE_ITEM__CHILDREN = treeItemBem('children');

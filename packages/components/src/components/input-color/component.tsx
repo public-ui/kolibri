@@ -1,5 +1,6 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { bem } from '../../../internals/src/schema/bem-registry';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -27,19 +28,12 @@ import type {
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
-} from '../../schema';
-import { bem } from '../../schema/bem-registry';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+} from '../../../internals/src/schema/index';
+import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
 
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputColorApi } from '../../internal/functional-components/input-color/api';
-import { inputColorPropsConfig } from '../../internal/functional-components/input-color/api';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputColorApi } from '../../../internals/src/controller/input-color/api';
+import { inputColorPropsConfig } from '../../../internals/src/controller/input-color/api';
 import {
 	accessKeyProp,
 	autoCompleteProp,
@@ -49,9 +43,15 @@ import {
 	stringValueProp,
 	suggestionsProp,
 	variantProp,
-} from '../../internal/props';
-import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+} from '../../../internals/src/props/index';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
 
 const colorBem = bem.forBlock('kol-input-color');
 

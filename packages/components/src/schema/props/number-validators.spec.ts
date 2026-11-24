@@ -1,14 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import type { Generic } from 'adopted-style-sheets';
 
+import { validateCurrentLength } from '../../../internals/src/schema/props/current-length';
+import { validateMax } from '../../../internals/src/schema/props/max';
+import { validateMaxLength } from '../../../internals/src/schema/props/max-length';
+import { validateRows } from '../../../internals/src/schema/props/rows';
+import { validateTabIndex } from '../../../internals/src/schema/props/tab-index';
+import { Log } from '../../../internals/src/schema/utils/dev.utils';
+import type { WatchNumberOptions } from '../../../internals/src/schema/utils/prop.validators';
 import { createLegacyComponent, getInvalidValueWarnings, getLoggedMessages } from '../../utils/testing/legacy-component';
-import { Log } from '../utils/dev.utils';
-import type { WatchNumberOptions } from '../utils/prop.validators';
-import { validateCurrentLength } from './current-length';
-import { validateMax } from './max';
-import { validateMaxLength } from './max-length';
-import { validateRows } from './rows';
-import { validateTabIndex } from './tab-index';
 
 type NumberValidator = (component: Generic.Element.Component, value?: number, options?: WatchNumberOptions) => void;
 

@@ -1,17 +1,11 @@
-import type {
-	FormFieldLabelInfoPopoverProps,
-	InputTypeOnDefault,
-	InternalButtonProps,
-	LabelWithExpertSlotPropType,
-	MsgPropType,
-	StencilUnknown,
-	Stringified,
-	TooltipAlignPropType,
-} from '../../../schema';
-import { buildBadgeTextString, trimLabel } from '../../../schema';
-import { resolveTargets } from '../../../utils/aria-labelledby';
-import { createRelatedUniqueId } from '../../../utils/dev.utils';
-import { dispatchDomEvent, KolEvent } from '../../../utils/events';
+import { BaseWebComponent } from '../../../../internals/src/controller/base-web-component';
+import type { ButtonItemFcProps } from '../../../../internals/src/controller/button/item';
+import { createButtonItem } from '../../../../internals/src/controller/button/item';
+import type { FormAssociationType } from '../../../../internals/src/controller/form-association/api';
+import { FormAssociationBehavior } from '../../../../internals/src/controller/form-association/behavior';
+import type { FormFieldBaseApi } from '../../../../internals/src/controller/form-field/api';
+import { getFormFieldAria } from '../../../../internals/src/controller/form-field/aria';
+import { TooltipBehavior } from '../../../../internals/src/controller/tooltip/behavior';
 import {
 	ariaDetailsProp,
 	disabledProp,
@@ -25,16 +19,22 @@ import {
 	nameProp,
 	tooltipAlignProp,
 	touchedProp,
-} from '../../props';
-import { BaseWebComponent } from '../base-web-component';
-import type { ButtonItemFcProps } from '../button/item';
-import { createButtonItem } from '../button/item';
-import type { FormAssociationType } from '../form-association/api';
-import { FormAssociationBehavior } from '../form-association/behavior';
+} from '../../../../internals/src/props/index';
+import type {
+	FormFieldLabelInfoPopoverProps,
+	InputTypeOnDefault,
+	InternalButtonProps,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	StencilUnknown,
+	Stringified,
+	TooltipAlignPropType,
+} from '../../../../internals/src/schema/index';
+import { buildBadgeTextString, trimLabel } from '../../../../internals/src/schema/index';
+import { resolveTargets } from '../../../../internals/src/utils/aria-labelledby';
+import { createRelatedUniqueId } from '../../../../internals/src/utils/dev.utils';
+import { dispatchDomEvent, KolEvent } from '../../../../internals/src/utils/events';
 import { createPopoverButtonItem } from '../popover-button/item';
-import { TooltipBehavior } from '../tooltip/behavior';
-import type { FormFieldBaseApi } from './api';
-import { getFormFieldAria } from './aria';
 import { type FormFieldFCProps, isLabelShownAsTooltip } from './component';
 import type { FormFieldInfoPopover } from './label';
 

@@ -1,14 +1,16 @@
 import type * as AdoptedStyleSheetsModule from 'adopted-style-sheets';
-import type * as AriaCurrentServiceModule from '../components/link/ariaCurrentService';
-import type * as TooltipTrackingModule from '../utils/tooltip-open-tracking';
+import type * as AriaCurrentServiceModule from '../../internals/src/components/link/ariaCurrentService';
+import type * as I18nModule from '../../internals/src/core/i18n';
+import type * as RegisterOptionsModule from '../../internals/src/core/options';
+import type * as TooltipTrackingModule from '../../internals/src/utils/tooltip-open-tracking';
 import type * as BootstrapModule from './bootstrap';
-import type * as I18nModule from './i18n';
 import type * as ThemeStoreModule from './theme-store';
 
 type AdoptedStyleSheets = typeof AdoptedStyleSheetsModule;
 type AriaCurrentService = typeof AriaCurrentServiceModule;
 type Bootstrap = typeof BootstrapModule;
 type I18n = typeof I18nModule;
+type RegisterOptions = typeof RegisterOptionsModule;
 type ThemeStore = typeof ThemeStoreModule;
 type TooltipTracking = typeof TooltipTrackingModule;
 
@@ -23,8 +25,8 @@ const loadCopy = <T>(load: () => T): T => {
 
 describe('state shared across bundle copies', () => {
 	it('notifies the location subscribers of every copy', () => {
-		const rootEntry = loadCopy(() => jest.requireActual<AriaCurrentService>('../components/link/ariaCurrentService'));
-		const customElements = loadCopy(() => jest.requireActual<AriaCurrentService>('../components/link/ariaCurrentService'));
+		const rootEntry = loadCopy(() => jest.requireActual<AriaCurrentService>('../../internals/src/components/link/ariaCurrentService'));
+		const customElements = loadCopy(() => jest.requireActual<AriaCurrentService>('../../internals/src/components/link/ariaCurrentService'));
 		const subscriber = jest.fn();
 
 		const unsubscribe = customElements.onLocationChange(subscriber, false);
@@ -35,8 +37,8 @@ describe('state shared across bundle copies', () => {
 	});
 
 	it('reports a tooltip opened in one copy as open in every copy', () => {
-		const rootEntry = loadCopy(() => jest.requireActual<TooltipTracking>('../utils/tooltip-open-tracking'));
-		const customElements = loadCopy(() => jest.requireActual<TooltipTracking>('../utils/tooltip-open-tracking'));
+		const rootEntry = loadCopy(() => jest.requireActual<TooltipTracking>('../../internals/src/utils/tooltip-open-tracking'));
+		const customElements = loadCopy(() => jest.requireActual<TooltipTracking>('../../internals/src/utils/tooltip-open-tracking'));
 
 		customElements.tooltipOpened();
 		const open = rootEntry.isTooltipOpen();
@@ -47,16 +49,16 @@ describe('state shared across bundle copies', () => {
 
 	it('resolves the bootstrap options in every copy', async () => {
 		const rootEntry = loadCopy(() => jest.requireActual<Bootstrap>('./bootstrap'));
-		const customElements = loadCopy(() => jest.requireActual<Bootstrap>('./bootstrap'));
+		const customElements = loadCopy(() => jest.requireActual<RegisterOptions>('../../internals/src/core/options'));
 
 		await rootEntry.bootstrap([], [], { reflectInputValues: true });
 
-		expect(customElements.getOptions()?.reflectInputValues).toBe(true);
+		expect(customElements.getRegisterOptions()?.reflectInputValues).toBe(true);
 	});
 
 	it('translates with the instance the last initialization created in any copy', () => {
-		const rootEntry = loadCopy(() => jest.requireActual<I18n>('./i18n'));
-		const customElements = loadCopy(() => jest.requireActual<I18n>('./i18n'));
+		const rootEntry = loadCopy(() => jest.requireActual<I18n>('../../internals/src/core/i18n'));
+		const customElements = loadCopy(() => jest.requireActual<I18n>('../../internals/src/core/i18n'));
 
 		const instance = rootEntry.initializeI18n('en');
 

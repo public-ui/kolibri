@@ -1,4 +1,4 @@
-import { KolAvatarTag } from '../../core/component-names';
+import { KolAvatarTag } from '../../../internals/src/core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolAvatar } from './component';
 

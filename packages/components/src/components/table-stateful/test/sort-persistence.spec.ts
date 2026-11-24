@@ -1,5 +1,5 @@
-import type { SortData } from '../../../internal/functional-components/table-stateful/model';
-import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders } from '../../../schema';
+import type { SortData } from '../../../../internals/src/controller/table-stateful/model';
+import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders } from '../../../../internals/src/schema/index';
 import { KolTableStateful } from '../component';
 
 /**

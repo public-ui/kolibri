@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import type { SelectOption, StencilUnknown } from '../../../schema';
+import type { SelectOption, StencilUnknown } from '../../../../internals/src/schema/index';
 import { KolSelect } from '../component';
 
 describe('kol-select initial selection', () => {

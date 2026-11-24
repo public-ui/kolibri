@@ -1,11 +1,11 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import type { ColorPair, KoliBriIconsProp } from '../../../schema';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import type { VersionApi } from '../../../../internals/src/controller/version/api';
+import type { ColorPair, KoliBriIconsProp } from '../../../../internals/src/schema/index';
 import { BadgeFC } from '../badge/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import type { VersionApi } from './api';
 
 type VersionFCProps = Pick<FunctionalComponentProps<VersionApi>, 'class' | 'label'> & {
 	/** Contrast-safe badge colour pair, fixed by the web component. */

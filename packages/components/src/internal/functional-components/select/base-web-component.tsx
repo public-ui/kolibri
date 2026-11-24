@@ -1,18 +1,7 @@
 import { h, type JSX } from '@stencil/core';
-import type {
-	IconsHorizontalPropType,
-	MultiplePropType,
-	Option,
-	OptionsWithOptgroupPropType,
-	SelectOption,
-	ShortKeyPropType,
-	StencilUnknown,
-	Stringified,
-	VariantClassNamePropType,
-} from '../../../schema';
-import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
-import clsx from '../../../utils/clsx';
-import type { CtaRef } from '../../../utils/element-interaction';
+import { fillKeyOptionMap } from '../../../../internals/src/controller/form-field/options';
+import { assertSelectValueMatchesMultiplicity, normalizeSelectValue } from '../../../../internals/src/controller/form-field/select-value';
+import type { SelectApi } from '../../../../internals/src/controller/select/api';
 import {
 	accessKeyProp,
 	horizontalIconsProp,
@@ -24,16 +13,27 @@ import {
 	shortKeyProp,
 	tabIndexProp,
 	variantProp,
-} from '../../props';
+} from '../../../../internals/src/props/index';
+import type {
+	IconsHorizontalPropType,
+	MultiplePropType,
+	Option,
+	OptionsWithOptgroupPropType,
+	SelectOption,
+	ShortKeyPropType,
+	StencilUnknown,
+	Stringified,
+	VariantClassNamePropType,
+} from '../../../../internals/src/schema/index';
+import { validateAccessAndShortKey } from '../../../../internals/src/schema/validators/access-and-short-key';
+import clsx from '../../../../internals/src/utils/clsx';
+import type { CtaRef } from '../../../../internals/src/utils/element-interaction';
 import { getInputAdornments } from '../form-field/adornments';
 import { BaseFormFieldWebComponent } from '../form-field/base-web-component';
 import { FormFieldFC } from '../form-field/component';
 import { InputContainerFC } from '../form-field/input-container';
-import { fillKeyOptionMap } from '../form-field/options';
 import type { SelectFCProps } from '../form-field/select';
 import { SelectFC } from '../form-field/select';
-import { assertSelectValueMatchesMultiplicity, normalizeSelectValue } from '../form-field/select-value';
-import type { SelectApi } from './api';
 
 /**
  * Shared orchestrator implementation of `kol-select` and the page size select of the pagination

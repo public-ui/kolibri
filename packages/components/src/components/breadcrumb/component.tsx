@@ -1,19 +1,19 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { BreadcrumbApi } from '../../internal/functional-components/breadcrumb/api';
-import { breadcrumbPropsConfig } from '../../internal/functional-components/breadcrumb/api';
+import type { UnsubscribeFunction } from '../../../internals/src/components/link/ariaCurrentService';
+import { onLocationChange } from '../../../internals/src/components/link/ariaCurrentService';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { BreadcrumbApi } from '../../../internals/src/controller/breadcrumb/api';
+import { breadcrumbPropsConfig } from '../../../internals/src/controller/breadcrumb/api';
+import type { BreadcrumbLinkItem } from '../../../internals/src/controller/breadcrumb/link-item';
+import { createBreadcrumbLinkItem } from '../../../internals/src/controller/breadcrumb/link-item';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import { breadcrumbLinksProp, labelProp } from '../../../internals/src/props/index';
+import type { BreadcrumbLinkProps, BreadcrumbProps, LabelPropType, Stringified } from '../../../internals/src/schema/index';
+import { a11yHintLabelingLandmarks } from '../../../internals/src/schema/index';
+import { addNavLabel, removeNavLabel } from '../../../internals/src/utils/unique-nav-labels';
 import { BreadcrumbFC } from '../../internal/functional-components/breadcrumb/component';
-import type { BreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
-import { createBreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { breadcrumbLinksProp, labelProp } from '../../internal/props';
-import type { BreadcrumbLinkProps, BreadcrumbProps, LabelPropType, Stringified } from '../../schema';
-import { a11yHintLabelingLandmarks } from '../../schema';
-import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import type { UnsubscribeFunction } from '../link/ariaCurrentService';
-import { onLocationChange } from '../link/ariaCurrentService';
 
 /**
  * The **Breadcrumb** component can be used to display the path to the current position of a web page within a hierarchical structure.

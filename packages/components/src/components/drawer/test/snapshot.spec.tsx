@@ -1,5 +1,5 @@
-import { KolDrawerTag } from '../../../core/component-names';
-import type { AlignPropType, DrawerProps } from '../../../schema';
+import { KolDrawerTag } from '../../../../internals/src/core/component-names';
+import type { AlignPropType, DrawerProps } from '../../../../internals/src/schema/index';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolDrawer } from '../component';

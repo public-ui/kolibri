@@ -1,9 +1,9 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import type { AbbrApi } from '../../../../internals/src/controller/abbr/api';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
-import type { AbbrApi } from './api';
 
 /**
  * The `abbr` element around the slotted abbreviation. The deprecated `label` is not rendered.

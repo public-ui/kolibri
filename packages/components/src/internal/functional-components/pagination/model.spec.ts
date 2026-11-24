@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { clampPage, getPageCount, getPageItems, getVisibleRange, resolvePageSize } from './model';
+import { clampPage, getPageCount, getPageItems, getVisibleRange, resolvePageSize } from '../../../../internals/src/controller/pagination/model';
 
 const options = [
 	{ label: '10', value: 10 },

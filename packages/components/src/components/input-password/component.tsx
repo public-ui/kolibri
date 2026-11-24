@@ -1,5 +1,6 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { bem } from '../../../internals/src/schema/bem-registry';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -34,24 +35,23 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 	VisibilityTogglePropType,
-} from '../../schema';
-import { devHint } from '../../schema';
-import { bem } from '../../schema/bem-registry';
+} from '../../../internals/src/schema/index';
+import { devHint } from '../../../internals/src/schema/index';
 
-import { translate } from '../../i18n';
+import { createButtonItem } from '../../../internals/src/controller/button/item';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { InputPasswordApi } from '../../../internals/src/controller/input-password/api';
+import { inputPasswordPropsConfig } from '../../../internals/src/controller/input-password/api';
+import { translate } from '../../../internals/src/i18n';
+import { visibilityToggleProp } from '../../../internals/src/props/index';
+import clsx from '../../../internals/src/utils/clsx';
+import { createUniqueId } from '../../../internals/src/utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputPasswordApi } from '../../internal/functional-components/input-password/api';
-import { inputPasswordPropsConfig } from '../../internal/functional-components/input-password/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { visibilityToggleProp } from '../../internal/props';
-import clsx from '../../utils/clsx';
-import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 
 const passwordBem = bem.forBlock('kol-input-password');
 

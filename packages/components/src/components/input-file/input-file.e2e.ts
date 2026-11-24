@@ -2,6 +2,8 @@ import { Buffer } from 'buffer';
 
 import { expect, type Page } from '@playwright/test';
 import { type E2EPage, test } from '@stencil/playwright';
+import { translate } from '../../../internals/src/i18n';
+import { Callback } from '../../../internals/src/schema/enums/index';
 import {
 	callback,
 	EXPERIMENTAL_MODE_HEAD,
@@ -15,8 +17,6 @@ import {
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
-import { translate } from '../../i18n';
-import { Callback } from '../../schema/enums';
 
 const COMPONENT_NAME = 'kol-input-file';
 const fillAction: FillAction = async (page) => {

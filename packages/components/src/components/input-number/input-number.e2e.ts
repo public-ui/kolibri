@@ -1,12 +1,12 @@
 import { expect } from '@playwright/test';
 import type { E2EPage } from '@stencil/playwright';
 import { test } from '@stencil/playwright';
+import type { NumberString } from '../../../internals/src/schema/index';
 import { testInputValueReflection } from '../../e2e';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
-import type { NumberString } from '../../schema';
 
 const COMPONENT_NAME = 'kol-input-number';
 const TEST_VALUE = '10.23';

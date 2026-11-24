@@ -1,15 +1,15 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
-import { trimLabel } from '../../../schema';
-import { bem } from '../../../schema/bem-registry';
+import type { BreadcrumbApi } from '../../../../internals/src/controller/breadcrumb/api';
+import type { BreadcrumbLinkItem } from '../../../../internals/src/controller/breadcrumb/link-item';
+import type { FunctionalComponentProps } from '../../../../internals/src/controller/generic-types';
+import { bem } from '../../../../internals/src/schema/bem-registry';
+import { trimLabel } from '../../../../internals/src/schema/index';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import { LinkFC } from '../link/component';
 import { renderLabelWithLang } from '../span/component';
-import type { BreadcrumbApi } from './api';
-import type { BreadcrumbLinkItem } from './link-item';
 
 const breadcrumbBem = bem.forBlock('kol-breadcrumb');
 const BEM_CLASS_BREADCRUMB__ICON = breadcrumbBem('icon');

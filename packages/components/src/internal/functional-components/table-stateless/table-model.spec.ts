@@ -1,6 +1,13 @@
 import { describe, expect, it } from '@jest/globals';
-import type { KoliBriTableHeaderCell } from '../../../schema';
-import { createSelectionModel, getFixedOffsets, getFixedSide, getPrimaryHeaders, getSelectAllSelection, getTableMinWidth } from './table-model';
+import {
+	createSelectionModel,
+	getFixedOffsets,
+	getFixedSide,
+	getPrimaryHeaders,
+	getSelectAllSelection,
+	getTableMinWidth,
+} from '../../../../internals/src/controller/table-stateless/table-model';
+import type { KoliBriTableHeaderCell } from '../../../../internals/src/schema/index';
 
 const cell = (key: string, width?: number): KoliBriTableHeaderCell => ({ key, label: key.toUpperCase(), width });
 
