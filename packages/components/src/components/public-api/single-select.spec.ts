@@ -2,10 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-single-select` (23 props, 2 methods),
- * extracted from the legacy `shadow.tsx` ahead of its skeleton migration (G0 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`). The migration points the pin to `component.tsx`
- * and adds the schema interface check; the pinned contract stays unchanged.
+ * Pinned public API of `kol-single-select` (23 props, 2 methods) (G0 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 const KOL_SINGLE_SELECT_PUBLIC_API: PublicApiContract = {
 	focus: {
@@ -173,5 +170,4 @@ describePublicApiContract({
 	tag: 'kol-single-select',
 	component: 'single-select',
 	pinnedApi: KOL_SINGLE_SELECT_PUBLIC_API,
-	schemaInterface: 'SingleSelectProps',
 });

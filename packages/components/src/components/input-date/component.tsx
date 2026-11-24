@@ -1,5 +1,5 @@
 import type { JSX, VNode } from '@stencil/core';
-import { Component, Element, forceUpdate, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -12,7 +12,6 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
-	InputDateProps,
 	InputDateTypePropType,
 	InputTypeOnDefault,
 	InternalButtonProps,
@@ -33,6 +32,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { deprecatedHint } from '../../schema';
+import { bem } from '../../schema/bem-registry';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
@@ -68,6 +68,8 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';
 
+const dateBem = bem.forBlock('kol-input-date');
+
 /**
  * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.
  *
@@ -81,10 +83,7 @@ import { submitFormOnEnter } from '../form/controller';
 	},
 	shadow: true,
 })
-export class KolInputDate
-	extends BaseFormFieldWebComponent<InputDateApi>
-	implements ClickableElement, FocusableElement, InputDateProps, WebComponentInterface<InputDateApi>
-{
+export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputDateApi> {
 	@Element() protected readonly host?: HTMLKolInputDateElement;
 
 	@State() public id = createUniqueId('input-date');
@@ -94,17 +93,17 @@ export class KolInputDate
 
 	@State() public inputHasFocus = false;
 
+	/**
+	 * Whether the field has a value, rendered as the root class `has-value`. It follows the initial
+	 * value and every `change`, and as state the class follows every change and `reset()` directly
+	 * (#11053).
+	 */
+	@State() public hasValue = false;
+
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	/** Type in which `_value` was set; `getValue()` and the events return the value in this type. */
 	private valueType: DateValueType = null;
-
-	/**
-	 * Whether the field has a value, rendered as the root class `has-value`. It is a plain field, not
-	 * state: it follows the initial value and every `change`, and the class follows with the next
-	 * render (#11053).
-	 */
-	private hasValue = false;
 
 	protected readonly propsConfig: PropsConfigShape = inputDatePropsConfig;
 
@@ -436,9 +435,8 @@ export class KolInputDate
 	public reset(): Promise<void> {
 		// `_value` keeps its value; only the rendered and the form value are cleared.
 		this.setRenderProp('value', undefined as unknown as string);
-		// The class must follow the cleared field immediately, not at the next change event.
+		// The state change renders again, so the class follows the cleared field immediately, not at the next change event.
 		this.hasValue = false;
-		forceUpdate(this);
 		this.formAssociation.setFormAssociatedValue('');
 
 		// Setting the render value might not change the native element if the previous value is already an empty string,
@@ -592,7 +590,7 @@ export class KolInputDate
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-date', this.getRenderProp('type'), {
+						class: clsx(dateBem(), this.getRenderProp('type'), {
 							'has-value': this.hasValue,
 						}),
 						accessKey: this.getRenderProp('accessKey') || undefined,

@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-table-stateful` (14 props, 2 methods), extracted from the legacy `shadow.tsx`
- * before its skeleton migration (#9599).
+ * Pinned public API of `kol-table-stateful` (14 props, 2 methods), #9599.
  */
 const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 	getSelection: {
@@ -28,7 +27,7 @@ const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'AriaLabelledbyPropType',
 		required: false,
-		doc: 'References an external element by ID that serves as the accessible label for this table. Uses ElementInternals.ariaLabelledByElements to cross the Shadow DOM boundary. Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox). Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.',
+		doc: 'References an external element by ID that serves as the accessible label for this table. The component resolves the IDs and sets them as element references (`ariaLabelledByElements`) on the native `<table>` inside the shadow root, because IDREF attributes cannot cross that boundary. Desktop screen readers (NVDA, JAWS with Chrome/Firefox) follow the references; VoiceOver and TalkBack do not — use `_label` instead.',
 	},
 	_data: {
 		kind: 'prop',

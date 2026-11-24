@@ -93,7 +93,7 @@ test.describe('kol-pagination', () => {
 });
 
 /*
- * Pins the event and callback protocol ahead of the skeleton migration (#9590): which callbacks and
+ * Pins the event and callback protocol (#9590): which callbacks and
  * DOM events fire, in which order, with which value, and how often a clamped page is reported.
  */
 test.describe('kol-pagination behavior', () => {
@@ -223,5 +223,25 @@ test.describe('kol-pagination behavior', () => {
 		await mount(page, { _label: 'Pagination', _max: 40, _page: 1, _pageSize: 15, _pageSizeOptions: [10, 20] });
 		expect(await page.locator('kol-pagination .kol-pagination__entries').textContent()).toContain('10');
 		expect(await page.locator('kol-pagination select').inputValue()).toBe('-0');
+	});
+});
+
+test.describe('kol-pagination focus', () => {
+	test('keeps the focus on the activated page button when the page changes', async ({ page }) => {
+		await page.setContent('<kol-pagination _label="Pagination" _max="100" _page="5"></kol-pagination>');
+		const pagination = page.locator('kol-pagination');
+		await pagination.evaluate((element: HTMLKolPaginationElement) => {
+			element.addEventListener('changepage', (event) => {
+				element._page = (event as CustomEvent<number>).detail;
+			});
+		});
+		await page.waitForChanges();
+
+		const button = pagination.getByRole('button', { name: '6', exact: true });
+		await button.focus();
+		await page.keyboard.press('Enter');
+		await expect(pagination.locator('.kol-pagination__button--selected .kol-span__label')).toHaveText('6');
+
+		await expect(pagination.getByRole('button', { name: '6', exact: true })).toBeFocused();
 	});
 });

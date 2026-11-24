@@ -8,7 +8,7 @@ import type { TreeItemApi } from '../../internal/functional-components/tree-item
 import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
 import { activeProp, ariaCurrentValueProp, hrefProp, labelLangSegmentsProp, openProp } from '../../internal/props';
-import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType, TreeItemProps } from '../../schema';
+import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -26,7 +26,7 @@ import { invalidateOpenItemsCache } from '../tree/open-items-cache';
 	},
 	shadow: true,
 })
-export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeItemProps, WebComponentInterface<TreeItemApi> {
+export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebComponentInterface<TreeItemApi> {
 	@Element() protected readonly host?: HTMLKolTreeItemElement;
 
 	@State() public ariaCurrent: string = '';
@@ -72,7 +72,10 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
-		openProp.apply(value, (v) => (this.open = v));
+		openProp.apply(value, (v) => {
+			this.open = v;
+			invalidateOpenItemsCache(this.getTree());
+		});
 	}
 
 	/**

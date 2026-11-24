@@ -21,13 +21,12 @@ import { variantQuoteProp } from './variant-quote';
 import { spinVariantOptions, variantSpinProp } from './variant-spin';
 
 /**
- * Pins the enum semantics adopted from #10719. The predecessor degraded an unknown value silently
- * to the `''` sentinel, which removed the attribute without telling anyone. The normalizers now
- * throw instead; the factory catches that, logs a `devWarning` and skips the callback, so the
- * render prop keeps the value it already had.
+ * Pins the enum semantics of #10719. For an unknown value the normalizers throw; the factory
+ * catches that, logs a `devWarning` and skips the callback, so the render prop keeps the value it
+ * already had.
  *
  * The kept-value behavior is only observable on a *change* from a valid to an invalid value —
- * on first assignment the previous value is the default, which equals the old degraded result.
+ * on first assignment the previous value is the default.
  * `kol-link` and `kol-link-button` share these definitions, so this is their contract too.
  */
 type EnumPropDefinition = {

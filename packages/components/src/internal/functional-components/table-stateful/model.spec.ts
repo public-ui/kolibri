@@ -100,6 +100,12 @@ describe('table-stateful model', () => {
 			expect(result.hasSortedCells).toBe(true);
 		});
 
+		it('keeps the sort of earlier rows when a later row has no sortable cell', () => {
+			const result = initializeSortFromHeaders({ horizontal: [[{ ...ID, sortDirection: 'ASC' }], [NAME]] }, false);
+			expect(result.sortData.map((entry) => `${entry.key}:${entry.direction}`)).toEqual(['id:ASC']);
+			expect(result.hasSortedCells).toBe(true);
+		});
+
 		it('reports a sortable column without key', () => {
 			const result = initializeSortFromHeaders({ horizontal: [[{ label: 'ID', compareFn: byId, sortDirection: 'ASC' }]] }, false);
 			expect(result).toEqual({ sortData: [], hasSortedCells: false, missingKey: true });

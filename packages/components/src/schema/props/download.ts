@@ -1,7 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { watchString } from '../utils';
-
 /* types */
 
 export type DownloadPropType = string;
@@ -11,9 +7,4 @@ export type DownloadPropType = string;
  */
 export type PropDownload = {
 	download?: DownloadPropType;
-};
-
-/* validator */
-export const validateDownload = (component: Generic.Element.Component, value?: DownloadPropType): void => {
-	watchString(component, '_download', value);
 };

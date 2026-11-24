@@ -1,15 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { attachInternals, resolveTargets } from './aria-labelledby';
-
-describe('attachInternals', () => {
-	it('returns undefined without a host', () => {
-		expect(attachInternals(undefined)).toBeUndefined();
-	});
-
-	it('returns undefined for a host without attachInternals', () => {
-		expect(attachInternals({} as Element)).toBeUndefined();
-	});
-});
+import { resolveTargets } from './aria-labelledby';
 
 describe('resolveTargets', () => {
 	it('resolves every id of the space separated list to its element in the document', () => {

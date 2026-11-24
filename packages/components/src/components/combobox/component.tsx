@@ -5,7 +5,6 @@ import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
 	ClickableElement,
-	ComboboxProps,
 	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
@@ -74,10 +73,7 @@ import {
 	},
 	shadow: true,
 })
-export class KolCombobox
-	extends BaseListboxWebComponent<ComboboxApi>
-	implements ClickableElement, ComboboxProps, FocusableElement, WebComponentInterface<ComboboxApi>
-{
+export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements ClickableElement, FocusableElement, WebComponentInterface<ComboboxApi> {
 	@Element() protected readonly host?: HTMLKolComboboxElement;
 
 	@State() public id = createUniqueId('combobox');
@@ -650,7 +646,7 @@ export class KolCombobox
 			type: 'text',
 			role: 'combobox',
 			'aria-activedescendant': this.getActiveDescendant(),
-			'aria-autocomplete': 'both',
+			'aria-autocomplete': 'list',
 			'aria-controls': createRelatedUniqueId(id, 'listbox'),
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
 			'aria-expanded': this.isOpen ? 'true' : 'false',
@@ -776,6 +772,7 @@ export class KolCombobox
 							onKeyDown={this.handleDropdownKeyDown}
 							hidden={!this.isOpen || isDisabled}
 							id={createRelatedUniqueId(this.id, 'listbox')}
+							aria-labelledby={createRelatedUniqueId(this.id, 'label')}
 						>
 							{this.renderOptions()}
 						</CustomSuggestionsOptionsGroupFC>

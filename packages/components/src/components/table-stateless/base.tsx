@@ -139,6 +139,8 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	protected teardownTable(): void {
 		this.resizeObserver?.disconnect();
 		clearTimeout(this.resizeDebounceTimeout);
+		this.cellRenderTimeouts.forEach((timeout) => clearTimeout(timeout));
+		this.cellRenderTimeouts.clear();
 		this.buttonItems.destroy();
 		this.linkItems.destroy();
 		this.selectionTooltipItems.destroy();
@@ -357,6 +359,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		this.cellRenderTimeouts.set(
 			element,
 			setTimeout(() => {
+				this.cellRenderTimeouts.delete(element);
 				if (typeof cell.render === 'function') {
 					const renderContent = cell.render(element, cell, cell.data, this.getRenderProp('data'));
 					if (typeof renderContent === 'string') {

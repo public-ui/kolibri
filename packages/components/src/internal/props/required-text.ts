@@ -7,10 +7,9 @@ import { createPropDefinition } from './helpers/factory';
  * text that replaces the default hint.
  *
  * External type is `Stringified<boolean>` (the declared `@Prop` type), internal type is
- * `boolean | string` — the predecessor branched on `typeof value === 'boolean'` and ran
- * `watchBoolean` or `watchString`, so a string was stored verbatim and rendered as the hint text.
- * A string is therefore **not** parsed into a boolean: `_requiredText="true"` renders the literal
- * word, exactly as before.
+ * `boolean | string`: a boolean switches the default hint on or off, a string is rendered verbatim
+ * as the hint text. A string is therefore **not** parsed into a boolean: `_requiredText="true"`
+ * renders the literal word.
  */
 export type RequiredTextProp = Prop<'requiredText', Stringified<boolean>, boolean | string>;
 

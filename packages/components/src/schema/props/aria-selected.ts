@@ -1,7 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { watchBoolean } from '../utils';
-
 /* types */
 export type AriaSelectedPropType = boolean;
 
@@ -11,9 +7,4 @@ export type AriaSelectedPropType = boolean;
  */
 export type PropAriaSelected = {
 	ariaSelected: AriaSelectedPropType;
-};
-
-/* validator */
-export const validateAriaSelected = (component: Generic.Element.Component, value?: boolean): void => {
-	watchBoolean(component, '_ariaSelected', value);
 };

@@ -1,5 +1,4 @@
-import type { Generic } from 'adopted-style-sheets';
-
+import type { ComponentPropsOptional, ComponentPropsRequired } from '../../internal/functional-components/generic-types';
 import type {
 	AriaExpandedPropType,
 	PropAccessKey,
@@ -48,5 +47,5 @@ export type OptionalButtonProps = {
 	PropSyncValueBySelector &
 	PropTooltipAlign;
 
-export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
-export type InternalButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
+export type ButtonProps = ComponentPropsRequired<RequiredButtonProps> & ComponentPropsOptional<OptionalButtonProps>;
+export type InternalButtonProps = ComponentPropsRequired<RequiredButtonProps> & ComponentPropsOptional<OptionalButtonProps>;
