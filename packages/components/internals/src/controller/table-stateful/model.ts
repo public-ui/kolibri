@@ -52,10 +52,11 @@ export function changeCellSort(sortData: SortData[], headerCell: KoliBriTableHea
 }
 
 /**
- * Reads the initial sort from the `sortDirection` of the header cells. Each header row starts the sort
- * anew, so the last row with a sortable cell defines it. Without `allowMultiSort` only the first sorted
- * cell of that row counts. `hasSortedCells` reports whether any row has a sorted cell; `missingKey`
- * reports whether a sortable cell lacks its `key`.
+ * Reads the initial sort from the `sortDirection` of the header cells. Each header row that contains a
+ * sortable cell starts the sort anew, so the last such row defines it; a row without a sortable cell keeps
+ * the sort of the rows before it. Without `allowMultiSort` only the first sorted cell of that row counts.
+ * `hasSortedCells` reports whether any row has a sorted cell; `missingKey` reports whether a sortable cell
+ * lacks its `key`.
  */
 export function initializeSortFromHeaders(
 	headers: KoliBriTableHeaders,
@@ -65,7 +66,8 @@ export function initializeSortFromHeaders(
 	let hasSortedCells = false;
 	let missingKey = false;
 	const applySort = (cells: KoliBriTableHeaderCellWithLogic[]) => {
-		sortData = [];
+		const rowSort: SortData[] = [];
+		let hasSortableCell = false;
 		cells.forEach((cell) => {
 			if (!isDefaultCell(cell)) {
 				return;
@@ -74,18 +76,21 @@ export function initializeSortFromHeaders(
 				missingKey = true;
 				return;
 			}
-			const key = cell.key;
-			if (!key) {
+			if (!cell.key || typeof cell.compareFn !== 'function') {
 				return;
 			}
+			hasSortableCell = true;
 			const direction = cell.sortDirection;
-			if ((direction === 'ASC' || direction === 'DESC') && typeof cell.compareFn === 'function') {
-				if (allowMultiSort || sortData.length === 0) {
-					sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction });
-				}
+			if (direction === 'ASC' || direction === 'DESC') {
 				hasSortedCells = true;
+				if (allowMultiSort || rowSort.length === 0) {
+					rowSort.push({ label: cell.label, key: cell.key, compareFn: cell.compareFn, direction });
+				}
 			}
 		});
+		if (hasSortableCell) {
+			sortData = rowSort;
+		}
 	};
 	headers.horizontal?.forEach(applySort);
 	headers.vertical?.forEach(applySort);
@@ -192,6 +197,26 @@ export function headerKeysChanged(previous: KoliBriTableHeaders, next: KoliBriTa
 	const previousKeys = getKeys(previous);
 	const nextKeys = getKeys(next);
 	return previousKeys.length !== nextKeys.length || previousKeys.some((key, index) => key !== nextKeys[index]);
+}
+
+/** Whether any header cell declares a sort direction. */
+export function hasDeclaredSort(headers: KoliBriTableHeaders): boolean {
+	return [headers.horizontal, headers.vertical].some((directions) => directions?.some((row) => row.some((cell) => cell.sortDirection !== undefined)));
+}
+
+/**
+ * Whether a non-structural re-set re-declares the direction of the currently sorted column — only
+ * then does the re-set replace that direction instead of leaving the active sort untouched. An
+ * empty active sort makes any declared sort active.
+ */
+export function redeclaresActiveSort(next: KoliBriTableHeaders, sortData: SortData[]): boolean {
+	const active = sortData.find((entry) => entry.direction);
+	if (!active) {
+		return hasDeclaredSort(next);
+	}
+	return [next.horizontal, next.vertical].some((directions) =>
+		directions?.some((row) => row.some((cell) => cell?.key === active.key && cell.sortDirection !== undefined)),
+	);
 }
 
 /**

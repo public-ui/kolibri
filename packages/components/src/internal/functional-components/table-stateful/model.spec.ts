@@ -6,6 +6,7 @@ import {
 	getHeaderCellSortOrder,
 	getHeaderCellSortState,
 	getSelectedData,
+	hasDeclaredSort,
 	hasHeadersInBothDirections,
 	initializeSortFromHeaders,
 	mergeAdjustedHeaderCells,
@@ -97,6 +98,12 @@ describe('table-stateful model', () => {
 		it('takes the sort of the last header row, while any row reports sorted cells', () => {
 			const result = initializeSortFromHeaders({ horizontal: [[{ ...ID, sortDirection: 'ASC' }], [CITY]] }, false);
 			expect(result.sortData).toEqual([]);
+			expect(result.hasSortedCells).toBe(true);
+		});
+
+		it('keeps the sort of earlier rows when a later row has no sortable cell', () => {
+			const result = initializeSortFromHeaders({ horizontal: [[{ ...ID, sortDirection: 'ASC' }], [NAME]] }, false);
+			expect(result.sortData.map((entry) => `${entry.key}:${entry.direction}`)).toEqual(['id:ASC']);
 			expect(result.hasSortedCells).toBe(true);
 		});
 
@@ -207,5 +214,15 @@ describe('table-stateful model', () => {
 			expect(getSelectedData(undefined, ROWS, [1])).toBeNull();
 			expect(getSelectedData({ label: () => '', keyPropertyName: '' }, ROWS, [1])).toBeNull();
 		});
+	});
+});
+
+describe('hasDeclaredSort', () => {
+	it('returns true when a header cell declares a sort direction', () => {
+		expect(hasDeclaredSort({ horizontal: [[{ ...ID, sortDirection: 'ASC' }]], vertical: [] })).toBe(true);
+	});
+
+	it('returns false when no header cell declares a sort direction', () => {
+		expect(hasDeclaredSort({ horizontal: [[ID]], vertical: [] })).toBe(false);
 	});
 });

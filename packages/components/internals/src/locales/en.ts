@@ -1,6 +1,6 @@
 export default {
 	'action-done': 'Action done',
-	'action-running': 'Action is running...',
+	'action-running': 'Action is running',
 	'avatar-alt': 'Avatar of {{name}}',
 	'character-counter-current': '{{current}} characters',
 	'character-counter-current-of-max': '{{current}}/{{max}} characters',
@@ -18,7 +18,7 @@ export default {
 	error: 'Error',
 	'error-list': 'Error list',
 	'error-list-message': 'Please correct the following errors',
-	'filename-text': 'Choose a file or drop it here...',
+	'filename-text': 'Choose a file or drop it here',
 	'form-description': 'Form fields marked with an asterisk (*) are mandatory.',
 	'hide-password': 'Hide password',
 	info: 'Note',
