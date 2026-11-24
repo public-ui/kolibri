@@ -1,7 +1,9 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { classNameFromVariant } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
+import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { FunctionalComponentProps } from '../generic-types';
@@ -27,7 +29,7 @@ const BEM_CLASS_TABS__TABLIST = tabsBem('tablist');
  * of `__button-create`, which the base and theme styles rely on.
  */
 export const TabsFC: FC<FunctionalComponentProps<TabsApi>> = (props) => {
-	const { align, class: hostClass, createButton, handleBlur, handleKeyDown, hasCreateButton, label, refContent, refRoot, tabButtons } = props;
+	const { align, class: hostClass, createButton, handleBlur, handleKeyDown, hasCreateButton, label, refContent, refRoot, tabButtons, variant } = props;
 
 	/* `blur` does not bubble, so the tab list listens to `focusout` and reports a blur only when the focus leaves it. */
 	const handleFocusOut = (event: FocusEvent): void => {
@@ -38,7 +40,14 @@ export const TabsFC: FC<FunctionalComponentProps<TabsApi>> = (props) => {
 	};
 
 	return (
-		<BemRootNodeFC block="kol-tabs" modifiers={{ [`align-${align}`]: true }} class={hostClass} ref={refRoot}>
+		<BemRootNodeFC
+			block="kol-tabs"
+			modifiers={{ [`align-${align}`]: true }}
+			class={clsx(hostClass, {
+				[classNameFromVariant(variant, 'button')]: !!variant && variant.length > 0,
+			})}
+			ref={refRoot}
+		>
 			<div class={BEM_CLASS_TABS__BUTTON_GROUP}>
 				{/* The tab buttons inside are focusable; the tab list itself is not part of the tab order. */}
 				<div aria-label={label} class={BEM_CLASS_TABS__TABLIST} role="tablist" tabIndex={-1} onKeyDown={handleKeyDown} onFocusout={handleFocusOut}>

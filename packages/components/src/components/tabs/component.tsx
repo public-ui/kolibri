@@ -8,7 +8,7 @@ import { tabsPropsConfig } from '../../internal/functional-components/tabs/api';
 import type { TabsButton, TabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { createTabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { TabsFC } from '../../internal/functional-components/tabs/component';
-import { alignProp, hasCreateButtonProp, labelProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../internal/props';
+import { alignProp, hasCreateButtonProp, labelProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp, variantProp } from '../../internal/props';
 import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
@@ -22,9 +22,11 @@ import type {
 	Stringified,
 	TabBehaviorPropType,
 	TabButtonProps,
+	VariantClassNamePropType,
 } from '../../schema';
 import { devHint, koliBriQuerySelector } from '../../schema';
 
+import { getFeatureFlag } from 'adopted-style-sheets';
 import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props';
@@ -165,6 +167,16 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType = undefined;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		this.applyVariant(value);
+	}
+
+	/**
 	 * Sets focus on the current tab button.
 	 */
 	@Method()
@@ -192,6 +204,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		this.watchOn(this._on);
 		this.watchSelected(this._selected);
 		this.watchTabs(this._tabs);
+		this.watchVariant(this._variant);
 	}
 
 	public componentWillRender(): void {
@@ -452,6 +465,14 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		});
 	}
 
+	protected applyVariant(value?: VariantClassNamePropType): void {
+		// Resolved here rather than as a `@Prop` default: a field initializer runs in the
+		// constructor, where `@Element()` is not yet populated for a `shadow: false` element under
+		// SSR, so the theme-scoped feature flag would silently be ignored there. Keeping it a
+		// fallback also leaves the public API unchanged. The rendered default is `normal` either way.
+		variantProp.apply(value ?? getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal', (v) => this.setRenderProp('variant', v));
+	}
+
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -469,6 +490,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 					selected={this.getRenderProp('selected')}
 					tabButtons={this.tabButtons}
 					tabs={this.getRenderProp('tabs')}
+					variant={this.getRenderProp('variant')}
 				/>
 			</Host>
 		);
