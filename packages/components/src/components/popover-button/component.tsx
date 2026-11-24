@@ -1,7 +1,11 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PopoverButtonWebComponentInterface } from '../../internal/functional-components/popover-button/api';
+import { PopoverButtonFC } from '../../internal/functional-components/popover-button/component';
+import { PopoverBehavior } from '../../internal/functional-components/popover/behavior';
+import { popoverAlignProp } from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDescriptionPropType,
@@ -26,7 +30,7 @@ import type {
 } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { BasePopoverButtonWebComponent } from './base';
+import { BaseButtonWebComponent } from '../button/base';
 
 /**
  * A button that toggles the visibility of a popover overlay containing arbitrary content.
@@ -42,7 +46,7 @@ import { BasePopoverButtonWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolPopoverButton extends BasePopoverButtonWebComponent implements ClickableElement, FocusableElement, PopoverButtonWebComponentInterface {
+export class KolPopoverButton extends BaseButtonWebComponent implements ClickableElement, FocusableElement, PopoverButtonWebComponentInterface {
 	@Element()
 	protected readonly host?: HTMLKolPopoverButtonElement;
 
@@ -51,6 +55,20 @@ export class KolPopoverButton extends BasePopoverButtonWebComponent implements C
 
 	@State()
 	public popoverOpen = false;
+
+	/**
+	 * Stateless: the shared button base is typed over `ButtonApi`, so its state access does not fit
+	 * the popover API, and the open state comes from the popover's own `toggle` event.
+	 */
+	private readonly popoverBehavior = new PopoverBehavior(BaseWebComponent.stateLess);
+	private popoverElement?: HTMLDivElement;
+
+	/**
+	 * DOM id of the popover element, referenced by the button's aria-controls attribute. Public
+	 * because the element exposes it through its web component interface; it is not a `@State()`
+	 * field since it never changes after creation.
+	 */
+	public readonly popoverId = createUniqueId('popover');
 
 	public constructor() {
 		super();
@@ -165,7 +183,7 @@ export class KolPopoverButton extends BasePopoverButtonWebComponent implements C
 
 	@Watch('_popoverAlign')
 	public watchPopoverAlign(value?: PopoverAlignPropType): void {
-		this.applyPopoverAlign(value);
+		popoverAlignProp.apply(value, (v) => this.popoverBehavior.watchAlign(v));
 	}
 
 	/**
@@ -251,7 +269,7 @@ export class KolPopoverButton extends BasePopoverButtonWebComponent implements C
 	 */
 	@Method()
 	public hidePopover(): Promise<void> {
-		this.closePopover();
+		this.popoverBehavior.setShow(false);
 		return Promise.resolve();
 	}
 
@@ -260,7 +278,11 @@ export class KolPopoverButton extends BasePopoverButtonWebComponent implements C
 	 */
 	@Method()
 	public showPopover(): Promise<void> {
-		this.openPopover();
+		// Refused while the button is disabled: the trigger is a `<button disabled>`, so no user
+		// interaction can open the popover, and the programmatic path must not be the one way around that.
+		if (this.getRenderProp('disabled') !== true) {
+			this.popoverBehavior.setShow(true);
+		}
 		return Promise.resolve();
 	}
 
@@ -285,7 +307,10 @@ export class KolPopoverButton extends BasePopoverButtonWebComponent implements C
 	}
 
 	public componentWillLoad(): void {
-		this.initPopoverToggle();
+		this.unsetButtonTabIndex();
+		// The popover button exposes no `_on` prop, so the button click always toggles the popover.
+		this.applyOn({ onClick: this.togglePopover });
+		this.popoverBehavior.componentWillLoad({ align: popoverAlignProp.getDefaultValue() });
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaDescription(this._ariaDescription);
@@ -310,15 +335,73 @@ export class KolPopoverButton extends BasePopoverButtonWebComponent implements C
 
 	public componentDidRender(): void {
 		this.syncTooltipListeners();
-		this.syncPopoverToggleListener();
+		// addEventListener is idempotent for an identical listener, so per-render calls are safe.
+		this.popoverElement?.addEventListener('toggle', this.handleToggle);
 	}
 
 	public disconnectedCallback(): void {
 		this.destroyTooltipBehavior();
-		this.destroyPopover();
+		if (this.popoverElement) {
+			this.popoverElement.removeEventListener('toggle', this.handleToggle);
+			this.popoverElement = undefined;
+		}
+		this.popoverBehavior.destroy();
 	}
 
+	private readonly togglePopover = (): void => {
+		this.popoverBehavior.setShow(!this.popoverOpen);
+	};
+
+	private readonly handleToggle = (event: Event): void => {
+		this.popoverOpen = (event as ToggleEvent).newState === 'open';
+	};
+
+	private readonly setButtonElementRef = (element?: HTMLButtonElement): void => {
+		this.ctaRef(element);
+		this.popoverBehavior.setTriggerElement(element);
+	};
+
+	private readonly setPopoverElementRef = (element?: HTMLDivElement): void => {
+		this.popoverElement = element;
+		this.popoverBehavior.setPopoverElementRef(element);
+	};
+
 	public render(): JSX.Element {
-		return <Host>{this.renderPopoverButtonFC()}</Host>;
+		return (
+			<Host>
+				<PopoverButtonFC
+					accessKey={this.getRenderProp('accessKey')}
+					ariaDescription={this.getRenderProp('ariaDescription')}
+					ariaDescriptionId={this.getState('ariaDescriptionId')}
+					ariaHasPopup={this.getRenderProp('ariaHasPopup')}
+					ariaSelected={this.getRenderProp('ariaSelected')}
+					customClass={this.getRenderProp('customClass')}
+					disabled={this.getRenderProp('disabled')}
+					handleBlur={this.handleBlur}
+					handleClick={this.handleClick}
+					handleFocus={this.handleFocus}
+					handleMouseDown={this.handleMouseDown}
+					hideLabel={this.getRenderProp('hideLabel')}
+					icons={this.getRenderProp('icons')}
+					id={this.getRenderProp('id')}
+					inline={this.getRenderProp('inline')}
+					label={this.getRenderProp('label')}
+					name={this.getRenderProp('name')}
+					on={this.getRenderProp('on')}
+					popoverAlign={this.popoverBehavior.getRenderProp('align')}
+					popoverOpen={this.popoverOpen}
+					popoverId={this.popoverId}
+					refButton={this.setButtonElementRef}
+					refPopover={this.setPopoverElementRef}
+					refTooltip={this.tooltipBehavior.setTooltipElementRef}
+					role={this.getRenderProp('role')}
+					shortKey={this.getRenderProp('shortKey')}
+					tabIndex={this.getRenderProp('tabIndex')}
+					tooltipAlign={this.getRenderProp('tooltipAlign')}
+					type={this.getRenderProp('type')}
+					variant={this.getRenderProp('variant')}
+				/>
+			</Host>
+		);
 	}
 }

@@ -290,9 +290,26 @@ const WEB_COMPONENT_BASES = (() => {
 	return declarations.filter(({ cls }) => !decoratorNames(cls).includes('Component') && extendsBaseWebComponent(cls));
 })();
 
+describe('Shared orchestrator bases', () => {
+	/** ARC42 § 9, decision 16: the `base.tsx` of a component folder is shared by at least two elements. */
+	const bases = SOURCES.filter(({ file }) => /components[\\/][^\\/]+[\\/]base\.tsx$/.test(file)).flatMap(({ file, source }) =>
+		classesOf(source)
+			.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && cls.name !== undefined)
+			.map((cls) => ({ file: path.relative(SRC, file), name: cls.name?.text ?? '' })),
+	);
+	const elementsExtending = (name: string): number =>
+		SOURCES.flatMap(({ source }) => classesOf(source)).filter(
+			(cls) => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component') && baseName(cls) === name,
+		).length;
+
+	it.each(bases.map(({ file, name }) => [`${file} ${name}`, name]))('%s is extended by at least two elements', (_label, name) => {
+		expect(elementsExtending(name)).toBeGreaterThanOrEqual(2);
+	});
+});
+
 describe('Web component base class member order', () => {
 	it('finds the base classes', () => {
-		expect(WEB_COMPONENT_BASES.length).toBeGreaterThan(10);
+		expect(WEB_COMPONENT_BASES.length).toBeGreaterThan(5);
 	});
 
 	it.each(WEB_COMPONENT_BASES.map(({ cls, file }) => [`${path.relative(SRC, file)} ${cls.name?.text}`, cls]))('%s follows the member order', (_name, cls) => {
