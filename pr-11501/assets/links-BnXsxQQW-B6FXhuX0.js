@@ -1,0 +1,1 @@
+import{tt as e}from"./index-CLph5Ioe-D-1Ev8A0.js";import{b as t,l as n}from"./props-from-config-C9wMUEf2-DaX1bVzn.js";function r(r){return n(`links`,[],e=>t(e),e=>e.every(e=>typeof e==`object`&&!!e&&(typeof e._href==`string`||typeof e._label==`string`)),{hints:(t,n)=>e(r,n.length)})}export{r as t};
