@@ -113,7 +113,7 @@ Responsibilities of the WC:
 - Owns the Stencil-specific decorators (`@Prop`, `@Event`, `@Watch`, `@State`, `@Listen`). Watchers normalize incoming values via schema helpers and store them with `setRenderProp`.
 - Manages derived/UI state on `@State` fields, updated through `setState`/`getState` for reactivity.
 - Composes optional Behaviors (e.g. `private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess)`).
-- Renders the FC inside a bare `<Host>` (shadow DOM). No `<Host class="kol-…">` — the tag name plus Shadow DOM are sufficient.
+- Renders the FC inside a bare `<Host>` (shadow DOM). No `<Host class="kol-…">` — the tag name plus Shadow DOM are sufficient. `render()` returns `<Host>` with exactly one child: the FC or a call of an own render helper that returns it (`{this.renderButtonFC()}`). Documented exceptions set one attribute on the host: `class` on `kol-select` and `kol-table-stateful`, which consumers select, and `tabindex` on `kol-tree`, whose host is the tab stop that hands the focus on to the active item. `render-host.spec.ts` pins this contract.
 
 A WC has **exactly one orchestrator (itself)** plus zero or more Behaviors. A WC may compose Behaviors, never other WCs.
 
