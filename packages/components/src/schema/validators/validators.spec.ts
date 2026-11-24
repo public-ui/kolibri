@@ -4,7 +4,7 @@ import { getLoggedMessages } from '../../utils/testing/logged-messages';
 import type { Optgroup, Option, SelectOption } from '../types/input/types';
 import { Log } from '../utils/dev.utils';
 import { validateAccessAndShortKey } from './access-and-short-key';
-import { isObject, isString, isStyle, STATE_CHANGE_EVENT } from './common';
+import { isNumberString, isObject, isString, isStyle, STATE_CHANGE_EVENT } from './common';
 import { validateInputSelectOptions } from './options';
 
 describe('schema validators', () => {
@@ -132,4 +132,17 @@ describe('schema validators', () => {
 			expect(a11yHints()).toEqual([]);
 		});
 	});
+});
+
+describe('isNumberString', () => {
+	it.each<unknown>(['0', '5', '007', '12.5', '0.25', '-1', '+1', '1e3', '-2.5E-3', '.5', '5.'])('accepts %p', (value) => {
+		expect(isNumberString(value)).toBe(true);
+	});
+
+	it.each<unknown>(['', ' 5', '5 ', '-', '.', 'e3', '1e', '1e400', '0x10', '1,5', '1.2.3', 'abc', 'NaN', 'Infinity', 5, undefined, null])(
+		'rejects %p',
+		(value) => {
+			expect(isNumberString(value)).toBe(false);
+		},
+	);
 });
