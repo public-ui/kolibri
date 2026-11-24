@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import type { SplitButtonWebComponentInterface } from '../../internal/functional-components/button/api';
 import type { PopoverButtonItem } from '../../internal/functional-components/popover-button/item';
@@ -375,12 +375,14 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 
 	public render(): JSX.Element {
 		return (
-			<SplitButtonFC
-				buttonProps={this.getButtonFCProps()}
-				buttonWrapperClass={this.getButtonWrapperClass()}
-				dropdownProps={this.dropdownItem.getFcProps()}
-				refDropdown={this.setDropdownRef}
-			/>
+			<Host>
+				<SplitButtonFC
+					buttonProps={this.getButtonFCProps()}
+					buttonWrapperClass={this.getButtonWrapperClass()}
+					dropdownProps={this.dropdownItem.getFcProps()}
+					refDropdown={this.setDropdownRef}
+				/>
+			</Host>
 		);
 	}
 }

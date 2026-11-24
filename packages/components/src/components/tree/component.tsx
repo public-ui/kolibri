@@ -324,6 +324,8 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 
 	public render(): JSX.Element {
 		return (
+			// The host is the tab stop of the tree and hands the focus on to the active item (`handleFocusIn`):
+			// documented exception to the bare `<Host>`.
 			<Host tabindex="0">
 				<TreeFC handleSlotchange={this.handleSlotchange} label={this.getRenderProp('label')} />
 			</Host>
