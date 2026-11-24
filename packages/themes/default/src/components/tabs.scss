@@ -2,12 +2,6 @@
 @use '~@public-ui/components/index' as *;
 
 @layer kol-theme-component {
-	@property --kol-tabs-small-width {
-		inherits: true;
-		initial-value: '400px';
-		syntax: '<length>';
-	}
-
 	:host {
 		container: tabs / inline-size;
 	}
@@ -18,47 +12,47 @@
 		grid-template-rows: var(--grid-template-rows);
 
 		&--align-right {
-			--display: grid;
-			--grid-template-columns: 1fr auto;
-
-			--button-group-display: grid;
+			--button-group-flex-direction: column;
 			--button-group-order: 1;
+
+			gap: to-rem(8);
 		}
 
 		&--align-left {
-			--display: grid;
-			--grid-template-columns: auto 1fr;
-
+			--button-group-flex-direction: column;
 			--button-group-order: 0;
+
+			gap: to-rem(8);
 		}
 
 		&--align-bottom {
-			--display: flex;
-			--grid-template-rows: 1fr auto;
-
+			--button-group-flex-direction: row;
 			--button-group-gap: #{to-rem(32)};
 			--button-group-order: 1;
 		}
 
 		&--align-top {
-			--display: flex;
-			--grid-template-rows: auto 1fr;
-
+			--button-group-flex-direction: row;
 			--button-group-gap: #{to-rem(32)};
 			--button-group-order: 0;
 		}
 
-		&__button-group {
-			display: var(--display);
+		&--sticky &__button-group {
+			position: sticky;
+			top: 0;
+			height: min-content;
+			align-items: start;
+		}
 
+		&__button-group {
+			background-color: var(--kol-a11y-background-color);
 			gap: var(--button-group-gap);
 			order: var(--button-group-order);
 			flex-wrap: wrap;
 		}
 
 		&__tablist {
-			display: var(--display);
-
+			display: flex;
 			gap: var(--button-group-gap);
 			flex-wrap: wrap;
 		}

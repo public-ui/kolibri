@@ -44,7 +44,7 @@ export const TabsFC: FC<FunctionalComponentProps<TabsApi>> = (props) => {
 			block="kol-tabs"
 			modifiers={{ [`align-${align}`]: true }}
 			class={clsx(hostClass, {
-				[classNameFromVariant(variant, 'button')]: !!variant && variant.length > 0,
+				[classNameFromVariant(variant, 'tabs')]: !!variant && variant.length > 0,
 			})}
 			ref={refRoot}
 		>
