@@ -300,6 +300,47 @@ describe('Web component base class member order', () => {
 	});
 });
 
+/**
+ * `componentWillLoad` applies a prop through its watcher (`this.watchLabel(this._label)`), so the first
+ * value and every later change run the same code. It never applies a prop definition itself
+ * (`labelProp.apply(this._label, …)`). Where the watcher reacts to a change beyond applying the value, the
+ * component calls the `apply…` method the watcher delegates to.
+ */
+const directPropApplies = (cls: ts.ClassDeclaration): string[] => {
+	const componentWillLoad = cls.members.find(
+		(member): member is ts.MethodDeclaration => ts.isMethodDeclaration(member) && memberName(member) === 'componentWillLoad',
+	);
+	const problems: string[] = [];
+	const visit = (node: ts.Node): void => {
+		if (
+			ts.isCallExpression(node) &&
+			ts.isPropertyAccessExpression(node.expression) &&
+			node.expression.name.text === 'apply' &&
+			/Prop$/.test(node.expression.expression.getText()) &&
+			node.arguments[0] !== undefined &&
+			ts.isPropertyAccessExpression(node.arguments[0]) &&
+			node.arguments[0].expression.kind === ts.SyntaxKind.ThisKeyword
+		) {
+			problems.push(`componentWillLoad applies ${node.arguments[0].name.text} with ${node.expression.expression.getText()} instead of calling its watcher`);
+		}
+		ts.forEachChild(node, visit);
+	};
+	if (componentWillLoad?.body) visit(componentWillLoad.body);
+	return problems;
+};
+
+describe('Stencil component initialization', () => {
+	it.each(SOURCES.filter(({ text }) => text.includes('@Component(')).map(({ file, source }) => [path.relative(SRC, file), source]))(
+		'%s applies its props in componentWillLoad through the watchers',
+		(_name, source) => {
+			const problems = classesOf(source)
+				.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
+				.flatMap(directPropApplies);
+			expect(problems).toEqual([]);
+		},
+	);
+});
+
 describe('Property initialization order', () => {
 	it('reads no property in an initializer before it is declared', () => {
 		const problems = SOURCES.flatMap(({ file, source }) =>

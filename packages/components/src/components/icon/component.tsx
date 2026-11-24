@@ -44,8 +44,8 @@ export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentIn
 	}
 
 	public componentWillLoad(): void {
-		iconsProp.apply(this._icons, (v) => this.setRenderProp('icons', v));
-		labelDecorativeProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.watchIcons(this._icons);
+		this.watchLabel(this._label);
 	}
 
 	public render(): JSX.Element {

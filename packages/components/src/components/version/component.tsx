@@ -49,7 +49,7 @@ export class KolVersion extends BaseWebComponent<VersionApi> implements WebCompo
 	}
 
 	public componentWillLoad(): void {
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.watchLabel(this._label);
 	}
 
 	public render(): JSX.Element {
