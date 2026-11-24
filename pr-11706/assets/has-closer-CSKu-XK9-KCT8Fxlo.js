@@ -1,1 +1,0 @@
-import{b as e,l as t}from"./props-from-config-CNOz81rp-BRXBVhm9.js";var n=t(`hasCloser`,!1,e);export{n as t};
