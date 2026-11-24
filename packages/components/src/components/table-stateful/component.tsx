@@ -3,10 +3,10 @@ import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from 
 
 import { translate } from '../../i18n';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { PaginationFC } from '../../internal/functional-components/pagination/component';
 import type { PaginationInput, PaginationItem } from '../../internal/functional-components/pagination/item';
 import { createPaginationItem } from '../../internal/functional-components/pagination/item';
 import type { TableStatefulApi } from '../../internal/functional-components/table-stateful/api';
+import { TableStatefulFC } from '../../internal/functional-components/table-stateful/component';
 import type { SortData } from '../../internal/functional-components/table-stateful/model';
 import {
 	buildHeaderCells,
@@ -55,15 +55,10 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { devHint, trimLabel } from '../../schema';
-import { bem } from '../../schema/bem-registry';
 import { Callback } from '../../schema/enums';
-import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { BaseTableStatelessWebComponent } from '../table-stateless/base';
-
-// Only the pagination elements use the block: a shadow DOM node with the block class itself would activate theme rules written for the host.
-const tableStatefulBem = bem.forBlock('kol-table-stateful');
-const BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER = tableStatefulBem('pagination-wrapper');
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -243,12 +238,13 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_headers')
 	public watchHeaders(value?: Stringified<KoliBriTableHeaders>): void {
 		tableStatefulHeadersProp.apply(value, (headers) => {
-			// Adjusted header cells fit only the same columns. A new object with the same keys (common with
-			// inline headers in React) keeps them.
-			if (headerKeysChanged(this.headers, headers)) {
+			// Adjusted header cells and the current sort fit only the same columns. A new object with the same
+			// keys (common with inline headers in React) keeps both; resetSort() re-reads the declared sort.
+			// The first headers always apply: keyless header cells would be read as unchanged by their keys.
+			const firstHeaders = !this.headers.horizontal?.length && !this.headers.vertical?.length;
+			if (firstHeaders || headerKeysChanged(this.headers, headers)) {
 				this.adjustedHeaderCells = undefined;
-			}
-			if (this.initializeSort(headers)) {
+				this.initializeSort(headers);
 				setTimeout(() => this.updateSortedData());
 			}
 			if (hasHeadersInBothDirections(headers)) {
@@ -437,13 +433,12 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.moveCheckboxFocus(event);
 	}
 
-	private initializeSort(headers: KoliBriTableHeaders): boolean {
-		const { sortData, hasSortedCells, missingKey } = initializeSortFromHeaders(headers, this.allowMultiSort);
+	private initializeSort(headers: KoliBriTableHeaders): void {
+		const { sortData, missingKey } = initializeSortFromHeaders(headers, this.allowMultiSort);
 		if (missingKey) {
 			devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
 		}
 		this.sortData = sortData;
-		return hasSortedCells;
 	}
 
 	private readonly updateSortedData = (): void => {
@@ -529,27 +524,18 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.syncTableLabel(this.externalLabelElements);
 	}
 
-	private renderPagination(position: PaginationPosition): JSX.Element {
-		const item = this.paginationItems[position];
-		return (
-			item && (
-				<div class={tableStatefulBem('pagination', { [this.paginationPosition]: true })}>
-					<div class={BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER}>
-						<PaginationFC {...item.getFcProps()} />
-					</div>
-				</div>
-			)
-		);
-	}
-
 	public render(): JSX.Element {
 		return (
 			// The host keeps the class `kol-table-stateful`, which consumers of the element can select —
 			// documented exception to the no-Host-class convention, same as kol-select.
 			<Host class="kol-table-stateful">
-				{this.renderPagination('top')}
-				{this.renderTableStatelessFC()}
-				{this.renderPagination('bottom')}
+				<TableStatefulFC
+					paginationBottom={this.paginationItems.bottom?.getFcProps()}
+					paginationPosition={this.paginationPosition}
+					paginationTop={this.paginationItems.top?.getFcProps()}
+				>
+					{this.renderTableStatelessFC()}
+				</TableStatefulFC>
 			</Host>
 		);
 	}

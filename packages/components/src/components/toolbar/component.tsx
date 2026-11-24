@@ -3,19 +3,19 @@ import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from 
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { UnsubscribeFunction } from '../../internal/functional-components/link/aria-current-service';
+import { onLocationChange } from '../../internal/functional-components/link/aria-current-service';
 import type { ToolbarApi } from '../../internal/functional-components/toolbar/api';
 import { toolbarPropsConfig } from '../../internal/functional-components/toolbar/api';
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
 import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
 import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
 import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
-import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType, ToolbarProps } from '../../schema';
+import type { ClickableElement, FocusableElement, KolFocusOptions, LabelPropType, ToolbarItemsPropType } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
-import type { OrientationPropType } from '../../schema/props/orientation';
+import type { OrientationPropType } from '../../schema/props';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
-import type { UnsubscribeFunction } from '../link/ariaCurrentService';
-import { onLocationChange } from '../link/ariaCurrentService';
 
 const ARROW_KEYS: KeyboardKey[] = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, KeyboardKey.ArrowRight, KeyboardKey.ArrowLeft];
 
@@ -26,7 +26,7 @@ const ARROW_KEYS: KeyboardKey[] = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, K
 	},
 	shadow: true,
 })
-export class KolToolbar extends BaseWebComponent<ToolbarApi> implements ClickableElement, FocusableElement, ToolbarProps, WebComponentInterface<ToolbarApi> {
+export class KolToolbar extends BaseWebComponent<ToolbarApi> implements ClickableElement, FocusableElement, WebComponentInterface<ToolbarApi> {
 	@Element() protected readonly host?: HTMLKolToolbarElement;
 
 	@State() public currentIndex: number = 0;

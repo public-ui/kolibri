@@ -22,13 +22,12 @@ import type {
 	Stringified,
 	TabBehaviorPropType,
 	TabButtonProps,
-	TabsProps,
 } from '../../schema';
 import { devHint, koliBriQuerySelector } from '../../schema';
 
 import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
-import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
+import type { HasCreateButtonPropType } from '../../schema/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -44,7 +43,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, TabsProps, WebComponentInterface<TabsApi> {
+export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, WebComponentInterface<TabsApi> {
 	@Element() protected readonly host?: HTMLKolTabsElement;
 
 	private rootElement?: HTMLDivElement;

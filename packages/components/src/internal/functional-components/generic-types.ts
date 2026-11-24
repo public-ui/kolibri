@@ -199,12 +199,13 @@ type PromiseMethod<Methods> = {
  * Maps each prop key to the public web component prop name `_<key>`.
  * The original casing is preserved: the documented camelCase name (e.g. `_secondaryHeadline`)
  * must stay type-safe, and keys differing only in case would collide under a Lowercase mapping.
+ * The schema types of prop values (e.g. `ButtonProps` for the entries of `_items`) use the same mapping.
  */
-type ComponentPropsRequired<Props> = {
+export type ComponentPropsRequired<Props> = {
 	[K in keyof Props as `_${string & K}`]: Props[K];
 };
 
-type ComponentPropsOptional<Props> = {
+export type ComponentPropsOptional<Props> = {
 	[K in keyof Props as `_${string & K}`]?: Props[K];
 };
 

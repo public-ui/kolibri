@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/components",
-	"version": "4.6.0",
+	"version": "4.7.0-rc.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -31,6 +31,7 @@
 			"import": "./loader/index.mjs",
 			"require": "./dist/loader/index.cjs.js"
 		},
+		"./assets/*": "./assets/*",
 		"./custom-elements.json": "./custom-elements.json",
 		"./package.json": "./package.json"
 	},
@@ -82,7 +83,7 @@
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:stylelint:components": "stylelint src/components/**/*.{css,scss}",
 		"lint:tsc": "tsc --noemit",
-		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
+		"dev": "cross-env NODE_ENV=development stencil build --dev --watch",
 		"prod": "stencil build --prod",
 		"test": "pnpm test:unit && pnpm test:e2e",
 		"test:e2e": "playwright test",

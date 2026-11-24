@@ -1,0 +1,18 @@
+import { KolDetailsTag } from '../../core/component-names';
+import { executeSnapshotTests } from '../../utils/testing';
+
+import { KolDetails } from './component';
+
+executeSnapshotTests(
+	KolDetailsTag,
+	[KolDetails],
+	[
+		{ _label: 'Zusammenfassung' },
+		{ _label: 'Zusammenfassung', _level: 3 },
+		{ _label: 'Zusammenfassung', _disabled: true, _open: false },
+		{ _label: 'Zusammenfassung', _disabled: true, _open: true },
+		{ _label: 'Zusammenfassung', _disabled: false, _open: false },
+		{ _label: 'Zusammenfassung', _disabled: false, _open: true },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: ' Label' }] },
+	],
+);

@@ -12,7 +12,7 @@
 	 * base layer, so nothing moves there, and the dark branch matches the field the popup belongs to.
 	 */
 	.kol-select {
-		background-color: light-dark(transparent, var(--color-light));
+		background-color: var(--color-surface-raised);
 		border: none;
 
 		&:focus {
@@ -25,7 +25,7 @@
 
 		&__option {
 			// Same again for the options themselves, which Firefox paints independently of the popup.
-			background-color: light-dark(transparent, var(--color-light));
+			background-color: var(--color-surface-raised);
 			border-radius: var(--border-radius);
 			margin: to-rem(1) 0;
 
@@ -57,7 +57,7 @@
 	// The surface above would otherwise sit as a lighter patch inside the muted box of a disabled field.
 	.kol-input-container--disabled .kol-select,
 	.kol-input-container--disabled .kol-select__option {
-		background-color: light-dark(transparent, var(--color-mute));
+		background-color: var(--color-surface-raised-disabled);
 	}
 
 	.kol-input-container:has(.kol-select[multiple][size='1']),

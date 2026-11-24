@@ -264,6 +264,42 @@ describe('Stencil component member order', () => {
 	});
 });
 
+/** The name of the class a class declaration extends, if any. */
+const baseName = (cls: ts.ClassDeclaration): string | undefined =>
+	cls.heritageClauses?.find((clause) => clause.token === ts.SyntaxKind.ExtendsKeyword)?.types[0]?.expression.getText();
+
+/**
+ * The classes that implement a web component without being one: `BaseWebComponent` and every class
+ * without `@Component` that extends it, directly or through another base (`button/base.tsx`,
+ * `form-field/base-web-component.tsx`, `PageSizeSelect`, …). They hold the orchestrator code of the
+ * elements (ARC42 § 9, decision 16), so they follow the same member order.
+ */
+const WEB_COMPONENT_BASES = (() => {
+	const declarations = SOURCES.flatMap(({ file, source }) =>
+		classesOf(source)
+			.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && cls.name !== undefined)
+			.map((cls) => ({ cls, file })),
+	);
+	const byName = new Map(declarations.map((declaration) => [declaration.cls.name?.text, declaration.cls]));
+	const extendsBaseWebComponent = (cls: ts.ClassDeclaration | undefined): boolean => {
+		if (!cls) return false;
+		if (cls.name?.text === 'BaseWebComponent') return true;
+		const base = baseName(cls);
+		return base !== undefined && extendsBaseWebComponent(byName.get(base));
+	};
+	return declarations.filter(({ cls }) => !decoratorNames(cls).includes('Component') && extendsBaseWebComponent(cls));
+})();
+
+describe('Web component base class member order', () => {
+	it('finds the base classes', () => {
+		expect(WEB_COMPONENT_BASES.length).toBeGreaterThan(10);
+	});
+
+	it.each(WEB_COMPONENT_BASES.map(({ cls, file }) => [`${path.relative(SRC, file)} ${cls.name?.text}`, cls]))('%s follows the member order', (_name, cls) => {
+		expect(checkClass(cls)).toEqual([]);
+	});
+});
+
 describe('Property initialization order', () => {
 	it('reads no property in an initializer before it is declared', () => {
 		const problems = SOURCES.flatMap(({ file, source }) =>

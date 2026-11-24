@@ -1,4 +1,4 @@
-import type { InputDateTypePropType, Iso8601 } from '../../../schema';
+import type { InputDateDeps, InputDateTypePropType, Iso8601 } from '../../../schema';
 
 const ISO_DATE_PATTERN = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/;
 const ISO_LOCAL_DATE_TIME_PATTERN = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])[T ][0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
@@ -90,12 +90,6 @@ export function isIsoDateString(value: string, type?: InputDateTypePropType | st
 			return false;
 	}
 }
-
-/** Props of the date input the date props depend on: the raw `_type` and `_step` of the element. */
-export type InputDateDeps = {
-	type?: InputDateTypePropType | string;
-	step?: number | string;
-};
 
 /**
  * Normalizes a date prop of `kol-input-date`: a `Date` becomes the ISO 8601 string of the type, a

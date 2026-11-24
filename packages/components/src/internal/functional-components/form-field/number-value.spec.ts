@@ -3,8 +3,8 @@ import type { NumberValueType } from './number-value';
 import { clampRangeValue, getNumberValueType, parseInputNumberValue, remapNumberValue } from './number-value';
 
 /**
- * Pins the value handling of the legacy `kol-input-number` and `kol-input-range` (G3a.1 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`), including the quirks the migration keeps.
+ * Pins the value handling of `kol-input-number` and `kol-input-range`, quirks included (G3a.1 of
+ * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 describe('getNumberValueType', () => {
 	it.each([

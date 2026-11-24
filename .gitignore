@@ -11,6 +11,11 @@
 /packages/themes/*/snapshots/
 /packages/unstyled/snapshots/
 
+# The size baseline is not versioned either: the "Size Baseline" workflow computes it live on the
+# target branch and the pull-request run downloads it for the informational comparison – see
+# docs/SIZE_GATE.md. Locally it is written by `pnpm size:update` / `pnpm size:pull`.
+size-baseline.json
+
 # in all sub folders
 .playwright-mcp/
 .DS_Store/

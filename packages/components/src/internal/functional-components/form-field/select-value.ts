@@ -1,5 +1,5 @@
 import type { Option, StencilUnknown } from '../../../schema';
-import type { SelectOptionsList } from '../../props/options-with-optgroup';
+import type { SelectOptionsList } from '../../props';
 
 /**
  * Throws when the shape of a `_value` does not match `_multiple`: a list in single mode, or a single

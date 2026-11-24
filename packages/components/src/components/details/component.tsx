@@ -13,7 +13,6 @@ import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelPro
 import type {
 	ClickableElement,
 	CollapsibleCallbacksPropType,
-	DetailsProps,
 	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
@@ -42,10 +41,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolDetails
-	extends BaseWebComponent<CollapsibleApi>
-	implements ClickableElement, DetailsProps, FocusableElement, WebComponentInterface<CollapsibleApi>
-{
+export class KolDetails extends BaseWebComponent<CollapsibleApi> implements ClickableElement, FocusableElement, WebComponentInterface<CollapsibleApi> {
 	@Element() protected readonly host?: HTMLKolDetailsElement;
 
 	private readonly detailsId = createUniqueId('details');

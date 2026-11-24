@@ -1,7 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { watchBoolean } from '../utils';
-
 /* types */
 export type AriaExpandedPropType = boolean;
 
@@ -11,9 +7,4 @@ export type AriaExpandedPropType = boolean;
  */
 export type PropAriaExpanded = {
 	ariaExpanded: AriaExpandedPropType;
-};
-
-/* validator */
-export const validateAriaExpanded = (component: Generic.Element.Component, value?: AriaExpandedPropType): void => {
-	watchBoolean(component, '_ariaExpanded', value);
 };

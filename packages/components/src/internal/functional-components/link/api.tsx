@@ -32,8 +32,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * - `labelWithExpertSlotProp`: same validation as `labelProp` (at least 2 characters, numbers-only
  *   labels exempt) and its label hints; the empty string additionally enables the expert slot.
  * - `spanIconsProp` (not `iconsProp`): icons are `KoliBriIconsProp` (object), not a plain string.
- * - `tooltipAlignProp`: same valid values as `alignProp` but defaults to `'right'` (matching the
- *   legacy `_tooltipAlign` default).
+ * - `tooltipAlignProp`: same valid values as `alignProp` but defaults to `'right'`.
  */
 export const linkPropsConfig = {
 	required: [hrefProp],

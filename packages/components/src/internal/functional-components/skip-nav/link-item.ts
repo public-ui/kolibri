@@ -1,7 +1,7 @@
 import type { AlignPropType, LinkOnCallbacksPropType, LinkProps } from '../../../schema';
 import { setEventTarget } from '../../../schema';
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
-import { nonce } from '../../../utils/dev.utils';
+import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import {
@@ -73,8 +73,7 @@ export const createSkipNavLinkItem = (link: LinkProps, getHost: () => HTMLElemen
 	apply(hideLabelProp, link._hideLabel);
 	apply(hrefProp, link._href);
 	apply(spanIconsProp, link._icons);
-	// The predecessor rendered `<kol-link-wc>`, whose `_inline` @Prop defaults to `true` — keep that
-	// default explicit so the links stay inline (no standalone a11y min-size).
+	// Skip-nav links are inline by default (no standalone a11y min-size); an entry's own `_inline` wins.
 	apply(inlineProp, link._inline ?? true);
 	apply(labelWithExpertSlotProp, link._label);
 	apply(linkCallbacksProp, link._on);
@@ -102,7 +101,7 @@ export const createSkipNavLinkItem = (link: LinkProps, getHost: () => HTMLElemen
 	});
 
 	renderProps.ariaCurrent = '';
-	renderProps.ariaDescriptionId = nonce();
+	renderProps.ariaDescriptionId = createUniqueId('aria-description');
 	renderProps.expertSlot = link._label === '';
 
 	const getResolvedHref = (): string => (typeof renderProps.href === 'string' ? renderProps.href : '');

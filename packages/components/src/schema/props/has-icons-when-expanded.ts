@@ -1,7 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { watchBoolean } from '../utils';
-
 /* types */
 export type HasIconsWhenExpandedPropType = boolean;
 
@@ -10,9 +6,4 @@ export type HasIconsWhenExpandedPropType = boolean;
  */
 export type PropHasIconsWhenExpanded = {
 	hasIconsWhenExpanded: HasIconsWhenExpandedPropType;
-};
-
-/* validator */
-export const validateHasIconsWhenExpanded = (component: Generic.Element.Component, value?: HasIconsWhenExpandedPropType): void => {
-	watchBoolean(component, '_hasIconsWhenExpanded', value);
 };

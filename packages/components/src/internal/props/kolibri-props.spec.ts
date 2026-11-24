@@ -3,7 +3,7 @@ import { kolibriColorProp } from './kolibri-color';
 import { labeledProp } from './labeled';
 
 /**
- * Pins the props of `kol-kolibri` against the legacy `validateColor` and `watchBoolean` they replace.
+ * Pins the props of `kol-kolibri`: `kolibriColorProp` and `labeledProp`.
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;

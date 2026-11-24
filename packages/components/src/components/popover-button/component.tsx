@@ -17,7 +17,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	NamePropType,
 	PopoverAlignPropType,
-	PopoverButtonProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
@@ -25,7 +24,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BasePopoverButtonWebComponent } from './base';
 
@@ -43,13 +42,10 @@ import { BasePopoverButtonWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolPopoverButton
-	extends BasePopoverButtonWebComponent
-	implements ClickableElement, FocusableElement, PopoverButtonProps, PopoverButtonWebComponentInterface
-{
+export class KolPopoverButton extends BasePopoverButtonWebComponent implements ClickableElement, FocusableElement, PopoverButtonWebComponentInterface {
 	@Element() protected readonly host?: HTMLKolPopoverButtonElement;
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	@State() public popoverOpen = false;
 
