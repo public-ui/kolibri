@@ -180,7 +180,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 		// Early resolution: if the external element is already in the DOM (common when the
 		// label element is rendered before this component), the first render already uses
 		// it, so the AT sees the correct name from the start.
-		this.resolveExternalLabel(this._ariaLabelledby);
+		this.watchAriaLabelledby(this._ariaLabelledby);
 	}
 
 	public componentDidLoad(): void {

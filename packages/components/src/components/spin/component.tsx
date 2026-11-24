@@ -52,9 +52,9 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	}
 
 	public componentWillLoad(): void {
-		showProp.apply(this._show, (v) => this.setRenderProp('show', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		variantSpinProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
+		this.watchShow(this._show);
+		this.watchLabel(this._label);
+		this.watchVariant(this._variant);
 	}
 
 	public render(): JSX.Element {

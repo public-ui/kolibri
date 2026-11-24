@@ -100,16 +100,9 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	}
 
 	public componentWillLoad(): void {
-		colorProp.apply(this._color, (v) => this.setRenderProp('color', v));
-		labelProp.apply(
-			this._label,
-			(v) => {
-				this.setRenderProp('label', v);
-				this.setState('initials', normalizeInitials(v));
-			},
-			this.isRequired('label'),
-		);
-		srcProp.apply(this._src, (v) => this.setRenderProp('src', v));
+		this.watchColor(this._color);
+		this.watchLabel(this._label);
+		this.watchSrc(this._src);
 	}
 
 	public render(): JSX.Element {

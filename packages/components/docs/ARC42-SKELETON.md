@@ -134,8 +134,8 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 
 	public componentWillLoad(): void {
-		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		this.watchHref(this._href);
+		this.watchLabel(this._label);
 		// …all other props…
 		this.tooltipBehavior.componentWillLoad({ label: this.getTooltipLabel(), align: this.getRenderProp('tooltipAlign') });
 	}
@@ -713,14 +713,14 @@ public watchName(value?: string): void {
 
 ### WC Initialization
 
-The WC declares its props config as the `propsConfig` field; the base seeds the render-prop store from it on the first access. `componentWillLoad` applies the current prop values and initializes composed Behaviors:
+The WC declares its props config as the `propsConfig` field; the base seeds the render-prop store from it on the first access. `componentWillLoad` applies the current prop values through their watchers, so the first value and every later change run the same code, and initializes composed Behaviors. It never applies a prop definition itself; where a watcher reacts to a change beyond applying the value, `componentWillLoad` calls the `apply…` method the watcher delegates to. `component-structure.spec.ts` pins this:
 
 ```tsx
 // Web Component
 protected readonly propsConfig: PropsConfigShape = skeletonPropsConfig;
 
 public componentWillLoad(): void {
-	nameProp.apply(this._name, (v) => this.setRenderProp('name', v));
+	this.watchName(this._name);
 	this.tooltipBehavior.componentWillLoad({ label: this.getTooltipLabel(), align: this.getRenderProp('tooltipAlign') });
 }
 ```

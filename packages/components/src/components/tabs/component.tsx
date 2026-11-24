@@ -185,13 +185,13 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	public componentWillLoad(): void {
-		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
-		tabBehaviorProp.apply(this._behavior, (v) => this.setRenderProp('behavior', v));
-		hasCreateButtonProp.apply(this._hasCreateButton, (v) => this.setRenderProp('hasCreateButton', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		tabsCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
-		this.applySelected(this._selected);
-		this.applyTabs(this._tabs);
+		this.watchAlign(this._align);
+		this.watchBehavior(this._behavior);
+		this.watchHasCreateButton(this._hasCreateButton);
+		this.watchLabel(this._label);
+		this.watchOn(this._on);
+		this.watchSelected(this._selected);
+		this.watchTabs(this._tabs);
 	}
 
 	public componentWillRender(): void {

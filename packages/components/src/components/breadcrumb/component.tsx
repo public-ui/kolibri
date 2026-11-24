@@ -62,7 +62,7 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements We
 
 	public componentWillLoad(): void {
 		this.applyLabel(this._label, true);
-		this.applyLinks(this._links);
+		this.watchLinks(this._links);
 
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.linkItems = this.linkItems.map((item) => {
