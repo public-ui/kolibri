@@ -1,1 +1,0 @@
-import{E as e,k as t,l as n}from"./props-from-config-C5Gnkw0l-D-mV0YgA.js";var r=n(`max`,100,e,e=>e>0),i=n(`unit`,`%`,t,e=>e.length>0);export{i as n,r as t};
