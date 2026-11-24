@@ -24,8 +24,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	/**
 	 * Defines the target URI of the link.
 	 */
-	@Prop()
-	public _href!: HrefPropType;
+	@Prop() public _href!: HrefPropType;
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
@@ -35,8 +34,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop()
-	public _label?: LabelLangSegmentsPropType = undefined;
+	@Prop() public _label?: LabelLangSegmentsPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -46,8 +44,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	/**
 	 * Defines the text of the quote.
 	 */
-	@Prop()
-	public _quote!: QuotePropType;
+	@Prop() public _quote!: QuotePropType;
 
 	@Watch('_quote')
 	public watchQuote(value?: QuotePropType): void {
@@ -57,8 +54,7 @@ export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponent
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop()
-	public _variant?: QuoteVariantType = 'inline';
+	@Prop() public _variant?: QuoteVariantType = 'inline';
 
 	@Watch('_variant')
 	public watchVariant(value?: QuoteVariantType): void {

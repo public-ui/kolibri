@@ -264,6 +264,40 @@ describe('Stencil component member order', () => {
 	});
 });
 
+/**
+ * A field decorator (`@Element`, `@Prop`, `@State`) stands on the line of its member, a method decorator
+ * (`@Listen`, `@Method`, `@Watch`) on a line of its own.
+ */
+const FIELD_DECORATORS = ['Element', 'Prop', 'State'];
+const METHOD_DECORATORS = ['Listen', 'Method', 'Watch'];
+
+const misplacedDecorators = (cls: ts.ClassDeclaration): string[] => {
+	const source = cls.getSourceFile();
+	const lineOf = (position: number): number => source.getLineAndCharacterOfPosition(position).line;
+	return cls.members.flatMap((member) => {
+		const nameLine = lineOf((member.name ?? member).getStart());
+		return (ts.canHaveDecorators(member) ? (ts.getDecorators(member) ?? []) : []).flatMap((decorator) => {
+			const name = ts.isCallExpression(decorator.expression) ? decorator.expression.expression.getText() : decorator.expression.getText();
+			const sameLine = lineOf(decorator.getEnd()) === nameLine;
+			if (FIELD_DECORATORS.includes(name) && !sameLine) return [`@${name} of ${memberName(member)} stands on a line of its own`];
+			if (METHOD_DECORATORS.includes(name) && sameLine) return [`@${name} of ${memberName(member)} stands on the line of its member`];
+			return [];
+		});
+	});
+};
+
+describe('Stencil decorator placement', () => {
+	it.each(SOURCES.filter(({ text }) => text.includes('@Component(')).map(({ file, source }) => [path.relative(SRC, file), source]))(
+		'%s places its decorators by member kind',
+		(_name, source) => {
+			const problems = classesOf(source)
+				.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
+				.flatMap(misplacedDecorators);
+			expect(problems).toEqual([]);
+		},
+	);
+});
+
 /** The name of the class a class declaration extends, if any. */
 const baseName = (cls: ts.ClassDeclaration): string | undefined =>
 	cls.heritageClauses?.find((clause) => clause.token === ts.SyntaxKind.ExtendsKeyword)?.types[0]?.expression.getText();

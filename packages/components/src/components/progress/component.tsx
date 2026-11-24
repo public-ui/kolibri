@@ -22,8 +22,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	/**
 	 * A11y: Aria live value
 	 */
-	@State()
-	public liveValue: number = 0;
+	@State() public liveValue: number = 0;
 
 	private interval?: ReturnType<typeof setInterval>;
 
@@ -32,8 +31,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop()
-	public _label?: LabelLangSegmentsPropType = undefined;
+	@Prop() public _label?: LabelLangSegmentsPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -43,8 +41,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	/**
 	 * Defines the maximum value of the element.
 	 */
-	@Prop()
-	public _max!: MaxPropType;
+	@Prop() public _max!: MaxPropType;
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {
@@ -57,8 +54,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	/**
 	 * Defines the unit of the step values (not shown).
 	 */
-	@Prop()
-	public _unit?: UnitPropType = undefined;
+	@Prop() public _unit?: UnitPropType = undefined;
 
 	@Watch('_unit')
 	public watchUnit(value?: UnitPropType): void {
@@ -68,8 +64,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop()
-	public _value!: ClampedNumberValuePropType;
+	@Prop() public _value!: ClampedNumberValuePropType;
 
 	@Watch('_value')
 	public watchValue(value?: ClampedNumberValuePropType): void {
@@ -86,8 +81,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop()
-	public _variant?: ProgressVariantType = undefined;
+	@Prop() public _variant?: ProgressVariantType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: ProgressVariantType): void {

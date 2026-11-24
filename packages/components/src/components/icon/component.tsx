@@ -24,8 +24,7 @@ export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentIn
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop()
-	public _icons!: string;
+	@Prop() public _icons!: string;
 
 	@Watch('_icons')
 	public watchIcons(value?: string): void {
@@ -35,8 +34,7 @@ export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentIn
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop()
-	public _label!: LabelPropType;
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {

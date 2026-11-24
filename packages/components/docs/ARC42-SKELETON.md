@@ -172,6 +172,8 @@ Every Stencil component class lists its members in the same order:
 11. helpers and handlers: the other methods, accessors and arrow-function fields, whatever their visibility
 12. `render`
 
+A field decorator (`@Element`, `@Prop`, `@State`) stands on the line of its member (`@Prop() public _label!: LabelPropType;`), a method decorator (`@Listen`, `@Method`, `@Watch`) on a line of its own above the method.
+
 Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components and of the classes that implement them without being one: `BaseWebComponent` and every class without `@Component` that extends it (the bases of design decision 16, the form field bases, the page size select item). For every class under `src` it also checks that no initializer reads an own property declared after it, directly (`this.x`), through own getters it reads (`this.derived`) or through own methods and arrow-function properties it calls (`this.compute()`), also nested through the called bodies. Every other path is not traced, e.g. a callee that receives `this` (`new Behavior(this)`), a synchronously run callback (an IIFE, `[1].map(() => this.later)`), `call`/`apply`/`bind` and element access (`this['x']`); keep such reads behind the property they read.
 
 ### Public API Contract (Migration Parity)
