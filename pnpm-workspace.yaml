@@ -6,6 +6,7 @@ packages:
   - packages/adapters/solid*
   - packages/adapters/svelte
   - packages/adapters/vue
+  - packages/components/fc
   - packages/components/internals
   - packages/components/lit
   - packages/components

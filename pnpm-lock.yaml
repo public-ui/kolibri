@@ -416,6 +416,9 @@ importers:
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../tools/eslint-config
+      '@public-ui/functional-components':
+        specifier: workspace:*
+        version: link:fc
       '@public-ui/icons':
         specifier: workspace:*
         version: link:../icons
@@ -515,6 +518,31 @@ importers:
       tsx:
         specifier: 4.23.15
         version: 4.23.15
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  packages/components/fc:
+    dependencies:
+      '@public-ui/internals':
+        specifier: workspace:*
+        version: link:../internals
+      '@stencil/core':
+        specifier: 4.45.3
+        version: 4.45.3
+      adopted-style-sheets:
+        specifier: 1.2.0-rc.3
+        version: 1.2.0-rc.3
+    devDependencies:
+      '@public-ui/eslint-config':
+        specifier: workspace:*
+        version: link:../../tools/eslint-config
+      '@typescript-eslint/parser':
+        specifier: 8.58.2
+        version: 8.58.2(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)
       typescript:
         specifier: 5.9.3
         version: 5.9.3

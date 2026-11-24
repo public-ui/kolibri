@@ -114,6 +114,7 @@
 		"@jest/globals": "29.7.0",
 		"@playwright/test": "1.63.0",
 		"@public-ui/eslint-config": "workspace:*",
+		"@public-ui/functional-components": "workspace:*",
 		"@public-ui/icons": "workspace:*",
 		"@public-ui/size-gate": "workspace:*",
 		"@public-ui/stencil-solid-output-target": "0.2.0",
