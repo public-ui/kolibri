@@ -12,6 +12,7 @@ import type {
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
+	InputDateDeps,
 	InputDateTypePropType,
 	InputTypeOnDefault,
 	InternalButtonProps,
@@ -46,7 +47,6 @@ import { SuggestionsFC } from '../../internal/functional-components/form-field/s
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputDateApi } from '../../internal/functional-components/input-date/api';
 import { inputDatePropsConfig } from '../../internal/functional-components/input-date/api';
-import type { InputDateDeps } from '../../internal/props';
 import {
 	accessKeyProp,
 	autoCompleteProp,
