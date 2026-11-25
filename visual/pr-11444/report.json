@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11444,
-	"head": "6441d6d0d42c8fa8aeee0419cbb65fdfd61824d1",
+	"head": "fbc48c6c116fa596b1b0a5adda6a83ee8ae51eab",
 	"repository": "public-ui/kolibri",
-	"runId": 45357466718,
-	"generatedAt": "2026-11-24T08:58:37.556Z",
-	"digest": "sha256:bb9a8c6b1977a3b6eb91f26039a91176bd96ddb5c3d371ef91e5f18841994770",
+	"runId": 45522809845,
+	"generatedAt": "2026-11-25T01:20:54.975Z",
+	"digest": "sha256:f5d54805c4b2f530931411df85146a0b68a65e45bb626308d56ef38d333fe0d5",
 	"baseline": {
-		"sha": "0d034749d69d083937ac13b9abb344b252d29504",
+		"sha": "1b80033b154e5b2849d4b41b53fa2d444e4d2b43",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
+					"sha": "1b80033b154e5b2849d4b41b53fa2d444e4d2b43",
 					"ref": "develop",
-					"runId": 45147817997,
+					"runId": 45513753273,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:38:34.326Z",
-					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
+					"createdAt": "2026-11-24T23:59:14.471Z",
+					"digest": "sha256:9654968bb97ca6512711ff5c0dbff948747c27e0a50fdbf8d1ce275434ce1ec1",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:aac628d40bc5286f8e8a1cb3200d1f5444bf11d76632e29c212963e240a0107d",
+			"digest": "sha256:a580d24c0f82a9a3c502662fb08b038d64b7490bb4befe403f6a23b211082292",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -67,31 +67,31 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:0a4488d43b6ffd3b918e8bb227d522788164cbbbbde2456823b79a54a2fc61c3"
+					"hash": "sha256:98de4f3b49c19a3dd74433afed8cf76073bc26f5be4cb3fe51de50d43f9acf39"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9f8ac255c0c22441df6a2eb872a7f00a408a19d7a1e9ac6e2f7de5673d1f7f9e"
+					"hash": "sha256:ce8e2462ce942ce58eb61cb626130c85981a1361eac95473b2fa35b648f2adcd"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:4fdfb50ee3f8a519f0a1e64a43d3e2d70db361d292fff175b23b88a90fce34e0"
+					"hash": "sha256:5b5712f451cccfa65ac652055a5041363e00e4b1170f52ed289164e919327112"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:24f4ca087db454317542eae54821b435eb2e95f875c2e419d763e7ce1edb5260"
+					"hash": "sha256:355b2a0fddcaf601eb7fe9564ee2827b688b5615b2fec77333ccad1fdb82c892"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9b0719e267b54997414a9641827647f526ed7c60f3b3a9ad2d0711388b4fba76"
+					"hash": "sha256:7a959dd9921b8098739b27596364cec6b256759c7b4222c4945bd3b7a0ebfe08"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -2188,7 +2188,7 @@
 					"name": "scenarios-label-lang--label-lang-alert",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:c810edf45ebbd9e525aa7ca7798e0564a49b522337b76341ef9ee5c8f95d1ee4"
+					"hash": "sha256:265868c7c7c838b91e18297212d2b17fec704c89a01f816600db1ce7ba038297"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -2752,13 +2752,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
+					"sha": "1b80033b154e5b2849d4b41b53fa2d444e4d2b43",
 					"ref": "develop",
-					"runId": 45147817997,
+					"runId": 45513753273,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:38:40.033Z",
-					"digest": "sha256:07ed78c905a09f6466f4423ea60fe32978ad9a036bfff987abbaf10d200cfc7f",
+					"createdAt": "2026-11-24T23:59:22.891Z",
+					"digest": "sha256:998af1338c11082b9712cd42bb58e36f20f22b413d51bcc7c3c8f004839129bd",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2771,7 +2771,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a738ccbc84920d600d54bf1b81be9755c4924f55c6ce7a60e023cf0f01d3a887",
+			"digest": "sha256:417a755e14341401573c8aa6b7853906a83a5a476f0511000236e444759c360f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2789,31 +2789,31 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:db70ee0546ba242901bdb6c2c6b97002b5ec9b4f0df57ddeb6f6ca56ec26a56f"
+					"hash": "sha256:eb333e083c06b98307a3d9f67a8fac82859073848cf538f35541362adc0d9baa"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:ecb0dd91e3ff4c36ecbfac2eb917e925cec24a954502df5416413d259d18c0ff"
+					"hash": "sha256:a2f3a0343d731d5d988b96822b666224a7bc07ae0ccafdec35f5fa4c92903621"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:a783ce74bf5cde5e8c99f6c5e4dcbb8e560b9c782ec817ab2539f559d1b07406"
+					"hash": "sha256:c2d35c6cfbf221e3685b7086e3c7bb79c4239745a5cd33085682c3aaf1f5c94d"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:c08161137cbd6db61029ef8d851a46e066f3a5f2b51becdab3b5a76bd6c88d31"
+					"hash": "sha256:16820ffad9b392eda6a4414034bdf02bfdebe92166ea0ed615963d2d4f10e4d0"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:e1a536aedf3fc9ffd8c13ad9c89166fbad50308a23f6ffe5db4b2abe5a9c789f"
+					"hash": "sha256:615a71f937ef0257d646fc7266fea08c955a4427ec7d7f4bcfd682c94ed6c2ab"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -4885,7 +4885,7 @@
 					"name": "scenarios-label-lang--label-lang-alert",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:9418ee144197e9e5027fa58abb7872dd7aceb380c95b9ba45ddfd28f489b81b8"
+					"hash": "sha256:a7324ebb3ad86e22c08eb2f88cf5df42a521d1717a5b2e2cb66cd0000b39b5b5"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -5449,13 +5449,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
+					"sha": "1b80033b154e5b2849d4b41b53fa2d444e4d2b43",
 					"ref": "develop",
-					"runId": 45147817997,
+					"runId": 45513753273,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:38:34.326Z",
-					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
+					"createdAt": "2026-11-24T23:59:14.471Z",
+					"digest": "sha256:9654968bb97ca6512711ff5c0dbff948747c27e0a50fdbf8d1ce275434ce1ec1",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5468,7 +5468,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:aac628d40bc5286f8e8a1cb3200d1f5444bf11d76632e29c212963e240a0107d",
+			"digest": "sha256:a580d24c0f82a9a3c502662fb08b038d64b7490bb4befe403f6a23b211082292",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5486,31 +5486,31 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:0a4488d43b6ffd3b918e8bb227d522788164cbbbbde2456823b79a54a2fc61c3"
+					"hash": "sha256:98de4f3b49c19a3dd74433afed8cf76073bc26f5be4cb3fe51de50d43f9acf39"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9f8ac255c0c22441df6a2eb872a7f00a408a19d7a1e9ac6e2f7de5673d1f7f9e"
+					"hash": "sha256:ce8e2462ce942ce58eb61cb626130c85981a1361eac95473b2fa35b648f2adcd"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:4fdfb50ee3f8a519f0a1e64a43d3e2d70db361d292fff175b23b88a90fce34e0"
+					"hash": "sha256:5b5712f451cccfa65ac652055a5041363e00e4b1170f52ed289164e919327112"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:24f4ca087db454317542eae54821b435eb2e95f875c2e419d763e7ce1edb5260"
+					"hash": "sha256:355b2a0fddcaf601eb7fe9564ee2827b688b5615b2fec77333ccad1fdb82c892"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9b0719e267b54997414a9641827647f526ed7c60f3b3a9ad2d0711388b4fba76"
+					"hash": "sha256:7a959dd9921b8098739b27596364cec6b256759c7b4222c4945bd3b7a0ebfe08"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -7607,7 +7607,7 @@
 					"name": "scenarios-label-lang--label-lang-alert",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:c810edf45ebbd9e525aa7ca7798e0564a49b522337b76341ef9ee5c8f95d1ee4"
+					"hash": "sha256:265868c7c7c838b91e18297212d2b17fec704c89a01f816600db1ce7ba038297"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -8171,12 +8171,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
+					"sha": "1b80033b154e5b2849d4b41b53fa2d444e4d2b43",
 					"ref": "develop",
-					"runId": 45147817997,
+					"runId": 45513753273,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:37:10.116Z",
+					"createdAt": "2026-11-24T23:59:25.971Z",
 					"digest": "sha256:66b08ccb4537a7e9b61478c3940e9fc00395814383c95ee669a64a4e719868e4",
 					"fallback": null,
 					"distance": 0,
@@ -10918,13 +10918,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
+					"sha": "1b80033b154e5b2849d4b41b53fa2d444e4d2b43",
 					"ref": "develop",
-					"runId": 45147817997,
+					"runId": 45513753273,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:37:21.261Z",
-					"digest": "sha256:52179ed1092595a872b3836d122f12fa43f163f4c4f15344c14977a6e1e51011",
+					"createdAt": "2026-11-25T00:00:55.281Z",
+					"digest": "sha256:14671ed8726b08ef53366408e0bf852a192a60e393556fadf297a532b34f3be9",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10937,7 +10937,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:2cef595f9d3cfe7cd0943e9baa930f492693c18127cbc9d4f3e53ce6c2e4970e",
+			"digest": "sha256:f95b0afd58fa6fd33d05fe2faad6652a7339adead76289bc29a1effd4c48d43e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13432,7 +13432,7 @@
 					"name": "table-sticky-cols--sticky-cols",
 					"route": "table-sticky-cols",
 					"status": "unchanged",
-					"hash": "sha256:b38f268e456e3eb7f9a73ad3b48e483c58693398f0c96c16bd432804b8e5431c"
+					"hash": "sha256:e691a0136c0759a244abccdd5382730aa6af2e5fe987a3120e54e140cad48565"
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
@@ -13630,12 +13630,12 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
+					"sha": "1b80033b154e5b2849d4b41b53fa2d444e4d2b43",
 					"ref": "develop",
-					"runId": 45147817997,
+					"runId": 45513753273,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:38:15.256Z",
+					"createdAt": "2026-11-25T00:00:00.146Z",
 					"digest": "sha256:850d93387ab408edcdddca6db70a6bd2f56f127fc08a688636529bfbb1701d98",
 					"fallback": null,
 					"distance": 0,
@@ -16358,13 +16358,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "0d034749d69d083937ac13b9abb344b252d29504",
+					"sha": "1b80033b154e5b2849d4b41b53fa2d444e4d2b43",
 					"ref": "develop",
-					"runId": 45147817997,
+					"runId": 45513753273,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:38:24.030Z",
-					"digest": "sha256:a6461012c621c0ea1567a719c62f25c956e706666fed882a6d694187c2c99a4a",
+					"createdAt": "2026-11-25T00:00:26.589Z",
+					"digest": "sha256:2c667cdb89ff8dbd11250bd1256abc2d471afc22941cf4b13c362d9746d4c75b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -16377,7 +16377,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:08b079501cb1a0651d5e76ad8557b2f2521f2c0835ddde9e8177f4b594906117",
+			"digest": "sha256:589e2281b857283d0e7f5a9dadf7c6e0b8412e361881c5643aada06cda0d1dd0",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -18857,7 +18857,7 @@
 					"name": "table-sticky-cols--sticky-cols",
 					"route": "table-sticky-cols",
 					"status": "unchanged",
-					"hash": "sha256:8cc546428dd0878d1a900c2976dde9ba81cd5db4887d9bbb047342a4e7cced64"
+					"hash": "sha256:aa43b2bda5199705df2b93f3aa704e06ab3bb273ec17f6d016345856a734ff7e"
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
