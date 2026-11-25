@@ -1,0 +1,1 @@
+import{b as e,l as t}from"./props-from-config-B_k4h7ak-BvxQ0tno.js";var n=t(`multiple`,!1,e);export{n as t};
