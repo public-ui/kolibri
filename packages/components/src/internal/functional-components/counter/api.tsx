@@ -2,7 +2,7 @@ import { hasCounterProp, maxLengthBehaviorProp, maxLengthProp } from '../../prop
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const counterPropsConfig = {
-	optional: [hasCounterProp, maxLengthProp, maxLengthBehaviorProp],
+	optional: [hasCounterProp, maxLengthBehaviorProp, maxLengthProp],
 } as const satisfies PropsConfigShape;
 
 export type CounterApi = ApiFromConfig<typeof counterPropsConfig>;

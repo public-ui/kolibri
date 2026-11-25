@@ -6,14 +6,10 @@ import { describePublicApiContract } from './contract';
  * `mutable`/`reflect` decorators so the reflected attribute is already updated when the delayed
  * `onClick`/`onToggle` callbacks read it.
  *
- * Consciously changed against the predecessor when `kol-accordion` and `kol-details` were
- * consolidated onto one collapsible layer (owner-approved, noted in the PR):
- * - `_on` is typed `CollapsibleCallbacksPropType<boolean>` — the same shape as the former
- *   `AccordionCallbacksPropType`, which survives as a `@deprecated` alias.
- * - `_label` is declared with the `LabelPropType` schema alias instead of the primitive `string`,
- *   matching `kol-details` and every other migrated component. Same type, no runtime effect.
- * - `click()` no longer mentions "the first section", a leftover of the pre-migration
- *   multi-section accordion.
+ * `kol-accordion` and `kol-details` share one collapsible layer:
+ * - `_on` is typed `CollapsibleCallbacksPropType<boolean>`; `AccordionCallbacksPropType` is a
+ *   `@deprecated` alias of the same shape.
+ * - `_label` is declared with the `LabelPropType` schema alias, like in `kol-details`.
  */
 const KOL_ACCORDION_PUBLIC_API: PublicApiContract = {
 	focus: {
@@ -63,4 +59,4 @@ const KOL_ACCORDION_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-accordion', component: 'accordion', pinnedApi: KOL_ACCORDION_PUBLIC_API, schemaInterface: 'AccordionProps' });
+describePublicApiContract({ tag: 'kol-accordion', component: 'accordion', pinnedApi: KOL_ACCORDION_PUBLIC_API });

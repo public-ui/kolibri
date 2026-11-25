@@ -1,6 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
-
-import { validateAlignment } from '../validators';
 import type { AlignPropType } from './align-options';
 
 export { alignPropTypeOptions, type AlignPropType } from './align-options';
@@ -11,9 +8,4 @@ export { alignPropTypeOptions, type AlignPropType } from './align-options';
  */
 export type PropAlign = {
 	align: AlignPropType;
-};
-
-/* validator */
-export const validateAlign = (component: Generic.Element.Component, value?: AlignPropType): void => {
-	validateAlignment(component, '_align', value);
 };

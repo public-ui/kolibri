@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { checkboxValueProp } from './checkbox-value';
 import { checkedProp } from './checked';
 import { iconsInputCheckboxProp } from './icons-input-checkbox';
@@ -7,10 +8,8 @@ import { labelAlignProp } from './label-align';
 import { variantInputCheckboxProp } from './variant-input-checkbox';
 
 /**
- * Pins the props of `kol-input-checkbox` against the legacy validators they replace
- * (`validateChecked`, `validateIndeterminate`, `validateLabelAlign`, `validateVariantInputCheckbox`,
- * the icon validator of the checkbox controller and the unchecked `_value`), G4.3 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`.
+ * Pins the props of `kol-input-checkbox`: `_checked`, `_indeterminate`, `_labelAlign`, `_variant`,
+ * `_icons` and the unchecked `_value` (G4.3 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;

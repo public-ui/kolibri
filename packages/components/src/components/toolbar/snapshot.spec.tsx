@@ -1,7 +1,6 @@
 import { KolToolbarTag } from '../../core/component-names';
-import type { ToolbarItemsPropType, ToolbarProps } from '../../schema';
+import type { ToolbarItemsPropType } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolToolbar } from './component';
 
 const ITEMS: ToolbarItemsPropType = [
@@ -16,7 +15,7 @@ const ITEMS: ToolbarItemsPropType = [
 	},
 ];
 
-executeSnapshotTests<ToolbarProps>(
+executeSnapshotTests(
 	KolToolbarTag,
 	[KolToolbar],
 	[

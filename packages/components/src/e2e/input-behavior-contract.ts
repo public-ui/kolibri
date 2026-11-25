@@ -1,6 +1,7 @@
 import type { Locator, Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { type E2EPage, test } from '@stencil/playwright';
+
 import { setContentWithRetry } from './utils/setContentWithRetry';
 
 /**

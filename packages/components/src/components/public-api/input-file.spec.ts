@@ -2,10 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-input-file` (21 props, 4 methods),
- * extracted from the legacy `shadow.tsx` ahead of its skeleton migration (G0 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`). The migration points the pin to `component.tsx`
- * and adds the schema interface check; the pinned contract stays unchanged.
+ * Pinned public API of `kol-input-file` (21 props, 4 methods) (G0 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 const KOL_INPUT_FILE_PUBLIC_API: PublicApiContract = {
 	click: {
@@ -168,4 +165,4 @@ const KOL_INPUT_FILE_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-file', component: 'input-file', pinnedApi: KOL_INPUT_FILE_PUBLIC_API, schemaInterface: 'InputFileProps' });
+describePublicApiContract({ tag: 'kol-input-file', component: 'input-file', pinnedApi: KOL_INPUT_FILE_PUBLIC_API });

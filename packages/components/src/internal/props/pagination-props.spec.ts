@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { boundaryCountProp } from './boundary-count';
 import { normalizeNumberType } from './helpers/normalizers';
 import { pageProp } from './page';
@@ -9,7 +10,7 @@ import { paginationMaxProp } from './pagination-max';
 import { siblingCountProp } from './sibling-count';
 
 /**
- * Pins the props of `kol-pagination` against the legacy validators they replace (#9590).
+ * Pins the props of `kol-pagination` (#9590).
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;
@@ -47,7 +48,7 @@ describe.each([
 		expect(applied(definition, value)).toEqual([expected]);
 	});
 
-	it('keeps NaN like the legacy validator', () => {
+	it('keeps NaN', () => {
 		expect(applied(definition, NaN)).toEqual([NaN]);
 	});
 });

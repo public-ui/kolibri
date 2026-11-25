@@ -1,9 +1,6 @@
 import type { Callback } from '../enums';
-import type { EventValueOrEventCallback } from '../types/callbacks';
-import { watchValidator } from '../utils';
-
-import type { Generic } from 'adopted-style-sheets';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableSelectionKeys } from '../types';
+import type { EventValueOrEventCallback } from '../types/callbacks';
 import type { TableHeaderCells } from './table-header-cells';
 
 /* types */
@@ -33,25 +30,4 @@ export type PropTableCallbacks = {
 
 export type StatefulPropTableCallbacks = {
 	on: TableStatefulCallbacksPropType;
-};
-
-/* validator */
-export const validateTableCallbacks = (component: Generic.Element.Component, value?: TableCallbacksPropType): void => {
-	watchValidator(
-		component,
-		`_on`,
-		(value) => typeof value === 'object' && value !== null,
-		new Set(['TableCallbacksPropType {Events.onSort, Events.onSelectionChange, Events.onChangeHeaderCells}']),
-		value,
-	);
-};
-
-export const validateTableStatefulCallbacks = (component: Generic.Element.Component, value?: TableStatefulCallbacksPropType): void => {
-	watchValidator(
-		component,
-		`_on`,
-		(value) => typeof value === 'object' && value !== null,
-		new Set(['TableStatefulCallbacksPropType {Events.onSelectionChange}']),
-		value,
-	);
 };

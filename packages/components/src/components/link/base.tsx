@@ -5,6 +5,8 @@ import { BaseWebComponent } from '../../internal/functional-components/base-web-
 import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
 import { linkPropsConfig } from '../../internal/functional-components/link/api';
+import type { UnsubscribeFunction } from '../../internal/functional-components/link/aria-current-service';
+import { onLocationChange } from '../../internal/functional-components/link/aria-current-service';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import {
@@ -56,8 +58,6 @@ import type {
 import { setEventTarget } from '../../schema';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { UnsubscribeFunction } from './ariaCurrentService';
-import { onLocationChange } from './ariaCurrentService';
 
 /**
  * Shared orchestrator implementation for every custom element that renders `LinkFC`:
@@ -94,8 +94,8 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	 * Marks `tabIndex` as unset. Call first in `componentWillLoad`, before the prop watchers run.
 	 */
 	protected unsetLinkTabIndex(): void {
-		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
-		// the attribute would trigger focus outlines that the predecessor did not draw. The first
+		// An unset tabindex must not render as `tabindex="0"`: links are natively tabbable and the
+		// attribute would trigger additional focus outlines. The first
 		// render-prop access seeds the store, so this unset runs against seeded defaults.
 		this.unsetRenderProp('tabIndex');
 	}

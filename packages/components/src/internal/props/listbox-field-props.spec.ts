@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { hasClearButtonProp } from './has-clear-button';
 import { singleSelectOptionsProp } from './single-select-options';
 

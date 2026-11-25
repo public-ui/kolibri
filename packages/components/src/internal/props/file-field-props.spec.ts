@@ -1,9 +1,9 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { acceptProp } from './accept';
 
 /**
- * Pins the props of `kol-input-file` against the legacy validator `validateAccept` they replace (G3c.1 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`). `_multiple` and `_required` reuse `multipleProp` and `requiredProp`.
+ * Pins the props of `kol-input-file` (G3c.1 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`). `_multiple` and `_required` reuse `multipleProp` and `requiredProp`.
  */
 const applied = (value: unknown): unknown[] => {
 	const callback = jest.fn();

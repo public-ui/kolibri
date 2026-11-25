@@ -11,7 +11,6 @@ import { createCollapsibleToggleHandler } from '../../internal/functional-compon
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { collapsibleCallbacksProp, disabledProp, labelLangSegmentsProp, levelProp, openProp } from '../../internal/props';
 import type {
-	AccordionProps,
 	ClickableElement,
 	CollapsibleCallbacksPropType,
 	DisabledPropType,
@@ -38,23 +37,26 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolAccordion
-	extends BaseWebComponent<CollapsibleApi>
-	implements AccordionProps, ClickableElement, FocusableElement, WebComponentInterface<CollapsibleApi>
-{
-	@Element() protected readonly host?: HTMLKolAccordionElement;
+export class KolAccordion extends BaseWebComponent<CollapsibleApi> implements ClickableElement, FocusableElement, WebComponentInterface<CollapsibleApi> {
+	@Element()
+	protected readonly host?: HTMLKolAccordionElement;
 
 	private readonly accordionId = createUniqueId('accordion');
 
-	@State() public controlId: string = createRelatedUniqueId(this.accordionId, 'control');
+	@State()
+	public controlId: string = createRelatedUniqueId(this.accordionId, 'control');
 
-	@State() public detailsOpen: boolean = false;
+	@State()
+	public detailsOpen: boolean = false;
 
-	@State() public expanded: boolean = false;
+	@State()
+	public expanded: boolean = false;
 
-	@State() public headingId: string = createRelatedUniqueId(this.accordionId, 'heading');
+	@State()
+	public headingId: string = createRelatedUniqueId(this.accordionId, 'heading');
 
-	@State() public transitionMs: number = DEFAULT_COLLAPSIBLE_TRANSITION_MS;
+	@State()
+	public transitionMs: number = DEFAULT_COLLAPSIBLE_TRANSITION_MS;
 
 	/* A disabled `<summary>` stays technically focusable, unlike the `<button disabled>` it replaced.
 	   Emptying the ref keeps the public `focus()` and `click()` methods from reaching it. */
@@ -81,7 +83,8 @@ export class KolAccordion
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -91,7 +94,8 @@ export class KolAccordion
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelLangSegmentsPropType;
+	@Prop()
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -101,7 +105,8 @@ export class KolAccordion
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 0;
+	@Prop()
+	public _level?: HeadingLevel = 0;
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
@@ -111,7 +116,8 @@ export class KolAccordion
 	/**
 	 * Defines the callback functions for the collapsible.
 	 */
-	@Prop() public _on?: CollapsibleCallbacksPropType<boolean> = undefined;
+	@Prop()
+	public _on?: CollapsibleCallbacksPropType<boolean> = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {
@@ -121,7 +127,8 @@ export class KolAccordion
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: OpenPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _open?: OpenPropType = false;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {

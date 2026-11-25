@@ -10,7 +10,6 @@ import type { PropsConfigShape, WebComponentInterface } from '../../internal/fun
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelLangSegmentsProp, levelProp } from '../../internal/props';
 import type {
-	AlertProps,
 	AlertPropType,
 	AlertTypePropType,
 	AlertVariantPropType,
@@ -19,7 +18,7 @@ import type {
 	KoliBriAlertEventCallbacks,
 	LabelLangSegmentsPropType,
 } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -35,19 +34,23 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, WebComponentInterface<AlertApi> {
-	@Element() protected readonly host?: HTMLKolAlertElement;
+export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponentInterface<AlertApi> {
+	@Element()
+	protected readonly host?: HTMLKolAlertElement;
 
-	@State() public headingId: string = createUniqueId('alert-heading');
+	@State()
+	public headingId: string = createUniqueId('alert-heading');
 
-	@State() public closerAriaDescriptionId: string = nonce();
+	@State()
+	public closerAriaDescriptionId: string = createUniqueId('closer-description');
 
 	/**
 	 * Whether the alert behavior (the `role="alert"` live region) is active. It mirrors the applied
 	 * `_alert` value, so the removal after the timeout renders through the state change without an
 	 * explicit render call.
 	 */
-	@State() public showAlert = false;
+	@State()
+	public showAlert = false;
 
 	private alertTimeout?: ReturnType<typeof setTimeout>;
 
@@ -63,7 +66,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines whether the screen-readers should read out the notification.
 	 */
-	@Prop() public _alert?: AlertPropType = false;
+	@Prop()
+	public _alert?: AlertPropType = false;
 
 	@Watch('_alert')
 	public watchAlert(value?: AlertPropType): void {
@@ -76,7 +80,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines whether the element can be closed.
 	 */
-	@Prop() public _hasCloser?: HasCloserPropType = false;
+	@Prop()
+	public _hasCloser?: HasCloserPropType = false;
 
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: HasCloserPropType): void {
@@ -86,7 +91,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label?: LabelLangSegmentsPropType = undefined;
+	@Prop()
+	public _label?: LabelLangSegmentsPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -96,7 +102,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
-	@Prop() public _level?: HeadingLevel = 0;
+	@Prop()
+	public _level?: HeadingLevel = 0;
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
@@ -106,7 +113,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines the event callback functions for closing the alert.
 	 */
-	@Prop() public _on?: KoliBriAlertEventCallbacks = undefined;
+	@Prop()
+	public _on?: KoliBriAlertEventCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriAlertEventCallbacks): void {
@@ -116,7 +124,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: AlertTypePropType = 'default';
+	@Prop()
+	public _type?: AlertTypePropType = 'default';
 
 	@Watch('_type')
 	public watchType(value?: AlertTypePropType): void {
@@ -126,7 +135,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: AlertVariantPropType = 'msg';
+	@Prop()
+	public _variant?: AlertVariantPropType = 'msg';
 
 	@Watch('_variant')
 	public watchVariant(value?: AlertVariantPropType): void {

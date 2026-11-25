@@ -3,10 +3,10 @@ import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from 
 
 import { translate } from '../../i18n';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { PaginationFC } from '../../internal/functional-components/pagination/component';
 import type { PaginationInput, PaginationItem } from '../../internal/functional-components/pagination/item';
 import { createPaginationItem } from '../../internal/functional-components/pagination/item';
 import type { TableStatefulApi } from '../../internal/functional-components/table-stateful/api';
+import { TableStatefulFC } from '../../internal/functional-components/table-stateful/component';
 import type { SortData } from '../../internal/functional-components/table-stateful/model';
 import {
 	buildHeaderCells,
@@ -55,15 +55,10 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { devHint, trimLabel } from '../../schema';
-import { bem } from '../../schema/bem-registry';
 import { Callback } from '../../schema/enums';
-import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { BaseTableStatelessWebComponent } from '../table-stateless/base';
-
-// Only the pagination elements use the block: a shadow DOM node with the block class itself would activate theme rules written for the host.
-const tableStatefulBem = bem.forBlock('kol-table-stateful');
-const BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER = tableStatefulBem('pagination-wrapper');
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -80,29 +75,38 @@ type PaginationPosition = 'bottom' | 'top';
 	shadow: true,
 })
 export class KolTableStateful extends BaseTableStatelessWebComponent implements WebComponentInterface<TableStatefulApi> {
-	@Element() protected readonly host?: HTMLKolTableStatefulElement;
+	@Element()
+	protected readonly host?: HTMLKolTableStatefulElement;
 
 	/**
 	 * The header cells adjusted in the settings menu (visibility, width, order). They are reapplied on
 	 * every render, so sorting, paging, selecting or new data keep the adjustments.
 	 */
-	@State() private adjustedHeaderCells?: TableHeaderCells;
+	@State()
+	private adjustedHeaderCells?: TableHeaderCells;
 
 	/** The pagination settings; page and page size follow the pagination. */
-	@State() private pagination: TablePagination = { _page: 1, _pageSize: 10, _max: 0 };
+	@State()
+	private pagination: TablePagination = { _page: 1, _pageSize: 10, _max: 0 };
 
 	/** Renders the element again after a change that is not held in a prop or a state of its own. */
-	@State() private renderCount = 0;
+	@State()
+	private renderCount = 0;
 
-	@State() public externalLabelElements: HTMLElement[] = [];
+	@State()
+	public externalLabelElements: HTMLElement[] = [];
 
-	@State() public hasScrollbar: boolean = false;
+	@State()
+	public hasScrollbar: boolean = false;
 
-	@State() public settingsChangedCounter: number = 0;
+	@State()
+	public settingsChangedCounter: number = 0;
 
-	@State() public sortedData: KoliBriTableDataType[] = [];
+	@State()
+	public sortedData: KoliBriTableDataType[] = [];
 
-	@State() public stickyColsDisabled: boolean = false;
+	@State()
+	public stickyColsDisabled: boolean = false;
 
 	/** All rows of `_data`; the displayed page is sliced from the sorted rows. */
 	private data: KoliBriTableDataType[] = [];
@@ -174,23 +178,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	};
 
 	/**
-	 * References an external element by ID that serves as the accessible label for this table.
-	 * The component resolves the IDs and sets them as element references (`ariaLabelledByElements`)
-	 * on the native `<table>` inside the shadow root, because IDREF attributes cannot cross that
-	 * boundary. Desktop screen readers (NVDA, JAWS with Chrome/Firefox) follow the references;
-	 * VoiceOver and TalkBack do not — use `_label` instead.
-	 */
-	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType = undefined;
-
-	@Watch('_ariaLabelledby')
-	public watchAriaLabelledby(value?: AriaLabelledbyPropType): void {
-		this.resolveExternalLabel(value);
-	}
-
-	/**
 	 * Defines whether to allow multi sort.
 	 */
-	@Prop() public _allowMultiSort?: AllowMultiSortPropType = undefined;
+	@Prop()
+	public _allowMultiSort?: AllowMultiSortPropType = undefined;
 
 	@Watch('_allowMultiSort')
 	public watchAllowMultiSort(value?: AllowMultiSortPropType): void {
@@ -200,9 +191,25 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	/**
+	 * References an external element by ID that serves as the accessible label for this table.
+	 * The component resolves the IDs and sets them as element references (`ariaLabelledByElements`)
+	 * on the native `<table>` inside the shadow root, because IDREF attributes cannot cross that
+	 * boundary. Desktop screen readers (NVDA, JAWS with Chrome/Firefox) follow the references;
+	 * VoiceOver and TalkBack do not — use `_label` instead.
+	 */
+	@Prop()
+	public _ariaLabelledby?: AriaLabelledbyPropType = undefined;
+
+	@Watch('_ariaLabelledby')
+	public watchAriaLabelledby(value?: AriaLabelledbyPropType): void {
+		this.resolveExternalLabel(value);
+	}
+
+	/**
 	 * Defines the primary table data.
 	 */
-	@Prop() public _data!: TableDataPropType;
+	@Prop()
+	public _data!: TableDataPropType;
 
 	@Watch('_data')
 	public watchData(value?: TableDataPropType): void {
@@ -215,7 +222,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the data for the table footer.
 	 */
-	@Prop() public _dataFoot?: TableDataFootPropType = undefined;
+	@Prop()
+	public _dataFoot?: TableDataFootPropType = undefined;
 
 	@Watch('_dataFoot')
 	public watchDataFoot(value?: TableDataFootPropType): void {
@@ -228,7 +236,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the fixed number of columns from start and end of the table
 	 */
-	@Prop() public _fixedCols?: FixedColsPropType = undefined;
+	@Prop()
+	public _fixedCols?: FixedColsPropType = undefined;
 
 	@Watch('_fixedCols')
 	public watchFixedCols(value?: FixedColsPropType): void {
@@ -236,9 +245,21 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	/**
+	 * Enables the settings menu if true (default: false).
+	 */
+	@Prop()
+	public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
+
+	@Watch('_hasSettingsMenu')
+	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
+		this.applyHasSettingsMenu(value);
+	}
+
+	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headers!: Stringified<KoliBriTableHeaders>;
+	@Prop()
+	public _headers!: Stringified<KoliBriTableHeaders>;
 
 	@Watch('_headers')
 	public watchHeaders(value?: Stringified<KoliBriTableHeaders>): void {
@@ -265,7 +286,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelLangSegmentsPropType;
+	@Prop()
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -275,7 +297,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Wether the table shows a loading spinner (default: false).
 	 */
-	@Prop() public _loading?: TableLoadingPropType = undefined;
+	@Prop()
+	public _loading?: TableLoadingPropType = undefined;
 
 	@Watch('_loading')
 	public watchLoading(value?: TableLoadingPropType): void {
@@ -283,9 +306,23 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	/**
+	 * Defines the callback functions for table events.
+	 */
+	@Prop()
+	public _on?: TableStatefulCallbacksPropType = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: TableStatefulCallbacksPropType): void {
+		tableStatefulCallbacksProp.apply(value, (v) => {
+			this.statefulOn = v;
+		});
+	}
+
+	/**
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
-	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps> = undefined;
+	@Prop()
+	public _pagination?: boolean | Stringified<KoliBriTablePaginationProps> = undefined;
 
 	@Watch('_pagination')
 	public watchPagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
@@ -298,7 +335,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Controls the position of the pagination.
 	 */
-	@Prop() public _paginationPosition?: PaginationPositionPropType = 'bottom';
+	@Prop()
+	public _paginationPosition?: PaginationPositionPropType = 'bottom';
 
 	@Watch('_paginationPosition')
 	public watchPaginationPosition(value?: PaginationPositionPropType): void {
@@ -310,7 +348,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/**
 	 * Defines how rows can be selected and the current selection.
 	 */
-	@Prop() public _selection?: TableSelectionPropType = undefined;
+	@Prop()
+	public _selection?: TableSelectionPropType = undefined;
 
 	@Watch('_selection')
 	public watchSelection(value?: TableSelectionPropType): void {
@@ -318,31 +357,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	/**
-	 * Defines the callback functions for table events.
-	 */
-	@Prop() public _on?: TableStatefulCallbacksPropType = undefined;
-
-	@Watch('_on')
-	public watchOn(value?: TableStatefulCallbacksPropType): void {
-		tableStatefulCallbacksProp.apply(value, (v) => {
-			this.statefulOn = v;
-		});
-	}
-
-	/**
-	 * Enables the settings menu if true (default: false).
-	 */
-	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
-
-	@Watch('_hasSettingsMenu')
-	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
-		this.applyHasSettingsMenu(value);
-	}
-
-	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -371,12 +389,13 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.applyOn(this.statelessOn);
 		// Early resolution: if the external element is already in the DOM, the first render already uses
 		// it, so the AT sees the correct name from the start.
-		this.resolveExternalLabel(this._ariaLabelledby);
+		this.watchAriaLabelledby(this._ariaLabelledby);
 
 		this.watchAllowMultiSort(this._allowMultiSort);
 		this.watchData(this._data);
 		this.watchDataFoot(this._dataFoot);
 		this.watchFixedCols(this._fixedCols);
+		this.watchHasSettingsMenu(this._hasSettingsMenu);
 		this.watchHeaders(this._headers);
 		this.watchLabel(this._label);
 		this.watchLoading(this._loading);
@@ -384,7 +403,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.watchPagination(this._pagination);
 		this.watchPaginationPosition(this._paginationPosition);
 		this.watchSelection(this._selection);
-		this.watchHasSettingsMenu(this._hasSettingsMenu);
 		this.watchVariant(this._variant);
 	}
 
@@ -529,27 +547,18 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.syncTableLabel(this.externalLabelElements);
 	}
 
-	private renderPagination(position: PaginationPosition): JSX.Element {
-		const item = this.paginationItems[position];
-		return (
-			item && (
-				<div class={tableStatefulBem('pagination', { [this.paginationPosition]: true })}>
-					<div class={BEM_CLASS_TABLE_STATEFUL__PAGINATION_WRAPPER}>
-						<PaginationFC {...item.getFcProps()} />
-					</div>
-				</div>
-			)
-		);
-	}
-
 	public render(): JSX.Element {
 		return (
 			// The host keeps the class `kol-table-stateful`, which consumers of the element can select —
 			// documented exception to the no-Host-class convention, same as kol-select.
 			<Host class="kol-table-stateful">
-				{this.renderPagination('top')}
-				{this.renderTableStatelessFC()}
-				{this.renderPagination('bottom')}
+				<TableStatefulFC
+					paginationBottom={this.paginationItems.bottom?.getFcProps()}
+					paginationPosition={this.paginationPosition}
+					paginationTop={this.paginationItems.top?.getFcProps()}
+				>
+					{this.renderTableStatelessFC()}
+				</TableStatefulFC>
 			</Host>
 		);
 	}

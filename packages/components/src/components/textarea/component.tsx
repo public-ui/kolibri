@@ -1,5 +1,30 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { CounterBehavior } from '../../internal/functional-components/counter/behavior';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import { TextAreaFC, type TextAreaFCProps } from '../../internal/functional-components/form-field/textarea';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { TextareaApi } from '../../internal/functional-components/textarea/api';
+import { textareaPropsConfig } from '../../internal/functional-components/textarea/api';
+import {
+	accessKeyProp,
+	adjustHeightProp,
+	horizontalIconsProp,
+	placeholderProp,
+	readOnlyProp,
+	requiredProp,
+	resizeProp,
+	rowsProp,
+	shortKeyProp,
+	spellCheckProp,
+	stringValueProp,
+	variantProp,
+} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
@@ -29,38 +54,12 @@ import type {
 	Stringified,
 	StringValuePropType,
 	SyncValueBySelectorPropType,
-	TextareaProps,
 	TextareaResizePropType,
 	TooltipAlignPropType,
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { CounterBehavior } from '../../internal/functional-components/counter/behavior';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { TextAreaFC, type TextAreaFCProps } from '../../internal/functional-components/form-field/textarea';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { TextareaApi } from '../../internal/functional-components/textarea/api';
-import { textareaPropsConfig } from '../../internal/functional-components/textarea/api';
-import {
-	accessKeyProp,
-	adjustHeightProp,
-	horizontalIconsProp,
-	placeholderProp,
-	readOnlyProp,
-	requiredProp,
-	resizeProp,
-	rowsProp,
-	shortKeyProp,
-	spellCheckProp,
-	stringValueProp,
-	variantProp,
-} from '../../internal/props';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -77,18 +76,19 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolTextarea
-	extends BaseFormFieldWebComponent<TextareaApi>
-	implements ClickableElement, FocusableElement, TextareaProps, WebComponentInterface<TextareaApi>
-{
-	@Element() protected readonly host?: HTMLKolTextareaElement;
+export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implements ClickableElement, FocusableElement, WebComponentInterface<TextareaApi> {
+	@Element()
+	protected readonly host?: HTMLKolTextareaElement;
 
-	@State() public id = createUniqueId('textarea');
+	@State()
+	public id = createUniqueId('textarea');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
 
@@ -118,7 +118,8 @@ export class KolTextarea
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -130,7 +131,8 @@ export class KolTextarea
 	 * Adjusts the height of the element to its content.
 	 * @TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 */
-	@Prop() public _adjustHeight?: AdjustHeightPropType = false;
+	@Prop()
+	public _adjustHeight?: AdjustHeightPropType = false;
 
 	@Watch('_adjustHeight')
 	public watchAdjustHeight(value?: AdjustHeightPropType): void {
@@ -142,7 +144,8 @@ export class KolTextarea
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -152,7 +155,8 @@ export class KolTextarea
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -160,20 +164,23 @@ export class KolTextarea
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * Shows a character counter for the input element.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hasCounter?: HasCounterPropType = false;
 
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
+	@Watch('_hasCounter')
+	public watchHasCounter(value?: HasCounterPropType): void {
+		this.counter.watchHasCounter(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -181,9 +188,21 @@ export class KolTextarea
 	}
 
 	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -193,7 +212,8 @@ export class KolTextarea
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -203,7 +223,8 @@ export class KolTextarea
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -213,7 +234,8 @@ export class KolTextarea
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -223,7 +245,8 @@ export class KolTextarea
 	/**
 	 * Defines the maximum number of input characters.
 	 */
-	@Prop() public _maxLength?: MaxLengthPropType = undefined;
+	@Prop()
+	public _maxLength?: MaxLengthPropType = undefined;
 
 	@Watch('_maxLength')
 	public watchMaxLength(value?: MaxLengthPropType): void {
@@ -232,20 +255,10 @@ export class KolTextarea
 	}
 
 	/**
-	 * Shows a character counter for the input element.
-	 */
-	@Prop() public _hasCounter?: HasCounterPropType = false;
-
-	@Watch('_hasCounter')
-	public watchHasCounter(value?: HasCounterPropType): void {
-		this.counter.watchHasCounter(value);
-		this.needsImmediateCounterUpdate = true;
-	}
-
-	/**
 	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
 	 */
-	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
+	@Prop()
+	public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
 
 	@Watch('_maxLengthBehavior')
 	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
@@ -256,7 +269,8 @@ export class KolTextarea
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -266,7 +280,8 @@ export class KolTextarea
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -276,7 +291,8 @@ export class KolTextarea
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -286,7 +302,8 @@ export class KolTextarea
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: PlaceholderPropType = undefined;
+	@Prop()
+	public _placeholder?: PlaceholderPropType = undefined;
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
@@ -296,7 +313,8 @@ export class KolTextarea
 	/**
 	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType = false;
+	@Prop()
+	public _readOnly?: ReadOnlyPropType = false;
 
 	@Watch('_readOnly')
 	public watchReadOnly(value?: ReadOnlyPropType): void {
@@ -304,20 +322,10 @@ export class KolTextarea
 	}
 
 	/**
-	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
-	 * In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `vertical` (default) and `none`.
-	 */
-	@Prop() public _resize?: TextareaResizePropType = 'vertical';
-
-	@Watch('_resize')
-	public watchResize(value?: TextareaResizePropType): void {
-		resizeProp.apply(value, (v) => this.setRenderProp('resize', v));
-	}
-
-	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -325,9 +333,22 @@ export class KolTextarea
 	}
 
 	/**
+	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `vertical` (default) and `none`.
+	 */
+	@Prop()
+	public _resize?: TextareaResizePropType = 'vertical';
+
+	@Watch('_resize')
+	public watchResize(value?: TextareaResizePropType): void {
+		resizeProp.apply(value, (v) => this.setRenderProp('resize', v));
+	}
+
+	/**
 	 * Maximum number of visible rows of the element.
 	 */
-	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType = undefined;
+	@Prop({ mutable: true, reflect: false })
+	public _rows?: RowsPropType = undefined;
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
@@ -342,7 +363,8 @@ export class KolTextarea
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -353,7 +375,8 @@ export class KolTextarea
 	/**
 	 * Defines whether the browser should check the spelling and grammar.
 	 */
-	@Prop() public _spellCheck?: SpellCheckPropType = undefined;
+	@Prop()
+	public _spellCheck?: SpellCheckPropType = undefined;
 
 	@Watch('_spellCheck')
 	public watchSpellCheck(value?: SpellCheckPropType): void {
@@ -364,7 +387,8 @@ export class KolTextarea
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -374,7 +398,8 @@ export class KolTextarea
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -384,7 +409,8 @@ export class KolTextarea
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -394,7 +420,8 @@ export class KolTextarea
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: StringValuePropType = undefined;
+	@Prop({ mutable: true, reflect: true })
+	public _value?: StringValuePropType = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StringValuePropType): void {
@@ -405,7 +432,8 @@ export class KolTextarea
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -443,25 +471,25 @@ export class KolTextarea
 	public componentWillLoad(): void {
 		this.watchAriaDetails(this._ariaDetails);
 		this._touched = this._touched === true;
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
 		this.watchAdjustHeight(this._adjustHeight);
-		this.watchMsg(this._msg);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
+		this.watchHasCounter(this._hasCounter);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
-		this.watchShortKey(this._shortKey);
-		this.watchOn(this._on);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchHasCounter(this._hasCounter);
 		this.watchMaxLengthBehavior(this._maxLengthBehavior);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
+		this.watchOn(this._on);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
+		this.watchVariant(this._variant);
 		// Without a counter update: `componentDidLoad` fills the counter once its spans exist.
 		this.counter.watchMaxLength(this._maxLength);
 		this.watchPlaceholder(this._placeholder);

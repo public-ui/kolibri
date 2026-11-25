@@ -1,5 +1,6 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister } from 'adopted-style-sheets';
+
 import type { Mode } from '../schema';
 import { Log, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';

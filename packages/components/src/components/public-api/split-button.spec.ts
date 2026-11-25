@@ -2,9 +2,8 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-split-button` — byte-identical to the predecessor `shadow.tsx` on the
- * develop branch (19 props + getValue/focus/click/closePopup). `_role` stays declared but, as
- * before, is not forwarded to the inner element.
+ * Pinned public API of `kol-split-button` (19 props plus `getValue()`, `focus()`, `click()` and
+ * `closePopup()`). `_role` stays declared but is not forwarded to the inner element.
  */
 const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 	getValue: {
@@ -152,4 +151,4 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-split-button', component: 'split-button', pinnedApi: KOL_SPLIT_BUTTON_PUBLIC_API, schemaInterface: 'SplitButtonProps' });
+describePublicApiContract({ tag: 'kol-split-button', component: 'split-button', pinnedApi: KOL_SPLIT_BUTTON_PUBLIC_API });

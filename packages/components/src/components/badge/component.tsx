@@ -11,7 +11,6 @@ import type { PropsConfigShape, WebComponentInterface } from '../../internal/fun
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../internal/props';
 import type {
-	BadgeProps,
 	FocusableElement,
 	InternalButtonProps,
 	KolFocusOptions,
@@ -21,7 +20,7 @@ import type {
 	Stringified,
 } from '../../schema';
 import { featureHint, objectObjectHandler, setEventTarget } from '../../schema';
-import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -40,12 +39,15 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	},
 	shadow: true,
 })
-export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, FocusableElement, WebComponentInterface<BadgeApi> {
-	@Element() protected readonly host?: HTMLKolBadgeElement;
+export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableElement, WebComponentInterface<BadgeApi> {
+	@Element()
+	protected readonly host?: HTMLKolBadgeElement;
 
-	@State() public labelId: string = createUniqueId('badge-label');
+	@State()
+	public labelId: string = createUniqueId('badge-label');
 
-	@State() public ariaDescriptionId: string = nonce();
+	@State()
+	public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 
@@ -68,7 +70,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	/**
 	 * Defines the backgroundColor and foregroundColor.
 	 */
-	@Prop() public _color?: Stringified<PropColor> = '#000';
+	@Prop()
+	public _color?: Stringified<PropColor> = '#000';
 
 	@Watch('_color')
 	public watchColor(value?: Stringified<PropColor>): void {
@@ -78,7 +81,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp> = undefined;
+	@Prop()
+	public _icons?: Stringified<KoliBriIconsProp> = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
@@ -88,7 +92,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -98,7 +103,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {

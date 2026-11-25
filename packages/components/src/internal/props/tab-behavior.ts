@@ -11,8 +11,7 @@ const tabBehaviorOptions: readonly TabBehaviorPropType[] = ['select-automatic', 
  * - `select-automatic`: arrow keys move the focus and activate the focused tab at once.
  * - `select-manual`: arrow keys only move the focus; Enter or Space activates the tab.
  *
- * Default: `select-automatic` — the behavior the predecessor applied whenever `_behavior` was
- * unset (it only checked for `select-manual`).
+ * Default: `select-automatic`.
  *
  * @see https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
  */

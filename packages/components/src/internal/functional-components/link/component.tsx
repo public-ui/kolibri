@@ -4,7 +4,7 @@ import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
 import { devHint, trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
-import { classNameFromVariant } from '../../../schema/props/variant-class-name';
+import { classNameFromVariant } from '../../../schema/props';
 import clsx from '../../../utils/clsx';
 import { preventFocus } from '../../../utils/element-interaction';
 import { AriaDescriptionSpanFC } from '../aria-description-span/component';

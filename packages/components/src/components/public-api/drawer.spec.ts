@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-drawer`: 6 props plus the four open/close methods — identical to the
- * predecessor `shadow.tsx` on the develop branch.
+ * Pinned public API of `kol-drawer` (6 props plus the four open/close methods).
  */
 const KOL_DRAWER_PUBLIC_API: PublicApiContract = {
 	show: {
@@ -70,4 +69,4 @@ const KOL_DRAWER_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-drawer', component: 'drawer', pinnedApi: KOL_DRAWER_PUBLIC_API, schemaInterface: 'DrawerProps' });
+describePublicApiContract({ tag: 'kol-drawer', component: 'drawer', pinnedApi: KOL_DRAWER_PUBLIC_API });

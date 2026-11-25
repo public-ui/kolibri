@@ -11,8 +11,7 @@ import { normalizeArray } from './helpers/normalizers';
  * when set via property), internal type is the parsed array.
  *
  * Every entry must be an object with a non-empty string `_label`. One invalid entry rejects the
- * whole value and keeps the previously rendered tabs — the predecessor's `watchJsonArrayString`
- * behaved the same way.
+ * whole value and keeps the previously rendered tabs.
  */
 export type TabsProp = Prop<'tabs', Stringified<TabButtonProps[]>, TabButtonProps[]>;
 

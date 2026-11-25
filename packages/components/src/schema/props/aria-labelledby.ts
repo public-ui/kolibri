@@ -1,7 +1,6 @@
-import type { Generic } from 'adopted-style-sheets';
-
 import { resolveTargets } from '../../utils/aria-labelledby';
-import { watchValidator } from '../utils';
+import { devHint } from '../utils/a11y.tipps';
+import { isValidationEnabled } from '../utils/dev.utils';
 
 /* types */
 /**
@@ -21,10 +20,13 @@ export type PropAriaLabelledby = {
 
 /* validator */
 export const validateAriaLabelledby = (component: unknown, host: HTMLElement | undefined, value?: AriaLabelledbyPropType): HTMLElement[] => {
-	const isValid = (value?: unknown): boolean => typeof value === 'string' || typeof value === 'undefined';
-	watchValidator(component as Generic.Element.Component, '_ariaLabelledby', isValid, new Set(['string']), value);
-	if (!isValid(value)) {
+	if (typeof value !== 'string' && typeof value !== 'undefined') {
 		// An invalid value is only logged: it resolves to no element.
+		if (isValidationEnabled()) {
+			devHint(
+				`[${(component as object).constructor.name}] The property value: (${value as string}) for '_ariaLabelledby' is not valid. Allowed values are: string, null`,
+			);
+		}
 		return [];
 	}
 

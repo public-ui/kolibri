@@ -2,10 +2,8 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-link` — identical to the predecessor on the develop branch
- * (18 props + focus) except `_role`, which was removed by owner decision ("keine public
- * role nur an der FC"; fulfils the deprecation announced on develop). The role exists only
- * as an internal `LinkFC` render prop.
+ * Pinned public API of `kol-link` (18 props plus `focus()`). `kol-link` has no public `_role`: the
+ * role exists only as an internal `LinkFC` render prop.
  */
 const KOL_LINK_PUBLIC_API: PublicApiContract = {
 	_accessKey: {
@@ -122,4 +120,4 @@ const KOL_LINK_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-link', component: 'link', pinnedApi: KOL_LINK_PUBLIC_API, schemaInterface: 'LinkProps' });
+describePublicApiContract({ tag: 'kol-link', component: 'link', pinnedApi: KOL_LINK_PUBLIC_API });

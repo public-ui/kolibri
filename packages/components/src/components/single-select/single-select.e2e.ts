@@ -1,5 +1,6 @@
 import { expect, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
+
 import { testInputValueReflection } from '../../e2e';
 import { getAriaDetailsRefIds } from '../../e2e/aria-details';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
