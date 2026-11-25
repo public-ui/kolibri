@@ -2,9 +2,7 @@ import { KolAvatarTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolAvatar } from './component';
 
-type AvatarSnapshotProps = Partial<Pick<KolAvatar, '_color' | '_label' | '_src'>> & { style?: Record<string, string> };
-
-executeSnapshotTests<AvatarSnapshotProps>(
+executeSnapshotTests(
 	KolAvatarTag,
 	[KolAvatar],
 	[

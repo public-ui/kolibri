@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-table-stateful` (14 props, 2 methods), extracted from the legacy `shadow.tsx`
- * before its skeleton migration (#9599).
+ * Pinned public API of `kol-table-stateful` (14 props, 2 methods), #9599.
  */
 const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 	getSelection: {

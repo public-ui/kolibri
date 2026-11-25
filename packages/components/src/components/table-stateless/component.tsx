@@ -86,6 +86,16 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	}
 
 	/**
+	 * Enables the settings menu if true (default: false).
+	 */
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
+
+	@Watch('_hasSettingsMenu')
+	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
+		this.applyHasSettingsMenu(value);
+	}
+
+	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
 	@Prop() public _headers!: TableHeadersPropType;
@@ -136,16 +146,6 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	}
 
 	/**
-	 * Enables the settings menu if true (default: false).
-	 */
-	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
-
-	@Watch('_hasSettingsMenu')
-	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
-		this.applyHasSettingsMenu(value);
-	}
-
-	/**
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: VariantClassNamePropType = undefined;
@@ -156,6 +156,10 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	}
 
 	public componentWillLoad(): void {
+		// The watchers apply the props. If the external label element is already in the DOM (common
+		// when the label element is rendered before this component), the first render already uses
+		// it, so the AT sees the correct name from the start.
+		this.watchAriaLabelledby(this._ariaLabelledby);
 		this.watchData(this._data);
 		this.watchDataFoot(this._dataFoot);
 		this.watchFixedCols(this._fixedCols);
@@ -166,11 +170,6 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 		this.watchOn(this._on);
 		this.watchSelection(this._selection);
 		this.watchVariant(this._variant);
-
-		// Early resolution: if the external element is already in the DOM (common when the
-		// label element is rendered before this component), the first render already uses
-		// it, so the AT sees the correct name from the start.
-		this.resolveExternalLabel(this._ariaLabelledby);
 	}
 
 	public componentDidLoad(): void {

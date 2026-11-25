@@ -6,9 +6,9 @@
 
 		border-radius: var(--kol-badge-border-radius);
 		display: flex;
+		width: fit-content;
 		align-items: center;
 		justify-content: flex-start;
-		width: fit-content;
 
 		font-family: var(--font-family);
 		font-size: to-rem(14.4);

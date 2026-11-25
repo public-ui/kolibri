@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { fixedColsProp } from './fixed-cols';
 import { tableDataProp } from './table-data';
 import { tableHeadersProp } from './table-headers';

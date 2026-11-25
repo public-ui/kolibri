@@ -1,38 +1,6 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
-import type {
-	AccessKeyPropType,
-	AriaDetailsPropType,
-	AutoCompletePropType,
-	ClickableElement,
-	DisabledPropType,
-	FocusableElement,
-	FormFieldLabelInfoPopoverProps,
-	HideLabelPropType,
-	HideMsgPropType,
-	HintPropType,
-	IconsHorizontalPropType,
-	InputNumberProps,
-	InputTypeOnDefault,
-	InternalButtonProps,
-	KolFocusOptions,
-	LabelWithExpertSlotPropType,
-	MsgPropType,
-	NamePropType,
-	NumberString,
-	PlaceholderPropType,
-	ReadOnlyPropType,
-	RequiredPropType,
-	ShortKeyPropType,
-	Stringified,
-	SuggestionsPropType,
-	SyncValueBySelectorPropType,
-	TooltipAlignPropType,
-	TouchedPropType,
-	VariantClassNamePropType,
-} from '../../schema';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
@@ -62,12 +30,45 @@ import {
 	suggestionsProp,
 	variantProp,
 } from '../../internal/props';
+import type {
+	AccessKeyPropType,
+	AriaDetailsPropType,
+	AutoCompletePropType,
+	ClickableElement,
+	DisabledPropType,
+	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IconsHorizontalPropType,
+	InputTypeOnDefault,
+	InternalButtonProps,
+	KolFocusOptions,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	NamePropType,
+	NumberString,
+	PlaceholderPropType,
+	ReadOnlyPropType,
+	RequiredPropType,
+	ShortKeyPropType,
+	Stringified,
+	SuggestionsPropType,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	TouchedPropType,
+	VariantClassNamePropType,
+} from '../../schema';
+import { bem } from '../../schema/bem-registry';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';
 
-const STEP_BUTTON_CLASS = 'kol-input-number__step-button';
+const numberBem = bem.forBlock('kol-input-number');
+const STEP_BUTTON_CLASS = numberBem('step-button');
 
 /** Focus moving between the input and a step button is no focus change of the field. */
 const isStepButton = (target: EventTarget | null): boolean => (target as HTMLElement | null)?.classList?.contains(STEP_BUTTON_CLASS) === true;
@@ -87,16 +88,20 @@ const isStepButton = (target: EventTarget | null): boolean => (target as HTMLEle
 })
 export class KolInputNumber
 	extends BaseFormFieldWebComponent<InputNumberApi>
-	implements ClickableElement, FocusableElement, InputNumberProps, WebComponentInterface<InputNumberApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputNumberApi>
 {
-	@Element() protected readonly host?: HTMLKolInputNumberElement;
+	@Element()
+	protected readonly host?: HTMLKolInputNumberElement;
 
-	@State() public id = createUniqueId('input-number');
+	@State()
+	public id = createUniqueId('input-number');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -120,7 +125,8 @@ export class KolInputNumber
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -133,7 +139,8 @@ export class KolInputNumber
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -143,7 +150,8 @@ export class KolInputNumber
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+	@Prop()
+	public _autoComplete?: AutoCompletePropType = 'off';
 
 	@Watch('_autoComplete')
 	public watchAutoComplete(value?: AutoCompletePropType): void {
@@ -153,7 +161,8 @@ export class KolInputNumber
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -161,20 +170,11 @@ export class KolInputNumber
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
-	}
-
-	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -182,9 +182,21 @@ export class KolInputNumber
 	}
 
 	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -194,7 +206,8 @@ export class KolInputNumber
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -204,7 +217,8 @@ export class KolInputNumber
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -214,7 +228,8 @@ export class KolInputNumber
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -224,7 +239,8 @@ export class KolInputNumber
 	/**
 	 * Defines the maximum value of the element.
 	 */
-	@Prop() public _max?: number | NumberString = undefined;
+	@Prop()
+	public _max?: number | NumberString = undefined;
 
 	@Watch('_max')
 	public watchMax(value?: number | NumberString): void {
@@ -234,7 +250,8 @@ export class KolInputNumber
 	/**
 	 * Defines the smallest possible input value.
 	 */
-	@Prop() public _min?: number | NumberString = undefined;
+	@Prop()
+	public _min?: number | NumberString = undefined;
 
 	@Watch('_min')
 	public watchMin(value?: number | NumberString): void {
@@ -244,7 +261,8 @@ export class KolInputNumber
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -254,7 +272,8 @@ export class KolInputNumber
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -264,7 +283,8 @@ export class KolInputNumber
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -274,7 +294,8 @@ export class KolInputNumber
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: PlaceholderPropType = undefined;
+	@Prop()
+	public _placeholder?: PlaceholderPropType = undefined;
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
@@ -284,7 +305,8 @@ export class KolInputNumber
 	/**
 	 * Makes the input element read only.
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType = false;
+	@Prop()
+	public _readOnly?: ReadOnlyPropType = false;
 
 	@Watch('_readOnly')
 	public watchReadOnly(value?: ReadOnlyPropType): void {
@@ -294,7 +316,8 @@ export class KolInputNumber
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -304,7 +327,8 @@ export class KolInputNumber
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -315,7 +339,8 @@ export class KolInputNumber
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
@@ -327,19 +352,10 @@ export class KolInputNumber
 	}
 
 	/**
-	 * Suggestions to provide for the input.
-	 */
-	@Prop() public _suggestions?: SuggestionsPropType = undefined;
-
-	@Watch('_suggestions')
-	public watchSuggestions(value?: SuggestionsPropType): void {
-		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
-	}
-
-	/**
 	 * Defines the step size for value changes.
 	 */
-	@Prop() public _step?: number | NumberString = undefined;
+	@Prop()
+	public _step?: number | NumberString = undefined;
 
 	@Watch('_step')
 	public watchStep(value?: number | NumberString): void {
@@ -347,10 +363,22 @@ export class KolInputNumber
 	}
 
 	/**
+	 * Suggestions to provide for the input.
+	 */
+	@Prop()
+	public _suggestions?: SuggestionsPropType = undefined;
+
+	@Watch('_suggestions')
+	public watchSuggestions(value?: SuggestionsPropType): void {
+		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+	}
+
+	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -360,7 +388,8 @@ export class KolInputNumber
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -370,7 +399,8 @@ export class KolInputNumber
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -380,7 +410,8 @@ export class KolInputNumber
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null = undefined;
+	@Prop({ mutable: true, reflect: true })
+	public _value?: number | NumberString | null = undefined;
 
 	/** A value reset to `null` keeps the remembered type. */
 	@Watch('_value')
@@ -395,7 +426,8 @@ export class KolInputNumber
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -435,33 +467,33 @@ export class KolInputNumber
 		this.unsetRenderProp('smartButton');
 
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
-		this.watchShortKey(this._shortKey);
-		this.watchSmartButton(this._smartButton);
-		this.watchOn(this._on);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchAutoComplete(this._autoComplete);
 		this.watchMax(this._max);
 		this.watchMin(this._min);
-		this.watchSuggestions(this._suggestions);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
+		this.watchOn(this._on);
 		this.watchPlaceholder(this._placeholder);
 		this.watchReadOnly(this._readOnly);
 		this.watchRequired(this._required);
+		this.watchShortKey(this._shortKey);
+		this.watchSmartButton(this._smartButton);
 		this.watchStep(this._step);
+		this.watchSuggestions(this._suggestions);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchValue(this._value);
+		this.watchVariant(this._variant);
 
 		this.hasValue = Boolean(this.getRenderProp('value'));
 	}
@@ -614,7 +646,7 @@ export class KolInputNumber
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: clsx('kol-input-number', 'number', {
+						class: clsx(numberBem(), 'number', {
 							'has-value': this.hasValue,
 						}),
 						accessKey: this.getRenderProp('accessKey') || undefined,

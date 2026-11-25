@@ -3,10 +3,10 @@ import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from 
 
 import { translate } from '../../i18n';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { PaginationFC } from '../../internal/functional-components/pagination/component';
 import type { PaginationInput, PaginationItem } from '../../internal/functional-components/pagination/item';
 import { createPaginationItem } from '../../internal/functional-components/pagination/item';
 import type { TableStatefulApi } from '../../internal/functional-components/table-stateful/api';
+import { TableStatefulFC } from '../../internal/functional-components/table-stateful/component';
 import type { SortData } from '../../internal/functional-components/table-stateful/model';
 import {
 	buildHeaderCells,
@@ -16,6 +16,7 @@ import {
 	hasHeadersInBothDirections,
 	headerKeysChanged,
 	initializeSortFromHeaders,
+	redeclaresActiveSort,
 	selectDisplayedData,
 	sortRows,
 } from '../../internal/functional-components/table-stateful/model';
@@ -170,6 +171,18 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	};
 
 	/**
+	 * Defines whether to allow multi sort.
+	 */
+	@Prop() public _allowMultiSort?: AllowMultiSortPropType = undefined;
+
+	@Watch('_allowMultiSort')
+	public watchAllowMultiSort(value?: AllowMultiSortPropType): void {
+		allowMultiSortProp.apply(value, (v) => {
+			this.allowMultiSort = v;
+		});
+	}
+
+	/**
 	 * References an external element by ID that serves as the accessible label for this table.
 	 * The component resolves the IDs and sets them as element references (`ariaLabelledByElements`)
 	 * on the native `<table>` inside the shadow root, because IDREF attributes cannot cross that
@@ -181,18 +194,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_ariaLabelledby')
 	public watchAriaLabelledby(value?: AriaLabelledbyPropType): void {
 		this.resolveExternalLabel(value);
-	}
-
-	/**
-	 * Defines whether to allow multi sort.
-	 */
-	@Prop() public _allowMultiSort?: AllowMultiSortPropType = undefined;
-
-	@Watch('_allowMultiSort')
-	public watchAllowMultiSort(value?: AllowMultiSortPropType): void {
-		allowMultiSortProp.apply(value, (v) => {
-			this.allowMultiSort = v;
-		});
 	}
 
 	/**
@@ -232,6 +233,16 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	/**
+	 * Enables the settings menu if true (default: false).
+	 */
+	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
+
+	@Watch('_hasSettingsMenu')
+	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
+		this.applyHasSettingsMenu(value);
+	}
+
+	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
 	@Prop() public _headers!: TableHeadersPropType;
@@ -239,12 +250,17 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_headers')
 	public watchHeaders(value?: TableHeadersPropType): void {
 		tableStatefulHeadersProp.apply(value, (headers) => {
-			// Adjusted header cells fit only the same columns. A new object with the same keys (common with
-			// inline headers in React) keeps them.
-			if (headerKeysChanged(this.headers, headers)) {
+			// Adjusted header cells and the current sort fit only the same columns. A new object with the same
+			// keys (common with inline headers in React) keeps both; resetSort() re-reads the declared sort.
+			// The first headers always apply: keyless header cells would be read as unchanged by their keys.
+			const firstHeaders = !this.headers.horizontal?.length && !this.headers.vertical?.length;
+			if (firstHeaders || headerKeysChanged(this.headers, headers)) {
 				this.adjustedHeaderCells = undefined;
-			}
-			if (this.initializeSort(headers)) {
+				this.initializeSort(headers);
+				setTimeout(() => this.updateSortedData());
+			} else if (redeclaresActiveSort(headers, this.sortData)) {
+				/* A non-structural re-set that re-declares the direction of the active sort replaces it. */
+				this.initializeSort(headers);
 				setTimeout(() => this.updateSortedData());
 			}
 			if (hasHeadersInBothDirections(headers)) {
@@ -275,6 +291,18 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_loading')
 	public watchLoading(value?: TableLoadingPropType): void {
 		this.applyLoading(value);
+	}
+
+	/**
+	 * Defines the callback functions for table events.
+	 */
+	@Prop() public _on?: TableStatefulCallbacksPropType = undefined;
+
+	@Watch('_on')
+	public watchOn(value?: TableStatefulCallbacksPropType): void {
+		tableStatefulCallbacksProp.apply(value, (v) => {
+			this.statefulOn = v;
+		});
 	}
 
 	/**
@@ -313,28 +341,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	}
 
 	/**
-	 * Defines the callback functions for table events.
-	 */
-	@Prop() public _on?: TableStatefulCallbacksPropType = undefined;
-
-	@Watch('_on')
-	public watchOn(value?: TableStatefulCallbacksPropType): void {
-		tableStatefulCallbacksProp.apply(value, (v) => {
-			this.statefulOn = v;
-		});
-	}
-
-	/**
-	 * Enables the settings menu if true (default: false).
-	 */
-	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType = undefined;
-
-	@Watch('_hasSettingsMenu')
-	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
-		this.applyHasSettingsMenu(value);
-	}
-
-	/**
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: VariantClassNamePropType = undefined;
@@ -364,14 +370,14 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	public componentWillLoad(): void {
 		this.applyOn(this.statelessOn);
-		// Early resolution: if the external element is already in the DOM, the first render already uses
-		// it, so the AT sees the correct name from the start.
-		this.resolveExternalLabel(this._ariaLabelledby);
-
+		// The watchers apply the props. If the external label element is already in the DOM, the first
+		// render already resolves it and the assistive technology reads the correct name from the start.
 		this.watchAllowMultiSort(this._allowMultiSort);
+		this.watchAriaLabelledby(this._ariaLabelledby);
 		this.watchData(this._data);
 		this.watchDataFoot(this._dataFoot);
 		this.watchFixedCols(this._fixedCols);
+		this.watchHasSettingsMenu(this._hasSettingsMenu);
 		this.watchHeaders(this._headers);
 		this.watchLabel(this._label);
 		this.watchLoading(this._loading);
@@ -379,7 +385,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.watchPagination(this._pagination);
 		this.watchPaginationPosition(this._paginationPosition);
 		this.watchSelection(this._selection);
-		this.watchHasSettingsMenu(this._hasSettingsMenu);
 		this.watchVariant(this._variant);
 	}
 
@@ -433,13 +438,12 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.moveCheckboxFocus(event);
 	}
 
-	private initializeSort(headers: KoliBriTableHeaders): boolean {
-		const { sortData, hasSortedCells, missingKey } = initializeSortFromHeaders(headers, this.allowMultiSort);
+	private initializeSort(headers: KoliBriTableHeaders): void {
+		const { sortData, missingKey } = initializeSortFromHeaders(headers, this.allowMultiSort);
 		if (missingKey) {
 			devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
 		}
 		this.sortData = sortData;
-		return hasSortedCells;
 	}
 
 	private readonly updateSortedData = (): void => {
@@ -543,16 +547,15 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.syncTableLabel(this.externalLabelElements);
 	}
 
-	private renderPagination(position: PaginationPosition): JSX.Element {
-		const item = this.paginationItems[position];
+	private renderTableStatefulFC(): JSX.Element {
 		return (
-			item && (
-				<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.paginationPosition}`}>
-					<div class="kol-table-stateful__pagination-wrapper">
-						<PaginationFC {...item.getFcProps()} />
-					</div>
-				</div>
-			)
+			<TableStatefulFC
+				paginationTop={this.paginationItems.top?.getFcProps()}
+				paginationBottom={this.paginationItems.bottom?.getFcProps()}
+				paginationPosition={this.paginationPosition}
+			>
+				{this.renderTableStatelessFC()}
+			</TableStatefulFC>
 		);
 	}
 
@@ -560,11 +563,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		return (
 			// The host keeps the class `kol-table-stateful`, which consumers of the element can select —
 			// documented exception to the no-Host-class convention, same as kol-select.
-			<Host class="kol-table-stateful">
-				{this.renderPagination('top')}
-				{this.renderTableStatelessFC()}
-				{this.renderPagination('bottom')}
-			</Host>
+			<Host class="kol-table-stateful">{this.renderTableStatefulFC()}</Host>
 		);
 	}
 }

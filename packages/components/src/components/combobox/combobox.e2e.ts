@@ -1,5 +1,6 @@
 import { expect, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
+
 import { testInputValueReflection } from '../../e2e';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';

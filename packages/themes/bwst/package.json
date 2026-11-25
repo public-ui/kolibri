@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-bwst",
-	"version": "5.0.0-beta.1",
+	"version": "5.0.0-beta.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -87,6 +87,14 @@
 		"@fontsource/noto-sans": "5.3.0",
 		"@fortawesome/fontawesome-free": "6.7.2",
 		"@public-ui/components": "workspace:*"
+	},
+	"peerDependenciesMeta": {
+		"@fortawesome/fontawesome-free": {
+			"optional": true
+		},
+		"@fontsource/noto-sans": {
+			"optional": true
+		}
 	},
 	"exports": {
 		".": {

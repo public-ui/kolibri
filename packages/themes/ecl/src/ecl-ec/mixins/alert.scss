@@ -1,10 +1,8 @@
 @use '../../mixins/to-rem' as *;
-@use './icon' as *;
 @use './button' as *;
 
 @mixin alert {
 	.kol-alert {
-		@include icon();
 		@include button('kol-button');
 
 		align-items: center;

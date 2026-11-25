@@ -314,7 +314,6 @@ graph TB
 | `@stencil/core`        | Web component compiler        | Components                       |
 | `adopted-style-sheets` | Style sheet adoption polyfill | Components, Themes               |
 | `@floating-ui/dom`     | Positioning engine            | Components (tooltips, dropdowns) |
-| `markdown-it`          | Markdown rendering            | Components (rich text)           |
 | `wcag-contrast`        | Contrast ratio validation     | Components (color validation)    |
 
 ### Internal Dependencies

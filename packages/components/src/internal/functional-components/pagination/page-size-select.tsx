@@ -1,4 +1,5 @@
 import type { JSX } from '@stencil/core';
+
 import type { InputTypeOnDefault, Option, ShortKeyPropType, StencilUnknown, Stringified } from '../../../schema';
 import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
@@ -98,16 +99,6 @@ export class PageSizeSelect extends BaseSelectWebComponent {
 		return undefined;
 	}
 
-	/** Call once per render of the embedding element. */
-	public render(input: PageSizeSelectInput): JSX.Element {
-		if (this.loaded) {
-			this.update(input);
-		} else {
-			this.load(input);
-		}
-		return this.renderSelectField();
-	}
-
 	/** Call from `componentDidRender` of the embedding element. */
 	public sync(): void {
 		this.syncFormField();
@@ -173,4 +164,29 @@ export class PageSizeSelect extends BaseSelectWebComponent {
 			this.applyValue(input.value);
 		}
 	}
+
+	/** Call once per render of the embedding element. */
+	public render(input: PageSizeSelectInput): JSX.Element {
+		if (this.loaded) {
+			this.update(input);
+		} else {
+			this.load(input);
+		}
+		return this.renderSelectField();
+	}
 }
+
+let pageSizeSelectDefined = false;
+
+/**
+ * Creates a page size select. In the custom elements build the web component base classes extend
+ * `HTMLElement`, whose constructor only runs for a class in the custom element registry, so the class
+ * is registered once under an internal name before the first `new`. The element never enters the DOM.
+ */
+export const createPageSizeSelect = (getHost: () => HTMLElement | undefined, requestRender: () => void): PageSizeSelect => {
+	if (!pageSizeSelectDefined && typeof HTMLElement !== 'undefined' && PageSizeSelect.prototype instanceof HTMLElement) {
+		customElements.define(createUniqueId('kol-page-size-select'), PageSizeSelect as unknown as CustomElementConstructor);
+	}
+	pageSizeSelectDefined = true;
+	return new PageSizeSelect(getHost, requestRender);
+};

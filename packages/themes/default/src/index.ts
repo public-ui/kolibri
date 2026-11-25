@@ -13,7 +13,6 @@ import dialogCss from './components/dialog.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
-import iconCss from './components/icon.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.scss';
@@ -65,7 +64,6 @@ export const DEFAULT = KoliBri.createTheme(
 		'KOL-DRAWER': drawerCss,
 		'KOL-FORM': formCss,
 		'KOL-HEADING': headingCss,
-		'KOL-ICON': iconCss,
 		'KOL-INPUT-CHECKBOX': inputCheckboxCss,
 		'KOL-INPUT-COLOR': inputColorCss,
 		'KOL-INPUT-DATE': inputDateCss,
@@ -79,6 +77,7 @@ export const DEFAULT = KoliBri.createTheme(
 		'KOL-LINK': linkCss,
 		'KOL-LINK-BUTTON': linkButtonCss,
 		'KOL-METER': meterCss,
+		'KOL-MODAL': dialogCss,
 		'KOL-NAV': navCss,
 		'KOL-PAGINATION': paginationCss,
 		'KOL-POPOVER-BUTTON': popoverButtonCss,

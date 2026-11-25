@@ -1,4 +1,3 @@
-import type { Generic } from 'adopted-style-sheets';
 import type { Callback } from '../enums';
 import type { EventValueOrEventCallback } from '../types/callbacks';
 
@@ -12,14 +11,4 @@ export type LinkOnCallbacksPropType = {
  */
 export type PropLinkOnCallbacks = {
 	on: LinkOnCallbacksPropType;
-};
-
-/* validator */
-export const validateLinkCallbacks = (component: Generic.Element.Component, value?: LinkOnCallbacksPropType): void => {
-	if (typeof value === 'object' && typeof value?.onClick === 'function') {
-		component.state = {
-			...component.state,
-			_on: value,
-		};
-	}
 };

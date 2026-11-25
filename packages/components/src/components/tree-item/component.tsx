@@ -1,20 +1,20 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, transformTag, Watch } from '@stencil/core';
 
 import { KolTreeTag } from '../../core/component-names';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { UnsubscribeFunction } from '../../internal/functional-components/link/aria-current-service';
+import { onLocationChange } from '../../internal/functional-components/link/aria-current-service';
 import type { TreeItemApi } from '../../internal/functional-components/tree-item/api';
 import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
+import { invalidateOpenItemsCache } from '../../internal/functional-components/tree/open-items-cache';
 import { activeProp, ariaCurrentValueProp, hrefProp, labelLangSegmentsProp, openProp } from '../../internal/props';
-import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType, TreeItemProps } from '../../schema';
+import type { HrefPropType, KolFocusOptions, LabelLangSegmentsPropType, OpenPropType } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { UnsubscribeFunction } from '../link/ariaCurrentService';
-import { onLocationChange } from '../link/ariaCurrentService';
-import { invalidateOpenItemsCache } from '../tree/open-items-cache';
 
 /**
  * @slot - Further Children as TreeItem Components
@@ -26,18 +26,24 @@ import { invalidateOpenItemsCache } from '../tree/open-items-cache';
 	},
 	shadow: true,
 })
-export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeItemProps, WebComponentInterface<TreeItemApi> {
-	@Element() protected readonly host?: HTMLKolTreeItemElement;
+export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebComponentInterface<TreeItemApi> {
+	@Element()
+	protected readonly host?: HTMLKolTreeItemElement;
 
-	@State() public ariaCurrent: string = '';
+	@State()
+	public ariaCurrent: string = '';
 
-	@State() public groupId: string = createUniqueId('tree-group');
+	@State()
+	public groupId: string = createUniqueId('tree-group');
 
-	@State() public hasChildren: boolean = false;
+	@State()
+	public hasChildren: boolean = false;
 
-	@State() public level: number = 0;
+	@State()
+	public level: number = 0;
 
-	@State() public open: boolean = false;
+	@State()
+	public open: boolean = false;
 
 	protected readonly anchorRef = createCtaRef<HTMLAnchorElement>();
 
@@ -48,7 +54,8 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	/**
 	 * If set (to true) the tree item is the active one.
 	 */
-	@Prop() public _active?: OpenPropType = undefined;
+	@Prop()
+	public _active?: OpenPropType = undefined;
 
 	@Watch('_active')
 	public watchActive(value?: OpenPropType): void {
@@ -56,9 +63,21 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	}
 
 	/**
+	 * Defines the target URI of the link.
+	 */
+	@Prop()
+	public _href!: HrefPropType;
+
+	@Watch('_href')
+	public watchHref(value?: HrefPropType): void {
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+	}
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelLangSegmentsPropType;
+	@Prop()
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -68,21 +87,15 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType = undefined;
+	@Prop()
+	public _open?: OpenPropType = undefined;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
-		openProp.apply(value, (v) => (this.open = v));
-	}
-
-	/**
-	 * Defines the target URI of the link.
-	 */
-	@Prop() public _href!: HrefPropType;
-
-	@Watch('_href')
-	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+		openProp.apply(value, (v) => {
+			this.open = v;
+			invalidateOpenItemsCache(this.getTree());
+		});
 	}
 
 	/**
@@ -150,7 +163,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	private determineTreeItemDepth(): void {
 		let level = 0;
 		let traverseItem: HTMLElement | null = this.host?.parentElement ?? null;
-		while (traverseItem !== null && traverseItem.tagName.toLowerCase() !== KolTreeTag && traverseItem !== document.body) {
+		while (traverseItem !== null && traverseItem.tagName.toLowerCase() !== transformTag(KolTreeTag) && traverseItem !== document.body) {
 			traverseItem = traverseItem.parentElement;
 			level += 1;
 		}
@@ -169,7 +182,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 	private getTree(): Element | undefined {
 		let element: Element | null | undefined = this.host;
 		while (element) {
-			const tree = element.closest(KolTreeTag);
+			const tree = element.closest(transformTag(KolTreeTag));
 			if (tree) {
 				return tree;
 			}

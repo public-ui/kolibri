@@ -1,7 +1,11 @@
-import type { PaginationInput } from './item';
+import { Log } from '../../../schema/utils/dev.utils';
+import type { PaginationInput, PaginationItem } from './item';
 import { createPaginationItem } from './item';
 
 type Reported = string[];
+
+/** The items of the spec, destroyed after each test so the register of unique nav labels stays clean. */
+const items: PaginationItem[] = [];
 
 /** Creates an item whose `_on` callbacks and events are logged. */
 const setup = () => {
@@ -12,6 +16,7 @@ const setup = () => {
 	);
 	const requestRender = jest.fn();
 	const item = createPaginationItem({ getEventTarget: () => target, requestRender });
+	items.push(item);
 	const on = {
 		onClick: (_event: Event, page: number) => reported.push(`cb:onClick:${page}`),
 		onChangePage: (event: Event, page: number) => reported.push(`cb:onChangePage:${page}:${event.type}`),
@@ -22,22 +27,23 @@ const setup = () => {
 
 const flush = () => new Promise((resolve) => setTimeout(resolve));
 
+const toText = (message: unknown): string => (Array.isArray(message) ? message.join(' ') : String(message));
+const warn = jest.spyOn(Log, 'warn').mockImplementation(() => undefined);
+const warnings = (): string[] => warn.mock.calls.map(([message]) => toText(message));
+
+beforeEach(() => {
+	warn.mockClear();
+});
+
+afterEach(() => {
+	items.splice(0).forEach((item) => item.destroy());
+});
+
+afterAll(() => {
+	warn.mockRestore();
+});
+
 describe('createPaginationItem', () => {
-	it('names the landmark with the translation when the label is unset, with and without requiredness', () => {
-		const { item } = setup();
-		item.applyLabel(undefined);
-		expect(item.getFcProps().label).toBe('kol-pagination');
-
-		item.applyLabel(undefined, true);
-		expect(item.getFcProps().label).toBe('kol-pagination');
-
-		item.applyLabel('Custom label', true);
-		expect(item.getFcProps().label).toBe('Custom label');
-
-		item.applyLabel(undefined, true);
-		expect(item.getFcProps().label).toBe('kol-pagination');
-	});
-
 	it('reports a page beyond the last page twice on load, because the page is applied again last', async () => {
 		const { item, on, reported } = setup();
 		item.load({ max: 10, on, page: 20 });
@@ -119,5 +125,89 @@ describe('createPaginationItem', () => {
 		navigationCallbacks.last.onClick(new Event('click'));
 		expect(reported).toEqual(['cb:onClick:2', 'ev:click:2', 'cb:onClick:3', 'ev:click:3']);
 		expect(item.getFcProps().navigationCallbacks).toBe(navigationCallbacks);
+	});
+
+	/**
+	 * Pins the requiredness semantics of the required slot (ARC42, "Requiredness semantics per prop").
+	 * `devWarning` logs each distinct message once per process, so the warning itself is asserted in
+	 * the first test that triggers it and later tests pin the resulting state only.
+	 */
+	describe('requiredness', () => {
+		it('keeps an unset _max without a warning when no requiredness is passed, like a composed item', () => {
+			const { item } = setup();
+			item.load({ on: {}, page: 1 });
+			expect(item.getFcProps().max).toBe(0);
+			expect(warnings()).toEqual([]);
+		});
+
+		it('warns about an unset _max when load marks it required and keeps the empty state of no entries', () => {
+			const { item } = setup();
+			item.load({ on: {}, page: 1 }, { max: true });
+			expect(item.getFcProps().max).toBe(0);
+			expect(warnings()).toEqual([expect.stringContaining(`The required property '_max' did not receive a value.`)]);
+		});
+
+		it('applies a set _max without a warning, also when load marks it required', () => {
+			const { item } = setup();
+			item.load({ max: 10, on: {}, page: 1 }, { max: true });
+			expect(item.getFcProps().max).toBe(10);
+		});
+
+		it('resets an unset _max to the default when the watcher applies it with requiredness', () => {
+			const { item } = setup();
+			item.load({ max: 10, on: {}, page: 1 });
+			item.applyMax(undefined, true);
+			expect(item.getFcProps().max).toBe(0);
+		});
+
+		it('keeps an unset _label warning-free without requiredness, like a composed item, and names the landmark with the translation', () => {
+			const { item } = setup();
+			item.load({ on: {}, page: 1 });
+			expect(item.getFcProps().label).toBe('kol-pagination');
+			expect(warnings()).toEqual([]);
+		});
+
+		it('warns about an unset _label when load marks it required and keeps the landmark named with the translation', () => {
+			const { item } = setup();
+			item.load({ on: {}, page: 1 }, { label: true });
+			expect(item.getFcProps().label).toBe('kol-pagination');
+			expect(warnings()).toEqual([expect.stringContaining(`The required property '_label' did not receive a value.`)]);
+		});
+
+		it('applies a set _label without a warning, also when load marks it required', () => {
+			const { item } = setup();
+			item.load({ label: 'Entries', on: {}, page: 1 }, { label: true });
+			expect(item.getFcProps().label).toBe('Entries');
+			expect(warnings()).toEqual([]);
+		});
+
+		it('returns to the translation when the watcher applies an unset _label with requiredness', () => {
+			const { item } = setup();
+			item.load({ label: 'Entries', on: {}, page: 1 });
+			item.applyLabel(undefined, true);
+			expect(item.getFcProps().label).toBe('kol-pagination');
+		});
+
+		it('starts an unset _page on the first page and reports it, as a type contract without a warning', async () => {
+			const { item, on, reported } = setup();
+			item.load({ max: 10, on });
+			await flush();
+			expect(item.getFcProps().page).toBe(1);
+			expect(reported).toEqual(['cb:onChangePage:1:StateChange', 'ev:changepage:1']);
+			expect(warnings()).toEqual([]);
+		});
+
+		it('keeps the DOM events working without _on, as a type contract without a warning', async () => {
+			const { item, reported } = setup();
+			item.load({ max: 30, page: 1, pageSize: 10 });
+			await flush();
+			reported.length = 0;
+
+			item.getFcProps().handlePageClick(new Event('click'), 3);
+			expect(reported).toEqual(['ev:click:3']);
+			await flush();
+			expect(reported).toEqual(['ev:click:3', 'ev:changepage:3']);
+			expect(warnings()).toEqual([]);
+		});
 	});
 });

@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
 
+import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TabsApi } from '../../internal/functional-components/tabs/api';
@@ -22,13 +23,10 @@ import type {
 	Stringified,
 	TabBehaviorPropType,
 	TabButtonProps,
-	TabsProps,
 } from '../../schema';
 import { devHint, koliBriQuerySelector } from '../../schema';
-
-import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
-import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
+import type { HasCreateButtonPropType } from '../../schema/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -44,8 +42,9 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, TabsProps, WebComponentInterface<TabsApi> {
-	@Element() protected readonly host?: HTMLKolTabsElement;
+export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, WebComponentInterface<TabsApi> {
+	@Element()
+	protected readonly host?: HTMLKolTabsElement;
 
 	private rootElement?: HTMLDivElement;
 
@@ -63,8 +62,10 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	 * `aria-labelledby`, `focusTabById` selector). Must not be derived from `_label`:
 	 * label characters (e.g. commas, which split CSS selector lists) would break the
 	 * `button#...` lookup, and identical labels on multiple `<kol-tabs>` would collide.
+	 * In the custom elements build the component is the host element, where a field named `id`
+	 * would write the host's `id` attribute.
 	 */
-	private readonly id = createUniqueId('tabs');
+	private readonly tabsId = createUniqueId('tabs');
 
 	/** One orchestrated button per tab, rebuilt whenever `_tabs` changes. */
 	private tabButtonItems: TabsButtonItem[] = [];
@@ -98,7 +99,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines the visual orientation of the component.
 	 */
-	@Prop() public _align?: AlignPropType = 'top';
+	@Prop()
+	public _align?: AlignPropType = 'top';
 
 	@Watch('_align')
 	public watchAlign(value?: AlignPropType): void {
@@ -108,7 +110,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines which behavior is active.
 	 */
-	@Prop() public _behavior?: TabBehaviorPropType = undefined;
+	@Prop()
+	public _behavior?: TabBehaviorPropType = undefined;
 
 	@Watch('_behavior')
 	public watchBehavior(value?: TabBehaviorPropType): void {
@@ -118,7 +121,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines whether the element has a create button.
 	 */
-	@Prop() public _hasCreateButton?: HasCreateButtonPropType = false;
+	@Prop()
+	public _hasCreateButton?: HasCreateButtonPropType = false;
 
 	@Watch('_hasCreateButton')
 	public watchHasCreateButton(value?: HasCreateButtonPropType): void {
@@ -128,7 +132,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -138,7 +143,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines the callback functions for tabs events.
 	 */
-	@Prop() public _on?: KoliBriTabsCallbacks = undefined;
+	@Prop()
+	public _on?: KoliBriTabsCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriTabsCallbacks): void {
@@ -148,7 +154,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines which tab is active.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _selected?: SelectedPropType = 0;
+	@Prop({ mutable: true, reflect: true })
+	public _selected?: SelectedPropType = 0;
 
 	@Watch('_selected')
 	public watchSelected(value?: SelectedPropType): void {
@@ -158,7 +165,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines the tab captions.
 	 */
-	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
+	@Prop()
+	public _tabs!: Stringified<TabButtonProps[]>;
 
 	@Watch('_tabs')
 	public watchTabs(value?: Stringified<TabButtonProps[]>): void {
@@ -186,13 +194,13 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	public componentWillLoad(): void {
-		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
-		tabBehaviorProp.apply(this._behavior, (v) => this.setRenderProp('behavior', v));
-		hasCreateButtonProp.apply(this._hasCreateButton, (v) => this.setRenderProp('hasCreateButton', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		tabsCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
-		this.applySelected(this._selected);
-		this.applyTabs(this._tabs);
+		this.watchAlign(this._align);
+		this.watchBehavior(this._behavior);
+		this.watchHasCreateButton(this._hasCreateButton);
+		this.watchLabel(this._label);
+		this.watchOn(this._on);
+		this.watchSelected(this._selected);
+		this.watchTabs(this._tabs);
 	}
 
 	public componentWillRender(): void {
@@ -324,7 +332,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	private focusTabById(index: number): void {
 		if (this.rootElement /* SSR instanceof HTMLElement */) {
-			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.id}-tab-${index}`, this.rootElement);
+			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.tabsId}-tab-${index}`, this.rootElement);
 			button?.focus();
 		}
 	}
@@ -366,8 +374,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		const tabs = this.getRenderProp('tabs');
 		for (let i = 0; i < tabs.length; i++) {
 			const div = document.createElement('div');
-			div.setAttribute('aria-labelledby', `${this.id}-tab-${i}`);
-			div.setAttribute('id', `${this.id}-panel-${i}`);
+			div.setAttribute('aria-labelledby', `${this.tabsId}-tab-${i}`);
+			div.setAttribute('id', `${this.tabsId}-panel-${i}`);
 			div.setAttribute('role', 'tabpanel');
 			div.setAttribute('hidden', '');
 			// Panels are not tabbable, see https://github.com/public-ui/kolibri/issues/10082
@@ -408,13 +416,13 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 			const isSelected = selected === index;
 			return item.getButton(
 				{
-					_ariaControls: `${this.id}-panel-${index}`,
+					_ariaControls: `${this.tabsId}-panel-${index}`,
 					_ariaSelected: isSelected,
 					_customClass: isSelected ? 'selected' : '',
 					_disabled: tab._disabled,
 					_hideLabel: tab._hideLabel,
 					_icons: tab._icons,
-					_id: `${this.id}-tab-${index}`,
+					_id: `${this.tabsId}-tab-${index}`,
 					_label: tab._label, // TODO: ariaLabel-Konzept prüfen
 					_on: this.tabButtonCallbacks as ButtonCallbacksPropType<StencilUnknown>,
 					_role: 'tab',

@@ -1,4 +1,5 @@
 import { h } from '@stencil/core';
+
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
 import { getInputAdornments } from './adornments';
 import { InputFC } from './input';

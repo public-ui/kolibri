@@ -1,7 +1,7 @@
 import type { KolFocusOptions } from '../../../schema';
 import { labelProp, orientationProp, toolbarItemsProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
-import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './entry-item';
 
 /**
  * Props configuration for the toolbar component.
@@ -9,7 +9,7 @@ import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
  * Notes on prop choices:
  * - `labelProp`: the label is emitted only as the `aria-label` of the toolbar and is never
  *   rendered, so language segments would have no effect — a plain string suffices.
- * - `orientationProp` defaults to `'horizontal'`, like the predecessor's `validateOrientation`.
+ * - `orientationProp` defaults to `'horizontal'`.
  */
 export const toolbarPropsConfig = {
 	required: [labelProp, toolbarItemsProp],
@@ -30,7 +30,7 @@ export type ToolbarApi = ApiFromConfig<
 			currentIndex: number;
 			/**
 			 * Orchestration records for the items (everything `ButtonFC` or `LinkFC` needs, built by
-			 * `createToolbarItem`), rebuilt whenever `_items` changes.
+			 * `createToolbarEntryItem`), rebuilt whenever `_items` changes.
 			 */
 			itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem>;
 			/**

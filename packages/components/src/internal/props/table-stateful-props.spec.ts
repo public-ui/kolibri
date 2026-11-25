@@ -1,4 +1,5 @@
 import { afterAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
+
 import { Log } from '../../schema/utils/dev.utils';
 import { allowMultiSortProp } from './allow-multi-sort';
 import { paginationPositionProp } from './pagination-position';
@@ -7,7 +8,7 @@ import { tableStatefulCallbacksProp } from './table-stateful-callbacks';
 import { tableStatefulHeadersProp } from './table-stateful-headers';
 
 /**
- * Pins the props of `kol-table-stateful` against the legacy validators they replace (#9599).
+ * Pins the props of `kol-table-stateful` (#9599).
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;

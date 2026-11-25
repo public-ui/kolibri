@@ -1,34 +1,5 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import type {
-	AcceptPropType,
-	AccessKeyPropType,
-	AriaDetailsPropType,
-	ClickableElement,
-	DisabledPropType,
-	FocusableElement,
-	FormFieldLabelInfoPopoverProps,
-	HideLabelPropType,
-	HideMsgPropType,
-	HintPropType,
-	IconsHorizontalPropType,
-	InputFileProps,
-	InputTypeOnDefault,
-	InternalButtonProps,
-	KolFocusOptions,
-	LabelWithExpertSlotPropType,
-	MsgPropType,
-	MultiplePropType,
-	NamePropType,
-	RequiredPropType,
-	ShortKeyPropType,
-	Stringified,
-	SyncValueBySelectorPropType,
-	TooltipAlignPropType,
-	TouchedPropType,
-	VariantClassNamePropType,
-} from '../../schema';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { translate } from '../../i18n';
 import { ButtonFC } from '../../internal/functional-components/button/component';
@@ -44,8 +15,40 @@ import type { InputFileApi } from '../../internal/functional-components/input-fi
 import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
 import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
 import { acceptProp, accessKeyProp, horizontalIconsProp, multipleProp, requiredProp, shortKeyProp, smartButtonProp, variantProp } from '../../internal/props';
+import type {
+	AcceptPropType,
+	AccessKeyPropType,
+	AriaDetailsPropType,
+	ClickableElement,
+	DisabledPropType,
+	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IconsHorizontalPropType,
+	InputTypeOnDefault,
+	InternalButtonProps,
+	KolFocusOptions,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	MultiplePropType,
+	NamePropType,
+	RequiredPropType,
+	ShortKeyPropType,
+	Stringified,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	TouchedPropType,
+	VariantClassNamePropType,
+} from '../../schema';
+import { bem } from '../../schema/bem-registry';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+
+const fileBem = bem.forBlock('kol-input-file');
 
 /**
  * The **File** input type creates an input field for file uploads. One or multiple files can be selected and submitted with a form.
@@ -59,27 +62,31 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolInputFile
-	extends BaseFormFieldWebComponent<InputFileApi>
-	implements ClickableElement, FocusableElement, InputFileProps, WebComponentInterface<InputFileApi>
-{
-	@Element() protected readonly host?: HTMLKolInputFileElement;
+export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputFileApi> {
+	@Element()
+	protected readonly host?: HTMLKolInputFileElement;
 
-	@State() public id = createUniqueId('input-file');
+	@State()
+	public id = createUniqueId('input-file');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
 	private readonly translateFilenameText = translate('kol-filename-text');
 
-	@State() private filename: string = this.translateFilenameText;
+	@State()
+	private filename: string = this.translateFilenameText;
 
 	/** Set by a selection in the file dialog and cleared by `reset()`; a drop does not set it (#10865). */
-	@State() private hasFileSelected = false;
+	@State()
+	private hasFileSelected = false;
 
-	@State() private isDragover = false;
+	@State()
+	private isDragover = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -97,7 +104,8 @@ export class KolInputFile
 	/**
 	 * Defines which file formats are accepted.
 	 */
-	@Prop() public _accept?: AcceptPropType = undefined;
+	@Prop()
+	public _accept?: AcceptPropType = undefined;
 
 	@Watch('_accept')
 	public watchAccept(value?: AcceptPropType): void {
@@ -107,7 +115,8 @@ export class KolInputFile
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -120,7 +129,8 @@ export class KolInputFile
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -130,7 +140,8 @@ export class KolInputFile
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -138,20 +149,11 @@ export class KolInputFile
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
-	}
-
-	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -159,9 +161,21 @@ export class KolInputFile
 	}
 
 	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -171,7 +185,8 @@ export class KolInputFile
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -181,7 +196,8 @@ export class KolInputFile
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -191,7 +207,8 @@ export class KolInputFile
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -201,7 +218,8 @@ export class KolInputFile
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -211,7 +229,8 @@ export class KolInputFile
 	/**
 	 * Makes the input accept multiple inputs.
 	 */
-	@Prop() public _multiple?: MultiplePropType = false;
+	@Prop()
+	public _multiple?: MultiplePropType = false;
 
 	@Watch('_multiple')
 	public watchMultiple(value?: MultiplePropType): void {
@@ -221,7 +240,8 @@ export class KolInputFile
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -231,7 +251,8 @@ export class KolInputFile
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -241,7 +262,8 @@ export class KolInputFile
 	/**
 	 * Makes the input element required.
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -251,7 +273,8 @@ export class KolInputFile
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -262,7 +285,8 @@ export class KolInputFile
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
@@ -277,7 +301,8 @@ export class KolInputFile
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -287,7 +312,8 @@ export class KolInputFile
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -297,7 +323,8 @@ export class KolInputFile
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -307,7 +334,8 @@ export class KolInputFile
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -362,26 +390,26 @@ export class KolInputFile
 		this.unsetRenderProp('smartButton');
 
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccept(this._accept);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
 		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
+		this.watchMsg(this._msg);
 		this.watchMultiple(this._multiple);
+		this.watchName(this._name);
 		this.watchOn(this._on);
 		this.watchRequired(this._required);
 		this.watchShortKey(this._shortKey);
 		this.watchSmartButton(this._smartButton);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
 		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchVariant(this._variant);
 	}
 
@@ -498,7 +526,7 @@ export class KolInputFile
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: 'kol-input-file file',
+						class: clsx(fileBem(), 'file'),
 						accessKey: this.getRenderProp('accessKey') || undefined,
 						shortKey: this.getRenderProp('shortKey') || undefined,
 						variant: this.getRenderProp('variant'),
@@ -518,10 +546,11 @@ export class KolInputFile
 					>
 						<InputFileNameFC filename={this.filename} hasFile={this.hasFileSelected} />
 						<InputFC {...this.getInputProps()} />
+						{/* The transparent file input covers the button and is the only tab stop; it opens the file dialog on click, Enter and Space. */}
 						<ButtonFC
 							{...this.browseButton.getFcProps(
-								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled },
-								{ class: BEM_CLASS_INPUT_CONTAINER__BUTTON },
+								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled, _tabIndex: -1 },
+								{ class: BEM_CLASS_INPUT_CONTAINER__BUTTON, 'aria-hidden': 'true' },
 							)}
 						/>
 					</InputContainerFC>

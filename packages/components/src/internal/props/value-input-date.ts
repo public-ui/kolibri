@@ -1,7 +1,8 @@
 import type { Iso8601 } from '../../schema';
+import type { InputDateDeps } from '../../schema/props/type-input-date';
 import type { Prop } from './helpers/factory';
 import { createDependentPropDefinition } from './helpers/factory';
-import { type InputDateDeps, isValidInputDate, normalizeInputDate } from './helpers/iso-date';
+import { isValidInputDate, normalizeInputDate } from './helpers/iso-date';
 
 /**
  * Value prop for the date input

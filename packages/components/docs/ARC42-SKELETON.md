@@ -30,7 +30,7 @@ src/
 │   └── <component>/                   # Web component folder — one folder per component
 │       ├── component.tsx              # Orchestrator: props, watchers, lifecycle, render
 │       ├── snapshot.spec.tsx          # Snapshot test (Jest) — co-located
-│       └── <component>.e2e.ts         # Interaction test (Playwright)
+│       └── <component>.e2e.ts         # Interaction test (Playwright); further files <component>.<topic>.e2e.ts
 └── internal/                          # Shared internals
     ├── functional-components/
     │   ├── <component>/               # Component-specific logic
@@ -56,6 +56,8 @@ src/
 ```
 
 This modular layout is the backbone for the architectural patterns described in the following chapters.
+
+The dependencies point inwards: `src/components/` imports from `src/internal/`, never the other way round. A helper that more than one component uses (e.g. `internal/functional-components/form/controller.ts`, `internal/functional-components/link/aria-current-service.ts`) lives under `src/internal/`, next to the functional component of the component it belongs to. The `boundaries/dependencies` rule in `eslint.config.mjs` enforces this direction.
 
 ## 2. Architecture Constraints
 
@@ -111,11 +113,11 @@ Responsibilities of the WC:
 - Owns the Stencil-specific decorators (`@Prop`, `@Event`, `@Watch`, `@State`, `@Listen`). Watchers normalize incoming values via schema helpers and store them with `setRenderProp`.
 - Manages derived/UI state on `@State` fields, updated through `setState`/`getState` for reactivity.
 - Composes optional Behaviors (e.g. `private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess)`).
-- Renders the FC inside a bare `<Host>` (shadow DOM). No `<Host class="kol-…">` — the tag name plus Shadow DOM are sufficient.
+- Renders the FC inside a bare `<Host>` (shadow DOM). No `<Host class="kol-…">` — the tag name plus Shadow DOM are sufficient. `render()` returns `<Host>` with exactly one child: the FC or a call of an own render helper that returns it (`{this.renderButtonFC()}`). Documented exceptions set one attribute on the host: `class` on `kol-select` and `kol-table-stateful`, which consumers select, and `tabindex` on `kol-tree`, whose host is the tab stop that hands the focus on to the active item. `render-host.spec.ts` pins this contract.
 
 A WC has **exactly one orchestrator (itself)** plus zero or more Behaviors. A WC may compose Behaviors, never other WCs.
 
-When several custom elements are tag variants of **one** FC (`kol-button`, `kol-button-link` and `kol-split-button` all render `ButtonFC`; `kol-link` and `kol-link-button` all render `LinkFC`), the orchestrator implementation is shared through an abstract base class next to the element (`components/button/base.tsx` → `BaseButtonWebComponent`, `components/link/base.tsx` → `BaseLinkWebComponent`). The base extends `BaseWebComponent<Api>`, carries no Stencil decorator and holds the composed Behaviors, the event handlers, one `apply<Prop>()` method per prop and the FC render call. The concrete element keeps everything Stencil has to see in the component class: `@Component`, `@Element`, `@State`, `@Method`, every `@Prop` with a one-line `@Watch` that calls the matching `apply<Prop>()`, and the lifecycle methods, which delegate to the base (see design decision 16).
+When several custom elements are tag variants of **one** FC (`kol-button`, `kol-button-link` and `kol-split-button` all render `ButtonFC`; `kol-link` and `kol-link-button` all render `LinkFC`), the orchestrator implementation is shared through an abstract base class next to the element: `components/button/base.tsx` → `BaseButtonWebComponent` (also extended by `kol-popover-button`), `components/dialog/base.tsx` → `BaseDialogWebComponent` (`kol-dialog`, `kol-modal`), `components/link/base.tsx` → `BaseLinkWebComponent` and `components/table-stateless/base.tsx` → `BaseTableStatelessWebComponent` (`kol-table-stateless`, `kol-table-stateful`). The base extends `BaseWebComponent<Api>`, carries no Stencil decorator and holds the composed Behaviors, the event handlers, one `apply<Prop>()` method per prop and the FC render call. The concrete element keeps everything Stencil has to see in the component class: `@Component`, `@Element`, `@State`, `@Method`, every `@Prop` with a one-line `@Watch` that calls the matching `apply<Prop>()`, and the lifecycle methods, which delegate to the base (see design decision 16). A base exists only for at least two elements; a single element keeps its orchestrator in `component.tsx` (`component-structure.spec.ts` checks this).
 
 ```tsx
 // WC — the orchestrator (KolLink, reference implementation)
@@ -124,7 +126,8 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 
 	protected readonly propsConfig: PropsConfigShape = linkPropsConfig;
 
-	@Prop() public _href!: string;
+	@Prop()
+	public _href!: string;
 
 	@Watch('_href')
 	public watchHref(value?: string): void {
@@ -132,8 +135,8 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 
 	public componentWillLoad(): void {
-		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		this.watchHref(this._href);
+		this.watchLabel(this._label);
 		// …all other props…
 		this.tooltipBehavior.componentWillLoad({ label: this.getTooltipLabel(), align: this.getRenderProp('tooltipAlign') });
 	}
@@ -170,13 +173,20 @@ Every Stencil component class lists its members in the same order:
 11. helpers and handlers: the other methods, accessors and arrow-function fields, whatever their visibility
 12. `render`
 
-Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components. For every class under `src` it also checks that no initializer reads an own property declared after it, directly (`this.x`), through own getters it reads (`this.derived`) or through own methods and arrow-function properties it calls (`this.compute()`), also nested through the called bodies. Every other path is not traced, e.g. a callee that receives `this` (`new Behavior(this)`), a synchronously run callback (an IIFE, `[1].map(() => this.later)`), `call`/`apply`/`bind` and element access (`this['x']`); keep such reads behind the property they read.
+The props stand in alphabetical order of their name: the `@Prop` members of the class (each with its watcher) and the watcher calls in `componentWillLoad`. Where calls in `componentWillLoad` depend on each other, a comment or a blank line separates them, and each run between such separators is sorted on its own. The `required` and `optional` lists of a props config are sorted by the identifier of the prop definition. `component-structure.spec.ts` checks all three.
+
+Every decorator stands on a line of its own, above the class or member it decorates. The ESLint rule `kolibri/decorator-on-own-line` enforces this, and `eslint --fix` applies it.
+
+Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components and of the classes that implement them without being one: `BaseWebComponent` and every class without `@Component` that extends it (the bases of design decision 16, the form field bases, the page size select item). For every class under `src` it also checks that no initializer reads an own property declared after it, directly (`this.x`), through own getters it reads (`this.derived`) or through own methods and arrow-function properties it calls (`this.compute()`), also nested through the called bodies. Every other path is not traced, e.g. a callee that receives `this` (`new Behavior(this)`), a synchronously run callback (an IIFE, `[1].map(() => this.later)`), `call`/`apply`/`bind` and element access (`this['x']`); keep such reads behind the property they read.
 
 ### Public API Contract (Migration Parity)
 
 The public API of a web component is exactly its set of `@Prop`/`@Method` members — for KoliBri
 the underscored props (`_href`, `_label`, …) plus the public methods (`focus()`, `click()`, …) —
 **including** their JSDoc comments, their types, their defaults and any `@deprecated` markers.
+The API definition reaches beyond these members: the props config and the `*Api` type also define
+the emitters, listeners, callbacks, refs and states behind them, so changing any of them is an API
+change as well (see below).
 
 **Migration rule: the public API of a migrated component must be identical to its predecessor.**
 When refactoring a legacy component to the skeleton architecture, the migrated WC must expose the
@@ -185,13 +195,19 @@ defaults and the same documentation. It must not add, remove, rename, retype or 
 public member. A behavioural difference behind an unchanged member is a separate, consciously
 reviewed decision — never a side effect of the migration.
 
-**The FC's props are internal, not public API.** The functional component is an internal renderer
-contract: it may offer more (or differently typed) props than the WC exposes. The WC is the API
-gate — it decides which render props are fed from public props and which stay at their internal
-defaults. Never derive the public API from the FC's props, and never add a public `@Prop` "because
-the FC has one". Conversely, internal-only capabilities (e.g. `ariaOwns`, `customClass`, `tabIndex`
-on `LinkFC`) may stay unreachable from the outside when the predecessor component did not expose
-them either.
+**The WC decides which render props are public.** The functional component may offer more (or
+differently typed) render props than the WC exposes as `@Prop`. The WC decides which render props
+are fed from public props and which stay at their internal defaults. Never add a public `@Prop`
+"because the FC has one". Conversely, capabilities without a public prop (e.g. `ariaOwns`,
+`customClass`, `tabIndex` on `LinkFC`) may stay unreachable from the outside when the predecessor
+component did not expose them either.
+
+**The `*Api` type defines the API.** The props config and the `*Api` type in
+`internal/functional-components/<name>/api.tsx` define the API of the component in full:
+`WebComponentInterface<Api>` derives the `@Prop`s, `@Method`s, emitters and listeners of the WC
+from them, and the FC and the behaviors receive their render props, callbacks, refs and states from
+them. Every member is part of the API contract. Renaming, removing or retyping a member, a callback
+or ref included, is an API change. A fix changes the implementation behind an unchanged member.
 
 **Why the JSDoc is part of the contract:** `stencil build --docs` generates `docs-vscode`,
 `docs-readme` and — via `generateCustomElementsJson` — the `custom-elements.json` descriptors
@@ -199,15 +215,19 @@ directly from `prop.docs` / `method.docs`. A `@Prop` without a JSDoc comment sil
 IntelliSense and generated documentation for every adapter package. The same applies to
 `@deprecated` markers, which announce planned removals to consumers.
 
-**Compile-time enforcement:** the WC implements the schema interface from `src/schema` (e.g.
-`implements LinkProps`) **in addition to** `WebComponentInterface<Api>`. The generic
-`WebComponentInterface` alone derives its prop types from the internal prop definitions
-(primitives like `string`/`boolean`), which would allow the public types to silently drift away
-from the schema. The schema alias types (`HrefPropType`, `LabelWithExpertSlotPropType`,
-`AlternativeButtonLinkRolePropType`, …) are structurally identical to the internal external types,
-so both `implements` clauses can coexist. Legacy state-shape requirements of `*API` types (e.g.
-`InternalLinkAPI`'s `state` member) are replaced by the render-prop store; implement the `*Props`
-interface instead.
+**Compile-time enforcement:** the WC implements only `WebComponentInterface<Api>`. The
+schema-alias types of the props (`HrefPropType`, `LabelWithExpertSlotPropType`,
+`AlternativeButtonLinkRolePropType`, …) are held by the prop definitions — their external types
+travel in the phantom keys of the prop definitions into the `Props` of the `*Api` type and from
+there into the `@Prop` declarations (see _Explicit Schema Types per Prop_ and _API Definition with
+`PropsConfigShape` and `ApiFromConfig`_). `src/schema/components` holds no type that describes a
+component (no `<Name>Props`, `<Name>States`, `<Name>API` or `<Name>Watches`), only the types of prop
+values such as `ButtonProps` for the entries of `_items`; they map their keys with the same
+`ComponentPropsRequired`/`ComponentPropsOptional` as `WebComponentInterface<Api>`. Snapshot specs type
+their prop variants through the tag name (`ElementProps<typeof Kol<Name>Tag>`). The public-api contract tests pin every
+`@Prop`/`@Method` member with its type as written, so a type drift shows up in the pin. Legacy
+state-shape requirements of `*API` types (e.g. `InternalLinkAPI`'s `state` member) are replaced by
+the render-prop store.
 
 **Verification (mandatory before merging a migration):** extract every `@Prop`/`@Method`
 declaration with its preceding JSDoc block from the predecessor file (`git show <base>:<path>`)
@@ -258,7 +278,7 @@ A Behavior is a reusable unit of logic that lives **inside** a WC. It extends `B
 - Exposes watcher entry points and lifecycle hooks (`componentWillLoad`) that the WC delegates to.
 - Must never instantiate other Behaviors directly — only the WC composes them.
 
-Rule of thumb: a Behavior exists only when the same logic is genuinely shared across multiple components. The sole current example is `TooltipBehavior`, composed by link, button, and similar components.
+Rule of thumb: a Behavior exists only when the same logic is genuinely shared across multiple components. Four Behaviors exist: `TooltipBehavior` (the tooltip of buttons, links, form fields and items), `CounterBehavior` (the character counter of the text fields and `kol-textarea`), `FormAssociationBehavior` (the form association of buttons and form fields) and `PopoverBehavior` (`kol-popover-button` and the popover button item, which `kol-split-button` and the info popover of the form fields use).
 
 ```tsx
 // Inside a WC
@@ -290,7 +310,7 @@ The FC is a pure renderer. It:
 
 #### BemRootNodeFC Pattern
 
-FCs use `BemRootNodeFC` to produce a single-root BEM structure. It renders exactly one `<div>` root node (enforcing a single-root FC), accepts a typed `block` name and `modifiers`, and merges an optional forwarded `class`:
+FCs use `BemRootNodeFC` to produce a single-root BEM structure. It renders exactly one root node (enforcing a single-root FC) — a `<div>` unless `component` names another element — accepts a typed `block` name and `modifiers`, and merges an optional forwarded `class`:
 
 ```tsx
 export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
@@ -317,7 +337,7 @@ The `block` and `modifiers` keys are validated against `KoliBriComponentsBemSche
 
 **Registration requirement:** before using `BemRootNodeFC block="kol-xxx"`, the block must be registered in `src/schema/bem-registry.ts` in **both** places — the exported `KoliBriComponentsBemSchema` type (required for compilation) and the runtime `BEM` const (consumed by the `kolibri-cli` SCSS generator). Type-only registration compiles and renders, but silently breaks theme SCSS generation.
 
-**When not to use it:** `BemRootNodeFC` always renders a `<div>` root. For FCs whose semantic root is another element (e.g. `ClickButtonFC` renders a `<button>`), build the root manually with `bem.forBlock('kol-xxx')(modifiers)` instead — the same typed schema applies. `LinkFC` and `ButtonFC` use `BemRootNodeFC` (both have extra siblings — tooltip, description — alongside their interactive element, so the wrapper is required, not just one non-div root); `SkeletonFC` and `ClickButtonFC` use direct `bem.forBlock` calls because their FC root _is_ the single non-div interactive element.
+**Root element:** every component FC builds its root with `BemRootNodeFC`, also when the semantic root is not a `<div>`. `component` selects the element (`article`, `button`, `details`, `dialog`, `fieldset`, `h1`–`h6`, `hgroup`, `i`, `img`, `label`, `li`, `nav`, `span`, `strong`, `svg`, …), and the attributes cover the global HTML attributes plus the element attributes these roots use (`open` on `details`, `onCancel`/`onClose` on `dialog`, `alt`/`src`/`loading` on `img`, `disabled` on `button` and `fieldset`). The class takes the position of `block` among the attributes, so the root keeps the attribute order of the call site. Sub-building blocks that are not the root of a component FC (the native `<select>`, `InputFC`, `TextAreaFC`, the options of the custom suggestions) keep their own element and a block or element class of their own.
 
 #### Shared Shell Root of the Form Fields
 
@@ -349,12 +369,15 @@ When a component renders another component inside its own shadow DOM — the clo
 | `createLinkItem` (`link/item.ts`)                    | `LinkFC`                         |
 | `createPopoverButtonItem` (`popover-button/item.ts`) | `PopoverButtonFC`                |
 | `createDialogItem` (`dialog/item.tsx`)               | `DialogFC` with a card           |
-| `PageSizeSelect` (`pagination/page-size-select.tsx`) | the select field of `kol-select` |
+| `PageSizeSelect` (`pagination/select-item.tsx`)      | the select field of `kol-select` |
 
+- An item that several components share lives as `item.ts(x)` in the folder of the FC it renders (`create<FC>Item`, the table above). An item that only one embedding component needs lives in that component's folder as `<what it renders>-item.ts(x)` (`create<Component><What>Item`: `breadcrumb/link-item.ts`, `tabs/button-item.ts`, `toolbar/entry-item.ts`, `pagination/select-item.tsx`). `component-structure.spec.ts` checks the file names.
 - `getFcProps(…)` returns the fully resolved FC props; call it once per render.
 - `syncListeners()` runs from `componentDidRender`, `destroy()` from `disconnectedCallback`.
 - A variable number of embedded instances (one action button per table row) goes through `createItemPool` (`item-pool.ts`): each render pass takes its items by key, and `endRender()` syncs them and destroys the ones the pass no longer used.
 - The KoliBri DOM events of the embedded component are dispatched on its FC root, where the embedded element used to be, so they bubble the same way.
+
+**The reactivity boundary is the item.** An item keeps its own state in closures — the `aria-current` of a link item, the edited header cells of the table settings menu. Stencil cannot observe that state, so when it changes, the item calls the `requestRender` callback its factory takes (`() => forceUpdate(this)` in the embedding WC). That callback is the only sanctioned use of `forceUpdate`: data the web component owns itself is a `@State`, and the rendering follows the change without an explicit call.
 
 ### Schema Helper Layer
 
@@ -403,7 +426,8 @@ export type DisabledProp = SimpleProp<'disabled', DisabledPropType>;
 export const disabledProp = createPropDefinition<DisabledProp>('disabled', false, normalizeBoolean);
 
 // components/button/component.tsx — @Prop, watcher and apply carry the schema type
-@Prop() public _disabled?: DisabledPropType = false;
+@Prop()
+public _disabled?: DisabledPropType = false;
 
 @Watch('_disabled')
 public watchDisabled(value?: DisabledPropType): void {
@@ -500,6 +524,41 @@ Three rules separate the layers, so a fachliche validator never has to deal with
 2. **`apply()` intercepts `undefined` and `null` before any fachliche validation**: after the warning when `required` was passed, the built-in default is substituted and handed to the callback. `normalize` and `validate` never see a raw `undefined` from the `apply` path.
 3. **A definition with a default must accept it as a value; a definition without a default has no fallback at all.** `createPropDefinition` takes `undefined` as a deliberate "no default": an unset value then flows through as "not set" — nothing is validated, the validator only ever sees real values (e.g. `isValidLabel` checks length only). A definition that does carry a default has its fallback validated and throws on an invalid one. Either way the fachliche validation of real values stays untouched by the "not set" state. The factory types this guarantee: a definition created with a default exposes a non-optional `getDefaultValue(): TInternal` (`PropDefinitionWithDefault`), so callers read the fallback without assertions.
 
+##### Requiredness semantics per prop: warning with fallback, warning without one, type contract only
+
+The required slot of the props config states that a prop belongs to the working contract of the
+component. What an unset value then does at runtime is a per-prop decision the component makes when
+it applies the value. Three variants exist; the decision and its reason live in the props config
+documentation of the component (`api.tsx`) and in the apply wiring of its web component, this
+section pins the variants themselves:
+
+1. **Warning with a working fallback.** The unset value warns and a substitute keeps the component
+   fully working — the pattern behind the pagination's `_label`, whose `kol-pagination` translation
+   keeps naming the navigation landmark. Its requiredness travels in the same `load` required map as
+   the fallback-less `_max` of variant 2.
+2. **Warning without a rescuing fallback.** The unset value warns and the neutral default keeps the
+   store honest, but it does not restore the function. The pagination's `_max` is the pattern:
+   without the number of entries nothing paginates, and no sensible substitute exists — 0 stays the
+   honest empty state (no pages, the visible range reads "0 - 0"). The required labels of the
+   landmark components (avatar, breadcrumb, click-button, icon, nav, popover-button, skip-nav, tabs,
+   toolbar, tree, version) follow the same variant with "not set" as their neutral value: the
+   warning fires and the landmark stays unnamed until a label arrives.
+3. **Type contract only.** The slot carries the TypeScript contract, and an unset value is a
+   legitimate, silently supplied state that needs no warning — the requiredness warning is
+   deliberately absent. The pagination's `_page` starts on the first page (the clamping promotes the
+   unset value and reports it as `changepage`), and its `_on` degrades to the DOM events (`click`,
+   `changepage`, `changepagesize`), which keep firing; an empty callbacks object is type-valid and
+   behaves identically to an unset one, so a warning could not tell the two apart.
+
+A component threads requiredness through a single apply point: an item's `load` takes the
+requiredness per key (`load(input, required)` with `required.label` and `required.max` for the
+pagination), and the
+watchers of the web component pass `isRequired(key)` on later applies. Appliers outside a component
+config — a composed item like the one of `kol-table-stateful`, behaviors, `resolve-props` — apply
+without requiredness: an unset value there is a legitimate "not set", and the composer supplies the
+values it needs itself (the stateful table derives the number of entries from its data and names the
+pagination itself).
+
 #### `DependentPropDefinition<TInternal, TDeps>`
 
 Some props require context from other props to normalize or validate correctly. `createDependentPropDefinition` extends the pattern with a `TDeps` parameter passed through to both `normalize` and `validate`. Its `apply` method takes the deps object as a third argument:
@@ -528,7 +587,7 @@ clampedNumberValueProp.apply(
 
 ### API Definition with `PropsConfigShape` and `ApiFromConfig`
 
-Component APIs are defined using a runtime props config object (`PropsConfigShape`) that groups prop definitions into `required` and `optional` arrays. The `ApiFromConfig<Config, Extra>` utility type derives the full `ComponentApi` type from this config, making the props config the single source of truth for both runtime behaviour (normalization, validation, defaults) and compile-time types:
+Component APIs are defined using a runtime props config object (`PropsConfigShape`) that groups prop definitions into `required` and `optional` arrays. The `ApiFromConfig<Config, Extra>` utility type derives the full `ComponentApi` type from this config, making the props config the single source of truth for both runtime behaviour (normalization, validation, defaults) and the compile-time types of the props. The `Extra` fields — `Callbacks`, `Methods`, `Refs`, `Emitters` and `Listeners` — define the part of the API the props config cannot express. Together, the props config and the `*Api` type are the complete API definition of the component (see _Public API Contract_): renaming, removing or retyping any member — callback or ref included — is an API change, pinned by the public-api contract tests:
 
 ```ts
 export const skeletonPropsConfig = {
@@ -589,7 +648,7 @@ Because callbacks are already arrow properties, both render patterns are valid:
 
 #### ⚠️ Never use `.bind(this)` with `addEventListener`/`removeEventListener`
 
-Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match. Use an arrow property, or a ref callback that removes the old listener before adding the new one (see `src/components/popover-button/base.tsx`, `handleToggle` + `componentDidRender`/`disconnectedCallback`).
+Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match. Use an arrow property, or a ref callback that removes the old listener before adding the new one (see `src/components/popover-button/component.tsx`, `handleToggle` + `componentDidRender`/`disconnectedCallback`).
 
 ### Implementation Flow
 
@@ -619,7 +678,8 @@ const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);
 
 ```tsx
 // Web Component (src/components/<component>/component.tsx)
-@Prop() public _name!: NamePropType;
+@Prop()
+public _name!: NamePropType;
 
 @Watch('_name')
 public watchName(value?: NamePropType): void {
@@ -661,14 +721,14 @@ public watchName(value?: string): void {
 
 ### WC Initialization
 
-The WC declares its props config as the `propsConfig` field; the base seeds the render-prop store from it on the first access. `componentWillLoad` applies the current prop values and initializes composed Behaviors:
+The WC declares its props config as the `propsConfig` field; the base seeds the render-prop store from it on the first access. `componentWillLoad` applies the current prop values through their watchers, so the first value and every later change run the same code, and initializes composed Behaviors. It never applies a prop definition itself; where a watcher reacts to a change beyond applying the value, `componentWillLoad` calls the `apply…` method the watcher delegates to. `component-structure.spec.ts` pins this:
 
 ```tsx
 // Web Component
 protected readonly propsConfig: PropsConfigShape = skeletonPropsConfig;
 
 public componentWillLoad(): void {
-	nameProp.apply(this._name, (v) => this.setRenderProp('name', v));
+	this.watchName(this._name);
 	this.tooltipBehavior.componentWillLoad({ label: this.getTooltipLabel(), align: this.getRenderProp('tooltipAlign') });
 }
 ```
@@ -748,7 +808,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Composition over inheritance**              | WCs compose Behaviors (e.g. `TooltipBehavior`) for reusable logic rather than relying on inheritance.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | **Orchestrator WC**                           | The WC is the single orchestrator: it normalizes props, manages state, and renders. No controller/aspect class sits between the element and the FC.                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| **BemRootNodeFC pattern**                     | FCs render a single root `<div>` via `BemRootNodeFC`, with a type-checked `block` and `modifiers`. Produces `<div class="kol-block kol-block--…">`; inner elements use BEM element classes.                                                                                                                                                                                                                                                                                                                                                                                        |
+| **BemRootNodeFC pattern**                     | FCs render a single root node via `BemRootNodeFC`, with a type-checked `block` and `modifiers`. Produces `<div class="kol-block kol-block--…">` or the element named by `component`; inner elements use BEM element classes.                                                                                                                                                                                                                                                                                                                                                       |
 | **Embedded components through items**         | A component that embeds another component in its own shadow DOM renders that component's FC directly; an item (`createButtonItem`, …) owns the orchestration of each embedded instance.                                                                                                                                                                                                                                                                                                                                                                                            |
 | **Declarative rendering**                     | Functional components are pure and stateless.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Event-driven communication**                | User interaction is emitted as DOM events/callbacks rather than calling functions across layers.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -806,15 +866,15 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Alternative_: add `data-testid` and use `getByTestId()`.
     - _Reason_: BEM class names are already present, stable, and semantically tied to the component. Using them keeps production markup clean of test-only concerns.
 14. **Test co-location — all tests live next to the component**
-    - _Pattern_: all test files sit directly alongside `component.tsx` — snapshot tests (`snapshot.spec.tsx`, Jest) and interaction tests (`interaction.e2e.ts`, Playwright). File names are uniform across components.
+    - _Pattern_: all test files sit directly alongside `component.tsx` — snapshot tests (`snapshot.spec.tsx`, Jest) and interaction tests (`<component>.e2e.ts`, further files `<component>.<topic>.e2e.ts`, Playwright). File names are uniform across components; `component-structure.spec.ts` pins the names of the interaction tests.
     - _Alternative_: group tests into a dedicated `test/` subdirectory.
     - _Reason_: co-located tests are easier to discover and keep related files visible side-by-side.
 15. **Public API parity during migration — the FC face is not the public face**
-    - _Pattern_: a skeleton migration keeps the WC's public `@Prop`/`@Method` set byte-identical to the predecessor: same members, same schema-alias types, same defaults, same JSDoc (including `@deprecated`). The WC implements the schema `*Props` interface alongside `WebComponentInterface<Api>` so drift fails the build. Internal FC props without a public predecessor prop stay internal (fed from defaults, no public `@Prop` added).
+    - _Pattern_: a skeleton migration keeps the WC's public `@Prop`/`@Method` set byte-identical to the predecessor: same members, same schema-alias types, same defaults, same JSDoc (including `@deprecated`). The WC implements only `WebComponentInterface<Api>`: the schema-alias types travel through the prop definitions, and the public-api contract tests pin the members, so drift fails the build. Internal FC props without a public predecessor prop stay internal (fed from defaults, no public `@Prop` added).
     - _Alternative_: expose every FC prop 1:1 as a public `@Prop` and declare props with the internal primitive types.
     - _Reason_: the public API is a compatibility contract (adapters, IntelliSense, `custom-elements.json` are generated from `prop.docs`/`method.docs`). Growing it silently (e.g. link gained `_ariaOwns`, `_customClass`, `_tabIndex`, `click()`) or dropping its documentation is a breaking change disguised as a refactor. See [§4 Public API Contract](#public-api-contract-migration-parity).
 16. **Shared orchestrator base for tag variants of one FC**
-    - _Pattern_: elements that render the same FC (`kol-button`/`kol-button-link`/`kol-split-button`, `kol-link`/`kol-link-button`) share an abstract, decorator-free base class next to the element (`button/base.tsx`, `link/base.tsx`) that extends `BaseWebComponent<Api>` and holds Behaviors, handlers, `apply<Prop>()` methods and the FC render call. The concrete element declares the Stencil members and delegates from its watchers and lifecycle methods.
+    - _Pattern_: elements that render the same FC (`kol-button`/`kol-button-link`/`kol-split-button`, `kol-dialog`/`kol-modal`, `kol-link`/`kol-link-button`, `kol-table-stateless`/`kol-table-stateful`) share an abstract, decorator-free base class next to the element (`button/base.tsx`, `dialog/base.tsx`, `link/base.tsx`, `table-stateless/base.tsx`) that extends `BaseWebComponent<Api>` and holds Behaviors, handlers, `apply<Prop>()` methods and the FC render call. The concrete element declares the Stencil members and delegates from its watchers and lifecycle methods.
     - _Alternative_: copy the orchestrator into every element (the state before this decision: ~350 identical lines in `component.tsx` and `wc.tsx`), or let the variants instantiate a `shadow:false` twin of the public element.
     - _Reason_: the base is not a layer between WC and FC (decision 1 stays intact) — it _is_ the WC's implementation, written once. Stencil only reads decorators and lifecycle hooks from the component class itself, so those stay there; plain methods and fields are inherited at runtime like the ones of `BaseWebComponent`. Anything that needs the host element (e.g. the form-association controller) is created from the concrete constructor after `super()`, because Stencil registers the host at the start of the component class's constructor.
 17. **DOM structure and BEM classes are a theming contract, not public API**
@@ -851,18 +911,19 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 12. Glossary
 
-| Term                     | Definition                                                                                                                                     |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                                                  |
-| **BemRootNodeFC**        | Single-root BEM wrapper FC. Renders one `<div class="kol-block kol-block--…">` from a type-checked `block` and `modifiers`.                    |
-| **Behavior**             | Optional, composable unit of reusable logic living inside a WC; extends `BaseBehavior`. Example: `TooltipBehavior`.                            |
-| **Orchestrator (WC)**    | The web component, which directly owns lifecycle, prop normalization, state management, Behavior composition and rendering.                    |
-| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                                                          |
-| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.                                  |
-| **Render props**         | Validated, normalized prop values stored on the WC via `setRenderProp` and read via `getRenderProp` for rendering.                             |
-| **Schema Helper**        | Utility providing `normalize` (unknown → TInternal), `validate` (TInternal → boolean) and `apply` (normalize + validate + callback) for props. |
-| **Schema Type**          | Named value type of one prop in `src/schema/props` (e.g. `DisabledPropType`); the single spelling every layer references.                      |
-| **StateAccess**          | `{ setState, getState }` bundle a WC passes to a Behavior; `BaseWebComponent.stateLess` is the no-op sentinel for stateless Behaviors.         |
-| **Stencil**              | Compiler for building framework-agnostic web components.                                                                                       |
-| **Transitional WC**      | A `shadow:false` WC that renders an FC into the light DOM so legacy consumers can reach inner BEM classes; deleted once consumers migrate.     |
-| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                                                       |
+| Term                     | Definition                                                                                                                                                                                                 |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                                                                                                              |
+| **BemRootNodeFC**        | Single-root BEM wrapper FC. Renders one root node (`<div>` or the element named by `component`) with `class="kol-block kol-block--…"` from a type-checked `block` and `modifiers`.                         |
+| **Behavior**             | Optional, composable unit of reusable logic living inside a WC; extends `BaseBehavior`. Example: `TooltipBehavior`.                                                                                        |
+| **Orchestrator (WC)**    | The web component, which directly owns lifecycle, prop normalization, state management, Behavior composition and rendering.                                                                                |
+| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                                                                                                                      |
+| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.                                                                                              |
+| **Render props**         | Validated, normalized prop values stored on the WC via `setRenderProp` and read via `getRenderProp` for rendering.                                                                                         |
+| **Schema Helper**        | Utility providing `normalize` (unknown → TInternal), `validate` (TInternal → boolean) and `apply` (normalize + validate + callback) for props.                                                             |
+| **Schema Type**          | Named value type of one prop in `src/schema/props` (e.g. `DisabledPropType`); the single spelling every layer references.                                                                                  |
+| **StateAccess**          | `{ setState, getState }` bundle a WC passes to a Behavior; `BaseWebComponent.stateLess` is the no-op sentinel for stateless Behaviors.                                                                     |
+| **Stencil**              | Compiler for building framework-agnostic web components.                                                                                                                                                   |
+| **Transitional WC**      | A `shadow:false` WC that renders an FC into the light DOM so legacy consumers can reach inner BEM classes; deleted once consumers migrate.                                                                 |
+| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                                                                                                                   |
+| **`*Api` type**          | The complete API definition of a component: the props config plus the `ApiFromConfig` extras (`Callbacks`, `Methods`, `Refs`, `Emitters`, `Listeners`) in `internal/functional-components/<name>/api.tsx`. |

@@ -1,7 +1,7 @@
-import { Buffer } from 'buffer';
-
 import { expect, type Page } from '@playwright/test';
 import { type E2EPage, test } from '@stencil/playwright';
+import { Buffer } from 'buffer';
+
 import {
 	callback,
 	EXPERIMENTAL_MODE_HEAD,
@@ -135,6 +135,28 @@ test.describe(COMPONENT_NAME, () => {
 		});
 	});
 
+	test.describe('Keyboard', () => {
+		test('has the file input as its only tab stop', async ({ page }) => {
+			await page.setContent('<button id="before">before</button><kol-input-file _label="File"></kol-input-file><button id="after">after</button>');
+			await page.waitForChanges();
+			await page.locator('#before').focus();
+
+			await page.keyboard.press('Tab');
+			await expect(page.locator('kol-input-file input[type="file"]')).toBeFocused();
+
+			await page.keyboard.press('Tab');
+			await expect(page.locator('#after')).toBeFocused();
+		});
+
+		test('hides the browse button from assistive technology', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File"></kol-input-file>');
+			await page.waitForChanges();
+
+			await expect(page.locator('kol-input-file .kol-input-container__button')).toHaveAttribute('aria-hidden', 'true');
+			await expect(page.locator('kol-input-file .kol-input-container__button button')).toHaveAttribute('tabindex', '-1');
+		});
+	});
+
 	test.describe('reset()', () => {
 		test('should clear the selected files and filename text', async ({ page }) => {
 			await setContentWithRetry(page, `<kol-input-file _label="Input"></kol-input-file>`);
@@ -237,7 +259,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		/* A drop sets the filename but not the `--has-file` modifier, and emits `change` before `input` — unlike a
-		   selection in the native dialog (#10865). The tests pin that state through the skeleton migration. */
+		   selection in the native dialog (#10865). The tests pin that state. */
 		test('shows the name of a dropped file without marking it as selected', async ({ page }) => {
 			await page.setContent('<kol-input-file _label="File"></kol-input-file>');
 

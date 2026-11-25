@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-kern",
-	"version": "5.0.0-beta.1",
+	"version": "5.0.0-beta.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -86,6 +86,11 @@
 	"peerDependencies": {
 		"@fontsource/fira-sans": "5.3.0",
 		"@public-ui/components": "workspace:*"
+	},
+	"peerDependenciesMeta": {
+		"@fontsource/fira-sans": {
+			"optional": true
+		}
 	},
 	"exports": {
 		".": {

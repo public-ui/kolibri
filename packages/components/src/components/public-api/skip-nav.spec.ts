@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-skip-nav` — byte-identical to the predecessor on the develop branch
- * (2 required props plus `focus()`).
+ * Pinned public API of `kol-skip-nav` (2 required props plus `focus()`).
  */
 const KOL_SKIP_NAV_PUBLIC_API: PublicApiContract = {
 	_label: {
@@ -26,4 +25,4 @@ const KOL_SKIP_NAV_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-skip-nav', component: 'skip-nav', pinnedApi: KOL_SKIP_NAV_PUBLIC_API, schemaInterface: 'SkipNavProps' });
+describePublicApiContract({ tag: 'kol-skip-nav', component: 'skip-nav', pinnedApi: KOL_SKIP_NAV_PUBLIC_API });

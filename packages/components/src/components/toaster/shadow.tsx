@@ -1,13 +1,11 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Method, State } from '@stencil/core';
 
-import { translate } from '../../i18n';
-import { createUniqueId } from '../../utils/dev.utils';
-
-import { KolButtonTag } from '../../core/component-names';
 import { KolToastItemFc } from '../../functional-components';
+import { translate } from '../../i18n';
 import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../schema';
 import { Log } from '../../schema';
+import { createUniqueId } from '../../utils/dev.utils';
 
 const TRANSITION_TIMEOUT = 300;
 
@@ -150,7 +148,7 @@ export class KolToastContainer implements ToasterAPI {
 		return (
 			<Host class="kol-toast-container">
 				{this.state._toastStates.length > 1 && (
-					<KolButtonTag
+					<kol-button
 						_label={this.translateToastCloseAll}
 						class="kol-toast-container__button-close-all"
 						_on={{
@@ -158,7 +156,7 @@ export class KolToastContainer implements ToasterAPI {
 								void this.closeAll();
 							},
 						}}
-					></KolButtonTag>
+					></kol-button>
 				)}
 				{this.state._toastStates.map((toastState) => (
 					<KolToastItemFc

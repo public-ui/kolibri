@@ -1,11 +1,35 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+
 import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import type { ComboboxApi } from '../../internal/functional-components/combobox/api';
+import { comboboxPropsConfig } from '../../internal/functional-components/combobox/api';
+import { BEM_CLASS_COMBOBOX__DELETE, ComboboxToggleFC } from '../../internal/functional-components/combobox/component';
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
+import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
+import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
+import {
+	accessKeyProp,
+	hasClearButtonProp,
+	horizontalIconsProp,
+	placeholderProp,
+	requiredProp,
+	shortKeyProp,
+	stringValueProp,
+	suggestionsProp,
+	variantProp,
+} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
 	ClickableElement,
-	ComboboxProps,
 	DisabledPropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
@@ -39,31 +63,6 @@ import { containsDeepActiveElement } from '../../utils/element-focus';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import type { ComboboxApi } from '../../internal/functional-components/combobox/api';
-import { comboboxPropsConfig } from '../../internal/functional-components/combobox/api';
-import { BEM_CLASS_COMBOBOX__DELETE, ComboboxToggleFC } from '../../internal/functional-components/combobox/component';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
-import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
-import {
-	accessKeyProp,
-	hasClearButtonProp,
-	horizontalIconsProp,
-	placeholderProp,
-	requiredProp,
-	shortKeyProp,
-	stringValueProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
-
 /**
  * @slot - The label of the input field.
  */
@@ -74,29 +73,33 @@ import {
 	},
 	shadow: true,
 })
-export class KolCombobox
-	extends BaseListboxWebComponent<ComboboxApi>
-	implements ClickableElement, ComboboxProps, FocusableElement, WebComponentInterface<ComboboxApi>
-{
-	@Element() protected readonly host?: HTMLKolComboboxElement;
+export class KolCombobox extends BaseListboxWebComponent<ComboboxApi> implements ClickableElement, FocusableElement, WebComponentInterface<ComboboxApi> {
+	@Element()
+	protected readonly host?: HTMLKolComboboxElement;
 
-	@State() public id = createUniqueId('combobox');
+	@State()
+	public id = createUniqueId('combobox');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
 	/** Whether the focus is inside the field; only `focusin` and `focusout` change it. */
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
-	@State() public isOpen = false;
+	@State()
+	public isOpen = false;
 
-	@State() public blockSuggestionMouseOver = false;
+	@State()
+	public blockSuggestionMouseOver = false;
 
 	/**
 	 * The suggestions matching the input, derived from the parsed `suggestions` render prop — never
 	 * from the raw prop, which can be a JSON string when set as an attribute.
 	 */
-	@State() public filteredSuggestions?: SuggestionsPropType;
+	@State()
+	public filteredSuggestions?: SuggestionsPropType;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -119,7 +122,8 @@ export class KolCombobox
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -132,7 +136,8 @@ export class KolCombobox
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -140,19 +145,10 @@ export class KolCombobox
 	}
 
 	/**
-	 * Defines the placeholder for input field. To be shown when there's no value.
-	 */
-	@Prop() public _placeholder?: PlaceholderPropType = undefined;
-
-	@Watch('_placeholder')
-	public watchPlaceholder(value?: PlaceholderPropType): void {
-		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
-	}
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -160,20 +156,22 @@ export class KolCombobox
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * Shows the clear button if enabled.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hasClearButton?: HasClearButtonPropType = true;
 
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
+	@Watch('_hasClearButton')
+	public watchHasClearButton(value?: HasClearButtonPropType): void {
+		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -181,9 +179,21 @@ export class KolCombobox
 	}
 
 	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -193,7 +203,8 @@ export class KolCombobox
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -203,7 +214,8 @@ export class KolCombobox
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -213,7 +225,8 @@ export class KolCombobox
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -223,7 +236,8 @@ export class KolCombobox
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -233,7 +247,8 @@ export class KolCombobox
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -243,7 +258,8 @@ export class KolCombobox
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -251,19 +267,44 @@ export class KolCombobox
 	}
 
 	/**
-	 * Shows the clear button if enabled.
+	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _hasClearButton?: HasClearButtonPropType = true;
+	@Prop()
+	public _placeholder?: PlaceholderPropType = undefined;
 
-	@Watch('_hasClearButton')
-	public watchHasClearButton(value?: HasClearButtonPropType): void {
-		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: PlaceholderPropType): void {
+		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
+	}
+
+	/**
+	 * Makes the input element required.
+	 */
+	@Prop()
+	public _required?: RequiredPropType = false;
+
+	@Watch('_required')
+	public watchRequired(value?: RequiredPropType): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		validateAccessAndShortKey(this._accessKey, value);
 	}
 
 	/**
 	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _suggestions!: SuggestionsPropType;
+	@Prop()
+	public _suggestions!: SuggestionsPropType;
 
 	/** Parses the raw prop into the render prop, then filters the parsed suggestions by the `_value` prop. */
 	@Watch('_suggestions')
@@ -275,31 +316,11 @@ export class KolCombobox
 	}
 
 	/**
-	 * Makes the input element required.
-	 */
-	@Prop() public _required?: RequiredPropType = false;
-
-	@Watch('_required')
-	public watchRequired(value?: RequiredPropType): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
-	}
-
-	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
-
-	@Watch('_shortKey')
-	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
-		validateAccessAndShortKey(this._accessKey, value);
-	}
-
-	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -309,7 +330,8 @@ export class KolCombobox
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -319,7 +341,8 @@ export class KolCombobox
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -329,7 +352,8 @@ export class KolCombobox
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: StringValuePropType = undefined;
+	@Prop({ mutable: true, reflect: true })
+	public _value?: StringValuePropType = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StringValuePropType): void {
@@ -340,7 +364,8 @@ export class KolCombobox
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -381,26 +406,26 @@ export class KolCombobox
 
 		this.optionRefs = [];
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
+		this.watchHasClearButton(this._hasClearButton);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
-		this.watchShortKey(this._shortKey);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
 		this.watchOn(this._on);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchHasClearButton(this._hasClearButton);
 		this.watchPlaceholder(this._placeholder);
 		this.watchRequired(this._required);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
+		this.watchVariant(this._variant);
 		this.applySuggestions(this._suggestions);
 		this.applyValue(this._value);
 

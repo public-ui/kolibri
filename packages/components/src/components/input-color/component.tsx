@@ -1,34 +1,5 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import type {
-	AccessKeyPropType,
-	AriaDetailsPropType,
-	AutoCompletePropType,
-	ClickableElement,
-	DisabledPropType,
-	FocusableElement,
-	FormFieldLabelInfoPopoverProps,
-	HideLabelPropType,
-	HideMsgPropType,
-	HintPropType,
-	IconsHorizontalPropType,
-	InputColorProps,
-	InputTypeOnDefault,
-	InternalButtonProps,
-	KolFocusOptions,
-	LabelWithExpertSlotPropType,
-	MsgPropType,
-	NamePropType,
-	ShortKeyPropType,
-	Stringified,
-	StringValuePropType,
-	SuggestionsPropType,
-	SyncValueBySelectorPropType,
-	TooltipAlignPropType,
-	TouchedPropType,
-	VariantClassNamePropType,
-} from '../../schema';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
@@ -49,8 +20,39 @@ import {
 	suggestionsProp,
 	variantProp,
 } from '../../internal/props';
+import type {
+	AccessKeyPropType,
+	AriaDetailsPropType,
+	AutoCompletePropType,
+	ClickableElement,
+	DisabledPropType,
+	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
+	HideLabelPropType,
+	HideMsgPropType,
+	HintPropType,
+	IconsHorizontalPropType,
+	InputTypeOnDefault,
+	InternalButtonProps,
+	KolFocusOptions,
+	LabelWithExpertSlotPropType,
+	MsgPropType,
+	NamePropType,
+	ShortKeyPropType,
+	Stringified,
+	StringValuePropType,
+	SuggestionsPropType,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	TouchedPropType,
+	VariantClassNamePropType,
+} from '../../schema';
+import { bem } from '../../schema/bem-registry';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+
+const colorBem = bem.forBlock('kol-input-color');
 
 /**
  * The **Color** input type creates a selection field for defining any color. The color can be entered in hexadecimal, RGB, or HSL notation. It is possible to select a color via a picker or by entering exact color values.
@@ -66,16 +68,20 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 })
 export class KolInputColor
 	extends BaseFormFieldWebComponent<InputColorApi>
-	implements ClickableElement, FocusableElement, InputColorProps, WebComponentInterface<InputColorApi>
+	implements ClickableElement, FocusableElement, WebComponentInterface<InputColorApi>
 {
-	@Element() protected readonly host?: HTMLKolInputColorElement;
+	@Element()
+	protected readonly host?: HTMLKolInputColorElement;
 
-	@State() public id = createUniqueId('input-color');
+	@State()
+	public id = createUniqueId('input-color');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -89,7 +95,8 @@ export class KolInputColor
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -102,7 +109,8 @@ export class KolInputColor
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -112,7 +120,8 @@ export class KolInputColor
 	/**
 	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+	@Prop()
+	public _autoComplete?: AutoCompletePropType = 'off';
 
 	@Watch('_autoComplete')
 	public watchAutoComplete(value?: AutoCompletePropType): void {
@@ -122,7 +131,8 @@ export class KolInputColor
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -130,20 +140,11 @@ export class KolInputColor
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
-	}
-
-	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -151,9 +152,21 @@ export class KolInputColor
 	}
 
 	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
 	 * Defines the hint text.
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -163,7 +176,8 @@ export class KolInputColor
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -173,7 +187,8 @@ export class KolInputColor
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -183,7 +198,8 @@ export class KolInputColor
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -193,7 +209,8 @@ export class KolInputColor
 	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -203,7 +220,8 @@ export class KolInputColor
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -213,7 +231,8 @@ export class KolInputColor
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -223,7 +242,8 @@ export class KolInputColor
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -234,7 +254,8 @@ export class KolInputColor
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
@@ -248,7 +269,8 @@ export class KolInputColor
 	/**
 	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _suggestions?: SuggestionsPropType = undefined;
+	@Prop()
+	public _suggestions?: SuggestionsPropType = undefined;
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
@@ -259,7 +281,8 @@ export class KolInputColor
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -269,7 +292,8 @@ export class KolInputColor
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -279,7 +303,8 @@ export class KolInputColor
 	/**
 	 * Shows if the input was touched by a user.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -289,7 +314,8 @@ export class KolInputColor
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop() public _value?: StringValuePropType = undefined;
+	@Prop()
+	public _value?: StringValuePropType = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StringValuePropType): void {
@@ -300,7 +326,8 @@ export class KolInputColor
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -340,27 +367,27 @@ export class KolInputColor
 		this.unsetRenderProp('smartButton');
 
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
+		this.watchOn(this._on);
 		this.watchShortKey(this._shortKey);
 		this.watchSmartButton(this._smartButton);
-		this.watchOn(this._on);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchAutoComplete(this._autoComplete);
 		this.watchSuggestions(this._suggestions);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchValue(this._value);
+		this.watchVariant(this._variant);
 	}
 
 	public componentDidRender(): void {
@@ -402,7 +429,7 @@ export class KolInputColor
 			msg: this.getRenderProp('msg'),
 			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
 			suggestions: suggestions.length > 0 ? ((<SuggestionsFC id={id} suggestions={suggestions} />) as VNode) : undefined,
-			class: 'kol-input-color__input kol-input-color__input--color',
+			class: colorBem('input', { color: true }),
 			onBlur: this.handleBlur,
 			onChange: this.handleChange,
 			onClick: this.handleClick,
@@ -427,7 +454,7 @@ export class KolInputColor
 			<Host>
 				<FormFieldFC
 					{...this.getFormFieldProps({
-						class: 'kol-input-color',
+						class: colorBem(),
 						accessKey: this.getRenderProp('accessKey') || undefined,
 						shortKey: this.getRenderProp('shortKey') || undefined,
 						variant: this.getRenderProp('variant'),

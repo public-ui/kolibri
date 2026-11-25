@@ -142,8 +142,9 @@ Das primaere Element haelt ein `CtaRef` aus `createCtaRef()`, die Methode entste
 
 ```typescript
 @Component({ tag: 'kol-button', shadow: true })
-export class KolButton extends BaseButtonWebComponent implements ButtonProps, ClickableElement {
-	@Element() protected readonly host?: HTMLKolButtonElement;
+export class KolButton extends BaseButtonWebComponent implements ClickableElement {
+	@Element()
+	protected readonly host?: HTMLKolButtonElement;
 
 	// In der Basisklasse: protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 	// Die Functional Component setzt ihn am nativen Element: <button ref={ctaRef} …>

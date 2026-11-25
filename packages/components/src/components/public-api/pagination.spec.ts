@@ -2,8 +2,7 @@ import type { PublicApiContract } from './contract';
 import { describePublicApiContract } from './contract';
 
 /**
- * Pinned public API of `kol-pagination` (11 props, 0 methods), extracted from the legacy `shadow.tsx`
- * before its skeleton migration (#9590); the pin checks `component.tsx` against `PaginationProps`.
+ * Pinned public API of `kol-pagination` (11 props, 0 methods), #9590.
  */
 const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	_boundaryCount: {
@@ -36,7 +35,7 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'MaxPropType',
 		required: true,
-		doc: 'Defines the maximum value of the element.',
+		doc: 'Defines the maximum value of the element. An unset value warns without a rescuing fallback: nothing paginates without the number of entries, and 0 stays the honest empty state (ARC42, "Requiredness semantics per prop").',
 	},
 	_on: {
 		kind: 'prop',
@@ -80,4 +79,4 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-pagination', component: 'pagination', pinnedApi: KOL_PAGINATION_PUBLIC_API, schemaInterface: 'PaginationProps' });
+describePublicApiContract({ tag: 'kol-pagination', component: 'pagination', pinnedApi: KOL_PAGINATION_PUBLIC_API });

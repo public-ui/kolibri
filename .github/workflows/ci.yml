@@ -53,6 +53,10 @@ jobs:
   build-and-check:
     needs: changed-files
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Writes the size gate comment of the pull request.
+      pull-requests: write
     steps:
       - name: Skip build, lint and tests for docs-only pull requests
         if: needs.changed-files.outputs.docs-only == 'true'
@@ -88,6 +92,64 @@ jobs:
       - name: Unit Tests
         if: needs.changed-files.outputs.docs-only != 'true'
         run: pnpm -r test:unit
+      # Pull-request runs compare their artifact sizes with the baseline that the "Size Baseline"
+      # workflow computed for the base commit; push runs report their sizes without comparison.
+      # Every step keeps going on error, so the size comparison can never block the merge.
+      - name: Select size baseline
+        id: size-baseline
+        if: ${{ github.event_name == 'pull_request' }}
+        continue-on-error: true
+        run: node scripts/size-baseline/select-baseline.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download size baseline
+        if: ${{ steps.size-baseline.outputs.artifact_id != '' }}
+        continue-on-error: true
+        uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ steps.size-baseline.outputs.artifact_id }}
+          run-id: ${{ steps.size-baseline.outputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: size-baseline-download
+      - name: Install size baseline
+        if: ${{ steps.size-baseline.outputs.artifact_id != '' }}
+        continue-on-error: true
+        run: |
+          cp size-baseline-download/components.json packages/components/size-baseline.json
+          cp size-baseline-download/theme-default.json packages/themes/default/size-baseline.json
+      # Informational comparison of the artifact sizes of the components and theme-default with the
+      # baseline of the target branch (installed above on pull requests; on push runs without
+      # comparison); see docs/SIZE_GATE.md. The treemap and the restructuring candidates come from
+      # the manually started workflow size-analysis.yml.
+      - name: Size gate
+        id: size-gate
+        if: needs.changed-files.outputs.docs-only != 'true'
+        run: pnpm -r size
+      # Keeps at most one size report comment on the pull request. It is created only for a notable
+      # change and updated on every later run. Pull requests from forks get a read-only token;
+      # for them the step only warns and the job summary carries the report.
+      - name: Size gate comment
+        if: ${{ !cancelled() && needs.changed-files.outputs.docs-only != 'true' && github.event_name == 'pull_request' }}
+        uses: actions/github-script@v9
+        env:
+          SIZE_GATE_OUTCOME: ${{ steps.size-gate.outcome }}
+        with:
+          script: |
+            const workspace = process.env.GITHUB_WORKSPACE;
+            const { renderPrComment, upsertPrComment } = await import(`${workspace}/packages/tools/size-gate/src/pr-comment.mjs`);
+            const repoUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}`;
+            const { body, notable } = renderPrComment({
+              outcome: process.env.SIZE_GATE_OUTCOME || 'skipped',
+              packageDirs: [`${workspace}/packages/components`, `${workspace}/packages/themes/default`],
+              runUrl: `${repoUrl}/actions/runs/${context.runId}`,
+              sha: context.payload.pull_request.head.sha,
+            });
+            try {
+              const result = await upsertPrComment({ body, context, create: notable, github });
+              core.info(`Size gate comment ${result.action} (${result.id}).`);
+            } catch (error) {
+              core.warning(`Could not write the size gate comment: ${error.message}`);
+            }
 
   e2e-tests:
     needs: changed-files
