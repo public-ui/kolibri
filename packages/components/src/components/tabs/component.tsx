@@ -478,8 +478,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		// Resolved here rather than as a `@Prop` default: a field initializer runs in the
 		// constructor, where `@Element()` is not yet populated for a `shadow: false` element under
 		// SSR, so the theme-scoped feature flag would silently be ignored there. Keeping it a
-		// fallback also leaves the public API unchanged. The rendered default is `normal` either way.
-		variantProp.apply(value ?? getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal', (v) => this.setRenderProp('variant', v));
+		// fallback also leaves the public API unchanged.
+		variantProp.apply(value ?? getFeatureFlag('tabsVariantDefault', this.host) ?? '', (v) => this.setRenderProp('variant', v));
 	}
 
 	public render(): JSX.Element {
