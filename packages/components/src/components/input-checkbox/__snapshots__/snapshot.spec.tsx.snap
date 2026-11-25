@@ -480,7 +480,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                   </div>
                 </div>
                 <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover__arrow kol-popover__arrow--right"></div>
                   <div class="kol-popover-button__popover--styled">
                     Ich bin ein Hinweis.
                   </div>
@@ -1088,7 +1088,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                   </div>
                 </div>
                 <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover__arrow kol-popover__arrow--right"></div>
                   <div class="kol-popover-button__popover--styled">
                     Ich bin ein Hinweis.
                   </div>
@@ -1721,7 +1721,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                   </div>
                 </div>
                 <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover__arrow kol-popover__arrow--right"></div>
                   <div class="kol-popover-button__popover--styled">
                     Ich bin ein Hinweis.
                   </div>
@@ -2286,7 +2286,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                   </div>
                 </div>
                 <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover__arrow kol-popover__arrow--right"></div>
                   <div class="kol-popover-button__popover--styled">
                     Ich bin ein Hinweis.
                   </div>
@@ -2894,7 +2894,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                   </div>
                 </div>
                 <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover__arrow kol-popover__arrow--right"></div>
                   <div class="kol-popover-button__popover--styled">
                     Ich bin ein Hinweis.
                   </div>
@@ -3496,7 +3496,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                   </div>
                 </div>
                 <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover__arrow kol-popover__arrow--right"></div>
                   <div class="kol-popover-button__popover--styled">
                     Ich bin ein Hinweis.
                   </div>
@@ -4129,7 +4129,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                   </div>
                 </div>
                 <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover__arrow kol-popover__arrow--right"></div>
                   <div class="kol-popover-button__popover--styled">
                     Ich bin ein Hinweis.
                   </div>
@@ -4700,7 +4700,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                   </div>
                 </div>
                 <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover__arrow kol-popover__arrow--right"></div>
                   <div class="kol-popover-button__popover--styled">
                     Ich bin ein Hinweis.
                   </div>

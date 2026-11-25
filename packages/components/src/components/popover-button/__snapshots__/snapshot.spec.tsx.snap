@@ -19,7 +19,7 @@ exports[`kol-popover-button should render with _label="Click to toggle" _disable
         </button>
       </div>
       <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-        <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+        <div class="kol-popover__arrow kol-popover__arrow--right"></div>
         <slot></slot>
       </div>
     </div>
@@ -57,7 +57,7 @@ exports[`kol-popover-button should render with _label="Click to toggle" _icons="
         </div>
       </div>
       <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-        <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+        <div class="kol-popover__arrow kol-popover__arrow--right"></div>
         <slot></slot>
       </div>
     </div>
@@ -84,7 +84,7 @@ exports[`kol-popover-button should render with _label="Click to toggle" _inline=
         </button>
       </div>
       <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-        <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+        <div class="kol-popover__arrow kol-popover__arrow--right"></div>
         <slot></slot>
       </div>
     </div>
@@ -138,7 +138,7 @@ exports[`kol-popover-button should render with _label="Click to toggle" 1`] = `
         </button>
       </div>
       <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-        <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+        <div class="kol-popover__arrow kol-popover__arrow--right"></div>
         <slot></slot>
       </div>
     </div>
@@ -170,7 +170,7 @@ exports[`kol-popover-button should render with _label=[{"text":"partly english",
         </button>
       </div>
       <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-        <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+        <div class="kol-popover__arrow kol-popover__arrow--right"></div>
         <slot></slot>
       </div>
     </div>

@@ -201,7 +201,7 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 		props.tooltipAlign = resolved.tooltipAlign;
 		props.type = resolved.type;
 		props.variant = resolved.variant;
-		popoverAlignProp.apply(popoverButtonProps._popoverAlign ?? 'bottom', (v) => {
+		popoverAlignProp.apply(popoverButtonProps._popoverAlign ?? 'right', (v) => {
 			props.popoverAlign = v;
 			popoverBehavior.watchAlign(v);
 		});
