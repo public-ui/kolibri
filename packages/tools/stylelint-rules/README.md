@@ -47,7 +47,7 @@ pnpm i -D stylelint postcss-scss @public-ui/stylelint-rules  # recommended
 
 ## Quick start for a theme
 
-A KoliBri theme keeps its sources in `src/`: `global.scss` for the theme global layer and one file for each component in `src/components/`. Add a `.stylelintrc.json` to the theme package:
+A KoliBri theme keeps its sources in `src/`: `global.scss` for the theme global layer, one file for each component in `src/components/` and, if needed, `forced-colors.scss` for the layer `kol-theme-forced-colors`. Add a `.stylelintrc.json` to the theme package:
 
 ```json
 {
@@ -59,6 +59,7 @@ A KoliBri theme keeps its sources in `src/`: `global.scss` for the theme global 
 		"kolibri/common-no-layer-in-reuse-files": true,
 		"kolibri/common-no-root-selector": true,
 		"kolibri/common-require-component-layer": [true, { "layerName": "kol-theme-component", "pathPattern": "/src/components/" }],
+		"kolibri/theme-allowed-layer-names": [true, { "pathPattern": "/src/" }],
 		"kolibri/theme-require-global-layer": true
 	}
 }
@@ -104,10 +105,10 @@ Most rules decide by the path of the linted file whether they apply. A file outs
 | `kolibri/common-no-root-selector`               | `.scss` files below a `/src/` folder                                                                                              |
 | `kolibri/common-require-component-layer`        | `.scss` files whose path contains `pathPattern`, except partials (`_*.scss`), `a11y.scss`, `preset.scss` and `forced-colors.scss` |
 | `kolibri/component-allowed-layer-names`         | files below `/packages/components/`, except `a11y.scss` and `_layer-order.scss`                                                   |
-| `kolibri/theme-allowed-layer-names`             | files below `/packages/themes/`                                                                                                   |
+| `kolibri/theme-allowed-layer-names`             | files whose path contains `pathPattern` (default `/packages/themes/`)                                                             |
 | `kolibri/theme-require-global-layer`            | files named `global.scss`                                                                                                         |
 
-The rules with `/packages/components/` or `/packages/themes/` in their path serve the KoliBri monorepo itself. For a theme in your own repository, `kolibri/common-layer-name-convention` checks the layer names instead of `kolibri/theme-allowed-layer-names`.
+The rules with `/packages/components/` in their path serve the KoliBri monorepo itself. The defaults of `pathPattern` match the monorepo as well; a theme in its own repository sets `pathPattern` to its own folders, as the quick start shows.
 
 ## Rules for themes
 
@@ -121,7 +122,7 @@ Every CSS rule, root-level declaration and `@include` of a component file stands
 | `pathPattern` | `string`  |    ✓     | A substring of the file path that marks the component files, e.g. `/src/components/`.                        |
 | `strict`      | `boolean` |          | `true` (default) checks every rule and include. `false` only checks that the file declares the layer at all. |
 
-Without `layerName` or `pathPattern`, the rule does nothing.
+Without `layerName` or `pathPattern`, the rule does nothing. Since a component file uses only the configured layer, additions for forced colors go into a `forced-colors.scss` with `@layer kol-theme-forced-colors`, which the rule skips, not into the component files.
 
 ```scss
 // ❌ the selector is outside the layer
@@ -155,9 +156,29 @@ All CSS of `global.scss` stands inside `@layer kol-theme-global`, and the file u
 }
 ```
 
+### `kolibri/theme-allowed-layer-names`
+
+A theme uses only its own layers: `kol-theme-global`, `kol-theme-component` and `kol-theme-forced-colors`. A typo creates a new layer at an unexpected place in the cascade, and a layer of the components package, such as `kol-component`, would mix the theme into the basis styling.
+
+| Option        | Type     | Required | Description                                                                                      |
+| ------------- | -------- | :------: | ------------------------------------------------------------------------------------------------ |
+| `pathPattern` | `string` |          | A substring of the file path that marks the theme files. Default `/packages/themes/` (monorepo). |
+
+```json
+"kolibri/theme-allowed-layer-names": [true, { "pathPattern": "/src/" }]
+```
+
+```scss
+// ❌
+@layer kol-theme-components { … }
+@layer kol-component { … }
+// ✅
+@layer kol-theme-component { … }
+```
+
 ### `kolibri/common-layer-name-convention`
 
-Every `@layer` in the theme sources is named `kol-theme-global` or `kol-theme-component`. A different name, such as a typo, would create a new layer at an unexpected place in the cascade. The rule always reports a **warning**, whatever severity you configure. It does not know `kol-theme-forced-colors`, so a theme that uses this layer gets a warning for it.
+The soft variant of `kolibri/theme-allowed-layer-names` for all `.scss` files below a `/src/` folder: every `@layer` is named `kol-theme-global`, `kol-theme-component` or `kol-theme-forced-colors`. The rule always reports a **warning**, whatever severity you configure, so it fits a theme that migrates step by step.
 
 ```scss
 // ❌
@@ -221,13 +242,12 @@ Selectors are flat BEM classes. `@at-root` and capturing the parent selector in 
 
 These rules check the paths of the monorepo and do nothing in other repositories.
 
-| Rule                                            | Purpose                                                                                              |
-| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `kolibri/common-component-css-must-be-in-layer` | The `style.scss` of every component in `packages/components` wraps all CSS in a layer.               |
-| `kolibri/component-allowed-layer-names`         | `packages/components` uses only `kol-a11y`, `kol-global`, `kol-component` and `kol-forced-colors`.   |
-| `kolibri/theme-allowed-layer-names`             | `packages/themes` uses only `kol-theme-global`, `kol-theme-component` and `kol-theme-forced-colors`. |
+| Rule                                            | Purpose                                                                                            |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `kolibri/common-component-css-must-be-in-layer` | The `style.scss` of every component in `packages/components` wraps all CSS in a layer.             |
+| `kolibri/component-allowed-layer-names`         | `packages/components` uses only `kol-a11y`, `kol-global`, `kol-component` and `kol-forced-colors`. |
 
-The components package enables `kolibri/common-require-component-layer` with `{ "layerName": "kol-component", "pathPattern": "/packages/components/src/components/", "strict": false }`.
+The theme packages of the monorepo enable `kolibri/theme-allowed-layer-names` with its default `pathPattern`. The components package enables `kolibri/common-require-component-layer` with `{ "layerName": "kol-component", "pathPattern": "/packages/components/src/components/", "strict": false }`.
 
 ## Versioning
 
