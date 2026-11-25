@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
+import { BadgeFC } from '../../../fc/src/badge/component';
 import type { BadgeApi } from '../../../internals/src/controller/badge/api';
 import { badgePropsConfig } from '../../../internals/src/controller/badge/api';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
@@ -23,7 +24,6 @@ import { featureHint, objectObjectHandler, setEventTarget } from '../../../inter
 import { createUniqueId, nonce } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
-import { BadgeFC } from '../../internal/functional-components/badge/component';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 

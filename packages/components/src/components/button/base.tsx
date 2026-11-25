@@ -1,8 +1,8 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { ButtonFC } from '../../../fc/src/button/component';
 import { BaseButtonWebComponent as SharedButtonOrchestration } from '../../../internals/src/components/button/base';
-import { ButtonFC } from '../../internal/functional-components/button/component';
 
 /**
  * Stencil render shim for the shared button orchestration: adds the `ButtonFC` render call, the

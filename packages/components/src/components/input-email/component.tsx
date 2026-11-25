@@ -37,6 +37,10 @@ import type {
 	VariantClassNamePropType,
 } from '../../../internals/src/schema/index';
 
+import { FormFieldFC } from '../../../fc/src/form-field/component';
+import { InputFC } from '../../../fc/src/form-field/input';
+import { InputContainerFC } from '../../../fc/src/form-field/input-container';
+import { BaseTextInputWebComponent } from '../../../fc/src/text-input/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { InputEmailApi } from '../../../internals/src/controller/input-email/api';
 import { inputEmailPropsConfig } from '../../../internals/src/controller/input-email/api';
@@ -45,10 +49,6 @@ import { bem } from '../../../internals/src/schema/bem-registry';
 import clsx from '../../../internals/src/utils/clsx';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
 
 const emailBem = bem.forBlock('kol-input-email');
 

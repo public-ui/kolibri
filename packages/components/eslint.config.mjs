@@ -166,7 +166,7 @@ export default [
 
 	// Skeleton blueprint import rules
 	{
-		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
+		files: ['src/components/**/*.{ts,tsx}'],
 		plugins: {
 			boundaries: boundariesPlugin,
 		},
@@ -182,11 +182,7 @@ export default [
 				 * matching element, so the specific entries must precede the generic ones.
 				 */
 				{ type: 'skeleton-web-components', pattern: ['src/components/click-button', 'src/components/skeleton'], mode: 'folder' },
-				{
-					type: 'skeleton-functional-components',
-					pattern: ['src/internal/functional-components/click-button', 'src/internal/functional-components/skeleton'],
-					mode: 'folder',
-				},
+				{ type: 'skeleton-functional-components', pattern: ['fc/src/click-button', 'fc/src/skeleton'], mode: 'folder' },
 				{ type: 'focus-decorator-utils', pattern: ['src/utils/element-interaction.ts', 'src/utils/element-focus.ts'], mode: 'file' },
 				{ type: 'testing-utils', pattern: 'src/utils/testing', mode: 'folder' },
 				{ type: 'internals', pattern: 'internals/src', mode: 'folder' },
@@ -195,9 +191,7 @@ export default [
 				{ type: 'i18n', pattern: 'src/i18n.ts', mode: 'file' },
 				{ type: 'utils', pattern: 'src/utils', mode: 'folder' },
 				{ type: 'e2e-helpers', pattern: 'src/e2e', mode: 'folder' },
-				/* Pre-migration heritage: only deprecated components (kol-toast-container) import from here. */
-				{ type: 'legacy-functional-components', pattern: 'src/functional-components', mode: 'folder' },
-				{ type: 'internal-functional-components', pattern: 'src/internal/functional-components', mode: 'folder' },
+				{ type: 'functional-components', pattern: 'fc/src', mode: 'folder' },
 				{ type: 'internal-props', pattern: 'src/internal/props', mode: 'folder' },
 				{ type: 'schema', pattern: 'src/schema', mode: 'folder' },
 			],
@@ -222,7 +216,7 @@ export default [
 										'internals',
 										'skeleton-web-components',
 										'skeleton-functional-components',
-										'internal-functional-components',
+										'functional-components',
 										'internal-props',
 										'focus-decorator-utils',
 										'schema',
@@ -231,7 +225,6 @@ export default [
 										'i18n',
 										'utils',
 										'e2e-helpers',
-										'legacy-functional-components',
 									],
 								},
 							},
@@ -243,19 +236,13 @@ export default [
 									type: [
 										'skeleton-web-components',
 										'skeleton-functional-components',
-										'internal-functional-components',
+										'functional-components',
 										'internal-props',
 										'focus-decorator-utils',
 										'schema',
 										'testing-utils',
 									],
 								},
-							},
-						},
-						{
-							from: { type: 'skeleton-functional-components' },
-							allow: {
-								to: { type: ['skeleton-functional-components', 'internal-functional-components', 'internal-props', 'schema', 'focus-decorator-utils'] },
 							},
 						},
 					],
@@ -284,9 +271,10 @@ export default [
 	},
 
 	// Requiredness must be threaded into apply — scoped to the web component layer. Appliers
-	// outside a component config (items, behaviors, resolve-props) deliberately omit it.
+	// outside a component config (items, behaviors, resolve-props) deliberately omit it; the
+	// form-field base class in the functional-components package carries its copy of these rules.
 	{
-		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/form-field/base-web-component.tsx'],
+		files: ['src/components/**/*.{ts,tsx}'],
 		plugins: {
 			kolibri: kolibriPlugin,
 		},

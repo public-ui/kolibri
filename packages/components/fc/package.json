@@ -1,0 +1,33 @@
+{
+	"name": "@public-ui/functional-components",
+	"version": "5.0.0-beta.1",
+	"license": "EUPL-1.2",
+	"private": true,
+	"description": "Stencil functional render components of the KoliBri components: the render layer the web component shells render through, shared with future runtime implementations.",
+	"exports": {
+		"./*": {
+			"types": "./dist/fc/src/*.d.ts",
+			"default": "./dist/fc/src/*.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc",
+		"format": "prettier --check src",
+		"lint": "eslint src",
+		"prepare": "pnpm run build"
+	},
+	"dependencies": {
+		"@public-ui/internals": "workspace:*",
+		"@stencil/core": "4.45.3",
+		"adopted-style-sheets": "1.2.0-rc.3",
+		"lodash-es": "4.18.1"
+	},
+	"devDependencies": {
+		"@public-ui/eslint-config": "workspace:*",
+		"@types/lodash-es": "4.17.12",
+		"@types/node": "26.4.0",
+		"@typescript-eslint/parser": "8.58.2",
+		"eslint": "9.39.5",
+		"typescript": "5.9.3"
+	}
+}

@@ -1,13 +1,13 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
 
+import { AbbrFC } from '../../../fc/src/abbr/component';
 import type { AbbrApi } from '../../../internals/src/controller/abbr/api';
 import { abbrPropsConfig } from '../../../internals/src/controller/abbr/api';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import { labelLangSegmentsProp } from '../../../internals/src/props/index';
 import type { LabelLangSegmentsPropType } from '../../../internals/src/schema/index';
-import { AbbrFC } from '../../internal/functional-components/abbr/component';
 
 /**
  * The **Abbr** component implements the HTML tag `abbr`.

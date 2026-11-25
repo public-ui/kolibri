@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
+import { ToolbarFC } from '../../../fc/src/toolbar/component';
 import type { UnsubscribeFunction } from '../../../internals/src/components/link/ariaCurrentService';
 import { onLocationChange } from '../../../internals/src/components/link/ariaCurrentService';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
@@ -22,7 +23,6 @@ import type {
 import type { OrientationPropType } from '../../../internals/src/schema/props/orientation';
 import { delegateClick, setClick } from '../../../internals/src/utils/element-click';
 import { delegateFocus, setFocus } from '../../../internals/src/utils/element-focus';
-import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
 
 const ARROW_KEYS: KeyboardKey[] = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, KeyboardKey.ArrowRight, KeyboardKey.ArrowLeft];
 

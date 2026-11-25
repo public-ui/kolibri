@@ -1,12 +1,12 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { SpinFC } from '../../../fc/src/spin/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { SpinApi } from '../../../internals/src/controller/spin/api';
 import { spinPropsConfig } from '../../../internals/src/controller/spin/api';
 import { labelProp, showProp, variantSpinProp, type SpinVariantType } from '../../../internals/src/props/index';
 import type { LabelPropType, ShowPropType } from '../../../internals/src/schema/index';
-import { SpinFC } from '../../internal/functional-components/spin/component';
 
 @Component({
 	tag: 'kol-spin',

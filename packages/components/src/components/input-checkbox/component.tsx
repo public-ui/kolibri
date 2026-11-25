@@ -33,6 +33,11 @@ import type { InputCheckboxVariantPropType } from '../../../internals/src/schema
 import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
 import clsx from '../../../internals/src/utils/clsx';
 
+import { BaseFormFieldWebComponent } from '../../../fc/src/form-field/base-web-component';
+import { CheckboxFC } from '../../../fc/src/form-field/checkbox';
+import { FormFieldFC } from '../../../fc/src/form-field/component';
+import { FieldControlFC } from '../../../fc/src/form-field/field-control';
+import type { InputFCProps } from '../../../fc/src/form-field/input';
 import { submitFormOnEnter } from '../../../internals/src/components/form/controller';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { InputCheckboxApi } from '../../../internals/src/controller/input-checkbox/api';
@@ -50,11 +55,6 @@ import {
 } from '../../../internals/src/props/index';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { CheckboxFC } from '../../internal/functional-components/form-field/checkbox';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { FieldControlFC } from '../../internal/functional-components/form-field/field-control';
-import type { InputFCProps } from '../../internal/functional-components/form-field/input';
 
 const checkboxBem = bem.forBlock('kol-input-checkbox');
 

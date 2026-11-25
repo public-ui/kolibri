@@ -1,12 +1,12 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { QuoteFC } from '../../../fc/src/quote/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { QuoteApi } from '../../../internals/src/controller/quote/api';
 import { quotePropsConfig } from '../../../internals/src/controller/quote/api';
 import { hrefProp, labelLangSegmentsProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../../internals/src/props/index';
 import type { HrefPropType, LabelLangSegmentsPropType, QuotePropType } from '../../../internals/src/schema/index';
-import { QuoteFC } from '../../internal/functional-components/quote/component';
 
 /**
  * The **Quote** component has two variants: a short inline (`inline`) and an indented block (`block`) variant. Both variants include a link to the source of the quote.

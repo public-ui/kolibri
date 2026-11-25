@@ -1,6 +1,9 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
+import { PaginationFC } from '../../../fc/src/pagination/component';
+import type { PaginationItem, PaginationPropsStore, PaginationRenderProps } from '../../../fc/src/pagination/item';
+import { createPaginationItem } from '../../../fc/src/pagination/item';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { PaginationApi } from '../../../internals/src/controller/pagination/api';
@@ -19,9 +22,6 @@ import type {
 	Stringified,
 	TooltipAlignPropType,
 } from '../../../internals/src/schema/index';
-import { PaginationFC } from '../../internal/functional-components/pagination/component';
-import type { PaginationItem, PaginationPropsStore, PaginationRenderProps } from '../../internal/functional-components/pagination/item';
-import { createPaginationItem } from '../../internal/functional-components/pagination/item';
 
 @Component({
 	tag: 'kol-pagination',

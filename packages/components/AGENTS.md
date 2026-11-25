@@ -83,7 +83,7 @@ All form field components expose `_ariaDetails?: string` (space-separated elemen
 
 **How it works:**
 
-- `BaseFormFieldWebComponent` (`src/internal/functional-components/form-field/base-web-component.tsx`) owns the implementation. `applyAriaDetails(value)` stores the prop, and `syncAriaDetails()` resolves the IDs via `resolveTargets()` and assigns the result to `ariaDetailsElements` of the native control (`input`, `select` or `textarea`) in the shadow root.
+- `BaseFormFieldWebComponent` (`fc/src/form-field/base-web-component.tsx`) owns the implementation. `applyAriaDetails(value)` stores the prop, and `syncAriaDetails()` resolves the IDs via `resolveTargets()` and assigns the result to `ariaDetailsElements` of the native control (`input`, `select` or `textarea`) in the shadow root.
 - Each field's `@Watch('_ariaDetails')` delegates to `applyAriaDetails(value)`; `componentWillLoad()` calls the watcher once to initialize.
 - Every render re-resolves the IDs, because the control and the referenced elements may enter the tree after the prop was set. Only changed references are written.
 

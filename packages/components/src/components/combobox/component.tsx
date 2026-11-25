@@ -39,6 +39,15 @@ import { containsDeepActiveElement } from '../../../internals/src/utils/element-
 import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../../internals/src/utils/events';
 
+import { ButtonFC } from '../../../fc/src/button/component';
+import { BEM_CLASS_COMBOBOX__DELETE, ComboboxToggleFC } from '../../../fc/src/combobox/component';
+import { getInputAdornments } from '../../../fc/src/form-field/adornments';
+import { FormFieldFC } from '../../../fc/src/form-field/component';
+import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../../fc/src/form-field/custom-suggestions';
+import { InputFC, type InputFCProps } from '../../../fc/src/form-field/input';
+import { InputContainerFC } from '../../../fc/src/form-field/input-container';
+import { BaseListboxWebComponent } from '../../../fc/src/listbox/base-web-component';
+import { ListboxGroupFC } from '../../../fc/src/listbox/group';
 import { createButtonItem } from '../../../internals/src/controller/button/item';
 import type { ComboboxApi } from '../../../internals/src/controller/combobox/api';
 import { comboboxPropsConfig } from '../../../internals/src/controller/combobox/api';
@@ -54,15 +63,6 @@ import {
 	suggestionsProp,
 	variantProp,
 } from '../../../internals/src/props/index';
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { BEM_CLASS_COMBOBOX__DELETE, ComboboxToggleFC } from '../../internal/functional-components/combobox/component';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
-import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
 
 /**
  * @slot - The label of the input field.

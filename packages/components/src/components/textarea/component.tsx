@@ -37,6 +37,12 @@ import type {
 } from '../../../internals/src/schema/index';
 import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
 
+import { CounterBehavior } from '../../../fc/src/counter/behavior';
+import { getInputAdornments } from '../../../fc/src/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../../fc/src/form-field/base-web-component';
+import { FormFieldFC } from '../../../fc/src/form-field/component';
+import { InputContainerFC } from '../../../fc/src/form-field/input-container';
+import { TextAreaFC, type TextAreaFCProps } from '../../../fc/src/form-field/textarea';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { TextareaApi } from '../../../internals/src/controller/textarea/api';
@@ -58,12 +64,6 @@ import {
 import clsx from '../../../internals/src/utils/clsx';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
-import { CounterBehavior } from '../../internal/functional-components/counter/behavior';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { TextAreaFC, type TextAreaFCProps } from '../../internal/functional-components/form-field/textarea';
 
 /**
  * The **Textarea** component provides a larger input field for content. Unlike InputText, it also allows extensive content to be entered, including line breaks.

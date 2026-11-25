@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { VersionFC } from '../../../fc/src/version/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { VersionApi } from '../../../internals/src/controller/version/api';
@@ -8,7 +9,6 @@ import { translate } from '../../../internals/src/i18n';
 import { labelProp } from '../../../internals/src/props/index';
 import type { ColorPair, KoliBriIconsProp, LabelPropType, VersionProps } from '../../../internals/src/schema/index';
 import { createContrastColorPair } from '../../../internals/src/schema/index';
-import { VersionFC } from '../../internal/functional-components/version/component';
 
 /**
  * Fixed background color of the version badge, paired with the contrast-safe foreground the badge

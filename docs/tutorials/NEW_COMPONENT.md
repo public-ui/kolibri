@@ -58,7 +58,7 @@ Details: [ARC42 §4 — Schema Helper Layer](../../packages/components/docs/ARC4
 
 ## Schritt 3 — API-Definition
 
-Datei: `src/internal/functional-components/<component>/api.tsx`
+Datei: `packages/components/internals/src/controller/<component>/api.tsx`
 
 ```typescript
 import { nameProp } from '../../props';
@@ -87,7 +87,7 @@ Details: [ARC42 §4 — API Definition with PropsConfigShape](../../packages/com
 
 ## Schritt 4 — Functional Component
 
-Datei: `src/internal/functional-components/<component>/component.tsx`
+Datei: `packages/components/fc/src/<component>/component.tsx`
 
 ```tsx
 import type { FunctionalComponent as FC } from '@stencil/core';
@@ -120,12 +120,12 @@ Die Web Component ist der **Orchestrator**: Sie erweitert `BaseWebComponent<Api>
 ```tsx
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { MyComponentApi } from '../../internal/functional-components/my-component/api';
-import { myComponentPropsConfig } from '../../internal/functional-components/my-component/api';
-import { MyComponentFC } from '../../internal/functional-components/my-component/component';
-import { nameProp } from '../../internal/props';
+import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
+import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
+import type { MyComponentApi } from '../../../internals/src/controller/my-component/api';
+import { myComponentPropsConfig } from '../../../internals/src/controller/my-component/api';
+import { MyComponentFC } from '../../fc/src/my-component/component';
+import { nameProp } from '../../../internals/src/props/index';
 
 @Component({
 	tag: 'kol-my-component',

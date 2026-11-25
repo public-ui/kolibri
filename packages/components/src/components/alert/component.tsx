@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
+import { AlertFC } from '../../../fc/src/alert/component';
 import type { AlertApi } from '../../../internals/src/controller/alert/api';
 import { alertPropsConfig } from '../../../internals/src/controller/alert/api';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
@@ -29,7 +30,6 @@ import type {
 import { createUniqueId, nonce } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef } from '../../../internals/src/utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
-import { AlertFC } from '../../internal/functional-components/alert/component';
 
 /**
  * The **Alert** component provides visual feedback to users. It consists of a color-coded container, a heading, content text, and an icon. The icon used and the color scheme depend on the `_type` of the alert.

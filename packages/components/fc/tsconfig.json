@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"target": "ES2017",
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"lib": ["dom", "dom.iterable", "ES2017", "ES2019.Array", "ESNext.Disposable"],
+		"declaration": true,
+		"outDir": "dist",
+		"strict": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"useDefineForClassFields": false,
+		"experimentalDecorators": true,
+		"jsx": "react",
+		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment",
+		"typeRoots": ["node_modules/@types"]
+	},
+	"include": ["src"],
+	"exclude": ["src/**/*.spec.ts", "src/**/*.spec.tsx", "src/**/*.e2e.ts", "src/**/test/**", "src/**/tests/**", "src/**/__snapshots__/**"]
+}

@@ -4,9 +4,9 @@ import { Component, h, Host, Method, State } from '@stencil/core';
 import { translate } from '../../../internals/src/i18n';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 
+import { KolToastItemFc } from '../../../fc/src/app';
 import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../../internals/src/schema/index';
 import { Log } from '../../../internals/src/schema/index';
-import { KolToastItemFc } from '../../functional-components';
 
 const TRANSITION_TIMEOUT = 300;
 

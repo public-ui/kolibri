@@ -1,6 +1,9 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
+import { PaginationFC } from '../../../fc/src/pagination/component';
+import type { PaginationInput, PaginationItem } from '../../../fc/src/pagination/item';
+import { createPaginationItem } from '../../../fc/src/pagination/item';
 import type { WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { TableStatefulApi } from '../../../internals/src/controller/table-stateful/api';
 import type { SortData } from '../../../internals/src/controller/table-stateful/model';
@@ -58,9 +61,6 @@ import type {
 import { devHint, trimLabel } from '../../../internals/src/schema/index';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../../internals/src/schema/props/aria-labelledby';
 import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
-import { PaginationFC } from '../../internal/functional-components/pagination/component';
-import type { PaginationInput, PaginationItem } from '../../internal/functional-components/pagination/item';
-import { createPaginationItem } from '../../internal/functional-components/pagination/item';
 import { BaseTableStatelessWebComponent } from '../table-stateless/base';
 
 // Only the pagination elements use the block: a shadow DOM node with the block class itself would activate theme rules written for the host.

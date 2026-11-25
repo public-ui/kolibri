@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, transformTag, Watch } from '@stencil/core';
 
+import { TreeFC } from '../../../fc/src/tree/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { TreeApi } from '../../../internals/src/controller/tree/api';
@@ -9,7 +10,6 @@ import { KolTreeItemTag, KolTreeTag } from '../../../internals/src/core/componen
 import { labelProp } from '../../../internals/src/props/index';
 import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../../internals/src/schema/index';
 import { delegateFocus } from '../../../internals/src/utils/element-focus';
-import { TreeFC } from '../../internal/functional-components/tree/component';
 import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
 
 const isTreeItem = (element?: EventTarget | null): element is HTMLKolTreeItemElement =>

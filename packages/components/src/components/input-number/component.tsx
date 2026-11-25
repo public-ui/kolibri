@@ -35,6 +35,13 @@ import type {
 } from '../../../internals/src/schema/index';
 import { validateAccessAndShortKey } from '../../../internals/src/schema/validators/access-and-short-key';
 
+import { getInputAdornments } from '../../../fc/src/form-field/adornments';
+import { BaseFormFieldWebComponent } from '../../../fc/src/form-field/base-web-component';
+import { FormFieldFC } from '../../../fc/src/form-field/component';
+import { InputFC, type InputFCProps } from '../../../fc/src/form-field/input';
+import { InputContainerFC } from '../../../fc/src/form-field/input-container';
+import { SuggestionsFC } from '../../../fc/src/form-field/suggestions';
+import { IconFC } from '../../../fc/src/icon/component';
 import { submitFormOnEnter } from '../../../internals/src/components/form/controller';
 import type { NumberValueType } from '../../../internals/src/controller/form-field/number-value';
 import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../../internals/src/controller/form-field/number-value';
@@ -60,13 +67,6 @@ import {
 import clsx from '../../../internals/src/utils/clsx';
 import { createUniqueId } from '../../../internals/src/utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../../internals/src/utils/element-interaction';
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
-import { IconFC } from '../../internal/functional-components/icon/component';
 
 const numberBem = bem.forBlock('kol-input-number');
 const STEP_BUTTON_CLASS = numberBem('step-button');

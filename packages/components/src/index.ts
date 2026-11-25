@@ -30,4 +30,4 @@ export * from './components.d';
 export { ToasterService } from './components/toaster/toaster';
 export { bootstrap, isInitialized, register } from './core/bootstrap';
 export { getRegisteredTagNameTransformer, registerTagNameTransformer } from './core/tag-transformer';
-export * from './kolibri';
+export * from './kolibri.d';

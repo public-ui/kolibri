@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { ProgressFC } from '../../../fc/src/progress/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { ProgressApi } from '../../../internals/src/controller/progress/api';
@@ -13,7 +14,6 @@ import {
 	type ProgressVariantType,
 } from '../../../internals/src/props/index';
 import type { ClampedNumberValuePropType, LabelLangSegmentsPropType, MaxPropType, UnitPropType } from '../../../internals/src/schema/index';
-import { ProgressFC } from '../../internal/functional-components/progress/component';
 
 /**
  * The **Progress** component visualizes the completion status of a task or process. It supports both determinate (percentage-based) and indeterminate variants.

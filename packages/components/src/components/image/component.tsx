@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
+import { ImageFC } from '../../../fc/src/image/component';
 import { BaseWebComponent } from '../../../internals/src/controller/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../../internals/src/controller/generic-types';
 import type { ImageApi } from '../../../internals/src/controller/image/api';
@@ -8,7 +9,6 @@ import { altProp, imageCallbacksProp, loadingProp, sizesProp, srcProp, srcsetPro
 import type { KoliBriImageEventCallbacks } from '../../../internals/src/schema/components/image';
 import type { AltPropType, SizesPropType, SrcPropType, SrcsetPropType } from '../../../internals/src/schema/index';
 import { dispatchDomEvent, KolEvent } from '../../../internals/src/utils/events';
-import { ImageFC } from '../../internal/functional-components/image/component';
 
 /**
  * The **Image** component renders an image with support for responsive loading via `srcset` and `sizes`, lazy loading, and accessible alternative text.
