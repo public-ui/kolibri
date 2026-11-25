@@ -1,6 +1,5 @@
 import { KolBreadcrumbTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolBreadcrumb } from './component';
 
 executeSnapshotTests(

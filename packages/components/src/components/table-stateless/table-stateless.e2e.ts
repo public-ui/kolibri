@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+
 import type { KoliBriTableSelection, KoliBriTableSelectionKeys, SortEventPayload, TableHeaderCellsPropType } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }, { id: '1003' }, { id: '1004' }];
@@ -126,6 +127,16 @@ test.describe('kol-table-stateless', () => {
 			await kolTableStateless.getByLabel(`Selection for ${DATA[0].id}`).check();
 
 			await expect(callbackPromise).resolves.toEqual([DATA[2].id, DATA[0].id]);
+		});
+
+		test('it shows the name of a selection input as tooltip on focus', async ({ page }) => {
+			const kolTableStateless = page.locator('kol-table-stateless');
+			const cell = kolTableStateless.locator('td.kol-table__cell--selection').first();
+
+			await cell.getByLabel(`Selection for ${DATA[0].id}`).focus();
+
+			await expect.poll(() => cell.locator('.kol-tooltip__floating').evaluate((element) => element.classList.contains('show'))).toBe(true);
+			await expect(cell.locator('.kol-tooltip__floating')).toContainText(`Selection for ${DATA[0].id}`);
 		});
 
 		test('it prevents selecting disabled rows', async ({ page }) => {

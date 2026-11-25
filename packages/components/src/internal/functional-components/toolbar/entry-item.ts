@@ -63,7 +63,7 @@ export type ToolbarHRItem = ToolbarItemBase & {
  * only where the entry leaves the prop unset, and an entry's own `_tabIndex` wins over the roving
  * tabindex.
  */
-export const createToolbarItem = (
+export const createToolbarEntryItem = (
 	item: ToolbarItemPropType,
 	getFlagHost: () => HTMLElement | undefined,
 ): ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem => {

@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
 
+import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TabsApi } from '../../internal/functional-components/tabs/api';
@@ -27,7 +28,6 @@ import type {
 import { devHint, koliBriQuerySelector } from '../../schema';
 
 import { getFeatureFlag } from 'adopted-style-sheets';
-import { translate } from '../../i18n';
 import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props';
 import { createUniqueId } from '../../utils/dev.utils';
@@ -46,7 +46,8 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	shadow: true,
 })
 export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableElement, FocusableElement, WebComponentInterface<TabsApi> {
-	@Element() protected readonly host?: HTMLKolTabsElement;
+	@Element()
+	protected readonly host?: HTMLKolTabsElement;
 
 	private rootElement?: HTMLDivElement;
 
@@ -99,7 +100,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines the visual orientation of the component.
 	 */
-	@Prop() public _align?: AlignPropType = 'top';
+	@Prop()
+	public _align?: AlignPropType = 'top';
 
 	@Watch('_align')
 	public watchAlign(value?: AlignPropType): void {
@@ -109,7 +111,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines which behavior is active.
 	 */
-	@Prop() public _behavior?: TabBehaviorPropType = undefined;
+	@Prop()
+	public _behavior?: TabBehaviorPropType = undefined;
 
 	@Watch('_behavior')
 	public watchBehavior(value?: TabBehaviorPropType): void {
@@ -119,7 +122,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines whether the element has a create button.
 	 */
-	@Prop() public _hasCreateButton?: HasCreateButtonPropType = false;
+	@Prop()
+	public _hasCreateButton?: HasCreateButtonPropType = false;
 
 	@Watch('_hasCreateButton')
 	public watchHasCreateButton(value?: HasCreateButtonPropType): void {
@@ -129,7 +133,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -139,7 +144,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines the callback functions for tabs events.
 	 */
-	@Prop() public _on?: KoliBriTabsCallbacks = undefined;
+	@Prop()
+	public _on?: KoliBriTabsCallbacks = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriTabsCallbacks): void {
@@ -149,7 +155,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines which tab is active.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _selected?: SelectedPropType = 0;
+	@Prop({ mutable: true, reflect: true })
+	public _selected?: SelectedPropType = 0;
 
 	@Watch('_selected')
 	public watchSelected(value?: SelectedPropType): void {
@@ -159,7 +166,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	/**
 	 * Defines the tab captions.
 	 */
-	@Prop() public _tabs!: Stringified<TabButtonProps[]>;
+	@Prop()
+	public _tabs!: Stringified<TabButtonProps[]>;
 
 	@Watch('_tabs')
 	public watchTabs(value?: Stringified<TabButtonProps[]>): void {

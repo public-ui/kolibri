@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
 import type { VNode } from '@stencil/core/internal';
+
 import type { IconOrIconClass, KoliBriHorizontalIcons } from '../../../schema';
 import { ButtonFC } from '../button/component';
 import type { ButtonItemFcProps } from '../button/item';

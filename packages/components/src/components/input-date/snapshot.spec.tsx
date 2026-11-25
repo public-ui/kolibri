@@ -1,6 +1,5 @@
 import { KolInputDateTag } from '../../core/component-names';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
-
 import { KolInputDate } from './component';
 
 executeInputSnapshotTests(KolInputDateTag, [KolInputDate], {

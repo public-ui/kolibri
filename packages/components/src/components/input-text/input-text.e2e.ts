@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+
 import { testInputCharacterLimit, testInputValueReflection } from '../../e2e';
 import { getAriaDetailsRefIds } from '../../e2e/aria-details';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';

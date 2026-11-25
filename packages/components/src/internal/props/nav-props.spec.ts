@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { collapsibleProp } from './collapsible';
 import { hasCompactButtonProp } from './has-compact-button';
 import { hasIconsWhenExpandedProp } from './has-icons-when-expanded';

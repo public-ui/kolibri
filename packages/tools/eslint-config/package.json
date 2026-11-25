@@ -1,12 +1,37 @@
 {
 	"name": "@public-ui/eslint-config",
-	"version": "4.3.0-rc.1",
+	"version": "4.7.0-rc.2",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri",
+		"directory": "packages/tools/eslint-config"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
 	"description": "Shared ESLint flat config presets and custom rules for the KoliBri monorepo.",
-	"private": true,
+	"keywords": [
+		"eslint",
+		"eslint-config",
+		"kolibri",
+		"stencil",
+		"web-components"
+	],
 	"type": "module",
 	"exports": {
 		".": "./index.js"
 	},
+	"files": [
+		"index.js",
+		"rules"
+	],
 	"scripts": {
 		"format": "prettier --check ."
 	},

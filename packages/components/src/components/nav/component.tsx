@@ -42,11 +42,14 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 	shadow: true,
 })
 export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInterface<NavApi> {
-	@Element() protected readonly host?: HTMLKolNavElement;
+	@Element()
+	protected readonly host?: HTMLKolNavElement;
 
-	@State() public compact: boolean = false;
+	@State()
+	public compact: boolean = false;
 
-	@State() public expandedChildren: NavChildren[] = [];
+	@State()
+	public expandedChildren: NavChildren[] = [];
 
 	private readonly navId = createUniqueId('kol-nav');
 
@@ -71,7 +74,8 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
 	 */
-	@Prop() public _collapsible?: CollapsiblePropType = true;
+	@Prop()
+	public _collapsible?: CollapsiblePropType = true;
 
 	@Watch('_collapsible')
 	public watchCollapsible(value?: CollapsiblePropType): void {
@@ -81,7 +85,8 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 	/**
 	 * Creates a button below the navigation, that toggles _collapsible.
 	 */
-	@Prop() public _hasCompactButton?: HasCompactButtonPropType = false;
+	@Prop()
+	public _hasCompactButton?: HasCompactButtonPropType = false;
 
 	@Watch('_hasCompactButton')
 	public watchHasCompactButton(value?: HasCompactButtonPropType): void {
@@ -91,7 +96,8 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 	/**
 	 * Shows icons next to the navigation item labels, even when the navigation is not collapsed.
 	 */
-	@Prop() public _hasIconsWhenExpanded?: HasIconsWhenExpandedPropType = false;
+	@Prop()
+	public _hasIconsWhenExpanded?: HasIconsWhenExpandedPropType = false;
 
 	@Watch('_hasIconsWhenExpanded')
 	public watchHasIconsWhenExpanded(value?: HasIconsWhenExpandedPropType): void {
@@ -102,7 +108,8 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -114,7 +121,8 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -124,7 +132,8 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 	/**
 	 * Defines the list of links, buttons or texts to render.
 	 */
-	@Prop() public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
+	@Prop()
+	public _links!: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>;
 
 	/** Every `_links` value resets the expansion to the active entries, also when the value is rejected. */
 	@Watch('_links')
@@ -136,9 +145,9 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 
 	public componentWillLoad(): void {
 		this.watchCollapsible(this._collapsible);
-		this.watchHideLabel(this._hideLabel);
 		this.watchHasCompactButton(this._hasCompactButton);
 		this.watchHasIconsWhenExpanded(this._hasIconsWhenExpanded);
+		this.watchHideLabel(this._hideLabel);
 		this.applyLabel(this._label, true);
 		this.watchLinks(this._links);
 	}

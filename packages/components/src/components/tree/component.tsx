@@ -26,7 +26,8 @@ const isTreeItem = (element?: EventTarget | null): element is HTMLKolTreeItemEle
 	shadow: true,
 })
 export class KolTree extends BaseWebComponent<TreeApi> implements FocusableElement, WebComponentInterface<TreeApi> {
-	@Element() protected readonly host?: HTMLKolTreeElement;
+	@Element()
+	protected readonly host?: HTMLKolTreeElement;
 
 	private observer?: MutationObserver;
 
@@ -43,7 +44,8 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {

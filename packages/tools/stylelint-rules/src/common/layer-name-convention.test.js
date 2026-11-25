@@ -32,6 +32,16 @@ describe('kolibri/layer-name-convention', () => {
 		assert.equal(warnings.length, 0);
 	});
 
+	it('accepts kol-theme-forced-colors layer name', async () => {
+		const result = await stylelint.lint({
+			code: '@layer kol-theme-forced-colors { .button { color: CanvasText; } }',
+			config,
+			codeFilename: srcPath,
+		});
+		const warnings = result.results[0].warnings.filter((w) => w.rule === 'kolibri/common-layer-name-convention');
+		assert.equal(warnings.length, 0);
+	});
+
 	it('warns about non-standard layer name in src file', async () => {
 		const result = await stylelint.lint({
 			code: '@layer my-custom-layer { .button { color: red; } }',

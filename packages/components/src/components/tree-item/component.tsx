@@ -27,17 +27,23 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	shadow: true,
 })
 export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebComponentInterface<TreeItemApi> {
-	@Element() protected readonly host?: HTMLKolTreeItemElement;
+	@Element()
+	protected readonly host?: HTMLKolTreeItemElement;
 
-	@State() public ariaCurrent: string = '';
+	@State()
+	public ariaCurrent: string = '';
 
-	@State() public groupId: string = createUniqueId('tree-group');
+	@State()
+	public groupId: string = createUniqueId('tree-group');
 
-	@State() public hasChildren: boolean = false;
+	@State()
+	public hasChildren: boolean = false;
 
-	@State() public level: number = 0;
+	@State()
+	public level: number = 0;
 
-	@State() public open: boolean = false;
+	@State()
+	public open: boolean = false;
 
 	protected readonly anchorRef = createCtaRef<HTMLAnchorElement>();
 
@@ -48,7 +54,8 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 	/**
 	 * If set (to true) the tree item is the active one.
 	 */
-	@Prop() public _active?: OpenPropType = undefined;
+	@Prop()
+	public _active?: OpenPropType = undefined;
 
 	@Watch('_active')
 	public watchActive(value?: OpenPropType): void {
@@ -56,9 +63,21 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 	}
 
 	/**
+	 * Defines the target URI of the link.
+	 */
+	@Prop()
+	public _href!: HrefPropType;
+
+	@Watch('_href')
+	public watchHref(value?: HrefPropType): void {
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+	}
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelLangSegmentsPropType;
+	@Prop()
+	public _label!: LabelLangSegmentsPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
@@ -68,7 +87,8 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 	/**
 	 * Opens/expands the element when truthy, closes/collapses when falsy.
 	 */
-	@Prop() public _open?: OpenPropType = undefined;
+	@Prop()
+	public _open?: OpenPropType = undefined;
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
@@ -76,16 +96,6 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 			this.open = v;
 			invalidateOpenItemsCache(this.getTree());
 		});
-	}
-
-	/**
-	 * Defines the target URI of the link.
-	 */
-	@Prop() public _href!: HrefPropType;
-
-	@Watch('_href')
-	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
 	}
 
 	/**

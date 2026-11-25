@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+
 import type { AvatarApi } from '../../internal/functional-components/avatar/api';
 import { avatarPropsConfig } from '../../internal/functional-components/avatar/api';
 import { AvatarFC } from '../../internal/functional-components/avatar/component';

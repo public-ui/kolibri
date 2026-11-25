@@ -1,4 +1,5 @@
 import { autoUpdate } from '@floating-ui/dom';
+
 import type { LabelLangSegmentsPropType } from '../../../schema';
 import { getDocument } from '../../../schema';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';

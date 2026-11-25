@@ -51,9 +51,11 @@ jobs:
         packages/adapters/preact
         packages/adapters/hydrate
         packages/adapters/react-hook-form-adapter
+        packages/tools/eslint-config
         packages/tools/hydrate-server
         packages/tools/kolibri-cli
         packages/tools/mcp
+        packages/tools/stylelint-rules
         packages/themes/bwst
         packages/themes/default
         packages/themes/desy

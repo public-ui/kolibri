@@ -1,6 +1,5 @@
 import { KolHeadingTag } from '../../core/component-names';
 import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
-
 import { KolHeading } from './component';
 
 executeSnapshotTests(

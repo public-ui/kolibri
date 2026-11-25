@@ -117,7 +117,7 @@ Responsibilities of the WC:
 
 A WC has **exactly one orchestrator (itself)** plus zero or more Behaviors. A WC may compose Behaviors, never other WCs.
 
-When several custom elements are tag variants of **one** FC (`kol-button`, `kol-button-link` and `kol-split-button` all render `ButtonFC`; `kol-link` and `kol-link-button` all render `LinkFC`), the orchestrator implementation is shared through an abstract base class next to the element (`components/button/base.tsx` → `BaseButtonWebComponent`, `components/link/base.tsx` → `BaseLinkWebComponent`). The base extends `BaseWebComponent<Api>`, carries no Stencil decorator and holds the composed Behaviors, the event handlers, one `apply<Prop>()` method per prop and the FC render call. The concrete element keeps everything Stencil has to see in the component class: `@Component`, `@Element`, `@State`, `@Method`, every `@Prop` with a one-line `@Watch` that calls the matching `apply<Prop>()`, and the lifecycle methods, which delegate to the base (see design decision 16).
+When several custom elements are tag variants of **one** FC (`kol-button`, `kol-button-link` and `kol-split-button` all render `ButtonFC`; `kol-link` and `kol-link-button` all render `LinkFC`), the orchestrator implementation is shared through an abstract base class next to the element: `components/button/base.tsx` → `BaseButtonWebComponent` (also extended by `kol-popover-button`), `components/dialog/base.tsx` → `BaseDialogWebComponent` (`kol-dialog`, `kol-modal`), `components/link/base.tsx` → `BaseLinkWebComponent` and `components/table-stateless/base.tsx` → `BaseTableStatelessWebComponent` (`kol-table-stateless`, `kol-table-stateful`). The base extends `BaseWebComponent<Api>`, carries no Stencil decorator and holds the composed Behaviors, the event handlers, one `apply<Prop>()` method per prop and the FC render call. The concrete element keeps everything Stencil has to see in the component class: `@Component`, `@Element`, `@State`, `@Method`, every `@Prop` with a one-line `@Watch` that calls the matching `apply<Prop>()`, and the lifecycle methods, which delegate to the base (see design decision 16). A base exists only for at least two elements; a single element keeps its orchestrator in `component.tsx` (`component-structure.spec.ts` checks this).
 
 ```tsx
 // WC — the orchestrator (KolLink, reference implementation)
@@ -126,7 +126,8 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 
 	protected readonly propsConfig: PropsConfigShape = linkPropsConfig;
 
-	@Prop() public _href!: string;
+	@Prop()
+	public _href!: string;
 
 	@Watch('_href')
 	public watchHref(value?: string): void {
@@ -171,6 +172,10 @@ Every Stencil component class lists its members in the same order:
 10. `@Listen`
 11. helpers and handlers: the other methods, accessors and arrow-function fields, whatever their visibility
 12. `render`
+
+The props stand in alphabetical order of their name: the `@Prop` members of the class (each with its watcher) and the watcher calls in `componentWillLoad`. Where calls in `componentWillLoad` depend on each other, a comment or a blank line separates them, and each run between such separators is sorted on its own. The `required` and `optional` lists of a props config are sorted by the identifier of the prop definition. `component-structure.spec.ts` checks all three.
+
+Every decorator stands on a line of its own, above the class or member it decorates. The ESLint rule `kolibri/decorator-on-own-line` enforces this, and `eslint --fix` applies it.
 
 Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components and of the classes that implement them without being one: `BaseWebComponent` and every class without `@Component` that extends it (the bases of design decision 16, the form field bases, the page size select item). For every class under `src` it also checks that no initializer reads an own property declared after it, directly (`this.x`), through own getters it reads (`this.derived`) or through own methods and arrow-function properties it calls (`this.compute()`), also nested through the called bodies. Every other path is not traced, e.g. a callee that receives `this` (`new Behavior(this)`), a synchronously run callback (an IIFE, `[1].map(() => this.later)`), `call`/`apply`/`bind` and element access (`this['x']`); keep such reads behind the property they read.
 
@@ -273,7 +278,7 @@ A Behavior is a reusable unit of logic that lives **inside** a WC. It extends `B
 - Exposes watcher entry points and lifecycle hooks (`componentWillLoad`) that the WC delegates to.
 - Must never instantiate other Behaviors directly — only the WC composes them.
 
-Rule of thumb: a Behavior exists only when the same logic is genuinely shared across multiple components. The sole current example is `TooltipBehavior`, composed by link, button, and similar components.
+Rule of thumb: a Behavior exists only when the same logic is genuinely shared across multiple components. Four Behaviors exist: `TooltipBehavior` (the tooltip of buttons, links, form fields and items), `CounterBehavior` (the character counter of the text fields and `kol-textarea`), `FormAssociationBehavior` (the form association of buttons and form fields) and `PopoverBehavior` (`kol-popover-button` and the popover button item, which `kol-split-button` and the info popover of the form fields use).
 
 ```tsx
 // Inside a WC
@@ -364,8 +369,9 @@ When a component renders another component inside its own shadow DOM — the clo
 | `createLinkItem` (`link/item.ts`)                    | `LinkFC`                         |
 | `createPopoverButtonItem` (`popover-button/item.ts`) | `PopoverButtonFC`                |
 | `createDialogItem` (`dialog/item.tsx`)               | `DialogFC` with a card           |
-| `PageSizeSelect` (`pagination/page-size-select.tsx`) | the select field of `kol-select` |
+| `PageSizeSelect` (`pagination/select-item.tsx`)      | the select field of `kol-select` |
 
+- An item that several components share lives as `item.ts(x)` in the folder of the FC it renders (`create<FC>Item`, the table above). An item that only one embedding component needs lives in that component's folder as `<what it renders>-item.ts(x)` (`create<Component><What>Item`: `breadcrumb/link-item.ts`, `tabs/button-item.ts`, `toolbar/entry-item.ts`, `pagination/select-item.tsx`). `component-structure.spec.ts` checks the file names.
 - `getFcProps(…)` returns the fully resolved FC props; call it once per render.
 - `syncListeners()` runs from `componentDidRender`, `destroy()` from `disconnectedCallback`.
 - A variable number of embedded instances (one action button per table row) goes through `createItemPool` (`item-pool.ts`): each render pass takes its items by key, and `endRender()` syncs them and destroys the ones the pass no longer used.
@@ -420,7 +426,8 @@ export type DisabledProp = SimpleProp<'disabled', DisabledPropType>;
 export const disabledProp = createPropDefinition<DisabledProp>('disabled', false, normalizeBoolean);
 
 // components/button/component.tsx — @Prop, watcher and apply carry the schema type
-@Prop() public _disabled?: DisabledPropType = false;
+@Prop()
+public _disabled?: DisabledPropType = false;
 
 @Watch('_disabled')
 public watchDisabled(value?: DisabledPropType): void {
@@ -641,7 +648,7 @@ Because callbacks are already arrow properties, both render patterns are valid:
 
 #### ⚠️ Never use `.bind(this)` with `addEventListener`/`removeEventListener`
 
-Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match. Use an arrow property, or a ref callback that removes the old listener before adding the new one (see `src/components/popover-button/base.tsx`, `handleToggle` + `componentDidRender`/`disconnectedCallback`).
+Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match. Use an arrow property, or a ref callback that removes the old listener before adding the new one (see `src/components/popover-button/component.tsx`, `handleToggle` + `componentDidRender`/`disconnectedCallback`).
 
 ### Implementation Flow
 
@@ -671,7 +678,8 @@ const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);
 
 ```tsx
 // Web Component (src/components/<component>/component.tsx)
-@Prop() public _name!: NamePropType;
+@Prop()
+public _name!: NamePropType;
 
 @Watch('_name')
 public watchName(value?: NamePropType): void {
@@ -866,7 +874,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Alternative_: expose every FC prop 1:1 as a public `@Prop` and declare props with the internal primitive types.
     - _Reason_: the public API is a compatibility contract (adapters, IntelliSense, `custom-elements.json` are generated from `prop.docs`/`method.docs`). Growing it silently (e.g. link gained `_ariaOwns`, `_customClass`, `_tabIndex`, `click()`) or dropping its documentation is a breaking change disguised as a refactor. See [§4 Public API Contract](#public-api-contract-migration-parity).
 16. **Shared orchestrator base for tag variants of one FC**
-    - _Pattern_: elements that render the same FC (`kol-button`/`kol-button-link`/`kol-split-button`, `kol-link`/`kol-link-button`) share an abstract, decorator-free base class next to the element (`button/base.tsx`, `link/base.tsx`) that extends `BaseWebComponent<Api>` and holds Behaviors, handlers, `apply<Prop>()` methods and the FC render call. The concrete element declares the Stencil members and delegates from its watchers and lifecycle methods.
+    - _Pattern_: elements that render the same FC (`kol-button`/`kol-button-link`/`kol-split-button`, `kol-dialog`/`kol-modal`, `kol-link`/`kol-link-button`, `kol-table-stateless`/`kol-table-stateful`) share an abstract, decorator-free base class next to the element (`button/base.tsx`, `dialog/base.tsx`, `link/base.tsx`, `table-stateless/base.tsx`) that extends `BaseWebComponent<Api>` and holds Behaviors, handlers, `apply<Prop>()` methods and the FC render call. The concrete element declares the Stencil members and delegates from its watchers and lifecycle methods.
     - _Alternative_: copy the orchestrator into every element (the state before this decision: ~350 identical lines in `component.tsx` and `wc.tsx`), or let the variants instantiate a `shadow:false` twin of the public element.
     - _Reason_: the base is not a layer between WC and FC (decision 1 stays intact) — it _is_ the WC's implementation, written once. Stencil only reads decorators and lifecycle hooks from the component class itself, so those stay there; plain methods and fields are inherited at runtime like the ones of `BaseWebComponent`. Anything that needs the host element (e.g. the form-association controller) is created from the concrete constructor after `super()`, because Stencil registers the host at the start of the component class's constructor.
 17. **DOM structure and BEM classes are a theming contract, not public API**
