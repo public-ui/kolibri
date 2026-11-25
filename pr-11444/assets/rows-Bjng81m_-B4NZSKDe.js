@@ -1,0 +1,1 @@
+import"./index-D1fZ9xFt-CQEGtdBi.js";import{E as e,l as t}from"./props-from-config-Be4hkJSo-BEaR0nAA.js";var n=t(`rows`,void 0,e,e=>e>=1);export{n as t};
