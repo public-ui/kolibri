@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11666,
-	"head": "98fd51a129e88aa1a4b1685714807d72e391f33e",
+	"head": "0719099541bd8bd8a3af1320695f494c005dda56",
 	"repository": "public-ui/kolibri",
-	"runId": 45156282995,
-	"generatedAt": "2026-11-23T10:40:38.954Z",
-	"digest": "sha256:dff787e65fe9335d6ea94a66ab7c743b469747576d7afc7e77425fdcaf9ab399",
+	"runId": 45515289002,
+	"generatedAt": "2026-11-25T00:17:34.897Z",
+	"digest": "sha256:91d40ab760d9b43deee13e5a9d488e4b37371d2d58e43533feaa4e326c287b61",
 	"baseline": {
-		"sha": "969ebd6086107574491c26886f2914fcf871f98f",
+		"sha": "e55cb89e54bb997946a27f11df455b1d6b1a5e8a",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "969ebd6086107574491c26886f2914fcf871f98f",
+					"sha": "e55cb89e54bb997946a27f11df455b1d6b1a5e8a",
 					"ref": "release/4",
-					"runId": 45149496821,
+					"runId": 45398936330,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:49:24.918Z",
-					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
+					"createdAt": "2026-11-24T13:07:08.155Z",
+					"digest": "sha256:9654968bb97ca6512711ff5c0dbff948747c27e0a50fdbf8d1ce275434ce1ec1",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
+			"digest": "sha256:9654968bb97ca6512711ff5c0dbff948747c27e0a50fdbf8d1ce275434ce1ec1",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -67,31 +67,31 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:0a4488d43b6ffd3b918e8bb227d522788164cbbbbde2456823b79a54a2fc61c3"
+					"hash": "sha256:98de4f3b49c19a3dd74433afed8cf76073bc26f5be4cb3fe51de50d43f9acf39"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9f8ac255c0c22441df6a2eb872a7f00a408a19d7a1e9ac6e2f7de5673d1f7f9e"
+					"hash": "sha256:ce8e2462ce942ce58eb61cb626130c85981a1361eac95473b2fa35b648f2adcd"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:4fdfb50ee3f8a519f0a1e64a43d3e2d70db361d292fff175b23b88a90fce34e0"
+					"hash": "sha256:5b5712f451cccfa65ac652055a5041363e00e4b1170f52ed289164e919327112"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:24f4ca087db454317542eae54821b435eb2e95f875c2e419d763e7ce1edb5260"
+					"hash": "sha256:355b2a0fddcaf601eb7fe9564ee2827b688b5615b2fec77333ccad1fdb82c892"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9b0719e267b54997414a9641827647f526ed7c60f3b3a9ad2d0711388b4fba76"
+					"hash": "sha256:7a959dd9921b8098739b27596364cec6b256759c7b4222c4945bd3b7a0ebfe08"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -2149,7 +2149,7 @@
 					"name": "scenarios-label-lang--label-lang-alert",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:c810edf45ebbd9e525aa7ca7798e0564a49b522337b76341ef9ee5c8f95d1ee4"
+					"hash": "sha256:265868c7c7c838b91e18297212d2b17fec704c89a01f816600db1ce7ba038297"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -2713,13 +2713,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "969ebd6086107574491c26886f2914fcf871f98f",
+					"sha": "e55cb89e54bb997946a27f11df455b1d6b1a5e8a",
 					"ref": "release/4",
-					"runId": 45149496821,
+					"runId": 45398936330,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:48:53.822Z",
-					"digest": "sha256:1c69a4eb361453cdcb46155056d69931521105258617774e33716e676b9c43e9",
+					"createdAt": "2026-11-24T13:05:33.111Z",
+					"digest": "sha256:0665dbd09454045bc28f1b8d16c2b8165afa93c8b066c8593f1d7b0b2bc5acf2",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2732,7 +2732,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:1c69a4eb361453cdcb46155056d69931521105258617774e33716e676b9c43e9",
+			"digest": "sha256:0665dbd09454045bc28f1b8d16c2b8165afa93c8b066c8593f1d7b0b2bc5acf2",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2750,31 +2750,31 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:d06daaccde270b2f48465fbacf98e4a4aa48eff8b36f867f52f3ba4b6d1fcc36"
+					"hash": "sha256:5a5b9fb0ea4001b888dafd07720a63025a29905e4b0cbfe278a7d04503e3f369"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:7ee1b1a4c24318fca40f7572a623cd525543e69831e44d325015233698901501"
+					"hash": "sha256:b4250beda5bcc3f47cb029ca3aa119c1dfd75fe73cc155e4961b3591e9469bfc"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:49b1826e2cb83465624a0055bfb3e15dcd525ed9481b0946d8571aacfb18e4aa"
+					"hash": "sha256:b60e5b21960696c76e3ff67a22841097d5e1c8f54962a8814cedece079a91dfd"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:b002c0bc3408b026ca12fab4dd82329f408287fcf4dce4b84cf765381cd45adf"
+					"hash": "sha256:ce5702f72aa7bf2ddd01ae57646d15649bfda4fbc4fa06f405c28d506d617eba"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:a486fec9ed409bd9eafb92e0bca4e9c3f40e3658112555c92d3794806828a340"
+					"hash": "sha256:53585b346f6072b2bd6052d3b37f249c51d0f36c5b5392e4e66553dcbd6458ec"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -3104,31 +3104,31 @@
 					"name": "input-checkbox-basic-noColumns--left-access-key",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c8abd15d5d6e35a1cc67da156c49ab6ac2ec35294bbeefc346886446fc53c075"
+					"hash": "sha256:8baff01793e385368cd606f8c4b226af92d38c86a97ab534a154a4b13c5725ef"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5fc1ed8309a18c27421768697955a5c32530d26253c6dfa90c5fb02e11549668"
+					"hash": "sha256:a2a9afc57f5041f6eb67ca77a98fde7ae3d83e2055da63489c180b6554d9c3bc"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:3fb44a2f3df74622a607a01e80b6f7ab7188ec62d5ac475bb4e04fac1e818ad0"
+					"hash": "sha256:daaf3b941ded47d296b0838ca345dea82c4055036cbd7038234ea89b2f1ceec1"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:417da2a20e94637e8ccdf42219f9ced852888e20c57fd5c952566e8b09af7b1c"
+					"hash": "sha256:9f2c13cd8ed590de413243ce3590876acbd6408f5ee0a76c42567af18fd5931b"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-error",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c4c7b232ecaeabdc5bc75648133ab01741ea8e8fcbc90c3c3f30e99b67c0b85a"
+					"hash": "sha256:08dbbcbf40e628712df787ebc73865f25a2d98493be4eae4c96864504baed688"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-hide-error",
@@ -3140,67 +3140,67 @@
 					"name": "input-checkbox-basic-noColumns--left-indet-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:2252ec068c3a1c8423bda6e9dde6eccc96e4cdbf3b5b9ecd1f91a22f18e65bfd"
+					"hash": "sha256:f104dc1fe2a131067fd679594ac3f77a9dacc8bfe2cbe6739ac820eec34f6768"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-indeterminate",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:e31f36772523502910a918caa090e4ab20708210cd341165afab138dee2173ca"
+					"hash": "sha256:24fbb4079010610d2f9b238de9b8056aef28eda0b5e3c438e62b2fb12674ec11"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-info-popover",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:d3d1366cdbdb0cd2149cd95d13fd31bc6ba853ae984f01f5d83a8297b64ba0f6"
+					"hash": "sha256:976bddd1d23541a38017f6ccb771aaabb6a82753e8a6dca2f6e5273cb41f24dd"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-long-label",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:56e66dda673f2c8652a90d1b80e55e1faa0d6c1b5d8a8129fd5d03bfe4c0f3d4"
+					"hash": "sha256:b22ea48d8c461506edb654792ea20ed42d40a2e2aaa5b637f667a18a4cdbd64d"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-short-key",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:255bb224be1f899493b8a05bf7407a37451960d47a876cc491c2135c86a231c1"
+					"hash": "sha256:fa929a7d8206e30021914758633188b241a87061da8dce40f024eb00774a27d7"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-unchecked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:44f8686e06ea8ca4e1f5657ee17e7ce9c9ec13e5c374ef2ea21f859e91185e9c"
+					"hash": "sha256:b09a47db191950f4463fd5cbfb5f9a7d7461dc568af52197f335263671f4a81b"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-access-key",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:45bc5cf73a76411053726a6cb76ddd1cc45d27eb7aecb3f32aa670dbbd1c18a4"
+					"hash": "sha256:5a514aa385b93eb550a24842933ba1359456c2c230e2f4df95881c91c8552059"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:14d7b77c94b1f88dd280177e7ad911387bb898984649a467a5841c5446d51028"
+					"hash": "sha256:59fc14584a5138742def342741eb062ea06c195745706dd6f76716387db50d44"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:cbc48cd8d97888dc2e8cf19c106c99ec5250c695c78f030664c759ecc02275d2"
+					"hash": "sha256:3b748aa73581b82d132a2bd0f3023d0a37b8931b6aa23b10b6724874baefac6a"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:1e89525a79cd2f376e3f5580536b1915547da9169373a7b3b5de9f6cb74b1cd0"
+					"hash": "sha256:779374a06645af7ed48fdb9bb50226622eaab0ac6fef2ca87d2f4812aa4d5467"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-error",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:a9d660193b12afebe711e83a3b45d726e79c49153b87bc1f93e4594e9d38ca57"
+					"hash": "sha256:27a6075a96e5fc3b2ec14407c8a69675eb487239c2c3bbce5c0fe9b9c563bf5e"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-hide-error",
@@ -3212,37 +3212,37 @@
 					"name": "input-checkbox-basic-noColumns--right-indet-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:0da1568050ac27b3b1a84bd0d3b29a16d79c48f1b47c9ecce44100246260b3c6"
+					"hash": "sha256:9630f20df9223d3507fa1179ee51994a9603a14bb0f6668e5b31717e2ceec2a7"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-indeterminate",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:22f7d184f9b8771e0cf94488d26531acb22ed56004413dc50cf11fc9f0f3d4a3"
+					"hash": "sha256:0500b3bbc6c2e0db309bf6ad7a946a1df6bfbee430f910ae2168d503c76488e9"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-info-popover",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:103ca7bb393aa5c048296e9721f57bdc6ff31facd8dd55e9731bd7a6e1a797b4"
+					"hash": "sha256:4b4200b7c12d0d1ab46a2dc3ec7555c8db8a71f27069285aa9342edad2d71784"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-long-label",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:ae2e625d2c0ef685a488878f6204056cdc7b8238cec607d20e8ca678e3dfcda6"
+					"hash": "sha256:6926ca3cc50ac2ab18c0dec9beff4737f34bf4b46d610a4fbd3117f9e9afaed5"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-short-key",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:ba8ff05556ea6553773c8338a5ec9501aa3111340f5068ff8736298ed8184f52"
+					"hash": "sha256:1438ea2babcc6d1edc6d6c36da2a5860133ec3ed5214c1de4b5cc04095ac8b65"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-unchecked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:87d5c602ece6649418ed3f9df15e744ffea824897c9622811e2f0eedf3c50fe9"
+					"hash": "sha256:b41d873c0b0444ff5accc0ea509496a8b6ac4d1b1ab633a8835cfb46a365bdf7"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-access-key",
@@ -4688,7 +4688,7 @@
 					"name": "scenarios-focus-elements-component-inputCheckbox",
 					"route": "scenarios-focus-elements-component-inputCheckbox",
 					"status": "unchanged",
-					"hash": "sha256:5cab2d30cfe7ad4b09229635e3589c86ddd135aac6f908ff06cd6d33d241d5c5"
+					"hash": "sha256:48284c3b90d7edd464649d259a1f146bd5306087f8d3a1de6c0f53028db9ef44"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputColor",
@@ -4832,7 +4832,7 @@
 					"name": "scenarios-label-lang--label-lang-alert",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:5d25f53a5c28346d45e213e966914241dd0ac5c6bc6f807dedd3f3861333e7d7"
+					"hash": "sha256:91c5781d88aa9e5525c22852eb809c82d7db3df87df1bf1700d0a21935d6334f"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -4868,7 +4868,7 @@
 					"name": "scenarios-label-lang--label-lang-checkbox",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:b4d7e31452c9c25993674b656e2feb237b2d35b638a5e3da886f442c26bcd448"
+					"hash": "sha256:53748cfcfc3a3040766c769ea80910e74e2224a0410fd90a4d857f00cc90d2d1"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-details",
@@ -5396,13 +5396,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "969ebd6086107574491c26886f2914fcf871f98f",
+					"sha": "e55cb89e54bb997946a27f11df455b1d6b1a5e8a",
 					"ref": "release/4",
-					"runId": 45149496821,
+					"runId": 45398936330,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:49:24.918Z",
-					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
+					"createdAt": "2026-11-24T13:07:08.155Z",
+					"digest": "sha256:9654968bb97ca6512711ff5c0dbff948747c27e0a50fdbf8d1ce275434ce1ec1",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5415,7 +5415,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
+			"digest": "sha256:9654968bb97ca6512711ff5c0dbff948747c27e0a50fdbf8d1ce275434ce1ec1",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5433,31 +5433,31 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:0a4488d43b6ffd3b918e8bb227d522788164cbbbbde2456823b79a54a2fc61c3"
+					"hash": "sha256:98de4f3b49c19a3dd74433afed8cf76073bc26f5be4cb3fe51de50d43f9acf39"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9f8ac255c0c22441df6a2eb872a7f00a408a19d7a1e9ac6e2f7de5673d1f7f9e"
+					"hash": "sha256:ce8e2462ce942ce58eb61cb626130c85981a1361eac95473b2fa35b648f2adcd"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:4fdfb50ee3f8a519f0a1e64a43d3e2d70db361d292fff175b23b88a90fce34e0"
+					"hash": "sha256:5b5712f451cccfa65ac652055a5041363e00e4b1170f52ed289164e919327112"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:24f4ca087db454317542eae54821b435eb2e95f875c2e419d763e7ce1edb5260"
+					"hash": "sha256:355b2a0fddcaf601eb7fe9564ee2827b688b5615b2fec77333ccad1fdb82c892"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9b0719e267b54997414a9641827647f526ed7c60f3b3a9ad2d0711388b4fba76"
+					"hash": "sha256:7a959dd9921b8098739b27596364cec6b256759c7b4222c4945bd3b7a0ebfe08"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -7515,7 +7515,7 @@
 					"name": "scenarios-label-lang--label-lang-alert",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:c810edf45ebbd9e525aa7ca7798e0564a49b522337b76341ef9ee5c8f95d1ee4"
+					"hash": "sha256:265868c7c7c838b91e18297212d2b17fec704c89a01f816600db1ce7ba038297"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -8079,12 +8079,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "969ebd6086107574491c26886f2914fcf871f98f",
+					"sha": "e55cb89e54bb997946a27f11df455b1d6b1a5e8a",
 					"ref": "release/4",
-					"runId": 45149496821,
+					"runId": 45398936330,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:48:55.229Z",
+					"createdAt": "2026-11-24T13:06:48.392Z",
 					"digest": "sha256:66b08ccb4537a7e9b61478c3940e9fc00395814383c95ee669a64a4e719868e4",
 					"fallback": null,
 					"distance": 0,
@@ -10762,13 +10762,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "969ebd6086107574491c26886f2914fcf871f98f",
+					"sha": "e55cb89e54bb997946a27f11df455b1d6b1a5e8a",
 					"ref": "release/4",
-					"runId": 45149496821,
+					"runId": 45398936330,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:49:37.054Z",
-					"digest": "sha256:52179ed1092595a872b3836d122f12fa43f163f4c4f15344c14977a6e1e51011",
+					"createdAt": "2026-11-24T13:06:48.043Z",
+					"digest": "sha256:d4b696c93f3710f92654020386e856982f57f11ec43908abfcfdbe871be8e5de",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10781,7 +10781,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:52179ed1092595a872b3836d122f12fa43f163f4c4f15344c14977a6e1e51011",
+			"digest": "sha256:d4b696c93f3710f92654020386e856982f57f11ec43908abfcfdbe871be8e5de",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11105,7 +11105,7 @@
 					"name": "dialog-basic-show-dialog-true",
 					"route": "dialog-basic-show-dialog-true",
 					"status": "unchanged",
-					"hash": "sha256:ebabbc02b7cb128e986a507c7e6e2ac18a18d2a642eb5434315149bae25a477e"
+					"hash": "sha256:56721705f3cb04757b944713056bb19e8eabea9cffcc9a56b4df8fe5cf85f43f"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -11117,7 +11117,7 @@
 					"name": "drawer-basic-align-left-closer-true",
 					"route": "drawer-basic-align-left-closer-true",
 					"status": "unchanged",
-					"hash": "sha256:71b0ce522787d0bace1dc4a5ca751e865e7a9c0d27ac474d587a609e260ca641"
+					"hash": "sha256:4dd5e0dd8c2ed02a73809b42fc63a976acc04f3eff13b33efb5d0c282438ff83"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -12599,7 +12599,7 @@
 					"name": "modal-basic-show-dialog-true",
 					"route": "modal-basic-show-dialog-true",
 					"status": "unchanged",
-					"hash": "sha256:b87d85c64c9119d1c212d17a615d147e7863e60ca89fdb7f07131e3d41395a33"
+					"hash": "sha256:6fb8d9587e116be8aeb4358225b702cd38195b1c44d135ce822c3ece64dbc90f"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -12647,7 +12647,7 @@
 					"name": "popover-button-basic",
 					"route": "popover-button-basic",
 					"status": "unchanged",
-					"hash": "sha256:132a5d5fe692377941b39a81b9c6de6f123d4f8b53407d9077f24416c1b17ae0"
+					"hash": "sha256:4e7941a799fd2df63933c16b3df69407a3924eebf81231dd96cf918124704f08"
 				},
 				{
 					"name": "popover-button-inline--inline",
@@ -12707,7 +12707,7 @@
 					"name": "scenarios-focus-elements-component-button",
 					"route": "scenarios-focus-elements-component-button",
 					"status": "unchanged",
-					"hash": "sha256:6411362ba8ae6a556562c540eb733fcbe80c31954d11002d625fe7bac934003e"
+					"hash": "sha256:cf239d922fa228b29cedc423d8af7f145dfb630154b1921ca013cc78b0987aa5"
 				},
 				{
 					"name": "scenarios-focus-elements-component-buttonLink",
@@ -12809,13 +12809,13 @@
 					"name": "scenarios-focus-elements-component-linkButton",
 					"route": "scenarios-focus-elements-component-linkButton",
 					"status": "unchanged",
-					"hash": "sha256:156b92bfbdc212bbe9a4e04a7cd7b7c3f6b20443062078d2e2b42b6a9ad4c79e"
+					"hash": "sha256:444440fa40c6be8795858b67d9c4215ad2d0637d4a2f5311e3fa7e2a0c87a56c"
 				},
 				{
 					"name": "scenarios-focus-elements-component-popoverButton",
 					"route": "scenarios-focus-elements-component-popoverButton",
 					"status": "unchanged",
-					"hash": "sha256:9093d0656ac71bc2945de7df12b35219a093cc6bae0466acde1c0c99656cbc38"
+					"hash": "sha256:3caa1f9b36c6ee4d3f9e92845f939e0449c9196f4c14be8aca55f5024e847480"
 				},
 				{
 					"name": "scenarios-focus-elements-component-select",
@@ -12845,7 +12845,7 @@
 					"name": "scenarios-focus-elements-component-splitButton",
 					"route": "scenarios-focus-elements-component-splitButton",
 					"status": "unchanged",
-					"hash": "sha256:ba4109aa8eac02de20feb71a656004f9cf890dccc99f5de821b70f4809163817"
+					"hash": "sha256:3b760df52e6e5124bed94a0cfb927c0a6987b6316901cbc87207d2ad473ca35d"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tabs",
@@ -12863,7 +12863,7 @@
 					"name": "scenarios-focus-elements-component-toolbar",
 					"route": "scenarios-focus-elements-component-toolbar",
 					"status": "unchanged",
-					"hash": "sha256:aa5c369baae4d6dc5c98ed2633f3ba98ef57d8c2380f8e7f7d50b8a9e695134b"
+					"hash": "sha256:520fa144df296af73d32d4b66d6fdf2c58ee5f59d0d70a23a099b9a404592add"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -13247,7 +13247,7 @@
 					"name": "table-sticky-cols--sticky-cols",
 					"route": "table-sticky-cols",
 					"status": "unchanged",
-					"hash": "sha256:b38f268e456e3eb7f9a73ad3b48e483c58693398f0c96c16bd432804b8e5431c"
+					"hash": "sha256:e691a0136c0759a244abccdd5382730aa6af2e5fe987a3120e54e140cad48565"
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
@@ -13445,12 +13445,12 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "969ebd6086107574491c26886f2914fcf871f98f",
+					"sha": "e55cb89e54bb997946a27f11df455b1d6b1a5e8a",
 					"ref": "release/4",
-					"runId": 45149496821,
+					"runId": 45398936330,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:49:43.062Z",
+					"createdAt": "2026-11-24T13:05:35.957Z",
 					"digest": "sha256:850d93387ab408edcdddca6db70a6bd2f56f127fc08a688636529bfbb1701d98",
 					"fallback": null,
 					"distance": 0,
@@ -16134,13 +16134,13 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "969ebd6086107574491c26886f2914fcf871f98f",
+					"sha": "e55cb89e54bb997946a27f11df455b1d6b1a5e8a",
 					"ref": "release/4",
-					"runId": 45149496821,
+					"runId": 45398936330,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-23T09:48:09.388Z",
-					"digest": "sha256:a6461012c621c0ea1567a719c62f25c956e706666fed882a6d694187c2c99a4a",
+					"createdAt": "2026-11-24T13:06:31.996Z",
+					"digest": "sha256:2c667cdb89ff8dbd11250bd1256abc2d471afc22941cf4b13c362d9746d4c75b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -16153,7 +16153,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a6461012c621c0ea1567a719c62f25c956e706666fed882a6d694187c2c99a4a",
+			"digest": "sha256:2c667cdb89ff8dbd11250bd1256abc2d471afc22941cf4b13c362d9746d4c75b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -18619,7 +18619,7 @@
 					"name": "table-sticky-cols--sticky-cols",
 					"route": "table-sticky-cols",
 					"status": "unchanged",
-					"hash": "sha256:8cc546428dd0878d1a900c2976dde9ba81cd5db4887d9bbb047342a4e7cced64"
+					"hash": "sha256:aa43b2bda5199705df2b93f3aa704e06ab3bb273ec17f6d016345856a734ff7e"
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
