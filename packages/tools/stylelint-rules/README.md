@@ -92,6 +92,24 @@ A component file that passes all rules looks like this:
 }
 ```
 
+## Which rules each package enables
+
+The rules are written for three kinds of packages. The table lists, for each of them, the rules and options in use; the first two columns are the configurations of the KoliBri monorepo (`packages/components/.stylelintrc.json` and `packages/themes/*/.stylelintrc.json`, both extending the root `.stylelintrc.json`).
+
+| Rule                                            | Components package (`packages/components`)                                                                   | Theme in the monorepo (`packages/themes/*`)                                   | Theme in its own repository                                                   |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `kolibri/common-component-css-must-be-in-layer` | ✓                                                                                                            | –                                                                             | –                                                                             |
+| `kolibri/common-layer-name-convention`          | –                                                                                                            | ✓ (warning)                                                                   | ✓ (warning)                                                                   |
+| `kolibri/common-no-at-root`                     | ✓                                                                                                            | ✓                                                                             | ✓                                                                             |
+| `kolibri/common-no-layer-in-reuse-files`        | ✓                                                                                                            | ✓                                                                             | ✓                                                                             |
+| `kolibri/common-no-root-selector`               | –                                                                                                            | ✓ in `ecl` and `kern`, off in `bwst`, `default` and `desy`                    | ✓                                                                             |
+| `kolibri/common-require-component-layer`        | ✓ `{ "layerName": "kol-component", "pathPattern": "/packages/components/src/components/", "strict": false }` | ✓ `{ "layerName": "kol-theme-component", "pathPattern": "/src/components/" }` | ✓ `{ "layerName": "kol-theme-component", "pathPattern": "/src/components/" }` |
+| `kolibri/component-allowed-layer-names`         | ✓                                                                                                            | –                                                                             | –                                                                             |
+| `kolibri/theme-allowed-layer-names`             | –                                                                                                            | ✓ (default `pathPattern`)                                                     | ✓ `{ "pathPattern": "/src/" }`                                                |
+| `kolibri/theme-require-global-layer`            | –                                                                                                            | ✓                                                                             | ✓                                                                             |
+
+The rules `kolibri/common-component-css-must-be-in-layer` and `kolibri/component-allowed-layer-names` are bound to the path `/packages/components/` and serve the components package of the monorepo only. The column _Theme in its own repository_ is the configuration of the [quick start](#quick-start-for-a-theme).
+
 ## Where a rule applies
 
 Most rules decide by the path of the linted file whether they apply. A file outside the path of a rule passes it silently, so check that your folder layout matches:
@@ -238,16 +256,14 @@ Selectors are flat BEM classes. `@at-root` and capturing the parent selector in 
 }
 ```
 
-## Rules for the KoliBri monorepo
+## Rules for the components package
 
-These rules check the paths of the monorepo and do nothing in other repositories.
+These rules check the path `/packages/components/` and do nothing in other packages or repositories.
 
 | Rule                                            | Purpose                                                                                            |
 | ----------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `kolibri/common-component-css-must-be-in-layer` | The `style.scss` of every component in `packages/components` wraps all CSS in a layer.             |
 | `kolibri/component-allowed-layer-names`         | `packages/components` uses only `kol-a11y`, `kol-global`, `kol-component` and `kol-forced-colors`. |
-
-The theme packages of the monorepo enable `kolibri/theme-allowed-layer-names` with its default `pathPattern`. The components package enables `kolibri/common-require-component-layer` with `{ "layerName": "kol-component", "pathPattern": "/packages/components/src/components/", "strict": false }`.
 
 ## Versioning
 
