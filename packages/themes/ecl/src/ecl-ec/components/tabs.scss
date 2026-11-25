@@ -2,18 +2,30 @@
 
 @layer kol-theme-component {
 	.kol-tabs {
+		--kol-tabs-sticky-top: 0;
+		--kol-tabs-sticky-bottom: auto;
+
 		&__button-group {
 			border-bottom: 2px solid var(--ecl-color-neutral-60);
+		}
+
+		&--sticky &__button-group {
+			background-color: var(--ecl-color-white);
+			position: sticky;
+			top: var(--kol-tabs-sticky-top);
+			bottom: var(--kol-tabs-sticky-bottom);
+			height: min-content;
+			align-items: start;
+		}
+
+		&--align-bottom {
+			--kol-tabs-sticky-top: auto;
+			--kol-tabs-sticky-bottom: 0;
 		}
 
 		.kol-button {
 			margin-bottom: -2px;
 
-			/* Box padding and the bottom border are part of the button box — after the skeleton
-			   migration the class sits on the wrapper, so keeping the padding here would stack it on
-			   top of the inner button's a11y min-size (+16px per tab). Both move to the interactive
-			   element to keep the button box, the label baseline and the selected-tab underline
-			   exactly where they were. */
 			.kol-button__interactive-element {
 				padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
 				border: none;

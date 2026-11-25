@@ -3,53 +3,51 @@
 
 @layer kol-theme-component {
 	.kol-tabs {
-		display: grid;
 		grid-template-columns: var(--grid-template-columns);
 		grid-template-rows: var(--grid-template-rows);
 
-		&--align-right {
-			--display: grid;
-			--grid-template-columns: 1fr auto;
+		--kol-tabs-sticky-top: 0;
+		--kol-tabs-sticky-bottom: auto;
 
-			--button-group-display: grid;
+		&--align-right {
 			--button-group-order: 1;
 		}
 
 		&--align-left {
-			--display: grid;
-			--grid-template-columns: auto 1fr;
-
 			--button-group-order: 0;
 		}
 
 		&--align-bottom {
-			--display: flex;
-			--grid-template-rows: 1fr auto;
-
 			--button-group-gap: #{to-rem(32)};
 			--button-group-order: 1;
+
+			--kol-tabs-sticky-top: auto;
+			--kol-tabs-sticky-bottom: 0;
 		}
 
 		&--align-top {
-			--display: flex;
-			--grid-template-rows: auto 1fr;
-
 			--button-group-gap: #{to-rem(16)};
 			--button-group-order: 0;
 		}
 
-		&__button-group {
-			display: var(--display);
+		&--sticky &__button-group {
+			position: sticky;
+			top: var(--kol-tabs-sticky-top);
+			bottom: var(--kol-tabs-sticky-bottom);
+			height: min-content;
+			align-items: start;
+		}
 
+		&__button-group {
+			background-color: var(--kol-a11y-background-color);
 			gap: var(--button-group-gap);
 			order: var(--button-group-order);
 			flex-wrap: wrap;
 			border-bottom: to-rem(1) solid var(--color-primary);
+			padding-block: to-rem(4);
 		}
 
 		&__tablist {
-			display: var(--display);
-
 			gap: var(--button-group-gap);
 			flex-wrap: wrap;
 		}
@@ -67,14 +65,6 @@
 			font-weight: normal;
 			font-style: normal;
 
-			/* In the legacy DOM the padding, the transparent 1px border, the border-radius and the
-			   line-height all applied to the button element itself. After the skeleton migration the
-			   class sits on the wrapper, so they move to the interactive element to keep the box
-			   width (padding + border must sit inside the same element so the coloured selected-tab
-			   border wraps the padded box like before) and the leading — Firefox also pins
-			   `line-height: normal` on the real `<button>`, beating any inherited value. The
-			   `position: relative; top: 1px` offset stays on the wrapper, which is the flex item in
-			   the tab group (as the button element was before). */
 			.kol-button__interactive-element {
 				border-radius: var(--border-radius);
 				min-width: var(--a11y-min-size);
@@ -103,9 +93,6 @@
 			}
 
 			&.selected {
-				/* In the legacy DOM the selected-tab border, its radius and the `::before` / `::after`
-				   decorations all lived on the button element. They move to `__button` together so
-				   the pseudos anchor to the same padded, bordered box as before the migration. */
 				.kol-button__interactive-element {
 					border-color: var(--color-primary);
 					border-radius: to-rem(4) to-rem(4) 0 0;
@@ -136,10 +123,6 @@
 						content: ' ';
 					}
 				}
-
-				.kol-span__container {
-					//border-top: 0.25em solid;
-				}
 			}
 
 			.kol-span__container {
@@ -153,18 +136,6 @@
 
 		&__panel {
 			height: 100%;
-		}
-
-		*[tabindex][role='tabpanel']:focus {
-			outline-width: 0;
-			outline-offset: 0;
-		}
-
-		*[tabindex][role='tabpanel']:focus-visible {
-			outline-color: var(--color-primary);
-			outline-style: solid;
-			outline-width: calc(2 * 1rem / var(--kolibri-root-font-size, 16));
-			outline-offset: 0;
 		}
 	}
 }

@@ -1,5 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
-import { alignProp, hasCreateButtonProp, labelProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../props';
+import { alignProp, hasCreateButtonProp, labelProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp, variantProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { TabsButton } from './button-item';
 
@@ -16,7 +16,7 @@ import type { TabsButton } from './button-item';
  */
 export const tabsPropsConfig = {
 	required: [labelProp, tabsProp],
-	optional: [alignProp, hasCreateButtonProp, selectedProp, tabBehaviorProp, tabsCallbacksProp],
+	optional: [alignProp, hasCreateButtonProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, variantProp],
 } as const satisfies PropsConfigShape;
 
 export type TabsApi = ApiFromConfig<

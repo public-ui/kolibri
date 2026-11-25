@@ -62,6 +62,12 @@ const KOL_TABS_PUBLIC_API: PublicApiContract = {
 		required: true,
 		doc: 'Defines the tab captions.',
 	},
+	_variant: {
+		kind: 'prop',
+		type: 'VariantClassNamePropType',
+		required: false,
+		doc: 'Defines which variant should be used for presentation.',
+	},
 };
 
 describePublicApiContract({ tag: 'kol-tabs', component: 'tabs', pinnedApi: KOL_TABS_PUBLIC_API });

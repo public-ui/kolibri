@@ -34,6 +34,11 @@ declare module 'adopted-style-sheets' {
 		 */
 		buttonVariantDefault: VariantClassNamePropType;
 		/**
+		 * Controls the standard variant for tabs.
+		 * When set this is the variant used whenever no variant is provided
+		 */
+		tabsVariantDefault: VariantClassNamePropType;
+		/**
 		 * Duration in milliseconds of the open/close transition of KolAccordion and KolDetails.
 		 * The components expose it as the CSS custom property `--collapsible-transition-duration`
 		 * on their `<details>` element and keep the native `open` attribute until it has elapsed,
