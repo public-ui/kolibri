@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11316,
-	"head": "87ed1b29added6a951c92187a27593e8e1d73bda",
+	"head": "36691cc109a753c8e53e16e505e68c93a93fea44",
 	"repository": "public-ui/kolibri",
-	"runId": 45364681562,
-	"generatedAt": "2026-11-24T09:41:23.833Z",
-	"digest": "sha256:85fb704731dae4e78e9148ede769e5557d2fcbac6e5c61f3caf5bf2b26db76bc",
+	"runId": 45594879784,
+	"generatedAt": "2026-11-25T10:43:42.875Z",
+	"digest": "sha256:6b96947c4ef89e54b92a172565c8fbaa2308d603eb9d6427b9e9cbe3f8cf0664",
 	"baseline": {
-		"sha": "be0c5f7f898bb46322aba48e603141314b9f440d",
+		"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 		"ref": "release/4",
 		"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 		"playwright": "1.63.0",
@@ -17,9 +17,9 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 3080,
-		"changed": 15,
-		"added": 7,
+		"unchanged": 3060,
+		"changed": 35,
+		"added": 0,
 		"removed": 0,
 		"error": 0
 	},
@@ -30,26 +30,26 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "be0c5f7f898bb46322aba48e603141314b9f440d",
+					"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 					"ref": "release/4",
-					"runId": 45362147870,
+					"runId": 45525521678,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-24T09:20:50.078Z",
-					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
+					"createdAt": "2026-11-25T01:31:26.555Z",
+					"digest": "sha256:9654968bb97ca6512711ff5c0dbff948747c27e0a50fdbf8d1ce275434ce1ec1",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 441,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 436,
+				"changed": 6,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:49f7edfa22904711bef110c7fc985d41b2993f5f95e3bfd5293e33c5c6cfa6b8",
+			"digest": "sha256:7824f9319717266ab0a47b36581f04ec2b96d4c726d7a80ef4a505089070aa6d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -67,31 +67,31 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:0a4488d43b6ffd3b918e8bb227d522788164cbbbbde2456823b79a54a2fc61c3"
+					"hash": "sha256:98de4f3b49c19a3dd74433afed8cf76073bc26f5be4cb3fe51de50d43f9acf39"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9f8ac255c0c22441df6a2eb872a7f00a408a19d7a1e9ac6e2f7de5673d1f7f9e"
+					"hash": "sha256:ce8e2462ce942ce58eb61cb626130c85981a1361eac95473b2fa35b648f2adcd"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:4fdfb50ee3f8a519f0a1e64a43d3e2d70db361d292fff175b23b88a90fce34e0"
+					"hash": "sha256:5b5712f451cccfa65ac652055a5041363e00e4b1170f52ed289164e919327112"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:24f4ca087db454317542eae54821b435eb2e95f875c2e419d763e7ce1edb5260"
+					"hash": "sha256:355b2a0fddcaf601eb7fe9564ee2827b688b5615b2fec77333ccad1fdb82c892"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9b0719e267b54997414a9641827647f526ed7c60f3b3a9ad2d0711388b4fba76"
+					"hash": "sha256:7a959dd9921b8098739b27596364cec6b256759c7b4222c4945bd3b7a0ebfe08"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -2119,9 +2119,19 @@
 					"name": "scenarios-focus-elements-component-tabs",
 					"route": "scenarios/focus-elements?component=tabs",
 					"status": "changed",
-					"hash": "sha256:67db462139a5443528a6d734fea875252f4ab556c65ebdafe6c74c2655bef65f",
-					"diffPixels": 1059,
-					"diffRatio": 0.020523,
+					"hash": "sha256:cbef417085de3cbc93270dc6ebb6b0e415d68a3ba1837108981aeb3d397919cd",
+					"diffPixels": 3301,
+					"diffRatio": 0.06113,
+					"sizeMismatch": {
+						"expected": [
+							300,
+							172
+						],
+						"actual": [
+							300,
+							180
+						]
+					},
 					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-tabs.expected.png",
 					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-tabs.actual.png",
 					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-tabs.diff.png"
@@ -2154,7 +2164,7 @@
 					"name": "scenarios-label-lang--label-lang-alert",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:c810edf45ebbd9e525aa7ca7798e0564a49b522337b76341ef9ee5c8f95d1ee4"
+					"hash": "sha256:265868c7c7c838b91e18297212d2b17fec704c89a01f816600db1ce7ba038297"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -2260,9 +2270,24 @@
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-tabs",
-					"route": "scenarios-label-lang",
-					"status": "unchanged",
-					"hash": "sha256:157be2c6aee2d84cf690ef353147d5211304fc411c72a51fe0207039e6b4131d"
+					"route": "scenarios/label-lang",
+					"status": "changed",
+					"hash": "sha256:507ce0b2081d186235ec032a1b17ac48f97982bb8cef4bce555893fb4e1921a9",
+					"diffPixels": 2558,
+					"diffRatio": 0.055512,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							52
+						],
+						"actual": [
+							768,
+							60
+						]
+					},
+					"expected": "test-tag-name-transformer/scenarios-label-lang--label-lang-tabs.expected.png",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-tabs.actual.png",
+					"diff": "test-tag-name-transformer/scenarios-label-lang--label-lang-tabs.diff.png"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-toolbar",
@@ -2548,34 +2573,87 @@
 				},
 				{
 					"name": "tabs-basic--icons",
-					"route": "tabs-basic",
-					"status": "unchanged",
-					"hash": "sha256:0f9a3ba249fcd2764536ed2638debbd4ce1f9e3527e3af38c61e051278955c40"
+					"route": "tabs/basic",
+					"status": "changed",
+					"hash": "sha256:383a861de7c822886b546be27ab0a4d43d0f55df6b5dbc6c62fea13894093e0b",
+					"diffPixels": 2627,
+					"diffRatio": 0.026934,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							119
+						],
+						"actual": [
+							768,
+							127
+						]
+					},
+					"expected": "test-tag-name-transformer/tabs-basic--icons.expected.png",
+					"actual": "test-tag-name-transformer/tabs-basic--icons.actual.png",
+					"diff": "test-tag-name-transformer/tabs-basic--icons.diff.png"
 				},
 				{
 					"name": "tabs-basic--regular",
-					"route": "tabs-basic",
-					"status": "unchanged",
-					"hash": "sha256:a5ea1bd21b84b6418fb5f014b0e3375289299480e1c31b8b46071225003d9795"
-				},
-				{
-					"name": "tabs-basic--sticky",
 					"route": "tabs/basic",
-					"status": "added",
-					"hash": "sha256:7bd6b52391ea838f5dec4ead28cc2973fbd820872a6641f805b821f6fa027f42",
-					"actual": "test-tag-name-transformer/tabs-basic--sticky.actual.png"
+					"status": "changed",
+					"hash": "sha256:00821dcbbfbf4ac7f0be5132b9aa88f269948ec39c6d06275d220185f7a0efc9",
+					"diffPixels": 2142,
+					"diffRatio": 0.025127,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							103
+						],
+						"actual": [
+							768,
+							111
+						]
+					},
+					"expected": "test-tag-name-transformer/tabs-basic--regular.expected.png",
+					"actual": "test-tag-name-transformer/tabs-basic--regular.actual.png",
+					"diff": "test-tag-name-transformer/tabs-basic--regular.diff.png"
 				},
 				{
 					"name": "tabs-create-button--create-button",
-					"route": "tabs-create-button",
-					"status": "unchanged",
-					"hash": "sha256:4d708cca660fd4bbbce9b1233c5115ec5e5aef8f36652c0bb85237c7d8dabe66"
+					"route": "tabs/create-button",
+					"status": "changed",
+					"hash": "sha256:8139283f887bf2ec518274361f61c182f49c385cd60b208aeadfe27cecf3ba0c",
+					"diffPixels": 1960,
+					"diffRatio": 0.020095,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							119
+						],
+						"actual": [
+							768,
+							127
+						]
+					},
+					"expected": "test-tag-name-transformer/tabs-create-button--create-button.expected.png",
+					"actual": "test-tag-name-transformer/tabs-create-button--create-button.actual.png",
+					"diff": "test-tag-name-transformer/tabs-create-button--create-button.diff.png"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
-					"route": "tabs-icons-only",
-					"status": "unchanged",
-					"hash": "sha256:0eb09d4ff9a2b8b3eb738ebd86b1dd5534c97a704402b450586e1a3c2ff8d4e4"
+					"route": "tabs/icons-only",
+					"status": "changed",
+					"hash": "sha256:0ec92f3a8220fca8f4adb4cfaabc0ce850566ac7d1b7bf9145c5ccaeb41a7c34",
+					"diffPixels": 1263,
+					"diffRatio": 0.030938,
+					"sizeMismatch": {
+						"expected": [
+							168,
+							235
+						],
+						"actual": [
+							168,
+							243
+						]
+					},
+					"expected": "test-tag-name-transformer/tabs-icons-only--icons-only.expected.png",
+					"actual": "test-tag-name-transformer/tabs-icons-only--icons-only.actual.png",
+					"diff": "test-tag-name-transformer/tabs-icons-only--icons-only.diff.png"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -2725,26 +2803,26 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "be0c5f7f898bb46322aba48e603141314b9f440d",
+					"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 					"ref": "release/4",
-					"runId": 45362147870,
+					"runId": 45525521678,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-24T09:19:15.535Z",
-					"digest": "sha256:1c69a4eb361453cdcb46155056d69931521105258617774e33716e676b9c43e9",
+					"createdAt": "2026-11-25T01:31:22.870Z",
+					"digest": "sha256:0665dbd09454045bc28f1b8d16c2b8165afa93c8b066c8593f1d7b0b2bc5acf2",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 437,
-				"changed": 5,
-				"added": 1,
+				"unchanged": 436,
+				"changed": 6,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:08fb0a90978509fc1fb498b66bf6ed501218a27534d0b0ca234db4271dc1b3f8",
+			"digest": "sha256:cfd165526027b1e5d32eb8e7a0173181af25c9f8a1b4e46d73ce7bdfcb63f80f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2762,31 +2840,31 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:d06daaccde270b2f48465fbacf98e4a4aa48eff8b36f867f52f3ba4b6d1fcc36"
+					"hash": "sha256:5a5b9fb0ea4001b888dafd07720a63025a29905e4b0cbfe278a7d04503e3f369"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:7ee1b1a4c24318fca40f7572a623cd525543e69831e44d325015233698901501"
+					"hash": "sha256:b4250beda5bcc3f47cb029ca3aa119c1dfd75fe73cc155e4961b3591e9469bfc"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:49b1826e2cb83465624a0055bfb3e15dcd525ed9481b0946d8571aacfb18e4aa"
+					"hash": "sha256:b60e5b21960696c76e3ff67a22841097d5e1c8f54962a8814cedece079a91dfd"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:b002c0bc3408b026ca12fab4dd82329f408287fcf4dce4b84cf765381cd45adf"
+					"hash": "sha256:ce5702f72aa7bf2ddd01ae57646d15649bfda4fbc4fa06f405c28d506d617eba"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:a486fec9ed409bd9eafb92e0bca4e9c3f40e3658112555c92d3794806828a340"
+					"hash": "sha256:53585b346f6072b2bd6052d3b37f249c51d0f36c5b5392e4e66553dcbd6458ec"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -3116,31 +3194,31 @@
 					"name": "input-checkbox-basic-noColumns--left-access-key",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c8abd15d5d6e35a1cc67da156c49ab6ac2ec35294bbeefc346886446fc53c075"
+					"hash": "sha256:8baff01793e385368cd606f8c4b226af92d38c86a97ab534a154a4b13c5725ef"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5fc1ed8309a18c27421768697955a5c32530d26253c6dfa90c5fb02e11549668"
+					"hash": "sha256:a2a9afc57f5041f6eb67ca77a98fde7ae3d83e2055da63489c180b6554d9c3bc"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-checked-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:3fb44a2f3df74622a607a01e80b6f7ab7188ec62d5ac475bb4e04fac1e818ad0"
+					"hash": "sha256:daaf3b941ded47d296b0838ca345dea82c4055036cbd7038234ea89b2f1ceec1"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:417da2a20e94637e8ccdf42219f9ced852888e20c57fd5c952566e8b09af7b1c"
+					"hash": "sha256:9f2c13cd8ed590de413243ce3590876acbd6408f5ee0a76c42567af18fd5931b"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-error",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c4c7b232ecaeabdc5bc75648133ab01741ea8e8fcbc90c3c3f30e99b67c0b85a"
+					"hash": "sha256:08dbbcbf40e628712df787ebc73865f25a2d98493be4eae4c96864504baed688"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-hide-error",
@@ -3152,67 +3230,67 @@
 					"name": "input-checkbox-basic-noColumns--left-indet-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:2252ec068c3a1c8423bda6e9dde6eccc96e4cdbf3b5b9ecd1f91a22f18e65bfd"
+					"hash": "sha256:f104dc1fe2a131067fd679594ac3f77a9dacc8bfe2cbe6739ac820eec34f6768"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-indeterminate",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:e31f36772523502910a918caa090e4ab20708210cd341165afab138dee2173ca"
+					"hash": "sha256:24fbb4079010610d2f9b238de9b8056aef28eda0b5e3c438e62b2fb12674ec11"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-info-popover",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:d3d1366cdbdb0cd2149cd95d13fd31bc6ba853ae984f01f5d83a8297b64ba0f6"
+					"hash": "sha256:976bddd1d23541a38017f6ccb771aaabb6a82753e8a6dca2f6e5273cb41f24dd"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-long-label",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:56e66dda673f2c8652a90d1b80e55e1faa0d6c1b5d8a8129fd5d03bfe4c0f3d4"
+					"hash": "sha256:b22ea48d8c461506edb654792ea20ed42d40a2e2aaa5b637f667a18a4cdbd64d"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-short-key",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:255bb224be1f899493b8a05bf7407a37451960d47a876cc491c2135c86a231c1"
+					"hash": "sha256:fa929a7d8206e30021914758633188b241a87061da8dce40f024eb00774a27d7"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-unchecked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:44f8686e06ea8ca4e1f5657ee17e7ce9c9ec13e5c374ef2ea21f859e91185e9c"
+					"hash": "sha256:b09a47db191950f4463fd5cbfb5f9a7d7461dc568af52197f335263671f4a81b"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-access-key",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:45bc5cf73a76411053726a6cb76ddd1cc45d27eb7aecb3f32aa670dbbd1c18a4"
+					"hash": "sha256:5a514aa385b93eb550a24842933ba1359456c2c230e2f4df95881c91c8552059"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:14d7b77c94b1f88dd280177e7ad911387bb898984649a467a5841c5446d51028"
+					"hash": "sha256:59fc14584a5138742def342741eb062ea06c195745706dd6f76716387db50d44"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-checked-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:cbc48cd8d97888dc2e8cf19c106c99ec5250c695c78f030664c759ecc02275d2"
+					"hash": "sha256:3b748aa73581b82d132a2bd0f3023d0a37b8931b6aa23b10b6724874baefac6a"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:1e89525a79cd2f376e3f5580536b1915547da9169373a7b3b5de9f6cb74b1cd0"
+					"hash": "sha256:779374a06645af7ed48fdb9bb50226622eaab0ac6fef2ca87d2f4812aa4d5467"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-error",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:a9d660193b12afebe711e83a3b45d726e79c49153b87bc1f93e4594e9d38ca57"
+					"hash": "sha256:27a6075a96e5fc3b2ec14407c8a69675eb487239c2c3bbce5c0fe9b9c563bf5e"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-hide-error",
@@ -3224,37 +3302,37 @@
 					"name": "input-checkbox-basic-noColumns--right-indet-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:0da1568050ac27b3b1a84bd0d3b29a16d79c48f1b47c9ecce44100246260b3c6"
+					"hash": "sha256:9630f20df9223d3507fa1179ee51994a9603a14bb0f6668e5b31717e2ceec2a7"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-indeterminate",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:22f7d184f9b8771e0cf94488d26531acb22ed56004413dc50cf11fc9f0f3d4a3"
+					"hash": "sha256:0500b3bbc6c2e0db309bf6ad7a946a1df6bfbee430f910ae2168d503c76488e9"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-info-popover",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:103ca7bb393aa5c048296e9721f57bdc6ff31facd8dd55e9731bd7a6e1a797b4"
+					"hash": "sha256:4b4200b7c12d0d1ab46a2dc3ec7555c8db8a71f27069285aa9342edad2d71784"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-long-label",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:ae2e625d2c0ef685a488878f6204056cdc7b8238cec607d20e8ca678e3dfcda6"
+					"hash": "sha256:6926ca3cc50ac2ab18c0dec9beff4737f34bf4b46d610a4fbd3117f9e9afaed5"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-short-key",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:ba8ff05556ea6553773c8338a5ec9501aa3111340f5068ff8736298ed8184f52"
+					"hash": "sha256:1438ea2babcc6d1edc6d6c36da2a5860133ec3ed5214c1de4b5cc04095ac8b65"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-unchecked",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:87d5c602ece6649418ed3f9df15e744ffea824897c9622811e2f0eedf3c50fe9"
+					"hash": "sha256:b41d873c0b0444ff5accc0ea509496a8b6ac4d1b1ab633a8835cfb46a365bdf7"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-access-key",
@@ -4700,7 +4778,7 @@
 					"name": "scenarios-focus-elements-component-inputCheckbox",
 					"route": "scenarios-focus-elements-component-inputCheckbox",
 					"status": "unchanged",
-					"hash": "sha256:5cab2d30cfe7ad4b09229635e3589c86ddd135aac6f908ff06cd6d33d241d5c5"
+					"hash": "sha256:48284c3b90d7edd464649d259a1f146bd5306087f8d3a1de6c0f53028db9ef44"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputColor",
@@ -4814,9 +4892,19 @@
 					"name": "scenarios-focus-elements-component-tabs",
 					"route": "scenarios/focus-elements?component=tabs",
 					"status": "changed",
-					"hash": "sha256:37e448f3fda19c424a69021fa28160e593efe7a52639c89c77981aed1c722065",
-					"diffPixels": 329,
-					"diffRatio": 0.012902,
+					"hash": "sha256:1427576f7b5bdfc7ff655a83e6920afe77ceb82e7537ce364536a5de0a34bbb1",
+					"diffPixels": 1203,
+					"diffRatio": 0.043118,
+					"sizeMismatch": {
+						"expected": [
+							300,
+							85
+						],
+						"actual": [
+							300,
+							93
+						]
+					},
 					"expected": "theme-bwst/scenarios-focus-elements-component-tabs.expected.png",
 					"actual": "theme-bwst/scenarios-focus-elements-component-tabs.actual.png",
 					"diff": "theme-bwst/scenarios-focus-elements-component-tabs.diff.png"
@@ -4849,7 +4937,7 @@
 					"name": "scenarios-label-lang--label-lang-alert",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:5d25f53a5c28346d45e213e966914241dd0ac5c6bc6f807dedd3f3861333e7d7"
+					"hash": "sha256:91c5781d88aa9e5525c22852eb809c82d7db3df87df1bf1700d0a21935d6334f"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -4885,7 +4973,7 @@
 					"name": "scenarios-label-lang--label-lang-checkbox",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:b4d7e31452c9c25993674b656e2feb237b2d35b638a5e3da886f442c26bcd448"
+					"hash": "sha256:53748cfcfc3a3040766c769ea80910e74e2224a0410fd90a4d857f00cc90d2d1"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-details",
@@ -4957,9 +5045,19 @@
 					"name": "scenarios-label-lang--label-lang-tabs",
 					"route": "scenarios/label-lang",
 					"status": "changed",
-					"hash": "sha256:bb9c9f05044ee5fcd7e44b11bfb23e8aa857353a99634964cd38fde796b2fc96",
-					"diffPixels": 185,
-					"diffRatio": 0.004545,
+					"hash": "sha256:2760c1710a2b4fe07c359dfe0a8815c57c443f4d6703c5818afd118f33e211c6",
+					"diffPixels": 3188,
+					"diffRatio": 0.06805,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							53
+						],
+						"actual": [
+							768,
+							61
+						]
+					},
 					"expected": "theme-bwst/scenarios-label-lang--label-lang-tabs.expected.png",
 					"actual": "theme-bwst/scenarios-label-lang--label-lang-tabs.actual.png",
 					"diff": "theme-bwst/scenarios-label-lang--label-lang-tabs.diff.png"
@@ -5250,9 +5348,19 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs/basic",
 					"status": "changed",
-					"hash": "sha256:15761cca8b7e457a2daeae81ccabad5e3c30bd1b0bee31c10d33e144757f4f39",
-					"diffPixels": 93,
-					"diffRatio": 0.000985,
+					"hash": "sha256:25e63bf28090b51810a12a25d268a6e0a00f894008e2ac4700edbdabfbdad227",
+					"diffPixels": 3244,
+					"diffRatio": 0.032244,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							123
+						],
+						"actual": [
+							768,
+							131
+						]
+					},
 					"expected": "theme-bwst/tabs-basic--icons.expected.png",
 					"actual": "theme-bwst/tabs-basic--icons.actual.png",
 					"diff": "theme-bwst/tabs-basic--icons.diff.png"
@@ -5261,36 +5369,64 @@
 					"name": "tabs-basic--regular",
 					"route": "tabs/basic",
 					"status": "changed",
-					"hash": "sha256:837b502db6536def6acfd0e73968197d77af68d96fe86928ba6c63d33e6c3b6e",
-					"diffPixels": 69,
-					"diffRatio": 0.00084,
+					"hash": "sha256:85476188b1cd24de07b4ea1f20eec4c1f374f25cfc6250effa14b1c84df075c5",
+					"diffPixels": 2861,
+					"diffRatio": 0.032394,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							107
+						],
+						"actual": [
+							768,
+							115
+						]
+					},
 					"expected": "theme-bwst/tabs-basic--regular.expected.png",
 					"actual": "theme-bwst/tabs-basic--regular.actual.png",
 					"diff": "theme-bwst/tabs-basic--regular.diff.png"
 				},
 				{
-					"name": "tabs-basic--sticky",
-					"route": "tabs/basic",
-					"status": "added",
-					"hash": "sha256:19095dc2d3e39579f63ab44b3745af917933ec825f8fff7953ea6bf7f94bd4bf",
-					"actual": "theme-bwst/tabs-basic--sticky.actual.png"
-				},
-				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs/create-button",
 					"status": "changed",
-					"hash": "sha256:e768b4235ef14f422daf417f616d2e25bc9f1d6b579ce234846fbe87ec600600",
-					"diffPixels": 69,
-					"diffRatio": 0.00073,
+					"hash": "sha256:274c017e1eb7aabe88b481c2ff8d56947051b2ae0971222ab3bd80ed84dc6473",
+					"diffPixels": 2860,
+					"diffRatio": 0.028427,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							123
+						],
+						"actual": [
+							768,
+							131
+						]
+					},
 					"expected": "theme-bwst/tabs-create-button--create-button.expected.png",
 					"actual": "theme-bwst/tabs-create-button--create-button.actual.png",
 					"diff": "theme-bwst/tabs-create-button--create-button.diff.png"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
-					"route": "tabs-icons-only",
-					"status": "unchanged",
-					"hash": "sha256:31db1ecce6791a4c84342a9623d4ac430ea0a56b62a805c4fc643912c5d35c41"
+					"route": "tabs/icons-only",
+					"status": "changed",
+					"hash": "sha256:c0a17576ce3abe98553b55a741e78abe328ad8308b8fd926c23ee940bffa50f9",
+					"diffPixels": 1252,
+					"diffRatio": 0.042585,
+					"sizeMismatch": {
+						"expected": [
+							168,
+							167
+						],
+						"actual": [
+							168,
+							175
+						]
+					},
+					"expected": "theme-bwst/tabs-icons-only--icons-only.expected.png",
+					"actual": "theme-bwst/tabs-icons-only--icons-only.actual.png",
+					"diff": "theme-bwst/tabs-icons-only--icons-only.diff.png"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -5440,26 +5576,26 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "be0c5f7f898bb46322aba48e603141314b9f440d",
+					"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 					"ref": "release/4",
-					"runId": 45362147870,
+					"runId": 45525521678,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-24T09:20:50.078Z",
-					"digest": "sha256:4e1c4a3ed78d92796b38bdf83fa8b7d118d9222a6fcd951f4549b8d473ba069f",
+					"createdAt": "2026-11-25T01:31:26.555Z",
+					"digest": "sha256:9654968bb97ca6512711ff5c0dbff948747c27e0a50fdbf8d1ce275434ce1ec1",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 441,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 436,
+				"changed": 6,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:49f7edfa22904711bef110c7fc985d41b2993f5f95e3bfd5293e33c5c6cfa6b8",
+			"digest": "sha256:7824f9319717266ab0a47b36581f04ec2b96d4c726d7a80ef4a505089070aa6d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5477,31 +5613,31 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:0a4488d43b6ffd3b918e8bb227d522788164cbbbbde2456823b79a54a2fc61c3"
+					"hash": "sha256:98de4f3b49c19a3dd74433afed8cf76073bc26f5be4cb3fe51de50d43f9acf39"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9f8ac255c0c22441df6a2eb872a7f00a408a19d7a1e9ac6e2f7de5673d1f7f9e"
+					"hash": "sha256:ce8e2462ce942ce58eb61cb626130c85981a1361eac95473b2fa35b648f2adcd"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:4fdfb50ee3f8a519f0a1e64a43d3e2d70db361d292fff175b23b88a90fce34e0"
+					"hash": "sha256:5b5712f451cccfa65ac652055a5041363e00e4b1170f52ed289164e919327112"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:24f4ca087db454317542eae54821b435eb2e95f875c2e419d763e7ce1edb5260"
+					"hash": "sha256:355b2a0fddcaf601eb7fe9564ee2827b688b5615b2fec77333ccad1fdb82c892"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:9b0719e267b54997414a9641827647f526ed7c60f3b3a9ad2d0711388b4fba76"
+					"hash": "sha256:7a959dd9921b8098739b27596364cec6b256759c7b4222c4945bd3b7a0ebfe08"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -7529,9 +7665,19 @@
 					"name": "scenarios-focus-elements-component-tabs",
 					"route": "scenarios/focus-elements?component=tabs",
 					"status": "changed",
-					"hash": "sha256:67db462139a5443528a6d734fea875252f4ab556c65ebdafe6c74c2655bef65f",
-					"diffPixels": 1059,
-					"diffRatio": 0.020523,
+					"hash": "sha256:cbef417085de3cbc93270dc6ebb6b0e415d68a3ba1837108981aeb3d397919cd",
+					"diffPixels": 3301,
+					"diffRatio": 0.06113,
+					"sizeMismatch": {
+						"expected": [
+							300,
+							172
+						],
+						"actual": [
+							300,
+							180
+						]
+					},
 					"expected": "theme-default/scenarios-focus-elements-component-tabs.expected.png",
 					"actual": "theme-default/scenarios-focus-elements-component-tabs.actual.png",
 					"diff": "theme-default/scenarios-focus-elements-component-tabs.diff.png"
@@ -7564,7 +7710,7 @@
 					"name": "scenarios-label-lang--label-lang-alert",
 					"route": "scenarios-label-lang",
 					"status": "unchanged",
-					"hash": "sha256:c810edf45ebbd9e525aa7ca7798e0564a49b522337b76341ef9ee5c8f95d1ee4"
+					"hash": "sha256:265868c7c7c838b91e18297212d2b17fec704c89a01f816600db1ce7ba038297"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-badge",
@@ -7670,9 +7816,24 @@
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-tabs",
-					"route": "scenarios-label-lang",
-					"status": "unchanged",
-					"hash": "sha256:157be2c6aee2d84cf690ef353147d5211304fc411c72a51fe0207039e6b4131d"
+					"route": "scenarios/label-lang",
+					"status": "changed",
+					"hash": "sha256:507ce0b2081d186235ec032a1b17ac48f97982bb8cef4bce555893fb4e1921a9",
+					"diffPixels": 2558,
+					"diffRatio": 0.055512,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							52
+						],
+						"actual": [
+							768,
+							60
+						]
+					},
+					"expected": "theme-default/scenarios-label-lang--label-lang-tabs.expected.png",
+					"actual": "theme-default/scenarios-label-lang--label-lang-tabs.actual.png",
+					"diff": "theme-default/scenarios-label-lang--label-lang-tabs.diff.png"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-toolbar",
@@ -7958,34 +8119,87 @@
 				},
 				{
 					"name": "tabs-basic--icons",
-					"route": "tabs-basic",
-					"status": "unchanged",
-					"hash": "sha256:0f9a3ba249fcd2764536ed2638debbd4ce1f9e3527e3af38c61e051278955c40"
+					"route": "tabs/basic",
+					"status": "changed",
+					"hash": "sha256:383a861de7c822886b546be27ab0a4d43d0f55df6b5dbc6c62fea13894093e0b",
+					"diffPixels": 2627,
+					"diffRatio": 0.026934,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							119
+						],
+						"actual": [
+							768,
+							127
+						]
+					},
+					"expected": "theme-default/tabs-basic--icons.expected.png",
+					"actual": "theme-default/tabs-basic--icons.actual.png",
+					"diff": "theme-default/tabs-basic--icons.diff.png"
 				},
 				{
 					"name": "tabs-basic--regular",
-					"route": "tabs-basic",
-					"status": "unchanged",
-					"hash": "sha256:a5ea1bd21b84b6418fb5f014b0e3375289299480e1c31b8b46071225003d9795"
-				},
-				{
-					"name": "tabs-basic--sticky",
 					"route": "tabs/basic",
-					"status": "added",
-					"hash": "sha256:7bd6b52391ea838f5dec4ead28cc2973fbd820872a6641f805b821f6fa027f42",
-					"actual": "theme-default/tabs-basic--sticky.actual.png"
+					"status": "changed",
+					"hash": "sha256:00821dcbbfbf4ac7f0be5132b9aa88f269948ec39c6d06275d220185f7a0efc9",
+					"diffPixels": 2142,
+					"diffRatio": 0.025127,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							103
+						],
+						"actual": [
+							768,
+							111
+						]
+					},
+					"expected": "theme-default/tabs-basic--regular.expected.png",
+					"actual": "theme-default/tabs-basic--regular.actual.png",
+					"diff": "theme-default/tabs-basic--regular.diff.png"
 				},
 				{
 					"name": "tabs-create-button--create-button",
-					"route": "tabs-create-button",
-					"status": "unchanged",
-					"hash": "sha256:4d708cca660fd4bbbce9b1233c5115ec5e5aef8f36652c0bb85237c7d8dabe66"
+					"route": "tabs/create-button",
+					"status": "changed",
+					"hash": "sha256:8139283f887bf2ec518274361f61c182f49c385cd60b208aeadfe27cecf3ba0c",
+					"diffPixels": 1960,
+					"diffRatio": 0.020095,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							119
+						],
+						"actual": [
+							768,
+							127
+						]
+					},
+					"expected": "theme-default/tabs-create-button--create-button.expected.png",
+					"actual": "theme-default/tabs-create-button--create-button.actual.png",
+					"diff": "theme-default/tabs-create-button--create-button.diff.png"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
-					"route": "tabs-icons-only",
-					"status": "unchanged",
-					"hash": "sha256:0eb09d4ff9a2b8b3eb738ebd86b1dd5534c97a704402b450586e1a3c2ff8d4e4"
+					"route": "tabs/icons-only",
+					"status": "changed",
+					"hash": "sha256:0ec92f3a8220fca8f4adb4cfaabc0ce850566ac7d1b7bf9145c5ccaeb41a7c34",
+					"diffPixels": 1263,
+					"diffRatio": 0.030938,
+					"sizeMismatch": {
+						"expected": [
+							168,
+							235
+						],
+						"actual": [
+							168,
+							243
+						]
+					},
+					"expected": "theme-default/tabs-icons-only--icons-only.expected.png",
+					"actual": "theme-default/tabs-icons-only--icons-only.actual.png",
+					"diff": "theme-default/tabs-icons-only--icons-only.diff.png"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -8135,12 +8349,12 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "be0c5f7f898bb46322aba48e603141314b9f440d",
+					"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 					"ref": "release/4",
-					"runId": 45362147870,
+					"runId": 45525521678,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-24T09:14:57.488Z",
+					"createdAt": "2026-11-25T01:30:17.440Z",
 					"digest": "sha256:66b08ccb4537a7e9b61478c3940e9fc00395814383c95ee669a64a4e719868e4",
 					"fallback": null,
 					"distance": 0,
@@ -8150,11 +8364,11 @@
 			"summary": {
 				"unchanged": 441,
 				"changed": 1,
-				"added": 1,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a03ab62b0335d7d0f9f9c57640e0520a9beb7d5fbe6ea592669c092bec25be40",
+			"digest": "sha256:7f9135b1d96aa2cb5a08422e31445b238bf98461cd62f088ba234b804cddd71b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10222,14 +10436,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-tabs",
-					"route": "scenarios/focus-elements?component=tabs",
-					"status": "changed",
-					"hash": "sha256:5729ed67eeddc036068d9c5f4a521f6f94f19ca9af5c9ddefdf006f1dd83ab35",
-					"diffPixels": 280,
-					"diffRatio": 0.008333,
-					"expected": "theme-desy/scenarios-focus-elements-component-tabs.expected.png",
-					"actual": "theme-desy/scenarios-focus-elements-component-tabs.actual.png",
-					"diff": "theme-desy/scenarios-focus-elements-component-tabs.diff.png"
+					"route": "scenarios-focus-elements-component-tabs",
+					"status": "unchanged",
+					"hash": "sha256:118cc1de25ca7460af5dab13a636bca4c4951595469b0fe90b2ae7ae91ee2abc"
 				},
 				{
 					"name": "scenarios-focus-elements-component-textarea",
@@ -10629,9 +10838,14 @@
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
-					"route": "table-sticky-header",
-					"status": "unchanged",
-					"hash": "sha256:d63912bd2f9db51d94c614bfd75953cddc8c52ed351a3dd7354c23e9ba4a14ae"
+					"route": "table/sticky-header",
+					"status": "changed",
+					"hash": "sha256:225e8eb5de66e3e66a51900aa1c5187a90f74973fba38eceec91813c925711fe",
+					"diffPixels": 21,
+					"diffRatio": 0.000001,
+					"expected": "theme-desy/table-sticky-header--sticky-header.expected.png",
+					"actual": "theme-desy/table-sticky-header--sticky-header.actual.png",
+					"diff": "theme-desy/table-sticky-header--sticky-header.diff.png"
 				},
 				{
 					"name": "table-variant--variant-no",
@@ -10662,13 +10876,6 @@
 					"route": "tabs-basic",
 					"status": "unchanged",
 					"hash": "sha256:823b83fd26f10ea8d34563eeb7b9b687031227663f099cdda082f67e749c130e"
-				},
-				{
-					"name": "tabs-basic--sticky",
-					"route": "tabs/basic",
-					"status": "added",
-					"hash": "sha256:ec697896f2cc63e8dfe1e0b95871e12f98fd7fb03a779cc555db261cd7248319",
-					"actual": "theme-desy/tabs-basic--sticky.actual.png"
 				},
 				{
 					"name": "tabs-create-button--create-button",
@@ -10830,26 +11037,26 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "be0c5f7f898bb46322aba48e603141314b9f440d",
+					"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 					"ref": "release/4",
-					"runId": 45362147870,
+					"runId": 45525521678,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-24T09:17:43.969Z",
-					"digest": "sha256:52179ed1092595a872b3836d122f12fa43f163f4c4f15344c14977a6e1e51011",
+					"createdAt": "2026-11-25T01:31:34.867Z",
+					"digest": "sha256:d4b696c93f3710f92654020386e856982f57f11ec43908abfcfdbe871be8e5de",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 437,
-				"changed": 5,
-				"added": 1,
+				"unchanged": 441,
+				"changed": 1,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0d4d74ecfbc0e4d62e9ae9ff13dfbd3ef6958dbf45e712957744713ee5ffbe91",
+			"digest": "sha256:7bb79c4120a9d4aa9e62aed69fe7bcbcbc064100aa8829adf34d57bd6a9be92a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11173,7 +11380,7 @@
 					"name": "dialog-basic-show-dialog-true",
 					"route": "dialog-basic-show-dialog-true",
 					"status": "unchanged",
-					"hash": "sha256:ebabbc02b7cb128e986a507c7e6e2ac18a18d2a642eb5434315149bae25a477e"
+					"hash": "sha256:56721705f3cb04757b944713056bb19e8eabea9cffcc9a56b4df8fe5cf85f43f"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -11185,7 +11392,7 @@
 					"name": "drawer-basic-align-left-closer-true",
 					"route": "drawer-basic-align-left-closer-true",
 					"status": "unchanged",
-					"hash": "sha256:71b0ce522787d0bace1dc4a5ca751e865e7a9c0d27ac474d587a609e260ca641"
+					"hash": "sha256:4dd5e0dd8c2ed02a73809b42fc63a976acc04f3eff13b33efb5d0c282438ff83"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -12667,7 +12874,7 @@
 					"name": "modal-basic-show-dialog-true",
 					"route": "modal-basic-show-dialog-true",
 					"status": "unchanged",
-					"hash": "sha256:b87d85c64c9119d1c212d17a615d147e7863e60ca89fdb7f07131e3d41395a33"
+					"hash": "sha256:6fb8d9587e116be8aeb4358225b702cd38195b1c44d135ce822c3ece64dbc90f"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -12715,7 +12922,7 @@
 					"name": "popover-button-basic",
 					"route": "popover-button-basic",
 					"status": "unchanged",
-					"hash": "sha256:132a5d5fe692377941b39a81b9c6de6f123d4f8b53407d9077f24416c1b17ae0"
+					"hash": "sha256:4e7941a799fd2df63933c16b3df69407a3924eebf81231dd96cf918124704f08"
 				},
 				{
 					"name": "popover-button-inline--inline",
@@ -12775,7 +12982,7 @@
 					"name": "scenarios-focus-elements-component-button",
 					"route": "scenarios-focus-elements-component-button",
 					"status": "unchanged",
-					"hash": "sha256:6411362ba8ae6a556562c540eb733fcbe80c31954d11002d625fe7bac934003e"
+					"hash": "sha256:cf239d922fa228b29cedc423d8af7f145dfb630154b1921ca013cc78b0987aa5"
 				},
 				{
 					"name": "scenarios-focus-elements-component-buttonLink",
@@ -12877,13 +13084,13 @@
 					"name": "scenarios-focus-elements-component-linkButton",
 					"route": "scenarios-focus-elements-component-linkButton",
 					"status": "unchanged",
-					"hash": "sha256:156b92bfbdc212bbe9a4e04a7cd7b7c3f6b20443062078d2e2b42b6a9ad4c79e"
+					"hash": "sha256:444440fa40c6be8795858b67d9c4215ad2d0637d4a2f5311e3fa7e2a0c87a56c"
 				},
 				{
 					"name": "scenarios-focus-elements-component-popoverButton",
 					"route": "scenarios-focus-elements-component-popoverButton",
 					"status": "unchanged",
-					"hash": "sha256:9093d0656ac71bc2945de7df12b35219a093cc6bae0466acde1c0c99656cbc38"
+					"hash": "sha256:3caa1f9b36c6ee4d3f9e92845f939e0449c9196f4c14be8aca55f5024e847480"
 				},
 				{
 					"name": "scenarios-focus-elements-component-select",
@@ -12913,18 +13120,13 @@
 					"name": "scenarios-focus-elements-component-splitButton",
 					"route": "scenarios-focus-elements-component-splitButton",
 					"status": "unchanged",
-					"hash": "sha256:ba4109aa8eac02de20feb71a656004f9cf890dccc99f5de821b70f4809163817"
+					"hash": "sha256:3b760df52e6e5124bed94a0cfb927c0a6987b6316901cbc87207d2ad473ca35d"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tabs",
-					"route": "scenarios/focus-elements?component=tabs",
-					"status": "changed",
-					"hash": "sha256:6b76345091d78bd562a4491be87808f6fa704a15f4c1cedc7d925f21f631fbbc",
-					"diffPixels": 144,
-					"diffRatio": 0.006316,
-					"expected": "theme-ecl/scenarios-focus-elements-component-tabs.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-tabs.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-tabs.diff.png"
+					"route": "scenarios-focus-elements-component-tabs",
+					"status": "unchanged",
+					"hash": "sha256:fecfc0f83f34d7e5601daa76e9f20144611c0031b847ce8c890a9150bd90412e"
 				},
 				{
 					"name": "scenarios-focus-elements-component-textarea",
@@ -12936,7 +13138,7 @@
 					"name": "scenarios-focus-elements-component-toolbar",
 					"route": "scenarios-focus-elements-component-toolbar",
 					"status": "unchanged",
-					"hash": "sha256:aa5c369baae4d6dc5c98ed2633f3ba98ef57d8c2380f8e7f7d50b8a9e695134b"
+					"hash": "sha256:520fa144df296af73d32d4b66d6fdf2c58ee5f59d0d70a23a099b9a404592add"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -13060,14 +13262,9 @@
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-tabs",
-					"route": "scenarios/label-lang",
-					"status": "changed",
-					"hash": "sha256:b2ce4d80665d2a17e8d0936c86249899c126a60265b0fd6819d6837ba23259c6",
-					"diffPixels": 428,
-					"diffRatio": 0.012666,
-					"expected": "theme-ecl/scenarios-label-lang--label-lang-tabs.expected.png",
-					"actual": "theme-ecl/scenarios-label-lang--label-lang-tabs.actual.png",
-					"diff": "theme-ecl/scenarios-label-lang--label-lang-tabs.diff.png"
+					"route": "scenarios-label-lang",
+					"status": "unchanged",
+					"hash": "sha256:1ebbba24e4756087c1997cb451c2171d58d06ace7fcf46e630d4d3f51fb7a556"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-toolbar",
@@ -13325,13 +13522,18 @@
 					"name": "table-sticky-cols--sticky-cols",
 					"route": "table-sticky-cols",
 					"status": "unchanged",
-					"hash": "sha256:b38f268e456e3eb7f9a73ad3b48e483c58693398f0c96c16bd432804b8e5431c"
+					"hash": "sha256:e691a0136c0759a244abccdd5382730aa6af2e5fe987a3120e54e140cad48565"
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
-					"route": "table-sticky-header",
-					"status": "unchanged",
-					"hash": "sha256:4d7b6e87ff49f4db845866e5bcedd00c417db6d97536ee1556c1aa8e161813c8"
+					"route": "table/sticky-header",
+					"status": "changed",
+					"hash": "sha256:04372404b384db73b787fd77a7d4c919e489c95313cf8e8a43c337653fda2d45",
+					"diffPixels": 625,
+					"diffRatio": 0.000029,
+					"expected": "theme-ecl/table-sticky-header--sticky-header.expected.png",
+					"actual": "theme-ecl/table-sticky-header--sticky-header.actual.png",
+					"diff": "theme-ecl/table-sticky-header--sticky-header.diff.png"
 				},
 				{
 					"name": "table-variant--variant-no",
@@ -13353,43 +13555,21 @@
 				},
 				{
 					"name": "tabs-basic--icons",
-					"route": "tabs/basic",
-					"status": "changed",
-					"hash": "sha256:9f6e334ab9d52f246a568952a2dbdd0237d9ebe84a0567f51a72796d94db6fe2",
-					"diffPixels": 222,
-					"diffRatio": 0.002492,
-					"expected": "theme-ecl/tabs-basic--icons.expected.png",
-					"actual": "theme-ecl/tabs-basic--icons.actual.png",
-					"diff": "theme-ecl/tabs-basic--icons.diff.png"
+					"route": "tabs-basic",
+					"status": "unchanged",
+					"hash": "sha256:1cdb91d939335693aa8ce37450c4b97326a2930e6118249ee04920f76caa1c4e"
 				},
 				{
 					"name": "tabs-basic--regular",
-					"route": "tabs/basic",
-					"status": "changed",
-					"hash": "sha256:7778b43f7b08d3e24c46e850577c66aa1b6cb1c59ecb4f07e8d4d1889291f405",
-					"diffPixels": 190,
-					"diffRatio": 0.002474,
-					"expected": "theme-ecl/tabs-basic--regular.expected.png",
-					"actual": "theme-ecl/tabs-basic--regular.actual.png",
-					"diff": "theme-ecl/tabs-basic--regular.diff.png"
-				},
-				{
-					"name": "tabs-basic--sticky",
-					"route": "tabs/basic",
-					"status": "added",
-					"hash": "sha256:74bb43c346cfb20665026b938f30ddbe8c445860872af32519c54d95bce6b47e",
-					"actual": "theme-ecl/tabs-basic--sticky.actual.png"
+					"route": "tabs-basic",
+					"status": "unchanged",
+					"hash": "sha256:559047e72fca1c141a20c3b8885bd8f8d59712557cfe04dc5b4b86f819563b99"
 				},
 				{
 					"name": "tabs-create-button--create-button",
-					"route": "tabs/create-button",
-					"status": "changed",
-					"hash": "sha256:fc15682ae47960c5d8f8686385503f530c59c71da186c66e27dcbbc7ac5fcac2",
-					"diffPixels": 190,
-					"diffRatio": 0.002133,
-					"expected": "theme-ecl/tabs-create-button--create-button.expected.png",
-					"actual": "theme-ecl/tabs-create-button--create-button.actual.png",
-					"diff": "theme-ecl/tabs-create-button--create-button.diff.png"
+					"route": "tabs-create-button",
+					"status": "unchanged",
+					"hash": "sha256:d862d2fc19d93a98674a3bac269129af6c9075b2431d51f112e018e7d905861e"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
@@ -13545,12 +13725,12 @@
 			"baseline": {
 				"files": 443,
 				"meta": {
-					"sha": "be0c5f7f898bb46322aba48e603141314b9f440d",
+					"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 					"ref": "release/4",
-					"runId": 45362147870,
+					"runId": 45525521678,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-24T09:19:52.320Z",
+					"createdAt": "2026-11-25T01:31:11.521Z",
 					"digest": "sha256:850d93387ab408edcdddca6db70a6bd2f56f127fc08a688636529bfbb1701d98",
 					"fallback": null,
 					"distance": 0,
@@ -13558,13 +13738,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 442,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 436,
+				"changed": 7,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a3c840091e448afe9c54a188fa33ce74326e9c36e02086ad50bef2cc75934ea8",
+			"digest": "sha256:9e0baec6158d19d6639d47e179824a634ef47ecaf6014cf28af52088c5c62f57",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15634,9 +15814,19 @@
 					"name": "scenarios-focus-elements-component-tabs",
 					"route": "scenarios/focus-elements?component=tabs",
 					"status": "changed",
-					"hash": "sha256:ed07a2496fd91e66f6e84312e30ad1ca3d7ea105b136dff0523eead78f4af77f",
-					"diffPixels": 999,
-					"diffRatio": 0.030833,
+					"hash": "sha256:ba28e89491a7aab6552e9000623f1d8464c8595df938311ffd3671c3e9bded7d",
+					"diffPixels": 1033,
+					"diffRatio": 0.031883,
+					"sizeMismatch": {
+						"expected": [
+							300,
+							108
+						],
+						"actual": [
+							300,
+							105
+						]
+					},
 					"expected": "theme-kern/scenarios-focus-elements-component-tabs.expected.png",
 					"actual": "theme-kern/scenarios-focus-elements-component-tabs.actual.png",
 					"diff": "theme-kern/scenarios-focus-elements-component-tabs.diff.png"
@@ -15775,9 +15965,24 @@
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-tabs",
-					"route": "scenarios-label-lang",
-					"status": "unchanged",
-					"hash": "sha256:d79270276f37fd335e2e2d6ba80f25f7a7a50fee3374cd557dc3beb3c1166e9f"
+					"route": "scenarios/label-lang",
+					"status": "changed",
+					"hash": "sha256:d5c9f115635ba4571e0659a6c9a6d26b56053fd041d2e99bb65e50298668ed32",
+					"diffPixels": 1765,
+					"diffRatio": 0.029846,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							77
+						],
+						"actual": [
+							768,
+							74
+						]
+					},
+					"expected": "theme-kern/scenarios-label-lang--label-lang-tabs.expected.png",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-tabs.actual.png",
+					"diff": "theme-kern/scenarios-label-lang--label-lang-tabs.diff.png"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-toolbar",
@@ -16039,9 +16244,14 @@
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
-					"route": "table-sticky-header",
-					"status": "unchanged",
-					"hash": "sha256:3228cee8aacaa2504bf0acd47f539090fe0d82cbda7fcfff304ddb7fe8e6f9cc"
+					"route": "table/sticky-header",
+					"status": "changed",
+					"hash": "sha256:ac8a8bd8db3e821f9c00ad6122c48177ba2d9a69a0c63c9ea3f0498942d3b975",
+					"diffPixels": 2499,
+					"diffRatio": 0.000137,
+					"expected": "theme-kern/table-sticky-header--sticky-header.expected.png",
+					"actual": "theme-kern/table-sticky-header--sticky-header.actual.png",
+					"diff": "theme-kern/table-sticky-header--sticky-header.diff.png"
 				},
 				{
 					"name": "table-variant--variant-0",
@@ -16069,34 +16279,87 @@
 				},
 				{
 					"name": "tabs-basic--icons",
-					"route": "tabs-basic",
-					"status": "unchanged",
-					"hash": "sha256:4d7c4410547ab717dc9b0ff497fe9e7653c2f67a55f02510142384230ac72c86"
+					"route": "tabs/basic",
+					"status": "changed",
+					"hash": "sha256:de38baf07f19cada16f0fc09955233bc1fee16517b1bd4e65559fc5a265d4d31",
+					"diffPixels": 1951,
+					"diffRatio": 0.017765,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							143
+						],
+						"actual": [
+							768,
+							140
+						]
+					},
+					"expected": "theme-kern/tabs-basic--icons.expected.png",
+					"actual": "theme-kern/tabs-basic--icons.actual.png",
+					"diff": "theme-kern/tabs-basic--icons.diff.png"
 				},
 				{
 					"name": "tabs-basic--regular",
-					"route": "tabs-basic",
-					"status": "unchanged",
-					"hash": "sha256:59e34ad63ab6311e52055d1a1d5d910715f4bd2c28566b394cdde6d26975b7e2"
-				},
-				{
-					"name": "tabs-basic--sticky",
 					"route": "tabs/basic",
-					"status": "added",
-					"hash": "sha256:6975ea9acc8eb1c71569ca2ef4743e6f08ad8f0399c039ca5d0b7c47fddb2f12",
-					"actual": "theme-kern/tabs-basic--sticky.actual.png"
+					"status": "changed",
+					"hash": "sha256:481b278e1e38f3f12b948afbfc0ca59a443a8c3ad9c80b29ad502de67a65ee1b",
+					"diffPixels": 1919,
+					"diffRatio": 0.019675,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							127
+						],
+						"actual": [
+							768,
+							124
+						]
+					},
+					"expected": "theme-kern/tabs-basic--regular.expected.png",
+					"actual": "theme-kern/tabs-basic--regular.actual.png",
+					"diff": "theme-kern/tabs-basic--regular.diff.png"
 				},
 				{
 					"name": "tabs-create-button--create-button",
-					"route": "tabs-create-button",
-					"status": "unchanged",
-					"hash": "sha256:c6b2a20f02c118ae0aa961bd43e062262409feaae12647119883a1f694b6e47c"
+					"route": "tabs/create-button",
+					"status": "changed",
+					"hash": "sha256:0e595a8ac443cf9a37523db0904d16aae25119cdd861fc9d74f0847647b90694",
+					"diffPixels": 1983,
+					"diffRatio": 0.018056,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							143
+						],
+						"actual": [
+							768,
+							140
+						]
+					},
+					"expected": "theme-kern/tabs-create-button--create-button.expected.png",
+					"actual": "theme-kern/tabs-create-button--create-button.actual.png",
+					"diff": "theme-kern/tabs-create-button--create-button.diff.png"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
-					"route": "tabs-icons-only",
-					"status": "unchanged",
-					"hash": "sha256:1425f163cac7d4d330a40a5c35960d0685f3bb794d7b05e53b690404b318a170"
+					"route": "tabs/icons-only",
+					"status": "changed",
+					"hash": "sha256:8729305437781b62ec7adbf114fe36a33e403061c83383c4dfdaf49bfd77ee9e",
+					"diffPixels": 947,
+					"diffRatio": 0.030306,
+					"sizeMismatch": {
+						"expected": [
+							168,
+							186
+						],
+						"actual": [
+							168,
+							180
+						]
+					},
+					"expected": "theme-kern/tabs-icons-only--icons-only.expected.png",
+					"actual": "theme-kern/tabs-icons-only--icons-only.actual.png",
+					"diff": "theme-kern/tabs-icons-only--icons-only.diff.png"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -16246,26 +16509,26 @@
 			"baseline": {
 				"files": 442,
 				"meta": {
-					"sha": "be0c5f7f898bb46322aba48e603141314b9f440d",
+					"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 					"ref": "release/4",
-					"runId": 45362147870,
+					"runId": 45525521678,
 					"image": "mcr.microsoft.com/playwright:v1.63.0-noble",
 					"playwright": "1.63.0",
-					"createdAt": "2026-11-24T09:17:26.088Z",
-					"digest": "sha256:a6461012c621c0ea1567a719c62f25c956e706666fed882a6d694187c2c99a4a",
+					"createdAt": "2026-11-25T01:31:12.506Z",
+					"digest": "sha256:2c667cdb89ff8dbd11250bd1256abc2d471afc22941cf4b13c362d9746d4c75b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 441,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 434,
+				"changed": 8,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:66deb099a4093da351b97ee45facf8a98bbea282ee2b8cadda7360e5c6183c1d",
+			"digest": "sha256:ab3d84ceffc593d0ceefa89ba5e2301f8db26d54210ad7c40ceb1cb73fde2dc1",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -18335,9 +18598,9 @@
 					"name": "scenarios-focus-elements-component-tabs",
 					"route": "scenarios/focus-elements?component=tabs",
 					"status": "changed",
-					"hash": "sha256:c5d230254866fe5ce32c820e3a964a216e7acaac4dba0dbdde6bc40caf5a47ee",
-					"diffPixels": 268,
-					"diffRatio": 0.011754,
+					"hash": "sha256:ef2197fd812e92c9eb8189f8c1d2700569d42a95700232f1e80d92084e26b4d4",
+					"diffPixels": 362,
+					"diffRatio": 0.015877,
 					"expected": "unstyled/scenarios-focus-elements-component-tabs.expected.png",
 					"actual": "unstyled/scenarios-focus-elements-component-tabs.actual.png",
 					"diff": "unstyled/scenarios-focus-elements-component-tabs.diff.png"
@@ -18476,9 +18739,14 @@
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-tabs",
-					"route": "scenarios-label-lang",
-					"status": "unchanged",
-					"hash": "sha256:e9cc8c58b962b2b02c3a8cac392c40e068ea3f070cd1bb6f3d5046dc22110796"
+					"route": "scenarios/label-lang",
+					"status": "changed",
+					"hash": "sha256:c8b693ebfb53bf90cceca12902dcefc59678e427478b1046a80862f5f0793199",
+					"diffPixels": 822,
+					"diffRatio": 0.023785,
+					"expected": "unstyled/scenarios-label-lang--label-lang-tabs.expected.png",
+					"actual": "unstyled/scenarios-label-lang--label-lang-tabs.actual.png",
+					"diff": "unstyled/scenarios-label-lang--label-lang-tabs.diff.png"
 				},
 				{
 					"name": "scenarios-label-lang--label-lang-toolbar",
@@ -18736,13 +19004,18 @@
 					"name": "table-sticky-cols--sticky-cols",
 					"route": "table-sticky-cols",
 					"status": "unchanged",
-					"hash": "sha256:8cc546428dd0878d1a900c2976dde9ba81cd5db4887d9bbb047342a4e7cced64"
+					"hash": "sha256:aa43b2bda5199705df2b93f3aa704e06ab3bb273ec17f6d016345856a734ff7e"
 				},
 				{
 					"name": "table-sticky-header--sticky-header",
-					"route": "table-sticky-header",
-					"status": "unchanged",
-					"hash": "sha256:5c080ef46bfbe22381169075d7ce0a843e9c708725cb39f9e77a80b9becedd22"
+					"route": "table/sticky-header",
+					"status": "changed",
+					"hash": "sha256:ec136c390a05a5d9f176eb0a660a62d2154921fb7bcd54adabc22a16dada5e95",
+					"diffPixels": 768,
+					"diffRatio": 0.000063,
+					"expected": "unstyled/table-sticky-header--sticky-header.expected.png",
+					"actual": "unstyled/table-sticky-header--sticky-header.actual.png",
+					"diff": "unstyled/table-sticky-header--sticky-header.diff.png"
 				},
 				{
 					"name": "table-variant--variant-no",
@@ -18764,34 +19037,47 @@
 				},
 				{
 					"name": "tabs-basic--icons",
-					"route": "tabs-basic",
-					"status": "unchanged",
-					"hash": "sha256:531f6b75c028e9c58c0c4eae5952fbe6e4a1b9e69b40b41fe1348aaaf7d85711"
+					"route": "tabs/basic",
+					"status": "changed",
+					"hash": "sha256:abfeab1ebd128fed8f51fe412a7a11fe51319f631bab7297a95c5abc7f42a615",
+					"diffPixels": 1069,
+					"diffRatio": 0.012318,
+					"expected": "unstyled/tabs-basic--icons.expected.png",
+					"actual": "unstyled/tabs-basic--icons.actual.png",
+					"diff": "unstyled/tabs-basic--icons.diff.png"
 				},
 				{
 					"name": "tabs-basic--regular",
-					"route": "tabs-basic",
-					"status": "unchanged",
-					"hash": "sha256:e81327d71e70f10bbc64d2ceeb3ed901c6dd4faa02c646db6a9304ff92cfbdac"
-				},
-				{
-					"name": "tabs-basic--sticky",
 					"route": "tabs/basic",
-					"status": "added",
-					"hash": "sha256:ac6857f3bf0fe4f4f102a1dd1171be0a8636f159eee8239d753ccb3f2bc9f318",
-					"actual": "unstyled/tabs-basic--sticky.actual.png"
+					"status": "changed",
+					"hash": "sha256:c13e9f04e3a3a8e1061aae4b346848938afbf14c3e878f1c4f1aec0c9cae21c9",
+					"diffPixels": 966,
+					"diffRatio": 0.012967,
+					"expected": "unstyled/tabs-basic--regular.expected.png",
+					"actual": "unstyled/tabs-basic--regular.actual.png",
+					"diff": "unstyled/tabs-basic--regular.diff.png"
 				},
 				{
 					"name": "tabs-create-button--create-button",
-					"route": "tabs-create-button",
-					"status": "unchanged",
-					"hash": "sha256:2099d2b6a7325823a75c10d2368a9a2955bb5cb9bdbe445079f9f2ae606995e9"
+					"route": "tabs/create-button",
+					"status": "changed",
+					"hash": "sha256:3915fd1aaf87a7c01b4f684b6e7ae2458031e28c587c58051e9da8bbd8893a07",
+					"diffPixels": 611,
+					"diffRatio": 0.00704,
+					"expected": "unstyled/tabs-create-button--create-button.expected.png",
+					"actual": "unstyled/tabs-create-button--create-button.actual.png",
+					"diff": "unstyled/tabs-create-button--create-button.diff.png"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
-					"route": "tabs-icons-only",
-					"status": "unchanged",
-					"hash": "sha256:b7f8c52d9925b3ddec36a440abc1c0c121e84eee4badd708d46b3acbd81504fd"
+					"route": "tabs/icons-only",
+					"status": "changed",
+					"hash": "sha256:a2297794ffeccb76c661651efc35997a928cd10f0994259fccd7d36b15ec7ea0",
+					"diffPixels": 105,
+					"diffRatio": 0.004433,
+					"expected": "unstyled/tabs-icons-only--icons-only.expected.png",
+					"actual": "unstyled/tabs-icons-only--icons-only.actual.png",
+					"diff": "unstyled/tabs-icons-only--icons-only.diff.png"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -18891,9 +19177,14 @@
 				},
 				{
 					"name": "toast-configurator",
-					"route": "toast-configurator",
-					"status": "unchanged",
-					"hash": "sha256:ff8370d7c658c65736321e276b32f4626918add8fd6d0d79a960055c6647c053"
+					"route": "toast/configurator",
+					"status": "changed",
+					"hash": "sha256:25ce3f000b04345b690d6f67bb5e1f3e375b1702b26c6ba55e38539a28a8ad91",
+					"diffPixels": 5828,
+					"diffRatio": 0.012951,
+					"expected": "unstyled/toast-configurator.expected.png",
+					"actual": "unstyled/toast-configurator.actual.png",
+					"diff": "unstyled/toast-configurator.diff.png"
 				},
 				{
 					"name": "toolbar-basic--horizontal",
