@@ -1,6 +1,5 @@
 import { KolSplitButtonTag } from '../../core/component-names';
 import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
-
 import { KolSplitButton } from './component';
 
 executeSnapshotTests(

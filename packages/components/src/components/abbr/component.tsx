@@ -31,7 +31,8 @@ export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentIn
 	 *
 	 * @design content zum Beispiel
 	 */
-	@Prop() public _label?: LabelLangSegmentsPropType = undefined;
+	@Prop()
+	public _label?: LabelLangSegmentsPropType = undefined;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {

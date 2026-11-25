@@ -1,4 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
+
 import { adjustHeightProp } from './adjust-height';
 import { hasCounterProp } from './has-counter';
 import { inputTextTypeProp } from './input-text-type';

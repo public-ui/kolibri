@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+
 import type * as SchemaModule from '../../schema';
 
 jest.mock('../../schema', () => {

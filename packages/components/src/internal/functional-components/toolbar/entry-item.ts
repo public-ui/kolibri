@@ -1,6 +1,5 @@
 import { getFeatureFlag } from 'adopted-style-sheets';
 
-import { propagateResetEventToForm, propagateSubmitEventToForm } from '../../../components/form/controller';
 import type { ToolbarItemPropType } from '../../../schema';
 import { setEventTarget } from '../../../schema';
 import { createUniqueId } from '../../../utils/dev.utils';
@@ -9,6 +8,7 @@ import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { BaseWebComponent } from '../base-web-component';
 import type { ButtonApi } from '../button/api';
 import { resolveButtonProps } from '../button/resolve-props';
+import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { LinkApi } from '../link/api';
 import type { EmbeddedLinkProps } from '../link/resolve-props';
@@ -63,7 +63,7 @@ export type ToolbarHRItem = ToolbarItemBase & {
  * only where the entry leaves the prop unset, and an entry's own `_tabIndex` wins over the roving
  * tabindex.
  */
-export const createToolbarItem = (
+export const createToolbarEntryItem = (
 	item: ToolbarItemPropType,
 	getFlagHost: () => HTMLElement | undefined,
 ): ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem => {

@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { getFeatureFlag } from 'adopted-style-sheets';
+
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { BreadcrumbApi } from '../../internal/functional-components/breadcrumb/api';
 import { breadcrumbPropsConfig } from '../../internal/functional-components/breadcrumb/api';
@@ -8,12 +9,12 @@ import { BreadcrumbFC } from '../../internal/functional-components/breadcrumb/co
 import type { BreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import { createBreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { UnsubscribeFunction } from '../../internal/functional-components/link/aria-current-service';
+import { onLocationChange } from '../../internal/functional-components/link/aria-current-service';
 import { breadcrumbLinksProp, labelProp } from '../../internal/props';
 import type { BreadcrumbLinkProps, LabelPropType, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks } from '../../schema';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
-import type { UnsubscribeFunction } from '../link/ariaCurrentService';
-import { onLocationChange } from '../link/ariaCurrentService';
 
 /**
  * The **Breadcrumb** component can be used to display the path to the current position of a web page within a hierarchical structure.
@@ -26,9 +27,11 @@ import { onLocationChange } from '../link/ariaCurrentService';
 	shadow: true,
 })
 export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements WebComponentInterface<BreadcrumbApi> {
-	@Element() protected readonly host?: HTMLKolBreadcrumbElement;
+	@Element()
+	protected readonly host?: HTMLKolBreadcrumbElement;
 
-	@State() public linkItems: BreadcrumbLinkItem[] = [];
+	@State()
+	public linkItems: BreadcrumbLinkItem[] = [];
 
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
@@ -43,7 +46,8 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements We
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop()
+	public _label!: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
@@ -53,7 +57,8 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements We
 	/**
 	 * Defines the list of links combined with their labels to render.
 	 */
-	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
+	@Prop()
+	public _links!: Stringified<BreadcrumbLinkProps[]>;
 
 	@Watch('_links')
 	public watchLinks(value?: Stringified<BreadcrumbLinkProps[]>): void {
@@ -62,7 +67,7 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements We
 
 	public componentWillLoad(): void {
 		this.applyLabel(this._label, true);
-		this.applyLinks(this._links);
+		this.watchLinks(this._links);
 
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.linkItems = this.linkItems.map((item) => {

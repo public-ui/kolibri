@@ -1,5 +1,6 @@
 import { cloneDeep, isObject } from 'lodash-es';
-import { devWarning } from '../../../schema';
+
+import { devWarning } from '../../../schema/utils/a11y.tipps';
 import { normalizeCallbacksObject } from './normalizers';
 
 function safeStringify(value: unknown): string {

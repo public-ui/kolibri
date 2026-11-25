@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+
 import { clampPage, getPageCount, getPageItems, getVisibleRange, resolvePageSize } from './model';
 
 const options = [

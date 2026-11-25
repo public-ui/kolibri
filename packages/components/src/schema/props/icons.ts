@@ -1,7 +1,6 @@
 import type { AnyIconFontClass, KoliBriCustomIcon, KoliBriHorizontalIconsProp, KoliBriIconsProp, KoliBriIconsState } from '../types';
 import type { Stringified } from '../types/common';
 import { isObject, isString, isStyle } from '../validators';
-
 import type { AlignPropType } from './align';
 
 /* types */

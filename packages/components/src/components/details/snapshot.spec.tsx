@@ -1,6 +1,5 @@
 import { KolDetailsTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolDetails } from './component';
 
 executeSnapshotTests(

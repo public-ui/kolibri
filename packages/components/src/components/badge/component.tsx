@@ -40,11 +40,14 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 	shadow: true,
 })
 export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableElement, WebComponentInterface<BadgeApi> {
-	@Element() protected readonly host?: HTMLKolBadgeElement;
+	@Element()
+	protected readonly host?: HTMLKolBadgeElement;
 
-	@State() public labelId: string = createUniqueId('badge-label');
+	@State()
+	public labelId: string = createUniqueId('badge-label');
 
-	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
+	@State()
+	public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 
@@ -69,7 +72,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 	 *
 	 * @design variant black=#000 blue=#06539e red=#ae0000
 	 */
-	@Prop() public _color?: Stringified<PropColor> = '#000';
+	@Prop()
+	public _color?: Stringified<PropColor> = '#000';
 
 	@Watch('_color')
 	public watchColor(value?: Stringified<PropColor>): void {
@@ -81,7 +85,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 	 *
 	 * @design toggle kolicon-house
 	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp> = undefined;
+	@Prop()
+	public _icons?: Stringified<KoliBriIconsProp> = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
@@ -93,7 +98,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 	 *
 	 * @design content Badge
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -103,7 +109,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {

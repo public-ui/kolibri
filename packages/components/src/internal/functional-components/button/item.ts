@@ -1,12 +1,12 @@
 import type { JSXBase } from '@stencil/core/internal';
 
-import { propagateResetEventToForm, propagateSubmitEventToForm } from '../../../components/form/controller';
 import type { InternalButtonProps, StencilUnknown } from '../../../schema';
 import { setEventTarget } from '../../../schema';
 import { createUniqueId } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { BaseWebComponent } from '../base-web-component';
+import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import type { FunctionalComponentProps } from '../generic-types';
 import { TooltipBehavior } from '../tooltip/behavior';
 import type { ButtonApi } from './api';

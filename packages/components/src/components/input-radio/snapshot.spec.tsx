@@ -1,6 +1,5 @@
 import { KolInputRadioTag } from '../../core/component-names';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
-
 import { KolInputRadio } from './component';
 
 const options = [

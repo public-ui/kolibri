@@ -1,4 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
+
 import type { RadioOption, SelectOption } from '../../../schema';
 import { fillKeyOptionMap, normalizeOptionValues } from './options';
 

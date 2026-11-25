@@ -28,7 +28,8 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements WebCompo
 	 *
 	 * @design content Überschrift
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -40,7 +41,8 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements WebCompo
 	 *
 	 * @design variant
 	 */
-	@Prop() public _level?: HeadingLevel = 0;
+	@Prop()
+	public _level?: HeadingLevel = 0;
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
@@ -52,7 +54,8 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements WebCompo
 	 *
 	 * @design toggle Unterzeile
 	 */
-	@Prop() public _secondaryHeadline?: SecondaryHeadlinePropType = undefined;
+	@Prop()
+	public _secondaryHeadline?: SecondaryHeadlinePropType = undefined;
 
 	@Watch('_secondaryHeadline')
 	public watchSecondaryHeadline(value?: SecondaryHeadlinePropType): void {
@@ -60,9 +63,9 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements WebCompo
 	}
 
 	public componentWillLoad(): void {
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		levelProp.apply(this._level, (v) => this.setRenderProp('level', v));
-		secondaryHeadlineProp.apply(this._secondaryHeadline, (v) => this.setRenderProp('secondaryHeadline', v));
+		this.watchLabel(this._label);
+		this.watchLevel(this._level);
+		this.watchSecondaryHeadline(this._secondaryHeadline);
 	}
 
 	public render(): JSX.Element {

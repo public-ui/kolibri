@@ -1,5 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, Watch } from '@stencil/core';
+
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SpinApi } from '../../internal/functional-components/spin/api';
@@ -19,6 +20,17 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	protected readonly propsConfig: PropsConfigShape = spinPropsConfig;
 
 	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop()
+	public _label?: LabelPropType = undefined;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+	}
+
+	/**
 	 * Makes the element show up.
 	 *
 	 * @design sample true
@@ -32,20 +44,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	}
 
 	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop()
-	public _label?: LabelPropType = undefined;
-
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-	}
-
-	/**
 	 * Defines which variant should be used for presentation.
-	 *
-	 * @design variant
 	 */
 	@Prop()
 	public _variant?: SpinVariantType = undefined;
@@ -56,9 +55,9 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	}
 
 	public componentWillLoad(): void {
-		showProp.apply(this._show, (v) => this.setRenderProp('show', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v), this.isRequired('label'));
-		variantSpinProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
+		this.watchLabel(this._label);
+		this.watchShow(this._show);
+		this.watchVariant(this._variant);
 	}
 
 	public render(): JSX.Element {

@@ -1,5 +1,6 @@
 import { type FunctionalComponent as FC, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+
 import type { AlertPropType, IdPropType, MsgPropType, Stringified } from '../../../schema';
 import { normalizeMsg } from '../../../schema';
 import clsx from '../../../utils/clsx';

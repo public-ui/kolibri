@@ -1,6 +1,5 @@
 import { KolLinkButtonTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolLinkButton } from './component';
 
 const baseObj = { _href: 'https://example.com', _icons: 'codicon codicon-home', _label: 'Label', _target: 'self' };

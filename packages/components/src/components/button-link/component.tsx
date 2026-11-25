@@ -51,9 +51,11 @@ import { BaseButtonWebComponent } from '../button/base';
 	shadow: true,
 })
 export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkWebComponentInterface, ClickableElement, FocusableElement {
-	@Element() protected readonly host?: HTMLKolButtonLinkElement;
+	@Element()
+	protected readonly host?: HTMLKolButtonLinkElement;
 
-	@State() public ariaDescriptionId: string = createUniqueId('aria-description');
+	@State()
+	public ariaDescriptionId: string = createUniqueId('aria-description');
 
 	public constructor() {
 		super();
@@ -63,7 +65,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -73,7 +76,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
-	@Prop() public _ariaControls?: AriaControlsPropType = undefined;
+	@Prop()
+	public _ariaControls?: AriaControlsPropType = undefined;
 
 	@Watch('_ariaControls')
 	public watchAriaControls(value?: AriaControlsPropType): void {
@@ -83,7 +87,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: AriaDescriptionPropType = undefined;
+	@Prop()
+	public _ariaDescription?: AriaDescriptionPropType = undefined;
 
 	@Watch('_ariaDescription')
 	public watchAriaDescription(value?: AriaDescriptionPropType): void {
@@ -93,7 +98,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
-	@Prop() public _ariaExpanded?: AriaExpandedPropType = undefined;
+	@Prop()
+	public _ariaExpanded?: AriaExpandedPropType = undefined;
 
 	@Watch('_ariaExpanded')
 	public watchAriaExpanded(value?: AriaExpandedPropType): void {
@@ -103,7 +109,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
-	@Prop() public _ariaSelected?: AriaSelectedPropType = undefined;
+	@Prop()
+	public _ariaSelected?: AriaSelectedPropType = undefined;
 
 	@Watch('_ariaSelected')
 	public watchAriaSelected(value?: AriaSelectedPropType): void {
@@ -113,7 +120,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -124,7 +132,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -134,7 +143,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsPropType = undefined;
+	@Prop()
+	public _icons?: IconsPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsPropType): void {
@@ -144,7 +154,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: InlinePropType = true;
+	@Prop()
+	public _inline?: InlinePropType = true;
 
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {
@@ -154,7 +165,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `''` to enable the expert slot.
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -164,7 +176,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -174,7 +187,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines the callback functions for button events.
 	 */
-	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown> = undefined;
+	@Prop()
+	public _on?: ButtonCallbacksPropType<StencilUnknown> = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
@@ -186,7 +200,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	 *
 	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
-	@Prop() public _role?: AlternativeButtonLinkRolePropType = undefined;
+	@Prop()
+	public _role?: AlternativeButtonLinkRolePropType = undefined;
 
 	@Watch('_role')
 	public watchRole(): void {
@@ -197,7 +212,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -208,7 +224,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -218,7 +235,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -228,7 +246,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: ButtonTypePropType = 'button';
+	@Prop()
+	public _type?: ButtonTypePropType = 'button';
 
 	@Watch('_type')
 	public watchType(value?: ButtonTypePropType): void {
@@ -238,7 +257,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop() public _value?: StencilUnknown = undefined;
+	@Prop()
+	public _value?: StencilUnknown = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StencilUnknown): void {
@@ -248,7 +268,8 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkW
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

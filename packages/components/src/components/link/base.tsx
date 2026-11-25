@@ -5,6 +5,8 @@ import { BaseWebComponent } from '../../internal/functional-components/base-web-
 import type { PropsConfigShape } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
 import { linkPropsConfig } from '../../internal/functional-components/link/api';
+import type { UnsubscribeFunction } from '../../internal/functional-components/link/aria-current-service';
+import { onLocationChange } from '../../internal/functional-components/link/aria-current-service';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import {
@@ -56,8 +58,6 @@ import type {
 import { setEventTarget } from '../../schema';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { UnsubscribeFunction } from './ariaCurrentService';
-import { onLocationChange } from './ariaCurrentService';
 
 /**
  * Shared orchestrator implementation for every custom element that renders `LinkFC`:

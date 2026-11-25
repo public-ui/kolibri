@@ -187,7 +187,7 @@ executeSnapshotTests(TAG, [KolMyComponent], [{ _name: 'Test' }, { _name: '' }]);
 
 Der Tag-Name typisiert die Prop-Varianten: Sie werden gegen die `@Prop`-Deklarationen des Elements geprüft (`ElementProps<typeof TAG>`), ein eigener Props-Typ entfällt.
 
-**Interaction-Test** (`interaction.e2e.ts`):
+**Interaction-Test** (`<component>.e2e.ts`):
 
 ```typescript
 import { expect } from '@playwright/test';

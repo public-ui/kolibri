@@ -1,5 +1,17 @@
 import type { JSX, VNode } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
+import { InputFC } from '../../internal/functional-components/form-field/input';
+import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
+import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { InputTextApi } from '../../internal/functional-components/input-text/api';
+import { inputTextPropsConfig } from '../../internal/functional-components/input-text/api';
+import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
+import { inputTextTypeProp, spellCheckProp, suggestionsProp } from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -36,18 +48,6 @@ import type {
 	TouchedPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-
-import { translate } from '../../i18n';
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { createButtonItem } from '../../internal/functional-components/button/item';
-import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC } from '../../internal/functional-components/form-field/input';
-import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputTextApi } from '../../internal/functional-components/input-text/api';
-import { inputTextPropsConfig } from '../../internal/functional-components/input-text/api';
-import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { inputTextTypeProp, spellCheckProp, suggestionsProp } from '../../internal/props';
 import { bem } from '../../schema/bem-registry';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
@@ -70,14 +70,18 @@ const textBem = bem.forBlock('kol-input-text');
 	shadow: true,
 })
 export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implements ClickableElement, FocusableElement, WebComponentInterface<InputTextApi> {
-	@Element() protected readonly host?: HTMLKolInputTextElement;
+	@Element()
+	protected readonly host?: HTMLKolInputTextElement;
 
-	@State() public id = createUniqueId('input-text');
+	@State()
+	public id = createUniqueId('input-text');
 
 	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
+	@State()
+	public infoPopoverOpen = false;
 
-	@State() public inputHasFocus = false;
+	@State()
+	public inputHasFocus = false;
 
 	private readonly clearButton = createButtonItem(() => this.host);
 
@@ -93,7 +97,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: AccessKeyPropType = undefined;
+	@Prop()
+	public _accessKey?: AccessKeyPropType = undefined;
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
@@ -101,21 +106,12 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
-	 * Defines whether the input can be auto-completed.
-	 */
-	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
-
-	@Watch('_autoComplete')
-	public watchAutoComplete(value?: AutoCompletePropType): void {
-		this.applyAutoComplete(value);
-	}
-
-	/**
 	 * References an external element by ID that provides accessible details for this input.
 	 *
 	 * Behavior and screen reader support: see `AriaDetailsPropType` and KNOWN_ISSUES.md.
 	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType = undefined;
+	@Prop()
+	public _ariaDetails?: AriaDetailsPropType = undefined;
 
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
@@ -123,23 +119,14 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
-	 * Shows a character counter for the input element.
+	 * Defines whether the input can be auto-completed.
 	 */
-	@Prop() public _hasCounter?: HasCounterPropType = false;
+	@Prop()
+	public _autoComplete?: AutoCompletePropType = 'off';
 
-	@Watch('_hasCounter')
-	public watchHasCounter(value?: HasCounterPropType): void {
-		this.applyHasCounter(value);
-	}
-
-	/**
-	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
-	 */
-	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
-
-	@Watch('_maxLengthBehavior')
-	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
-		this.applyMaxLengthBehavior(value);
+	@Watch('_autoComplete')
+	public watchAutoComplete(value?: AutoCompletePropType): void {
+		this.applyAutoComplete(value);
 	}
 
 	/**
@@ -147,7 +134,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	 *
 	 * @design state disabled
 	 */
-	@Prop() public _disabled?: DisabledPropType = false;
+	@Prop()
+	public _disabled?: DisabledPropType = false;
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
@@ -155,20 +143,22 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * Shows a character counter for the input element.
 	 */
-	@Prop() public _hideMsg?: HideMsgPropType = false;
+	@Prop()
+	public _hasCounter?: HasCounterPropType = false;
 
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: HideMsgPropType): void {
-		this.applyHideMsg(value);
+	@Watch('_hasCounter')
+	public watchHasCounter(value?: HasCounterPropType): void {
+		this.applyHasCounter(value);
 	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
 	 */
-	@Prop() public _hideLabel?: HideLabelPropType = false;
+	@Prop()
+	public _hideLabel?: HideLabelPropType = false;
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
@@ -176,11 +166,23 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 */
+	@Prop()
+	public _hideMsg?: HideMsgPropType = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: HideMsgPropType): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
 	 * Defines the hint text.
 	 *
 	 * @design content Hinweistext
 	 */
-	@Prop() public _hint?: HintPropType = '';
+	@Prop()
+	public _hint?: HintPropType = '';
 
 	@Watch('_hint')
 	public watchHint(value?: HintPropType): void {
@@ -190,7 +192,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines the icon classnames.
 	 */
-	@Prop() public _icons?: IconsHorizontalPropType = undefined;
+	@Prop()
+	public _icons?: IconsHorizontalPropType = undefined;
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
@@ -200,7 +203,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines the informational popover after the label.
 	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
+	@Prop()
+	public _infoPopover?: FormFieldLabelInfoPopoverProps = undefined;
 
 	@Watch('_infoPopover')
 	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
@@ -212,7 +216,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	 *
 	 * @design content Vorname
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop()
+	public _label!: LabelWithExpertSlotPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
@@ -222,7 +227,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines the maximum number of input characters.
 	 */
-	@Prop() public _maxLength?: MaxLengthPropType = undefined;
+	@Prop()
+	public _maxLength?: MaxLengthPropType = undefined;
 
 	@Watch('_maxLength')
 	public watchMaxLength(value?: MaxLengthPropType): void {
@@ -230,11 +236,23 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop()
+	public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
+
+	@Watch('_maxLengthBehavior')
+	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.applyMaxLengthBehavior(value);
+	}
+
+	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 *
 	 * @design variant
 	 */
-	@Prop() public _msg?: Stringified<MsgPropType> = undefined;
+	@Prop()
+	public _msg?: Stringified<MsgPropType> = undefined;
 
 	@Watch('_msg')
 	public watchMsg(value?: Stringified<MsgPropType>): void {
@@ -244,7 +262,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines the technical name of an input field.
 	 */
-	@Prop() public _name?: NamePropType = undefined;
+	@Prop()
+	public _name?: NamePropType = undefined;
 
 	@Watch('_name')
 	public watchName(value?: NamePropType): void {
@@ -254,7 +273,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines the callback functions for input events.
 	 */
-	@Prop() public _on?: InputTypeOnDefault = undefined;
+	@Prop()
+	public _on?: InputTypeOnDefault = undefined;
 
 	@Watch('_on')
 	public watchOn(value?: InputTypeOnDefault): void {
@@ -264,7 +284,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines a validation pattern for the input field.
 	 */
-	@Prop() public _pattern?: PatternPropType = undefined;
+	@Prop()
+	public _pattern?: PatternPropType = undefined;
 
 	@Watch('_pattern')
 	public watchPattern(value?: PatternPropType): void {
@@ -274,7 +295,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
-	@Prop() public _placeholder?: PlaceholderPropType = undefined;
+	@Prop()
+	public _placeholder?: PlaceholderPropType = undefined;
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
@@ -286,7 +308,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	 *
 	 * @design state readonly
 	 */
-	@Prop() public _readOnly?: ReadOnlyPropType = false;
+	@Prop()
+	public _readOnly?: ReadOnlyPropType = false;
 
 	@Watch('_readOnly')
 	public watchReadOnly(value?: ReadOnlyPropType): void {
@@ -298,7 +321,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	 *
 	 * @design state required
 	 */
-	@Prop() public _required?: RequiredPropType = false;
+	@Prop()
+	public _required?: RequiredPropType = false;
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
@@ -308,7 +332,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: ShortKeyPropType = undefined;
+	@Prop()
+	public _shortKey?: ShortKeyPropType = undefined;
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
@@ -316,9 +341,21 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 */
+	@Prop()
+	public _smartButton?: Stringified<InternalButtonProps> = undefined;
+
+	@Watch('_smartButton')
+	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
+		this.applySmartButton(value);
+	}
+
+	/**
 	 * Defines whether the browser should check the spelling and grammar.
 	 */
-	@Prop() public _spellCheck?: SpellCheckPropType = undefined;
+	@Prop()
+	public _spellCheck?: SpellCheckPropType = undefined;
 
 	@Watch('_spellCheck')
 	public watchSpellCheck(value?: SpellCheckPropType): void {
@@ -328,7 +365,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Suggestions to provide for the input.
 	 */
-	@Prop() public _suggestions?: SuggestionsPropType = undefined;
+	@Prop()
+	public _suggestions?: SuggestionsPropType = undefined;
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
@@ -336,20 +374,11 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	}
 
 	/**
-	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
-	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps> = undefined;
-
-	@Watch('_smartButton')
-	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
-		this.applySmartButton(value);
-	}
-
-	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
+	@Prop()
+	public _syncValueBySelector?: SyncValueBySelectorPropType = undefined;
 
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
@@ -359,7 +388,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Prop()
+	public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
@@ -371,7 +401,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	 *
 	 * @design sample true
 	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: TouchedPropType = false;
+	@Prop({ mutable: true, reflect: true })
+	public _touched?: TouchedPropType = false;
 
 	@Watch('_touched')
 	public watchTouched(value?: TouchedPropType): void {
@@ -381,7 +412,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: InputTextTypePropType = 'text';
+	@Prop()
+	public _type?: InputTextTypePropType = 'text';
 
 	@Watch('_type')
 	public watchType(value?: InputTextTypePropType): void {
@@ -391,7 +423,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: StringValuePropType = undefined;
+	@Prop({ mutable: true, reflect: true })
+	public _value?: StringValuePropType = undefined;
 
 	@Watch('_value')
 	public watchValue(value?: StringValuePropType): void {
@@ -401,7 +434,8 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = undefined;
+	@Prop()
+	public _variant?: VariantClassNamePropType = undefined;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
@@ -495,34 +529,34 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 	public componentWillLoad(): void {
 		this.unsetRenderProp('smartButton');
 		this._touched = this._touched === true;
-		this.watchAriaDetails(this._ariaDetails);
-		this.watchName(this._name);
-		this.watchSyncValueBySelector(this._syncValueBySelector);
-		this.watchTouched(this._touched);
 		this.watchAccessKey(this._accessKey);
-		this.watchMsg(this._msg);
+		this.watchAriaDetails(this._ariaDetails);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchDisabled(this._disabled);
-		this.watchHideMsg(this._hideMsg);
+		this.watchHasCounter(this._hasCounter);
 		this.watchHideLabel(this._hideLabel);
+		this.watchHideMsg(this._hideMsg);
 		this.watchHint(this._hint);
+		this.watchIcons(this._icons);
 		this.watchInfoPopover(this._infoPopover);
 		this.watchLabel(this._label);
+		this.watchMaxLengthBehavior(this._maxLengthBehavior);
+		this.watchMsg(this._msg);
+		this.watchName(this._name);
+		this.watchOn(this._on);
 		this.watchShortKey(this._shortKey);
 		this.watchSmartButton(this._smartButton);
-		this.watchOn(this._on);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
 		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchTouched(this._touched);
 		this.watchVariant(this._variant);
-		this.watchIcons(this._icons);
-		this.watchAutoComplete(this._autoComplete);
-		this.watchHasCounter(this._hasCounter);
-		this.watchMaxLengthBehavior(this._maxLengthBehavior);
 		this.initMaxLength(this._maxLength);
 		this.watchPattern(this._pattern);
 		this.watchPlaceholder(this._placeholder);
 		this.watchReadOnly(this._readOnly);
 		this.watchRequired(this._required);
-		this.watchSuggestions(this._suggestions);
 		this.watchSpellCheck(this._spellCheck);
+		this.watchSuggestions(this._suggestions);
 		this.watchType(this._type);
 		this.initValue(this._value);
 		this.initHasValue();
