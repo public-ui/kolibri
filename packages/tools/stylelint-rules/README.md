@@ -126,7 +126,7 @@ Most rules decide by the path of the linted file whether they apply. A file outs
 | `kolibri/theme-allowed-layer-names`             | files whose path contains `pathPattern` (default `/packages/themes/`)                                                             |
 | `kolibri/theme-require-global-layer`            | files named `global.scss`                                                                                                         |
 
-The defaults of `pathPattern` match the monorepo as well; a theme in its own repository sets `pathPattern` to its own folders, as the quick start shows.
+The default `pathPattern` of `kolibri/theme-allowed-layer-names` matches the themes of the monorepo; a theme in its own repository sets `pathPattern` to its own folders, as the quick start shows.
 
 ## Rules for themes
 
