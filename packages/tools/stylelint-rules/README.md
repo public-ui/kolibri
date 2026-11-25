@@ -108,7 +108,7 @@ The rules are written for three kinds of packages. The table lists, for each of 
 | `kolibri/theme-allowed-layer-names`             | –                                                                                                            | ✓ (default `pathPattern`)                                                     | ✓ `{ "pathPattern": "/src/" }`                                                |
 | `kolibri/theme-require-global-layer`            | –                                                                                                            | ✓                                                                             | ✓                                                                             |
 
-The rules `kolibri/common-component-css-must-be-in-layer` and `kolibri/component-allowed-layer-names` are bound to the path `/packages/components/` and serve the components package of the monorepo only. The column _Theme in its own repository_ is the configuration of the [quick start](#quick-start-for-a-theme).
+The column _Theme in its own repository_ is the configuration of the [quick start](#quick-start-for-a-theme).
 
 ## Where a rule applies
 
@@ -126,7 +126,7 @@ Most rules decide by the path of the linted file whether they apply. A file outs
 | `kolibri/theme-allowed-layer-names`             | files whose path contains `pathPattern` (default `/packages/themes/`)                                                             |
 | `kolibri/theme-require-global-layer`            | files named `global.scss`                                                                                                         |
 
-The rules with `/packages/components/` in their path serve the KoliBri monorepo itself. The defaults of `pathPattern` match the monorepo as well; a theme in its own repository sets `pathPattern` to its own folders, as the quick start shows.
+The defaults of `pathPattern` match the monorepo as well; a theme in its own repository sets `pathPattern` to its own folders, as the quick start shows.
 
 ## Rules for themes
 
