@@ -1,0 +1,1 @@
+import{k as e,l as t}from"./props-from-config-Dr6e6ZFX-B4z7vraw.js";var n=t(`value`,void 0,e);export{n as t};
