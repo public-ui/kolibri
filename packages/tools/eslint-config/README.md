@@ -272,7 +272,7 @@ Option `directories` (`string[]`) lists the directory path patterns, with forwar
 
 ## Versioning
 
-The package is released together with all KoliBri packages and carries the same version. Its rules follow the conventions of that KoliBri version; a new rule or a stricter default can arrive with a minor version, so pin the version you lint against.
+The package is released together with all KoliBri packages and carries the same version. Its rules follow the conventions of that KoliBri version, so use the version that matches your `@public-ui/components`.
 
 ## Related
 

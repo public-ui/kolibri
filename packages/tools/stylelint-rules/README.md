@@ -11,19 +11,21 @@ Custom Stylelint rules that keep the SCSS of KoliBri components and themes insid
 
 ## Motivation
 
-KoliBri styles its web components with adopted style sheets in five cascade layers. Each layer has one owner, and the order of the layers decides which rule wins:
+KoliBri styles its web components with adopted style sheets in seven cascade layers. Each layer has one owner, and the order of the layers decides which rule wins:
 
-| Order | Layer                 | Owner                             | Content                                                  |
-| :---: | --------------------- | --------------------------------- | -------------------------------------------------------- |
-|   1   | `kol-a11y`            | `@public-ui/components`           | Accessibility preset for all components                  |
-|   2   | `kol-global`          | `@public-ui/components`           | Basis layout shared by all components                    |
-|   3   | `kol-component`       | `@public-ui/components`           | Basis layout of one component                            |
-|   4   | `kol-theme-global`    | your theme (`global.scss`)        | Design tokens, fonts and colors shared by all components |
-|   5   | `kol-theme-component` | your theme (one file a component) | The look of one component                                |
+| Order | Layer                     | Owner                             | Content                                                             |
+| :---: | ------------------------- | --------------------------------- | ------------------------------------------------------------------- |
+|   1   | `kol-a11y`                | `@public-ui/components`           | Accessibility preset for all components                             |
+|   2   | `kol-global`              | `@public-ui/components`           | Basis layout shared by all components                               |
+|   3   | `kol-component`           | `@public-ui/components`           | Basis layout of one component                                       |
+|   4   | `kol-theme-global`        | your theme (`global.scss`)        | Design tokens, fonts and colors shared by all components            |
+|   5   | `kol-theme-component`     | your theme (one file a component) | The look of one component                                           |
+|   6   | `kol-forced-colors`       | `@public-ui/components`           | Visibility of structure and states in forced colors (high contrast) |
+|   7   | `kol-theme-forced-colors` | your theme                        | Theme additions for forced colors                                   |
 
 CSS outside a layer beats every layered rule, whatever its specificity. A single unlayered selector in a theme can therefore override the accessibility preset by accident, and a layer with a wrong name ends up in the wrong place of the cascade. These rules catch both while you write the SCSS:
 
-- All CSS of a theme stands inside `@layer kol-theme-global` or `@layer kol-theme-component`.
+- All CSS of a theme stands inside a theme layer: `kol-theme-global`, `kol-theme-component` or `kol-theme-forced-colors`.
 - Mixins, helpers and partials stay layer-agnostic, so the file that includes them decides the layer.
 - A theme styles the component through `:host`, never through the page-wide `:root`.
 - Selectors are flat BEM classes, without `@at-root` or `$root: &` gymnastics.
@@ -155,7 +157,7 @@ All CSS of `global.scss` stands inside `@layer kol-theme-global`, and the file u
 
 ### `kolibri/common-layer-name-convention`
 
-Every `@layer` in the theme sources is named `kol-theme-global` or `kol-theme-component`. A different name, such as a typo, would create a new layer at an unexpected place in the cascade. The rule always reports a **warning**, whatever severity you configure.
+Every `@layer` in the theme sources is named `kol-theme-global` or `kol-theme-component`. A different name, such as a typo, would create a new layer at an unexpected place in the cascade. The rule always reports a **warning**, whatever severity you configure. It does not know `kol-theme-forced-colors`, so a theme that uses this layer gets a warning for it.
 
 ```scss
 // ❌
