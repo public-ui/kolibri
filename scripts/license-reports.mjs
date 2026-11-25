@@ -33,8 +33,10 @@ const reportTargets = [
 	{ name: 'theme-ecl', packageJsonPath: 'packages/themes/ecl/package.json' },
 	{ name: 'theme-kern', packageJsonPath: 'packages/themes/kern/package.json' },
 	{ name: 'themes', packageJsonPath: 'packages/themes/package.json' },
+	{ name: 'tools-eslint-config', packageJsonPath: 'packages/tools/eslint-config/package.json' },
 	{ name: 'tools-kolibri-cli', packageJsonPath: 'packages/tools/kolibri-cli/package.json' },
 	{ name: 'tools-mcp', packageJsonPath: 'packages/tools/mcp/package.json' },
+	{ name: 'tools-stylelint-rules', packageJsonPath: 'packages/tools/stylelint-rules/package.json' },
 	{ name: 'tools-visual-tests', packageJsonPath: 'packages/tools/visual-tests/package.json' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
