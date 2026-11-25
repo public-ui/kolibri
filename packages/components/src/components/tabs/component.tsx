@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
-
 import { getFeatureFlag } from 'adopted-style-sheets';
+
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
@@ -26,7 +26,6 @@ import type {
 	TabButtonProps,
 	VariantClassNamePropType,
 } from '../../schema';
-
 import { devHint, koliBriQuerySelector } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props';
