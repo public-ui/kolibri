@@ -1,0 +1,1 @@
+import{k as e,l as t}from"./props-from-config-B_k4h7ak-Duxr3CG6.js";var n=t(`target`,``,e);export{n as t};
