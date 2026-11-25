@@ -1,1 +1,0 @@
-import"./index-DBEsXAMm-BKEYCwSx.js";import{j as e,u as t}from"./props-from-config-BRFZ4nHp-WL5PmEC1.js";var n=t(`href`,``,e,e=>typeof e==`string`);export{n as t};

@@ -1,1 +1,0 @@
-import"./index-DBEsXAMm-BKEYCwSx.js";import{S as e,u as t}from"./props-from-config-BRFZ4nHp-WL5PmEC1.js";var n=t(`readOnly`,!1,e);export{n as t};
