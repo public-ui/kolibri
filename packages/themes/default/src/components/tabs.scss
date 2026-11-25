@@ -11,6 +11,9 @@
 		grid-template-columns: var(--grid-template-columns);
 		grid-template-rows: var(--grid-template-rows);
 
+		--kol-tabs-sticky-top: 0;
+		--kol-tabs-sticky-bottom: auto;
+
 		&--align-right {
 			--button-group-flex-direction: column;
 			--button-group-order: 1;
@@ -29,6 +32,8 @@
 			--button-group-flex-direction: row;
 			--button-group-gap: #{to-rem(32)};
 			--button-group-order: 1;
+			--kol-tabs-sticky-top: auto;
+			--kol-tabs-sticky-bottom: 0;
 		}
 
 		&--align-top {
@@ -39,7 +44,8 @@
 
 		&--sticky &__button-group {
 			position: sticky;
-			top: 0;
+			top: var(--kol-tabs-sticky-top);
+			bottom: var(--kol-tabs-sticky-bottom);
 			height: min-content;
 			align-items: start;
 		}
@@ -49,6 +55,7 @@
 			gap: var(--button-group-gap);
 			order: var(--button-group-order);
 			flex-wrap: wrap;
+			padding-block: to-rem(4);
 		}
 
 		&__tablist {

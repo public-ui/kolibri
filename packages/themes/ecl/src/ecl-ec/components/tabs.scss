@@ -2,6 +2,9 @@
 
 @layer kol-theme-component {
 	.kol-tabs {
+		--kol-tabs-sticky-top: 0;
+		--kol-tabs-sticky-bottom: auto;
+
 		&__button-group {
 			border-bottom: 2px solid var(--ecl-color-neutral-60);
 		}
@@ -9,9 +12,15 @@
 		&--sticky &__button-group {
 			background-color: var(--ecl-color-white);
 			position: sticky;
-			top: 0;
+			top: var(--kol-tabs-sticky-top);
+			bottom: var(--kol-tabs-sticky-bottom);
 			height: min-content;
 			align-items: start;
+		}
+
+		&--align-bottom {
+			--kol-tabs-sticky-top: auto;
+			--kol-tabs-sticky-bottom: 0;
 		}
 
 		.kol-button {

@@ -165,7 +165,7 @@ export const App: FC<Props> = ({ customThemes }) => {
 	if (!isSampleAppDataInitialized) {
 		return (
 			<HideMenusContext.Provider value={hideMenus}>
-				<main className="flex flex-col items-stretch p-4" id="route-container">
+				<main className="flex flex-col items-stretch m-4" id="route-container">
 					<p>Loading data</p>
 				</main>
 			</HideMenusContext.Provider>
@@ -192,7 +192,7 @@ export const App: FC<Props> = ({ customThemes }) => {
 					/>
 				)}
 
-				<main className="flex flex-col items-stretch p-4" id="route-container">
+				<main className="flex flex-col items-stretch m-t-4 m-b-4 p-l-4 p-r-4" id="route-container">
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<Navigate to={ROUTE_LIST[0]} replace />} />
