@@ -1,0 +1,1 @@
+import{k as e,l as t}from"./props-from-config-Dr6e6ZFX-DvtuV7SV.js";var n=t(`href`,``,e,e=>typeof e==`string`);export{n as t};
