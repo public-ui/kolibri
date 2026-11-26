@@ -1,0 +1,1 @@
+import{l as e,w as t}from"./props-from-config-Dr6e6ZFX-1CXLXUIj.js";var n=[0,1,2,3,4,5,6],r=e(`level`,0,e=>t(e),e=>n.includes(e));export{r as t};
