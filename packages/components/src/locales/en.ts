@@ -20,6 +20,7 @@ export default {
 	'error-list-message': 'Please correct the following errors',
 	'filename-text': 'Choose a file or drop it here',
 	'form-description': 'Form fields marked with an asterisk (*) are mandatory.',
+	'form-field-error-addon': 'in form field {{label}}: ',
 	'hide-password': 'Hide password',
 	info: 'Note',
 	'kolibri-logo': 'KoliBri logo',

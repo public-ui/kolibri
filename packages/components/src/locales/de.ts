@@ -20,6 +20,7 @@ export default {
 	'error-list-message': 'Bitte korrigieren Sie folgende Fehler:',
 	'filename-text': 'Datei auswählen oder hier ablegen',
 	'form-description': 'Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben.',
+	'form-field-error-addon': 'in Feld {{label}}: ',
 	'hide-password': 'Passwort verbergen',
 	info: 'Hinweis',
 	'kolibri-logo': 'Logo von KoliBri',
