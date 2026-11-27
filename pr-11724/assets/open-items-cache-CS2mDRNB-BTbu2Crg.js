@@ -1,0 +1,1 @@
+import"./index-D1fZ9xFt-CQEGtdBi.js";var e=new WeakMap,t=(t,n)=>{e.set(t,n)},n=t=>{e.delete(t)},r=t=>{var n;t&&((n=e.get(t))==null||n())};export{t as n,n as r,r as t};
