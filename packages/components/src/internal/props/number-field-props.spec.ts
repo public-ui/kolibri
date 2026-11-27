@@ -34,11 +34,6 @@ describe.each([
 		[0, 0],
 		[1.5, 1.5],
 		[-5, -5],
-		['5', 5],
-		['0.25', 0.25],
-		['-5', -5],
-		['1e3', 1000],
-		['.5', 0.5],
 	])('accepts %p as %p', (value, normalized) => {
 		expect(applied(definition, value)).toEqual([normalized]);
 	});

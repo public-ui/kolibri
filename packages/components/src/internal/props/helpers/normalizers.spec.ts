@@ -105,12 +105,6 @@ describe('normalizeInputNumber', () => {
 		[-3, -3],
 		[1.5, 1.5],
 		[Infinity, Infinity],
-		['0', 0],
-		['007', 7],
-		['12.5', 12.5],
-		['-5', -5],
-		['1e3', 1000],
-		['.5', 0.5],
 	])('normalizes %p to %p', (value, expected) => {
 		expect(normalizeInputNumber(value)).toBe(expected);
 	});

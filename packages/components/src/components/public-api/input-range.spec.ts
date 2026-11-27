@@ -90,14 +90,14 @@ const KOL_INPUT_RANGE_PUBLIC_API: PublicApiContract = {
 	},
 	_max: {
 		kind: 'prop',
-		type: 'number | NumberString',
+		type: 'number',
 		required: false,
 		doc: 'Defines the maximum value of the element.',
 		default: '100',
 	},
 	_min: {
 		kind: 'prop',
-		type: 'number | NumberString',
+		type: 'number',
 		required: false,
 		doc: 'Defines the smallest possible input value.',
 		default: '0',
@@ -128,7 +128,7 @@ const KOL_INPUT_RANGE_PUBLIC_API: PublicApiContract = {
 	},
 	_step: {
 		kind: 'prop',
-		type: 'number | NumberString',
+		type: 'number',
 		required: false,
 		doc: 'Defines the step size for value changes.',
 	},
@@ -160,7 +160,7 @@ const KOL_INPUT_RANGE_PUBLIC_API: PublicApiContract = {
 	},
 	_value: {
 		kind: 'prop',
-		type: 'number | NumberString',
+		type: 'number',
 		required: false,
 		doc: 'Defines the value of the element.',
 	},
