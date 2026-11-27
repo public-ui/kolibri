@@ -1,0 +1,1 @@
+import{c as e}from"./index-DskC-aHu-zs_HgC2L.js";var t=class{constructor(n){new.target===t&&e(this,n)}};export{t as test_component};

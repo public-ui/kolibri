@@ -1,0 +1,1 @@
+import{k as e,l as t}from"./props-from-config-DOikEX8--DEe7Cmya.js";var n=t(`target`,``,e);export{n as t};
