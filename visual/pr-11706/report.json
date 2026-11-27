@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11706,
-	"head": "5288f4ff8c9dd5b27d92c0b96af52c1d99ebcb01",
+	"head": "8e394d8f4a09eb26d86313000ee21c607be84459",
 	"repository": "public-ui/kolibri",
-	"runId": 45970883388,
-	"generatedAt": "2026-11-27T09:22:42.145Z",
-	"digest": "sha256:acb658a546b377f64e51812f8bd21b6e2741bf2016cdf616bc34789cb461088e",
+	"runId": 45976097837,
+	"generatedAt": "2026-11-27T10:00:24.301Z",
+	"digest": "sha256:9aeee6fc7119145980b1529bbe7574b22ea5551c4ee182e2e185b0db48e252dd",
 	"baseline": {
 		"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 		"ref": "release/4",
@@ -49,23 +49,23 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ec245a1b954fabdd6a009f27ba0d44b6fa494e703bba4401ce3560b6eb0e0e57",
+			"digest": "sha256:fed552788d1262c4cee2be6b598edd0f42d3d6d42e8cf0356cfe4cc3b40c733e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
 					"route": "abbr/basic",
 					"status": "changed",
-					"hash": "sha256:61d98deac0f331117da09572f467adc0f6f7333d35aa0bd259487d6a69125849",
-					"diffPixels": 738,
-					"diffRatio": 0.042987,
+					"hash": "sha256:faee847ed014bf92c2510da857174a740d09fbab0a7c5ffc0c0a20428eefdaa3",
+					"diffPixels": 3275,
+					"diffRatio": 0.030951,
 					"sizeMismatch": {
 						"expected": [
 							180,
 							21
 						],
 						"actual": [
-							296,
-							58
+							554,
+							191
 						]
 					},
 					"expected": "test-tag-name-transformer/abbr-basic--basic.expected.png",
@@ -2747,23 +2747,23 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:c359686e42502d4dd2ae28a03fb0fc9e075514f1454a6f5cab6fe767edb5bd3a",
+			"digest": "sha256:803f210cf948b7adbfda32c0a173f883bc59c33850237c3523de5a48cb66fc6f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
 					"route": "abbr/basic",
 					"status": "changed",
-					"hash": "sha256:6c40171859eb383e6e278d86fcf345f719ff43f17b03f97af23025fc648fa608",
-					"diffPixels": 726,
-					"diffRatio": 0.040741,
+					"hash": "sha256:41a309127daabb5f2f1513c5bd1b613349661a3aac07e4149581db92152e4a68",
+					"diffPixels": 3196,
+					"diffRatio": 0.029683,
 					"sizeMismatch": {
 						"expected": [
 							180,
 							22
 						],
 						"actual": [
-							297,
-							60
+							555,
+							194
 						]
 					},
 					"expected": "theme-bwst/abbr-basic--basic.expected.png",
@@ -5445,23 +5445,23 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ec245a1b954fabdd6a009f27ba0d44b6fa494e703bba4401ce3560b6eb0e0e57",
+			"digest": "sha256:fed552788d1262c4cee2be6b598edd0f42d3d6d42e8cf0356cfe4cc3b40c733e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
 					"route": "abbr/basic",
 					"status": "changed",
-					"hash": "sha256:61d98deac0f331117da09572f467adc0f6f7333d35aa0bd259487d6a69125849",
-					"diffPixels": 738,
-					"diffRatio": 0.042987,
+					"hash": "sha256:faee847ed014bf92c2510da857174a740d09fbab0a7c5ffc0c0a20428eefdaa3",
+					"diffPixels": 3275,
+					"diffRatio": 0.030951,
 					"sizeMismatch": {
 						"expected": [
 							180,
 							21
 						],
 						"actual": [
-							296,
-							58
+							554,
+							191
 						]
 					},
 					"expected": "theme-default/abbr-basic--basic.expected.png",
@@ -8143,23 +8143,23 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0750133238a6a08ebebbf0cd20e3cf4ab659a31a2b30ea71e6397089ae968c18",
+			"digest": "sha256:b7b68b8d273607416c6c7fafb5f3f88feba111e2171e8a67f514976a8d45b575",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
 					"route": "abbr/basic",
 					"status": "changed",
-					"hash": "sha256:54f2706e3f28dad143329a58d943583ae4e3456e3004f7e164a2e3e57cebd62b",
-					"diffPixels": 719,
-					"diffRatio": 0.04117,
+					"hash": "sha256:26f2e06e6b3c840f12e679f92a80ccd6c79e9d63d5565b212f983ddb6774f9bf",
+					"diffPixels": 3213,
+					"diffRatio": 0.03005,
 					"sizeMismatch": {
 						"expected": [
 							179,
 							22
 						],
 						"actual": [
-							296,
-							59
+							554,
+							193
 						]
 					},
 					"expected": "theme-desy/abbr-basic--basic.expected.png",
@@ -10841,23 +10841,23 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:255a1d9195da4b965bd6760ce16096a005ad1eb767b6c9a4511809843c014455",
+			"digest": "sha256:3e5c13e43cef089922b13a908854870e45bda5a43e4ebd67d06019a4ecc35369",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
 					"route": "abbr/basic",
 					"status": "changed",
-					"hash": "sha256:759cec664bec84389c36e5e0485b9739ed49ff41a4b785df82d3cdc86201e94c",
-					"diffPixels": 740,
-					"diffRatio": 0.039063,
+					"hash": "sha256:20655bb678998fae5ccbe0f8ad07e522637ccb205bdc874fe061c2b65abd1f03",
+					"diffPixels": 3300,
+					"diffRatio": 0.029783,
 					"sizeMismatch": {
 						"expected": [
 							180,
 							24
 						],
 						"actual": [
-							296,
-							64
+							554,
+							200
 						]
 					},
 					"expected": "theme-ecl/abbr-basic--basic.expected.png",
@@ -13539,23 +13539,23 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:1c6d5ec823685037d36a2faec3f943e74ebc5caba93a133683ab12032ff09f05",
+			"digest": "sha256:2f9aa2dba43a6111ed3e4f4305b763940a632b528bddd156e74135bc2667b6b8",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
 					"route": "abbr/basic",
 					"status": "changed",
-					"hash": "sha256:fb0ce8c248eeab642b6185e30dc88ac906b0a01356832307038105204461f14f",
-					"diffPixels": 800,
-					"diffRatio": 0.048414,
+					"hash": "sha256:1f4d442faa2d6a643e551884e4881570f28bf1f1aaba25733e0a323808230a00",
+					"diffPixels": 3293,
+					"diffRatio": 0.031449,
 					"sizeMismatch": {
 						"expected": [
 							183,
 							19
 						],
 						"actual": [
-							306,
-							54
+							566,
+							185
 						]
 					},
 					"expected": "theme-kern/abbr-basic--basic.expected.png",
@@ -16243,23 +16243,23 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:4032a52825f373a355c500075e108dda6785b34e22650d68cb0b46cf9a9c4110",
+			"digest": "sha256:4c669c7f20412ae731b23affd534b347fae047236229f0746b8e7176f08ac559",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
 					"route": "abbr/basic",
 					"status": "changed",
-					"hash": "sha256:fe8bd02f294729accc45d5d1ecfd919414b6b4a889cea10ec33976a4be8778fc",
-					"diffPixels": 718,
-					"diffRatio": 0.041822,
+					"hash": "sha256:a9a8dead5fd68b4a1b777624b322a4dc3dc694c64b87c08b07e56241db80fd76",
+					"diffPixels": 3245,
+					"diffRatio": 0.030667,
 					"sizeMismatch": {
 						"expected": [
 							179,
 							21
 						],
 						"actual": [
-							296,
-							58
+							554,
+							191
 						]
 					},
 					"expected": "unstyled/abbr-basic--basic.expected.png",
