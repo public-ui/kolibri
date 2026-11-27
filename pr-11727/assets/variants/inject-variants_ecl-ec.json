@@ -1,0 +1,26 @@
+{
+	"buttonVariants": [
+		"primary",
+		"primary highlight",
+		"primary neutral",
+		"primary inverted",
+		"secondary",
+		"secondary neutral",
+		"secondary inverted",
+		"tertiary",
+		"tertiary neutral",
+		"tertiary inverted"
+	],
+	"iconVariants": [
+		"ecl-icons-livestreaming",
+        "ecl-icons-log-in",
+        "ecl-icons-digital",
+        "ecl-icons-information-round"
+	],
+	"iconVariantsButton": [
+		"ecl-icons-livestreaming"
+	],
+	"iconVariantsInput": [
+		"ecl-icons-digital"
+	]
+}
