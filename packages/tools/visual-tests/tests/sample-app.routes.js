@@ -461,6 +461,11 @@ ROUTES.set('single-select/basic?noColumns', {
 		},
 	},
 });
+ROUTES.set('single-select/open-listbox?open-listbox=true', {
+	snapshot: {
+		forceFullPage: true,
+	},
+});
 ROUTES.set('split-button/basic', {
 	snapshot: {
 		viewportSize: {
