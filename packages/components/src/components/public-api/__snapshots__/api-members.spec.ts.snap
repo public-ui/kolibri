@@ -1,6 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`abbr pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `{}`;
+exports[`abbr pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
+{
+  "Callbacks": {
+    "slotchange": {
+      "doc": "Bound to the default slot. \`slotchange\` is not composed, so it never reaches the host element: the web component has to listen on the slot itself to check the slotted content.",
+      "type": "() => void",
+    },
+  },
+  "Refs": {
+    "abbr": {
+      "doc": "The abbreviation element; the anchor the tooltip behavior listens on.",
+      "type": "HTMLElement",
+    },
+    "slot": {
+      "doc": "The default slot carrying the slotted short form.",
+      "type": "HTMLSlotElement",
+    },
+  },
+}
+`;
 
 exports[`alert pins the members of the *Api type (callbacks, methods, refs, emitters, listeners) 1`] = `
 {

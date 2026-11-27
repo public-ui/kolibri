@@ -1,11 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-abbr should render with _label="Text" 1`] = `
+exports[`kol-abbr should render with  1`] = `
 <kol-abbr>
   <template shadowrootmode="open">
     <abbr class="kol-abbr">
       <slot></slot>
     </abbr>
+  </template>
+</kol-abbr>
+`;
+
+exports[`kol-abbr should render with _label="Text" 1`] = `
+<kol-abbr>
+  <template shadowrootmode="open">
+    <abbr aria-describedby="abbr-tooltip-content-nonce" class="kol-abbr kol-abbr--has-label" tabindex="0">
+      <slot></slot>
+    </abbr>
+    <div class="kol-tooltip__floating">
+      <div class="kol-tooltip__arrow"></div>
+      <span class="kol-span kol-tooltip__content" id="abbr-tooltip-content-nonce">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Text
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+        </span>
+      </span>
+    </div>
   </template>
 </kol-abbr>
 `;

@@ -10,7 +10,7 @@ const KOL_ABBR_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'LabelLangSegmentsPropType',
 		required: false,
-		doc: 'DEPRECATED! Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+		doc: 'Defines the long form of the abbreviation, displayed in the tooltip of the slotted short form. Setting it makes the abbreviation focusable, so the tooltip is reachable by keyboard.',
 	},
 };
 

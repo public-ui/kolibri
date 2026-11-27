@@ -1,6 +1,10 @@
 @mixin kol-abbr-styles() {
 	:host > abbr {
 		text-decoration: underline dashed;
+	}
+
+	/* The help cursor promises an explanation, so it needs the tooltip of the long form. */
+	.kol-abbr--has-label {
 		cursor: help;
 	}
 }
