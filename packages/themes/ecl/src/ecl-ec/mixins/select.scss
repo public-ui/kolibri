@@ -83,10 +83,5 @@
 		&:has(.kol-input-container__adornment--end .kol-input-container__smart-button + .kol-input-container__icon) .kol-select {
 			border-right-width: to-rem(76);
 		}
-
-		.kol-input-container__container {
-			position: relative;
-			z-index: 1;
-		}
 	}
 }

@@ -17,6 +17,7 @@
 
 		&__container {
 			position: relative;
+			// the container is a click area above the adornments and a stacking context for the tooltips of its text
 			z-index: 1;
 		}
 
@@ -28,6 +29,12 @@
 				display: grid;
 				place-items: center;
 			}
+		}
+
+		&__smart-button {
+			position: relative;
+			// the smart button lies above the container
+			z-index: 2;
 		}
 	}
 }

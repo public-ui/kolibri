@@ -25,9 +25,6 @@
 		}
 
 		&__smart-button {
-			position: relative;
-			z-index: 2;
-
 			/* The class carrier is a wrapper — focus lands on the button inside it. */
 			.kol-button__interactive-element {
 				&:focus {

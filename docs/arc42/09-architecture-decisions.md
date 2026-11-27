@@ -450,36 +450,9 @@ Use SASS variables exclusively for internal calculations and styling in the base
 
 ### ADR-017: Skeleton Component Architecture Pattern
 
-**Status:** Accepted
+**Status:** Superseded
 
-**Context:**
-Components in KoliBri follow different architectural patterns (legacy Schema-based vs. modern Skeleton). As components are modernized through skeleton migration, a clear pattern needs to be established to ensure consistency and maintainability across the codebase.
-
-**Decision:**
-All new and refactored components adopt the **Skeleton Architecture Pattern**:
-
-1. **Web Component** (`src/components/[name]/component.tsx`): Stencil component with lifecycle, property decorators, and event emission
-2. **Controller** (`src/internal/functional-components/[name]/controller.ts`): Pure logic layer, extends `BaseController<Api>`
-3. **Functional Component** (`src/internal/functional-components/[name]/component.tsx`): Stateless render function (`FC<FunctionalComponentProps<Api>>`)
-4. **API Definition** (`src/internal/functional-components/[name]/api.tsx`): Type-safe prop/event/callback contracts via `PropsConfigShape` and `ApiFromConfig`
-
-This provides:
-
-- Clear separation of concerns (presentation vs. logic)
-- Type-safe component boundaries
-- Reusable controller logic
-- Testable units at each layer
-
-**Consequences:**
-
-- ✅ Consistent architecture across all components
-- ✅ Type safety at compile time via `WebComponentInterface<Api>`
-- ✅ Predictable structure for new contributors
-- ✅ Easier testing (controllers independent of Stencil)
-- ✅ Clear contract enforcement (`PropsConfigShape` prevents missing validators/watchers)
-- ❌ Migration effort for legacy components
-- ❌ More boilerplate than legacy patterns
-- ❌ Larger codebase footprint per component
+The controller layer this decision described no longer exists. The skeleton architecture of the components is documented in [ARC42-SKELETON](../../packages/components/docs/ARC42-SKELETON.md).
 
 ### ADR-018: Color Schemes (Dark/Light) Live in Themes, Not in Base Styling
 
@@ -512,45 +485,37 @@ Details: [Base Styling vs. Theming Concept](../BASE_STYLING_VS_THEMING_CONCEPT.m
 - Color scheme as a component prop: Moves a design decision into the component API
 - Global CSS custom properties switched by the host page: Not encapsulated, conflicts with ADR-009
 
-**Related Practice: Dead Schema Detection**
+### ADR-019: Reserved Z-Index Layers
 
-When migrating components to Skeleton architecture, legacy Schemas in `packages/components/src/schema/components/*.ts` become obsolete. These must be identified and removed to prevent stale type definitions:
+**Status:** Accepted
 
-```bash
-# After skeleton migration, check if old schema is still imported:
-grep -r "from '../../schema/components/COMPONENT_NAME'" packages/components/src --include="*.ts*"
+**Context:**
+`z-index` decides which elements lie above or below others. Used without a plan, overlays such as tooltips, sticky table parts or buttons above click areas end up in the wrong order, and applications cannot tell which values the components already occupy.
 
-# If 0 results → schema is dead → remove from:
-# 1. packages/components/src/schema/components/COMPONENT_NAME.ts (delete file)
-# 2. packages/components/src/schema/index.ts (remove re-export)
-```
+**Decision:**
+KoliBri reserves two z-index layers and keeps all of its own values inside them:
 
-Removing dead schemas prevents:
+- **Low layer, 1 to 10:** stacking inside regular components, for example:
+  - the input container lies above its adornments and below its smart button,
+  - an open collapsible or an input container with open suggestions lies above its neighbours,
+  - sticky table columns and rows lie above the content of the table,
+  - the dots of `kol-spin` stack among each other.
+- **High layer, 1001 to 1010:** elements that lie above the application:
+  - the skip navigation lies highest (1010),
+  - tooltips follow (1007 and 1008),
+  - toasts lie above the application content (1001).
+- `0` keeps an element on the base layer; `auto` and the CSS-wide keywords set no layer.
+- A comment directly above every `z-index` names what the element lies above or below.
+- Themes use `z-index` as little as possible.
 
-- Type definition duplication
-- Accidental usage of outdated APIs
-- Confusion between legacy and modern prop patterns
-- Unnecessary compilation overhead
+The Stylelint rule `kolibri/common-z-index-layers` enforces the layers and the comment in the components and in every theme.
 
-**Alternatives Considered:**
+**Consequences:**
 
-- Flat legacy pattern: Less structure, harder to test and maintain
-- Schema-only definitions: No separation of presentation and logic
-- Incremental patterns: Inconsistency across codebase
-- No forced migration: Maintenance burden, inconsistent DX
-
-**Migration Checklist:**
-
-- [ ] New API definition created with `PropsConfigShape` + `ApiFromConfig`
-- [ ] Controller extends `BaseController<Api>` and implements `componentWillLoad()`
-- [ ] Functional component is stateless and receives all state via props
-- [ ] Web component creates controller and manages Stencil lifecycle
-- [ ] Prop triangle complete (field + `@Prop()` + `@Watch()` + `componentWillLoad()` init)
-- [ ] Old schema file identified and dependency check run
-- [ ] Dead schema file deleted if no dependencies remain
-- [ ] Schema re-export removed from `schema/index.ts`
-- [ ] Tests updated to use new API
-- [ ] Migration documented in `MIGRATION.md` if consumer-facing
+- ✅ Applications know which layers the components occupy: 11 to 1000 stay free for them.
+- ✅ Every `z-index` explains its purpose, which keeps the stacking order reviewable.
+- ❌ Applications place their own overlays between 11 and 1000.
+- ❌ A component that needs a new layer has to fit into the reserved ranges.
 
 ---
 

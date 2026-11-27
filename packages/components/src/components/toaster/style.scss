@@ -8,7 +8,8 @@
 	:host {
 		display: flex;
 		position: fixed;
-		z-index: 200;
+		// toast should be above all app content but below tooltip and skipnav
+		z-index: 1001;
 		max-width: 90vw;
 		flex-direction: column;
 	}

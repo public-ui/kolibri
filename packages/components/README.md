@@ -47,6 +47,10 @@ Then use the components anywhere in your markup:
 
 For an improved developer experience, use the framework-specific adapters described in the [framework guides](https://public-ui.github.io/en/docs/get-started/frameworks).
 
+## Stacking order (z-index)
+
+KoliBri keeps its own `z-index` values in two reserved layers: `1` to `10` for the stacking inside a component (for example sticky table columns or an open collapsible) and `1001` to `1010` for elements above the application (toasts, tooltips and the skip navigation). Place the overlays of your application, such as sticky headers or panels, between `11` and `1000`: they then lie above the components and below their tooltips. See [ADR-019](https://github.com/public-ui/kolibri/blob/develop/docs/arc42/09-architecture-decisions.md#adr-019-reserved-z-index-layers).
+
 ## Theming
 
 KoliBri themes provide the visual layer for the components. The default theme is maintained in this repository; see the [default theme guide](../themes/default/README.md) to customize styles and tokens.

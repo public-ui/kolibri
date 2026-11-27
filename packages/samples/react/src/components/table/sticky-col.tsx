@@ -46,6 +46,7 @@ export const TableStickyCol: FC = () => (
 				className="block"
 				_selection={selection}
 				_fixedCols={[2, 1]}
+				style={{ maxWidth: '70vw' }}
 			/>
 		</SampleBlock>
 	</>

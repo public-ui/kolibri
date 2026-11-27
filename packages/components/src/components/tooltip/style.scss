@@ -40,7 +40,8 @@
 			color: black;
 			background-color: white;
 			position: absolute;
-			z-index: 999;
+			// arrow is 1 below its content
+			z-index: 1007;
 			width: to-rem(10);
 			height: to-rem(10);
 		}
@@ -49,7 +50,8 @@
 			color: black;
 			background-color: white;
 			position: relative;
-			z-index: 1000;
+			// content is above everything except skipnav
+			z-index: 1008;
 		}
 	}
 

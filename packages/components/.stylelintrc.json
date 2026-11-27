@@ -12,6 +12,7 @@
 				"strict": false
 			}
 		],
+		"kolibri/common-z-index-layers": true,
 		"property-disallowed-list": ["/gap/"],
 		"declaration-property-value-allowed-list": {
 			"/color/": [

@@ -14,12 +14,4 @@
 		/* Prevent scroll chaining from scrollable dialog content to the page. */
 		overscroll-behavior: contain;
 	}
-
-	.kol-dialog__close-button,
-	.kol-modal__close-button {
-		position: absolute;
-		top: to-rem(1);
-		right: to-rem(1);
-		z-index: 1;
-	}
 }

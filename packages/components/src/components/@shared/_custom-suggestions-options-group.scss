@@ -5,7 +5,6 @@
 		background-color: white;
 		display: block;
 		position: absolute;
-		z-index: 2;
 		max-height: to-rem(250);
 		margin: 0;
 		padding: 0;
@@ -14,8 +13,8 @@
 		list-style-type: none;
 	}
 
-	//sobald die listbox offen ist, muss der z-index des containers höher sein als die container ungeöffneter selects
 	.kol-input-container:has(.kol-custom-suggestions-options-group--open) {
+		// an open listbox lifts its container above the containers of closed selects, tables and the like
 		z-index: 10;
 	}
 }

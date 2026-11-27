@@ -28,7 +28,8 @@
 		&__head {
 			position: sticky;
 			top: 0;
-			z-index: 10;
+			// the sticky head lies above the cells, the sticky columns and the loader
+			z-index: 9;
 		}
 
 		&__caption {

@@ -479,6 +479,38 @@ Details: [Basis-Styling vs. Theming Konzept](../BASE_STYLING_VS_THEMING_CONCEPT.
 - Color Scheme als Komponenten-Prop: Verlagert eine Design-Entscheidung in die Komponenten-API
 - Globale CSS Custom Properties, von der Host-Seite umgeschaltet: Nicht gekapselt, Konflikt mit ADR-009
 
+### ADR-019: Reservierte Z-Index-Ebenen
+
+**Status:** Akzeptiert
+
+**Kontext:**
+`z-index` entscheidet, welche Elemente über oder unter anderen liegen. Ohne Plan geraten Überlagerungen wie Tooltips, fixierte Tabellenteile oder Buttons über Klickflächen in die falsche Reihenfolge, und Anwendungen können nicht erkennen, welche Werte die Komponenten schon belegen.
+
+**Entscheidung:**
+KoliBri reserviert zwei Z-Index-Ebenen und hält alle eigenen Werte darin:
+
+- **Untere Ebene, 1 bis 10:** Stapelung innerhalb regulärer Komponenten, zum Beispiel:
+  - der Input-Container liegt über seinen Adornments und unter seinem Smart Button,
+  - ein offenes Collapsible oder ein Input-Container mit offenen Vorschlägen liegt über seinen Nachbarn,
+  - fixierte Tabellenspalten und -zeilen liegen über dem Inhalt der Tabelle,
+  - die Punkte von `kol-spin` stapeln sich untereinander.
+- **Obere Ebene, 1001 bis 1010:** Elemente, die über der Anwendung liegen:
+  - die Skip-Navigation liegt am höchsten (1010),
+  - danach folgen Tooltips (1007 und 1008),
+  - Toasts liegen über dem Inhalt der Anwendung (1001).
+- `0` hält ein Element auf der Grundebene; `auto` und die CSS-weiten Schlüsselwörter setzen keine Ebene.
+- Ein Kommentar direkt über jedem `z-index` nennt, worüber oder worunter das Element liegt.
+- Themes nutzen `z-index` so wenig wie möglich.
+
+Die Stylelint-Regel `kolibri/common-z-index-layers` setzt die Ebenen und den Kommentar in den Komponenten und in jedem Theme durch.
+
+**Konsequenzen:**
+
+- ✅ Anwendungen wissen, welche Ebenen die Komponenten belegen: 11 bis 1000 bleiben für sie frei.
+- ✅ Jeder `z-index` erklärt seinen Zweck, die Stapelreihenfolge bleibt im Review nachvollziehbar.
+- ❌ Anwendungen legen ihre eigenen Überlagerungen zwischen 11 und 1000.
+- ❌ Eine Komponente, die eine neue Ebene braucht, muss in die reservierten Bereiche passen.
+
 ## 9.2 Offene Entscheidungen
 
 Diese Entscheidungen werden in Betracht gezogen und werden in zukünftigen Planungszyklen adressiert, während sich das Projekt weiterentwickelt und neue Anforderungen aufkommen.

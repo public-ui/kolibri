@@ -29,6 +29,7 @@ CSS outside a layer beats every layered rule, whatever its specificity. A single
 - Mixins, helpers and partials stay layer-agnostic, so the file that includes them decides the layer.
 - A theme styles the component through `:host`, never through the page-wide `:root`.
 - Selectors are flat BEM classes, without `@at-root` or `$root: &` gymnastics.
+- A `z-index` stays inside the layers KoliBri reserves (`0`, `1` to `10`, `1001` to `1010`) and names what it lies above or below, so an application knows which layers stay free for it.
 
 The KoliBri monorepo lints its own components and themes with exactly these rules.
 
@@ -59,6 +60,7 @@ A KoliBri theme keeps its sources in `src/`: `global.scss` for the theme global 
 		"kolibri/common-no-layer-in-reuse-files": true,
 		"kolibri/common-no-root-selector": true,
 		"kolibri/common-require-component-layer": [true, { "layerName": "kol-theme-component", "pathPattern": "/src/components/" }],
+		"kolibri/common-z-index-layers": true,
 		"kolibri/theme-allowed-layer-names": [true, { "pathPattern": "/src/" }],
 		"kolibri/theme-require-global-layer": true
 	}
@@ -96,17 +98,18 @@ A component file that passes all rules looks like this:
 
 The rules are written for three kinds of packages. The table lists, for each of them, the rules and options in use; the first two columns are the configurations of the KoliBri monorepo (`packages/components/.stylelintrc.json` and `packages/themes/*/.stylelintrc.json`, both extending the root `.stylelintrc.json`).
 
-| Rule                                            | Components package (`packages/components`)                                                                   | Theme in the monorepo (`packages/themes/*`)                                   | Theme in its own repository                                                   |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `kolibri/common-component-css-must-be-in-layer` | ✓                                                                                                            | –                                                                             | –                                                                             |
-| `kolibri/common-layer-name-convention`          | –                                                                                                            | ✓ (warning)                                                                   | ✓ (warning)                                                                   |
-| `kolibri/common-no-at-root`                     | ✓                                                                                                            | ✓                                                                             | ✓                                                                             |
-| `kolibri/common-no-layer-in-reuse-files`        | ✓                                                                                                            | ✓                                                                             | ✓                                                                             |
-| `kolibri/common-no-root-selector`               | –                                                                                                            | ✓ in `ecl` and `kern`, off in `bwst`, `default` and `desy`                    | ✓                                                                             |
-| `kolibri/common-require-component-layer`        | ✓ `{ "layerName": "kol-component", "pathPattern": "/packages/components/src/components/", "strict": false }` | ✓ `{ "layerName": "kol-theme-component", "pathPattern": "/src/components/" }` | ✓ `{ "layerName": "kol-theme-component", "pathPattern": "/src/components/" }` |
-| `kolibri/component-allowed-layer-names`         | ✓                                                                                                            | –                                                                             | –                                                                             |
-| `kolibri/theme-allowed-layer-names`             | –                                                                                                            | ✓ (default `pathPattern`)                                                     | ✓ `{ "pathPattern": "/src/" }`                                                |
-| `kolibri/theme-require-global-layer`            | –                                                                                                            | ✓                                                                             | ✓                                                                             |
+| Rule                                            | Components package (`packages/components`)                                                                   | Theme in the monorepo (`packages/themes/*`)                                     | Theme in its own repository                                                   |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `kolibri/common-component-css-must-be-in-layer` | ✓                                                                                                            | –                                                                               | –                                                                             |
+| `kolibri/common-layer-name-convention`          | –                                                                                                            | ✓ (warning)                                                                     | ✓ (warning)                                                                   |
+| `kolibri/common-no-at-root`                     | ✓                                                                                                            | ✓                                                                               | ✓                                                                             |
+| `kolibri/common-no-layer-in-reuse-files`        | ✓                                                                                                            | ✓                                                                               | ✓                                                                             |
+| `kolibri/common-no-root-selector`               | –                                                                                                            | ✓ in `ecl` and `kern`, off in `bwst`, `default` and `desy`                      | ✓                                                                             |
+| `kolibri/common-require-component-layer`        | ✓ `{ "layerName": "kol-component", "pathPattern": "/packages/components/src/components/", "strict": false }` | ✓ `{ "layerName": "kol-theme-component", "pathPattern": "/src/components/" }`   | ✓ `{ "layerName": "kol-theme-component", "pathPattern": "/src/components/" }` |
+| `kolibri/common-z-index-layers`                 | ✓                                                                                                            | ✓, off for the Font Awesome copy `src/mixins/icon.scss` in `bwst` and `default` | ✓                                                                             |
+| `kolibri/component-allowed-layer-names`         | ✓                                                                                                            | –                                                                               | –                                                                             |
+| `kolibri/theme-allowed-layer-names`             | –                                                                                                            | ✓ (default `pathPattern`)                                                       | ✓ `{ "pathPattern": "/src/" }`                                                |
+| `kolibri/theme-require-global-layer`            | –                                                                                                            | ✓                                                                               | ✓                                                                             |
 
 The column _Theme in its own repository_ is the configuration of the [quick start](#quick-start-for-a-theme).
 
@@ -122,6 +125,7 @@ Most rules decide by the path of the linted file whether they apply. A file outs
 | `kolibri/common-no-layer-in-reuse-files`        | files below a `/src/` folder that are in a `helpers` or `mixins` folder or start with `_`                                         |
 | `kolibri/common-no-root-selector`               | `.scss` files below a `/src/` folder                                                                                              |
 | `kolibri/common-require-component-layer`        | `.scss` files whose path contains `pathPattern`, except partials (`_*.scss`), `a11y.scss`, `preset.scss` and `forced-colors.scss` |
+| `kolibri/common-z-index-layers`                 | every file                                                                                                                        |
 | `kolibri/component-allowed-layer-names`         | files below `/packages/components/`, except `a11y.scss` and `_layer-order.scss`                                                   |
 | `kolibri/theme-allowed-layer-names`             | files whose path contains `pathPattern` (default `/packages/themes/`)                                                             |
 | `kolibri/theme-require-global-layer`            | files named `global.scss`                                                                                                         |
@@ -253,6 +257,22 @@ Selectors are flat BEM classes. `@at-root` and capturing the parent selector in 
 // ✅
 .kol-alert__closer {
 	.kol-alert--variant-msg & { … }
+}
+```
+
+### `kolibri/common-z-index-layers`
+
+KoliBri reserves two z-index layers ([ADR-019](https://github.com/public-ui/kolibri/blob/develop/docs/arc42/09-architecture-decisions.md#adr-019-reserved-z-index-layers)): `1` to `10` for the stacking inside a component and `1001` to `1010` for elements above the application, such as tooltips and the skip navigation. `0`, `auto` and the CSS-wide keywords set no layer of their own. Every `z-index` has a comment directly above it that names what the element lies above or below. A variable or `var()` is reported, since its value cannot be checked.
+
+```scss
+// ❌
+.kol-tooltip__content {
+	z-index: 1000;
+}
+// ✅
+.kol-tooltip__content {
+	// above everything except the skip navigation
+	z-index: 1008;
 }
 ```
 
