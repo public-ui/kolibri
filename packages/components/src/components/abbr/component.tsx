@@ -13,6 +13,7 @@ import type { LabelLangSegmentsPropType } from '../../schema';
  * The **Abbr** component implements the HTML tag `abbr`.
  *
  * @slot - The abbreviation (short form).
+ * @design slot z. B.
  */
 @Component({
 	tag: 'kol-abbr',
@@ -27,6 +28,8 @@ export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentIn
 	/**
 	 * DEPRECATED!
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 *
+	 * @design content zum Beispiel
 	 */
 	@Prop()
 	public _label?: LabelLangSegmentsPropType = undefined;

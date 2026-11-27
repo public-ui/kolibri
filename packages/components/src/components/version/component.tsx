@@ -41,6 +41,8 @@ export class KolVersion extends BaseWebComponent<VersionApi> implements WebCompo
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 *
+	 * @design content 1.0.0
 	 */
 	@Prop()
 	public _label!: LabelPropType;

@@ -32,6 +32,8 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	/**
 	 * Makes the element show up.
+	 *
+	 * @design sample true
 	 */
 	@Prop()
 	public _show?: ShowPropType = undefined;

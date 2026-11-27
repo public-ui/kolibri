@@ -38,8 +38,10 @@ export type PublicApiContract = Record<string, Omit<ApiMember, 'name'>>;
 const extractPublicApi = (source: string): ApiMember[] => {
 	const lines = source.split('\n');
 	const isDocLine = (line: string): boolean => /^\s*(\/\*\*|\*|\*\/)/.test(line);
+	// `@design` describes the design export (`packages/tools/design-export`); Stencil leaves custom tags out of `prop.docs`.
 	const normalizeDoc = (doc: string[]): string =>
 		doc
+			.filter((line) => !/^\s*\*\s*@design\b/.test(line))
 			.map((line) =>
 				line
 					.trim()

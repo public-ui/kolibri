@@ -69,6 +69,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 
 	/**
 	 * Defines the backgroundColor and foregroundColor.
+	 *
+	 * @design variant black=#000 blue=#06539e red=#ae0000
 	 */
 	@Prop()
 	public _color?: Stringified<PropColor> = '#000';
@@ -80,6 +82,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 
 	/**
 	 * Defines the icon classnames.
+	 *
+	 * @design toggle kolicon-house
 	 */
 	@Prop()
 	public _icons?: Stringified<KoliBriIconsProp> = undefined;
@@ -91,6 +95,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 *
+	 * @design content Badge
 	 */
 	@Prop()
 	public _label!: LabelWithExpertSlotPropType;

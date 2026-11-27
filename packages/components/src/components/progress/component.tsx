@@ -32,6 +32,8 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 *
+	 * @design content Fortschritt
 	 */
 	@Prop()
 	public _label?: LabelLangSegmentsPropType = undefined;
@@ -43,6 +45,8 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	/**
 	 * Defines the maximum value of the element.
+	 *
+	 * @design sample 100
 	 */
 	@Prop()
 	public _max!: MaxPropType;
@@ -57,6 +61,8 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	/**
 	 * Defines the unit of the step values (not shown).
+	 *
+	 * @design content %
 	 */
 	@Prop()
 	public _unit?: UnitPropType = undefined;
@@ -68,6 +74,8 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	/**
 	 * Defines the value of the element.
+	 *
+	 * @design sample 40
 	 */
 	@Prop()
 	public _value!: ClampedNumberValuePropType;
@@ -86,6 +94,8 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 *
+	 * @design variant
 	 */
 	@Prop()
 	public _variant?: ProgressVariantType = undefined;

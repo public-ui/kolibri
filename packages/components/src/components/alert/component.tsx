@@ -79,6 +79,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	/**
 	 * Defines whether the element can be closed.
+	 *
+	 * @design variant
 	 */
 	@Prop()
 	public _hasCloser?: HasCloserPropType = false;
@@ -90,6 +92,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 *
+	 * @design content Überschrift
 	 */
 	@Prop()
 	public _label?: LabelLangSegmentsPropType = undefined;
@@ -123,6 +127,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	/**
 	 * Defines either the type of the component or of the components interactive element.
+	 *
+	 * @design variant
 	 */
 	@Prop()
 	public _type?: AlertTypePropType = 'default';
@@ -134,6 +140,8 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 *
+	 * @design variant
 	 */
 	@Prop()
 	public _variant?: AlertVariantPropType = 'msg';
