@@ -9,13 +9,14 @@ import { resolveCardCloseButtonProps } from '../../internal/functional-component
 import { CardFC } from '../../internal/functional-components/card/component';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { cardCallbacksProp, hasCloserProp, hrefProp, labelLangSegmentsProp, levelProp, linkTargetProp } from '../../internal/props';
+import { cardCallbacksProp, hasCloserProp, hrefProp, imageProp, labelLangSegmentsProp, levelProp, linkTargetProp } from '../../internal/props';
 import type {
 	ClickableElement,
 	FocusableElement,
 	HasCloserPropType,
 	HeadingLevel,
 	HrefPropType,
+	ImagePropType,
 	KolFocusOptions,
 	KoliBriCardEventCallbacks,
 	LabelLangSegmentsPropType,
@@ -82,6 +83,17 @@ export class KolCard extends BaseWebComponent<CardApi> implements ClickableEleme
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
 		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+	}
+
+	/**
+	 * Sets the image URI and alt text for the card image.
+	 */
+	@Prop()
+	public _image?: ImagePropType = undefined;
+
+	@Watch('_image')
+	public watchImage(value?: ImagePropType): void {
+		imageProp.apply(value, (v) => this.setRenderProp('image', v));
 	}
 
 	/**
@@ -157,6 +169,7 @@ export class KolCard extends BaseWebComponent<CardApi> implements ClickableEleme
 
 		this.watchHasCloser(this._hasCloser);
 		this.watchHref(this._href);
+		this.watchImage(this._image);
 		this.watchLabel(this._label);
 		this.watchLevel(this._level);
 		this.watchOn(this._on);
@@ -207,6 +220,7 @@ export class KolCard extends BaseWebComponent<CardApi> implements ClickableEleme
 					hasCloser={this.getRenderProp('hasCloser')}
 					headingId={this.getState('headingId')}
 					href={this.getRenderProp('href')}
+					image={this.getRenderProp('image')}
 					label={this.getRenderProp('label')}
 					level={this.getRenderProp('level')}
 					on={this.getRenderProp('on')}

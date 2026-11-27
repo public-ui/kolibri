@@ -55,6 +55,7 @@ ROUTES.set('button/short-key');
 ROUTES.set('card/basic');
 ROUTES.set('card/linked');
 ROUTES.set('card/headlines');
+ROUTES.set('card/image');
 ROUTES.set('combobox/basic?noColumns');
 ROUTES.set('details/basic');
 ROUTES.set('dialog/basic?show-dialog=true', {

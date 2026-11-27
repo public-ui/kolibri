@@ -29,12 +29,14 @@ const KOL_CARD_PUBLIC_API: PublicApiContract = {
 		type: 'HrefPropType',
 		required: false,
 		doc: 'Defines the target URI of the link.',
+		default: undefined,
 	},
 	_label: {
 		kind: 'prop',
 		type: 'LabelLangSegmentsPropType',
 		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+		default: undefined,
 	},
 	_level: {
 		kind: 'prop',
@@ -48,12 +50,21 @@ const KOL_CARD_PUBLIC_API: PublicApiContract = {
 		type: 'KoliBriCardEventCallbacks',
 		required: false,
 		doc: 'Defines the event callback functions for the component.',
+		default: undefined,
 	},
 	_target: {
 		kind: 'prop',
 		type: 'LinkTargetPropType',
 		required: false,
 		doc: 'Defines where to open the link.',
+		default: undefined,
+	},
+	_image: {
+		kind: 'prop',
+		type: 'ImagePropType',
+		required: false,
+		doc: 'Sets the image URI and alt text for the card image.',
+		default: undefined,
 	},
 };
 

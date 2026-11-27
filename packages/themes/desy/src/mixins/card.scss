@@ -9,8 +9,6 @@
 		border-radius: 4px;
 		width: 100%;
 		height: 100%;
-		padding: to-rem(18) to-rem(18) to-rem(24) to-rem(32);
-		gap: to-rem(16) 0;
 
 		font-family: var(--font-family);
 		transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
@@ -19,8 +17,9 @@
 			color: var(--color-dark-blue-100);
 			display: flex;
 			margin: 0;
-			padding-top: to-rem(6);
-			padding-right: to-rem(14);
+			padding-top: to-rem(24);
+			padding-right: to-rem(8);
+			padding-left: to-rem(32);
 			align-items: flex-start;
 
 			font-size: to-rem(19.2);
@@ -31,7 +30,7 @@
 		&__content {
 			color: var(--color-dark-blue-100);
 			width: 100%;
-			padding-right: to-rem(32);
+			padding: to-rem(16) to-rem(32) to-rem(24);
 			overflow: hidden;
 
 			font-size: to-rem(16);
@@ -40,8 +39,18 @@
 		}
 
 		&__close-button {
+			padding-top: to-rem(18);
+			padding-right: to-rem(26);
+
+			align-self: flex-start;
+
 			font-size: to-rem(24);
 			line-height: to-rem(16);
+		}
+
+		&__image {
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
 		}
 
 		&__link {

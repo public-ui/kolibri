@@ -56,6 +56,7 @@ export * from './href';
 export * from './icons';
 export * from './icons-input-checkbox';
 export * from './id';
+export * from './image';
 export * from './image-callbacks';
 export * from './indeterminate';
 export * from './info-popover';

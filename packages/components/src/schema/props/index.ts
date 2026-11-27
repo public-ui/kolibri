@@ -52,6 +52,7 @@ export * from './href';
 export * from './icons';
 export * from './icons-input-checkbox';
 export * from './id';
+export * from './image';
 export * from './image-sizes';
 export * from './image-source';
 export * from './image-srcset';

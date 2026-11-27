@@ -1,5 +1,6 @@
 import type { KolFocusOptions } from '../../../schema';
 import { cardCallbacksProp, hasCloserProp, hrefProp, labelLangSegmentsProp, levelProp, linkTargetProp } from '../../props';
+import { imageProp } from '../../props/image';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
@@ -13,7 +14,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  */
 export const cardPropsConfig = {
 	required: [labelLangSegmentsProp],
-	optional: [cardCallbacksProp, hasCloserProp, hrefProp, levelProp, linkTargetProp],
+	optional: [cardCallbacksProp, hasCloserProp, hrefProp, imageProp, levelProp, linkTargetProp],
 } as const satisfies PropsConfigShape;
 
 export type CardApi = ApiFromConfig<

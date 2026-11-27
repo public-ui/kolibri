@@ -178,6 +178,7 @@ export const createDialogItem = (
 								handleClose: handleCardClose,
 								hasCloser: true,
 								headingId,
+								image: undefined,
 								label,
 								level,
 								refCloseButton: cardCloseButtonRef,
