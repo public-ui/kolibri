@@ -1,1 +1,0 @@
-import{k as e,l as t}from"./props-from-config-CFPKt34H-BVkXiDAo.js";var n=t(`value`,void 0,e);export{n as t};
