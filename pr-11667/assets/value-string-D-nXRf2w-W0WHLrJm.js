@@ -1,1 +1,0 @@
-import{k as e,l as t}from"./props-from-config-DnjeRYva-BQedQRiq.js";var n=t(`value`,void 0,e);export{n as t};
