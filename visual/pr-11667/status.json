@@ -1,15 +1,15 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "12 visual changes approved by BF150",
-	"computedAt": "2026-11-27T12:39:34.655Z",
+	"state": "pending",
+	"description": "7 changed – 3 of 7 approved, review pending",
+	"computedAt": "2026-11-27T13:04:50.625Z",
 	"pr": 11667,
-	"head": "4afdcd821d9a325d919ef8545ab37e8f8d42db80",
-	"digest": "sha256:1563ad1cc576abc2affee78f5035eb9132b4cfea39c978a50e2a228bfeb331fb",
+	"head": "466931e361fc13e1edd5ab87312878c571c483b8",
+	"digest": "sha256:f2996e16c71561d06cfed4de1dce2fe66d97c0172faede6daf356ecf936b9e9d",
 	"counts": {
-		"changes": 12,
-		"open": 0,
-		"approved": 12,
+		"changes": 7,
+		"open": 4,
+		"approved": 3,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
@@ -33,50 +33,21 @@
 			"notes": [],
 			"by": "BF150"
 		},
-		"theme-desy/table-stateful-with-selection--selection": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
-		},
-		"theme-desy/table-stateful-with-single-selection--single-selection": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
-		},
-		"theme-desy/table-stateless-with-selection--selection": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
-		},
-		"theme-desy/table-stateless-with-single-selection--single-selection": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
-		},
 		"theme-desy/table-sticky-cols--sticky-cols": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
-		},
-		"theme-desy/table-sticky-header--sticky-header": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/table-sticky-cols--sticky-cols": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-kern/table-sticky-cols--sticky-cols": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"unstyled/table-sticky-cols--sticky-cols": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		}
 	}
 }
