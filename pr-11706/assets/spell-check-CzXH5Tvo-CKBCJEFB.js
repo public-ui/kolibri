@@ -1,1 +1,0 @@
-import{b as e,l as t}from"./props-from-config-CFPKt34H-Df132tS9.js";var n=t(`spellCheck`,void 0,e);export{n as t};

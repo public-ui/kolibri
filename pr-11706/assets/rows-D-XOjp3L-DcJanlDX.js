@@ -1,1 +1,0 @@
-import{E as e,l as t}from"./props-from-config-CFPKt34H-Df132tS9.js";var n=t(`rows`,void 0,e,e=>e>=1);export{n as t};
