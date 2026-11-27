@@ -135,6 +135,21 @@ There is a bug report for this issue:
 
 [VoiceOver reads negative percent values for month, day, and year steppers in `<input type="date">`](https://issuetracker.google.com/issues/361250561?pli=1)
 
+#### Firefox: month/year selection in the date picker leaves an incomplete date
+
+The date picker is the native one of the browser. In Firefox, choosing a month or a year in the picker of an empty field fills only that segment, without a day being clicked. The field then shows an incomplete date, in a German locale for example `TT.MM.2024` or `TT.09.JJJJ`, and the user can leave the field without a message. The date picker of Chrome does not fill single segments and always sets a complete date.
+
+As long as the date is incomplete, the native element reports an empty value and marks the input as invalid (`validity.badInput`). KolInputDate passes the empty value on: `_on.onInput`/`onChange`, `getValue()` and the form value deliver `null` or an empty value. No wrong date is taken over, but the application cannot distinguish an incomplete date from an empty field.
+
+- **Validation:** KoliBri does not surface native validity messages; messages are set by the application via `_msg` (see [🐞 GitHub issue #10271](https://github.com/public-ui/kolibri/issues/10271)).
+- **Required fields:** with `_required`, the application validation detects the missing value.
+- **Optional fields:** an incomplete date is treated as empty. Tell users the expected format and the requirement in `_label` or `_hint`. Exposing the native validity state to the application is tracked in [🐞 GitHub issue #11664](https://github.com/public-ui/kolibri/issues/11664).
+
+[🐞 GitHub issue #11664](https://github.com/public-ui/kolibri/issues/11664),
+[🐞 GitHub issue #10271](https://github.com/public-ui/kolibri/issues/10271),
+[🐞 GitHub issue #10542](https://github.com/public-ui/kolibri/issues/10542),
+[MDN: `ValidityState.badInput`](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/badInput)
+
 ### kol-input-text
 
 The `search` of this component is highly browser-dependent. For example, the close button is either shown or hidden depending on the browser. Accessibility is therefore not achieved.
