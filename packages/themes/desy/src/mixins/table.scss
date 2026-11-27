@@ -90,7 +90,7 @@
 			}
 
 			&--selection {
-				width: to-rem(44);
+				--kol-table-selection-col-width: #{to-rem(77)};
 			}
 		}
 
