@@ -131,7 +131,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 
 	@Watch('_href')
 	public watchHref(value?: string): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		this.applyProp(hrefProp, value);
 	}
 
 	public componentWillLoad(): void {
@@ -286,7 +286,7 @@ private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
 // delegating to the behavior from a watcher
 private applyTooltipAlign(value?: string): void {
-	tooltipAlignProp.apply(value, (v) => {
+	this.applyProp(tooltipAlignProp, value, (v) => {
 		this.setRenderProp('tooltipAlign', v);
 		this.tooltipBehavior.watchAlign(v);
 	});
@@ -431,7 +431,7 @@ public _disabled?: DisabledPropType = false;
 
 @Watch('_disabled')
 public watchDisabled(value?: DisabledPropType): void {
-	disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+	this.applyProp(disabledProp, value);
 }
 ```
 
@@ -507,7 +507,7 @@ receives already-normalized props and never validates.
 
 `PropDefinition<TInternal>` defines `normalize` (unknown → TInternal), `validate` (TInternal → boolean), `getDefaultValue()` (→ TInternal) and `apply(value, callback)`. The normalize function accepts `unknown` because HTML attributes can arrive as any type.
 
-Each `PropDefinition` provides an `apply(value, callback)` method that combines normalization, validation and fallback handling into a single call. If the value is `undefined` or `null`, the built-in default is used. Otherwise, the value is normalized and validated before being passed to the callback — ensuring callbacks only receive type-safe internal values:
+Each `PropDefinition` provides an `apply(value, callback)` method that combines normalization, validation and fallback handling into a single call. If the value is `undefined` or `null`, the built-in default is used. Otherwise, the value is normalized and validated before being passed to the callback — ensuring callbacks only receive type-safe internal values. Web components and behaviors call it through `applyProp` (see below); items and `resolve-props` call it directly:
 
 ```typescript
 maxProp.apply(value, (normalized) => {
@@ -520,7 +520,7 @@ maxProp.apply(value, (normalized) => {
 
 Three rules separate the layers, so a fachliche validator never has to deal with "not set":
 
-1. **Requiredness is a property of the component, decided by the props config slot.** The `required`/`optional` arrays feed `ApiFromConfig` (`Props.Required`/`Props.Optional`) _and_ drive the runtime warning: `BaseWebComponent.isRequired(key)` answers from the `required` array, and the applying watcher passes it to `apply` as its third argument (`labelProp.apply(value, cb, this.isRequired('label'))`). A prop definition itself carries no requiredness — one definition serves a required prop in one component (the link's `href`) and an optional one in another (the card's) without duplication. Appliers outside a component config (items, behaviors, `resolve-props`) apply without the argument: an unset value there is a legitimate "not set", not a missing required value.
+1. **Requiredness is a property of the component, decided by the props config slot.** The `required`/`optional` arrays feed `ApiFromConfig` (`Props.Required`/`Props.Optional`) _and_ drive the runtime warning: `BaseWebComponent.isRequired(key)` answers from the `required` array, and `BaseWebComponent.applyProp(definition, value, callback?)` passes it to `apply`, so a watcher only names the definition (`this.applyProp(labelProp, value)`). A prop definition itself carries no requiredness — one definition serves a required prop in one component (the link's `href`) and an optional one in another (the card's) without duplication. Appliers outside a component config (items, behaviors, `resolve-props`) apply without the argument: an unset value there is a legitimate "not set", not a missing required value.
 2. **`apply()` intercepts `undefined` and `null` before any fachliche validation**: after the warning when `required` was passed, the built-in default is substituted and handed to the callback. `normalize` and `validate` never see a raw `undefined` from the `apply` path.
 3. **A definition with a default must accept it as a value; a definition without a default has no fallback at all.** `createPropDefinition` takes `undefined` as a deliberate "no default": an unset value then flows through as "not set" — nothing is validated, the validator only ever sees real values (e.g. `isValidLabel` checks length only). A definition that does carry a default has its fallback validated and throws on an invalid one. Either way the fachliche validation of real values stays untouched by the "not set" state. The factory types this guarantee: a definition created with a default exposes a non-optional `getDefaultValue(): TInternal` (`PropDefinitionWithDefault`), so callers read the fallback without assertions.
 
@@ -553,7 +553,7 @@ section pins the variants themselves:
 A component threads requiredness through a single apply point: an item's `load` takes the
 requiredness per key (`load(input, required)` with `required.label` and `required.max` for the
 pagination), and the
-watchers of the web component pass `isRequired(key)` on later applies. Appliers outside a component
+watchers of the web component apply through `applyProp`, which reads `isRequired(key)` itself. Appliers outside a component
 config — a composed item like the one of `kol-table-stateful`, behaviors, `resolve-props` — apply
 without requiredness: an unset value there is a legitimate "not set", and the composer supplies the
 values it needs itself (the stateful table derives the number of entries from its data and names the
@@ -683,11 +683,11 @@ public _name!: NamePropType;
 
 @Watch('_name')
 public watchName(value?: NamePropType): void {
-	nameProp.apply(value, (v) => this.setRenderProp('name', v));
+	this.applyProp(nameProp, value);
 }
 ```
 
-The `apply()` method uses the default value built into `nameProp` when the incoming value is `undefined` or `null`.
+`applyProp` stores the normalized value as the render prop named after the definition. `apply()` uses the default value built into `nameProp` when the incoming value is `undefined` or `null`.
 
 ### WC State Management
 
@@ -712,7 +712,7 @@ The WC manages two kinds of state directly:
 ```tsx
 @Watch('_name')
 public watchName(value?: string): void {
-	nameProp.apply(value, (v) => {
+	this.applyProp(nameProp, value, (v) => {
 		this.setRenderProp('name', v);     // Store normalized prop (no re-render)
 		// this.setState('name', v);       // Add only if 'name' is also an @State field
 	});

@@ -79,7 +79,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 
 	@Watch('_collapsible')
 	public watchCollapsible(value?: CollapsiblePropType): void {
-		collapsibleProp.apply(value, (v) => this.setRenderProp('collapsible', v));
+		this.applyProp(collapsibleProp, value);
 	}
 
 	/**
@@ -90,7 +90,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 
 	@Watch('_hasCompactButton')
 	public watchHasCompactButton(value?: HasCompactButtonPropType): void {
-		hasCompactButtonProp.apply(value, (v) => this.setRenderProp('hasCompactButton', v));
+		this.applyProp(hasCompactButtonProp, value);
 	}
 
 	/**
@@ -101,7 +101,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 
 	@Watch('_hasIconsWhenExpanded')
 	public watchHasIconsWhenExpanded(value?: HasIconsWhenExpandedPropType): void {
-		hasIconsWhenExpandedProp.apply(value, (v) => this.setRenderProp('hasIconsWhenExpanded', v));
+		this.applyProp(hasIconsWhenExpandedProp, value);
 	}
 
 	/**
@@ -113,7 +113,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: HideLabelPropType): void {
-		hideLabelProp.apply(value, (v) => {
+		this.applyProp(hideLabelProp, value, (v) => {
 			this.compact = v;
 		});
 	}
@@ -138,7 +138,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 	/** Every `_links` value resets the expansion to the active entries, also when the value is rejected. */
 	@Watch('_links')
 	public watchLinks(value?: Stringified<ButtonOrLinkOrTextWithChildrenProps[]>): void {
-		navLinksProp.apply(value, (v) => this.setRenderProp('links', v));
+		this.applyProp(navLinksProp, value);
 		devHint(`[KolNav] The navigation structure is not yet validated recursively.`);
 		this.expandedChildren = getInitiallyExpanded(this.getRenderProp('links'));
 	}
@@ -175,7 +175,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements WebComponentInte
 		if (!initial) {
 			removeNavLabel(this.getRenderProp('label'));
 		}
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelProp, value);
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.getRenderProp('label'));
 	}

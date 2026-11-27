@@ -30,7 +30,7 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements WebCompo
 
 	@Watch('_color')
 	public watchColor(value?: Stringified<PropColor>): void {
-		kolibriColorProp.apply(value, (v) => this.setRenderProp('color', v));
+		this.applyProp(kolibriColorProp, value);
 	}
 
 	/**
@@ -41,7 +41,7 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements WebCompo
 
 	@Watch('_labeled')
 	public watchLabeled(value?: LabeledPropType): void {
-		labeledProp.apply(value, (v) => this.setRenderProp('labeled', v));
+		this.applyProp(labeledProp, value);
 	}
 
 	public componentWillLoad(): void {

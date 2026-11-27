@@ -123,7 +123,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
@@ -136,7 +136,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_adjustHeight')
 	public watchAdjustHeight(value?: AdjustHeightPropType): void {
-		adjustHeightProp.apply(value, (v) => this.setRenderProp('adjustHeight', v));
+		this.applyProp(adjustHeightProp, value);
 	}
 
 	/**
@@ -217,7 +217,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(horizontalIconsProp, value);
 	}
 
 	/**
@@ -307,7 +307,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
-		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
+		this.applyProp(placeholderProp, value);
 	}
 
 	/**
@@ -318,7 +318,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_readOnly')
 	public watchReadOnly(value?: ReadOnlyPropType): void {
-		readOnlyProp.apply(value, (v) => this.setRenderProp('readOnly', v));
+		this.applyProp(readOnlyProp, value);
 	}
 
 	/**
@@ -329,7 +329,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+		this.applyProp(requiredProp, value);
 	}
 
 	/**
@@ -341,7 +341,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_resize')
 	public watchResize(value?: TextareaResizePropType): void {
-		resizeProp.apply(value, (v) => this.setRenderProp('resize', v));
+		this.applyProp(resizeProp, value);
 	}
 
 	/**
@@ -352,7 +352,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
-		rowsProp.apply(value, (v) => {
+		this.applyProp(rowsProp, value, (v) => {
 			this.setRenderProp('rows', v);
 			if (!this.isWritingRows) {
 				this.minRows = v;
@@ -368,7 +368,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 		validateAccessAndShortKey(this._accessKey, value);
 	}
 
@@ -380,7 +380,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_spellCheck')
 	public watchSpellCheck(value?: SpellCheckPropType): void {
-		spellCheckProp.apply(value, (v) => this.setRenderProp('spellCheck', v));
+		this.applyProp(spellCheckProp, value);
 	}
 
 	/**
@@ -437,7 +437,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	/**
@@ -633,7 +633,7 @@ export class KolTextarea extends BaseFormFieldWebComponent<TextareaApi> implemen
 
 	/** Applies the value without a counter update; the watcher adds it. */
 	private applyValue(value?: string): void {
-		stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		this.applyProp(stringValueProp, value);
 		this.hasValue = Boolean(this.getRenderProp('value'));
 		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
 	}

@@ -214,7 +214,7 @@ export class KolInputRadio
 	/** The option map keeps its entries while the list is empty. */
 	@Watch('_options')
 	public watchOptions(value?: RadioOptionsPropType): void {
-		radioOptionsProp.apply(value, (v) => {
+		this.applyProp(radioOptionsProp, value, (v) => {
 			this.setRenderProp('options', v);
 			if (v.length > 0) {
 				this.keyOptionMap.clear();
@@ -231,7 +231,7 @@ export class KolInputRadio
 
 	@Watch('_orientation')
 	public watchOrientation(value?: OrientationPropType): void {
-		radioOrientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
+		this.applyProp(radioOrientationProp, value);
 	}
 
 	/**
@@ -242,7 +242,7 @@ export class KolInputRadio
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+		this.applyProp(requiredProp, value);
 	}
 
 	/**
@@ -292,7 +292,7 @@ export class KolInputRadio
 		if (value === null || value === undefined) {
 			this.setRenderProp('value', value as unknown as NonNullable<StencilUnknown>);
 		} else {
-			radioValueProp.apply(value, (v) => this.setRenderProp('value', v));
+			this.applyProp(radioValueProp, value);
 		}
 		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
 	}
@@ -305,7 +305,7 @@ export class KolInputRadio
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	/**

@@ -59,7 +59,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 
 	@Watch('_active')
 	public watchActive(value?: OpenPropType): void {
-		activeProp.apply(value, (v) => this.setRenderProp('active', v));
+		this.applyProp(activeProp, value);
 	}
 
 	/**
@@ -70,7 +70,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+		this.applyProp(hrefProp, value);
 	}
 
 	/**
@@ -81,7 +81,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	/**
@@ -92,7 +92,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements WebCom
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
-		openProp.apply(value, (v) => {
+		this.applyProp(openProp, value, (v) => {
 			this.open = v;
 			invalidateOpenItemsCache(this.getTree());
 		});
