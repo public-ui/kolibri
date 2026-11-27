@@ -718,10 +718,10 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
 </kol-input-password>
 `;
 
-exports[`kol-input-password should render with _label="Label" _name="field" _variant="visibility-toggle" _value="Value" 1`] = `
+exports[`kol-input-password should render with _label="Label" _name="field" _variant="left" _value="Value" 1`] = `
 <kol-input-password>
   <template shadowrootmode="open">
-    <div class="has-value kol-form-field kol-form-field--visibility-toggle kol-input-password password">
+    <div class="has-value kol-form-field kol-form-field--left kol-input-password password">
       <label class="kol-form-field__label" for="input-password-nonce" id="input-password-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
