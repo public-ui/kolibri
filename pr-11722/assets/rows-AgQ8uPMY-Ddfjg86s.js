@@ -1,0 +1,1 @@
+import{E as e,l as t}from"./props-from-config-Dr6e6ZFX-CSQL5are.js";var n=t(`rows`,void 0,e,e=>e>=1);export{n as t};
