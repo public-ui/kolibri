@@ -1,1 +1,0 @@
-import"./index-D1fZ9xFt-CQEGtdBi.js";var e=(e,t)=>{if(e&&t)throw Error(`AccessKey and ShortKey are used. Only one is allowed.`)};export{e as t};
