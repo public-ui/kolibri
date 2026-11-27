@@ -1,0 +1,1 @@
+import"./index-Rxt9vp1C-BrsFgcLS.js";import{l as e,w as t}from"./props-from-config-rqgKq3Pr-9PQ12Uwl.js";var n=[0,1,2,3,4,5,6],r=e(`level`,0,e=>t(e),e=>n.includes(e));export{r as t};

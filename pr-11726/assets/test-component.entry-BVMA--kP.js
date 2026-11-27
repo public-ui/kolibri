@@ -1,0 +1,1 @@
+import{N as e}from"./index-Rxt9vp1C-BrsFgcLS.js";var t=class{constructor(n){new.target===t&&e(this,n)}};export{t as test_component};
