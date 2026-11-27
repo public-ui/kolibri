@@ -5,7 +5,6 @@ export * from './common';
 export * from './dialog';
 export * from './icons';
 export * from './input/iso8601';
-export * from './input/numberString';
 export * from './input/types';
 export * from './modal';
 export * from './table';

@@ -6,7 +6,7 @@ import { BaseFormFieldWebComponent } from '../../internal/functional-components/
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { clampRangeValue, getNumberValueType, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
+import { clampRangeValue } from '../../internal/functional-components/form-field/number-value';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputRangeApi } from '../../internal/functional-components/input-range/api';
@@ -45,7 +45,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	NumberString,
 	ShortKeyPropType,
 	Stringified,
 	SuggestionsPropType,
@@ -95,9 +94,6 @@ export class KolInputRange
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	private rangeRef?: HTMLInputElement;
-
-	/** Whether `_value` was set as a string; `getValue()` and the events return the value in this type. */
-	private valueIsNumberString = false;
 
 	protected readonly propsConfig: PropsConfigShape = inputRangePropsConfig;
 
@@ -224,10 +220,10 @@ export class KolInputRange
 	 * Defines the maximum value of the element.
 	 */
 	@Prop()
-	public _max?: number | NumberString = 100;
+	public _max?: number = 100;
 
 	@Watch('_max')
-	public watchMax(value?: number | NumberString): void {
+	public watchMax(value?: number): void {
 		inputMaxProp.apply(value, (v) => this.setRenderProp('max', v));
 	}
 
@@ -235,10 +231,10 @@ export class KolInputRange
 	 * Defines the smallest possible input value.
 	 */
 	@Prop()
-	public _min?: number | NumberString = 0;
+	public _min?: number = 0;
 
 	@Watch('_min')
-	public watchMin(value?: number | NumberString): void {
+	public watchMin(value?: number): void {
 		inputMinProp.apply(value, (v) => this.setRenderProp('min', v));
 	}
 
@@ -291,10 +287,10 @@ export class KolInputRange
 	 * Defines the step size for value changes.
 	 */
 	@Prop()
-	public _step?: number | NumberString = undefined;
+	public _step?: number = undefined;
 
 	@Watch('_step')
-	public watchStep(value?: number | NumberString): void {
+	public watchStep(value?: number): void {
 		stepProp.apply(value, (v) => this.setRenderProp('step', v));
 	}
 
@@ -347,15 +343,12 @@ export class KolInputRange
 	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true })
-	public _value?: number | NumberString = undefined;
+	public _value?: number = undefined;
 
 	@Watch('_value')
-	public watchValue(value?: number | NumberString | null): void {
+	public watchValue(value?: number | null): void {
 		inputNumberValueProp.apply(value, (v) => this.setRenderProp('value', v));
 		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value') ?? null);
-		if (value !== undefined) {
-			this.valueIsNumberString = getNumberValueType(value) === 'NumberString';
-		}
 	}
 
 	/**
@@ -373,7 +366,7 @@ export class KolInputRange
 	 * Returns the current value.
 	 */
 	@Method()
-	public getValue(): Promise<number | NumberString | undefined> {
+	public getValue(): Promise<number | undefined> {
 		if (this.ctaRef.el !== undefined) {
 			return Promise.resolve(this.readValue(this.ctaRef.el.value));
 		}
@@ -447,9 +440,9 @@ export class KolInputRange
 	}
 
 	/** The clamped value of a native input in the type in which `_value` was set. */
-	private readValue(raw: string): number | NumberString {
+	private readValue(raw: string): number {
 		const value = clampRangeValue(raw, this.getRenderProp('min'), this.getRenderProp('max'));
-		return remapNumberValue(value, this.valueIsNumberString ? 'NumberString' : 'number') ?? value;
+		return value;
 	}
 
 	/**

@@ -49,7 +49,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	NumberString,
 	ReadOnlyPropType,
 	RequiredPropType,
 	ShortKeyPropType,
@@ -339,10 +338,10 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 	 * Defines the step size for value changes.
 	 */
 	@Prop()
-	public _step?: number | NumberString = undefined;
+	public _step?: number = undefined;
 
 	@Watch('_step')
-	public watchStep(value?: number | NumberString): void {
+	public watchStep(value?: number): void {
 		stepProp.apply(value, (v) => this.setRenderProp('step', v));
 	}
 

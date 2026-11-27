@@ -152,7 +152,7 @@ const KOL_INPUT_DATE_PUBLIC_API: PublicApiContract = {
 	},
 	_step: {
 		kind: 'prop',
-		type: 'number | NumberString',
+		type: 'number',
 		required: false,
 		doc: 'Defines the step size for value changes.',
 	},

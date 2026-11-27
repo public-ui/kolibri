@@ -7,7 +7,6 @@ import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../.
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
-import type { NumberString } from '../../schema';
 
 const COMPONENT_NAME = 'kol-input-number';
 const TEST_VALUE = '10.23';
@@ -42,7 +41,7 @@ const setupCallbacks = async (page: E2EPage) => {
 };
 
 // Helper function to set initial value
-const setInitialValue = async (page: E2EPage, value: number | NumberString | null | undefined) => {
+const setInitialValue = async (page: E2EPage, value: number | null | undefined) => {
 	await page.locator('kol-input-number').evaluate((element: HTMLKolInputNumberElement, val) => {
 		element._value = val;
 	}, value);
@@ -157,7 +156,7 @@ test.describe(COMPONENT_NAME, () => {
 
 	test.describe('type handling', () => {
 		// HTML attribute test cases - values preserve their type as passed
-		const htmlTestCases = [{ name: 'string attribute', initialValue: '1' as NumberString, expectedInitial: '1', expectedAfterFill: '0' }];
+		const htmlTestCases = [{ name: 'string attribute', initialValue: 1, expectedInitial: '1', expectedAfterFill: '0' }];
 
 		for (const testCase of htmlTestCases) {
 			test(`HTML: should handle ${testCase.name} type correctly`, async ({ page }) => {

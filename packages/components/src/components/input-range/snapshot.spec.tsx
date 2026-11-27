@@ -22,7 +22,7 @@ executeSnapshotTests(
 	[KolInputRange],
 	[
 		{ _label: 'Label', _max: 10, _min: 1, _name: 'field', _value: 5 },
-		{ _label: 'Label', _name: 'field', _value: '5' },
+		{ _label: 'Label', _name: 'field', _value: 5 },
 		{ _label: 'Label', _max: 100000, _min: -50, _name: 'field', _value: 10 },
 		{ _label: 'Label', _name: 'field', _suggestions: [1, 2], _value: 1 },
 	],

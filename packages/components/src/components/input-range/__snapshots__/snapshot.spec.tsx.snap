@@ -1533,7 +1533,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _sugges
 </kol-input-range>
 `;
 
-exports[`kol-input-range should render with _label="Label" _name="field" _value="5" 1`] = `
+exports[`kol-input-range should render with _label="Label" _name="field" _value=5 1`] = `
 <kol-input-range _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">

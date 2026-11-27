@@ -7,8 +7,6 @@ import { BaseFormFieldWebComponent } from '../../internal/functional-components/
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import type { NumberValueType } from '../../internal/functional-components/form-field/number-value';
-import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
 import type { PropsConfigShape, WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { IconFC } from '../../internal/functional-components/icon/component';
@@ -48,7 +46,6 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	NumberString,
 	PlaceholderPropType,
 	ReadOnlyPropType,
 	RequiredPropType,
@@ -104,9 +101,6 @@ export class KolInputNumber
 	public inputHasFocus = false;
 
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
-
-	/** Type in which `_value` was set; `getValue()` and the events return the value in this type. */
-	private valueType: NumberValueType = 'null';
 
 	/**
 	 * Whether the field has a value, rendered as the root class `has-value`. It is a plain field, not
@@ -240,10 +234,10 @@ export class KolInputNumber
 	 * Defines the maximum value of the element.
 	 */
 	@Prop()
-	public _max?: number | NumberString = undefined;
+	public _max?: number = undefined;
 
 	@Watch('_max')
-	public watchMax(value?: number | NumberString): void {
+	public watchMax(value?: number): void {
 		inputMaxProp.apply(value, (v) => this.setRenderProp('max', v));
 	}
 
@@ -251,10 +245,10 @@ export class KolInputNumber
 	 * Defines the smallest possible input value.
 	 */
 	@Prop()
-	public _min?: number | NumberString = undefined;
+	public _min?: number = undefined;
 
 	@Watch('_min')
-	public watchMin(value?: number | NumberString): void {
+	public watchMin(value?: number): void {
 		inputMinProp.apply(value, (v) => this.setRenderProp('min', v));
 	}
 
@@ -355,10 +349,10 @@ export class KolInputNumber
 	 * Defines the step size for value changes.
 	 */
 	@Prop()
-	public _step?: number | NumberString = undefined;
+	public _step?: number = undefined;
 
 	@Watch('_step')
-	public watchStep(value?: number | NumberString): void {
+	public watchStep(value?: number): void {
 		stepProp.apply(value, (v) => this.setRenderProp('step', v));
 	}
 
@@ -411,16 +405,13 @@ export class KolInputNumber
 	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true })
-	public _value?: number | NumberString | null = undefined;
+	public _value?: number | null = undefined;
 
 	/** A value reset to `null` keeps the remembered type. */
 	@Watch('_value')
-	public watchValue(value?: number | NumberString | null): void {
+	public watchValue(value?: number | null): void {
 		inputNumberValueProp.apply(value, (v) => this.setRenderProp('value', v));
 		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value') ?? null);
-		if (value !== undefined && value !== null) {
-			this.valueType = getNumberValueType(value);
-		}
 	}
 
 	/**
@@ -438,8 +429,8 @@ export class KolInputNumber
 	 * Returns the current value.
 	 */
 	@Method()
-	public getValue(): Promise<number | NumberString | null> {
-		return Promise.resolve(this.remapValue(this.getRenderProp('value')));
+	public getValue(): Promise<number | null> {
+		return Promise.resolve(this.getRenderProp('value'));
 	}
 
 	/**
@@ -506,13 +497,9 @@ export class KolInputNumber
 		this.destroyFormField();
 	}
 
-	private remapValue(value?: number | null): number | NumberString | null {
-		return remapNumberValue(value, this.valueType);
-	}
-
 	/** The value of the native input in the type in which `_value` was set. */
-	private readInputValue(): number | NumberString | null {
-		return this.remapValue(parseInputNumberValue(this.ctaRef.el?.value));
+	private readInputValue(): number | null {
+		return parseInt(this.ctaRef.el?.value ?? '');
 	}
 
 	/** Writes the value before the input event is dispatched, so the watcher has run when listeners read it. */

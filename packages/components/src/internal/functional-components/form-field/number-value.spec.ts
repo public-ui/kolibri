@@ -1,43 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 
-import type { NumberValueType } from './number-value';
-import { clampRangeValue, getNumberValueType, parseInputNumberValue, remapNumberValue } from './number-value';
-
-/**
- * Pins the value handling of `kol-input-number` and `kol-input-range`, quirks included (G3a.1 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
- */
-describe('getNumberValueType', () => {
-	it.each([
-		['5', 'NumberString'],
-		['0.5', 'NumberString'],
-		[5, 'number'],
-		[0, 'number'],
-		[-5, 'number'],
-		[NaN, 'null'],
-		[null, 'null'],
-		[undefined, 'null'],
-		['-5', 'NumberString'],
-		['abc', 'null'],
-	])('classifies %p as %p', (value, type) => {
-		expect(getNumberValueType(value)).toBe(type);
-	});
-});
-
-const REMAP_CASES: Array<[number | null | undefined, NumberValueType, number | string | null]> = [
-	[5, 'NumberString', '5'],
-	[5, 'number', 5],
-	[5, 'null', 5],
-	[null, 'NumberString', null],
-	[undefined, 'number', null],
-	[NaN, 'number', NaN],
-];
-
-describe('remapNumberValue', () => {
-	it.each(REMAP_CASES)('returns %p with type %p as %p', (value, type, remapped) => {
-		expect(remapNumberValue(value, type)).toBe(remapped);
-	});
-});
+import { clampRangeValue, parseInputNumberValue } from './number-value';
 
 describe('parseInputNumberValue', () => {
 	it.each([

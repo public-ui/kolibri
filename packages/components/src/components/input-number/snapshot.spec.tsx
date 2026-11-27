@@ -26,7 +26,7 @@ executeSnapshotTests(
 	[KolInputNumber],
 	[
 		{ _label: 'Label', _name: 'field', _max: 10, _min: 1, _step: 0.5, _value: 5 },
-		{ _label: 'Label', _name: 'field', _value: '5' },
+		{ _label: 'Label', _name: 'field', _value: 5 },
 		{ _label: 'Label', _name: 'field', _value: null },
 		{ _label: 'Label', _name: 'field', _value: 0 },
 		{ _label: 'Label', _name: 'field', _placeholder: '0', _required: true },

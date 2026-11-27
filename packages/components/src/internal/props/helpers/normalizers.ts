@@ -1,5 +1,5 @@
 import { isLabelSegment, type LabelLangSegmentsPropType } from '../../../schema/props/label';
-import { isNumberString, isObject } from '../../../schema/validators/common';
+import { isObject } from '../../../schema/validators/common';
 
 export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {
@@ -77,9 +77,6 @@ export function normalizeNumberType(value?: unknown): number | never {
 export function normalizeInputNumber(value?: unknown): number | never {
 	if (typeof value === 'number') {
 		return (isNaN(value) ? undefined : value) as number;
-	}
-	if (isNumberString(value)) {
-		return parseFloat(value);
 	}
 	throw new Error(`Invalid number: ${value as string}`);
 }
