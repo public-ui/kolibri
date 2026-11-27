@@ -1,0 +1,44 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "6 changed – 0 of 6 approved, review pending",
+	"computedAt": "2026-11-27T13:07:12.455Z",
+	"pr": 11725,
+	"head": "7d37787a174f93c4189d5b2f3cfc7f4fb00cffb8",
+	"digest": "sha256:c35df3e9b7366dbc4109920b7085b7e1ecf32faa96390d7fcce3f416e89fa625",
+	"counts": {
+		"changes": 6,
+		"open": 6,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"theme-desy/table-stateful-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateful-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-sticky-cols--sticky-cols": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-sticky-header--sticky-header": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
