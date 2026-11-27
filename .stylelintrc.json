@@ -5,6 +5,7 @@
 		"block-no-empty": true,
 		"color-no-invalid-hex": true,
 		"custom-property-pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:--[a-z0-9]+(?:-[a-z0-9]+)*)*$",
+		"declaration-property-value-disallowed-list": { "text-overflow": ["/ellipsis/"] },
 		"declaration-property-value-no-unknown": null,
 		"selector-class-pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:__(?:[a-z0-9]+(?:-[a-z0-9]+)*))?(?:--(?:[a-z0-9]+(?:-[a-z0-9]+)*))?$",
 

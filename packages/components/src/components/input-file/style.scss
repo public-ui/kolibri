@@ -37,22 +37,23 @@
 	.kol-input-container {
 		&__container {
 			display: flex;
-			overflow: hidden;
 			align-items: center;
 		}
 
 		&__button {
-			/* The button root is an item of the centered `__container` row. `height: auto` keeps it at its
-			   own height instead of the `height: 100%` of the button styles, which would stretch it to the row. */
+			/* The button root is an item of the centered `__container` row. `height: auto` drops the
+			   `height: 100%` of the button styles so `align-self: stretch` applies and the button
+			   follows the row height: a long file name that wraps the row to multiple lines grows
+			   the button with it. */
 			height: auto;
+			align-self: stretch;
 		}
 
 		&__filename {
-			overflow: hidden;
+			min-width: 0;
 			flex-grow: 1;
 
-			white-space: nowrap;
-			text-overflow: ellipsis;
+			overflow-wrap: anywhere;
 		}
 
 		&:has(> .kol-input-container__adornment--start):has(> .kol-input-container__adornment--end) {
