@@ -12,8 +12,7 @@ export const InputPasswordShowPassword: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This sample shows KolInputPassword in the variant &quot;visibility-toggle&quot;. It features a button to toggle between a visible and hidden password
-					input.
+					This sample shows KolInputPassword with the &quot;visibility-toggle&quot;. It features a button to toggle between a visible and hidden password input.
 				</p>
 			</SampleDescription>
 
