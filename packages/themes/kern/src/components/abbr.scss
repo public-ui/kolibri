@@ -1,7 +1,8 @@
 @use '~@public-ui/components/index' as *;
 
 @layer kol-theme-component {
-	abbr:has(+ .kol-tooltip) {
+	.kol-abbr--has-label {
+		text-decoration: none;
 		border-bottom: 1px dashed;
 	}
 }
