@@ -1,6 +1,5 @@
 import { KolInputRangeTag } from '../../core/component-names';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../utils/testing';
-
 import { KolInputRange } from './component';
 
 executeInputSnapshotTests(KolInputRangeTag, [KolInputRange], {

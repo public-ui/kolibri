@@ -1,4 +1,5 @@
 import { autoUpdate } from '@floating-ui/dom';
+
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { alignProp } from '../../props';
 import { BaseBehavior } from '../base-behavior';

@@ -1,4 +1,5 @@
 import { h } from '@stencil/core';
+
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
 import { TextAreaFC } from './textarea';
 

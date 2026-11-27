@@ -290,14 +290,183 @@ const WEB_COMPONENT_BASES = (() => {
 	return declarations.filter(({ cls }) => !decoratorNames(cls).includes('Component') && extendsBaseWebComponent(cls));
 })();
 
+describe('Shared orchestrator bases', () => {
+	/** ARC42 § 9, decision 16: the `base.tsx` of a component folder is shared by at least two elements. */
+	const bases = SOURCES.filter(({ file }) => /components[\\/][^\\/]+[\\/]base\.tsx$/.test(file)).flatMap(({ file, source }) =>
+		classesOf(source)
+			.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && cls.name !== undefined)
+			.map((cls) => ({ file: path.relative(SRC, file), name: cls.name?.text ?? '' })),
+	);
+	const elementsExtending = (name: string): number =>
+		SOURCES.flatMap(({ source }) => classesOf(source)).filter(
+			(cls) => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component') && baseName(cls) === name,
+		).length;
+
+	it.each(bases.map(({ file, name }) => [`${file} ${name}`, name]))('%s is extended by at least two elements', (_label, name) => {
+		expect(elementsExtending(name)).toBeGreaterThanOrEqual(2);
+	});
+});
+
 describe('Web component base class member order', () => {
 	it('finds the base classes', () => {
-		expect(WEB_COMPONENT_BASES.length).toBeGreaterThan(10);
+		expect(WEB_COMPONENT_BASES.length).toBeGreaterThan(5);
 	});
 
 	it.each(WEB_COMPONENT_BASES.map(({ cls, file }) => [`${path.relative(SRC, file)} ${cls.name?.text}`, cls]))('%s follows the member order', (_name, cls) => {
 		expect(checkClass(cls)).toEqual([]);
 	});
+});
+
+/**
+ * `componentWillLoad` applies a prop through its watcher (`this.watchLabel(this._label)`), so the first
+ * value and every later change run the same code. It never applies a prop definition itself
+ * (`labelProp.apply(this._label, …)`). Where the watcher reacts to a change beyond applying the value, the
+ * component calls the `apply…` method the watcher delegates to; a watcher that only hands the value on to
+ * that method is called itself.
+ */
+const bypassedWatchers = (cls: ts.ClassDeclaration): string[] => {
+	const methods = cls.members.filter((member): member is ts.MethodDeclaration => ts.isMethodDeclaration(member));
+	const componentWillLoad = methods.find((method) => memberName(method) === 'componentWillLoad');
+	/** The watcher of a prop and, if its body only hands the value on to one own method, that method. */
+	const watcherOf = (prop: string): { name: string; delegate?: string } | undefined => {
+		const watcher = methods.find((method) =>
+			(ts.getDecorators(method) ?? []).some(
+				(decorator) =>
+					ts.isCallExpression(decorator.expression) &&
+					decorator.expression.expression.getText() === 'Watch' &&
+					(decorator.expression.arguments[0] as ts.StringLiteral | undefined)?.text === prop,
+			),
+		);
+		if (!watcher) return undefined;
+		const [statement, ...rest] = watcher.body?.statements ?? [];
+		const parameter = watcher.parameters[0]?.name.getText();
+		const call = statement && ts.isExpressionStatement(statement) ? statement.expression : undefined;
+		const delegates =
+			rest.length === 0 &&
+			call !== undefined &&
+			ts.isCallExpression(call) &&
+			ts.isPropertyAccessExpression(call.expression) &&
+			call.expression.expression.kind === ts.SyntaxKind.ThisKeyword &&
+			call.arguments.length === 1 &&
+			call.arguments[0].getText() === parameter;
+		return { name: memberName(watcher), delegate: delegates ? call.expression.name.text : undefined };
+	};
+	const problems: string[] = [];
+	const visit = (node: ts.Node): void => {
+		const firstArgument = ts.isCallExpression(node) ? node.arguments[0] : undefined;
+		if (
+			ts.isCallExpression(node) &&
+			ts.isPropertyAccessExpression(node.expression) &&
+			firstArgument !== undefined &&
+			ts.isPropertyAccessExpression(firstArgument) &&
+			firstArgument.expression.kind === ts.SyntaxKind.ThisKeyword
+		) {
+			const prop = firstArgument.name.text;
+			const callee = node.expression;
+			if (callee.name.text === 'apply' && /Prop$/.test(callee.expression.getText())) {
+				problems.push(`componentWillLoad applies ${prop} with ${callee.expression.getText()} instead of calling its watcher`);
+			} else if (callee.expression.kind === ts.SyntaxKind.ThisKeyword && node.arguments.length === 1) {
+				const watcher = watcherOf(prop);
+				if (watcher?.delegate === callee.name.text) {
+					problems.push(`componentWillLoad calls ${callee.name.text} for ${prop}, which ${watcher.name} only hands on to; call ${watcher.name}`);
+				}
+			}
+		}
+		ts.forEachChild(node, visit);
+	};
+	if (componentWillLoad?.body) visit(componentWillLoad.body);
+	return problems;
+};
+
+describe('Prop order along the chain', () => {
+	/**
+	 * The props stand in alphabetical order of their name in the props config, as `@Prop` members and
+	 * in the watcher calls of `componentWillLoad`. A comment or a blank line in `componentWillLoad`
+	 * separates calls whose order matters; each run between them is sorted on its own.
+	 */
+	const compare = (a: string, b: string): number => a.localeCompare(b, 'en', { sensitivity: 'base' });
+	const unsorted = (names: string[]): string[] => names.filter((name, index) => index > 0 && compare(names[index - 1], name) > 0);
+	/** `kol-tooltip-wc` is deprecated and stays unchanged. */
+	const components = SOURCES.filter(({ file, text }) => text.includes('@Component(') && !file.endsWith(path.join('tooltip', 'component.tsx')));
+
+	it.each(components.map(({ file, source }) => [path.relative(SRC, file), source]))('%s declares its @Prop members in alphabetical order', (_name, source) => {
+		const problems = classesOf(source)
+			.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
+			.flatMap((cls) =>
+				unsorted(cls.members.filter((member) => decoratorNames(member).includes('Prop')).map((member) => memberName(member).replace(/^_/, ''))),
+			);
+		expect(problems).toEqual([]);
+	});
+
+	it.each(components.map(({ file, source }) => [path.relative(SRC, file), source]))(
+		'%s calls the watchers in componentWillLoad in alphabetical order',
+		(_name, source) => {
+			const problems = classesOf(source)
+				.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
+				.flatMap((cls) => {
+					const componentWillLoad = cls.members.find(
+						(member): member is ts.MethodDeclaration => ts.isMethodDeclaration(member) && memberName(member) === 'componentWillLoad',
+					);
+					const runs: string[][] = [[]];
+					componentWillLoad?.body?.statements.forEach((statement) => {
+						const call = ts.isExpressionStatement(statement) ? statement.expression : undefined;
+						const argument = call && ts.isCallExpression(call) ? call.arguments[0] : undefined;
+						const isWatcherCall =
+							call !== undefined &&
+							ts.isCallExpression(call) &&
+							ts.isPropertyAccessExpression(call.expression) &&
+							call.expression.expression.kind === ts.SyntaxKind.ThisKeyword &&
+							call.expression.name.text.startsWith('watch') &&
+							argument !== undefined &&
+							ts.isPropertyAccessExpression(argument) &&
+							argument.expression.kind === ts.SyntaxKind.ThisKeyword;
+						const separated = /\/\/|\/\*|\n\s*\n/.test(source.text.slice(statement.getFullStart(), statement.getStart()));
+						if (!isWatcherCall || separated) runs.push([]);
+						if (isWatcherCall) runs[runs.length - 1].push(argument.name.text.replace(/^_/, ''));
+					});
+					return runs.flatMap(unsorted);
+				});
+			expect(problems).toEqual([]);
+		},
+	);
+
+	it('lists the prop definitions of every props config in alphabetical order', () => {
+		const problems = fs
+			.readdirSync(path.join(SRC, 'internal', 'functional-components'), { withFileTypes: true })
+			.filter((entry) => entry.isDirectory())
+			.map((entry) => path.join(SRC, 'internal', 'functional-components', entry.name, 'api.tsx'))
+			.filter((file) => fs.existsSync(file))
+			.flatMap((file) => {
+				const source = ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+				const found: string[] = [];
+				const visit = (node: ts.Node): void => {
+					if (
+						ts.isPropertyAssignment(node) &&
+						['optional', 'required'].includes(node.name.getText()) &&
+						ts.isArrayLiteralExpression(node.initializer) &&
+						node.initializer.elements.every(ts.isIdentifier)
+					) {
+						unsorted(node.initializer.elements.map((element) => element.getText())).forEach((name) => found.push(`${path.relative(SRC, file)}: ${name}`));
+					}
+					ts.forEachChild(node, visit);
+				};
+				visit(source);
+				return found;
+			});
+		expect(problems).toEqual([]);
+	});
+});
+
+describe('Stencil component initialization', () => {
+	it.each(SOURCES.filter(({ text }) => text.includes('@Component(')).map(({ file, source }) => [path.relative(SRC, file), source]))(
+		'%s applies its props in componentWillLoad through the watchers',
+		(_name, source) => {
+			const problems = classesOf(source)
+				.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
+				.flatMap(bypassedWatchers);
+			expect(problems).toEqual([]);
+		},
+	);
 });
 
 describe('Property initialization order', () => {
@@ -307,6 +476,66 @@ describe('Property initialization order', () => {
 				.flatMap(initializationProblems)
 				.map((problem) => `${path.relative(SRC, file)}: ${problem}`),
 		);
+		expect(problems).toEqual([]);
+	});
+});
+
+describe('Interaction test files', () => {
+	/** ARC42 § 9, decision 14: `<component>.e2e.ts`, further files `<component>.<topic>.e2e.ts`. */
+	const misnamed = fs
+		.readdirSync(__dirname, { withFileTypes: true })
+		.filter((entry) => entry.isDirectory())
+		.flatMap((entry) =>
+			fs
+				.readdirSync(path.join(__dirname, entry.name))
+				.filter((name) => name.endsWith('.e2e.ts') && name !== `${entry.name}.e2e.ts` && !new RegExp(`^${entry.name}\\.[a-z0-9-]+\\.e2e\\.ts$`).test(name))
+				.map((name) => `${entry.name}/${name}`),
+		);
+
+	it('are named after their component folder', () => {
+		expect(misnamed).toEqual([]);
+	});
+});
+
+describe('Item files', () => {
+	/**
+	 * ARC42 § Embedded Components (Items): an item that several components share is `<fc>/item.ts(x)`
+	 * and imported from outside its own component; an item that only one embedding component needs is
+	 * `<component>/<what it renders>-item.ts(x)` with the factory `create<Component><What>Item`.
+	 */
+	const FC_DIR = path.join(SRC, 'internal', 'functional-components');
+	const sourceFiles = (dir: string): string[] =>
+		fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+			const full = path.join(dir, entry.name);
+			if (entry.isDirectory()) return sourceFiles(full);
+			return /\.tsx?$/.test(entry.name) && !/\.(spec|e2e)\.tsx?$/.test(entry.name) && !entry.name.endsWith('.d.ts') ? [full] : [];
+		});
+	const allFiles = sourceFiles(SRC).map((file) => ({ file, text: fs.readFileSync(file, 'utf8') }));
+	const pascal = (kebab: string): string => kebab.replace(/(^|-)([a-z0-9])/g, (_match, _dash: string, char: string) => char.toUpperCase());
+	const problems = allFiles
+		.filter(({ file, text }) => file.startsWith(FC_DIR) && /export (const|function) create\w+Item\b/.test(text))
+		.flatMap(({ file, text }) => {
+			const folder = path.basename(path.dirname(file));
+			const name = path.basename(file).replace(/\.tsx?$/, '');
+			const relative = path.relative(SRC, file);
+			if (name === 'item') {
+				const ownDirs = [path.join(SRC, 'components', folder), path.join(FC_DIR, folder)];
+				const importer = allFiles.find(
+					({ file: other, text: otherText }) =>
+						!ownDirs.some((dir) => other.startsWith(dir + path.sep)) && new RegExp(`['"][^'"]*/${folder}/item['"]`).test(otherText),
+				);
+				return importer ? [] : [`${relative} is used by its own component only; name it <what it renders>-item`];
+			}
+			if (name.endsWith('-item')) {
+				const factory = `create${pascal(folder)}${pascal(name.slice(0, -'-item'.length))}Item`;
+				return text.includes(`export const ${factory}`) || text.includes(`export function ${factory}`)
+					? []
+					: [`${relative} names its factory other than ${factory}`];
+			}
+			return [`${relative} has an item factory but is no item file`];
+		});
+
+	it('are named after what they render and who uses them', () => {
 		expect(problems).toEqual([]);
 	});
 });

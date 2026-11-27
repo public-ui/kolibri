@@ -1,7 +1,7 @@
-import { Buffer } from 'buffer';
-
 import { expect, type Page } from '@playwright/test';
 import { type E2EPage, test } from '@stencil/playwright';
+import { Buffer } from 'buffer';
+
 import {
 	callback,
 	EXPERIMENTAL_MODE_HEAD,

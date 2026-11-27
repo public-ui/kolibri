@@ -32,7 +32,7 @@ import { buildDefaultPropsFromConfig } from '../props-from-config';
 import { paginationPropsConfig, type PaginationApi } from './api';
 import type { PaginationFCProps } from './component';
 import { clampPage, getPageCount, resolvePageSize } from './model';
-import { PageSizeSelect } from './page-size-select';
+import { PageSizeSelect } from './select-item';
 
 /** The render props of the pagination, as the item keeps them: config defaults applied. */
 export type PaginationRenderProps = ResolvedFunctionalComponentProps<PaginationApi>;

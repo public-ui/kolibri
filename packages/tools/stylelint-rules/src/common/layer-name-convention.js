@@ -3,7 +3,8 @@ import stylelint from 'stylelint';
 
 const ruleName = 'kolibri/common-layer-name-convention';
 const messages = stylelint.utils.ruleMessages(ruleName, {
-	wrongLayerName: (layerName, filePath) => `Layer name "${layerName}" should use the convention 'kol-theme-global' or 'kol-theme-component': ${filePath}`,
+	wrongLayerName: (layerName, filePath) =>
+		`Layer name "${layerName}" should use the convention 'kol-theme-global', 'kol-theme-component' or 'kol-theme-forced-colors': ${filePath}`,
 });
 
 const meta = {
@@ -13,7 +14,7 @@ const meta = {
 
 /**
  * Custom stylelint rule to warn about non-standard layer names:
- * - Warns if layer names don't follow the convention 'kol-theme-global' or 'kol-theme-component'
+ * - Warns if layer names don't follow the convention 'kol-theme-global', 'kol-theme-component' or 'kol-theme-forced-colors'
  * - Only applies to SCSS files in src/ directory
  * - Provides warnings, not errors
  */
@@ -32,7 +33,7 @@ const ruleFunction = (primaryOption) => {
 		const isInSrc = normalizedPath.includes('/src/') && fileName.endsWith('.scss');
 		if (!isInSrc) return;
 
-		const allowedLayerNames = ['kol-theme-global', 'kol-theme-component'];
+		const allowedLayerNames = ['kol-theme-component', 'kol-theme-forced-colors', 'kol-theme-global'];
 
 		// Check all @layer declarations for naming convention
 		root.walkAtRules('layer', (atRule) => {

@@ -72,6 +72,11 @@ export default [
 			 */
 			'kolibri/no-translate-cast-or-concat': 'error',
 
+			/**
+			 * Every decorator stands on a line of its own, above the code it decorates.
+			 */
+			'kolibri/decorator-on-own-line': 'error',
+
 			// Disable rules that TypeScript already handles
 			'no-undef': 'off',
 

@@ -2,7 +2,6 @@ import type { Routes } from '../shares/types';
 import { AccordionComponentContent } from './accordionComponentContent';
 import { ButtonShortkeyTable } from './button-shortkey-table';
 import { ChangeTabindex } from './change-tabindex';
-import { CustomTooltipCssProperties } from './custom-tooltip-css-properties';
 import { DateInForm } from './date-in-form';
 import { DisabledInteractiveElements } from './disabled-interactive-elements';
 import { FocusElements } from './focus-elements';
@@ -24,7 +23,6 @@ export const SCENARIO_ROUTES: Routes = {
 	scenarios: {
 		'button-shortkey-table': ButtonShortkeyTable,
 		'change-tabindex': ChangeTabindex,
-		'custom-tooltip-css-properties': CustomTooltipCssProperties,
 		'date-in-form': DateInForm,
 		'disabled-interactive-scenario': DisabledInteractiveElements,
 		'focus-elements': FocusElements,

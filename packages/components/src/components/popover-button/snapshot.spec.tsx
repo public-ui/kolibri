@@ -1,6 +1,5 @@
 import { KolPopoverButtonTag } from '../../core/component-names';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolPopoverButton } from './component';
 
 executeSnapshotTests(

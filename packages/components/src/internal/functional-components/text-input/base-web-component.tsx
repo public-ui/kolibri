@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
 import type { VNode } from '@stencil/core/internal';
+
 import type {
 	AccessKeyPropType,
 	AutoCompletePropType,

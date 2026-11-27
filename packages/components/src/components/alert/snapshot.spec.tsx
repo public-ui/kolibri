@@ -4,7 +4,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { KolAlertTag } from '../../core/component-names';
 import type { AlertProps, AlertType } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
-
 import { KolAlert } from './component';
 
 const baseObject = { _label: 'Überschrift' };

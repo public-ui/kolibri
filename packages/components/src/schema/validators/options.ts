@@ -1,7 +1,6 @@
 import { containsOnlyNumbers, hasEnoughReadableChars } from '../props';
-import { a11yHint } from '../utils';
-
 import type { Optgroup, SelectOption } from '../types';
+import { a11yHint } from '../utils';
 export const validateInputSelectOptions = <T>(option: SelectOption<T>): boolean => {
 	if (typeof option === 'object' && option !== null) {
 		if (typeof option.label === 'string' && option.label.length > 0) {

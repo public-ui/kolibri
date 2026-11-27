@@ -1,6 +1,5 @@
 import { KolSingleSelectTag } from '../../core/component-names';
 import { executeInputSnapshotTests } from '../../utils/testing';
-
 import { KolSingleSelect } from './component';
 
 const options = [

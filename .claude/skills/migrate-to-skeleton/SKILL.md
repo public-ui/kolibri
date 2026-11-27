@@ -80,7 +80,7 @@ Hintergrund: `packages/components/docs/ARC42-SKELETON.md#schema-helper-layer`.
 6. **CSS/SCSS** — `packages/components/src/components/<komponente>/style.scss`
    Bestehende Basis-Styles behalten, Selektoren an die neue BEM-Struktur anpassen. `style.scss` bleibt Basis-Styling: nur Layout und Struktur, keine Farben (außer dem Schwarz-/Weiß-Kontrast-Fallback), **kein Dark-/Light-Color-Scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Farben und Color Schemes gehören in die Theme-Pakete (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
 7. **Tests** — ko-lokalisiert neben `component.tsx`
-   `snapshot.spec.tsx` über `executeSnapshotTests`; `interaction.e2e.ts` nur, wenn Interaktionsverhalten es rechtfertigt.
+   `snapshot.spec.tsx` über `executeSnapshotTests`; `<component>.e2e.ts` nur, wenn Interaktionsverhalten es rechtfertigt.
 
 ## 6. Phase 4 — Legacy-Rückbau
 

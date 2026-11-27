@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
+
 import { BaseWebComponent } from '../base-web-component';
 import { CounterBehavior } from './behavior';
 

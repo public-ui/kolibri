@@ -48,7 +48,6 @@ grep -l "@Component(" packages/components/src/components/*/component.tsx | sort
 Ausgenommen sind:
 
 - `tooltip`: `kol-tooltip-wc` ist absichtlich deprecated und bleibt unverändert (siehe `AGENTS.md`).
-- `skeleton` und `click-button`: Referenzimplementierung der Architektur.
 - `@else`: Hilfskomponenten.
 
 Bereits reviewt sind Komponenten, zu denen ein Issue mit dem Label `skeleton-review` und dem Titel

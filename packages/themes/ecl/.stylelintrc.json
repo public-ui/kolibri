@@ -6,6 +6,7 @@
 		"kolibri/common-no-root-selector": true,
 		"kolibri/common-require-component-layer": [true, { "layerName": "kol-theme-component", "pathPattern": "/src/components/" }],
 		"kolibri/common-z-index-layers": true,
+		"kolibri/theme-allowed-layer-names": true,
 		"kolibri/theme-require-global-layer": true
 	}
 }

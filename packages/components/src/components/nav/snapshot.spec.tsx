@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+
 import { KolNavTag } from '../../core/component-names';
 import { type ElementProps, executeSnapshotTests } from '../../utils/testing';
 import { KolNav } from './component';
