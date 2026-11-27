@@ -102,7 +102,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	@Watch('_align')
 	public watchAlign(value?: AlignPropType): void {
-		alignProp.apply(value, (v) => this.setRenderProp('align', v));
+		this.applyProp(alignProp, value);
 	}
 
 	/**
@@ -113,7 +113,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	@Watch('_behavior')
 	public watchBehavior(value?: TabBehaviorPropType): void {
-		tabBehaviorProp.apply(value, (v) => this.setRenderProp('behavior', v));
+		this.applyProp(tabBehaviorProp, value);
 	}
 
 	/**
@@ -124,7 +124,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	@Watch('_hasCreateButton')
 	public watchHasCreateButton(value?: HasCreateButtonPropType): void {
-		hasCreateButtonProp.apply(value, (v) => this.setRenderProp('hasCreateButton', v));
+		this.applyProp(hasCreateButtonProp, value);
 	}
 
 	/**
@@ -135,7 +135,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelProp, value);
 	}
 
 	/**
@@ -146,7 +146,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriTabsCallbacks): void {
-		tabsCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(tabsCallbacksProp, value);
 	}
 
 	/**
@@ -444,14 +444,14 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	private applySelected(value?: SelectedPropType): void {
-		selectedProp.apply(value, (v) => {
+		this.applyProp(selectedProp, value, (v) => {
 			this.setRenderProp('selected', v);
 			this.syncSelected();
 		});
 	}
 
 	private applyTabs(value?: Stringified<TabButtonProps[]>): void {
-		tabsProp.apply(value, (tabs) => {
+		this.applyProp(tabsProp, value, (tabs) => {
 			this.setRenderProp('tabs', tabs);
 			this.tabButtonItems.forEach((item) => item.destroy());
 			this.tabButtonItems = tabs.map(() => createTabsButtonItem());

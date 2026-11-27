@@ -75,7 +75,7 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 
 	@Watch('_color')
 	public watchColor(value?: Stringified<PropColor>): void {
-		colorProp.apply(value, (v) => this.setRenderProp('color', v));
+		this.applyProp(colorProp, value);
 	}
 
 	/**
@@ -86,7 +86,7 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
-		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(spanIconsProp, value);
 	}
 
 	/**
@@ -97,7 +97,7 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelWithExpertSlotProp, value);
 	}
 
 	/**
@@ -152,7 +152,7 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements FocusableEle
 			this.unsetRenderProp('smartButton');
 			this.smartButtonProps = undefined;
 			if (value !== undefined && value !== null) {
-				smartButtonProp.apply(value, (smartButton) => {
+				this.applyProp(smartButtonProp, value, (smartButton) => {
 					this.setRenderProp('smartButton', smartButton);
 					this.smartButtonProps = resolveButtonProps({ ...smartButton, _hideLabel: true, _ariaControls: this.labelId }, this.host);
 					this.tooltipBehavior.componentWillLoad({

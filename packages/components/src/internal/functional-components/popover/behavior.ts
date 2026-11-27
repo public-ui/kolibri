@@ -31,7 +31,7 @@ export class PopoverBehavior extends BaseBehavior<PopoverApi> implements Behavio
 	}
 
 	public watchAlign(value?: string): void {
-		alignProp.apply(value, (v) => {
+		this.applyProp(alignProp, value, (v) => {
 			this.setRenderProp('align', v);
 		});
 	}

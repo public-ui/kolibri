@@ -67,7 +67,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 
 	@Watch('_align')
 	public watchAlign(value?: AlignPropType): void {
-		alignProp.apply(value, (v) => this.setRenderProp('align', v));
+		this.applyProp(alignProp, value);
 	}
 
 	/**
@@ -78,7 +78,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: HasCloserPropType): void {
-		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
+		this.applyProp(hasCloserProp, value);
 	}
 
 	/**
@@ -89,7 +89,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	/**
@@ -100,7 +100,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
-		levelProp.apply(value, (v) => this.setRenderProp('level', v));
+		this.applyProp(levelProp, value);
 	}
 
 	/**
@@ -111,7 +111,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriModalEventCallbacks): void {
-		drawerCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(drawerCallbacksProp, value);
 	}
 
 	/**
@@ -122,7 +122,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements WebCompone
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
-		openProp.apply(value, (v) => {
+		this.applyProp(openProp, value, (v) => {
 			this.setState('expanded', v);
 			// Before the first render there is no dialog to drive — `componentDidLoad` does it.
 			if (this.dialogRef.el) {

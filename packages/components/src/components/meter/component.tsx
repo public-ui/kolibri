@@ -50,7 +50,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 		if (value === undefined) {
 			this.unsetRenderProp('high');
 		} else {
-			highProp.apply(value, (v) => this.setRenderProp('high', v));
+			this.applyProp(highProp, value);
 		}
 	}
 
@@ -62,7 +62,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	/**
@@ -76,7 +76,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 		if (value === undefined) {
 			this.unsetRenderProp('low');
 		} else {
-			lowProp.apply(value, (v) => this.setRenderProp('low', v));
+			this.applyProp(lowProp, value);
 		}
 	}
 
@@ -89,7 +89,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {
-		maxProp.apply(value, (v) => {
+		this.applyProp(maxProp, value, (v) => {
 			this.setRenderProp('max', v);
 			this.watchValue(this.getRawProp('value'));
 		});
@@ -104,7 +104,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_min')
 	public watchMin(value?: MinPropType): void {
-		minProp.apply(value, (v) => {
+		this.applyProp(minProp, value, (v) => {
 			this.setRenderProp('min', v);
 			this.watchValue(this.getRawProp('value'));
 		});
@@ -124,7 +124,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 		if (value === undefined) {
 			this.unsetRenderProp('optimum');
 		} else {
-			optimumProp.apply(value, (v) => this.setRenderProp('optimum', v));
+			this.applyProp(optimumProp, value);
 		}
 	}
 
@@ -136,7 +136,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_orientation')
 	public watchOrientation(value?: OrientationPropType): void {
-		orientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
+		this.applyProp(orientationProp, value);
 	}
 
 	/**
@@ -147,7 +147,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_unit')
 	public watchUnit(value?: UnitPropType): void {
-		unitProp.apply(value, (v) => this.setRenderProp('unit', v));
+		this.applyProp(unitProp, value);
 	}
 
 	/**

@@ -253,7 +253,7 @@ export class KolInputEmail
 
 	@Watch('_multiple')
 	public watchMultiple(value?: MultiplePropType): void {
-		multipleProp.apply(value, (v) => this.setRenderProp('multiple', v));
+		this.applyProp(multipleProp, value);
 	}
 
 	/**
@@ -352,7 +352,7 @@ export class KolInputEmail
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
-		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+		this.applyProp(suggestionsProp, value);
 	}
 
 	/**

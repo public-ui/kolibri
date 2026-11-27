@@ -347,7 +347,7 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 
 	@Watch('_spellCheck')
 	public watchSpellCheck(value?: SpellCheckPropType): void {
-		spellCheckProp.apply(value, (v) => this.setRenderProp('spellCheck', v));
+		this.applyProp(spellCheckProp, value);
 	}
 
 	/**
@@ -358,7 +358,7 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
-		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+		this.applyProp(suggestionsProp, value);
 	}
 
 	/**
@@ -403,7 +403,7 @@ export class KolInputText extends BaseTextInputWebComponent<InputTextApi> implem
 
 	@Watch('_type')
 	public watchType(value?: InputTextTypePropType): void {
-		inputTextTypeProp.apply(value, (v) => this.setRenderProp('type', v));
+		this.applyProp(inputTextTypeProp, value);
 	}
 
 	/**

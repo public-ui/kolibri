@@ -109,7 +109,7 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 
 	@Watch('_accept')
 	public watchAccept(value?: AcceptPropType): void {
-		acceptProp.apply(value, (v) => this.setRenderProp('accept', v));
+		this.applyProp(acceptProp, value);
 	}
 
 	/**
@@ -120,7 +120,7 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
@@ -190,7 +190,7 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(horizontalIconsProp, value);
 	}
 
 	/**
@@ -234,7 +234,7 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 
 	@Watch('_multiple')
 	public watchMultiple(value?: MultiplePropType): void {
-		multipleProp.apply(value, (v) => this.setRenderProp('multiple', v));
+		this.applyProp(multipleProp, value);
 	}
 
 	/**
@@ -267,7 +267,7 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+		this.applyProp(requiredProp, value);
 	}
 
 	/**
@@ -278,7 +278,7 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 		validateAccessAndShortKey(this._accessKey, value);
 	}
 
@@ -293,7 +293,7 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 		if (value === undefined || value === null) {
 			this.unsetRenderProp('smartButton');
 		} else {
-			smartButtonProp.apply(value, (v) => this.setRenderProp('smartButton', v));
+			this.applyProp(smartButtonProp, value);
 		}
 	}
 
@@ -339,7 +339,7 @@ export class KolInputFile extends BaseFormFieldWebComponent<InputFileApi> implem
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	/**

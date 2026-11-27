@@ -4,6 +4,7 @@ import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core'
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import { alignProp, badgeTextProp, idProp, labelLangSegmentsProp } from '../../internal/props';
 import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType } from '../../schema';
 
 /**
@@ -26,6 +27,11 @@ export class KolTooltipWc {
 	@Prop()
 	public _badgeText?: BadgeTextPropType = undefined;
 
+	@Watch('_badgeText')
+	public validateBadgeText(value?: BadgeTextPropType): void {
+		badgeTextProp.apply(value, (v) => this.tooltipBehavior.watchBadgeText(v));
+	}
+
 	/**
 	 * Defines the alignment of the tooltip, popover or tabs in relation to the element.
 	 */
@@ -34,7 +40,7 @@ export class KolTooltipWc {
 
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
-		this.tooltipBehavior?.watchAlign(value);
+		alignProp.apply(value, (v) => this.tooltipBehavior.watchAlign(v));
 	}
 
 	/**
@@ -47,7 +53,7 @@ export class KolTooltipWc {
 
 	@Watch('_id')
 	public validateId(value?: IdPropType): void {
-		this.tooltipBehavior?.watchId(value);
+		idProp.apply(value, (v) => this.tooltipBehavior.watchId(v));
 	}
 
 	/**
@@ -58,7 +64,8 @@ export class KolTooltipWc {
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		this.tooltipBehavior?.watchLabel(value);
+		// The empty string records the "not set" state instead of an invalid-value warning.
+		labelLangSegmentsProp.apply(value || undefined, (v) => this.tooltipBehavior.watchLabel(v));
 	}
 
 	/**
@@ -74,12 +81,10 @@ export class KolTooltipWc {
 	}
 
 	public componentWillLoad(): void {
-		this.tooltipBehavior.componentWillLoad({
-			label: this._label,
-			align: this._align,
-			badgeText: this._badgeText,
-			id: this._id,
-		});
+		this.validateAlign(this._align);
+		this.validateBadgeText(this._badgeText);
+		this.validateId(this._id);
+		this.validateLabel(this._label);
 	}
 
 	public componentDidRender(): void {
