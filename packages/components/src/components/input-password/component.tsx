@@ -412,7 +412,7 @@ export class KolInputPassword
 
 	@Watch('_visibilityToggle')
 	public watchVisibilityToggle(value?: VisibilityTogglePropType): void {
-		visibilityToggleProp.apply(value, (v) => this.setRenderProp('visibilityToggle', v));
+		this.applyProp(visibilityToggleProp, value);
 	}
 
 	/**

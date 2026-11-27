@@ -63,12 +63,12 @@ export abstract class BaseSelectWebComponent extends BaseFormFieldWebComponent<S
 	// --- Prop application (the concrete element's watchers delegate here) ---
 
 	protected applyAccessKey(value?: string): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 		validateAccessAndShortKey(value, this.getShortKeyProp());
 	}
 
 	protected applyShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 		validateAccessAndShortKey(this.getAccessKeyProp(), value);
 	}
 
@@ -76,12 +76,12 @@ export abstract class BaseSelectWebComponent extends BaseFormFieldWebComponent<S
 	protected abstract getShortKeyProp(): ShortKeyPropType | undefined;
 
 	protected applyIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(horizontalIconsProp, value);
 	}
 
 	protected applyMultiple(value?: MultiplePropType): void {
 		assertSelectValueMatchesMultiplicity(this._value, value === true, 'current');
-		multipleProp.apply(value, (v) => {
+		this.applyProp(multipleProp, value, (v) => {
 			this.setRenderProp('multiple', v);
 			this.setRenderProp('value', normalizeSelectValue(this.getRenderProp('value'), this.getRenderProp('options'), this._multiple));
 		});
@@ -89,7 +89,7 @@ export abstract class BaseSelectWebComponent extends BaseFormFieldWebComponent<S
 
 	/** The option map keeps its entries while the list is empty. */
 	protected applyOptions(value?: OptionsWithOptgroupPropType): void {
-		optionsWithOptgroupProp.apply(value, (v) => {
+		this.applyProp(optionsWithOptgroupProp, value, (v) => {
 			this.setRenderProp('options', v);
 			if (v.length > 0) {
 				this.keyOptionMap.clear();
@@ -100,15 +100,15 @@ export abstract class BaseSelectWebComponent extends BaseFormFieldWebComponent<S
 	}
 
 	protected applyRequired(value?: boolean): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+		this.applyProp(requiredProp, value);
 	}
 
 	protected applyRows(value?: number): void {
-		rowsProp.apply(value, (v) => this.setRenderProp('rows', v));
+		this.applyProp(rowsProp, value);
 	}
 
 	protected applyTabIndex(value?: number): void {
-		tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
+		this.applyProp(tabIndexProp, value);
 	}
 
 	/**
@@ -125,12 +125,12 @@ export abstract class BaseSelectWebComponent extends BaseFormFieldWebComponent<S
 		if (value === null) {
 			setValue([null]);
 		} else {
-			selectValueProp.apply(value, setValue);
+			this.applyProp(selectValueProp, value, setValue);
 		}
 	}
 
 	protected applyVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	// --- Value ---

@@ -158,48 +158,48 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	// --- Prop application ---
 
 	protected applyData(value?: TableDataPropType): void {
-		tableDataProp.apply(value, (rows) => {
+		this.applyProp(tableDataProp, value, (rows) => {
 			this.setRenderProp('data', rows);
 			this.setState('rowKeys', createRowKeys(rows, this.getState('rowKeys')));
 		});
 	}
 
 	protected applyDataFoot(value?: TableDataFootPropType): void {
-		tableDataFootProp.apply(value, (v) => this.setRenderProp('dataFoot', v));
+		this.applyProp(tableDataFootProp, value);
 	}
 
 	protected applyFixedCols(value?: FixedColsPropType): void {
-		fixedColsProp.apply(value, (v) => this.setRenderProp('fixedCols', v));
+		this.applyProp(fixedColsProp, value);
 		this.updateStickyColsDisabled();
 	}
 
 	protected applyHasSettingsMenu(value?: HasSettingsMenuPropType): void {
-		hasSettingsMenuProp.apply(value, (v) => this.setRenderProp('hasSettingsMenu', v));
+		this.applyProp(hasSettingsMenuProp, value);
 	}
 
 	protected applyHeaders(value?: TableHeadersPropType): void {
-		tableHeadersProp.apply(value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)), this.isRequired('headers'));
+		this.applyProp(tableHeadersProp, value, (headers) => this.setRenderProp('headers', withHeaderCellSettings(headers)));
 	}
 
 	protected applyLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	protected applyLoading(value?: TableLoadingPropType): void {
-		tableLoadingProp.apply(value, (v) => this.setRenderProp('loading', v));
+		this.applyProp(tableLoadingProp, value);
 	}
 
 	protected applyOn(value?: TableCallbacksPropType): void {
-		tableCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(tableCallbacksProp, value);
 	}
 
 	protected applySelection(value?: TableSelectionPropType): void {
-		tableSelectionProp.apply(value, (v) => this.setRenderProp('selection', v));
+		this.applyProp(tableSelectionProp, value);
 		this.updateStickyColsDisabled();
 	}
 
 	protected applyVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	/**

@@ -71,7 +71,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	@Watch('_alert')
 	public watchAlert(value?: AlertPropType): void {
-		alertProp.apply(value, (v) => {
+		this.applyProp(alertProp, value, (v) => {
 			this.showAlert = v;
 			this.syncAlertEffects(v);
 		});
@@ -85,7 +85,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: HasCloserPropType): void {
-		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
+		this.applyProp(hasCloserProp, value);
 	}
 
 	/**
@@ -96,7 +96,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	/**
@@ -107,7 +107,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
-		levelProp.apply(value, (v) => this.setRenderProp('level', v));
+		this.applyProp(levelProp, value);
 	}
 
 	/**
@@ -118,7 +118,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriAlertEventCallbacks): void {
-		alertCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(alertCallbacksProp, value);
 	}
 
 	/**
@@ -129,7 +129,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	@Watch('_type')
 	public watchType(value?: AlertTypePropType): void {
-		alertTypeProp.apply(value, (v) => this.setRenderProp('type', v));
+		this.applyProp(alertTypeProp, value);
 	}
 
 	/**
@@ -140,7 +140,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements WebComponent
 
 	@Watch('_variant')
 	public watchVariant(value?: AlertVariantPropType): void {
-		alertVariantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(alertVariantProp, value);
 	}
 
 	public componentWillLoad(): void {

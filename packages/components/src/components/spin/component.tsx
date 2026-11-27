@@ -27,7 +27,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelProp, value);
 	}
 
 	/**
@@ -38,7 +38,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	@Watch('_show')
 	public watchShow(value?: ShowPropType): void {
-		showProp.apply(value, (v) => this.setRenderProp('show', v));
+		this.applyProp(showProp, value);
 	}
 
 	/**
@@ -49,7 +49,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	@Watch('_variant')
 	public watchVariant(value?: SpinVariantType): void {
-		variantSpinProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantSpinProp, value);
 	}
 
 	public componentWillLoad(): void {

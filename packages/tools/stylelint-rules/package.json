@@ -1,12 +1,37 @@
 {
 	"name": "@public-ui/stylelint-rules",
-	"version": "4.1.2-rc.1",
+	"version": "5.0.0-beta.3",
+	"license": "EUPL-1.2",
+	"homepage": "https://public-ui.github.io",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri",
+		"directory": "packages/tools/stylelint-rules"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
 	"description": "Custom Stylelint rules for the KoliBri component library and their themes.",
-	"private": true,
+	"keywords": [
+		"kolibri",
+		"scss",
+		"stylelint",
+		"stylelint-plugin",
+		"web-components"
+	],
 	"type": "module",
 	"exports": {
 		".": "./src/index.js"
 	},
+	"files": [
+		"src",
+		"!src/**/*.test.js"
+	],
 	"scripts": {
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint",

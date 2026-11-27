@@ -100,7 +100,7 @@ export class KolInputColor
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
@@ -125,7 +125,7 @@ export class KolInputColor
 
 	@Watch('_autoComplete')
 	public watchAutoComplete(value?: AutoCompletePropType): void {
-		autoCompleteProp.apply(value, (v) => this.setRenderProp('autoComplete', v));
+		this.applyProp(autoCompleteProp, value);
 	}
 
 	/**
@@ -181,7 +181,7 @@ export class KolInputColor
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(horizontalIconsProp, value);
 	}
 
 	/**
@@ -247,7 +247,7 @@ export class KolInputColor
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 		validateAccessAndShortKey(this._accessKey, value);
 	}
 
@@ -262,7 +262,7 @@ export class KolInputColor
 		if (value === undefined || value === null) {
 			this.unsetRenderProp('smartButton');
 		} else {
-			smartButtonProp.apply(value, (v) => this.setRenderProp('smartButton', v));
+			this.applyProp(smartButtonProp, value);
 		}
 	}
 
@@ -274,7 +274,7 @@ export class KolInputColor
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
-		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+		this.applyProp(suggestionsProp, value);
 	}
 
 	/**
@@ -319,7 +319,7 @@ export class KolInputColor
 
 	@Watch('_value')
 	public watchValue(value?: StringValuePropType): void {
-		stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		this.applyProp(stringValueProp, value);
 		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
 	}
 
@@ -331,7 +331,7 @@ export class KolInputColor
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	/**

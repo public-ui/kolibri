@@ -109,7 +109,7 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 	}
 
 	public watchName(value?: string): void {
-		nameProp.apply(value, (v) => {
+		this.applyProp(nameProp, value, (v) => {
 			this.setRenderProp('name', v);
 			this.setNameAttribute(v);
 		});

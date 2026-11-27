@@ -1,3 +1,4 @@
+import type { PropDefinition } from '../props';
 import type { ComponentApi, InternalOf, PropsConfigShape, ResolvedInputProps, ResolvedProps, StateAccess, StrictFields } from './generic-types';
 import { buildDefaultPropsFromConfig } from './props-from-config';
 
@@ -88,13 +89,29 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 	/**
 	 * Whether the props config lists a prop under `required`. Requiredness is a property of the
 	 * component, so it comes from the config slot — the prop definition itself stays neutral.
-	 * Pass the result to `PropDefinition.apply` as its third argument. Outside a component config
-	 * (items, behaviors) this is `false`: an unset value there is a legitimate "not set", not a
-	 * missing required value.
+	 * {@link applyProp} reads it for the watchers; a composed item takes it for its own apply point.
 	 */
 	protected isRequired(key: string): boolean {
 		this.seedRenderProps();
 		return this.requiredPropNames.has(key);
+	}
+
+	/**
+	 * Applies a prop value through its definition with the requiredness from the props config. Without
+	 * a callback the normalized value becomes the render prop named after the definition.
+	 */
+	protected applyProp<T>(definition: Pick<PropDefinition<T>, 'apply' | 'propName'>, value: unknown, callback?: (normalized: T) => void): void {
+		this.seedRenderProps();
+		// The store is typed per render key; the definition carries its key as a plain string.
+		const store = this.renderProps as Record<string, unknown>;
+		definition.apply(
+			value,
+			callback ??
+				((normalized) => {
+					store[definition.propName] = normalized;
+				}),
+			this.isRequired(definition.propName),
+		);
 	}
 
 	/**

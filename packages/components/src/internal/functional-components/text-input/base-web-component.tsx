@@ -109,36 +109,36 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 	// --- Prop application ---
 
 	protected applyAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.textShared.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value, (v) => this.textShared.setRenderProp('accessKey', v));
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
 	protected applyAutoComplete(value?: AutoCompletePropType): void {
-		autoCompleteProp.apply(value, (v) => this.textShared.setRenderProp('autoComplete', v));
+		this.applyProp(autoCompleteProp, value, (v) => this.textShared.setRenderProp('autoComplete', v));
 	}
 
 	protected applyIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.textShared.setRenderProp('icons', v));
+		this.applyProp(horizontalIconsProp, value, (v) => this.textShared.setRenderProp('icons', v));
 	}
 
 	protected applyPattern(value?: string): void {
-		patternProp.apply(value, (v) => this.textShared.setRenderProp('pattern', v));
+		this.applyProp(patternProp, value, (v) => this.textShared.setRenderProp('pattern', v));
 	}
 
 	protected applyPlaceholder(value?: string): void {
-		placeholderProp.apply(value, (v) => this.textShared.setRenderProp('placeholder', v));
+		this.applyProp(placeholderProp, value, (v) => this.textShared.setRenderProp('placeholder', v));
 	}
 
 	protected applyReadOnly(value?: boolean): void {
-		readOnlyProp.apply(value, (v) => this.textShared.setRenderProp('readOnly', v));
+		this.applyProp(readOnlyProp, value, (v) => this.textShared.setRenderProp('readOnly', v));
 	}
 
 	protected applyRequired(value?: boolean): void {
-		requiredProp.apply(value, (v) => this.textShared.setRenderProp('required', v));
+		this.applyProp(requiredProp, value, (v) => this.textShared.setRenderProp('required', v));
 	}
 
 	protected applyShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.textShared.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value, (v) => this.textShared.setRenderProp('shortKey', v));
 		validateAccessAndShortKey(this._accessKey, value);
 	}
 
@@ -147,7 +147,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 		if (value === undefined || value === null) {
 			this.textShared.unsetRenderProp('smartButton');
 		} else {
-			smartButtonProp.apply(value, (v) => this.textShared.setRenderProp('smartButton', v));
+			this.applyProp(smartButtonProp, value, (v) => this.textShared.setRenderProp('smartButton', v));
 		}
 	}
 
@@ -159,7 +159,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	/** Applies the value on load, without a counter update: `didLoadTextInput` fills the counter once its spans exist. */
 	protected initValue(value?: string): void {
-		stringValueProp.apply(value, (v) => this.textShared.setRenderProp('value', v));
+		this.applyProp(stringValueProp, value, (v) => this.textShared.setRenderProp('value', v));
 		this.formAssociation.setFormAssociatedValue(this.textShared.getRenderProp('value'));
 	}
 
@@ -169,7 +169,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 	}
 
 	protected applyVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.textShared.setRenderProp('variant', v));
+		this.applyProp(variantProp, value, (v) => this.textShared.setRenderProp('variant', v));
 	}
 
 	protected applyHasCounter(value?: boolean): void {

@@ -200,80 +200,76 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	// --- Prop application (one per prop; the concrete element's watchers delegate here) ---
 
 	protected applyAccessKey(value?: AccessKeyPropType, shortKey?: ShortKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 		validateAccessAndShortKey(value, shortKey);
 	}
 
 	protected applyAriaControls(value?: AriaControlsPropType): void {
-		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
+		this.applyProp(ariaControlsProp, value);
 	}
 
 	protected applyAriaDescription(value?: AriaDescriptionPropType): void {
-		ariaDescriptionProp.apply(value, (v) => this.setRenderProp('ariaDescription', v));
+		this.applyProp(ariaDescriptionProp, value);
 	}
 
 	protected applyAriaExpanded(value?: boolean): void {
-		ariaExpandedProp.apply(value, (v) => this.setRenderProp('ariaExpanded', v));
+		this.applyProp(ariaExpandedProp, value);
 	}
 
 	protected applyAriaHasPopup(value?: AriaHasPopupPropType): void {
-		ariaHasPopupProp.apply(value, (v) => this.setRenderProp('ariaHasPopup', v));
+		this.applyProp(ariaHasPopupProp, value);
 	}
 
 	protected applyAriaSelected(value?: boolean): void {
-		ariaSelectedProp.apply(value, (v) => this.setRenderProp('ariaSelected', v));
+		this.applyProp(ariaSelectedProp, value);
 	}
 
 	protected applyCustomClass(value?: CustomClassPropType): void {
-		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
+		this.applyProp(customClassProp, value);
 	}
 
 	protected applyDisabled(value?: DisabledPropType): void {
-		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+		this.applyProp(disabledProp, value);
 	}
 
 	protected applyHideLabel(value?: HideLabelPropType): void {
-		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
+		this.applyProp(hideLabelProp, value);
 	}
 
 	protected applyIcons(value?: IconsPropType): void {
-		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(spanIconsProp, value);
 	}
 
 	protected applyId(value?: IdPropType): void {
-		idProp.apply(value, (v) => this.setRenderProp('id', v));
+		this.applyProp(idProp, value);
 	}
 
 	protected applyInline(value?: InlinePropType): void {
-		inlineProp.apply(value, (v) => this.setRenderProp('inline', v));
+		this.applyProp(inlineProp, value);
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('label', v);
-				this.tooltipBehavior.watchLabel(v);
-			},
-			this.isRequired('label'),
-		);
+		this.applyProp(labelWithExpertSlotProp, value, (v) => {
+			this.setRenderProp('label', v);
+			this.tooltipBehavior.watchLabel(v);
+		});
 	}
 
 	protected applyName(value?: NamePropType): void {
-		nameProp.apply(value, (v) => this.setRenderProp('name', v));
+		this.applyProp(nameProp, value);
 		this.formAssociation.watchName(value);
 	}
 
 	protected applyOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
-		buttonCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(buttonCallbacksProp, value);
 	}
 
 	protected applyRole(value?: AlternativeButtonLinkRolePropType): void {
-		linkRoleProp.apply(value, (v) => this.setRenderProp('role', v));
+		this.applyProp(linkRoleProp, value);
 	}
 
 	protected applyShortKey(value?: ShortKeyPropType, accessKey?: AccessKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 		validateAccessAndShortKey(accessKey, value);
 	}
 
@@ -287,21 +283,21 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 		// into the document tab order. Unsetting the prop has to restore that state, so the else
 		// branch is not optional: without it a reset would keep the previous number.
 		if (typeof value === 'number') {
-			tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
+			this.applyProp(tabIndexProp, value);
 		} else {
 			this.unsetRenderProp('tabIndex');
 		}
 	}
 
 	protected applyTooltipAlign(value?: TooltipAlignPropType): void {
-		tooltipAlignProp.apply(value ?? 'top', (v) => {
+		this.applyProp(tooltipAlignProp, value ?? 'top', (v) => {
 			this.setRenderProp('tooltipAlign', v);
 			this.tooltipBehavior.watchAlign(v);
 		});
 	}
 
 	protected applyType(value?: ButtonTypePropType): void {
-		buttonTypeProp.apply(value, (v) => this.setRenderProp('type', v));
+		this.applyProp(buttonTypeProp, value);
 	}
 
 	protected applyValue(value?: StencilUnknown): void {
@@ -314,7 +310,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 		// constructor, where `@Element()` is not yet populated for a `shadow: false` element under
 		// SSR, so the theme-scoped feature flag would silently be ignored there. Keeping it a
 		// fallback also leaves the public API unchanged. The rendered default is `normal` either way.
-		variantProp.apply(value ?? getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal', (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value ?? getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal');
 	}
 
 	// --- Render ---

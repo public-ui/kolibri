@@ -35,7 +35,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 
 	@Watch('_alt')
 	public watchAlt(value?: AltPropType): void {
-		altProp.apply(value, (v) => this.setRenderProp('alt', v));
+		this.applyProp(altProp, value);
 	}
 
 	/**
@@ -46,7 +46,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 
 	@Watch('_loading')
 	public watchLoading(value?: LoadingType): void {
-		loadingProp.apply(value, (v) => this.setRenderProp('loading', v));
+		this.applyProp(loadingProp, value);
 	}
 
 	/**
@@ -57,7 +57,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriImageEventCallbacks): void {
-		imageCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(imageCallbacksProp, value);
 	}
 
 	/**
@@ -68,7 +68,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 
 	@Watch('_sizes')
 	public watchSizes(value?: SizesPropType): void {
-		sizesProp.apply(value, (v) => this.setRenderProp('sizes', v));
+		this.applyProp(sizesProp, value);
 	}
 
 	/**
@@ -79,7 +79,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 
 	@Watch('_src')
 	public watchSrc(value?: SrcPropType): void {
-		srcProp.apply(value, (v) => this.setRenderProp('src', v));
+		this.applyProp(srcProp, value);
 	}
 
 	/**
@@ -90,7 +90,7 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 
 	@Watch('_srcset')
 	public watchSrcset(value?: SrcsetPropType): void {
-		srcsetProp.apply(value, (v) => this.setRenderProp('srcset', v));
+		this.applyProp(srcsetProp, value);
 	}
 
 	public componentWillLoad(): void {

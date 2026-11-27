@@ -104,7 +104,7 @@ export class KolInputCheckbox
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
@@ -129,7 +129,7 @@ export class KolInputCheckbox
 
 	@Watch('_checked')
 	public watchChecked(value?: CheckedPropType): void {
-		checkedProp.apply(value, (v) => this.setRenderProp('checked', v));
+		this.applyProp(checkedProp, value);
 		this.syncFormAssociatedValue();
 	}
 
@@ -187,7 +187,7 @@ export class KolInputCheckbox
 	/** Merges the given icons into the current ones, so the other states keep their icons. */
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<InputCheckboxIconsProp>): void {
-		iconsInputCheckboxProp.apply(value, (v) => this.setRenderProp('icons', { ...this.getRenderProp('icons'), ...v }));
+		this.applyProp(iconsInputCheckboxProp, value, (v) => this.setRenderProp('icons', { ...this.getRenderProp('icons'), ...v }));
 	}
 
 	/**
@@ -198,7 +198,7 @@ export class KolInputCheckbox
 
 	@Watch('_indeterminate')
 	public watchIndeterminate(value?: IndeterminatePropType): void {
-		indeterminateProp.apply(value, (v) => this.setRenderProp('indeterminate', v));
+		this.applyProp(indeterminateProp, value);
 	}
 
 	/**
@@ -231,7 +231,7 @@ export class KolInputCheckbox
 
 	@Watch('_labelAlign')
 	public watchLabelAlign(value?: LabelAlignPropType): void {
-		labelAlignProp.apply(value, (v) => this.setRenderProp('labelAlign', v));
+		this.applyProp(labelAlignProp, value);
 	}
 
 	/**
@@ -275,7 +275,7 @@ export class KolInputCheckbox
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+		this.applyProp(requiredProp, value);
 	}
 
 	/**
@@ -286,7 +286,7 @@ export class KolInputCheckbox
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 		validateAccessAndShortKey(this._accessKey, value);
 	}
 
@@ -339,7 +339,7 @@ export class KolInputCheckbox
 		if (value === null || value === undefined) {
 			this.setRenderProp('value', value as unknown as NonNullable<StencilUnknown>);
 		} else {
-			checkboxValueProp.apply(value, (v) => this.setRenderProp('value', v));
+			this.applyProp(checkboxValueProp, value);
 		}
 		this.syncFormAssociatedValue();
 	}
@@ -352,7 +352,7 @@ export class KolInputCheckbox
 
 	@Watch('_variant')
 	public watchVariant(value?: InputCheckboxVariantPropType): void {
-		variantInputCheckboxProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantInputCheckboxProp, value);
 	}
 
 	/**

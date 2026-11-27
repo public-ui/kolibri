@@ -177,7 +177,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	@Watch('_allowMultiSort')
 	public watchAllowMultiSort(value?: AllowMultiSortPropType): void {
-		allowMultiSortProp.apply(value, (v) => {
+		this.applyProp(allowMultiSortProp, value, (v) => {
 			this.allowMultiSort = v;
 		});
 	}
@@ -203,7 +203,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	@Watch('_data')
 	public watchData(value?: TableDataPropType): void {
-		tableDataProp.apply(value, (rows) => {
+		this.applyProp(tableDataProp, value, (rows) => {
 			this.data = rows;
 			setTimeout(this.updateSortedData);
 		});
@@ -216,7 +216,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	@Watch('_dataFoot')
 	public watchDataFoot(value?: TableDataFootPropType): void {
-		tableDataFootProp.apply(value, (rows) => {
+		this.applyProp(tableDataFootProp, value, (rows) => {
 			this.setRenderProp('dataFoot', rows);
 			setTimeout(this.updateSortedData);
 		});
@@ -249,7 +249,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	@Watch('_headers')
 	public watchHeaders(value?: TableHeadersPropType): void {
-		tableStatefulHeadersProp.apply(value, (headers) => {
+		this.applyProp(tableStatefulHeadersProp, value, (headers) => {
 			// Adjusted header cells and the current sort fit only the same columns. A new object with the same
 			// keys (common with inline headers in React) keeps both; resetSort() re-reads the declared sort.
 			// The first headers always apply: keyless header cells would be read as unchanged by their keys.
@@ -300,7 +300,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	@Watch('_on')
 	public watchOn(value?: TableStatefulCallbacksPropType): void {
-		tableStatefulCallbacksProp.apply(value, (v) => {
+		this.applyProp(tableStatefulCallbacksProp, value, (v) => {
 			this.statefulOn = v;
 		});
 	}
@@ -313,7 +313,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	@Watch('_pagination')
 	public watchPagination(value?: boolean | Stringified<KoliBriTablePaginationProps>): void {
 		this.showPagination = isTablePaginationShown(value);
-		tablePaginationProp.apply(value, (v) => {
+		this.applyProp(tablePaginationProp, value, (v) => {
 			this.pagination = v;
 		});
 	}
@@ -325,7 +325,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	@Watch('_paginationPosition')
 	public watchPaginationPosition(value?: PaginationPositionPropType): void {
-		paginationPositionProp.apply(value, (v) => {
+		this.applyProp(paginationPositionProp, value, (v) => {
 			this.paginationPosition = v;
 		});
 	}

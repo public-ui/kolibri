@@ -114,7 +114,7 @@ export class KolInputRange
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
@@ -139,7 +139,7 @@ export class KolInputRange
 
 	@Watch('_autoComplete')
 	public watchAutoComplete(value?: AutoCompletePropType): void {
-		autoCompleteProp.apply(value, (v) => this.setRenderProp('autoComplete', v));
+		this.applyProp(autoCompleteProp, value);
 	}
 
 	/**
@@ -195,7 +195,7 @@ export class KolInputRange
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(horizontalIconsProp, value);
 	}
 
 	/**
@@ -228,7 +228,7 @@ export class KolInputRange
 
 	@Watch('_max')
 	public watchMax(value?: number | NumberString): void {
-		inputMaxProp.apply(value, (v) => this.setRenderProp('max', v));
+		this.applyProp(inputMaxProp, value);
 	}
 
 	/**
@@ -239,7 +239,7 @@ export class KolInputRange
 
 	@Watch('_min')
 	public watchMin(value?: number | NumberString): void {
-		inputMinProp.apply(value, (v) => this.setRenderProp('min', v));
+		this.applyProp(inputMinProp, value);
 	}
 
 	/**
@@ -283,7 +283,7 @@ export class KolInputRange
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 		validateAccessAndShortKey(this._accessKey, value);
 	}
 
@@ -295,7 +295,7 @@ export class KolInputRange
 
 	@Watch('_step')
 	public watchStep(value?: number | NumberString): void {
-		stepProp.apply(value, (v) => this.setRenderProp('step', v));
+		this.applyProp(stepProp, value);
 	}
 
 	/**
@@ -306,7 +306,7 @@ export class KolInputRange
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
-		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+		this.applyProp(suggestionsProp, value);
 	}
 
 	/**
@@ -351,7 +351,7 @@ export class KolInputRange
 
 	@Watch('_value')
 	public watchValue(value?: number | NumberString | null): void {
-		inputNumberValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		this.applyProp(inputNumberValueProp, value);
 		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value') ?? null);
 		if (value !== undefined) {
 			this.valueIsNumberString = getNumberValueType(value) === 'NumberString';
@@ -366,7 +366,7 @@ export class KolInputRange
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	/**
