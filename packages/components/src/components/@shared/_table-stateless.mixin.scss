@@ -258,7 +258,7 @@
 			right: 0;
 			bottom: 0;
 			left: 0;
-			//loader in table above everything else that can be in a table
+			// the loader covers the cells and the sticky columns; a sticky head of a theme stays above it
 			z-index: 8;
 			align-items: center;
 			justify-content: center;

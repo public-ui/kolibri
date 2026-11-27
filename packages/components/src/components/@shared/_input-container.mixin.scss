@@ -17,7 +17,7 @@
 
 		&__container {
 			position: relative;
-			// input container are a click area above input adornments and create a higher staking area above text for there tooltips
+			// the container is a click area above the adornments and a stacking context for the tooltips of its text
 			z-index: 1;
 		}
 
@@ -33,7 +33,7 @@
 
 		&__smart-button {
 			position: relative;
-			// smart buttons are above their __container
+			// the smart button lies above the container
 			z-index: 2;
 		}
 	}
