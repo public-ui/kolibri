@@ -448,34 +448,11 @@ Use SASS variables exclusively for internal calculations and styling in the base
 - No variables at all: Poor maintainability, code duplication
 - Component-specific CSS variables only: Still crosses Shadow DOM boundary
 
-### ADR-017: CSS: Z-Index Structuring
+### ADR-017: Skeleton Component Architecture Pattern
 
-**Status:** Accepted
+**Status:** Superseded
 
-**Context:**
-z-index is used to structure the layers in on which components are in the z-axis. With them nodes can lay below or above other nodes. Using them incorectly can lead to many different problems whenever components have overlays, such as tooltips, sticky parts, buttons over other click areas and so on.
-
-**Decision:**
-To sturcture our components and help teams understand how to use z-index in there app together with ou components, we reserve some z-index layers.
-
-- every occurence of a z-index needs a description why it is and what it should be above or below
-- z-index 1 - 10 are the low layer and reserved only for normal KoliBri components such as:
-  - inputs container structure: container is above its adornments but below its smart button
-  - collapsible input container with open suggestions gets z-index above other collapsibles
-  - kol-spin arranges its dots
-  - sticky table columns and rows get z-index above posible content in tables
-- z-index 1001 - 1010 are the high layer and reserved for special KoliBri components such as:
-  - skip nav > highest z-index (1010)
-  - tooltips > second highest z-index (1007 & 1008)
-  - toast > 1001
-- themes use as little z-index as possible
-
-**Consequences:**
-
-- ✅ only use z-index layers 1 - 10 and 1000 - 1010 for components and themes
-- ✅ Teams can better predict what z-index layers they can use
-- ❌ Teams have to use z-index above 10 and below 1000
-- ❌ Teams have to check their z-indexes
+The controller layer this decision described no longer exists. The skeleton architecture of the components is documented in [ARC42-SKELETON](../../packages/components/docs/ARC42-SKELETON.md).
 
 ### ADR-018: Color Schemes (Dark/Light) Live in Themes, Not in Base Styling
 
@@ -507,6 +484,38 @@ Details: [Base Styling vs. Theming Concept](../BASE_STYLING_VS_THEMING_CONCEPT.m
 - Color scheme in the base styling: Couples all themes to one base palette, breaks the layout-only rule
 - Color scheme as a component prop: Moves a design decision into the component API
 - Global CSS custom properties switched by the host page: Not encapsulated, conflicts with ADR-009
+
+### ADR-019: Reserved Z-Index Layers
+
+**Status:** Accepted
+
+**Context:**
+`z-index` decides which elements lie above or below others. Used without a plan, overlays such as tooltips, sticky table parts or buttons above click areas end up in the wrong order, and applications cannot tell which values the components already occupy.
+
+**Decision:**
+KoliBri reserves two z-index layers and keeps all of its own values inside them:
+
+- **Low layer, 1 to 10:** stacking inside regular components, for example:
+  - the input container lies above its adornments and below its smart button,
+  - an open collapsible or an input container with open suggestions lies above its neighbours,
+  - sticky table columns and rows lie above the content of the table,
+  - the dots of `kol-spin` stack among each other.
+- **High layer, 1001 to 1010:** elements that lie above the application:
+  - the skip navigation lies highest (1010),
+  - tooltips follow (1007 and 1008),
+  - toasts lie above the application content (1001).
+- `0` keeps an element on the base layer; `auto` and the CSS-wide keywords set no layer.
+- A comment directly above every `z-index` names what the element lies above or below.
+- Themes use `z-index` as little as possible.
+
+The Stylelint rule `kolibri/common-z-index-layers` enforces the layers and the comment in the components and in every theme.
+
+**Consequences:**
+
+- ✅ Applications know which layers the components occupy: 11 to 1000 stay free for them.
+- ✅ Every `z-index` explains its purpose, which keeps the stacking order reviewable.
+- ❌ Applications place their own overlays between 11 and 1000.
+- ❌ A component that needs a new layer has to fit into the reserved ranges.
 
 ---
 
