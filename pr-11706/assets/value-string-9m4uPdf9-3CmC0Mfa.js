@@ -1,1 +1,0 @@
-import{k as e,l as t}from"./props-from-config-CNOz81rp-DUREdeU0.js";var n=t(`value`,void 0,e);export{n as t};

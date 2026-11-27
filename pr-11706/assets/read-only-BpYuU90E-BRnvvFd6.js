@@ -1,1 +1,0 @@
-import{b as e,l as t}from"./props-from-config-CNOz81rp-DUREdeU0.js";var n=t(`readOnly`,!1,e);export{n as t};
