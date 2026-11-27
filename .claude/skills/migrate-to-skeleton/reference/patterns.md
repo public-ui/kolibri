@@ -18,7 +18,7 @@ public _myProp?: string;
 
 @Watch('_myProp')
 public watchMyProp(value?: string): void {
-	myProp.apply(value, (v) => this.setRenderProp('myProp', v));
+	this.applyProp(myProp, value);
 }
 ```
 
@@ -51,7 +51,7 @@ export class KolMyComponent extends BaseWebComponent<MyApi> implements WebCompon
 
 	@Watch('_myProp')
 	public watchMyProp(value?: string): void {
-		myProp.apply(value, (v) => this.setRenderProp('myProp', v));
+		this.applyProp(myProp, value);
 	}
 
 	public componentWillLoad(): void {

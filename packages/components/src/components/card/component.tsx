@@ -70,7 +70,7 @@ export class KolCard extends BaseWebComponent<CardApi> implements ClickableEleme
 
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: HasCloserPropType): void {
-		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
+		this.applyProp(hasCloserProp, value);
 	}
 
 	/**
@@ -81,7 +81,7 @@ export class KolCard extends BaseWebComponent<CardApi> implements ClickableEleme
 
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+		this.applyProp(hrefProp, value);
 	}
 
 	/**
@@ -92,7 +92,7 @@ export class KolCard extends BaseWebComponent<CardApi> implements ClickableEleme
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	/**
@@ -103,7 +103,7 @@ export class KolCard extends BaseWebComponent<CardApi> implements ClickableEleme
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
-		levelProp.apply(value, (v) => this.setRenderProp('level', v));
+		this.applyProp(levelProp, value);
 	}
 
 	/**
@@ -114,7 +114,7 @@ export class KolCard extends BaseWebComponent<CardApi> implements ClickableEleme
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriCardEventCallbacks): void {
-		cardCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(cardCallbacksProp, value);
 	}
 
 	/**
@@ -125,7 +125,7 @@ export class KolCard extends BaseWebComponent<CardApi> implements ClickableEleme
 
 	@Watch('_target')
 	public watchTarget(value?: LinkTargetPropType): void {
-		linkTargetProp.apply(value, (v) => this.setRenderProp('target', v));
+		this.applyProp(linkTargetProp, value);
 	}
 
 	/**

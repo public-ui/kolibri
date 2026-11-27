@@ -139,7 +139,7 @@ export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements 
 
 	@Watch('_name')
 	public watchName(value?: string): void {
-		nameProp.apply(value, (v) => this.setRenderProp('name', v));
+		this.applyProp(nameProp, value);
 	}
 
 	public componentWillLoad(): void {
@@ -157,7 +157,7 @@ export class KolMyComponent extends BaseWebComponent<MyComponentApi> implements 
 ```
 
 - Die Basis säht die Render-Props aus dem `propsConfig`-Feld beim ersten Zugriff — auch wenn ein `@Watch` durch eine Prop-Zuweisung vor `componentWillLoad()` feuert; `componentWillLoad()` wendet alle Props an (Prop-Dreieck: Deklaration, `@Watch()`, Init)
-- Watcher rufen die Prop-Factory direkt auf: `nameProp.apply(value, (v) => this.setRenderProp('name', v))`
+- Watcher wenden die Prop-Factory über die Basis an: `this.applyProp(nameProp, value)`. Die Basis ergänzt die Pflichtangabe aus dem `propsConfig`.
 - `@State`-Felder werden über `this.setState(key, value)` / `this.getState(key)` verwaltet und im `render()` direkt übergeben
 - Immer `shadow: true` und `<Host>` ohne Klassen-Attribut
 - `@Watch` nur auf unterstrichene Props

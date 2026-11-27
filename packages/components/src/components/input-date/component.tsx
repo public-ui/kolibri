@@ -125,7 +125,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
@@ -150,7 +150,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_autoComplete')
 	public watchAutoComplete(value?: AutoCompletePropType): void {
-		autoCompleteProp.apply(value, (v) => this.setRenderProp('autoComplete', v));
+		this.applyProp(autoCompleteProp, value);
 	}
 
 	/**
@@ -206,7 +206,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(horizontalIconsProp, value);
 	}
 
 	/**
@@ -294,7 +294,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_readOnly')
 	public watchReadOnly(value?: ReadOnlyPropType): void {
-		readOnlyProp.apply(value, (v) => this.setRenderProp('readOnly', v));
+		this.applyProp(readOnlyProp, value);
 	}
 
 	/**
@@ -305,7 +305,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+		this.applyProp(requiredProp, value);
 	}
 
 	/**
@@ -316,7 +316,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 		validateAccessAndShortKey(this._accessKey, value);
 	}
 
@@ -331,7 +331,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 		if (value === undefined || value === null) {
 			this.unsetRenderProp('smartButton');
 		} else {
-			smartButtonProp.apply(value, (v) => this.setRenderProp('smartButton', v));
+			this.applyProp(smartButtonProp, value);
 		}
 	}
 
@@ -343,7 +343,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_step')
 	public watchStep(value?: number | NumberString): void {
-		stepProp.apply(value, (v) => this.setRenderProp('step', v));
+		this.applyProp(stepProp, value);
 	}
 
 	/**
@@ -354,7 +354,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_suggestions')
 	public watchSuggestions(value?: SuggestionsPropType): void {
-		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+		this.applyProp(suggestionsProp, value);
 	}
 
 	/**
@@ -399,7 +399,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_type')
 	public watchType(value?: InputDateTypePropType): void {
-		inputDateTypeProp.apply(value, (v) => this.setRenderProp('type', v));
+		this.applyProp(inputDateTypeProp, value);
 	}
 
 	/**
@@ -429,7 +429,7 @@ export class KolInputDate extends BaseFormFieldWebComponent<InputDateApi> implem
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	/**

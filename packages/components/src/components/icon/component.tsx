@@ -30,7 +30,7 @@ export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentIn
 
 	@Watch('_icons')
 	public watchIcons(value?: string): void {
-		iconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(iconsProp, value);
 	}
 
 	/**
@@ -41,7 +41,7 @@ export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentIn
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelDecorativeProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelDecorativeProp, value);
 	}
 
 	public componentWillLoad(): void {

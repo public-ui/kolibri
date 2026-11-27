@@ -132,7 +132,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 		validateAccessAndShortKey(value, this._shortKey);
 	}
 
@@ -168,7 +168,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 	@Watch('_hasClearButton')
 	public watchHasClearButton(value?: HasClearButtonPropType): void {
-		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
+		this.applyProp(hasClearButtonProp, value);
 	}
 
 	/**
@@ -213,7 +213,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(horizontalIconsProp, value);
 	}
 
 	/**
@@ -297,7 +297,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 	@Watch('_placeholder')
 	public watchPlaceholder(value?: PlaceholderPropType): void {
-		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
+		this.applyProp(placeholderProp, value);
 	}
 
 	/**
@@ -308,7 +308,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 	@Watch('_required')
 	public watchRequired(value?: RequiredPropType): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+		this.applyProp(requiredProp, value);
 	}
 
 	/**
@@ -319,7 +319,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
-		rowsProp.apply(value, (v) => this.setRenderProp('rows', v));
+		this.applyProp(rowsProp, value);
 	}
 
 	/**
@@ -330,7 +330,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 		validateAccessAndShortKey(this._accessKey, value);
 	}
 
@@ -387,7 +387,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	/**
@@ -767,7 +767,7 @@ export class KolSingleSelect extends BaseListboxWebComponent<SingleSelectApi> im
 	}
 
 	private applyOptions(value?: OptionsPropType): void {
-		singleSelectOptionsProp.apply(value, (v) => this.setRenderProp('options', v));
+		this.applyProp(singleSelectOptionsProp, value);
 	}
 
 	public render(): JSX.Element {

@@ -33,7 +33,7 @@ export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentIn
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	public componentWillLoad(): void {

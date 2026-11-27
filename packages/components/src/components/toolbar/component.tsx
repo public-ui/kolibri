@@ -51,7 +51,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 
 	@Watch('_items')
 	public watchItems(value?: ToolbarItemsPropType): void {
-		toolbarItemsProp.apply(value, (items) => {
+		this.applyProp(toolbarItemsProp, value, (items) => {
 			this.setRenderProp('items', items);
 			this.itemRecords.forEach((record) => record.destroy());
 			this.itemRecords = items.map((item) => createToolbarEntryItem(item, () => this.host));
@@ -67,7 +67,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelProp, value);
 	}
 
 	/**
@@ -78,7 +78,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 
 	@Watch('_orientation')
 	public watchOrientation(value?: OrientationPropType): void {
-		orientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
+		this.applyProp(orientationProp, value);
 	}
 
 	/**

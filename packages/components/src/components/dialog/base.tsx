@@ -68,23 +68,23 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 	// --- Prop application ---
 
 	protected applyLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	protected applyLevel(value?: HeadingLevel): void {
-		levelProp.apply(value, (v) => this.setRenderProp('level', v));
+		this.applyProp(levelProp, value);
 	}
 
 	protected applyOn(value?: KoliBriDialogEventCallbacks): void {
-		dialogCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(dialogCallbacksProp, value);
 	}
 
 	protected applyVariant(value?: ModalVariantPropType): void {
-		variantDialogProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantDialogProp, value);
 	}
 
 	protected applyWidth(value?: WidthPropType): void {
-		widthProp.apply(value, (v) => this.setRenderProp('width', v));
+		this.applyProp(widthProp, value);
 	}
 
 	// --- Dialog control ---

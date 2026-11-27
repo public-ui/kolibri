@@ -170,7 +170,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	// --- Prop application (the concrete element's watchers delegate here) ---
 
 	protected applyAriaDetails(value?: string): void {
-		ariaDetailsProp.apply(value, (v) => this.shared.setRenderProp('ariaDetails', v));
+		this.applyProp(ariaDetailsProp, value);
 		this.syncAriaDetails();
 	}
 
@@ -201,40 +201,40 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	}
 
 	protected applyDisabled(value?: boolean): void {
-		disabledProp.apply(value, (v) => this.shared.setRenderProp('disabled', v));
+		this.applyProp(disabledProp, value);
 	}
 
 	protected applyHideLabel(value?: boolean): void {
-		hideLabelProp.apply(value, (v) => this.shared.setRenderProp('hideLabel', v));
+		this.applyProp(hideLabelProp, value);
 	}
 
 	protected applyHideMsg(value?: boolean): void {
-		hideMsgProp.apply(value, (v) => this.shared.setRenderProp('hideMsg', v));
+		this.applyProp(hideMsgProp, value);
 	}
 
 	protected applyHint(value?: string): void {
-		hintProp.apply(value, (v) => this.shared.setRenderProp('hint', v));
+		this.applyProp(hintProp, value);
 	}
 
 	protected applyInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
-		infoPopoverProp.apply(value, (v) => this.shared.setRenderProp('infoPopover', v));
+		this.applyProp(infoPopoverProp, value);
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.shared.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelWithExpertSlotProp, value);
 	}
 
 	protected applyMsg(value?: Stringified<MsgPropType>): void {
-		msgProp.apply(value, (v) => this.shared.setRenderProp('msg', v));
+		this.applyProp(msgProp, value);
 	}
 
 	protected applyName(value?: string): void {
-		nameProp.apply(value, (v) => this.shared.setRenderProp('name', v));
+		this.applyProp(nameProp, value);
 		this.formAssociation.watchName(value);
 	}
 
 	protected applyOn(value?: InputTypeOnDefault): void {
-		inputCallbacksProp.apply(value, (v) => this.shared.setRenderProp('on', v));
+		this.applyProp(inputCallbacksProp, value);
 	}
 
 	protected applySyncValueBySelector(value?: string): void {
@@ -243,11 +243,11 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 
 	/** Form fields show the tooltip on top by default; the shared prop defaults to `'right'`. */
 	protected applyTooltipAlign(value?: TooltipAlignPropType): void {
-		tooltipAlignProp.apply(value ?? 'top', (v) => this.shared.setRenderProp('tooltipAlign', v));
+		this.applyProp(tooltipAlignProp, value ?? 'top');
 	}
 
 	protected applyTouched(value?: boolean): void {
-		touchedProp.apply(value, (v) => this.shared.setRenderProp('touched', v));
+		this.applyProp(touchedProp, value);
 	}
 
 	// --- Event handling of the native control ---

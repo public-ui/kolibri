@@ -1,3 +1,4 @@
+import type { PropDefinition } from '../props';
 import type { ComponentApi, GetStateFn, PropsConfigShape, ResolvedProps, SetStateFn, StateAccess, StrictFields } from './generic-types';
 import { buildDefaultPropsFromConfig } from './props-from-config';
 
@@ -46,11 +47,36 @@ export abstract class BaseBehavior<Api extends ComponentApi> {
 	}
 
 	/**
+	 * Applies a prop value through its definition. A behavior has no props config of its own to require
+	 * a value. Without a callback the normalized value becomes the render prop named after the
+	 * definition.
+	 */
+	protected applyProp<T>(definition: Pick<PropDefinition<T>, 'apply' | 'propName'>, value: unknown, callback?: (normalized: T) => void): void {
+		// The store is typed per render key; the definition carries its key as a plain string.
+		const store = this.renderProps as Record<string, unknown>;
+		definition.apply(
+			value,
+			callback ??
+				((normalized) => {
+					store[definition.propName] = normalized;
+				}),
+		);
+	}
+
+	/**
 	 * Stores a validated and normalized property value for rendering.
 	 * This is the value the functional component will receive.
 	 */
 	protected setRenderProp<K extends keyof ResolvedProps<Api>>(key: K, value: StrictFields<ResolvedProps<Api>>[K]): void {
 		this.renderProps[key] = value;
+	}
+
+	/**
+	 * Clears a render prop back to "not set" for a prop without a default. `StrictFields` types the
+	 * store as fully populated, so the exception is asserted here once instead of at each call site.
+	 */
+	protected unsetRenderProp<K extends keyof ResolvedProps<Api>>(key: K): void {
+		this.renderProps[key] = undefined as unknown as StrictFields<ResolvedProps<Api>>[K];
 	}
 
 	/** Returns the current validated render value for a property. */

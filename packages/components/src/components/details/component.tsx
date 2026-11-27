@@ -92,7 +92,7 @@ export class KolDetails extends BaseWebComponent<CollapsibleApi> implements Clic
 
 	@Watch('_disabled')
 	public watchDisabled(value?: DisabledPropType): void {
-		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+		this.applyProp(disabledProp, value);
 	}
 
 	/**
@@ -103,7 +103,7 @@ export class KolDetails extends BaseWebComponent<CollapsibleApi> implements Clic
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	/**
@@ -114,7 +114,7 @@ export class KolDetails extends BaseWebComponent<CollapsibleApi> implements Clic
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
-		levelProp.apply(value, (v) => this.setRenderProp('level', v));
+		this.applyProp(levelProp, value);
 	}
 
 	/**
@@ -125,7 +125,7 @@ export class KolDetails extends BaseWebComponent<CollapsibleApi> implements Clic
 
 	@Watch('_on')
 	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {
-		collapsibleCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(collapsibleCallbacksProp, value);
 	}
 
 	/**
@@ -136,7 +136,7 @@ export class KolDetails extends BaseWebComponent<CollapsibleApi> implements Clic
 
 	@Watch('_open')
 	public watchOpen(value?: OpenPropType): void {
-		openProp.apply(value, (v) => {
+		this.applyProp(openProp, value, (v) => {
 			this.setRenderProp('open', v);
 			/* The very first pass runs during componentWillLoad: render the final state straight
 			   away instead of animating into it. */

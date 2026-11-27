@@ -104,13 +104,13 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements We
 		if (!initial) {
 			removeNavLabel(this.getRenderProp('label'));
 		}
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelProp, value);
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.getRenderProp('label'));
 	}
 
 	private applyLinks(value: Stringified<BreadcrumbLinkProps[]> | undefined): void {
-		breadcrumbLinksProp.apply(value, (links) => {
+		this.applyProp(breadcrumbLinksProp, value, (links) => {
 			this.setRenderProp('links', links);
 			this.linkItems.forEach((item) => item.destroy());
 			this.linkItems = links.map((link) => createBreadcrumbLinkItem(link, () => this.host));

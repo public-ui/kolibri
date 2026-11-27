@@ -66,7 +66,7 @@ export class KolForm extends BaseWebComponent<FormApi> implements WebComponentIn
 
 	@Watch('_errorList')
 	public watchErrorList(value?: ErrorListPropType[]): void {
-		errorListProp.apply(value, (errorList) => {
+		this.applyProp(errorListProp, value, (errorList) => {
 			this.setRenderProp('errorList', errorList);
 			this.errorLinkItems = errorList.map((error) => createFormErrorLinkItem(error, this.focusErrorTarget));
 		});
@@ -80,7 +80,7 @@ export class KolForm extends BaseWebComponent<FormApi> implements WebComponentIn
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriFormCallbacks): void {
-		formCallbacksProp.apply(value, (on) => this.setRenderProp('on', on));
+		this.applyProp(formCallbacksProp, value);
 	}
 
 	/**
@@ -91,7 +91,7 @@ export class KolForm extends BaseWebComponent<FormApi> implements WebComponentIn
 
 	@Watch('_requiredText')
 	public watchRequiredText(value?: Stringified<boolean>): void {
-		requiredTextProp.apply(value, (requiredText) => this.setRenderProp('requiredText', requiredText));
+		this.applyProp(requiredTextProp, value);
 	}
 
 	/**

@@ -68,7 +68,7 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 
 	@Watch('_color')
 	public watchColor(value?: string | ColorPair): void {
-		colorProp.apply(value, (v) => this.setRenderProp('color', v));
+		this.applyProp(colorProp, value);
 	}
 
 	/**
@@ -79,14 +79,10 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('label', v);
-				this.setState('initials', normalizeInitials(v));
-			},
-			this.isRequired('label'),
-		);
+		this.applyProp(labelProp, value, (v) => {
+			this.setRenderProp('label', v);
+			this.setState('initials', normalizeInitials(v));
+		});
 	}
 
 	/**
@@ -97,7 +93,7 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 
 	@Watch('_src')
 	public watchSrc(value?: SrcPropType): void {
-		srcProp.apply(value, (v) => this.setRenderProp('src', v));
+		this.applyProp(srcProp, value);
 	}
 
 	public componentWillLoad(): void {

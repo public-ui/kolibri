@@ -38,7 +38,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_label')
 	public watchLabel(value?: LabelLangSegmentsPropType): void {
-		labelLangSegmentsProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelLangSegmentsProp, value);
 	}
 
 	/**
@@ -49,7 +49,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {
-		maxProp.apply(value, (v) => {
+		this.applyProp(maxProp, value, (v) => {
 			this.setRenderProp('max', v);
 			this.watchValue(this.getRawProp('value'));
 		});
@@ -63,7 +63,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_unit')
 	public watchUnit(value?: UnitPropType): void {
-		unitProp.apply(value, (v) => this.setRenderProp('unit', v));
+		this.applyProp(unitProp, value);
 	}
 
 	/**
@@ -92,7 +92,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_variant')
 	public watchVariant(value?: ProgressVariantType): void {
-		variantProgressProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProgressProp, value);
 	}
 
 	/** Runs on every (re)insertion into the DOM, so a moved element keeps announcing its value. */
