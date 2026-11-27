@@ -16,6 +16,7 @@ These Stylelint Rules enforce SCSS architecture conventions for web component li
 - Utility files (mixins, helpers, partials) stay layer-agnostic.
 - Theme files never use the global `:root` selector — only `:host` for proper web component encapsulation.
 - The deprecated `$root: &` and `@at-root` SCSS patterns are banned in favor of flat BEM selectors.
+- Every `z-index` stays inside the reserved layers (0, 1 to 10, 1001 to 1010) and carries a comment that names what it lies above or below (ADR-019).
 
 ## Installation
 
@@ -38,7 +39,8 @@ Add the plugin and enable the rules you need in your `.stylelintrc.json`. Rules 
 		"kolibri/common-layer-name-convention": "warn",
 		"kolibri/common-no-at-root": true,
 		"kolibri/common-no-layer-in-reuse-files": true,
-		"kolibri/common-no-root-selector": true
+		"kolibri/common-no-root-selector": true,
+		"kolibri/common-z-index-layers": true
 	}
 }
 ```
@@ -114,13 +116,14 @@ The `kolibri/common-require-component-layer` rule is configurable and accepts a 
 
 ### General Rules (applicable to all packages)
 
-| Rule                                            | Description                                                                                                          | Default  |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | :------: |
-| `kolibri/common-component-css-must-be-in-layer` | All CSS in `style.scss` files inside `packages/components/src/components/` must be wrapped in a `@layer` declaration |  `true`  |
-| `kolibri/common-layer-name-convention`          | Warns when a `@layer` name in `src/` does not follow the convention `kol-theme-global` or `kol-theme-component`      | `"warn"` |
-| `kolibri/common-no-at-root`                     | Forbids `@at-root` and the `$variable: &` selector-capture pattern. Use flat BEM selectors instead                   |  `true`  |
-| `kolibri/common-no-layer-in-reuse-files`        | `@layer` declarations are forbidden inside `helpers/`, `mixins/`, and `_`-prefixed partial files                     |  `true`  |
-| `kolibri/common-no-root-selector`               | The `:root` selector is forbidden in `src/` SCSS files. Use `:host` instead for web component scoping                |  `true`  |
+| Rule                                            | Description                                                                                                                                  | Default  |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | :------: |
+| `kolibri/common-component-css-must-be-in-layer` | All CSS in `style.scss` files inside `packages/components/src/components/` must be wrapped in a `@layer` declaration                         |  `true`  |
+| `kolibri/common-layer-name-convention`          | Warns when a `@layer` name in `src/` does not follow the convention `kol-theme-global` or `kol-theme-component`                              | `"warn"` |
+| `kolibri/common-no-at-root`                     | Forbids `@at-root` and the `$variable: &` selector-capture pattern. Use flat BEM selectors instead                                           |  `true`  |
+| `kolibri/common-no-layer-in-reuse-files`        | `@layer` declarations are forbidden inside `helpers/`, `mixins/`, and `_`-prefixed partial files                                             |  `true`  |
+| `kolibri/common-no-root-selector`               | The `:root` selector is forbidden in `src/` SCSS files. Use `:host` instead for web component scoping                                        |  `true`  |
+| `kolibri/common-z-index-layers`                 | A `z-index` is `0`, `1` to `10` or `1001` to `1010` (or `auto`), and a comment directly above it names what it lies above or below (ADR-019) |  `true`  |
 
 ### Component Package Rules (`packages/components/`)
 

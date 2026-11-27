@@ -5,5 +5,6 @@ import noAtRoot from './no-at-root.js';
 import noLayerInReuseFiles from './no-layer-in-reuse-files.js';
 import noRootSelector from './no-root-selector.js';
 import requireComponentLayer from './require-component-layer.js';
+import zIndexLayers from './z-index-layers.js';
 
-export default [cssMustBeInLayer, layerNameConvention, noAtRoot, noLayerInReuseFiles, noRootSelector, requireComponentLayer];
+export default [cssMustBeInLayer, layerNameConvention, noAtRoot, noLayerInReuseFiles, noRootSelector, requireComponentLayer, zIndexLayers];

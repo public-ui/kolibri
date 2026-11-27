@@ -98,6 +98,7 @@
 
 		&--open:focus-within {
 			position: relative;
+			// an open collapsible with focus lies above the collapsibles that follow it
 			z-index: 10;
 		}
 	}
