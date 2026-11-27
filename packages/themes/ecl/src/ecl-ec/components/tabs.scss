@@ -24,10 +24,20 @@
 				border-bottom-color: var(--ecl-color-dark-80);
 			}
 
-			.kol-button__interactive-element:focus {
+			/* Firefox repaints native form controls under user color overrides and drops author outlines.
+			   The ring lives on the class carrier instead: a plain element with the button's box, so it keeps
+			   enclosing the whole tab. */
+			&:has(> .kol-button__interactive-element:focus) {
 				outline: 2px solid var(--ecl-color-primary);
 				border-radius: 1px;
+				position: relative;
 				outline-offset: -2px;
+			}
+
+			.kol-button__interactive-element:focus {
+				outline: none;
+				// The radius shapes the ring Firefox itself draws on the native button under a page color override.
+				border-radius: 1px;
 			}
 
 			&.selected {
