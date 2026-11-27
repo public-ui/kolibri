@@ -11,6 +11,7 @@ const config = {
 
 const themesPath = '/repo/packages/themes/default/src/components/button.scss';
 const componentsPath = '/repo/packages/components/src/components/button/style.scss';
+const externalThemePath = '/projects/my-theme/src/components/button.scss';
 
 describe('kolibri/layer-restrictions-themes', () => {
 	it('accepts kol-theme-component layer in themes package', async () => {
@@ -48,5 +49,51 @@ describe('kolibri/layer-restrictions-themes', () => {
 			codeFilename: componentsPath,
 		});
 		assert.equal(result.results[0].warnings.length, 0);
+	});
+
+	it('accepts kol-theme-forced-colors layer in themes package', async () => {
+		const result = await stylelint.lint({
+			code: '@layer kol-theme-forced-colors { .button { color: CanvasText; } }',
+			config,
+			codeFilename: themesPath,
+		});
+		assert.equal(result.results[0].warnings.length, 0);
+	});
+
+	it('ignores a theme outside packages/themes without pathPattern', async () => {
+		const result = await stylelint.lint({
+			code: '@layer kol-component { .button { color: red; } }',
+			config,
+			codeFilename: externalThemePath,
+		});
+		assert.equal(result.results[0].warnings.length, 0);
+	});
+
+	it('rejects a foreign layer in a theme matched by pathPattern', async () => {
+		const result = await stylelint.lint({
+			code: '@layer kol-component { .button { color: red; } }',
+			config: { ...config, rules: { 'kolibri/theme-allowed-layer-names': [true, { pathPattern: '/src/' }] } },
+			codeFilename: externalThemePath,
+		});
+		assert.equal(result.results[0].warnings.length, 1);
+		assert.equal(result.results[0].warnings[0].rule, 'kolibri/theme-allowed-layer-names');
+	});
+
+	it('accepts the theme layers in a theme matched by pathPattern', async () => {
+		const result = await stylelint.lint({
+			code: '@layer kol-theme-global { :host { color: red; } } @layer kol-theme-component { .button { color: red; } }',
+			config: { ...config, rules: { 'kolibri/theme-allowed-layer-names': [true, { pathPattern: '/src/' }] } },
+			codeFilename: externalThemePath,
+		});
+		assert.equal(result.results[0].warnings.length, 0);
+	});
+
+	it('reports an invalid pathPattern option', async () => {
+		const result = await stylelint.lint({
+			code: '@layer kol-component { .button { color: red; } }',
+			config: { ...config, rules: { 'kolibri/theme-allowed-layer-names': [true, { pathPattern: 42 }] } },
+			codeFilename: externalThemePath,
+		});
+		assert.equal(result.results[0].invalidOptionWarnings.length, 1);
 	});
 });

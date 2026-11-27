@@ -183,7 +183,7 @@ export class KolPopoverButton extends BaseButtonWebComponent implements Clickabl
 
 	@Watch('_popoverAlign')
 	public watchPopoverAlign(value?: PopoverAlignPropType): void {
-		popoverAlignProp.apply(value, (v) => this.popoverBehavior.watchAlign(v));
+		this.applyProp(popoverAlignProp, value, (v) => this.popoverBehavior.watchAlign(v));
 	}
 
 	/**

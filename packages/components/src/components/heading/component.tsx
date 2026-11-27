@@ -31,7 +31,7 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements WebCompo
 
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelWithExpertSlotProp, value);
 	}
 
 	/**
@@ -42,7 +42,7 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements WebCompo
 
 	@Watch('_level')
 	public watchLevel(value?: HeadingLevel): void {
-		levelProp.apply(value, (v) => this.setRenderProp('level', v));
+		this.applyProp(levelProp, value);
 	}
 
 	/**
@@ -53,7 +53,7 @@ export class KolHeading extends BaseWebComponent<HeadingApi> implements WebCompo
 
 	@Watch('_secondaryHeadline')
 	public watchSecondaryHeadline(value?: SecondaryHeadlinePropType): void {
-		secondaryHeadlineProp.apply(value, (v) => this.setRenderProp('secondaryHeadline', v));
+		this.applyProp(secondaryHeadlineProp, value);
 	}
 
 	public componentWillLoad(): void {

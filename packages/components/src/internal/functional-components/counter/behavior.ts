@@ -45,15 +45,15 @@ export class CounterBehavior extends BaseBehavior<CounterApi> implements Behavio
 	}
 
 	public watchHasCounter(value?: boolean): void {
-		hasCounterProp.apply(value, (v) => this.setRenderProp('hasCounter', v));
+		this.applyProp(hasCounterProp, value);
 	}
 
 	public watchMaxLength(value?: number): void {
-		maxLengthProp.apply(value, (v) => this.setRenderProp('maxLength', v));
+		this.applyProp(maxLengthProp, value);
 	}
 
 	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
-		maxLengthBehaviorProp.apply(value, (v) => this.setRenderProp('maxLengthBehavior', v));
+		this.applyProp(maxLengthBehaviorProp, value);
 	}
 
 	public readonly setVisualRef = (el?: HTMLSpanElement): void => {

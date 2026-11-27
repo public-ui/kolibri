@@ -3,23 +3,34 @@ import stylelint from 'stylelint';
 const ruleName = 'kolibri/theme-allowed-layer-names';
 const messages = stylelint.utils.ruleMessages(ruleName, {
 	rejected: (layerName, filePath) =>
-		`Layer "${layerName}" is not allowed in themes package. Only kol-theme-global and kol-theme-component are allowed: ${filePath}`,
+		`Layer "${layerName}" is not allowed in a theme. Only kol-theme-global, kol-theme-component and kol-theme-forced-colors are allowed: ${filePath}`,
 });
+
+const defaultPathPattern = '/packages/themes/';
 
 const meta = {
 	url: 'https://github.com/public-ui/kolibri/blob/develop/AGENTS.md#theming',
 	fixable: false,
 };
 
-const ruleFunction = (primaryOption) => {
+/**
+ * `pathPattern` marks the theme files by a substring of their path; the default matches the themes of the KoliBri monorepo.
+ */
+const ruleFunction = (primaryOption, secondaryOptions) => {
 	return (root, result) => {
-		if (!primaryOption) return;
+		const validOptions = stylelint.utils.validateOptions(
+			result,
+			ruleName,
+			{ actual: primaryOption, possible: [true, false] },
+			{ actual: secondaryOptions, possible: { pathPattern: [(value) => typeof value === 'string' && value.length > 0] }, optional: true },
+		);
+		if (!validOptions || !primaryOption) return;
 
 		const filePath = result.root.source.input.from;
 		if (!filePath) return;
 
 		const normalizedPath = filePath.replace(/\\/g, '/');
-		if (!normalizedPath.includes('/packages/themes/')) return;
+		if (!normalizedPath.includes(secondaryOptions?.pathPattern ?? defaultPathPattern)) return;
 
 		const allowedLayers = ['kol-theme-global', 'kol-theme-component', 'kol-theme-forced-colors'];
 

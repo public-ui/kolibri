@@ -96,13 +96,13 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 		if (!initial) {
 			removeNavLabel(this.getRenderProp('label'));
 		}
-		labelProp.apply(value, (v) => this.setRenderProp('label', v), this.isRequired('label'));
+		this.applyProp(labelProp, value);
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.getRenderProp('label'));
 	}
 
 	private applyLinks(value: Stringified<LinkProps[]> | undefined): void {
-		skipNavLinksProp.apply(value, (links) => {
+		this.applyProp(skipNavLinksProp, value, (links) => {
 			this.setRenderProp('links', links);
 			this.linkItems.forEach((item) => item.destroy());
 			this.linkItems = links.map((link) => createSkipNavLinkItem(link, () => this.host));

@@ -191,7 +191,7 @@ pnpm --filter @public-ui/components build
 - [ ] API nutzt `PropsConfigShape` + `ApiFromConfig`, nur benötigte Abschnitte deklariert
 - [ ] WC ist Orchestrator: erbt `BaseWebComponent<Api>`, keine Controller-/Aspect-Klasse, deklariert `propsConfig` als Feld — die Basis säht die Render-Props daraus beim ersten Zugriff
 - [ ] Prop-Triangle für **jeden** `@Prop()` vollständig (Deklaration, `@Watch`, Anwendung beim Laden)
-- [ ] Watcher wenden die Prop-Factory inline an: `xxxProp.apply(value, (v) => this.setRenderProp('xxx', v))`
+- [ ] Watcher wenden die Prop-Factory über die Basis an: `this.applyProp(xxxProp, value)`
 - [ ] Behavior (falls vorhanden) erbt `BaseBehavior<Api>`, implementiert `BehaviorInterface<Api>`, wird über `this.stateAccess` oder begründet über `BaseWebComponent.stateLess` komponiert — inkl. `componentDidRender`-Sync und `disconnectedCallback`-Teardown
 - [ ] FC ist zustandslos und kapselt seinen Wurzelknoten in `BemRootNodeFC`
 - [ ] Die Render-Funktion nutzt durchgängig die Render-FunctionalComponents (`ButtonFC`, `LinkFC`, …) über Items (Fallstrick 8)

@@ -46,7 +46,7 @@ export * from './has-create-button';
 export * from './has-icons-when-expanded';
 export * from './has-settings-menu';
 /** The shape type of every prop definition; the factory functions in `helpers/` serve the prop modules only. */
-export type { Prop } from './helpers/factory';
+export type { Prop, PropDefinition } from './helpers/factory';
 export * from './hide-label';
 export * from './hide-msg';
 export * from './high';

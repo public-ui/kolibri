@@ -170,79 +170,75 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	// --- Prop application (one per prop; the concrete element's watchers delegate here) ---
 
 	protected applyAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyProp(accessKeyProp, value);
 	}
 
 	protected applyAriaControls(value?: AriaControlsPropType): void {
-		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
+		this.applyProp(ariaControlsProp, value);
 	}
 
 	protected applyAriaCurrentValue(value?: AriaCurrentValuePropType): void {
-		ariaCurrentValueProp.apply(value, (v) => this.setRenderProp('ariaCurrentValue', v));
+		this.applyProp(ariaCurrentValueProp, value);
 	}
 
 	protected applyAriaDescription(value?: AriaDescriptionPropType): void {
-		ariaDescriptionProp.apply(value, (v) => this.setRenderProp('ariaDescription', v));
+		this.applyProp(ariaDescriptionProp, value);
 	}
 
 	protected applyAriaExpanded(value?: boolean): void {
-		ariaExpandedProp.apply(value, (v) => this.setRenderProp('ariaExpanded', v));
+		this.applyProp(ariaExpandedProp, value);
 	}
 
 	protected applyAriaOwns(value?: AriaOwnsPropType): void {
-		ariaOwnsProp.apply(value, (v) => this.setRenderProp('ariaOwns', v));
+		this.applyProp(ariaOwnsProp, value);
 	}
 
 	protected applyCustomClass(value?: CustomClassPropType): void {
-		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
+		this.applyProp(customClassProp, value);
 	}
 
 	protected applyDisabled(value?: DisabledPropType): void {
-		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+		this.applyProp(disabledProp, value);
 	}
 
 	protected applyDownload(value?: DownloadPropType): void {
-		downloadProp.apply(value, (v) => this.setRenderProp('download', v));
+		this.applyProp(downloadProp, value);
 	}
 
 	protected applyHideLabel(value?: HideLabelPropType): void {
-		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
+		this.applyProp(hideLabelProp, value);
 	}
 
 	protected applyHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v), this.isRequired('href'));
+		this.applyProp(hrefProp, value);
 	}
 
 	protected applyIcons(value?: Stringified<KoliBriIconsProp>): void {
-		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyProp(spanIconsProp, value);
 	}
 
 	protected applyInline(value?: InlinePropType): void {
-		inlineProp.apply(value, (v) => this.setRenderProp('inline', v));
+		this.applyProp(inlineProp, value);
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(
-			value,
-			(v) => {
-				this.setRenderProp('label', v);
-				this.setState('expertSlot', value === '');
-				this.tooltipBehavior.watchLabel(this.getTooltipLabel());
-			},
-			this.isRequired('label'),
-		);
+		this.applyProp(labelWithExpertSlotProp, value, (v) => {
+			this.setRenderProp('label', v);
+			this.setState('expertSlot', value === '');
+			this.tooltipBehavior.watchLabel(this.getTooltipLabel());
+		});
 	}
 
 	protected applyOn(value?: LinkOnCallbacksPropType): void {
-		linkCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyProp(linkCallbacksProp, value);
 	}
 
 	protected applyRole(value?: AlternativeButtonLinkRolePropType): void {
-		linkRoleProp.apply(value, (v) => this.setRenderProp('role', v));
+		this.applyProp(linkRoleProp, value);
 	}
 
 	protected applyShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyProp(shortKeyProp, value);
 	}
 
 	protected applyTabIndex(value?: TabIndexPropType): void {
@@ -250,25 +246,25 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 		// render as `tabindex="0"`. Unsetting the prop has to restore that state, so the else branch
 		// is not optional: without it a reset would keep the previous number.
 		if (typeof value === 'number') {
-			tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
+			this.applyProp(tabIndexProp, value);
 		} else {
 			this.unsetRenderProp('tabIndex');
 		}
 	}
 
 	protected applyTarget(value?: LinkTargetPropType): void {
-		linkTargetProp.apply(value, (v) => this.setRenderProp('target', v));
+		this.applyProp(linkTargetProp, value);
 	}
 
 	protected applyTooltipAlign(value?: TooltipAlignPropType): void {
-		tooltipAlignProp.apply(value, (v) => {
+		this.applyProp(tooltipAlignProp, value, (v) => {
 			this.setRenderProp('tooltipAlign', v);
 			this.tooltipBehavior.watchAlign(v);
 		});
 	}
 
 	protected applyVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyProp(variantProp, value);
 	}
 
 	// --- Refs ---
