@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11706,
-	"head": "5f6e43f6e0fb938ba69fa40c31d01becb0e6b8da",
+	"head": "5288f4ff8c9dd5b27d92c0b96af52c1d99ebcb01",
 	"repository": "public-ui/kolibri",
-	"runId": 45966963273,
-	"generatedAt": "2026-11-27T08:53:20.199Z",
-	"digest": "sha256:6c219b4bf480d1ba81018d70aeb72b8911856388a4accbdce5f734f2a3281fed",
+	"runId": 45970883388,
+	"generatedAt": "2026-11-27T09:22:42.145Z",
+	"digest": "sha256:acb658a546b377f64e51812f8bd21b6e2741bf2016cdf616bc34789cb461088e",
 	"baseline": {
 		"sha": "c0df4dd77894b6e129e172fe5d70b432f1d5a210",
 		"ref": "release/4",
@@ -13539,15 +13539,15 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:f8e918529ba0986eeabf17a3842d1759add8ee01cfca2fe434a0b322c641d078",
+			"digest": "sha256:1c6d5ec823685037d36a2faec3f943e74ebc5caba93a133683ab12032ff09f05",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
 					"route": "abbr/basic",
 					"status": "changed",
-					"hash": "sha256:72eb8752780301ba29ea363a237058b6d178a16136eb62ed0f6b72b3a9f44cbe",
-					"diffPixels": 781,
-					"diffRatio": 0.047265,
+					"hash": "sha256:fb0ce8c248eeab642b6185e30dc88ac906b0a01356832307038105204461f14f",
+					"diffPixels": 800,
+					"diffRatio": 0.048414,
 					"sizeMismatch": {
 						"expected": [
 							183,
